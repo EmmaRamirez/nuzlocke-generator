@@ -1,0 +1,36 @@
+@import "_normalize.scss";
+
+$theme-color: #4fbc35;
+$accent-color: #eee;
+$text-color: #222;
+
+body {
+  border-top: .5rem solid $theme-color;
+  font-family: sans-serif;
+  padding: 0vh 10vw;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  text-transform: lowercase;
+}
+
+
+.nuzleaf-icon {
+  
+  height: 3rem;
+  
+  padding: .25rem;
+  position: relative;
+  top: .5rem;
+}
+
+
+
+input[type="checkbox"] {
+  margin-right: .2rem;
+  &:not(:nth-of-type(1)) {
+    margin-left: .5rem;
+  }
+}

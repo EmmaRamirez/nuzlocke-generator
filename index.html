@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Nuzlocke Generator</title>
+    <meta description="An intuitive ruleset generator for Pokémon Nuzlockes" />
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Nuzlocke Generator<img class="nuzleaf-icon" src="img/nuzleaf.svg" /></h1>
+      
+      <form>
+        <label># of Rulesets:</label><input type="number" name="numOfRules" min="2" max="40" value="2" />
+
+        <fieldset>
+          <legend>Game</legend>
+          
+          <input type="checkbox" id="random-game" checked />Random Game
+          <input type="checkbox" name="romHacks" />Include ROM Hacks
+          
+          <fieldset class="generation-I-set">
+            <legend>Generation I:</legend>
+            <input type="checkbox" name="redVersion" />Red Version
+            <input type="checkbox" name="blueVersion" />Blue Version
+            <input type="checkbox" name="yellowVersion" />Yellow Version
+          </fieldset>
+          
+          <fieldset class="generation-II-set">
+            <legend>Generation II:</legend>
+            <input type="checkbox" name="goldVersion" />Gold Version
+            <input type="checkbox" name="silverVersion" />Silver Version
+            <input type="checkbox" name="crystalVersion" />Crystal Version
+          </fieldset>
+          
+          <fieldset class="generation-III-set">
+            <legend>Generation III:</legend>
+            <input type="checkbox" name="rubyVersion" />Ruby Version
+            <input type="checkbox" name="sapphireVersion" />Sapphire Version
+            <input type="checkbox" name="leafgreenVersion" />Leafgreen Version
+            <input type="checkbox" name="fireredVersion" />Firered Version
+            <input type="checkbox" name="emeraldVersion" />Emerald Version
+          </fieldset>
+          
+          <fieldset class="generation-IV-set">
+            <legend>Generation IV:</legend>
+            <input type="checkbox" name="diamondVersion" />Diamond Version
+            <input type="checkbox" name="pearlVersion" />Pearl Version
+            <input type="checkbox" name="platinumVersion" />Platinum Version
+            <input type="checkbox" name="heartgoldVersion" />Heartgold Version
+            <input type="checkbox" name="soulsilverVersion" />Soulsilver Version
+          </fieldset>
+          
+          <fieldset class="generation-V-set">
+            <legend>Generation V:</legend>
+            <input type="checkbox" name="blackVersion" />Black Version
+            <input type="checkbox" name="whiteVersion" />White Version
+            <input type="checkbox" name="black2Version" />Black 2 Version
+            <input type="checkbox" name="white2Version" />White 2 Version
+          </fieldset>
+          
+          <fieldset class="generation-VI-set">
+            <legend>Generation VI:</legend>
+            <input type="checkbox" name="X" />X
+            <input type="checkbox" name="Y" />Y
+            <input type="checkbox" name="OmegaRuby" />OmegaRuby
+            <input type="checkbox" name="AlphaSapphire" />AlphaSapphire
+          </fieldset>
+
+        </fieldset>
+        <label>Difficulty</label>
+        <input type="range" id="difficulty" min="1" max="5" value="3" />
+        
+        <button id="generate">Generate</button>
+      </form>
+      
+      <ol class="ruleset">
+      
+      </ol>
+      
+<!--      <div id="dummy"></div>-->
+      
+      
+    </div>
+    <footer>
+      <p>This website is not affiliated with Nuzlocke Comics, The Pokémon Company International, Nintendo, Gamefreak or any of its trademarks.</p>
+    </footer>
+    <script src="js/nuzlocke.js"></script>
+  </body>
+</html>
