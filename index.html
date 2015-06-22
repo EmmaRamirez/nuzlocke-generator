@@ -2,87 +2,87 @@
 <html lang="en">
   <head>
     <title>Nuzlocke Generator</title>
-    <meta description="An intuitive ruleset generator for Pokémon Nuzlockes" />
+    <meta description="An intuitive ruleset generator for Pok&eacute;mon Nuzlockes" />
     <link rel="stylesheet" href="css/app.css" />
   </head>
   <body>
     <div class="container">
       <h1>Nuzlocke Generator<img class="nuzleaf-icon" src="img/nuzleaf.svg" /></h1>
       
-      <form>
-        <label># of Rulesets:</label><input type="number" name="numOfRules" min="2" max="40" value="2" />
+      <div class="nuzlocke-container">
+        <label># of Rulesets</label> <input type="number" id="rulesNumber" name="numOfRules" min="2" max="40" value="2" />
 
         <fieldset>
           <legend>Game</legend>
           
-          <input type="checkbox" id="random-game" checked />Random Game
-          <input type="checkbox" name="romHacks" />Include ROM Hacks
+          <input type="checkbox" id="random-game" value="randomGame" checked />Random Game
+          <input type="checkbox" value="romHacks" />Include ROM Hacks
           
-          <fieldset class="generation-I-set">
+          <fieldset class="generation-I-set gen-set">
             <legend>Generation I:</legend>
-            <input type="checkbox" name="redVersion" />Red Version
-            <input type="checkbox" name="blueVersion" />Blue Version
-            <input type="checkbox" name="yellowVersion" />Yellow Version
+            <input type="checkbox" value="redVersion" />Red Version
+            <input type="checkbox" value="blueVersion" />Blue Version
+            <input type="checkbox" value="yellowVersion" />Yellow Version
           </fieldset>
           
-          <fieldset class="generation-II-set">
+          <fieldset class="generation-II-set gen-set">
             <legend>Generation II:</legend>
-            <input type="checkbox" name="goldVersion" />Gold Version
-            <input type="checkbox" name="silverVersion" />Silver Version
-            <input type="checkbox" name="crystalVersion" />Crystal Version
+            <input type="checkbox" value="goldVersion" />Gold Version
+            <input type="checkbox" value="silverVersion" />Silver Version
+            <input type="checkbox" value="crystalVersion" />Crystal Version
           </fieldset>
           
-          <fieldset class="generation-III-set">
+          <fieldset class="generation-III-set gen-set">
             <legend>Generation III:</legend>
-            <input type="checkbox" name="rubyVersion" />Ruby Version
-            <input type="checkbox" name="sapphireVersion" />Sapphire Version
-            <input type="checkbox" name="leafgreenVersion" />Leafgreen Version
-            <input type="checkbox" name="fireredVersion" />Firered Version
-            <input type="checkbox" name="emeraldVersion" />Emerald Version
+            <input type="checkbox" value="rubyVersion" />Ruby Version
+            <input type="checkbox" value="sapphireVersion" />Sapphire Version
+            <input type="checkbox" value="leafgreenVersion" />Leafgreen Version
+            <input type="checkbox" value="fireredVersion" />Firered Version
+            <input type="checkbox" value="emeraldVersion" />Emerald Version
           </fieldset>
           
-          <fieldset class="generation-IV-set">
+          <fieldset class="generation-IV-set gen-set">
             <legend>Generation IV:</legend>
-            <input type="checkbox" name="diamondVersion" />Diamond Version
-            <input type="checkbox" name="pearlVersion" />Pearl Version
-            <input type="checkbox" name="platinumVersion" />Platinum Version
-            <input type="checkbox" name="heartgoldVersion" />Heartgold Version
-            <input type="checkbox" name="soulsilverVersion" />Soulsilver Version
+            <input type="checkbox" value="diamondVersion" />Diamond Version
+            <input type="checkbox" value="pearlVersion" />Pearl Version
+            <input type="checkbox" value="platinumVersion" />Platinum Version
+            <input type="checkbox" value="heartgoldVersion" />Heartgold Version
+            <input type="checkbox" value="soulsilverVersion" />Soulsilver Version
           </fieldset>
           
-          <fieldset class="generation-V-set">
+          <fieldset class="generation-V-set gen-set">
             <legend>Generation V:</legend>
-            <input type="checkbox" name="blackVersion" />Black Version
-            <input type="checkbox" name="whiteVersion" />White Version
-            <input type="checkbox" name="black2Version" />Black 2 Version
-            <input type="checkbox" name="white2Version" />White 2 Version
+            <input type="checkbox" value="blackVersion" />Black Version
+            <input type="checkbox" value="whiteVersion" />White Version
+            <input type="checkbox" value="black2Version" />Black 2 Version
+            <input type="checkbox" value="white2Version" />White 2 Version
           </fieldset>
           
-          <fieldset class="generation-VI-set">
+          <fieldset class="generation-VI-set gen-set">
             <legend>Generation VI:</legend>
-            <input type="checkbox" name="X" />X
-            <input type="checkbox" name="Y" />Y
-            <input type="checkbox" name="OmegaRuby" />OmegaRuby
-            <input type="checkbox" name="AlphaSapphire" />AlphaSapphire
+            <input type="checkbox" value="X" />X
+            <input type="checkbox" value="Y" />Y
+            <input type="checkbox" value="OmegaRuby" />OmegaRuby
+            <input type="checkbox" value="AlphaSapphire" />AlphaSapphire
           </fieldset>
 
         </fieldset>
-        <label>Difficulty</label>
-        <input type="range" id="difficulty" min="1" max="5" value="3" />
-        
+        <label>Difficulty</label> <input type="range" id="difficulty" min="1" max="5" value="3" />
+        <br/>
         <button id="generate">Generate</button>
-      </form>
+        
+      </div>
       
       <ol class="ruleset">
       
       </ol>
       
-<!--      <div id="dummy"></div>-->
+      <div id="test-dummy"></div>
       
       
     </div>
     <footer>
-      <p>This website is not affiliated with Nuzlocke Comics, The Pokémon Company International, Nintendo, Gamefreak or any of its trademarks.</p>
+      <p>This website is not affiliated with Nuzlocke Comics, The Pok&eacute;mon Company International, Nintendo, Gamefreak or any of its trademarks.</p>
     </footer>
     <script src="js/nuzlocke.js"></script>
   </body>
