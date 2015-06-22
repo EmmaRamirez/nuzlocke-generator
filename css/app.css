@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700);
 *,
 *::before,
 *::after {
@@ -222,14 +223,28 @@ table {
 
 body {
   border-top: 0.5rem solid #4fbc35;
-  font-family: sans-serif;
+  font-family: "Roboto", sans-serif;
   padding: 0vh 10vw;
 }
 
 h1 {
+  background: #4fbc35;
+  color: #eeeeee;
   font-size: 2.5rem;
+  font-weight: 300;
+  padding: .25rem;
   text-align: center;
   text-transform: lowercase;
+}
+
+a {
+  border-bottom: 1px solid #4fbc35;
+  color: #4fbc35;
+  text-decoration: none;
+}
+a:hover {
+  border-bottom: 1px solid #3e942a;
+  color: #3e942a;
 }
 
 .nuzleaf-icon {
@@ -239,9 +254,26 @@ h1 {
   top: .5rem;
 }
 
+.nuzlocke-container {
+  margin-top: 1.5rem;
+}
+
 input[type="checkbox"] {
   margin-right: .2rem;
 }
-input[type="checkbox"]:not(:nth-of-type(1)) {
-  margin-left: .5rem;
+
+.suggestion {
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+footer {
+  background: #368024;
+  bottom: 0;
+  color: #eeeeee;
+  left: 0;
+  padding: 1rem;
+  position: absolute;
+  text-align: center;
+  width: 100%;
 }

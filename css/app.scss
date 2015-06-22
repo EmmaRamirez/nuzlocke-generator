@@ -1,4 +1,6 @@
 @import "_normalize.scss";
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700);
+
 
 $theme-color: #4fbc35;
 $accent-color: #eee;
@@ -6,14 +8,28 @@ $text-color: #222;
 
 body {
   border-top: .5rem solid $theme-color;
-  font-family: sans-serif;
+  font-family: "Roboto", sans-serif;
   padding: 0vh 10vw;
 }
 
 h1 {
+  background: $theme-color;
+  color: $accent-color;
   font-size: 2.5rem;
+  font-weight: 300;
+  padding: .25rem;
   text-align: center;
   text-transform: lowercase;
+}
+
+a {
+  border-bottom: 1px solid $theme-color;
+  color: $theme-color;
+  text-decoration: none;
+  &:hover {
+    border-bottom: 1px solid darken($theme-color, 10%);
+    color: darken($theme-color, 10%);
+  }
 }
 
 
@@ -27,10 +43,29 @@ h1 {
 }
 
 
+.nuzlocke-container {
+  margin-top: 1.5rem;
+}
+
 
 input[type="checkbox"] {
   margin-right: .2rem;
-  &:not(:nth-of-type(1)) {
-    margin-left: .5rem;
-  }
+
+}
+
+.suggestion {
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+
+footer {
+  background: darken($theme-color, 15%);
+  bottom: 0;
+  color: $accent-color;
+  left: 0;
+  padding: 1rem;
+  position: absolute;
+  text-align: center;
+  width: 100%;
 }
