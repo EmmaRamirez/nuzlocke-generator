@@ -10,7 +10,12 @@
       <h1>Nuzlocke Generator<img class="nuzleaf-icon" src="img/nuzleaf.svg" /></h1>
       
       <div class="nuzlocke-container">
-        <label># of Rulesets</label> <input type="number" id="rulesNumber" name="numOfRules" min="2" max="40" value="2" />
+        <label># of Rules</label> <input type="number" id="rulesNumber" name="numOfRules" min="2" max="40" value="0" /> <sup>*Zero will generate a random number of rules</sup>
+        
+        <br/>
+        
+        <label>Difficulty</label> <input type="range" id="difficulty" min="1" max="5" value="3" />
+
 
         <fieldset>
           <legend>Game</legend>
@@ -20,54 +25,53 @@
           
           <fieldset class="generation-I-set gen-set">
             <legend>Generation I:</legend>
-            <input type="checkbox" value="redVersion" />Red Version
-            <input type="checkbox" value="blueVersion" />Blue Version
-            <input type="checkbox" value="yellowVersion" />Yellow Version
+            <label><input type="checkbox" value="redVersion" />Red Version</label>
+            <label><input type="checkbox" value="blueVersion" />Blue Version</label>
+            <label><input type="checkbox" value="yellowVersion" />Yellow Version</label>
           </fieldset>
           
           <fieldset class="generation-II-set gen-set">
             <legend>Generation II:</legend>
-            <input type="checkbox" value="goldVersion" />Gold Version
-            <input type="checkbox" value="silverVersion" />Silver Version
-            <input type="checkbox" value="crystalVersion" />Crystal Version
+            <label><input type="checkbox" value="goldVersion" />Gold Version</label>
+            <label><input type="checkbox" value="silverVersion" />Silver Version</label>
+            <label><input type="checkbox" value="crystalVersion" />Crystal Version</label>
           </fieldset>
           
           <fieldset class="generation-III-set gen-set">
             <legend>Generation III:</legend>
-            <input type="checkbox" value="rubyVersion" />Ruby Version
-            <input type="checkbox" value="sapphireVersion" />Sapphire Version
-            <input type="checkbox" value="leafgreenVersion" />Leafgreen Version
-            <input type="checkbox" value="fireredVersion" />Firered Version
-            <input type="checkbox" value="emeraldVersion" />Emerald Version
+            <label><input type="checkbox" value="rubyVersion" />Ruby Version</label>
+            <label><input type="checkbox" value="sapphireVersion" />Sapphire Version</label>
+            <label><input type="checkbox" value="leafgreenVersion" />Leafgreen Version</label>
+            <label><input type="checkbox" value="fireredVersion" />Firered Version</label>
+            <label><input type="checkbox" value="emeraldVersion" />Emerald Version</label>
           </fieldset>
           
           <fieldset class="generation-IV-set gen-set">
             <legend>Generation IV:</legend>
-            <input type="checkbox" value="diamondVersion" />Diamond Version
-            <input type="checkbox" value="pearlVersion" />Pearl Version
-            <input type="checkbox" value="platinumVersion" />Platinum Version
-            <input type="checkbox" value="heartgoldVersion" />Heartgold Version
-            <input type="checkbox" value="soulsilverVersion" />Soulsilver Version
+            <label><input type="checkbox" value="diamondVersion" />Diamond Version</label>
+            <label><input type="checkbox" value="pearlVersion" />Pearl Version</label>
+            <label><input type="checkbox" value="platinumVersion" />Platinum Version</label>
+            <label><input type="checkbox" value="heartgoldVersion" />Heartgold Version</label>
+            <label><input type="checkbox" value="soulsilverVersion" />Soulsilver Version</label>
           </fieldset>
           
           <fieldset class="generation-V-set gen-set">
             <legend>Generation V:</legend>
-            <input type="checkbox" value="blackVersion" />Black Version
-            <input type="checkbox" value="whiteVersion" />White Version
-            <input type="checkbox" value="black2Version" />Black 2 Version
-            <input type="checkbox" value="white2Version" />White 2 Version
+            <input type="checkbox" value="blackVersion" />Black Version</label>
+            <input type="checkbox" value="whiteVersion" />White Version</label>
+            <input type="checkbox" value="black2Version" />Black 2 Version</label>
+            <input type="checkbox" value="white2Version" />White 2 Version</label>
           </fieldset>
           
           <fieldset class="generation-VI-set gen-set">
             <legend>Generation VI:</legend>
-            <input type="checkbox" value="X" />X
-            <input type="checkbox" value="Y" />Y
-            <input type="checkbox" value="OmegaRuby" />OmegaRuby
-            <input type="checkbox" value="AlphaSapphire" />AlphaSapphire
+            <label><input type="checkbox" value="X" />X</label>
+            <label><input type="checkbox" value="Y" />Y</label>
+            <label><input type="checkbox" value="OmegaRuby" />OmegaRuby</label>
+            <label><input type="checkbox" value="AlphaSapphire" />AlphaSapphire</label>
           </fieldset>
 
         </fieldset>
-        <label>Difficulty</label> <input type="range" id="difficulty" min="1" max="5" value="3" />
         <br/>
         <button id="generate">Generate</button>
         
@@ -78,7 +82,10 @@
       </ol>
       
       <div id="test-dummy"></div>
+
+      <div class="suggestion">Want to see a new feature, rule, or game? <a href="#suggest">Suggest</a> it.</div>
       
+
       
     </div>
     <footer>
