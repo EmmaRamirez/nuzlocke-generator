@@ -10,12 +10,14 @@
       <h1>Nuzlocke Generator<img class="nuzleaf-icon" src="img/nuzleaf.svg" /></h1>
       
       <div class="nuzlocke-container">
-        <label># of Rules</label> <input type="number" id="rulesNumber" name="numOfRules" min="2" max="40" value="0" /> <sup>*Zero will generate a random number of rules</sup>
         
-        <br/>
+        <fieldset>
+          <legend># of Rules</legend> <input type="number" id="rulesNumber" name="numOfRules" min="2" max="40" value="0" /> <sup>*Zero will generate a random number of rules</sup>
+        </fieldset>
         
-        <label>Difficulty</label> <input type="range" id="difficulty" min="1" max="5" value="3" />
-
+        <fieldset>
+          <legend>Difficulty</legend> <input type="range" id="difficulty" min="1" max="5" value="3" />
+        </fieldset>
 
         <fieldset>
           <legend>Game</legend>
@@ -57,10 +59,10 @@
           
           <fieldset class="generation-V-set gen-set">
             <legend>Generation V:</legend>
-            <input type="checkbox" value="blackVersion" />Black Version</label>
-            <input type="checkbox" value="whiteVersion" />White Version</label>
-            <input type="checkbox" value="black2Version" />Black 2 Version</label>
-            <input type="checkbox" value="white2Version" />White 2 Version</label>
+            <label><input type="checkbox" value="blackVersion" />Black Version</label>
+            <label><input type="checkbox" value="whiteVersion" />White Version</label>
+            <label><input type="checkbox" value="black2Version" />Black 2 Version</label>
+            <label><input type="checkbox" value="white2Version" />White 2 Version</label>
           </fieldset>
           
           <fieldset class="generation-VI-set gen-set">
@@ -73,12 +75,18 @@
 
         </fieldset>
         <br/>
-        <button id="generate">Generate</button>
+        <button id="generate" class="btn-generate">Generate</button>
         
       </div>
       
       <ol class="ruleset">
-      
+<!--
+        <li>Any Pok&eacute;mon that has fainted is considered dead and must be released or permaboxed</li>
+        <li>You may only catch the first Pok&eacute;mon you see in a route.</li>
+        <li>You do not have to catch duplicates.</li>
+        <li>You may only catch a new Pok&eacute;mon every othe route.</li>
+        <li>You may not catch shinies.</li>
+-->
       </ol>
       
       <div id="test-dummy"></div>
