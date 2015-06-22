@@ -17,12 +17,17 @@
         
         <fieldset>
           <legend>Difficulty</legend> <input type="range" id="difficulty" min="1" max="5" value="3" />
+          <div class="difficulty-guide">
+            <span>Least Hard</span>
+            <span>Hard</span>
+            <span>Masochist Hard</span>
+          </div>
         </fieldset>
 
         <fieldset>
           <legend>Game</legend>
           
-          <input type="checkbox" id="random-game" value="randomGame" checked />Random Game
+          <input type="checkbox" id="random-game" value="randomGame" />Random Game
           <input type="checkbox" value="romHacks" />Include ROM Hacks
           
           <fieldset class="generation-I-set gen-set">
@@ -89,8 +94,6 @@
 -->
       </ol>
       
-      <div id="test-dummy"></div>
-
       <div class="suggestion">Want to see a new feature, rule, or game? <a href="#suggest">Suggest</a> it.</div>
       
 
