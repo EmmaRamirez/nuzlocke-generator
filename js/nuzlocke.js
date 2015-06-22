@@ -10,29 +10,35 @@
     },
     
     rules: [
+      // 1
       {
         text: "You may not use any heal items outside of battle",
         diff: 4,
         gamesApplicable: "all",
         gensApplicable: [1, 2, 3, 4, 5, 6]
       },
+      // 2
       {
         text: "You may not run from any wild Pokémon",
         diff: 3,
         gamesApplicable: "all",
         gensApplicable: [1, 2, 3, 4, 5, 6]
       },
+      // 3
       {
         text: "You may only carry up to 4 Pokémon in your party",
         diff: 3,
         gamesApplicable: "all",
-        gensApplicable: [1, 2, 3, 4, 5, 6]
+        gensApplicable: [1, 2, 3, 4, 5, 6],
+        conflictsWith: 4
       },
+      // 4
       {
         text: "You may only carry up to 3 Pokemon in your party",
         diff: 5,
         gamesApplicable: "all",
-        gensApplicable: [1, 2, 3, 4, 5, 6]
+        gensApplicable: [1, 2, 3, 4, 5, 6],
+        conflictsWith: 3
       },
       {
         text: "All Pokémon in your party must overlap in type, i.e. Infernape / Lucario / Steelix / Claydol",
@@ -82,14 +88,14 @@
     ],
     
     
-    inputControls: function() {
+    inputControls: function () {
       
       var randomGame = document.getElementById("random-game");
       var generationFields = document.querySelectorAll(".gen-set"), i;
       
       randomGame.addEventListener("change", function () {
         
-        if ( randomGame.checked ) {
+        if (randomGame.checked) {
           
           for (i = 0; i < generationFields.length; i++) {
             generationFields[i].setAttribute('disabled', 'true');
@@ -110,9 +116,7 @@
     
     createRuleset: function () {
       
-      var dummy = document.getElementById("test-dummy");
       
-      dummy.textContent = "ok";
       
       
       var generateButton = document.getElementById("generate");
@@ -136,14 +140,15 @@
 //          numOfRules = Math.floor(Math.random() * Nuzlocke.rules.length);
 //        }
         
+        
+        
+        
         function postDifficulty (difficulty, node) {
-          
-          
           var difficultyString;
           
           switch (difficulty) {
             case 1:
-              difficultyString = "Least Hard";
+            difficultyString = "Least Hard";
               break;
             case 2:
               difficultyString = "Okay Hard";
@@ -164,7 +169,24 @@
           node.innerHTML = "<div class='difficulty-level-post'>Difficulty: " + difficultyString + "</div>";
         }
         
+        
+      
+        
+        
         postDifficulty(difficulty, list);
+        
+        
+        //console.log(gameVersion);
+          
+        
+        
+        function postGame (node) {
+          var gameVersion = Nuzlocke.games[2].name;
+          
+          list.innerHTML += "<div class='version-chosen-post'>Version: " + gameVersion + "</div>";
+        }
+        
+        postGame(list);
         
         for (var i = 0; i < numOfRules; i++) {
           //dummy.textContent += Nuzlocke.rules[i].text;
