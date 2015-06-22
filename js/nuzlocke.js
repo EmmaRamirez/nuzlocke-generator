@@ -20,7 +20,7 @@
         text: "You may not run from any wild Pokémon",
         diff: 3,
         gamesApplicable: "all",
-        gensApplicable: [1, 3]
+        gensApplicable: [1, 2, 3, 4, 5, 6]
       },
       {
         text: "You may only carry up to 4 Pokémon in your party",
@@ -72,6 +72,12 @@
         nameSelect: document.getElementsByName("redVersion"),
         diff: 3,
         gen: 3
+      },
+      {
+        name: "Platinum Version",
+        nameSelect: document.getElementsByName("platinumVersion"),
+        diff: 4,
+        gen: 4
       }
     ],
     
@@ -111,15 +117,67 @@
       
       var generateButton = document.getElementById("generate");
       
-      var numOfRules = document.getElementById("rulesNumber").value;
+      
+      //var numOfRules = document.getElementById("rulesNumber").value;
       
       //var numOfRules = numOfRules.value;
       
       generateButton.addEventListener("click", function () {
         
         
+        var difficulty = document.getElementById("difficulty").value;
+        var numOfRules = document.getElementById("rulesNumber").value;
+        var list = document.querySelector(".ruleset");
+        list.innerHTML = "";
         
-        dummy.textContent = numOfRules;
+        //dummy.textContent = numOfRules;
+        
+//        if (numOfRules === 0) {
+//          numOfRules = Math.floor(Math.random() * Nuzlocke.rules.length);
+//        }
+        
+        function postDifficulty (difficulty, node) {
+          
+          
+          var difficultyString;
+          
+          switch (difficulty) {
+            case 1:
+              difficultyString = "Least Hard";
+              break;
+            case 2:
+              difficultyString = "Okay Hard";
+              break;
+            case 3:
+              difficultyString = "Hard";
+              break;
+            case 4:
+              difficultyString = "Pretty Hard";
+              break;
+            case 5:
+              difficultyString = "Pure Masochism";
+              break;
+            default:
+              difficultyString = "Hard";
+          }
+          
+          node.innerHTML = "<div class='difficulty-level-post'>Difficulty: " + difficultyString + "</div>";
+        }
+        
+        postDifficulty(difficulty, list);
+        
+        for (var i = 0; i < numOfRules; i++) {
+          //dummy.textContent += Nuzlocke.rules[i].text;
+          
+          var l = Nuzlocke.rules.length;
+          var random = Math.floor(Math.random() * l);
+          
+          var li = document.createElement("li");
+          
+          li.textContent = Nuzlocke.rules[random].text;
+          
+          list.appendChild(li);
+        }
         
         
         
