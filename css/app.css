@@ -354,120 +354,192 @@ input[type="checkbox"] {
   background: #dd0b0b;
   color: #fee9e9;
 }
+.red-label input[type="checkbox"]:checked {
+  background: #ac0909;
+}
 
 .blue-label {
   background: #1f1fb2;
   color: #d8d8f8;
+}
+.blue-label input[type="checkbox"]:checked {
+  background: #171787;
 }
 
 .yellow-label {
   background: #e3e32e;
   color: #101002;
 }
+.yellow-label input[type="checkbox"]:checked {
+  background: #c4c41a;
+}
 
 .gold-label {
   background: #bcaa4c;
   color: #070602;
+}
+.gold-label input[type="checkbox"]:checked {
+  background: #9b8b3a;
 }
 
 .silver-label {
   background: #cbc9c4;
   color: #4d4a43;
 }
+.silver-label input[type="checkbox"]:checked {
+  background: #b3b0a9;
+}
 
 .crystal-label {
   background: #21938a;
   color: #c2f1ee;
+}
+.crystal-label input[type="checkbox"]:checked {
+  background: #186963;
 }
 
 .ruby-label {
   background: #cb1818;
   color: #fce6e6;
 }
+.ruby-label input[type="checkbox"]:checked {
+  background: #9d1313;
+}
 
 .sapphire-label {
   background: #1414aa;
   color: #c5c5f8;
+}
+.sapphire-label input[type="checkbox"]:checked {
+  background: #0f0f7c;
 }
 
 .leafgreen-label {
   background: #3bc63b;
   color: #000200;
 }
+.leafgreen-label input[type="checkbox"]:checked {
+  background: #2ea02e;
+}
 
 .firered-label {
   background: #d92b2b;
   color: #040101;
+}
+.firered-label input[type="checkbox"]:checked {
+  background: #b12020;
 }
 
 .emerald-label {
   background: #089608;
   color: #a3faa3;
 }
+.emerald-label input[type="checkbox"]:checked {
+  background: #056605;
+}
 
 .diamond-label {
   background: #8d8ddd;
   color: #191952;
+}
+.diamond-label input[type="checkbox"]:checked {
+  background: #6666d1;
 }
 
 .pearl-label {
   background: #e096a3;
   color: #5c1b26;
 }
+.pearl-label input[type="checkbox"]:checked {
+  background: #d46f80;
+}
 
 .platinum-label {
   background: #957a7a;
   color: #090707;
+}
+.platinum-label input[type="checkbox"]:checked {
+  background: #7a6262;
 }
 
 .heartgold-label {
   background: #c4af40;
   color: #040301;
 }
+.heartgold-label input[type="checkbox"]:checked {
+  background: #a08e31;
+}
 
 .soulsilver-label {
   background: #a2a3ba;
   color: #282835;
+}
+.soulsilver-label input[type="checkbox"]:checked {
+  background: #8586a4;
 }
 
 .black-label {
   background: #080808;
   color: #888888;
 }
+.black-label input[type="checkbox"]:checked {
+  background: black;
+}
 
 .white-label {
   background: #ededed;
   color: #6e6e6e;
+}
+.white-label input[type="checkbox"]:checked {
+  background: lightgray;
 }
 
 .black2-label {
   background: #28282c;
   color: #a5a5ae;
 }
+.black2-label input[type="checkbox"]:checked {
+  background: #101011;
+}
 
 .white2-label {
   background: #cbb0b0;
   color: #4b3131;
+}
+.white2-label input[type="checkbox"]:checked {
+  background: #b79191;
 }
 
 .x-label {
   background: #712528;
   color: #e5b0b2;
 }
+.x-label input[type="checkbox"]:checked {
+  background: #4b181a;
+}
 
 .y-label {
   background: #1c878b;
   color: #b6eef0;
+}
+.y-label input[type="checkbox"]:checked {
+  background: #135e61;
 }
 
 .omegaruby-label {
   background: #a81818;
   color: #f7c8c8;
 }
+.omegaruby-label input[type="checkbox"]:checked {
+  background: #7b1212;
+}
 
 .alphasapphire-label {
   background: #2121af;
   color: #d7d7f8;
+}
+.alphasapphire-label input[type="checkbox"]:checked {
+  background: #191984;
 }
 
 input[type="checkbox"] {
@@ -476,9 +548,6 @@ input[type="checkbox"] {
   border-radius: 50%;
   height: .75rem;
   width: .75rem;
-}
-input[type="checkbox"]:checked {
-  background: red;
 }
 input[type="checkbox"]:focus {
   outline: 0 solid white;
