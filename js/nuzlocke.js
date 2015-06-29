@@ -142,7 +142,6 @@
       
       
       
-      
       var generateButton = document.getElementById("generate");
       
       
@@ -151,7 +150,7 @@
       //var numOfRules = numOfRules.value;
       
       generateButton.addEventListener("click", function () {
-        
+        this.textContent = "Generated!";
         
         var difficulty = document.getElementById("difficulty").value;
         var numOfRules = document.getElementById("rulesNumber").value;
