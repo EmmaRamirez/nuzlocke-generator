@@ -31,6 +31,14 @@ $game-colors: (
   alphasapphire: #2121af
 );
 
+/* Mixins & Extends */
+%transition-s {
+  transition: 300ms ease-in-out;
+}
+%transition-m {
+  transition: 500ms ease-in-out;
+}
+
 /* Global */
 body {
   border-top: .5rem solid $theme-color;
@@ -89,20 +97,33 @@ fieldset {
   }
 }
 
-input[type=range] {
+input[type="number"] {
+  background: lighten($theme-color, 33%);
+  border: 1px solid $theme-color;
+  font-size: 1.5rem;
+  text-align: right;
+  @extend %transition-s;
+  &:focus {
+    background: white;
+    outline: none;
+    @extend %transition-s;
+  }
+}
+
+input[type="range"] {
   -webkit-appearance: none; 
   width: 50%;
 }
 
-input[type=range]::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
 }
 
-input[type=range]:focus {
+input[type="range"]:focus {
   outline: none;
 }
 
-input[type=range]::-ms-track {
+input[type="range"]::-ms-track {
   width: 100%;
   cursor: pointer;
   background: transparent;
@@ -111,13 +132,14 @@ input[type=range]::-ms-track {
 }
 
 ::-webkit-slider-runnable-track {
-  background: #e52525;
+  background: #888;
+  border-radius: 2px;
   height: .25rem;
 }
 ::-webkit-slider-thumb {
   -webkit-appearance: none;
   background: black;
-  border: 1px solid #bbb;
+  border: 2px solid #bbb;
   border-radius: 50%;
   background: #ffffff;
   // definite question here about which one provides better context
@@ -187,7 +209,9 @@ input[type="checkbox"] {
   border-radius: 50%;
   height: .75rem;
   width: .75rem;
+  @extend %transition-s;
   &:checked {
+    @extend %transition-s;
   }
   &:focus {
     outline: 0 solid white;
@@ -203,6 +227,16 @@ input[type="checkbox"] {
   margin: 0 auto;
   padding: .25rem 1rem;
   position: relative;
+  &:hover {
+    background: darken($theme-color, 5%);
+    
+    img {
+      animation: 300ms small-horizontal-movement infinite alternate ease-in;
+    }
+  }
+  img {
+    float: right;
+  }
 }
 
 
@@ -252,4 +286,10 @@ footer {
   padding: 1rem;
   text-align: center;
   width: 100%;
+}
+
+@keyframes small-horizontal-movement {
+  to {
+    transform: translateY(2px);
+  }
 }
