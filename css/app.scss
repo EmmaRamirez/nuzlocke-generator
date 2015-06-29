@@ -97,6 +97,7 @@ fieldset {
   }
 }
 
+/* # of Rules Input */
 input[type="number"] {
   background: lighten($theme-color, 33%);
   border: 1px solid $theme-color;
@@ -110,6 +111,7 @@ input[type="number"] {
   }
 }
 
+/* Difficulty Level Input */
 input[type="range"] {
   -webkit-appearance: none; 
   width: 50%;
@@ -162,10 +164,16 @@ input[type="range"]::-ms-track {
     &:nth-of-type(3) {
       text-align: right;
     }
+    .selected {
+      font-weight: bold;
+    }
+    .unselected {
+      font-weight: normal;
+    }
   }
 }
 
-
+/* Games / Generations subform */
 input[type="checkbox"] {
   margin-right: .2rem;
 
@@ -218,6 +226,7 @@ input[type="checkbox"] {
   }
 }
 
+/* Generate Button */
 .btn-generate {
   border: 0 solid white;
   background: $theme-color;
@@ -238,7 +247,6 @@ input[type="checkbox"] {
     float: right;
   }
 }
-
 
 /* Ruleset */
 .ruleset {

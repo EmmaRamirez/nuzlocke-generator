@@ -92,6 +92,8 @@
       
       var randomGame = document.getElementById("random-game");
       var generationFields = document.querySelectorAll(".gen-set"), i;
+      var difficulty = document.getElementById("difficulty");
+      var difficultyGuide = document.querySelector(".difficulty-guide");
       
       randomGame.addEventListener("change", function () {
         
@@ -110,6 +112,32 @@
         }
         
       });
+      
+      difficulty.addEventListener("input", function() {
+        var difficultyVal = difficulty.value;
+        var guideValues = document.querySelectorAll(".difficulty-guide span");
+        
+        function resetFontWeight () {
+          for (i = 0; i < guideValues.length; i++) {
+            //guideValues[i].style.fontWeight = "normal";
+            guideValues[i].classList.add("selected");
+          }
+        }
+        
+        if (difficultyVal == 1) {
+          resetFontWeight();
+          guideValues[0].style.fontWeight = "bold";
+          guideValues[0].classList("selected");
+        } else if (difficultyVal == 3) {
+          resetFontWeight();
+          guideValues[1].style.fontWeight = "bold";
+        } else if (difficultyVal == 5) {
+          resetFontWeight();
+          guideValues[2].style.fontWeight = "bold";
+        }
+      });
+      
+      
       
     },
     

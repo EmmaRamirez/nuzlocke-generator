@@ -281,6 +281,7 @@ fieldset fieldset legend {
   font-weight: normal;
 }
 
+/* # of Rules Input */
 input[type="number"] {
   background: #bbe9b0;
   border: 1px solid #4fbc35;
@@ -292,6 +293,7 @@ input[type="number"]:focus {
   outline: none;
 }
 
+/* Difficulty Level Input */
 input[type="range"] {
   -webkit-appearance: none;
   width: 50%;
@@ -345,7 +347,14 @@ input[type="range"]::-ms-track {
 .difficulty-guide span:nth-of-type(3) {
   text-align: right;
 }
+.difficulty-guide span .selected {
+  font-weight: bold;
+}
+.difficulty-guide span .unselected {
+  font-weight: normal;
+}
 
+/* Games / Generations subform */
 input[type="checkbox"] {
   margin-right: .2rem;
 }
@@ -570,6 +579,7 @@ input[type="checkbox"]:focus {
   outline: 0 solid white;
 }
 
+/* Generate Button */
 .btn-generate {
   border: 0 solid white;
   background: #4fbc35;
