@@ -68,6 +68,7 @@ a {
 
 label {
   cursor: pointer;
+  user-select: none;
 }
 
 /* Heading */
@@ -211,7 +212,7 @@ input[type="checkbox"] {
   }
 }
 
-input[type="checkbox"] {
+label[class*=label] input[type="checkbox"] {
   -webkit-appearance: none;
   background: white;
   border-radius: 50%;
@@ -223,6 +224,18 @@ input[type="checkbox"] {
   }
   &:focus {
     outline: 0 solid white;
+  }
+}
+
+.game-settings {
+  label {
+    background: #ddd;
+    border-radius: 8px;
+    margin-right: 1rem;
+    padding: .5rem;
+    input[type="checkbox"] {
+      
+    }
   }
 }
 

@@ -222,7 +222,7 @@ table {
 }
 
 /* Mixins & Extends */
-input[type="number"], input[type="number"]:focus, input[type="checkbox"], input[type="checkbox"]:checked {
+input[type="number"], input[type="number"]:focus, label[class*=label] input[type="checkbox"], label[class*=label] input[type="checkbox"]:checked {
   transition: 300ms ease-in-out;
 }
 
@@ -255,6 +255,7 @@ a:hover {
 
 label {
   cursor: pointer;
+  user-select: none;
 }
 
 /* Heading */
@@ -568,15 +569,22 @@ input[type="checkbox"] {
   background: #191984;
 }
 
-input[type="checkbox"] {
+label[class*=label] input[type="checkbox"] {
   -webkit-appearance: none;
   background: white;
   border-radius: 50%;
   height: .75rem;
   width: .75rem;
 }
-input[type="checkbox"]:focus {
+label[class*=label] input[type="checkbox"]:focus {
   outline: 0 solid white;
+}
+
+.game-settings label {
+  background: #ddd;
+  border-radius: 8px;
+  margin-right: 1rem;
+  padding: .5rem;
 }
 
 /* Generate Button */
