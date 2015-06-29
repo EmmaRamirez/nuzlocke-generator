@@ -117,23 +117,19 @@
         var difficultyVal = difficulty.value;
         var guideValues = document.querySelectorAll(".difficulty-guide span");
         
-        function resetFontWeight () {
+        function changeFontWeight (val) {
           for (i = 0; i < guideValues.length; i++) {
-            //guideValues[i].style.fontWeight = "normal";
-            guideValues[i].classList.add("selected");
+            guideValues[i].style.fontWeight = "normal";
+            guideValues[val].style.fontWeight = "bold";
           }
         }
         
         if (difficultyVal == 1) {
-          resetFontWeight();
-          guideValues[0].style.fontWeight = "bold";
-          guideValues[0].classList("selected");
+          changeFontWeight(0);
         } else if (difficultyVal == 3) {
-          resetFontWeight();
-          guideValues[1].style.fontWeight = "bold";
+          changeFontWeight(1);
         } else if (difficultyVal == 5) {
-          resetFontWeight();
-          guideValues[2].style.fontWeight = "bold";
+          changeFontWeight(2);
         }
       });
       
