@@ -338,105 +338,130 @@ input[type="checkbox"] {
 }
 
 .gen-set label {
+  border-radius: 2px;
   display: inline-block;
-  padding: .25rem;
-  width: 10rem;
+  padding: .5rem;
+  width: 10.5rem;
 }
 
 .red-label {
   background: #dd0b0b;
+  color: #fee9e9;
 }
 
 .blue-label {
-  background: blue;
+  background: #1f1fb2;
+  color: #d8d8f8;
 }
 
 .yellow-label {
-  background: yellow;
+  background: #e3e32e;
+  color: #101002;
 }
 
 .gold-label {
-  background: gold;
+  background: #bcaa4c;
+  color: #070602;
 }
 
 .silver-label {
-  background: silver;
+  background: #cbc9c4;
+  color: #4d4a43;
 }
 
 .crystal-label {
-  background: blue;
+  background: #21938a;
+  color: #c2f1ee;
 }
 
 .ruby-label {
-  background: red;
+  background: #cb1818;
+  color: #fce6e6;
 }
 
 .sapphire-label {
-  background: blue;
+  background: #1414aa;
+  color: #c5c5f8;
 }
 
 .leafgreen-label {
-  background: green;
+  background: #3bc63b;
+  color: #000200;
 }
 
 .firered-label {
-  background: red;
+  background: #d92b2b;
+  color: #040101;
 }
 
 .emerald-label {
-  background: green;
+  background: #089608;
+  color: #a3faa3;
 }
 
 .diamond-label {
-  background: blue;
+  background: #8d8ddd;
+  color: #191952;
 }
 
 .pearl-label {
-  background: pink;
+  background: #e096a3;
+  color: #5c1b26;
 }
 
 .platinum-label {
-  background: gray;
+  background: #957a7a;
+  color: #090707;
 }
 
 .heartgold-label {
-  background: gold;
+  background: #c4af40;
+  color: #040301;
 }
 
 .soulsilver-label {
-  background: silver;
+  background: #a2a3ba;
+  color: #282835;
 }
 
 .black-label {
-  background: black;
+  background: #080808;
+  color: #888888;
 }
 
 .white-label {
-  background: white;
+  background: #ededed;
+  color: #6e6e6e;
 }
 
 .black2-label {
-  background: black;
+  background: #28282c;
+  color: #a5a5ae;
 }
 
 .white2-label {
-  background: white;
+  background: #cbb0b0;
+  color: #4b3131;
 }
 
 .x-label {
-  background: red;
+  background: #712528;
+  color: #e5b0b2;
 }
 
 .y-label {
-  background: blue;
+  background: #1c878b;
+  color: #b6eef0;
 }
 
 .omegaruby-label {
-  background: red;
+  background: #a81818;
+  color: #f7c8c8;
 }
 
 .alphasapphire-label {
-  background: blue;
+  background: #2121af;
+  color: #d7d7f8;
 }
 
 .btn-generate {

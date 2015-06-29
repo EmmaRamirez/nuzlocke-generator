@@ -6,30 +6,31 @@ $accent-color: #eee;
 $text-color: #222;
 $game-colors: (
   red: #dd0b0b,
-  blue: blue,
-  yellow: yellow,
-  gold: gold,
-  silver: silver,
-  crystal: blue,
-  ruby: red,
-  sapphire: blue,
-  leafgreen: green,
-  firered: red,
-  emerald: green,
-  diamond: blue,
-  pearl: pink,
-  platinum: grey,
-  heartgold: gold,
-  soulsilver: silver,
-  black: black,
-  white: white,
-  black2: black,
-  white2: white,
-  x: red,
-  y: blue,
-  omegaruby: red,
-  alphasapphire: blue
+  blue: #1f1fb2,
+  yellow: #e3e32e,
+  gold: #bcaa4c,
+  silver: #cbc9c4,
+  crystal: #21938a,
+  ruby: #cb1818,
+  sapphire: #1414aa,
+  leafgreen: #3bc63b,
+  firered: #d92b2b,
+  emerald: #089608,
+  diamond: #8d8ddd,
+  pearl: #e096a3,
+  platinum: #957a7a,
+  heartgold: #c4af40,
+  soulsilver: #a2a3ba,
+  black: #080808,
+  white: #ededed,
+  black2: #28282c,
+  white2: #cbb0b0,
+  x: #712528,
+  y: #1c878b,
+  omegaruby: #a81818,
+  alphasapphire: #2121af
 );
+
 /* Global */
 body {
   border-top: .5rem solid $theme-color;
@@ -154,14 +155,21 @@ input[type="checkbox"] {
   padding: 0;
 }
 .gen-set label {
+  border-radius: 2px;
   display: inline-block;
-  padding: .25rem;
-  width: 10rem;
+  padding: .5rem;
+  width: 10.5rem;
 }
 
 @each $game, $color in $game-colors {
+  
     .#{$game}-label {
       background: $color;
+      @if lightness($color) > 50% {
+        color: darken($color, 50%);
+      } @else {
+        color: lighten($color, 50%);
+      }
     }
 }
 
