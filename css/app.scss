@@ -154,6 +154,11 @@ input[type="checkbox"] {
 .gen-set {
   padding: 0;
 }
+.gen-set legend {
+  position: relative;
+  left: -7rem;
+  top: 1.5rem;
+}
 .gen-set label {
   border-radius: 2px;
   display: inline-block;
@@ -163,14 +168,24 @@ input[type="checkbox"] {
 
 @each $game, $color in $game-colors {
   
-    .#{$game}-label {
-      background: $color;
-      @if lightness($color) > 50% {
-        color: darken($color, 50%);
-      } @else {
-        color: lighten($color, 50%);
-      }
+  .#{$game}-label {
+    background: $color;
+    @if lightness($color) > 50% {
+      color: darken($color, 50%);
+    } @else {
+      color: lighten($color, 50%);
     }
+    
+    
+  }
+
+  #{$game}-label:checked {
+    background: darken($color, 100%);
+  }
+
+  
+
+    
 }
 
 .btn-generate {
