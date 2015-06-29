@@ -231,7 +231,7 @@ body {
 h1 {
   background: #4fbc35;
   color: #eeeeee;
-  font-size: 2.5rem;
+  font-size: 4rem;
   font-weight: 300;
   padding: .25rem;
   text-align: center;
@@ -254,7 +254,8 @@ label {
 
 /* Heading */
 .nuzleaf-icon {
-  height: 3rem;
+  height: 5rem;
+  margin-left: .5rem;
   padding: .25rem;
   position: relative;
   top: .5rem;
@@ -263,6 +264,16 @@ label {
 /* Generator Form */
 .nuzlocke-container {
   margin-top: 1.5rem;
+}
+
+fieldset {
+  border: 0 solid black;
+}
+fieldset legend {
+  font-weight: bold;
+}
+fieldset fieldset legend {
+  font-weight: normal;
 }
 
 input[type=range] {
