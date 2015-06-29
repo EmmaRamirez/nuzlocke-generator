@@ -586,7 +586,6 @@ label[class*=label] input[type="checkbox"]:focus {
 .game-settings label {
   background: #ddd;
   border-radius: 8px;
-  margin-right: 1rem;
   padding: .5rem;
 }
 
