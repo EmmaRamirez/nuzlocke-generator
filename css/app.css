@@ -308,7 +308,7 @@ input[type=range]::-ms-track {
   border: 1px solid #bbb;
   border-radius: 50%;
   background: #ffffff;
-  cursor: pointer;
+  cursor: w-resize;
   height: 1.25rem;
   margin-top: -.5rem;
   width: 1.25rem;
@@ -355,17 +355,9 @@ input[type="checkbox"] {
   color: #fee9e9;
 }
 
-red-label:checked {
-  background: black;
-}
-
 .blue-label {
   background: #1f1fb2;
   color: #d8d8f8;
-}
-
-blue-label:checked {
-  background: black;
 }
 
 .yellow-label {
@@ -373,17 +365,9 @@ blue-label:checked {
   color: #101002;
 }
 
-yellow-label:checked {
-  background: black;
-}
-
 .gold-label {
   background: #bcaa4c;
   color: #070602;
-}
-
-gold-label:checked {
-  background: black;
 }
 
 .silver-label {
@@ -391,17 +375,9 @@ gold-label:checked {
   color: #4d4a43;
 }
 
-silver-label:checked {
-  background: black;
-}
-
 .crystal-label {
   background: #21938a;
   color: #c2f1ee;
-}
-
-crystal-label:checked {
-  background: black;
 }
 
 .ruby-label {
@@ -409,17 +385,9 @@ crystal-label:checked {
   color: #fce6e6;
 }
 
-ruby-label:checked {
-  background: black;
-}
-
 .sapphire-label {
   background: #1414aa;
   color: #c5c5f8;
-}
-
-sapphire-label:checked {
-  background: black;
 }
 
 .leafgreen-label {
@@ -427,17 +395,9 @@ sapphire-label:checked {
   color: #000200;
 }
 
-leafgreen-label:checked {
-  background: black;
-}
-
 .firered-label {
   background: #d92b2b;
   color: #040101;
-}
-
-firered-label:checked {
-  background: black;
 }
 
 .emerald-label {
@@ -445,17 +405,9 @@ firered-label:checked {
   color: #a3faa3;
 }
 
-emerald-label:checked {
-  background: black;
-}
-
 .diamond-label {
   background: #8d8ddd;
   color: #191952;
-}
-
-diamond-label:checked {
-  background: black;
 }
 
 .pearl-label {
@@ -463,17 +415,9 @@ diamond-label:checked {
   color: #5c1b26;
 }
 
-pearl-label:checked {
-  background: black;
-}
-
 .platinum-label {
   background: #957a7a;
   color: #090707;
-}
-
-platinum-label:checked {
-  background: black;
 }
 
 .heartgold-label {
@@ -481,17 +425,9 @@ platinum-label:checked {
   color: #040301;
 }
 
-heartgold-label:checked {
-  background: black;
-}
-
 .soulsilver-label {
   background: #a2a3ba;
   color: #282835;
-}
-
-soulsilver-label:checked {
-  background: black;
 }
 
 .black-label {
@@ -499,17 +435,9 @@ soulsilver-label:checked {
   color: #888888;
 }
 
-black-label:checked {
-  background: black;
-}
-
 .white-label {
   background: #ededed;
   color: #6e6e6e;
-}
-
-white-label:checked {
-  background: black;
 }
 
 .black2-label {
@@ -517,17 +445,9 @@ white-label:checked {
   color: #a5a5ae;
 }
 
-black2-label:checked {
-  background: black;
-}
-
 .white2-label {
   background: #cbb0b0;
   color: #4b3131;
-}
-
-white2-label:checked {
-  background: black;
 }
 
 .x-label {
@@ -535,17 +455,9 @@ white2-label:checked {
   color: #e5b0b2;
 }
 
-x-label:checked {
-  background: black;
-}
-
 .y-label {
   background: #1c878b;
   color: #b6eef0;
-}
-
-y-label:checked {
-  background: black;
 }
 
 .omegaruby-label {
@@ -553,17 +465,23 @@ y-label:checked {
   color: #f7c8c8;
 }
 
-omegaruby-label:checked {
-  background: black;
-}
-
 .alphasapphire-label {
   background: #2121af;
   color: #d7d7f8;
 }
 
-alphasapphire-label:checked {
-  background: black;
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  background: white;
+  border-radius: 50%;
+  height: .75rem;
+  width: .75rem;
+}
+input[type="checkbox"]:checked {
+  background: red;
+}
+input[type="checkbox"]:focus {
+  outline: 0 solid white;
 }
 
 .btn-generate {

@@ -116,18 +116,16 @@ input[type=range]::-ms-track {
 }
 ::-webkit-slider-thumb {
   -webkit-appearance: none;
-  
   background: black;
-  
   border: 1px solid #bbb;
   border-radius: 50%;
   background: #ffffff;
-  cursor: pointer;
-  
+  // definite question here about which one provides better context
+  //cursor: move;
+  cursor: w-resize;
   height: 1.25rem;
   margin-top: -.5rem;
   width: 1.25rem;
-  
 }
 
 .difficulty-guide {
@@ -167,7 +165,6 @@ input[type="checkbox"] {
 }
 
 @each $game, $color in $game-colors {
-  
   .#{$game}-label {
     background: $color;
     @if lightness($color) > 50% {
@@ -176,16 +173,24 @@ input[type="checkbox"] {
       color: lighten($color, 50%);
     }
     
-    
+    input[type="checkbox"] {
+      &:checked {
+        background: darken($color, 10%);
+      }
   }
+}
 
-  #{$game}-label:checked {
-    background: darken($color, 100%);
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  background: white;
+  border-radius: 50%;
+  height: .75rem;
+  width: .75rem;
+  &:checked {
   }
-
-  
-
-    
+  &:focus {
+    outline: 0 solid white;
+  }
 }
 
 .btn-generate {
