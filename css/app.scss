@@ -92,7 +92,9 @@ label {
 .nuzlocke-container {
   margin-top: 1.5rem;
 }
-
+.rule-section {
+  margin: 1rem;
+}
 
 /* # of Rules Input */
 input[type="number"] {
@@ -111,9 +113,13 @@ input[type="number"] {
 /* Difficulty Settings */
 .difficulties {
   background: linear-gradient(to left, $theme-color, $accent-color);
-  //margin: 1rem;
+  margin: 1rem 0;
   div {
-    background: transparent;
+    background-color: transparent;
+    background-image: url('../img/pokeball.png');
+    background-repeat: no-repeat;
+    background-position: center -50%;
+    background-size: 16px;
     cursor: pointer;
     display: inline-block;
     font-size: 1.25rem;
@@ -123,7 +129,8 @@ input[type="number"] {
     width: 20%;
     @extend %transition-s;
     &:hover, &[data-selected="true"] {
-      background: rgba(black, 0.3);
+      background-color: rgba(black, 0.3);
+      background-position: center 15%;
       font-weight: bold;
       @extend %transition-s;
     }

@@ -71,6 +71,11 @@
         divChild.addEventListener('click', function(){
           var diff = this.getAttribute('data-difficulty');
           Nuzlocke.settings.difficulty = diff;
+          for (var i = 0; i < 5; i++) {
+            if (els[i].getAttribute('data-selected') == "true") {
+              els[i].setAttribute('data-selected', "false");
+            }
+          }
           console.log(Nuzlocke.settings.difficulty);
           this.setAttribute('data-selected', "true");
         });
@@ -79,7 +84,12 @@
 
     bindNumOfRulesInput: function(el) {
       el.addEventListener('change', function() {
-        Nuzlocke.settings.numOfRules = this.value;
+        if (this.value > 0) {
+          Nuzlocke.settings.numOfRules = this.value;
+        } else {
+          Nuzlocke.settings.numOfRules = Math.floor(Math.random() * Nuzlocke.rules.length);
+        }
+
         console.log(Nuzlocke.settings.numOfRules);
       });
     },
