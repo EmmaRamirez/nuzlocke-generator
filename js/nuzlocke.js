@@ -44,6 +44,10 @@
       {
         description: "Play in set mode.",
         difficulty: 3
+      },
+      {
+        description: "You must catch duplicates.",
+        difficulty: 3
       }
     ],
     init: function() {
@@ -131,18 +135,31 @@
       var ruleset = [];
       ruleset.push("If a Pok\xE9mon faints you must release or permabox it.", "You may only catch the first Pokemon you see in a route.")
 
-      console.log(Nuzlocke.settings.numOfRules);
+      //console.log(Nuzlocke.settings.numOfRules);
       //console.log(tmpRules);
+
+      function matchesDifficulty(obj) {
+        if ('difficulty' in obj > 3) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+      tmpRules = tmpRules.filter(matchesDifficulty);
+
+      console.log("Filtered array length: " + tmpRules.length);
+      console.log("Filtered array: ", tmpRules);
 
       for (var i = 0; i < Nuzlocke.settings.numOfRules; i++) {
 
         var choice = choose(tmpRules);
         //console.log(tmpRules.indexOf(choice));
-        console.log(choice.description);
+        //console.log(choice.description);
         ruleset.push(choice.description);
         tmpRules.splice(tmpRules.indexOf(choice) - 1, 1);
         //console.log(tmpRules);
-        console.log(ruleset);
+        //console.log(ruleset);
       }
 
       Nuzlocke.canvasCreate(Nuzlocke.settings.c, ruleset);
