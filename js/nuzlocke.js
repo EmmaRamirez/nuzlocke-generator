@@ -1,7 +1,7 @@
 (function(){
   var Nuzlocke = {
     settings: {
-      numOfRules: 5,
+      numOfRules: 3,
       difficulty: 3,
       numOfRulesInput: document.getElementById('numOfRules'),
       difficultyButtons: document.querySelectorAll('[data-difficulty]'),
@@ -10,16 +10,32 @@
     },
     rules: [
       {
-        description: "Use only Pok\xE9balls.",
+        description: "Use only Pok\xE9balls to catch Pok\xE9mon.",
         difficulty: 4,
       },
       {
-        description: "You may not purchase any Pok\xE9balls from the Pok\xE9mart.",
+        description: "You must use Pok\xE9mon from only three different types.",
+        difficulty: 2,
+      },
+      {
+        description: "You must use Pok\xE9mon from only three different types.",
+        difficulty: 4,
+      },
+      {
+        description: "Box your Pok\xE9mon if they fant. If you have a full box, you lose.",
         difficulty: 5,
+      },
+      {
+        description: "You may not purchase any Pok\xE9balls from the Pok\xE9mart.",
+        difficulty: 4,
       },
       {
         description: "You may not use items outside of battle.",
         difficulty: 4
+      },
+      {
+        description: "You can only use items during battle.",
+        difficulty: 4,
       },
       {
         description: "Your Pok\xE9mon may not overlap in type.",
@@ -28,6 +44,10 @@
       {
         description: "You may only carry up to 4 Pok\xE9mon in your party",
         difficulty: 3,
+      },
+      {
+        description: "You can only use one Pok\xE9mon Center per town visited.",
+        difficulty: 6
       },
       {
         description: "You may only carry up to 3 Pok\xE9mon in your party",
@@ -46,6 +66,18 @@
         difficulty: 3
       },
       {
+        description: "Play in shift mode.",
+        difficulty: 1
+      },
+      {
+        description: "You may use one revive per game.",
+        difficulty: 1
+      },
+      {
+        description: "You may only catch one Pok\xe9mon per two routes.",
+        difficulty: 4
+      },
+      {
         description: "You must catch duplicates.",
         difficulty: 3
       },
@@ -58,7 +90,6 @@
       this.bindGenerateButton(Nuzlocke.settings.generateButton);
       this.setInputMax();
       this.setInputValue();
-      //this.canvasTest(Nuzlocke.settings.c);
     },
 
     bindGenerateButton: function(el) {
@@ -74,10 +105,6 @@
       var firstEl = els[0];
 
       forEach.call(els, function(divChild) {
-        if (divChild.getAttribute('data-selected') == "true") {
-          //divChild.style.color = '#0F0';
-        }
-        //divChild.style.color = '#0F0';
         divChild.addEventListener('click', function(){
           var diff = this.getAttribute('data-difficulty');
           Nuzlocke.settings.difficulty = diff;
@@ -86,7 +113,6 @@
               els[i].setAttribute('data-selected', "false");
             }
           }
-          console.log(Nuzlocke.settings.difficulty);
           this.setAttribute('data-selected', "true");
         });
       });
@@ -99,7 +125,6 @@
         } else {
           Nuzlocke.settings.numOfRules = Math.floor(Math.random() * Nuzlocke.rules.length);
         }
-        console.log(this.value);
       });
     },
 
@@ -115,6 +140,7 @@
       function choose(arr) {
         return arr[Math.floor(Math.random() * arr.length)];
       }
+
       function clone(obj) {
         if(obj === null || typeof(obj) !== 'object' || 'isActiveClone' in obj)
             return obj;
@@ -131,13 +157,10 @@
 
         return temp;
       }
-      //console.log(num);
+
       var tmpRules = clone(Nuzlocke.rules);
       var ruleset = [];
       ruleset.push("If a Pok\xE9mon faints you must release or permabox it.", "You may only catch the first Pokemon you see in a route.")
-
-      //console.log(Nuzlocke.settings.numOfRules);
-      //console.log(tmpRules);
 
       function matchesDifficulty(obj) {
         if (obj.difficulty == diff || obj.difficulty == diff - 1 || obj.difficulty == diff + 1) {
@@ -152,20 +175,19 @@
       console.log("Filtered array length: " + tmpRules.length);
       console.log("Filtered array: ", tmpRules);
 
-      for (var i = 0; i < Nuzlocke.settings.numOfRules; i++) {
-
-        var choice = choose(tmpRules);
-        //console.log(tmpRules.indexOf(choice));
-        //console.log(choice.description);
-        ruleset.push(choice.description);
-        tmpRules.splice(tmpRules.indexOf(choice) - 1, 1);
-        //console.log(tmpRules);
-        //console.log(ruleset);
+      if (tmpRules.length < num) {
+        var difference = num - tmpRules.length;
+        ruleset = ["Select a lower number of rules! (" + difference + " rules over)"];
+      } else {
+        for (var i = 0; i < Nuzlocke.settings.numOfRules; i++) {
+          var choice = choose(tmpRules);
+          ruleset.push(choice.description);
+          tmpRules.splice(tmpRules.indexOf(choice) - 1, 1);
+        }
       }
 
-      Nuzlocke.canvasCreate(Nuzlocke.settings.c, ruleset);
-      //console.log(Nuzlocke.rules);
 
+      Nuzlocke.canvasCreate(Nuzlocke.settings.c, ruleset);
     },
 
     canvasCreate: function(el, rules) {
@@ -175,17 +197,9 @@
 
       ctx.strokeStyle = 'transparent';
 
-
-
       ctx.fillStyle = '#ccc';
       ctx.fillRect(0, 0, w, 100);
-      //ctx.fill();
       ctx.stroke();
-
-      // ctx.fillStyle = '#ddd';
-      // ctx.fillRect((w / 2), 0, (w / 2), 100);
-      // //ctx.fill();
-      // ctx.stroke();
 
       for (var i = 0; i < rules.length; i++) {
         if (i == 0 || i % 2 == 0) {
@@ -199,9 +213,7 @@
         ctx.stroke();
       }
 
-
       ctx.font = '40pt Open Sans';
-      //ctx.strokeStyle = 'red';
       ctx.fillStyle = 'black';
       ctx.fillText('Nuzlocke Challenge', 16, 66);
 
@@ -210,8 +222,6 @@
       ctx.fillText('{ difficulty: ' + Nuzlocke.settings.difficulty + ', rules: ' + Nuzlocke.settings.numOfRules + ' }', 520, 66);
 
       for (var i = 0; i < rules.length; i++) {
-
-
         ctx.font = '16pt Open Sans';
         ctx.fillStyle = '#222';
         ctx.fillText( (i + 1) + '. ' + rules[i], 16, 140 + (i * 64));
