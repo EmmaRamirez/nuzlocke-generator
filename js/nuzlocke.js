@@ -89,11 +89,12 @@
 
     bindNumOfRulesInput: function(el) {
       el.addEventListener('change', function() {
-        if (Nuzlocke.settings.numOfRules.value > 0) {
+        if (this.value > 0) {
           Nuzlocke.settings.numOfRules = this.value;
         } else {
           Nuzlocke.settings.numOfRules = Math.floor(Math.random() * Nuzlocke.rules.length);
         }
+        console.log(this.value);
       });
     },
 
@@ -131,7 +132,7 @@
       ruleset.push("If a Pok\xE9mon faints you must release or permabox it.", "You may only catch the first Pokemon you see in a route.")
 
       console.log(Nuzlocke.settings.numOfRules);
-      console.log(tmpRules);
+      //console.log(tmpRules);
 
       for (var i = 0; i < Nuzlocke.settings.numOfRules; i++) {
 
@@ -197,13 +198,6 @@
         ctx.fillStyle = '#222';
         ctx.fillText( (i + 1) + '. ' + rules[i], 16, 140 + (i * 64));
       }
-
-
-
-
-
-
-      console.log("hello");
     },
 
 
