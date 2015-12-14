@@ -12,6 +12,14 @@
         difficulty: 4,
       },
       {
+        description: "You may not purchase any Pok\xE9balls from the Pok\xE9mart.",
+        difficulty: 5,
+      },
+      {
+        description: "You may not use items outside of battle.",
+        difficulty: 4
+      },
+      {
         description: "LA",
         difficulty: 4,
       },
@@ -61,12 +69,34 @@
       function choose(arr) {
         return arr[Math.floor(Math.random() * arr.length)];
       }
-      console.log(num);
-      for (var i = 0; i < Nuzlocke.settings.numOfRules; i++) {
-        var choice = choose(Nuzlocke.rules);
+      function clone(obj) {
+        if(obj === null || typeof(obj) !== 'object' || 'isActiveClone' in obj)
+            return obj;
 
-        console.log(choose(Nuzlocke.rules).description);
+        var temp = obj.constructor(); // changed
+
+        for(var key in obj) {
+            if(Object.prototype.hasOwnProperty.call(obj, key)) {
+                obj['isActiveClone'] = null;
+                temp[key] = clone(obj[key]);
+                delete obj['isActiveClone'];
+            }
+        }
+
+        return temp;
       }
+      //console.log(num);
+      var tmpRules = clone(Nuzlocke.rules);
+      console.log(tmpRules);
+      for (var i = 0; i < Nuzlocke.settings.numOfRules; i++) {
+
+        var choice = choose(tmpRules);
+        console.log(tmpRules.indexOf(choice));
+        tmpRules.splice(tmpRules.indexOf(choice) - 1, 1);
+        console.log(choice.description);
+      }
+      console.log(Nuzlocke.rules);
+      console.log(tmpRules);
     },
 
 
