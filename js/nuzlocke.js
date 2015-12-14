@@ -139,7 +139,7 @@
       //console.log(tmpRules);
 
       function matchesDifficulty(obj) {
-        if ('difficulty' in obj > 3) {
+        if (obj.difficulty > diff || obj.difficulty > diff - 1 || obj.difficulty > diff + 1) {
           return true;
         } else {
           return false;
