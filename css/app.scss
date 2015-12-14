@@ -116,7 +116,8 @@ input[type="number"] {
 .difficulties {
   background: linear-gradient(to left, $theme-color, $accent-color);
   margin: 1rem 0;
-  div {
+  button {
+    border: 0 solid transparent;
     background-color: transparent;
     background-image: url('../img/pokeball.png');
     background-repeat: no-repeat;
