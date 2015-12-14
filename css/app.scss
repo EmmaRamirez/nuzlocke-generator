@@ -1,11 +1,45 @@
 @import "_normalize.scss";
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700);
 
-
 $theme-color: #4fbc35;
 $accent-color: #eee;
 $text-color: #222;
+$game-colors: (
+  red: #dd0b0b,
+  blue: #1f1fb2,
+  yellow: #e3e32e,
+  gold: #bcaa4c,
+  silver: #cbc9c4,
+  crystal: #21938a,
+  ruby: #cb1818,
+  sapphire: #1414aa,
+  leafgreen: #3bc63b,
+  firered: #d92b2b,
+  emerald: #089608,
+  diamond: #8d8ddd,
+  pearl: #e096a3,
+  platinum: #957a7a,
+  heartgold: #c4af40,
+  soulsilver: #a2a3ba,
+  black: #080808,
+  white: #ededed,
+  black2: #28282c,
+  white2: #cbb0b0,
+  x: #712528,
+  y: #1c878b,
+  omegaruby: #a81818,
+  alphasapphire: #2121af
+);
 
+/* Mixins & Extends */
+%transition-s {
+  transition: 300ms ease-in-out;
+}
+%transition-m {
+  transition: 500ms ease-in-out;
+}
+
+/* Global */
 body {
   border-top: .5rem solid $theme-color;
   font-family: "Roboto", sans-serif;
@@ -15,7 +49,7 @@ body {
 h1 {
   background: $theme-color;
   color: $accent-color;
-  font-size: 2.5rem;
+  font-size: 4rem;
   font-weight: 300;
   padding: .25rem;
   text-align: center;
@@ -32,40 +66,253 @@ a {
   }
 }
 
+label {
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
+/* Heading */
 .nuzleaf-icon {
   
-  height: 3rem;
-  
+  height: 5rem;
+  margin-left: .5rem;
   padding: .25rem;
   position: relative;
   top: .5rem;
 }
 
-
+/* Generator Form */
 .nuzlocke-container {
   margin-top: 1.5rem;
 }
 
+fieldset {
+  border: 0 solid black;
+  legend {
+    font-weight: bold;
+  }
+  fieldset {
+    legend {
+      font-weight: normal;
+    }
+  }
+}
 
+/* # of Rules Input */
+input[type="number"] {
+  background: lighten($theme-color, 33%);
+  border: 1px solid $theme-color;
+  font-size: 1.5rem;
+  text-align: right;
+  @extend %transition-s;
+  &:focus {
+    background: white;
+    outline: none;
+    @extend %transition-s;
+  }
+}
+
+/* Difficulty Level Input */
+input[type="range"] {
+  -webkit-appearance: none; 
+  width: 50%;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+::-webkit-slider-runnable-track {
+  background: #888;
+  border-radius: 2px;
+  height: .25rem;
+}
+::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: black;
+  border: 2px solid #bbb;
+  border-radius: 50%;
+  background: #ffffff;
+  // definite question here about which one provides better context
+  //cursor: move;
+  cursor: w-resize;
+  height: 1.25rem;
+  margin-top: -.5rem;
+  width: 1.25rem;
+}
+
+.difficulty-guide {
+  width: 50%;
+  span {
+    display: inline-block;
+    margin-left: .25rem;
+    width: 32%;
+    &:nth-of-type(2) {
+      text-align: center;
+    }
+    &:nth-of-type(3) {
+      text-align: right;
+    }
+    .selected {
+      font-weight: bold;
+    }
+    .unselected {
+      font-weight: normal;
+    }
+  }
+}
+
+/* Games / Generations subform */
 input[type="checkbox"] {
   margin-right: .2rem;
 
 }
 
+.gen-set {
+  padding: 0;
+}
+.gen-set legend {
+  position: relative;
+  left: -7rem;
+  top: 1.5rem;
+}
+.gen-set label {
+  border-radius: 2px;
+  display: inline-block;
+  padding: .5rem;
+  width: 10.5rem;
+}
+
+@each $game, $color in $game-colors {
+  .#{$game}-label {
+    background: $color;
+    @if lightness($color) > 50% {
+      color: darken($color, 50%);
+    } @else {
+      color: lighten($color, 50%);
+    }
+    
+    input[type="checkbox"] {
+      &:checked {
+        background: darken($color, 10%);
+      }
+    }
+  }
+}
+
+label[class*=label] input[type="checkbox"] {
+  -webkit-appearance: none;
+  background: white;
+  border-radius: 50%;
+  height: .75rem;
+  width: .75rem;
+  @extend %transition-s;
+  &:checked {
+    @extend %transition-s;
+  }
+  &:focus {
+    outline: 0 solid white;
+  }
+}
+
+.game-settings {
+  label {
+    background: #ddd;
+    border-radius: 8px;
+    padding: .5rem;
+    input[type="checkbox"] {
+      
+    }
+  }
+}
+
+/* Generate Button */
+.btn-generate {
+  border: 0 solid white;
+  background: $theme-color;
+  color: $accent-color;
+  display: block;
+  font-size: 1.5rem;
+  margin: 0 auto;
+  padding: .25rem 1rem;
+  position: relative;
+  &:hover {
+    background: darken($theme-color, 5%);
+    
+    img {
+      animation: 300ms small-horizontal-movement infinite alternate ease-in;
+    }
+  }
+  img {
+    float: right;
+  }
+}
+
+/* Ruleset */
+.ruleset {
+  font-size: 1.25rem;
+  list-style-position: inside;
+  margin-left: 10%;
+  padding: 0;
+  width: 80%;
+  li {
+    background: #ddd;
+    padding: .25rem;
+    padding-left: 1rem;
+  }
+  li:nth-of-type(2n) {
+    background: #eee;
+  }
+}
+
+.difficulty-level-post {
+  background: #ededed;
+  display: inline-block;
+  padding: .25rem;
+  text-align: center;
+  width: 50%;
+  
+}
+.version-chosen-post {
+  @extend .difficulty-level-post;
+  background: #dedede;
+}
+
+
+/* Footer & Suggestion Form */
 .suggestion {
   font-size: 1.1rem;
   text-align: center;
 }
-
 
 footer {
   background: darken($theme-color, 15%);
   bottom: 0;
   color: $accent-color;
   left: 0;
+  margin-top: 1rem;
   padding: 1rem;
-  position: absolute;
   text-align: center;
   width: 100%;
+}
+
+@keyframes small-horizontal-movement {
+  to {
+    transform: translateY(2px);
+  }
 }
