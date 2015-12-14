@@ -153,13 +153,13 @@ input[type="number"] {
   position: relative;
   &:hover {
     background: darken($theme-color, 5%);
-
     img {
       animation: 300ms small-horizontal-movement infinite alternate ease-in;
     }
   }
   img {
     float: right;
+    vertical-align: middle;
   }
 }
 
