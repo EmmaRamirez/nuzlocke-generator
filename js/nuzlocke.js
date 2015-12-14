@@ -48,7 +48,7 @@
       this.bindNumOfRulesInput(Nuzlocke.settings.numOfRulesInput);
       this.bindGenerateButton(Nuzlocke.settings.generateButton);
       this.setInputMax();
-
+      this.setInputValue();
     },
 
     bindGenerateButton: function(el) {
@@ -64,10 +64,14 @@
       var firstEl = els[0];
 
       forEach.call(els, function(divChild) {
-        if (divChild.hasAttribute('data-selected')) {
+        if (divChild.getAttribute('data-selected') == "true") {
           divChild.style.color = '#0F0';
         }
         //divChild.style.color = '#0F0';
+        divChild.addEventListener('click', function(){
+
+          this.style.color = 'red';
+        });
       });
     },
 
@@ -79,7 +83,11 @@
     },
 
     setInputMax: function() {
-      document.getElementById('numOfRules').setAttribute('max', Nuzlocke.rules.length);
+      Nuzlocke.settings.numOfRulesInput.setAttribute('max', Nuzlocke.rules.length);
+    },
+
+    setInputValue: function() {
+      Nuzlocke.settings.numOfRulesInput.value = Nuzlocke.settings.numOfRules;
     },
 
     createRuleset: function(num, diff) {
@@ -104,17 +112,20 @@
       }
       //console.log(num);
       var tmpRules = clone(Nuzlocke.rules);
-      console.log(tmpRules);
+
       console.log(Nuzlocke.settings.numOfRules);
+      console.log(tmpRules);
+
       for (var i = 0; i < Nuzlocke.settings.numOfRules; i++) {
 
         var choice = choose(tmpRules);
         //console.log(tmpRules.indexOf(choice));
         tmpRules.splice(tmpRules.indexOf(choice) - 1, 1);
+        console.log(tmpRules);
         console.log(choice.description);
       }
-      console.log(Nuzlocke.rules);
-      console.log(tmpRules);
+      //console.log(Nuzlocke.rules);
+
     },
 
 
