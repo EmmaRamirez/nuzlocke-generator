@@ -224,7 +224,7 @@ table {
 }
 
 /* Mixins & Extends */
-input[type="number"], input[type="number"]:focus {
+input[type="number"], input[type="number"]:focus, .difficulties div, .difficulties div:hover, .difficulties div[data-selected="true"] {
   transition: 300ms ease-in-out;
 }
 
@@ -294,6 +294,27 @@ input[type="number"] {
 input[type="number"]:focus {
   background: white;
   outline: none;
+}
+
+/* Difficulty Settings */
+.difficulties {
+  background: linear-gradient(to left, #4fbc35, #eee);
+}
+
+.difficulties div {
+  background: transparent;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.25rem;
+  margin-right: -4px;
+  padding: 2rem 1rem 1rem 1rem;
+  text-align: center;
+  width: 20%;
+}
+
+.difficulties div:hover, .difficulties div[data-selected="true"] {
+  background: rgba(0, 0, 0, 0.3);
+  font-weight: bold;
 }
 
 /* Generate Button */

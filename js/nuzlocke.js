@@ -65,12 +65,14 @@
 
       forEach.call(els, function(divChild) {
         if (divChild.getAttribute('data-selected') == "true") {
-          divChild.style.color = '#0F0';
+          //divChild.style.color = '#0F0';
         }
         //divChild.style.color = '#0F0';
         divChild.addEventListener('click', function(){
-
-          this.style.color = 'red';
+          var diff = this.getAttribute('data-difficulty');
+          Nuzlocke.settings.difficulty = diff;
+          console.log(Nuzlocke.settings.difficulty);
+          this.setAttribute('data-selected', "true");
         });
       });
     },

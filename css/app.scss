@@ -108,6 +108,29 @@ input[type="number"] {
   }
 }
 
+/* Difficulty Settings */
+.difficulties {
+  background: linear-gradient(to left, $theme-color, $accent-color);
+  //margin: 1rem;
+  div {
+    background: transparent;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1.25rem;
+    margin-right: -4px;
+    padding: 2rem 1rem 1rem 1rem;
+    text-align: center;
+    width: 20%;
+    @extend %transition-s;
+    &:hover, &[data-selected="true"] {
+      background: rgba(black, 0.3);
+      font-weight: bold;
+      @extend %transition-s;
+    }
+
+  }
+}
+
 
 /* Generate Button */
 .btn-generate {
