@@ -1,0 +1,34 @@
+﻿Merge branch 'master' of https://github.com/EmmaRamirez/nuzlocke-generator
+
+# Conflicts:
+#	css/app.css
+#	css/app.scss
+#	index.html
+#	js/nuzlocke.js
+#	prepros.cfg
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 12 and 16 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   css/app.css
+#	modified:   css/app.scss
+#	new file:   img/seedot.png
+#	modified:   index.html
+#	new file:   js/min/nuzlocke.min.js
+#	modified:   js/nuzlocke.js
+#	modified:   prepros.cfg
+#
+

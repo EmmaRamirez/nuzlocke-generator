@@ -6,30 +6,39 @@ $accent-color: #eee;
 $text-color: #222;
 $game-colors: (
   red: #dd0b0b,
-  blue: blue,
-  yellow: yellow,
-  gold: gold,
-  silver: silver,
-  crystal: blue,
-  ruby: red,
-  sapphire: blue,
-  leafgreen: green,
-  firered: red,
-  emerald: green,
-  diamond: blue,
-  pearl: pink,
-  platinum: grey,
-  heartgold: gold,
-  soulsilver: silver,
-  black: black,
-  white: white,
-  black2: black,
-  white2: white,
-  x: red,
-  y: blue,
-  omegaruby: red,
-  alphasapphire: blue
+  blue: #1f1fb2,
+  yellow: #e3e32e,
+  gold: #bcaa4c,
+  silver: #cbc9c4,
+  crystal: #21938a,
+  ruby: #cb1818,
+  sapphire: #1414aa,
+  leafgreen: #3bc63b,
+  firered: #d92b2b,
+  emerald: #089608,
+  diamond: #8d8ddd,
+  pearl: #e096a3,
+  platinum: #957a7a,
+  heartgold: #c4af40,
+  soulsilver: #a2a3ba,
+  black: #080808,
+  white: #ededed,
+  black2: #28282c,
+  white2: #cbb0b0,
+  x: #712528,
+  y: #1c878b,
+  omegaruby: #a81818,
+  alphasapphire: #2121af
 );
+
+/* Mixins & Extends */
+%transition-s {
+  transition: 300ms ease-in-out;
+}
+%transition-m {
+  transition: 500ms ease-in-out;
+}
+
 /* Global */
 body {
   border-top: .5rem solid $theme-color;
@@ -40,7 +49,7 @@ body {
 h1 {
   background: $theme-color;
   color: $accent-color;
-  font-size: 2.5rem;
+  font-size: 4rem;
   font-weight: 300;
   padding: .25rem;
   text-align: center;
@@ -59,6 +68,10 @@ a {
 
 label {
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .container {
@@ -68,9 +81,8 @@ label {
 
 /* Heading */
 .nuzleaf-icon {
-
-  height: 3rem;
-
+  height: 5rem;
+  margin-left: .5rem;
   padding: .25rem;
   position: relative;
   top: .5rem;
@@ -81,6 +93,23 @@ label {
   margin-top: 1.5rem;
 }
 
+
+/* # of Rules Input */
+input[type="number"] {
+  background: lighten($theme-color, 33%);
+  border: 1px solid $theme-color;
+  font-size: 1.5rem;
+  text-align: right;
+  @extend %transition-s;
+  &:focus {
+    background: white;
+    outline: none;
+    @extend %transition-s;
+  }
+}
+
+
+/* Generate Button */
 .btn-generate {
   border: 0 solid white;
   background: $theme-color;
@@ -90,8 +119,17 @@ label {
   margin: 0 auto;
   padding: .25rem 1rem;
   position: relative;
-}
+  &:hover {
+    background: darken($theme-color, 5%);
 
+    img {
+      animation: 300ms small-horizontal-movement infinite alternate ease-in;
+    }
+  }
+  img {
+    float: right;
+  }
+}
 
 /* Ruleset */
 .ruleset {
@@ -110,18 +148,6 @@ label {
   }
 }
 
-.difficulty-level-post {
-  background: #ededed;
-  display: inline-block;
-  padding: .25rem;
-  text-align: center;
-  width: 50%;
-
-}
-.version-chosen-post {
-  @extend .difficulty-level-post;
-  background: #dedede;
-}
 
 
 /* Footer & Suggestion Form */
@@ -138,4 +164,11 @@ footer {
   padding: 1rem;
   text-align: center;
   width: 100%;
+}
+
+
+@keyframes small-horizontal-movement {
+  to {
+    transform: translateY(2px);
+  }
 }

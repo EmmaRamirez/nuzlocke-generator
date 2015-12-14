@@ -22,6 +22,23 @@
       {
         description: "LA",
         difficulty: 4,
+
+        text: "You may not run from any wild Pokémon",
+        diff: 3,
+        gamesApplicable: "all",
+        gensApplicable: [1, 3]
+      },
+      {
+        text: "You may only carry up to 4 Pokémon in your party",
+        diff: 3,
+        gamesApplicable: "all",
+        gensApplicable: [1, 2, 3, 4, 5, 6]
+      },
+      {
+        text: "You may only carry up to 3 Pokemon in your party",
+        diff: 5,
+        gamesApplicable: "all",
+        gensApplicable: [1, 2, 3, 4, 5, 6]
       },
       {
         description: "OL",
@@ -33,7 +50,6 @@
       }
     ],
     init: function() {
-
 
       this.bindGenerateButton(Nuzlocke.settings.generateButton);
       this.bindDifficultyButton(Nuzlocke.settings.difficultyButtons);

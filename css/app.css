@@ -223,6 +223,11 @@ table {
   border-spacing: 0;
 }
 
+/* Mixins & Extends */
+input[type="number"], input[type="number"]:focus {
+  transition: 300ms ease-in-out;
+}
+
 /* Global */
 body {
   border-top: 0.5rem solid #4fbc35;
@@ -233,7 +238,7 @@ body {
 h1 {
   background: #4fbc35;
   color: #eee;
-  font-size: 2.5rem;
+  font-size: 4rem;
   font-weight: 300;
   padding: .25rem;
   text-align: center;
@@ -253,6 +258,10 @@ a:hover {
 
 label {
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .container {
@@ -262,7 +271,8 @@ label {
 
 /* Heading */
 .nuzleaf-icon {
-  height: 3rem;
+  height: 5rem;
+  margin-left: .5rem;
   padding: .25rem;
   position: relative;
   top: .5rem;
@@ -273,6 +283,20 @@ label {
   margin-top: 1.5rem;
 }
 
+/* # of Rules Input */
+input[type="number"] {
+  background: #bbe9b0;
+  border: 1px solid #4fbc35;
+  font-size: 1.5rem;
+  text-align: right;
+}
+
+input[type="number"]:focus {
+  background: white;
+  outline: none;
+}
+
+/* Generate Button */
 .btn-generate {
   border: 0 solid white;
   background: #4fbc35;
@@ -282,6 +306,18 @@ label {
   margin: 0 auto;
   padding: 0.25rem 1rem;
   position: relative;
+}
+
+.btn-generate:hover {
+  background: #47a82f;
+}
+
+.btn-generate:hover img {
+  animation: 300ms small-horizontal-movement infinite alternate ease-in;
+}
+
+.btn-generate img {
+  float: right;
 }
 
 /* Ruleset */
@@ -303,18 +339,6 @@ label {
   background: #eee;
 }
 
-.difficulty-level-post, .version-chosen-post {
-  background: #ededed;
-  display: inline-block;
-  padding: .25rem;
-  text-align: center;
-  width: 50%;
-}
-
-.version-chosen-post {
-  background: #dedede;
-}
-
 /* Footer & Suggestion Form */
 .suggestion {
   font-size: 1.1rem;
@@ -329,4 +353,10 @@ footer {
   padding: 1rem;
   text-align: center;
   width: 100%;
+}
+
+@keyframes small-horizontal-movement {
+  to {
+    transform: translateY(2px);
+  }
 }
