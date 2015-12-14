@@ -127,9 +127,10 @@
 
         var choice = choose(tmpRules);
         //console.log(tmpRules.indexOf(choice));
+        console.log(choice.description);
         tmpRules.splice(tmpRules.indexOf(choice) - 1, 1);
         console.log(tmpRules);
-        console.log(choice.description);
+
       }
       //console.log(Nuzlocke.rules);
 
