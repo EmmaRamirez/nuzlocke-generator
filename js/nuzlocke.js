@@ -1,7 +1,7 @@
 (function(){
   var Nuzlocke = {
     settings: {
-      numOfRules: 2,
+      numOfRules: 5,
       difficulty: 3,
       numOfRulesInput: document.getElementById('numOfRules'),
       difficultyButtons: document.querySelectorAll('[data-difficulty]'),
@@ -22,7 +22,7 @@
         difficulty: 4
       },
       {
-        description: "LA",
+        description: "Your Pok\xE9mon may not overlap in type.",
         difficulty: 4,
       },
       {
@@ -34,12 +34,16 @@
         difficulty: 5,
       },
       {
-        description: "OL",
+        description: "Your Pok\xE9mon must overlap in type.",
         difficulty: 3,
       },
       {
-        description: "MA",
+        description: "Your Pok\xE9mon must stay three levels lower than the next gym leader.",
         difficulty: 2,
+      },
+      {
+        description: "Play in set mode.",
+        difficulty: 3
       }
     ],
     init: function() {
@@ -85,8 +89,11 @@
 
     bindNumOfRulesInput: function(el) {
       el.addEventListener('change', function() {
-        Nuzlocke.settings.numOfRules = this.value;
-        console.log(Nuzlocke.settings.numOfRules);
+        if (Nuzlocke.settings.numOfRules.value > 0) {
+          Nuzlocke.settings.numOfRules = this.value;
+        } else {
+          Nuzlocke.settings.numOfRules = Math.floor(Math.random() * Nuzlocke.rules.length);
+        }
       });
     },
 
@@ -121,6 +128,7 @@
       //console.log(num);
       var tmpRules = clone(Nuzlocke.rules);
       var ruleset = [];
+      ruleset.push("If a Pok\xE9mon faints you must release or permabox it.", "You may only catch the first Pokemon you see in a route.")
 
       console.log(Nuzlocke.settings.numOfRules);
       console.log(tmpRules);
@@ -136,12 +144,12 @@
         console.log(ruleset);
       }
 
-      Nuzlocke.canvasTest(Nuzlocke.settings.c, ruleset);
+      Nuzlocke.canvasCreate(Nuzlocke.settings.c, ruleset);
       //console.log(Nuzlocke.rules);
 
     },
 
-    canvasTest: function(el, rules) {
+    canvasCreate: function(el, rules) {
       var w = el.width, h = el.width;
       el.height = 100 + (rules.length * 64);
       var ctx = el.getContext('2d');
