@@ -8,7 +8,7 @@
     },
     rules: [
       {
-        description: "NA",
+        description: "Use only Pok\xE9balls.",
         difficulty: 4,
       },
       {
