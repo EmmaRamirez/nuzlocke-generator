@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Nuzlocke Generator</title>
+    <meta description="An intuitive ruleset generator for Pok&eacute;mon Nuzlockes" />
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Nuzlocke Generator<img class="nuzleaf-icon" src="img/nuzleaf.svg" /></h1>
+
+      <div class="nuzlocke-container">
+
+        <div class="rules-amt rules-container">
+          <span class"rules-amt-txt rules-txt"># of Rules: <input id="numOfRules" type="number" min="0" value="1" max="10" /></span><br/>
+          <sup>0 will generate a random number of rules</sup>
+        </div>
+
+        <div class="rules-difficulty rules-container">
+          <strong class="rules-difficulty-txt rules-txt">Difficulty</strong>
+          <div class="difficulties">
+            <div data-difficulty="1" data-selected="false">Easiest</div>
+            <div data-difficulty="2" data-selected="false">Easier</div>
+            <div data-difficulty="3" data-selected="true">Medium</div>
+            <div data-difficulty="4" data-selected="false">Harder</div>
+            <div data-difficulty="5" data-selected="false">Hardest</div>
+          </div>
+        </div>
+
+
+        <button id="generate" class="btn-generate">Generate <img src="img/seedot.gif" /></button>
+
+      </div>
+
+      <ol class="ruleset">
+<!--
+        <li>Any Pok&eacute;mon that has fainted is considered dead and must be released or permaboxed</li>
+        <li>You may only catch the first Pok&eacute;mon you see in a route.</li>
+        <li>You do not have to catch duplicates.</li>
+        <li>You may only catch a new Pok&eacute;mon every othe route.</li>
+        <li>You may not catch shinies.</li>
+-->
+      </ol>
+
+      <div class="suggestion">Want to see a new feature, rule, or game? <a href="#suggest">Suggest</a> it.</div>
+
+
+
+    </div>
+    <footer>
+      <p>This website is not affiliated with Nuzlocke Comics, The Pok&eacute;mon Company International, Nintendo, Gamefreak or any of its trademarks.</p>
+    </footer>
+    <script src="js/nuzlocke.js"></script>
+  </body>
+</html>
