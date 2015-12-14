@@ -49,7 +49,7 @@
       this.bindGenerateButton(Nuzlocke.settings.generateButton);
       this.setInputMax();
       this.setInputValue();
-      this.canvasTest(Nuzlocke.settings.c);
+      //this.canvasTest(Nuzlocke.settings.c);
     },
 
     bindGenerateButton: function(el) {
@@ -120,6 +120,7 @@
       }
       //console.log(num);
       var tmpRules = clone(Nuzlocke.rules);
+      var ruleset = [];
 
       console.log(Nuzlocke.settings.numOfRules);
       console.log(tmpRules);
@@ -129,16 +130,20 @@
         var choice = choose(tmpRules);
         //console.log(tmpRules.indexOf(choice));
         console.log(choice.description);
+        ruleset.push(choice.description);
         tmpRules.splice(tmpRules.indexOf(choice) - 1, 1);
-        console.log(tmpRules);
-
+        //console.log(tmpRules);
+        console.log(ruleset);
       }
+
+      Nuzlocke.canvasTest(Nuzlocke.settings.c, ruleset);
       //console.log(Nuzlocke.rules);
 
     },
 
-    canvasTest: function(el) {
+    canvasTest: function(el, rules) {
       var w = el.width, h = el.width;
+      el.height = 100 + (rules.length * 64);
       var ctx = el.getContext('2d');
 
       ctx.strokeStyle = 'transparent';
@@ -146,19 +151,47 @@
 
 
       ctx.fillStyle = '#ccc';
-      ctx.rect(0, 0, (w / 2), 100);
-      ctx.fill();
+      ctx.fillRect(0, 0, w, 100);
+      //ctx.fill();
       ctx.stroke();
 
-      ctx.fillStyle = '#ddd';
-      ctx.rect((w / 2), 0, (w / 2), 100);
-      ctx.fill();
-      ctx.stroke();
+      // ctx.fillStyle = '#ddd';
+      // ctx.fillRect((w / 2), 0, (w / 2), 100);
+      // //ctx.fill();
+      // ctx.stroke();
+
+      for (var i = 0; i < rules.length; i++) {
+        if (i == 0 || i % 2 == 0) {
+          ctx.fillStyle = '#eee';
+        } else {
+          ctx.fillStyle = '#ddd';
+        }
+
+        ctx.fillRect(0, (100 + (64 * i)), w, 64);
+        //ctx.fill();
+        ctx.stroke();
+      }
+
 
       ctx.font = '40pt Open Sans';
       //ctx.strokeStyle = 'red';
       ctx.fillStyle = 'black';
-      ctx.fillText('Hello World!', 16, 66);
+      ctx.fillText('Nuzlocke Challenge', 16, 66);
+
+      ctx.font = '16pt Open Sans';
+      ctx.fillStyle = '#333';
+      ctx.fillText('{ difficulty: ' + Nuzlocke.settings.difficulty + ', rules: ' + Nuzlocke.settings.numOfRules + ' }', 520, 66);
+
+      for (var i = 0; i < rules.length; i++) {
+
+
+        ctx.font = '16pt Open Sans';
+        ctx.fillStyle = '#222';
+        ctx.fillText( (i + 1) + '. ' + rules[i], 16, 140 + (i * 64));
+      }
+
+
+
 
 
 
