@@ -46,6 +46,9 @@
       var firstEl = els[0];
 
       forEach.call(els, function(divChild) {
+        if (divChild.hasAttribute('data-selected')) {
+          divChild.style.color = '#0F0';
+        }
         //divChild.style.color = '#0F0';
       });
     },
