@@ -63,9 +63,9 @@ label {
 
 /* Heading */
 .nuzleaf-icon {
-  
+
   height: 3rem;
-  
+
   padding: .25rem;
   position: relative;
   top: .5rem;
@@ -77,7 +77,7 @@ label {
 }
 
 input[type=range] {
-  -webkit-appearance: none; 
+  -webkit-appearance: none;
   width: 50%;
 }
 
@@ -100,21 +100,27 @@ input[type=range]::-ms-track {
 ::-webkit-slider-runnable-track {
   background: #e52525;
   height: .25rem;
+  &:hover {
+    cursor: move;
+  }
 }
 ::-webkit-slider-thumb {
   -webkit-appearance: none;
-  
+
   background: black;
-  
+
   border: 1px solid #bbb;
   border-radius: 50%;
   background: #ffffff;
   cursor: pointer;
-  
+
   height: 1.25rem;
   margin-top: -.5rem;
   width: 1.25rem;
-  
+  &:hover {
+    cursor: move;
+  }
+
 }
 
 .difficulty-guide {
@@ -188,7 +194,7 @@ input[type="checkbox"] {
   padding: .25rem;
   text-align: center;
   width: 50%;
-  
+
 }
 .version-chosen-post {
   @extend .difficulty-level-post;
@@ -203,9 +209,8 @@ input[type="checkbox"] {
 }
 
 footer {
-  background: darken($theme-color, 15%);
   bottom: 0;
-  color: $accent-color;
+  color: darken($accent-color, 15%);
   left: 0;
   margin-top: 1rem;
   padding: 1rem;

@@ -1,14 +1,14 @@
 (function () {
-  //"use strict";
-  
+  "use strict";
+
   var Nuzlocke = {
-    
+
     init: function () {
-      
-      
-      
+
+
+
     },
-    
+
     rules: [
       // 1
       {
@@ -65,7 +65,7 @@
         gensApplicable: [1, 2, 3, 4, 5, 6]
       }
     ],
-    
+
     games: [
       {
         name: "Blue Version",
@@ -86,66 +86,66 @@
         gen: 4
       }
     ],
-    
-    
+
+
     inputControls: function () {
-      
+
       var randomGame = document.getElementById("random-game");
       var generationFields = document.querySelectorAll(".gen-set"), i;
-      
+
       randomGame.addEventListener("change", function () {
-        
+
         if (randomGame.checked) {
-          
+
           for (i = 0; i < generationFields.length; i++) {
             generationFields[i].setAttribute('disabled', 'true');
           }
 
         } else {
-          
+
           for (i = 0; i < generationFields.length; i++) {
             generationFields[i].setAttribute('disabled', 'false');
           }
-          
+
         }
-        
+
       });
-      
+
     },
-    
-    
+
+
     createRuleset: function () {
-      
-      
-      
-      
+
+
+
+
       var generateButton = document.getElementById("generate");
-      
-      
+
+
       //var numOfRules = document.getElementById("rulesNumber").value;
-      
+
       //var numOfRules = numOfRules.value;
-      
+
       generateButton.addEventListener("click", function () {
-        
-        
+
+
         var difficulty = document.getElementById("difficulty").value;
         var numOfRules = document.getElementById("rulesNumber").value;
         var list = document.querySelector(".ruleset");
         list.innerHTML = "";
-        
+
         //dummy.textContent = numOfRules;
-        
+
 //        if (numOfRules === 0) {
 //          numOfRules = Math.floor(Math.random() * Nuzlocke.rules.length);
 //        }
-        
-        
-        
-        
+
+
+
+
         function postDifficulty (difficulty, node) {
           var difficultyString;
-          
+
           switch (difficulty) {
             case 1:
             difficultyString = "Least Hard";
@@ -165,60 +165,60 @@
             default:
               difficultyString = "Hard";
           }
-          
+
           node.innerHTML = "<div class='difficulty-level-post'>Difficulty: " + difficultyString + "</div>";
         }
-        
-        
-      
-        
-        
+
+
+
+
+
         postDifficulty(difficulty, list);
-        
-        
+
+
         //console.log(gameVersion);
-          
-        
-        
+
+
+
         function postGame (node) {
           var gameVersion = Nuzlocke.games[2].name;
-          
+
           list.innerHTML += "<div class='version-chosen-post'>Version: " + gameVersion + "</div>";
         }
-        
+
         postGame(list);
-        
+
         for (var i = 0; i < numOfRules; i++) {
           //dummy.textContent += Nuzlocke.rules[i].text;
-          
+
           var l = Nuzlocke.rules.length;
           var random = Math.floor(Math.random() * l);
-          
+
           var li = document.createElement("li");
-          
+
           li.textContent = Nuzlocke.rules[random].text;
-          
+
           list.appendChild(li);
         }
-        
-        
-        
-        
+
+
+
+
       });
-      
+
     }
-    
-    
-    
-    
+
+
+
+
   };
-  
-  
+
+
   Nuzlocke.init();
   Nuzlocke.inputControls();
   Nuzlocke.createRuleset();
-  
-  
+
+
 }());
 
 
@@ -228,14 +228,14 @@
 //        var dummy = document.querySelector("#dummy"),
 //        l = Nuzlocke.rules.length,
 //        r = Math.floor(Math.random() * l);
-//      
+//
 //        dummy.textContent = Nuzlocke.games[1].name;
 //        dummy.textContent = Nuzlocke.rules[1].text;
 //
 //
 //
 //        dummy.textContent = Nuzlocke.rules[r].text + " " + r.toString();
-//        
+//
 //        var dummy = document.getElementById("dummy");
 //        var numOfRules = document.getElementsByName("numOfRules");
 //        var difficulty = document.getElementById("difficulty").value;
@@ -246,15 +246,7 @@
 
 //      var randomGame = document.querySelector("#random-game");
 //      var genFieldsets = document.querySelector("fieldset > fieldset");
-//      
+//
 //      if (randomGame.checked == true) {
 //        document.body.style = "#333";
 //      }
-
-
-
-
-
-
-
-
