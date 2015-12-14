@@ -26,11 +26,11 @@
         difficulty: 4,
       },
       {
-        description: "You may only carry up to 4 Pokémon in your party",
+        description: "You may only carry up to 4 Pok\xE9mon in your party",
         difficulty: 3,
       },
       {
-        description: "You may only carry up to 3 Pokemon in your party",
+        description: "You may only carry up to 3 Pok\xE9mon in your party",
         difficulty: 5,
       },
       {
