@@ -255,6 +255,11 @@ label {
   cursor: pointer;
 }
 
+.container {
+  margin: 0 auto;
+  width: 60rem;
+}
+
 /* Heading */
 .nuzleaf-icon {
   height: 3rem;
