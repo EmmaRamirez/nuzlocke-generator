@@ -75,7 +75,9 @@ label {
 .nuzlocke-container {
   margin-top: 1.5rem;
 }
-
+fieldset {
+  border: 0px solid white;
+}
 input[type=range] {
   -webkit-appearance: none;
   width: 50%;
