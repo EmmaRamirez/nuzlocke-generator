@@ -229,24 +229,31 @@ input[type="number"], input[type="number"]:focus, .difficulties div, .difficulti
 }
 
 /* Global */
+body {
+  border-top: 0.5rem solid #4fbc35;
+  font-family: "Roboto", sans-serif;
+  padding: 0vh 10vw;
+}
+
+h1 {
+  background: #4fbc35;
+  color: #eee;
+  font-size: 4rem;
+  font-weight: 300;
+  padding: .25rem;
+  text-align: center;
+  text-transform: lowercase;
+}
+
 a {
   border-bottom: 1px solid #4fbc35;
-  font-size: 4rem;
+  color: #4fbc35;
   text-decoration: none;
 }
 
 a:hover {
   border-bottom: 1px solid #3e942a;
   color: #3e942a;
-}
-
-label {
-  cursor: pointer;
-}
-
-/* Heading */
-.nuzleaf-icon {
-  height: 3rem;
 }
 
 label {
@@ -260,6 +267,25 @@ label {
 .container {
   margin: 0 auto;
   width: 60rem;
+}
+
+/* Heading */
+.nuzleaf-icon {
+  height: 5rem;
+  margin-left: .5rem;
+  padding: .25rem;
+  position: relative;
+  top: .5rem;
+}
+
+/* Generator Form */
+.nuzlocke-container {
+  margin-top: 1.5rem;
+}
+
+.rules-container {
+  margin: 1rem 0;
+  padding: .5rem;
 }
 
 /* # of Rules Input */
@@ -282,7 +308,11 @@ input[type="number"]:focus {
 }
 
 .difficulties div {
-  background: transparent;
+  background-color: transparent;
+  background-image: url("../img/pokeball.png");
+  background-repeat: no-repeat;
+  background-size: 1rem;
+  background-position: center -50%;
   cursor: pointer;
   display: inline-block;
   font-size: 1.25rem;
@@ -293,7 +323,8 @@ input[type="number"]:focus {
 }
 
 .difficulties div:hover, .difficulties div[data-selected="true"] {
-  background: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
+  background-position: center 15%;
   font-weight: bold;
 }
 
@@ -343,4 +374,21 @@ input[type="number"]:focus {
 /* Footer & Suggestion Form */
 .suggestion {
   font-size: 1.1rem;
+  text-align: center;
+}
+
+footer {
+  bottom: 0;
+  color: #c8c8c8;
+  left: 0;
+  margin-top: 1rem;
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+}
+
+@keyframes small-horizontal-movement {
+  to {
+    transform: translateY(2px);
+  }
 }

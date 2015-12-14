@@ -1,252 +1,142 @@
-(function () {
-  "use strict";
-
+(function(){
   var Nuzlocke = {
-
-    init: function () {
-
-
+    settings: {
+      numOfRules: 2,
+      difficulty: 3,
+      numOfRulesInput: document.getElementById('numOfRules'),
+      difficultyButtons: document.querySelectorAll('[data-difficulty]'),
+      generateButton: document.getElementById('generate'),
 
     },
-
     rules: [
-      // 1
       {
-        text: "You may not use any heal items outside of battle",
-        diff: 4,
-        gamesApplicable: "all",
-        gensApplicable: [1, 2, 3, 4, 5, 6]
-      },
-      // 2
-      {
-        text: "You may not run from any wild Pokémon",
-        diff: 3,
-        gamesApplicable: "all",
-        gensApplicable: [1, 2, 3, 4, 5, 6]
-      },
-      // 3
-      {
-        text: "You may only carry up to 4 Pokémon in your party",
-        diff: 3,
-        gamesApplicable: "all",
-        gensApplicable: [1, 2, 3, 4, 5, 6],
-        conflictsWith: 4
-      },
-      // 4
-      {
-        text: "You may only carry up to 3 Pokemon in your party",
-        diff: 5,
-        gamesApplicable: "all",
-        gensApplicable: [1, 2, 3, 4, 5, 6],
-        conflictsWith: 3
+        description: "Use only Pok\xE9balls.",
+        difficulty: 4,
       },
       {
-        text: "All Pokémon in your party must overlap in type, i.e. Infernape / Lucario / Steelix / Claydol",
-        diff: 5,
-        gamesApplicable: "all",
-        gensApplicable: [1, 2, 3, 4, 5, 6]
+        description: "You may not purchase any Pok\xE9balls from the Pok\xE9mart.",
+        difficulty: 5,
       },
       {
-        text: "No Pokémon may evolve past their second stage",
-        diff: 4,
-        gamesApplicable: "all",
-        gensApplicable: [1, 2, 3, 4, 5, 6]
+        description: "You may not use items outside of battle.",
+        difficulty: 4
       },
       {
-        text: "Your Pokémon may not be levelled higher than the Pokémon of the gym leader you will challenge",
-        diff: 3,
-        gamesApplicable: "all",
-        gensApplicable: [1, 2, 3, 4, 5, 6]
+        description: "LA",
+        difficulty: 4,
       },
       {
-        text: "If any of your Pokémon end up five or more levels apart after a gym match, you must release the highest-leveled one.",
-        diff: 2,
-        gamesApplicable: "all",
-        gensApplicable: [1, 2, 3, 4, 5, 6]
+        description: "You may only carry up to 4 Pokémon in your party",
+        difficulty: 3,
+      },
+      {
+        description: "You may only carry up to 3 Pokemon in your party",
+        difficulty: 5,
+      },
+      {
+        description: "OL",
+        difficulty: 3,
+      },
+      {
+        description: "MA",
+        difficulty: 2,
       }
     ],
+    init: function() {
 
-    games: [
-      {
-        name: "Blue Version",
-        nameSelect: document.getElementsByName("blueVersion"),
-        diff: 3,
-        gen: 1
-      },
-      {
-        name: "FireRed Version",
-        nameSelect: document.getElementsByName("redVersion"),
-        diff: 3,
-        gen: 3
-      },
-      {
-        name: "Platinum Version",
-        nameSelect: document.getElementsByName("platinumVersion"),
-        diff: 4,
-        gen: 4
-      }
-    ],
-
-
-    inputControls: function () {
-
-      var randomGame = document.getElementById("random-game");
-      var generationFields = document.querySelectorAll(".gen-set"), i;
-
-      randomGame.addEventListener("change", function () {
-
-        if (randomGame.checked) {
-
-          for (i = 0; i < generationFields.length; i++) {
-            generationFields[i].setAttribute('disabled', 'true');
-          }
-
-        } else {
-
-          for (i = 0; i < generationFields.length; i++) {
-            generationFields[i].setAttribute('disabled', 'false');
-          }
-
-        }
-
-      });
-
+      this.bindDifficultyButton(Nuzlocke.settings.difficultyButtons);
+      this.bindNumOfRulesInput(Nuzlocke.settings.numOfRulesInput);
+      this.bindGenerateButton(Nuzlocke.settings.generateButton);
+      this.setInputMax();
+      this.setInputValue();
     },
 
-
-    createRuleset: function () {
-
-
-
-
-      var generateButton = document.getElementById("generate");
-
-
-      //var numOfRules = document.getElementById("rulesNumber").value;
-
-      //var numOfRules = numOfRules.value;
-
-      generateButton.addEventListener("click", function () {
-
-
-        var difficulty = document.getElementById("difficulty").value;
-        var numOfRules = document.getElementById("rulesNumber").value;
-        var list = document.querySelector(".ruleset");
-        list.innerHTML = "";
-
-        //dummy.textContent = numOfRules;
-
-//        if (numOfRules === 0) {
-//          numOfRules = Math.floor(Math.random() * Nuzlocke.rules.length);
-//        }
-
-
-
-
-        function postDifficulty (difficulty, node) {
-          var difficultyString;
-
-          switch (difficulty) {
-            case 1:
-            difficultyString = "Least Hard";
-              break;
-            case 2:
-              difficultyString = "Okay Hard";
-              break;
-            case 3:
-              difficultyString = "Hard";
-              break;
-            case 4:
-              difficultyString = "Pretty Hard";
-              break;
-            case 5:
-              difficultyString = "Pure Masochism";
-              break;
-            default:
-              difficultyString = "Hard";
-          }
-
-          node.innerHTML = "<div class='difficulty-level-post'>Difficulty: " + difficultyString + "</div>";
-        }
-
-
-
-
-
-        postDifficulty(difficulty, list);
-
-
-        //console.log(gameVersion);
-
-
-
-        function postGame (node) {
-          var gameVersion = Nuzlocke.games[2].name;
-
-          list.innerHTML += "<div class='version-chosen-post'>Version: " + gameVersion + "</div>";
-        }
-
-        postGame(list);
-
-        for (var i = 0; i < numOfRules; i++) {
-          //dummy.textContent += Nuzlocke.rules[i].text;
-
-          var l = Nuzlocke.rules.length;
-          var random = Math.floor(Math.random() * l);
-
-          var li = document.createElement("li");
-
-          li.textContent = Nuzlocke.rules[random].text;
-
-          list.appendChild(li);
-        }
-
-
-
-
+    bindGenerateButton: function(el) {
+      el.addEventListener('click', function(){
+        console.log('a');
+        this.innerHTML = 'Reroll <img src="img/voltorb.gif" />';
+        Nuzlocke.createRuleset(Nuzlocke.settings.numOfRules, Nuzlocke.settings.difficulty);
       });
+    },
 
-    }
+    bindDifficultyButton: function(els) {
+      var forEach = Array.prototype.forEach;
+      var firstEl = els[0];
 
+      forEach.call(els, function(divChild) {
+        if (divChild.getAttribute('data-selected') == "true") {
+          //divChild.style.color = '#0F0';
+        }
+        //divChild.style.color = '#0F0';
+        divChild.addEventListener('click', function(){
+          var diff = this.getAttribute('data-difficulty');
+          Nuzlocke.settings.difficulty = diff;
+          for (var i = 0; i < 5; i++) {
+            if (els[i].getAttribute('data-selected') == "true") {
+              els[i].setAttribute('data-selected', "false");
+            }
+          }
+          console.log(Nuzlocke.settings.difficulty);
+          this.setAttribute('data-selected', "true");
+        });
+      });
+    },
 
+    bindNumOfRulesInput: function(el) {
+      el.addEventListener('change', function() {
+        Nuzlocke.settings.numOfRules = this.value;
+        console.log(Nuzlocke.settings.numOfRules);
+      });
+    },
+
+    setInputMax: function() {
+      Nuzlocke.settings.numOfRulesInput.setAttribute('max', Nuzlocke.rules.length);
+    },
+
+    setInputValue: function() {
+      Nuzlocke.settings.numOfRulesInput.value = Nuzlocke.settings.numOfRules;
+    },
+
+    createRuleset: function(num, diff) {
+      function choose(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+      }
+      function clone(obj) {
+        if(obj === null || typeof(obj) !== 'object' || 'isActiveClone' in obj)
+            return obj;
+
+        var temp = obj.constructor(); // changed
+
+        for(var key in obj) {
+            if(Object.prototype.hasOwnProperty.call(obj, key)) {
+                obj['isActiveClone'] = null;
+                temp[key] = clone(obj[key]);
+                delete obj['isActiveClone'];
+            }
+        }
+
+        return temp;
+      }
+      //console.log(num);
+      var tmpRules = clone(Nuzlocke.rules);
+
+      console.log(Nuzlocke.settings.numOfRules);
+      console.log(tmpRules);
+
+      for (var i = 0; i < Nuzlocke.settings.numOfRules; i++) {
+
+        var choice = choose(tmpRules);
+        //console.log(tmpRules.indexOf(choice));
+        tmpRules.splice(tmpRules.indexOf(choice) - 1, 1);
+        console.log(tmpRules);
+        console.log(choice.description);
+      }
+      //console.log(Nuzlocke.rules);
+
+    },
 
 
   };
 
-
   Nuzlocke.init();
-  Nuzlocke.inputControls();
-  Nuzlocke.createRuleset();
-
-
-}());
-
-
-
-
-
-//        var dummy = document.querySelector("#dummy"),
-//        l = Nuzlocke.rules.length,
-//        r = Math.floor(Math.random() * l);
-//
-//        dummy.textContent = Nuzlocke.games[1].name;
-//        dummy.textContent = Nuzlocke.rules[1].text;
-//
-//
-//
-//        dummy.textContent = Nuzlocke.rules[r].text + " " + r.toString();
-//
-//        var dummy = document.getElementById("dummy");
-//        var numOfRules = document.getElementsByName("numOfRules");
-//        var difficulty = document.getElementById("difficulty").value;
-//        var difficulty = difficulty.value;
-//        var list = document.querySelector(".ruleset");
-//
-//        dummy.textContent = difficulty;
-
-//      var randomGame = document.querySelector("#random-game");
-//      var genFieldsets = document.querySelector("fieldset > fieldset");
-//
-//      if (randomGame.checked == true) {
-//        document.body.style = "#333";
-//      }
+})();

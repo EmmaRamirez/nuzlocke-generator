@@ -40,26 +40,30 @@ $game-colors: (
 }
 
 /* Global */
+body {
+  border-top: .5rem solid $theme-color;
+  font-family: "Roboto", sans-serif;
+  padding: 0vh 10vw;
+}
 
+h1 {
+  background: $theme-color;
+  color: $accent-color;
+  font-size: 4rem;
+  font-weight: 300;
+  padding: .25rem;
+  text-align: center;
+  text-transform: lowercase;
+}
 
 a {
   border-bottom: 1px solid $theme-color;
-  font-size: 4rem;
+  color: $theme-color;
   text-decoration: none;
   &:hover {
     border-bottom: 1px solid darken($theme-color, 10%);
     color: darken($theme-color, 10%);
   }
-}
-
-label {
-  cursor: pointer;
-}
-
-/* Heading */
-.nuzleaf-icon {
-
-  height: 3rem;
 }
 
 label {
@@ -75,8 +79,23 @@ label {
   width: 60rem;
 }
 
+/* Heading */
+.nuzleaf-icon {
+  height: 5rem;
+  margin-left: .5rem;
+  padding: .25rem;
+  position: relative;
+  top: .5rem;
+}
 
-
+/* Generator Form */
+.nuzlocke-container {
+  margin-top: 1.5rem;
+}
+.rules-container {
+  margin: 1rem 0;
+  padding: .5rem;
+}
 
 
 /* # of Rules Input */
@@ -98,7 +117,11 @@ input[type="number"] {
   background: linear-gradient(to left, $theme-color, $accent-color);
   margin: 1rem 0;
   div {
-    background: transparent;
+    background-color: transparent;
+    background-image: url('../img/pokeball.png');
+    background-repeat: no-repeat;
+    background-size: 1rem;
+    background-position: center -50%;
     cursor: pointer;
     display: inline-block;
     font-size: 1.25rem;
@@ -108,7 +131,8 @@ input[type="number"] {
     width: 20%;
     @extend %transition-s;
     &:hover, &[data-selected="true"] {
-      background: rgba(black, 0.3);
+      background-color: rgba(black, 0.3);
+      background-position: center 15%;
       font-weight: bold;
       @extend %transition-s;
     }
@@ -158,8 +182,25 @@ input[type="number"] {
 
 
 
-
 /* Footer & Suggestion Form */
 .suggestion {
   font-size: 1.1rem;
+  text-align: center;
+}
+
+footer {
+  bottom: 0;
+  color: darken($accent-color, 15%);
+  left: 0;
+  margin-top: 1rem;
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+}
+
+
+@keyframes small-horizontal-movement {
+  to {
+    transform: translateY(2px);
+  }
 }
