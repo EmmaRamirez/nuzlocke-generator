@@ -3,8 +3,10 @@
     settings: {
       numOfRules: 2,
       difficulty: 3,
-      generateButton: document.getElementById('generate'),
+      numOfRulesInput: document.getElementById('numOfRules'),
       difficultyButtons: document.querySelectorAll('[data-difficulty]'),
+      generateButton: document.getElementById('generate'),
+
     },
     rules: [
       {
@@ -22,23 +24,14 @@
       {
         description: "LA",
         difficulty: 4,
-
-        text: "You may not run from any wild Pokémon",
-        diff: 3,
-        gamesApplicable: "all",
-        gensApplicable: [1, 3]
       },
       {
-        text: "You may only carry up to 4 Pokémon in your party",
-        diff: 3,
-        gamesApplicable: "all",
-        gensApplicable: [1, 2, 3, 4, 5, 6]
+        description: "You may only carry up to 4 Pokémon in your party",
+        difficulty: 3,
       },
       {
-        text: "You may only carry up to 3 Pokemon in your party",
-        diff: 5,
-        gamesApplicable: "all",
-        gensApplicable: [1, 2, 3, 4, 5, 6]
+        description: "You may only carry up to 3 Pokemon in your party",
+        difficulty: 5,
       },
       {
         description: "OL",
@@ -51,8 +44,9 @@
     ],
     init: function() {
 
-      this.bindGenerateButton(Nuzlocke.settings.generateButton);
       this.bindDifficultyButton(Nuzlocke.settings.difficultyButtons);
+      this.bindNumOfRulesInput(Nuzlocke.settings.numOfRulesInput);
+      this.bindGenerateButton(Nuzlocke.settings.generateButton);
       this.setInputMax();
 
     },
@@ -74,6 +68,13 @@
           divChild.style.color = '#0F0';
         }
         //divChild.style.color = '#0F0';
+      });
+    },
+
+    bindNumOfRulesInput: function(el) {
+      el.addEventListener('change', function() {
+        Nuzlocke.settings.numOfRules = this.value;
+        console.log(Nuzlocke.settings.numOfRules);
       });
     },
 
@@ -104,10 +105,11 @@
       //console.log(num);
       var tmpRules = clone(Nuzlocke.rules);
       console.log(tmpRules);
+      console.log(Nuzlocke.settings.numOfRules);
       for (var i = 0; i < Nuzlocke.settings.numOfRules; i++) {
 
         var choice = choose(tmpRules);
-        console.log(tmpRules.indexOf(choice));
+        //console.log(tmpRules.indexOf(choice));
         tmpRules.splice(tmpRules.indexOf(choice) - 1, 1);
         console.log(choice.description);
       }
