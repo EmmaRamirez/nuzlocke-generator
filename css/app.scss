@@ -6,50 +6,45 @@ $accent-color: #eee;
 $text-color: #222;
 $game-colors: (
   red: #dd0b0b,
-  blue: blue,
-  yellow: yellow,
-  gold: gold,
-  silver: silver,
-  crystal: blue,
-  ruby: red,
-  sapphire: blue,
-  leafgreen: green,
-  firered: red,
-  emerald: green,
-  diamond: blue,
-  pearl: pink,
-  platinum: grey,
-  heartgold: gold,
-  soulsilver: silver,
-  black: black,
-  white: white,
-  black2: black,
-  white2: white,
-  x: red,
-  y: blue,
-  omegaruby: red,
-  alphasapphire: blue
+  blue: #1f1fb2,
+  yellow: #e3e32e,
+  gold: #bcaa4c,
+  silver: #cbc9c4,
+  crystal: #21938a,
+  ruby: #cb1818,
+  sapphire: #1414aa,
+  leafgreen: #3bc63b,
+  firered: #d92b2b,
+  emerald: #089608,
+  diamond: #8d8ddd,
+  pearl: #e096a3,
+  platinum: #957a7a,
+  heartgold: #c4af40,
+  soulsilver: #a2a3ba,
+  black: #080808,
+  white: #ededed,
+  black2: #28282c,
+  white2: #cbb0b0,
+  x: #712528,
+  y: #1c878b,
+  omegaruby: #a81818,
+  alphasapphire: #2121af
 );
-/* Global */
-body {
-  border-top: .5rem solid $theme-color;
-  font-family: "Roboto", sans-serif;
-  padding: 0vh 10vw;
+
+/* Mixins & Extends */
+%transition-s {
+  transition: 300ms ease-in-out;
+}
+%transition-m {
+  transition: 500ms ease-in-out;
 }
 
-h1 {
-  background: $theme-color;
-  color: $accent-color;
-  font-size: 2.5rem;
-  font-weight: 300;
-  padding: .25rem;
-  text-align: center;
-  text-transform: lowercase;
-}
+/* Global */
+
 
 a {
   border-bottom: 1px solid $theme-color;
-  color: $theme-color;
+  font-size: 4rem;
   text-decoration: none;
   &:hover {
     border-bottom: 1px solid darken($theme-color, 10%);
@@ -65,102 +60,64 @@ label {
 .nuzleaf-icon {
 
   height: 3rem;
-
-  padding: .25rem;
-  position: relative;
-  top: .5rem;
 }
 
-/* Generator Form */
-.nuzlocke-container {
-  margin-top: 1.5rem;
-}
-fieldset {
-  border: 0px solid white;
-}
-input[type=range] {
-  -webkit-appearance: none;
-  width: 50%;
-}
-
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-}
-
-input[type=range]:focus {
-  outline: none;
-}
-
-input[type=range]::-ms-track {
-  width: 100%;
+label {
   cursor: pointer;
-  background: transparent;
-  border-color: transparent;
-  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-::-webkit-slider-runnable-track {
-  background: #e52525;
-  height: .25rem;
-  &:hover {
-    cursor: move;
+.container {
+  margin: 0 auto;
+  width: 60rem;
+}
+
+
+
+
+
+/* # of Rules Input */
+input[type="number"] {
+  background: lighten($theme-color, 33%);
+  border: 1px solid $theme-color;
+  font-size: 1.5rem;
+  text-align: right;
+  @extend %transition-s;
+  &:focus {
+    background: white;
+    outline: none;
+    @extend %transition-s;
   }
 }
-::-webkit-slider-thumb {
-  -webkit-appearance: none;
 
-  background: black;
-
-  border: 1px solid #bbb;
-  border-radius: 50%;
-  background: #ffffff;
-  cursor: pointer;
-
-  height: 1.25rem;
-  margin-top: -.5rem;
-  width: 1.25rem;
-  &:hover {
-    cursor: move;
-  }
-
-}
-
-.difficulty-guide {
-  width: 50%;
-  span {
+/* Difficulty Settings */
+.difficulties {
+  background: linear-gradient(to left, $theme-color, $accent-color);
+  margin: 1rem 0;
+  div {
+    background: transparent;
+    cursor: pointer;
     display: inline-block;
-    margin-left: .25rem;
-    width: 32%;
-    &:nth-of-type(2) {
-      text-align: center;
+    font-size: 1.25rem;
+    margin-right: -4px;
+    padding: 2rem 1rem 1rem 1rem;
+    text-align: center;
+    width: 20%;
+    @extend %transition-s;
+    &:hover, &[data-selected="true"] {
+      background: rgba(black, 0.3);
+      font-weight: bold;
+      @extend %transition-s;
     }
-    &:nth-of-type(3) {
-      text-align: right;
-    }
+
   }
 }
 
 
-input[type="checkbox"] {
-  margin-right: .2rem;
-
-}
-
-.gen-set {
-  padding: 0;
-}
-.gen-set label {
-  display: inline-block;
-  padding: .25rem;
-  width: 10rem;
-}
-
-@each $game, $color in $game-colors {
-    .#{$game}-label {
-      background: $color;
-    }
-}
-
+/* Generate Button */
 .btn-generate {
   border: 0 solid white;
   background: $theme-color;
@@ -170,8 +127,17 @@ input[type="checkbox"] {
   margin: 0 auto;
   padding: .25rem 1rem;
   position: relative;
-}
+  &:hover {
+    background: darken($theme-color, 5%);
 
+    img {
+      animation: 300ms small-horizontal-movement infinite alternate ease-in;
+    }
+  }
+  img {
+    float: right;
+  }
+}
 
 /* Ruleset */
 .ruleset {
@@ -190,32 +156,10 @@ input[type="checkbox"] {
   }
 }
 
-.difficulty-level-post {
-  background: #ededed;
-  display: inline-block;
-  padding: .25rem;
-  text-align: center;
-  width: 50%;
 
-}
-.version-chosen-post {
-  @extend .difficulty-level-post;
-  background: #dedede;
-}
 
 
 /* Footer & Suggestion Form */
 .suggestion {
   font-size: 1.1rem;
-  text-align: center;
-}
-
-footer {
-  bottom: 0;
-  color: darken($accent-color, 15%);
-  left: 0;
-  margin-top: 1rem;
-  padding: 1rem;
-  text-align: center;
-  width: 100%;
 }
