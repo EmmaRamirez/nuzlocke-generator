@@ -6,7 +6,7 @@
       numOfRulesInput: document.getElementById('numOfRules'),
       difficultyButtons: document.querySelectorAll('[data-difficulty]'),
       generateButton: document.getElementById('generate'),
-
+      c: document.getElementById('c'),
     },
     rules: [
       {
@@ -49,6 +49,7 @@
       this.bindGenerateButton(Nuzlocke.settings.generateButton);
       this.setInputMax();
       this.setInputValue();
+      this.canvasTest(Nuzlocke.settings.c);
     },
 
     bindGenerateButton: function(el) {
@@ -135,6 +136,35 @@
       //console.log(Nuzlocke.rules);
 
     },
+
+    canvasTest: function(el) {
+      var w = el.width, h = el.width;
+      var ctx = el.getContext('2d');
+
+      ctx.strokeStyle = 'transparent';
+
+
+
+      ctx.fillStyle = '#ccc';
+      ctx.rect(0, 0, (w / 2), 100);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = '#ddd';
+      ctx.rect((w / 2), 0, (w / 2), 100);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.font = '40pt Open Sans';
+      //ctx.strokeStyle = 'red';
+      ctx.fillStyle = 'black';
+      ctx.fillText('Hello World!', 16, 66);
+
+
+
+      console.log("hello");
+    },
+
 
 
   };

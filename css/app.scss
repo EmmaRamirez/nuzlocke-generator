@@ -180,6 +180,18 @@ input[type="number"] {
   }
 }
 
+/* Canvas */
+canvas {
+  border: 1px solid black;
+  display: block;
+  margin: 0 auto;
+}
+.canvas-info {
+  color: darken($accent-color, 25%);
+  font-size: 10px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
 
 
 /* Footer & Suggestion Form */

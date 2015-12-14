@@ -350,6 +350,7 @@ input[type="number"]:focus {
 
 .btn-generate img {
   float: right;
+  vertical-align: middle;
 }
 
 /* Ruleset */
@@ -369,6 +370,20 @@ input[type="number"]:focus {
 
 .ruleset li:nth-of-type(2n) {
   background: #eee;
+}
+
+/* Canvas */
+canvas {
+  border: 1px solid black;
+  display: block;
+  margin: 0 auto;
+}
+
+.canvas-info {
+  color: #aeaeae;
+  font-size: 10px;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 /* Footer & Suggestion Form */
