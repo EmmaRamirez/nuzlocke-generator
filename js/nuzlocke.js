@@ -48,7 +48,8 @@
       {
         description: "You must catch duplicates.",
         difficulty: 3
-      }
+      },
+
     ],
     init: function() {
 
@@ -139,7 +140,7 @@
       //console.log(tmpRules);
 
       function matchesDifficulty(obj) {
-        if (obj.difficulty > diff || obj.difficulty > diff - 1 || obj.difficulty > diff + 1) {
+        if (obj.difficulty == diff || obj.difficulty == diff - 1 || obj.difficulty == diff + 1) {
           return true;
         } else {
           return false;
