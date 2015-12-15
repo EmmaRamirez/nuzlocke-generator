@@ -1,8 +1,7 @@
 # Nuzlocke Generator
 
-Nuzlocke Generator is a simple web application currently in progress that will have the functionality to generate random rulesets for Pokémon nuzlockes, given a set of constraints.
 
-Currently, it is going to accept
-- Number of Rulesets
-- Game Version
-- Desired Difficulty
+
+Nuzlocke Generator is a simple web application currently in progress that will have the functionality to generate random rulesets for Pokémon [http://www.nuzlocke.com/challenge.php](Nuzlockes), given a set of constraints.
+
+It currently accepts difficulty and # of ruleset inputs.
