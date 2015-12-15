@@ -194,8 +194,7 @@
           tmpRules.splice(index, 1);
         }
       }
-
-
+      
       Nuzlocke.canvasCreate(Nuzlocke.settings.c, ruleset);
     },
 
