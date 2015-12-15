@@ -70,6 +70,14 @@
         difficulty: 1
       },
       {
+        description: "You must have one Pok\xE9mon at least 5 levels above the others.",
+        difficulty: 1
+      },
+      {
+        description: "Your nicknames must have a theme (e.g. Scooter Brands, Philosopers).",
+        difficulty: 1
+      },
+      {
         description: "You may use one revive per game.",
         difficulty: 1
       },
@@ -182,7 +190,8 @@
         for (var i = 0; i < Nuzlocke.settings.numOfRules; i++) {
           var choice = choose(tmpRules);
           ruleset.push(choice.description);
-          tmpRules.splice(tmpRules.indexOf(choice) - 1, 1);
+          var index = tmpRules.indexOf(choice);
+          tmpRules.splice(index, 1);
         }
       }
 
