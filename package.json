@@ -1,0 +1,23 @@
+{
+  "name": "nuzlocke-generator",
+  "version": "1.0.0",
+  "description": "a nuzlocke generating tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmmaRamirez/nuzlocke-generator.git"
+  },
+  "keywords": [
+    "pokemon",
+    "nuzlocke"
+  ],
+  "author": "Emma Ramirez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EmmaRamirez/nuzlocke-generator/issues"
+  },
+  "homepage": "https://github.com/EmmaRamirez/nuzlocke-generator#readme"
+}
