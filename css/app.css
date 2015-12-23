@@ -232,7 +232,7 @@ input[type="number"], input[type="number"]:focus, .difficulties button, .difficu
 body {
   border-top: 0.5rem solid #4fbc35;
   font-family: "Roboto", sans-serif;
-  padding: 0vh 10vw;
+  padding: 0 10vw;
 }
 
 h1 {
