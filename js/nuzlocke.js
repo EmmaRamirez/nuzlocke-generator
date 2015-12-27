@@ -7,6 +7,7 @@
       difficultyButtons: document.querySelectorAll('[data-difficulty]'),
       generateButton: document.getElementById('generate'),
       c: document.getElementById('c'),
+      download: document.getElementById('download')
     },
     rules: [
       {
@@ -96,6 +97,7 @@
       this.bindDifficultyButton(Nuzlocke.settings.difficultyButtons);
       this.bindNumOfRulesInput(Nuzlocke.settings.numOfRulesInput);
       this.bindGenerateButton(Nuzlocke.settings.generateButton);
+      this.bindDownloadButton(Nuzlocke.settings.download);
       this.setInputMax();
       this.setInputValue();
     },
@@ -194,7 +196,7 @@
           tmpRules.splice(index, 1);
         }
       }
-      
+
       Nuzlocke.canvasCreate(Nuzlocke.settings.c, ruleset);
     },
 
@@ -202,6 +204,7 @@
       var w = el.width, h = el.width;
       el.height = 100 + (rules.length * 64);
       var ctx = el.getContext('2d');
+      Nuzlocke.settings.download.style.display = 'block';
 
       ctx.strokeStyle = 'transparent';
 
@@ -234,7 +237,20 @@
         ctx.fillStyle = '#222';
         ctx.fillText( (i + 1) + '. ' + rules[i], 16, 140 + (i * 64));
       }
+
     },
+
+    downloadCanvas: function(link, canvasId, filename) {
+      link.href = document.getElementById(canvasId).toDataURL();
+      link.download = filename;
+    },
+
+    bindDownloadButton: function(el) {
+      el.addEventListener('click', function() {
+        console.log("Logged event");
+        Nuzlocke.downloadCanvas(this, 'c', 'Nuzlocke-Ruleset.png');
+      }, false);
+    }
 
 
 

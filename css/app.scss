@@ -194,6 +194,31 @@ canvas {
   text-align: center;
 }
 
+/* Download Button*/
+.download {
+  background: #eee;
+  border: 0 solid transparent;
+  border-bottom: 1px solid $theme-color;
+  border-radius: 2px;
+  cursor: pointer;
+  display: none;
+  font-size: 1.25rem;
+  margin: .5rem auto;
+  padding: .25rem;
+  text-align: center;
+  width: 10rem;
+  @extend %transition-s;
+  img {
+    vertical-align: middle;
+  }
+  &:hover {
+    background: darken(#eee, 10%);
+    border-bottom: 1px solid $theme-color;
+    box-shadow: 0 0 10px rgba($theme-color, 0.3);
+    @extend %transition-s;
+  }
+}
+
 
 /* Footer & Suggestion Form */
 .suggestion {

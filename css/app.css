@@ -224,7 +224,7 @@ table {
 }
 
 /* Mixins & Extends */
-input[type="number"], input[type="number"]:focus, .difficulties button, .difficulties button:hover, .difficulties button[data-selected="true"] {
+input[type="number"], input[type="number"]:focus, .difficulties button, .difficulties button:hover, .difficulties button[data-selected="true"], .download, .download:hover {
   transition: 300ms ease-in-out;
 }
 
@@ -384,6 +384,31 @@ canvas {
   font-size: 10px;
   margin-bottom: 1rem;
   text-align: center;
+}
+
+/* Download Button*/
+.download {
+  background: #eee;
+  border: 0 solid transparent;
+  border-bottom: 1px solid #4fbc35;
+  border-radius: 2px;
+  cursor: pointer;
+  display: none;
+  font-size: 1.25rem;
+  margin: .5rem auto;
+  padding: .25rem;
+  text-align: center;
+  width: 10rem;
+}
+
+.download img {
+  vertical-align: middle;
+}
+
+.download:hover {
+  background: #d4d4d4;
+  border-bottom: 1px solid #4fbc35;
+  box-shadow: 0 0 10px rgba(79, 188, 53, 0.3);
 }
 
 /* Footer & Suggestion Form */
