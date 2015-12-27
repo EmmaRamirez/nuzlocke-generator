@@ -104,7 +104,6 @@
 
     bindGenerateButton: function(el) {
       el.addEventListener('click', function(){
-        console.log('a');
         this.innerHTML = 'Reroll <img src="img/voltorb.gif" />';
         Nuzlocke.createRuleset(Nuzlocke.settings.numOfRules, Nuzlocke.settings.difficulty);
       });
@@ -182,9 +181,6 @@
 
       tmpRules = tmpRules.filter(matchesDifficulty);
 
-      console.log("Filtered array length: " + tmpRules.length);
-      console.log("Filtered array: ", tmpRules);
-
       if (tmpRules.length < num) {
         var difference = num - tmpRules.length;
         ruleset = ["Select a lower number of rules! (" + difference + " rules over)"];
@@ -247,7 +243,6 @@
 
     bindDownloadButton: function(el) {
       el.addEventListener('click', function() {
-        console.log("Logged event");
         Nuzlocke.downloadCanvas(this, 'c', 'Nuzlocke-Ruleset.png');
       }, false);
     }
