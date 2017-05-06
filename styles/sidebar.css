@@ -1,0 +1,104 @@
+.sidebar {
+  background: #eee;
+  border-right: 1px solid #ccc;
+  min-height: 100vh;
+  padding: 1rem;
+  padding-top: 3rem;
+  position: relative;
+  resize: horizontal;
+  width: 33%;
+}
+
+.tab-bars {
+  display: flex;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.tab-bar {
+  background: white;
+  /*border: 1px solid #ccc;*/
+  cursor: pointer;
+  padding: .25rem;
+  text-align: center;
+  width: 100%;
+}
+
+.tab-bar.tab-pokemon {
+  background: lightgreen;
+}
+.tab-bar.tab-trainer {
+  background: tomato;
+}
+.tab-bar.tab-other {
+  background: cornflowerblue;
+}
+
+.add-new-pokemon {
+  background: lightgreen;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: .25rem;
+  box-shadow: 0 0 .5rem #ddd;
+  color: #333;
+  /*margin: .25rem;*/
+  padding: .25rem .5rem;
+}
+
+.pokemon-entry {
+  align-items: center;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: .25rem;
+  display: flex;
+  margin: .15rem 0;
+}
+
+.pokemon-entry > * {
+  margin: .25rem;
+}
+
+.entry-nickname {
+  font-weight: bold;
+}
+
+.entry-species {
+  color: #666;
+  font-style: italic;
+}
+
+.entry-sort-icon {
+  color: #888;
+}
+
+.entry-delete-icon {
+  color: red;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.add-new-entry {
+  background: white;
+  margin: .4rem 0;
+}
+
+.add-new-entry-inner {
+  padding: .25rem;
+}
+
+.add-new-entry-label {
+  background: #333;
+  color: #eee;
+  padding: .25rem;
+}
+
+.add-new-entry label {
+  display: inline-block;
+}
+
+.add-new-entry label > .context {
+  color: #666;
+  display: block;
+  font-size: 90%;
+}
