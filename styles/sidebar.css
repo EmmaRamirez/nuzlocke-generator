@@ -36,12 +36,14 @@
   background: cornflowerblue;
 }
 
-.add-new-pokemon {
+.add-new-pokemon,
+.confirm-btn {
   background: lightgreen;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: .25rem;
   box-shadow: 0 0 .5rem #ddd;
   color: #333;
+  cursor: pointer;
   /*margin: .25rem;*/
   padding: .25rem .5rem;
 }
@@ -97,8 +99,22 @@
   display: inline-block;
 }
 
-.add-new-entry label > .context {
+.add-new-entry label .context {
   color: #666;
   display: block;
   font-size: 90%;
+}
+
+.confirm-btn {
+  display: block;
+  margin: .5rem auto;
+}
+
+.entry-move {
+  display: inline-block;
+}
+
+.other-options-expander {
+  color: #444;
+  margin: .4rem 0; 
 }

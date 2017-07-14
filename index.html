@@ -17,60 +17,10 @@
         <div class='tab-one'>
           <button class='add-new-pokemon btn-add'><i class='fa fa-plus'></i> Add New Pokémon</div>
 
-          <div class='current-entries'>
-            <div class='pokemon-entry'>
-              <i class='fa fa-bars entry-sort-icon'></i>
-              <img src='http://serebii.net/pokedex-sm/icon/001.png'>
-              <div class='entry-nickname'>Bulbao</div> <div class='entry-species'>Bulbasaur</div> <div class='entry-level'>lv. 5</div>
-              <i class='fa fa-trash entry-delete-icon'></i>
-          </div>
+          <div class='current-pokemon-space'></div>
 
-          <div class='add-new-entry'>
-            <div class='add-new-entry-label'>New Pokémon</div>
-            <div class='add-new-entry-inner'>
-            <label>
-              <span class='context'>Species</span>
-              <select>
-                <option>Bulbasaur</option>
-              </select>
-            </label>
+          <div class='new-pokemon-space'></div>
 
-            <label>
-              <span class='context'>Nickname</span>
-              <input type='text'>
-            </label>
-
-            <label class='status'>Status</span>
-              <select>
-                <option>Team</option>
-                <option>Boxed</option>
-                <option>Dead</option>
-                <option>Don't Show</option>
-              </select>
-            </label>
-
-            <label>
-              <span class='context'>Level</span>
-              <input type='number' step='1' min='1' value='5' size='3' style='text-align: right; width:64px'>
-            </label>
-
-            <label>
-              <span class='context'>Gender</span>
-              <select>
-                <option>Genderless</option>
-                <option>Male</option>
-                <option>Female</option>
-              </select>
-            </label>
-
-            
-            <br>
-
-            <button class='confirm-btn'>Confirm</button>
-
-            </div>
-
-          </div>
         </div>
         <div class='tab-two'>
 
@@ -80,5 +30,6 @@
         <p>Output</p>
       </div>
     </div>
+    <script src='dist/bundle.js'></script>
   </body>
 </html>
