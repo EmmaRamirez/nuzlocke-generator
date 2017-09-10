@@ -18,7 +18,7 @@ function teamPokemon(team) {
 
 const TabTitle = ({ title }) => <div className='tab-title' style={{ height: '48px', padding: '.5rem', textAlign: 'center', fontWeight: 'bold' }}>{title}</div>;
 
-const TeamPanel = ({ team }) => {
+const TeamPanel = ({ team }:any) => {
 
   return <div className='tab team-tab'><TabTitle title='Team' />{teamPokemon(team)}</div>;
 };
