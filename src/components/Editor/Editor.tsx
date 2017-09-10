@@ -24,7 +24,7 @@ export class Editor extends React.Component<{}, {}> {
       >
         <GameEditor />
         <TrainerEditor />
-        <PokemonEditor pokemon={['Bulbasaur', 'Ivysaur', 'Venusaur', 'Pikachu', 'Arceus']} />
+        <PokemonEditor pokemon={['Bulbasaur', 'Ivysaur', 'Venusaur', 'Pikachu', 'Arceus', 'Rowlet', 'Litten', 'Hoopa', 'Raichu', 'Grimer', 'Elekid', 'Pyukumuku', 'Totodile', 'Oddish', 'Bellossom', 'Girafarig', 'Larvitar', 'Pidgey', 'Gardevoir', 'Crobat', 'Braviary', 'Vullaby', 'Victini', 'Koffing', 'Weezing', 'Grumpig', 'Camerupt']} />
       </Scrollbars>
     );
   }

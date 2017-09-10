@@ -20450,7 +20450,7 @@ exports = module.exports = __webpack_require__(57)(undefined);
 
 
 // module
-exports.push([module.i, ".editor {\n  border: 1px solid #eee;\n  height: 100vh;\n  overflow-y: scroll;\n  padding: 0.25rem;\n  width: 33%;\n}\n.editor:hover {\n  box-shadow: 0 0 4px #eee;\n}\n.trainer-info-field {\n  align-items: center;\n  border-bottom: 1px solid #ddd;\n  border-top: 1px solid #ddd;\n  display: flex;\n  justify-content: space-between;\n  margin: 0.25rem;\n}\n.trainer-info-field input {\n  border: 0 solid transparent;\n  border-left: 1px solid #eee;\n  border-radius: 2px;\n  padding: 0.25rem;\n}\n", ""]);
+exports.push([module.i, ".editor {\n  border: 1px solid #eee;\n  height: 100vh;\n  overflow-y: scroll;\n  padding: 0.25rem;\n  width: 33%;\n}\n.editor:hover {\n  box-shadow: 0 0 4px #eee;\n}\n.trainer-info-field {\n  align-items: center;\n  border-bottom: 1px solid #ddd;\n  border-top: 1px solid #ddd;\n  display: flex;\n  justify-content: space-between;\n  margin: 0.25rem;\n}\n.trainer-info-field input {\n  border: 0 solid transparent;\n  border-left: 1px solid #eee;\n  border-radius: 2px;\n  padding: 0.25rem;\n}\n.tab {\n  background: url(" + __webpack_require__(347) + ");\n  background-repeat: no-repeat;\n  background-size: 100% 100%;\n  display: flex;\n  flex-wrap: wrap;\n  min-height: calc(156px * 1.5);\n  width: calc(168px * 1.5);\n}\n.tab .tab-title {\n  flex-basis: 218px;\n  flex-grow: 999;\n}\n.tab .pokemon-icon {\n  cursor: pointer;\n  margin: 1px;\n  min-height: 40px;\n}\n.pokemon-tab {\n  display: flex;\n  justify-content: center;\n}\n", ""]);
 
 // exports
 
@@ -37631,7 +37631,7 @@ class Editor extends React.Component {
         return (React.createElement(react_custom_scrollbars_1.Scrollbars, { autoHide: true, autoHideTimeout: 1000, autoHideDuration: 200, className: 'editor', style: { width: '33%', height: '100vh', padding: '.25rem' } },
             React.createElement(GameEditor_1.GameEditor, null),
             React.createElement(TrainerEditor_1.TrainerEditor, null),
-            React.createElement(PokemonEditor_1.PokemonEditor, { pokemon: ['Bulbasaur', 'Ivysaur', 'Venusaur', 'Pikachu', 'Arceus'] })));
+            React.createElement(PokemonEditor_1.PokemonEditor, { pokemon: ['Bulbasaur', 'Ivysaur', 'Venusaur', 'Pikachu', 'Arceus', 'Rowlet', 'Litten', 'Hoopa', 'Raichu', 'Grimer', 'Elekid', 'Pyukumuku', 'Totodile', 'Oddish', 'Bellossom', 'Girafarig', 'Larvitar', 'Pidgey', 'Gardevoir', 'Crobat', 'Braviary', 'Vullaby', 'Victini', 'Koffing', 'Weezing', 'Grumpig', 'Camerupt'] })));
     }
 }
 exports.Editor = Editor;
@@ -37671,16 +37671,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = __webpack_require__(102);
 const React = __webpack_require__(1);
 const utils_1 = __webpack_require__(345);
+__webpack_require__(347);
+const getSpriteIcon = (species) => `https://www.serebii.net/pokedex-sm/icon/${utils_1.speciesToNumber(species).toString().padStart(3, '0')}.png`;
 function teamPokemon(team) {
     return team.map((item, index) => {
-        return React.createElement("img", { key: index, src: `https://www.serebii.net/pokedex-sm/icon/${utils_1.speciesToNumber(item).toString().padStart(3, '0')}.png`, alt: team });
+        return React.createElement("img", { className: 'pokemon-icon', key: index, src: getSpriteIcon(item), alt: item });
     });
 }
+const TabTitle = ({ title }) => React.createElement("div", { className: 'tab-title', style: { height: '48px', padding: '.5rem', textAlign: 'center', fontWeight: 'bold' } }, title);
 const TeamPanel = ({ team }) => {
-    return React.createElement("div", null, teamPokemon(team));
+    return React.createElement("div", { className: 'tab team-tab' },
+        React.createElement(TabTitle, { title: 'Team' }),
+        teamPokemon(team));
 };
-const BoxedPanel = () => React.createElement("div", null, "Boxed");
-const DeadPanel = () => React.createElement("div", null, "Dead");
+const BoxedPanel = () => React.createElement("div", { className: 'tab boxed-tab' },
+    React.createElement(TabTitle, { title: 'Boxed' }),
+    "Boxed");
+const DeadPanel = () => React.createElement("div", { className: 'tab dead-tab' },
+    React.createElement(TabTitle, { title: 'Dead' }),
+    "Dead");
 class PokemonEditor extends React.Component {
     constructor(props) {
         super(props);
@@ -37690,9 +37699,12 @@ class PokemonEditor extends React.Component {
         return (React.createElement("div", { className: 'pokemon-editor' },
             React.createElement("h3", null, "Pokemon"),
             React.createElement(core_1.Tabs2, { id: 'pokemon-box', className: 'pokemon-box' },
-                React.createElement(core_1.Tab2, { id: 'team', title: 'Team', panel: React.createElement(TeamPanel, { team: team }) }),
-                React.createElement(core_1.Tab2, { id: 'boxed', title: 'Boxed', panel: React.createElement(BoxedPanel, null) }),
-                React.createElement(core_1.Tab2, { id: 'dead', title: 'Dead', panel: React.createElement(DeadPanel, null) }))));
+                React.createElement(core_1.Tab2, { id: 'team', className: 'pt-tab-panel pokemon-tab', title: 'Team', panel: React.createElement(TeamPanel, { team: team }) }),
+                React.createElement(core_1.Tab2, { id: 'boxed', className: 'pt-tab-panel pokemon-tab', title: 'Boxed', panel: React.createElement(BoxedPanel, null) }),
+                React.createElement(core_1.Tab2, { id: 'dead', className: 'pt-tab-panel pokemon-tab', title: 'Dead', panel: React.createElement(DeadPanel, null) })),
+            React.createElement("div", { className: 'current-pokemon' },
+                React.createElement("img", { alt: 'Current Pokemon being edited', src: getSpriteIcon('Arceus') }),
+                React.createElement("span", { className: 'current-pokemon-nickname' }, "Mr.Sparkles"))));
     }
 }
 exports.PokemonEditor = PokemonEditor;
@@ -39539,6 +39551,12 @@ function speciesToNumber(s) {
 }
 exports.speciesToNumber = speciesToNumber;
 
+
+/***/ }),
+/* 347 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "src/assets/img/team-box.fdf75beb431b37f51e6da0894cd715af.png";
 
 /***/ })
 /******/ ]);
