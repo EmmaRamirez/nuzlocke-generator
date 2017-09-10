@@ -6,7 +6,7 @@ import { CurrentPokemonEdit } from './CurrentPokemonEdit';
 
 require('../../assets/img/team-box.png');
 
-let selected = 'Arceus';
+const selected = 'Arceus';
 
 const getSpriteIcon = (species:string) => `https://www.serebii.net/pokedex-sm/icon/${speciesToNumber(species).toString().padStart(3, '0')}.png`;
 

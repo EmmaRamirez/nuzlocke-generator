@@ -38,6 +38,16 @@ export const CurrentPokemonEdit = () => (
       <input type='text' value='80' />
     </span>
     <span className='current-pokemon-input-wrapper'>
+      <label>Gender</label>
+      <div className='pt-select'>
+          <select>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Neutral</option>
+          </select>
+        </div>
+    </span>
+    <span className='current-pokemon-input-wrapper'>
       <label>Nature</label>
       <input type='text' value='Sassy' />
     </span>
