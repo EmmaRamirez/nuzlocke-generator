@@ -6,6 +6,8 @@ npm-debug.log*
 # Project Related
 dist
 dist/*
+*/dist
+bundle.js
 test/__snapshots__
 .env
 
