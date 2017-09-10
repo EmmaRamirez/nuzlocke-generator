@@ -5,6 +5,7 @@ npm-debug.log*
 
 # Project Related
 dist
+dist/*
 test/__snapshots__
 .env
 
