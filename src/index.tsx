@@ -7,6 +7,7 @@ import { appReducers } from './reducers';
 import { configureStore } from './store';
 
 require('./components/Shared/styles/base.styl');
+require('../node_modules/@blueprintjs/core/dist/blueprint.css');
 
 const store = configureStore();
 const mountNode = document.getElementById('app');

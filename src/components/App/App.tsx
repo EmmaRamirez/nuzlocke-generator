@@ -2,7 +2,8 @@ import { Hotkey, Hotkeys, HotkeysTarget } from '@blueprintjs/core';
 import * as React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import { Home } from '../Home';
+import { Editor } from '../Editor';
+
 
 @HotkeysTarget
 export class App extends React.Component<{}, {}> {
@@ -24,8 +25,7 @@ export class App extends React.Component<{}, {}> {
   public render() {
     return (
       <div className='app' role='main'>
-        <div>Nuzlocke Generator</div>
-        <Home></Home>
+        <Editor />
       </div>
     );
   }

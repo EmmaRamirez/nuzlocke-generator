@@ -1,0 +1,1 @@
+export { PokemonEditor } from './PokemonEditor';

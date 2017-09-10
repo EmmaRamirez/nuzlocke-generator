@@ -48,6 +48,10 @@ module.exports = {
         loader: ['style-loader', 'css-loader', 'stylus-loader']
       },
       {
+        test: /\.css$/,
+        loader: ['style-loader', 'css-loader']
+      },
+      {
         test: /\.(woff|woff2)$/,
         loader: 'url-loader',
         options: {
