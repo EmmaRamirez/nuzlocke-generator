@@ -1,5 +1,25 @@
 {
   "compilerOptions": {
-    "allowJs": true
-  }
+      "target": "es6",
+      "module": "commonjs",
+      "declaration": false,
+      "noImplicitAny": true,
+      "removeComments": true,
+      "strictNullChecks": true,
+      "noLib": false,
+      "jsx": "react",
+      "experimentalDecorators": true,
+      "allowSyntheticDefaultImports": true,
+      "allowJs": true,
+      "typeRoots": [
+        "./node_modules/@types"
+      ]
+    },
+    "exclude": [
+      "node_modules",
+      "server",
+      "server-src",
+      "webpack.config.ts"
+    ],
+    "compileOnSave": false
 }
