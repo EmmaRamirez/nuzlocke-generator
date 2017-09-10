@@ -2,14 +2,17 @@ import { Tab2, Tabs2 } from '@blueprintjs/core';
 import * as React from 'react';
 
 import { speciesToNumber } from '../../utils';
+import { CurrentPokemonEdit } from './CurrentPokemonEdit';
 
 require('../../assets/img/team-box.png');
+
+let selected = 'Arceus';
 
 const getSpriteIcon = (species:string) => `https://www.serebii.net/pokedex-sm/icon/${speciesToNumber(species).toString().padStart(3, '0')}.png`;
 
 function teamPokemon(team) {
   return team.map((item, index) => {
-    return <img className='pokemon-icon' key={index} src={getSpriteIcon(item)} alt={item} />;
+    return <img className={item === selected ? 'pokemon-icon selected' : 'pokemon-icon'} key={index} src={getSpriteIcon(item)} alt={item} />;
   });
 }
 
@@ -37,16 +40,14 @@ export class PokemonEditor extends React.Component<PokemonEditorProps, {}> {
     const team = this.props.pokemon;
     return (
       <div className='pokemon-editor'>
-        <h3>Pokemon</h3>
+        <h4>Pokemon</h4>
+        <button className='pt-intent-success pt-button add-new-pokemon'><span className='pt-icon-add' /> Add New Pokemon</button>
         <Tabs2 id='pokemon-box' className='pokemon-box'>
           <Tab2 id='team' className='pt-tab-panel pokemon-tab' title='Team' panel={<TeamPanel team={team} />} />
           <Tab2 id='boxed' className='pt-tab-panel pokemon-tab' title='Boxed' panel={<BoxedPanel />} />
           <Tab2 id='dead' className='pt-tab-panel pokemon-tab' title='Dead' panel={<DeadPanel />} />
         </Tabs2>
-        <div className='current-pokemon'>
-          <img alt='Current Pokemon being edited' src={getSpriteIcon('Arceus')} />
-          <span className='current-pokemon-nickname'>Mr.Sparkles</span>
-        </div>
+        <CurrentPokemonEdit />
       </div>
     );
   }

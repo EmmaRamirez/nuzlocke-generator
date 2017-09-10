@@ -3,6 +3,7 @@ import { Scrollbars } from 'react-custom-scrollbars';
 
 import { GameEditor } from './GameEditor';
 import { PokemonEditor } from './PokemonEditor';
+import { StyleEditor } from './StyleEditor';
 import { TrainerEditor } from './TrainerEditor';
 
 
@@ -25,6 +26,7 @@ export class Editor extends React.Component<{}, {}> {
         <GameEditor />
         <TrainerEditor />
         <PokemonEditor pokemon={['Bulbasaur', 'Ivysaur', 'Venusaur', 'Pikachu', 'Arceus', 'Rowlet', 'Litten', 'Hoopa', 'Raichu', 'Grimer', 'Elekid', 'Pyukumuku', 'Totodile', 'Oddish', 'Bellossom', 'Girafarig', 'Larvitar', 'Pidgey', 'Gardevoir', 'Crobat', 'Braviary', 'Vullaby', 'Victini', 'Koffing', 'Weezing', 'Grumpig', 'Camerupt']} />
+        <StyleEditor />
       </Scrollbars>
     );
   }

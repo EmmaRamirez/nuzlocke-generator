@@ -7,7 +7,7 @@ export class TrainerEditor extends React.Component<{}, {}> {
   public render() {
     return (
       <div className='trainer-editor'>
-        <div>Trainer</div>
+        <h4>Trainer</h4>
         <div>Trainer Image</div>
         <TrainerInfoEditor />
         <div>Badges</div>

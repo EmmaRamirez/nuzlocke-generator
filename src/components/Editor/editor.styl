@@ -7,6 +7,12 @@
   &:hover
     box-shadow: 0 0 4px #eee
 
+.game-editor, .trainer-editor, .pokemon-editor, .style-editor
+  padding: .3rem;
+
+.style-editor
+  padding-bottom: 1.5rem;
+
 .trainer-info-field
   align-items: center
   border-bottom: 1px solid #ddd
@@ -31,10 +37,52 @@
   .tab-title
     flex-basis: 218px;
     flex-grow: 999;
+    font-size: 1.75rem;
   .pokemon-icon
     cursor: pointer;
     margin: 1px;
     min-height: 40px;
+    &.selected
+      background: rgba(15, 13, 13, 0.37);
+      border-radius: 50%;
 .pokemon-tab
   display: flex;
   justify-content: center;
+
+.current-pokemon
+  border: 1px solid #ddd;
+  border-radius: .25rem;
+  margin: .25rem;
+  padding: .25rem;
+
+.current-pokemon-image
+  padding: .25rem;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+
+.current-pokemon-input-wrapper
+  display: flex;
+  flex-flow: column;
+  padding: .25rem;
+  label
+    font-size: 10px;
+  input
+    border: 1px solid #eee
+
+.status-wrapper
+  display: inline-flex;
+  flex-flow: column;
+  padding: .25rem;
+  width: 30%;
+  vertical-align: top;
+  span
+    font-size: 10px;
+    width: 100%;
+ 
+
+// .current-pokemon-more
+//   align-self: center;
+//   border: 1px solid #ddd;
+//   background: #eee;
+//   border-radius: .25rem;
+//   padding: .15rem;
