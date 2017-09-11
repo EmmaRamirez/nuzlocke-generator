@@ -1,8 +1,8 @@
 import { applyMiddleware, combineReducers } from 'redux';
-import { saveNuzlocke } from './saveNuzlocke';
+import { nuzlocke } from './nuzlocke';
 
 export const appReducers = combineReducers({
-  saveNuzlocke
+  nuzlocke
 });
 
-export { saveNuzlocke } from './saveNuzlocke';
+export { nuzlocke } from './nuzlocke';

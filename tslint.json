@@ -28,7 +28,7 @@
       "no-var-keyword": true,
       "one-line": [true, "check-open-brace", "check-whitespace"],
       "ordered-imports": [
-          true,
+          false,
           {
               "import-sources-order": "case-insensitive",
               "named-mports-order": "case-insensitive"

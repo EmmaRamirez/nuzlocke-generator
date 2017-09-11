@@ -9,6 +9,9 @@ import { TrainerEditor } from './TrainerEditor';
 
 require('./editor.styl');
 
+/**
+ * The main editor interface.
+ */
 export class Editor extends React.Component<{}, {}> {
   constructor(props:object) {
     super(props);

@@ -13,10 +13,12 @@ const store = configureStore();
 const mountNode = document.getElementById('app');
 
 render(
-  <App />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   mountNode
 );
 
 store.subscribe(() => {
-  console.log(store.getState());
+  console.table(store.getState());
 });

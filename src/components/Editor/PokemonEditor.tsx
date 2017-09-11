@@ -16,7 +16,7 @@ function teamPokemon(team) {
   });
 }
 
-const TabTitle = ({ title }) => <div className='tab-title' style={{ height: '48px', padding: '.5rem', textAlign: 'center', fontWeight: 'bold' }}>{title}</div>;
+const TabTitle = ({ title }: { title: string }) => <div contentEditable className='tab-title' style={{ height: '48px', padding: '.5rem', textAlign: 'center', fontWeight: 'bold' }}>{title}</div>;
 
 const TeamPanel = ({ team }:any) => {
 
