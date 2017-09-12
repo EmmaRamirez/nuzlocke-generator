@@ -11,6 +11,13 @@
       "experimentalDecorators": true,
       "allowSyntheticDefaultImports": true,
       "allowJs": true,
+      "lib": [
+        "dom",
+        "dom.iterable",
+        "es2017",
+        "es2017.object",
+        "es2017.sharedmemory"
+      ],
       "typeRoots": [
         "./node_modules/@types"
       ]
