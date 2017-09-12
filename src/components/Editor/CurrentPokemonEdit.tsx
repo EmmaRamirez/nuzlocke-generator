@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { speciesToNumber } from '../../utils';
+import { speciesToNumber, getSpriteIcon } from '../../utils';
 import { CurrentPokemonInput } from './CurrentPokemonInput';
 
-const getSpriteIcon = (species:string) => `https://www.serebii.net/pokedex-sm/icon/${speciesToNumber(species).toString().padStart(3, '0')}.png`;
 
 export const CurrentPokemonEdit = () => (
   <div className='current-pokemon'>

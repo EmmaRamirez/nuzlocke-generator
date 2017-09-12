@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TrainerInfoEditor } from './TrainerInfoEditor';
-}
+
 
 export class TrainerEditor extends React.Component<{}, {}> {
 

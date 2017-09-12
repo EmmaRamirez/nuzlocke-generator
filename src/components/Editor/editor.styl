@@ -38,13 +38,17 @@
     flex-basis: 218px;
     flex-grow: 999;
     font-size: 1.75rem;
+  .pokemon-icon img,
   .pokemon-icon
     cursor: pointer;
-    margin: 1px;
     min-height: 40px;
-    &.selected
-      background: rgba(15, 13, 13, 0.37);
-      border-radius: 50%;
+    max-height: 42px;
+    max-width: 42px;
+    border: 1px solid transparent;
+    transition: 500ms all;
+  .pokemon-icon.selected
+    border: 1px white dashed;
+    transition: 500ms all;
 .pokemon-tab
   display: flex;
   justify-content: center;
