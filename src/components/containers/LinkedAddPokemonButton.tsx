@@ -15,6 +15,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 export const LinkedAddPokemonButton = connect(
-  (state, ownProps) => {},
+  mapStateToProps,
   mapDispatchToProps
 )(AddPokemonButton);

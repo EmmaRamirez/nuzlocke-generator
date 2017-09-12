@@ -4,9 +4,8 @@ import { saveNuzlocke } from '../../actions';
 import { SaveButton } from '../Editor/SaveButton';
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(isEqual(state.nuzlocke.nuzlocke, ownProps.data));
   return {
-    saved: isEqual(state.nuzlocke.nuzlocke, ownProps.data)
+    saved: isEqual(state.nuzlocke, ownProps.data)
   };
 };
 
