@@ -1,8 +1,11 @@
 import { Tab2, Tabs2 } from '@blueprintjs/core';
 import * as React from 'react';
+import * as uuid from 'uuid/v4';
 
-import { speciesToNumber } from '../../utils';
+import { speciesToNumber, choose } from '../../utils';
 import { CurrentPokemonEdit } from './CurrentPokemonEdit';
+
+import { LinkedAddPokemonButton } from '../containers';
 
 require('../../assets/img/team-box.png');
 
@@ -41,7 +44,10 @@ export class PokemonEditor extends React.Component<PokemonEditorProps, {}> {
     return (
       <div className='pokemon-editor'>
         <h4>Pokemon</h4>
-        <button className='pt-intent-success pt-button add-new-pokemon'><span className='pt-icon-add' /> Add New Pokemon</button>
+        <LinkedAddPokemonButton defaultPokemon={ {
+          id: uuid(),
+          species: choose(['Bulbasaur', 'Murkrow', 'Koffing', 'Victini', 'Jangmo-o', 'Croagunk', 'Crobat', 'Arceus'])
+        } } />
         <Tabs2 id='pokemon-box' className='pokemon-box'>
           <Tab2 id='team' className='pt-tab-panel pokemon-tab' title='Team' panel={<TeamPanel team={team} />} />
           <Tab2 id='boxed' className='pt-tab-panel pokemon-tab' title='Boxed' panel={<BoxedPanel />} />

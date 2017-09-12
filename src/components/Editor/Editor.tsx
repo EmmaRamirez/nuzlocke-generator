@@ -24,7 +24,7 @@ export class Editor extends React.Component<{}, {}> {
         autoHideTimeout={1000}
         autoHideDuration={200}
         className='editor'
-        style={{ width: '33%', height: '100vh', padding: '.25rem' }}
+        style={{ width: '90%', height: '100vh', padding: '.25rem' }}
       >
         <GameEditor />
         <TrainerEditor />

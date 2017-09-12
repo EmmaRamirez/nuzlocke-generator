@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { speciesToNumber } from '../../utils';
+import { CurrentPokemonInput } from './CurrentPokemonInput';
 
 const getSpriteIcon = (species:string) => `https://www.serebii.net/pokedex-sm/icon/${speciesToNumber(species).toString().padStart(3, '0')}.png`;
 
@@ -17,10 +18,13 @@ export const CurrentPokemonEdit = () => (
       </label>
     </span>
 
-    <span className='current-pokemon-input-wrapper current-pokemon-species'>
-      <label>Species</label>
-      <input type='text' value='Arceus' />
-    </span>
+    <CurrentPokemonInput
+      labelName='Species'
+      inputName='species'
+      value={'Arceus'}
+      placeholder='Missing No.'
+      type='text'
+    />
     <span className='current-pokemon-input-wrapper current-pokemon-nickname'>
       <label>Nickname</label>
       <input type='text' value='Mr. Sparkles' />
