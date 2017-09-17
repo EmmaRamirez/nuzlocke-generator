@@ -23,13 +23,13 @@ export class CurrentPokemonInput extends React.Component<CurrentPokemonInputProp
     const edit = {
       [inputName]: e.target.value
     };
-    console.log(edit);
     this.context.store.dispatch(editPokemon(edit, this.context.store.getState().selectedId));
+    this.forceUpdate();
   }
 
   public getInput({ labelName, inputName, type, value, placeholder, options }:CurrentPokemonInputProps) {
     if (type === 'text') {
-      return <input onChange={(event) => this.onChange(event, inputName) } type={type} name={inputName} value={value == null ? '' : value} placeholder={placeholder} />;
+      return <input onChange={(event) => this.onChange(event, inputName) } type={type} name={inputName} defaultValue={ value} placeholder={placeholder} />;
     }
     if (type === 'select') {
       return <div className='pt-select'>
@@ -46,14 +46,14 @@ export class CurrentPokemonInput extends React.Component<CurrentPokemonInputProp
     if (type === 'double-select') {
       return <span className='double-select-wrapper'>
           <div className='pt-select'>
-          <select value={value[0]} name={inputName}>
+          <select onChange={e => this.onChange(e, inputName)} value={value[0] == null ? 'None' : value} name={inputName}>
             {
               options.map((item, index) => <option value={item} key={index}>{item}</option>)
             }
           </select>
         </div>
         <div className='pt-select'>
-          <select defaultValue={value[1]} name={inputName}>
+          <select onChange={e => this.onChnage(e, inputName)} value={value[1] == null ? 'None' : value} name={inputName}>
             {
               options.map((item, index) => <option value={item} key={index}>{item}</option>)
             }

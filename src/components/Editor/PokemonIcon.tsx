@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getSpriteIcon, StoreContext } from '../../utils';
+import { getSpriteIcon, speciesToNumber, StoreContext } from '../../utils';
 
 
 interface PokemonIconProps {

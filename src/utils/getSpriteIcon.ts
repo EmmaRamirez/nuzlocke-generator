@@ -1,3 +1,6 @@
 import { speciesToNumber } from './speciesToNumber';
 
-export const getSpriteIcon = (species:string) => `https://www.serebii.net/pokedex-sm/icon/${speciesToNumber(species).toString().padStart(3, '0')}.png`;
+export const getSpriteIcon = (species:string) => {
+  const n = speciesToNumber(species);
+  return `https://www.serebii.net/pokedex-sm/icon/${n.toString().padStart(3, '0')}.png`;
+}

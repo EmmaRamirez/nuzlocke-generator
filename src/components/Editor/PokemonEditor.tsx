@@ -67,7 +67,8 @@ export class PokemonEditor extends React.Component<{}, PokemonEditorState> {
       id: uuid(),
       species: choose(['Bulbasaur', 'Murkrow', 'Koffing', 'Victini', 'Jangmo-o', 'Croagunk', 'Crobat', 'Arceus', 'Volcanion', 'Magearna', 'Burmy', 'Sandygast', 'Dialga', 'Palkia', 'Reshiram', 'Zekrom', 'Pawniard', 'Bisharp', 'Toxicroak', 'Ivysaur', 'Torracat', 'Wishiwashi']),
       status: choose(['Team', 'Boxed', 'Dead']),
-      gender: choose(['Female', 'Male', 'Neutral'])
+      gender: choose(['Female', 'Male', 'Neutral']),
+      types: ['Normal', 'None']
     };
   }
 

@@ -60,7 +60,7 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
     );
   }
 
-  public expandView = e => {
+  public expandView (e) {
     this.setState({
       expandedView: !this.state.expandedView
     });
@@ -72,8 +72,6 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
     if (currentPokemon == null) {
       return <div className='current-pokemon'>Select a Pok&eacute;mon to edit</div>;
     }
-    console.log('currentPokemon', currentPokemon);
-    console.log('currentID', this.state.selectedId);
 
     return (
       <div className='current-pokemon'>
@@ -152,17 +150,17 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
         value={currentPokemon.moves}
         type='text'
       />
-      <br/>
-      <button onClick={() => this.expandView} data-expandedView={this.state.expandedView.toString()} className='pt-button pt-fill pt-intent-primary current-pokemon-more'>
-        { this.state.expandedView ?
-          <span>Less <span className='pt-icon-symbol-triangle-up' /></span> :
-          <span>More <span className='pt-icon-symbol-triangle-down' /></span>
-        } </button>
       {
         this.state.expandedView ?
         this.moreInputs(currentPokemon) :
         null
       }
+      <br/>
+      <button onClick={(e) => this.expandView(e)} data-expandedView={this.state.expandedView.toString()} className='pt-button pt-fill pt-intent-primary current-pokemon-more'>
+        { this.state.expandedView ?
+          <span>Less <span className='pt-icon-symbol-triangle-up' /></span> :
+          <span>More <span className='pt-icon-symbol-triangle-down' /></span>
+        } </button>
     </div>
     );
   }

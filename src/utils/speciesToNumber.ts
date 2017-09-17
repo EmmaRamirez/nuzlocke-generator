@@ -1604,5 +1604,5 @@ export function speciesToNumber(s:string):number | null {
       return 801;
   if (s === 'Marshadow')
       return 802;
-  return null;
+  return 132;
 }
