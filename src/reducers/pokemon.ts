@@ -1,10 +1,28 @@
 import {
   Action,
   ADD_POKEMON,
-  DELETE_POKEMON
+  DELETE_POKEMON,
+  EDIT_POKEMON
 } from '../actions';
 
-export function pokemon(state = [], action:Action<ADD_POKEMON> | Action<DELETE_POKEMON>) {
+const pokemonState = [
+  {
+    id: '5',
+    species: 'Croagunk',
+    nickname: 'Greg',
+    types: ['Poison', 'Fighting'],
+    status: 'Team',
+    level: 34,
+    gender: 'm',
+    met: 'Pastoria City',
+    metLevel: 1,
+    nature: 'Rash',
+    ability: 'Dry Skin',
+    moves: ['Bullet Punch', 'Cross Chop', 'Poison Jab', 'Taunt'],
+  }
+];
+
+export function pokemon(state = pokemonState, action:Action<ADD_POKEMON> | Action<DELETE_POKEMON> | Action<EDIT_POKEMON>) {
   switch (action.type) {
     case 'ADD_POKEMON':
       return [
@@ -12,12 +30,16 @@ export function pokemon(state = [], action:Action<ADD_POKEMON> | Action<DELETE_P
           action.pokemon
         ];
     case 'DELETE_POKEMON':
-      return Object.assign({}, state, {
-        pokemon: state.pokemon.filter((val, index) => {
+      return state.filter((val, index) => {
           return val.id !== action.id;
-        })
-      }
-    );
+      });
+    case 'EDIT_POKEMON':
+      let pokemonToEdit = state.find((poke) => poke.id === action.id);
+      let newPoke = { ...pokemonToEdit, ...action.edits };
+      return [
+        ...state.filter(poke => poke.id !== action.id),
+        newPoke
+      ];
     default:
       return state;
   }
