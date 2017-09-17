@@ -13,6 +13,7 @@ export interface Pokemon {
   causeOfDeath?: string;
   forme?: string;
   item?: string;
+  types?: string[];
   customImage?: string;
   customSprite?: string;
   customTypes?: string[];
