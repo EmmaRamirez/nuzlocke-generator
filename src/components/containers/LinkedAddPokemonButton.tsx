@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addPokemon } from '../../actions';
+import { addPokemon, selectPokemon } from '../../actions';
 import { AddPokemonButton } from '../Editor/AddPokemonButton';
 
 const mapStateToProps = (state, ownProps) => {
@@ -10,6 +10,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: () => {
       dispatch(addPokemon(ownProps.defaultPokemon));
+      dispatch(selectPokemon(ownProps.defaultPokemon.id));
     }
   };
 };
