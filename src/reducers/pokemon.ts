@@ -34,8 +34,8 @@ export function pokemon(state = pokemonState, action:Action<ADD_POKEMON> | Actio
           return val.id !== action.id;
       });
     case 'EDIT_POKEMON':
-      let pokemonToEdit = state.find((poke) => poke.id === action.id);
-      let newPoke = { ...pokemonToEdit, ...action.edits };
+      const pokemonToEdit = state.find((poke) => poke.id === action.id);
+      const newPoke = { ...pokemonToEdit, ...action.edits };
       return [
         ...state.filter(poke => poke.id !== action.id),
         newPoke

@@ -70,7 +70,7 @@ export class CurrentPokemonInput extends React.Component<CurrentPokemonInputProp
       <span className={`current-pokemon-input-wrapper current-pokemon-${inputName}`}>
         <label>{labelName}</label>
         { this.getInput({ labelName, inputName, type, value, placeholder, options }) }
-        
+
       </span>
     );
   }

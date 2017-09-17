@@ -30,7 +30,7 @@ const BoxedPanel = ({ boxed }) => <div className='tab boxed-tab'><LinkedTabTitle
 
 const DeadPanel = ({ dead }) => <div className='tab dead-tab'><LinkedTabTitle boxId={2} title='Dead' />{pokemonByFilter(dead, 'Dead')}</div>;
 
-const AllPanel = ({ team }) => <div className='tab all-tab'><TabTitle title='All' />{pokemonByFilter(team)}</div>
+const AllPanel = ({ team }) => <div className='tab all-tab'><TabTitle title='All' />{pokemonByFilter(team)}</div>;
 
 interface PokemonEditorProps {
   pokemon: Pokemon[];

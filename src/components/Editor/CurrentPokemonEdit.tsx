@@ -17,7 +17,7 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
     this.state = {
       selectedId: '5',
       expandedView: false
-    }
+    };
   }
 
   public componentWillMount() {
@@ -66,7 +66,7 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
     });
   }
 
-  render () {
+  public render () {
     const currentPokemon = this.context.store.getState().pokemon.find((v) => v.id === this.state.selectedId);
 
     if (currentPokemon == null) {
