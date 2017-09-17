@@ -33,20 +33,20 @@ export class App extends React.Component<{}, AppState> {
   }
 
   public componentWillMount() {
-    if (localForage.getItem('data') != null) {
-      localForage.setItem('data', {
-        game: {},
-        pokemon: [],
-        trainer: {}
-      });
-    }
+    // if (localForage.getItem('data') != null) {
+    //   localForage.setItem('data', {
+    //     game: {},
+    //     pokemon: [],
+    //     trainer: {}
+    //   });
+    // }
 
-    localForage.getItem('data').then((data) => {
-      this.context.store.dispatch(saveNuzlocke(data));
-      console.log('store dispatched ', data);
-    }).catch((err) => {
-      console.error(err, 'No localStorage item was found.');
-    });
+    // localForage.getItem('data').then((data) => {
+    //   this.context.store.dispatch(saveNuzlocke(data));
+    //   console.log('store dispatched ', data);
+    // }).catch((err) => {
+    //   console.error(err, 'No localStorage item was found.');
+    // });
   }
 
   public renderHotkeys() {
