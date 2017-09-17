@@ -10,6 +10,7 @@ interface PokemonIconProps {
 
 interface PokemonIconState {
   selectedId: string;
+  unsubscriber: Function;
 }
 
 @StoreContext
@@ -17,16 +18,24 @@ export class PokemonIcon extends React.Component<PokemonIconProps, PokemonIconSt
   constructor(props) {
     super(props);
     this.state = {
-      selectedId: ''
+      selectedId: '',
+      unsubscriber: () => {}
     };
   }
 
   public componentWillMount() {
-    this.context.store.subscribe(() => {
+    const unsubscriber = this.context.store.subscribe(() => {
       this.setState({
         selectedId: this.context.store.getState().selectedId
       });
     });
+    this.setState({
+      unsubscriber
+    });
+  }
+
+  public componentWillUnmount() {
+    this.state.unsubscriber();
   }
 
   public render() {

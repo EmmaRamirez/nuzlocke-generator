@@ -1,25 +1,77 @@
 import * as React from 'react';
 
+import { StoreContext } from '../../utils';
+import { editPokemon } from '../../actions';
+
 interface CurrentPokemonInputProps {
   labelName: string;
   inputName: string;
   type: string;
   value: any;
-  placeholder: string;
+  placeholder?: string;
+  options?: string[];
 }
 
+@StoreContext
 export class CurrentPokemonInput extends React.Component<CurrentPokemonInputProps, {}> {
   constructor(props:CurrentPokemonInputProps) {
     super(props);
+    this.onChange = this.onChange.bind(this);
+  }
+
+  public onChange(e, inputName) {
+    const edit = {
+      [inputName]: e.target.value
+    };
+    console.log(edit);
+    this.context.store.dispatch(editPokemon(edit, this.context.store.getState().selectedId));
+  }
+
+  public getInput({ labelName, inputName, type, value, placeholder, options }:CurrentPokemonInputProps) {
+    if (type === 'text') {
+      return <input onChange={(event) => this.onChange(event, inputName) } type={type} name={inputName} value={value == null ? '' : value} placeholder={placeholder} />;
+    }
+    if (type === 'select') {
+      return <div className='pt-select'>
+        <select onChange={ (event) => this.onChange(event, inputName) } value={value} name={inputName}>
+          {
+            options.map((item, index) => <option key={index}>{item}</option>)
+          }
+        </select>
+      </div>;
+    }
+    if (type === 'checkbox') {
+      return <input type={type} name={inputName} checked={value} />;
+    }
+    if (type === 'double-select') {
+      return <span className='double-select-wrapper'>
+          <div className='pt-select'>
+          <select value={value[0]} name={inputName}>
+            {
+              options.map((item, index) => <option value={item} key={index}>{item}</option>)
+            }
+          </select>
+        </div>
+        <div className='pt-select'>
+          <select defaultValue={value[1]} name={inputName}>
+            {
+              options.map((item, index) => <option value={item} key={index}>{item}</option>)
+            }
+          </select>
+        </div>
+      </span>;
+    }
+    return <div>No input type provided.</div>;
   }
 
   public render() {
-    const { labelName, inputName, type, value, placeholder } = this.props;
+    const { labelName, inputName, type, value, placeholder, options } = this.props;
     return (
-    <span className={`current-pokemon-input-wrapper current-pokemon-${inputName}`}>
-      <label>{labelName}</label>
-      <input type={type} name={inputName} value={value} placeholder={placeholder} />
-    </span>
+      <span className={`current-pokemon-input-wrapper current-pokemon-${inputName}`}>
+        <label>{labelName}</label>
+        { this.getInput({ labelName, inputName, type, value, placeholder, options }) }
+        
+      </span>
     );
   }
 }

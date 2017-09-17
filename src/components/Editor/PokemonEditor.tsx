@@ -7,28 +7,30 @@ import { Pokemon } from '../../models';
 import { speciesToNumber, choose, StoreContext } from '../../utils';
 import { CurrentPokemonEdit } from './CurrentPokemonEdit';
 import { PokemonIcon } from './PokemonIcon';
+import { TabTitle } from './TabTitle';
 
-import { LinkedAddPokemonButton, LinkedPokemonIcon } from '../containers';
+import { LinkedAddPokemonButton, LinkedPokemonIcon, LinkedTabTitle } from '../containers';
 
 require('../../assets/img/team-box.png');
 
-
-function teamPokemon(team:Pokemon[]) {
-  return team.map((item, index) => {
-    return <LinkedPokemonIcon key={index} id={item.id} species={item.species} />;
+function pokemonByFilter(team:Pokemon[], filter?:string):JSX.Element[] {
+  let filterFunction:any;
+  if (filter != null) filterFunction = (poke => poke.status === filter);
+  if (filter == null) filterFunction = (poke => true);
+  return team.filter(filterFunction).map((poke, index) => {
+    return <LinkedPokemonIcon key={index} id={poke.id} species={poke.species} />;
   });
 }
 
-const TabTitle = ({ title }: { title: string }) => <div contentEditable suppressContentEditableWarning={true} className='tab-title' style={{ height: '48px', padding: '.5rem', textAlign: 'center', fontWeight: 'bold' }}>{title}</div>;
-
 const TeamPanel = ({ team }) => {
-  console.log(team);
-  return <div className='tab team-tab'><TabTitle title='Team' />{teamPokemon(team)}</div>;
+  return <div className='tab team-tab'><LinkedTabTitle boxId={0} title='Team' />{pokemonByFilter(team, 'Team')}</div>;
 };
 
-const BoxedPanel = () => <div className='tab boxed-tab'><TabTitle title='Boxed' />Boxed</div>;
+const BoxedPanel = ({ boxed }) => <div className='tab boxed-tab'><LinkedTabTitle boxId={1} title='Boxed' />{pokemonByFilter(boxed, 'Boxed')}</div>;
 
-const DeadPanel = () => <div className='tab dead-tab'><TabTitle title='Dead' />Dead</div>;
+const DeadPanel = ({ dead }) => <div className='tab dead-tab'><LinkedTabTitle boxId={2} title='Dead' />{pokemonByFilter(dead, 'Dead')}</div>;
+
+const AllPanel = ({ team }) => <div className='tab all-tab'><TabTitle title='All' />{pokemonByFilter(team)}</div>
 
 interface PokemonEditorProps {
   pokemon: Pokemon[];
@@ -37,6 +39,7 @@ interface PokemonEditorProps {
 interface PokemonEditorState {
   team: Pokemon[];
   selectedPokemonId: string;
+  boxes: string[];
 }
 
 @StoreContext
@@ -45,6 +48,7 @@ export class PokemonEditor extends React.Component<{}, PokemonEditorState> {
     super(props);
     this.state = {
       team: [],
+      boxes: ['Team', 'Boxed', 'Dead'],
       selectedPokemonId: '',
     };
   }
@@ -52,7 +56,8 @@ export class PokemonEditor extends React.Component<{}, PokemonEditorState> {
   public componentWillMount() {
     this.context.store.subscribe(() => {
       this.setState({
-        team: this.context.store.getState().pokemon
+        team: this.context.store.getState().pokemon,
+        boxes: this.context.store.getState().box
       });
     });
   }
@@ -60,22 +65,25 @@ export class PokemonEditor extends React.Component<{}, PokemonEditorState> {
   public genPokemon() {
     return {
       id: uuid(),
-      species: choose(['Bulbasaur', 'Murkrow', 'Koffing', 'Victini', 'Jangmo-o', 'Croagunk', 'Crobat', 'Arceus'])
+      species: choose(['Bulbasaur', 'Murkrow', 'Koffing', 'Victini', 'Jangmo-o', 'Croagunk', 'Crobat', 'Arceus', 'Volcanion', 'Magearna', 'Burmy', 'Sandygast', 'Dialga', 'Palkia', 'Reshiram', 'Zekrom', 'Pawniard', 'Bisharp', 'Toxicroak', 'Ivysaur', 'Torracat', 'Wishiwashi']),
+      status: choose(['Team', 'Boxed', 'Dead']),
+      gender: choose(['Female', 'Male', 'Neutral'])
     };
   }
 
   public render() {
     const { store } = this.context;
-    const { team } = this.state;
+    const { team, boxes } = this.state;
 
     return (
       <div className='pokemon-editor'>
         <h4>Pokemon</h4>
         <LinkedAddPokemonButton defaultPokemon={ this.genPokemon() } />
         <Tabs2 id='pokemon-box' className='pokemon-box'>
-          <Tab2 id='team' className='pt-tab-panel pokemon-tab' title='Team' panel={<TeamPanel team={team} />} />
-          <Tab2 id='boxed' className='pt-tab-panel pokemon-tab' title='Boxed' panel={<BoxedPanel />} />
-          <Tab2 id='dead' className='pt-tab-panel pokemon-tab' title='Dead' panel={<DeadPanel />} />
+          <Tab2 id='team' className='pt-tab-panel pokemon-tab' title={boxes[0]} panel={<TeamPanel team={team} />} />
+          <Tab2 id='boxed' className='pt-tab-panel pokemon-tab' title={boxes[1]} panel={<BoxedPanel boxed={team} />} />
+          <Tab2 id='dead' className='pt-tab-panel pokemon-tab' title={boxes[2]} panel={<DeadPanel dead={team} />} />
+          <Tab2 id='all' className='pt-tab-panel pokemon-tab' title='All' panel={<AllPanel team={team} />} />
         </Tabs2>
         <CurrentPokemonEdit />
       </div>
