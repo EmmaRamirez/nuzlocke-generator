@@ -13,7 +13,7 @@ const pokemonState = [
     types: ['Poison', 'Fighting'],
     status: 'Team',
     level: 34,
-    gender: 'm',
+    gender: 'Male',
     met: 'Pastoria City',
     metLevel: 1,
     nature: 'Rash',

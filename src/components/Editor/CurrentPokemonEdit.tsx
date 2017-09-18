@@ -50,6 +50,12 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
           type='checkbox'
         />
         <CurrentPokemonInput
+          labelName='Custom Image'
+          inputName='customImage'
+          value={currentPokemon.customImage}
+          type='text'
+        />
+        <CurrentPokemonInput
           labelName='Types'
           inputName='types'
           value={currentPokemon.types}
@@ -156,7 +162,7 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
         null
       }
       <br/>
-      <button onClick={(e) => this.expandView(e)} data-expandedView={this.state.expandedView.toString()} className='pt-button pt-fill pt-intent-primary current-pokemon-more'>
+      <button onClick={(e) => this.expandView(e)} data-expandedView={this.state.expandedView.toString()} className='pt-button pt-intent-primary pt-fill current-pokemon-more'>
         { this.state.expandedView ?
           <span>Less <span className='pt-icon-symbol-triangle-up' /></span> :
           <span>More <span className='pt-icon-symbol-triangle-down' /></span>

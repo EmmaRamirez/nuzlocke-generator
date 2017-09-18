@@ -1,4 +1,4 @@
-import { Tab2, Tabs2 } from '@blueprintjs/core';
+import { Tab2, Tabs2, Tooltip, Position } from '@blueprintjs/core';
 import * as React from 'react';
 import * as uuid from 'uuid/v4';
 
@@ -18,7 +18,9 @@ function pokemonByFilter(team:Pokemon[], filter?:string):JSX.Element[] {
   if (filter != null) filterFunction = (poke => poke.status === filter);
   if (filter == null) filterFunction = (poke => true);
   return team.filter(filterFunction).map((poke, index) => {
-    return <LinkedPokemonIcon key={index} id={poke.id} species={poke.species} />;
+    return <Tooltip content={poke.nickname || ''} position={Position.TOP}>
+      <LinkedPokemonIcon key={index} id={poke.id} species={poke.species} />
+    </Tooltip>;
   });
 }
 
@@ -62,11 +64,17 @@ export class PokemonEditor extends React.Component<{}, PokemonEditorState> {
     });
   }
 
+  public componentDidMount() {
+    this.setState({
+      team: this.context.store.getState().pokemon
+    })
+  }
+
   public genPokemon() {
     return {
       id: uuid(),
-      species: choose(['Bulbasaur', 'Murkrow', 'Koffing', 'Victini', 'Jangmo-o', 'Croagunk', 'Crobat', 'Arceus', 'Volcanion', 'Magearna', 'Burmy', 'Sandygast', 'Dialga', 'Palkia', 'Reshiram', 'Zekrom', 'Pawniard', 'Bisharp', 'Toxicroak', 'Ivysaur', 'Torracat', 'Wishiwashi']),
-      status: choose(['Team', 'Boxed', 'Dead']),
+      species: choose(['Arceus', 'Roselia', 'Vulpix']),
+      status: 'Team',
       gender: choose(['Female', 'Male', 'Neutral']),
       types: ['Normal', 'None']
     };

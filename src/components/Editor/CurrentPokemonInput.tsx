@@ -19,17 +19,30 @@ export class CurrentPokemonInput extends React.Component<CurrentPokemonInputProp
     this.onChange = this.onChange.bind(this);
   }
 
-  public onChange(e, inputName) {
-    const edit = {
-      [inputName]: e.target.value
-    };
+  public onChange(e, inputName, position?, value?) {
+    let edit;
+    if (inputName === 'types') {
+      edit = {
+        [inputName]: value
+      };
+      edit[inputName][position] = e.target.value;
+    } else if (inputName === 'moves') {
+      edit = {
+        [inputName]: e.target.value.split(',')
+      }
+    } else {
+      edit = {
+        [inputName]: e.target.value
+      };
+    }
     this.context.store.dispatch(editPokemon(edit, this.context.store.getState().selectedId));
     this.forceUpdate();
   }
 
   public getInput({ labelName, inputName, type, value, placeholder, options }:CurrentPokemonInputProps) {
+    value = value == null ? '' : value;
     if (type === 'text') {
-      return <input onChange={(event) => this.onChange(event, inputName) } type={type} name={inputName} defaultValue={ value} placeholder={placeholder} />;
+      return <input onChange={(event) => this.onChange(event, inputName) } type={type} name={inputName} value={value} placeholder={placeholder} />;
     }
     if (type === 'select') {
       return <div className='pt-select'>
@@ -41,19 +54,24 @@ export class CurrentPokemonInput extends React.Component<CurrentPokemonInputProp
       </div>;
     }
     if (type === 'checkbox') {
-      return <input type={type} name={inputName} checked={value} />;
+      return <label className='pt-control pt-checkbox'>
+        <input type={type} name={inputName} checked={value} />
+        <span className='pt-control-indicator'></span>
+      </label>;
     }
     if (type === 'double-select') {
+      console.log(value);
       return <span className='double-select-wrapper'>
           <div className='pt-select'>
-          <select onChange={e => this.onChange(e, inputName)} value={value[0] == null ? 'None' : value} name={inputName}>
+          <select onChange={e => this.onChange(e, inputName, 0, value)} value={value[0] == null ? 'None' : value[0]} name={inputName}>
             {
               options.map((item, index) => <option value={item} key={index}>{item}</option>)
             }
           </select>
         </div>
+        <span>&nbsp;</span>
         <div className='pt-select'>
-          <select onChange={e => this.onChnage(e, inputName)} value={value[1] == null ? 'None' : value} name={inputName}>
+          <select onChange={e => this.onChange(e, inputName, 1, value)} value={value[1] == null ? 'None' : value[1]} name={inputName}>
             {
               options.map((item, index) => <option value={item} key={index}>{item}</option>)
             }

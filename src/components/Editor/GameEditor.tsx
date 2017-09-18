@@ -24,13 +24,7 @@ export class GameEditor extends React.Component<{}, {}> {
       <div className='game-editor'>
         <h4>Game</h4>
         <label>Game </label>
-        <div className='pt-select'>
-          <select defaultValue='Red'>
-            <option value='Red'>Red</option>
-            <option value='Pearl'>Pearl</option>
-            <option value='Sun'>Sun</option>
-          </select>
-        </div>
+        <input className='pt-input' type='text' defaultValue='Sun' dir='auto' />
         <button className='pt-button'>Import</button>
         <button className='pt-button'>Export</button>
         <LinkedSaveButton data={{
