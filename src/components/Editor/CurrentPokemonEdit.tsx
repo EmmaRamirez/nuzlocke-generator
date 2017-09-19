@@ -60,7 +60,7 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
           inputName='types'
           value={currentPokemon.types}
           type='double-select'
-          options={['Normal', 'Grass', 'Fire', 'Water', 'Poison', 'Fighting', 'Fairy', 'None']}
+          options={['Bug', 'Dark', 'Dragon', 'Electric', 'Fighting', 'Fire', 'Flying', 'Ghost', 'Grass', 'Ground', 'Ice', 'Normal', 'Poison', 'Psychic', 'Rock', 'Steel', 'Water', 'None']}
         />
       </div>
     );
@@ -140,7 +140,35 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
         inputName='nature'
         placeholder='Sassy'
         value={currentPokemon.nature}
-        type='text'
+        type='select'
+        options={[
+          'Adamant',
+          'Bashful',
+          'Bold',
+          'Brave',
+          'Calm',
+          'Careful',
+          'Docile',
+          'Gentle',
+          'Hardy',
+          'Hasty',
+          'Impish',
+          'Jolly',
+          'Lax',
+          'Lonely',
+          'Mild',
+          'Modest',
+          'Naive',
+          'Naughty',
+          'Quiet',
+          'Quirky',
+          'Rash',
+          'Relaxed',
+          'Sassy',
+          'Serious',
+          'Timid',
+          'None'
+        ]}
       />
       <CurrentPokemonInput
         labelName='Ability'

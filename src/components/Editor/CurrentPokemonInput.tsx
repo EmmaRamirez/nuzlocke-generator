@@ -29,7 +29,7 @@ export class CurrentPokemonInput extends React.Component<CurrentPokemonInputProp
     } else if (inputName === 'moves') {
       edit = {
         [inputName]: e.target.value.split(',')
-      }
+      };
     } else {
       edit = {
         [inputName]: e.target.value

@@ -18,8 +18,8 @@ function pokemonByFilter(team:Pokemon[], filter?:string):JSX.Element[] {
   if (filter != null) filterFunction = (poke => poke.status === filter);
   if (filter == null) filterFunction = (poke => true);
   return team.filter(filterFunction).map((poke, index) => {
-    return <Tooltip content={poke.nickname || ''} position={Position.TOP}>
-      <LinkedPokemonIcon key={index} id={poke.id} species={poke.species} />
+    return <Tooltip key={index} content={poke.nickname || ''} position={Position.TOP}>
+      <LinkedPokemonIcon id={poke.id} species={poke.species} />
     </Tooltip>;
   });
 }
@@ -67,15 +67,21 @@ export class PokemonEditor extends React.Component<{}, PokemonEditorState> {
   public componentDidMount() {
     this.setState({
       team: this.context.store.getState().pokemon
-    })
+    });
   }
 
-  public genPokemon() {
+  public genPokemon():Pokemon {
     return {
       id: uuid(),
       species: choose(['Arceus', 'Roselia', 'Vulpix']),
+      nickname: choose(['Arka', 'Viox', 'Lion', 'Mura', 'Vintarra', 'Graxx', 'Tyros']),
       status: 'Team',
       gender: choose(['Female', 'Male', 'Neutral']),
+      level: choose([3, 100, 23]),
+      met: choose(['Mt.Cornot', 'Route 8', 'Route 1', 'Route 12']),
+      metLevel: choose([5, 12, 33]),
+      nature: choose(['Brave', 'Adamant', 'Sassy', 'Mild']),
+      ability: 'Run Away',
       types: ['Normal', 'None']
     };
   }
