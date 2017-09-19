@@ -164,7 +164,7 @@ export function speciesToNumber(s:string):number | null {
       return 81;
   if (s === 'Magneton')
       return 82;
-  if (s === 'Farfetchd')
+  if (s === 'Farfetch\'d')
       return 83;
   if (s === 'Doduo')
       return 84;
