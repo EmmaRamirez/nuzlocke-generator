@@ -14,7 +14,8 @@ interface ResultState {
   problems: string[];
 }
 
-const typeToColor = (type:string):string => {
+const typeToColor = (type:string):string | null => {
+  if (type === 'None') return null;
   const types:any = {
     Bug: '#AEE359',
     Dark: '#29291F',
@@ -35,20 +36,31 @@ const typeToColor = (type:string):string => {
     Water: '#5B64DE',
   };
   return types[type];
-}
+};
 
 const getBackgroundGradient = (typeA:string, typeB:string):string => {
+  console.log(typeToColor(typeB));
   if (typeB == null) {
     if (typeA == null) {
       console.error(`No type was specified for the gradient.`);
       return 'transparent';
     } else {
-      return typeToColor(typeA);
+      return `linear-gradient(to right, ${typeToColor(typeA)}, ${typeToColor(typeA)}`;
     }
   } else {
     return `linear-gradient(to right, ${typeToColor(typeA)}, ${typeToColor(typeB)}`;
   }
-}
+};
+
+const getGenderElement = (gender) => {
+  if (gender === 'Male' || gender === 'm') {
+    return <span style={{color: 'lightblue'}}>&#9794;</span>;
+  } else if (gender === 'Female' || gender === 'f') {
+    return <span style={{color: 'pink'}}>&#9792;</span>;
+  } else {
+    return <span></span>;
+  }
+};
 
 @StoreContext
 export class Result extends React.Component<{}, ResultState> {
@@ -60,7 +72,7 @@ export class Result extends React.Component<{}, ResultState> {
       trainer: {},
       style: {},
       problems: []
-    }
+    };
   }
 
   public componentWillMount() {
@@ -70,38 +82,43 @@ export class Result extends React.Component<{}, ResultState> {
         pokemon: store.getState().pokemon,
         game: store.getState().game
       });
-    })
+    });
   }
 
   public componentDidMount() {
     this.setState({
       pokemon: this.context.store.getState().pokemon
-    })
+    });
   }
 
   private getMoveType(move) {
-    for (let type in movesByType) {
+    for (const type in movesByType) {
       if (movesByType.hasOwnProperty(type)) {
-        if(movesByType[type].some((value, index) => {
+        if (movesByType[type].some((value, index) => {
           return move === value;
         })) return type;
       }
     }
-    
+
     return 'Normal';
   }
 
   private generateMoves(moves) {
     return moves.map((move, index) => {
       move = move.trim();
-      let type = this.getMoveType(move);
-      return <div className={`move ${type}-type`}>{move}</div>;
-    })
+      const type = this.getMoveType(move);
+      return <div key={index} className={`move ${type}-type`}>{move}</div>;
+    });
   }
 
   private renderTeamPokemon() {
+    if (!this.state.pokemon.some((v, i) => v.hasOwnProperty('id'))) {
+      console.log('1', this.state.pokemon);
+      return <div></div>;
+    }
+    console.log('2', this.state.pokemon);
     return this.state.pokemon.map((poke, index) => {
-      let moves = poke.moves == null ? '' : <div className='pokemon-moves'>{this.generateMoves(poke.moves)}</div>
+      const moves = poke.moves == null ? '' : <div className='pokemon-moves'>{this.generateMoves(poke.moves)}</div>;
       return (
         <div key={poke.id} className='pokemon-container'>
           <div className='bubble' style={{
@@ -114,7 +131,7 @@ export class Result extends React.Component<{}, ResultState> {
           <div className='pokemon-info'>
             <div className='pokemon-info-inner'>
               <span className='pokemon-nickname'>{poke.nickname}</span>
-              <span className='pokemon-name'>{poke.species}</span>{poke.gender}
+              <span className='pokemon-name'>{poke.species}</span>{getGenderElement(poke.gender)}
               <span className='pokemon-level'>lv. {poke.level}</span>
               <br/>
               <span className='pokemon-location'>Met in {poke.met}, at lv. {poke.metLevel}</span>
@@ -127,7 +144,7 @@ export class Result extends React.Component<{}, ResultState> {
           </div>
         </div>
       );
-    })
+    });
   }
 
 
@@ -139,9 +156,27 @@ export class Result extends React.Component<{}, ResultState> {
 
   }
 
+  private renderTrainer() {
+    const { trainer } = this.state;
+    return (
+      <div className='trainer-wrapper'>
+        <img alt='Trainer' className='trainer-image' src='' />
+        <div className='game-logo'>
+          <span><img src='' alt='Game Logo' /></span>
+        </div>
+        <div className='trainer-name'>
+          <span>name</span>
+          { trainer.name || '' }
+        </div>
+      </div>
+    );
+  }
+
   public render() {
     return <div className='result container'>
-      <div className='trainer-container'></div>
+      <div className='trainer-container'>
+        { this.renderTrainer() }
+      </div>
       <div className='team-container'>
         { this.renderTeamPokemon() }
       </div>
