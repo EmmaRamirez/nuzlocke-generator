@@ -62,6 +62,12 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
           type='double-select'
           options={['Bug', 'Dark', 'Dragon', 'Electric', 'Fighting', 'Fire', 'Flying', 'Ghost', 'Grass', 'Ground', 'Ice', 'Normal', 'Poison', 'Psychic', 'Rock', 'Steel', 'Water', 'None']}
         />
+        <CurrentPokemonInput
+          labelName='Wonder Traded'
+          inputName='wonderTradedFor'
+          value={currentPokemon.wonderTradedFor}
+          type='text'
+        />
       </div>
     );
   }

@@ -21,4 +21,5 @@ export interface Pokemon {
   champion?: boolean;
   badges?: string[];
   num?: string;
+  wonderTradedFor?: string;
 }

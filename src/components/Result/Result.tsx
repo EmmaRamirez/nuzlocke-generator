@@ -39,10 +39,8 @@ const typeToColor = (type:string):string | null => {
 };
 
 const getBackgroundGradient = (typeA:string, typeB:string):string => {
-  console.log(typeToColor(typeB));
   if (typeB == null) {
     if (typeA == null) {
-      console.error(`No type was specified for the gradient.`);
       return 'transparent';
     } else {
       return `linear-gradient(to right, ${typeToColor(typeA)}, ${typeToColor(typeA)}`;
@@ -112,12 +110,7 @@ export class Result extends React.Component<{}, ResultState> {
   }
 
   private renderTeamPokemon() {
-    if (!this.state.pokemon.some((v, i) => v.hasOwnProperty('id'))) {
-      console.log('1', this.state.pokemon);
-      return <div></div>;
-    }
-    console.log('2', this.state.pokemon);
-    return this.state.pokemon.map((poke, index) => {
+    return this.state.pokemon.filter((v) => v.hasOwnProperty('id')).map((poke, index) => {
       const moves = poke.moves == null ? '' : <div className='pokemon-moves'>{this.generateMoves(poke.moves)}</div>;
       return (
         <div key={poke.id} className='pokemon-container'>

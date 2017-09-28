@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { StoreContext } from '../../utils';
-import { editPokemon } from '../../actions';
+import { editPokemon, selectPokemon } from '../../actions';
 
 interface CurrentPokemonInputProps {
   labelName: string;
@@ -36,7 +36,8 @@ export class CurrentPokemonInput extends React.Component<CurrentPokemonInputProp
       };
     }
     this.context.store.dispatch(editPokemon(edit, this.context.store.getState().selectedId));
-    this.forceUpdate();
+    this.context.store.dispatch(selectPokemon(this.context.store.getState().selectedId));
+    //this.forceUpdate();
   }
 
   public getInput({ labelName, inputName, type, value, placeholder, options }:CurrentPokemonInputProps) {
@@ -55,12 +56,11 @@ export class CurrentPokemonInput extends React.Component<CurrentPokemonInputProp
     }
     if (type === 'checkbox') {
       return <label className='pt-control pt-checkbox'>
-        <input type={type} name={inputName} checked={value} />
+        <input type={type} name={inputName} defaultChecked={!!value} />
         <span className='pt-control-indicator'></span>
       </label>;
     }
     if (type === 'double-select') {
-      console.log(value);
       return <span className='double-select-wrapper'>
           <div className='pt-select'>
           <select onChange={e => this.onChange(e, inputName, 0, value)} value={value[0] == null ? 'None' : value[0]} name={inputName}>

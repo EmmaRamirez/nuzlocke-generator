@@ -36,6 +36,11 @@ export function pokemon(state = pokemonState, action:Action<ADD_POKEMON> | Actio
     case 'EDIT_POKEMON':
       const pokemonToEdit = state.find((poke) => poke.id === action.id);
       const newPoke = { ...pokemonToEdit, ...action.edits };
+      if (state.length === 1) {
+        return [
+          Object.assign({}, ...state, action.edits)
+        ]
+      }
       return [
         ...state.filter(poke => poke.id !== action.id),
         newPoke
