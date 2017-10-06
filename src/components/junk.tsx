@@ -8,4 +8,4 @@ const url = 'https://jsonplaceholder.typicode.com/users';
   } catch (e) {
     console.log('Boo');
   }
-})
+});

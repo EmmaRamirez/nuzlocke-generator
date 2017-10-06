@@ -39,7 +39,7 @@ export function pokemon(state = pokemonState, action:Action<ADD_POKEMON> | Actio
       if (state.length === 1) {
         return [
           Object.assign({}, ...state, action.edits)
-        ]
+        ];
       }
       return [
         ...state.filter(poke => poke.id !== action.id),
