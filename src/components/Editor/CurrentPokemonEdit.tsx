@@ -12,7 +12,7 @@ interface CurrentPokemonEditState {
 @StoreContext
 export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditState> {
 
-  constructor(props) {
+  constructor(props:any) {
     super(props);
     this.state = {
       selectedId: '5',
