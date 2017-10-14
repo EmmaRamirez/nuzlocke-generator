@@ -47,7 +47,9 @@ export class CurrentPokemonInput extends React.Component<CurrentPokemonInputProp
       return <div className='pt-select'>
         <select onChange={ (event) => this.onChange(event, inputName) } value={value} name={inputName}>
           {
-            options.map((item, index) => <option key={index}>{item}</option>)
+            options ?
+            options.map((item, index) => <option key={index}>{item}</option>) :
+            null
           }
         </select>
       </div>;
@@ -63,7 +65,9 @@ export class CurrentPokemonInput extends React.Component<CurrentPokemonInputProp
           <div className='pt-select'>
           <select onChange={e => this.onChange(e, inputName, 0, value)} value={value[0] == null ? 'None' : value[0]} name={inputName}>
             {
-              options.map((item, index) => <option value={item} key={index}>{item}</option>)
+              options ?
+              options.map((item, index) => <option value={item} key={index}>{item}</option>) :
+              null
             }
           </select>
         </div>
@@ -71,7 +75,9 @@ export class CurrentPokemonInput extends React.Component<CurrentPokemonInputProp
         <div className='pt-select'>
           <select onChange={e => this.onChange(e, inputName, 1, value)} value={value[1] == null ? 'None' : value[1]} name={inputName}>
             {
-              options.map((item, index) => <option value={item} key={index}>{item}</option>)
+              options ?
+              options.map((item, index) => <option value={item} key={index}>{item}</option>) :
+              null
             }
           </select>
         </div>

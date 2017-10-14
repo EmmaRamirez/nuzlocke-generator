@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { speciesToNumber, getSpriteIcon, StoreContext } from '../../utils';
 import { Pokemon } from '../../models';
+import { onClick } from '../../types';
 import { CurrentPokemonInput } from './CurrentPokemonInput';
 import { LinkedDeletePokemonButton } from '../containers';
 
@@ -72,14 +73,14 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
     );
   }
 
-  public expandView (e) {
+  public expandView = (e:React.SyntheticEvent<HTMLButtonElement>) => {
     this.setState({
       expandedView: !this.state.expandedView
     });
   }
 
   public render () {
-    const currentPokemon = this.context.store.getState().pokemon.find((v) => v.id === this.state.selectedId);
+    const currentPokemon = this.context.store.getState().pokemon.find((v:Pokemon) => v.id === this.state.selectedId);
 
     if (currentPokemon == null) {
       return <div className='current-pokemon'>Select a Pok&eacute;mon to edit</div>;
@@ -196,7 +197,7 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
         null
       }
       <br/>
-      <button onClick={(e) => this.expandView(e)} data-expandedView={this.state.expandedView.toString()} className='pt-button pt-intent-primary pt-fill current-pokemon-more'>
+      <button onClick={this.expandView} data-expandedview={this.state.expandedView.toString()} className='pt-button pt-intent-primary pt-fill current-pokemon-more'>
         { this.state.expandedView ?
           <span>Less <span className='pt-icon-symbol-triangle-up' /></span> :
           <span>More <span className='pt-icon-symbol-triangle-down' /></span>

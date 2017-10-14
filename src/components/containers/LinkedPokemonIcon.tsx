@@ -19,4 +19,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export const LinkedPokemonIcon = connect(
   mapStateToProps,
   mapDispatchToProps
-)(PokemonIcon);
+)(PokemonIcon as any);

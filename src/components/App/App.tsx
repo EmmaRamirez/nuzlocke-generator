@@ -1,6 +1,7 @@
 import { Hotkey, Hotkeys, HotkeysTarget } from '@blueprintjs/core';
 import * as localForage from 'localforage';
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Store } from 'redux';
 import { saveNuzlocke } from '../../actions';
@@ -20,7 +21,7 @@ interface AppContext {
 
 function StoreContext (target:any) {
   target.contextTypes = target.contextTypes || {};
-  target.contextTypes.store = React.PropTypes.object.isRequired;
+  target.contextTypes.store = PropTypes.object.isRequired;
 }
 
 @StoreContext
