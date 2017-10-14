@@ -63,6 +63,7 @@
     "recompose": "^0.25.0",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
+    "redux-saga": "^0.15.6",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
     "rimraf": "^2.6.1",
@@ -75,7 +76,7 @@
     "tslint": "^5.7.0",
     "tslint-loader": "^3.5.3",
     "tslint-microsoft-contrib": "^5.0.1",
-    "typescript": "^2.5.2",
+    "typescript": "^2.6.0-rc",
     "url-loader": "^0.5.9",
     "uuid": "^3.0.1",
     "webpack": "^2.7.0"

@@ -1,0 +1,1 @@
+export type onClick = (e?:React.SyntheticEvent<MouseEvent>) => void;

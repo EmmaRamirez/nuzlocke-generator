@@ -16,12 +16,11 @@ interface CurrentPokemonInputProps {
 export class CurrentPokemonInput extends React.Component<CurrentPokemonInputProps, {}> {
   constructor(props:CurrentPokemonInputProps) {
     super(props);
-    this.onChange = this.onChange.bind(this);
   }
 
-  public onChange(e, inputName, position?, value?) {
+  public onChange = (e:React.SyntheticEvent<any> & any, inputName:string, position?:number, value?:any) => {
     let edit;
-    if (inputName === 'types') {
+    if (inputName === 'types' && position != null) {
       edit = {
         [inputName]: value
       };
@@ -37,7 +36,6 @@ export class CurrentPokemonInput extends React.Component<CurrentPokemonInputProp
     }
     this.context.store.dispatch(editPokemon(edit, this.context.store.getState().selectedId));
     this.context.store.dispatch(selectPokemon(this.context.store.getState().selectedId));
-    //this.forceUpdate();
   }
 
   public getInput({ labelName, inputName, type, value, placeholder, options }:CurrentPokemonInputProps) {

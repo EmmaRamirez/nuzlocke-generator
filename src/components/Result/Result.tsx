@@ -140,6 +140,13 @@ export class Result extends React.Component<{}, ResultState> {
     });
   }
 
+  private renderErrors(state:ResultState) {
+    const renderItems = [];
+    if (state.pokemon.filter(poke => poke.status === 'Team').length > 6) {
+      renderItems.push(<div className='pt-callout pt-intent-danger'>You have more than 6 Pokémon in your party.</div>);
+    }
+    return renderItems;
+  }
 
   private renderBoxedPokemon() {
 
@@ -167,6 +174,7 @@ export class Result extends React.Component<{}, ResultState> {
 
   public render() {
     return <div className='result container'>
+      { this.renderErrors(this.state) }
       <div className='trainer-container'>
         { this.renderTrainer() }
       </div>

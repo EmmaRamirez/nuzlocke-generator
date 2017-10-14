@@ -1,21 +1,29 @@
 import * as React from 'react';
 import { compose, withState } from 'recompose';
 import { Alert, Intent } from '@blueprintjs/core';
+import { onClick } from '../../types';
 
 import { StoreContext } from '../../utils';
 
 // const recomposeDelete = withState('dialogOn', 'setDialog', false);
 
+interface DeletePokemonButtonProps {
+  id: string;
+  onClick: onClick & any;
+  onChange: (e?:React.SyntheticEvent<any>) => void;
+}
+
 @StoreContext
-export class DeletePokemonButton extends React.Component<{ id: string, onClick: () => void, onChange: (e) => void }, { dialogOn: boolean }> {
-  constructor(props) {
+export class DeletePokemonButton extends React.Component<DeletePokemonButtonProps, { dialogOn: boolean }> {
+  constructor(props:DeletePokemonButtonProps) {
     super(props);
     this.state = {
       dialogOn: false,
     };
     this.toggleDialog = this.toggleDialog.bind(this);
   }
-  public toggleDialog() {
+
+  private toggleDialog() {
     this.setState({
       dialogOn: !this.state.dialogOn
     });
