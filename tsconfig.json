@@ -3,7 +3,7 @@
       "target": "es6",
       "module": "commonjs",
       "declaration": false,
-      "noImplicitAny": true,
+      "noImplicitAny": false,
       "removeComments": true,
       "strictNullChecks": true,
       "noLib": false,
@@ -24,9 +24,7 @@
     },
     "exclude": [
       "node_modules",
-      "server",
-      "server-src",
-      "webpack.config.ts"
+      "./node_modules/@types"
     ],
     "compileOnSave": false
 }

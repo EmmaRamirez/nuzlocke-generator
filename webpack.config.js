@@ -22,7 +22,7 @@ module.exports = {
     host: 'localhost',
     port: 8080,
     noInfo: true,
-    hot: true,
+    hot: false,
     stats: 'errors-only',
     historyApiFallback: true
   },
@@ -81,9 +81,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      sourcemap: true
-    }),
     new CopyWebpackPlugin([
       { from: './src/index.html', to: './index.html' },
       { from: './src/img', to: './img' }
