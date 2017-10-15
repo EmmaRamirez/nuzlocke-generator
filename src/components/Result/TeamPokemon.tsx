@@ -20,14 +20,15 @@ const getMoveType = move => {
 const generateMoves = moves => {
   return moves.map((move, index) => {
     move = move.trim();
-    const type = this.getMoveType(move);
+    const type = getMoveType(move);
     return <div key={index} className={`move ${type}-type`}>{move}</div>;
   });
 };
 
-export const TeamPokemon = (poke:Pokemon) => {
-  console.log('poke at team', poke);
-  const moves = poke.moves == null ? '' : <div className='pokemon-moves'>{this.generateMoves(poke.moves)}</div>;
+export const TeamPokemon = (props:Pokemon) => {
+  console.log(props);
+  const poke = props;
+  const moves = poke.moves == null ? '' : <div className='pokemon-moves'>{generateMoves(poke.moves)}</div>;
   return (
     <div className='pokemon-container'>
       <div className='bubble' style={{

@@ -47,9 +47,9 @@ export class Result extends React.Component<{}, ResultState> {
 
 
   private renderTeamPokemon() {
-    return this.state.pokemon.filter(v => v.hasOwnProperty('id')).map(poke => {
+    return this.state.pokemon.filter(v => v.hasOwnProperty('id')).map((poke, index) => {
       console.log(poke);
-      return <TeamPokemon poke={poke} />;
+      return <TeamPokemon key={index} {...poke} />;
     });
   }
 
