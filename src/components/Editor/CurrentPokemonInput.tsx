@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { StoreContext } from '../../utils';
+import { StoreContext, matchSpeciesToTypes } from '../../utils';
 import { editPokemon, selectPokemon } from '../../actions';
 
 interface CurrentPokemonInputProps {
@@ -25,6 +25,11 @@ export class CurrentPokemonInput extends React.Component<CurrentPokemonInputProp
         [inputName]: value
       };
       edit[inputName][position] = e.target.value;
+    } else if (inputName === 'species') {
+      edit = {
+        [inputName]: e.target.value,
+        types: matchSpeciesToTypes(e.target.value)
+      };
     } else if (inputName === 'moves') {
       edit = {
         [inputName]: e.target.value.split(',')

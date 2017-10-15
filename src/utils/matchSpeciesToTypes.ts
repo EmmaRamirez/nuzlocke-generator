@@ -3,6 +3,9 @@ export const matchSpeciesToTypes = (species: string):string[] => {
     case 'Bulbasaur':
     case 'Ivysaur':
     case 'Venusaur':
+    case 'Roselia':
+    case 'Budew':
+    case 'Roserade':
       return ['Grass', 'Poison'];
     case 'Charmander':
     case 'Charmeleon':
