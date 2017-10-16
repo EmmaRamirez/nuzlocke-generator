@@ -34,6 +34,11 @@ export class App extends React.Component<{}, AppState> {
   }
 
   public componentWillMount() {
+    localForage.getItem('data').then(data => {
+      console.log(data);
+    }).catch(err => {
+      console.error('No localstorage found');
+    });
     // if (localForage.getItem('data') != null) {
     //   localForage.setItem('data', {
     //     game: {},
