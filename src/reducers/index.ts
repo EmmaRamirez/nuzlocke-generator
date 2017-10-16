@@ -8,6 +8,7 @@ import { box } from './box';
 import { confirmation } from './confirmation';
 import { selectedId } from './selectedId';
 import { game } from './game';
+import { trainer } from './trainer';
 
 // export const appReducers = combineReducers({
 //   nuzlocke,
@@ -21,6 +22,7 @@ export const appReducers = combineReducers({
   selectedId,
   confirmation,
   game,
+  trainer,
   router: routerReducer
 });
 

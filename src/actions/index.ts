@@ -7,3 +7,4 @@ export { editBox, EDIT_BOX } from './editBox';
 export { selectPokemon, SELECT_POKEMON } from './selectPokemon';
 export { modifyDeletionConfirmation, MODIFY_DELETION_CONFIRMATION } from './modifyDeletionConfirmation';
 export { editGame, EDIT_GAME } from './editGame';
+export { editTrainer, EDIT_TRAINER } from './editTrainer';
