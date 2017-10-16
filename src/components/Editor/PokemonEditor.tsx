@@ -9,7 +9,7 @@ import { CurrentPokemonEdit } from './CurrentPokemonEdit';
 import { PokemonIcon } from './PokemonIcon';
 import { TabTitle } from './TabTitle';
 
-import { LinkedAddPokemonButton, LinkedPokemonIcon, LinkedTabTitle } from '../containers';
+import { LinkedAddPokemonButton, LinkedPokemonIcon, LinkedTabTitle } from '.';
 
 require('../../assets/img/team-box.png');
 

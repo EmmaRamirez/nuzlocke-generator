@@ -3,7 +3,7 @@ import { speciesToNumber, getSpriteIcon, StoreContext } from '../../utils';
 import { Pokemon } from '../../models';
 import { onClick } from '../../types';
 import { CurrentPokemonInput } from './CurrentPokemonInput';
-import { LinkedDeletePokemonButton } from '../containers';
+import { LinkedDeletePokemonButton } from './LinkedDeletePokemonButton';
 
 interface CurrentPokemonEditState {
   selectedId: string;

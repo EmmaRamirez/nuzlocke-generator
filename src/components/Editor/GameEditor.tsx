@@ -2,9 +2,7 @@ import * as React from 'react';
 import { Store } from 'redux';
 
 import { StoreContext } from '../../utils';
-import { LinkedSaveButton } from '../containers';
-
-
+import { LinkedSaveButton } from './LinkedSaveButton';
 
 
 @StoreContext
@@ -25,6 +23,7 @@ export class GameEditor extends React.Component<{}, {}> {
         <h4>Game</h4>
         <label>Game </label>
         <input className='pt-input' type='text' defaultValue='Sun' dir='auto' />
+        <br/>
         <button className='pt-button'>Import</button>
         <button className='pt-button'>Export</button>
         <LinkedSaveButton data={{
