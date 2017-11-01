@@ -4,8 +4,9 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Store } from 'redux';
-import { saveNuzlocke } from '../../actions';
 
+import { saveNuzlocke } from '../../actions';
+import { BasicComponentWithTypes } from '../../services';
 import { Editor } from '../Editor';
 import { Result } from '../Result';
 
@@ -71,6 +72,7 @@ export class App extends React.Component<{}, AppState> {
       <div className='app' role='main'>
         <Editor />
         <Result />
+        <BasicComponentWithTypes name='Electabuzz' />
       </div>
     );
   }

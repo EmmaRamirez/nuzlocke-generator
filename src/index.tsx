@@ -11,6 +11,8 @@ import { Admin } from './components/Admin';
 import { appReducers } from './reducers';
 import { store } from './store';
 
+import * as Services from './services';
+
 require('./components/Shared/styles/base.styl');
 require('../node_modules/@blueprintjs/core/dist/blueprint.css');
 

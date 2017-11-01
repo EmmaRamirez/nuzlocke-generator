@@ -9,7 +9,7 @@
       "noLib": false,
       "jsx": "react",
       "experimentalDecorators": true,
-      "allowSyntheticDefaultImports": true,
+      "allowSyntheticDefaultImports": false,
       "allowJs": true,
       "lib": [
         "dom",
