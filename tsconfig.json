@@ -9,7 +9,7 @@
       "noLib": false,
       "jsx": "react",
       "experimentalDecorators": true,
-      "allowSyntheticDefaultImports": true,
+      "allowSyntheticDefaultImports": false,
       "allowJs": true,
       "lib": [
         "dom",
@@ -20,7 +20,8 @@
       ],
       "typeRoots": [
         "./node_modules/@types"
-      ]
+      ],
+      "baseUrl": "./src"
     },
     "exclude": [
       "node_modules",
