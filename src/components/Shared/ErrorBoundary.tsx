@@ -1,6 +1,12 @@
 import * as React from 'react';
 
-export class ErrorBoundary extends React.Component<any, { hasError: boolean }> {
+type ReactPortal = any;
+
+interface ErrorBoundaryProps {
+  errorMessage?: string;
+}
+
+export class ErrorBoundary extends React.Component<ErrorBoundaryProps, { hasError: boolean }> {
   constructor(props:any) {
     super(props);
     this.state = {
@@ -14,9 +20,9 @@ export class ErrorBoundary extends React.Component<any, { hasError: boolean }> {
     });
   }
 
-  public render() {
+  public render(): string | number | false | Element | Element[] | ReactPortal | null {
     if (this.state.hasError) {
-      return <div className='error-boundary'>Oh no! Something went wrong.</div>;
+      return <div className='error-boundary'>{ this.props.errorMessage || 'Something went wrong.' }</div>;
     }
     return this.props.children;
   }

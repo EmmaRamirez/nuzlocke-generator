@@ -1604,5 +1604,15 @@ export function speciesToNumber(s:string):number | null {
       return 801;
   if (s === 'Marshadow')
       return 802;
+  if (s === 'Poipole')
+    return 803;
+  if (s === 'Naganadel')
+    return 804;
+  if (s === 'Stakataka')
+    return 805;
+  if (s === 'Blacephalon')
+    return 806;
+  if (s === 'Zeraora')
+    return 807;
   return 132;
 }

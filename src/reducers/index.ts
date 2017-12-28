@@ -26,6 +26,13 @@ export const appReducers = combineReducers({
   router: routerReducer
 });
 
-export { nuzlocke } from './nuzlocke';
-export { pokemon } from './pokemon';
-export { confirmation } from './confirmation';
+export const reducers = {
+  box,
+  confirmation,
+  game,
+  nuzlocke,
+  pokemon,
+  selectedId,
+  trainer,
+  router: routerReducer
+};
