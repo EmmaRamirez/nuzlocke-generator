@@ -46,6 +46,7 @@
     "chai": "^4.1.2",
     "cheerio": "^1.0.0-rc.2",
     "copy-webpack-plugin": "^4.3.1",
+    "coveralls": "^3.0.0",
     "css-loader": "^0.28.7",
     "emotion": "^8.0.12",
     "enzyme": "^3.3.0",
