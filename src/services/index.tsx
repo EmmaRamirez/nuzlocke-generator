@@ -1,8 +1,3 @@
-/**
- * 
- * 
- */
-
 import * as React from 'react';
 import { ErrorBoundary } from '../components/Shared/ErrorBoundary';
 
@@ -18,8 +13,9 @@ export const favoritePokemon:ServiceFunction<{ name: string }, string> = ({ name
 export const pokemonTypes:ServiceFunction = ({}, instance) => {
   instance.setState({
     types: ['Fire', 'Water', 'Grass']
-  })
+  });
 };
+
 export const getUsers:ServiceFunction = async ({}, instance) => {
   serviceGuard(async () => {
     const response = await fetch('https://jsonplaceholder.typicode.com/users');
@@ -30,7 +26,7 @@ export const getUsers:ServiceFunction = async ({}, instance) => {
   }, (e) => {
     console.error(e);
   });
-}
+};
 
 export function serviceGuard(onSuccess:Function, onError:Function = (e) => console.error(e)) {
   try {
@@ -53,10 +49,10 @@ export interface ServiceOptions {
 /**
  * withService() is a higher order function that takes an array of functions and performs
  * them periodically on a new component that wraps around the target component.
- * 
+ *
  * @param services - An array of Service Functions, see ServiceFunction
  * @return Component
- * 
+ *
  */
 export function withService(...services:ServiceFunction[]):any {
   console.log('service', services);
@@ -76,7 +72,7 @@ export function withService(...services:ServiceFunction[]):any {
         super(props, context);
       }
 
-      static displayName = `ServiceProvider(${componentName})`; 
+      public static displayName = `ServiceProvider(${componentName})`;
 
       public componentWillMount() {
         console.log('displayName', ServicedComponent.displayName);
@@ -100,7 +96,7 @@ export function withService(...services:ServiceFunction[]):any {
         return <ErrorBoundary><Component {...this.props} /></ErrorBoundary>;
       }
     };
-  }
+  };
 }
 
 
@@ -109,7 +105,6 @@ export const BasicComponentWithTypes = withService(favoritePokemon, pokemonTypes
 
 // export function groupServices(options, ...services:Function[]) {
 //   const baseUrl = options.baseUrl ? options.baseUrl : 'http://localhost:8080';
-  
 //   return services.map((service, index) => {
 //     return {
 //       [service.name]: service.bind(this, options, ...service.arguments.splice(1))

@@ -1,5 +1,5 @@
 # Nuzlocke Generator
 
-[![wercker status](https://app.wercker.com/status/48d340a434816858dca35b368a1970b6/s/master "wercker status")](https://app.wercker.com/project/byKey/48d340a434816858dca35b368a1970b6)
+[![Build Status](https://travis-ci.org/EmmaRamirez/nuzlocke-generator.svg?branch=master)](https://travis-ci.org/EmmaRamirez/nuzlocke-generator)
 
 WIP - This readme will be updated when the project reaches a working release.

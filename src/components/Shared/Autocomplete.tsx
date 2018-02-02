@@ -1,16 +1,20 @@
 import * as React from 'react';
 
-interface AutocompleteProps {
-
+interface AutocompleteProps<T> {
+  items: T[];
 }
 
-interface AutocompleteState {
-
+interface AutocompleteState<T> {
+  visibleItems: T[];
 }
 
-export class Autocomplete extends React.Component<AutocompleteProps, AutocompleteState> {
+export class Autocomplete<T> extends React.Component<AutocompleteProps<T>, AutocompleteState<T>> {
   constructor(props) {
     super(props);
+  }
+
+  public typeOf<T>() {
+    return new Autocomplete<T>(this.props);
   }
 
   public render() {

@@ -24,14 +24,14 @@ export class GameEditor extends React.Component<{}, {}> {
         <label>Game </label>
         <input className='pt-input' type='text' defaultValue='Sun' dir='auto' />
         <br/>
-        <button className='pt-button'>Import</button>
-        <button className='pt-button'>Export</button>
-        <LinkedSaveButton data={{
+        {/* <button className='pt-button'>Import</button>
+        <button className='pt-button'>Export</button> */}
+        {/* <LinkedSaveButton data={{
           pokemon: this.context.store.getState().pokemon,
           trainer: {},
           game: this.context.store.getState().game,
           style: {}
-        }}/>
+        }}/> */}
       </div>
     );
   }

@@ -20,7 +20,8 @@
       ],
       "typeRoots": [
         "./node_modules/@types"
-      ]
+      ],
+      "baseUrl": "./src"
     },
     "exclude": [
       "node_modules",

@@ -37,9 +37,9 @@ class Maybe<A> {
               {}, a, {[k.toString()]: b }
             ) as any
           )
-        )
+        );
       }
-    )
+    );
   }
 }
 
