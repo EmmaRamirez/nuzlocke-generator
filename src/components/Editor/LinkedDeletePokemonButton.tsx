@@ -3,21 +3,20 @@ import { deletePokemon, modifyDeletionConfirmation } from '../../actions';
 import { DeletePokemonButton } from '../Editor/DeletePokemonButton';
 
 const mapStateToProps = (state, ownProps) => {
-  return { };
+    return {};
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    onClick: () => {
-      dispatch(deletePokemon(ownProps.id));
-    },
-    onChange: (event) => {
-      dispatch(modifyDeletionConfirmation(!event.target.checked));
-    }
-  };
+    return {
+        onClick: () => {
+            dispatch(deletePokemon(ownProps.id));
+        },
+        onChange: event => {
+            dispatch(modifyDeletionConfirmation(!event.target.checked));
+        },
+    };
 };
 
-export const LinkedDeletePokemonButton = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DeletePokemonButton);
+export const LinkedDeletePokemonButton = connect(mapStateToProps, mapDispatchToProps)(
+    DeletePokemonButton,
+);

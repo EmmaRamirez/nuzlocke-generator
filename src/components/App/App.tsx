@@ -13,67 +13,74 @@ import { Result } from '../Result';
 const result = require('../../assets/img/result.png');
 
 interface AppState {
-  data: object;
+    data: object;
 }
 
 interface AppContext {
-  store: Store<any>;
+    store: Store<any>;
 }
 
-function StoreContext (target:any) {
-  target.contextTypes = target.contextTypes || {};
-  target.contextTypes.store = PropTypes.object.isRequired;
+function StoreContext(target: any) {
+    target.contextTypes = target.contextTypes || {};
+    target.contextTypes.store = PropTypes.object.isRequired;
 }
 
 @StoreContext
 @HotkeysTarget
 export class App extends React.Component<{}, AppState> {
-  public context: AppContext;
+    public context: AppContext;
 
-  constructor(props:any) {
-    super(props);
-  }
+    constructor(props: any) {
+        super(props);
+    }
 
-  public componentWillMount() {
-    localForage.getItem('data').then(data => {
-      console.log(data);
-    }).catch(err => {
-      console.error('No localstorage found');
-    });
-    // if (localForage.getItem('data') != null) {
-    //   localForage.setItem('data', {
-    //     game: {},
-    //     pokemon: [],
-    //     trainer: {}
-    //   });
-    // }
+    public componentWillMount() {
+        localForage
+            .getItem('data')
+            .then(data => {
+                console.log(data);
+            })
+            .catch(err => {
+                console.error('No localstorage found');
+            });
+        // if (localForage.getItem('data') != null) {
+        //   localForage.setItem('data', {
+        //     game: {},
+        //     pokemon: [],
+        //     trainer: {}
+        //   });
+        // }
 
-    // localForage.getItem('data').then((data) => {
-    //   this.context.store.dispatch(saveNuzlocke(data));
-    //   console.log('store dispatched ', data);
-    // }).catch((err) => {
-    //   console.error(err, 'No localStorage item was found.');
-    // });
-  }
+        // localForage.getItem('data').then((data) => {
+        //   this.context.store.dispatch(saveNuzlocke(data));
+        //   console.log('store dispatched ', data);
+        // }).catch((err) => {
+        //   console.error(err, 'No localStorage item was found.');
+        // });
+    }
 
-  public renderHotkeys() {
-    return <Hotkeys>
-      <Hotkey
-        global={true}
-        combo='h'
-        label='Nothing'
-        onKeyDown={ () => { console.log('pressed h'); } }
-      />
-    </Hotkeys>;
-  }
+    public renderHotkeys() {
+        return (
+            <Hotkeys>
+                <Hotkey
+                    global={true}
+                    combo='h'
+                    label='Nothing'
+                    onKeyDown={() => {
+                        console.log('pressed h');
+                    }}
+                />
+            </Hotkeys>
+        );
+    }
 
-  public render() {
-    return (
-      <div className='app' role='main'>
-        <Editor />
-        <Result />
-        <BasicComponentWithTypes name='Electabuzz' />
-      </div>
-    );
-  }
+    public render() {
+        return (
+            <div className='app' role='main'>
+                <Editor />
+                <Result />
+                <BasicComponentWithTypes name='Electabuzz' />
+            </div>
+        );
+    }
 }

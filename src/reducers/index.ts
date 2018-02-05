@@ -16,23 +16,23 @@ import { trainer } from './trainer';
 // });
 
 export const appReducers = combineReducers({
-  nuzlocke,
-  pokemon,
-  box,
-  selectedId,
-  confirmation,
-  game,
-  trainer,
-  router: routerReducer
+    nuzlocke,
+    pokemon,
+    box,
+    selectedId,
+    confirmation,
+    game,
+    trainer,
+    router: routerReducer,
 });
 
 export const reducers = {
-  box,
-  confirmation,
-  game,
-  nuzlocke,
-  pokemon,
-  selectedId,
-  trainer,
-  router: routerReducer
+    box,
+    confirmation,
+    game,
+    nuzlocke,
+    pokemon,
+    selectedId,
+    trainer,
+    router: routerReducer,
 };

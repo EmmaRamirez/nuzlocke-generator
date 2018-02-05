@@ -5,6 +5,6 @@
     "trailingComma": "all",
     "semi": true,
     "jsx-bracket-same-line": true,
-    "requirePragma": true,
+    "requirePragma": false,
     "tabWidth": 4
   }

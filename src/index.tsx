@@ -21,27 +21,24 @@ import '@blueprintjs/core/dist/blueprint.css';
 const mountNode = document.getElementById('app');
 const history = createHistory();
 
-window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
-  // tslint:disable-next-line:prefer-template
-  console.log('Error: ' + errorMsg + ' Script: ' + url + ' Line: ' + lineNumber
-  + ' Column: ' + column + ' StackTrace: ' +  errorObj);
+window.onerror = function(errorMsg, url, lineNumber, column, errorObj) {
+    // tslint:disable-next-line:prefer-template
+    console.log(
+        `Error: ${errorMsg}, Script: ${url}, Line: ${lineNumber}, Column: ${column}, StackTrace: ${errorObj}`,
+    );
 };
 
 render(
-  <Provider store={store}>
-    <PersistGate
-      loading={<div>Loading...</div>}
-      onBeforeLift={null}
-      persistor={persistor}
-    >
-      <ConnectedRouter history={history}>
-        <Route exact path='/' component={App} />
-      </ConnectedRouter>
-    </PersistGate>
-  </Provider>,
-  mountNode
+    <Provider store={store}>
+        <PersistGate loading={<div>Loading...</div>} onBeforeLift={null} persistor={persistor}>
+            <ConnectedRouter history={history}>
+                <Route exact path='/' component={App} />
+            </ConnectedRouter>
+        </PersistGate>
+    </Provider>,
+    mountNode,
 );
 
 store.subscribe(() => {
-  console.table(store.getState());
+    console.table(store.getState());
 });

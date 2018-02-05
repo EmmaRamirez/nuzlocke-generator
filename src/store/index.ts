@@ -10,9 +10,9 @@ import { reducers } from '../reducers';
 import { rootSaga } from '../sagas';
 
 const config = {
-  key: 'root',
-  blacklist: ['router'],
-  storage
+    key: 'root',
+    blacklist: ['router'],
+    storage,
 };
 
 const history = createHistory();
@@ -24,18 +24,10 @@ const sagaMiddleware = createSagaMiddleware();
 const routerMiddleware = createRouterMiddleware(history);
 
 export const store = createStore(
-  persistReducers,
-  applyMiddleware(
-    loggerMiddleware,
-    sagaMiddleware,
-    routerMiddleware
-  )
+    persistReducers,
+    applyMiddleware(loggerMiddleware, sagaMiddleware, routerMiddleware),
 );
 
-export const persistor = persistStore(
-  store,
-  null,
-  () => store.getState()
-);
+export const persistor = persistStore(store, null, () => store.getState());
 
 sagaMiddleware.run(rootSaga);
