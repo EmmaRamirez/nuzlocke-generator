@@ -16,7 +16,8 @@ import * as Services from './services';
 
 import 'components/Shared/styles/base.styl';
 
-import '@blueprintjs/core/dist/blueprint.css';
+import '@blueprintjs/icons/lib/css/blueprint-icons.css';
+import '@blueprintjs/core/src/blueprint.scss';
 
 const mountNode = document.getElementById('app');
 const history = createHistory();

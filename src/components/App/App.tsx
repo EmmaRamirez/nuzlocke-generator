@@ -26,7 +26,6 @@ function StoreContext(target: any) {
 }
 
 @StoreContext
-@HotkeysTarget
 export class App extends React.Component<{}, AppState> {
     public context: AppContext;
 
@@ -59,27 +58,26 @@ export class App extends React.Component<{}, AppState> {
         // });
     }
 
-    public renderHotkeys() {
-        return (
-            <Hotkeys>
-                <Hotkey
-                    global={true}
-                    combo='h'
-                    label='Nothing'
-                    onKeyDown={() => {
-                        console.log('pressed h');
-                    }}
-                />
-            </Hotkeys>
-        );
-    }
+    // public renderHotkeys() {
+    //     return (
+    //         <Hotkeys>
+    //             <Hotkey
+    //                 global={true}
+    //                 combo='h'
+    //                 label='Nothing'
+    //                 onKeyDown={() => {
+    //                     console.log('pressed h');
+    //                 }}
+    //             />
+    //         </Hotkeys>
+    //     );
+    // }
 
     public render() {
         return (
             <div className='app' role='main'>
                 <Editor />
                 <Result />
-                <BasicComponentWithTypes name='Electabuzz' />
             </div>
         );
     }

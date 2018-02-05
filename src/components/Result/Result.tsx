@@ -75,7 +75,7 @@ export class Result extends React.Component<{}, ResultState> {
         const { trainer } = this.state;
         return (
             <div className='trainer-wrapper'>
-                <img alt='Trainer' className='trainer-image' src='' />
+                {/* <img alt='Trainer' className='trainer-image' src='' />
                 <div className='game-logo'>
                     <span>
                         <img src='' alt='Game Logo' />
@@ -84,7 +84,7 @@ export class Result extends React.Component<{}, ResultState> {
                 <div className='trainer-name'>
                     <span>name</span>
                     {trainer.name || ''}
-                </div>
+                </div> */}
             </div>
         );
     }
