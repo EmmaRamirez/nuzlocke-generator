@@ -1,17 +1,22 @@
 import * as React from 'react';
 import { Store } from 'redux';
+import { connect } from 'react-redux';
+import { editGame } from 'actions';
 
-import { StoreContext } from '../../utils';
 import { LinkedSaveButton } from './LinkedSaveButton';
 
-@StoreContext
-export class GameEditor extends React.Component<{}, {}> {
+export interface GameEditorProps {
+    game: any;
+    editGame: Function;
+}
+
+export class GameEditorBase extends React.Component<GameEditorProps, {}> {
     constructor(props) {
         super(props);
     }
 
-    public componentWillMount() {
-        console.log(this.context.store);
+    private onInput = e => {
+        this.props.editGame({ name: e.target.value });
     }
 
     public render() {
@@ -19,7 +24,7 @@ export class GameEditor extends React.Component<{}, {}> {
             <div className='game-editor'>
                 <h4>Game</h4>
                 <label>Game </label>
-                <input className='pt-input' type='text' defaultValue='Sun' dir='auto' />
+                <input onChange={this.onInput} className='pt-input' type='text' value={this.props.game.name} dir='auto' />
                 <br />
                 {/* <button className='pt-button'>Import</button>
         <button className='pt-button'>Export</button> */}
@@ -33,3 +38,8 @@ export class GameEditor extends React.Component<{}, {}> {
         );
     }
 }
+
+export const GameEditor = connect(
+    (state:any) => ({ game: state.game }),
+    { editGame }
+)(GameEditorBase);

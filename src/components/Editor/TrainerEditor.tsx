@@ -8,7 +8,6 @@ export class TrainerEditor extends React.Component<{}, {}> {
                 <h4>Trainer</h4>
                 <div>Trainer Image</div>
                 <TrainerInfoEditor />
-                <div>Badges</div>
             </div>
         );
     }

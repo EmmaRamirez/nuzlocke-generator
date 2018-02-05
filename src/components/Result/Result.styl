@@ -28,7 +28,25 @@
   position: relative;
 }
 
+.trainer-wrapper {
+  display: flex !important;
+  align-items: center;
+  align-content: center;
+}
 
+.nuzlocke-title {
+  display: inline-flex;
+  font-size: 1.5rem;
+  font-weight: light;
+}
+
+.badge-wrapper {
+  display: inline-flex;
+  width: 200px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: auto;
+}
 
 .pokemon-item {
   background: #eee;
@@ -275,6 +293,7 @@ h3 {
 
 .container {
   padding-bottom: 3.5rem;
+  background: url('img/dawn-wings.png');
 }
 
 .team-container {
@@ -407,6 +426,10 @@ h3 {
   display: inline-block;
   height: 7.5rem;
   width: 7.5rem;
+}
+
+.not-obtained {
+  filter: grayscale(100%);
 }
 
 .bubble {

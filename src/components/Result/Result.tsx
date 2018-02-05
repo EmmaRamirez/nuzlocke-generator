@@ -2,21 +2,27 @@ import * as React from 'react';
 
 import { Pokemon, Trainer } from '../../models';
 import { StoreContext } from '../../utils';
+import { connect } from 'react-redux';
 
 import { TeamPokemon } from './TeamPokemon';
 
 require('./Result.styl');
 
+interface ResultProps {
+    pokemon: Pokemon[];
+    game: any;
+    trainer: Trainer;
+}
+
 interface ResultState {
     pokemon: Pokemon[];
-    game: object;
+    game: any;
     trainer: Trainer;
     style: object;
     problems: string[];
 }
 
-@StoreContext
-export class Result extends React.Component<{}, ResultState> {
+export class ResultBase extends React.Component<ResultProps, ResultState> {
     constructor(props) {
         super(props);
         this.state = {
@@ -29,31 +35,19 @@ export class Result extends React.Component<{}, ResultState> {
     }
 
     public componentWillMount() {
-        const { store } = this.context;
-        store.subscribe(() => {
-            this.setState({
-                pokemon: store.getState().pokemon,
-                game: store.getState().game,
-            });
-        });
     }
 
-    public componentDidMount() {
-        this.setState({
-            pokemon: this.context.store.getState().pokemon,
-        });
-    }
 
     private renderTeamPokemon() {
-        return this.state.pokemon.filter(v => v.hasOwnProperty('id')).map((poke, index) => {
+        return this.props.pokemon.filter(v => v.hasOwnProperty('id')).map((poke, index) => {
             console.log(poke);
             return <TeamPokemon key={index} {...poke} />;
         });
     }
 
-    private renderErrors(state: ResultState) {
+    private renderErrors() {
         const renderItems: React.ReactNode[] = [];
-        if (state.pokemon.filter(poke => poke.status === 'Team').length > 6) {
+        if (this.props.pokemon.filter(poke => poke.status === 'Team').length > 6) {
             renderItems.push(
                 <div className='pt-callout pt-intent-danger'>
                     You have more than 6 Pokémon in your party.
@@ -71,10 +65,38 @@ export class Result extends React.Component<{}, ResultState> {
         return null;
     }
 
+    private renderBadgesOrTrials() {
+        const badges = [
+            'normalium-z',
+            'fightium-z',
+            'waterium-z',
+            'firium-z',
+            'grassium-z',
+            'rockium-z',
+            'electrium-z',
+            'ghostium-z',
+            'darkinium-z',
+            'dragonium-z',
+            'fairium-z',
+            'groundium-z'
+        ];
+
+        return badges.map((badge, index) => {
+            // @ts-ignore
+            return <img className={ this.props.trainer.badges > index ? 'obtained' : 'not-obtained'} key={badge} alt={badge} src={`./img/${badge}.png`} />
+        });
+    }
+
     private renderTrainer() {
         const { trainer } = this.state;
         return (
             <div className='trainer-wrapper'>
+                <div className='nuzlocke-title'>{ this.props.game.name } Nuzlocke</div>
+                <div className='badge-wrapper'>
+                    {
+                        this.renderBadgesOrTrials()
+                    }
+                </div>
                 {/* <img alt='Trainer' className='trainer-image' src='' />
                 <div className='game-logo'>
                     <span>
@@ -92,7 +114,7 @@ export class Result extends React.Component<{}, ResultState> {
     public render() {
         return (
             <div className='result container'>
-                {this.renderErrors(this.state)}
+                {this.renderErrors()}
                 <div className='trainer-container'>{this.renderTrainer()}</div>
                 <div className='team-container'>{this.renderTeamPokemon()}</div>
                 <div className='boxed-container'>{this.renderBoxedPokemon()}</div>
@@ -101,3 +123,14 @@ export class Result extends React.Component<{}, ResultState> {
         );
     }
 }
+
+export const Result = connect(
+    (state:any) => ({
+        pokemon: state.pokemon,
+        game: state.game,
+        trainer: state.trainer
+    }),
+    {
+
+    }
+)(ResultBase);

@@ -3,12 +3,14 @@ import { editTrainer } from '../../actions';
 import { TrainerInfoEditField } from './TrainerInfoEditField';
 
 const mapStateToProps = (state, ownProps) => {
-    return {};
+    return {
+        value: state.trainer[ownProps.name]
+    };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onInput: e => {
+        onChange: e => {
             dispatch(
                 editTrainer({
                     [ownProps.name]: e.target.value,

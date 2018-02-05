@@ -3,5 +3,5 @@ export interface Trainer {
     id?: string | number;
     time?: string;
     money?: number;
-    badges?: string[];
+    badges?: number;
 }
