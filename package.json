@@ -12,6 +12,7 @@
     "styleguide:build": "styleguidist build --config styleguide.config.js --verbose",
     "clean": "rimraf dist",
     "pretest": "npm run lint",
+    "format": "prettier --config .prettierrc --write **/**/*.{ts,tsx} && npm run lint",
     "lint": "tslint --fix -c tslint.json 'src/**/*.{ts,tsx}'",
     "prestart": "webpack",
     "serve": "ts-node --disableWarnings server-src",
@@ -21,7 +22,7 @@
   "author": "Emma Ramirez <ramirez.emma.g@gmail.com> (http://emmaramirez.me)",
   "license": "MIT",
   "dependencies": {
-    "@blueprintjs/core": "^1.35.0",
+    "@blueprintjs/core": "^2.0.0-beta.2",
     "@nestjs/common": "^4.5.6",
     "@nestjs/core": "^4.5.6",
     "@nestjs/microservices": "^4.5.3",

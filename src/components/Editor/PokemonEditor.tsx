@@ -1,4 +1,4 @@
-import { Tab2, Tabs2, Tooltip, Position } from '@blueprintjs/core';
+import { Tab, Tabs, Tooltip, Position } from '@blueprintjs/core';
 import * as React from 'react';
 import * as uuid from 'uuid/v4';
 
@@ -94,12 +94,12 @@ export class PokemonEditor extends React.Component<{}, PokemonEditorState> {
       <div className='pokemon-editor'>
         <h4>Pokemon</h4>
         <LinkedAddPokemonButton defaultPokemon={ this.genPokemon() } />
-        <Tabs2 id='pokemon-box' className='pokemon-box'>
-          <Tab2 id='team' className='pt-tab-panel pokemon-tab' title={boxes[0]} panel={<TeamPanel team={team} />} />
-          <Tab2 id='boxed' className='pt-tab-panel pokemon-tab' title={boxes[1]} panel={<BoxedPanel boxed={team} />} />
-          <Tab2 id='dead' className='pt-tab-panel pokemon-tab' title={boxes[2]} panel={<DeadPanel dead={team} />} />
-          <Tab2 id='all' className='pt-tab-panel pokemon-tab' title='All' panel={<AllPanel team={team} />} />
-        </Tabs2>
+        <Tabs id='pokemon-box' className='pokemon-box'>
+          <Tab id='team' className='pt-tab-panel pokemon-tab' title={boxes[0]} panel={<TeamPanel team={team} />} />
+          <Tab id='boxed' className='pt-tab-panel pokemon-tab' title={boxes[1]} panel={<BoxedPanel boxed={team} />} />
+          <Tab id='dead' className='pt-tab-panel pokemon-tab' title={boxes[2]} panel={<DeadPanel dead={team} />} />
+          <Tab id='all' className='pt-tab-panel pokemon-tab' title='All' panel={<AllPanel team={team} />} />
+        </Tabs>
         <CurrentPokemonEdit />
       </div>
     );

@@ -14,8 +14,9 @@ import { store, persistor } from './store';
 
 import * as Services from './services';
 
-require('./components/Shared/styles/base.styl');
-require('../node_modules/@blueprintjs/core/dist/blueprint.css');
+import 'components/Shared/styles/base.styl';
+
+import '@blueprintjs/core/dist/blueprint.css';
 
 const mountNode = document.getElementById('app');
 const history = createHistory();
