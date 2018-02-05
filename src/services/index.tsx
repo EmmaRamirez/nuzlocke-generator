@@ -106,7 +106,6 @@ export const BasicComponentWithTypes = withService(favoritePokemon, pokemonTypes
 
 // export function groupServices(options, ...services:Function[]) {
 //   const baseUrl = options.baseUrl ? options.baseUrl : 'http://localhost:8080';
-
 //   return services.map((service, index) => {
 //     return {
 //       [service.name]: service.bind(this, options, ...service.arguments.splice(1))
