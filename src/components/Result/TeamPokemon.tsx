@@ -61,8 +61,9 @@ export const TeamPokemon = (props: Pokemon) => {
                 <div
                     style={{
                         backgroundImage: `url(img/${(
-                            addForme(poke.species) || 'missingno'
-                        ).toLowerCase()}.jpg)`,
+                            // @ts-ignore
+                            addForme((poke ? poke.species : '').replace(/\s/g, '') || 'missingno'
+                        ).toLowerCase())}.jpg)`,
                     }}
                     className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()}`}
                 />

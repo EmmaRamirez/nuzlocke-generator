@@ -438,7 +438,7 @@ export function speciesToNumber(s: string): number | null {
     if (s === 'Bronzor') return 436;
     if (s === 'Bronzong') return 437;
     if (s === 'Bonsly') return 438;
-    if (s === 'Mime Jr.') return 439;
+    if (s === 'Mime Jr') return 439;
     if (s === 'Happiny') return 440;
     if (s === 'Chatot') return 441;
     if (s === 'Spiritomb') return 442;

@@ -4,6 +4,7 @@ import { getSpriteIcon, speciesToNumber, StoreContext } from '../../utils';
 interface PokemonIconProps {
     id: string;
     species: string;
+    forme: string;
     onClick: () => void;
 }
 
@@ -38,7 +39,7 @@ export class PokemonIcon extends React.Component<PokemonIconProps, PokemonIconSt
     }
 
     public render() {
-        const { id, species } = this.props;
+        const { id, species, forme } = this.props;
 
         return (
             <div
@@ -48,7 +49,7 @@ export class PokemonIcon extends React.Component<PokemonIconProps, PokemonIconSt
                     this.props.onClick();
                 }}
                 className={id === this.state.selectedId ? 'pokemon-icon selected' : 'pokemon-icon'}>
-                <img src={getSpriteIcon(species)} alt={species} />
+                <img src={getSpriteIcon(species, forme)} alt={species} />
             </div>
         );
     }

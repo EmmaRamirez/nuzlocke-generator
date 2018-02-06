@@ -5,6 +5,7 @@ export const typeToColor = (type: string): string | null => {
         Dark: '#29291F',
         Dragon: '#153F4D',
         Electric: '#E3E039',
+        Fairy: '#F0C7E5',
         Fighting: '#59462A',
         Fire: '#EB3434',
         Flying: '#96D3E0',

@@ -20,7 +20,7 @@ function pokemonByFilter(team: Pokemon[], filter?: string): JSX.Element[] {
     return team.filter(filterFunction).map((poke, index) => {
         return (
             <Tooltip key={index} content={poke.nickname || ''} position={Position.TOP}>
-                <LinkedPokemonIcon id={poke.id} species={poke.species} />
+                <LinkedPokemonIcon id={poke.id} species={poke.species} forme={poke.forme} />
             </Tooltip>
         );
     });
