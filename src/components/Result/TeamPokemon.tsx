@@ -64,7 +64,7 @@ export const TeamPokemon = (props: Pokemon) => {
                     <span className='pokemon-level'>lv. {poke.level}</span>
                     <br />
                     <span className='pokemon-location'>
-                        Met in {poke.met}, at lv. {poke.metLevel}
+                        { poke.met === 'Starter' ? poke.met : `Met on ${poke.met}`}, from lv. {poke.metLevel}
                     </span>
                     <br />
                     <span className='pokemon-nature'>

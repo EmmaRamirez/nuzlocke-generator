@@ -54,7 +54,7 @@ export class DeletePokemonButton extends React.Component<
                         Don't Ask Me For Confirmation Again
                     </label>
                 </Alert>
-                <i
+                <span
                     role='button'
                     onClick={e => {
                         if (this.context.store.getState().confirmation) {
@@ -63,7 +63,7 @@ export class DeletePokemonButton extends React.Component<
                             this.props.onClick();
                         }
                     }}
-                    className='fa fa-trash'
+                    className='pt-icon pt-icon-trash'
                     title='Delete Pokemon'
                 />
             </div>

@@ -83,7 +83,7 @@ export class ResultBase extends React.Component<ResultProps, ResultState> {
 
         return badges.map((badge, index) => {
             // @ts-ignore
-            return <img className={ this.props.trainer.badges > index ? 'obtained' : 'not-obtained'} key={badge} alt={badge} src={`./img/${badge}.png`} />
+            return <img className={ this.props.trainer.badges > index ? 'obtained' : 'not-obtained'} key={badge} alt={badge} src={`./img/${badge}.png`} />;
         });
     }
 
