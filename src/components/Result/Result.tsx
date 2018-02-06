@@ -88,10 +88,24 @@ export class ResultBase extends React.Component<ResultProps, ResultState> {
     }
 
     private renderTrainer() {
-        const { trainer } = this.state;
+        const { trainer } = this.props;
         return (
             <div className='trainer-wrapper'>
+                <img style={{
+                    border: '2px solid rgba(255, 255, 255, 0.3)',
+                    borderRadius: '50%',
+                    height: '3rem',
+                    width: '3rem'
+                }} src='img/moon.jpg' alt='Moon 2' />
                 <div className='nuzlocke-title'>{ this.props.game.name } Nuzlocke</div>
+                <div className='name column'>
+                    <div>name</div>
+                    <div>{ trainer.name }</div>
+                </div>
+                <div className='id column'>
+                    <div>ID</div>
+                    <div>{ trainer.id }</div>
+                </div>
                 <div className='badge-wrapper'>
                     {
                         this.renderBadgesOrTrials()

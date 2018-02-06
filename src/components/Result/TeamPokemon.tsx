@@ -37,6 +37,17 @@ export const TeamPokemon = (props: Pokemon) => {
     const poke = props;
     const moves =
         poke.moves == null ? '' : <div className='pokemon-moves'>{generateMoves(poke.moves)}</div>;
+    const addForme = (species:string | undefined) => {
+        if (poke.forme) {
+            if (poke.forme === 'Alolan' || poke.forme === 'Alola') {
+                return `alolan-${species}`;
+            }
+
+            return species;
+        } else {
+            return species;
+        }
+    };
     return (
         <div className='pokemon-container'>
             <div
@@ -50,7 +61,7 @@ export const TeamPokemon = (props: Pokemon) => {
                 <div
                     style={{
                         backgroundImage: `url(img/${(
-                            poke.species || 'missingno'
+                            addForme(poke.species) || 'missingno'
                         ).toLowerCase()}.jpg)`,
                     }}
                     className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()}`}
