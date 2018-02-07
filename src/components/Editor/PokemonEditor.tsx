@@ -13,11 +13,15 @@ import { LinkedAddPokemonButton, LinkedPokemonIcon, LinkedTabTitle } from '.';
 
 require('../../assets/img/team-box.png');
 
+const sortPokes = (a, b) => {
+  return a.position - b.position;
+};
+
 function pokemonByFilter(team: Pokemon[], filter?: string): JSX.Element[] {
     let filterFunction: any;
     if (filter != null) filterFunction = poke => poke.status === filter;
     if (filter == null) filterFunction = poke => true;
-    return team.filter(filterFunction).map((poke, index) => {
+    return team.filter(filterFunction).sort(sortPokes).map((poke, index) => {
         return (
             <Tooltip key={index} content={poke.nickname || ''} position={Position.TOP}>
                 <LinkedPokemonIcon id={poke.id} species={poke.species} forme={poke.forme} />
@@ -93,17 +97,25 @@ export class PokemonEditor extends React.Component<{}, PokemonEditorState> {
     }
 
     public genPokemon(): Pokemon {
+      const { team } = this.state;
+      let position = 0;
+      if (team && team.length > 0) {
+        // @ts-ignore
+        console.log(team[team.length - 1].position);
+        position = parseInt(team[team.length - 1].position as any, undefined) + 1;
+      }
         return {
             id: uuid(),
-            species: choose(['Arceus', 'Roselia', 'Vulpix']),
-            nickname: choose(['Arka', 'Viox', 'Lion', 'Mura', 'Vintarra', 'Graxx', 'Tyros']),
+            position: position,
+            species: '',
+            nickname: '',
             status: 'Team',
-            gender: choose(['Female', 'Male', 'Neutral']),
-            level: choose([3, 100, 23]),
-            met: choose(['Mt.Cornot', 'Route 8', 'Route 1', 'Route 12']),
-            metLevel: choose([5, 12, 33]),
-            nature: choose(['Brave', 'Adamant', 'Sassy', 'Mild']),
-            ability: 'Run Away',
+            gender: 'Male',
+            level: 0,
+            met: '',
+            metLevel: 0,
+            nature: 'Adamant',
+            ability: '',
             types: ['Normal', 'None'],
         };
     }

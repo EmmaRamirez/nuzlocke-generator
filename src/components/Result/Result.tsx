@@ -24,6 +24,10 @@ interface ResultState {
     problems: string[];
 }
 
+const sortPokes = (a, b) => {
+    return a.position - b.position;
+};
+
 export class ResultBase extends React.Component<ResultProps, ResultState> {
     constructor(props) {
         super(props);
@@ -41,7 +45,7 @@ export class ResultBase extends React.Component<ResultProps, ResultState> {
 
 
     private renderTeamPokemon() {
-        return this.props.pokemon.filter(v => v.hasOwnProperty('id')).filter(poke => poke.status === 'Team').map((poke, index) => {
+        return this.props.pokemon.filter(v => v.hasOwnProperty('id')).filter(poke => poke.status === 'Team').sort(sortPokes).map((poke, index) => {
             console.log(poke);
             return <TeamPokemon key={index} {...poke} />;
         });

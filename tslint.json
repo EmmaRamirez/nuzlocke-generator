@@ -3,7 +3,6 @@
   "rules": {
       "class-name": true,
       "comment-format": [false],
-      "cyclomatic-complexity": [true, 20],
       "indent": [true, "spaces"],
       "insecure-random": true,
       "member-access": true,

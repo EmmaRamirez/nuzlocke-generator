@@ -31,7 +31,7 @@ export const DeadPokemon = (poke:Pokemon) => {
             }}>
             </div>
             <div className='dead-pokemon-info'>
-                <div className='pokemon-d-nickname'>{poke.nickname}</div>
+                <div className='pokemon-d-nickname'>{poke.nickname} {getGenderElement(poke.gender)}</div>
                 <div className='pokemon-levels'>Levels {poke.metLevel}&mdash;{poke.level}</div>
                 <div className='pokemon-causeofdeath'>{poke.causeOfDeath}</div>
             </div>

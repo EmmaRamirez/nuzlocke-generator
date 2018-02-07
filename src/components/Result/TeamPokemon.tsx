@@ -33,7 +33,6 @@ const generateMoves = moves => {
 };
 
 export const TeamPokemon = (props: Pokemon) => {
-    console.log(props);
     const poke = props;
     const moves =
         poke.moves == null ? '' : <div className='pokemon-moves'>{generateMoves(poke.moves)}</div>;
