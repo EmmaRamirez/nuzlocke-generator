@@ -1,6 +1,6 @@
 import { speciesToNumber } from './speciesToNumber';
 
-export const getSpriteIcon = (species: string, forme:string) => {
+export const getSpriteIcon = (species: string, forme:string | undefined) => {
     const n = speciesToNumber(species) || 150;
     const getForme = (forme) => {
         if (forme === 'Alolan' || forme === 'alola') {

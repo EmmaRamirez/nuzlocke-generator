@@ -5,6 +5,8 @@ import { StoreContext } from '../../utils';
 import { connect } from 'react-redux';
 
 import { TeamPokemon } from './TeamPokemon';
+import { DeadPokemon } from './DeadPokemon';
+import { BoxedPokemon } from './BoxedPokemon';
 
 require('./Result.styl');
 
@@ -39,7 +41,7 @@ export class ResultBase extends React.Component<ResultProps, ResultState> {
 
 
     private renderTeamPokemon() {
-        return this.props.pokemon.filter(v => v.hasOwnProperty('id')).map((poke, index) => {
+        return this.props.pokemon.filter(v => v.hasOwnProperty('id')).filter(poke => poke.status === 'Team').map((poke, index) => {
             console.log(poke);
             return <TeamPokemon key={index} {...poke} />;
         });
@@ -58,11 +60,17 @@ export class ResultBase extends React.Component<ResultProps, ResultState> {
     }
 
     private renderBoxedPokemon() {
-        return null;
+        return this.props.pokemon.filter(v => v.hasOwnProperty('id')).filter(poke => poke.status === 'Boxed').map((poke, index) => {
+            console.log(poke);
+            return <BoxedPokemon key={index} {...poke} />;
+        });
     }
 
     private renderDeadPokemon() {
-        return null;
+        return this.props.pokemon.filter(v => v.hasOwnProperty('id')).filter(poke => poke.status === 'Dead').map((poke, index) => {
+            console.log(poke);
+            return <DeadPokemon key={index} {...poke} />;
+        });
     }
 
     private renderBadgesOrTrials() {
@@ -89,6 +97,7 @@ export class ResultBase extends React.Component<ResultProps, ResultState> {
 
     private renderTrainer() {
         const { trainer } = this.props;
+        const bottomTextStyle:any = { fontSize: '1.1rem', fontWeight: 'bold' };
         return (
             <div className='trainer-wrapper'>
                 <img style={{
@@ -100,11 +109,11 @@ export class ResultBase extends React.Component<ResultProps, ResultState> {
                 <div className='nuzlocke-title'>{ this.props.game.name } Nuzlocke</div>
                 <div className='name column'>
                     <div>name</div>
-                    <div>{ trainer.name }</div>
+                    <div style={bottomTextStyle}>{ trainer.name }</div>
                 </div>
                 <div className='id column'>
                     <div>ID</div>
-                    <div>{ trainer.id }</div>
+                    <div style={bottomTextStyle}>{ trainer.id }</div>
                 </div>
                 <div className='badge-wrapper'>
                     {
@@ -129,10 +138,20 @@ export class ResultBase extends React.Component<ResultProps, ResultState> {
         return (
             <div className='result container'>
                 {this.renderErrors()}
-                <div className='trainer-container'>{this.renderTrainer()}</div>
-                <div className='team-container'>{this.renderTeamPokemon()}</div>
-                <div className='boxed-container'>{this.renderBoxedPokemon()}</div>
-                <div className='dead-container'>{this.renderDeadPokemon()}</div>
+                <div className='trainer-container'>
+                    {this.renderTrainer()}
+                </div>
+                <div className='team-container'>
+                    {this.renderTeamPokemon()}
+                </div>
+                <div className='boxed-container'>
+                    <h3>BOXED</h3>
+                    {this.renderBoxedPokemon()}
+                </div>
+                <div className='dead-container'>
+                    <h3>DEAD</h3>
+                    {this.renderDeadPokemon()}
+                </div>
             </div>
         );
     }

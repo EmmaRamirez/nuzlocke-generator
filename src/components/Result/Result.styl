@@ -183,9 +183,6 @@
 }
 
 .dead-pokemon-container {
-  background: #fff;
-  border: 1px solid #ddd;
-  display: inline-block;
   height: 5.1rem;
   margin-bottom: .25rem;
   position: relative;
@@ -225,11 +222,7 @@
 }
 
 
-h3 {
-  margin: .2rem;
-  letter-spacing: 4px;
-  text-align: center;
-}
+
 
 .pokemon-causeofdeath {
   font-size: .8rem;
@@ -305,8 +298,9 @@ h3 {
   max-width: 80rem;
   padding-bottom: .5rem;
   overflow: hidden;
-  height: 700px;
-  transform: scale(.85);
+  margin: 3rem;
+  height: 900px;
+  // transform: scale(.85);
 }
 
 .team-container {
@@ -350,10 +344,34 @@ h3 {
   padding: .25rem;
 }
 
+.dead-pokemon-container {
+  display: flex !important;
+  align-items: center;
+}
+
 .dead-pokemon-info,
 .pokemon-d-nickname strong,
 .pokemon-causeofdeath {
   color: white;
+}
+
+.dead-pokemon-info {
+  margin: .5rem;
+}
+
+.pokemon-d-nickname {
+  font-size: 1rem;
+  font-weight: light !important;
+  margin-right: .5rem;
+  color: #eee;
+  // margin: .5rem;
+}
+
+.dead-pokemon-picture {
+  height: 80px;
+  width: 76px;
+  background-size: cover;
+  background-position: center;
 }
 
 .pokemon-levels {
@@ -511,7 +529,7 @@ h3 {
 }
 
 .column {
-  display: inline-flex !important;
+  // display: inline-flex !important;
   flex-direction: column;
   justify-content: center;
 }
@@ -563,6 +581,7 @@ h3 {
   margin: .5rem;
   letter-spacing: 4px;
   text-align: center;
+  color: #eee !important;
 }
 
 /*.pokemon-causeofdeath {

@@ -48,6 +48,12 @@ export const TeamPokemon = (props: Pokemon) => {
             return species;
         }
     };
+    const getImage = ():string => {
+        return `url(img/${(
+            // @ts-ignore
+            addForme((poke ? poke.species : '').replace(/\s/g, '') || 'missingno'
+        ).toLowerCase())}.jpg)`;
+    };
     return (
         <div className='pokemon-container'>
             <div
@@ -60,10 +66,7 @@ export const TeamPokemon = (props: Pokemon) => {
                 }}>
                 <div
                     style={{
-                        backgroundImage: `url(img/${(
-                            // @ts-ignore
-                            addForme((poke ? poke.species : '').replace(/\s/g, '') || 'missingno'
-                        ).toLowerCase())}.jpg)`,
+                        backgroundImage: getImage(),
                     }}
                     className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()}`}
                 />

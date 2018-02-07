@@ -56,6 +56,12 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                     type='text'
                 />
                 <CurrentPokemonInput
+                    labelName='Cause of Death'
+                    inputName='causeOfDeath'
+                    value={currentPokemon.causeOfDeath}
+                    type='text'
+                />
+                <CurrentPokemonInput
                     labelName='Types'
                     inputName='types'
                     value={currentPokemon.types}
