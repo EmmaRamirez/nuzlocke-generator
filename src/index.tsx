@@ -18,6 +18,7 @@ import 'components/Shared/styles/base.styl';
 
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/core/src/blueprint.scss';
+import '@blueprintjs/table/lib/css/table.css';
 
 const mountNode = document.getElementById('app');
 const history = createHistory();

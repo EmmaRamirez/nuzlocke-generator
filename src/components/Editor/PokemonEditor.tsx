@@ -1,4 +1,4 @@
-import { Tab, Tabs, Tooltip, Position } from '@blueprintjs/core';
+import { Tab, Tabs, Tooltip, Button, Position } from '@blueprintjs/core';
 import * as React from 'react';
 import * as uuid from 'uuid/v4';
 
@@ -10,6 +10,7 @@ import { PokemonIcon } from './PokemonIcon';
 import { TabTitle } from './TabTitle';
 
 import { LinkedAddPokemonButton, LinkedPokemonIcon, LinkedTabTitle } from '.';
+import { MassEditor } from './MassEditor';
 
 require('../../assets/img/team-box.png');
 
@@ -68,6 +69,7 @@ interface PokemonEditorState {
     team: Pokemon[];
     selectedPokemonId: string;
     boxes: string[];
+    isMassEditorOpen: boolean;
 }
 
 @StoreContext
@@ -78,6 +80,7 @@ export class PokemonEditor extends React.Component<{}, PokemonEditorState> {
             team: [],
             boxes: ['Team', 'Boxed', 'Dead'],
             selectedPokemonId: '',
+            isMassEditorOpen: false,
         };
     }
 
@@ -120,42 +123,57 @@ export class PokemonEditor extends React.Component<{}, PokemonEditorState> {
         };
     }
 
+    private openMassEditor = e => {
+        this.setState({
+          isMassEditorOpen: true
+        });
+    }
+
     public render() {
         const { store } = this.context;
         const { team, boxes } = this.state;
 
         return (
-            <div className='pokemon-editor'>
-                <h4>Pokemon</h4>
-                <LinkedAddPokemonButton defaultPokemon={this.genPokemon()} />
-                <Tabs id='pokemon-box' className='pokemon-box'>
-                    <Tab
-                        id='team'
-                        className='pt-tab-panel pokemon-tab'
-                        title={boxes[0]}
-                        panel={<TeamPanel team={team} />}
-                    />
-                    <Tab
-                        id='boxed'
-                        className='pt-tab-panel pokemon-tab'
-                        title={boxes[1]}
-                        panel={<BoxedPanel boxed={team} />}
-                    />
-                    <Tab
-                        id='dead'
-                        className='pt-tab-panel pokemon-tab'
-                        title={boxes[2]}
-                        panel={<DeadPanel dead={team} />}
-                    />
-                    <Tab
-                        id='all'
-                        className='pt-tab-panel pokemon-tab'
-                        title='All'
-                        panel={<AllPanel team={team} />}
-                    />
-                </Tabs>
-                <CurrentPokemonEdit />
-            </div>
+            <>
+              <div className='pokemon-editor'>
+                  <h4>Pokemon</h4>
+                  <div className='button-row' style={{ display: 'flex' }}>
+                    <LinkedAddPokemonButton defaultPokemon={this.genPokemon()} />
+                    <Button onClick={this.openMassEditor} style={{ marginLeft: 'auto' }} className='pt-intent-primary pt-minimal'>Open Mass Editor</Button>
+                  </div>
+                  <Tabs id='pokemon-box' className='pokemon-box'>
+                      <Tab
+                          id='team'
+                          className='pt-tab-panel pokemon-tab'
+                          title={boxes[0]}
+                          panel={<TeamPanel team={team} />}
+                      />
+                      <Tab
+                          id='boxed'
+                          className='pt-tab-panel pokemon-tab'
+                          title={boxes[1]}
+                          panel={<BoxedPanel boxed={team} />}
+                      />
+                      <Tab
+                          id='dead'
+                          className='pt-tab-panel pokemon-tab'
+                          title={boxes[2]}
+                          panel={<DeadPanel dead={team} />}
+                      />
+                      <Tab
+                          id='all'
+                          className='pt-tab-panel pokemon-tab'
+                          title='All'
+                          panel={<AllPanel team={team} />}
+                      />
+                  </Tabs>
+                  <CurrentPokemonEdit />
+              </div>
+              <MassEditor
+                isOpen={this.state.isMassEditorOpen}
+                toggleDialog={ e => this.setState({ isMassEditorOpen: !this.state.isMassEditorOpen })}
+              />
+            </>
         );
     }
 }
