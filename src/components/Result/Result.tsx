@@ -119,6 +119,15 @@ export class ResultBase extends React.Component<ResultProps, ResultState> {
                     <div>ID</div>
                     <div style={bottomTextStyle}>{ trainer.id }</div>
                 </div>
+                {
+                    trainer.expShareStatus == null || trainer.expShareStatus === '' ?
+                    null
+                    :
+                    <div className='id column'>
+                        <div>Exp Share</div>
+                        <div style={bottomTextStyle}>{ (trainer.expShareStatus || '').toUpperCase() }</div>
+                    </div>
+                }
                 <div className='badge-wrapper'>
                     {
                         this.renderBadgesOrTrials()
@@ -154,7 +163,9 @@ export class ResultBase extends React.Component<ResultProps, ResultState> {
                 </div>
                 <div className='dead-container'>
                     <h3>DEAD</h3>
-                    {this.renderDeadPokemon()}
+                    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
+                        {this.renderDeadPokemon()}
+                    </div>
                 </div>
             </div>
         );

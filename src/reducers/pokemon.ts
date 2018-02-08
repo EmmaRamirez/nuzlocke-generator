@@ -2,7 +2,7 @@ import { Action, ADD_POKEMON, DELETE_POKEMON, EDIT_POKEMON } from '../actions';
 
 const pokemonState = [
     {
-        id: '5',
+        id: '5367bd50-bf2c-46a9-994a-e381d249cc89',
         species: 'Croagunk',
         nickname: 'Greg',
         types: ['Poison', 'Fighting'],

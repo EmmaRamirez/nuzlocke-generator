@@ -42,6 +42,12 @@ export class TrainerInfoEditor extends React.Component<{}, {}> {
                     name='badges'
                     placeholder='0'
                 />
+                <LinkedTrainerInfoEditField
+                    onInput={this.onInput}
+                    label='Exp Share'
+                    name='expShareStatus'
+                    placeholder='off'
+                />
             </div>
         );
     }

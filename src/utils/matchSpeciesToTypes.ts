@@ -6,12 +6,108 @@ export const matchSpeciesToTypes = (species: string): string[] => {
         case 'Roselia':
         case 'Budew':
         case 'Roserade':
+        case 'Oddish':
+        case 'Gloom':
+        case 'Vileplume':
+        case 'Bellsprout':
+        case 'Weepinbell':
+        case 'Victreebel':
+        case 'Foongus':
+        case 'Amoonguss':
             return ['Grass', 'Poison'];
         case 'Charmander':
         case 'Charmeleon':
         case 'Vulpix':
         case 'Ninetales':
+        case 'Growlithe':
+        case 'Arcanine':
+        case 'Ponyta':
+        case 'Rapidash':
+        case 'Magmar':
+        case 'Flareon':
+        case 'Cyndaquil':
+        case 'Quilava':
+        case 'Typhlosion':
+        case 'Slugma':
+        case 'Magby':
+        case 'Entei':
+        case 'Torchic':
+        case 'Torkoal':
+        case 'Chimchar':
+        case 'Magmortar':
+        case 'Tepig':
+        case 'Pansear':
+        case 'Simisear':
+        case 'Darumaka':
+        case 'Darmanitan':
+        case 'Heatmor':
+        case 'Fennekin':
+        case 'Braixen':
+        case 'Litten':
+        case 'Torracat':
             return ['Fire', 'Fire'];
+        case 'Squirtle':
+        case 'Wartortle':
+        case 'Blastoise':
+        case 'Psyduck':
+        case 'Golduck':
+        case 'Poliwag':
+        case 'Poliwhirl':
+        case 'Seel':
+        case 'Shellder':
+        case 'Krabby':
+        case 'Kingler':
+        case 'Horsea':
+        case 'Goldeen':
+        case 'Seaking':
+        case 'Staryu':
+        case 'Magikarp':
+        case 'Vaporeon':
+        case 'Totodile':
+        case 'Croconaw':
+        case 'Feraligatr':
+        case 'Politoed':
+        case 'Remoraid':
+        case 'Octillery':
+        case 'Suicune':
+        case 'Mudkip':
+        case 'Wailmer':
+        case 'Wailord':
+        case 'Corphish':
+        case 'Feebas':
+        case 'Milotic':
+        case 'Castform':
+        case 'Clamperl':
+        case 'Huntail':
+        case 'Gorebyss':
+        case 'Luvdisc':
+        case 'Kyogre':
+        case 'Piplup':
+        case 'Prinplup':
+        case 'Buizel':
+        case 'Floatzel':
+        case 'Shellos':
+        case 'Finneon':
+        case 'Lumineon':
+        case 'Phione':
+        case 'Manaphy':
+        case 'Oshawott':
+        case 'Dewott':
+        case 'Samurott':
+        case 'Panpour':
+        case 'Simipour':
+        case 'Tympole':
+        case 'Basculin':
+        case 'Alomomola':
+        case 'Froakie':
+        case 'Frogadier':
+        case 'Clauncher':
+        case 'Clawitzer':
+        case 'Popplio':
+        case 'Brionne':
+        case 'Wishiwashi':
+        case 'Pyukumuku':
+            return ['Water', 'Water'];
         case 'Croagunk':
         case 'Toxicroak':
             return ['Poison', 'Fighting'];

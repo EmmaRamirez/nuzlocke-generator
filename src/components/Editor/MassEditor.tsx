@@ -2,13 +2,16 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Dialog, Button, Intent } from '@blueprintjs/core';
 import { Table, Column, Cell, EditableCell } from '@blueprintjs/table';
+import { LinkedAddPokemonButton } from './LinkedAddPokemonButton';
 import { editPokemon } from 'actions';
 import { Pokemon } from 'models';
+import { generateEmptyPokemon } from 'utils';
 
 export interface MassEditorProps {
     isOpen?: any;
     toggleDialog?: any;
     pokemon: Pokemon[];
+    editPokemon: (edits: object, id: string) => void;
 }
 
 export class MassEditorBase extends React.Component<MassEditorProps, {}> {
@@ -18,7 +21,7 @@ export class MassEditorBase extends React.Component<MassEditorProps, {}> {
     // }
 
     private renderColumns (pokemon: MassEditorProps['pokemon']) {
-        return Object.keys(pokemon[0]).map(key => {
+        return Object.keys(pokemon[0]).filter(k => k !== 'id').map(key => {
             return <Column key={key} name={key} cellRenderer={r => <EditableCell onConfirm={ (v, _, c) => this.props.editPokemon({
                 [key]: v
             }, pokemon[r].id) } value={pokemon[r][key]} />} />;
@@ -34,6 +37,9 @@ export class MassEditorBase extends React.Component<MassEditorProps, {}> {
                 title='Mass Editor'
             >
                 <div className='pt-dialog-body'>
+                    <LinkedAddPokemonButton
+                        defaultPokemon={generateEmptyPokemon(this.props.pokemon)}
+                    />
                     <Table numRows={this.props.pokemon.length}>
                         { this.renderColumns(this.props.pokemon) }
                     </Table>

@@ -4,7 +4,7 @@ import * as uuid from 'uuid/v4';
 
 import { Pokemon } from '../../models';
 
-import { speciesToNumber, choose, StoreContext } from '../../utils';
+import { speciesToNumber, choose, generateEmptyPokemon, StoreContext } from 'utils';
 import { CurrentPokemonEdit } from './CurrentPokemonEdit';
 import { PokemonIcon } from './PokemonIcon';
 import { TabTitle } from './TabTitle';
@@ -99,30 +99,6 @@ export class PokemonEditor extends React.Component<{}, PokemonEditorState> {
         });
     }
 
-    public genPokemon(): Pokemon {
-      const { team } = this.state;
-      let position = 0;
-      if (team && team.length > 0) {
-        // @ts-ignore
-        console.log(team[team.length - 1].position);
-        position = parseInt(team[team.length - 1].position as any, undefined) + 1;
-      }
-        return {
-            id: uuid(),
-            position: position,
-            species: '',
-            nickname: '',
-            status: 'Team',
-            gender: 'Male',
-            level: 0,
-            met: '',
-            metLevel: 0,
-            nature: 'Adamant',
-            ability: '',
-            types: ['Normal', 'None'],
-        };
-    }
-
     private openMassEditor = e => {
         this.setState({
           isMassEditorOpen: true
@@ -138,8 +114,8 @@ export class PokemonEditor extends React.Component<{}, PokemonEditorState> {
               <div className='pokemon-editor'>
                   <h4>Pokemon</h4>
                   <div className='button-row' style={{ display: 'flex' }}>
-                    <LinkedAddPokemonButton defaultPokemon={this.genPokemon()} />
-                    <Button onClick={this.openMassEditor} style={{ marginLeft: 'auto' }} className='pt-intent-primary pt-minimal'>Open Mass Editor</Button>
+                    <LinkedAddPokemonButton defaultPokemon={generateEmptyPokemon(this.state.team)} />
+                    <Button iconName={'heat-grid'} onClick={this.openMassEditor} style={{ marginLeft: 'auto' }} className='pt-intent-primary pt-minimal'>Open Mass Editor</Button>
                   </div>
                   <Tabs id='pokemon-box' className='pokemon-box'>
                       <Tab
@@ -170,6 +146,7 @@ export class PokemonEditor extends React.Component<{}, PokemonEditorState> {
                   <CurrentPokemonEdit />
               </div>
               <MassEditor
+                // @ts-ignore
                 isOpen={this.state.isMassEditorOpen}
                 toggleDialog={ e => this.setState({ isMassEditorOpen: !this.state.isMassEditorOpen })}
               />
