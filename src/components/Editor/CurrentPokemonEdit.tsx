@@ -97,6 +97,12 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                     ]}
                 />
                 <CurrentPokemonInput
+                    labelName='Item'
+                    inputName='item'
+                    value={currentPokemon.item}
+                    type='text'
+                />
+                <CurrentPokemonInput
                     labelName='Wonder Traded'
                     inputName='wonderTradedFor'
                     value={currentPokemon.wonderTradedFor}

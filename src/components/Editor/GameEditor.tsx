@@ -2,7 +2,9 @@ import * as React from 'react';
 import { Store } from 'redux';
 import { connect } from 'react-redux';
 import { editGame } from 'actions';
+import { listOfGames } from 'utils';
 
+import { Button, Intent } from '@blueprintjs/core';
 import { LinkedSaveButton } from './LinkedSaveButton';
 
 export interface GameEditorProps {
@@ -20,20 +22,33 @@ export class GameEditorBase extends React.Component<GameEditorProps, {}> {
     }
 
     public render() {
+        const { game } = this.props;
         return (
             <div className='game-editor'>
                 <h4>Game</h4>
-                <label>Game </label>
-                <input onChange={this.onInput} className='pt-input' type='text' value={this.props.game.name} dir='auto' />
-                <br />
-                {/* <button className='pt-button'>Import</button>
-        <button className='pt-button'>Export</button> */}
-                {/* <LinkedSaveButton data={{
-          pokemon: this.context.store.getState().pokemon,
-          trainer: {},
-          game: this.context.store.getState().game,
-          style: {}
-        }}/> */}
+                {/* <label>Game </label> */}
+                {/* <input onChange={this.onInput} className='pt-input' type='text' value={game.name} dir='auto' /> */}
+
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'space-between'
+                    }}
+                >
+                    <div className='pt-select'>
+                        <select
+                            onChange={this.onInput}
+                            value={game.name}
+                        >
+                            {
+                                listOfGames.map(game => <option key={game}>{game}</option>)
+                            }
+                        </select>
+                    </div>
+                    <Button iconName='list' intent={Intent.PRIMARY}>
+                        Add Rules
+                    </Button>
+                </div>
             </div>
         );
     }

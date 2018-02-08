@@ -16,7 +16,6 @@ export interface Pokemon {
     types?: string[];
     customImage?: string;
     customSprite?: string;
-    customTypes?: string[];
     shiny?: boolean;
     champion?: boolean;
     badges?: string[];
@@ -24,3 +23,30 @@ export interface Pokemon {
     position?: number;
     wonderTradedFor?: string;
 }
+
+// We export a non-type version when we need all the keys easily
+export const PokemonKeys:Pokemon = {
+    id: '',
+    species: '',
+    nickname: '',
+    status: '',
+    level: 0,
+    gender: '',
+    met: '',
+    metLevel: 0,
+    nature: '',
+    ability: '',
+    moves: [],
+    causeOfDeath: '',
+    forme: '',
+    item: '',
+    types: [],
+    customImage: '',
+    customSprite: '',
+    shiny: false,
+    champion: false,
+    badges: [],
+    num: '',
+    position: 0,
+    wonderTradedFor: ''
+};

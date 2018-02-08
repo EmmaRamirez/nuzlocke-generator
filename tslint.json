@@ -34,7 +34,6 @@
       "prefer-const": true,
       "prefer-for-of": true,
       "prefer-template": [true, "allow-single-concat"],
-      "radix": true,
       "react-a11y-anchors": true,
       "react-a11y-event-has-role": true,
       "react-a11y-aria-unsupported-elements": true,

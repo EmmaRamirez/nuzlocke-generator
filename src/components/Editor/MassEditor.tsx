@@ -4,7 +4,7 @@ import { Dialog, Button, Intent } from '@blueprintjs/core';
 import { Table, Column, Cell, EditableCell } from '@blueprintjs/table';
 import { LinkedAddPokemonButton } from './LinkedAddPokemonButton';
 import { editPokemon } from 'actions';
-import { Pokemon } from 'models';
+import { Pokemon, PokemonKeys } from 'models';
 import { generateEmptyPokemon } from 'utils';
 
 export interface MassEditorProps {
@@ -21,7 +21,7 @@ export class MassEditorBase extends React.Component<MassEditorProps, {}> {
     // }
 
     private renderColumns (pokemon: MassEditorProps['pokemon']) {
-        return Object.keys(pokemon[0]).filter(k => k !== 'id').map(key => {
+        return Object.keys(PokemonKeys).filter(k => k !== 'id').map(key => {
             return <Column key={key} name={key} cellRenderer={r => <EditableCell onConfirm={ (v, _, c) => this.props.editPokemon({
                 [key]: v
             }, pokemon[r].id) } value={pokemon[r][key]} />} />;
@@ -40,6 +40,7 @@ export class MassEditorBase extends React.Component<MassEditorProps, {}> {
                     <LinkedAddPokemonButton
                         defaultPokemon={generateEmptyPokemon(this.props.pokemon)}
                     />
+                    <div style={{ padding: '.25rem' }} />
                     <Table numRows={this.props.pokemon.length}>
                         { this.renderColumns(this.props.pokemon) }
                     </Table>

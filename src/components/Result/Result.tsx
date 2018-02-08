@@ -1,8 +1,10 @@
 import * as React from 'react';
 
-import { Pokemon, Trainer } from '../../models';
-import { StoreContext } from '../../utils';
+import { Pokemon, Trainer } from 'models';
+import { StoreContext } from 'utils';
 import { connect } from 'react-redux';
+
+import { selectPokemon } from 'actions';
 
 import { TeamPokemon } from './TeamPokemon';
 import { DeadPokemon } from './DeadPokemon';
@@ -14,6 +16,7 @@ interface ResultProps {
     pokemon: Pokemon[];
     game: any;
     trainer: Trainer;
+    selectPokemon: selectPokemon;
 }
 
 interface ResultState {
@@ -179,6 +182,6 @@ export const Result = connect(
         trainer: state.trainer
     }),
     {
-
+        selectPokemon
     }
 )(ResultBase);

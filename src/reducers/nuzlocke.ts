@@ -2,10 +2,7 @@ import { SAVE_NUZLOCKE } from '../actions';
 
 export function nuzlocke(
     state = {
-        pokemon: [],
-        game: {},
-        trainer: {},
-        style: {},
+        saves: [],
     },
     action: any,
 ) {

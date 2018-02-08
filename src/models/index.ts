@@ -1,3 +1,3 @@
-export { Pokemon } from './Pokemon';
+export * from './Pokemon';
 export { Trainer } from './Trainer';
 export { HistoryEntry } from './HistoryEntry';

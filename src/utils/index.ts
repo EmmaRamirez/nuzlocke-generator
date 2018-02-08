@@ -5,3 +5,5 @@ export { getSpriteIcon } from './getSpriteIcon';
 export { matchSpeciesToTypes } from './matchSpeciesToTypes';
 export * from './generateEmptyPokemon';
 export * from './getAdditionalFormes';
+export * from './listOfItems';
+export * from './listOfGames';

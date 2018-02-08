@@ -1,9 +1,13 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 
-import { Pokemon } from '../../models';
+import { Pokemon } from 'models';
 import { getBackgroundGradient } from './getBackgroundGradient';
 import { getGenderElement } from './getGenderElement';
 import { movesByType } from './movesByType';
+import { typeToColor } from './typeToColor';
+
+import { selectPokemon } from 'actions';
 
 const getMoveType = move => {
     for (const type in movesByType) {
@@ -32,7 +36,7 @@ const generateMoves = moves => {
     });
 };
 
-export const TeamPokemon = (props: Pokemon) => {
+export const TeamPokemonBase = (props: Pokemon & { selectPokemon } ) => {
     const poke = props;
     const moves =
         poke.moves == null ? '' : <div className='pokemon-moves'>{generateMoves(poke.moves)}</div>;
@@ -53,11 +57,15 @@ export const TeamPokemon = (props: Pokemon) => {
             addForme((poke ? poke.species : '').replace(/\s/g, '') || 'missingno'
         ).toLowerCase())}.jpg)`;
     };
+    const getFirstType = poke.types ? poke.types[0] : 'Normal';
     return (
         <div className='pokemon-container'>
             <div
+                role='presentation'
+                onClick={e => props.selectPokemon(poke.id)}
                 className='bubble'
                 style={{
+                    cursor: 'pointer',
                     background: getBackgroundGradient(
                         poke.types != null ? poke.types[0] : '',
                         poke.types != null ? poke.types[1] : '',
@@ -70,6 +78,17 @@ export const TeamPokemon = (props: Pokemon) => {
                     className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()}`}
                 />
             </div>
+            {
+                poke.item == null ? null :
+                <div className='pokemon-item' style={{
+                    borderColor: typeToColor(getFirstType)
+                }}>
+                    <img
+                        alt={poke.item}
+                        src={`http://www.serebii.net/itemdex/sprites/${poke.item.toLowerCase().replace(/\s/g, '')}.png`}
+                    />
+                </div>
+            }
             <div className='pokemon-info'>
                 <div className='pokemon-info-inner'>
                     <span className='pokemon-nickname'>{poke.nickname}</span>
@@ -92,3 +111,10 @@ export const TeamPokemon = (props: Pokemon) => {
         </div>
     );
 };
+
+export const TeamPokemon = connect(
+    null,
+    {
+        selectPokemon
+    }
+)(TeamPokemonBase as any);
