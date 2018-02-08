@@ -7,3 +7,5 @@ export * from './generateEmptyPokemon';
 export * from './getAdditionalFormes';
 export * from './listOfItems';
 export * from './listOfGames';
+export * from './sortPokes';
+export * from './pokemonByFilter';

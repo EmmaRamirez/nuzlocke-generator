@@ -52,6 +52,9 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } ) => {
         }
     };
     const getImage = ():string => {
+        if (poke.customImage) {
+            return `url(${poke.customImage})`;
+        }
         return `url(img/${(
             // @ts-ignore
             addForme((poke ? poke.species : '').replace(/\s/g, '') || 'missingno'

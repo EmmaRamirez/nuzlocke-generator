@@ -4,7 +4,7 @@ import * as uuid from 'uuid/v4';
 
 import { Pokemon } from '../../models';
 
-import { speciesToNumber, choose, generateEmptyPokemon, StoreContext } from 'utils';
+import { speciesToNumber, choose, generateEmptyPokemon, StoreContext, pokemonByFilter } from 'utils';
 import { CurrentPokemonEdit } from './CurrentPokemonEdit';
 import { PokemonIcon } from './PokemonIcon';
 import { TabTitle } from './TabTitle';
@@ -14,22 +14,6 @@ import { MassEditor } from './MassEditor';
 
 require('../../assets/img/team-box.png');
 
-const sortPokes = (a, b) => {
-  return a.position - b.position;
-};
-
-function pokemonByFilter(team: Pokemon[], filter?: string): JSX.Element[] {
-    let filterFunction: any;
-    if (filter != null) filterFunction = poke => poke.status === filter;
-    if (filter == null) filterFunction = poke => true;
-    return team.filter(filterFunction).sort(sortPokes).map((poke, index) => {
-        return (
-            <Tooltip key={index} content={poke.nickname || ''} position={Position.TOP}>
-                <LinkedPokemonIcon id={poke.id} species={poke.species} forme={poke.forme} />
-            </Tooltip>
-        );
-    });
-}
 
 const TeamPanel = ({ team }) => {
     return (
