@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
+import { editStyle } from 'actions';
+import { styleDefaults } from 'utils';
+
 import { RadioGroup, Radio, TextArea, Checkbox } from '@blueprintjs/core';
 
 const styleOptions = [
@@ -12,12 +15,19 @@ const value = `body {
     color: red;
 }`;
 
+const editEvent = (e, props) => props.editStyle({ [e.target.name]: e.target.value });
+
 // tslint:disable-next-line:no-empty-interfaces
 export interface StyleEditorProps {
-
+    style: any;
+    editStyle: editStyle;
 }
 
-export const StyleEditorBase = ({ }: StyleEditorProps) => {
+export const StyleEditorBase = (props: StyleEditorProps) => {
+    const getStyleProp = (prop: string) => {
+        if (props && props.style && props.style[prop]) props.style[prop];
+        else return styleDefaults[prop];
+    };
     return (
         <div className='style-editor'>
             <h4>Style</h4>
@@ -35,27 +45,24 @@ export const StyleEditorBase = ({ }: StyleEditorProps) => {
             <div className='style-edit'>
                 <span>Image Style </span>
                 <div className='pt-select'>
-                    <select>
-                        <option>Round</option>
-                        <option>Square</option>
+                    <select onChange={e => editEvent(e, props) } value={props.style.imageStyle}>
+                        <option value='round'>Round</option>
+                        <option value='square'>Square</option>
                     </select>
                 </div>
             </div>
 
-            {/* <div className='style-edit'>
-                <span>Icon Style </span>
-                <div className='pt-select'>
-                    <select>
-                        <option>Round</option>
-                        <option>Square</option>
-                    </select>
-                </div>
-            </div> */}
-
             <div className='style-edit' style={{ flexFlow: 'column' }}>
                 <label className='pt-label pt-inline'>
                     Background color
-                    <input className='color-input' type='color' />
+                    <input name='bgColor' onChange={e => editEvent(e, props)} className='color-input' type='color' value={props.style.bgColor} />
+                </label>
+            </div>
+
+            <div className='style-edit' style={{ flexFlow: 'column' }}>
+                <label className='pt-label pt-inline'>
+                    Header color
+                    <input name='topHeaderColor' onChange={e => editEvent(e, props)} className='color-input' type='color' value={props.style.topHeaderColor} />
                 </label>
             </div>
 
@@ -63,7 +70,7 @@ export const StyleEditorBase = ({ }: StyleEditorProps) => {
 
                 <label className='pt-label pt-inline'>
                     Background Image
-                    <input className='pt-input' />
+                    <input value={props.style.backgroundImage} onChange={e => editEvent(e, props)} className='pt-input' />
                 </label>
 
             </div>
@@ -111,6 +118,6 @@ export const StyleEditorBase = ({ }: StyleEditorProps) => {
 };
 
 export const StyleEditor = connect(
-    null,
-    null
+    (state:any) => ({ style: state.style }),
+    { editStyle }
 )(StyleEditorBase);

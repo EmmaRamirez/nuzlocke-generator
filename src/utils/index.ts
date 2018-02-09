@@ -11,3 +11,4 @@ export * from './sortPokes';
 export * from './pokemonByFilter';
 export * from './levenshteinDistance';
 export * from './addForme';
+export { styleDefaults } from './styleDefaults';

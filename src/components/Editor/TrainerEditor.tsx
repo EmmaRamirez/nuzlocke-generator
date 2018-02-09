@@ -6,7 +6,6 @@ export class TrainerEditor extends React.Component<{}, {}> {
         return (
             <div className='trainer-editor'>
                 <h4>Trainer</h4>
-                <div>Trainer Image</div>
                 <TrainerInfoEditor />
             </div>
         );

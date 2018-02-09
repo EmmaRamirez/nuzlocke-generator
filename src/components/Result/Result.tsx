@@ -17,30 +17,16 @@ interface ResultProps {
     game: any;
     trainer: Trainer;
     selectPokemon: selectPokemon;
-}
-
-interface ResultState {
-    pokemon: Pokemon[];
-    game: any;
-    trainer: Trainer;
-    style: object;
-    problems: string[];
+    style: any;
 }
 
 const sortPokes = (a, b) => {
     return a.position - b.position;
 };
 
-export class ResultBase extends React.Component<ResultProps, ResultState> {
+export class ResultBase extends React.Component<ResultProps> {
     constructor(props) {
         super(props);
-        this.state = {
-            pokemon: [] as Pokemon[],
-            game: {},
-            trainer: {},
-            style: {},
-            problems: [] as string[],
-        };
     }
 
     public componentWillMount() {
@@ -114,14 +100,22 @@ export class ResultBase extends React.Component<ResultProps, ResultState> {
                     width: '3rem'
                 }} src='img/moon.jpg' alt='Moon 2' />
                 <div className='nuzlocke-title'>{ this.props.game.name } Nuzlocke</div>
-                <div className='name column'>
-                    <div>name</div>
-                    <div style={bottomTextStyle}>{ trainer.name }</div>
-                </div>
-                <div className='id column'>
-                    <div>ID</div>
-                    <div style={bottomTextStyle}>{ trainer.id }</div>
-                </div>
+                {
+                    trainer.name === null || trainer.name === '' ?
+                    null :
+                    <div className='name column'>
+                        <div>name</div>
+                        <div style={bottomTextStyle}>{ trainer.name }</div>
+                    </div>
+                }
+                {
+                    trainer.id == null || trainer.id === '' ?
+                    null :
+                    <div className='id column'>
+                        <div>ID</div>
+                        <div style={bottomTextStyle}>{ trainer.id }</div>
+                    </div>
+                }
                 {
                     trainer.expShareStatus == null || trainer.expShareStatus === '' ?
                     null
@@ -151,10 +145,13 @@ export class ResultBase extends React.Component<ResultProps, ResultState> {
     }
 
     public render() {
+        const { style } = this.props;
+        const bgColor = style ? style.bgColor : '#383840';
+        const topHeaderColor = style ? style.topHeaderColor : '#333333';
         return (
-            <div className='result container'>
+            <div className='result container' style={{ backgroundColor: bgColor }}>
                 {this.renderErrors()}
-                <div className='trainer-container'>
+                <div className='trainer-container' style={{ backgroundColor: topHeaderColor }}>
                     {this.renderTrainer()}
                 </div>
                 <div className='team-container'>
@@ -179,7 +176,8 @@ export const Result = connect(
     (state:any) => ({
         pokemon: state.pokemon,
         game: state.game,
-        trainer: state.trainer
+        trainer: state.trainer,
+        style: state.style
     }),
     {
         selectPokemon

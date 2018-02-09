@@ -25,7 +25,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, {}> {
         const { game } = this.props;
         return (
             <div className='game-editor'>
-                <h4>Game</h4>
+                <h4 style={{ display: 'flex', alignContent: 'flex-end' }}>Game <Button style={{ marginLeft: 'auto' }} className='pt-minimal'>minimize editor</Button></h4>
                 {/* <label>Game </label> */}
                 {/* <input onChange={this.onInput} className='pt-input' type='text' value={game.name} dir='auto' /> */}
 

@@ -9,6 +9,9 @@ import { saveNuzlocke } from '../../actions';
 import { BasicComponentWithTypes } from '../../services';
 import { Editor } from '../Editor';
 import { Result } from '../Result';
+import { VersionTag } from './VersionTag';
+
+const pkg = require('../../../package.json');
 
 const result = require('../../assets/img/result.png');
 
@@ -76,6 +79,7 @@ export class App extends React.Component<{}, AppState> {
     public render() {
         return (
             <div className='app' role='main'>
+                <VersionTag version={pkg.version} />
                 <Editor />
                 <Result />
             </div>

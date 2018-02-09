@@ -5,4 +5,5 @@ export interface Trainer {
     money?: number;
     badges?: number;
     expShareStatus?: string;
+    image?: string;
 }
