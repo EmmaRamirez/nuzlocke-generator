@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { RadioGroup, Radio, TextArea } from '@blueprintjs/core';
+import { RadioGroup, Radio, TextArea, Checkbox } from '@blueprintjs/core';
 
 const styleOptions = [
     'Default Light',
@@ -33,7 +33,7 @@ export const StyleEditorBase = ({ }: StyleEditorProps) => {
             </div>
 
             <div className='style-edit'>
-                <span>Icon Style </span>
+                <span>Image Style </span>
                 <div className='pt-select'>
                     <select>
                         <option>Round</option>
@@ -42,7 +42,7 @@ export const StyleEditorBase = ({ }: StyleEditorProps) => {
                 </div>
             </div>
 
-            <div className='style-edit'>
+            {/* <div className='style-edit'>
                 <span>Icon Style </span>
                 <div className='pt-select'>
                     <select>
@@ -50,6 +50,22 @@ export const StyleEditorBase = ({ }: StyleEditorProps) => {
                         <option>Square</option>
                     </select>
                 </div>
+            </div> */}
+
+            <div className='style-edit' style={{ flexFlow: 'column' }}>
+                <label className='pt-label pt-inline'>
+                    Background color
+                    <input className='color-input' type='color' />
+                </label>
+            </div>
+
+            <div className='style-edit'>
+
+                <label className='pt-label pt-inline'>
+                    Background Image
+                    <input className='pt-input' />
+                </label>
+
             </div>
 
             <div className='style-edit'>
@@ -62,6 +78,23 @@ export const StyleEditorBase = ({ }: StyleEditorProps) => {
                     <Radio label='Horizontal' value='horizontal' />
                     <Radio label='Vertical' value='vertical' />
                 </RadioGroup>
+            </div>
+
+            <div className='style-edit'>
+                <RadioGroup
+                    className='radio-group'
+                    label='Team Images'
+                    onChange={ e => {} }
+                    selectedValue={'horizontal'}
+                >
+                    <Radio label='Standard' value='standard' />
+                    <Radio label='Dream World' value='dreamworld' />
+                    <Radio label='Sugimori' value='sugimori' />
+                </RadioGroup>
+            </div>
+
+            <div className='style-edit'>
+                <Checkbox checked={false} label='Icons Next to Team Pokemon' onChange={e => {}} />
             </div>
 
             <div className='custom-css-input-wrapper'>

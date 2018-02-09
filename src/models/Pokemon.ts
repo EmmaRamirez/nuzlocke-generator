@@ -1,6 +1,6 @@
 export interface Pokemon {
     id: string;
-    species?: string;
+    species: string;
     nickname?: string;
     status?: string;
     level?: number;

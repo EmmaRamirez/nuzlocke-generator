@@ -6,6 +6,7 @@ import { getBackgroundGradient } from './getBackgroundGradient';
 import { getGenderElement } from './getGenderElement';
 import { movesByType } from './movesByType';
 import { typeToColor } from './typeToColor';
+import { addForme } from 'utils';
 
 import { selectPokemon } from 'actions';
 
@@ -36,29 +37,19 @@ const generateMoves = moves => {
     });
 };
 
+
+
 export const TeamPokemonBase = (props: Pokemon & { selectPokemon } ) => {
     const poke = props;
     const moves =
         poke.moves == null ? '' : <div className='pokemon-moves'>{generateMoves(poke.moves)}</div>;
-    const addForme = (species:string | undefined) => {
-        if (poke.forme) {
-            if (poke.forme === 'Alolan' || poke.forme === 'Alola') {
-                return `alolan-${species}`;
-            }
-
-            return species;
-        } else {
-            return species;
-        }
-    };
     const getImage = ():string => {
         if (poke.customImage) {
             return `url(${poke.customImage})`;
         }
         return `url(img/${(
-            // @ts-ignore
-            addForme((poke ? poke.species : '').replace(/\s/g, '') || 'missingno'
-        ).toLowerCase())}.jpg)`;
+            addForme(poke.species.replace(/\s/g, ''), poke.forme) || 'missingno'
+        ).toLowerCase()}.jpg)`;
     };
     const getFirstType = poke.types ? poke.types[0] : 'Normal';
     return (

@@ -9,3 +9,5 @@ export * from './listOfItems';
 export * from './listOfGames';
 export * from './sortPokes';
 export * from './pokemonByFilter';
+export * from './levenshteinDistance';
+export * from './addForme';
