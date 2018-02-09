@@ -1,4 +1,4 @@
-export const getAdditionalFormes = (species:string | undefined):string[] => {
+export const getAdditionalFormes = (species: string | undefined): string[] => {
     if (species == null) return [];
     const s = species.toLowerCase();
     if (s === 'pikachu') {
@@ -14,13 +14,11 @@ export const getAdditionalFormes = (species:string | undefined):string[] => {
             'Unova Cap',
             'Kalos Cap',
             'Alola Cap',
-            'Partner Cap'
+            'Partner Cap',
         ];
     }
     if (s === 'pichu') {
-        return [
-            'Spiky-eared'
-        ];
+        return ['Spiky-eared'];
     }
     if (s === 'unown') {
         return [
@@ -49,110 +47,53 @@ export const getAdditionalFormes = (species:string | undefined):string[] => {
             'W',
             'X',
             'Y',
-            'Z'
+            'Z',
         ];
     }
     if (s === 'castform') {
-        return [
-            'Sunny',
-            'Rainy',
-            'Snowy'
-        ];
+        return ['Sunny', 'Rainy', 'Snowy'];
     }
     if (s === 'Deoxys') {
-        return [
-            'Attack',
-            'Defense',
-            'Speed'
-        ];
+        return ['Attack', 'Defense', 'Speed'];
     }
     if (s === 'burmy' || s === 'wormadam') {
-        return [
-            'Plant',
-            'Sandy',
-            'Trash'
-        ];
+        return ['Plant', 'Sandy', 'Trash'];
     }
     if (s === 'shellos' || s === 'gastrodon') {
-        return [
-            'West Sea',
-            'East Sea'
-        ];
+        return ['West Sea', 'East Sea'];
     }
     if (s === 'rotom') {
-        return [
-            'Heat',
-            'Wash',
-            'Frost',
-            'Fan',
-            'Mow'
-        ];
+        return ['Heat', 'Wash', 'Frost', 'Fan', 'Mow'];
     }
     if (s === 'giratina') {
-        return [
-            'Altered',
-            'Origin'
-        ];
+        return ['Altered', 'Origin'];
     }
     if (s === 'shaymin') {
-        return [
-            'Land',
-            'Sky'
-        ];
+        return ['Land', 'Sky'];
     }
     if (s === 'basculin') {
-        return [
-            'Red-Striped',
-            'Blue-Striped'
-        ];
+        return ['Red-Striped', 'Blue-Striped'];
     }
     if (s === 'deerling' || s === 'sawsbuck') {
-        return [
-            'Spring',
-            'Summer',
-            'Autumn',
-            'Winter'
-        ];
+        return ['Spring', 'Summer', 'Autumn', 'Winter'];
     }
     if (s === 'tornadus' || s === 'thundurus' || s === 'landorus') {
-        return [
-            'Incarnate',
-            'Therian'
-        ];
+        return ['Incarnate', 'Therian'];
     }
     if (s === 'kyurem') {
-        return [
-            'White Kyurem',
-            'Black Kyurem'
-        ];
+        return ['White Kyurem', 'Black Kyurem'];
     }
     if (s === 'keldeo') {
-        return [
-            'Resolute'
-        ];
+        return ['Resolute'];
     }
     if (s === 'meloetta') {
-        return [
-            'Aria',
-            'Pirouette'
-        ];
+        return ['Aria', 'Pirouette'];
     }
     if (s === 'genesect') {
-        return [
-            'Shock Drive',
-            'Burn Drive',
-            'Chill Drive',
-            'Douse Drive'
-        ];
+        return ['Shock Drive', 'Burn Drive', 'Chill Drive', 'Douse Drive'];
     }
     if (s === 'flabébé' || s === 'floette' || s === 'florges') {
-        return [
-            'Red',
-            'Yellow',
-            'Orange',
-            'Blue',
-            'White'
-        ];
+        return ['Red', 'Yellow', 'Orange', 'Blue', 'White'];
     }
     if (s === 'furfrou') {
         return [
@@ -164,54 +105,48 @@ export const getAdditionalFormes = (species:string | undefined):string[] => {
             'La Reine',
             'Matron',
             'Dandy',
-            'Debutante'
+            'Debutante',
         ];
     }
     if (s === 'zygarde') {
-        return [
-            '10%',
-            '50%',
-            'Complete'
-        ];
+        return ['10%', '50%', 'Complete'];
     }
     if (s === 'hoopa') {
-        return [
-            'Confined',
-            'Unbound'
-        ];
+        return ['Confined', 'Unbound'];
     }
     if (s === 'Oricorio') {
-        return [
-            'Baile',
-            'Pom-Pom',
-            'Pa\'u',
-            'Sensu'
-        ];
+        return ['Baile', 'Pom-Pom', 'Pa\'u', 'Sensu'];
     }
     if (s === 'lycanroc') {
-        return [
-            'Midday',
-            'Midnight',
-            'Dusk'
-        ];
+        return ['Midday', 'Midnight', 'Dusk'];
     }
     if (s === 'wishiwashi') {
-        return [
-            'Solo',
-            'School'
-        ];
+        return ['Solo', 'School'];
     }
     if (s === 'Necroza') {
-        return [
-            'Dusk Mane',
-            'Dawn Wings',
-            'Ultra'
-        ];
+        return ['Dusk Mane', 'Dawn Wings', 'Ultra'];
     }
-    if (s === 'rattata' || s === 'raticate' || s === 'raichu' || s === 'sandshrew' || s === 'sandslash' || s === 'vulpix' || s === 'ninetales' || s === 'diglett' || s === 'dugtrio' || s === 'meowth' || s === 'persian' || s === 'geodude' || s === 'graveler' || s === 'golemn' || s === 'grimer' || s === 'muk' || s === 'exeggutor' || s === 'marowak') {
-        return [
-            'Alolan'
-        ];
+    if (
+        s === 'rattata' ||
+        s === 'raticate' ||
+        s === 'raichu' ||
+        s === 'sandshrew' ||
+        s === 'sandslash' ||
+        s === 'vulpix' ||
+        s === 'ninetales' ||
+        s === 'diglett' ||
+        s === 'dugtrio' ||
+        s === 'meowth' ||
+        s === 'persian' ||
+        s === 'geodude' ||
+        s === 'graveler' ||
+        s === 'golemn' ||
+        s === 'grimer' ||
+        s === 'muk' ||
+        s === 'exeggutor' ||
+        s === 'marowak'
+    ) {
+        return ['Alolan'];
     }
     return [];
 };

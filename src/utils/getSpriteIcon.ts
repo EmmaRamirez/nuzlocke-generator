@@ -1,8 +1,8 @@
 import { speciesToNumber } from './speciesToNumber';
 
-export const getSpriteIcon = (species: string, forme:string | undefined) => {
+export const getSpriteIcon = (species: string, forme: string | undefined) => {
     const n = speciesToNumber(species) || 150;
-    const getForme = (forme) => {
+    const getForme = forme => {
         if (forme === 'Alolan') {
             return '-a';
         }
@@ -17,5 +17,6 @@ export const getSpriteIcon = (species: string, forme:string | undefined) => {
         if (forme === 'Pharaoh') return '-p';
         return '';
     };
-    return `https://www.serebii.net/pokedex-sm/icon/${n.toString().padStart(3, '0') + getForme(forme)}.png`;
+    return `https://www.serebii.net/pokedex-sm/icon/${n.toString().padStart(3, '0') +
+        getForme(forme)}.png`;
 };

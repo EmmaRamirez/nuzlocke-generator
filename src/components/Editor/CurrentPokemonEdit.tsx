@@ -10,9 +10,6 @@ interface CurrentPokemonEditState {
     expandedView: boolean;
 }
 
-
-
-
 @StoreContext
 export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditState> {
     constructor(props: any) {
@@ -40,10 +37,7 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                     placeholder=''
                     value={currentPokemon.forme}
                     type='select'
-                    options={[
-                        'Normal',
-                        ...getAdditionalFormes(currentPokemon.species)
-                    ]}
+                    options={['Normal', ...getAdditionalFormes(currentPokemon.species)]}
                 />
                 <CurrentPokemonInput
                     labelName='Shiny'

@@ -6,10 +6,7 @@ import { styleDefaults } from 'utils';
 
 import { RadioGroup, Radio, TextArea, Checkbox } from '@blueprintjs/core';
 
-const styleOptions = [
-    'Default Light',
-    'Default Dark',
-];
+const styleOptions = ['Default Light', 'Default Dark'];
 
 const value = `body {
     color: red;
@@ -34,18 +31,14 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
             <div className='style-edit'>
                 <span>Template </span>
                 <div className='pt-select'>
-                    <select>
-                        {
-                            styleOptions.map(o => <option key={o}>{o}</option>)
-                        }
-                    </select>
+                    <select>{styleOptions.map(o => <option key={o}>{o}</option>)}</select>
                 </div>
             </div>
 
             <div className='style-edit'>
                 <span>Image Style </span>
                 <div className='pt-select'>
-                    <select onChange={e => editEvent(e, props) } value={props.style.imageStyle}>
+                    <select onChange={e => editEvent(e, props)} value={props.style.imageStyle}>
                         <option value='round'>Round</option>
                         <option value='square'>Square</option>
                     </select>
@@ -55,33 +48,46 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
             <div className='style-edit' style={{ flexFlow: 'column' }}>
                 <label className='pt-label pt-inline'>
                     Background color
-                    <input name='bgColor' onChange={e => editEvent(e, props)} className='color-input' type='color' value={props.style.bgColor} />
+                    <input
+                        name='bgColor'
+                        onChange={e => editEvent(e, props)}
+                        className='color-input'
+                        type='color'
+                        value={props.style.bgColor}
+                    />
                 </label>
             </div>
 
             <div className='style-edit' style={{ flexFlow: 'column' }}>
                 <label className='pt-label pt-inline'>
                     Header color
-                    <input name='topHeaderColor' onChange={e => editEvent(e, props)} className='color-input' type='color' value={props.style.topHeaderColor} />
+                    <input
+                        name='topHeaderColor'
+                        onChange={e => editEvent(e, props)}
+                        className='color-input'
+                        type='color'
+                        value={props.style.topHeaderColor}
+                    />
                 </label>
             </div>
 
             <div className='style-edit'>
-
                 <label className='pt-label pt-inline'>
                     Background Image
-                    <input value={props.style.backgroundImage} onChange={e => editEvent(e, props)} className='pt-input' />
+                    <input
+                        value={props.style.backgroundImage}
+                        onChange={e => editEvent(e, props)}
+                        className='pt-input'
+                    />
                 </label>
-
             </div>
 
             <div className='style-edit'>
                 <RadioGroup
                     className='radio-group'
                     label='Moves Position'
-                    onChange={ e => {} }
-                    selectedValue={'horizontal'}
-                >
+                    onChange={e => {}}
+                    selectedValue={'horizontal'}>
                     <Radio label='Horizontal' value='horizontal' />
                     <Radio label='Vertical' value='vertical' />
                 </RadioGroup>
@@ -91,9 +97,8 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 <RadioGroup
                     className='radio-group'
                     label='Team Images'
-                    onChange={ e => {} }
-                    selectedValue={'horizontal'}
-                >
+                    onChange={e => {}}
+                    selectedValue={'horizontal'}>
                     <Radio label='Standard' value='standard' />
                     <Radio label='Dream World' value='dreamworld' />
                     <Radio label='Sugimori' value='sugimori' />
@@ -117,7 +122,6 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
     );
 };
 
-export const StyleEditor = connect(
-    (state:any) => ({ style: state.style }),
-    { editStyle }
-)(StyleEditorBase);
+export const StyleEditor = connect((state: any) => ({ style: state.style }), { editStyle })(
+    StyleEditorBase,
+);

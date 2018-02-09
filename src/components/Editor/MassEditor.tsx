@@ -15,17 +15,34 @@ export interface MassEditorProps {
 }
 
 export class MassEditorBase extends React.Component<MassEditorProps, {}> {
-
     // private renderCell = (rowIndex: number) => {
     //     return <Cell>{this.props.pokemon[rowIndex].nickname}</Cell>;
     // }
 
-    private renderColumns (pokemon: MassEditorProps['pokemon']) {
-        return Object.keys(PokemonKeys).filter(k => k !== 'id').map(key => {
-            return <Column key={key} name={key} cellRenderer={r => <EditableCell onConfirm={ (v, _, c) => this.props.editPokemon({
-                [key]: v
-            }, pokemon[r].id) } value={pokemon[r][key]} />} />;
-        });
+    private renderColumns(pokemon: MassEditorProps['pokemon']) {
+        return Object.keys(PokemonKeys)
+            .filter(k => k !== 'id')
+            .map(key => {
+                return (
+                    <Column
+                        key={key}
+                        name={key}
+                        cellRenderer={r => (
+                            <EditableCell
+                                onConfirm={(v, _, c) =>
+                                    this.props.editPokemon(
+                                        {
+                                            [key]: v,
+                                        },
+                                        pokemon[r].id,
+                                    )
+                                }
+                                value={pokemon[r][key]}
+                            />
+                        )}
+                    />
+                );
+            });
     }
 
     public render() {
@@ -34,15 +51,14 @@ export class MassEditorBase extends React.Component<MassEditorProps, {}> {
                 iconName='edit'
                 isOpen={this.props.isOpen}
                 onClose={this.props.toggleDialog}
-                title='Mass Editor'
-            >
+                title='Mass Editor'>
                 <div className='pt-dialog-body'>
                     <LinkedAddPokemonButton
                         defaultPokemon={generateEmptyPokemon(this.props.pokemon)}
                     />
                     <div style={{ padding: '.25rem' }} />
                     <Table numRows={this.props.pokemon.length}>
-                        { this.renderColumns(this.props.pokemon) }
+                        {this.renderColumns(this.props.pokemon)}
                     </Table>
                 </div>
                 {/* <div className='pt-dialog-footer'>
@@ -55,8 +71,8 @@ export class MassEditorBase extends React.Component<MassEditorProps, {}> {
 }
 
 export const MassEditor = connect(
-    (state:any) => ({
-        pokemon: state.pokemon
+    (state: any) => ({
+        pokemon: state.pokemon,
     }),
-    { editPokemon }
+    { editPokemon },
 )(MassEditorBase as any);

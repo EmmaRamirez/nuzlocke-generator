@@ -29,15 +29,17 @@ export class ResultBase extends React.Component<ResultProps> {
         super(props);
     }
 
-    public componentWillMount() {
-    }
-
+    public componentWillMount() {}
 
     private renderTeamPokemon() {
-        return this.props.pokemon.filter(v => v.hasOwnProperty('id')).filter(poke => poke.status === 'Team').sort(sortPokes).map((poke, index) => {
-            console.log(poke);
-            return <TeamPokemon key={index} {...poke} />;
-        });
+        return this.props.pokemon
+            .filter(v => v.hasOwnProperty('id'))
+            .filter(poke => poke.status === 'Team')
+            .sort(sortPokes)
+            .map((poke, index) => {
+                console.log(poke);
+                return <TeamPokemon key={index} {...poke} />;
+            });
     }
 
     private renderErrors() {
@@ -53,17 +55,23 @@ export class ResultBase extends React.Component<ResultProps> {
     }
 
     private renderBoxedPokemon() {
-        return this.props.pokemon.filter(v => v.hasOwnProperty('id')).filter(poke => poke.status === 'Boxed').map((poke, index) => {
-            console.log(poke);
-            return <BoxedPokemon key={index} {...poke} />;
-        });
+        return this.props.pokemon
+            .filter(v => v.hasOwnProperty('id'))
+            .filter(poke => poke.status === 'Boxed')
+            .map((poke, index) => {
+                console.log(poke);
+                return <BoxedPokemon key={index} {...poke} />;
+            });
     }
 
     private renderDeadPokemon() {
-        return this.props.pokemon.filter(v => v.hasOwnProperty('id')).filter(poke => poke.status === 'Dead').map((poke, index) => {
-            console.log(poke);
-            return <DeadPokemon key={index} {...poke} />;
-        });
+        return this.props.pokemon
+            .filter(v => v.hasOwnProperty('id'))
+            .filter(poke => poke.status === 'Dead')
+            .map((poke, index) => {
+                console.log(poke);
+                return <DeadPokemon key={index} {...poke} />;
+            });
     }
 
     private renderBadgesOrTrials() {
@@ -79,57 +87,59 @@ export class ResultBase extends React.Component<ResultProps> {
             'darkinium-z',
             'dragonium-z',
             'fairium-z',
-            'groundium-z'
+            'groundium-z',
         ];
 
         return badges.map((badge, index) => {
             // @ts-ignore
-            return <img className={ this.props.trainer.badges > index ? 'obtained' : 'not-obtained'} key={badge} alt={badge} src={`./img/${badge}.png`} />;
+            return (
+                <img
+                    className={this.props.trainer.badges > index ? 'obtained' : 'not-obtained'}
+                    key={badge}
+                    alt={badge}
+                    src={`./img/${badge}.png`}
+                />
+            );
         });
     }
 
     private renderTrainer() {
         const { trainer } = this.props;
-        const bottomTextStyle:any = { fontSize: '1.1rem', fontWeight: 'bold' };
+        const bottomTextStyle: any = { fontSize: '1.1rem', fontWeight: 'bold' };
         return (
             <div className='trainer-wrapper'>
-                <img style={{
-                    border: '2px solid rgba(255, 255, 255, 0.3)',
-                    borderRadius: '50%',
-                    height: '3rem',
-                    width: '3rem'
-                }} src='img/moon.jpg' alt='Moon 2' />
-                <div className='nuzlocke-title'>{ this.props.game.name } Nuzlocke</div>
-                {
-                    trainer.name === null || trainer.name === '' ?
-                    null :
+                <img
+                    style={{
+                        border: '2px solid rgba(255, 255, 255, 0.3)',
+                        borderRadius: '50%',
+                        height: '3rem',
+                        width: '3rem',
+                    }}
+                    src='img/moon.jpg'
+                    alt='Moon 2'
+                />
+                <div className='nuzlocke-title'>{this.props.game.name} Nuzlocke</div>
+                {trainer.name === null || trainer.name === '' ? null : (
                     <div className='name column'>
                         <div>name</div>
-                        <div style={bottomTextStyle}>{ trainer.name }</div>
+                        <div style={bottomTextStyle}>{trainer.name}</div>
                     </div>
-                }
-                {
-                    trainer.id == null || trainer.id === '' ?
-                    null :
+                )}
+                {trainer.id == null || trainer.id === '' ? null : (
                     <div className='id column'>
                         <div>ID</div>
-                        <div style={bottomTextStyle}>{ trainer.id }</div>
+                        <div style={bottomTextStyle}>{trainer.id}</div>
                     </div>
-                }
-                {
-                    trainer.expShareStatus == null || trainer.expShareStatus === '' ?
-                    null
-                    :
+                )}
+                {trainer.expShareStatus == null || trainer.expShareStatus === '' ? null : (
                     <div className='id column'>
                         <div>Exp Share</div>
-                        <div style={bottomTextStyle}>{ (trainer.expShareStatus || '').toUpperCase() }</div>
+                        <div style={bottomTextStyle}>
+                            {(trainer.expShareStatus || '').toUpperCase()}
+                        </div>
                     </div>
-                }
-                <div className='badge-wrapper'>
-                    {
-                        this.renderBadgesOrTrials()
-                    }
-                </div>
+                )}
+                <div className='badge-wrapper'>{this.renderBadgesOrTrials()}</div>
                 {/* <img alt='Trainer' className='trainer-image' src='' />
                 <div className='game-logo'>
                     <span>
@@ -154,16 +164,19 @@ export class ResultBase extends React.Component<ResultProps> {
                 <div className='trainer-container' style={{ backgroundColor: topHeaderColor }}>
                     {this.renderTrainer()}
                 </div>
-                <div className='team-container'>
-                    {this.renderTeamPokemon()}
-                </div>
+                <div className='team-container'>{this.renderTeamPokemon()}</div>
                 <div className='boxed-container'>
                     <h3>BOXED</h3>
                     {this.renderBoxedPokemon()}
                 </div>
                 <div className='dead-container'>
                     <h3>DEAD</h3>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            justifyContent: 'space-evenly',
+                        }}>
                         {this.renderDeadPokemon()}
                     </div>
                 </div>
@@ -173,13 +186,13 @@ export class ResultBase extends React.Component<ResultProps> {
 }
 
 export const Result = connect(
-    (state:any) => ({
+    (state: any) => ({
         pokemon: state.pokemon,
         game: state.game,
         trainer: state.trainer,
-        style: state.style
+        style: state.style,
     }),
     {
-        selectPokemon
-    }
+        selectPokemon,
+    },
 )(ResultBase);

@@ -4,7 +4,7 @@ import { TrainerInfoEditField } from './TrainerInfoEditField';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        value: state.trainer[ownProps.name]
+        value: state.trainer[ownProps.name],
     };
 };
 

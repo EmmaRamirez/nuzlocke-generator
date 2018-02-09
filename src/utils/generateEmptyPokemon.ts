@@ -1,7 +1,7 @@
 import * as uuid from 'uuid/v4';
 import { Pokemon } from 'models';
 
-export function generateEmptyPokemon(pokemon:Pokemon[]): Pokemon {
+export function generateEmptyPokemon(pokemon: Pokemon[]): Pokemon {
     let position = 0;
     if (pokemon && pokemon.length > 0) {
         try {

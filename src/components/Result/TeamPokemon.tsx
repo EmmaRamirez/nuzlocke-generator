@@ -37,13 +37,11 @@ const generateMoves = moves => {
     });
 };
 
-
-
-export const TeamPokemonBase = (props: Pokemon & { selectPokemon } ) => {
+export const TeamPokemonBase = (props: Pokemon & { selectPokemon }) => {
     const poke = props;
     const moves =
         poke.moves == null ? '' : <div className='pokemon-moves'>{generateMoves(poke.moves)}</div>;
-    const getImage = ():string => {
+    const getImage = (): string => {
         if (poke.customImage) {
             return `url(${poke.customImage})`;
         }
@@ -72,17 +70,20 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } ) => {
                     className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()}`}
                 />
             </div>
-            {
-                poke.item == null ? null :
-                <div className='pokemon-item' style={{
-                    borderColor: typeToColor(getFirstType)
-                }}>
+            {poke.item == null ? null : (
+                <div
+                    className='pokemon-item'
+                    style={{
+                        borderColor: typeToColor(getFirstType),
+                    }}>
                     <img
                         alt={poke.item}
-                        src={`http://www.serebii.net/itemdex/sprites/${poke.item.toLowerCase().replace(/\s/g, '')}.png`}
+                        src={`http://www.serebii.net/itemdex/sprites/${poke.item
+                            .toLowerCase()
+                            .replace(/\s/g, '')}.png`}
                     />
                 </div>
-            }
+            )}
             <div className='pokemon-info'>
                 <div className='pokemon-info-inner'>
                     <span className='pokemon-nickname'>{poke.nickname}</span>
@@ -91,7 +92,8 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } ) => {
                     <span className='pokemon-level'>lv. {poke.level}</span>
                     <br />
                     <span className='pokemon-location'>
-                        { poke.met === 'Starter' ? poke.met : `Met on ${poke.met}`}, from lv. {poke.metLevel}
+                        {poke.met === 'Starter' ? poke.met : `Met on ${poke.met}`}, from lv.{' '}
+                        {poke.metLevel}
                     </span>
                     <br />
                     <span className='pokemon-nature'>
@@ -106,9 +108,6 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } ) => {
     );
 };
 
-export const TeamPokemon = connect(
-    null,
-    {
-        selectPokemon
-    }
-)(TeamPokemonBase as any);
+export const TeamPokemon = connect(null, {
+    selectPokemon,
+})(TeamPokemonBase as any);

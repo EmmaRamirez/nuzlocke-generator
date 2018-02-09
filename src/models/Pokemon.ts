@@ -25,7 +25,7 @@ export interface Pokemon {
 }
 
 // We export a non-type version when we need all the keys easily
-export const PokemonKeys:Pokemon = {
+export const PokemonKeys: Pokemon = {
     id: '',
     species: '',
     nickname: '',
@@ -48,5 +48,5 @@ export const PokemonKeys:Pokemon = {
     badges: [],
     num: '',
     position: 0,
-    wonderTradedFor: ''
+    wonderTradedFor: '',
 };

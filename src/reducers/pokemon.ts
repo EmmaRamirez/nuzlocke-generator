@@ -14,7 +14,7 @@ const pokemonState = [
         nature: 'Rash',
         ability: 'Dry Skin',
         moves: ['Bullet Punch', 'Cross Chop', 'Poison Jab', 'Taunt'],
-        position: 0
+        position: 0,
     },
 ];
 
