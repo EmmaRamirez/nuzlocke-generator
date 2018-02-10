@@ -29,14 +29,14 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
         <div className='style-editor'>
             <h4>Style</h4>
             <div className='style-edit'>
-                <span>Template </span>
+                <label className='pt-label pt-inline'>Template</label>
                 <div className='pt-select'>
                     <select>{styleOptions.map(o => <option key={o}>{o}</option>)}</select>
                 </div>
             </div>
 
             <div className='style-edit'>
-                <span>Image Style </span>
+                <label className='pt-label pt-inline'>Image Style </label>
                 <div className='pt-select'>
                     <select onChange={e => editEvent(e, props)} value={props.style.imageStyle}>
                         <option value='round'>Round</option>
@@ -45,41 +45,35 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 </div>
             </div>
 
-            <div className='style-edit' style={{ flexFlow: 'column' }}>
-                <label className='pt-label pt-inline'>
-                    Background color
-                    <input
-                        name='bgColor'
-                        onChange={e => editEvent(e, props)}
-                        className='color-input'
-                        type='color'
-                        value={props.style.bgColor}
-                    />
-                </label>
-            </div>
-
-            <div className='style-edit' style={{ flexFlow: 'column' }}>
-                <label className='pt-label pt-inline'>
-                    Header color
-                    <input
-                        name='topHeaderColor'
-                        onChange={e => editEvent(e, props)}
-                        className='color-input'
-                        type='color'
-                        value={props.style.topHeaderColor}
-                    />
-                </label>
+            <div className='style-edit'>
+                <label className='pt-label pt-inline'>Background color</label>
+                <input
+                    name='bgColor'
+                    onChange={e => editEvent(e, props)}
+                    className='color-input'
+                    type='color'
+                    value={props.style.bgColor}
+                />
             </div>
 
             <div className='style-edit'>
-                <label className='pt-label pt-inline'>
-                    Background Image
-                    <input
-                        value={props.style.backgroundImage}
-                        onChange={e => editEvent(e, props)}
-                        className='pt-input'
-                    />
-                </label>
+                <label className='pt-label pt-inline'>Header color</label>
+                <input
+                    name='topHeaderColor'
+                    onChange={e => editEvent(e, props)}
+                    className='color-input'
+                    type='color'
+                    value={props.style.topHeaderColor}
+                />
+            </div>
+
+            <div className='style-edit'>
+                <label className='pt-label pt-inline'>Background Image</label>
+                <input
+                    value={props.style.backgroundImage}
+                    onChange={e => editEvent(e, props)}
+                    className='pt-input'
+                />
             </div>
 
             <div className='style-edit'>
@@ -110,7 +104,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
             </div>
 
             <div className='custom-css-input-wrapper'>
-                <div>Custom CSS</div>
+                <label className='pt-label'>Custom CSS</label>
                 <TextArea
                     large={true}
                     onChange={e => {}}

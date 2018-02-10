@@ -1,22 +1,25 @@
 import * as React from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
+import { connect } from 'react-redux';
 
 import { GameEditor } from './GameEditor';
 import { PokemonEditor } from './PokemonEditor';
 import { StyleEditor } from './StyleEditor';
 import { TrainerEditor } from './TrainerEditor';
+import { ImportAndExport } from './ImportAndExport';
 
 require('./editor.styl');
 
 /**
  * The main editor interface.
  */
-export class Editor extends React.Component<{}, {}> {
-    constructor(props: object) {
+export class EditorBase extends React.Component<{ editor: any }, {}> {
+    constructor(props) {
         super(props);
     }
 
     public render() {
+        const minimized = this.props.editor.minimized;
         return (
             <Scrollbars
                 autoHide
@@ -24,7 +27,8 @@ export class Editor extends React.Component<{}, {}> {
                 autoHideDuration={200}
                 className='editor'
                 style={{
-                    width: '33%',
+                    width: minimized ? '0%' : '33%',
+                    marginLeft: minimized ? '-30rem' : '0',
                     minWidth: '30rem',
                     maxWidth: '40rem',
                     height: '100vh',
@@ -34,7 +38,15 @@ export class Editor extends React.Component<{}, {}> {
                 <TrainerEditor />
                 <PokemonEditor />
                 <StyleEditor />
+                <ImportAndExport />
             </Scrollbars>
         );
     }
 }
+
+export const Editor = connect(
+    (state: any) => ({
+        editor: state.editor,
+    }),
+    null,
+)(EditorBase);

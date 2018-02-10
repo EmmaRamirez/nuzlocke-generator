@@ -11,24 +11,12 @@ import { game } from './game';
 import { trainer } from './trainer';
 import { history } from './history';
 import { style } from './style';
+import { editor } from './editor';
 
 // export const appReducers = combineReducers({
 //   nuzlocke,
 //   pokemon
 // });
-
-export const appReducers = combineReducers({
-    nuzlocke,
-    pokemon,
-    box,
-    selectedId,
-    confirmation,
-    game,
-    trainer,
-    history,
-    style,
-    router: routerReducer,
-});
 
 export const reducers = {
     box,
@@ -36,9 +24,12 @@ export const reducers = {
     game,
     nuzlocke,
     pokemon,
+    editor,
     selectedId,
     trainer,
     history,
     style,
     router: routerReducer,
 };
+
+export const appReducers = combineReducers(reducers);

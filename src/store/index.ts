@@ -9,10 +9,13 @@ import storage from 'redux-persist/lib/storage';
 import { reducers } from '../reducers';
 import { rootSaga } from '../sagas';
 
+const pkg = require('../../package.json');
+
 const config = {
     key: 'root',
     blacklist: ['router'],
     storage,
+    version: pkg.version,
 };
 
 const history = createHistory();

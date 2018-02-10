@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Store } from 'redux';
 import { connect } from 'react-redux';
-import { editGame } from 'actions';
+import { editGame, changeEditorSize } from 'actions';
 import { listOfGames } from 'utils';
 
 import { Button, Intent } from '@blueprintjs/core';
@@ -10,6 +10,8 @@ import { LinkedSaveButton } from './LinkedSaveButton';
 export interface GameEditorProps {
     game: any;
     editGame: Function;
+    editor: any;
+    changeEditorSize: changeEditorSize;
 }
 
 export class GameEditorBase extends React.Component<GameEditorProps, {}> {
@@ -27,8 +29,11 @@ export class GameEditorBase extends React.Component<GameEditorProps, {}> {
             <div className='game-editor'>
                 <h4 style={{ display: 'flex', alignContent: 'flex-end' }}>
                     Game{' '}
-                    <Button style={{ marginLeft: 'auto' }} className='pt-minimal'>
-                        minimize editor
+                    <Button
+                        onClick={e => this.props.changeEditorSize(!this.props.editor.minimized)}
+                        style={{ marginLeft: 'auto' }}
+                        className='pt-minimal'>
+                        {this.props.editor.minimized ? 'maximize' : 'minimize'} editor
                     </Button>
                 </h4>
                 {/* <label>Game </label> */}
@@ -53,6 +58,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, {}> {
     }
 }
 
-export const GameEditor = connect((state: any) => ({ game: state.game }), { editGame })(
-    GameEditorBase,
-);
+export const GameEditor = connect((state: any) => ({ game: state.game, editor: state.editor }), {
+    editGame,
+    changeEditorSize,
+})(GameEditorBase);

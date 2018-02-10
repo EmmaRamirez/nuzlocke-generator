@@ -14,6 +14,8 @@ import { store, persistor } from './store';
 
 import * as Services from './services';
 
+import 'assets/pokemon-font.css';
+
 import 'components/Shared/styles/base.styl';
 
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';

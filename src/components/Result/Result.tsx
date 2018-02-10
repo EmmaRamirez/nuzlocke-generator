@@ -3,6 +3,8 @@ import * as React from 'react';
 import { Pokemon, Trainer } from 'models';
 import { StoreContext } from 'utils';
 import { connect } from 'react-redux';
+import * as uuid from 'uuid/v4';
+import { ResizableBox } from 'react-resizable';
 
 import { selectPokemon } from 'actions';
 
@@ -16,6 +18,7 @@ interface ResultProps {
     pokemon: Pokemon[];
     game: any;
     trainer: Trainer;
+    box: string[];
     selectPokemon: selectPokemon;
     style: any;
 }
@@ -37,7 +40,6 @@ export class ResultBase extends React.Component<ResultProps> {
             .filter(poke => poke.status === 'Team')
             .sort(sortPokes)
             .map((poke, index) => {
-                console.log(poke);
                 return <TeamPokemon key={index} {...poke} />;
             });
     }
@@ -46,12 +48,24 @@ export class ResultBase extends React.Component<ResultProps> {
         const renderItems: React.ReactNode[] = [];
         if (this.props.pokemon.filter(poke => poke.status === 'Team').length > 6) {
             renderItems.push(
-                <div className='pt-callout pt-intent-danger'>
+                <div key={uuid()} className='pt-callout pt-intent-danger'>
                     You have more than 6 Pokémon in your party.
                 </div>,
             );
         }
-        return renderItems;
+        return (
+            <div
+                style={{
+                    display: 'flex',
+                    position: 'absolute',
+                    left: '32%',
+                    top: '2px',
+                    width: '60%',
+                    zIndex: 10,
+                }}>
+                {renderItems}
+            </div>
+        );
     }
 
     private renderBoxedPokemon() {
@@ -94,6 +108,7 @@ export class ResultBase extends React.Component<ResultProps> {
             // @ts-ignore
             return (
                 <img
+                    // @ts-ignore
                     className={this.props.trainer.badges > index ? 'obtained' : 'not-obtained'}
                     key={badge}
                     alt={badge}
@@ -115,7 +130,7 @@ export class ResultBase extends React.Component<ResultProps> {
                         height: '3rem',
                         width: '3rem',
                     }}
-                    src='img/moon.jpg'
+                    src={trainer.image ? trainer.image : 'img/moon.jpg'}
                     alt='Moon 2'
                 />
                 <div className='nuzlocke-title'>{this.props.game.name} Nuzlocke</div>
@@ -155,32 +170,42 @@ export class ResultBase extends React.Component<ResultProps> {
     }
 
     public render() {
-        const { style } = this.props;
+        const { style, box } = this.props;
         const bgColor = style ? style.bgColor : '#383840';
         const topHeaderColor = style ? style.topHeaderColor : '#333333';
         return (
-            <div className='result container' style={{ backgroundColor: bgColor }}>
+            <>
                 {this.renderErrors()}
-                <div className='trainer-container' style={{ backgroundColor: topHeaderColor }}>
-                    {this.renderTrainer()}
-                </div>
-                <div className='team-container'>{this.renderTeamPokemon()}</div>
-                <div className='boxed-container'>
-                    <h3>BOXED</h3>
-                    {this.renderBoxedPokemon()}
-                </div>
-                <div className='dead-container'>
-                    <h3>DEAD</h3>
-                    <div
-                        style={{
-                            display: 'flex',
-                            flexWrap: 'wrap',
-                            justifyContent: 'space-evenly',
-                        }}>
-                        {this.renderDeadPokemon()}
+                <ResizableBox
+                    width={'80rem'}
+                    height={'900px'}
+                    minConstraints={[10, 10]}
+                    maxConstraints={[Infinity, Infinity]}>
+                    <div className='result container' style={{ backgroundColor: bgColor }}>
+                        <div
+                            className='trainer-container'
+                            style={{ backgroundColor: topHeaderColor }}>
+                            {this.renderTrainer()}
+                        </div>
+                        <div className='team-container'>{this.renderTeamPokemon()}</div>
+                        <div className='boxed-container'>
+                            <h3>{box[1]}</h3>
+                            {this.renderBoxedPokemon()}
+                        </div>
+                        <div className='dead-container'>
+                            <h3>{box[2]}</h3>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    flexWrap: 'wrap',
+                                    justifyContent: 'space-evenly',
+                                }}>
+                                {this.renderDeadPokemon()}
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </ResizableBox>
+            </>
         );
     }
 }
@@ -191,6 +216,7 @@ export const Result = connect(
         game: state.game,
         trainer: state.trainer,
         style: state.style,
+        box: state.box,
     }),
     {
         selectPokemon,

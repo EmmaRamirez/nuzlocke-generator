@@ -36,12 +36,21 @@
   background-size: 100% 100%;
   display: flex;
   flex-wrap: wrap;
-  min-height: calc(156px * 1.5);
-  width: calc(168px * 1.5);
+  height: calc(156px * 1.5);
+  overflow-y: auto;
+  width: calc(170px * 1.5);
+  &::-webkit-scrollbar
+    width: 2px;
+    height: 8px;
+    border-radius: 2px;
+    background-color: white;
+  &::-webkit-scrollbar-thumb
+    background: #aaa;
   .tab-title
     flex-basis: 218px;
     flex-grow: 999;
-    font-size: 1.75rem;
+    font-family: 'pokemon_gbregular';
+    font-size: 1.5rem;
   .pokemon-icon img,
   .pokemon-icon
     cursor: pointer;
@@ -125,15 +134,27 @@ input[name='metLevel']
 .pt-dialog
   width: 90% !important;
 
+.has-nice-scrollbars
+  &::-webkit-scrollbar
+    width: 5px;
+    height: 8px;
+    border-radius: 2px;
+    background-color: white;
+  &::-webkit-scrollbar-thumb
+    background: #aaa; 
+
+
 .style-edit
   align-items: flex-start;
   align-content: center;
   border-bottom: 1px solid #ddd;
   display: flex;
-  margin: .25rem;
+  //margin: .25rem;
+  padding: .5rem;
   width: 100%;
   label.pt-label
     margin: 0;
+    min-width: 10rem;
   span
     display: inline-block;
     margin-right: .25rem;
