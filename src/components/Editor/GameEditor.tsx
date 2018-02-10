@@ -23,6 +23,17 @@ export class GameEditorBase extends React.Component<GameEditorProps, {}> {
         this.props.editGame({ name: e.target.value });
     };
 
+    private isMinimized():any {
+        if (this.props.editor.minimized) {
+            return {
+                position: 'fixed',
+                top: '2px',
+                left: '2px'
+            };
+        }
+        return {};
+    }
+
     public render() {
         const { game } = this.props;
         return (
@@ -31,7 +42,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, {}> {
                     Game{' '}
                     <Button
                         onClick={e => this.props.changeEditorSize(!this.props.editor.minimized)}
-                        style={{ marginLeft: 'auto' }}
+                        style={{ marginLeft: 'auto', ...this.isMinimized() }}
                         className='pt-minimal'>
                         {this.props.editor.minimized ? 'maximize' : 'minimize'} editor
                     </Button>

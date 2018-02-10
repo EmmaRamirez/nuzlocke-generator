@@ -1,5 +1,3 @@
-import { Hotkey, Hotkeys, HotkeysTarget } from '@blueprintjs/core';
-import * as localForage from 'localforage';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { BrowserRouter, Route } from 'react-router-dom';
@@ -10,78 +8,46 @@ import { BasicComponentWithTypes } from '../../services';
 import { Editor } from '../Editor';
 import { Result } from '../Result';
 import { VersionTag } from './VersionTag';
+import { generateReleaseNotes } from 'utils';
+
+import { Dialog } from '@blueprintjs/core';
+
+import * as ReactMarkdown from 'react-markdown';
 
 const pkg = require('../../../package.json');
 
 const result = require('../../assets/img/result.png');
 
-interface AppState {
-    data: object;
-}
 
-interface AppContext {
-    store: Store<any>;
-}
-
-function StoreContext(target: any) {
-    target.contextTypes = target.contextTypes || {};
-    target.contextTypes.store = PropTypes.object.isRequired;
-}
-
-@StoreContext
-export class App extends React.Component<{}, AppState> {
-    public context: AppContext;
+export class App extends React.Component<{}, { isOpen: boolean }> {
 
     constructor(props: any) {
         super(props);
+        this.state = {
+            isOpen: true
+        };
     }
 
-    public componentWillMount() {
-        localForage
-            .getItem('data')
-            .then(data => {
-                console.log(data);
-            })
-            .catch(err => {
-                console.error('No localstorage found');
-            });
-        // if (localForage.getItem('data') != null) {
-        //   localForage.setItem('data', {
-        //     game: {},
-        //     pokemon: [],
-        //     trainer: {}
-        //   });
-        // }
+    public componentWillMount() {}
 
-        // localForage.getItem('data').then((data) => {
-        //   this.context.store.dispatch(saveNuzlocke(data));
-        //   console.log('store dispatched ', data);
-        // }).catch((err) => {
-        //   console.error(err, 'No localStorage item was found.');
-        // });
-    }
-
-    // public renderHotkeys() {
-    //     return (
-    //         <Hotkeys>
-    //             <Hotkey
-    //                 global={true}
-    //                 combo='h'
-    //                 label='Nothing'
-    //                 onKeyDown={() => {
-    //                     console.log('pressed h');
-    //                 }}
-    //             />
-    //         </Hotkeys>
-    //     );
-    // }
+    private toggleDialog = e => this.setState({ isOpen: !this.state.isOpen });
 
     public render() {
         return (
             <div className='app' role='main'>
-                <VersionTag version={pkg.version} />
+                <VersionTag version={pkg.version} onClick={this.toggleDialog} />
                 <Editor />
                 <Result />
+                <Dialog
+                    isOpen={this.state.isOpen}
+                    onClose={this.toggleDialog}
+                    iconName='document'
+                    title={`Release Notes ${pkg.version}`}
+                >
+                    <div className='pt-dialog-body'>
+                        <ReactMarkdown source={generateReleaseNotes(pkg.version)} />
+                    </div>
+                </Dialog>
             </div>
         );
     }

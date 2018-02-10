@@ -73,7 +73,6 @@ export class ResultBase extends React.Component<ResultProps> {
             .filter(v => v.hasOwnProperty('id'))
             .filter(poke => poke.status === 'Boxed')
             .map((poke, index) => {
-                console.log(poke);
                 return <BoxedPokemon key={index} {...poke} />;
             });
     }
@@ -83,7 +82,6 @@ export class ResultBase extends React.Component<ResultProps> {
             .filter(v => v.hasOwnProperty('id'))
             .filter(poke => poke.status === 'Dead')
             .map((poke, index) => {
-                console.log(poke);
                 return <DeadPokemon key={index} {...poke} />;
             });
     }
@@ -177,10 +175,15 @@ export class ResultBase extends React.Component<ResultProps> {
             <>
                 {this.renderErrors()}
                 <ResizableBox
-                    width={'80rem'}
-                    height={'900px'}
-                    minConstraints={[10, 10]}
-                    maxConstraints={[Infinity, Infinity]}>
+                    width={1200}
+                    height={900}
+                    // minConstraints={[10, 10]}
+                    // maxConstraints={[Infinity, Infinity]}
+                    handleSize={[10, 10]}
+                    aixs='both'
+                    lockAspectRatio={false}
+                    style={{ margin: '3rem' }}
+                >
                     <div className='result container' style={{ backgroundColor: bgColor }}>
                         <div
                             className='trainer-container'

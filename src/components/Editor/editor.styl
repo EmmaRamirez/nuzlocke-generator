@@ -131,7 +131,7 @@
 input[name='metLevel']
   color: #ccc;
 
-.pt-dialog
+.pt-dialog.wide-dialog
   width: 90% !important;
 
 .has-nice-scrollbars
@@ -145,7 +145,7 @@ input[name='metLevel']
 
 
 .style-edit
-  align-items: flex-start;
+  align-items: center;
   align-content: center;
   border-bottom: 1px solid #ddd;
   display: flex;
@@ -164,7 +164,6 @@ input[name='metLevel']
   align-items: center;
   display: flex;
   .pt-control
-    background: #fafafa;
     border-radius: .25rem;
     margin: .25rem;
   label.pt-label
@@ -191,3 +190,9 @@ input[name='metLevel']
     border: none;
     border-radius: 50%;
     padding: 0;
+
+.color-edit-wrapper
+  align-items: center;
+  display: flex;
+  input[type='text']
+    padding-left: .5rem;

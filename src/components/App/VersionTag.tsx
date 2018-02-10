@@ -2,9 +2,10 @@ import * as React from 'react';
 
 import { Button } from '@blueprintjs/core';
 
-export const VersionTag = ({ version }) => {
+export const VersionTag = ({ version, onClick }) => {
     return (
         <Button
+            onClick={onClick}
             style={{
                 border: '1px solid #ddd',
                 position: 'absolute',

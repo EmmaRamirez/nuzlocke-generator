@@ -51,6 +51,7 @@ export class MassEditorBase extends React.Component<MassEditorProps, {}> {
                 iconName='edit'
                 isOpen={this.props.isOpen}
                 onClose={this.props.toggleDialog}
+                className='wide-dialog'
                 title='Mass Editor'>
                 <div className='pt-dialog-body'>
                     <LinkedAddPokemonButton
