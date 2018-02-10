@@ -13,3 +13,4 @@ export * from './levenshteinDistance';
 export * from './addForme';
 export { styleDefaults } from './styleDefaults';
 export { generateReleaseNotes } from './generateReleaseNotes';
+export * from './getBadges';
