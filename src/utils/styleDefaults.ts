@@ -6,5 +6,6 @@ export const styleDefaults = {
     backgroundImage: '',
     movesPosition: 'horizontal',
     teamImages: 'standard',
+    customCSS: ``,
     iconsNextToTeamPokemon: false,
 };
