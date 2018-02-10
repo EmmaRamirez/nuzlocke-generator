@@ -30,7 +30,7 @@ const generateMoves = moves => {
         move = move.trim();
         const type = getMoveType(move);
         return (
-            <div key={index} className={`move ${type}-type`}>
+            <div key={index} className={`move ${type}-type ${move.length >= 12 ? 'long-text-move' : '' }`}>
                 {move}
             </div>
         );

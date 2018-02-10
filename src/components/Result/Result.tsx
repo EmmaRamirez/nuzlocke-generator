@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Pokemon, Trainer } from 'models';
-import { StoreContext } from 'utils';
+import { getBadges } from 'utils';
 import { connect } from 'react-redux';
 import * as uuid from 'uuid/v4';
 import { ResizableBox } from 'react-resizable';
@@ -87,22 +87,9 @@ export class ResultBase extends React.Component<ResultProps> {
     }
 
     private renderBadgesOrTrials() {
-        const badges = [
-            'normalium-z',
-            'fightium-z',
-            'waterium-z',
-            'firium-z',
-            'grassium-z',
-            'rockium-z',
-            'electrium-z',
-            'ghostium-z',
-            'darkinium-z',
-            'dragonium-z',
-            'fairium-z',
-            'groundium-z',
-        ];
+        const { name } = this.props.game;
 
-        return badges.map((badge, index) => {
+        return getBadges(name).map((badge, index) => {
             // @ts-ignore
             return (
                 <img
