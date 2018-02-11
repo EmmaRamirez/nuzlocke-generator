@@ -81,6 +81,7 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                 <CurrentPokemonInput
                     labelName='Custom Image'
                     inputName='customImage'
+                    placeholder='http://..'
                     value={currentPokemon.customImage}
                     type='text'
                 />

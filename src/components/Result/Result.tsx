@@ -133,6 +133,18 @@ export class ResultBase extends React.Component<ResultProps> {
                         <div style={bottomTextStyle}>{trainer.name}</div>
                     </div>
                 )}
+                {trainer.money == null ? null : (
+                    <div className='money column'>
+                        <div>money</div>
+                        <div style={bottomTextStyle}>{trainer.money}</div>
+                    </div>
+                )}
+                {trainer.time == null || trainer.time === '' ? null : (
+                    <div className='time column'>
+                        <div>time</div>
+                        <div style={bottomTextStyle}>{trainer.time}</div>
+                    </div>
+                )}
                 {trainer.id == null || trainer.id === '' ? null : (
                     <div className='id column'>
                         <div>ID</div>
@@ -140,7 +152,7 @@ export class ResultBase extends React.Component<ResultProps> {
                     </div>
                 )}
                 {trainer.expShareStatus == null || trainer.expShareStatus === '' ? null : (
-                    <div className='id column'>
+                    <div className='expShareStatus column'>
                         <div>Exp Share</div>
                         <div style={bottomTextStyle}>
                             {(trainer.expShareStatus || '').toUpperCase()}
