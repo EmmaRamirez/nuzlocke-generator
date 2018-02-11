@@ -30,7 +30,9 @@ const generateMoves = moves => {
         move = move.trim();
         const type = getMoveType(move);
         return (
-            <div key={index} className={`move ${type}-type ${move.length >= 12 ? 'long-text-move' : '' }`}>
+            <div
+                key={index}
+                className={`move ${type}-type ${move.length >= 12 ? 'long-text-move' : ''}`}>
                 {move}
             </div>
         );
@@ -55,7 +57,7 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
             <div
                 role='presentation'
                 onClick={e => props.selectPokemon(poke.id)}
-                className={ props.style.imageStyle === 'round' ? 'round' : 'square'}
+                className={props.style.imageStyle === 'round' ? 'round' : 'square'}
                 style={{
                     cursor: 'pointer',
                     background: getBackgroundGradient(
@@ -74,7 +76,9 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
             </div>
             {poke.item == null ? null : (
                 <div
-                    className={`pokemon-item ${props.style.imageStyle === 'round' ? 'round' : 'square'}`}
+                    className={`pokemon-item ${
+                        props.style.imageStyle === 'round' ? 'round' : 'square'
+                    }`}
                     style={{
                         borderColor: typeToColor(getFirstType),
                     }}>
@@ -91,18 +95,20 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
                     <span className='pokemon-nickname'>{poke.nickname}</span>
                     <span className='pokemon-name'>{poke.species}</span>
                     {getGenderElement(poke.gender)}
-                    { poke.level ? <span className='pokemon-level'>lv. {poke.level}</span> : null }
+                    {poke.level ? <span className='pokemon-level'>lv. {poke.level}</span> : null}
                     <br />
                     <span className='pokemon-location'>
                         {poke.met === 'Starter' ? poke.met : `Met on ${poke.met}`}, from lv.{' '}
                         {poke.metLevel}
                     </span>
                     <br />
-                    { poke.nature ? <span className='pokemon-nature'>
-                        <strong>{poke.nature}</strong> nature
-                    </span> : null }
+                    {poke.nature ? (
+                        <span className='pokemon-nature'>
+                            <strong>{poke.nature}</strong> nature
+                        </span>
+                    ) : null}
                     <br />
-                    { poke.ability ? <span className='pokemon-ability'>{poke.ability}</span> : null }
+                    {poke.ability ? <span className='pokemon-ability'>{poke.ability}</span> : null}
                 </div>
                 {moves}
             </div>
@@ -111,10 +117,10 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
 };
 
 export const TeamPokemon = connect(
-    (state:any) => ({
-        style: state.style
+    (state: any) => ({
+        style: state.style,
     }),
     {
         selectPokemon,
-    }
+    },
 )(TeamPokemonBase as any);

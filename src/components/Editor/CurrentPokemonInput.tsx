@@ -55,14 +55,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         this.props.selectPokemon && this.props.selectPokemon(this.props.selectedId);
     };
 
-    public getInput({
-        labelName,
-        inputName,
-        type,
-        value,
-        placeholder,
-        options,
-    }: any) {
+    public getInput({ labelName, inputName, type, value, placeholder, options }: any) {
         value = value == null ? '' : value;
         if (type === 'moves') {
             return (
@@ -71,10 +64,12 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                         onChange={values => {
                             console.log(values);
                             const edit = {
-                                moves: values
+                                moves: values,
                             };
-                            this.props.editPokemon && this.props.editPokemon(edit, this.props.selectedId);
-                            this.props.selectPokemon && this.props.selectPokemon(edit, this.props.selectedId);
+                            this.props.editPokemon &&
+                                this.props.editPokemon(edit, this.props.selectedId);
+                            this.props.selectPokemon &&
+                                this.props.selectPokemon(edit, this.props.selectedId);
                         }}
                         // onInputChange={(e:any) => {
                         //     const edit = {
@@ -170,9 +165,9 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
     }
 }
 
-export const CurrentPokemonInput:any = connect(
-    (state:any) => ({
-        selectedId: state.selectedId
+export const CurrentPokemonInput: any = connect(
+    (state: any) => ({
+        selectedId: state.selectedId,
     }),
-    { editPokemon, selectPokemon }
+    { editPokemon, selectPokemon },
 )(CurrentPokemonInputBase as any);

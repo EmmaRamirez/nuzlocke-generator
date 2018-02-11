@@ -50,7 +50,4 @@ export const DeadPokemonBase = (poke: Pokemon & { selectPokemon }) => {
     );
 };
 
-export const DeadPokemon = connect(
-    null,
-    { selectPokemon }
-)(DeadPokemonBase);
+export const DeadPokemon = connect(null, { selectPokemon })(DeadPokemonBase);

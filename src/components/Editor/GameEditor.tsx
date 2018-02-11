@@ -23,12 +23,12 @@ export class GameEditorBase extends React.Component<GameEditorProps, {}> {
         this.props.editGame({ name: e.target.value });
     };
 
-    private isMinimized():any {
+    private isMinimized(): any {
         if (this.props.editor.minimized) {
             return {
                 position: 'fixed',
                 top: '2px',
-                left: '2px'
+                left: '2px',
             };
         }
         return {};

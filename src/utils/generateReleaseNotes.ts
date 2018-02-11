@@ -1,4 +1,4 @@
-export function generateReleaseNotes(version:string) {
+export function generateReleaseNotes(version: string) {
     return releaseNotes[version] || '';
 }
 
@@ -19,5 +19,5 @@ This is a limited beta of the application. As such, it has a shitload of bugs ev
 - You can comment, request new features, or file bugs [here](https://github.com/EmmaRamirez/nuzlocke-generator/issues)
 - Right now, the biggest needs are images for Pokémon and finding bugs
 - If you complete your nuzlocke & document it using this, send me the final data so I can add it to a Hall of Fame!
-    `
+    `,
 };

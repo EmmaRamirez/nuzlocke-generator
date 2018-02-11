@@ -23,6 +23,9 @@ module.exports = {
         stats: 'errors-only',
         historyApiFallback: true,
     },
+    stats: {
+        warnings: false
+    },
     module: {
         rules: [
             {

@@ -169,8 +169,7 @@ export class ResultBase extends React.Component<ResultProps> {
                     handleSize={[10, 10]}
                     aixs='both'
                     lockAspectRatio={false}
-                    style={{ margin: '3rem' }}
-                >
+                    style={{ margin: '3rem' }}>
                     <div className='result container' style={{ backgroundColor: bgColor }}>
                         <div
                             className='trainer-container'

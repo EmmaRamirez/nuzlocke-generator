@@ -12,7 +12,6 @@ import { generateReleaseNotes } from 'utils';
 
 import { Dialog } from '@blueprintjs/core';
 
-
 import * as ReactMarkdown from 'react-markdown';
 
 const pkg = require('../../../package.json');
@@ -20,12 +19,14 @@ const croagunk = require('assets/img/croagunk.gif');
 
 import './app.styl';
 
-export class AppBase extends React.Component<{ seeRelease: seeRelease, sawRelease: any }, { isOpen: boolean }> {
-
+export class AppBase extends React.Component<
+    { seeRelease: seeRelease; sawRelease: any },
+    { isOpen: boolean }
+> {
     constructor(props: any) {
         super(props);
         this.state = {
-            isOpen: !this.props.sawRelease[pkg.version]
+            isOpen: !this.props.sawRelease[pkg.version],
         };
     }
 
@@ -34,7 +35,7 @@ export class AppBase extends React.Component<{ seeRelease: seeRelease, sawReleas
     private closeDialog = e => {
         this.props.seeRelease(pkg.version);
         this.toggleDialog(null);
-    }
+    };
 
     private toggleDialog = e => this.setState({ isOpen: !this.state.isOpen });
 
@@ -49,12 +50,16 @@ export class AppBase extends React.Component<{ seeRelease: seeRelease, sawReleas
                     onClose={this.closeDialog}
                     icon='document'
                     title={`Release Notes ${pkg.version}`}
-                    className='release-dialog'
-                >
+                    className='release-dialog'>
                     <div className='pt-dialog-body'>
                         <div className='release-notes-wrapper'>
-                            <h3>{pkg.version} <img alt='Croagunk' src={croagunk} /></h3>
-                            <ReactMarkdown className='release-notes' source={generateReleaseNotes(pkg.version)} />
+                            <h3>
+                                {pkg.version} <img alt='Croagunk' src={croagunk} />
+                            </h3>
+                            <ReactMarkdown
+                                className='release-notes'
+                                source={generateReleaseNotes(pkg.version)}
+                            />
                         </div>
                     </div>
                 </Dialog>
@@ -64,10 +69,10 @@ export class AppBase extends React.Component<{ seeRelease: seeRelease, sawReleas
 }
 
 export const App = connect(
-    (state:any) => ({
-        sawRelease: state.sawRelease
+    (state: any) => ({
+        sawRelease: state.sawRelease,
     }),
     {
-        seeRelease
-    }
+        seeRelease,
+    },
 )(AppBase);

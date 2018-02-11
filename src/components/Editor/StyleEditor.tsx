@@ -31,11 +31,12 @@ export const ColorEdit = ({ value, onChange, name }) => {
                 value={value}
             />
             <input
-                style={{ border: 'none', }}
+                style={{ border: 'none' }}
                 onChange={onChange}
                 type='text'
                 name={name}
-                value={value} />
+                value={value}
+            />
         </div>
     );
 };
@@ -58,7 +59,10 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
             <div className='style-edit'>
                 <label className='pt-label pt-inline'>Image Style </label>
                 <div className='pt-select'>
-                    <select name='imageStyle' onChange={e => editEvent(e, props)} value={props.style.imageStyle}>
+                    <select
+                        name='imageStyle'
+                        onChange={e => editEvent(e, props)}
+                        value={props.style.imageStyle}>
                         <option value='round'>Round</option>
                         <option value='square'>Square</option>
                     </select>
@@ -68,7 +72,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
             <div className='style-edit'>
                 <label className='pt-label pt-inline'>Background color</label>
                 <ColorEdit
-                    onChange={ e => editEvent(e, props) }
+                    onChange={e => editEvent(e, props)}
                     name={'bgColor'}
                     value={props.style.bgColor}
                 />
@@ -116,18 +120,25 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
             </div>
 
             <div className='style-edit'>
-                <Checkbox checked={false} name='iconsNextToTeamPokemon' label='Icons Next to Team Pokemon' onChange={e => editEvent(e, props)} />
+                <Checkbox
+                    checked={false}
+                    name='iconsNextToTeamPokemon'
+                    label='Icons Next to Team Pokemon'
+                    onChange={e => editEvent(e, props)}
+                />
             </div>
 
             <div className='custom-css-input-wrapper'>
-                <label style={{ padding: '.5rem' }} className='pt-label'>Custom CSS <a href=''>Check out Layout Guide</a></label>
+                <label style={{ padding: '.5rem' }} className='pt-label'>
+                    Custom CSS <a href=''>Check out Layout Guide</a>
+                </label>
                 <TextArea
                     large={true}
                     onChange={e => editEvent(e, props, 'customCSS')}
                     className='custom-css-input pt-fill'
                     value={props.style.customCSS}
                 />
-                <style>{ props.style.customCSS }</style>
+                <style>{props.style.customCSS}</style>
             </div>
         </div>
     );

@@ -50,5 +50,5 @@ export const PokemonKeys: Pokemon = {
     num: '',
     position: 0,
     wonderTradedFor: '',
-    mvp: false
+    mvp: false,
 };

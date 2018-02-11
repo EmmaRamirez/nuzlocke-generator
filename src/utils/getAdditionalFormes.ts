@@ -196,15 +196,10 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
     ) {
         return ['Mega'];
     }
-    if (
-        s === 'charizard' ||
-        s === 'mewtwo'
-    ) {
+    if (s === 'charizard' || s === 'mewtwo') {
         return ['Mega-X', 'Mega-Y'];
     }
-    if (
-        s === 'kyogre' || s === 'groudon'
-    ) {
+    if (s === 'kyogre' || s === 'groudon') {
         return ['Primal'];
     }
     return [];

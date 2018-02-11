@@ -1,5 +1,12 @@
 export function getBadges(name) {
-    if (name === 'Red' || name === 'Blue' || name === 'Yellow' || name === 'Green' || name === 'FireRed' || name === 'LeafGreen') {
+    if (
+        name === 'Red' ||
+        name === 'Blue' ||
+        name === 'Yellow' ||
+        name === 'Green' ||
+        name === 'FireRed' ||
+        name === 'LeafGreen'
+    ) {
         return [
             'boulder-badge',
             'cascade-badge',
@@ -8,11 +15,17 @@ export function getBadges(name) {
             'soul-badge',
             'marsh-badge',
             'volcano-badge',
-            'earth-badge'
+            'earth-badge',
         ];
     }
 
-    if (name === 'Gold' || name === 'Silver' || name === 'Crystal' || name === 'HeartGold' || name === 'SoulSilver') {
+    if (
+        name === 'Gold' ||
+        name === 'Silver' ||
+        name === 'Crystal' ||
+        name === 'HeartGold' ||
+        name === 'SoulSilver'
+    ) {
         return [
             'zephyr-badge',
             'hive-badge',
@@ -29,11 +42,17 @@ export function getBadges(name) {
             'soul-badge',
             'marsh-badge',
             'volcano-badge',
-            'earth-badge'
+            'earth-badge',
         ];
     }
 
-    if (name === 'Ruby' || name === 'Sapphire' || name === 'Emerald' || name === 'AlphaSapphire' || name === 'OmegaRuby') {
+    if (
+        name === 'Ruby' ||
+        name === 'Sapphire' ||
+        name === 'Emerald' ||
+        name === 'AlphaSapphire' ||
+        name === 'OmegaRuby'
+    ) {
         return [
             'stone-badge',
             'knuckle-badge',
@@ -42,7 +61,7 @@ export function getBadges(name) {
             'balance-badge',
             'feather-badge',
             'mind-badge',
-            'rain-badge'
+            'rain-badge',
         ];
     }
 
@@ -55,7 +74,7 @@ export function getBadges(name) {
             'relic-badge',
             'mine-badge',
             'icicle-badge',
-            'beacon-badge'
+            'beacon-badge',
         ];
     }
 
@@ -68,7 +87,7 @@ export function getBadges(name) {
             'quake-badge',
             'jet-badge',
             'freeze-badge',
-            'legend-badge'
+            'legend-badge',
         ];
     }
 
@@ -81,7 +100,7 @@ export function getBadges(name) {
             'quake-badge',
             'jet-badge',
             'legend-badge',
-            'wave-badge'
+            'wave-badge',
         ];
     }
 
@@ -94,7 +113,7 @@ export function getBadges(name) {
             'voltage-badge',
             'fairy-badge',
             'psychic-badge',
-            'iceberg-badge'
+            'iceberg-badge',
         ];
     }
 

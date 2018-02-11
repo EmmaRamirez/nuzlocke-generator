@@ -30,7 +30,4 @@ export const BoxedPokemonBase = (poke: Pokemon & { selectPokemon }) => {
     );
 };
 
-export const BoxedPokemon = connect(
-    null,
-    { selectPokemon }
-)(BoxedPokemonBase);
+export const BoxedPokemon = connect(null, { selectPokemon })(BoxedPokemonBase);
