@@ -1,26 +1,37 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Button, ButtonGroup, Dialog, Callout } from '@blueprintjs/core';
+import { Button, ButtonGroup, Dialog, Callout, TextArea } from '@blueprintjs/core';
 
-import { editGame } from 'actions';
+import { replaceState } from 'actions';
 
 export interface ImportAndExportProps {
     state: any;
+    replaceState: replaceState;
 }
 
 export class ImportAndExportBase extends React.Component<
     ImportAndExportProps,
-    { isOpen: boolean; mode: 'import' | 'export' }
+    { isOpen: boolean; mode: 'import' | 'export', data: string }
 > {
+    public textarea: any;
+
     constructor(props) {
         super(props);
         this.state = {
             isOpen: false,
             mode: 'export',
+            data: '',
         };
     }
 
-    private importState = () => {};
+    private confirmImport = e => {
+        this.props.replaceState(JSON.parse(this.state.data));
+    };
+
+    private importState = () => {
+        this.setState({ mode: 'import' });
+        this.setState({ isOpen: true });
+    };
 
     private exportState = state => {
         delete state.router;
@@ -39,22 +50,40 @@ export class ImportAndExportBase extends React.Component<
                             : 'Import Nuzlocke Save'
                     }
                     icon='floppy-disk'>
-                    <Callout>Copy this and paste it somewhere safe!</Callout>
-                    <div
-                        style={{ height: '40vh', overflow: 'auto' }}
-                        className='pt-dialog-body has-nice-scrollbars'>
-                        <span suppressContentEditableWarning={true} contentEditable={true}>
-                            {JSON.stringify(this.props.state, null, 2)}
-                        </span>
-                    </div>
+                    {
+                        this.state.mode === 'export' ?
+                        <>
+                            <Callout>Copy this and paste it somewhere safe!</Callout>
+                            <div
+                                style={{ height: '40vh', overflow: 'auto' }}
+                                className='pt-dialog-body has-nice-scrollbars'>
+                                <span suppressContentEditableWarning={true} contentEditable={true}>
+                                    {JSON.stringify(this.props.state, null, 2)}
+                                </span>
+                            </div>
+                        </>
+                        :
+                        <>
+                            <div className='pt-dialog-body has-nice-scrollbars'>
+                                <TextArea
+                                    className='custom-css-input pt-fill'
+                                    onChange={(e:any) => this.setState({ data: e.target.value }) }
+                                    value={this.state.data}
+                                    large={true}
+                                />
+                            </div>
+                            <div className='pt-dialog-footer'>
+                                <Button onClick={this.confirmImport} text='Confirm' />
+                            </div>
+                        </>
+                    }
                 </Dialog>
                 <ButtonGroup>
                     <Button
                         onClick={e => this.importState()}
                         icon='import'
                         className='pt-intent-primary'
-                        disabled
-                        title={`Sorry this doesn't work yet -_-`}>
+                    >
                         Import
                     </Button>
                     <Button onClick={e => this.exportState(this.props.state)} icon='export'>
@@ -67,5 +96,5 @@ export class ImportAndExportBase extends React.Component<
 }
 
 export const ImportAndExport = connect((state: any) => ({ state: state }), {
-    editGame,
+    replaceState
 })(ImportAndExportBase as any);

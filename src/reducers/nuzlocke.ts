@@ -9,6 +9,8 @@ export function nuzlocke(
     switch (action.type) {
         case 'SAVE_NUZLOCKE':
             return { ...state, ...action.nuzlocke };
+        case 'REPLACE_STATE':
+            return action.replaceWith.nuzlocke;
         default:
             return state;
     }

@@ -191,7 +191,7 @@ export class ResultBase extends React.Component<ResultProps> {
                     <div className='team-container'>{this.renderTeamPokemon()}</div>
                     <div className='boxed-container'>
                         <h3>{box[1]}</h3>
-                        {this.renderBoxedPokemon()}
+                        <div style={{ marginLeft: '1rem' }}>{this.renderBoxedPokemon()}</div>
                     </div>
                     <div className='dead-container'>
                         <h3>{box[2]}</h3>
