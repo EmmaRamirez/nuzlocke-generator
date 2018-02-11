@@ -11,6 +11,7 @@ import { game } from './game';
 import { trainer } from './trainer';
 import { history } from './history';
 import { style } from './style';
+import { sawRelease } from './sawRelease';
 import { editor } from './editor';
 
 // export const appReducers = combineReducers({
@@ -26,6 +27,7 @@ export const reducers = {
     pokemon,
     editor,
     selectedId,
+    sawRelease,
     trainer,
     history,
     style,

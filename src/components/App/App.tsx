@@ -1,16 +1,17 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Store } from 'redux';
 
-import { saveNuzlocke } from '../../actions';
-import { BasicComponentWithTypes } from '../../services';
+import { seeRelease } from 'actions';
 import { Editor } from '../Editor';
 import { Result } from '../Result';
 import { VersionTag } from './VersionTag';
 import { generateReleaseNotes } from 'utils';
 
 import { Dialog } from '@blueprintjs/core';
+
 
 import * as ReactMarkdown from 'react-markdown';
 
@@ -19,16 +20,21 @@ const croagunk = require('assets/img/croagunk.gif');
 
 import './app.styl';
 
-export class App extends React.Component<{}, { isOpen: boolean }> {
+export class AppBase extends React.Component<{ seeRelease: seeRelease, sawRelease: any }, { isOpen: boolean }> {
 
     constructor(props: any) {
         super(props);
         this.state = {
-            isOpen: true
+            isOpen: !this.props.sawRelease[pkg.version]
         };
     }
 
     public componentWillMount() {}
+
+    private closeDialog = e => {
+        this.props.seeRelease(pkg.version);
+        this.toggleDialog(null);
+    }
 
     private toggleDialog = e => this.setState({ isOpen: !this.state.isOpen });
 
@@ -40,8 +46,8 @@ export class App extends React.Component<{}, { isOpen: boolean }> {
                 <Result />
                 <Dialog
                     isOpen={this.state.isOpen}
-                    onClose={this.toggleDialog}
-                    iconName='document'
+                    onClose={this.closeDialog}
+                    icon='document'
                     title={`Release Notes ${pkg.version}`}
                     className='release-dialog'
                 >
@@ -56,3 +62,12 @@ export class App extends React.Component<{}, { isOpen: boolean }> {
         );
     }
 }
+
+export const App = connect(
+    (state:any) => ({
+        sawRelease: state.sawRelease
+    }),
+    {
+        seeRelease
+    }
+)(AppBase);

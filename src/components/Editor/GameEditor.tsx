@@ -60,7 +60,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, {}> {
                             {listOfGames.map(game => <option key={game}>{game}</option>)}
                         </select>
                     </div>
-                    <Button iconName='list' intent={Intent.PRIMARY}>
+                    <Button icon='list' intent={Intent.PRIMARY}>
                         Add Rules
                     </Button>
                 </div>

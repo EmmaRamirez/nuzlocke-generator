@@ -36,7 +36,7 @@ export class DeletePokemonButton extends React.Component<
         return (
             <div className='delete-pokemon-button'>
                 <Alert
-                    iconName='trash'
+                    icon='trash'
                     isOpen={this.state.dialogOn && this.context.store.getState().confirmation}
                     onCancel={this.toggleDialog}
                     onConfirm={this.props.onClick}

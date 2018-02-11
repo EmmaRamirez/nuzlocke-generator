@@ -38,7 +38,7 @@ export class ImportAndExportBase extends React.Component<
                             ? 'Exported Nuzlocke Save'
                             : 'Import Nuzlocke Save'
                     }
-                    iconName='floppy-disk'>
+                    icon='floppy-disk'>
                     <Callout>Copy this and paste it somewhere safe!</Callout>
                     <div
                         style={{ height: '40vh', overflow: 'auto' }}
@@ -51,11 +51,11 @@ export class ImportAndExportBase extends React.Component<
                 <ButtonGroup>
                     <Button
                         onClick={e => this.importState()}
-                        iconName='import'
+                        icon='import'
                         className='pt-intent-primary'>
                         Import
                     </Button>
-                    <Button onClick={e => this.exportState(this.props.state)} iconName='export'>
+                    <Button onClick={e => this.exportState(this.props.state)} icon='export'>
                         Export
                     </Button>
                 </ButtonGroup>

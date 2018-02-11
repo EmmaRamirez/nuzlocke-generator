@@ -14,3 +14,4 @@ export { editTrainer, EDIT_TRAINER } from './editTrainer';
 export * from './addHistoryEntry';
 export * from './editStyle';
 export * from './changeEditorSize';
+export * from './seeRelease';

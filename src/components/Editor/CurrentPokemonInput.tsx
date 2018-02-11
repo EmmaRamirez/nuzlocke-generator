@@ -84,7 +84,6 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                         //     this.props.selectPokemon && this.props.selectPokemon(edit, this.props.selectedId);
                         // }}
                         values={value || []}
-                        leftIconName='ninja'
                     />
                 </ErrorBoundary>
             );

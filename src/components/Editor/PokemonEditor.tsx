@@ -107,7 +107,7 @@ export class PokemonEditor extends React.Component<{}, PokemonEditorState> {
                             defaultPokemon={generateEmptyPokemon(this.state.team)}
                         />
                         <Button
-                            iconName={'heat-grid'}
+                            icon={'heat-grid'}
                             onClick={this.openMassEditor}
                             style={{ marginLeft: 'auto' }}
                             className='pt-intent-primary pt-minimal'>

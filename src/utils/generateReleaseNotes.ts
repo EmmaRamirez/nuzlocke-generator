@@ -8,6 +8,7 @@ const releaseNotes = {
 This is a limited beta of the application. As such, it has a shitload of bugs everywhere. Some key things to note are:
 
 - Data _is_ saved automatically, but be sure to export data into a file often
+- Data is saved via localStorage, so you may not be able to view your saved data on a different device, browser, or in incognito mode
 - Images for Pokemon may not be present
 - Some editor & styling options may not work
 - Custom regions don't work yet

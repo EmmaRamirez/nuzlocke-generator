@@ -48,7 +48,7 @@ export class MassEditorBase extends React.Component<MassEditorProps, {}> {
     public render() {
         return (
             <Dialog
-                iconName='edit'
+                icon='edit'
                 isOpen={this.props.isOpen}
                 onClose={this.props.toggleDialog}
                 className='wide-dialog'
