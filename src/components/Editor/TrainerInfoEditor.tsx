@@ -54,6 +54,12 @@ export class TrainerInfoEditor extends React.Component<{}, {}> {
                 />
                 <LinkedTrainerInfoEditField
                     onInput={this.onInput}
+                    label='Title'
+                    name='title'
+                    placeholder=''
+                />
+                <LinkedTrainerInfoEditField
+                    onInput={this.onInput}
                     label='# of Badges'
                     name='badges'
                     placeholder='0'

@@ -97,12 +97,17 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
                     {getGenderElement(poke.gender)}
                     {poke.level ? <span className='pokemon-level'>lv. {poke.level}</span> : null}
                     <br />
-                    <span className='pokemon-location'>
-                        {poke.met === 'Starter' ? poke.met : `Met on ${poke.met}`}, from lv.{' '}
-                        {poke.metLevel}
-                    </span>
+                    {
+                        poke.met && poke.metLevel ?
+                        <span className='pokemon-location'>
+                            {poke.met === 'Starter' ? poke.met : `Met on ${poke.met}`}, from lv.{' '}
+                            {poke.metLevel}
+                        </span>
+                        :
+                        null
+                    }
                     <br />
-                    {poke.nature ? (
+                    {poke.nature && poke.nature !== 'None' ? (
                         <span className='pokemon-nature'>
                             <strong>{poke.nature}</strong> nature
                         </span>

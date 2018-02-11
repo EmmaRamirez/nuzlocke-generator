@@ -127,7 +127,12 @@ export class ResultBase extends React.Component<ResultProps, { width: any, heigh
                     :
                     null
                 }
-                <div className='nuzlocke-title'>{this.props.game.name} Nuzlocke</div>
+                {
+                    trainer.title ?
+                    <div className='nuzlocke-title'>{this.props.trainer.title}</div>
+                    :
+                    <div className='nuzlocke-title'>{this.props.game.name} Nuzlocke</div>
+                }
                 {trainer.name === null || trainer.name === '' ? null : (
                     <div className='name column'>
                         <div>name</div>

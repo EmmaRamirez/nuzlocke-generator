@@ -52,7 +52,10 @@ export class ImportAndExportBase extends React.Component<
                     <Button
                         onClick={e => this.importState()}
                         icon='import'
-                        className='pt-intent-primary'>
+                        className='pt-intent-primary'
+                        disabled
+                        title={`Sorry this doesn't work yet -_-`}
+                    >
                         Import
                     </Button>
                     <Button onClick={e => this.exportState(this.props.state)} icon='export'>

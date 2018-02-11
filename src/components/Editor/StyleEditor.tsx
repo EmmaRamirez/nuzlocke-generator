@@ -73,15 +73,6 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
             </div>
 
             <div className='style-edit'>
-                <label className='pt-label pt-inline'>Background color</label>
-                <ColorEdit
-                    onChange={e => editEvent(e, props)}
-                    name={'bgColor'}
-                    value={props.style.bgColor}
-                />
-            </div>
-
-            <div className='style-edit'>
                 <label className='pt-label pt-inline'>Result Dimensions</label>
                 <input
                     name='resultWidth'
@@ -93,6 +84,15 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                     className='pt-input'
                     onChange={e => editEvent(e, props) }
                     value={props.style.resultHeight}
+                />
+            </div>
+
+            <div className='style-edit'>
+                <label className='pt-label pt-inline'>Background color</label>
+                <ColorEdit
+                    onChange={e => editEvent(e, props)}
+                    name={'bgColor'}
+                    value={props.style.bgColor}
                 />
             </div>
 
