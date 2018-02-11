@@ -95,7 +95,7 @@ export class ResultBase extends React.Component<ResultProps> {
                 <img
                     // @ts-ignore
                     className={
-                        this.props.trainer.badges.includes(badge) ? 'obtained' : 'not-obtained'
+                        this.props.trainer && this.props.trainer.badges && this.props.trainer.badges.includes(badge) ? 'obtained' : 'not-obtained'
                     }
                     key={badge}
                     alt={badge}
