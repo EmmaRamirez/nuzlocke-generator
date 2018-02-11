@@ -24,7 +24,7 @@ module.exports = {
         historyApiFallback: true,
     },
     stats: {
-        warnings: false
+        warnings: false,
     },
     module: {
         rules: [

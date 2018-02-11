@@ -1,9 +1,7 @@
 import { Action, ADD_POKEMON, DELETE_POKEMON, EDIT_POKEMON } from '../actions';
 import { generateEmptyPokemon } from 'utils';
 
-const pokemonState = [
-    generateEmptyPokemon()
-];
+const pokemonState = [generateEmptyPokemon()];
 
 export function pokemon(
     state = pokemonState,

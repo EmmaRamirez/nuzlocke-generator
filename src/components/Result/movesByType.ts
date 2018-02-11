@@ -123,7 +123,7 @@ export const movesByType: any = {
         'Charge',
         'Charge Beam',
         'Thunder Fang',
-        'Plasma Fists'
+        'Plasma Fists',
     ],
     Fairy: [
         'Dazzling Gleam',
@@ -230,7 +230,7 @@ export const movesByType: any = {
         'Incinerate',
         'Sunny Day',
         'Burn Up',
-        'Mind Blown'
+        'Mind Blown',
     ],
     Flying: [
         'Feather Dance',
@@ -660,7 +660,7 @@ export const movesByType: any = {
         'Psyshock',
         'Agility',
         'Photon Geyser',
-        'Light That Burns The Sky'
+        'Light That Burns The Sky',
     ],
     Rock: [
         'Rock Throw',

@@ -14,8 +14,8 @@ export interface BadgeInputProps {
     editTrainer: any;
 }
 
-const handleDeletion = (badges, e) => {
-    badges.delete(e.target.label);
+const handleDeletion = (badges, badge) => {
+    badges.delete(badge);
     return badges;
 };
 
@@ -23,42 +23,63 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, { badges: S
     constructor(props) {
         super(props);
         this.state = {
-            badges: new Set([])
+            badges: new Set([]),
         };
     }
     public render() {
-        return <TrainerInfoEditField
-            label='Checkpoints (Badges)'
-            name='badges'
-            placeholder='...'
-            value={null}
-            onChange={null}
-            element={inputProps =>
-                <Popover content={<Menu>
-                    {
-                        getBadges(this.props.game.name)
-                            .map(badge => <Checkbox onChange={(e:any) => {
-                                this.setState({
-                                    badges: this.state.badges.has(e.target.label) ? handleDeletion(this.state.badges, e) : this.state.badges.add(e.target.label)
-                                }, () => {
-                                    this.props.editTrainer({ badges: Array.from(this.state.badges) });
-                                });
-                            }} checked={this.props.trainer && this.props.trainer.badges && this.props.trainer.badges.includes(badge)} key={badge} label={badge} />)
-                    }
-                </Menu>} position={Position.BOTTOM}>
-                    <Button>Select Badges</Button>
-                </Popover>
-            }
-        />;
+        return (
+            <TrainerInfoEditField
+                label='Checkpoints (Badges)'
+                name='badges'
+                placeholder='...'
+                value={null}
+                onChange={null}
+                element={inputProps => (
+                    <Popover
+                        content={
+                            <Menu>
+                                {getBadges(this.props.game.name).map(badge => (
+                                    <Checkbox
+                                        onChange={(e: any) => {
+                                            this.setState(
+                                                {
+                                                    badges: this.state.badges.has(badge)
+                                                        ? handleDeletion(this.state.badges, badge)
+                                                        : this.state.badges.add(badge),
+                                                },
+                                                () => {
+                                                    this.props.editTrainer({
+                                                        badges: Array.from(this.state.badges),
+                                                    });
+                                                },
+                                            );
+                                        }}
+                                        checked={
+                                            this.props.trainer &&
+                                            this.props.trainer.badges &&
+                                            this.props.trainer.badges.includes(badge)
+                                        }
+                                        key={badge}
+                                        label={badge}
+                                    />
+                                ))}
+                            </Menu>
+                        }
+                        position={Position.BOTTOM}>
+                        <Button>Select Badges</Button>
+                    </Popover>
+                )}
+            />
+        );
     }
 }
 
 export const BadgeInput = connect(
-    (state:any) => ({
+    (state: any) => ({
         trainer: state.trainer,
-        game: state.game
+        game: state.game,
     }),
     {
-        editTrainer
-    }
+        editTrainer,
+    },
 )(BadgeInputBase);

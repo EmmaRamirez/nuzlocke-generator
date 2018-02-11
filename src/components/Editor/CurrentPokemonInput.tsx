@@ -62,7 +62,9 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
             return (
                 <ErrorBoundary>
                     <TagInput
-                        tagProps={(v, i) => ({ className: `${getMoveType((v || '').toString().trim())}-type` }) }
+                        tagProps={(v, i) => ({
+                            className: `${getMoveType((v || '').toString().trim())}-type`,
+                        })}
                         onChange={values => {
                             console.log(values);
                             const edit = {

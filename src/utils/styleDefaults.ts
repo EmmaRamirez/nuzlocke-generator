@@ -9,5 +9,5 @@ export const styleDefaults = {
     customCSS: ``,
     iconsNextToTeamPokemon: false,
     resultHeight: '900',
-    resultWidth: '1200'
+    resultWidth: '1200',
 };

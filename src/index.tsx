@@ -12,7 +12,6 @@ import { Admin } from './components/Admin';
 import { appReducers } from './reducers';
 import { store, persistor } from './store';
 
-
 import 'assets/pokemon-font.css';
 
 import 'components/Shared/styles/base.styl';

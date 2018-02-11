@@ -2,7 +2,14 @@ import * as React from 'react';
 
 import { BadgeInput } from './BadgeInput';
 import { LinkedTrainerInfoEditField } from './LinkedTrainerInfoEditField';
-import { Checkbox, Button, Popover, Position, Menu, PopoverInteractionKind } from '@blueprintjs/core';
+import {
+    Checkbox,
+    Button,
+    Popover,
+    Position,
+    Menu,
+    PopoverInteractionKind,
+} from '@blueprintjs/core';
 
 const SpanBlock = ({ text }) => (
     <span

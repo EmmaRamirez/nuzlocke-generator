@@ -8,7 +8,7 @@ import { RadioGroup, Radio, TextArea, Checkbox } from '@blueprintjs/core';
 
 const styleOptions = [
     // 'Default Light',
-    'Default Dark'
+    'Default Dark',
 ];
 
 const value = `body {
@@ -55,7 +55,12 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
             <div className='style-edit'>
                 <label className='pt-label pt-inline'>Template</label>
                 <div className='pt-select'>
-                    <select name='template' onChange={e => editEvent(e, props)} value={props.style.template}>{styleOptions.map(o => <option key={o}>{o}</option>)}</select>
+                    <select
+                        name='template'
+                        onChange={e => editEvent(e, props)}
+                        value={props.style.template}>
+                        {styleOptions.map(o => <option key={o}>{o}</option>)}
+                    </select>
                 </div>
             </div>
 
@@ -77,12 +82,14 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 <input
                     name='resultWidth'
                     className='pt-input'
-                    onChange={ e => editEvent(e, props) }
+                    onChange={e => editEvent(e, props)}
                     value={props.style.resultWidth}
-                /><span style={{ marginRight: '0' }} className='pt-icon pt-icon-cross' /><input
+                />
+                <span style={{ marginRight: '0' }} className='pt-icon pt-icon-cross' />
+                <input
                     name='resultHeight'
                     className='pt-input'
-                    onChange={e => editEvent(e, props) }
+                    onChange={e => editEvent(e, props)}
                     value={props.style.resultHeight}
                 />
             </div>

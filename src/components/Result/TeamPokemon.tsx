@@ -42,7 +42,13 @@ const generateMoves = moves => {
 export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: any }) => {
     const poke = props;
     const moves =
-        poke.moves == null ? '' : <div className={`pokemon-moves ${props.style.movesPosition}`}>{generateMoves(poke.moves)}</div>;
+        poke.moves == null ? (
+            ''
+        ) : (
+            <div className={`pokemon-moves ${props.style.movesPosition}`}>
+                {generateMoves(poke.moves)}
+            </div>
+        );
     const getImage = (): string => {
         if (poke.customImage) {
             return `url(${poke.customImage})`;
@@ -97,15 +103,12 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
                     {getGenderElement(poke.gender)}
                     {poke.level ? <span className='pokemon-level'>lv. {poke.level}</span> : null}
                     <br />
-                    {
-                        poke.met && poke.metLevel ?
+                    {poke.met && poke.metLevel ? (
                         <span className='pokemon-location'>
                             {poke.met === 'Starter' ? poke.met : `Met on ${poke.met}`}, from lv.{' '}
                             {poke.metLevel}
                         </span>
-                        :
-                        null
-                    }
+                    ) : null}
                     <br />
                     {poke.nature && poke.nature !== 'None' ? (
                         <span className='pokemon-nature'>

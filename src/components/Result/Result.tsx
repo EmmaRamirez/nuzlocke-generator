@@ -94,7 +94,9 @@ export class ResultBase extends React.Component<ResultProps> {
             return (
                 <img
                     // @ts-ignore
-                    className={this.props.trainer.badges.includes(badge) ? 'obtained' : 'not-obtained'}
+                    className={
+                        this.props.trainer.badges.includes(badge) ? 'obtained' : 'not-obtained'
+                    }
                     key={badge}
                     alt={badge}
                     src={`./img/${badge}.png`}
@@ -108,8 +110,7 @@ export class ResultBase extends React.Component<ResultProps> {
         const bottomTextStyle: any = { fontSize: '1.1rem', fontWeight: 'bold' };
         return (
             <div className='trainer-wrapper'>
-                {
-                    trainer.image ?
+                {trainer.image ? (
                     <img
                         style={{
                             border: '2px solid rgba(255, 255, 255, 0.3)',
@@ -120,15 +121,12 @@ export class ResultBase extends React.Component<ResultProps> {
                         src={trainer.image ? trainer.image : 'img/moon.jpg'}
                         alt='Moon 2'
                     />
-                    :
-                    null
-                }
-                {
-                    trainer.title ?
+                ) : null}
+                {trainer.title ? (
                     <div className='nuzlocke-title'>{this.props.trainer.title}</div>
-                    :
+                ) : (
                     <div className='nuzlocke-title'>{this.props.game.name} Nuzlocke</div>
-                }
+                )}
                 {trainer.name === null || trainer.name === '' ? null : (
                     <div className='name column'>
                         <div>name</div>
@@ -167,9 +165,9 @@ export class ResultBase extends React.Component<ResultProps> {
     private onResize = (e, { element, size }) => {
         this.setState({
             width: size.width,
-            height: size.height
+            height: size.height,
         });
-    }
+    };
 
     public render() {
         const { style, box } = this.props;
@@ -178,38 +176,35 @@ export class ResultBase extends React.Component<ResultProps> {
         return (
             <>
                 {this.renderErrors()}
-                    <div
-                        className={`result container ${style.theme}`}
-                        style={{
-                            margin: '3rem',
-                            backgroundColor: bgColor,
-                            backgroundImage: `url(${style.backgroundImage})`,
-                            height: style.resultHeight + 'px',
-                            width: style.resultWidth + 'px',
-                        }}
-                    >
+                <div
+                    className={`result container ${style.theme}`}
+                    style={{
+                        margin: '3rem',
+                        backgroundColor: bgColor,
+                        backgroundImage: `url(${style.backgroundImage})`,
+                        height: style.resultHeight + 'px',
+                        width: style.resultWidth + 'px',
+                    }}>
+                    <div className='trainer-container' style={{ backgroundColor: topHeaderColor }}>
+                        {this.renderTrainer()}
+                    </div>
+                    <div className='team-container'>{this.renderTeamPokemon()}</div>
+                    <div className='boxed-container'>
+                        <h3>{box[1]}</h3>
+                        {this.renderBoxedPokemon()}
+                    </div>
+                    <div className='dead-container'>
+                        <h3>{box[2]}</h3>
                         <div
-                            className='trainer-container'
-                            style={{ backgroundColor: topHeaderColor }}>
-                            {this.renderTrainer()}
-                        </div>
-                        <div className='team-container'>{this.renderTeamPokemon()}</div>
-                        <div className='boxed-container'>
-                            <h3>{box[1]}</h3>
-                            {this.renderBoxedPokemon()}
-                        </div>
-                        <div className='dead-container'>
-                            <h3>{box[2]}</h3>
-                            <div
-                                style={{
-                                    display: 'flex',
-                                    flexWrap: 'wrap',
-                                    justifyContent: 'space-evenly',
-                                }}>
-                                {this.renderDeadPokemon()}
-                            </div>
+                            style={{
+                                display: 'flex',
+                                flexWrap: 'wrap',
+                                justifyContent: 'space-evenly',
+                            }}>
+                            {this.renderDeadPokemon()}
                         </div>
                     </div>
+                </div>
             </>
         );
     }
