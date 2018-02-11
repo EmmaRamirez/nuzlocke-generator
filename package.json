@@ -14,7 +14,8 @@
     "lint": "tslint --fix -c tslint.json 'src/**/*.{ts,tsx}'",
     "prestart": "webpack",
     "serve": "ts-node --disableWarnings server-src",
-    "start": "npm run serve"
+    "start": "npm run serve",
+    "deploy": "git subtree push — prefix dist heroku master"
   },
   "keywords": [],
   "author": "Emma Ramirez <ramirez.emma.g@gmail.com> (http://emmaramirez.me)",
