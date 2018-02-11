@@ -1,7 +1,12 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 
-import { StoreContext, matchSpeciesToTypes } from '../../utils';
-import { editPokemon, selectPokemon } from '../../actions';
+import { matchSpeciesToTypes } from 'utils';
+import { editPokemon, selectPokemon } from 'actions';
+
+import { ErrorBoundary } from 'components/Shared';
+
+import { TagInput } from '@blueprintjs/core';
 
 interface CurrentPokemonInputProps {
     labelName: string;
@@ -10,10 +15,12 @@ interface CurrentPokemonInputProps {
     value: any;
     placeholder?: string;
     options?: string[];
+    editPokemon?: any;
+    selectedId: any;
+    selectPokemon?: any;
 }
 
-@StoreContext
-export class CurrentPokemonInput extends React.Component<CurrentPokemonInputProps, {}> {
+export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInputProps, {}> {
     constructor(props: CurrentPokemonInputProps) {
         super(props);
     }
@@ -37,15 +44,15 @@ export class CurrentPokemonInput extends React.Component<CurrentPokemonInputProp
             };
         } else if (inputName === 'moves') {
             edit = {
-                [inputName]: e.target.value.split(','),
+                [inputName]: e.target.value,
             };
         } else {
             edit = {
                 [inputName]: e.target.value,
             };
         }
-        this.context.store.dispatch(editPokemon(edit, this.context.store.getState().selectedId));
-        this.context.store.dispatch(selectPokemon(this.context.store.getState().selectedId));
+        this.props.editPokemon && this.props.editPokemon(edit, this.props.selectedId);
+        this.props.selectPokemon && this.props.selectPokemon(this.props.selectedId);
     };
 
     public getInput({
@@ -55,8 +62,33 @@ export class CurrentPokemonInput extends React.Component<CurrentPokemonInputProp
         value,
         placeholder,
         options,
-    }: CurrentPokemonInputProps) {
+    }: any) {
         value = value == null ? '' : value;
+        if (type === 'moves') {
+            return (
+                <ErrorBoundary>
+                    <TagInput
+                        onChange={values => {
+                            console.log(values);
+                            const edit = {
+                                moves: values
+                            };
+                            this.props.editPokemon && this.props.editPokemon(edit, this.props.selectedId);
+                            this.props.selectPokemon && this.props.selectPokemon(edit, this.props.selectedId);
+                        }}
+                        // onInputChange={(e:any) => {
+                        //     const edit = {
+                        //         moves: e.target.value
+                        //     };
+                        //     this.props.editPokemon && this.props.editPokemon(edit, this.props.selectedId);
+                        //     this.props.selectPokemon && this.props.selectPokemon(edit, this.props.selectedId);
+                        // }}
+                        values={value || []}
+                        leftIconName='ninja'
+                    />
+                </ErrorBoundary>
+            );
+        }
         if (type === 'text') {
             return (
                 <input
@@ -138,3 +170,10 @@ export class CurrentPokemonInput extends React.Component<CurrentPokemonInputProp
         );
     }
 }
+
+export const CurrentPokemonInput:any = connect(
+    (state:any) => ({
+        selectedId: state.selectedId
+    }),
+    { editPokemon, selectPokemon }
+)(CurrentPokemonInputBase as any);

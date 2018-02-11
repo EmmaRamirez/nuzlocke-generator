@@ -234,7 +234,7 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                     inputName='moves'
                     placeholder=''
                     value={currentPokemon.moves}
-                    type='text'
+                    type='moves'
                 />
                 {this.state.expandedView ? this.moreInputs(currentPokemon) : null}
                 <br />

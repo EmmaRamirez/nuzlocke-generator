@@ -148,5 +148,64 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
     ) {
         return ['Alolan'];
     }
+    if (
+        s === 'venusaur' ||
+        s === 'blastoise' ||
+        s === 'alakazam' ||
+        s === 'gengar' ||
+        s === 'kangaskhan' ||
+        s === 'pinsir' ||
+        s === 'gyarados' ||
+        s === 'aerodactyl' ||
+        s === 'ampharos' ||
+        s === 'scizor' ||
+        s === 'heracross' ||
+        s === 'houndoom' ||
+        s === 'tyrantiar' ||
+        s === 'blaziken' ||
+        s === 'gardevoir' ||
+        s === 'mawile' ||
+        s === 'aggron' ||
+        s === 'medicham' ||
+        s === 'manectric' ||
+        s === 'aanette' ||
+        s === 'absol' ||
+        s === 'garchomp' ||
+        s === 'lucario' ||
+        s === 'abomasnow' ||
+        s === 'beedrill' ||
+        s === 'pidgeot' ||
+        s === 'slowbro' ||
+        s === 'steelix' ||
+        s === 'sceptile' ||
+        s === 'swampert' ||
+        s === 'sableye' ||
+        s === 'sharpedo' ||
+        s === 'camerupt' ||
+        s === 'altaria' ||
+        s === 'glalie' ||
+        s === 'salamence' ||
+        s === 'metagross' ||
+        s === 'latias' ||
+        s === 'latios' ||
+        s === 'rayquaza' ||
+        s === 'lopunny' ||
+        s === 'gallade' ||
+        s === 'audino' ||
+        s === 'diancie'
+    ) {
+        return ['Mega'];
+    }
+    if (
+        s === 'charizard' ||
+        s === 'mewtwo'
+    ) {
+        return ['Mega-X', 'Mega-Y'];
+    }
+    if (
+        s === 'kyogre' || s === 'groudon'
+    ) {
+        return ['Primal'];
+    }
     return [];
 };

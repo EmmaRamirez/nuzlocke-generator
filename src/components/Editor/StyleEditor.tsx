@@ -58,7 +58,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
             <div className='style-edit'>
                 <label className='pt-label pt-inline'>Image Style </label>
                 <div className='pt-select'>
-                    <select onChange={e => editEvent(e, props)} value={props.style.imageStyle}>
+                    <select name='imageStyle' onChange={e => editEvent(e, props)} value={props.style.imageStyle}>
                         <option value='round'>Round</option>
                         <option value='square'>Square</option>
                     </select>

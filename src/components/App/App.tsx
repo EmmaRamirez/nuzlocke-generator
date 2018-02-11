@@ -15,9 +15,9 @@ import { Dialog } from '@blueprintjs/core';
 import * as ReactMarkdown from 'react-markdown';
 
 const pkg = require('../../../package.json');
+const croagunk = require('assets/img/croagunk.gif');
 
-const result = require('../../assets/img/result.png');
-
+import './app.styl';
 
 export class App extends React.Component<{}, { isOpen: boolean }> {
 
@@ -43,9 +43,13 @@ export class App extends React.Component<{}, { isOpen: boolean }> {
                     onClose={this.toggleDialog}
                     iconName='document'
                     title={`Release Notes ${pkg.version}`}
+                    className='release-dialog'
                 >
                     <div className='pt-dialog-body'>
-                        <ReactMarkdown source={generateReleaseNotes(pkg.version)} />
+                        <div className='release-notes-wrapper'>
+                            <h3>{pkg.version} <img alt='Croagunk' src={croagunk} /></h3>
+                            <ReactMarkdown className='release-notes' source={generateReleaseNotes(pkg.version)} />
+                        </div>
                     </div>
                 </Dialog>
             </div>

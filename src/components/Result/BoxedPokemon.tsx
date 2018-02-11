@@ -1,14 +1,18 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 
-import { Pokemon } from '../../models';
+import { Pokemon } from 'models';
+import { selectPokemon } from 'actions';
 import { getBackgroundGradient } from './getBackgroundGradient';
 import { getGenderElement } from './getGenderElement';
 import { getSpriteIcon } from 'utils';
 
-export const BoxedPokemon = (poke: Pokemon) => {
+export const BoxedPokemonBase = (poke: Pokemon & { selectPokemon }) => {
     return (
         <div className='boxed-pokemon-container'>
             <div
+                role='presentation'
+                onClick={e => poke.selectPokemon(poke.id)}
                 className='boxed-pokemon-image'
                 style={{
                     backgroundImage: `url(${getSpriteIcon(
@@ -25,3 +29,8 @@ export const BoxedPokemon = (poke: Pokemon) => {
         </div>
     );
 };
+
+export const BoxedPokemon = connect(
+    null,
+    { selectPokemon }
+)(BoxedPokemonBase);

@@ -1,11 +1,13 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 
-import { Pokemon } from '../../models';
+import { Pokemon } from 'models';
 import { getBackgroundGradient } from './getBackgroundGradient';
 import { getGenderElement } from './getGenderElement';
 import { getSpriteIcon } from 'utils';
+import { selectPokemon } from 'actions';
 
-export const DeadPokemon = (poke: Pokemon) => {
+export const DeadPokemonBase = (poke: Pokemon & { selectPokemon }) => {
     const addForme = (species: string | undefined) => {
         if (poke.forme) {
             if (poke.forme === 'Alolan' || poke.forme === 'Alola') {
@@ -28,6 +30,8 @@ export const DeadPokemon = (poke: Pokemon) => {
     return (
         <div className={getClassname()} data-league={poke.champion}>
             <div
+                role='presentation'
+                onClick={e => poke.selectPokemon(poke.id)}
                 className='dead-pokemon-picture'
                 style={{
                     backgroundImage: getImage(),
@@ -45,3 +49,8 @@ export const DeadPokemon = (poke: Pokemon) => {
         </div>
     );
 };
+
+export const DeadPokemon = connect(
+    null,
+    { selectPokemon }
+)(DeadPokemonBase);

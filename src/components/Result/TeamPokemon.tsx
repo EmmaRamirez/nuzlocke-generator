@@ -37,7 +37,7 @@ const generateMoves = moves => {
     });
 };
 
-export const TeamPokemonBase = (props: Pokemon & { selectPokemon }) => {
+export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: any }) => {
     const poke = props;
     const moves =
         poke.moves == null ? '' : <div className='pokemon-moves'>{generateMoves(poke.moves)}</div>;
@@ -55,7 +55,7 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon }) => {
             <div
                 role='presentation'
                 onClick={e => props.selectPokemon(poke.id)}
-                className='bubble'
+                className={ props.style.imageStyle === 'round' ? 'round' : 'square'}
                 style={{
                     cursor: 'pointer',
                     background: getBackgroundGradient(
@@ -67,12 +67,14 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon }) => {
                     style={{
                         backgroundImage: getImage(),
                     }}
-                    className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()}`}
+                    className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()} ${
+                        props.style.imageStyle === 'round' ? 'round' : 'square'
+                    }`}
                 />
             </div>
             {poke.item == null ? null : (
                 <div
-                    className='pokemon-item'
+                    className={`pokemon-item ${props.style.imageStyle === 'round' ? 'round' : 'square'}`}
                     style={{
                         borderColor: typeToColor(getFirstType),
                     }}>
@@ -108,6 +110,11 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon }) => {
     );
 };
 
-export const TeamPokemon = connect(null, {
-    selectPokemon,
-})(TeamPokemonBase as any);
+export const TeamPokemon = connect(
+    (state:any) => ({
+        style: state.style
+    }),
+    {
+        selectPokemon,
+    }
+)(TeamPokemonBase as any);

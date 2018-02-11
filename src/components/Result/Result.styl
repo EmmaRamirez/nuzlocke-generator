@@ -77,16 +77,7 @@
   }
 }
 
-.pokemon-item {
-  background: #eee;
-  border: 5px solid white;
-  border-radius: 50%;
-  bottom: 0;
-  height: 3rem;
-  padding: .5rem;
-  position: absolute;
-  width: 3rem;
-}
+
 
 .pokemon-shiny {
   background: #eee;
@@ -293,13 +284,6 @@
   top: 0;
 }
 
-.boxed-pokemon-image {
-  background-size: cover;
-  background-position: center center;
-  display: inline-block;
-  height: 2rem;
-  width: 2rem;
-}
 
 .badge {
   height: 1rem;
@@ -345,8 +329,15 @@
 }
 
 .boxed-pokemon-image {
-  /*vertical-align: middle;*/
+  cursor: pointer;
+  background-size: cover;
+  background-position: center center;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
 }
+
+
 
 .pokemon-causeofdeath {
   color: black;
@@ -389,6 +380,7 @@
 }
 
 .dead-pokemon-picture {
+  cursor: pointer;
   height: 80px;
   width: 76px;
   background-size: cover;
@@ -459,28 +451,43 @@
   position: relative;
 }
 
-.pokemon-image {
-  background-size: cover;
-  background-position: center center;
-  border-radius: 50%;
-  display: inline-block;
-  height: 7.5rem;
-  width: 7.5rem;
-}
+
 
 .not-obtained {
   filter: grayscale(100%);
 }
 
-.bubble {
+.round {
   border-radius: 50%;
   display: inline-block;
   height: 8rem;
   width: 8rem;
   padding: .25rem;
-  -webkit-filter: drop-shadow(0 0 1px #000);
   position: relative;
   z-index: 10;
+}
+
+.square {
+  display: inline-block;
+  height: 8rem;
+  width: 8rem;
+  padding: .25rem;
+  position: relative;
+  z-index: 10;
+}
+
+.pokemon-image {
+  background-size: cover;
+  background-position: center center;
+  display: inline-block;
+  height: 7.5rem;
+  width: 7.5rem;
+  &.square {
+  
+  }
+  &.round {
+    border-radius: 50%;
+  }
 }
 
 .pokemon-item {
@@ -488,11 +495,19 @@
   border: 5px solid white;
   bottom: 0;
   height: 3rem;
+  left: 12px;
   padding: .5rem;
   position: absolute;
   width: 3rem;
   z-index: 10;
+  &.round {
+    border-radius: 50%;  
+  }
+  &.square {
+    border-radius: 0;
+  }
 }
+
 
 .pokemon-shiny {
   background: #eee;
@@ -642,10 +657,3 @@ h3 {
   top: 0;
 }
 
-.boxed-pokemon-image {
-  background-size: cover;
-  background-position: center center;
-  display: inline-block;
-  height: 2rem;
-  width: 2rem;
-}
