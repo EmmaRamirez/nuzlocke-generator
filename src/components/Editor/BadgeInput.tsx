@@ -26,6 +26,9 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, { badges: S
             badges: new Set([]),
         };
     }
+    public componentWillMount() {
+        this.setState({ badges: new Set(this.props.trainer.badges)  });
+    }
     public render() {
         return (
             <TrainerInfoEditField
@@ -36,6 +39,7 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, { badges: S
                 onChange={null}
                 element={inputProps => (
                     <Popover
+                        minimal={true}
                         content={
                             <Menu>
                                 {getBadges(this.props.game.name).map(badge => (
