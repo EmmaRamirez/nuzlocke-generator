@@ -12,7 +12,6 @@ import { Admin } from './components/Admin';
 import { appReducers } from './reducers';
 import { store, persistor } from './store';
 
-import * as Services from './services';
 
 import 'assets/pokemon-font.css';
 

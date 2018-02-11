@@ -6,6 +6,8 @@
       "noImplicitAny": false,
       "removeComments": true,
       "strictNullChecks": true,
+      "noImplicitReturns": true,
+      "strictFunctionTypes": true,
       "noLib": false,
       "jsx": "react",
       "experimentalDecorators": true,

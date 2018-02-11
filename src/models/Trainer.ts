@@ -3,7 +3,7 @@ export interface Trainer {
     id?: string | number;
     time?: string;
     money?: number;
-    badges?: number;
+    badges?: string[];
     expShareStatus?: string;
     image?: string;
     title?: string;

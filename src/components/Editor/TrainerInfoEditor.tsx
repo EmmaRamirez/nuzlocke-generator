@@ -1,7 +1,8 @@
 import * as React from 'react';
 
+import { BadgeInput } from './BadgeInput';
 import { LinkedTrainerInfoEditField } from './LinkedTrainerInfoEditField';
-import { Popover, Position, Menu, PopoverInteractionKind } from '@blueprintjs/core';
+import { Checkbox, Button, Popover, Position, Menu, PopoverInteractionKind } from '@blueprintjs/core';
 
 const SpanBlock = ({ text }) => (
     <span
@@ -58,12 +59,7 @@ export class TrainerInfoEditor extends React.Component<{}, {}> {
                     name='title'
                     placeholder=''
                 />
-                <LinkedTrainerInfoEditField
-                    onInput={this.onInput}
-                    label='# of Badges'
-                    name='badges'
-                    placeholder='0'
-                />
+                <BadgeInput />
                 {/* <LinkedTrainerInfoEditField
                     onInput={this.onInput}
                     label='Checkpoints (Badges)'
