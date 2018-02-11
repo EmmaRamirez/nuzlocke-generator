@@ -1,7 +1,7 @@
 import * as uuid from 'uuid/v4';
 import { Pokemon } from 'models';
 
-export function generateEmptyPokemon(pokemon: Pokemon[]): Pokemon {
+export function generateEmptyPokemon(pokemon?: Pokemon[]): Pokemon {
     let position = 0;
     if (pokemon && pokemon.length > 0) {
         try {
@@ -11,7 +11,7 @@ export function generateEmptyPokemon(pokemon: Pokemon[]): Pokemon {
         }
     }
     const genStatus = () => {
-        if (pokemon.filter(poke => poke.status === 'Team').length >= 6) return 'Boxed';
+        if (pokemon && pokemon.filter(poke => poke.status === 'Team').length >= 6) return 'Boxed';
         return 'Team';
     };
     return {

@@ -26,5 +26,5 @@ export const listOfGames = [
     'Moon',
     'Ultra Sun',
     'Ultra Moon',
-    'Custom...',
+    //'Custom...',
 ];

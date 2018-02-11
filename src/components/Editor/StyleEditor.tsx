@@ -6,7 +6,10 @@ import { styleDefaults } from 'utils';
 
 import { RadioGroup, Radio, TextArea, Checkbox } from '@blueprintjs/core';
 
-const styleOptions = ['Default Light', 'Default Dark'];
+const styleOptions = [
+    // 'Default Light',
+    'Default Dark'
+];
 
 const value = `body {
     color: red;
@@ -52,7 +55,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
             <div className='style-edit'>
                 <label className='pt-label pt-inline'>Template</label>
                 <div className='pt-select'>
-                    <select>{styleOptions.map(o => <option key={o}>{o}</option>)}</select>
+                    <select name='template' onChange={e => editEvent(e, props)} value={props.style.template}>{styleOptions.map(o => <option key={o}>{o}</option>)}</select>
                 </div>
             </div>
 
@@ -79,6 +82,21 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
             </div>
 
             <div className='style-edit'>
+                <label className='pt-label pt-inline'>Result Dimensions</label>
+                <input
+                    name='resultWidth'
+                    className='pt-input'
+                    onChange={ e => editEvent(e, props) }
+                    value={props.style.resultWidth}
+                /><span style={{ marginRight: '0' }} className='pt-icon pt-icon-cross' /><input
+                    name='resultHeight'
+                    className='pt-input'
+                    onChange={e => editEvent(e, props) }
+                    value={props.style.resultHeight}
+                />
+            </div>
+
+            <div className='style-edit'>
                 <label className='pt-label pt-inline'>Header color</label>
                 <ColorEdit
                     name='topHeaderColor'
@@ -91,6 +109,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 <label className='pt-label pt-inline'>Background Image</label>
                 <input
                     value={props.style.backgroundImage}
+                    name='backgroundImage'
                     onChange={e => editEvent(e, props)}
                     className='pt-input'
                 />
@@ -119,18 +138,18 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 </RadioGroup>
             </div>
 
-            <div className='style-edit'>
+            {/* <div className='style-edit'>
                 <Checkbox
                     checked={false}
                     name='iconsNextToTeamPokemon'
                     label='Icons Next to Team Pokemon'
                     onChange={e => editEvent(e, props)}
                 />
-            </div>
+            </div> */}
 
             <div className='custom-css-input-wrapper'>
                 <label style={{ padding: '.5rem' }} className='pt-label'>
-                    Custom CSS <a href=''>Check out Layout Guide</a>
+                    Custom CSS {/*<a href=''>Check out Layout Guide</a>*/}
                 </label>
                 <TextArea
                     large={true}

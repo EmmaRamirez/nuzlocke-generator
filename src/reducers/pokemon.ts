@@ -1,21 +1,8 @@
 import { Action, ADD_POKEMON, DELETE_POKEMON, EDIT_POKEMON } from '../actions';
+import { generateEmptyPokemon } from 'utils';
 
 const pokemonState = [
-    {
-        id: '5367bd50-bf2c-46a9-994a-e381d249cc89',
-        species: 'Croagunk',
-        nickname: 'Greg',
-        types: ['Poison', 'Fighting'],
-        status: 'Team',
-        level: 34,
-        gender: 'Male',
-        met: 'Pastoria City',
-        metLevel: 1,
-        nature: 'Rash',
-        ability: 'Dry Skin',
-        moves: ['Bullet Punch', 'Cross Chop', 'Poison Jab', 'Taunt'],
-        position: 0,
-    },
+    generateEmptyPokemon()
 ];
 
 export function pokemon(

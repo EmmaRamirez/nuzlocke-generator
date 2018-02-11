@@ -10,7 +10,7 @@ import { addForme } from 'utils';
 
 import { selectPokemon } from 'actions';
 
-const getMoveType = move => {
+export const getMoveType = move => {
     for (const type in movesByType) {
         if (movesByType.hasOwnProperty(type)) {
             if (
@@ -42,7 +42,7 @@ const generateMoves = moves => {
 export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: any }) => {
     const poke = props;
     const moves =
-        poke.moves == null ? '' : <div className='pokemon-moves'>{generateMoves(poke.moves)}</div>;
+        poke.moves == null ? '' : <div className={`pokemon-moves ${props.style.movesPosition}`}>{generateMoves(poke.moves)}</div>;
     const getImage = (): string => {
         if (poke.customImage) {
             return `url(${poke.customImage})`;

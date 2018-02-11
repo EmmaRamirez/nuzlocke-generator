@@ -8,4 +8,6 @@ export const styleDefaults = {
     teamImages: 'standard',
     customCSS: ``,
     iconsNextToTeamPokemon: false,
+    resultHeight: '900',
+    resultWidth: '1200'
 };

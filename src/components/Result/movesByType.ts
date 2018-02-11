@@ -88,6 +88,7 @@ export const movesByType: any = {
         'Roar of Time',
         'Spacial Rend',
         'Twister',
+        'Clangorous Soulblaze',
     ],
     Electric: [
         '10,000,000 Volt Thunderbolt',
@@ -122,6 +123,7 @@ export const movesByType: any = {
         'Charge',
         'Charge Beam',
         'Thunder Fang',
+        'Plasma Fists'
     ],
     Fairy: [
         'Dazzling Gleam',
@@ -146,6 +148,7 @@ export const movesByType: any = {
         'Floral Healing',
         'Flower Shield',
         'Charm',
+        'Let\'s Snuggle Forever',
     ],
     Fighting: [
         'Seismic Toss',
@@ -227,6 +230,7 @@ export const movesByType: any = {
         'Incinerate',
         'Sunny Day',
         'Burn Up',
+        'Mind Blown'
     ],
     Flying: [
         'Feather Dance',
@@ -282,6 +286,7 @@ export const movesByType: any = {
         'Spectral Thief',
         'Shadow Sneak',
         'Grudge',
+        'Menacing Moonraze Maelstrom',
     ],
     Grass: [
         'Frenzy Plant',
@@ -654,6 +659,8 @@ export const movesByType: any = {
         'Psycho Shift',
         'Psyshock',
         'Agility',
+        'Photon Geyser',
+        'Light That Burns The Sky'
     ],
     Rock: [
         'Rock Throw',
@@ -700,6 +707,8 @@ export const movesByType: any = {
         'Corkscrew Crash',
         'Doom Desire',
         'Steel Wing',
+        'Splintered Stormshards',
+        'Searing Sunraze Smash',
     ],
     Water: [
         'Brine',

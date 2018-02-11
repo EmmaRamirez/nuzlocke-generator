@@ -4,7 +4,7 @@ import { Pokemon, Trainer } from 'models';
 import { getBadges } from 'utils';
 import { connect } from 'react-redux';
 import * as uuid from 'uuid/v4';
-import { ResizableBox } from 'react-resizable';
+import { ResizableBox, Resizable } from 'react-resizable';
 
 import { selectPokemon } from 'actions';
 
@@ -27,9 +27,13 @@ const sortPokes = (a, b) => {
     return a.position - b.position;
 };
 
-export class ResultBase extends React.Component<ResultProps> {
+export class ResultBase extends React.Component<ResultProps, { width: any, height: any }> {
     constructor(props) {
         super(props);
+        this.state = {
+            width: 1200,
+            height: 900
+        };
     }
 
     public componentWillMount() {}
@@ -108,16 +112,21 @@ export class ResultBase extends React.Component<ResultProps> {
         const bottomTextStyle: any = { fontSize: '1.1rem', fontWeight: 'bold' };
         return (
             <div className='trainer-wrapper'>
-                <img
-                    style={{
-                        border: '2px solid rgba(255, 255, 255, 0.3)',
-                        borderRadius: '50%',
-                        height: '3rem',
-                        width: '3rem',
-                    }}
-                    src={trainer.image ? trainer.image : 'img/moon.jpg'}
-                    alt='Moon 2'
-                />
+                {
+                    trainer.image ?
+                    <img
+                        style={{
+                            border: '2px solid rgba(255, 255, 255, 0.3)',
+                            borderRadius: '50%',
+                            height: '3rem',
+                            width: '3rem',
+                        }}
+                        src={trainer.image ? trainer.image : 'img/moon.jpg'}
+                        alt='Moon 2'
+                    />
+                    :
+                    null
+                }
                 <div className='nuzlocke-title'>{this.props.game.name} Nuzlocke</div>
                 {trainer.name === null || trainer.name === '' ? null : (
                     <div className='name column'>
@@ -154,23 +163,31 @@ export class ResultBase extends React.Component<ResultProps> {
         );
     }
 
+    private onResize = (e, { element, size }) => {
+        this.setState({
+            width: size.width,
+            height: size.height
+        });
+    }
+
     public render() {
         const { style, box } = this.props;
         const bgColor = style ? style.bgColor : '#383840';
         const topHeaderColor = style ? style.topHeaderColor : '#333333';
+        console.log(this.state.width, this.state.height);
         return (
             <>
                 {this.renderErrors()}
-                <ResizableBox
-                    width={1200}
-                    height={900}
-                    // minConstraints={[10, 10]}
-                    // maxConstraints={[Infinity, Infinity]}
-                    handleSize={[10, 10]}
-                    aixs='both'
-                    lockAspectRatio={false}
-                    style={{ margin: '3rem' }}>
-                    <div className='result container' style={{ backgroundColor: bgColor }}>
+                    <div
+                        className={`result container ${style.theme}`}
+                        style={{
+                            margin: '3rem',
+                            backgroundColor: bgColor,
+                            backgroundImage: `url(${style.backgroundImage})`,
+                            height: style.resultHeight + 'px',
+                            width: style.resultWidth + 'px',
+                        }}
+                    >
                         <div
                             className='trainer-container'
                             style={{ backgroundColor: topHeaderColor }}>
@@ -193,7 +210,6 @@ export class ResultBase extends React.Component<ResultProps> {
                             </div>
                         </div>
                     </div>
-                </ResizableBox>
             </>
         );
     }

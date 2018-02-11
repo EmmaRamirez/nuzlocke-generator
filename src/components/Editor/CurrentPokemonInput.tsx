@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { matchSpeciesToTypes } from 'utils';
 import { editPokemon, selectPokemon } from 'actions';
+import { movesByType, getMoveType } from 'components/Result';
 
 import { ErrorBoundary } from 'components/Shared';
 
@@ -61,6 +62,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
             return (
                 <ErrorBoundary>
                     <TagInput
+                        tagProps={(v, i) => ({ className: `${getMoveType((v || '').toString().trim())}-type` }) }
                         onChange={values => {
                             console.log(values);
                             const edit = {
@@ -69,7 +71,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                             this.props.editPokemon &&
                                 this.props.editPokemon(edit, this.props.selectedId);
                             this.props.selectPokemon &&
-                                this.props.selectPokemon(edit, this.props.selectedId);
+                                this.props.selectPokemon(this.props.selectedId);
                         }}
                         // onInputChange={(e:any) => {
                         //     const edit = {
