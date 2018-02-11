@@ -5,6 +5,7 @@ npm-debug.log*
 
 # Project Related
 test/__snapshots__
+.env
 
 # Runtime data
 pids
