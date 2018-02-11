@@ -27,13 +27,9 @@ const sortPokes = (a, b) => {
     return a.position - b.position;
 };
 
-export class ResultBase extends React.Component<ResultProps, { width: any, height: any }> {
+export class ResultBase extends React.Component<ResultProps> {
     constructor(props) {
         super(props);
-        this.state = {
-            width: 1200,
-            height: 900
-        };
     }
 
     public componentWillMount() {}
@@ -179,7 +175,6 @@ export class ResultBase extends React.Component<ResultProps, { width: any, heigh
         const { style, box } = this.props;
         const bgColor = style ? style.bgColor : '#383840';
         const topHeaderColor = style ? style.topHeaderColor : '#333333';
-        console.log(this.state.width, this.state.height);
         return (
             <>
                 {this.renderErrors()}

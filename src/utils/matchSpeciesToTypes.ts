@@ -111,6 +111,8 @@ export const matchSpeciesToTypes = (species: string): string[] => {
         case 'Croagunk':
         case 'Toxicroak':
             return ['Poison', 'Fighting'];
+        case 'Marshadow':
+            return ['Ghost', 'Fighting'];
         default:
             return ['Normal', 'Normal'];
     }

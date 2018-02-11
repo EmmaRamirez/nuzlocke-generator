@@ -69,4 +69,4 @@ export class ImportAndExportBase extends React.Component<
 
 export const ImportAndExport = connect((state: any) => ({ state: state }), {
     editGame,
-})(ImportAndExportBase);
+})(ImportAndExportBase as any);

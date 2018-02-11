@@ -40,30 +40,6 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                     options={['Normal', ...getAdditionalFormes(currentPokemon.species)]}
                 />
                 <CurrentPokemonInput
-                    labelName='Shiny'
-                    inputName='shiny'
-                    value={currentPokemon.shiny}
-                    type='checkbox'
-                />
-                <CurrentPokemonInput
-                    labelName='Champion'
-                    inputName='champion'
-                    value={currentPokemon.champion}
-                    type='checkbox'
-                />
-                <CurrentPokemonInput
-                    labelName='Custom Image'
-                    inputName='customImage'
-                    value={currentPokemon.customImage}
-                    type='text'
-                />
-                <CurrentPokemonInput
-                    labelName='Cause of Death'
-                    inputName='causeOfDeath'
-                    value={currentPokemon.causeOfDeath}
-                    type='text'
-                />
-                <CurrentPokemonInput
                     labelName='Types'
                     inputName='types'
                     value={currentPokemon.types}
@@ -89,6 +65,30 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                         'Water',
                         'None',
                     ]}
+                />
+                <CurrentPokemonInput
+                    labelName='Shiny'
+                    inputName='shiny'
+                    value={currentPokemon.shiny}
+                    type='checkbox'
+                />
+                <CurrentPokemonInput
+                    labelName='Champion'
+                    inputName='champion'
+                    value={currentPokemon.champion}
+                    type='checkbox'
+                />
+                <CurrentPokemonInput
+                    labelName='Custom Image'
+                    inputName='customImage'
+                    value={currentPokemon.customImage}
+                    type='text'
+                />
+                <CurrentPokemonInput
+                    labelName='Cause of Death'
+                    inputName='causeOfDeath'
+                    value={currentPokemon.causeOfDeath}
+                    type='text'
                 />
                 <CurrentPokemonInput
                     labelName='Item'

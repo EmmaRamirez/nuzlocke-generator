@@ -72,4 +72,4 @@ export class GameEditorBase extends React.Component<GameEditorProps, {}> {
 export const GameEditor = connect((state: any) => ({ game: state.game, editor: state.editor }), {
     editGame,
     changeEditorSize,
-})(GameEditorBase);
+})(GameEditorBase as any);

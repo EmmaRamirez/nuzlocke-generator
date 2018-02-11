@@ -20,11 +20,11 @@ export function generateEmptyPokemon(pokemon?: Pokemon[]): Pokemon {
         species: '',
         nickname: '',
         status: genStatus(),
-        gender: 'Male',
+        gender: 'Neutral',
         level: 0,
         met: '',
         metLevel: 0,
-        nature: 'Adamant',
+        nature: 'None',
         ability: '',
         types: ['Normal', 'None'],
     };
