@@ -108,6 +108,73 @@ export const matchSpeciesToTypes = (species: string): string[] => {
         case 'Wishiwashi':
         case 'Pyukumuku':
             return ['Water', 'Water'];
+        case 'Mankey':
+        case 'Primeape':
+        case 'Machop':
+        case 'Machoke':
+        case 'Machamp':
+        case 'Hitmonlee':
+        case 'Hitmonchan':
+        case 'Tyrogue':
+        case 'Hitmontop':
+        case 'Makuhita':
+        case 'Hariyama':
+        case 'Riolu':
+        case 'Timburr':
+        case 'Gurdurr':
+        case 'Conkeldurr':
+        case 'Throh':
+        case 'Sawk':
+        case 'Mienfoo':
+        case 'Mienshao':
+        case 'Pancham':
+        case 'Crabrawler':
+        case 'Passimian':
+            return ['Fighting', 'Fighting'];
+        case 'Meditite':
+        case 'Medicham':
+            return ['Fighting', 'Psychic'];
+        case 'Lucario':
+            return ['Fighting', 'Steel'];
+        case 'Pangoro':
+            return ['Fighitng', 'Dark'];
+        case 'Hawlucha':
+            return ['Fighting', 'Flying'];
+        case 'Crabominable':
+            return ['Fighting', 'Ice'];
+        case 'Heracross':
+        case 'Buzzwole':
+        case 'Pheromosa':
+            return ['Bug', 'Fighting'];
+        case 'Scraggy':
+        case 'Scrafty':
+            return ['Dark', 'Fighting'];
+        case 'Hakamo-o':
+        case 'Kommo-o':
+            return ['Dragon', 'Fighting'];
+        case 'Combusken':
+        case 'Blaziken':
+        case 'Monferno':
+        case 'Infernape':
+        case 'Pignite':
+        case 'Emboar':
+            return ['Fire', 'Fighting'];
+        case 'Breloom':
+        case 'Virizion':
+        case 'Chensaught':
+            return ['Grass', 'Fighting'];
+        case 'Stufful':
+        case 'Bewear':
+            return ['Normal', 'Fighting'];
+        case 'Gallade':
+            return ['Psychic', 'Fighting'];
+        case 'Terrakon':
+            return ['Rock', 'Fighting'];
+        case 'Cobalion':
+            return ['Steel', 'Fighting'];
+        case 'Poliwrath':
+        case 'Keldeo':
+            return ['Water', 'Fighting'];
         case 'Croagunk':
         case 'Toxicroak':
             return ['Poison', 'Fighting'];
