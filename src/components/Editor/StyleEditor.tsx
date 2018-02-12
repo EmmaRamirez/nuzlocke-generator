@@ -81,14 +81,14 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 <label className='pt-label pt-inline'>Result Dimensions</label>
                 <input
                     name='resultWidth'
-                    className='pt-input'
+                    className='pt-input small-input'
                     onChange={e => editEvent(e, props)}
                     value={props.style.resultWidth}
                 />
                 <span style={{ marginRight: '0' }} className='pt-icon pt-icon-cross' />
                 <input
                     name='resultHeight'
-                    className='pt-input'
+                    className='pt-input small-input'
                     onChange={e => editEvent(e, props)}
                     value={props.style.resultHeight}
                 />
@@ -140,19 +140,37 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                     onChange={e => editEvent(e, props, 'teamImages')}
                     selectedValue={props.style.teamImages}>
                     <Radio label='Standard' value='standard' />
+                    <Radio label='Sugimori' value='sugimori' />
                     <Radio disabled label='Dream World' value='dreamworld' />
-                    <Radio disabled label='Sugimori' value='sugimori' />
                 </RadioGroup>
             </div>
 
             {/* <div className='style-edit'>
                 <Checkbox
-                    checked={false}
+                    checked={props.style.iconsNextToTeamPokemon}
                     name='iconsNextToTeamPokemon'
                     label='Icons Next to Team Pokemon'
-                    onChange={e => editEvent(e, props)}
+                    onChange={(e:any) => editEvent({ ...e, target: { value: e.target.checked }}, props, 'iconsNextToTeamPokemon')}
                 />
             </div> */}
+
+            <div className='style-edit'>
+                <Checkbox
+                    checked={props.style.teamPokemonBorder}
+                    name='teamPokemonBorder'
+                    label='Team Pokemon Gradient Backgrounds'
+                    onChange={(e:any) => editEvent({ ...e, target: { value: e.target.checked }}, props, 'teamPokemonBorder')}
+                />
+            </div>
+
+            <div className='style-edit'>
+                <Checkbox
+                    checked={props.style.minimalTeamLayout}
+                    name='minimalTeamLayout'
+                    label='Minimal Team Layout'
+                    onChange={(e:any) => editEvent({ ...e, target: { value: e.target.checked }}, props, 'minimalTeamLayout')}
+                />
+            </div>
 
             <div className='custom-css-input-wrapper'>
                 <label style={{ padding: '.5rem' }} className='pt-label'>

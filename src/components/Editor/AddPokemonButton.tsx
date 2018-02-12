@@ -8,6 +8,6 @@ export const AddPokemonButton = ({ added, onClick }: { added: boolean; onClick: 
             e.preventDefault();
             onClick();
         }}>
-        <span className='pt-icon-add' /> Add New Pokemon
+        <span className='pt-icon-add' /> &nbsp;Add New Pokemon
     </button>
 );

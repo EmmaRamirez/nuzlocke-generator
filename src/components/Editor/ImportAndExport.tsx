@@ -85,12 +85,22 @@ export class ImportAndExportBase extends React.Component<
                                 <TextArea
                                     className='custom-css-input pt-fill'
                                     onChange={(e:any) => this.setState({ data: e.target.value }) }
+                                    placeholder='Paste nuzlocke.json contents here'
                                     value={this.state.data}
                                     large={true}
                                 />
                             </div>
                             <div className='pt-dialog-footer'>
-                                <Button onClick={this.confirmImport} text='Confirm' />
+                                <ButtonGroup>
+                                    <Button intent={Intent.PRIMARY} onClick={this.confirmImport} text='Upload' icon='upload' />
+                                    <Button
+                                        icon='tick'
+                                        intent={this.state.data === '' ? Intent.NONE : Intent.SUCCESS}
+                                        onClick={this.confirmImport}
+                                        disabled={this.state.data === '' ? true : false }
+                                        text='Confirm'
+                                    />
+                                </ButtonGroup>
                             </div>
                         </>
                     }
@@ -101,10 +111,10 @@ export class ImportAndExportBase extends React.Component<
                         icon='import'
                         className='pt-intent-primary'
                     >
-                        Import
+                        Import Data
                     </Button>
                     <Button onClick={e => this.exportState(this.props.state)} icon='export'>
-                        Export
+                        Export Data
                     </Button>
                 </ButtonGroup>
             </div>

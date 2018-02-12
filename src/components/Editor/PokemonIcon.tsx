@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { getSpriteIcon, speciesToNumber, StoreContext } from '../../utils';
 
 interface PokemonIconProps {
@@ -6,51 +7,23 @@ interface PokemonIconProps {
     species: string;
     forme: string;
     onClick: () => void;
-}
-
-interface PokemonIconState {
     selectedId: string;
-    unsubscriber: Function;
 }
 
-@StoreContext
-export class PokemonIcon extends React.Component<PokemonIconProps, PokemonIconState> {
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedId: '',
-            unsubscriber: () => {},
-        };
-    }
+export const PokemonIconBase:React.SFC<PokemonIconProps> = ({ id, species, forme, onClick, selectedId }:PokemonIconProps) => {
+    return (
+        <div
+            role='icon'
+            onClick={e => {
+                e.preventDefault();
+                onClick();
+            }}
+            className={id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'}>
+            <img src={getSpriteIcon(species, forme)} alt={species} />
+        </div>
+    );
+};
 
-    public componentWillMount() {
-        const unsubscriber = this.context.store.subscribe(() => {
-            this.setState({
-                selectedId: this.context.store.getState().selectedId,
-            });
-        });
-        this.setState({
-            unsubscriber,
-        });
-    }
-
-    public componentWillUnmount() {
-        this.state.unsubscriber();
-    }
-
-    public render() {
-        const { id, species, forme } = this.props;
-
-        return (
-            <div
-                role='icon'
-                onClick={e => {
-                    e.preventDefault();
-                    this.props.onClick();
-                }}
-                className={id === this.state.selectedId ? 'pokemon-icon selected' : 'pokemon-icon'}>
-                <img src={getSpriteIcon(species, forme)} alt={species} />
-            </div>
-        );
-    }
-}
+export const PokemonIcon = connect(
+    (state:any) => ({ selectedId: state.selectedId })
+)(PokemonIconBase);
