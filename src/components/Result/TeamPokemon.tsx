@@ -62,9 +62,23 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
     };
     const getFirstType = poke.types ? poke.types[0] : 'Normal';
 
+    const addProp = (item) => {
+        const propName = `data-${item.toLowerCase()}`;
+        if (item === 'type') return { [propName]: poke[item].join(' ') };
+        if (poke[item] == null || poke[item] === '') return {  };
+        return { [propName]: poke[item].toString() };
+    };
+
+    const dataKeys = ['id', 'position', 'species', 'nickname', 'status', 'gender', 'level', 'metLevel', 'nature', 'ability', 'item', 'types', 'forme', 'moves', 'causeOfDeath', 'shiny', 'champion', 'num', 'wonderTradedFor', 'mvp', 'customImage'];
+    const data = dataKeys.reduce((prev, curr) => {
+        return { ...prev, ...addProp(curr) };
+    }, {});
+
+    console.log(data);
+
     if (props.style.minimalTeamLayout) {
         return (
-            <div className='pokemon-container minimal'>
+            <div className='pokemon-container minimal' {...data}>
                 <div
                     style={{
                         backgroundImage: getImage(),
@@ -85,7 +99,7 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
     }
 
     return (
-        <div className='pokemon-container'>
+        <div className='pokemon-container' {...data}>
             <div
                 role='presentation'
                 onClick={e => props.selectPokemon(poke.id)}

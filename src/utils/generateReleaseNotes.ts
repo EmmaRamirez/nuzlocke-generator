@@ -46,11 +46,13 @@ This is a limited beta of the application. As such, it has a shitload of bugs ev
 
 ![download](${download})
 
+- Pokémon containers now have [data] attributes for easier custom CSS injection
 
 ## Fixes
 - Improvements to Import Data UI -- clearer instructions and design
 - Some cases (i.e. no Nature, no level, etc) for missing data have been fixed
 - Move tags in editor are now properly colored
+- Editing moves no longer casues deselection issues on the target Pokémon
 
 
 # Contributing
