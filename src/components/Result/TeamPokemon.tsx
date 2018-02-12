@@ -6,7 +6,7 @@ import { getBackgroundGradient } from './getBackgroundGradient';
 import { getGenderElement } from './getGenderElement';
 import { movesByType } from './movesByType';
 import { typeToColor } from './typeToColor';
-import { addForme } from 'utils';
+import { addForme, getSpriteIcon, speciesToNumber } from 'utils';
 
 import { selectPokemon } from 'actions';
 
@@ -53,11 +53,37 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
         if (poke.customImage) {
             return `url(${poke.customImage})`;
         }
+        if (props.style.teamImages === 'sugimori') {
+            return `url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/${(speciesToNumber(poke.species) || 0).toString().padStart(3 , '0')}.png)`;
+        }
         return `url(img/${(
             addForme(poke.species.replace(/\s/g, ''), poke.forme) || 'missingno'
         ).toLowerCase()}.jpg)`;
     };
     const getFirstType = poke.types ? poke.types[0] : 'Normal';
+
+    if (props.style.minimalTeamLayout) {
+        return (
+            <div className='pokemon-container minimal'>
+                <div
+                    style={{
+                        backgroundImage: getImage(),
+                    }}
+                    className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()} ${
+                        props.style.imageStyle === 'round' ? 'round' : 'square'
+                    }`}
+                />
+                <div className='pokemon-info'>
+                    <div className='pokemon-info-inner'>
+                        <span className='pokemon-nickname'>{poke.nickname}</span>
+                        <span className='pokemon-name'>{poke.species}</span>
+                        {poke.level ? <span className='pokemon-level'>lv. {poke.level}</span> : null}
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className='pokemon-container'>
             <div
@@ -66,10 +92,10 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
                 className={props.style.imageStyle === 'round' ? 'round' : 'square'}
                 style={{
                     cursor: 'pointer',
-                    background: getBackgroundGradient(
+                    background: props.style.teamPokemonBorder ? getBackgroundGradient(
                         poke.types != null ? poke.types[0] : '',
                         poke.types != null ? poke.types[1] : '',
-                    ),
+                    ) : 'transparent',
                 }}>
                 <div
                     style={{
@@ -80,7 +106,7 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
                     }`}
                 />
             </div>
-            {poke.item == null ? null : (
+            {poke.item == null || poke.item === '' ? null : (
                 <div
                     className={`pokemon-item ${
                         props.style.imageStyle === 'round' ? 'round' : 'square'

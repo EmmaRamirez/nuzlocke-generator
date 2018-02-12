@@ -27,6 +27,13 @@
   // transform: scale(.85);
 }
 
+
+.pokemon-container {
+  display: inline-block;
+  padding: 1rem;
+  position: relative;
+}
+
 .logo {
   height: 2.5rem;
 }
@@ -42,11 +49,6 @@
   vertical-align: bottom;
 }
 
-.pokemon-container {
-  display: inline-block;
-  padding: 1rem;
-  position: relative;
-}
 
 .trainer-wrapper {
   display: flex !important;
@@ -359,11 +361,6 @@
   vertical-align: bottom;
 }
 
-.pokemon-container {
-  display: inline-block;
-  padding: 1rem;
-  position: relative;
-}
 
 
 
@@ -434,6 +431,23 @@
   position: absolute;
   left: 7rem;
   top: 1rem;
+}
+
+.minimal {
+  min-width: 17rem;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.minimal .pokemon-info {
+  background: transparent;
+  display: flex;
+  padding: 0;
+  height: auto;
+  width: auto;
+  margin-left: 0;
 }
 
 .pokemon-info {

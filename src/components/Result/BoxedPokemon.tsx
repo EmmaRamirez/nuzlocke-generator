@@ -23,7 +23,7 @@ export const BoxedPokemonBase = (poke: Pokemon & { selectPokemon }) => {
             />
             <div className='boxed-pokemon-info'>
                 <span className='boxed-pokemon-name'>
-                    {poke.nickname} {getGenderElement(poke.gender)} lv. {poke.level}
+                    {poke.nickname} {getGenderElement(poke.gender)} { poke.level ? <span>lv. {poke.level}</span> : null }
                 </span>
             </div>
         </div>

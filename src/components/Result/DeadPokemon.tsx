@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import { Pokemon } from 'models';
 import { getBackgroundGradient } from './getBackgroundGradient';
 import { getGenderElement } from './getGenderElement';
-import { getSpriteIcon } from 'utils';
+import { getSpriteIcon, speciesToNumber } from 'utils';
 import { selectPokemon } from 'actions';
 
-export const DeadPokemonBase = (poke: Pokemon & { selectPokemon }) => {
+export const DeadPokemonBase = (poke: Pokemon & { selectPokemon } & { style: any }) => {
     const addForme = (species: string | undefined) => {
         if (poke.forme) {
             if (poke.forme === 'Alolan' || poke.forme === 'Alola') {
@@ -20,10 +20,17 @@ export const DeadPokemonBase = (poke: Pokemon & { selectPokemon }) => {
         }
     };
     const getImage = (): string => {
-        return `url(img/${
-            // @ts-ignore
-            addForme((poke ? poke.species : '').replace(/\s/g, '') || 'missingno').toLowerCase()
-        }.jpg)`;
+        if (poke.customImage) {
+            return `url(${poke.customImage})`;
+        }
+        if (poke.style.teamImages === 'sugimori') {
+            return `url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/${
+                (speciesToNumber(poke.species) || 0).toString().padStart(3 , '0')
+            }.png)`;
+        }
+        return `url(img/${(
+            addForme(poke.species.replace(/\s/g, '')) || 'missingno'
+        ).toLowerCase()}.jpg)`;
     };
     const getClassname = () =>
         poke.champion ? 'dead-pokemon-container champion' : 'dead-pokemon-container';
@@ -50,4 +57,4 @@ export const DeadPokemonBase = (poke: Pokemon & { selectPokemon }) => {
     );
 };
 
-export const DeadPokemon = connect(null, { selectPokemon })(DeadPokemonBase);
+export const DeadPokemon = connect((state:any) => ({ style: state.style }), { selectPokemon })(DeadPokemonBase);
