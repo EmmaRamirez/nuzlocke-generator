@@ -88,6 +88,8 @@ module.exports = {
             { from: './src/img', to: './img' },
         ]),
 
-        new OfflinePlugin()
+        // new OfflinePlugin({
+        //     excludes: ['**/*.js', '*.js']
+        // })
     ],
 };

@@ -22,10 +22,10 @@ import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/table/lib/css/table.css';
 
-OfflinePluginRuntime.install({
-    onUpdateReady: () => OfflinePluginRuntime.applyUpdate(),
-    onUpdated: () => location.reload(),
-});
+// OfflinePluginRuntime.install({
+//     onUpdateReady: () => OfflinePluginRuntime.applyUpdate(),
+//     onUpdated: () => location.reload(),
+// });
 
 const mountNode = document.getElementById('app');
 const history = createHistory();
