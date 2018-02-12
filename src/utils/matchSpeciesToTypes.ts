@@ -131,6 +131,65 @@ export const matchSpeciesToTypes = (species: string): string[] => {
         case 'Crabrawler':
         case 'Passimian':
             return ['Fighting', 'Fighting'];
+        case 'Misreavus':
+        case 'Shuppet':
+        case 'Banette':
+        case 'Duskull':
+        case 'Dusclops':
+        case 'Mismagius':
+        case 'Dusknoir':
+        case 'Yamask':
+        case 'Cofagrigus':
+            return ['Ghost', 'Ghost'];
+        case 'Gastly':
+        case 'Haunter':
+        case 'Gengar':
+            return ['Ghost', 'Poison'];
+        case 'Drifloon':
+        case 'Drifblim':
+            return ['Ghost', 'Flying'];
+        case 'Spiritomb':
+            return ['Ghost', 'Dark'];
+        case 'Giratina':
+            return ['Ghost', 'Dragon'];
+        case 'Litwick':
+        case 'Lampent':
+        case 'Chandelure':
+            return ['Ghost', 'Fire'];
+        case 'Phantump':
+        case 'Trevenant':
+        case 'Pumpkaboo':
+        case 'Gourgeist':
+        case 'Dhelmise':
+            return ['Ghost', 'Grass'];
+        case 'Sandygast':
+        case 'Palossand':
+            return ['Ghost', 'Ground'];
+        case 'Shedinja':
+            return ['Bug', 'Ghost'];
+        case 'Sabeleye':
+            return ['Dark', 'Ghost'];
+        case 'Rotom':
+            return ['Electric', 'Ghost'];
+        case 'Blacephalon':
+            return ['Fire', 'Ghost'];
+        case 'Decidueye':
+            return ['Grass', 'Ghost'];
+        case 'Golett':
+        case 'Golurk':
+            return ['Ground', 'Ghost'];
+        case 'Froslass':
+            return ['Ice', 'Ghost'];
+        case 'Hoopa':
+        case 'Lunala':
+            return ['Psychic', 'Ghost'];
+        case 'Honedge':
+        case 'Doublade':
+        case 'Aegislash':
+            return ['Steel', 'Ghost'];
+        case 'Frillish':
+        case 'Jellicent':
+            return ['Water', 'Ghost'];
         case 'Meditite':
         case 'Medicham':
             return ['Fighting', 'Psychic'];
