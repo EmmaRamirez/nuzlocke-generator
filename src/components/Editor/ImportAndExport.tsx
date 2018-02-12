@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Button, ButtonGroup, Dialog, Callout, TextArea } from '@blueprintjs/core';
+import { Button, ButtonGroup, Dialog, Callout, TextArea, Intent } from '@blueprintjs/core';
+import * as uuid from 'uuid/v4';
 
 import { replaceState } from 'actions';
 
@@ -9,9 +10,16 @@ export interface ImportAndExportProps {
     replaceState: replaceState;
 }
 
+export interface ImportAndExportState {
+    isOpen: boolean;
+    mode: 'import' | 'export';
+    data: string;
+    href: string;
+}
+
 export class ImportAndExportBase extends React.Component<
     ImportAndExportProps,
-    { isOpen: boolean; mode: 'import' | 'export', data: string }
+    ImportAndExportState
 > {
     public textarea: any;
 
@@ -21,6 +29,7 @@ export class ImportAndExportBase extends React.Component<
             isOpen: false,
             mode: 'export',
             data: '',
+            href: ''
         };
     }
 
@@ -37,6 +46,9 @@ export class ImportAndExportBase extends React.Component<
         delete state.router;
         delete state._persist;
         this.setState({ isOpen: true });
+        this.setState({
+            href: `data:text/plain;charset=utf-8,${encodeURIComponent(JSON.stringify(state))}`
+        });
     };
     public render() {
         return (
@@ -60,6 +72,11 @@ export class ImportAndExportBase extends React.Component<
                                 <span suppressContentEditableWarning={true} contentEditable={true}>
                                     {JSON.stringify(this.props.state, null, 2)}
                                 </span>
+                            </div>
+                            <div className='pt-dialog-footer'>
+                                <a href={this.state.href} download={`nuzlocke_${uuid()}.json`}>
+                                    <Button icon={'download'} intent={Intent.PRIMARY}>Download</Button>
+                                </a>
                             </div>
                         </>
                         :

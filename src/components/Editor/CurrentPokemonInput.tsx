@@ -75,13 +75,6 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                             this.props.selectPokemon &&
                                 this.props.selectPokemon(this.props.selectedId);
                         }}
-                        // onInputChange={(e:any) => {
-                        //     const edit = {
-                        //         moves: e.target.value
-                        //     };
-                        //     this.props.editPokemon && this.props.editPokemon(edit, this.props.selectedId);
-                        //     this.props.selectPokemon && this.props.selectPokemon(edit, this.props.selectedId);
-                        // }}
                         values={value || []}
                     />
                 </ErrorBoundary>
