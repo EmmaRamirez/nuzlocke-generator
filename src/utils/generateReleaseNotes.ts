@@ -53,7 +53,7 @@ This is a limited beta of the application. As such, it has a shitload of bugs ev
 - Some cases (i.e. no Nature, no level, etc) for missing data have been fixed
 - Move tags in editor are now properly colored
 - Editing moves no longer casues deselection issues on the target Pokémon
-
+- Pokemon in Mass Editor are now sorted by position
 
 # Contributing
 - You can comment, request new features, or file bugs [here](https://github.com/EmmaRamirez/nuzlocke-generator/issues)

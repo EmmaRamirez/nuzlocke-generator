@@ -5,7 +5,7 @@ import { Table, Column, Cell, EditableCell } from '@blueprintjs/table';
 import { LinkedAddPokemonButton } from './LinkedAddPokemonButton';
 import { editPokemon } from 'actions';
 import { Pokemon, PokemonKeys } from 'models';
-import { generateEmptyPokemon } from 'utils';
+import { generateEmptyPokemon, sortPokes } from 'utils';
 
 export interface MassEditorProps {
     isOpen?: any;
@@ -59,7 +59,7 @@ export class MassEditorBase extends React.Component<MassEditorProps, {}> {
                     />
                     <div style={{ padding: '.25rem' }} />
                     <Table numRows={this.props.pokemon.length}>
-                        {this.renderColumns(this.props.pokemon)}
+                        {this.renderColumns(this.props.pokemon.sort(sortPokes))}
                     </Table>
                 </div>
                 {/* <div className='pt-dialog-footer'>
