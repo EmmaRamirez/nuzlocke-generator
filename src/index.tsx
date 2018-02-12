@@ -6,6 +6,7 @@ import createHistory from 'history/createBrowserHistory';
 import { Route } from 'react-router';
 import { ConnectedRouter } from 'react-router-redux';
 import { PersistGate } from 'redux-persist/es/integration/react';
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 
 import { App } from './components/App';
 import { Admin } from './components/Admin';
@@ -20,6 +21,11 @@ import 'react-resizable/css/styles.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/table/lib/css/table.css';
+
+OfflinePluginRuntime.install({
+    onUpdateReady: () => OfflinePluginRuntime.applyUpdate(),
+    onUpdated: () => location.reload(),
+});
 
 const mountNode = document.getElementById('app');
 const history = createHistory();

@@ -1,6 +1,8 @@
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
+const OfflinePlugin = require('offline-plugin');
+
 
 module.exports = {
     entry: './src/index.tsx',
@@ -85,5 +87,7 @@ module.exports = {
             { from: './src/index.html', to: './index.html' },
             { from: './src/img', to: './img' },
         ]),
+
+        new OfflinePlugin()
     ],
 };
