@@ -21,6 +21,7 @@ interface ResultProps {
     box: string[];
     selectPokemon: selectPokemon;
     style: any;
+    rules: string[];
 }
 
 const sortPokes = (a, b) => {
@@ -183,6 +184,14 @@ export class ResultBase extends React.Component<ResultProps> {
 
     public render() {
         const { style, box } = this.props;
+        const numberOfDead = this.props.pokemon
+            .filter(v => v.hasOwnProperty('id'))
+            .filter(poke => poke.status === 'Dead')
+            .length;
+        const numberOfBoxed = this.props.pokemon
+            .filter(v => v.hasOwnProperty('id'))
+            .filter(poke => poke.status === 'Boxed')
+            .length;
         const bgColor = style ? style.bgColor : '#383840';
         const topHeaderColor = style ? style.topHeaderColor : '#333333';
         return (
@@ -201,21 +210,46 @@ export class ResultBase extends React.Component<ResultProps> {
                         {this.renderTrainer()}
                     </div>
                     <div className='team-container'>{this.renderTeamPokemon()}</div>
-                    <div className='boxed-container'>
-                        <h3>{box[1]}</h3>
-                        <div style={{ marginLeft: '1rem' }}>{this.renderBoxedPokemon()}</div>
-                    </div>
-                    <div className='dead-container'>
-                        <h3>{box[2]}</h3>
-                        <div
-                            style={{
-                                display: 'flex',
-                                flexWrap: 'wrap',
-                                justifyContent: 'space-evenly',
-                            }}>
-                            {this.renderDeadPokemon()}
+                    {
+                        numberOfBoxed > 0 ?
+                        <div className='boxed-container'>
+                            <h3>{box[1]}</h3>
+                            <div style={{ marginLeft: '1rem' }}>{this.renderBoxedPokemon()}</div>
                         </div>
-                    </div>
+                        :
+                        null
+                    }
+                    {
+                        numberOfDead > 0 ?
+                        <div className='dead-container'>
+                            <h3>{box[2]}</h3>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    flexWrap: 'wrap',
+                                    justifyContent: 'space-evenly',
+                                }}>
+                                {this.renderDeadPokemon()}
+                            </div>
+                        </div>
+                        :
+                        null
+                    }
+                    {
+                        style.displayRules ?
+                        <div className='rules-container'>
+                            <h3>Rules</h3>
+                            <ol>
+                            {
+                                this.props.rules.map((rule, index) => {
+                                    return <li key={index}>{rule}</li>;
+                                })
+                            }
+                            </ol>
+                        </div>
+                        :
+                        null
+                    }
                 </div>
             </>
         );
@@ -229,6 +263,7 @@ export const Result = connect(
         trainer: state.trainer,
         style: state.style,
         box: state.box,
+        rules: state.rules,
     }),
     {
         selectPokemon,
