@@ -46,7 +46,7 @@ This is a limited beta of the application. As such, it has a shitload of bugs ev
 
 ![download](${download})
 
-- Pokémon containers now have [data] attributes for easier custom CSS injection
+- Pokémon containers now have data attributes for easier custom CSS injection
 
 ## Fixes
 - Improvements to Import Data UI -- clearer instructions and design
@@ -60,5 +60,16 @@ This is a limited beta of the application. As such, it has a shitload of bugs ev
 - Right now, the biggest needs are images for Pokémon and finding bugs
 - If you complete your nuzlocke & document it using this, send me the final data so I can add it to a Hall of Fame!
 - Check out the nuzlocke forums thread [here!](http://s7.zetaboards.com/Nuzlocke_Forum/topic/11058602/1)
-`
+`,
+    '0.0.3-beta': `
+# Changelog
+
+## Features
+- Rules Editor!
+- Dark mode Editor, for additional slickness
+
+## Fixes
+- Dead & Boxed containers now longer show up if there are dead or boxed pokemon, respectively
+
+    `
 };

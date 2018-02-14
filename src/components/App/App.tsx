@@ -20,7 +20,7 @@ const croagunk = require('assets/img/croagunk.gif');
 import './app.styl';
 
 export class AppBase extends React.Component<
-    { seeRelease: seeRelease; sawRelease: any },
+    { seeRelease: seeRelease; sawRelease: any, style: any },
     { isOpen: boolean }
 > {
     constructor(props: any) {
@@ -29,8 +29,6 @@ export class AppBase extends React.Component<
             isOpen: !this.props.sawRelease[pkg.version],
         };
     }
-
-    public componentWillMount() {}
 
     private closeDialog = e => {
         this.props.seeRelease(pkg.version);
@@ -71,6 +69,7 @@ export class AppBase extends React.Component<
 export const App = connect(
     (state: any) => ({
         sawRelease: state.sawRelease,
+        style: state.style
     }),
     {
         seeRelease,

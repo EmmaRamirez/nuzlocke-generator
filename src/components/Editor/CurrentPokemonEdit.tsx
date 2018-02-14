@@ -133,7 +133,7 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                 <span className='current-pokemon-header'>
                     <img
                         className='current-pokemon-image'
-                        alt='Current Pokemon being edited'
+                        alt='icon'
                         src={getSpriteIcon(currentPokemon.species, currentPokemon.forme)}
                     />
                     <CurrentPokemonInput

@@ -8,12 +8,12 @@ import { StyleEditor } from './StyleEditor';
 import { TrainerEditor } from './TrainerEditor';
 import { ImportAndExport } from './ImportAndExport';
 
-require('./editor.styl');
+import './editor.styl';
 
 /**
  * The main editor interface.
  */
-export class EditorBase extends React.Component<{ editor: any }, {}> {
+export class EditorBase extends React.Component<{ editor: any, style: any }, {}> {
     constructor(props) {
         super(props);
     }
@@ -25,7 +25,7 @@ export class EditorBase extends React.Component<{ editor: any }, {}> {
                 autoHide
                 autoHideTimeout={1000}
                 autoHideDuration={200}
-                className='editor'
+                className={`editor ${this.props.style.editorDarkMode ? 'pt-dark' : ''}`}
                 style={{
                     width: minimized ? '0%' : '33%',
                     marginLeft: minimized ? '-30rem' : '0',
@@ -33,6 +33,7 @@ export class EditorBase extends React.Component<{ editor: any }, {}> {
                     maxWidth: '40rem',
                     height: '100vh',
                     padding: '.25rem',
+                    background: this.props.style.editorDarkMode ? '#222' : '#fff',
                 }}>
                 <GameEditor />
                 <TrainerEditor />
@@ -47,6 +48,7 @@ export class EditorBase extends React.Component<{ editor: any }, {}> {
 export const Editor = connect(
     (state: any) => ({
         editor: state.editor,
+        style: state.style
     }),
     null,
 )(EditorBase);

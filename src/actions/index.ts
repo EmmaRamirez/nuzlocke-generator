@@ -17,3 +17,4 @@ export * from './changeEditorSize';
 export * from './seeRelease';
 export * from './createCustomType';
 export * from './replaceState';
+export * from './rules';

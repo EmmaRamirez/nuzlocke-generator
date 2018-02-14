@@ -172,6 +172,24 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 />
             </div>
 
+            <div className='style-edit'>
+                <Checkbox
+                    checked={props.style.displayRules}
+                    name='displayRules'
+                    label='Display Nuzlocke Rules'
+                    onChange={(e:any) => editEvent({ ...e, target: { value: e.target.checked }}, props, 'displayRules')}
+                />
+            </div>
+
+            <div className='style-edit'>
+                <Checkbox
+                    checked={props.style.editorDarkMode}
+                    name='editorDarkMode'
+                    label='Editor Dark Mode'
+                    onChange={(e:any) => editEvent({ ...e, target: { value: e.target.checked }}, props, 'editorDarkMode')}
+                />
+            </div>
+
             <div className='custom-css-input-wrapper'>
                 <label style={{ padding: '.5rem' }} className='pt-label'>
                     Custom CSS {/*<a href=''>Check out Layout Guide</a>*/}

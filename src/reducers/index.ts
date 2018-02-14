@@ -13,6 +13,7 @@ import { history } from './history';
 import { style } from './style';
 import { sawRelease } from './sawRelease';
 import { editor } from './editor';
+import { rules } from './rules';
 
 // export const appReducers = combineReducers({
 //   nuzlocke,
@@ -30,6 +31,7 @@ export const reducers = {
     sawRelease,
     trainer,
     history,
+    rules,
     style,
     router: routerReducer,
 };

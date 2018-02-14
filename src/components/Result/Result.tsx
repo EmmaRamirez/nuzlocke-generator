@@ -12,7 +12,7 @@ import { TeamPokemon } from './TeamPokemon';
 import { DeadPokemon } from './DeadPokemon';
 import { BoxedPokemon } from './BoxedPokemon';
 
-require('./Result.styl');
+import './Result.styl';
 
 interface ResultProps {
     pokemon: Pokemon[];

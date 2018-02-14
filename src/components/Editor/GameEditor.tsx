@@ -6,6 +6,7 @@ import { listOfGames } from 'utils';
 
 import { Button, Intent } from '@blueprintjs/core';
 import { LinkedSaveButton } from './LinkedSaveButton';
+import { RulesEditorDialog } from './RulesEditor';
 
 export interface GameEditorProps {
     game: any;
@@ -14,9 +15,12 @@ export interface GameEditorProps {
     changeEditorSize: changeEditorSize;
 }
 
-export class GameEditorBase extends React.Component<GameEditorProps, {}> {
+export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: boolean }> {
     constructor(props) {
         super(props);
+        this.state = {
+            isOpen: false
+        };
     }
 
     private onInput = e => {
@@ -34,37 +38,45 @@ export class GameEditorBase extends React.Component<GameEditorProps, {}> {
         return {};
     }
 
+    private toggleDialog = _ => this.setState({ isOpen: !this.state.isOpen });
+
     public render() {
         const { game } = this.props;
+        // Awful hack to get rid of `isOpen` conflict warning
+        const RED:any = RulesEditorDialog;
         return (
-            <div className='game-editor'>
-                <h4 style={{ display: 'flex', alignContent: 'flex-end' }}>
-                    Game{' '}
-                    <Button
-                        onClick={e => this.props.changeEditorSize(!this.props.editor.minimized)}
-                        style={{ marginLeft: 'auto', ...this.isMinimized() }}
-                        className='pt-minimal'>
-                        {this.props.editor.minimized ? 'maximize' : 'minimize'} editor
-                    </Button>
-                </h4>
-                {/* <label>Game </label> */}
-                {/* <input onChange={this.onInput} className='pt-input' type='text' value={game.name} dir='auto' /> */}
+            <>
+                <RED isOpen={this.state.isOpen} onClose={this.toggleDialog} />
+                <div className='game-editor'>
+                    <h4 style={{ display: 'flex', alignContent: 'flex-end' }}>
+                        Game{' '}
+                        <Button
+                            onClick={e => this.props.changeEditorSize(!this.props.editor.minimized)}
+                            style={{ marginLeft: 'auto', ...this.isMinimized() }}
+                            className='pt-minimal'>
+                            {this.props.editor.minimized ? 'maximize' : 'minimize'} editor
+                        </Button>
+                    </h4>
+                    {/* <label>Game </label> */}
+                    {/* <input onChange={this.onInput} className='pt-input' type='text' value={game.name} dir='auto' /> */}
 
-                <div
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                    }}>
-                    <div className='pt-select'>
-                        <select onChange={this.onInput} value={game.name}>
-                            {listOfGames.map(game => <option key={game}>{game}</option>)}
-                        </select>
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                        }}>
+                        <div className='pt-select'>
+                            <select onChange={this.onInput} value={game.name}>
+                                {listOfGames.map(game => <option key={game}>{game}</option>)}
+                            </select>
+                        </div>
+                        <Button icon='automatic-updates'>Save as Update &nbsp;&nbsp;<span className='pt-icon pt-icon-caret-down' /></Button>
+                        <Button onClick={this.toggleDialog} icon='list' intent={Intent.PRIMARY}>
+                            Modify Rules
+                        </Button>
                     </div>
-                    {/* <Button icon='list' intent={Intent.PRIMARY}>
-                        Add Rules
-                    </Button> */}
                 </div>
-            </div>
+            </>
         );
     }
 }

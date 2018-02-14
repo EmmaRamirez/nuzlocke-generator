@@ -10,6 +10,8 @@ export const styleDefaults = {
     resultWidth: '1200',
     teamImages: 'standard',
     teamPokemonBorder: true,
+    displayRules: false,
+    editorDarkMode: false,
     template: 'Default Dark',
     topHeaderColor: '#333333',
 };
