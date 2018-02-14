@@ -51,6 +51,7 @@ export const DeadPokemonBase = (poke: Pokemon & { selectPokemon } & { style: any
                 <div className='pokemon-levels'>
                     Levels {poke.metLevel}&mdash;{poke.level}
                 </div>
+                <br />
                 <div className='pokemon-causeofdeath'>{poke.causeOfDeath}</div>
             </div>
         </div>

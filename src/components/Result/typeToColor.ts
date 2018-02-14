@@ -17,7 +17,7 @@ export const typeToColor = (type: string): string | null => {
         Poison: '#75226B',
         Psychic: '#EB75DD',
         Rock: '#8F795D',
-        Steel: '#CCC',
+        Steel: '#888',
         Water: '#5B64DE',
     };
     return types[type];

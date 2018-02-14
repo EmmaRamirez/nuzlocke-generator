@@ -140,7 +140,7 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
         s === 'persian' ||
         s === 'geodude' ||
         s === 'graveler' ||
-        s === 'golemn' ||
+        s === 'golem' ||
         s === 'grimer' ||
         s === 'muk' ||
         s === 'exeggutor' ||
