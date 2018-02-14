@@ -70,7 +70,7 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, { badges: S
                             </Menu>
                         }
                         position={Position.BOTTOM}>
-                        <Button>Select Badges</Button>
+                        <Button>Select Checkpoints</Button>
                     </Popover>
                 )}
             />

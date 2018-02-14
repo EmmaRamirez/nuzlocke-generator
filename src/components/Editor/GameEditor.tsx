@@ -49,7 +49,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                 <RED isOpen={this.state.isOpen} onClose={this.toggleDialog} />
                 <div className='game-editor'>
                     <h4 style={{ display: 'flex', alignContent: 'flex-end' }}>
-                        Game{' '}
+                        Game
                         <Button
                             onClick={e => this.props.changeEditorSize(!this.props.editor.minimized)}
                             style={{ marginLeft: 'auto', ...this.isMinimized() }}
@@ -65,12 +65,13 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                             display: 'flex',
                             justifyContent: 'space-between',
                         }}>
+                        <Button icon='add' intent={Intent.SUCCESS}>New Nuzlocke</Button>
                         <div className='pt-select'>
                             <select onChange={this.onInput} value={game.name}>
                                 {listOfGames.map(game => <option key={game}>{game}</option>)}
                             </select>
                         </div>
-                        <Button icon='automatic-updates'>Save as Update &nbsp;&nbsp;<span className='pt-icon pt-icon-caret-down' /></Button>
+                        <Button icon='exchange'>Switch Nuzlockes</Button>
                         <Button onClick={this.toggleDialog} icon='list' intent={Intent.PRIMARY}>
                             Modify Rules
                         </Button>

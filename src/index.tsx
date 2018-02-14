@@ -37,6 +37,7 @@ window.onerror = function(errorMsg, url, lineNumber, column, errorObj) {
     );
 };
 
+
 render(
     <Provider store={store}>
         <PersistGate loading={<div>Loading...</div>} onBeforeLift={null} persistor={persistor}>
@@ -50,4 +51,9 @@ render(
 
 store.subscribe(() => {
     console.table(store.getState());
+    if ((store.getState() as any).style.editorDarkMode) {
+        document.body.style.background = '#111';
+    } else {
+        document.body.style.background = '#fff';
+    }
 });
