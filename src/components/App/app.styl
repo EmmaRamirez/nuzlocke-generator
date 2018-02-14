@@ -1,15 +1,24 @@
-.release-notes-wrapper
+.pt-light
     .release-notes
         background: #fafafa;
+
+
+.release-notes-wrapper
+    .release-notes
         margin: .5rem;
         padding: 1rem;
     h1, h2, h3, h4
-        color: #333 !important;
+        color: #333;
     h1
         font-size: 1.5rem !important;
     h2
         margin-top: .5rem;
         font-size: 1.2rem !important;
+    h3
+        text-transform: uppercase;
+        margin: .5rem;
+        letter-spacing: 4px;
+        text-align: center;
     p
         line-height: 1.4;
         margin-top: .5rem;
@@ -17,6 +26,11 @@
         max-height: 15rem;
         margin: 0 auto;
         max-width: 100%;
+
+.pt-dark
+    .release-dialog
+        h1, h2, h3, h4
+            color: #fff !important;
 
 .release-dialog
     width: 620px !important;

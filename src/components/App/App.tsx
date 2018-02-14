@@ -40,7 +40,7 @@ export class AppBase extends React.Component<
     public render() {
         return (
             <div className='app' role='main'>
-                <VersionTag version={pkg.version} onClick={this.toggleDialog} />
+                <VersionTag version={pkg.version} onClick={this.toggleDialog} darkMode={this.props.style.editorDarkMode} />
                 <Editor />
                 <Result />
                 <Dialog
@@ -48,10 +48,10 @@ export class AppBase extends React.Component<
                     onClose={this.closeDialog}
                     icon='document'
                     title={`Release Notes ${pkg.version}`}
-                    className='release-dialog'>
+                    className={`release-dialog ${this.props.style.editorDarkMode ? 'pt-dark' : 'pt-light' }`}>
                     <div className='pt-dialog-body'>
                         <div className='release-notes-wrapper'>
-                            <h3>
+                            <h3 className='heading'>
                                 {pkg.version} <img alt='Croagunk' src={croagunk} />
                             </h3>
                             <ReactMarkdown
