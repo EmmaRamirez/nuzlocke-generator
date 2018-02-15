@@ -21,10 +21,8 @@
 .trainer-info-field
   align-items: center
   border-bottom: 1px solid #ddd
-  // border-top: 1px solid #ddd
   display: flex
   justify-content: space-between
-  // margin: .25rem
   input
     background: inherit 
     border: 0 solid transparent
@@ -32,6 +30,11 @@
     border-radius: 2px
     color: inherit
     padding: .25rem;
+
+.pt-dark .trainer-info-field
+  border-bottom: 1px solid #394b59;
+  input
+    border-left: 1px solid #394b59;
 
 .tab
   align-content: flex-start;
@@ -66,6 +69,10 @@
   .pokemon-icon.selected
     border: 1px white dashed;
     transition: 500ms all;
+
+.pt-dark .tab .tab-title
+  color: #111;
+
 .pokemon-tab
   display: flex;
   justify-content: center;
@@ -75,6 +82,10 @@
   border-radius: .25rem;
   margin: .25rem;
   padding: .25rem;
+
+.pt-dark .current-pokemon
+  border: 1px solid black;
+
 
 .current-pokemon-header
   align-items: center;
@@ -87,6 +98,10 @@
   border-radius: 50%;
   height: 3rem;
 
+.pt-dark .current-pokemon-image
+  border: none;
+  background: #394b59;
+
 .current-pokemon-input-wrapper
   display: inline-flex;
   flex-flow: column;
@@ -97,6 +112,13 @@
   input
     border: 1px solid #eee
     padding: .25rem;
+
+.pt-dark .current-pokemon-input-wrapper
+  input
+    box-shadow: 0 0 0 0 rgba(19, 124, 189, 0), 0 0 0 0 rgba(19, 124, 189, 0), 0 0 0 0 rgba(19, 124, 189, 0), inset 0 0 0 1px rgba(16, 22, 26, 0.3), inset 0 1px 1px rgba(16, 22, 26, 0.4);
+    background: rgba(16, 22, 26, 0.3);
+    border: none;
+    color: #f5f8fa;
 
 .pt-input-ghost
   border: 0 !important;
@@ -170,6 +192,9 @@ input[name='metLevel']
   span
     display: inline-block;
     margin-right: .25rem;
+
+.pt-dark .style-edit
+  border-bottom: 1px solid #111;
 
 .radio-group
   align-content: center;

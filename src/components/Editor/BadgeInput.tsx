@@ -27,7 +27,7 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, { badges: S
         };
     }
     public componentWillMount() {
-        this.setState({ badges: new Set(this.props.trainer.badges)  });
+        this.setState({ badges: new Set(this.props.trainer.badges) });
     }
     public render() {
         return (

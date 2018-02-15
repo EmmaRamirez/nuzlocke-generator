@@ -54,7 +54,11 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
             return `url(${poke.customImage})`;
         }
         if (props.style.teamImages === 'sugimori') {
-            return `url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/${(speciesToNumber(poke.species) || 0).toString().padStart(3 , '0')}.png)`;
+            return `url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/${(
+                speciesToNumber(poke.species) || 0
+            )
+                .toString()
+                .padStart(3, '0')}.png)`;
         }
         return `url(img/${(
             addForme(poke.species.replace(/\s/g, ''), poke.forme) || 'missingno'
@@ -62,14 +66,36 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
     };
     const getFirstType = poke.types ? poke.types[0] : 'Normal';
 
-    const addProp = (item) => {
+    const addProp = item => {
         const propName = `data-${item.toLowerCase()}`;
         if (item === 'type') return { [propName]: poke[item].join(' ') };
-        if (poke[item] == null || poke[item] === '') return {  };
+        if (poke[item] == null || poke[item] === '') return {};
         return { [propName]: poke[item].toString() };
     };
 
-    const dataKeys = ['id', 'position', 'species', 'nickname', 'status', 'gender', 'level', 'metLevel', 'nature', 'ability', 'item', 'types', 'forme', 'moves', 'causeOfDeath', 'shiny', 'champion', 'num', 'wonderTradedFor', 'mvp', 'customImage'];
+    const dataKeys = [
+        'id',
+        'position',
+        'species',
+        'nickname',
+        'status',
+        'gender',
+        'level',
+        'metLevel',
+        'nature',
+        'ability',
+        'item',
+        'types',
+        'forme',
+        'moves',
+        'causeOfDeath',
+        'shiny',
+        'champion',
+        'num',
+        'wonderTradedFor',
+        'mvp',
+        'customImage',
+    ];
     const data = dataKeys.reduce((prev, curr) => {
         return { ...prev, ...addProp(curr) };
     }, {});
@@ -89,7 +115,9 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
                     <div className='pokemon-info-inner'>
                         <span className='pokemon-nickname'>{poke.nickname}</span>
                         <span className='pokemon-name'>{poke.species}</span>
-                        {poke.level ? <span className='pokemon-level'>lv. {poke.level}</span> : null}
+                        {poke.level ? (
+                            <span className='pokemon-level'>lv. {poke.level}</span>
+                        ) : null}
                     </div>
                 </div>
             </div>
@@ -104,10 +132,12 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
                 className={props.style.imageStyle === 'round' ? 'round' : 'square'}
                 style={{
                     cursor: 'pointer',
-                    background: props.style.teamPokemonBorder ? getBackgroundGradient(
-                        poke.types != null ? poke.types[0] : '',
-                        poke.types != null ? poke.types[1] : '',
-                    ) : 'transparent',
+                    background: props.style.teamPokemonBorder
+                        ? getBackgroundGradient(
+                              poke.types != null ? poke.types[0] : '',
+                              poke.types != null ? poke.types[1] : '',
+                          )
+                        : 'transparent',
                 }}>
                 <div
                     style={{
@@ -156,7 +186,7 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
                     <br />
                     {poke.ability ? <span className='pokemon-ability'>{poke.ability}</span> : null}
                 </div>
-                { props.style.showPokemonMoves ? moves : null }
+                {props.style.showPokemonMoves ? moves : null}
             </div>
         </div>
     );

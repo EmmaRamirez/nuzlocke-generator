@@ -1,6 +1,5 @@
 import { Pokemon, Trainer } from 'models';
 
-
 export interface NuzlockeSave {
     /** uuid */
     id: string;
@@ -11,7 +10,7 @@ export interface NuzlockeSave {
         game?: any;
         box?: any;
         rules?: any;
-    }
+    };
 }
 
 export interface Nuzlocke {

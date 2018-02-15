@@ -6,11 +6,7 @@ import { styleDefaults } from 'utils';
 
 import { RadioGroup, Radio, TextArea, Checkbox } from '@blueprintjs/core';
 
-const styleOptions = [
-    // 'Default Light',
-    'Crystal',
-    'Default Dark',
-];
+const styleOptions = ['Default Light', 'Default Dark'];
 
 const editEvent = (e, props, name?) => props.editStyle({ [name || e.target.name]: e.target.value });
 
@@ -163,7 +159,13 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                     checked={props.style.teamPokemonBorder}
                     name='teamPokemonBorder'
                     label='Team Pokemon Gradient Backgrounds'
-                    onChange={(e:any) => editEvent({ ...e, target: { value: e.target.checked }}, props, 'teamPokemonBorder')}
+                    onChange={(e: any) =>
+                        editEvent(
+                            { ...e, target: { value: e.target.checked } },
+                            props,
+                            'teamPokemonBorder',
+                        )
+                    }
                 />
             </div>
 
@@ -172,7 +174,13 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                     checked={props.style.showPokemonMoves}
                     name='showPokemonMoves'
                     label='Show Pokemon Moves'
-                    onChange={(e:any) => editEvent({ ...e, target: { value: e.target.checked }}, props, 'showPokemonMoves')}
+                    onChange={(e: any) =>
+                        editEvent(
+                            { ...e, target: { value: e.target.checked } },
+                            props,
+                            'showPokemonMoves',
+                        )
+                    }
                 />
             </div>
 
@@ -181,7 +189,28 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                     checked={props.style.minimalTeamLayout}
                     name='minimalTeamLayout'
                     label='Minimal Team Layout'
-                    onChange={(e:any) => editEvent({ ...e, target: { value: e.target.checked }}, props, 'minimalTeamLayout')}
+                    onChange={(e: any) =>
+                        editEvent(
+                            { ...e, target: { value: e.target.checked } },
+                            props,
+                            'minimalTeamLayout',
+                        )
+                    }
+                />
+            </div>
+
+            <div className='style-edit'>
+                <Checkbox
+                    checked={props.style.displayBadges}
+                    name='displayBadges'
+                    label='Display Badges'
+                    onChange={(e: any) =>
+                        editEvent(
+                            { ...e, target: { value: e.target.checked } },
+                            props,
+                            'displayBadges',
+                        )
+                    }
                 />
             </div>
 
@@ -190,7 +219,13 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                     checked={props.style.displayRules}
                     name='displayRules'
                     label='Display Nuzlocke Rules'
-                    onChange={(e:any) => editEvent({ ...e, target: { value: e.target.checked }}, props, 'displayRules')}
+                    onChange={(e: any) =>
+                        editEvent(
+                            { ...e, target: { value: e.target.checked } },
+                            props,
+                            'displayRules',
+                        )
+                    }
                 />
             </div>
 
@@ -199,7 +234,13 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                     checked={props.style.editorDarkMode}
                     name='editorDarkMode'
                     label='Editor Dark Mode'
-                    onChange={(e:any) => editEvent({ ...e, target: { value: e.target.checked }}, props, 'editorDarkMode')}
+                    onChange={(e: any) =>
+                        editEvent(
+                            { ...e, target: { value: e.target.checked } },
+                            props,
+                            'editorDarkMode',
+                        )
+                    }
                 />
             </div>
 

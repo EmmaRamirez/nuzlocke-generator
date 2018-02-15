@@ -19,7 +19,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
     constructor(props) {
         super(props);
         this.state = {
-            isOpen: false
+            isOpen: false,
         };
     }
 
@@ -43,7 +43,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
     public render() {
         const { game } = this.props;
         // Awful hack to get rid of `isOpen` conflict warning
-        const RED:any = RulesEditorDialog;
+        const RED: any = RulesEditorDialog;
         return (
             <>
                 <RED isOpen={this.state.isOpen} onClose={this.toggleDialog} />
@@ -65,13 +65,13 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                             display: 'flex',
                             justifyContent: 'space-between',
                         }}>
-                        <Button icon='add' intent={Intent.SUCCESS}>New Nuzlocke</Button>
+                        {/* <Button icon='add' intent={Intent.SUCCESS}>New Nuzlocke</Button> */}
                         <div className='pt-select'>
                             <select onChange={this.onInput} value={game.name}>
                                 {listOfGames.map(game => <option key={game}>{game}</option>)}
                             </select>
                         </div>
-                        <Button icon='exchange'>Switch Nuzlockes</Button>
+                        {/* <Button icon='exchange'>Switch Nuzlockes</Button> */}
                         <Button onClick={this.toggleDialog} icon='list' intent={Intent.PRIMARY}>
                             Modify Rules
                         </Button>

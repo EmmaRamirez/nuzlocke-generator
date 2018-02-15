@@ -37,7 +37,6 @@ window.onerror = function(errorMsg, url, lineNumber, column, errorObj) {
     );
 };
 
-
 render(
     <Provider store={store}>
         <PersistGate loading={<div>Loading...</div>} onBeforeLift={null} persistor={persistor}>

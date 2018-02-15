@@ -65,11 +65,14 @@ This is a limited beta of the application. As such, it has a shitload of bugs ev
 # Changelog
 
 ## Features
-- Rules Editor!
-- Dark mode Editor, for additional slickness
+- **Rules Editor**: you can edit your ruleset and include it in the Result now!
+- **Dark Mode Editor**: for additional slickness
+- **More Layout Options**: control if moves display, and more!
 
 ## Fixes
 - Dead & Boxed containers now longer show up if there are dead or boxed pokemon, respectively
+- Defaults Game to Red, instead of blank
+- Pokémon in Mass Editor now properly sorted
 
-    `
+    `,
 };

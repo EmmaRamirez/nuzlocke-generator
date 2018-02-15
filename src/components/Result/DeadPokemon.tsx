@@ -24,9 +24,11 @@ export const DeadPokemonBase = (poke: Pokemon & { selectPokemon } & { style: any
             return `url(${poke.customImage})`;
         }
         if (poke.style.teamImages === 'sugimori') {
-            return `url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/${
-                (speciesToNumber(poke.species) || 0).toString().padStart(3 , '0')
-            }.png)`;
+            return `url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/${(
+                speciesToNumber(poke.species) || 0
+            )
+                .toString()
+                .padStart(3, '0')}.png)`;
         }
         return `url(img/${(
             addForme(poke.species.replace(/\s/g, '')) || 'missingno'
@@ -58,4 +60,6 @@ export const DeadPokemonBase = (poke: Pokemon & { selectPokemon } & { style: any
     );
 };
 
-export const DeadPokemon = connect((state:any) => ({ style: state.style }), { selectPokemon })(DeadPokemonBase);
+export const DeadPokemon = connect((state: any) => ({ style: state.style }), { selectPokemon })(
+    DeadPokemonBase,
+);

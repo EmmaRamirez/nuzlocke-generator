@@ -20,7 +20,7 @@ const croagunk = require('assets/img/croagunk.gif');
 import './app.styl';
 
 export class AppBase extends React.Component<
-    { seeRelease: seeRelease; sawRelease: any, style: any },
+    { seeRelease: seeRelease; sawRelease: any; style: any },
     { isOpen: boolean }
 > {
     constructor(props: any) {
@@ -40,7 +40,11 @@ export class AppBase extends React.Component<
     public render() {
         return (
             <div className='app' role='main'>
-                <VersionTag version={pkg.version} onClick={this.toggleDialog} darkMode={this.props.style.editorDarkMode} />
+                <VersionTag
+                    version={pkg.version}
+                    onClick={this.toggleDialog}
+                    darkMode={this.props.style.editorDarkMode}
+                />
                 <Editor />
                 <Result />
                 <Dialog
@@ -48,7 +52,9 @@ export class AppBase extends React.Component<
                     onClose={this.closeDialog}
                     icon='document'
                     title={`Release Notes ${pkg.version}`}
-                    className={`release-dialog ${this.props.style.editorDarkMode ? 'pt-dark' : 'pt-light' }`}>
+                    className={`release-dialog ${
+                        this.props.style.editorDarkMode ? 'pt-dark' : 'pt-light'
+                    }`}>
                     <div className='pt-dialog-body'>
                         <div className='release-notes-wrapper'>
                             <h3 className='heading'>
@@ -69,7 +75,7 @@ export class AppBase extends React.Component<
 export const App = connect(
     (state: any) => ({
         sawRelease: state.sawRelease,
-        style: state.style
+        style: state.style,
     }),
     {
         seeRelease,

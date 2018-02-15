@@ -10,7 +10,13 @@ interface PokemonIconProps {
     selectedId: string;
 }
 
-export const PokemonIconBase:React.SFC<PokemonIconProps> = ({ id, species, forme, onClick, selectedId }:PokemonIconProps) => {
+export const PokemonIconBase: React.SFC<PokemonIconProps> = ({
+    id,
+    species,
+    forme,
+    onClick,
+    selectedId,
+}: PokemonIconProps) => {
     return (
         <div
             role='icon'
@@ -24,6 +30,6 @@ export const PokemonIconBase:React.SFC<PokemonIconProps> = ({ id, species, forme
     );
 };
 
-export const PokemonIcon = connect(
-    (state:any) => ({ selectedId: state.selectedId })
-)(PokemonIconBase);
+export const PokemonIcon = connect((state: any) => ({ selectedId: state.selectedId }))(
+    PokemonIconBase,
+);

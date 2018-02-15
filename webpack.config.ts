@@ -3,7 +3,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const OfflinePlugin = require('offline-plugin');
 
-
 module.exports = {
     entry: './src/index.tsx',
     output: {

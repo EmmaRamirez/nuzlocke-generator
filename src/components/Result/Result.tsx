@@ -90,13 +90,21 @@ export class ResultBase extends React.Component<ResultProps> {
     private renderBadgesOrTrials() {
         const { name } = this.props.game;
 
+        if (!this.props.style.displayBadges) {
+            return null;
+        }
+
         return getBadges(name).map((badge, index) => {
             // @ts-ignore
             return (
                 <img
                     // @ts-ignore
                     className={
-                        this.props.trainer && this.props.trainer.badges && this.props.trainer.badges.includes(badge) ? 'obtained' : 'not-obtained'
+                        this.props.trainer &&
+                        this.props.trainer.badges &&
+                        this.props.trainer.badges.includes(badge)
+                            ? 'obtained'
+                            : 'not-obtained'
                     }
                     key={badge}
                     alt={badge}
@@ -134,7 +142,7 @@ export class ResultBase extends React.Component<ResultProps> {
                         <div style={bottomTextStyle}>{trainer.name}</div>
                     </div>
                 )}
-                {(trainer.money == null || trainer.money.toString() === '') ? null : (
+                {trainer.money == null || trainer.money.toString() === '' ? null : (
                     <div className='money column'>
                         <div>money</div>
                         <div style={bottomTextStyle}>{trainer.money}</div>
@@ -186,19 +194,19 @@ export class ResultBase extends React.Component<ResultProps> {
         const { style, box } = this.props;
         const numberOfDead = this.props.pokemon
             .filter(v => v.hasOwnProperty('id'))
-            .filter(poke => poke.status === 'Dead')
-            .length;
+            .filter(poke => poke.status === 'Dead').length;
         const numberOfBoxed = this.props.pokemon
             .filter(v => v.hasOwnProperty('id'))
-            .filter(poke => poke.status === 'Boxed')
-            .length;
+            .filter(poke => poke.status === 'Boxed').length;
         const bgColor = style ? style.bgColor : '#383840';
         const topHeaderColor = style ? style.topHeaderColor : '#333333';
         return (
             <>
                 {this.renderErrors()}
                 <div
-                    className={`result container ${style.template && style.template.toLowerCase().replace(/\s/g, '-') || ''}`}
+                    className={`result container ${(style.template &&
+                        style.template.toLowerCase().replace(/\s/g, '-')) ||
+                        ''}`}
                     style={{
                         margin: '3rem',
                         backgroundColor: bgColor,
@@ -210,17 +218,13 @@ export class ResultBase extends React.Component<ResultProps> {
                         {this.renderTrainer()}
                     </div>
                     <div className='team-container'>{this.renderTeamPokemon()}</div>
-                    {
-                        numberOfBoxed > 0 ?
+                    {numberOfBoxed > 0 ? (
                         <div className='boxed-container'>
                             <h3>{box[1]}</h3>
                             <div style={{ marginLeft: '1rem' }}>{this.renderBoxedPokemon()}</div>
                         </div>
-                        :
-                        null
-                    }
-                    {
-                        numberOfDead > 0 ?
+                    ) : null}
+                    {numberOfDead > 0 ? (
                         <div className='dead-container'>
                             <h3>{box[2]}</h3>
                             <div
@@ -233,24 +237,17 @@ export class ResultBase extends React.Component<ResultProps> {
                                 {this.renderDeadPokemon()}
                             </div>
                         </div>
-                        :
-                        null
-                    }
-                    {
-                        style.displayRules ?
+                    ) : null}
+                    {style.displayRules ? (
                         <div className='rules-container'>
                             <h3>Rules</h3>
                             <ol>
-                            {
-                                this.props.rules.map((rule, index) => {
+                                {this.props.rules.map((rule, index) => {
                                     return <li key={index}>{rule}</li>;
-                                })
-                            }
+                                })}
                             </ol>
                         </div>
-                        :
-                        null
-                    }
+                    ) : null}
                 </div>
             </>
         );

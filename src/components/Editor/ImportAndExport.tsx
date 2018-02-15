@@ -31,7 +31,7 @@ export class ImportAndExportBase extends React.Component<
             isOpen: false,
             mode: 'export',
             data: '',
-            href: ''
+            href: '',
         };
     }
 
@@ -49,7 +49,7 @@ export class ImportAndExportBase extends React.Component<
         delete state._persist;
         this.setState({ isOpen: true });
         this.setState({
-            href: `data:text/plain;charset=utf-8,${encodeURIComponent(JSON.stringify(state))}`
+            href: `data:text/plain;charset=utf-8,${encodeURIComponent(JSON.stringify(state))}`,
         });
     };
 
@@ -60,19 +60,19 @@ export class ImportAndExportBase extends React.Component<
 
         if (d.pokemon) {
             return (
-                <div className='team-icons' style={{
-                    background: 'rgba(0, 0, 0, 0.1)',
-                    borderRadius: '.25rem',
-                    margin: '.25rem',
-                    marginTop: '.5rem',
-                    display: 'flex',
-                    justifyContent: 'center',
-                }}>
-                    {
-                        d.pokemon.filter(p => p.status === 'Team').map(p => {
-                            return <PokemonIcon {...p} />;
-                        })
-                    }
+                <div
+                    className='team-icons'
+                    style={{
+                        background: 'rgba(0, 0, 0, 0.1)',
+                        borderRadius: '.25rem',
+                        margin: '.25rem',
+                        marginTop: '.5rem',
+                        display: 'flex',
+                        justifyContent: 'center',
+                    }}>
+                    {d.pokemon.filter(p => p.status === 'Team').map(p => {
+                        return <PokemonIcon {...p} />;
+                    })}
                 </div>
             );
         } else {
@@ -92,8 +92,7 @@ export class ImportAndExportBase extends React.Component<
                             : 'Import Nuzlocke Save'
                     }
                     icon='floppy-disk'>
-                    {
-                        this.state.mode === 'export' ?
+                    {this.state.mode === 'export' ? (
                         <>
                             <Callout>Copy this and paste it somewhere safe!</Callout>
                             <div
@@ -105,43 +104,51 @@ export class ImportAndExportBase extends React.Component<
                             </div>
                             <div className='pt-dialog-footer'>
                                 <a href={this.state.href} download={`nuzlocke_${uuid()}.json`}>
-                                    <Button icon={'download'} intent={Intent.PRIMARY}>Download</Button>
+                                    <Button icon={'download'} intent={Intent.PRIMARY}>
+                                        Download
+                                    </Button>
                                 </a>
                             </div>
                         </>
-                        :
+                    ) : (
                         <>
                             <div className='pt-dialog-body has-nice-scrollbars'>
                                 <TextArea
                                     className='custom-css-input pt-fill'
-                                    onChange={(e:any) => this.setState({ data: e.target.value }) }
+                                    onChange={(e: any) => this.setState({ data: e.target.value })}
                                     placeholder='Paste nuzlocke.json contents here'
                                     value={this.state.data}
                                     large={true}
                                 />
-                                <ErrorBoundary>{ this.renderTeam(this.state.data) }</ErrorBoundary>
+                                <ErrorBoundary>{this.renderTeam(this.state.data)}</ErrorBoundary>
                             </div>
                             <div className='pt-dialog-footer'>
                                 <ButtonGroup>
-                                    <Button intent={Intent.PRIMARY} onClick={this.confirmImport} text='Upload' icon='upload' />
+                                    <Button
+                                        intent={Intent.PRIMARY}
+                                        onClick={this.confirmImport}
+                                        text='Upload'
+                                        icon='upload'
+                                    />
                                     <Button
                                         icon='tick'
-                                        intent={this.state.data === '' ? Intent.NONE : Intent.SUCCESS}
+                                        intent={
+                                            this.state.data === '' ? Intent.NONE : Intent.SUCCESS
+                                        }
                                         onClick={this.confirmImport}
-                                        disabled={this.state.data === '' ? true : false }
+                                        disabled={this.state.data === '' ? true : false}
                                         text='Confirm'
                                     />
                                 </ButtonGroup>
                             </div>
                         </>
-                    }
+                    )}
                 </Dialog>
                 <ButtonGroup>
                     <Button
                         onClick={e => this.importState()}
                         icon='import'
-                        className='pt-intent-primary'
-                    >
+                        className='pt-intent-primary'>
                         Import Data
                     </Button>
                     <Button onClick={e => this.exportState(this.props.state)} icon='export'>
@@ -154,5 +161,5 @@ export class ImportAndExportBase extends React.Component<
 }
 
 export const ImportAndExport = connect((state: any) => ({ state: state }), {
-    replaceState
+    replaceState,
 })(ImportAndExportBase as any);

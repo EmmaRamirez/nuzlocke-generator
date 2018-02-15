@@ -13,7 +13,7 @@ import './editor.styl';
 /**
  * The main editor interface.
  */
-export class EditorBase extends React.Component<{ editor: any, style: any }, {}> {
+export class EditorBase extends React.Component<{ editor: any; style: any }, {}> {
     constructor(props) {
         super(props);
     }
@@ -48,7 +48,7 @@ export class EditorBase extends React.Component<{ editor: any, style: any }, {}>
 export const Editor = connect(
     (state: any) => ({
         editor: state.editor,
-        style: state.style
+        style: state.style,
     }),
     null,
 )(EditorBase);
