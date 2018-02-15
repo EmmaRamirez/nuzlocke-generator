@@ -24,7 +24,7 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
                         background: 'transparent',
                         border: 'none',
                         borderBottom: '1px dashed #222',
-                        width: '80%',
+                        width: '91%',
                         textOverflow: 'ellipsis',
                         margin: '.25rem',
                     }}
@@ -34,6 +34,8 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
                 />
                 <span
                     role='action'
+                    style={{ cursor: 'pointer' }}
+                    title='Delete Rule'
                     onClick={e => this.props.deleteRule(index)}
                     className='pt-icon pt-icon-cross'
                 />
@@ -41,13 +43,16 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
         ));
     }
 
+    public renderButtons() {
+        return <Button onClick={_ => this.props.addRule()} intent={Intent.PRIMARY}>
+                    Add Rule
+                </Button>;
+    }
+
     public render() {
         return (
             <>
                 <ol>{this.renderRules()}</ol>
-                <Button onClick={_ => this.props.addRule()} intent={Intent.PRIMARY}>
-                    Add Rule
-                </Button>
             </>
         );
     }
@@ -70,6 +75,9 @@ export const RulesEditorDialogBase = (
                     addRule={props.addRule}
                     deleteRule={props.deleteRule}
                 />
+            </div>
+            <div className='pt-dialog-footer'>
+                { new RulesEditor(props).renderButtons() }
             </div>
         </Dialog>
     );

@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { speciesToNumber, getSpriteIcon, getAdditionalFormes, StoreContext } from 'utils';
+import { speciesToNumber, getSpriteIcon, getAdditionalFormes, StoreContext, listOfPokemon } from 'utils';
 import { Pokemon } from 'models';
 import { onClick } from 'types';
 import { CurrentPokemonInput } from './CurrentPokemonInput';
 import { LinkedDeletePokemonButton } from './LinkedDeletePokemonButton';
+import { Autocomplete } from '../Shared';
+import { selectPokemon, editPokemon } from 'actions';
 
 interface CurrentPokemonEditState {
     selectedId: string;
@@ -120,6 +122,12 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
     };
 
     public render() {
+        // const SpeciesComplete = new Autocomplete({
+        //     items: [],
+        //     placeholder: 'Missing No.',
+        //     name: 'species',
+        //     label: 'Species'
+        // }).typeOf<string>();
         const currentPokemon = this.context.store
             .getState()
             .pokemon.find((v: Pokemon) => v.id === this.state.selectedId);
@@ -145,12 +153,26 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                     />
                     <LinkedDeletePokemonButton id={this.state.selectedId} />
                 </span>
-                <CurrentPokemonInput
+                {/* <CurrentPokemonInput
                     labelName='Species'
                     inputName='species'
                     value={currentPokemon.species}
                     placeholder='Missing No.'
                     type='text'
+                /> */}
+                <Autocomplete
+                    items={listOfPokemon}
+                    name='species'
+                    label='Species'
+                    placeholder='Missing No.'
+                    value={currentPokemon.species}
+                    onChange={ e => {
+                        const edit = {
+                            species: e.target.value
+                        };
+                        this.context.store.dispatch(editPokemon(edit, this.state.selectedId));
+                        this.context.store.dispatch(selectPokemon(this.state.selectedId));
+                    }}
                 />
                 <CurrentPokemonInput
                     labelName='Nickname'

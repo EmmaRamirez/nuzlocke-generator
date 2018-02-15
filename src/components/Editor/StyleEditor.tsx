@@ -8,7 +8,14 @@ import { RadioGroup, Radio, TextArea, Checkbox } from '@blueprintjs/core';
 
 const styleOptions = ['Default Light', 'Default Dark'];
 
-const editEvent = (e, props, name?) => props.editStyle({ [name || e.target.name]: e.target.value });
+const editEvent = (e, props, name?) => {
+    const propName = name || e.target.name;
+    props.editStyle({ [propName]: e.target.value });
+    if (propName === 'template' && e.target.value === 'Default Light') {
+        props.editStyle({'bgColor': '#eeeeee'});
+        props.editStyle({'topHeaderColor': '#dedede'});
+    }
+};
 
 // tslint:disable-next-line:no-empty-interfaces
 export interface StyleEditorProps {

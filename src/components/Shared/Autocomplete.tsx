@@ -1,33 +1,45 @@
 import * as React from 'react';
 
-interface AutocompleteProps<T> {
-    items: T[];
+interface AutocompleteProps {
+    items: string[];
+    placeholder?: string;
+    name?: string;
+    label?: string;
+    value: string;
+    onChange: any;
 }
 
-interface AutocompleteState<T> {
-    visibleItems: T[];
+interface AutocompleteState {
+    visibleItems: string[];
     currentValue: string;
+    isOpen: boolean;
 }
 
-export class Autocomplete<T> extends React.Component<AutocompleteProps<T>, AutocompleteState<T>> {
+import './Autocomplete.styl';
+
+export class Autocomplete extends React.Component<AutocompleteProps, AutocompleteState> {
     constructor(props) {
         super(props);
         this.state = {
             visibleItems: [],
             currentValue: '',
+            isOpen: false,
         };
     }
 
-    public typeOf<T>() {
-        return new Autocomplete<T>(this.props);
+    private selectItem (v) {
+        console.log(v);
+        this.setState({ currentValue: v, isOpen: false });
     }
 
-    private selectItem = _ => {};
+    public componentWillMount() {
+        this.setState({ currentValue: this.props.value });
+    }
 
     private renderItems() {
         return this.state.visibleItems.map((v, i) => {
             return (
-                <li role='item' onClick={this.selectItem}>
+                <li key={i} role='item' onClick={e => this.selectItem(v)}>
                     {v}
                 </li>
             );
@@ -36,15 +48,32 @@ export class Autocomplete<T> extends React.Component<AutocompleteProps<T>, Autoc
 
     private updateItems = (e: any) => {
         this.setState({
-            visibleItems: this.props.items.filter(i => (i as any).contains(e.target.value)),
+            currentValue: e.target.value,
+            visibleItems: this.props.items.filter(i => i.startsWith(e.target.value)),
         });
-    };
+        this.props.onChange(e);
+    }
+
+    private openList = e => this.setState({ isOpen: true });
+
+    private closeList = e => this.setState({ isOpen: false });
+
+    private handleEscape = e => {
+        if (e.keyCode === 27) {
+            this.closeList(e);
+        }
+    }
 
     public render() {
         return (
-            <div className='pt-input autocomplete'>
-                <input type='text' onChange={this.updateItems} value={this.state.currentValue} />
-                <ul className='autocomplete-items'>{this.renderItems()}</ul>
+            <div className='current-pokemon-input-wrapper autocomplete'>
+                <label>{ this.props.label }</label>
+                <input onKeyDown={this.handleEscape} onFocus={this.openList} placeholder={this.props.placeholder} name={this.props.name} type='text' onChange={this.updateItems} value={this.state.currentValue} />
+                { this.state.isOpen ?
+                    <ul className='autocomplete-items has-nice-scrollbars'>{this.renderItems()}</ul>
+                    :
+                    null
+                }
             </div>
         );
     }
