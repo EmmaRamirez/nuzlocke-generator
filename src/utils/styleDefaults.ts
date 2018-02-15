@@ -14,4 +14,5 @@ export const styleDefaults = {
     editorDarkMode: false,
     template: 'Default Dark',
     topHeaderColor: '#333333',
+    showPokemonMoves: true,
 };

@@ -198,7 +198,7 @@ export class ResultBase extends React.Component<ResultProps> {
             <>
                 {this.renderErrors()}
                 <div
-                    className={`result container ${style.theme}`}
+                    className={`result container ${style.template && style.template.toLowerCase().replace(/\s/g, '-') || ''}`}
                     style={{
                         margin: '3rem',
                         backgroundColor: bgColor,

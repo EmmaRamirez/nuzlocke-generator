@@ -8,12 +8,9 @@ import { RadioGroup, Radio, TextArea, Checkbox } from '@blueprintjs/core';
 
 const styleOptions = [
     // 'Default Light',
+    'Crystal',
     'Default Dark',
 ];
-
-const value = `body {
-    color: red;
-}`;
 
 const editEvent = (e, props, name?) => props.editStyle({ [name || e.target.name]: e.target.value });
 
@@ -167,6 +164,15 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                     name='teamPokemonBorder'
                     label='Team Pokemon Gradient Backgrounds'
                     onChange={(e:any) => editEvent({ ...e, target: { value: e.target.checked }}, props, 'teamPokemonBorder')}
+                />
+            </div>
+
+            <div className='style-edit'>
+                <Checkbox
+                    checked={props.style.showPokemonMoves}
+                    name='showPokemonMoves'
+                    label='Show Pokemon Moves'
+                    onChange={(e:any) => editEvent({ ...e, target: { value: e.target.checked }}, props, 'showPokemonMoves')}
                 />
             </div>
 

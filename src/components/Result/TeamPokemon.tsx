@@ -156,7 +156,7 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
                     <br />
                     {poke.ability ? <span className='pokemon-ability'>{poke.ability}</span> : null}
                 </div>
-                {moves}
+                { props.style.showPokemonMoves ? moves : null }
             </div>
         </div>
     );
