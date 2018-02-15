@@ -134,7 +134,7 @@ export class ResultBase extends React.Component<ResultProps> {
                         <div style={bottomTextStyle}>{trainer.name}</div>
                     </div>
                 )}
-                {trainer.money == null ? null : (
+                {(trainer.money == null || trainer.money.toString() === '') ? null : (
                     <div className='money column'>
                         <div>money</div>
                         <div style={bottomTextStyle}>{trainer.money}</div>

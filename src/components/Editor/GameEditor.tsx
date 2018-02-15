@@ -53,9 +53,9 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                         <Button
                             onClick={e => this.props.changeEditorSize(!this.props.editor.minimized)}
                             style={{ marginLeft: 'auto', ...this.isMinimized() }}
-                            className='pt-minimal'>
-                            {this.props.editor.minimized ? 'maximize' : 'minimize'} editor
-                        </Button>
+                            className='pt-minimal'
+                            icon={this.props.editor.minimized ? 'maximize' : 'minimize'}
+                        />
                     </h4>
                     {/* <label>Game </label> */}
                     {/* <input onChange={this.onInput} className='pt-input' type='text' value={game.name} dir='auto' /> */}

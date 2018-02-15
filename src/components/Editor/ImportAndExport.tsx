@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Button, ButtonGroup, Dialog, Callout, TextArea, Intent } from '@blueprintjs/core';
+import { PokemonIcon } from './PokemonIcon';
+import { ErrorBoundary } from 'components/Shared';
 import * as uuid from 'uuid/v4';
 
 import { replaceState } from 'actions';
@@ -50,6 +52,34 @@ export class ImportAndExportBase extends React.Component<
             href: `data:text/plain;charset=utf-8,${encodeURIComponent(JSON.stringify(state))}`
         });
     };
+
+    private renderTeam(data) {
+        const d = JSON.parse(data);
+
+        console.log(d);
+
+        if (d.pokemon) {
+            return (
+                <div className='team-icons' style={{
+                    background: 'rgba(0, 0, 0, 0.1)',
+                    borderRadius: '.25rem',
+                    margin: '.25rem',
+                    marginTop: '.5rem',
+                    display: 'flex',
+                    justifyContent: 'center',
+                }}>
+                    {
+                        d.pokemon.filter(p => p.status === 'Team').map(p => {
+                            return <PokemonIcon {...p} />;
+                        })
+                    }
+                </div>
+            );
+        } else {
+            return null;
+        }
+    }
+
     public render() {
         return (
             <div style={{ padding: '1rem' }}>
@@ -89,6 +119,7 @@ export class ImportAndExportBase extends React.Component<
                                     value={this.state.data}
                                     large={true}
                                 />
+                                <ErrorBoundary>{ this.renderTeam(this.state.data) }</ErrorBoundary>
                             </div>
                             <div className='pt-dialog-footer'>
                                 <ButtonGroup>

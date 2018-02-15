@@ -74,8 +74,6 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
         return { ...prev, ...addProp(curr) };
     }, {});
 
-    console.log(data);
-
     if (props.style.minimalTeamLayout) {
         return (
             <div className='pokemon-container minimal' {...data}>

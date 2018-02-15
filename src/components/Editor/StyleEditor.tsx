@@ -37,6 +37,7 @@ export const ColorEdit = ({ value, onChange, name }) => {
                 style={{ border: 'none' }}
                 onChange={onChange}
                 type='text'
+                className='color-text-input'
                 name={name}
                 value={value}
             />
@@ -84,6 +85,9 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                     className='pt-input small-input'
                     onChange={e => editEvent(e, props)}
                     value={props.style.resultWidth}
+                    type='number'
+                    min='0'
+                    step='10'
                 />
                 <span style={{ marginRight: '0' }} className='pt-icon pt-icon-cross' />
                 <input
@@ -91,6 +95,9 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                     className='pt-input small-input'
                     onChange={e => editEvent(e, props)}
                     value={props.style.resultHeight}
+                    type='number'
+                    min='0'
+                    step='10'
                 />
             </div>
 
