@@ -15,4 +15,5 @@ export interface NuzlockeSave {
 }
 
 export interface Nuzlocke {
-    saves: NuzlockeSave[];}
+    saves: NuzlockeSave[];
+}
