@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { speciesToNumber, getSpriteIcon, getAdditionalFormes, StoreContext, listOfPokemon } from 'utils';
+import {
+    speciesToNumber,
+    getSpriteIcon,
+    getAdditionalFormes,
+    StoreContext,
+    listOfPokemon,
+} from 'utils';
 import { Pokemon } from 'models';
 import { onClick } from 'types';
 import { CurrentPokemonInput } from './CurrentPokemonInput';
@@ -166,9 +172,9 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                     label='Species'
                     placeholder='Missing No.'
                     value={currentPokemon.species}
-                    onChange={ e => {
+                    onChange={e => {
                         const edit = {
-                            species: e.target.value
+                            species: e.target.value,
                         };
                         this.context.store.dispatch(editPokemon(edit, this.state.selectedId));
                         this.context.store.dispatch(selectPokemon(this.state.selectedId));

@@ -27,7 +27,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
         };
     }
 
-    private selectItem (v) {
+    private selectItem(v) {
         console.log(v);
         this.setState({ currentValue: v, isOpen: false });
     }
@@ -52,7 +52,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
             visibleItems: this.props.items.filter(i => i.startsWith(e.target.value)),
         });
         this.props.onChange(e);
-    }
+    };
 
     private openList = e => this.setState({ isOpen: true });
 
@@ -62,18 +62,24 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
         if (e.keyCode === 27) {
             this.closeList(e);
         }
-    }
+    };
 
     public render() {
         return (
             <div className='current-pokemon-input-wrapper autocomplete'>
-                <label>{ this.props.label }</label>
-                <input onKeyDown={this.handleEscape} onFocus={this.openList} placeholder={this.props.placeholder} name={this.props.name} type='text' onChange={this.updateItems} value={this.state.currentValue} />
-                { this.state.isOpen ?
+                <label>{this.props.label}</label>
+                <input
+                    onKeyDown={this.handleEscape}
+                    onFocus={this.openList}
+                    placeholder={this.props.placeholder}
+                    name={this.props.name}
+                    type='text'
+                    onChange={this.updateItems}
+                    value={this.state.currentValue}
+                />
+                {this.state.isOpen ? (
                     <ul className='autocomplete-items has-nice-scrollbars'>{this.renderItems()}</ul>
-                    :
-                    null
-                }
+                ) : null}
             </div>
         );
     }

@@ -12,8 +12,8 @@ const editEvent = (e, props, name?) => {
     const propName = name || e.target.name;
     props.editStyle({ [propName]: e.target.value });
     if (propName === 'template' && e.target.value === 'Default Light') {
-        props.editStyle({'bgColor': '#eeeeee'});
-        props.editStyle({'topHeaderColor': '#dedede'});
+        props.editStyle({ bgColor: '#eeeeee' });
+        props.editStyle({ topHeaderColor: '#dedede' });
     }
 };
 

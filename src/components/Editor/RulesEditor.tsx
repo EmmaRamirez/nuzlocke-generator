@@ -44,9 +44,11 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
     }
 
     public renderButtons() {
-        return <Button onClick={_ => this.props.addRule()} intent={Intent.PRIMARY}>
-                    Add Rule
-                </Button>;
+        return (
+            <Button onClick={_ => this.props.addRule()} intent={Intent.PRIMARY}>
+                Add Rule
+            </Button>
+        );
     }
 
     public render() {
@@ -76,9 +78,7 @@ export const RulesEditorDialogBase = (
                     deleteRule={props.deleteRule}
                 />
             </div>
-            <div className='pt-dialog-footer'>
-                { new RulesEditor(props).renderButtons() }
-            </div>
+            <div className='pt-dialog-footer'>{new RulesEditor(props).renderButtons()}</div>
         </Dialog>
     );
 };
