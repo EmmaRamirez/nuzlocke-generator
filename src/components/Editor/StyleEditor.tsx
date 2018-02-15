@@ -15,6 +15,10 @@ const editEvent = (e, props, name?) => {
         props.editStyle({ bgColor: '#eeeeee' });
         props.editStyle({ topHeaderColor: '#dedede' });
     }
+    if (propName === 'template' && e.target.value === 'Default Dark') {
+        props.editStyle({ bgColor: '#383840' });
+        props.editStyle({ topHeaderColor: '#333333' });
+    }
 };
 
 // tslint:disable-next-line:no-empty-interfaces
