@@ -78,4 +78,14 @@ This is a limited beta of the application. As such, it has a shitload of bugs ev
 
 You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nuzlocke-generator/issues).
     `,
+    '0.0.4-beta': `
+# Changelog
+
+## Fixes
+- Fixed a height issue with rendering in Firefox
+- Fixed error that crashed Importing a file
+
+
+You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nuzlocke-generator/issues).
+    `,
 };

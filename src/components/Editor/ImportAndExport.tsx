@@ -54,7 +54,12 @@ export class ImportAndExportBase extends React.Component<
     };
 
     private renderTeam(data) {
-        const d = JSON.parse(data);
+        let d;
+        try {
+            d = JSON.parse(data);
+        } catch {
+            d = { pokemon: false };
+        }
 
         console.log(d);
 
@@ -71,7 +76,7 @@ export class ImportAndExportBase extends React.Component<
                         justifyContent: 'center',
                     }}>
                     {d.pokemon.filter(p => p.status === 'Team').map(p => {
-                        return <PokemonIcon {...p} />;
+                        return <PokemonIcon key={p.id} {...p} />;
                     })}
                 </div>
             );
