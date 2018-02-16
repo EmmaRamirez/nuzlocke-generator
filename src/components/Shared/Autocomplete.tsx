@@ -36,6 +36,10 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
         this.setState({ currentValue: this.props.value });
     }
 
+    public componentWillReceiveProps(nextProps) {
+        this.setState({ currentValue: nextProps.value });
+    }
+
     private renderItems() {
         return this.state.visibleItems.map((v, i) => {
             return (

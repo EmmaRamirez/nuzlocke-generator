@@ -84,7 +84,11 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 ## Fixes
 - Fixed a height issue with rendering in Firefox
 - Fixed error that crashed Importing a file
+- Fixed a bug where if you switch to a different Pokémon, the species name wouldn't change
 
+## Features
+- Grayscale toggle for Dead Pokemon images
+- New format for met location & level + the option to keep the old format
 
 You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nuzlocke-generator/issues).
     `,

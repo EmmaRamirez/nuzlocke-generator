@@ -1,19 +1,19 @@
 {
   "name": "nuzlocke-generator",
-  "version": "0.0.3-beta",
+  "version": "0.0.4-beta",
   "description": "A tool for generating nuzlocke team pics from data",
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage --config jest-config.json",
     "prebuild": "npm run lint",
     "build": "webpack",
-    "build:production": "webpack NODE_ENV=production ",
+    "build:production": "webpack --define process.env.NODE_ENV='PRODUCTION' ",
     "build:watch": "webpack --watch",
     "clean": "rimraf dist",
     "pretest": "npm run lint",
     "format": "prettier --config .prettierrc --write **/**/*.{ts,tsx} && npm run lint",
     "lint": "tslint --fix -c tslint.json 'src/**/*.{ts,tsx}'",
-    "serve": "webpack-dev-server",
+    "serve": "webpack-dev-server --open",
     "deploy": "npm run build && git push heroku master"
   },
   "keywords": [],

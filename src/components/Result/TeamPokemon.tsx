@@ -111,6 +111,27 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
         return { ...prev, ...addProp(curr) };
     }, {});
 
+    const generateMetData = () => {
+        if (poke.met) {
+            if (props.style.oldMetLocationFormat) {
+                return (
+                    <span className='pokemon-location'>
+                        {poke.met === 'Starter' ? poke.met : `Met on ${poke.met}`}{
+                            poke.metLevel ? `, from lv.${poke.metLevel}` : null }
+                    </span>
+                );
+            } else {
+                return (
+                    <span className='pokemon-location'>
+                        Met Location: {poke.met}{ poke.metLevel ? `, at lv.${poke.metLevel}` : null }
+                    </span>
+                );
+            }
+        } else {
+            return null;
+        }
+    };
+
     if (props.style.minimalTeamLayout) {
         return (
             <div className='pokemon-container minimal' {...data}>
@@ -182,12 +203,7 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
                     {getGenderElement(poke.gender)}
                     {poke.level ? <span className='pokemon-level'>lv. {poke.level}</span> : null}
                     <br />
-                    {poke.met && poke.metLevel ? (
-                        <span className='pokemon-location'>
-                            {poke.met === 'Starter' ? poke.met : `Met on ${poke.met}`}, from lv.{' '}
-                            {poke.metLevel}
-                        </span>
-                    ) : null}
+                    { generateMetData() }
                     <br />
                     {poke.nature && poke.nature !== 'None' ? (
                         <span className='pokemon-nature'>

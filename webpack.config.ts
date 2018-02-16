@@ -3,13 +3,15 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const OfflinePlugin = require('offline-plugin');
 
+const isProduction = process.env.NODE_ENV === 'PRODUCTION' ? true : false;
+
 module.exports = {
     entry: './src/index.tsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
     },
-    devtool: 'source-map',
+    devtool: isProduction ? 'none' : 'source-map',
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
         modules: [path.resolve('./src'), path.resolve('./node_modules')],
@@ -86,6 +88,10 @@ module.exports = {
             { from: './src/index.html', to: './index.html' },
             { from: './src/img', to: './img' },
         ]),
+
+        new webpack.Define({
+            'process.env.NODE_ENV': process.env.NODE_ENV
+        })
 
         // new OfflinePlugin({
         //     excludes: ['**/*.js', '*.js']
