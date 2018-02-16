@@ -7,6 +7,7 @@ export const styleDefaults = {
     editorDarkMode: false,
     iconsNextToTeamPokemon: false,
     imageStyle: 'round',
+    grayScaleDeadPokemon: false,
     minimalTeamLayout: false,
     movesPosition: 'horizontal',
     oldMetLocationFormat: true,

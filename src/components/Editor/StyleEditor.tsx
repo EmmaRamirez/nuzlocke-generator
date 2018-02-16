@@ -270,6 +270,21 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 />
             </div>
 
+            <div className='style-edit'>
+                <Checkbox
+                    checked={props.style.grayScaleDeadPokemon}
+                    name='grayScaleDeadPokemon'
+                    label='Gray Scale Filter Dead Pokemon Images'
+                    onChange={(e: any) =>
+                        editEvent(
+                            { ...e, target: { value: e.target.checked } },
+                            props,
+                            'grayScaleDeadPokemon',
+                        )
+                    }
+                />
+            </div>
+
             <div className='custom-css-input-wrapper'>
                 <label style={{ padding: '.5rem' }} className='pt-label'>
                     Custom CSS {/*<a href=''>Check out Layout Guide</a>*/}

@@ -8,6 +8,7 @@ import { getSpriteIcon, speciesToNumber } from 'utils';
 import { selectPokemon } from 'actions';
 
 export const DeadPokemonBase = (poke: Pokemon & { selectPokemon } & { style: any }) => {
+    const style = poke.style;
     const addForme = (species: string | undefined) => {
         if (poke.forme) {
             if (poke.forme === 'Alolan' || poke.forme === 'Alola') {
@@ -44,6 +45,7 @@ export const DeadPokemonBase = (poke: Pokemon & { selectPokemon } & { style: any
                 className='dead-pokemon-picture'
                 style={{
                     backgroundImage: getImage(),
+                    filter: style.grayScaleDeadPokemon ? 'grayscale(100%)' : 'none',
                 }}
             />
             <div className='dead-pokemon-info'>
