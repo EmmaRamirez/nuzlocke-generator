@@ -198,20 +198,17 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
             )}
             <div className='pokemon-info'>
                 <div className='pokemon-info-inner'>
-                    <span className='pokemon-nickname'>{poke.nickname}</span>
+                    <span style={{ margin: '0.25rem 0 0'}} className='pokemon-nickname'>{poke.nickname}</span>
                     <span className='pokemon-name'>{poke.species}</span>
                     {getGenderElement(poke.gender)}
                     {poke.level ? <span className='pokemon-level'>lv. {poke.level}</span> : null}
-                    <br />
                     { generateMetData() }
-                    <br />
                     {poke.nature && poke.nature !== 'None' ? (
-                        <span className='pokemon-nature'>
+                        <div className='pokemon-nature'>
                             <strong>{poke.nature}</strong> nature
-                        </span>
+                        </div>
                     ) : null}
-                    <br />
-                    {poke.ability ? <span className='pokemon-ability'>{poke.ability}</span> : null}
+                    {poke.ability ? <div className='pokemon-ability'>{poke.ability}</div> : null}
                 </div>
                 {props.style.showPokemonMoves ? moves : null}
             </div>

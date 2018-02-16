@@ -6,6 +6,6 @@ export const getGenderElement = gender => {
     } else if (gender === 'Female' || gender === 'f') {
         return <span className='gender-color-female'>&#9792;</span>;
     } else {
-        return <span />;
+        return null;
     }
 };
