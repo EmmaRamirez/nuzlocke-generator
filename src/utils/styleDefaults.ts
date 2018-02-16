@@ -9,6 +9,7 @@ export const styleDefaults = {
     imageStyle: 'round',
     minimalTeamLayout: false,
     movesPosition: 'horizontal',
+    oldMetLocationFormat: true,
     resultHeight: '900',
     resultWidth: '1200',
     showPokemonMoves: true,

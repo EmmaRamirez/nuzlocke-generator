@@ -49,6 +49,15 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
                 {generateMoves(poke.moves)}
             </div>
         );
+    const sugiFormeNotation = forme => {
+        if (typeof forme === 'undefined') return '';
+        // If the forme exists, we default to '_f2'
+        if (forme != null || forme !== 'Normal' || forme === 'Alolan' || forme === 'Mega') return '_f2';
+        // Pokemon with more than 1 extra forme have different notations
+        if (forme === 'Sandy' || forme === 'Pau\'u') return '_f3';
+        if (forme === 'Sensu') return '_f4';
+        return '';
+    };
     const getImage = (): string => {
         if (poke.customImage) {
             return `url(${poke.customImage})`;
@@ -58,7 +67,9 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
                 speciesToNumber(poke.species) || 0
             )
                 .toString()
-                .padStart(3, '0')}.png)`;
+                .padStart(3, '0')
+                + (sugiFormeNotation(poke.forme))
+            }.png)`;
         }
         return `url(img/${(
             addForme(poke.species.replace(/\s/g, ''), poke.forme) || 'missingno'

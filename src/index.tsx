@@ -49,7 +49,6 @@ render(
 );
 
 store.subscribe(() => {
-    console.table(store.getState());
     if ((store.getState() as any).style.editorDarkMode) {
         document.body.style.background = '#111';
     } else {
