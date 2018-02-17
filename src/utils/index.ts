@@ -15,3 +15,4 @@ export { styleDefaults } from './styleDefaults';
 export { generateReleaseNotes } from './generateReleaseNotes';
 export * from './getBadges';
 export * from './listOfPokemon';
+export { TYPES } from './typesMap';

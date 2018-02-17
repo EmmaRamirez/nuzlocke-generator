@@ -16,6 +16,7 @@ export const getSpriteIcon = (species: string, forme: string | undefined) => {
         if (forme === 'Kabuki') return '-k';
         if (forme === 'Pharaoh') return '-p';
         if (forme === 'Mega') return '-m';
+        if (forme === 'East Sea') return 'e';
         return '';
     };
     return `https://www.serebii.net/pokedex-sm/icon/${n.toString().padStart(3, '0') +

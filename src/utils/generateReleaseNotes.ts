@@ -92,4 +92,14 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 
 You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nuzlocke-generator/issues).
     `,
+    '0.1.0-beta': `
+# Changelog
+
+## Features
+- **Sprites Mode**: enables sprites for the games. Currently doesn't work with Gen 3 because of Serebii.
+
+## Fixes
+- Fixed bug where "name" would still show up even if Trainer name wasn't defined
+
+`
 };

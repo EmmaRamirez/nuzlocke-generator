@@ -36,6 +36,13 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
         this.setState({ currentValue: this.props.value });
     }
 
+    public componentWillUnmount() {
+        this.setState({
+            isOpen: false,
+            visibleItems: []
+        });
+    }
+
     public componentWillReceiveProps(nextProps) {
         this.setState({ currentValue: nextProps.value });
     }
@@ -63,7 +70,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
     private closeList = e => this.setState({ isOpen: false });
 
     private handleEscape = e => {
-        if (e.keyCode === 27) {
+        if (e.which === 27 || e.which === 13 || e.which === 9) {
             this.closeList(e);
         }
     };

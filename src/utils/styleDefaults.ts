@@ -14,6 +14,7 @@ export const styleDefaults = {
     resultHeight: '900',
     resultWidth: '1200',
     showPokemonMoves: true,
+    spritesMode: false,
     teamImages: 'standard',
     teamPokemonBorder: true,
     template: 'Default Dark',

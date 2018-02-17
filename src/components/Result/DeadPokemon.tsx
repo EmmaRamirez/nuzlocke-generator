@@ -5,9 +5,10 @@ import { Pokemon } from 'models';
 import { getBackgroundGradient } from './getBackgroundGradient';
 import { getGenderElement } from './getGenderElement';
 import { getSpriteIcon, speciesToNumber } from 'utils';
+import { getPokemonImage } from './getPokemonImage';
 import { selectPokemon } from 'actions';
 
-export const DeadPokemonBase = (poke: Pokemon & { selectPokemon } & { style: any }) => {
+export const DeadPokemonBase = (poke: Pokemon & { selectPokemon } & { style: any } & { game: any }) => {
     const style = poke.style;
     const addForme = (species: string | undefined) => {
         if (poke.forme) {
@@ -20,21 +21,6 @@ export const DeadPokemonBase = (poke: Pokemon & { selectPokemon } & { style: any
             return species;
         }
     };
-    const getImage = (): string => {
-        if (poke.customImage) {
-            return `url(${poke.customImage})`;
-        }
-        if (poke.style.teamImages === 'sugimori') {
-            return `url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/${(
-                speciesToNumber(poke.species) || 0
-            )
-                .toString()
-                .padStart(3, '0')}.png)`;
-        }
-        return `url(img/${(
-            addForme(poke.species.replace(/\s/g, '')) || 'missingno'
-        ).toLowerCase()}.jpg)`;
-    };
     const getClassname = () =>
         poke.champion ? 'dead-pokemon-container champion' : 'dead-pokemon-container';
     return (
@@ -44,7 +30,13 @@ export const DeadPokemonBase = (poke: Pokemon & { selectPokemon } & { style: any
                 onClick={e => poke.selectPokemon(poke.id)}
                 className='dead-pokemon-picture'
                 style={{
-                    backgroundImage: getImage(),
+                    backgroundImage: getPokemonImage({
+                        customImage: poke.customImage,
+                        forme: poke.forme,
+                        species: poke.species,
+                        style: poke.style,
+                        name: poke.game.name
+                    }),
                     filter: style.grayScaleDeadPokemon ? 'grayscale(100%)' : 'none',
                 }}
             />
@@ -62,6 +54,6 @@ export const DeadPokemonBase = (poke: Pokemon & { selectPokemon } & { style: any
     );
 };
 
-export const DeadPokemon = connect((state: any) => ({ style: state.style }), { selectPokemon })(
+export const DeadPokemon = connect((state: any) => ({ style: state.style, game: state.game }), { selectPokemon })(
     DeadPokemonBase,
 );

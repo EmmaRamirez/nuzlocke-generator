@@ -8,6 +8,7 @@ import {
     Popover,
     Position,
     Menu,
+    Intent,
     PopoverInteractionKind,
 } from '@blueprintjs/core';
 
@@ -101,6 +102,7 @@ export class TrainerInfoEditor extends React.Component<{}, {}> {
                     name='image'
                     placeholder='http://...'
                 />
+                <Button style={{ borderRadius: '0' }} className='pt-minimal' intent={Intent.PRIMARY} icon='plus'>Add New Field</Button>
             </div>
         );
     }
