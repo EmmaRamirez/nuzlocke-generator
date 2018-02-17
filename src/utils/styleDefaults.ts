@@ -10,7 +10,7 @@ export const styleDefaults = {
     grayScaleDeadPokemon: false,
     minimalTeamLayout: false,
     movesPosition: 'horizontal',
-    oldMetLocationFormat: true,
+    oldMetLocationFormat: false,
     resultHeight: '900',
     resultWidth: '1200',
     showPokemonMoves: true,

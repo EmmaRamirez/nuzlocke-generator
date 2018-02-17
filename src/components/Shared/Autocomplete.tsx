@@ -30,6 +30,11 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
     private selectItem(v) {
         console.log(v);
         this.setState({ currentValue: v, isOpen: false });
+        this.props.onChange({
+            target: {
+                value: v
+            }
+        });
     }
 
     public componentWillMount() {
