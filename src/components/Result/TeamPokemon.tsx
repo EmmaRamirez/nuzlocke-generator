@@ -81,7 +81,7 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
         'wonderTradedFor',
         'mvp',
         'customImage',
-    ];
+    ].sort();
     const data = dataKeys.reduce((prev, curr) => {
         return { ...prev, ...addProp(curr) };
     }, {});

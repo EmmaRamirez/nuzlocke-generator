@@ -15,4 +15,5 @@ export { styleDefaults } from './styleDefaults';
 export { generateReleaseNotes } from './generateReleaseNotes';
 export * from './getBadges';
 export * from './listOfPokemon';
-export { TYPES } from './typesMap';
+export { listOfThemes } from './listOfThemes';
+export * from './getGameRegion';

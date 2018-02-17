@@ -18,6 +18,11 @@
   }
 }
 
+.result-notes {
+  text-align: center;
+  margin: .5rem;
+}
+
 .container {
   padding-bottom: 1rem;
   background-color: #383840;
@@ -145,18 +150,20 @@
 }
 
 .dead-pokemon-container[data-league='true'] {
-  background: #EEE8AA;
+  //background: #EEE8AA;
+  outline: 1px solid #EEE8AA;
 }
 
 .dead-pokemon-container[data-league='true']::after {
   content: '';
-  background: url('../../img/Champion_Ribbon.png');
+  background: url('../../img/alola-champion-ribbon.png');  
   display: block;
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 35px;
   position: absolute;
   top: .25rem;
   right: .25rem;
+  opacity: 0.8;
 }
 
 .death-info-container {
@@ -192,7 +199,19 @@
   position: relative;
 }
 
+.pokemon-container[data-champion='true'] .pokemon-info::after {
+  content: '';
+  display: block;
+  height: 40px;
+  width: 35px;
+  position: absolute;
+  top: .25rem;
+  right: .25rem;
+}
 
+.region-alola .pokemon-container[data-champion='true'] .pokemon-info::after {
+  background: url('../../img/alola-champion-ribbon.png');  
+}
 
 
 .pokemon-levels {
@@ -237,10 +256,6 @@
   background: #333;
   border: 1px solid #010101;
   /*color: #eee;*/
-}
-
-[data-league='true'] .dead-pokemon-info {
-  -webkit-filter: invert();
 }
 
 
@@ -673,6 +688,9 @@
 
 .default-light {
   h3 {
+    color: #111;
+  }
+  .result-notes {
     color: #111;
   }
   .container {

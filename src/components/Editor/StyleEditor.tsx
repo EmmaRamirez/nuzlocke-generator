@@ -2,11 +2,8 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { editStyle } from 'actions';
-import { styleDefaults } from 'utils';
-
+import { styleDefaults, listOfThemes } from 'utils';
 import { RadioGroup, Radio, TextArea, Checkbox } from '@blueprintjs/core';
-
-const styleOptions = ['Default Light', 'Default Dark'];
 
 const editEvent = (e, props, name?) => {
     const propName = name || e.target.name;
@@ -64,7 +61,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                         name='template'
                         onChange={e => editEvent(e, props)}
                         value={props.style.template}>
-                        {styleOptions.map(o => <option key={o}>{o}</option>)}
+                        {listOfThemes.map(o => <option key={o}>{o}</option>)}
                     </select>
                 </div>
             </div>

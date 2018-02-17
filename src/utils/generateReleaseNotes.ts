@@ -97,9 +97,12 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 
 ## Features
 - **Sprites Mode**: enables sprites for the games. Currently doesn't work with Gen 3 because of Serebii.
+- **Champion property**: works for Pokémon now. Displays a nice shiny badge in their info section.
+- **Shiny property**: add the shiny start to its info section.
 
 ## Fixes
 - Fixed bug where "name" would still show up even if Trainer name wasn't defined
+- Renamed "name" field to "Trainer Name" for clarity
 
 `
 };

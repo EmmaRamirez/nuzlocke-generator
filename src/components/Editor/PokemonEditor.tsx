@@ -2,7 +2,7 @@ import { Tab, Tabs, Tooltip, Button, Position } from '@blueprintjs/core';
 import * as React from 'react';
 import * as uuid from 'uuid/v4';
 
-import { Pokemon } from '../../models';
+import { Pokemon } from 'models';
 
 import {
     speciesToNumber,

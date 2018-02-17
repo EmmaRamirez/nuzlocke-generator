@@ -7,4 +7,5 @@ export interface Trainer {
     expShareStatus?: string;
     image?: string;
     title?: string;
+    notes?: string;
 }

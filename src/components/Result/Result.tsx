@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Pokemon, Trainer } from 'models';
-import { getBadges } from 'utils';
+import { getBadges, getGameRegion } from 'utils';
 import { connect } from 'react-redux';
 import * as uuid from 'uuid/v4';
 import { ResizableBox, Resizable } from 'react-resizable';
@@ -191,7 +191,7 @@ export class ResultBase extends React.Component<ResultProps> {
     };
 
     public render() {
-        const { style, box } = this.props;
+        const { style, box, trainer } = this.props;
         const numberOfDead = this.props.pokemon
             .filter(v => v.hasOwnProperty('id'))
             .filter(poke => poke.status === 'Dead').length;
@@ -206,7 +206,7 @@ export class ResultBase extends React.Component<ResultProps> {
                 <div
                     className={`result container ${(style.template &&
                         style.template.toLowerCase().replace(/\s/g, '-')) ||
-                        ''}`}
+                        ''} region-${getGameRegion(this.props.game.name)}`}
                     style={{
                         margin: '3rem',
                         backgroundColor: bgColor,
@@ -217,6 +217,12 @@ export class ResultBase extends React.Component<ResultProps> {
                     <div className='trainer-container' style={{ backgroundColor: topHeaderColor }}>
                         {this.renderTrainer()}
                     </div>
+                    {
+                        (trainer && trainer.notes) ?
+                            <div className='result-notes'>{ trainer.notes }</div>
+                            :
+                            null
+                    }
                     <div className='team-container'>{this.renderTeamPokemon()}</div>
                     {numberOfBoxed > 0 ? (
                         <div className='boxed-container'>

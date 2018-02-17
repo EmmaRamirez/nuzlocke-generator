@@ -8,7 +8,7 @@ test/__snapshots__
 .env
 *.env
 env
-
+src/img/dev
 
 # Runtime data
 pids

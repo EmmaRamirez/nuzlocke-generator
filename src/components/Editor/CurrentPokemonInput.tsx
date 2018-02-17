@@ -47,6 +47,10 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
             edit = {
                 [inputName]: e.target.value,
             };
+        } else if (inputName === 'champion' || inputName === 'shiny') {
+            edit = {
+                [inputName]: e.target.checked,
+            };
         } else {
             edit = {
                 [inputName]: e.target.value,
@@ -108,7 +112,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         if (type === 'checkbox') {
             return (
                 <label className='pt-control pt-checkbox'>
-                    <input type={type} name={inputName} defaultChecked={!!value} />
+                    <input onChange={e => this.onChange(e, inputName)} checked={value} type={type} name={inputName} />
                     <span className='pt-control-indicator' />
                 </label>
             );

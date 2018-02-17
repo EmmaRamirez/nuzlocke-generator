@@ -39,7 +39,7 @@ export class TrainerInfoEditor extends React.Component<{}, {}> {
             <div className='trainer-info-editor'>
                 <LinkedTrainerInfoEditField
                     onInput={this.onInput}
-                    label='Name'
+                    label='Trainer Name'
                     name='name'
                     placeholder='Trainer Name'
                 />
@@ -101,6 +101,12 @@ export class TrainerInfoEditor extends React.Component<{}, {}> {
                     label='Trainer Image'
                     name='image'
                     placeholder='http://...'
+                />
+                <LinkedTrainerInfoEditField
+                    onInput={this.onInput}
+                    label='Notes'
+                    name='notes'
+                    placeholder=''
                 />
                 <Button style={{ borderRadius: '0' }} className='pt-minimal' intent={Intent.PRIMARY} icon='plus'>Add New Field</Button>
             </div>
