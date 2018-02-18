@@ -108,7 +108,13 @@ export class TrainerInfoEditor extends React.Component<{}, {}> {
                     name='notes'
                     placeholder=''
                 />
-                <Button style={{ borderRadius: '0' }} className='pt-minimal' intent={Intent.PRIMARY} icon='plus'>Add New Field</Button>
+                <Button
+                    style={{ borderRadius: '0' }}
+                    className='pt-minimal'
+                    intent={Intent.PRIMARY}
+                    icon='plus'>
+                    Add New Field
+                </Button>
             </div>
         );
     }

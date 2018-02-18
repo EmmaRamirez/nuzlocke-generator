@@ -27,6 +27,6 @@ export const listOfGames = [
     'Ultra Sun',
     'Ultra Moon',
     'Colosseum',
-    'XD Gale of Darkness'
+    'XD Gale of Darkness',
     //'Custom...',
 ];

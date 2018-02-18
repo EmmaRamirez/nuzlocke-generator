@@ -40,7 +40,9 @@ const generateMoves = moves => {
     });
 };
 
-export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: any } & { game: any }) => {
+export const TeamPokemonBase = (
+    props: Pokemon & { selectPokemon } & { style: any } & { game: any },
+) => {
     const poke = props;
     const moves =
         poke.moves == null ? (
@@ -87,19 +89,23 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
     }, {});
 
     const generateMetData = () => {
-        const determinePreposition = () =>  (poke.met && poke.met.toLocaleLowerCase().startsWith('route')) ? 'on' : 'in';
+        const determinePreposition = () =>
+            poke.met && poke.met.toLocaleLowerCase().startsWith('route') ? 'on' : 'in';
         if (poke.met) {
             if (props.style.oldMetLocationFormat) {
                 return (
                     <div className='pokemon-location'>
-                        {poke.met === 'Starter' ? poke.met : `Met ${determinePreposition()} ${poke.met}`}{
-                            poke.metLevel ? `, from lv.${poke.metLevel}` : null }
+                        {poke.met === 'Starter'
+                            ? poke.met
+                            : `Met ${determinePreposition()} ${poke.met}`}
+                        {poke.metLevel ? `, from lv.${poke.metLevel}` : null}
                     </div>
                 );
             } else {
                 return (
                     <div className='pokemon-location'>
-                        Met Location: {poke.met}{ poke.metLevel ? `, at lv.${poke.metLevel}` : null }
+                        Met Location: {poke.met}
+                        {poke.metLevel ? `, at lv.${poke.metLevel}` : null}
                     </div>
                 );
             }
@@ -118,7 +124,7 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
                             forme: poke.forme,
                             species: poke.species,
                             style: props.style,
-                            name: props.game.name
+                            name: props.game.name,
                         }),
                     }}
                     className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()} ${
@@ -160,7 +166,7 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
                             forme: poke.forme,
                             species: poke.species,
                             style: props.style,
-                            name: props.game.name
+                            name: props.game.name,
                         }),
                     }}
                     className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()} ${
@@ -186,11 +192,13 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
             )}
             <div className='pokemon-info'>
                 <div className='pokemon-info-inner'>
-                    <span style={{ margin: '0.25rem 0 0'}} className='pokemon-nickname'>{poke.nickname}</span>
+                    <span style={{ margin: '0.25rem 0 0' }} className='pokemon-nickname'>
+                        {poke.nickname}
+                    </span>
                     <span className='pokemon-name'>{poke.species}</span>
                     {getGenderElement(poke.gender)}
                     {poke.level ? <span className='pokemon-level'>lv. {poke.level}</span> : null}
-                    { generateMetData() }
+                    {generateMetData()}
                     {poke.nature && poke.nature !== 'None' ? (
                         <div className='pokemon-nature'>
                             <strong>{poke.nature}</strong> nature
@@ -207,7 +215,7 @@ export const TeamPokemonBase = (props: Pokemon & { selectPokemon } & { style: an
 export const TeamPokemon = connect(
     (state: any) => ({
         style: state.style,
-        game: state.game
+        game: state.game,
     }),
     {
         selectPokemon,

@@ -217,12 +217,9 @@ export class ResultBase extends React.Component<ResultProps> {
                     <div className='trainer-container' style={{ backgroundColor: topHeaderColor }}>
                         {this.renderTrainer()}
                     </div>
-                    {
-                        (trainer && trainer.notes) ?
-                            <div className='result-notes'>{ trainer.notes }</div>
-                            :
-                            null
-                    }
+                    {trainer && trainer.notes ? (
+                        <div className='result-notes'>{trainer.notes}</div>
+                    ) : null}
                     <div className='team-container'>{this.renderTeamPokemon()}</div>
                     {numberOfBoxed > 0 ? (
                         <div className='boxed-container'>

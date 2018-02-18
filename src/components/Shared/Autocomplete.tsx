@@ -32,8 +32,8 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
         this.setState({ currentValue: v, isOpen: false });
         this.props.onChange({
             target: {
-                value: v
-            }
+                value: v,
+            },
         });
     }
 
@@ -44,7 +44,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
     public componentWillUnmount() {
         this.setState({
             isOpen: false,
-            visibleItems: []
+            visibleItems: [],
         });
     }
 

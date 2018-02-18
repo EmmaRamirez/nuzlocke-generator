@@ -70,10 +70,13 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, { badges: S
                             </Menu>
                         }
                         position={Position.BOTTOM}>
-                        <Button style={{
-                            borderRadius: 0,
-                            width: '168px'
-                        }}>Select Checkpoints</Button>
+                        <Button
+                            style={{
+                                borderRadius: 0,
+                                width: '168px',
+                            }}>
+                            Select Checkpoints
+                        </Button>
                     </Popover>
                 )}
             />

@@ -104,5 +104,5 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Fixed bug where "name" would still show up even if Trainer name wasn't defined
 - Renamed "name" field to "Trainer Name" for clarity
 
-`
+`,
 };

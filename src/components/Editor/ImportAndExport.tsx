@@ -46,7 +46,7 @@ export class ImportAndExportBase extends React.Component<
 
     private exportState = state => {
         this.setState({
-            mode: 'export'
+            mode: 'export',
         });
         delete state.router;
         delete state._persist;

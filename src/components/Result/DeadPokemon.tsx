@@ -8,7 +8,9 @@ import { getSpriteIcon, speciesToNumber } from 'utils';
 import { getPokemonImage } from './getPokemonImage';
 import { selectPokemon } from 'actions';
 
-export const DeadPokemonBase = (poke: Pokemon & { selectPokemon } & { style: any } & { game: any }) => {
+export const DeadPokemonBase = (
+    poke: Pokemon & { selectPokemon } & { style: any } & { game: any },
+) => {
     const style = poke.style;
     const addForme = (species: string | undefined) => {
         if (poke.forme) {
@@ -35,7 +37,7 @@ export const DeadPokemonBase = (poke: Pokemon & { selectPokemon } & { style: any
                         forme: poke.forme,
                         species: poke.species,
                         style: poke.style,
-                        name: poke.game.name
+                        name: poke.game.name,
                     }),
                     filter: style.grayScaleDeadPokemon ? 'grayscale(100%)' : 'none',
                 }}
@@ -54,6 +56,6 @@ export const DeadPokemonBase = (poke: Pokemon & { selectPokemon } & { style: any
     );
 };
 
-export const DeadPokemon = connect((state: any) => ({ style: state.style, game: state.game }), { selectPokemon })(
-    DeadPokemonBase,
-);
+export const DeadPokemon = connect((state: any) => ({ style: state.style, game: state.game }), {
+    selectPokemon,
+})(DeadPokemonBase);
