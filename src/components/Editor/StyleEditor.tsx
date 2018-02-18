@@ -16,6 +16,9 @@ const editEvent = (e, props, name?) => {
         props.editStyle({ bgColor: '#383840' });
         props.editStyle({ topHeaderColor: '#333333' });
     }
+    if (propName === 'template' && e.target.value === 'Cards') {
+        props.editStyle({ imageStyle: 'square' });
+    }
 };
 
 // tslint:disable-next-line:no-empty-interfaces

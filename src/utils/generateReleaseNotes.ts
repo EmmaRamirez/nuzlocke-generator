@@ -1,5 +1,6 @@
 const badgeSelect = require('assets/badge-select.png');
 const download = require('assets/download.png');
+const cardsTheme = require('assets/cards-theme.png');
 
 export function generateReleaseNotes(version: string) {
     return releaseNotes[version] || '';
@@ -92,17 +93,21 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 
 You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nuzlocke-generator/issues).
     `,
-    '0.1.0-beta': `
+    '0.0.5-beta': `
 # Changelog
 
 ## Features
 - **Sprites Mode**: enables sprites for the games. Currently doesn't work with Gen 3 because of Serebii.
 - **Champion property**: works for Pokémon now. Displays a nice shiny badge in their info section.
 - **Shiny property**: add the shiny start to its info section.
+- **New Theme**: a Cards-based theme
+
+![cards-theme](${cardsTheme})
 
 ## Fixes
 - Fixed bug where "name" would still show up even if Trainer name wasn't defined
 - Renamed "name" field to "Trainer Name" for clarity
-
+- Fixed coloring for Fighitng types
+- Fixed issues with selecting a Pokémon using the new autocomplete
 `,
 };

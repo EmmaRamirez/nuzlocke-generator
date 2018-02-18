@@ -1,1 +1,1 @@
-export const listOfThemes = ['Default Light', 'Default Dark', 'Bulbapedia'];
+export const listOfThemes = ['Default Light', 'Default Dark', 'Cards'];

@@ -192,12 +192,14 @@ export const TeamPokemonBase = (
             )}
             <div className='pokemon-info'>
                 <div className='pokemon-info-inner'>
-                    <span style={{ margin: '0.25rem 0 0' }} className='pokemon-nickname'>
-                        {poke.nickname}
+                    <span className='pokemon-main-info'>
+                        <span style={{ margin: '0.25rem 0 0' }} className='pokemon-nickname'>
+                            {poke.nickname}
+                        </span>
+                        <span className='pokemon-name'>{poke.species}</span>
+                        {getGenderElement(poke.gender)}
+                        {poke.level ? <span className='pokemon-level'>lv. {poke.level}</span> : null}
                     </span>
-                    <span className='pokemon-name'>{poke.species}</span>
-                    {getGenderElement(poke.gender)}
-                    {poke.level ? <span className='pokemon-level'>lv. {poke.level}</span> : null}
                     {generateMetData()}
                     {poke.nature && poke.nature !== 'None' ? (
                         <div className='pokemon-nature'>

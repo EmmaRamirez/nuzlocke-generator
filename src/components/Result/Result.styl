@@ -189,16 +189,6 @@
   display: inline-block;
 }
 
-.boxed-pokemon-container {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  display: inline-block;
-  margin-bottom: 4px;
-  width: 15.25%;
-  position: relative;
-}
-
 .pokemon-container[data-champion='true'] .pokemon-info::after {
   content: '';
   display: block;
@@ -215,14 +205,6 @@
 
 
 .pokemon-levels {
-}
-
-.boxed-pokemon-info {
-  border-left: 1px solid #ddd;
-  display: inline-block;
-  /*position: absolute;*/
-  padding: .5rem;
-  top: 0;
 }
 
 
@@ -767,4 +749,85 @@
     margin: 0;
     margin-right: 2px;
   }
+}
+
+.cards {
+
+    .pokemon-info {
+     width: 100%;
+     min-height: 0;
+     background: rgba(0, 0, 0, 0.4);
+    margin: 0 !important;
+     padding: 0;
+     overflow: visible;
+     margin-left: 0;
+     z-index: 10;
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     border-radius: 0;
+     background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+  }
+  .boxed-pokemon-container {
+      background: rgba(0, 0, 0, 0.4);
+      border: unset;
+      width: auto;
+  }
+  
+  .boxed-pokemon-info {
+    border: unset;
+  }
+  .team-container {
+  }
+  .pokemon-container {
+      background: #222;
+      margin: .5rem;
+      width: 15rem;
+      display: flex;
+      height: 15rem;
+      flex-direction: column;
+      border-radius: .25rem;
+      overflow: hidden;
+  }
+  .pokemon-image {
+      position: absolute;
+      top: -1rem;
+      left: -1rem;
+      width: 15rem;
+      height: 15rem;
+  }
+  .round {
+      margin: 6px auto;
+  }
+  .pokemon-main-info {
+      position: absolute;
+      bottom: 13rem;
+  }
+  .dead-pokemon-container {
+      background: rgba(0, 0, 0, .3);
+      border: none;
+      width: 10rem;
+      height: 10rem;
+      border-radius: .25rem;
+      overflow: hidden;
+  }
+
+  .dead-pokemon-picture {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .dead-pokemon-info {
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+    margin: 0;
+    width: auto;
+  }
+
+  .move {
+      font-size: 0.7rem;
+  }
+
+
 }
