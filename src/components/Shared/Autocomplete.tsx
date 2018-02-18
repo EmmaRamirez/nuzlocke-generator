@@ -75,7 +75,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
     private closeList = e => {
         this.setState({ isOpen: false });
         this.setState({ visibleItems: [] });
-    }
+    };
 
     private handleEscape = e => {
         if (e.which === 27 || e.which === 13 || e.which === 9) {

@@ -198,7 +198,9 @@ export const TeamPokemonBase = (
                         </span>
                         <span className='pokemon-name'>{poke.species}</span>
                         {getGenderElement(poke.gender)}
-                        {poke.level ? <span className='pokemon-level'>lv. {poke.level}</span> : null}
+                        {poke.level ? (
+                            <span className='pokemon-level'>lv. {poke.level}</span>
+                        ) : null}
                     </span>
                     {generateMetData()}
                     {poke.nature && poke.nature !== 'None' ? (

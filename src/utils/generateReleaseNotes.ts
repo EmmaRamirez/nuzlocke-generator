@@ -3,7 +3,6 @@ const download = require('assets/download.png');
 const cardsTheme = require('assets/cards-theme.png');
 const spritesMode = require('assets/sprites-mode.png');
 
-
 export function generateReleaseNotes(version: string) {
     return releaseNotes[version] || '';
 }
