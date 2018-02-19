@@ -32,3 +32,13 @@ export function deleteRule(target) {
         target,
     };
 }
+
+export type RESET_RULES = 'RESET_RULES';
+export const RESET_RULES: RESET_RULES = 'RESET_RULES';
+
+export type resetRules = () => Action<RESET_RULES>;
+export function resetRules() {
+    return {
+        type: DELETE_RULE,
+    };
+}

@@ -9,6 +9,7 @@ export interface RulesEditorProps {
     editRule: editRule;
     addRule: addRule;
     deleteRule: deleteRule;
+    resetRules: resetRules;
 }
 
 export class RulesEditor extends React.Component<RulesEditorProps> {
@@ -45,9 +46,14 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
 
     public renderButtons() {
         return (
-            <Button onClick={_ => this.props.addRule()} intent={Intent.PRIMARY}>
-                Add Rule
-            </Button>
+            <>
+                <Button onClick={_ => this.props.addRule()} intent={Intent.PRIMARY}>
+                    Add Rule
+                </Button>
+                <Button onClick={_ => this.props.resetRules()} intent={Intent.PRIMARY}>
+                Reset Rule
+                </Button>
+            </>
         );
     }
 
