@@ -36,8 +36,14 @@ export class AppBase extends React.Component<AppProps, { isOpen: boolean }> {
     }
 
     public componentWillMount() {
-        if (this.props.rules[1] !== 'You can only catch may the first Pokemon you encounter in an area') {
-            this.props.editRule(1, 'You can only catch may the first Pokemon you encounter in an area');
+        if (
+            this.props.rules[1] !==
+            'You can only catch may the first Pokemon you encounter in an area'
+        ) {
+            this.props.editRule(
+                1,
+                'You can only catch may the first Pokemon you encounter in an area',
+            );
         }
     }
 
@@ -87,7 +93,7 @@ export const App = connect(
     (state: any) => ({
         sawRelease: state.sawRelease,
         style: state.style,
-        rules: state.rules
+        rules: state.rules,
     }),
     {
         seeRelease,
