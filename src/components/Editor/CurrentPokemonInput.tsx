@@ -163,7 +163,8 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
     public render() {
         const { labelName, inputName, type, value, placeholder, options } = this.props;
         return (
-            <span className={`current-pokemon-input-wrapper current-pokemon-${type} current-pokemon-${inputName}`}>
+            <span
+                className={`current-pokemon-input-wrapper current-pokemon-${type} current-pokemon-${inputName}`}>
                 <label>{labelName}</label>
                 {this.getInput({ labelName, inputName, type, value, placeholder, options })}
             </span>

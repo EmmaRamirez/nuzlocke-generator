@@ -50,10 +50,13 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
                 <Button onClick={_ => this.props.addRule()} intent={Intent.PRIMARY}>
                     Add Rule
                 </Button>
-                <Button style={{ marginLeft: '1rem' }} onClick={_ => {
-                    this.props.resetRules();
-                    this.forceUpdate();
-                }} intent={Intent.WARNING}>
+                <Button
+                    style={{ marginLeft: '1rem' }}
+                    onClick={_ => {
+                        this.props.resetRules();
+                        this.forceUpdate();
+                    }}
+                    intent={Intent.WARNING}>
                     Reset Rules
                 </Button>
             </>
@@ -64,7 +67,7 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
         return (
             <>
                 <ol>{this.renderRules()}</ol>
-                { this.renderButtons() }
+                {this.renderButtons()}
             </>
         );
     }
