@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Store } from 'redux';
 
-import { seeRelease } from 'actions';
+import { seeRelease, editRule } from 'actions';
 import { Editor } from '../Editor';
 import { Result } from '../Result';
 import { VersionTag } from './VersionTag';
@@ -19,15 +19,26 @@ const croagunk = require('assets/img/croagunk.gif');
 
 import './app.styl';
 
-export class AppBase extends React.Component<
-    { seeRelease: seeRelease; sawRelease: any; style: any },
-    { isOpen: boolean }
-> {
+export interface AppProps {
+    seeRelease: seeRelease;
+    sawRelease: boolean;
+    style: any;
+    rules: any;
+    editRule: any;
+}
+
+export class AppBase extends React.Component<AppProps, { isOpen: boolean }> {
     constructor(props: any) {
         super(props);
         this.state = {
             isOpen: !this.props.sawRelease[pkg.version],
         };
+    }
+
+    public componentWillMount() {
+        if (this.props.rules[1] !== 'You can only catch may the first Pokemon you encounter in an area') {
+            this.props.editRule(1, 'You can only catch may the first Pokemon you encounter in an area');
+        }
     }
 
     private closeDialog = e => {
@@ -76,8 +87,10 @@ export const App = connect(
     (state: any) => ({
         sawRelease: state.sawRelease,
         style: state.style,
+        rules: state.rules
     }),
     {
         seeRelease,
+        editRule,
     },
 )(AppBase);
