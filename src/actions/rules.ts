@@ -39,6 +39,6 @@ export const RESET_RULES: RESET_RULES = 'RESET_RULES';
 export type resetRules = () => Action<RESET_RULES>;
 export function resetRules() {
     return {
-        type: DELETE_RULE,
+        type: RESET_RULES,
     };
 }

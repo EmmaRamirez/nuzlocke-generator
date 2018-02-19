@@ -104,7 +104,7 @@
 
 .current-pokemon-input-wrapper
   display: inline-flex;
-  flex-flow: column;
+  flex-direction: column;
   padding: .25rem;
   width: 11rem;
   label
@@ -112,6 +112,13 @@
   input
     border: 1px solid #eee
     padding: .25rem;
+
+.current-pokemon-checkbox
+  display: inline-flex;
+  flex-flow: row-reverse;
+  justify-content: flex-end;
+  width: 5rem;
+  transform: translateY(1rem);
 
 .pt-dark .current-pokemon-input-wrapper
   input
@@ -136,10 +143,6 @@
 
 .current-pokemon-moves
   width: 25rem;
-
-.current-pokemon-shiny,
-.current-pokemon-champion
-  width: 3rem;
 
 .current-pokemon-nature
   width: 6.5rem;

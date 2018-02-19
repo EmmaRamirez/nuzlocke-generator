@@ -104,6 +104,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 
 - **Champion property**: works for Pokémon now. Displays a nice shiny badge in their info section.
 - **New Theme**: a Cards-based theme
+- Reset rules button
 
 ![cards-theme](${cardsTheme})
 
@@ -112,6 +113,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Renamed "name" field to "Trainer Name" for clarity
 - Fixed coloring for Fighitng types
 - Fixed issues with selecting a Pokémon using the new autocomplete
+- Fixed grammar of nuzlocke rule #2
 
 You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nuzlocke-generator/issues).
 `,

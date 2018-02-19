@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button, IDialogProps, Dialog, Intent } from '@blueprintjs/core';
 import { connect } from 'react-redux';
 
-import { editRule, addRule, deleteRule } from 'actions';
+import { editRule, addRule, deleteRule, resetRules } from 'actions';
 
 export interface RulesEditorProps {
     rules: string[];
@@ -50,8 +50,11 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
                 <Button onClick={_ => this.props.addRule()} intent={Intent.PRIMARY}>
                     Add Rule
                 </Button>
-                <Button onClick={_ => this.props.resetRules()} intent={Intent.PRIMARY}>
-                Reset Rule
+                <Button style={{ marginLeft: '1rem' }} onClick={_ => {
+                    this.props.resetRules();
+                    this.forceUpdate();
+                }} intent={Intent.WARNING}>
+                    Reset Rules
                 </Button>
             </>
         );
@@ -61,6 +64,7 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
         return (
             <>
                 <ol>{this.renderRules()}</ol>
+                { this.renderButtons() }
             </>
         );
     }
@@ -82,9 +86,10 @@ export const RulesEditorDialogBase = (
                     editRule={props.editRule}
                     addRule={props.addRule}
                     deleteRule={props.deleteRule}
+                    resetRules={props.resetRules}
                 />
             </div>
-            <div className='pt-dialog-footer'>{new RulesEditor(props).renderButtons()}</div>
+            {/* <div className='pt-dialog-footer'>{new RulesEditor(props).renderButtons()}</div> */}
         </Dialog>
     );
 };
@@ -93,5 +98,5 @@ export const RulesEditorDialog = connect(
     (state: any) => ({
         rules: state.rules,
     }),
-    { editRule, addRule, deleteRule },
+    { editRule, addRule, deleteRule, resetRules },
 )(RulesEditorDialogBase as any);
