@@ -234,7 +234,7 @@ export class ResultBase extends React.Component<ResultProps> {
                                 style={{
                                     display: 'flex',
                                     flexWrap: 'wrap',
-                                    justifyContent: 'space-between',
+                                    justifyContent: 'flex-start',
                                     margin: '.5rem',
                                 }}>
                                 {this.renderDeadPokemon()}
