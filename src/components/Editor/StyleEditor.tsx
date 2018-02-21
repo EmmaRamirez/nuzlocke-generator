@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { editStyle } from 'actions';
 import { styleDefaults, listOfThemes } from 'utils';
 import { RadioGroup, Radio, TextArea, Checkbox } from '@blueprintjs/core';
+import { BaseEditor } from './BaseEditor';
 
 const editEvent = (e, props, name?) => {
     const propName = name || e.target.name;
@@ -55,8 +56,9 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
         else return styleDefaults[prop];
     };
     return (
-        <div className='style-editor'>
-            <h4>Style</h4>
+        <BaseEditor
+          name='Style'
+        >
             <div className='style-edit'>
                 <label className='pt-label pt-inline'>Template</label>
                 <div className='pt-select'>
@@ -312,7 +314,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 />
                 <style>{props.style.customCSS}</style>
             </div>
-        </div>
+        </BaseEditor>
     );
 };
 

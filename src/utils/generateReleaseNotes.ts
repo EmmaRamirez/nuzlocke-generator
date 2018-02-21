@@ -117,4 +117,17 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 
 You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nuzlocke-generator/issues).
 `,
+    '0.1.0-beta': `
+# Changelog
+
+## Features
+- **Multiple nuzlockes**: been a long time coming, but you can now create as many nuzlockes as you please!
+- **Linked nuzlockes**: and you can link + import data from one nuzlocke into another
+- **Champion status**: a status useful for multi-run nuzlockes
+
+## Fixes
+- Fixed the margins on the first row of Pokémon info
+- Champion ribbons work for each region now
+
+`,
 };
