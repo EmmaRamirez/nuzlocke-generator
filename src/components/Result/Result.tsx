@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Pokemon, Trainer } from 'models';
-import { getBadges, getGameRegion } from 'utils';
+import { getBadges, getGameRegion, sortPokes } from 'utils';
 import { connect } from 'react-redux';
 import * as uuid from 'uuid/v4';
 import { ResizableBox, Resizable } from 'react-resizable';
@@ -23,10 +23,6 @@ interface ResultProps {
     style: any;
     rules: string[];
 }
-
-const sortPokes = (a, b) => {
-    return a.position - b.position;
-};
 
 export class ResultBase extends React.Component<ResultProps> {
     constructor(props) {
