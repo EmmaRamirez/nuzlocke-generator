@@ -15,7 +15,7 @@ export interface Pokemon {
     item?: string;
     types?: string[];
     customImage?: string;
-    customSprite?: string;
+    customIcon?: string;
     shiny?: boolean;
     champion?: boolean;
     badges?: string[];
@@ -43,7 +43,7 @@ export const PokemonKeys: Pokemon = {
     item: '',
     types: [],
     customImage: '',
-    customSprite: '',
+    customIcon: '',
     shiny: false,
     champion: false,
     badges: [],

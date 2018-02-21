@@ -1,4 +1,4 @@
-import { addForme, getSpriteIcon, speciesToNumber } from 'utils';
+import { addForme, getSpriteIcon, speciesToNumber, getForme } from 'utils';
 
 const sugiFormeNotation = forme => {
     if (typeof forme === 'undefined') return '';
@@ -12,11 +12,14 @@ const sugiFormeNotation = forme => {
 
 const getGameName = name => {
     if (name === 'Red' || name === 'Blue') return 'rb';
+    if (name === 'Ruby' || name === 'Sapphire' || name === 'FireRed' || name === 'LeafGreen' || name === 'Emerald') {
+      return 'emerald';
+    }
     if (name === 'Diamond' || name === 'Pearl' || name === 'Platinum') return 'dp';
     if (name === 'HeartGold' || name === 'SoulSilver') return 'hgss';
     if (name === 'Black' || name === 'White' || name === 'White 2' || name === 'Black 2')
         return 'blackwhite';
-    if (name === 'X' || name === 'Y') return 'xy';
+    if (name === 'X' || name === 'Y' || name === 'OmegaRuby' || name === 'AlphaSapphire') return 'xy';
     if (name === 'Sun' || name === 'Moon' || name === 'Ultra Sun' || name === 'Ultra Moon')
         return 'sunmoon';
     if (
@@ -40,11 +43,18 @@ export function getPokemonImage({ customImage, forme, species, name, style }) {
     if (
         style.spritesMode &&
         (name === 'Black' ||
+            name === 'Emerald' ||
+            name === 'Ruby' ||
+            name === 'Sapphire' ||
+            name === 'LeafGreen' ||
+            name === 'FireRed' ||
             name === 'White' ||
             name === 'Black 2' ||
             name === 'White 2' ||
             name === 'X' ||
             name === 'Y' ||
+            name === 'OmegaRuby' ||
+            name === 'AlphaSapphire' ||
             name === 'Sun' ||
             name === 'Moon' ||
             name === 'Ultra Sun' ||
@@ -52,7 +62,7 @@ export function getPokemonImage({ customImage, forme, species, name, style }) {
     ) {
         return `url(https://www.serebii.net/${getGameName(
             name,
-        )}/pokemon/${leadingZerosNumber}.png)`;
+        )}/pokemon/${leadingZerosNumber}${getForme(forme)}.png)`;
     }
     if (style.spritesMode) {
         return `url(https://www.serebii.net/pokearth/sprites/${getGameName(

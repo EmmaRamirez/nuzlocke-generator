@@ -8,6 +8,8 @@ export interface BaseEditorProps {
     name: string;
 }
 
+const baseEditorStyle:any = { cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' };
+
 export class BaseEditor extends React.Component<BaseEditorProps, BaseEditorState> {
     constructor(props) {
         super(props);
@@ -22,12 +24,10 @@ export class BaseEditor extends React.Component<BaseEditorProps, BaseEditorState
 
     public render() {
         return (
-            <div className={`${this.props.name.toLowerCase()}-editor`}>
-                <h4 style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between' }}>
+            <div className={`${this.props.name.toLowerCase()}-editor base-editor`}>
+                <h4 title={`${this.state.isOpen ? 'Collapse' : 'Open'} this editor.`} style={baseEditorStyle} onClick={this.toggleEditor}>
                     { this.props.name }
                     <span
-                        role='icon'
-                        onClick={this.toggleEditor}
                         className={`pt-icon pt-icon-caret-${this.state.isOpen ? 'up' : 'down'}`}
                     />
                 </h4>

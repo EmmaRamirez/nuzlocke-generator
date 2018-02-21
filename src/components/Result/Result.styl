@@ -411,11 +411,19 @@
   }
 }
 
+.is-sprite {
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+
 .pokemon-item {
   background: #111;
   border: 5px solid white;
   bottom: 0;
   height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   left: 12px;
   padding: .5rem;
   position: absolute;
@@ -791,10 +799,17 @@
   }
   .pokemon-image {
       position: absolute;
-      top: -1rem;
-      left: -1rem;
+      top: 0;
+      left: 0;
       width: 15rem;
       height: 15rem;
+  }
+  .pokemon-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
   .round {
       margin: 6px auto;
@@ -813,6 +828,11 @@
       margin: 0 0.5rem;
   }
 
+  .dead-pokemon-picture.sprites-mode {
+    background-size: auto;
+    background-repeat: no-repeat;  
+  }
+
   .dead-pokemon-picture {
     width: 10rem;
     height: 10rem;
@@ -823,7 +843,7 @@
     bottom: 0;
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
     margin: 0;
-    width: auto;
+    width: 100%;
   }
 
   .move {
