@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { editStyle } from 'actions';
 import { styleDefaults, listOfThemes } from 'utils';
 import { RadioGroup, Radio, TextArea, Checkbox } from '@blueprintjs/core';
+import { BaseEditor } from './BaseEditor';
 
 const editEvent = (e, props, name?) => {
     const propName = name || e.target.name;
@@ -55,8 +56,9 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
         else return styleDefaults[prop];
     };
     return (
-        <div className='style-editor'>
-            <h4>Style</h4>
+        <BaseEditor
+          name='Style'
+        >
             <div className='style-edit'>
                 <label className='pt-label pt-inline'>Template</label>
                 <div className='pt-select'>
@@ -70,16 +72,25 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
             </div>
 
             <div className='style-edit'>
-                <label className='pt-label pt-inline'>Image Style </label>
-                <div className='pt-select'>
-                    <select
-                        name='imageStyle'
-                        onChange={e => editEvent(e, props)}
-                        value={props.style.imageStyle}>
-                        <option value='round'>Round</option>
-                        <option value='square'>Square</option>
-                    </select>
-                </div>
+                <RadioGroup
+                    className='radio-group'
+                    label='Image Style'
+                    onChange={e => editEvent(e, props, 'imageStyle')}
+                    selectedValue={props.style.imageStyle}>
+                    <Radio label='Round' value='round' />
+                    <Radio label='Square' value='square' />
+                </RadioGroup>
+            </div>
+
+            <div className='style-edit'>
+                <RadioGroup
+                    className='radio-group'
+                    label='Item Style'
+                    onChange={e => editEvent(e, props, 'itemStyle')}
+                    selectedValue={props.style.itemStyle}>
+                    <Radio label='Round' value='round' />
+                    <Radio label='Square' value='square' />
+                </RadioGroup>
             </div>
 
             <div className='style-edit'>
@@ -289,7 +300,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 <Checkbox
                     checked={props.style.spritesMode}
                     name='spritesMode'
-                    label='Sprites Mode (Not Gen 3 Compatible)'
+                    label='Sprites Mode'
                     onChange={(e: any) =>
                         editEvent(
                             { ...e, target: { value: e.target.checked } },
@@ -312,7 +323,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 />
                 <style>{props.style.customCSS}</style>
             </div>
-        </div>
+        </BaseEditor>
     );
 };
 

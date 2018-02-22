@@ -8,6 +8,8 @@ export const listOfGames = [
     'Crystal',
     'Ruby',
     'Sapphire',
+    'FireRed',
+    'LeafGreen',
     'Emerald',
     'Diamond',
     'Pearl',

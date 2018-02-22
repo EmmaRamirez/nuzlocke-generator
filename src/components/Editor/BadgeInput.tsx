@@ -67,13 +67,14 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, { badges: S
                                         label={badge}
                                     />
                                 ))}
+                                <Button className='pt-minimal'>Customize Checkpoints</Button>
                             </Menu>
                         }
                         position={Position.BOTTOM}>
                         <Button
                             style={{
                                 borderRadius: 0,
-                                width: '168px',
+                                width: '160px',
                             }}>
                             Select Checkpoints
                         </Button>

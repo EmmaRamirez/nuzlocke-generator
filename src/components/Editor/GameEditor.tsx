@@ -15,6 +15,12 @@ export interface GameEditorProps {
     changeEditorSize: changeEditorSize;
 }
 
+const gameSubEditorStyle:any = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  paddingBottom: '.25rem',
+};
+
 export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: boolean }> {
     constructor(props) {
         super(props);
@@ -57,21 +63,14 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                             icon={this.props.editor.minimized ? 'maximize' : 'minimize'}
                         />
                     </h4>
-                    {/* <label>Game </label> */}
-                    {/* <input onChange={this.onInput} className='pt-input' type='text' value={game.name} dir='auto' /> */}
-
                     <div
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                        }}>
-                        {/* <Button icon='add' intent={Intent.SUCCESS}>New Nuzlocke</Button> */}
+                        style={gameSubEditorStyle}>
                         <div className='pt-select'>
                             <select onChange={this.onInput} value={game.name}>
                                 {listOfGames.map(game => <option key={game}>{game}</option>)}
                             </select>
                         </div>
-                        {/* <Button icon='exchange'>Switch Nuzlockes</Button> */}
+                        <Button icon='exchange'>Switch Nuzlockes</Button>
                         <Button onClick={this.toggleDialog} icon='list' intent={Intent.PRIMARY}>
                             Modify Rules
                         </Button>

@@ -53,6 +53,7 @@ export const TeamPokemonBase = (
             </div>
         );
     const getFirstType = poke.types ? poke.types[0] : 'Normal';
+    const spriteStyle = props.style.spritesMode ? { backgroundSize: 'auto', backgroundRepeat: 'no-repeat' } : { };
 
     const addProp = item => {
         const propName = `data-${item.toLowerCase()}`;
@@ -126,6 +127,7 @@ export const TeamPokemonBase = (
                             style: props.style,
                             name: props.game.name,
                         }),
+                        ...spriteStyle
                     }}
                     className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()} ${
                         props.style.imageStyle === 'round' ? 'round' : 'square'
@@ -149,7 +151,7 @@ export const TeamPokemonBase = (
             <div
                 role='presentation'
                 onClick={e => props.selectPokemon(poke.id)}
-                className={props.style.imageStyle === 'round' ? 'round' : 'square'}
+                className={`${props.style.imageStyle} pokemon-image-wrapper`}
                 style={{
                     cursor: 'pointer',
                     background: props.style.teamPokemonBorder
@@ -168,6 +170,7 @@ export const TeamPokemonBase = (
                             style: props.style,
                             name: props.game.name,
                         }),
+                        ...spriteStyle
                     }}
                     className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()} ${
                         props.style.imageStyle === 'round' ? 'round' : 'square'
@@ -177,7 +180,7 @@ export const TeamPokemonBase = (
             {poke.item == null || poke.item === '' ? null : (
                 <div
                     className={`pokemon-item ${
-                        props.style.imageStyle === 'round' ? 'round' : 'square'
+                        props.style.itemStyle
                     }`}
                     style={{
                         borderColor: typeToColor(getFirstType),
@@ -192,7 +195,7 @@ export const TeamPokemonBase = (
             )}
             <div className='pokemon-info'>
                 <div className='pokemon-info-inner'>
-                    <span className='pokemon-main-info'>
+                    <div className='pokemon-main-info'>
                         <span style={{ margin: '0.25rem 0 0' }} className='pokemon-nickname'>
                             {poke.nickname}
                         </span>
@@ -201,7 +204,7 @@ export const TeamPokemonBase = (
                         {poke.level ? (
                             <span className='pokemon-level'>lv. {poke.level}</span>
                         ) : null}
-                    </span>
+                    </div>
                     {generateMetData()}
                     {poke.nature && poke.nature !== 'None' ? (
                         <div className='pokemon-nature'>

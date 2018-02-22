@@ -30,7 +30,7 @@ export const DeadPokemonBase = (
             <div
                 role='presentation'
                 onClick={e => poke.selectPokemon(poke.id)}
-                className='dead-pokemon-picture'
+                className={`dead-pokemon-picture ${poke.style.spritesMode ? 'sprites-mode' : ''}`}
                 style={{
                     backgroundImage: getPokemonImage({
                         customImage: poke.customImage,

@@ -239,6 +239,15 @@ export const matchSpeciesToTypes = (species: string): string[] => {
             return ['Poison', 'Fighting'];
         case 'Marshadow':
             return ['Ghost', 'Fighting'];
+        case 'Dratini':
+        case 'Dragonair':
+        case 'Bagon':
+        case 'Shelgon':
+        case 'Druddigon':
+            return ['Dragon', 'Dragon'];
+        case 'Dragonite':
+        case 'Salamence':
+            return ['Dragon', 'Flying'];
         default:
             return ['Normal', 'Normal'];
     }

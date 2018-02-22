@@ -5,6 +5,7 @@ import {
     getAdditionalFormes,
     StoreContext,
     listOfPokemon,
+    matchSpeciesToTypes
 } from 'utils';
 import { Pokemon } from 'models';
 import { onClick } from 'types';
@@ -94,6 +95,13 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                     type='text'
                 />
                 <CurrentPokemonInput
+                    labelName='Custom Icon'
+                    inputName='customIcon'
+                    placeholder='http://..'
+                    value={currentPokemon.customIcon}
+                    type='text'
+                />
+                <CurrentPokemonInput
                     labelName='Cause of Death'
                     inputName='causeOfDeath'
                     value={currentPokemon.causeOfDeath}
@@ -177,6 +185,7 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                             species: e.target.value,
                         };
                         this.context.store.dispatch(editPokemon(edit, this.state.selectedId));
+                        this.context.store.dispatch(editPokemon({ types: matchSpeciesToTypes(e.target.value) }, this.state.selectedId));
                         this.context.store.dispatch(selectPokemon(this.state.selectedId));
                     }}
                 />
