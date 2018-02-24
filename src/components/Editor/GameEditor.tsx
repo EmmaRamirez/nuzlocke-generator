@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { editGame, changeEditorSize } from 'actions';
 import { listOfGames } from 'utils';
 
-import { Button, Intent } from '@blueprintjs/core';
+import { Button, Intent, Popover, Menu, Position } from '@blueprintjs/core';
 import { LinkedSaveButton } from './LinkedSaveButton';
 import { RulesEditorDialog } from './RulesEditor';
 
@@ -70,7 +70,14 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                                 {listOfGames.map(game => <option key={game}>{game}</option>)}
                             </select>
                         </div>
-                        <Button icon='exchange'>Switch Nuzlockes</Button>
+                        <Popover
+                            minimal={true}
+                            content={<Menu>
+                            </Menu>}
+                            position={Position.BOTTOM}
+                        >
+                            <Button icon='exchange'>Switch Nuzlockes</Button>
+                        </Popover>
                         <Button onClick={this.toggleDialog} icon='list' intent={Intent.PRIMARY}>
                             Modify Rules
                         </Button>
