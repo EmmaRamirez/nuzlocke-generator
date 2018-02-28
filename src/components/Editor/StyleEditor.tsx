@@ -56,9 +56,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
         else return styleDefaults[prop];
     };
     return (
-        <BaseEditor
-          name='Style'
-        >
+        <BaseEditor name='Style'>
             <div className='style-edit'>
                 <label className='pt-label pt-inline'>Template</label>
                 <div className='pt-select'>

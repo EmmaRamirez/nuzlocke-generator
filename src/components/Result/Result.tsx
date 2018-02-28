@@ -125,7 +125,16 @@ export class ResultBase extends React.Component<ResultProps> {
         const bottomTextStyle: any = { fontSize: '1.1rem', fontWeight: 'bold' };
         return (
             <div className='trainer-wrapper'>
-                <div style={{ color: '#111', background: style.bgColor, width: '100px', borderRadius: '.25rem', textAlign: 'center' }}>{ game.name }</div>
+                <div
+                    style={{
+                        color: '#111',
+                        background: style.bgColor,
+                        width: '100px',
+                        borderRadius: '.25rem',
+                        textAlign: 'center',
+                    }}>
+                    {game.name}
+                </div>
                 {trainer.image ? (
                     <img
                         style={{
@@ -208,7 +217,9 @@ export class ResultBase extends React.Component<ResultProps> {
         // const numberOfChamps = this.props.pokemon
         //     .filter(v => v.hasOwnProperty('id'))
         //     .filter(poke => poke.status === 'Champs').length;
-        const numberOfBoxed = 1, numberOfDead = 1, numberOfChamps = 1;
+        const numberOfBoxed = 1,
+            numberOfDead = 1,
+            numberOfChamps = 1;
         const bgColor = style ? style.bgColor : '#383840';
         const topHeaderColor = style ? style.topHeaderColor : '#333333';
         return (
@@ -252,19 +263,12 @@ export class ResultBase extends React.Component<ResultProps> {
                             </div>
                         </div>
                     ) : null}
-                    {
-                        numberOfChamps > 0 ?
-                        (
-                            <div className='champs-container'>
-                                <h3>Champs</h3>
-                                <div
-                                >
-                                    { this.renderChampsPokemon() }
-                                </div>
-                            </div>
-                        )
-                        : null
-                    }
+                    {numberOfChamps > 0 ? (
+                        <div className='champs-container'>
+                            <h3>Champs</h3>
+                            <div>{this.renderChampsPokemon()}</div>
+                        </div>
+                    ) : null}
                     {style.displayRules ? (
                         <div className='rules-container'>
                             <h3>Rules</h3>

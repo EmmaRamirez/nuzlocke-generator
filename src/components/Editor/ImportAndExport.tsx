@@ -162,7 +162,9 @@ export class ImportAndExportBase extends React.Component<
                     <Button onClick={e => this.exportState(this.props.state)} icon='export'>
                         Export Data
                     </Button>
-                    <Button icon='add' intent={Intent.SUCCESS}>New Nuzlocke</Button>
+                    <Button icon='add' intent={Intent.SUCCESS}>
+                        New Nuzlocke
+                    </Button>
                 </ButtonGroup>
             </div>
         );

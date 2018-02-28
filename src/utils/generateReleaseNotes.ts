@@ -135,5 +135,5 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Type auto-matching now works for every species
 - Improved design of Cards theme for sprites
 - Fixed width of info for dead Pokémon
-`
+`,
 };

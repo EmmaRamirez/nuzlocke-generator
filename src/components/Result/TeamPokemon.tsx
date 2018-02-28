@@ -53,7 +53,9 @@ export const TeamPokemonBase = (
             </div>
         );
     const getFirstType = poke.types ? poke.types[0] : 'Normal';
-    const spriteStyle = props.style.spritesMode ? { backgroundSize: 'auto', backgroundRepeat: 'no-repeat' } : { };
+    const spriteStyle = props.style.spritesMode
+        ? { backgroundSize: 'auto', backgroundRepeat: 'no-repeat' }
+        : {};
 
     const addProp = item => {
         const propName = `data-${item.toLowerCase()}`;
@@ -127,7 +129,7 @@ export const TeamPokemonBase = (
                             style: props.style,
                             name: props.game.name,
                         }),
-                        ...spriteStyle
+                        ...spriteStyle,
                     }}
                     className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()} ${
                         props.style.imageStyle === 'round' ? 'round' : 'square'
@@ -170,7 +172,7 @@ export const TeamPokemonBase = (
                             style: props.style,
                             name: props.game.name,
                         }),
-                        ...spriteStyle
+                        ...spriteStyle,
                     }}
                     className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()} ${
                         props.style.imageStyle === 'round' ? 'round' : 'square'
@@ -179,9 +181,7 @@ export const TeamPokemonBase = (
             </div>
             {poke.item == null || poke.item === '' ? null : (
                 <div
-                    className={`pokemon-item ${
-                        props.style.itemStyle
-                    }`}
+                    className={`pokemon-item ${props.style.itemStyle}`}
                     style={{
                         borderColor: typeToColor(getFirstType),
                     }}>

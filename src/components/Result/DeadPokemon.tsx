@@ -43,7 +43,9 @@ export const DeadPokemonBase = (
                     filter: style.grayScaleDeadPokemon ? 'grayscale(100%)' : 'none',
                 }}
             /> */}
-            <span style={{ filter: 'grayscale(100%)' }}><PokemonIconBase {...poke as any} /></span>
+            <span style={{ filter: 'grayscale(100%)' }}>
+                <PokemonIconBase {...poke as any} />
+            </span>
             <div className='dead-pokemon-info'>
                 <div className='pokemon-d-nickname'>
                     {poke.nickname} {getGenderElement(poke.gender)}

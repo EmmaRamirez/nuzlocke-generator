@@ -5,7 +5,7 @@ import {
     getAdditionalFormes,
     StoreContext,
     listOfPokemon,
-    matchSpeciesToTypes
+    matchSpeciesToTypes,
 } from 'utils';
 import { Pokemon } from 'models';
 import { onClick } from 'types';
@@ -185,7 +185,12 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                             species: e.target.value,
                         };
                         this.context.store.dispatch(editPokemon(edit, this.state.selectedId));
-                        this.context.store.dispatch(editPokemon({ types: matchSpeciesToTypes(e.target.value) }, this.state.selectedId));
+                        this.context.store.dispatch(
+                            editPokemon(
+                                { types: matchSpeciesToTypes(e.target.value) },
+                                this.state.selectedId,
+                            ),
+                        );
                         this.context.store.dispatch(selectPokemon(this.state.selectedId));
                     }}
                 />

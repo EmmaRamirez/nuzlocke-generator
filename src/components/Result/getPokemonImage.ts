@@ -12,14 +12,21 @@ const sugiFormeNotation = forme => {
 
 const getGameName = name => {
     if (name === 'Red' || name === 'Blue') return 'rb';
-    if (name === 'Ruby' || name === 'Sapphire' || name === 'FireRed' || name === 'LeafGreen' || name === 'Emerald') {
-      return 'emerald';
+    if (
+        name === 'Ruby' ||
+        name === 'Sapphire' ||
+        name === 'FireRed' ||
+        name === 'LeafGreen' ||
+        name === 'Emerald'
+    ) {
+        return 'emerald';
     }
     if (name === 'Diamond' || name === 'Pearl' || name === 'Platinum') return 'dp';
     if (name === 'HeartGold' || name === 'SoulSilver') return 'hgss';
     if (name === 'Black' || name === 'White' || name === 'White 2' || name === 'Black 2')
         return 'blackwhite';
-    if (name === 'X' || name === 'Y' || name === 'OmegaRuby' || name === 'AlphaSapphire') return 'xy';
+    if (name === 'X' || name === 'Y' || name === 'OmegaRuby' || name === 'AlphaSapphire')
+        return 'xy';
     if (name === 'Sun' || name === 'Moon' || name === 'Ultra Sun' || name === 'Ultra Moon')
         return 'sunmoon';
     if (

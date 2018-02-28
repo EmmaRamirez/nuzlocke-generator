@@ -15,10 +15,10 @@ export interface GameEditorProps {
     changeEditorSize: changeEditorSize;
 }
 
-const gameSubEditorStyle:any = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  paddingBottom: '.25rem',
+const gameSubEditorStyle: any = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    paddingBottom: '.25rem',
 };
 
 export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: boolean }> {
@@ -63,19 +63,13 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                             icon={this.props.editor.minimized ? 'maximize' : 'minimize'}
                         />
                     </h4>
-                    <div
-                        style={gameSubEditorStyle}>
+                    <div style={gameSubEditorStyle}>
                         <div className='pt-select'>
                             <select onChange={this.onInput} value={game.name}>
                                 {listOfGames.map(game => <option key={game}>{game}</option>)}
                             </select>
                         </div>
-                        <Popover
-                            minimal={true}
-                            content={<Menu>
-                            </Menu>}
-                            position={Position.BOTTOM}
-                        >
+                        <Popover minimal={true} content={<Menu />} position={Position.BOTTOM}>
                             <Button icon='exchange'>Switch Nuzlockes</Button>
                         </Popover>
                         <Button onClick={this.toggleDialog} icon='list' intent={Intent.PRIMARY}>
