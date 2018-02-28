@@ -163,7 +163,7 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                         inputName='status'
                         value={currentPokemon.status}
                         type='select'
-                        options={['Team', 'Boxed', 'Dead']}
+                        options={['Team', 'Boxed', 'Dead', 'Champs']}
                     />
                     <LinkedDeletePokemonButton id={this.state.selectedId} />
                 </span>
