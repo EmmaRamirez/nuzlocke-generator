@@ -12,7 +12,7 @@ export class ChampsPokemon extends React.Component<any> {
             <div
                 style={{
                     width: '32px',
-                    background: 'red',
+                    background: '#f3563a',
                     display: 'inline-block',
                 }}>
                 <PokemonIconBase {...this.props as any} />

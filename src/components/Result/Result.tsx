@@ -127,7 +127,7 @@ export class ResultBase extends React.Component<ResultProps> {
             <div className='trainer-wrapper'>
                 <div
                     style={{
-                        color: '#111',
+                        color: '#eee',
                         background: style.bgColor,
                         width: '100px',
                         borderRadius: '.25rem',
