@@ -23,6 +23,7 @@ export interface Pokemon {
     position?: number;
     wonderTradedFor?: string;
     mvp?: boolean;
+    gameOfOrigin?: string;
 }
 
 // We export a non-type version when we need all the keys easily
@@ -51,4 +52,5 @@ export const PokemonKeys: Pokemon = {
     position: 0,
     wonderTradedFor: '',
     mvp: false,
+    gameOfOrigin: '',
 };

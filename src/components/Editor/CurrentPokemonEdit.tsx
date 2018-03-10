@@ -13,6 +13,7 @@ import { CurrentPokemonInput } from './CurrentPokemonInput';
 import { LinkedDeletePokemonButton } from './LinkedDeletePokemonButton';
 import { Autocomplete } from '../Shared';
 import { selectPokemon, editPokemon } from 'actions';
+import { listOfGames } from 'utils';
 
 interface CurrentPokemonEditState {
     selectedId: string;
@@ -124,6 +125,13 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                     inputName='position'
                     value={currentPokemon.position}
                     type='text'
+                />
+                <CurrentPokemonInput
+                    labelName='Game of Origin'
+                    inputName='gameOfOrigin'
+                    value={currentPokemon.gameOfOrigin}
+                    type='select'
+                    options={listOfGames}
                 />
             </div>
         );

@@ -8,4 +8,5 @@ export interface Trainer {
     image?: string;
     title?: string;
     notes?: string;
+    totalTime?: string;
 }

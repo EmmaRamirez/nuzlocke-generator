@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { PokemonIconBase } from '../Editor/PokemonIcon';
+import { gameOfOriginToColor } from './gameOfOriginToColor';
 
 export class ChampsPokemon extends React.Component<any> {
     constructor(props) {
@@ -12,7 +13,7 @@ export class ChampsPokemon extends React.Component<any> {
             <div
                 style={{
                     width: '32px',
-                    background: '#f3563a',
+                    background: gameOfOriginToColor(this.props.gameOfOrigin),
                     display: 'inline-block',
                 }}>
                 <PokemonIconBase {...this.props as any} />

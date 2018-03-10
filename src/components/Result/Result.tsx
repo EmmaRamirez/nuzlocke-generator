@@ -176,6 +176,12 @@ export class ResultBase extends React.Component<ResultProps> {
                         <div style={bottomTextStyle}>{trainer.id}</div>
                     </div>
                 )}
+                {trainer.totalTime == null || trainer.totalTime === '' ? null : (
+                    <div className='time column'>
+                        <div>time</div>
+                        <div style={bottomTextStyle}>{trainer.totalTime}</div>
+                    </div>
+                )}
                 {trainer.expShareStatus == null || trainer.expShareStatus === '' ? null : (
                     <div className='expShareStatus column'>
                         <div>Exp Share</div>
