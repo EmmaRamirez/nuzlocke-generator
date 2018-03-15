@@ -42,7 +42,8 @@
 
 .tab
   align-content: flex-start;
-  background: url('../../assets/img/team-box.png');
+  background-color: rgba(0, 0, 0, 0.1);
+  background-image: url('../../assets/img/team-box.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   display: flex;
@@ -61,7 +62,7 @@
     flex-basis: 218px;
     flex-grow: 999;
     font-family: 'pokemon_gbregular';
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   .pokemon-icon img,
   .pokemon-icon
     cursor: pointer;
@@ -74,8 +75,24 @@
     border: 1px white dashed;
     transition: 500ms all;
 
+.tab.Dead-tab
+  background-image: url('../../assets/img/dead-box.png');
+
+.tab.Champs-tab
+  background-image: url('../../assets/img/champs-box.png');
+
+.tab.Boxed-tab
+  background-image: url('../../assets/img/boxed-box.png');
+
 .pt-dark .tab .tab-title
   color: #111;
+
+.box-wrapper
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .tab
+    margin: 2px;
 
 .pokemon-tab
   display: flex;

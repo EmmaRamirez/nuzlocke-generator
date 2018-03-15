@@ -55,9 +55,11 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
     private renderItems() {
         return this.state.visibleItems.map((v, i) => {
             return (
-                <li key={i} role='item' onClick={e => this.selectItem(v)} style={
-                    v === this.state.currentValue ? { color: 'lightblue' } : {}
-                }>
+                <li
+                    key={i}
+                    role='item'
+                    onClick={e => this.selectItem(v)}
+                    style={v === this.state.currentValue ? { color: 'lightblue' } : {}}>
                     {v}
                 </li>
             );
@@ -96,9 +98,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
         } else {
             this.selectItem(this.state.visibleItems[currentIndex + 1]);
         }
-    }
-
-
+    };
 
     public render() {
         return (

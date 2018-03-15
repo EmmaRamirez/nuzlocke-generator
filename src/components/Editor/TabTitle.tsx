@@ -6,7 +6,7 @@ export const TabTitle = ({ title, onInput }: { title: string; onInput?: Function
         suppressContentEditableWarning={true}
         onInput={e => (onInput != null ? onInput(e) : null)}
         className='tab-title'
-        style={{ height: '48px', padding: '.5rem', textAlign: 'center', fontWeight: 'bold' }}>
+        style={{ height: '42px', padding: '.5rem', textAlign: 'center', fontWeight: 'bold' }}>
         {title}
     </div>
 );

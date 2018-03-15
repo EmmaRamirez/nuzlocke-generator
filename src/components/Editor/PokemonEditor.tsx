@@ -22,6 +22,7 @@ import { BoxedPokemon } from '../Result/BoxedPokemon';
 import { BaseEditor } from './BaseEditor';
 
 require('../../assets/img/team-box.png');
+require('../../assets/img/dead-box.png');
 
 export const Box = ({
     pokemon,
@@ -89,26 +90,28 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                             Open Mass Editor
                         </Button>
                     </div>
-                    <Tabs id='pokemon-box' className='pokemon-box'>
+                    {/* <Tabs id='pokemon-box' className='pokemon-box'> */}
+                    <div className='box-wrapper'>
                         {boxes.map((type, id) => {
                             return (
-                                <Tab
-                                    key={id}
-                                    id={type}
-                                    className={`pt-tab-panel pokemon-tab`}
-                                    title={boxes[id]}
-                                    panel={
-                                        <Box
-                                            pokemon={team}
-                                            tabTitle={type}
-                                            boxId={id}
-                                            filterString={type}
-                                        />
-                                    }
+                                // <Tab
+                                //     key={id}
+                                //     id={type}
+                                //     className={`pt-tab-panel pokemon-tab`}
+                                //     title={boxes[id]}
+                                //     panel={
+                                <Box
+                                    pokemon={team}
+                                    tabTitle={type}
+                                    boxId={id}
+                                    filterString={type}
                                 />
+                                // }
+                                // />
                             );
                         })}
-                    </Tabs>
+                    </div>
+                    {/* </Tabs> */}
                     <CurrentPokemonEdit />
                 </BaseEditor>
                 <MassEditor

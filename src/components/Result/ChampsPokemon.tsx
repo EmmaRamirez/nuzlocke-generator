@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { PokemonIconBase } from '../Editor/PokemonIcon';
+import { LinkedPokemonIcon } from '../Editor/LinkedPokemonIcon';
 import { gameOfOriginToColor } from './gameOfOriginToColor';
 
 export class ChampsPokemon extends React.Component<any> {
@@ -15,8 +15,9 @@ export class ChampsPokemon extends React.Component<any> {
                     width: '32px',
                     background: gameOfOriginToColor(this.props.gameOfOrigin),
                     display: 'inline-block',
+                    cursor: 'pointer',
                 }}>
-                <PokemonIconBase {...this.props as any} />
+                <LinkedPokemonIcon {...this.props as any} />
             </div>
         );
     }

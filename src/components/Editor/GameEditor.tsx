@@ -1,17 +1,19 @@
 import * as React from 'react';
 import { Store } from 'redux';
 import { connect } from 'react-redux';
-import { editGame, changeEditorSize } from 'actions';
+import { editGame, changeEditorSize, editStyle } from 'actions';
 import { listOfGames } from 'utils';
 
 import { Button, Intent, Popover, Menu, Position } from '@blueprintjs/core';
 import { LinkedSaveButton } from './LinkedSaveButton';
 import { RulesEditorDialog } from './RulesEditor';
+import { gameOfOriginToColor } from '../Result/gameOfOriginToColor';
 
 export interface GameEditorProps {
     game: any;
-    editGame: Function;
+    editGame: any;
     editor: any;
+    editStyle: editStyle;
     changeEditorSize: changeEditorSize;
 }
 
@@ -31,6 +33,9 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
 
     private onInput = e => {
         this.props.editGame({ name: e.target.value });
+        this.props.editStyle({
+            bgColor: gameOfOriginToColor(e.target.value),
+        });
     };
 
     private isMinimized(): any {
@@ -84,5 +89,6 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
 
 export const GameEditor = connect((state: any) => ({ game: state.game, editor: state.editor }), {
     editGame,
+    editStyle,
     changeEditorSize,
 })(GameEditorBase as any);

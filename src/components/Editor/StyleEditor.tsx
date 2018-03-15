@@ -5,8 +5,9 @@ import { editStyle } from 'actions';
 import { styleDefaults, listOfThemes } from 'utils';
 import { RadioGroup, Radio, TextArea, Checkbox } from '@blueprintjs/core';
 import { BaseEditor } from './BaseEditor';
+import { gameOfOriginToColor } from '../Result/gameOfOriginToColor';
 
-const editEvent = (e, props, name?) => {
+const editEvent = (e, props, name?, game?) => {
     const propName = name || e.target.name;
     props.editStyle({ [propName]: e.target.value });
     if (propName === 'template' && e.target.value === 'Default Light') {
@@ -20,12 +21,18 @@ const editEvent = (e, props, name?) => {
     if (propName === 'template' && e.target.value === 'Cards') {
         props.editStyle({ imageStyle: 'square' });
     }
+    if (propName === 'template' && e.target.value === 'Generations') {
+        props.editStyle({
+            bgColor: gameOfOriginToColor(game),
+        });
+    }
 };
 
 // tslint:disable-next-line:no-empty-interfaces
 export interface StyleEditorProps {
     style: any;
     editStyle: editStyle;
+    game: any;
 }
 
 export const ColorEdit = ({ value, onChange, name }) => {
@@ -62,7 +69,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 <div className='pt-select'>
                     <select
                         name='template'
-                        onChange={e => editEvent(e, props)}
+                        onChange={e => editEvent(e, props, null, props.game.name)}
                         value={props.style.template}>
                         {listOfThemes.map(o => <option key={o}>{o}</option>)}
                     </select>
@@ -325,6 +332,6 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
     );
 };
 
-export const StyleEditor = connect((state: any) => ({ style: state.style }), { editStyle })(
-    StyleEditorBase,
-);
+export const StyleEditor = connect((state: any) => ({ style: state.style, game: state.game }), {
+    editStyle,
+})(StyleEditorBase);
