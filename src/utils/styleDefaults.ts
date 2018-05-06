@@ -14,6 +14,7 @@ export const styleDefaults = {
     oldMetLocationFormat: false,
     resultHeight: '900',
     resultWidth: '1200',
+    scaleSprites: false,
     showPokemonMoves: true,
     spritesMode: false,
     teamImages: 'standard',

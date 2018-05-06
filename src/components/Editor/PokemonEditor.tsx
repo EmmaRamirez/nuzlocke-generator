@@ -101,6 +101,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                                 //     title={boxes[id]}
                                 //     panel={
                                 <Box
+                                    key={id}
                                     pokemon={team}
                                     tabTitle={type}
                                     boxId={id}

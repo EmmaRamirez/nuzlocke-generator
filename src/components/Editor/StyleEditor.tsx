@@ -316,6 +316,21 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 />
             </div>
 
+            <div className='style-edit'>
+                <Checkbox
+                    checked={props.style.spritesMode}
+                    name='scaleSprites'
+                    label='Scale Sprites'
+                    onChange={(e: any) =>
+                        editEvent(
+                            { ...e, target: { value: e.target.checked } },
+                            props,
+                            'scaleSprites',
+                        )
+                    }
+                />
+            </div>
+
             <div className='custom-css-input-wrapper'>
                 <label style={{ padding: '.5rem' }} className='pt-label'>
                     Custom CSS {/*<a href=''>Check out Layout Guide</a>*/}

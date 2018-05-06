@@ -97,4 +97,7 @@ module.exports = {
         //     excludes: ['**/*.js', '*.js']
         // })
     ],
+    externals: {
+        'fs': {}
+    }
 };
