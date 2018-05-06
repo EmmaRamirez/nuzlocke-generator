@@ -207,10 +207,10 @@ export class ImportAndExportBase extends React.Component<
                         New Nuzlocke
                     </Button>
                 </ButtonGroup>
-                <div className='pt-label pt-inline' style={{ padding: '1rem' }}>
+                {/* <div className='pt-label pt-inline' style={{ padding: '1rem' }}>
                     <span>Upload Save file</span>
                     <input ref={ref => this.fileInput = ref } onChange={this.uploadFile} type='file' id='file' name='file' accept='.sav' />
-                </div>
+                </div> */}
             </div>
         );
     }
