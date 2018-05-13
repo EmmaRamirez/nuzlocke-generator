@@ -80,6 +80,6 @@ export function getPokemonImage({ customImage, forme, species, name, style }) {
         return `url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/${leadingZerosNumber}.png)`;
     }
     return `url(img/${(
-        addForme(species.replace(/\s/g, ''), forme) || 'missingno'
+        addForme((species || '').replace(/\s/g, ''), forme) || 'missingno'
     ).toLowerCase()}.jpg)`;
 }

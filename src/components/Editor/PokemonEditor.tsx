@@ -1,9 +1,10 @@
-import { Tab, Tabs, Tooltip, Button, Position } from '@blueprintjs/core';
+import { Tab, Tabs, Tooltip, Button, Position, ButtonGroup } from '@blueprintjs/core';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import * as uuid from 'uuid/v4';
 
 import { Pokemon } from 'models';
+import { Boxes } from 'types';
 
 import {
     speciesToNumber,
@@ -20,6 +21,8 @@ import { LinkedAddPokemonButton, LinkedPokemonIcon, LinkedTabTitle } from '.';
 import { MassEditor } from './MassEditor';
 import { BoxedPokemon } from '../Result/BoxedPokemon';
 import { BaseEditor } from './BaseEditor';
+import { Scrollbars } from 'react-custom-scrollbars';
+
 
 require('../../assets/img/team-box.png');
 require('../../assets/img/dead-box.png');
@@ -37,7 +40,7 @@ export const Box = ({
 }) => {
     const filter = filterString === 'All' ? null : filterString;
     return (
-        <div className={`tab ${tabTitle}-tab`}>
+        <div className={`box ${tabTitle}-box`}>
             <LinkedTabTitle boxId={boxId} title={tabTitle} />
             {pokemonByFilter(pokemon, filter)}
         </div>
@@ -46,7 +49,7 @@ export const Box = ({
 
 interface PokemonEditorProps {
     team: Pokemon[];
-    boxes: string[];
+    boxes: Boxes;
 }
 
 interface PokemonEditorState {
@@ -63,6 +66,8 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
         };
     }
 
+    private boxes: HTMLDivElement | null;
+
     public componentDidMount() {}
 
     private openMassEditor = e => {
@@ -72,6 +77,18 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
     };
 
     private toggleEditor = e => this.setState({ isOpen: !this.state.isOpen });
+
+    private renderBoxes (boxes, team) {
+        return boxes.map(({ key, name }) => {
+            return <Box
+                key={key}
+                pokemon={team}
+                tabTitle={name}
+                boxId={key}
+                filterString={name}
+            />;
+        });
+    }
 
     public render() {
         const { team, boxes } = this.props;
@@ -90,29 +107,9 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                             Open Mass Editor
                         </Button>
                     </div>
-                    {/* <Tabs id='pokemon-box' className='pokemon-box'> */}
-                    <div className='box-wrapper'>
-                        {boxes.map((type, id) => {
-                            return (
-                                // <Tab
-                                //     key={id}
-                                //     id={type}
-                                //     className={`pt-tab-panel pokemon-tab`}
-                                //     title={boxes[id]}
-                                //     panel={
-                                <Box
-                                    key={id}
-                                    pokemon={team}
-                                    tabTitle={type}
-                                    boxId={id}
-                                    filterString={type}
-                                />
-                                // }
-                                // />
-                            );
-                        })}
-                    </div>
-                    {/* </Tabs> */}
+                    <br />
+                    { this.renderBoxes(boxes, team) }
+                    <br />
                     <CurrentPokemonEdit />
                 </BaseEditor>
                 <MassEditor

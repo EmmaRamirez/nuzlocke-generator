@@ -74,9 +74,9 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                                 {listOfGames.map(game => <option key={game}>{game}</option>)}
                             </select>
                         </div>
-                        <Popover minimal={true} content={<Menu />} position={Position.BOTTOM}>
+                        {/* <Popover minimal={true} content={<Menu />} position={Position.BOTTOM}>
                             <Button icon='exchange'>Switch Nuzlockes</Button>
-                        </Popover>
+                        </Popover> */}
                         <Button onClick={this.toggleDialog} icon='list' intent={Intent.PRIMARY}>
                             Modify Rules
                         </Button>

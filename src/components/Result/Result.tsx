@@ -19,7 +19,7 @@ interface ResultProps {
     pokemon: Pokemon[];
     game: any;
     trainer: Trainer;
-    box: string[];
+    box: { key: number, name: string }[];
     selectPokemon: selectPokemon;
     style: any;
     rules: string[];
@@ -251,13 +251,13 @@ export class ResultBase extends React.Component<ResultProps> {
                     <div className='team-container'>{this.renderTeamPokemon()}</div>
                     {numberOfBoxed > 0 ? (
                         <div className='boxed-container'>
-                            <h3>{box[1]}</h3>
+                            <h3>{box[1].name}</h3>
                             <div style={{ marginLeft: '1rem' }}>{this.renderBoxedPokemon()}</div>
                         </div>
                     ) : null}
                     {numberOfDead > 0 ? (
                         <div className='dead-container'>
-                            <h3>{box[2]}</h3>
+                            <h3>{box[2].name}</h3>
                             <div
                                 style={{
                                     display: 'flex',
@@ -271,7 +271,7 @@ export class ResultBase extends React.Component<ResultProps> {
                     ) : null}
                     {numberOfChamps > 0 ? (
                         <div className='champs-container'>
-                            <h3>Champs</h3>
+                            <h3>{box[3].name}</h3>
                             <div style={{
                                 margin: '.5rem'
                             }}>{this.renderChampsPokemon()}</div>

@@ -5,13 +5,13 @@ import { TabTitle } from '../Editor/TabTitle';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        title: state.box[ownProps.boxId],
+        title: state.box[ownProps.boxId].name
     };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onInput: e => {
+        onChange: e => {
             dispatch(editBox(e.target.textContent, ownProps.boxId));
         },
     };

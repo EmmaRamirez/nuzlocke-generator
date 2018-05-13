@@ -216,6 +216,8 @@ input[name='metLevel']
   span
     display: inline-block;
     margin-right: .25rem;
+  .pt-control
+    margin-bottom: 0;
 
 .pt-dark .style-edit
   border-bottom: 1px solid #111;
@@ -230,9 +232,9 @@ input[name='metLevel']
   label.pt-label
     margin: 0;
 
-.custom-css-input
-  font-size: .8rem !important;
-  min-height: 10rem;
+// .custom-css-input
+//   font-size: .8rem !important;
+//   min-height: 10rem;
 
 .color-input
   padding: 0;
@@ -261,3 +263,49 @@ input[name='metLevel']
 .pt-dark .color-text-input
   background: rgba(16, 22, 26, 0.3);
   color: #eee;
+  
+
+.no-pokemon-selected
+  display: flex;
+  align-items: center;
+  padding: .5rem;
+  p
+    margin: .25rem;
+    padding-left: .25rem;
+
+.box
+  border-radius: .25rem;
+  padding: .25rem;
+  margin: .25rem;
+  display: flex;
+  align-items: center;
+ //background-size: 100% auto;
+  background-position: center;
+  flex-wrap: wrap;
+
+.pt-dark .box
+  box-shadow: 0 0 .25rem #000;
+
+.Team-box
+  background: #15db72;
+  background-image: url('../../assets/img/team-box-body.png');
+
+.Boxed-box
+  background: #1184d6;
+  background-image: url('../../assets/img/boxed-box.png');
+
+.Dead-box
+  background: #ce1831;
+  background-image: url('../../assets/img/dead-box.png');
+
+.Champs-box
+  background: #e5db52;
+  background-image: url('../../assets/img/champs-box.png');
+
+.tab-title
+  min-width: 100px;
+  height: 64px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;

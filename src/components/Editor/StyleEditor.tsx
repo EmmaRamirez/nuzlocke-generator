@@ -318,7 +318,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
 
             <div className='style-edit'>
                 <Checkbox
-                    checked={props.style.spritesMode}
+                    checked={props.style.scaleSprites}
                     name='scaleSprites'
                     label='Scale Sprites'
                     onChange={(e: any) =>

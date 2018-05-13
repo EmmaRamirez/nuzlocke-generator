@@ -8,16 +8,20 @@ import {
     matchSpeciesToTypes,
 } from 'utils';
 import { Pokemon } from 'models';
-import { onClick } from 'types';
+import { onClick, Boxes } from 'types';
 import { CurrentPokemonInput } from './CurrentPokemonInput';
 import { LinkedDeletePokemonButton } from './LinkedDeletePokemonButton';
 import { Autocomplete } from '../Shared';
 import { selectPokemon, editPokemon } from 'actions';
 import { listOfGames } from 'utils';
 
+const pokeball = require('assets/pokeball.png');
+
+
 interface CurrentPokemonEditState {
     selectedId: string;
     expandedView: boolean;
+    box: Boxes;
 }
 
 @StoreContext
@@ -26,6 +30,7 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
         super(props);
         this.state = {
             selectedId: '5',
+            box: [],
             expandedView: false,
         };
     }
@@ -34,6 +39,7 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
         this.context.store.subscribe(() => {
             this.setState({
                 selectedId: this.context.store.getState().selectedId,
+                box: this.context.store.getState().box,
             });
         });
     }
@@ -155,7 +161,7 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
             .pokemon.find((v: Pokemon) => v.id === this.state.selectedId);
 
         if (currentPokemon == null) {
-            return <div className='current-pokemon'>Select a Pok&eacute;mon to edit</div>;
+            return <div className='current-pokemon no-pokemon-selected'><img alt='pokeball' src={pokeball} /> <p>Select a Pok&eacute;mon to edit</p></div>;
         }
 
         return (
@@ -171,7 +177,7 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                         inputName='status'
                         value={currentPokemon.status}
                         type='select'
-                        options={['Team', 'Boxed', 'Dead', 'Champs']}
+                        options={this.state.box.map(n => n.name)}
                     />
                     <LinkedDeletePokemonButton id={this.state.selectedId} />
                 </span>

@@ -187,7 +187,7 @@ export const TeamPokemonBase = (
                     }}>
                     <img
                         alt={poke.item}
-                        src={`http://www.serebii.net/itemdex/sprites/${poke.item
+                        src={`http://www.serebii.net/itemdex/sprites/${(poke.item || '')
                             .toLowerCase()
                             .replace(/\s/g, '')}.png`}
                     />

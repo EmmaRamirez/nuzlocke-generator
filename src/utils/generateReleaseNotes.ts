@@ -125,6 +125,8 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - **Collapsible editors**: for a slightly cleaner interface
 - **Custom Icons**: property for adding custom sprite icons
 - **New Theme**: Generations, useful for multi-nuzlocke runs
+- **Delete All Data Option**: Does that mean we're GDPR-compliant?
+- **Redesigned Boxes**: Cleaner and more colorful
 
 ## Fixes
 - Fixed the margins on the first row of Pokémon info
@@ -135,6 +137,16 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Improved design of Cards theme for sprites
 - Fixed width of info for dead Pokémon
 - Autocomplete can now be navigated with arrow keys
+- Fixed Alola/Mega sugimori images
+
+## Known Issues
+- Not every Pokémon has an "artsy" image
+- Some gender differences don't have official art
+- Types can't be set in the mass editor
+- Changing the name of a box fails
+- Sometimes changing a type won't work unless you reload the page
+- Selecting a checkpoint sometimes undoes all others
+
 `,
     '0.1.0-beta': `
 # Changelog
