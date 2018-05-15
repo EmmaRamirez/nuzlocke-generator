@@ -98,6 +98,6 @@ module.exports = {
         // })
     ],
     externals: {
-        'fs': {}
-    }
+        fs: {},
+    },
 };

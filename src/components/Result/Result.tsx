@@ -19,7 +19,7 @@ interface ResultProps {
     pokemon: Pokemon[];
     game: any;
     trainer: Trainer;
-    box: { key: number, name: string }[];
+    box: { key: number; name: string }[];
     selectPokemon: selectPokemon;
     style: any;
     rules: string[];
@@ -272,9 +272,12 @@ export class ResultBase extends React.Component<ResultProps> {
                     {numberOfChamps > 0 ? (
                         <div className='champs-container'>
                             <h3>{box[3].name}</h3>
-                            <div style={{
-                                margin: '.5rem'
-                            }}>{this.renderChampsPokemon()}</div>
+                            <div
+                                style={{
+                                    margin: '.5rem',
+                                }}>
+                                {this.renderChampsPokemon()}
+                            </div>
                         </div>
                     ) : null}
                     {style.displayRules ? (

@@ -5,7 +5,7 @@ import { TabTitle } from '../Editor/TabTitle';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        title: state.box[ownProps.boxId].name
+        title: state.box[ownProps.boxId].name,
     };
 };
 

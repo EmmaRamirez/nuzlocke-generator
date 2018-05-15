@@ -22,7 +22,7 @@ export interface ImportAndExportState {
     href: string;
 }
 
-const hexEncode = function(str:string) {
+const hexEncode = function(str: string) {
     let hex, i;
 
     let result = '';
@@ -106,13 +106,12 @@ export class ImportAndExportBase extends React.Component<
     }
 
     private uploadFile = e => {
-
         const file = this.fileInput.files[0];
         const reader = new FileReader();
 
         reader.readAsArrayBuffer(file);
 
-        reader.addEventListener('load', function () {
+        reader.addEventListener('load', function() {
             const u = new Uint8Array(this.result);
             const a = new Array(u.length);
             let i = u.length;
@@ -121,22 +120,21 @@ export class ImportAndExportBase extends React.Component<
             }
             console.log(a);
             parseFile(a, 'nuzlocke')
-            .then(res => {
-                console.log(res);
-            })
-            .catch(err => {
-                console.error(err);
-            });
-
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
         });
-
-    }
+    };
 
     private clearAllData = e => {
         persistor.purge();
-    }
+    };
 
-    private toggleClearingData = e => this.setState({ isClearAllDataOpen: !this.state.isClearAllDataOpen });
+    private toggleClearingData = e =>
+        this.setState({ isClearAllDataOpen: !this.state.isClearAllDataOpen });
 
     public render() {
         return (
@@ -148,10 +146,10 @@ export class ImportAndExportBase extends React.Component<
                     cancelButtonText='Nevermind'
                     confirmButtonText='Delete Anyway'
                     intent={Intent.DANGER}
-                    icon='trash'
-                >
+                    icon='trash'>
                     <p>
-                        This will permanently delete all your local storage data, with no way to retrieve it. Are you sure you want to do this?
+                        This will permanently delete all your local storage data, with no way to
+                        retrieve it. Are you sure you want to do this?
                     </p>
                 </Alert>
                 <Dialog
@@ -229,9 +227,15 @@ export class ImportAndExportBase extends React.Component<
                         New Nuzlocke
                     </Button> */}
                 </ButtonGroup>
-                <br/>
-                <br/>
-                <Button icon='trash' onClick={this.toggleClearingData} intent={Intent.DANGER} className='pt-minimal'>Clear All Data</Button>
+                <br />
+                <br />
+                <Button
+                    icon='trash'
+                    onClick={this.toggleClearingData}
+                    intent={Intent.DANGER}
+                    className='pt-minimal'>
+                    Clear All Data
+                </Button>
                 {/* <div className='pt-label pt-inline' style={{ padding: '1rem' }}>
                     <span>Upload Save file</span>
                     <input ref={ref => this.fileInput = ref } onChange={this.uploadFile} type='file' id='file' name='file' accept='.sav' />

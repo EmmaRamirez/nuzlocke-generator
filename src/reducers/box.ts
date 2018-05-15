@@ -1,25 +1,28 @@
 import { editBox, EDIT_BOX, REPLACE_STATE, VERSION_0_0_6_BETA, Action } from 'actions';
 
-const defaultBoxes:{ key: number, name: string }[] = [
+const defaultBoxes: { key: number; name: string }[] = [
     {
         key: 0,
         name: 'Team',
     },
     {
         key: 1,
-        name: 'Boxed'
+        name: 'Boxed',
     },
     {
         key: 2,
-        name: 'Dead'
+        name: 'Dead',
     },
     {
         key: 3,
-        name: 'Champs'
-    }
+        name: 'Champs',
+    },
 ];
 
-export function box(state = defaultBoxes, action: Action<EDIT_BOX | REPLACE_STATE | VERSION_0_0_6_BETA>) {
+export function box(
+    state = defaultBoxes,
+    action: Action<EDIT_BOX | REPLACE_STATE | VERSION_0_0_6_BETA>,
+) {
     switch (action.type) {
         case 'EDIT_BOX':
             const newState = state;

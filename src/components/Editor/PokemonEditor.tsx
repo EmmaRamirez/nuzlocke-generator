@@ -23,7 +23,6 @@ import { BoxedPokemon } from '../Result/BoxedPokemon';
 import { BaseEditor } from './BaseEditor';
 import { Scrollbars } from 'react-custom-scrollbars';
 
-
 require('../../assets/img/team-box.png');
 require('../../assets/img/dead-box.png');
 
@@ -78,15 +77,9 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
 
     private toggleEditor = e => this.setState({ isOpen: !this.state.isOpen });
 
-    private renderBoxes (boxes, team) {
+    private renderBoxes(boxes, team) {
         return boxes.map(({ key, name }) => {
-            return <Box
-                key={key}
-                pokemon={team}
-                tabTitle={name}
-                boxId={key}
-                filterString={name}
-            />;
+            return <Box key={key} pokemon={team} tabTitle={name} boxId={key} filterString={name} />;
         });
     }
 
@@ -108,7 +101,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                         </Button>
                     </div>
                     <br />
-                    { this.renderBoxes(boxes, team) }
+                    {this.renderBoxes(boxes, team)}
                     <br />
                     <CurrentPokemonEdit />
                 </BaseEditor>

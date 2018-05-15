@@ -17,7 +17,6 @@ import { listOfGames } from 'utils';
 
 const pokeball = require('assets/pokeball.png');
 
-
 interface CurrentPokemonEditState {
     selectedId: string;
     expandedView: boolean;
@@ -161,7 +160,11 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
             .pokemon.find((v: Pokemon) => v.id === this.state.selectedId);
 
         if (currentPokemon == null) {
-            return <div className='current-pokemon no-pokemon-selected'><img alt='pokeball' src={pokeball} /> <p>Select a Pok&eacute;mon to edit</p></div>;
+            return (
+                <div className='current-pokemon no-pokemon-selected'>
+                    <img alt='pokeball' src={pokeball} /> <p>Select a Pok&eacute;mon to edit</p>
+                </div>
+            );
         }
 
         return (

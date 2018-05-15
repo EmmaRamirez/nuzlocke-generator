@@ -17,7 +17,7 @@ const migrations = {
             ...state,
             box: undefined,
         };
-    }
+    },
 };
 
 const config = {
@@ -25,7 +25,7 @@ const config = {
     blacklist: ['router'],
     storage,
     version: pkg.version,
-    migrations: createMigrate(migrations, { debug: false })
+    migrations: createMigrate(migrations, { debug: false }),
 };
 
 const history = createHistory();
