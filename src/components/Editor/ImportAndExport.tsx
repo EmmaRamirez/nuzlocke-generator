@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Button, ButtonGroup, Dialog, Callout, TextArea, Intent, Alert } from '@blueprintjs/core';
 import { PokemonIcon } from './PokemonIcon';
 import { ErrorBoundary } from 'components/Shared';
-import { parseFile } from 'pokemon-savefile-parser';
+// import { parseFile } from 'pokemon-savefile-parser';
 import * as uuid from 'uuid/v4';
 import { persistor } from 'store';
 
@@ -119,13 +119,13 @@ export class ImportAndExportBase extends React.Component<
                 a[i] = (u[i] < 16 ? '0' : '') + u[i].toString(16);
             }
             console.log(a);
-            parseFile(a, 'nuzlocke')
-                .then(res => {
-                    console.log(res);
-                })
-                .catch(err => {
-                    console.error(err);
-                });
+            // parseFile(a, 'nuzlocke')
+            //     .then(res => {
+            //         console.log(res);
+            //     })
+            //     .catch(err => {
+            //         console.error(err);
+            //     });
         });
     };
 
