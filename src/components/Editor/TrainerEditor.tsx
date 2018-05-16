@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { TrainerInfoEditor } from './TrainerInfoEditor';
+import { BaseEditor } from './BaseEditor';
 
 export class TrainerEditor extends React.Component<{}, {}> {
     public render() {
         return (
-            <div className='trainer-editor'>
-                <h4>Trainer</h4>
+            <BaseEditor name='Trainer'>
                 <TrainerInfoEditor />
-            </div>
+            </BaseEditor>
         );
     }
 }

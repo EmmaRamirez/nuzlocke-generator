@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Button, ButtonGroup, Dialog, Callout, TextArea, Intent } from '@blueprintjs/core';
+import { Button, ButtonGroup, Dialog, Callout, TextArea, Intent, Alert } from '@blueprintjs/core';
 import { PokemonIcon } from './PokemonIcon';
 import { ErrorBoundary } from 'components/Shared';
+// import { parseFile } from 'pokemon-savefile-parser';
 import * as uuid from 'uuid/v4';
+import { persistor } from 'store';
 
 import { replaceState } from 'actions';
 
@@ -14,21 +16,36 @@ export interface ImportAndExportProps {
 
 export interface ImportAndExportState {
     isOpen: boolean;
+    isClearAllDataOpen: boolean;
     mode: 'import' | 'export';
     data: string;
     href: string;
 }
+
+const hexEncode = function(str: string) {
+    let hex, i;
+
+    let result = '';
+    for (i = 0; i < str.length; i++) {
+        hex = str.charCodeAt(i).toString(16);
+        result += ('000' + hex).slice(-4);
+    }
+
+    return result;
+};
 
 export class ImportAndExportBase extends React.Component<
     ImportAndExportProps,
     ImportAndExportState
 > {
     public textarea: any;
+    public fileInput: any;
 
     constructor(props) {
         super(props);
         this.state = {
             isOpen: false,
+            isClearAllDataOpen: false,
             mode: 'export',
             data: '',
             href: '',
@@ -88,9 +105,53 @@ export class ImportAndExportBase extends React.Component<
         }
     }
 
+    private uploadFile = e => {
+        const file = this.fileInput.files[0];
+        const reader = new FileReader();
+
+        reader.readAsArrayBuffer(file);
+
+        reader.addEventListener('load', function() {
+            const u = new Uint8Array(this.result);
+            const a = new Array(u.length);
+            let i = u.length;
+            while (i--) {
+                a[i] = (u[i] < 16 ? '0' : '') + u[i].toString(16);
+            }
+            console.log(a);
+            // parseFile(a, 'nuzlocke')
+            //     .then(res => {
+            //         console.log(res);
+            //     })
+            //     .catch(err => {
+            //         console.error(err);
+            //     });
+        });
+    };
+
+    private clearAllData = e => {
+        persistor.purge();
+    };
+
+    private toggleClearingData = e =>
+        this.setState({ isClearAllDataOpen: !this.state.isClearAllDataOpen });
+
     public render() {
         return (
             <div style={{ padding: '1rem' }}>
+                <Alert
+                    onConfirm={this.clearAllData}
+                    isOpen={this.state.isClearAllDataOpen}
+                    onCancel={this.toggleClearingData}
+                    cancelButtonText='Nevermind'
+                    confirmButtonText='Delete Anyway'
+                    intent={Intent.DANGER}
+                    icon='trash'>
+                    <p>
+                        This will permanently delete all your local storage data, with no way to
+                        retrieve it. Are you sure you want to do this?
+                    </p>
+                </Alert>
                 <Dialog
                     isOpen={this.state.isOpen}
                     onClose={e => this.setState({ isOpen: false })}
@@ -162,7 +223,23 @@ export class ImportAndExportBase extends React.Component<
                     <Button onClick={e => this.exportState(this.props.state)} icon='export'>
                         Export Data
                     </Button>
+                    {/* <Button icon='add' intent={Intent.SUCCESS}>
+                        New Nuzlocke
+                    </Button> */}
                 </ButtonGroup>
+                <br />
+                <br />
+                <Button
+                    icon='trash'
+                    onClick={this.toggleClearingData}
+                    intent={Intent.DANGER}
+                    className='pt-minimal'>
+                    Clear All Data
+                </Button>
+                {/* <div className='pt-label pt-inline' style={{ padding: '1rem' }}>
+                    <span>Upload Save file</span>
+                    <input ref={ref => this.fileInput = ref } onChange={this.uploadFile} type='file' id='file' name='file' accept='.sav' />
+                </div> */}
             </div>
         );
     }

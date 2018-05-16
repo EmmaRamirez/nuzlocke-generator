@@ -21,6 +21,7 @@ import 'react-resizable/css/styles.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/table/lib/css/table.css';
+import { version0_0_6_BETA } from 'actions';
 
 // OfflinePluginRuntime.install({
 //     onUpdateReady: () => OfflinePluginRuntime.applyUpdate(),
@@ -53,5 +54,10 @@ store.subscribe(() => {
         document.body.style.background = '#111';
     } else {
         document.body.style.background = '#fff';
+    }
+
+    // Check if state has old box format
+    if (typeof (store.getState() as any).box[0] === 'string') {
+        store.dispatch(version0_0_6_BETA());
     }
 });

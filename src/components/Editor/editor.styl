@@ -15,8 +15,12 @@
 .game-editor, .trainer-editor, .pokemon-editor, .style-editor
   padding: .3rem;
 
-.style-editor
-  padding-bottom: 1.5rem;
+.base-editor
+  border: 1px solid #fafafa;
+  border-top: 0 solid transparent !important;
+
+.pt-dark .base-editor
+  border: 1px solid #111;
 
 .trainer-info-field
   align-items: center
@@ -38,7 +42,8 @@
 
 .tab
   align-content: flex-start;
-  background: url('../../assets/img/team-box.png');
+  background-color: rgba(0, 0, 0, 0.1);
+  background-image: url('../../assets/img/team-box.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   display: flex;
@@ -57,7 +62,7 @@
     flex-basis: 218px;
     flex-grow: 999;
     font-family: 'pokemon_gbregular';
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   .pokemon-icon img,
   .pokemon-icon
     cursor: pointer;
@@ -70,8 +75,24 @@
     border: 1px white dashed;
     transition: 500ms all;
 
+.tab.Dead-tab
+  background-image: url('../../assets/img/dead-box.png');
+
+.tab.Champs-tab
+  background-image: url('../../assets/img/champs-box.png');
+
+.tab.Boxed-tab
+  background-image: url('../../assets/img/boxed-box.png');
+
 .pt-dark .tab .tab-title
   color: #111;
+
+.box-wrapper
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .tab
+    margin: 2px;
 
 .pokemon-tab
   display: flex;
@@ -195,6 +216,8 @@ input[name='metLevel']
   span
     display: inline-block;
     margin-right: .25rem;
+  .pt-control
+    margin-bottom: 0;
 
 .pt-dark .style-edit
   border-bottom: 1px solid #111;
@@ -209,9 +232,9 @@ input[name='metLevel']
   label.pt-label
     margin: 0;
 
-.custom-css-input
-  font-size: .8rem !important;
-  min-height: 10rem;
+// .custom-css-input
+//   font-size: .8rem !important;
+//   min-height: 10rem;
 
 .color-input
   padding: 0;
@@ -240,3 +263,48 @@ input[name='metLevel']
 .pt-dark .color-text-input
   background: rgba(16, 22, 26, 0.3);
   color: #eee;
+  
+
+.no-pokemon-selected
+  display: flex;
+  align-items: center;
+  padding: .5rem;
+  p
+    margin: .25rem;
+    padding-left: .25rem;
+
+.box
+  border-radius: .25rem;
+  padding: .25rem;
+  margin: .25rem;
+  display: flex;
+  align-items: center;
+  background-position: center;
+  flex-wrap: wrap;
+
+.pt-dark .box
+  box-shadow: 0 0 .25rem #000;
+
+.Team-box
+  background: #15db72;
+  background-image: url('../../assets/img/team-box-body.png');
+
+.Boxed-box
+  background: #1184d6;
+  background-image: url('../../assets/img/boxed-box.png');
+
+.Dead-box
+  background: #ce1831;
+  background-image: url('../../assets/img/dead-box.png');
+
+.Champs-box
+  background: #e5db52;
+  background-image: url('../../assets/img/champs-box.png');
+
+.tab-title
+  min-width: 100px;
+  height: 64px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;

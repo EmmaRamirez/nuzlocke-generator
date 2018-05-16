@@ -55,7 +55,11 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
     private renderItems() {
         return this.state.visibleItems.map((v, i) => {
             return (
-                <li key={i} role='item' onClick={e => this.selectItem(v)}>
+                <li
+                    key={i}
+                    role='item'
+                    onClick={e => this.selectItem(v)}
+                    style={v === this.state.currentValue ? { color: 'lightblue' } : {}}>
                     {v}
                 </li>
             );
@@ -77,9 +81,22 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
         this.setState({ visibleItems: [] });
     };
 
-    private handleEscape = e => {
+    private handleKeyDown = e => {
         if (e.which === 27 || e.which === 13 || e.which === 9) {
             this.closeList(e);
+        }
+        if (e.which === 38 || e.which === 40) {
+            this.handleMovement(e);
+            this.setState({ isOpen: true });
+        }
+    };
+
+    private handleMovement = e => {
+        const currentIndex = this.state.visibleItems.indexOf(this.state.currentValue);
+        if (e.which === 38) {
+            this.selectItem(this.state.visibleItems[currentIndex - 1]);
+        } else {
+            this.selectItem(this.state.visibleItems[currentIndex + 1]);
         }
     };
 
@@ -88,7 +105,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
             <div className='current-pokemon-input-wrapper autocomplete'>
                 <label>{this.props.label}</label>
                 <input
-                    onKeyDown={this.handleEscape}
+                    onKeyDown={this.handleKeyDown}
                     onFocus={this.openList}
                     placeholder={this.props.placeholder}
                     name={this.props.name}

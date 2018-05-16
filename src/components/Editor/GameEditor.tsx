@@ -1,19 +1,27 @@
 import * as React from 'react';
 import { Store } from 'redux';
 import { connect } from 'react-redux';
-import { editGame, changeEditorSize } from 'actions';
+import { editGame, changeEditorSize, editStyle } from 'actions';
 import { listOfGames } from 'utils';
 
-import { Button, Intent } from '@blueprintjs/core';
+import { Button, Intent, Popover, Menu, Position } from '@blueprintjs/core';
 import { LinkedSaveButton } from './LinkedSaveButton';
 import { RulesEditorDialog } from './RulesEditor';
+import { gameOfOriginToColor } from '../Result/gameOfOriginToColor';
 
 export interface GameEditorProps {
     game: any;
-    editGame: Function;
+    editGame: any;
     editor: any;
+    editStyle: editStyle;
     changeEditorSize: changeEditorSize;
 }
+
+const gameSubEditorStyle: any = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    paddingBottom: '.25rem',
+};
 
 export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: boolean }> {
     constructor(props) {
@@ -25,6 +33,9 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
 
     private onInput = e => {
         this.props.editGame({ name: e.target.value });
+        this.props.editStyle({
+            bgColor: gameOfOriginToColor(e.target.value),
+        });
     };
 
     private isMinimized(): any {
@@ -57,21 +68,15 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                             icon={this.props.editor.minimized ? 'maximize' : 'minimize'}
                         />
                     </h4>
-                    {/* <label>Game </label> */}
-                    {/* <input onChange={this.onInput} className='pt-input' type='text' value={game.name} dir='auto' /> */}
-
-                    <div
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                        }}>
-                        {/* <Button icon='add' intent={Intent.SUCCESS}>New Nuzlocke</Button> */}
+                    <div style={gameSubEditorStyle}>
                         <div className='pt-select'>
                             <select onChange={this.onInput} value={game.name}>
                                 {listOfGames.map(game => <option key={game}>{game}</option>)}
                             </select>
                         </div>
-                        {/* <Button icon='exchange'>Switch Nuzlockes</Button> */}
+                        {/* <Popover minimal={true} content={<Menu />} position={Position.BOTTOM}>
+                            <Button icon='exchange'>Switch Nuzlockes</Button>
+                        </Popover> */}
                         <Button onClick={this.toggleDialog} icon='list' intent={Intent.PRIMARY}>
                             Modify Rules
                         </Button>
@@ -84,5 +89,6 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
 
 export const GameEditor = connect((state: any) => ({ game: state.game, editor: state.editor }), {
     editGame,
+    editStyle,
     changeEditorSize,
 })(GameEditorBase as any);

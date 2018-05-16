@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Pokemon, Trainer } from 'models';
-import { getBadges, getGameRegion } from 'utils';
+import { getBadges, getGameRegion, sortPokes } from 'utils';
 import { connect } from 'react-redux';
 import * as uuid from 'uuid/v4';
 import { ResizableBox, Resizable } from 'react-resizable';
@@ -11,6 +11,7 @@ import { selectPokemon } from 'actions';
 import { TeamPokemon } from './TeamPokemon';
 import { DeadPokemon } from './DeadPokemon';
 import { BoxedPokemon } from './BoxedPokemon';
+import { ChampsPokemon } from './ChampsPokemon';
 
 import './Result.styl';
 
@@ -18,15 +19,11 @@ interface ResultProps {
     pokemon: Pokemon[];
     game: any;
     trainer: Trainer;
-    box: string[];
+    box: { key: number; name: string }[];
     selectPokemon: selectPokemon;
     style: any;
     rules: string[];
 }
-
-const sortPokes = (a, b) => {
-    return a.position - b.position;
-};
 
 export class ResultBase extends React.Component<ResultProps> {
     constructor(props) {
@@ -78,6 +75,15 @@ export class ResultBase extends React.Component<ResultProps> {
             });
     }
 
+    private renderChampsPokemon() {
+        return this.props.pokemon
+            .filter(v => v.hasOwnProperty('id'))
+            .filter(poke => poke.status === 'Champs')
+            .map((poke, index) => {
+                return <ChampsPokemon key={index} {...poke} />;
+            });
+    }
+
     private renderDeadPokemon() {
         return this.props.pokemon
             .filter(v => v.hasOwnProperty('id'))
@@ -115,10 +121,20 @@ export class ResultBase extends React.Component<ResultProps> {
     }
 
     private renderTrainer() {
-        const { trainer } = this.props;
+        const { trainer, game, style } = this.props;
         const bottomTextStyle: any = { fontSize: '1.1rem', fontWeight: 'bold' };
         return (
             <div className='trainer-wrapper'>
+                <div
+                    style={{
+                        color: '#eee',
+                        background: style.bgColor,
+                        width: '100px',
+                        borderRadius: '.25rem',
+                        textAlign: 'center',
+                    }}>
+                    {game.name}
+                </div>
                 {trainer.image ? (
                     <img
                         style={{
@@ -160,6 +176,12 @@ export class ResultBase extends React.Component<ResultProps> {
                         <div style={bottomTextStyle}>{trainer.id}</div>
                     </div>
                 )}
+                {trainer.totalTime == null || trainer.totalTime === '' ? null : (
+                    <div className='time column'>
+                        <div>time</div>
+                        <div style={bottomTextStyle}>{trainer.totalTime}</div>
+                    </div>
+                )}
                 {trainer.expShareStatus == null || trainer.expShareStatus === '' ? null : (
                     <div className='expShareStatus column'>
                         <div>Exp Share</div>
@@ -192,12 +214,18 @@ export class ResultBase extends React.Component<ResultProps> {
 
     public render() {
         const { style, box, trainer } = this.props;
-        const numberOfDead = this.props.pokemon
-            .filter(v => v.hasOwnProperty('id'))
-            .filter(poke => poke.status === 'Dead').length;
-        const numberOfBoxed = this.props.pokemon
-            .filter(v => v.hasOwnProperty('id'))
-            .filter(poke => poke.status === 'Boxed').length;
+        // const numberOfDead = this.props.pokemon
+        //     .filter(v => v.hasOwnProperty('id'))
+        //     .filter(poke => poke.status === 'Dead').length;
+        // const numberOfBoxed = this.props.pokemon
+        //     .filter(v => v.hasOwnProperty('id'))
+        //     .filter(poke => poke.status === 'Boxed').length;
+        // const numberOfChamps = this.props.pokemon
+        //     .filter(v => v.hasOwnProperty('id'))
+        //     .filter(poke => poke.status === 'Champs').length;
+        const numberOfBoxed = 1,
+            numberOfDead = 1,
+            numberOfChamps = 1;
         const bgColor = style ? style.bgColor : '#383840';
         const topHeaderColor = style ? style.topHeaderColor : '#333333';
         return (
@@ -223,13 +251,13 @@ export class ResultBase extends React.Component<ResultProps> {
                     <div className='team-container'>{this.renderTeamPokemon()}</div>
                     {numberOfBoxed > 0 ? (
                         <div className='boxed-container'>
-                            <h3>{box[1]}</h3>
+                            <h3>{box[1].name}</h3>
                             <div style={{ marginLeft: '1rem' }}>{this.renderBoxedPokemon()}</div>
                         </div>
                     ) : null}
                     {numberOfDead > 0 ? (
                         <div className='dead-container'>
-                            <h3>{box[2]}</h3>
+                            <h3>{box[2].name}</h3>
                             <div
                                 style={{
                                     display: 'flex',
@@ -238,6 +266,17 @@ export class ResultBase extends React.Component<ResultProps> {
                                     margin: '.5rem',
                                 }}>
                                 {this.renderDeadPokemon()}
+                            </div>
+                        </div>
+                    ) : null}
+                    {numberOfChamps > 0 ? (
+                        <div className='champs-container'>
+                            <h3>{box[3].name}</h3>
+                            <div
+                                style={{
+                                    margin: '.5rem',
+                                }}>
+                                {this.renderChampsPokemon()}
                             </div>
                         </div>
                     ) : null}

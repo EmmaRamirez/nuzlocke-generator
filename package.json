@@ -1,6 +1,6 @@
 {
   "name": "nuzlocke-generator",
-  "version": "0.0.5-beta",
+  "version": "0.0.6-beta",
   "description": "A tool for generating nuzlocke team pics from data",
   "main": "index.js",
   "scripts": {
@@ -44,6 +44,7 @@
     "@types/redux-logger": "^3.0.5",
     "awesome-typescript-loader": "^3.4.1",
     "body-parser": "^1.18.2",
+    "buffer": "^5.1.0",
     "chai": "^4.1.2",
     "cheerio": "^1.0.0-rc.2",
     "copy-webpack-plugin": "^4.3.1",
@@ -53,6 +54,7 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "file-loader": "^0.11.2",
+    "fs": "0.0.1-security",
     "hapi": "^17.2.0",
     "history": "^4.7.2",
     "imports-loader": "^0.7.1",
@@ -64,6 +66,7 @@
     "mocha": "^3.5.3",
     "node-sass": "^4.7.2",
     "offline-plugin": "^4.9.0",
+    "pokemon-savefile-parser": "^0.2.1",
     "prettier": "^1.10.2",
     "prop-types": "^15.6.0",
     "pure-render-decorator": "^1.2.1",
@@ -109,7 +112,8 @@
     "typescript": "^2.6.2",
     "url-loader": "^0.5.9",
     "uuid": "^3.1.0",
-    "webpack": "^2.7.0"
+    "webpack": "^2.7.0",
+    "webpack-dashboard": "^1.1.1"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",

@@ -117,4 +117,45 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 
 You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nuzlocke-generator/issues).
 `,
+    '0.0.6-beta': `
+# Changelog
+
+## Features
+- **Champion status**: a status useful for multi-run nuzlockes
+- **Collapsible editors**: for a slightly cleaner interface
+- **Custom Icons**: property for adding custom sprite icons
+- **New Theme**: Generations, useful for multi-nuzlocke runs
+- **Delete All Data Option**: Does that mean we're GDPR-compliant?
+- **Redesigned Boxes**: Cleaner and more colorful
+
+## Fixes
+- Fixed the margins on the first row of Pokémon info
+- Champion ribbons work for each region now
+- Added FireRed and LeafGreen to list of games
+- Sprites Mode now works with Gen 3
+- Type auto-matching now works for every species
+- Improved design of Cards theme for sprites
+- Fixed width of info for dead Pokémon
+- Autocomplete can now be navigated with arrow keys
+- Fixed Alola/Mega sugimori images
+
+## Known Issues
+- Not every Pokémon has an "artsy" image
+- Some gender differences don't have official art
+- Types can't be set in the mass editor
+- Changing the name of a box fails
+- Sometimes changing a type won't work unless you reload the page
+- Selecting a checkpoint sometimes undoes all others
+
+`,
+    '0.1.0-beta': `
+# Changelog
+
+# Features
+- **Multiple nuzlockes**: been a long time coming, but you can now create as many nuzlockes as you please!
+- **Linked nuzlockes**: and you can link + import data from one nuzlocke into another
+
+
+## Fixes
+`,
 };

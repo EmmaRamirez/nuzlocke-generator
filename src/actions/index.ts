@@ -19,3 +19,4 @@ export * from './createCustomType';
 export * from './replaceState';
 export * from './rules';
 export * from './nuzlockes';
+export * from './version006';

@@ -1,8 +1,10 @@
-import { Tab, Tabs, Tooltip, Button, Position } from '@blueprintjs/core';
+import { Tab, Tabs, Tooltip, Button, Position, ButtonGroup } from '@blueprintjs/core';
 import * as React from 'react';
+import { connect } from 'react-redux';
 import * as uuid from 'uuid/v4';
 
 import { Pokemon } from 'models';
+import { Boxes } from 'types';
 
 import {
     speciesToNumber,
@@ -17,76 +19,55 @@ import { TabTitle } from './TabTitle';
 
 import { LinkedAddPokemonButton, LinkedPokemonIcon, LinkedTabTitle } from '.';
 import { MassEditor } from './MassEditor';
+import { BoxedPokemon } from '../Result/BoxedPokemon';
+import { BaseEditor } from './BaseEditor';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 require('../../assets/img/team-box.png');
+require('../../assets/img/dead-box.png');
 
-const TeamPanel = ({ team }) => {
+export const Box = ({
+    pokemon,
+    tabTitle,
+    boxId,
+    filterString,
+}: {
+    pokemon;
+    tabTitle;
+    boxId;
+    filterString?;
+}) => {
+    const filter = filterString === 'All' ? null : filterString;
     return (
-        <div className='tab team-tab'>
-            <LinkedTabTitle boxId={0} title='Team' />
-            {pokemonByFilter(team, 'Team')}
+        <div className={`box ${tabTitle}-box`}>
+            <LinkedTabTitle boxId={boxId} title={tabTitle} />
+            {pokemonByFilter(pokemon, filter)}
         </div>
     );
 };
 
-const BoxedPanel = ({ boxed }) => (
-    <div className='tab boxed-tab'>
-        <LinkedTabTitle boxId={1} title='Boxed' />
-        {pokemonByFilter(boxed, 'Boxed')}
-    </div>
-);
-
-const DeadPanel = ({ dead }) => (
-    <div className='tab dead-tab'>
-        <LinkedTabTitle boxId={2} title='Dead' />
-        {pokemonByFilter(dead, 'Dead')}
-    </div>
-);
-
-const AllPanel = ({ team }) => (
-    <div className='tab all-tab'>
-        <TabTitle title='All' />
-        {pokemonByFilter(team)}
-    </div>
-);
-
 interface PokemonEditorProps {
-    pokemon: Pokemon[];
+    team: Pokemon[];
+    boxes: Boxes;
 }
 
 interface PokemonEditorState {
-    team: Pokemon[];
-    selectedPokemonId: string;
-    boxes: string[];
     isMassEditorOpen: boolean;
+    isOpen: boolean;
 }
 
-@StoreContext
-export class PokemonEditor extends React.Component<{}, PokemonEditorState> {
+export class PokemonEditorBase extends React.Component<PokemonEditorProps, PokemonEditorState> {
     constructor(props: PokemonEditorProps) {
         super(props);
         this.state = {
-            team: [],
-            boxes: ['Team', 'Boxed', 'Dead'],
-            selectedPokemonId: '',
             isMassEditorOpen: false,
+            isOpen: true,
         };
     }
 
-    public componentWillMount() {
-        this.context.store.subscribe(() => {
-            this.setState({
-                team: this.context.store.getState().pokemon,
-                boxes: this.context.store.getState().box,
-            });
-        });
-    }
+    private boxes: HTMLDivElement | null;
 
-    public componentDidMount() {
-        this.setState({
-            team: this.context.store.getState().pokemon,
-        });
-    }
+    public componentDidMount() {}
 
     private openMassEditor = e => {
         this.setState({
@@ -94,18 +75,23 @@ export class PokemonEditor extends React.Component<{}, PokemonEditorState> {
         });
     };
 
+    private toggleEditor = e => this.setState({ isOpen: !this.state.isOpen });
+
+    private renderBoxes(boxes, team) {
+        return boxes.map(({ key, name }) => {
+            return <Box key={key} pokemon={team} tabTitle={name} boxId={key} filterString={name} />;
+        });
+    }
+
     public render() {
-        const { store } = this.context;
-        const { team, boxes } = this.state;
+        const { team, boxes } = this.props;
+        const { isOpen } = this.state;
 
         return (
             <>
-                <div className='pokemon-editor'>
-                    <h4>Pokemon</h4>
+                <BaseEditor name='Pokemon'>
                     <div className='button-row' style={{ display: 'flex' }}>
-                        <LinkedAddPokemonButton
-                            defaultPokemon={generateEmptyPokemon(this.state.team)}
-                        />
+                        <LinkedAddPokemonButton defaultPokemon={generateEmptyPokemon(team)} />
                         <Button
                             icon={'heat-grid'}
                             onClick={this.openMassEditor}
@@ -114,34 +100,11 @@ export class PokemonEditor extends React.Component<{}, PokemonEditorState> {
                             Open Mass Editor
                         </Button>
                     </div>
-                    <Tabs id='pokemon-box' className='pokemon-box'>
-                        <Tab
-                            id='team'
-                            className='pt-tab-panel pokemon-tab'
-                            title={boxes[0]}
-                            panel={<TeamPanel team={team} />}
-                        />
-                        <Tab
-                            id='boxed'
-                            className='pt-tab-panel pokemon-tab'
-                            title={boxes[1]}
-                            panel={<BoxedPanel boxed={team} />}
-                        />
-                        <Tab
-                            id='dead'
-                            className='pt-tab-panel pokemon-tab'
-                            title={boxes[2]}
-                            panel={<DeadPanel dead={team} />}
-                        />
-                        <Tab
-                            id='all'
-                            className='pt-tab-panel pokemon-tab'
-                            title='All'
-                            panel={<AllPanel team={team} />}
-                        />
-                    </Tabs>
+                    <br />
+                    {this.renderBoxes(boxes, team)}
+                    <br />
                     <CurrentPokemonEdit />
-                </div>
+                </BaseEditor>
                 <MassEditor
                     // @ts-ignore
                     isOpen={this.state.isMassEditorOpen}
@@ -153,3 +116,11 @@ export class PokemonEditor extends React.Component<{}, PokemonEditorState> {
         );
     }
 }
+
+export const PokemonEditor = connect(
+    (state: any) => ({
+        team: state.pokemon,
+        boxes: state.box,
+    }),
+    null,
+)(PokemonEditorBase);

@@ -15,7 +15,7 @@ export interface Pokemon {
     item?: string;
     types?: string[];
     customImage?: string;
-    customSprite?: string;
+    customIcon?: string;
     shiny?: boolean;
     champion?: boolean;
     badges?: string[];
@@ -23,6 +23,7 @@ export interface Pokemon {
     position?: number;
     wonderTradedFor?: string;
     mvp?: boolean;
+    gameOfOrigin?: string;
 }
 
 // We export a non-type version when we need all the keys easily
@@ -43,7 +44,7 @@ export const PokemonKeys: Pokemon = {
     item: '',
     types: [],
     customImage: '',
-    customSprite: '',
+    customIcon: '',
     shiny: false,
     champion: false,
     badges: [],
@@ -51,4 +52,5 @@ export const PokemonKeys: Pokemon = {
     position: 0,
     wonderTradedFor: '',
     mvp: false,
+    gameOfOrigin: '',
 };

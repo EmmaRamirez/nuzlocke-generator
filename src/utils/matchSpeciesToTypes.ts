@@ -131,6 +131,38 @@ export const matchSpeciesToTypes = (species: string): string[] => {
         case 'Crabrawler':
         case 'Passimian':
             return ['Fighting', 'Fighting'];
+        case 'Tornadus':
+            return ['Flying', 'Flying'];
+        case 'Noibat':
+        case 'Noivern':
+            return ['Flying', 'Dragon'];
+        case 'Pidgey':
+        case 'Pidgeotto':
+        case 'Pidgeot':
+        case 'Spearow':
+        case 'Fearow':
+        case 'Farfetch\'d':
+        case 'Doduo':
+        case 'Dodrio':
+        case 'Hoothoot':
+        case 'Noctowl':
+        case 'Tailow':
+        case 'Swellow':
+        case 'Swablu':
+        case 'Starly':
+        case 'Staravia':
+        case 'Staraptor':
+        case 'Chatot':
+        case 'Pidove':
+        case 'Tranquill':
+        case 'Unfezant':
+        case 'Rufflet':
+        case 'Braviary':
+        case 'Fletchling':
+        case 'Pikipek':
+        case 'Trumbeak':
+        case 'Toucannon':
+            return ['Normal', 'Flying'];
         case 'Misreavus':
         case 'Shuppet':
         case 'Banette':
@@ -239,6 +271,15 @@ export const matchSpeciesToTypes = (species: string): string[] => {
             return ['Poison', 'Fighting'];
         case 'Marshadow':
             return ['Ghost', 'Fighting'];
+        case 'Dratini':
+        case 'Dragonair':
+        case 'Bagon':
+        case 'Shelgon':
+        case 'Druddigon':
+            return ['Dragon', 'Dragon'];
+        case 'Dragonite':
+        case 'Salamence':
+            return ['Dragon', 'Flying'];
         default:
             return ['Normal', 'Normal'];
     }
