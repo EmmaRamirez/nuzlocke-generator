@@ -214,18 +214,18 @@ export class ResultBase extends React.Component<ResultProps> {
 
     public render() {
         const { style, box, trainer } = this.props;
-        // const numberOfDead = this.props.pokemon
-        //     .filter(v => v.hasOwnProperty('id'))
-        //     .filter(poke => poke.status === 'Dead').length;
-        // const numberOfBoxed = this.props.pokemon
-        //     .filter(v => v.hasOwnProperty('id'))
-        //     .filter(poke => poke.status === 'Boxed').length;
-        // const numberOfChamps = this.props.pokemon
-        //     .filter(v => v.hasOwnProperty('id'))
-        //     .filter(poke => poke.status === 'Champs').length;
-        const numberOfBoxed = 1,
-            numberOfDead = 1,
-            numberOfChamps = 1;
+        const numberOfDead = this.props.pokemon
+            .filter(v => v.hasOwnProperty('id'))
+            .filter(poke => poke.status === 'Dead').length;
+        const numberOfBoxed = this.props.pokemon
+            .filter(v => v.hasOwnProperty('id'))
+            .filter(poke => poke.status === 'Boxed').length;
+        const numberOfChamps = this.props.pokemon
+            .filter(v => v.hasOwnProperty('id'))
+            .filter(poke => poke.status === 'Champs').length;
+        // const numberOfBoxed = 1,
+        //     numberOfDead = 1,
+        //     numberOfChamps = 1;
         const bgColor = style ? style.bgColor : '#383840';
         const topHeaderColor = style ? style.topHeaderColor : '#333333';
         return (
