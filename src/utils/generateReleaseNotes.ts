@@ -148,6 +148,22 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Selecting a checkpoint sometimes undoes all others
 
 `,
+    '0.0.7-beta': `
+# Changelog
+
+## Features
+
+## Fixes
+- Restored selected styling in boxes
+
+## Known Issues
+- Not every Pokémon has an "artsy" image
+- Some gender differences don't have official art
+- Types can't be set in the mass editor
+- Changing the name of a box fails
+- Sometimes changing a type won't work unless you reload the page
+- Selecting a checkpoint sometimes undoes all others
+`,
     '0.1.0-beta': `
 # Changelog
 

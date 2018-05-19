@@ -40,40 +40,40 @@
   input
     border-left: 1px solid #394b59;
 
-.tab
-  align-content: flex-start;
-  background-color: rgba(0, 0, 0, 0.1);
-  background-image: url('../../assets/img/team-box.png');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  display: flex;
-  flex-wrap: wrap;
-  height: calc(156px * 1.5);
-  overflow-y: auto;
-  width: calc(170px * 1.5);
-  &::-webkit-scrollbar
-    width: 2px;
-    height: 8px;
-    border-radius: 2px;
-    background-color: white;
-  &::-webkit-scrollbar-thumb
-    background: #aaa;
-  .tab-title
-    flex-basis: 218px;
-    flex-grow: 999;
-    font-family: 'pokemon_gbregular';
-    font-size: 1.25rem;
-  .pokemon-icon img,
-  .pokemon-icon
-    cursor: pointer;
-    min-height: 40px;
-    max-height: 42px;
-    max-width: 42px;
-    border: 1px solid transparent;
-    transition: 500ms all;
-  .pokemon-icon.selected
-    border: 1px white dashed;
-    transition: 500ms all;
+// .tab
+//   align-content: flex-start;
+//   background-color: rgba(0, 0, 0, 0.1);
+//   background-image: url('../../assets/img/team-box.png');
+//   background-repeat: no-repeat;
+//   background-size: 100% 100%;
+//   display: flex;
+//   flex-wrap: wrap;
+//   height: calc(156px * 1.5);
+//   overflow-y: auto;
+//   width: calc(170px * 1.5);
+//   &::-webkit-scrollbar
+//     width: 2px;
+//     height: 8px;
+//     border-radius: 2px;
+//     background-color: white;
+//   &::-webkit-scrollbar-thumb
+//     background: #aaa;
+//   .tab-title
+//     flex-basis: 218px;
+//     flex-grow: 999;
+//     font-family: 'pokemon_gbregular';
+//     font-size: 1.25rem;
+//   .pokemon-icon img,
+//   .pokemon-icon
+//     cursor: pointer;
+//     min-height: 40px;
+//     max-height: 42px;
+//     max-width: 42px;
+//     border: 1px solid transparent;
+//     transition: 500ms all;
+//   .pokemon-icon.selected
+//     border: 1px white dashed;
+//     transition: 500ms all;
 
 .tab.Dead-tab
   background-image: url('../../assets/img/dead-box.png');
@@ -281,6 +281,22 @@ input[name='metLevel']
   align-items: center;
   background-position: center;
   flex-wrap: wrap;
+  .pokemon-icon
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  .pokemon-icon img,
+  .pokemon-icon
+    cursor: pointer;
+    // min-height: 40px;
+    // max-height: 42px;
+    // max-width: 42px;
+    border: 1px solid transparent;
+    transition: 500ms all;
+  .pokemon-icon.selected
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.33);
+    transition: 500ms all;
 
 .pt-dark .box
   box-shadow: 0 0 .25rem #000;
