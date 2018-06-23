@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { editStyle } from 'actions';
 import { styleDefaults, listOfThemes } from 'utils';
-import { RadioGroup, Radio, TextArea, Checkbox } from '@blueprintjs/core';
+import { RadioGroup, Radio, TextArea, Checkbox, Button, ButtonGroup } from '@blueprintjs/core';
 import { BaseEditor } from './BaseEditor';
 import { gameOfOriginToColor } from '../Result/gameOfOriginToColor';
 
@@ -119,6 +119,32 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                     min='0'
                     step='10'
                 />
+            </div>
+
+            <div className='style-edit'>
+                <label className='pt-label pt-inline'>Zoom Level</label>
+                <div>
+                    <ButtonGroup>
+                        <Button icon='zoom-out' onClick={e => {
+                            const newZoomLevel = (props.style.zoomLevel - .1) <= 0 ? 0 : props.style.zoomLevel - .1;
+                            editEvent({ target: { value: newZoomLevel }}, props, 'zoomLevel');
+                        }} />
+                        {/* <Button>{`${props.style.zoomLevel * 100}%`}</Button> */}
+                        <Button style={{ padding: '0 1.25rem' }}>
+                            <Slider
+                                onChange={value => editEvent({ target: { value }}, props, 'zoomLevel')}
+                                value={props.style.zoomLevel}
+                                min={0.2}
+                                max={2}
+                                stepSize={0.1}
+                            />
+                        </Button>
+                        <Button icon='zoom-in' onClick={e => {
+                            const newZoomLevel = (props.style.zoomLevel + .1) >= 2 ? 2 : props.style.zoomLevel + .1;
+                            editEvent({ target: { value: newZoomLevel }}, props, 'zoomLevel');
+                        }} />
+                    </ButtonGroup>
+                </div>
             </div>
 
             <div className='style-edit'>

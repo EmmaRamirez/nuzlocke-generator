@@ -240,6 +240,8 @@ export class ResultBase extends React.Component<ResultProps> {
                         backgroundColor: bgColor,
                         backgroundImage: `url(${style.backgroundImage})`,
                         height: style.resultHeight + 'px',
+                        transform: `scale(${style.zoomLevel})`,
+                        transformOrigin: '0 0',
                         width: style.resultWidth + 'px',
                     }}>
                     <div className='trainer-container' style={{ backgroundColor: topHeaderColor }}>
