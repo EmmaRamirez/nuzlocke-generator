@@ -3,7 +3,15 @@ import { connect } from 'react-redux';
 
 import { editStyle } from 'actions';
 import { styleDefaults, listOfThemes } from 'utils';
-import { RadioGroup, Radio, TextArea, Checkbox, Button, ButtonGroup, Slider } from '@blueprintjs/core';
+import {
+    RadioGroup,
+    Radio,
+    TextArea,
+    Checkbox,
+    Button,
+    ButtonGroup,
+    Slider,
+} from '@blueprintjs/core';
 import { BaseEditor } from './BaseEditor';
 import { gameOfOriginToColor } from '../Result/gameOfOriginToColor';
 
