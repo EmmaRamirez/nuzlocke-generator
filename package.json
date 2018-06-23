@@ -16,6 +16,10 @@
     "serve": "webpack-dev-server --open",
     "deploy": "npm run build && git push heroku master"
   },
+  "engines": {
+    "node": "8.9.0",
+    "npm": "6.1.0"
+  },
   "keywords": [],
   "author": "Emma Ramirez <ramirez.emma.g@gmail.com> (http://emmaramirez.me)",
   "license": "MIT",
