@@ -31,13 +31,6 @@ import { version0_0_6_BETA } from 'actions';
 const mountNode = document.getElementById('app');
 const history = createHistory();
 
-window.onerror = function(errorMsg, url, lineNumber, column, errorObj) {
-    // tslint:disable-next-line:prefer-template
-    console.log(
-        `Error: ${errorMsg}, Script: ${url}, Line: ${lineNumber}, Column: ${column}, StackTrace: ${errorObj}`,
-    );
-};
-
 render(
     <Provider store={store}>
         <PersistGate loading={<div>Loading...</div>} onBeforeLift={null} persistor={persistor}>
