@@ -1,6 +1,10 @@
 # Nuzlocke Generator
 
-[![Build Status](https://travis-ci.org/EmmaRamirez/nuzlocke-generator.svg?branch=master)](https://travis-ci.org/EmmaRamirez/nuzlocke-generator)
+
+![Travis](https://img.shields.io/travis/EmmaRamirez/nuzlocke-generator.svg?style=flat-square)
+
+
+![GitHub release](https://img.shields.io/github/release/EmmaRamirez/nuzlocke-generator.svg?style=flat-square)
 
 > https://nuzlocke-generator.herokuapp.com/
 
