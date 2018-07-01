@@ -27,11 +27,18 @@ interface ResultProps {
     rules: string[];
 }
 
-export class ResultBase extends React.PureComponent<ResultProps> {
+interface ResultState {
+    downloadError: string | null;
+}
+
+export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     public resultRef: React.RefObject<HTMLDivElement>;
     constructor(props) {
         super(props);
         this.resultRef = React.createRef();
+        this.state = {
+            downloadError: null
+        };
     }
 
     public componentWillMount() {}
@@ -210,12 +217,12 @@ export class ResultBase extends React.PureComponent<ResultProps> {
         );
     }
 
-    private onResize = (e, { element, size }) => {
-        this.setState({
-            width: size.width,
-            height: size.height,
-        });
-    };
+    // private onResize = (e, { element, size }) => {
+    //     this.setState({
+    //         width: size.width,
+    //         height: size.height,
+    //     });
+    // };
 
     private async toImage() {
         const resultNode = this.resultRef.current;
@@ -225,8 +232,11 @@ export class ResultBase extends React.PureComponent<ResultProps> {
             link.download = `nuzlocke-${uuid()}.png`;
             link.href = dataUrl;
             link.click();
+            this.setState({ downloadError: null });
         } catch (e) {
-            console.error(e);
+            this.setState({
+                downloadError: 'Failed to download. This is likely due to your image containing an image resource that does not allow Cross-Origin'
+            });
         }
     }
 
@@ -321,8 +331,9 @@ export class ResultBase extends React.PureComponent<ResultProps> {
                         padding: '.5rem',
                     }}>
                     <Button icon='download' intent={Intent.PRIMARY} onClick={e => this.toImage()}>
-                        Download
+                        Download (BETA)
                     </Button>
+                    { this.state.downloadError ? <div>{ this.state.downloadError }</div> : null }
                 </div>
             </div>
         );
