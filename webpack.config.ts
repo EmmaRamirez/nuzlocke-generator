@@ -3,7 +3,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const OfflinePlugin = require('offline-plugin');
 
-const isProduction = process.env.NODE_ENV === 'PRODUCTION' ? true : false;
+const isProduction = process.env.NODE_ENV === 'production' ? true : false;
 
 module.exports = {
     entry: './src/index.tsx',
@@ -26,7 +26,6 @@ module.exports = {
         stats: 'errors-only',
         historyApiFallback: true,
     },
-    mode: isProduction ? 'production' : 'development',
     stats: {
         warnings: false,
     },
