@@ -4,7 +4,7 @@ import { Pokemon } from 'models';
 declare var expect: any;
 
 describe('addPokemon', () => {
-    xit('returns expected output', () => {
+    it('returns expected output', () => {
         const pokemon: Pokemon = {
             id: '0',
             species: 'Testmon',
