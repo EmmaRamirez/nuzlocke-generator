@@ -26,6 +26,7 @@ module.exports = {
         stats: 'errors-only',
         historyApiFallback: true,
     },
+    mode: isProduction ? 'production' : 'development',
     stats: {
         warnings: false,
     },

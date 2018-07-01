@@ -1,5 +1,5 @@
-import { applyMiddleware, createStore } from 'redux';
-import { createLogger } from 'redux-logger';
+import { applyMiddleware, createStore, Middleware } from 'redux';
+import { createLogger, logger } from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import createHistory from 'history/createBrowserHistory';
 import { routerMiddleware as createRouterMiddleware } from 'react-router-redux';
@@ -32,13 +32,21 @@ const history = createHistory();
 
 const persistReducers = persistCombineReducers(config, reducers);
 
-const loggerMiddleware = createLogger();
+const middlewares: Middleware[] = [];
+
+if (process.env.NODE_ENV !== 'PRODUCTION') {
+    const loggerMiddleware = createLogger();
+    middlewares.push(loggerMiddleware);
+}
+
 const sagaMiddleware = createSagaMiddleware();
 const routerMiddleware = createRouterMiddleware(history);
 
+middlewares.push(sagaMiddleware, routerMiddleware);
+
 export const store = createStore(
     persistReducers,
-    applyMiddleware(loggerMiddleware, sagaMiddleware, routerMiddleware),
+    applyMiddleware(...middlewares),
 );
 
 export const persistor = persistStore(store, null, () => store.getState());
