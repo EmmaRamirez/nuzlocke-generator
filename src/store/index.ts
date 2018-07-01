@@ -44,10 +44,7 @@ const routerMiddleware = createRouterMiddleware(history);
 
 middlewares.push(sagaMiddleware, routerMiddleware);
 
-export const store = createStore(
-    persistReducers,
-    applyMiddleware(...middlewares),
-);
+export const store = createStore(persistReducers, applyMiddleware(...middlewares));
 
 export const persistor = persistStore(store, null, () => store.getState());
 

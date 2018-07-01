@@ -215,7 +215,7 @@ export class ResultBase extends React.PureComponent<ResultProps> {
             width: size.width,
             height: size.height,
         });
-    }
+    };
 
     private async toImage() {
         const resultNode = this.resultRef.current;
@@ -313,11 +313,13 @@ export class ResultBase extends React.PureComponent<ResultProps> {
                         </div>
                     ) : null}
                 </div>
-                <div className='download-button-container' style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    padding: '.5rem'
-                }}>
+                <div
+                    className='download-button-container'
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        padding: '.5rem',
+                    }}>
                     <Button icon='download' intent={Intent.PRIMARY} onClick={e => this.toImage()}>
                         Download
                     </Button>
