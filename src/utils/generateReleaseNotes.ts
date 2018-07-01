@@ -152,9 +152,12 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 # Changelog
 
 ## Features
+- **Download Button**: you can now download nuzlocke images directly! No more print screen!
+- **Zoom slider**: scale up or down the size of your image
 
 ## Fixes
 - Restored selected styling in boxes
+- Added margins between Game Version badge and Nuzlocke title
 
 ## Known Issues
 - Not every Pokémon has an "artsy" image

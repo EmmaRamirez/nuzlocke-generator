@@ -183,7 +183,7 @@ export const TeamPokemonBase = (
                 <div
                     className={`pokemon-item ${props.style.itemStyle}`}
                     style={{
-                        borderColor: typeToColor(getFirstType),
+                        borderColor: typeToColor(getFirstType) || 'transparent',
                     }}>
                     <img
                         alt={poke.item}

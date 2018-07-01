@@ -5,6 +5,7 @@ import { getBadges, getGameRegion, sortPokes } from 'utils';
 import { connect } from 'react-redux';
 import * as uuid from 'uuid/v4';
 import { ResizableBox, Resizable } from 'react-resizable';
+import * as domtoimage from 'dom-to-image';
 
 import { selectPokemon } from 'actions';
 
@@ -14,6 +15,7 @@ import { BoxedPokemon } from './BoxedPokemon';
 import { ChampsPokemon } from './ChampsPokemon';
 
 import './Result.styl';
+import { Button, Intent } from '../../../node_modules/@blueprintjs/core';
 
 interface ResultProps {
     pokemon: Pokemon[];
@@ -25,9 +27,11 @@ interface ResultProps {
     rules: string[];
 }
 
-export class ResultBase extends React.Component<ResultProps> {
+export class ResultBase extends React.PureComponent<ResultProps> {
+    public resultRef: React.RefObject<HTMLDivElement>;
     constructor(props) {
         super(props);
+        this.resultRef = React.createRef();
     }
 
     public componentWillMount() {}
@@ -129,6 +133,7 @@ export class ResultBase extends React.Component<ResultProps> {
                     style={{
                         color: '#eee',
                         background: style.bgColor,
+                        marginRight: '.5rem',
                         width: '100px',
                         borderRadius: '.25rem',
                         textAlign: 'center',
@@ -144,7 +149,7 @@ export class ResultBase extends React.Component<ResultProps> {
                             width: '3rem',
                         }}
                         src={trainer.image ? trainer.image : 'img/moon.jpg'}
-                        alt='Moon 2'
+                        alt='Trainer Image'
                     />
                 ) : null}
                 {trainer.title ? (
@@ -210,7 +215,20 @@ export class ResultBase extends React.Component<ResultProps> {
             width: size.width,
             height: size.height,
         });
-    };
+    }
+
+    private async toImage() {
+        const resultNode = this.resultRef.current;
+        try {
+            const dataUrl = await domtoimage.toPng(resultNode);
+            const link = document.createElement('a');
+            link.download = `nuzlocke-${uuid()}.png`;
+            link.href = dataUrl;
+            link.click();
+        } catch (e) {
+            console.error(e);
+        }
+    }
 
     public render() {
         const { style, box, trainer } = this.props;
@@ -229,9 +247,10 @@ export class ResultBase extends React.Component<ResultProps> {
         const bgColor = style ? style.bgColor : '#383840';
         const topHeaderColor = style ? style.topHeaderColor : '#333333';
         return (
-            <>
+            <div>
                 {this.renderErrors()}
                 <div
+                    ref={this.resultRef}
                     className={`result container ${(style.template &&
                         style.template.toLowerCase().replace(/\s/g, '-')) ||
                         ''} region-${getGameRegion(this.props.game.name)}`}
@@ -240,6 +259,7 @@ export class ResultBase extends React.Component<ResultProps> {
                         backgroundColor: bgColor,
                         backgroundImage: `url(${style.backgroundImage})`,
                         height: style.resultHeight + 'px',
+                        marginBottom: '.5rem',
                         transform: `scale(${style.zoomLevel})`,
                         transformOrigin: '0 0',
                         width: style.resultWidth + 'px',
@@ -293,7 +313,16 @@ export class ResultBase extends React.Component<ResultProps> {
                         </div>
                     ) : null}
                 </div>
-            </>
+                <div className='download-button-container' style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    padding: '.5rem'
+                }}>
+                    <Button icon='download' intent={Intent.PRIMARY} onClick={e => this.toImage()}>
+                        Download
+                    </Button>
+                </div>
+            </div>
         );
     }
 }
