@@ -16,6 +16,7 @@ module.exports = {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
         modules: [path.resolve('./src'), path.resolve('./node_modules')],
     },
+    mode: 'development',
     devServer: {
         contentBase: './dist',
         inline: true,
@@ -89,9 +90,11 @@ module.exports = {
             { from: './src/img', to: './img' },
         ]),
 
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': process.env.NODE_ENV,
-        }),
+        // new webpack.DefinePlugin({
+        //     'process.env': {
+        //         'NODE_ENV': JSON.stringify('production')
+        //     }
+        // }),
 
         // new OfflinePlugin({
         //     excludes: ['**/*.js', '*.js']

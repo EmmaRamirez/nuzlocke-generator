@@ -15,7 +15,7 @@ import { BoxedPokemon } from './BoxedPokemon';
 import { ChampsPokemon } from './ChampsPokemon';
 
 import './Result.styl';
-import { Button, Intent } from '../../../node_modules/@blueprintjs/core';
+import { Button, Intent, Callout } from '../../../node_modules/@blueprintjs/core';
 
 interface ResultProps {
     pokemon: Pokemon[];
@@ -333,7 +333,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     <Button icon='download' intent={Intent.PRIMARY} onClick={e => this.toImage()}>
                         Download (BETA)
                     </Button>
-                    { this.state.downloadError ? <div>{ this.state.downloadError }</div> : null }
+                    { this.state.downloadError ? <Callout>{ this.state.downloadError }</Callout> : null }
                 </div>
             </div>
         );
