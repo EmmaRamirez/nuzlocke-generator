@@ -27,7 +27,11 @@
   </head>
   <body>
     <div id='app'></div>
-    <script async src='./bundle.js'></script>
+    <script preload src='./bundle.js'></script>
+    <script preload src='http://msikma.github.io/pokesprite/build/pokesprite.min.js'></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', function () { PkSpr.process_dom() });
+    </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-79007755-3"></script>
   </body>
 </html>

@@ -13,7 +13,7 @@
     "pretest": "npm run lint",
     "format": "prettier --config .prettierrc --write **/**/*.{ts,tsx} && npm run lint",
     "lint": "tslint --fix -c tslint.json 'src/**/*.{ts,tsx}'",
-    "serve": "webpack-serve --open",
+    "serve": "webpack-serve",
     "serve:heroku": "npm run build:production && heroku local web",
     "deploy": "npm run build && git push heroku master"
   },

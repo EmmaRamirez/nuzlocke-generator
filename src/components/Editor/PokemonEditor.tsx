@@ -14,7 +14,7 @@ import {
     pokemonByFilter,
 } from 'utils';
 import { CurrentPokemonEdit } from './CurrentPokemonEdit';
-import { PokemonIcon } from './PokemonIcon';
+import { PokemonIcon } from 'components/PokemonIcon';
 import { TabTitle } from './TabTitle';
 
 import { LinkedAddPokemonButton, LinkedPokemonIcon, LinkedTabTitle } from '.';

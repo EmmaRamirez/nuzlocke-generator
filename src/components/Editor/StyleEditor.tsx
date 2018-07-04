@@ -129,7 +129,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 />
             </div>
 
-            <div className='style-edit'>
+            {/* <div className='style-edit'>
                 <label className='pt-label pt-inline'>Zoom Level</label>
                 <div>
                     <ButtonGroup>
@@ -143,8 +143,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                                 editEvent({ target: { value: newZoomLevel } }, props, 'zoomLevel');
                             }}
                         />
-                        {/* <Button>{`${props.style.zoomLevel * 100}%`}</Button> */}
-                        <Button style={{ padding: '0 1.25rem' }}>
+=                        <Button style={{ padding: '0 1.25rem' }}>
                             <Slider
                                 onChange={value =>
                                     editEvent({ target: { value } }, props, 'zoomLevel')
@@ -167,7 +166,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                         />
                     </ButtonGroup>
                 </div>
-            </div>
+            </div> */}
 
             <div className='style-edit'>
                 <label className='pt-label pt-inline'>Background color</label>
