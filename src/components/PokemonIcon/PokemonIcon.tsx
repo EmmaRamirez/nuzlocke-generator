@@ -18,8 +18,8 @@ interface PokemonIconProps {
 }
 
 const formatSpeciesName = (species: string | null) => {
-    if (species == null) return 'ditto';
-    if (listOfPokemon.indexOf(species) < 0) return 'ditto';
+    if (species == null) return 'unknown';
+    if (listOfPokemon.indexOf(species) < 0) return 'unknown';
     if (species === 'Mr. Mime') return 'mr-mime';
     if (species === 'Mime Jr.') return 'mime-jr';
     if (species === 'Flabébé') return 'flabebe';
@@ -40,8 +40,6 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
 
     public componentDidUpdate() {
         const node = this.iconRef.current;
-        console.log(node, this.props.id);
-        console.log(PkSpr);
     }
 
     public render() {
@@ -61,7 +59,7 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
                     }>
                     <img
                       alt={species}
-                      src={`icons/pokemon/regular/${formatSpeciesName(species)}.png`}
+                      src={`icons/pokemon/${isShiny ? 'shiny' : 'regular'}/${formatSpeciesName(species)}.png`}
                     />
                 </div>
             </ErrorBoundary>

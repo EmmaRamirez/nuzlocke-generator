@@ -1,4 +1,4 @@
-# Nuzlocke Generator ★ ![Travis](https://img.shields.io/travis/EmmaRamirez/nuzlocke-generator.svg?style=flat-square) ![GitHub release](https://img.shields.io/github/release/EmmaRamirez/nuzlocke-generator.svg?style=flat-square)
+# [Nuzlocke Generator](ttps://nuzlocke-generator.herokuapp.com/) · ![Travis](https://img.shields.io/travis/EmmaRamirez/nuzlocke-generator.svg?style=flat-square) ![GitHub release](https://img.shields.io/github/release/EmmaRamirez/nuzlocke-generator.svg?style=flat-square)
 
 > https://nuzlocke-generator.herokuapp.com/
 

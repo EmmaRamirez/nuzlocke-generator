@@ -28,6 +28,7 @@ export const listOfItems = [
     'Electric Seed',
     'Everstone',
     'Eviolite',
+    'Exp Share',
     'Expert Belt',
     'Flame Orb',
     'Float Stone',

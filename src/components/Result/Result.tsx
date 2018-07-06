@@ -283,6 +283,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         margin: '3rem',
                         backgroundColor: bgColor,
                         backgroundImage: `url(${style.backgroundImage})`,
+                        backgroundRepeat: style.tileBackground ? 'repeat' : 'no-repeat',
                         height: style.resultHeight + 'px',
                         marginBottom: '.5rem',
                         transform: `scale(${style.zoomLevel})`,

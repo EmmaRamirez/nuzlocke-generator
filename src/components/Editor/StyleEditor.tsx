@@ -194,6 +194,19 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                     onChange={e => editEvent(e, props)}
                     className='pt-input'
                 />
+                <span>{' '}</span>
+                <Checkbox
+                    checked={props.style.tileBackground}
+                    name='tileBackground'
+                    label='Tile'
+                    onChange={(e: any) =>
+                        editEvent(
+                            { ...e, target: { value: e.target.checked } },
+                            props,
+                            'tileBackground',
+                        )
+                    }
+                />
             </div>
 
             <div className='style-edit'>
