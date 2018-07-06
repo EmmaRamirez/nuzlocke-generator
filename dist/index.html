@@ -27,16 +27,13 @@
   </head>
   <body>
     <div id='app'>
-      <div>Loading...</div>
-      <img src='./src/assets/loading.gif' />
-      <div>If there's an error, try reloading the page or writing a bug report.</div>
+      <div style='align-items: center; font-family: sans-serif; flex-direction: column; display: flex; justify-content: center;'>
+        <h2>Nuzlocke Generator</h2>
+        <img height='200' src='./src/assets/loading.gif' />
+        <h3>Loading...</h3>
+      </div>
     </div>
-    <script preload src='./vendor/react.production.min.js'></script>
     <script preload src='./bundle.js'></script>
-    <script preload src='http://msikma.github.io/pokesprite/build/pokesprite.min.js'></script>
-    <script>
-      window.addEventListener('DOMContentLoaded', function () { PkSpr.process_dom() });
-    </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-79007755-3"></script>
   </body>
 </html>

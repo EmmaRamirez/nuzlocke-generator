@@ -5,8 +5,6 @@ import { pokemon } from 'reducers/pokemon';
 import { selectPokemon } from 'actions';
 import { ErrorBoundary } from '../Shared';
 
-const PkSpr = require('./pokesprite');
-
 interface PokemonIconProps {
     id: string;
     species: string;
