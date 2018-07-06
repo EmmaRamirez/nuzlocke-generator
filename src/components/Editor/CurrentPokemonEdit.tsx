@@ -6,6 +6,7 @@ import {
     StoreContext,
     listOfPokemon,
     matchSpeciesToTypes,
+    listOfItems,
 } from 'utils';
 import { Pokemon } from 'models';
 import { onClick, Boxes } from 'types';
@@ -114,11 +115,19 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                     value={currentPokemon.causeOfDeath}
                     type='text'
                 />
-                <CurrentPokemonInput
-                    labelName='Item'
-                    inputName='item'
-                    value={currentPokemon.item}
-                    type='text'
+                <Autocomplete
+                    items={listOfItems}
+                    name='item'
+                    label='Item'
+                    placeholder='Item'
+                    value={currentPokemon.item || ''}
+                    onChange={e => {
+                        const edit = {
+                            item: e.target.value,
+                        };
+                        this.context.store.dispatch(editPokemon(edit, this.state.selectedId));
+                        this.context.store.dispatch(selectPokemon(this.state.selectedId));
+                    }}
                 />
                 <CurrentPokemonInput
                     labelName='Wonder Traded'
