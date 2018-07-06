@@ -15,7 +15,7 @@ import { BoxedPokemon } from './BoxedPokemon';
 import { ChampsPokemon } from './ChampsPokemon';
 
 import './Result.styl';
-import { Button, Intent } from '../../../node_modules/@blueprintjs/core';
+import { Button, Intent, Callout } from '@blueprintjs/core';
 
 interface ResultProps {
     pokemon: Pokemon[];
@@ -60,6 +60,14 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                 <div key={uuid()} className='pt-callout pt-intent-danger'>
                     You have more than 6 Pokémon in your party.
                 </div>,
+            );
+        }
+        if (this.state.downloadError) {
+            renderItems.push(
+                <div key={uuid()} className='pt-callout pt-intent-danger'>
+                    Image failed to download. Check that you are not using images
+                    that link to external sites.
+                </div>
             );
         }
         return (
@@ -259,6 +267,13 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         return (
             <div>
                 {this.renderErrors()}
+                <Button style={{
+                    position: 'absolute',
+                    top: '2px',
+                    right: '112px',
+                }} icon='download' intent={Intent.PRIMARY} onClick={e => this.toImage()}>
+                    Download Image<sup>BETA</sup>
+                </Button>
                 <div
                     ref={this.resultRef}
                     className={`result container ${(style.template &&
@@ -268,6 +283,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         margin: '3rem',
                         backgroundColor: bgColor,
                         backgroundImage: `url(${style.backgroundImage})`,
+                        backgroundRepeat: style.tileBackground ? 'repeat' : 'no-repeat',
                         height: style.resultHeight + 'px',
                         marginBottom: '.5rem',
                         transform: `scale(${style.zoomLevel})`,
@@ -322,18 +338,6 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             </ol>
                         </div>
                     ) : null}
-                </div>
-                <div
-                    className='download-button-container'
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        padding: '.5rem',
-                    }}>
-                    <Button icon='download' intent={Intent.PRIMARY} onClick={e => this.toImage()}>
-                        Download (BETA)
-                    </Button>
-                    { this.state.downloadError ? <div>{ this.state.downloadError }</div> : null }
                 </div>
             </div>
         );

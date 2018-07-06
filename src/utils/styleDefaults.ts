@@ -20,5 +20,6 @@ export const styleDefaults = {
     teamImages: 'standard',
     teamPokemonBorder: true,
     template: 'Default Dark',
+    tileBackground: false,
     topHeaderColor: '#333333',
 };

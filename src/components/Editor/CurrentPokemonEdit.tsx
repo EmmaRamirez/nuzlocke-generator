@@ -6,6 +6,7 @@ import {
     StoreContext,
     listOfPokemon,
     matchSpeciesToTypes,
+    listOfItems,
 } from 'utils';
 import { Pokemon } from 'models';
 import { onClick, Boxes } from 'types';
@@ -14,6 +15,7 @@ import { LinkedDeletePokemonButton } from './LinkedDeletePokemonButton';
 import { Autocomplete } from '../Shared';
 import { selectPokemon, editPokemon } from 'actions';
 import { listOfGames } from 'utils';
+import { PokemonIconBase } from 'components/PokemonIcon';
 
 const pokeball = require('assets/pokeball.png');
 
@@ -113,11 +115,19 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                     value={currentPokemon.causeOfDeath}
                     type='text'
                 />
-                <CurrentPokemonInput
-                    labelName='Item'
-                    inputName='item'
-                    value={currentPokemon.item}
-                    type='text'
+                <Autocomplete
+                    items={listOfItems}
+                    name='item'
+                    label='Item'
+                    placeholder='Item'
+                    value={currentPokemon.item || ''}
+                    onChange={e => {
+                        const edit = {
+                            item: e.target.value,
+                        };
+                        this.context.store.dispatch(editPokemon(edit, this.state.selectedId));
+                        this.context.store.dispatch(selectPokemon(this.state.selectedId));
+                    }}
                 />
                 <CurrentPokemonInput
                     labelName='Wonder Traded'
@@ -170,10 +180,14 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
         return (
             <div className='current-pokemon'>
                 <span className='current-pokemon-header'>
-                    <img
+                    <PokemonIconBase
                         className='current-pokemon-image'
-                        alt='icon'
-                        src={getSpriteIcon(currentPokemon.species, currentPokemon.forme)}
+                        id={currentPokemon.id}
+                        species={currentPokemon.species}
+                        forme={currentPokemon.forme}
+                        isShiny={currentPokemon.shiny}
+                        selectedId={null}
+                        onClick={() => {}}
                     />
                     <CurrentPokemonInput
                         labelName='Status'

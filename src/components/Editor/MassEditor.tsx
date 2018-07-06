@@ -29,13 +29,21 @@ export class MassEditorBase extends React.Component<MassEditorProps, {}> {
                         name={key}
                         cellRenderer={r => (
                             <EditableCell
-                                onConfirm={(v, _, c) =>
+                                onConfirm={(v, _, c) => {
+                                    let value: any = v;
+                                    if (key === 'types') {
+                                        value = v.split(',').map(s => s.trim());
+                                    }
+                                    if (key === 'moves') {
+                                        value = v.split(',').map(s => s.trim());
+                                    }
                                     this.props.editPokemon(
                                         {
-                                            [key]: v,
+                                            [key]: value,
                                         },
                                         pokemon[r].id,
-                                    )
+                                    );
+                                    }
                                 }
                                 value={pokemon[r][key]}
                             />

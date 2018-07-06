@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Button, ButtonGroup, Dialog, Callout, TextArea, Intent, Alert } from '@blueprintjs/core';
-import { PokemonIcon } from './PokemonIcon';
+import { PokemonIconBase } from 'components/PokemonIcon';
 import { ErrorBoundary } from 'components/Shared';
 // import { parseFile } from 'pokemon-savefile-parser';
 import * as uuid from 'uuid/v4';
@@ -96,7 +96,7 @@ export class ImportAndExportBase extends React.Component<
                         justifyContent: 'center',
                     }}>
                     {d.pokemon.filter(p => p.status === 'Team').map(p => {
-                        return <PokemonIcon key={p.id} {...p} />;
+                        return <PokemonIconBase key={p.id} {...p} />;
                     })}
                 </div>
             );

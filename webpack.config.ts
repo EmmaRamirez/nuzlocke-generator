@@ -11,7 +11,8 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
     },
-    devtool: isProduction ? 'none' : 'source-map',
+    mode: 'development',
+    devtool: 'source-map',
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
         modules: [path.resolve('./src'), path.resolve('./node_modules')],
@@ -87,10 +88,12 @@ module.exports = {
         new CopyWebpackPlugin([
             { from: './src/index.html', to: './index.html' },
             { from: './src/img', to: './img' },
+            { from: './src/assets/icons', to: './icons' }
         ]),
 
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': process.env.NODE_ENV,
+            'process.env.NODE_ENV': JSON.stringify('production'),
+            'PRODUCTION': JSON.stringify(true)
         }),
 
         // new OfflinePlugin({

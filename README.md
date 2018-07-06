@@ -1,10 +1,4 @@
-# Nuzlocke Generator
-
-
-![Travis](https://img.shields.io/travis/EmmaRamirez/nuzlocke-generator.svg?style=flat-square)
-
-
-![GitHub release](https://img.shields.io/github/release/EmmaRamirez/nuzlocke-generator.svg?style=flat-square)
+# [Nuzlocke Generator](ttps://nuzlocke-generator.herokuapp.com/) · ![Travis](https://img.shields.io/travis/EmmaRamirez/nuzlocke-generator.svg?style=flat-square) ![GitHub release](https://img.shields.io/github/release/EmmaRamirez/nuzlocke-generator.svg?style=flat-square)
 
 > https://nuzlocke-generator.herokuapp.com/
 
@@ -15,7 +9,7 @@ This is a beta. Expect everything to break. Save backups if you value them.
 ```bash
 git clone git@github.com:EmmaRamirez/nuzlocke-generator.git
 npm install
-npm run build && npm run serve
+npm run serve
 ```
 
 You should find it at `localhost:8080`.

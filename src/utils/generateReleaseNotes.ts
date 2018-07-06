@@ -148,33 +148,30 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Selecting a checkpoint sometimes undoes all others
 
 `,
-    '0.0.7-beta': `
+    '0.0.8-beta': `
 # Changelog
 
 ## Features
 - **Download Button**: you can now download nuzlocke images directly! No more print screen!
-- **Zoom slider**: scale up or down the size of your image
+- **Autocomple for Items**: is it Icy Drive or Chill Drive? Wonder no more!
+- **Tile option for Background**: Not a big feature, but it's nice
 
 ## Fixes
 - Restored selected styling in boxes
 - Added margins between Game Version badge and Nuzlocke title
+- Box names have been changed to be non-editable
+- Sprites can now be shiny
+- Pre-render screen is now considerably cuter
+- Types can now be set in the mass editor
 
 ## Known Issues
+- Sprites were reworked in this update, so some might be broken. This was done to make the images downloadable
+- Downloaded images might have stronger anti-aliasing
 - Not every Pokémon has an "artsy" image
 - Some gender differences don't have official art
-- Types can't be set in the mass editor
-- Changing the name of a box fails
 - Sometimes changing a type won't work unless you reload the page
 - Selecting a checkpoint sometimes undoes all others
 `,
     '0.1.0-beta': `
-# Changelog
-
-# Features
-- **Multiple nuzlockes**: been a long time coming, but you can now create as many nuzlockes as you please!
-- **Linked nuzlockes**: and you can link + import data from one nuzlocke into another
-
-
-## Fixes
 `,
 };

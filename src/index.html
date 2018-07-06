@@ -26,8 +26,14 @@
     </script>
   </head>
   <body>
-    <div id='app'></div>
-    <script async src='./bundle.js'></script>
+    <div id='app'>
+      <div style='align-items: center; font-family: sans-serif; flex-direction: column; display: flex; justify-content: center;'>
+        <h2>Nuzlocke Generator</h2>
+        <img height='200' src='./src/assets/loading.gif' />
+        <h3>Loading...</h3>
+      </div>
+    </div>
+    <script preload src='./bundle.js'></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-79007755-3"></script>
   </body>
 </html>
