@@ -148,7 +148,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Selecting a checkpoint sometimes undoes all others
 
 `,
-    '0.0.7-beta': `
+    '0.0.8-beta': `
 # Changelog
 
 ## Features
@@ -168,13 +168,5 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Selecting a checkpoint sometimes undoes all others
 `,
     '0.1.0-beta': `
-# Changelog
-
-# Features
-- **Multiple nuzlockes**: been a long time coming, but you can now create as many nuzlockes as you please!
-- **Linked nuzlockes**: and you can link + import data from one nuzlocke into another
-
-
-## Fixes
 `,
 };

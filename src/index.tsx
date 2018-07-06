@@ -28,8 +28,6 @@ import { version0_0_6_BETA } from 'actions';
 //     onUpdated: () => location.reload(),
 // });
 
-console.log(process.env.NODE_ENV);
-
 const mountNode = document.getElementById('app');
 const history = createHistory();
 

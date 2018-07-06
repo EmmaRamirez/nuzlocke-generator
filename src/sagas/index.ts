@@ -1,19 +1,31 @@
+declare const PkSpr: any;
 import { delay } from 'redux-saga';
-import { put, call, takeEvery, all } from 'redux-saga/effects';
+import { put, call, takeLatest, all } from 'redux-saga/effects';
+import { SELECT_POKEMON, EDIT_POKEMON } from 'actions';
 
 export function* helloSaga(): any {
-    console.log('Hello Saga');
+
 }
 
-export function* incrementAsync() {
-    yield call(delay, 1000);
-    yield put({ type: 'INCREMENT' });
+export function* updateSprites(): any {
+    try {
+        PkSpr.process_dom();
+    } catch (e) {
+        console.error(e);
+    }
 }
 
-export function* watchIncrementAsync() {
-    yield takeEvery('INCREMENT_ASYNC', incrementAsync);
+export function* spriteSaga () {
+    yield takeLatest(SELECT_POKEMON, updateSprites);
+}
+
+export function *spriteSaga2 () {
+    yield takeLatest(EDIT_POKEMON, updateSprites);
 }
 
 export function* rootSaga() {
-    yield all([helloSaga(), watchIncrementAsync()]);
+    yield all([
+        // spriteSaga(),
+        // spriteSaga2()
+    ]);
 }

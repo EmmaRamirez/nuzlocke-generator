@@ -1,9 +1,7 @@
 import * as React from 'react';
 
-type ReactPortal = any;
-
 interface ErrorBoundaryProps {
-    errorMessage?: string;
+    errorMessage?: React.ReactNode;
 }
 
 export class ErrorBoundary extends React.Component<ErrorBoundaryProps, { hasError: boolean }> {
@@ -20,7 +18,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, { hasErro
         });
     }
 
-    public render(): string | number | false | Element | Element[] | ReactPortal | null {
+    public render(): React.ReactNode {
         if (this.state.hasError) {
             return (
                 <div className='error-boundary'>

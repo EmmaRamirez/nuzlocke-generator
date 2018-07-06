@@ -17,7 +17,7 @@ import { CurrentPokemonEdit } from './CurrentPokemonEdit';
 import { PokemonIcon } from 'components/PokemonIcon';
 import { TabTitle } from './TabTitle';
 
-import { LinkedAddPokemonButton, LinkedPokemonIcon, LinkedTabTitle } from '.';
+import { LinkedAddPokemonButton, LinkedTabTitle } from '.';
 import { MassEditor } from './MassEditor';
 import { BoxedPokemon } from '../Result/BoxedPokemon';
 import { BaseEditor } from './BaseEditor';

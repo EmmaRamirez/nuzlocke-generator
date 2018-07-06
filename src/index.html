@@ -26,7 +26,12 @@
     </script>
   </head>
   <body>
-    <div id='app'></div>
+    <div id='app'>
+      <div>Loading...</div>
+      <img src='./src/assets/loading.gif' />
+      <div>If there's an error, try reloading the page or writing a bug report.</div>
+    </div>
+    <script preload src='./vendor/react.production.min.js'></script>
     <script preload src='./bundle.js'></script>
     <script preload src='http://msikma.github.io/pokesprite/build/pokesprite.min.js'></script>
     <script>

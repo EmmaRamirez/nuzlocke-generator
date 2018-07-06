@@ -7,7 +7,7 @@ import { getGenderElement } from './getGenderElement';
 import { getSpriteIcon, speciesToNumber } from 'utils';
 import { getPokemonImage } from './getPokemonImage';
 import { selectPokemon } from 'actions';
-import { PokemonIconBase } from '../Editor/PokemonIcon';
+import { PokemonIconBase } from 'components/PokemonIcon';
 
 export const DeadPokemonBase = (
     poke: Pokemon & { selectPokemon } & { style: any } & { game: any },

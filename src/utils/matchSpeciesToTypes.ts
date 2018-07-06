@@ -163,7 +163,7 @@ export const matchSpeciesToTypes = (species: string): string[] => {
         case 'Trumbeak':
         case 'Toucannon':
             return ['Normal', 'Flying'];
-        case 'Misreavus':
+        case 'Misdreavus':
         case 'Shuppet':
         case 'Banette':
         case 'Duskull':

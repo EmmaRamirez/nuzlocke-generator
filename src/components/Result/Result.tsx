@@ -15,7 +15,7 @@ import { BoxedPokemon } from './BoxedPokemon';
 import { ChampsPokemon } from './ChampsPokemon';
 
 import './Result.styl';
-import { Button, Intent, Callout } from '../../../node_modules/@blueprintjs/core';
+import { Button, Intent, Callout } from '@blueprintjs/core';
 
 interface ResultProps {
     pokemon: Pokemon[];

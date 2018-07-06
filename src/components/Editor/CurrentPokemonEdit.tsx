@@ -14,6 +14,7 @@ import { LinkedDeletePokemonButton } from './LinkedDeletePokemonButton';
 import { Autocomplete } from '../Shared';
 import { selectPokemon, editPokemon } from 'actions';
 import { listOfGames } from 'utils';
+import { PokemonIconBase } from 'components/PokemonIcon';
 
 const pokeball = require('assets/pokeball.png');
 
@@ -170,10 +171,14 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
         return (
             <div className='current-pokemon'>
                 <span className='current-pokemon-header'>
-                    <img
+                    <PokemonIconBase
                         className='current-pokemon-image'
-                        alt='icon'
-                        src={getSpriteIcon(currentPokemon.species, currentPokemon.forme)}
+                        id={currentPokemon.id}
+                        species={currentPokemon.species}
+                        forme={currentPokemon.forme}
+                        isShiny={currentPokemon.shiny}
+                        selectedId={null}
+                        onClick={() => {}}
                     />
                     <CurrentPokemonInput
                         labelName='Status'
