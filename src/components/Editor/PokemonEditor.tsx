@@ -15,9 +15,8 @@ import {
 } from 'utils';
 import { CurrentPokemonEdit } from './CurrentPokemonEdit';
 import { PokemonIcon } from 'components/PokemonIcon';
-import { TabTitle } from './TabTitle';
 
-import { LinkedAddPokemonButton, LinkedTabTitle } from '.';
+import { LinkedAddPokemonButton } from '.';
 import { MassEditor } from './MassEditor';
 import { BoxedPokemon } from '../Result/BoxedPokemon';
 import { BaseEditor } from './BaseEditor';
@@ -40,7 +39,19 @@ export const Box = ({
     const filter = filterString === 'All' ? null : filterString;
     return (
         <div className={`box ${tabTitle}-box`}>
-            <LinkedTabTitle boxId={boxId} title={tabTitle} />
+            {/* <LinkedTabTitle boxId={boxId} title={tabTitle} /> */}
+            <span style={{
+                background: '#222',
+                borderRadius: '.25rem',
+                color: '#eee',
+                display: 'inline-block',
+                margin: '.25rem',
+                padding: '.25rem',
+                textAlign: 'center',
+                width: '4rem',
+            }}>
+                {tabTitle}
+            </span>
             {pokemonByFilter(pokemon, filter)}
         </div>
     );

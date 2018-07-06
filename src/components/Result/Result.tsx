@@ -62,6 +62,14 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                 </div>,
             );
         }
+        if (this.state.downloadError) {
+            renderItems.push(
+                <div key={uuid()} className='pt-callout pt-intent-danger'>
+                    Image failed to download. Check that you are not using images
+                    that link to external sites.
+                </div>
+            );
+        }
         return (
             <div
                 style={{
@@ -259,6 +267,13 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         return (
             <div>
                 {this.renderErrors()}
+                <Button style={{
+                    position: 'absolute',
+                    top: '2px',
+                    right: '112px',
+                }} icon='download' intent={Intent.PRIMARY} onClick={e => this.toImage()}>
+                    Download Image<sup>BETA</sup>
+                </Button>
                 <div
                     ref={this.resultRef}
                     className={`result container ${(style.template &&
@@ -322,18 +337,6 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             </ol>
                         </div>
                     ) : null}
-                </div>
-                <div
-                    className='download-button-container'
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        padding: '.5rem',
-                    }}>
-                    <Button icon='download' intent={Intent.PRIMARY} onClick={e => this.toImage()}>
-                        Download (BETA)
-                    </Button>
-                    { this.state.downloadError ? <Callout>{ this.state.downloadError }</Callout> : null }
                 </div>
             </div>
         );

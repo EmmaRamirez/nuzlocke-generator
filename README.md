@@ -9,7 +9,7 @@ This is a beta. Expect everything to break. Save backups if you value them.
 ```bash
 git clone git@github.com:EmmaRamirez/nuzlocke-generator.git
 npm install
-npm run build && npm run serve
+npm run serve
 ```
 
 You should find it at `localhost:8080`.
