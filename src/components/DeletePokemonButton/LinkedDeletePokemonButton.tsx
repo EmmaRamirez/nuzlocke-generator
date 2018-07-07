@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { deletePokemon, modifyDeletionConfirmation } from '../../actions';
-import { DeletePokemonButton } from '../Editor/DeletePokemonButton';
+import { deletePokemon, modifyDeletionConfirmation } from 'actions';
+import { DeletePokemonButton } from 'components/DeletePokemonButton';
 
 const mapStateToProps = (state, ownProps) => {
     return {};

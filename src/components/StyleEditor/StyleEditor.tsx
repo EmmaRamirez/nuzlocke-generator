@@ -8,12 +8,9 @@ import {
     Radio,
     TextArea,
     Checkbox,
-    Button,
-    ButtonGroup,
-    Slider,
 } from '@blueprintjs/core';
 import { BaseEditor } from 'components/BaseEditor';
-import { gameOfOriginToColor } from '../Result/gameOfOriginToColor';
+import { gameOfOriginToColor } from 'components/Result/gameOfOriginToColor';
 
 const editEvent = (e, props, name?, game?) => {
     const propName = name || e.target.name;

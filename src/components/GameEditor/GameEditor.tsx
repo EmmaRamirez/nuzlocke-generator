@@ -1,13 +1,11 @@
 import * as React from 'react';
-import { Store } from 'redux';
 import { connect } from 'react-redux';
 import { editGame, changeEditorSize, editStyle } from 'actions';
 import { listOfGames } from 'utils';
 
-import { Button, Intent, Popover, Menu, Position } from '@blueprintjs/core';
-import { LinkedSaveButton } from './LinkedSaveButton';
-import { RulesEditorDialog } from './RulesEditor';
-import { gameOfOriginToColor } from '../Result/gameOfOriginToColor';
+import { Button, Intent } from '@blueprintjs/core';
+import { RulesEditorDialog } from 'components/RulesEditor';
+import { gameOfOriginToColor } from 'components/Result/gameOfOriginToColor';
 
 export interface GameEditorProps {
     game: any;

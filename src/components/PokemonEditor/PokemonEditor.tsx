@@ -1,4 +1,4 @@
-import { Tab, Tabs, Tooltip, Button, Position, ButtonGroup } from '@blueprintjs/core';
+import { Button } from '@blueprintjs/core';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import * as uuid from 'uuid/v4';
@@ -7,20 +7,14 @@ import { Pokemon } from 'models';
 import { Boxes } from 'types';
 
 import {
-    speciesToNumber,
-    choose,
     generateEmptyPokemon,
-    StoreContext,
     pokemonByFilter,
 } from 'utils';
 import { CurrentPokemonEdit } from './CurrentPokemonEdit';
-import { PokemonIcon } from 'components/PokemonIcon';
 
-import { LinkedAddPokemonButton } from '.';
+import { LinkedAddPokemonButton } from 'components/AddPokemonButton/LinkedAddPokemonButton';
 import { MassEditor } from './MassEditor';
-import { BoxedPokemon } from '../Result/BoxedPokemon';
 import { BaseEditor } from 'components/BaseEditor';
-import { Scrollbars } from 'react-custom-scrollbars';
 
 require('../../assets/img/team-box.png');
 require('../../assets/img/dead-box.png');

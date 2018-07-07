@@ -9,12 +9,12 @@ import { persistor } from 'store';
 
 import { replaceState } from 'actions';
 
-export interface ImportAndExportProps {
+export interface DataEditorProps {
     state: any;
     replaceState: replaceState;
 }
 
-export interface ImportAndExportState {
+export interface DataEditorState {
     isOpen: boolean;
     isClearAllDataOpen: boolean;
     mode: 'import' | 'export';
@@ -34,9 +34,9 @@ const hexEncode = function(str: string) {
     return result;
 };
 
-export class ImportAndExportBase extends React.Component<
-    ImportAndExportProps,
-    ImportAndExportState
+export class DataEditorBase extends React.Component<
+    DataEditorProps,
+    DataEditorState
 > {
     public textarea: any;
     public fileInput: any;
@@ -245,6 +245,6 @@ export class ImportAndExportBase extends React.Component<
     }
 }
 
-export const ImportAndExport = connect((state: any) => ({ state: state }), {
+export const DataEditor = connect((state: any) => ({ state: state }), {
     replaceState,
-})(ImportAndExportBase as any);
+})(DataEditorBase as any);

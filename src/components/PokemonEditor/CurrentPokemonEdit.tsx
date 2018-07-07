@@ -11,7 +11,7 @@ import {
 import { Pokemon } from 'models';
 import { onClick, Boxes } from 'types';
 import { CurrentPokemonInput } from './CurrentPokemonInput';
-import { LinkedDeletePokemonButton } from './LinkedDeletePokemonButton';
+import { LinkedDeletePokemonButton } from 'components/DeletePokemonButton';
 import { Autocomplete } from '../Shared';
 import { selectPokemon, editPokemon } from 'actions';
 import { listOfGames } from 'utils';

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { addPokemon, selectPokemon } from '../../actions';
-import { AddPokemonButton } from '../Editor/AddPokemonButton';
+import { AddPokemonButton } from 'components/AddPokemonButton';
 
 const mapStateToProps = (state, ownProps) => {
     return { added: ownProps.added };

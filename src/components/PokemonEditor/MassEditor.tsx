@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Dialog, Button, Intent } from '@blueprintjs/core';
+import { Dialog } from '@blueprintjs/core';
 import { Table, Column, Cell, EditableCell } from '@blueprintjs/table';
-import { LinkedAddPokemonButton } from './LinkedAddPokemonButton';
+import { LinkedAddPokemonButton } from 'components/AddPokemonButton/LinkedAddPokemonButton';
 import { editPokemon } from 'actions';
 import { Pokemon, PokemonKeys } from 'models';
 import { generateEmptyPokemon, sortPokes } from 'utils';
