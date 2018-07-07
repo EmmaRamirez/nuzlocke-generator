@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-interface AutocompleteProps {
+export interface AutocompleteProps {
     items: string[];
     placeholder?: string;
     name?: string;
@@ -9,7 +9,7 @@ interface AutocompleteProps {
     onChange: any;
 }
 
-interface AutocompleteState {
+export interface AutocompleteState {
     visibleItems: string[];
     currentValue: string;
     isOpen: boolean;

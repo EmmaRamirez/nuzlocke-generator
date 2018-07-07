@@ -12,7 +12,7 @@ import {
 } from 'utils';
 import { CurrentPokemonEdit } from './CurrentPokemonEdit';
 
-import { LinkedAddPokemonButton } from 'components/AddPokemonButton/LinkedAddPokemonButton';
+import { AddPokemonButton } from 'components/AddPokemonButton';
 import { MassEditor } from './MassEditor';
 import { BaseEditor } from 'components/BaseEditor';
 
@@ -96,7 +96,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
             <>
                 <BaseEditor name='Pokemon'>
                     <div className='button-row' style={{ display: 'flex' }}>
-                        <LinkedAddPokemonButton defaultPokemon={generateEmptyPokemon(team)} />
+                        <AddPokemonButton defaultPokemon={generateEmptyPokemon(team)} />
                         <Button
                             icon={'heat-grid'}
                             onClick={this.openMassEditor}

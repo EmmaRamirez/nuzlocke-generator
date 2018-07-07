@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Dialog } from '@blueprintjs/core';
 import { Table, Column, Cell, EditableCell } from '@blueprintjs/table';
-import { LinkedAddPokemonButton } from 'components/AddPokemonButton/LinkedAddPokemonButton';
+import { AddPokemonButton } from 'components/AddPokemonButton';
 import { editPokemon } from 'actions';
 import { Pokemon, PokemonKeys } from 'models';
 import { generateEmptyPokemon, sortPokes } from 'utils';
@@ -62,7 +62,7 @@ export class MassEditorBase extends React.Component<MassEditorProps, {}> {
                 className='wide-dialog'
                 title='Mass Editor'>
                 <div className='pt-dialog-body'>
-                    <LinkedAddPokemonButton
+                    <AddPokemonButton
                         defaultPokemon={generateEmptyPokemon(this.props.pokemon)}
                     />
                     <div style={{ padding: '.25rem' }} />
