@@ -52,7 +52,6 @@
     "chai": "^4.1.2",
     "cheerio": "^1.0.0-rc.2",
     "copy-webpack-plugin": "^4.5.2",
-    "coveralls": "^3.0.0",
     "css-loader": "^0.28.7",
     "dom-to-image": "git+https://github.com/Keepsite/dom-to-image.git",
     "emotion": "^8.0.12",
@@ -138,6 +137,7 @@
     "testRegex": "/__tests__/.*\\.(ts|tsx|js)$"
   },
   "devDependencies": {
+    "coveralls": "^3.0.2",
     "husky": "^1.0.0-rc.12",
     "ts-loader": "^4.4.2",
     "tslint": "^5.10.0",

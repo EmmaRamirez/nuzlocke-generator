@@ -1,16 +1,12 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 import createHistory from 'history/createBrowserHistory';
 import { Route } from 'react-router';
 import { ConnectedRouter } from 'react-router-redux';
 import { PersistGate } from 'redux-persist/es/integration/react';
-import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 
 import { App } from './components/App';
-import { Admin } from './components/Admin';
-import { appReducers } from './reducers';
 import { store, persistor } from './store';
 
 import 'assets/pokemon-font.css';

@@ -20,7 +20,7 @@ import './app.styl';
 
 export interface AppProps {
     seeRelease: seeRelease;
-    sawRelease: boolean;
+    sawRelease: { [x: string]: boolean };
     style: any;
     rules: any;
     editRule: any;
