@@ -55,10 +55,6 @@ export class AppBase extends React.Component<AppProps, { isOpen: boolean }> {
         };
     }
 
-    public componentWillMount() {
-
-    }
-
     private closeDialog = e => {
         this.props.seeRelease(pkg.version);
         this.toggleDialog(null);
