@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { GameEditor } from './GameEditor';
 import { PokemonEditor } from './PokemonEditor';
 import { StyleEditor } from './StyleEditor';
-import { TrainerEditor } from './TrainerEditor';
+import { TrainerEditor } from 'components/TrainerEditor/TrainerEditor';
 import { ImportAndExport } from './ImportAndExport';
 
 import './editor.styl';

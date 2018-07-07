@@ -12,7 +12,7 @@ import {
     ButtonGroup,
     Slider,
 } from '@blueprintjs/core';
-import { BaseEditor } from './BaseEditor';
+import { BaseEditor } from 'components/BaseEditor';
 import { gameOfOriginToColor } from '../Result/gameOfOriginToColor';
 
 const editEvent = (e, props, name?, game?) => {

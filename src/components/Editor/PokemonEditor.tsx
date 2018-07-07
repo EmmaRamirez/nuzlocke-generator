@@ -19,7 +19,7 @@ import { PokemonIcon } from 'components/PokemonIcon';
 import { LinkedAddPokemonButton } from '.';
 import { MassEditor } from './MassEditor';
 import { BoxedPokemon } from '../Result/BoxedPokemon';
-import { BaseEditor } from './BaseEditor';
+import { BaseEditor } from 'components/BaseEditor';
 import { Scrollbars } from 'react-custom-scrollbars';
 
 require('../../assets/img/team-box.png');
