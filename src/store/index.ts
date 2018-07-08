@@ -1,4 +1,4 @@
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, createStore, Middleware } from 'redux';
 import { createLogger } from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import createHistory from 'history/createBrowserHistory';
@@ -32,13 +32,22 @@ const history = createHistory();
 
 const persistReducers = persistCombineReducers(config, reducers);
 
-const loggerMiddleware = createLogger();
+const middlewares:Middleware[] = [];
+
+if (process.env.NODE_ENV === 'test') { }
+else {
+    const loggerMiddleware = createLogger();
+    middlewares.push(loggerMiddleware);
+}
+
 const sagaMiddleware = createSagaMiddleware();
 const routerMiddleware = createRouterMiddleware(history);
 
+middlewares.push(sagaMiddleware, routerMiddleware);
+
 export const store = createStore(
     persistReducers,
-    applyMiddleware(loggerMiddleware, sagaMiddleware, routerMiddleware),
+    applyMiddleware(...middlewares),
 );
 
 export const persistor = persistStore(store, null, () => store.getState());

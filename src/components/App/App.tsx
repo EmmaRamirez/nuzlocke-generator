@@ -5,10 +5,9 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { Store } from 'redux';
 
 import { seeRelease, editRule } from 'actions';
-import { Editor } from '../Editor';
-import { Result } from '../Result';
 import { VersionTag } from './VersionTag';
 import { generateReleaseNotes } from 'utils';
+import * as Loadable from 'react-loadable';
 
 import { Dialog } from '@blueprintjs/core';
 
@@ -21,11 +20,32 @@ import './app.styl';
 
 export interface AppProps {
     seeRelease: seeRelease;
-    sawRelease: boolean;
+    sawRelease: { [x: string]: boolean };
     style: any;
     rules: any;
     editRule: any;
 }
+
+function Loading () {
+    return <div>Loading...</div>;
+}
+
+const Editor = Loadable({
+    loader: () => import('components/Editor'),
+    loading: Loading,
+    render(loaded) {
+        return <loaded.Editor />;
+    }
+});
+
+const Result = Loadable({
+    loader: () => import('components/Result'),
+    loading: Loading,
+    render(loaded) {
+        return <loaded.Result />;
+    }
+});
+
 
 export class AppBase extends React.Component<AppProps, { isOpen: boolean }> {
     constructor(props: any) {
@@ -45,13 +65,13 @@ export class AppBase extends React.Component<AppProps, { isOpen: boolean }> {
     public render() {
         return (
             <div className='app' role='main'>
+                <Editor />
+                <Result />
                 <VersionTag
                     version={pkg.version}
                     onClick={this.toggleDialog}
                     darkMode={this.props.style.editorDarkMode}
                 />
-                <Editor />
-                <Result />
                 <Dialog
                     isOpen={this.state.isOpen}
                     onClose={this.closeDialog}

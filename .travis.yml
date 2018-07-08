@@ -1,6 +1,9 @@
 language: node_js
 node_js:
 - '8'
+- '10'
 cache:
   directories:
   - node_modules
+after_success:
+  - node node_modules/.bin/jest --coverage --config jest-config.json && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage

@@ -2,9 +2,11 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const OfflinePlugin = require('offline-plugin');
+const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
 
 const isProduction = process.env.NODE_ENV === 'production' ? true : false;
 
+// tslint:disable-next-line:no-default-export
 module.exports = {
     entry: './src/index.tsx',
     output: {
@@ -94,6 +96,10 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
             'PRODUCTION': JSON.stringify(true)
+        }),
+
+        new ReactLoadablePlugin({
+            filename: './dist/react-lodable.json'
         }),
 
         // new OfflinePlugin({

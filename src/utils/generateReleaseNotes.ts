@@ -153,7 +153,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 
 ## Features
 - **Download Button**: you can now download nuzlocke images directly! No more print screen!
-- **Autocomple for Items**: is it Icy Drive or Chill Drive? Wonder no more!
+- **Autocomplete for Items**: is it Icy Drive or Chill Drive? Wonder no more!
 - **Tile option for Background**: Not a big feature, but it's nice
 
 ## Fixes

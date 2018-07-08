@@ -6,13 +6,14 @@ import { selectPokemon } from 'actions';
 import { ErrorBoundary } from '../Shared';
 
 interface PokemonIconProps {
-    id: string;
+    id?: string;
     species: string;
     forme?: string;
     onClick: () => void;
     selectedId: string | null;
     isShiny?: boolean;
     className?: string;
+    style?: React.CSSProperties;
 }
 
 const formatSpeciesName = (species: string | null) => {
@@ -41,7 +42,7 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
     }
 
     public render() {
-        const { id, species, forme, onClick, selectedId, className, isShiny } = this.props;
+        const { id, species, forme, onClick, selectedId, className, isShiny, style } = this.props;
         return (
             <ErrorBoundary>
                 <div
@@ -52,6 +53,7 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
                     }}
                     ref={this.iconRef}
                     id={id}
+                    style={style}
                     className={
                         `${id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'}${className || ''}`
                     }>

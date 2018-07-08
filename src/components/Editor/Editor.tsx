@@ -2,11 +2,11 @@ import * as React from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { connect } from 'react-redux';
 
-import { GameEditor } from './GameEditor';
-import { PokemonEditor } from './PokemonEditor';
-import { StyleEditor } from './StyleEditor';
-import { TrainerEditor } from './TrainerEditor';
-import { ImportAndExport } from './ImportAndExport';
+import { GameEditor } from 'components/GameEditor';
+import { PokemonEditor } from 'components/PokemonEditor';
+import { StyleEditor } from 'components/StyleEditor';
+import { TrainerEditor } from 'components/TrainerEditor/TrainerEditor';
+import { DataEditor } from 'components/DataEditor';
 
 import './editor.styl';
 
@@ -39,7 +39,7 @@ export class EditorBase extends React.Component<{ editor: any; style: any }, {}>
                 <TrainerEditor />
                 <PokemonEditor />
                 <StyleEditor />
-                <ImportAndExport />
+                <DataEditor />
             </Scrollbars>
         );
     }
