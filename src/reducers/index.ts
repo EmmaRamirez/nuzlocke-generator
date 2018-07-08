@@ -1,5 +1,4 @@
 import { applyMiddleware, combineReducers } from 'redux';
-import createHistory from 'history/createBrowserHistory';
 import { routerReducer } from 'react-router-redux';
 
 import { nuzlocke } from './nuzlocke';
@@ -14,11 +13,6 @@ import { style } from './style';
 import { sawRelease } from './sawRelease';
 import { editor } from './editor';
 import { rules } from './rules';
-
-// export const appReducers = combineReducers({
-//   nuzlocke,
-//   pokemon
-// });
 
 export const reducers = {
     box,

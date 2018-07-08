@@ -12,7 +12,7 @@ import {
 import { BaseEditor } from 'components/BaseEditor';
 import { gameOfOriginToColor } from 'components/Result/gameOfOriginToColor';
 
-const editEvent = (e, props, name?, game?) => {
+const editEvent = (e, props: StyleEditorProps, name?, game?) => {
     const propName = name || e.target.name;
     props.editStyle({ [propName]: e.target.value });
     if (propName === 'template' && e.target.value === 'Default Light') {

@@ -6,6 +6,8 @@ import { AddPokemonButton } from 'components/AddPokemonButton';
 import { editPokemon } from 'actions';
 import { Pokemon, PokemonKeys } from 'models';
 import { generateEmptyPokemon, sortPokes } from 'utils';
+import { typeToColor } from 'components/Result';
+import { PokemonIconBase } from 'components/PokemonIcon';
 
 export interface MassEditorProps {
     isOpen?: any;
@@ -13,6 +15,28 @@ export interface MassEditorProps {
     pokemon: Pokemon[];
     editPokemon: (edits: object, id: string) => void;
 }
+
+const TypeCellStyles = {
+    color: 'white',
+    display: 'inline-block',
+    margin: '0 auto',
+    padding: '.15rem',
+    width: '50%',
+};
+
+const renderValue = (pokemon, r, key) => {
+    if (key === 'types') {
+        const typeA = pokemon[r][key][0];
+        const typeB = pokemon[r][key][1];
+        return (
+            <>
+                <span style={{ ...TypeCellStyles, background: typeToColor(typeA) || 'transparent'}}>{typeA}</span>
+                <span style={{ ...TypeCellStyles, background: typeToColor(typeB) || 'transparent'}}>{typeB}</span>
+            </>
+        );
+    }
+    return pokemon[r][key];
+};
 
 export class MassEditorBase extends React.Component<MassEditorProps, {}> {
     // private renderCell = (rowIndex: number) => {
@@ -30,7 +54,7 @@ export class MassEditorBase extends React.Component<MassEditorProps, {}> {
                         cellRenderer={r => (
                             <EditableCell
                                 onConfirm={(v, _, c) => {
-                                    let value: any = v;
+                                    let value: any = pokemon[r][key];
                                     if (key === 'types') {
                                         value = v.split(',').map(s => s.trim());
                                     }
@@ -45,7 +69,7 @@ export class MassEditorBase extends React.Component<MassEditorProps, {}> {
                                     );
                                     }
                                 }
-                                value={pokemon[r][key]}
+                                value={renderValue(pokemon, r, key)}
                             />
                         )}
                     />
@@ -66,7 +90,7 @@ export class MassEditorBase extends React.Component<MassEditorProps, {}> {
                         defaultPokemon={generateEmptyPokemon(this.props.pokemon)}
                     />
                     <div style={{ padding: '.25rem' }} />
-                    <Table numRows={this.props.pokemon.length}>
+                    <Table numRows={this.props.pokemon.length} numFrozenColumns={1}>
                         {this.renderColumns(this.props.pokemon.sort(sortPokes))}
                     </Table>
                 </div>

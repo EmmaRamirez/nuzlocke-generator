@@ -1,4 +1,4 @@
-import { editBox, EDIT_BOX, REPLACE_STATE, VERSION_0_0_6_BETA, Action } from 'actions';
+import { EDIT_BOX, REPLACE_STATE, VERSION_0_0_6_BETA, Action } from 'actions';
 
 const defaultBoxes: { key: number; name: string }[] = [
     {
