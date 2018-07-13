@@ -7055,7 +7055,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./TrainerInfoEditField": [
+  "components/TrainerEditor/TrainerInfoEditField": [
     {
       "id": "./src/components/TrainerEditor/TrainerInfoEditField.tsx",
       "name": "./src/components/TrainerEditor/TrainerInfoEditField.tsx",
