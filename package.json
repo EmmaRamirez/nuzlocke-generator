@@ -17,7 +17,7 @@
     "serve:heroku": "npm run build:production && heroku local web",
     "deploy": "npm run build && git push heroku master",
     "precommit": "npm run lint",
-    "prepush": "npm run build:production && git add . && git commit --no-verify -m 'chore: update build'"
+    "prepush": "ts-node imageCheck.ts && npm run build:production && git add . && git commit --no-verify -m 'chore: update build'"
   },
   "engines": {
     "node": "8.9.0",

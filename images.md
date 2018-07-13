@@ -1,4 +1,4 @@
-# A
+## A
 [x] Abomasnow
 [x] Abra
 [x] Absol
@@ -33,7 +33,7 @@
 [x] Azelf
 [x] Azumarill
 [x] Azurill
-# B
+## B
 [x] Bagon
 [x] Baltoy
 [x] Banette
@@ -79,7 +79,7 @@
 [x] Burmy
 [x] Butterfree
 [x] Buzzwole
-# C
+## C
 [x] Cacnea
 [x] Cacturne
 [x] Camerupt
@@ -143,7 +143,7 @@
 [x] Cubone
 [x] Cutiefly
 [x] Cyndaquil
-# D
+## D
 [x] Darkrai
 [x] Darmanitan
 [x] Dartrix
@@ -190,7 +190,7 @@
 [x] Duskull
 [x] Dustox
 [x] Dwebble
-# E
+## E
 [x] Eelektrik
 [x] Eelektross
 [x] Eevee
@@ -212,7 +212,7 @@
 [x] Exeggcute
 [x] Exeggutor
 [x] Exploud
-# F
+## F
 [ ] Farfetch’d
 [x] Fearow
 [ ] Feebas
@@ -240,7 +240,7 @@
 [x] Froslass
 [x] Furfrou
 [x] Furret
-# G
+## G
 [x] Gabite
 [x] Gallade
 [x] Galvantula
@@ -292,7 +292,7 @@
 [x] Gurdurr
 [x] Guzzlord
 [x] Gyarados
-# H
+## H
 [ ] Hakamo-o
 [x] Happiny
 [x] Hariyama
@@ -322,14 +322,14 @@
 [x] Huntail
 [x] Hydreigon
 [x] Hypno
-# I
+## I
 [x] Igglybuff
 [x] Illumise
 [x] Incineroar
 [x] Infernape
 [x] Inkay
 [x] Ivysaur
-# J
+## J
 [ ] Jangmo-o
 [x] Jellicent
 [x] Jigglypuff
@@ -338,7 +338,7 @@
 [x] Joltik
 [x] Jumpluff
 [x] Jynx
-# K
+## K
 [x] Kabuto
 [ ] Kabutops
 [x] Kadabra
@@ -365,7 +365,7 @@
 [x] Krookodile
 [x] Kyogre
 [ ] Kyurem
-# L
+## L
 [ ] Lairon
 [x] Lampent
 [ ] Landorus
@@ -404,7 +404,7 @@
 [x] Luxio
 [x] Luxray
 [ ] Lycanroc
-# M
+## M
 [x] Machamp
 [x] Machoke
 [x] Machop
@@ -472,7 +472,7 @@
 [ ] Munna
 [x] Murkrow
 [ ] Musharna
-# N
+## N
 [ ] Naganadel
 [ ] Natu
 [ ] Necrozma
@@ -492,7 +492,7 @@
 [ ] Nosepass
 [x] Numel
 [ ] Nuzleaf
-# O
+## O
 [ ] Octillery
 [x] Oddish
 [x] Omanyte
@@ -501,7 +501,7 @@
 [ ] Oranguru
 [x] Oricorio
 [x] Oshawott
-# P
+## P
 [ ] Pachirisu
 [ ] Palkia
 [ ] Palossand
@@ -558,12 +558,12 @@
 [x] Purugly
 [x] Pyroar
 [ ] Pyukumuku
-# Q
+## Q
 [x] Quagsire
 [x] Quilava
 [ ] Quilladin
 [ ] Qwilfish
-# R
+## R
 [x] Raichu
 [ ] Raikou
 [ ] Ralts
@@ -592,7 +592,7 @@
 [ ] Rotom
 [x] Rowlet
 [ ] Rufflet
-# S
+## S
 [ ] Sableye
 [x] Salamence
 [ ] Salandit
@@ -705,7 +705,7 @@
 [ ] Swirlix
 [ ] Swoobat
 [x] Sylveon
-# T
+## T
 [ ] Taillow
 [x] Talonflame
 [ ] Tangela
@@ -755,13 +755,13 @@
 [ ] Tyrantrum
 [ ] Tyrogue
 [ ] Tyrunt
-# U
+## U
 [x] Umbreon
 [x] Unfezant
 [ ] Unown
 [ ] Ursaring
 [ ] Uxie
-# V
+## V
 [ ] Vanillish
 [ ] Vanillite
 [ ] Vanilluxe
@@ -785,7 +785,7 @@
 [x] Voltorb
 [ ] Vullaby
 [x] Vulpix
-# W
+## W
 [x] Wailmer
 [ ] Wailord
 [ ] Walrein
@@ -809,17 +809,17 @@
 [ ] Wormadam
 [x] Wurmple
 [ ] Wynaut
-# X
+## X
 [ ] Xatu
 [ ] Xerneas
 [x] Xurkitree
-# Y
+## Y
 [x] Yamask
 [x] Yanma
 [ ] Yanmega
 [ ] Yungoos
 [ ] Yveltal
-# Z
+## Z
 [ ] Zangoose
 [ ] Zapdos
 [ ] Zebstrika
