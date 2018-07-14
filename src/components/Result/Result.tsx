@@ -4,7 +4,6 @@ import { Pokemon, Trainer } from 'models';
 import { getBadges, getGameRegion, sortPokes } from 'utils';
 import { connect } from 'react-redux';
 import * as uuid from 'uuid/v4';
-import { ResizableBox, Resizable } from 'react-resizable';
 import * as domtoimage from 'dom-to-image';
 
 import { selectPokemon } from 'actions';

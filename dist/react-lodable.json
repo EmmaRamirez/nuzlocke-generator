@@ -2221,20 +2221,6 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "!!../../css-loader/index.js!../../resolve-url-loader/index.js!./styles.css": [
-    {
-      "id": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/react-resizable/css/styles.css",
-      "name": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/react-resizable/css/styles.css",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/react-resizable/css/styles.css",
-      "name": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/react-resizable/css/styles.css",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
   "!!../../../node_modules/css-loader/index.js!../../../node_modules/resolve-url-loader/index.js!../../../node_modules/stylus-loader/index.js!./app.styl": [
     {
       "id": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/App/app.styl",
@@ -3791,20 +3777,6 @@
     {
       "id": "./node_modules/react-redux/es/utils/warning.js",
       "name": "./node_modules/react-redux/es/utils/warning.js",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "react-resizable/css/styles.css": [
-    {
-      "id": "./node_modules/react-resizable/css/styles.css",
-      "name": "./node_modules/react-resizable/css/styles.css",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./node_modules/react-resizable/css/styles.css",
-      "name": "./node_modules/react-resizable/css/styles.css",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -7055,7 +7027,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./TrainerInfoEditField": [
+  "components/TrainerEditor/TrainerInfoEditField": [
     {
       "id": "./src/components/TrainerEditor/TrainerInfoEditField.tsx",
       "name": "./src/components/TrainerEditor/TrainerInfoEditField.tsx",
