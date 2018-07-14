@@ -4,7 +4,7 @@ import { Pokemon, Trainer } from 'models';
 import { getBadges, getGameRegion, sortPokes } from 'utils';
 import { connect } from 'react-redux';
 import * as uuid from 'uuid/v4';
-import { ResizableBox, Resizable } from 'react-resizable';
+import { Scrollbars } from 'react-custom-scrollbars';
 import * as domtoimage from 'dom-to-image';
 
 import { selectPokemon } from 'actions';
@@ -15,7 +15,7 @@ import { BoxedPokemon } from './BoxedPokemon';
 import { ChampsPokemon } from './ChampsPokemon';
 
 import './Result.styl';
-import { Button, Intent, Callout } from '@blueprintjs/core';
+import { Button, Intent } from '@blueprintjs/core';
 
 interface ResultProps {
     pokemon: Pokemon[];
@@ -265,7 +265,10 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         const bgColor = style ? style.bgColor : '#383840';
         const topHeaderColor = style ? style.topHeaderColor : '#333333';
         return (
-            <div>
+            <Scrollbars
+                autoHide
+                autoHideTimeout={1000}
+                autoHideDuration={200}>
                 {this.renderErrors()}
                 <Button style={{
                     position: 'absolute',
@@ -339,7 +342,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         </div>
                     ) : null}
                 </div>
-            </div>
+            </Scrollbars>
         );
     }
 }
