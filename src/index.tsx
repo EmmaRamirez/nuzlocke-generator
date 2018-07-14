@@ -14,7 +14,6 @@ import 'assets/pokemon-font.css';
 
 import 'components/Shared/styles/base.styl';
 
-import 'react-resizable/css/styles.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/table/lib/css/table.css';
