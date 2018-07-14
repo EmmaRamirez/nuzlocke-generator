@@ -27,9 +27,29 @@
   "author": "Emma Ramirez <ramirez.emma.g@gmail.com> (http://emmaramirez.me)",
   "license": "MIT",
   "dependencies": {
-    "@blueprintjs/core": "^2.0.0-rc.1",
-    "@blueprintjs/icons": "^2.0.0-rc.1",
-    "@blueprintjs/table": "^2.0.0-rc.1",
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "moduleNameMapper": {
+      "^.+\\.(css|styl)$": "<rootDir>stylus.config.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js"
+    },
+    "testRegex": "/__tests__/.*\\.(ts|tsx|js)$"
+  },
+  "devDependencies": {
+    "coveralls": "^3.0.2",
+    "husky": "^1.0.0-rc.12",
+    "ts-loader": "^4.4.2",
+    "tslint": "^5.10.0",
+    "tslint-loader": "^3.6.0",
     "@types/chai": "^4.0.10",
     "@types/enzyme": "^2.8.12",
     "@types/express": "^4.11.0",
@@ -46,9 +66,9 @@
     "@types/react-router-dom": "^4.2.3",
     "@types/react-router-redux": "^5.0.11",
     "@types/redux-logger": "^3.0.5",
-    "awesome-typescript-loader": "^3.4.1",
-    "body-parser": "^1.18.2",
-    "buffer": "^5.1.0",
+    "@blueprintjs/core": "^2.0.0-rc.1",
+    "@blueprintjs/icons": "^2.0.0-rc.1",
+    "@blueprintjs/table": "^2.0.0-rc.1",
     "chai": "^4.1.2",
     "cheerio": "^1.0.0-rc.2",
     "copy-webpack-plugin": "^4.5.2",
@@ -58,8 +78,6 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "file-loader": "^1.1.11",
-    "fs": "0.0.1-security",
-    "hapi": "^17.5.2",
     "history": "^4.7.2",
     "imports-loader": "^0.7.1",
     "istanbul": "^0.4.5",
@@ -86,7 +104,6 @@
     "react-markdown": "^3.1.5",
     "react-polyfills": "0.0.1",
     "react-redux": "^5.0.6",
-    "react-resizable": "^1.7.5",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",
@@ -120,28 +137,5 @@
     "webpack-cli": "^3.0.8",
     "webpack-dashboard": "^2.0.0",
     "webpack-serve": "^1.0.4"
-  },
-  "jest": {
-    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
-    "transform": {
-      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "moduleNameMapper": {
-      "^.+\\.(css|styl)$": "<rootDir>stylus.config.js",
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js"
-    },
-    "testRegex": "/__tests__/.*\\.(ts|tsx|js)$"
-  },
-  "devDependencies": {
-    "coveralls": "^3.0.2",
-    "husky": "^1.0.0-rc.12",
-    "ts-loader": "^4.4.2",
-    "tslint": "^5.10.0",
-    "tslint-loader": "^3.6.0"
   }
 }
