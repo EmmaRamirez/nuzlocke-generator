@@ -18,3 +18,4 @@ export * from './listOfPokemon';
 export { listOfThemes } from './listOfThemes';
 export * from './getGameRegion';
 export * from './getForme';
+export * from './listOfLocations';

@@ -1,6 +1,6 @@
 {
   "name": "nuzlocke-generator",
-  "version": "0.0.8-beta",
+  "version": "0.0.9-beta",
   "description": "A tool for generating nuzlocke team pics from data",
   "main": "index.js",
   "scripts": {

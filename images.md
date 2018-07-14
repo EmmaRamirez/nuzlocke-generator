@@ -354,7 +354,7 @@
 - [x] Klang
 - [x] Klefki
 - [x] Klink
-- [ ] Klinklang
+- [x] Klinklang
 - [x] Koffing
 - [x] Komala
 - [x] Kommo-o
@@ -438,10 +438,10 @@
 - [x] Medicham
 - [x] Meditite
 - [x] Meganium
-- [ ] Meloetta
+- [x] Meloetta
 - [x] Meowstic
 - [x] Meowth
-- [ ] Mesprit
+- [x] Mesprit
 - [x] Metagross
 - [x] Metang
 - [x] Metapod
@@ -482,14 +482,14 @@
 - [x] Nidoran♂
 - [x] Nidorina
 - [x] Nidorino
-- [ ] Nihilego
+- [x] Nihilego
 - [x] Nincada
 - [x] Ninetales
 - [x] Ninjask
 - [x] Noctowl
 - [x] Noibat
 - [x] Noivern
-- [ ] Nosepass
+- [x] Nosepass
 - [x] Numel
 - [x] Nuzleaf
 ## O
@@ -503,12 +503,12 @@
 - [x] Oshawott
 ## P
 - [x] Pachirisu
-- [ ] Palkia
+- [x] Palkia
 - [x] Palossand
-- [ ] Palpitoad
+- [x] Palpitoad
 - [x] Pancham
 - [x] Pangoro
-- [ ] Panpour
+- [x] Panpour
 - [x] Pansage
 - [x] Pansear
 - [x] Paras
@@ -521,7 +521,7 @@
 - [x] Petilil
 - [x] Phanpy
 - [x] Phantump
-- [ ] Pheromosa
+- [x] Pheromosa
 - [x] Phione
 - [x] Pichu
 - [x] Pidgeot
@@ -572,13 +572,13 @@
 - [x] Raticate
 - [x] Rattata
 - [x] Rayquaza
-- [ ] Regice
-- [ ] Regigigas
-- [ ] Regirock
-- [ ] Registeel
+- [x] Regice
+- [x] Regigigas
+- [x] Regirock
+- [x] Registeel
 - [x] Relicanth
 - [x] Remoraid
-- [ ] Reshiram
+- [x] Reshiram
 - [x] Reuniclus
 - [x] Rhydon
 - [x] Rhyhorn
@@ -623,7 +623,7 @@
 - [x] Seviper
 - [x] Sewaddle
 - [x] Sharpedo
-- [ ] Shaymin
+- [x] Shaymin
 - [x] Shedinja
 - [x] Shelgon
 - [x] Shellder
@@ -677,7 +677,7 @@
 - [x] Spoink
 - [x] Spritzee
 - [x] Squirtle
-- [ ] Stakataka
+- [x] Stakataka
 - [x] Stantler
 - [x] Staraptor
 - [x] Staravia
@@ -719,9 +719,9 @@
 - [x] Tentacool
 - [x] Tentacruel
 - [x] Tepig
-- [ ] Terrakion
+- [x] Terrakion
 - [x] Throh
-- [ ] Thundurus
+- [x] Thundurus
 - [x] Timburr
 - [x] Tirtouga
 - [x] Togedemaru
@@ -730,7 +730,7 @@
 - [x] Togetic
 - [x] Torchic
 - [x] Torkoal
-- [ ] Tornadus
+- [x] Tornadus
 - [x] Torracat
 - [x] Torterra
 - [x] Totodile
@@ -772,12 +772,12 @@
 - [x] Venusaur
 - [x] Vespiquen
 - [x] Vibrava
-- [ ] Victini
+- [x] Victini
 - [x] Victreebel
 - [x] Vigoroth
 - [x] Vikavolt
 - [x] Vileplume
-- [ ] Virizion
+- [x] Virizion
 - [x] Vivillon
 - [x] Volbeat
 - [x] Volcanion
@@ -818,16 +818,16 @@
 - [x] Yanma
 - [x] Yanmega
 - [x] Yungoos
-- [ ] Yveltal
+- [x] Yveltal
 ## Z
 - [x] Zangoose
 - [x] Zapdos
 - [x] Zebstrika
-- [ ] Zekrom
-- [ ] Zeraora
+- [x] Zekrom
+- [x] Zeraora
 - [x] Zigzagoon
 - [x] Zoroark
 - [x] Zorua
 - [x] Zubat
-- [ ] Zweilous
+- [x] Zweilous
 - [x] Zygarde

@@ -7,6 +7,7 @@ import {
     listOfPokemon,
     matchSpeciesToTypes,
     listOfItems,
+    listOfLocations,
 } from 'utils';
 import { Pokemon } from 'models';
 import { onClick, Boxes } from 'types';
@@ -239,12 +240,19 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                     value={currentPokemon.level}
                     type='text'
                 />
-                <CurrentPokemonInput
-                    labelName='Met Location'
-                    inputName='met'
+                <Autocomplete
+                    items={listOfLocations}
+                    name='met'
+                    label='Met Location'
                     placeholder='Pallet Town'
                     value={currentPokemon.met}
-                    type='text'
+                    onChange={e => {
+                        const edit = {
+                            met: e.target.value,
+                        };
+                        this.context.store.dispatch(editPokemon(edit, this.state.selectedId));
+                        this.context.store.dispatch(selectPokemon(this.state.selectedId));
+                    }}
                 />
                 <CurrentPokemonInput
                     labelName='Met Level'

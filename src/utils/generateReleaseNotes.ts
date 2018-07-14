@@ -176,11 +176,12 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 # Changelog
 
 ## Features
-
+- **Autocomplete for Locations**: Abandoned Ship, Artisan Cave, Aether Paradise...
 
 ## Fixes
 - Added nearly all Pokémon images
 - Result is now scrollable for most platforms/browsers
+- Mass Editor now obeys dark mode
 
 ## Known Issues
 - Sugimori images can't be used with the download option
