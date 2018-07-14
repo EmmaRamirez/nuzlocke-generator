@@ -20,6 +20,7 @@ const formatSpeciesName = (species: string | null) => {
     if (species == null) return 'unknown';
     if (listOfPokemon.indexOf(species) < 0) return 'unknown';
     if (species === 'Mr. Mime') return 'mr-mime';
+    if (species === 'Farfetch\'d') return 'farfetchd';
     if (species === 'Mime Jr.') return 'mime-jr';
     if (species === 'Flabébé') return 'flabebe';
     return species.toLowerCase();

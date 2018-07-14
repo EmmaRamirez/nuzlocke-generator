@@ -61,7 +61,7 @@
 - [x] Blissey
 - [x] Blitzle
 - [x] Boldore
-- [ ] Bonsly
+- [x] Bonsly
 - [x] Bouffalant
 - [x] Bounsweet
 - [x] Braixen
@@ -215,11 +215,11 @@
 ## F
 - [ ] Farfetch’d
 - [x] Fearow
-- [ ] Feebas
+- [x] Feebas
 - [x] Fennekin
 - [x] Feraligatr
-- [ ] Ferroseed
-- [ ] Ferrothorn
+- [x] Ferroseed
+- [x] Ferrothorn
 - [x] Finneon
 - [x] Flaaffy
 - [x] Flabébé
@@ -230,9 +230,9 @@
 - [x] Floette
 - [x] Florges
 - [x] Flygon
-- [ ] Fomantis
+- [x] Fomantis
 - [x] Foongus
-- [ ] Forretress
+- [x] Forretress
 - [x] Fraxure
 - [x] Frillish
 - [x] Froakie
@@ -276,7 +276,7 @@
 - [x] Gothita
 - [x] Gothitelle
 - [x] Gothorita
-- [ ] Gourgeist
+- [x] Gourgeist
 - [x] Granbull
 - [x] Graveler
 - [x] Greninja
@@ -371,7 +371,7 @@
 - [x] Landorus
 - [x] Lanturn
 - [x] Lapras
-- [ ] Larvesta
+- [x] Larvesta
 - [x] Larvitar
 - [x] Latias
 - [x] Latios
@@ -403,7 +403,7 @@
 - [x] Luvdisc
 - [x] Luxio
 - [x] Luxray
-- [ ] Lycanroc
+- [x] Lycanroc
 ## M
 - [x] Machamp
 - [x] Machoke
@@ -418,16 +418,16 @@
 - [x] Magneton
 - [x] Magnezone
 - [x] Makuhita
-- [ ] Malamar
+- [x] Malamar
 - [x] Mamoswine
-- [ ] Manaphy
-- [ ] Mandibuzz
+- [x] Manaphy
+- [x] Mandibuzz
 - [x] Manectric
 - [x] Mankey
 - [x] Mantine
-- [ ] Mantyke
+- [x] Mantyke
 - [x] Maractus
-- [ ] Mareanie
+- [x] Mareanie
 - [x] Mareep
 - [x] Marill
 - [x] Marowak
@@ -450,18 +450,18 @@
 - [x] Mienfoo
 - [x] Mienshao
 - [x] Mightyena
-- [ ] Milotic
+- [x] Milotic
 - [x] Miltank
 - [ ] Mime Jr.
-- [ ] Mimikyu
+- [x] Mimikyu
 - [x] Minccino
 - [x] Minior
-- [ ] Minun
+- [x] Minun
 - [x] Misdreavus
 - [x] Mismagius
 - [x] Moltres
 - [x] Monferno
-- [ ] Morelull
+- [x] Morelull
 - [x] Mothim
 - [ ] Mr. Mime
 - [x] Mudbray
@@ -469,13 +469,13 @@
 - [x] Mudsdale
 - [x] Muk
 - [x] Munchlax
-- [ ] Munna
+- [x] Munna
 - [x] Murkrow
-- [ ] Musharna
+- [x] Musharna
 ## N
-- [ ] Naganadel
+- [x] Naganadel
 - [x] Natu
-- [ ] Necrozma
+- [x] Necrozma
 - [x] Nidoking
 - [x] Nidoqueen
 - [x] Nidoran♀
@@ -483,11 +483,11 @@
 - [x] Nidorina
 - [x] Nidorino
 - [ ] Nihilego
-- [ ] Nincada
+- [x] Nincada
 - [x] Ninetales
-- [ ] Ninjask
+- [x] Ninjask
 - [x] Noctowl
-- [ ] Noibat
+- [x] Noibat
 - [x] Noivern
 - [ ] Nosepass
 - [x] Numel
@@ -498,7 +498,7 @@
 - [x] Omanyte
 - [x] Omastar
 - [x] Onix
-- [ ] Oranguru
+- [x] Oranguru
 - [x] Oricorio
 - [x] Oshawott
 ## P
@@ -509,21 +509,21 @@
 - [x] Pancham
 - [x] Pangoro
 - [ ] Panpour
-- [ ] Pansage
-- [ ] Pansear
+- [x] Pansage
+- [x] Pansear
 - [x] Paras
 - [x] Parasect
-- [ ] Passimian
+- [x] Passimian
 - [x] Patrat
 - [x] Pawniard
 - [x] Pelipper
 - [x] Persian
 - [x] Petilil
 - [x] Phanpy
-- [ ] Phantump
+- [x] Phantump
 - [ ] Pheromosa
-- [ ] Phione
-- [ ] Pichu
+- [x] Phione
+- [x] Pichu
 - [x] Pidgeot
 - [x] Pidgeotto
 - [x] Pidgey
@@ -532,7 +532,7 @@
 - [x] Pikachu
 - [x] Pikipek
 - [x] Piloswine
-- [ ] Pineco
+- [x] Pineco
 - [x] Pinsir
 - [x] Piplup
 - [x] Plusle
@@ -545,7 +545,7 @@
 - [x] Poochyena
 - [x] Popplio
 - [x] Porygon
-- [ ] Porygon-Z
+- [x] Porygon-Z
 - [x] Porygon2
 - [x] Primarina
 - [x] Primeape
@@ -554,10 +554,10 @@
 - [x] Psyduck
 - [x] Pumpkaboo
 - [x] Pupitar
-- [ ] Purrloin
+- [x] Purrloin
 - [x] Purugly
 - [x] Pyroar
-- [ ] Pyukumuku
+- [x] Pyukumuku
 ## Q
 - [x] Quagsire
 - [x] Quilava
@@ -565,13 +565,13 @@
 - [x] Qwilfish
 ## R
 - [x] Raichu
-- [ ] Raikou
+- [x] Raikou
 - [x] Ralts
 - [x] Rampardos
 - [x] Rapidash
 - [x] Raticate
 - [x] Rattata
-- [ ] Rayquaza
+- [x] Rayquaza
 - [ ] Regice
 - [ ] Regigigas
 - [ ] Regirock
@@ -591,7 +591,7 @@
 - [x] Roserade
 - [x] Rotom
 - [x] Rowlet
-- [ ] Rufflet
+- [x] Rufflet
 ## S
 - [x] Sableye
 - [x] Salamence
@@ -603,8 +603,8 @@
 - [x] Sandslash
 - [x] Sandygast
 - [x] Sawk
-- [ ] Sawsbuck
-- [ ] Scatterbug
+- [x] Sawsbuck
+- [x] Scatterbug
 - [x] Sceptile
 - [x] Scizor
 - [x] Scolipede
@@ -616,34 +616,34 @@
 - [x] Sealeo
 - [x] Seedot
 - [x] Seel
-- [ ] Seismitoad
+- [x] Seismitoad
 - [x] Sentret
 - [x] Serperior
 - [x] Servine
 - [x] Seviper
-- [ ] Sewaddle
+- [x] Sewaddle
 - [x] Sharpedo
 - [ ] Shaymin
-- [ ] Shedinja
+- [x] Shedinja
 - [x] Shelgon
 - [x] Shellder
 - [x] Shellos
 - [x] Shelmet
-- [ ] Shieldon
+- [x] Shieldon
 - [x] Shiftry
-- [ ] Shiinotic
+- [x] Shiinotic
 - [x] Shinx
 - [x] Shroomish
 - [x] Shuckle
 - [x] Shuppet
 - [x] Sigilyph
 - [x] Silcoon
-- [ ] Silvally
-- [ ] Simipour
-- [ ] Simisage
-- [ ] Simisear
+- [x] Silvally
+- [x] Simipour
+- [x] Simisage
+- [x] Simisear
 - [x] Skarmory
-- [ ] Skiddo
+- [x] Skiddo
 - [x] Skiploom
 - [x] Skitty
 - [x] Skorupi
@@ -656,29 +656,29 @@
 - [x] Slowking
 - [x] Slowpoke
 - [x] Slugma
-- [ ] Slurpuff
+- [x] Slurpuff
 - [x] Smeargle
-- [ ] Smoochum
+- [x] Smoochum
 - [x] Sneasel
 - [x] Snivy
 - [x] Snorlax
 - [x] Snorunt
 - [x] Snover
 - [x] Snubbull
-- [ ] Solgaleo
+- [x] Solgaleo
 - [x] Solosis
 - [x] Solrock
 - [x] Spearow
-- [ ] Spewpa
+- [x] Spewpa
 - [x] Spheal
 - [x] Spinarak
 - [x] Spinda
 - [x] Spiritomb
 - [x] Spoink
-- [ ] Spritzee
+- [x] Spritzee
 - [x] Squirtle
 - [ ] Stakataka
-- [ ] Stantler
+- [x] Stantler
 - [x] Staraptor
 - [x] Staravia
 - [x] Starly
@@ -687,7 +687,7 @@
 - [x] Steelix
 - [x] Steenee
 - [x] Stoutland
-- [ ] Stufful
+- [x] Stufful
 - [x] Stunfisk
 - [x] Stunky
 - [x] Sudowoodo
@@ -696,26 +696,26 @@
 - [x] Sunkern
 - [x] Surskit
 - [x] Swablu
-- [ ] Swadloon
+- [x] Swadloon
 - [x] Swalot
 - [x] Swampert
 - [x] Swanna
 - [x] Swellow
 - [x] Swinub
-- [ ] Swirlix
-- [ ] Swoobat
+- [x] Swirlix
+- [x] Swoobat
 - [x] Sylveon
 ## T
 - [x] Taillow
 - [x] Talonflame
 - [x] Tangela
-- [ ] Tangrowth
+- [x] Tangrowth
 - [ ] Tapu Bulu
 - [ ] Tapu Fini
 - [ ] Tapu Koko
 - [ ] Tapu Lele
 - [x] Tauros
-- [ ] Teddiursa
+- [x] Teddiursa
 - [x] Tentacool
 - [x] Tentacruel
 - [x] Tepig
@@ -723,9 +723,9 @@
 - [x] Throh
 - [ ] Thundurus
 - [x] Timburr
-- [ ] Tirtouga
-- [ ] Togedemaru
-- [ ] Togekiss
+- [x] Tirtouga
+- [x] Togedemaru
+- [x] Togekiss
 - [x] Togepi
 - [x] Togetic
 - [x] Torchic
@@ -735,7 +735,7 @@
 - [x] Torterra
 - [x] Totodile
 - [x] Toucannon
-- [ ] Toxapex
+- [x] Toxapex
 - [x] Toxicroak
 - [x] Tranquill
 - [x] Trapinch
@@ -745,28 +745,28 @@
 - [x] Trubbish
 - [x] Trumbeak
 - [x] Tsareena
-- [ ] Turtonator
+- [x] Turtonator
 - [x] Turtwig
-- [ ] Tympole
+- [x] Tympole
 - [x] Tynamo
 - [ ] Type: Null
 - [x] Typhlosion
 - [x] Tyranitar
-- [ ] Tyrantrum
-- [ ] Tyrogue
-- [ ] Tyrunt
+- [x] Tyrantrum
+- [x] Tyrogue
+- [x] Tyrunt
 ## U
 - [x] Umbreon
 - [x] Unfezant
-- [ ] Unown
+- [x] Unown
 - [x] Ursaring
 - [x] Uxie
 ## V
-- [ ] Vanillish
-- [ ] Vanillite
-- [ ] Vanilluxe
+- [x] Vanillish
+- [x] Vanillite
+- [x] Vanilluxe
 - [x] Vaporeon
-- [ ] Venipede
+- [x] Venipede
 - [x] Venomoth
 - [x] Venonat
 - [x] Venusaur
@@ -780,24 +780,24 @@
 - [ ] Virizion
 - [x] Vivillon
 - [x] Volbeat
-- [ ] Volcanion
+- [x] Volcanion
 - [x] Volcarona
 - [x] Voltorb
-- [ ] Vullaby
+- [x] Vullaby
 - [x] Vulpix
 ## W
 - [x] Wailmer
 - [x] Wailord
 - [x] Walrein
 - [x] Wartortle
-- [ ] Watchog
+- [x] Watchog
 - [x] Weavile
 - [x] Weedle
 - [x] Weepinbell
 - [x] Weezing
-- [ ] Whimsicott
-- [ ] Whirlipede
-- [ ] Whiscash
+- [x] Whimsicott
+- [x] Whirlipede
+- [x] Whiscash
 - [x] Whismur
 - [x] Wigglytuff
 - [x] Wimpod
@@ -816,13 +816,13 @@
 ## Y
 - [x] Yamask
 - [x] Yanma
-- [ ] Yanmega
-- [ ] Yungoos
+- [x] Yanmega
+- [x] Yungoos
 - [ ] Yveltal
 ## Z
 - [x] Zangoose
 - [x] Zapdos
-- [ ] Zebstrika
+- [x] Zebstrika
 - [ ] Zekrom
 - [ ] Zeraora
 - [x] Zigzagoon

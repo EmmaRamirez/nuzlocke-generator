@@ -9,29 +9,33 @@ const buildFile:string[] = [];
 const alphabet:string[] = [];
 let exists = 0;
 
+const normalize = (str: string) => str.toLowerCase().replace(/\s/g, '-');
+const toPercentage = (num, den) => `${ ((num / den) * 100).toFixed(0) }%`;
+
 function missingByGeneration (list) {
     const generationPoints = [
         { start: 0, end: 151 },
-        { start: 152, end: 251 },
-        { start: 252, end: 386 },
-        { start: 387, end: 493 },
-        { start: 494, end: 649 },
-        { start: 650, end: 721 },
-        { start: 722, end: 807 }
+        { start: 151, end: 251 },
+        { start: 251, end: 386 },
+        { start: 386, end: 493 },
+        { start: 493, end: 649 },
+        { start: 649, end: 721 },
+        { start: 721, end: 807 }
     ];
 
     const resultMap = generationPoints.map((point, idx) => {
         const generationList = list.slice(point.start, point.end);
+        const total = point.end - point.start;
         let generationTotal = 0;
         const generationMissing:string[] = [];
         for (const pokemon of generationList) {
-            if (fs.existsSync(`src/img/${pokemon.toLowerCase()}.jpg`)) {
+            if (fs.existsSync(`src/img/${normalize(pokemon)}.jpg`)) {
                 generationTotal += 1;
             } else {
                 generationMissing.push(pokemon);
             }
         }
-        return `${chalk.blue(`[Gen ${idx + 1}]`)}: ${chalk.yellow(`${generationTotal}/${point.end - point.start}`)} ${chalk.red( (generationTotal / (point.end - point.start )).toFixed(2) + '%' )}, missing: ${generationMissing.join(', ')}\n`;
+        return `${chalk.blue(`[Gen ${idx + 1}]`)}: ${chalk.yellow(`${generationTotal}/${total}`)} ${chalk.red(toPercentage(generationTotal, total)) }, missing: ${generationMissing.length === 0 ? 'none' : generationMissing.join(', ')}\n`;
     });
 
     console.log(resultMap.join('\n'));
@@ -44,7 +48,7 @@ for (const pokemon of pokemonList) {
         alphabet.push(pokemon.charAt(0));
         buildFile.push(`## ${pokemon.charAt(0)}`);
     }
-    if (fs.existsSync(`src/img/${pokemon.toLowerCase()}.jpg`)) {
+    if (fs.existsSync(`src/img/${normalize(pokemon)}.jpg`)) {
         buildFile.push(`- [x] ${pokemon}`);
         exists++;
     } else {
@@ -54,7 +58,7 @@ for (const pokemon of pokemonList) {
 
 fs.writeFile(targetFile, buildFile.join('\n'), (err) => {
     if (err) throw new Error('Failed to write file.');
-    console.log(`Wrote ${targetFile} file with ${exists}/${listOfPokemon.length} ${chalk.green(`${ (exists / listOfPokemon.length).toFixed(2) }%`)} entries.`);
+    console.log(`Wrote ${targetFile} file with ${exists}/${listOfPokemon.length} ${chalk.green(toPercentage(exists, listOfPokemon.length))} entries.`);
 });
 
 missingByGeneration(listOfPokemon);

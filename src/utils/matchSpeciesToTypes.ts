@@ -280,6 +280,16 @@ export const matchSpeciesToTypes = (species: string): string[] => {
         case 'Dragonite':
         case 'Salamence':
             return ['Dragon', 'Flying'];
+        case 'Omanyte':
+        case 'Omastar':
+        case 'Kabuto':
+        case 'Kabutops':
+        case 'Tirtuoga':
+        case 'Carracosta':
+        case 'Corsola':
+        case 'Binacle':
+        case 'Barbaracle':
+            return ['Water', 'Rock'];
         default:
             return ['Normal', 'Normal'];
     }
