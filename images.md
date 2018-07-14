@@ -410,7 +410,7 @@
 - [x] Machop
 - [x] Magby
 - [x] Magcargo
-- [ ] Magearna
+- [x] Magearna
 - [x] Magikarp
 - [x] Magmar
 - [x] Magmortar
