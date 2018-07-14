@@ -172,6 +172,21 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Sometimes changing a type won't work unless you reload the page
 - Selecting a checkpoint sometimes undoes all others
 `,
+    '0.0.9-beta': `
+# Changelog
+
+## Features
+
+
+## Fixes
+- Added nearly all Pokémon images
+- Result is now scrollable for most platforms/browsers
+
+## Known Issues
+- Sugimori images can't be used with the download option
+- Sometimes changing a type won't work unless you reload the page
+- Selecting a checkpoint sometimes undoes all others
+`,
     '0.1.0-beta': `
 `,
 };
