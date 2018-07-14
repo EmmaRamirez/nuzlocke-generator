@@ -26,8 +26,7 @@
   "keywords": [],
   "author": "Emma Ramirez <ramirez.emma.g@gmail.com> (http://emmaramirez.me)",
   "license": "MIT",
-  "dependencies": {
-  },
+  "dependencies": {},
   "jest": {
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
     "moduleFileExtensions": [
