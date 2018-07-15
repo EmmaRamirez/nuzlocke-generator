@@ -178,8 +178,10 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 ## Features
 - **Autocomplete for Locations**: Abandoned Ship, Artisan Cave, Aether Paradise...
 
+
 ## Fixes
 - Added nearly all Pokémon images
+- Added images for plates, gems, and berries
 - Result is now scrollable for most platforms/browsers
 - Mass Editor now obeys dark mode
 - Faint Attack is now a move option alongside Feint Attack
