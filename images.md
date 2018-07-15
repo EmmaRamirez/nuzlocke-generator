@@ -53,7 +53,7 @@
 - [x] Bewear
 - [x] Bibarel
 - [x] Bidoof
-- [ ] Binacle
+- [x] Binacle
 - [x] Bisharp
 - [x] Blacephalon
 - [x] Blastoise
@@ -806,7 +806,7 @@
 - [x] Wobbuffet
 - [x] Woobat
 - [x] Wooper
-- [ ] Wormadam
+- [x] Wormadam
 - [x] Wurmple
 - [x] Wynaut
 ## X
