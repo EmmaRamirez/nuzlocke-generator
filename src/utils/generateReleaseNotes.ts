@@ -182,6 +182,8 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Added nearly all Pokémon images
 - Result is now scrollable for most platforms/browsers
 - Mass Editor now obeys dark mode
+- Faint Attack is now a move option alongside Feint Attack
+- You can now click on boxed pokemon icons in the Result panel again
 
 ## Known Issues
 - Sugimori images can't be used with the download option

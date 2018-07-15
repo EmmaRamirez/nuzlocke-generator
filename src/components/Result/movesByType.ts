@@ -68,6 +68,7 @@ export const movesByType: any = {
         'Torment',
         'Embargo',
         'Feint Attack',
+        'Faint Attack',
         'Fake Tears',
     ],
     Dragon: [

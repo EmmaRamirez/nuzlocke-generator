@@ -13,6 +13,8 @@ export const BoxedPokemonBase = (poke: Pokemon & { selectPokemon }) => {
         <div className='boxed-pokemon-container'>
             <PokemonIcon
                 species={poke.species}
+                id={poke.id}
+                style={{ cursor: 'pointer' }}
             />
             <div className='boxed-pokemon-info'>
                 <span className='boxed-pokemon-name'>

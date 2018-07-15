@@ -94,5 +94,8 @@ export const listOfItems = [
     'White Herb',
     'Wide Lens',
     'Wise Glasses',
-    'Zoom Lens'
+    'Zoom Lens',
+
+    'Aguav Berry',
+    
 ];
