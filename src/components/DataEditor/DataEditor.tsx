@@ -3,11 +3,14 @@ import { connect } from 'react-redux';
 import { Button, ButtonGroup, Dialog, Callout, TextArea, Intent, Alert } from '@blueprintjs/core';
 import { PokemonIconBase } from 'components/PokemonIcon';
 import { ErrorBoundary } from 'components/Shared';
-// import { parseFile } from 'pokemon-savefile-parser';
 import * as uuid from 'uuid/v4';
 import { persistor } from 'store';
-
 import { replaceState } from 'actions';
+import { style } from 'reducers/style';
+// import { parseFile } from 'pokemon-savefile-parser';
+
+const trash = require('assets/img/trash.png');
+
 
 export interface DataEditorProps {
     state: any;
@@ -145,12 +148,17 @@ export class DataEditorBase extends React.Component<
                     onCancel={this.toggleClearingData}
                     cancelButtonText='Nevermind'
                     confirmButtonText='Delete Anyway'
+                    className={this.props.state.style.editorDarkMode ? 'pt-dark' : 'pt-light'}
+                    style={{ maxWidth: '600px' }}
                     intent={Intent.DANGER}
-                    icon='trash'>
-                    <p>
-                        This will permanently delete all your local storage data, with no way to
-                        retrieve it. Are you sure you want to do this?
-                    </p>
+                >
+                    <div style={{ display: 'flex' }}>
+                        <img style={{ height: '10rem' }} src={trash} alt='Sad Trubbish' />
+                        <p style={{ fontSize: '1.2rem', padding: '1rem' }}>
+                            This will permanently delete all your local storage data, with no way to
+                            retrieve it. Are you sure you want to do this?
+                        </p>
+                    </div>
                 </Alert>
                 <Dialog
                     isOpen={this.state.isOpen}
