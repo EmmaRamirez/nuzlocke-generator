@@ -9,10 +9,11 @@ import * as domtoimage from 'dom-to-image';
 
 import { selectPokemon } from 'actions';
 
-import { TeamPokemon } from './TeamPokemon';
+import { TeamPokemon } from 'components/TeamPokemon';
 import { DeadPokemon } from './DeadPokemon';
 import { BoxedPokemon } from './BoxedPokemon';
 import { ChampsPokemon } from './ChampsPokemon';
+import { reducers } from 'reducers';
 
 import './Result.styl';
 import { Button, Intent } from '@blueprintjs/core';
@@ -49,7 +50,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             .filter(poke => poke.status === 'Team')
             .sort(sortPokes)
             .map((poke, index) => {
-                return <TeamPokemon key={index} {...poke} />;
+                return <TeamPokemon key={index} pokemon={poke} />;
             });
     }
 
@@ -347,8 +348,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     }
 }
 
-export const Result = connect(
-    (state: any) => ({
+export const Result = connect<Partial<typeof reducers>, any, any>(
+    (state: Partial<typeof reducers>) => ({
         pokemon: state.pokemon,
         game: state.game,
         trainer: state.trainer,
