@@ -15,6 +15,7 @@ interface CurrentPokemonInputProps {
     type: string;
     value: any;
     placeholder?: string;
+    disabled?: boolean;
     options?: string[];
     editPokemon?: any;
     selectedId: any;
@@ -60,7 +61,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         this.props.selectPokemon && this.props.selectPokemon(this.props.selectedId);
     };
 
-    public getInput({ labelName, inputName, type, value, placeholder, options }: any) {
+    public getInput({ labelName, disabled, inputName, type, value, placeholder, options }: any) {
         value = value == null ? '' : value;
         if (type === 'moves') {
             return (
@@ -92,6 +93,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                     name={inputName}
                     value={value}
                     placeholder={placeholder}
+                    disabled={disabled || false}
                 />
             );
         }

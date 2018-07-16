@@ -1,7 +1,6 @@
 import { Button } from '@blueprintjs/core';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import * as uuid from 'uuid/v4';
 
 import { Pokemon } from 'models';
 import { Boxes } from 'types';
@@ -10,10 +9,9 @@ import {
     generateEmptyPokemon,
     pokemonByFilter,
 } from 'utils';
-import { CurrentPokemonEdit } from './CurrentPokemonEdit';
+import { CurrentPokemonEdit, MassEditor } from '.';
 
 import { AddPokemonButton } from 'components/AddPokemonButton';
-import { MassEditor } from './MassEditor';
 import { BaseEditor } from 'components/BaseEditor';
 
 require('../../assets/img/team-box.png');

@@ -11,9 +11,9 @@ import {
 } from 'utils';
 import { Pokemon } from 'models';
 import { onClick, Boxes } from 'types';
-import { CurrentPokemonInput } from './CurrentPokemonInput';
+import { CurrentPokemonInput } from 'components/PokemonEditor';
 import { LinkedDeletePokemonButton } from 'components/DeletePokemonButton';
-import { Autocomplete } from '../Shared';
+import { Autocomplete } from 'components/Shared';
 import { selectPokemon, editPokemon } from 'actions';
 import { connect } from 'react-redux';
 import { listOfGames } from 'utils';
@@ -36,7 +36,7 @@ export interface CurrentPokemonEditState {
 }
 
 export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditProps, CurrentPokemonEditState> {
-    constructor(props: any) {
+    constructor(props) {
         super(props);
         this.state = {
             selectedId: '5',
@@ -50,6 +50,12 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
             selectedId: this.props.selectedId,
             box: this.props.box
         });
+    }
+
+    public componentWillReceiveProps(nextProps, prevProps) {
+        if (nextProps.selectedId !== prevProps.selectedId) {
+            this.setState({ selectedId: nextProps.selectedId });
+        }
     }
 
     public moreInputs(currentPokemon: Pokemon) {
@@ -145,6 +151,7 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
                 <CurrentPokemonInput
                     labelName='Position'
                     inputName='position'
+                    disabled={true}
                     value={currentPokemon.position}
                     type='text'
                 />
@@ -166,12 +173,6 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
     };
 
     public render() {
-        // const SpeciesComplete = new Autocomplete({
-        //     items: [],
-        //     placeholder: 'Missing No.',
-        //     name: 'species',
-        //     label: 'Species'
-        // }).typeOf<string>();
         const currentPokemon = this.props.pokemon.find((v: Pokemon) => v.id === this.state.selectedId);
 
         if (currentPokemon == null) {
@@ -203,13 +204,6 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
                     />
                     <LinkedDeletePokemonButton id={this.state.selectedId} />
                 </span>
-                {/* <CurrentPokemonInput
-                    labelName='Species'
-                    inputName='species'
-                    value={currentPokemon.species}
-                    placeholder='Missing No.'
-                    type='text'
-                /> */}
                 <Autocomplete
                     items={listOfPokemon}
                     name='species'
