@@ -46,6 +46,12 @@ export const matchSpeciesToTypes = (species: string): string[] => {
         case 'Litten':
         case 'Torracat':
             return ['Fire', 'Fire'];
+        case 'Charizard':
+        case 'Moltres':
+        case 'Ho-Oh':
+        case 'Fletchinder':
+        case 'Talonflame':
+            return ['Fire', 'Flying'];
         case 'Squirtle':
         case 'Wartortle':
         case 'Blastoise':
