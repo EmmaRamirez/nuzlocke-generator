@@ -153,6 +153,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         width: '100px',
                         borderRadius: '.25rem',
                         textAlign: 'center',
+                        textShadow: '0 0 2px #222'
                     }}>
                     {game.name}
                 </div>

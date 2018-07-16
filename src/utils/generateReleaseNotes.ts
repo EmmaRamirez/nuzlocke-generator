@@ -177,7 +177,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 
 ## Features
 - **Autocomplete for Locations**: Abandoned Ship, Artisan Cave, Aether Paradise...
-
+- **Hotkey support**: See the Hotkeys section below Style for more info
 
 ## Fixes
 - Added nearly all Pokémon images
@@ -186,10 +186,11 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Mass Editor now obeys dark mode
 - Faint Attack is now a move option alongside Feint Attack
 - You can now click on boxed pokemon icons in the Result panel again
+- Improved designs of several dialogs, such as the RulesEditor and Delete All Data screen
+- Changing a type should now work in all situations
 
 ## Known Issues
 - Sugimori images can't be used with the download option
-- Sometimes changing a type won't work unless you reload the page
 - Selecting a checkpoint sometimes undoes all others
 `,
     '0.1.0-beta': `

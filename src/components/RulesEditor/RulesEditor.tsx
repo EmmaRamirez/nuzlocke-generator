@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Button, IDialogProps, Dialog, Intent, TextArea, Icon } from '@blueprintjs/core';
 import { connect } from 'react-redux';
-
 import { editRule, addRule, deleteRule, resetRules } from 'actions';
 
 import './RulesEditor.styl';
@@ -70,13 +69,13 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
 }
 
 export const RulesEditorDialogBase = (
-    props: RulesEditorProps & { onClose: any; isOpen: boolean },
+    props: RulesEditorProps & { onClose: any; isOpen: boolean, style: any },
 ) => {
     return (
         <Dialog
             isOpen={props.isOpen}
             onClose={props.onClose}
-            className='rules-editor-dialog'
+            className={`rules-editor-dialog ${ props.style.editorDarkMode ? 'pt-dark' : 'pt-light' }`}
             title='Rules Editor'
             icon='edit'>
             <div className='pt-dialog-body'>
@@ -95,6 +94,7 @@ export const RulesEditorDialogBase = (
 export const RulesEditorDialog = connect(
     (state: any) => ({
         rules: state.rules,
+        style: state.style
     }),
     { editRule, addRule, deleteRule, resetRules },
 )(RulesEditorDialogBase as any);

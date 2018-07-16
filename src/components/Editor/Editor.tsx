@@ -7,6 +7,7 @@ import { PokemonEditor } from 'components/PokemonEditor';
 import { StyleEditor } from 'components/StyleEditor';
 import { TrainerEditor } from 'components/TrainerEditor/TrainerEditor';
 import { DataEditor } from 'components/DataEditor';
+import { HotkeysEditor } from 'components/HotkeysEditor';
 
 import './editor.styl';
 
@@ -39,6 +40,7 @@ export class EditorBase extends React.Component<{ editor: any; style: any }, {}>
                 <TrainerEditor />
                 <PokemonEditor />
                 <StyleEditor />
+                <HotkeysEditor />
                 <DataEditor />
             </Scrollbars>
         );
