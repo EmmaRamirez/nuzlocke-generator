@@ -24,7 +24,7 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
             <li className='rules-list-item' key={index}>
                 <div className='rule-no'>{ index + 1 }</div>
                 <TextArea
-                    value={rule}
+                    defaultValue={rule}
                     className='pt-fill'
                     onChange={ (e:any) => this.props.editRule(index, e.target.value) }
                     dir='auto'
@@ -32,29 +32,6 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
                 <div role='action' onClick={e => this.props.deleteRule(index)} className='rule-delete' title='Delete Rule'>
                     <Icon intent={Intent.DANGER} role='action' style={{ cursor: 'pointer' }} icon={'trash'} />
                 </div>
-
-                {/*
-                //     style={{
-                //         border: '1px solid #ccc',
-                //         background: '#efefef',
-                //         borderRadius: '.5rem',
-                //         padding: '.25rem',
-                //         margin: '.25rem',
-                //         width: '100%'
-                //     }}
-                //     type='text'
-                //     multiple
-                //     defaultValue={rule}
-                //     onChange={e => this.props.editRule(index, e.target.value )}
-                // />
-                // <span
-                //     role='action'
-                //     style={{ cursor: 'pointer' }}
-                //     title='Delete Rule'
-                //     onClick={e => this.props.deleteRule(index)}
-                //     className='pt-icon pt-icon-cross'
-                // />
-                */}
             </li>
         ));
     }
