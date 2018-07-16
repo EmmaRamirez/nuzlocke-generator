@@ -15,19 +15,27 @@ import { CurrentPokemonInput } from './CurrentPokemonInput';
 import { LinkedDeletePokemonButton } from 'components/DeletePokemonButton';
 import { Autocomplete } from '../Shared';
 import { selectPokemon, editPokemon } from 'actions';
+import { connect } from 'react-redux';
 import { listOfGames } from 'utils';
 import { PokemonIconBase } from 'components/PokemonIcon';
 
 const pokeball = require('assets/pokeball.png');
 
-interface CurrentPokemonEditState {
+export interface CurrentPokemonEditProps {
+    selectedId: Pokemon['id'];
+    box: any;
+    pokemon: Pokemon[];
+    selectPokemon: selectPokemon;
+    editPokemon: editPokemon;
+}
+
+export interface CurrentPokemonEditState {
     selectedId: string;
     expandedView: boolean;
     box: Boxes;
 }
 
-@StoreContext
-export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditState> {
+export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditProps, CurrentPokemonEditState> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -38,11 +46,9 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
     }
 
     public componentWillMount() {
-        this.context.store.subscribe(() => {
-            this.setState({
-                selectedId: this.context.store.getState().selectedId,
-                box: this.context.store.getState().box,
-            });
+        this.setState({
+            selectedId: this.props.selectedId,
+            box: this.props.box
         });
     }
 
@@ -126,8 +132,8 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                         const edit = {
                             item: e.target.value,
                         };
-                        this.context.store.dispatch(editPokemon(edit, this.state.selectedId));
-                        this.context.store.dispatch(selectPokemon(this.state.selectedId));
+                        editPokemon(edit, this.state.selectedId);
+                        selectPokemon(this.state.selectedId);
                     }}
                 />
                 <CurrentPokemonInput
@@ -166,9 +172,7 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
         //     name: 'species',
         //     label: 'Species'
         // }).typeOf<string>();
-        const currentPokemon = this.context.store
-            .getState()
-            .pokemon.find((v: Pokemon) => v.id === this.state.selectedId);
+        const currentPokemon = this.props.pokemon.find((v: Pokemon) => v.id === this.state.selectedId);
 
         if (currentPokemon == null) {
             return (
@@ -216,14 +220,12 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                         const edit = {
                             species: e.target.value,
                         };
-                        this.context.store.dispatch(editPokemon(edit, this.state.selectedId));
-                        this.context.store.dispatch(
-                            editPokemon(
-                                { types: matchSpeciesToTypes(e.target.value) },
-                                this.state.selectedId,
-                            ),
+                        editPokemon(edit, this.state.selectedId);
+                        editPokemon(
+                            { types: matchSpeciesToTypes(e.target.value) },
+                            this.state.selectedId,
                         );
-                        this.context.store.dispatch(selectPokemon(this.state.selectedId));
+                        selectPokemon(this.state.selectedId);
                     }}
                 />
                 <CurrentPokemonInput
@@ -245,13 +247,13 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                     name='met'
                     label='Met Location'
                     placeholder='Pallet Town'
-                    value={currentPokemon.met}
+                    value={currentPokemon.met || ''}
                     onChange={e => {
                         const edit = {
                             met: e.target.value,
                         };
-                        this.context.store.dispatch(editPokemon(edit, this.state.selectedId));
-                        this.context.store.dispatch(selectPokemon(this.state.selectedId));
+                        editPokemon(edit, this.state.selectedId);
+                        selectPokemon(this.state.selectedId);
                     }}
                 />
                 <CurrentPokemonInput
@@ -338,3 +340,15 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
         );
     }
 }
+
+export const CurrentPokemonEdit = connect(
+    (state:any) => ({
+        box: state.box,
+        selectedId: state.selectedId,
+        pokemon: state.pokemon
+    }),
+    {
+        selectPokemon,
+        editPokemon
+    }
+)(CurrentPokemonEditBase);
