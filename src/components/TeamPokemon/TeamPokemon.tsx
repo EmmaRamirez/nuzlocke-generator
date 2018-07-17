@@ -68,11 +68,8 @@ export class TeamPokemonBase extends React.Component <TeamPokemonBaseProps> {
     }
 
     public render() {
-        console.log(this.props);
         const { pokemon, style, game, selectPokemon } = this.props;
         const poke = pokemon;
-
-        console.log(poke);
 
         const moves =
             poke.moves == null ? (

@@ -32,7 +32,7 @@ export class HotkeysEditor extends React.Component<{}> {
                     {
                         hotkeyList.map(item => (
                             <li style={{ display: 'flex' }}>
-                                <code style={{ margin: '4px' }} className='pt-code'>{ item.key }</code>
+                                <kbd style={{ margin: '4px' }} className='pt-code'>{ item.key }</kbd>
                                 <div style={{ margin: '4px' }}>{ item.comment }</div>
                             </li>
                         ))

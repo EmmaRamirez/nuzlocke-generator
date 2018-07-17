@@ -19,3 +19,4 @@ export { listOfThemes } from './listOfThemes';
 export * from './getGameRegion';
 export * from './getForme';
 export * from './listOfLocations';
+export * from './noop';

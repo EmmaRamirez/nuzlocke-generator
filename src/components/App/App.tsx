@@ -6,17 +6,19 @@ import { Store } from 'redux';
 
 import { seeRelease, editRule } from 'actions';
 import { VersionTag } from './VersionTag';
-import { generateReleaseNotes } from 'utils';
+import { generateReleaseNotes, sortPokes, sortPokesReverse } from 'utils';
 import * as Loadable from 'react-loadable';
-
-import { Dialog } from '@blueprintjs/core';
-
 import * as ReactMarkdown from 'react-markdown';
+import { Dialog } from '@blueprintjs/core';
+import { Pokemon } from 'models';
+import { selectPokemon } from 'actions';
+
 
 const pkg = require('../../../package.json');
 const croagunk = require('assets/img/croagunk.gif');
 
 import './app.styl';
+import { Hotkeys } from 'components/Hotkeys';
 
 export interface AppProps {
     seeRelease: seeRelease;
@@ -60,11 +62,13 @@ export class AppBase extends React.Component<AppProps, { isOpen: boolean }> {
         this.toggleDialog(null);
     };
 
+
     private toggleDialog = e => this.setState({ isOpen: !this.state.isOpen });
 
     public render() {
         return (
             <div className='app' role='main'>
+                <Hotkeys />
                 <Editor />
                 <Result />
                 <VersionTag

@@ -3,6 +3,8 @@ import * as React from 'react';
 import { BadgeInput } from 'components/TrainerEditor/BadgeInput';
 import { LinkedTrainerInfoEditField } from 'components/TrainerEditor/LinkedTrainerInfoEditField';
 
+import { Popover, PopoverInteractionKind, Position, Menu } from '@blueprintjs/core';
+
 const SpanBlock = ({ text }) => (
     <span
         style={{
@@ -73,23 +75,22 @@ export class TrainerInfoEditor extends React.Component<{}, {}> {
                 />
                 <LinkedTrainerInfoEditField
                     onInput={this.onInput}
-                    // label={
-                    //     <Popover
-                    //         minimal={true}
-                    //         interactionKind={PopoverInteractionKind.HOVER}
-                    //         position={Position.BOTTOM}
-                    //         content={
-                    //             <Menu>
-                    //                 Type: image url. You can also specify a plain string of{' '}
-                    //                 {trainerNames.map(t => <SpanBlock key={t} text={t} />)}
-                    //             </Menu>
-                    //         }>
-                    //         <span>
-                    //             Trainer Image <span className='pt-icon pt-icon-info-sign' />
-                    //         </span>
-                    //     </Popover>
-                    // }
-                    label='Trainer Image'
+                    label={
+                        <Popover
+                            minimal={true}
+                            interactionKind={PopoverInteractionKind.HOVER}
+                            position={Position.BOTTOM}
+                            content={
+                                <Menu>
+                                    Type: image url. You can also specify a plain string of{' '}
+                                    {trainerNames.map(t => <SpanBlock key={t} text={t} />)}
+                                </Menu>
+                            }>
+                            <span>
+                                Trainer Image <span className='pt-icon pt-icon-info-sign' />
+                            </span>
+                        </Popover>
+                    }
                     name='image'
                     placeholder='http://...'
                 />

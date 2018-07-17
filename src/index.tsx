@@ -37,10 +37,8 @@ const rollbarConfig = new Rollbar({
     enabled: window.location.pathname.includes('localhost') ? false : true,
 });
 
-// OfflinePluginRuntime.install({
-//     onUpdateReady: () => OfflinePluginRuntime.applyUpdate(),
-//     onUpdated: () => location.reload(),
-// });
+Rollbar.init(rollbarConfig as any);
+
 
 const mountNode = document.getElementById('app');
 const history = createHistory();
