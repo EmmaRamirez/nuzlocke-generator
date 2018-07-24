@@ -18,7 +18,6 @@ import { TopBar } from 'components/TopBar';
 import { reducers } from 'reducers';
 
 import './Result.styl';
-import { Button, Intent } from '@blueprintjs/core';
 
 interface ResultProps {
     pokemon: Pokemon[];
@@ -273,7 +272,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         style.template.toLowerCase().replace(/\s/g, '-')) ||
                         ''} region-${getGameRegion(this.props.game.name)}`}
                     style={{
-                        margin: '3rem',
+                        margin: '3rem auto',
                         backgroundColor: bgColor,
                         backgroundImage: `url(${style.backgroundImage})`,
                         backgroundRepeat: style.tileBackground ? 'repeat' : 'no-repeat',
