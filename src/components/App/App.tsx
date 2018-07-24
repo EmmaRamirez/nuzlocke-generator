@@ -48,7 +48,6 @@ const Result = Loadable({
     }
 });
 
-
 export class AppBase extends React.Component<AppProps, { isOpen: boolean }> {
     constructor(props: any) {
         super(props);
@@ -71,11 +70,11 @@ export class AppBase extends React.Component<AppProps, { isOpen: boolean }> {
                 <Hotkeys />
                 <Editor />
                 <Result />
-                <VersionTag
+                {/* <VersionTag
                     version={pkg.version}
                     onClick={this.toggleDialog}
                     darkMode={this.props.style.editorDarkMode}
-                />
+                /> */}
                 <Dialog
                     isOpen={this.state.isOpen}
                     onClose={this.closeDialog}

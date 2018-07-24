@@ -225,7 +225,6 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                     selectedValue={props.style.teamImages}>
                     <Radio label='Standard' value='standard' />
                     <Radio label='Sugimori' value='sugimori' />
-                    <Radio disabled label='Dream World' value='dreamworld' />
                 </RadioGroup>
             </div>
 

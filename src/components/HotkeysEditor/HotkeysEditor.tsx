@@ -1,19 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { BaseEditor } from '../BaseEditor';
-
-const accentedE = '\xE9';
-
-export const hotkeyList = [
-    {
-        key: 'j',
-        comment: `Prevous Pok${accentedE}mon`
-    },
-    {
-        key: 'k',
-        comment: `Next Pok${accentedE}mon`
-    }
-];
+import { BaseEditor } from 'components/BaseEditor';
+import { hotkeyList } from 'utils';
 
 // tslint:disable-next-line:no-empty-interfaces
 export interface HotkeysEditorState {

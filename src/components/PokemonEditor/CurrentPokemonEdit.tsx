@@ -138,8 +138,8 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
                         const edit = {
                             item: e.target.value,
                         };
-                        editPokemon(edit, this.state.selectedId);
-                        selectPokemon(this.state.selectedId);
+                        this.props.editPokemon(edit, this.state.selectedId);
+                        this.props.selectPokemon(this.state.selectedId);
                     }}
                 />
                 <CurrentPokemonInput
@@ -214,12 +214,12 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
                         const edit = {
                             species: e.target.value,
                         };
-                        editPokemon(edit, this.state.selectedId);
-                        editPokemon(
+                        this.props.editPokemon(edit, this.state.selectedId);
+                        this.props.editPokemon(
                             { types: matchSpeciesToTypes(e.target.value) },
                             this.state.selectedId,
                         );
-                        selectPokemon(this.state.selectedId);
+                        this.props.selectPokemon(this.state.selectedId);
                     }}
                 />
                 <CurrentPokemonInput
@@ -246,8 +246,8 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
                         const edit = {
                             met: e.target.value,
                         };
-                        editPokemon(edit, this.state.selectedId);
-                        selectPokemon(this.state.selectedId);
+                        this.props.editPokemon(edit, this.state.selectedId);
+                        this.props.selectPokemon(this.state.selectedId);
                     }}
                 />
                 <CurrentPokemonInput

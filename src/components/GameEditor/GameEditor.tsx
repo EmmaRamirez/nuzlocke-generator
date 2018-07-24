@@ -36,17 +36,6 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
         });
     };
 
-    private isMinimized(): any {
-        if (this.props.editor.minimized) {
-            return {
-                position: 'fixed',
-                top: '2px',
-                left: '2px',
-            };
-        }
-        return {};
-    }
-
     private toggleDialog = _ => this.setState({ isOpen: !this.state.isOpen });
 
     public render() {
@@ -59,12 +48,6 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                 <div className='game-editor'>
                     <h4 style={{ display: 'flex', alignContent: 'flex-end' }}>
                         Game
-                        <Button
-                            onClick={e => this.props.changeEditorSize(!this.props.editor.minimized)}
-                            style={{ marginLeft: 'auto', ...this.isMinimized() }}
-                            className='pt-minimal'
-                            icon={this.props.editor.minimized ? 'maximize' : 'minimize'}
-                        />
                     </h4>
                     <div style={gameSubEditorStyle}>
                         <div className='pt-select'>

@@ -1,3 +1,9 @@
+.top-bar {
+  padding: .25rem;
+  font-size: 1.15rem;
+}
+
+
 .container {
   border: 1px solid #ddd;
   // margin: .5rem auto;
@@ -986,5 +992,18 @@
     width: 975px;
     bottom: -50px;
     right: 0;
+  }
+}
+
+.hexagons {
+  .pokemon-image-wrapper {
+    background: transparent;
+    border-radius: 0 !important;
+    -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
+  .pokemon-image {
+    
   }
 }

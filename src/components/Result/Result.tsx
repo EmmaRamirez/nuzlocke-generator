@@ -13,6 +13,8 @@ import { TeamPokemon } from 'components/TeamPokemon';
 import { DeadPokemon } from './DeadPokemon';
 import { BoxedPokemon } from './BoxedPokemon';
 import { ChampsPokemon } from './ChampsPokemon';
+import { TopBar } from 'components/TopBar';
+
 import { reducers } from 'reducers';
 
 import './Result.styl';
@@ -272,13 +274,16 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                 autoHideTimeout={1000}
                 autoHideDuration={200}>
                 {this.renderErrors()}
-                <Button style={{
+
+                {/* <Button style={{
                     position: 'absolute',
                     top: '2px',
                     right: '112px',
                 }} icon='download' intent={Intent.PRIMARY} onClick={e => this.toImage()}>
                     Download Image<sup>BETA</sup>
-                </Button>
+                </Button> */}
+
+                <TopBar onClickDownload={e => this.toImage()} />
                 <div
                     ref={this.resultRef}
                     className={`result container ${(style.template &&
