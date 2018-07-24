@@ -8,7 +8,7 @@ import configureStore from 'redux-mock-store';
 describe('<App />', () => {
     it('renders', () => {
         const store = configureStore()({});
-        const wrapper = mount(<App style={styleDefaults} rules={['1', '2']} />);
+        const wrapper = mount(<App disableHotkeys={true} style={styleDefaults} rules={['1', '2']} />);
         expect(wrapper).toBeDefined();
     });
 });

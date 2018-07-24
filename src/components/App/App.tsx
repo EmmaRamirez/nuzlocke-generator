@@ -6,10 +6,12 @@ import * as Loadable from 'react-loadable';
 
 
 import './app.styl';
+import { Hotkeys } from 'components/Hotkeys';
 
 export interface AppProps {
     style: any;
     rules: any;
+    disableHotkeys?: boolean;
 }
 
 function Loading () {
@@ -32,23 +34,19 @@ const Result = Loadable({
     }
 });
 
-const Hotkeys = Loadable({
-    loader: () => import('components/Hotkeys'),
-    loading: Loading,
-    render(loaded) {
-        return <loaded.Hokeys />;
-    }
-});
-
 export class AppBase extends React.PureComponent<AppProps> {
     constructor(props: any) {
         super(props);
     }
 
+    public static defaultProps = {
+        disableHotkeys: false,
+    };
+
     public render() {
         return (
             <div className='app' role='main'>
-                <Hotkeys />
+                { this.props.disableHotkeys ? null : <Hotkeys /> }
                 <Editor />
                 <Result />
             </div>
