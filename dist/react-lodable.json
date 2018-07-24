@@ -111,7 +111,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../common/errors": [
+  "./errors": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
@@ -1593,7 +1593,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/internal/scrollUtils": [
+  "../common/internal/scrollUtils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/internal/scrollUtils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/internal/scrollUtils.js",
@@ -1677,7 +1677,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/utils": [
+  "../common/utils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
@@ -4455,7 +4455,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./internal/proc": [
+  "./proc": [
     {
       "id": "./node_modules/redux-saga/es/internal/proc.js",
       "name": "./node_modules/redux-saga/es/internal/proc.js",
@@ -6735,7 +6735,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "components/PokemonIcon": [
+  "../PokemonIcon": [
     {
       "id": "./src/components/PokemonIcon/index.ts",
       "name": "./src/components/PokemonIcon/index.ts",

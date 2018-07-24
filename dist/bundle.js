@@ -48540,7 +48540,7 @@ function extend() {
 /*! exports provided: name, version, description, main, scripts, engines, keywords, author, license, dependencies, devDependencies, default */
 /***/ (function(module) {
 
-module.exports = {"name":"nuzlocke-generator","version":"0.0.9-beta","description":"A tool for generating nuzlocke team pics from data","main":"index.js","scripts":{"test":"jest --coverage --config jest-config.json","prebuild":"npm run lint","build":"webpack","build:production":"webpack","build:watch":"webpack --watch","clean":"rimraf dist","pretest":"npm run lint","format":"prettier --config .prettierrc --write **/**/*.{ts,tsx} && npm run lint","lint":"tslint --fix -c tslint.json 'src/**/*.{ts,tsx}'","serve":"webpack-serve","serve:heroku":"npm run build:production && heroku local web","deploy":"npm run build && git push heroku master","precommit":"npm run lint","prepush":"ts-node imageCheck.ts && npm run build:production && git add . && git commit --no-verify -m 'chore: update build'"},"engines":{"node":"8.9.0","npm":"6.1.0"},"keywords":[],"author":"Emma Ramirez <ramirez.emma.g@gmail.com> (http://emmaramirez.me)","license":"MIT","dependencies":{},"devDependencies":{"@blueprintjs/core":"^2.0.0","@blueprintjs/icons":"^2.0.0","@blueprintjs/table":"^2.0.0","@types/chai":"^4.0.10","@types/enzyme":"^2.8.12","@types/express":"^4.11.0","@types/jest":"^23.1.4","@types/lodash":"^4.14.91","@types/mocha":"^2.2.45","@types/node":"^8.5.2","@types/pure-render-decorator":"^0.2.28","@types/react":"^16.4.6","@types/react-addons-css-transition-group":"^15.0.3","@types/react-dom":"^16.0.6","@types/react-redux":"^5.0.14","@types/react-router":"^4.0.20","@types/react-router-dom":"^4.2.3","@types/react-router-redux":"^5.0.11","@types/redux-logger":"^3.0.5","chai":"^4.1.2","cheerio":"^1.0.0-rc.2","copy-webpack-plugin":"^4.5.2","coveralls":"^3.0.2","css-loader":"^0.28.7","dom-to-image":"git+https://github.com/Keepsite/dom-to-image.git","emotion":"^8.0.12","enzyme":"^3.3.0","enzyme-adapter-react-16":"^1.1.1","file-loader":"^1.1.11","history":"^4.7.2","husky":"^1.0.0-rc.12","imports-loader":"^0.7.1","istanbul":"^0.4.5","jest":"^23.3.0","jest-css-modules":"^1.1.0","jest-enzyme":"^4.0.2","localforage":"^1.5.5","lodash":"^4.17.10","mocha":"^5.2.0","node-sass":"^4.9.0","offline-plugin":"^5.0.5","pokemon-savefile-parser":"^0.2.1","prettier":"^1.10.2","prop-types":"^15.6.0","pure-render-decorator":"^1.2.1","react":"^16.4.1","react-addons-css-transition-group":"^15.6.2","react-addons-test-utils":"^15.6.2","react-custom-scrollbars":"^4.2.1","react-docgen-typescript":"^1.2.0","react-dom":"^16.4.1","react-hot-loader":"^3.1.3","react-loadable":"^5.4.0","react-markdown":"^3.1.5","react-polyfills":"0.0.1","react-redux":"^5.0.6","react-router":"^4.2.0","react-router-dom":"^4.2.2","react-router-redux":"^5.0.0-alpha.9","react-styleguidist":"^6.1.0","react-test-renderer":"^15.6.2","react-transition-group":"^2.2.1","recompose":"^0.25.1","redux":"^3.7.2","redux-logger":"^3.0.6","redux-persist":"^5.4.0","redux-saga":"^0.15.6","redux-thunk":"^2.2.0","reflect-metadata":"^0.1.10","reselect":"^3.0.1","resolve-url-loader":"^2.3.0","rimraf":"^2.6.2","rollbar":"^2.4.2","rxjs":"^5.5.6","sass-loader":"^6.0.6","serviceworker-webpack-plugin":"^0.2.3","sinon":"^6.1.3","style-loader":"^0.18.2","stylus":"^0.54.5","stylus-loader":"^3.0.2","ts-jest":"^23.0.0","ts-loader":"^4.4.2","tslint":"^5.10.0","tslint-loader":"^3.6.0","tslint-microsoft-contrib":"^5.0.1","typescript":"^2.9.2","url-loader":"^1.0.1","uuid":"^3.1.0","webpack":"4.14.0","webpack-cli":"^3.0.8","webpack-dashboard":"^2.0.0","webpack-serve":"^1.0.4"}};
+module.exports = {"name":"nuzlocke-generator","version":"0.0.9-beta","description":"A tool for generating nuzlocke team pics from data","main":"index.js","scripts":{"test":"jest --coverage --config jest-config.json","prebuild":"npm run lint","build":"webpack","build:production":"webpack","build:watch":"webpack --watch","clean":"rimraf dist","pretest":"npm run lint","format":"prettier --config .prettierrc --write **/**/*.{ts,tsx} && npm run lint","lint":"tslint --fix -c tslint.json 'src/**/*.{ts,tsx}'","serve":"webpack-serve","serve:heroku":"npm run build:production && heroku local web","deploy":"npm run build && git push heroku master","precommit":"npm run lint","prepush":"ts-node imageCheck.ts && npm run build:production && git add . && git commit --no-verify -m 'chore: update build'"},"engines":{"node":"8.9.0","npm":"6.1.0"},"keywords":[],"author":"Emma Ramirez <ramirez.emma.g@gmail.com> (http://emmaramirez.me)","license":"MIT","dependencies":{"redux-mock-store":"^1.5.3"},"devDependencies":{"@blueprintjs/core":"^2.0.0","@blueprintjs/icons":"^2.0.0","@blueprintjs/table":"^2.0.0","@types/chai":"^4.0.10","@types/enzyme":"^2.8.12","@types/express":"^4.11.0","@types/jest":"^23.1.4","@types/lodash":"^4.14.91","@types/mocha":"^2.2.45","@types/node":"^8.5.2","@types/pure-render-decorator":"^0.2.28","@types/react":"^16.4.6","@types/react-addons-css-transition-group":"^15.0.3","@types/react-dom":"^16.0.6","@types/react-redux":"^5.0.14","@types/react-router":"^4.0.20","@types/react-router-dom":"^4.2.3","@types/react-router-redux":"^5.0.11","@types/redux-logger":"^3.0.5","chai":"^4.1.2","cheerio":"^1.0.0-rc.2","copy-webpack-plugin":"^4.5.2","coveralls":"^3.0.2","css-loader":"^0.28.7","dom-to-image":"git+https://github.com/Keepsite/dom-to-image.git","emotion":"^8.0.12","enzyme":"^3.3.0","enzyme-adapter-react-16":"^1.1.1","file-loader":"^1.1.11","history":"^4.7.2","husky":"^1.0.0-rc.12","imports-loader":"^0.7.1","istanbul":"^0.4.5","jest":"^23.3.0","jest-css-modules":"^1.1.0","jest-enzyme":"^4.0.2","localforage":"^1.5.5","lodash":"^4.17.10","mocha":"^5.2.0","node-sass":"^4.9.0","offline-plugin":"^5.0.5","pokemon-savefile-parser":"^0.2.1","prettier":"^1.10.2","prop-types":"^15.6.0","pure-render-decorator":"^1.2.1","react":"^16.4.1","react-addons-css-transition-group":"^15.6.2","react-addons-test-utils":"^15.6.2","react-custom-scrollbars":"^4.2.1","react-docgen-typescript":"^1.2.0","react-dom":"^16.4.1","react-hot-loader":"^3.1.3","react-loadable":"^5.4.0","react-markdown":"^3.1.5","react-polyfills":"0.0.1","react-redux":"^5.0.6","react-router":"^4.2.0","react-router-dom":"^4.2.2","react-router-redux":"^5.0.0-alpha.9","react-styleguidist":"^6.1.0","react-test-renderer":"^15.6.2","react-transition-group":"^2.2.1","recompose":"^0.25.1","redux":"^3.7.2","redux-logger":"^3.0.6","redux-persist":"^5.4.0","redux-saga":"^0.15.6","redux-thunk":"^2.2.0","reflect-metadata":"^0.1.10","reselect":"^3.0.1","resolve-url-loader":"^2.3.0","rimraf":"^2.6.2","rollbar":"^2.4.2","rxjs":"^5.5.6","sass-loader":"^6.0.6","serviceworker-webpack-plugin":"^0.2.3","sinon":"^6.1.3","style-loader":"^0.18.2","stylus":"^0.54.5","stylus-loader":"^3.0.2","ts-jest":"^23.0.0","ts-loader":"^4.4.2","tslint":"^5.10.0","tslint-loader":"^3.6.0","tslint-microsoft-contrib":"^5.0.1","typescript":"^2.9.2","url-loader":"^1.0.1","uuid":"^3.1.0","webpack":"4.14.0","webpack-cli":"^3.0.8","webpack-dashboard":"^2.0.0","webpack-serve":"^1.0.4"}};
 
 /***/ }),
 
@@ -49255,7 +49255,6 @@ const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 const Loadable = __webpack_require__(/*! react-loadable */ "./node_modules/react-loadable/lib/index.js");
 __webpack_require__(/*! ./app.styl */ "./src/components/App/app.styl");
-const Hotkeys_1 = __webpack_require__(/*! components/Hotkeys */ "./src/components/Hotkeys/index.ts");
 function Loading() {
     return React.createElement("div", null, "Loading...");
 }
@@ -49273,13 +49272,20 @@ const Result = Loadable({
         return React.createElement(loaded.Result, null);
     }
 });
+const Hotkeys = Loadable({
+    loader: () => Promise.resolve().then(() => __webpack_require__(/*! components/Hotkeys */ "./src/components/Hotkeys/index.ts")),
+    loading: Loading,
+    render(loaded) {
+        return React.createElement(loaded.Hokeys, null);
+    }
+});
 class AppBase extends React.PureComponent {
     constructor(props) {
         super(props);
     }
     render() {
         return (React.createElement("div", { className: 'app', role: 'main' },
-            React.createElement(Hotkeys_1.Hotkeys, null),
+            React.createElement(Hotkeys, null),
             React.createElement(Editor, null),
             React.createElement(Result, null)));
     }
@@ -49868,12 +49874,12 @@ class HotkeysBase extends React.PureComponent {
         };
     }
     componentDidMount() {
-        document.addEventListener('keydown', this.globalHotkeysEvents.handleKeyDown);
-        document.addEventListener('keyup', this.globalHotkeysEvents.handleKeyUp);
+        document && document.addEventListener('keydown', this.globalHotkeysEvents.handleKeyDown);
+        document && document.addEventListener('keyup', this.globalHotkeysEvents.handleKeyUp);
     }
     componentWillMount() {
-        document.removeEventListener('keydown', this.globalHotkeysEvents.handleKeyDown);
-        document.removeEventListener('keyup', this.globalHotkeysEvents.handleKeyUp);
+        document && document.removeEventListener('keydown', this.globalHotkeysEvents.handleKeyDown);
+        document && document.removeEventListener('keyup', this.globalHotkeysEvents.handleKeyUp);
     }
     isTextInput(e) {
         const elem = e.target;
