@@ -1,26 +1,15 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { reducers } from 'reducers';
-import { selectPokemon } from 'actions';
+import { selectPokemon, deletePokemon } from 'actions';
 import { Pokemon } from 'models';
 import { sortPokes, sortPokesReverse, noop } from 'utils';
 import { selectedId } from 'reducers/selectedId';
-
-export const hotkeys = [
-    {
-        key: 'j',
-        label: 'Previous Pokemon',
-        onKeyUp: 'previousPokemon',
-    },
-    {
-        key: 'k',
-        label: 'Next Pokemon',
-        onKeyUp: 'nextPokemon'
-    }
-];
+import { hotkeyList } from 'utils';
 
 export interface HotkeysProps {
     selectPokemon: selectPokemon;
+    deletePokemon: deletePokemon;
     pokemon: Pokemon[];
     selectedId: string;
 }
@@ -52,12 +41,12 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
     }
 
     private handleKeyUp = (e: KeyboardEvent) => {
-        hotkeys.map(hotkey => {
+        hotkeyList.map(hotkey => {
             if (e.key === hotkey.key) {
                 if (this.isTextInput(e)) {
                     noop();
                 } else {
-                    this[hotkey.onKeyUp]();
+                    if (hotkey.onKeyUp) this[hotkey.onKeyUp]();
                 }
             }
         });
@@ -114,6 +103,10 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
         console.log('k', poke, position, nextPoke, id);
     }
 
+    private deletePokemon () {
+        this.props.deletePokemon(this.props.selectedId);
+    }
+
     public render() {
         return <div />;
     }
@@ -126,5 +119,6 @@ export const Hotkeys = connect(
     }),
     {
         selectPokemon,
+        deletePokemon,
     }
 )(HotkeysBase as any);
