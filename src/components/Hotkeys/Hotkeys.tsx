@@ -26,13 +26,13 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
     }
 
     public componentDidMount() {
-        document.addEventListener('keydown', this.globalHotkeysEvents.handleKeyDown);
-        document.addEventListener('keyup', this.globalHotkeysEvents.handleKeyUp);
+        document && document.addEventListener('keydown', this.globalHotkeysEvents.handleKeyDown);
+        document && document.addEventListener('keyup', this.globalHotkeysEvents.handleKeyUp);
     }
 
     public componentWillMount() {
-        document.removeEventListener('keydown', this.globalHotkeysEvents.handleKeyDown);
-        document.removeEventListener('keyup', this.globalHotkeysEvents.handleKeyUp);
+        document && document.removeEventListener('keydown', this.globalHotkeysEvents.handleKeyDown);
+        document && document.removeEventListener('keyup', this.globalHotkeysEvents.handleKeyUp);
     }
 
 

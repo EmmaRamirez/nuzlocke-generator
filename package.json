@@ -26,7 +26,9 @@
   "keywords": [],
   "author": "Emma Ramirez <ramirez.emma.g@gmail.com> (http://emmaramirez.me)",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "redux-mock-store": "^1.5.3"
+  },
   "devDependencies": {
     "@blueprintjs/core": "^2.0.0",
     "@blueprintjs/icons": "^2.0.0",

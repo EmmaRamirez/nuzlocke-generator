@@ -6,7 +6,6 @@ import * as Loadable from 'react-loadable';
 
 
 import './app.styl';
-import { Hotkeys } from 'components/Hotkeys';
 
 export interface AppProps {
     style: any;
@@ -30,6 +29,14 @@ const Result = Loadable({
     loading: Loading,
     render(loaded) {
         return <loaded.Result />;
+    }
+});
+
+const Hotkeys = Loadable({
+    loader: () => import('components/Hotkeys'),
+    loading: Loading,
+    render(loaded) {
+        return <loaded.Hokeys />;
     }
 });
 
