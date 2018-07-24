@@ -253,19 +253,11 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     }
 
     public render() {
-        const { style, box, trainer } = this.props;
-        const numberOfDead = this.props.pokemon
-            .filter(v => v.hasOwnProperty('id'))
-            .filter(poke => poke.status === 'Dead').length;
-        const numberOfBoxed = this.props.pokemon
-            .filter(v => v.hasOwnProperty('id'))
-            .filter(poke => poke.status === 'Boxed').length;
-        const numberOfChamps = this.props.pokemon
-            .filter(v => v.hasOwnProperty('id'))
-            .filter(poke => poke.status === 'Champs').length;
-        // const numberOfBoxed = 1,
-        //     numberOfDead = 1,
-        //     numberOfChamps = 1;
+        const { style, box, trainer, pokemon } = this.props;
+        const getNumberOf = (status: string, pokemon: Pokemon[]) => pokemon.filter(v => v.hasOwnProperty('id')).filter(poke => poke.status === status).length;
+        const numberOfDead = getNumberOf('Dead', pokemon);
+        const numberOfBoxed = getNumberOf('Boxed', pokemon);
+        const numberOfChamps = getNumberOf('Champs', pokemon);
         const bgColor = style ? style.bgColor : '#383840';
         const topHeaderColor = style ? style.topHeaderColor : '#333333';
         return (
@@ -274,15 +266,6 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                 autoHideTimeout={1000}
                 autoHideDuration={200}>
                 {this.renderErrors()}
-
-                {/* <Button style={{
-                    position: 'absolute',
-                    top: '2px',
-                    right: '112px',
-                }} icon='download' intent={Intent.PRIMARY} onClick={e => this.toImage()}>
-                    Download Image<sup>BETA</sup>
-                </Button> */}
-
                 <TopBar onClickDownload={e => this.toImage()} />
                 <div
                     ref={this.resultRef}
