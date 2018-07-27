@@ -62,6 +62,7 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                 >
                     0.0.9-beta
                 </Button>
+                { this.props.children }
                 <Dialog
                     isOpen={this.state.isOpen}
                     onClose={this.closeDialog}

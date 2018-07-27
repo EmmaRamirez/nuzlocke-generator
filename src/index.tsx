@@ -60,9 +60,4 @@ store.subscribe(() => {
     } else {
         document.body.style.background = '#fff';
     }
-
-    // Check if state has old box format
-    if (typeof (store.getState() as any).box[0] === 'string') {
-        store.dispatch(version0_0_6_BETA());
-    }
 });

@@ -73,17 +73,9 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             );
         }
         return (
-            <div
-                style={{
-                    display: 'flex',
-                    position: 'absolute',
-                    left: '32%',
-                    top: '2px',
-                    width: '60%',
-                    zIndex: 10,
-                }}>
+            <>
                 {renderItems}
-            </div>
+            </>
         );
     }
 
@@ -264,8 +256,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                 autoHide
                 autoHideTimeout={1000}
                 autoHideDuration={200}>
-                {this.renderErrors()}
-                <TopBar onClickDownload={e => this.toImage()} />
+                <TopBar onClickDownload={e => this.toImage()} >{this.renderErrors()}</TopBar>
                 <div
                     ref={this.resultRef}
                     className={`result container ${(style.template &&
