@@ -28,3 +28,4 @@ export * from './styleDefaults';
 export * from './typeToColor';
 export * from './mapTrainerImage';
 export * from './listOfTrainers';
+export * from './listOfAbilities';

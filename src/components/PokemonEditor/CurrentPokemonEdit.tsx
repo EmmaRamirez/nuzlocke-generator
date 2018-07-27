@@ -8,6 +8,7 @@ import {
     matchSpeciesToTypes,
     listOfItems,
     listOfLocations,
+    listOfAbilities,
 } from 'utils';
 import { Pokemon } from 'models';
 import { onClick, Boxes } from 'types';
@@ -300,12 +301,19 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
                         'None',
                     ]}
                 />
-                <CurrentPokemonInput
-                    labelName='Ability'
-                    inputName='ability'
+                <Autocomplete
+                    items={listOfAbilities}
+                    name='ability'
+                    label='Ability'
                     placeholder=''
-                    value={currentPokemon.ability}
-                    type='text'
+                    value={currentPokemon.ability || ''}
+                    onChange={e => {
+                        const edit = {
+                            ability: e.target.value,
+                        };
+                        this.props.editPokemon(edit, this.state.selectedId);
+                        this.props.selectPokemon(this.state.selectedId);
+                    }}
                 />
                 <CurrentPokemonInput
                     labelName='Moves'

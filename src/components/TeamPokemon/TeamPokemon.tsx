@@ -183,6 +183,10 @@ export class TeamPokemonBase extends React.Component <TeamPokemonBaseProps> {
                         className={`pokemon-item ${this.props.style.itemStyle}`}
                         style={{
                             borderColor: typeToColor(getFirstType) || 'transparent',
+                            backgroundImage: style.template === 'Hexagons' ? getBackgroundGradient(
+                                poke.types != null ? poke.types[0] : '',
+                                poke.types != null ? poke.types[1] : '',
+                            ) : '',
                         }}>
                         <img
                             alt={poke.item}

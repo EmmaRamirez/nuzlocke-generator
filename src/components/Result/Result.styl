@@ -103,7 +103,7 @@
 
 .badge-wrapper {
   display: inline-flex;
-  width: 200px;
+  width: 216px;
   flex-wrap: wrap;
   justify-content: center;
   margin-left: auto;
@@ -1006,14 +1006,104 @@
 }
 
 .hexagons {
+
+  .team-container  {
+    margin-left: 8rem;
+    margin-top: .5rem;
+  }
+
+  .pokemon-container {
+    padding: 0;
+  }
   .pokemon-image-wrapper {
     background: transparent;
     border-radius: 0 !important;
     -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    height: 15.5rem;
+    width: 15.5rem;
+  }
+
+  .pokemon-image-wrapper::after {
+    content: '';
+    -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    height: 15rem;
+    width: 15rem;
+    position: absolute;
+    display: block;
+    top: .25rem;
+    z-index: 10;
+    background: linear-gradient(to bottom, rgba(black, 0.75), transparent, rgba(black, 0.7));
   }
 
   .pokemon-image {
-    
+    height: 15rem;
+    width: 15rem;
+    -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
+  .pokemon-item {
+    -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 1.5rem);
+    border-radius: 0;
+    border: none;
+    // background: transparent;
+    background-size: 15rem;
+    background-position: center bottom;
+  }
+
+  .pokemon-nature,
+  .pokemon-ability {
+    display: inline-block;
+    margin-left: 0.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .pokemon-info {
+    background: transparent;
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    z-index: 10;
+    text-align: center;
+    width: 15.5rem;
+    margin: 0;
+    padding: 0;
+    height: 8rem;
+  }
+
+  .pokemon-info-inner {
+    padding: 0;
+  }
+
+  .pokemon-moves {
+    margin-top: 1rem;
+    display: flex;
+    position: absolute;
+    bottom: 0.25rem;
+    opacity: 0.6;
+    left: 0.25rem;
+    width: calc(100% - .5rem);
+  }
+
+  .move {
+    border-radius: 0;
+    margin: 0;
+  }
+
+
+
+  .pokemon-container:nth-of-type(5),
+  .pokemon-container:nth-of-type(6) {
+    transform: translate(-124px, -62px);
+  }
+
+  .pokemon-container:nth-of-type(4) {
+    transform: translate(-124px, 186px);
   }
 }

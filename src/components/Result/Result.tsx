@@ -246,6 +246,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     public render() {
         const { style, box, trainer, pokemon } = this.props;
         const getNumberOf = (status: string, pokemon: Pokemon[]) => pokemon.filter(v => v.hasOwnProperty('id')).filter(poke => poke.status === status).length;
+        const numberOfTeam = getNumberOf('Team', pokemon);
         const numberOfDead = getNumberOf('Dead', pokemon);
         const numberOfBoxed = getNumberOf('Boxed', pokemon);
         const numberOfChamps = getNumberOf('Champs', pokemon);
@@ -261,7 +262,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     ref={this.resultRef}
                     className={`result container ${(style.template &&
                         style.template.toLowerCase().replace(/\s/g, '-')) ||
-                        ''} region-${getGameRegion(this.props.game.name)}`}
+                        ''} region-${getGameRegion(this.props.game.name)} team-size-${numberOfTeam}`}
                     style={{
                         margin: '3rem auto',
                         backgroundColor: bgColor,
