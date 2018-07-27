@@ -188,6 +188,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - You can now click on boxed pokemon icons in the Result panel again
 - Improved designs of several dialogs, such as the RulesEditor and Delete All Data screen
 - Changing a type should now work in all situations
+- Result notes have a bigger font-size and are bold
 
 ## Known Issues
 - Sugimori images can't be used with the download option (depending on browser)

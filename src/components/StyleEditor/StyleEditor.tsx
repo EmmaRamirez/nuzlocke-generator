@@ -313,21 +313,6 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
 
             <div className='style-edit'>
                 <Checkbox
-                    checked={props.style.editorDarkMode}
-                    name='editorDarkMode'
-                    label='Editor Dark Mode'
-                    onChange={(e: any) =>
-                        editEvent(
-                            { ...e, target: { value: e.target.checked } },
-                            props,
-                            'editorDarkMode',
-                        )
-                    }
-                />
-            </div>
-
-            <div className='style-edit'>
-                <Checkbox
                     checked={props.style.oldMetLocationFormat}
                     name='oldMetLocationFormat'
                     label='Old Met Location Format'

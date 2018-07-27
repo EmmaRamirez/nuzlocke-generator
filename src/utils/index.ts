@@ -26,3 +26,5 @@ export * from './noop';
 export * from './sortPokes';
 export * from './styleDefaults';
 export * from './typeToColor';
+export * from './mapTrainerImage';
+export * from './listOfTrainers';

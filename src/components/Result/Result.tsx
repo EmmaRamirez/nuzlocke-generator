@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Pokemon, Trainer } from 'models';
-import { getBadges, getGameRegion, sortPokes } from 'utils';
+import { getBadges, getGameRegion, sortPokes, mapTrainerImage } from 'utils';
 import { connect } from 'react-redux';
 import * as uuid from 'uuid/v4';
 import { Scrollbars } from 'react-custom-scrollbars';
@@ -158,7 +158,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             height: '3rem',
                             width: '3rem',
                         }}
-                        src={trainer.image ? trainer.image : 'img/moon.jpg'}
+                        src={mapTrainerImage(trainer.image)}
                         alt='Trainer Image'
                     />
                 ) : null}
