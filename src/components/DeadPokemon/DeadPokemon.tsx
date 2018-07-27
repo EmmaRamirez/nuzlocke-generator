@@ -2,10 +2,8 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { Pokemon } from 'models';
-import { getBackgroundGradient } from './getBackgroundGradient';
-import { getGenderElement } from './getGenderElement';
-import { getSpriteIcon, speciesToNumber } from 'utils';
-import { getPokemonImage } from './getPokemonImage';
+import { GenderElement } from 'components/Shared';
+import { getBackgroundGradient, getPokemonImage, getSpriteIcon, speciesToNumber } from 'utils';
 import { selectPokemon } from 'actions';
 import { PokemonIconBase } from 'components/PokemonIcon';
 
@@ -48,7 +46,7 @@ export const DeadPokemonBase = (
             </span>
             <div className='dead-pokemon-info'>
                 <div className='pokemon-d-nickname'>
-                    {poke.nickname} {getGenderElement(poke.gender)}
+                    {poke.nickname} {GenderElement(poke.gender)}
                 </div>
                 <div className='pokemon-levels'>
                     Levels {poke.metLevel}&mdash;{poke.level}

@@ -7,12 +7,12 @@ import { Boxes } from 'types';
 
 import {
     generateEmptyPokemon,
-    pokemonByFilter,
 } from 'utils';
 import { CurrentPokemonEdit, MassEditor } from '.';
 
 import { AddPokemonButton } from 'components/AddPokemonButton';
 import { BaseEditor } from 'components/BaseEditor';
+import { PokemonByFilter } from 'components/Shared';
 
 require('../../assets/img/team-box.png');
 require('../../assets/img/dead-box.png');
@@ -44,7 +44,7 @@ export const Box = ({
             }}>
                 {tabTitle}
             </span>
-            {pokemonByFilter(pokemon, filter)}
+            {PokemonByFilter(pokemon, filter)}
         </div>
     );
 };

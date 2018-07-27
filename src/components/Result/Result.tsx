@@ -10,9 +10,9 @@ import * as domtoimage from 'dom-to-image';
 import { selectPokemon } from 'actions';
 
 import { TeamPokemon } from 'components/TeamPokemon';
-import { DeadPokemon } from './DeadPokemon';
-import { BoxedPokemon } from './BoxedPokemon';
-import { ChampsPokemon } from './ChampsPokemon';
+import { DeadPokemon } from 'components/DeadPokemon';
+import { BoxedPokemon } from 'components/BoxedPokemon';
+import { ChampsPokemon } from 'components/ChampsPokemon';
 import { TopBar } from 'components/TopBar';
 
 import { reducers } from 'reducers';

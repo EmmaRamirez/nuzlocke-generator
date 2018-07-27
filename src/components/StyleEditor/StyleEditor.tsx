@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { editStyle } from 'actions';
-import { styleDefaults, listOfThemes } from 'utils';
+import { gameOfOriginToColor, styleDefaults, listOfThemes } from 'utils';
 import {
     RadioGroup,
     Radio,
@@ -10,7 +10,6 @@ import {
     Checkbox,
 } from '@blueprintjs/core';
 import { BaseEditor } from 'components/BaseEditor';
-import { gameOfOriginToColor } from 'components/Result/gameOfOriginToColor';
 
 const editEvent = (e, props: StyleEditorProps, name?, game?) => {
     const propName = name || e.target.name;

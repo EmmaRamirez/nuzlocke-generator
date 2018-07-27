@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { matchSpeciesToTypes } from 'utils';
+import { matchSpeciesToTypes, getMoveType } from 'utils';
 import { editPokemon, selectPokemon } from 'actions';
-import { movesByType, getMoveType } from 'components/Result';
 
 import { ErrorBoundary } from 'components/Shared';
 

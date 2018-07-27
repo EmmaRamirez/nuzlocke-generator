@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export const getGenderElement = gender => {
+export const GenderElement = gender => {
     if (gender === 'Male' || gender === 'm') {
         return <span className='pokmeon-gender gender-color-male'>&#9794;</span>;
     } else if (gender === 'Female' || gender === 'f') {

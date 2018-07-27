@@ -1,4 +1,4 @@
-import { movesByType } from 'components/Result';
+import { movesByType } from 'utils';
 
 export const getMoveType = move => {
     for (const type in movesByType) {

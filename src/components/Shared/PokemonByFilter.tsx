@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Tooltip, Position } from '@blueprintjs/core';
 import { Pokemon } from 'models';
 import { PokemonIcon } from 'components/PokemonIcon';
-import { sortPokes } from './sortPokes';
+import { sortPokes } from 'utils';
 
-export function pokemonByFilter(team: Pokemon[], filter?: string): JSX.Element[] {
+export function PokemonByFilter(team: Pokemon[], filter?: string): JSX.Element[] {
     let filterFunction: any;
     if (filter != null) filterFunction = poke => poke.status === filter;
     if (filter == null) filterFunction = poke => true;

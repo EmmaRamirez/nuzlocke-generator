@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { PokemonIcon } from 'components/PokemonIcon';
-import { gameOfOriginToColor } from './gameOfOriginToColor';
+import { gameOfOriginToColor } from 'utils';
 
 export class ChampsPokemon extends React.Component<any> {
     constructor(props) {

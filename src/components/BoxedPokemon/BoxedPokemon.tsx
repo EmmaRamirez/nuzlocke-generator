@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 
 import { Pokemon } from 'models';
 import { selectPokemon } from 'actions';
-import { getBackgroundGradient } from './getBackgroundGradient';
-import { getGenderElement } from './getGenderElement';
-import { getSpriteIcon, speciesToNumber } from 'utils';
-import { PokemonIcon } from '../PokemonIcon';
+import { getBackgroundGradient, getSpriteIcon, speciesToNumber } from 'utils';
+import { PokemonIcon } from 'components/PokemonIcon';
+import { GenderElement } from 'components/Shared';
 
 export const BoxedPokemonBase = (poke: Pokemon & { selectPokemon }) => {
     return (
@@ -18,7 +17,7 @@ export const BoxedPokemonBase = (poke: Pokemon & { selectPokemon }) => {
             />
             <div className='boxed-pokemon-info'>
                 <span className='boxed-pokemon-name'>
-                    {poke.nickname} {getGenderElement(poke.gender)}{' '}
+                    {poke.nickname} {GenderElement(poke.gender)}{' '}
                     {poke.level ? <span>lv. {poke.level}</span> : null}
                 </span>
             </div>

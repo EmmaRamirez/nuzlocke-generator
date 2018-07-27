@@ -3,13 +3,11 @@ import { connect } from 'react-redux';
 
 import { Pokemon } from 'models';
 import { getBackgroundGradient,
-        getGenderElement,
-        movesByType,
         typeToColor,
         getPokemonImage,
         getMoveType
-    } from 'components/Result';
-
+    } from 'utils';
+import { GenderElement } from 'components/Shared';
 import { selectPokemon } from 'actions';
 
 
@@ -201,7 +199,7 @@ export class TeamPokemonBase extends React.Component <TeamPokemonBaseProps> {
                                 {poke.nickname}
                             </span>
                             <span className='pokemon-name'>{poke.species}</span>
-                            {getGenderElement(poke.gender)}
+                            {GenderElement(poke.gender)}
                             {poke.level ? (
                                 <span className='pokemon-level'>lv. {poke.level}</span>
                             ) : null}
