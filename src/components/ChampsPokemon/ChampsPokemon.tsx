@@ -11,10 +11,14 @@ export class ChampsPokemon extends React.Component<any> {
     public render() {
         return (
             <div
+                className='champs-pokemon'
                 style={{
-                    width: '32px',
+                    height: '48px',
+                    width: '48px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     background: gameOfOriginToColor(this.props.gameOfOrigin),
-                    display: 'inline-block',
                     cursor: 'pointer',
                 }}>
                 <PokemonIcon {...this.props as any} />

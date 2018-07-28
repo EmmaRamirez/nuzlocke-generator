@@ -2,6 +2,7 @@ const badgeSelect = require('assets/badge-select.png');
 const download = require('assets/download.png');
 const cardsTheme = require('assets/cards-theme.png');
 const spritesMode = require('assets/sprites-mode.png');
+const hexagonTheme = require('assets/hexagons-theme.png');
 
 export function generateReleaseNotes(version: string) {
     return releaseNotes[version] || '';
@@ -177,7 +178,11 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 
 ## Features
 - **Autocomplete for Locations**: Abandoned Ship, Artisan Cave, Aether Paradise...
+- **Autocomplete for Abilities**: Noticing a pattern here?
 - **Hotkey support**: See the Hotkeys section below Style for more info
+- **Hexagon Theme**: Consider it a beta within a beta. Enjoy!
+
+![hexagontheme](${hexagonTheme})
 
 ## Fixes
 - Added nearly all Pokémon images
@@ -189,6 +194,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Improved designs of several dialogs, such as the RulesEditor and Delete All Data screen
 - Changing a type should now work in all situations
 - Result notes have a bigger font-size and are bold
+- Improvements to Keyboard UX of Autocomplete
 
 ## Known Issues
 - Sugimori images can't be used with the download option (depending on browser)

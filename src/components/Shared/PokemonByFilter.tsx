@@ -18,6 +18,7 @@ export function PokemonByFilter(team: Pokemon[], filter?: string): JSX.Element[]
                         id={poke.id}
                         species={poke.species}
                         forme={poke.forme}
+                        isShiny={poke.shiny}
                     />
                 </Tooltip>
             );

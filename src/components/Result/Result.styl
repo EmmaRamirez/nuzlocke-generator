@@ -1007,6 +1007,35 @@
 
 .hexagons {
 
+  &.team-size-6 {
+    .pokemon-container:nth-of-type(5),
+    .pokemon-container:nth-of-type(6) {
+      transform: translate(-124px, -62px);
+    }
+
+    .pokemon-container:nth-of-type(4) {
+      transform: translate(-124px, 186px);
+    }
+  }
+
+  &.team-size-5 {
+    .pokemon-container:nth-of-type(4) {
+      transform: translate(-372px, 186px)
+    }
+    .pokemon-container:nth-of-type(5) {
+      transform: translate(-248px, -62px)
+    }
+  }
+
+  &.team-size-4,
+  &.team-size-3,
+  &.team-size-2,
+  &.team-size-1 {
+    .team-container {
+      margin-left: 0;
+    }
+  }
+
   .team-container  {
     margin-left: 8rem;
     margin-top: .5rem;
@@ -1057,6 +1086,11 @@
     background-position: center bottom;
   }
 
+  .champs-pokemon {
+    -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
   .pokemon-nature,
   .pokemon-ability {
     display: inline-block;
@@ -1096,14 +1130,24 @@
     margin: 0;
   }
 
-
-
-  .pokemon-container:nth-of-type(5),
-  .pokemon-container:nth-of-type(6) {
-    transform: translate(-124px, -62px);
+  .boxed-container, .champs-container, .dead-container {
+    display: inline-block;
+    width: 33%;
+    vertical-align: top;
   }
 
-  .pokemon-container:nth-of-type(4) {
-    transform: translate(-124px, 186px);
+  .boxed-pokemon-container {
+    background: #333;
+    width: auto;
+  }
+
+  .dead-pokemon-container {
+    height: auto;
+    width: 100%;
+  }
+
+  .dead-pokemon-info {
+    margin: 0;
+    width: 100%;
   }
 }

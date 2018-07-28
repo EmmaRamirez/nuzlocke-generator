@@ -19,6 +19,8 @@ interface PokemonIconProps {
 const formatSpeciesName = (species: string | null) => {
     if (species == null) return 'unknown';
     if (listOfPokemon.indexOf(species) < 0) return 'unknown';
+    if (species === 'Nidoran♀') return 'nidoran-f';
+    if (species === 'Nidoran♂') return 'nidoran-m';
     if (species === 'Mr. Mime') return 'mr-mime';
     if (species === 'Farfetch\'d') return 'farfetchd';
     if (species === 'Mime Jr.') return 'mime-jr';

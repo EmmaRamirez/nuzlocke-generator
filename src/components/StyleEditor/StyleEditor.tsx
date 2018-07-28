@@ -80,6 +80,14 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 </div>
             </div>
 
+            {
+                props.style.template === 'Hexagons' ?
+                <div className='style-edit'>
+                    <h6>Hexagons Template Options</h6>
+                </div>
+                : null
+            }
+
             <div className='style-edit'>
                 <RadioGroup
                     className='radio-group'

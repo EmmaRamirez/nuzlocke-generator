@@ -14,6 +14,8 @@ export const BoxedPokemonBase = (poke: Pokemon & { selectPokemon }) => {
                 species={poke.species}
                 id={poke.id}
                 style={{ cursor: 'pointer' }}
+                forme={poke.forme}
+                shiny={poke.shiny}
             />
             <div className='boxed-pokemon-info'>
                 <span className='boxed-pokemon-name'>
