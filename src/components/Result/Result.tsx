@@ -152,12 +152,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                 </div>
                 {trainer.image ? (
                     <img
-                        style={{
-                            border: '2px solid rgba(255, 255, 255, 0.3)',
-                            borderRadius: '50%',
-                            height: '3rem',
-                            width: '3rem',
-                        }}
+                        className='trainer-image'
                         src={mapTrainerImage(trainer.image)}
                         alt='Trainer Image'
                     />

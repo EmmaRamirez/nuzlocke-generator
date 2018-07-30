@@ -12,7 +12,7 @@ const capitalize = (s:string) => s[0].toUpperCase() + s.slice(1);
 const SpanBlock = ({ text }) => (
     <span
         style={{
-            background: '#e6eef1',
+            background: 'rgba(0, 0, 0, 0.1)',
             display: 'inline-block',
             padding: '0 3px',
             margin: '2px',
