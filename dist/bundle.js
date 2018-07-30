@@ -19894,7 +19894,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".top-bar {\n  padding: 0.25rem;\n  font-size: 1.15rem;\n}\n\n.container {\n  border: 1px solid #ddd;\n  padding-bottom: 0.5rem;\n  position: relative;\n  overflow: hidden;\n  width: 100%;\n  height: 100%;\n}\n\n.container h3 {\n  text-transform: uppercase;\n  margin: 0.5rem;\n  letter-spacing: 4px;\n  text-align: center;\n  color: #eee;\n}\n\n.pt-dark .pt-callout {\n  color: #fff;\n}\n\n.result-notes {\n  text-align: center;\n  margin: 0.5rem;\n}\n\n.container {\n  padding-bottom: 1rem;\n  background-color: #383840;\n  border: 1px solid #111;\n  color: #eee;\n  margin: 0 auto;\n}\n\n.gender-color-female {\n  color: #ffc0cb;\n}\n\n.gender-color-male {\n  color: #add8e6;\n}\n\n.pokemon-container {\n  display: inline-block;\n  padding: 1rem;\n  position: relative;\n}\n\n.logo {\n  height: 2.5rem;\n}\n\n.trainer-container div span {\n  font-size: 0.8rem;\n  letter-spacing: 2px;\n}\n\n.trainer-image {\n  border-radius: 50%;\n  height: 3rem;\n  vertical-align: bottom;\n}\n\n.trainer-wrapper {\n  display: flex !important;\n  align-items: center;\n  align-content: center;\n}\n\n.nuzlocke-title {\n  display: inline-flex;\n  font-size: 1.5rem;\n  font-weight: light;\n}\n\n.badge-wrapper {\n  display: inline-flex;\n  width: 200px;\n  flex-wrap: wrap;\n  justify-content: center;\n  margin-left: auto;\n  margin-right: 3rem;\n}\n\n.badge-wrapper img {\n  height: 1.5rem;\n}\n\n.pokemon-shiny {\n  background: #eee;\n  border-radius: 50%;\n  border: 2px solid #fff;\n  height: 2rem;\n  width: 2rem;\n  padding-top: 0.2rem;\n  padding-left: 0.5rem;\n  position: absolute;\n  left: 7rem;\n  top: 1rem;\n}\n\n.move {\n  /*border-bottom: 1px solid #ccc;*/\n  /*box-shadow: inset 0 0 3rem rgba(0, 0, 0, 0.3);*/\n  border: 4px solid rgba(255,255,255,0.3);\n  border-radius: 4px;\n  color: #222;\n  font-size: 0.9rem;\n  height: 1.7rem;\n  margin: 0.25rem;\n  padding: 0;\n  text-align: center;\n}\n\n.move.long-text-move {\n  font-size: 0.7rem;\n}\n\n.pokemon-nickname {\n  font-size: 1.5rem;\n}\n\n.boxed-container,\n.dead-container {\n  margin: 0 auto;\n  margin-top: 1rem;\n}\n\n.dead-pokemon-container {\n  height: 5.1rem;\n  margin-bottom: 0.25rem;\n  position: relative;\n  width: 19rem;\n  vertical-align: middle;\n  text-align: left;\n}\n\n.dead-pokemon-container[data-league='true'] {\n  outline: 1px solid #eee8aa;\n}\n\n.dead-pokemon-container[data-league='true']::after {\n  content: '';\n  background: url(" + __webpack_require__(/*! ../../img/alola-champion-ribbon.png */ "./src/img/alola-champion-ribbon.png") + ");\n  display: block;\n  height: 40px;\n  width: 35px;\n  position: absolute;\n  top: 0.25rem;\n  right: 0.25rem;\n  opacity: 0.8;\n}\n\n.death-info-container {\n  width: 12rem;\n  display: inline-block;\n  vertical-align: middle;\n  margin-top: -8rem;\n}\n\n.dead-pokemon-container .pokemon-image {\n  border-radius: 0;\n  display: inline-block;\n  height: 5rem;\n  width: 5rem;\n  overflow: hidden;\n}\n\n.pokemon-causeofdeath {\n  font-size: 0.8rem;\n  display: inline-block;\n}\n\n.pokemon-container[data-champion='true'] .pokemon-info::after {\n  content: '';\n  display: block;\n  height: 40px;\n  width: 35px;\n  position: absolute;\n  top: 0.25rem;\n  right: 0.25rem;\n}\n\n.region-alola .pokemon-container[data-champion='true'] .pokemon-info::after {\n  background: url(" + __webpack_require__(/*! ../../img/alola-champion-ribbon.png */ "./src/img/alola-champion-ribbon.png") + ");\n}\n\n.badge {\n  height: 1rem;\n}\n\n[data-obtained='false'] {\n  -webkit-filter: grayscale(100%);\n}\n\n.trainer-container {\n  color: #eee;\n  padding: 0.25rem;\n  width: 100%;\n  background-size: cover, 50% auto;\n  background-position: top left, bottom left;\n}\n\n.team-container {\n  display: flex;\n  /* flex-direction: column; */\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: center;\n}\n\n.dead-pokemon-container {\n  background: #333;\n  border: 1px solid #010101;\n  /*color: #eee;*/\n}\n\n.boxed-pokemon-container {\n  display: inline-flex !important;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n.boxed-pokemon-image {\n  cursor: pointer;\n  background-size: cover;\n  background-position: center center;\n  display: inline-block;\n  height: 2rem;\n  width: 2rem;\n}\n\n.pokemon-causeofdeath {\n  color: #000;\n}\n\n.dead-pokemon-info {\n  color: #eee;\n  width: 200px;\n  vertical-align: top;\n  display: inline-block;\n  padding: 0.25rem;\n}\n\n.dead-pokemon-container {\n  display: inline-flex !important;\n  align-items: center;\n  margin-right: 2px;\n}\n\n.dead-container {\n  margin-left: 0;\n}\n\n.dead-pokemon-info,\n.pokemon-d-nickname strong,\n.pokemon-causeofdeath {\n  color: #fff;\n}\n\n.dead-pokemon-info {\n  margin: 0.5rem;\n}\n\n.pokemon-d-nickname {\n  font-size: 1rem;\n  font-weight: light !important;\n  margin-right: 0.5rem;\n  color: #eee;\n}\n\n.pokemon-d-nickname,\n.pokemon-levels {\n  display: inline-block;\n  font-size: 0.9rem;\n  text-align: center;\n  text-shadow: none;\n}\n\n.dead-pokemon-picture {\n  cursor: pointer;\n  height: 80px;\n  width: 76px;\n  background-size: cover;\n  background-position: center;\n}\n\n.pokemon-levels {\n  margin: 0 !important;\n  color: #ddd;\n}\n\n.selector {\n  margin: 0 auto;\n  max-width: 80rem;\n  padding: 0.5rem;\n}\n\n.selector button {\n  border: 0 solid transparent;\n  background: #333;\n  cursor: pointer;\n  color: #eee;\n  border-radius: 0.25rem;\n  padding: 0.5rem;\n}\n\n.selector button:hover {\n  background: #444;\n  transition: 300ms;\n}\n\n.trainer-container {\n  background: #333;\n  color: #eee;\n  border-bottom: 1px solid #000;\n  padding: 0.25rem;\n  width: 100%;\n  background-size: cover, 50% auto;\n  background-position: top left, bottom left;\n}\n\n.trainer-container div {\n  display: inline-block;\n  padding: 0.25rem;\n  text-align: center;\n}\n\n.logo {\n  height: 100%;\n  height: 2rem;\n}\n\n.trainer-container div span {\n  font-size: 0.8rem;\n  letter-spacing: 2px;\n}\n\n.trainer-image {\n  border-radius: 50%;\n  height: 3rem;\n  vertical-align: bottom;\n}\n\n.not-obtained {\n  filter: grayscale(100%);\n}\n\n.round {\n  border-radius: 50%;\n  display: inline-block;\n  height: 8rem;\n  width: 8rem;\n  padding: 0.25rem;\n  position: relative;\n  z-index: 10;\n}\n\n.square {\n  display: inline-block;\n  height: 8rem;\n  width: 8rem;\n  padding: 0.25rem;\n  position: relative;\n  z-index: 10;\n}\n\n.pokemon-image {\n  background-size: cover;\n  background-position: center center;\n  display: inline-block;\n  height: 7.5rem;\n  width: 7.5rem;\n}\n\n.pokemon-image.round {\n  border-radius: 50%;\n}\n\n.is-sprite {\n  background-size: auto;\n  background-repeat: no-repeat;\n}\n\n.pokemon-item {\n  background: #111;\n  border: 5px solid #fff;\n  bottom: 0;\n  height: 3rem;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  left: 12px;\n  padding: 0.5rem;\n  position: absolute;\n  width: 3rem;\n  z-index: 10;\n}\n\n.pokemon-item.round {\n  border-radius: 50%;\n}\n\n.pokemon-item.square {\n  border-radius: 0;\n}\n\n.pokemon-shiny {\n  background: #eee;\n  border-radius: 50%;\n  border: 2px solid #fff;\n  height: 2rem;\n  width: 2rem;\n  padding-top: 0.2rem;\n  padding-left: 0.5rem;\n  position: absolute;\n  left: 7rem;\n  top: 1rem;\n}\n\n.minimal {\n  min-width: 17rem;\n  justify-content: center;\n  flex-direction: column;\n  align-items: center;\n  text-align: center;\n}\n\n.minimal .pokemon-info {\n  background: transparent;\n  display: flex;\n  padding: 0;\n  height: auto;\n  width: auto;\n  margin-left: 0;\n}\n\n.pokemon-info {\n  border-radius: 0 4px 4px 0;\n  display: inline-block;\n  background: #111;\n  height: auto;\n  min-height: 8rem;\n  margin-left: -4rem;\n  position: relative;\n  width: 26rem;\n  vertical-align: top;\n  -webkit-filter: drop-shadow(0 0 1px #111);\n  padding-left: 4rem;\n  border-radius: 0.25rem;\n  overflow: hidden;\n}\n\n.pokemon-info span {\n  margin: 0 0.25rem;\n}\n\n.pokemon-info::before {\n  content: '';\n  border-color: transparent #111 transparent transparent;\n  border-width: 1.5rem;\n  border-style: solid;\n  left: -3rem;\n  top: calc(50% - 1.5rem);\n  position: absolute;\n  display: none;\n}\n\n.pokemon-info-inner {\n  display: inline-block;\n  padding: 0.5rem;\n  vertical-align: top;\n}\n\n.pokemon-moves {\n  background: transparent;\n  display: flex;\n  width: 100%;\n}\n\n.pokemon-moves.horizontal {\n  height: 2rem;\n  width: 100%;\n}\n\n.pokemon-moves.vertical {\n  height: 8rem;\n  width: 23%;\n  position: absolute;\n  top: 0;\n  flex-direction: column;\n  right: 6px;\n  justify-content: space-evenly;\n}\n\n.column {\n  flex-direction: column;\n  justify-content: center;\n}\n\n.move {\n  /*border-bottom: 1px solid #ccc;*/\n  /*box-shadow: inset 0 0 3rem rgba(0, 0, 0, 0.3);*/\n  align-items: center;\n  border: 0 solid transparent;\n  border-radius: 0;\n  border-radius: 4px;\n  display: flex;\n  font-size: 0.8rem;\n  justify-content: center;\n  margin: 0 0.25rem;\n  padding: 0;\n  text-align: center;\n  width: 100%;\n}\n\n.pokemon-nickname {\n  font-size: 1.5rem;\n}\n\n.boxed-pokemon-container {\n  background: #151515;\n  border: 1px solid #000;\n  border-radius: 4px;\n  display: inline-block;\n  margin: 2px;\n  width: 16%;\n  position: relative;\n}\n\n.pokemon-levels {\n  margin-top: 3.5rem;\n}\n\n.boxed-pokemon-info {\n  border-left: 1px solid #111;\n  display: inline-block;\n  /*position: absolute;*/\n  padding: 0.5rem;\n  top: 0;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable,\n.move {\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Fighting-type,\n.move.Fighting-type {\n  background: #a52a2a;\n  color: #eee;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Ice-type,\n.move.Ice-type {\n  background: #c2f1f2;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Fire-type,\n.move.Fire-type {\n  background: #eb3434;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Grass-type,\n.move.Grass-type {\n  background: #39bf3c;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Bug-type,\n.move.Bug-type {\n  background: #aee359;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Normal-type,\n.move.Normal-type {\n  background: #e1e3d3;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Steel-type,\n.move.Steel-type {\n  background: #b0b0b0;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Rock-type,\n.move.Rock-type {\n  background: #8f795d;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Ground-type,\n.move.Ground-type {\n  background: #9c6e21;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Poison-type,\n.move.Poison-type {\n  background: #75226b;\n  color: #eee;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Ghost-type,\n.move.Ghost-type {\n  background: #3b2238 !important;\n  color: #eee;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Water-type,\n.move.Water-type {\n  background: #5b64de;\n  color: #eee;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Electric-type,\n.move.Electric-type {\n  background: #e3e039;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Dark-type,\n.move.Dark-type {\n  background: #29291f;\n  color: #eee;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Fairy-type,\n.move.Fairy-type {\n  background: #ffc0cb;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Flying-type,\n.move.Flying-type {\n  background: #96d3e0;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Psychic-type,\n.move.Psychic-type {\n  background: #eb75dd;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Dragon-type,\n.move.Dragon-type {\n  background: #153f4d;\n  color: #fff;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.-type,\n.move.-type {\n  display: none;\n}\n\n.crystal .pokemon-container {\n  margin: 2px;\n  padding: 0;\n  width: 11rem;\n  height: 19rem;\n}\n\n.crystal .pokemon-info {\n  width: 100%;\n  position: absolute;\n  bottom: 0;\n  height: auto;\n  left: 0;\n  margin-left: 0;\n  padding: 0;\n  z-index: 100;\n  height: 9rem;\n  margin-left: 4px;\n}\n\n.crystal .pokemon-nickname {\n  display: block;\n}\n\n.crystal .pokemon-image {\n  height: 10rem;\n  width: 10rem;\n}\n\n.crystal .square,\n.crystal .bubble {\n  height: 11rem;\n  width: 11rem;\n}\n\n.default-light h3 {\n  color: #111;\n}\n\n.default-light .result-notes {\n  color: #111;\n}\n\n.default-light .container {\n  background-color: #eee;\n  border: 1px solid #666;\n}\n\n.default-light .pokemon-container {\n  background: transparent;\n}\n\n.default-light .pokemon-info {\n  background: #ddd;\n  color: #222;\n  filter: none;\n  -webkit-filter: none;\n}\n\n.default-light .boxed-pokemon-container {\n  background: #ddd;\n  border: 1px solid #ccc;\n  color: #333;\n}\n\n.default-light .dead-pokemon-container {\n  background: #ddd;\n  border-color: transparent;\n}\n\n.default-light .dead-pokemon-info,\n.default-light .pokemon-d-nickname,\n.default-light .pokemon-levels,\n.default-light .pokemon-causeofdeath {\n  color: #222;\n}\n\n.default-light .trainer-container {\n  color: #000;\n  border-bottom: transparent;\n}\n\n.default-light .boxed-pokemon-info {\n  border-left-color: #9a9a9a;\n}\n\n.default-light .gender-color-female {\n  color: #f35e5e;\n}\n\n.default-light .gender-color-male {\n  color: #5e9df3;\n}\n\n.default-light .rules-container {\n  color: #333;\n}\n\n.compact-crystal .pokemon-image {\n  filter: drop-shadow(0 0 4px #000);\n}\n\n.compact-crystal .pokemon-info {\n  width: 8rem;\n  padding: 0;\n  margin: 0;\n  background: transparent !important;\n  min-height: 4rem;\n}\n\n.compact-crystal .pokemon-nickname {\n  display: block;\n  font-size: 1rem;\n  text-transform: uppercase;\n  font-weight: bold;\n}\n\n.compact-crystal .pokemon-container {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n\n.compact-crystal .pokemon-info span {\n  margin: 0;\n  margin-right: 2px;\n}\n\n.cards .pokemon-info {\n  width: 100%;\n  min-height: 0;\n  background: rgba(0,0,0,0.4);\n  margin: 0 !important;\n  padding: 0;\n  overflow: visible;\n  margin-left: 0;\n  z-index: 10;\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  border-radius: 0;\n  background: linear-gradient(transparent, rgba(0,0,0,0.6));\n}\n\n.cards .boxed-pokemon-container {\n  background: rgba(0,0,0,0.4);\n  border: unset;\n  width: auto;\n}\n\n.cards .boxed-pokemon-info {\n  border: unset;\n}\n\n.cards .pokemon-container {\n  background: #222;\n  margin: 0.5rem;\n  width: 15rem;\n  display: flex;\n  height: 15rem;\n  flex-direction: column;\n  border-radius: 0.25rem;\n  overflow: hidden;\n}\n\n.cards .pokemon-image {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 15rem;\n  height: 15rem;\n}\n\n.cards .pokemon-image-wrapper {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n}\n\n.cards .round {\n  margin: 6px auto;\n}\n\n.cards .pokemon-main-info {\n  position: absolute;\n  bottom: 13rem;\n}\n\n.cards .dead-pokemon-container {\n  background: rgba(0,0,0,0.3);\n  border: none;\n  width: 10rem;\n  height: 10rem;\n  border-radius: 0.25rem;\n  overflow: hidden;\n  margin: 0 0.5rem;\n}\n\n.cards .dead-pokemon-picture.sprites-mode {\n  background-size: auto;\n  background-repeat: no-repeat;\n}\n\n.cards .dead-pokemon-picture {\n  width: 10rem;\n  height: 10rem;\n}\n\n.cards .dead-pokemon-info {\n  position: absolute;\n  bottom: 0;\n  background: linear-gradient(transparent, rgba(0,0,0,0.6));\n  margin: 0;\n  width: 100%;\n}\n\n.cards .move {\n  font-size: 0.7rem;\n}\n\n.cards .pokemon-item {\n  position: absolute;\n  z-index: 11;\n  border: none;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  top: 10rem;\n  left: 12rem;\n  background: transparent;\n}\n\n.generations .container {\n  position: relative;\n}\n\n.generations li {\n  background: rgba(0,0,0,0.2);\n  list-style-type: none;\n  border-radius: 0.25rem;\n  padding: 0.25rem;\n  margin: 0.25rem;\n  display: inline-block;\n}\n\n.generations .team-container {\n  width: 36%;\n  justify-content: flex-start;\n  display: inline-block;\n  margin-left: 4px;\n}\n\n.generations .pokemon-container {\n  padding: 0;\n  margin: 2px 0;\n}\n\n.generations .pokemon-info {\n  border-radius: 0;\n  background-size: 322px 10px;\n  background-image: linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);\n}\n\n.generations .pokemon-image-wrapper {\n  width: 10rem;\n  -webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);\n  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);\n}\n\n.generations .pokemon-image {\n  -webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);\n  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);\n  width: 9.5rem;\n}\n\n.generations .boxed-container {\n  width: 200px;\n  height: 420px;\n  display: inline-block;\n  background: #333;\n  border-radius: 0.25rem;\n  vertical-align: top;\n  background-size: 10px 10px;\n  background-image: linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);\n}\n\n.generations .move {\n  -webkit-clip-path: polygon(9% 0, 100% 1%, 100% 100%, 8% 100%, 0% 50%);\n  clip-path: polygon(9% 0, 100% 1%, 100% 100%, 8% 100%, 0% 50%);\n  border-radius: 0;\n}\n\n.generations .boxed-pokemon-container {\n  width: auto;\n  background: transparent;\n  border: none;\n  margin: 0;\n}\n\n.generations .boxed-pokemon-info {\n  display: none;\n}\n\n.generations .dead-container {\n  width: 710px;\n  display: inline-block;\n  vertical-align: top;\n  background-color: #333;\n  background-size: 10px 10px;\n  background-image: linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);\n  margin-left: 7px;\n  border-radius: 0.25rem;\n  height: 420px;\n}\n\n.generations .dead-pokemon-container {\n  width: 14rem;\n  height: 3rem;\n}\n\n.generations .pokemon-causeofdeath {\n  font-size: 0.7rem;\n}\n\n.generations .champs-container {\n  border-radius: 0.25rem;\n  width: 916px;\n  height: 212px;\n  position: absolute;\n  bottom: 148px;\n  right: 14px;\n  background-color: #333;\n  background-size: 10px 10px;\n  background-image: linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);\n  padding: 0.25rem;\n}\n\n.generations .rules-container {\n  position: absolute;\n  height: 200px;\n  width: 975px;\n  bottom: -50px;\n  right: 0;\n}\n\n.hexagons .pokemon-image-wrapper {\n  background: transparent;\n  border-radius: 0 !important;\n  -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);\n  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);\n}\n\n", ""]);
+exports.push([module.i, ".top-bar {\n  padding: 0.25rem;\n  font-size: 1.15rem;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-bottom: 1px solid rgba(0,0,0,0.33);\n}\n\n.pt-dark .top-bar {\n  background: #222;\n}\n\n.container {\n  border: 1px solid #ddd;\n  padding-bottom: 0.5rem;\n  position: relative;\n  overflow: hidden;\n  width: 100%;\n  height: 100%;\n}\n\n.container h3 {\n  text-transform: uppercase;\n  margin: 0.5rem;\n  letter-spacing: 4px;\n  text-align: center;\n  color: #eee;\n}\n\n.pt-dark .pt-callout {\n  color: #fff;\n}\n\n.result-notes {\n  text-align: center;\n  margin: 0.5rem;\n  font-size: 1.25rem;\n  font-weight: bold;\n}\n\n.container {\n  padding-bottom: 1rem;\n  background-color: #383840;\n  border: 1px solid #111;\n  color: #eee;\n  margin: 0 auto;\n}\n\n.gender-color-female {\n  color: #ffc0cb;\n}\n\n.gender-color-male {\n  color: #add8e6;\n}\n\n.pokemon-container {\n  display: inline-block;\n  padding: 1rem;\n  position: relative;\n}\n\n.logo {\n  height: 2.5rem;\n}\n\n.trainer-container div span {\n  font-size: 0.8rem;\n  letter-spacing: 2px;\n}\n\n.trainer-image {\n  border-radius: 50%;\n  height: 3rem;\n  border: 2px solid rgba(255,255,255,0.3);\n  height: 3rem;\n  width: 3rem;\n}\n\n.trainer-wrapper {\n  display: flex !important;\n  align-items: center;\n  align-content: center;\n}\n\n.nuzlocke-title {\n  display: inline-flex;\n  font-size: 1.5rem;\n  font-weight: light;\n}\n\n.badge-wrapper {\n  display: inline-flex;\n  width: 216px;\n  flex-wrap: wrap;\n  justify-content: center;\n  margin-left: auto;\n  margin-right: 3rem;\n}\n\n.badge-wrapper img {\n  height: 1.5rem;\n}\n\n.pokemon-shiny {\n  background: #eee;\n  border-radius: 50%;\n  border: 2px solid #fff;\n  height: 2rem;\n  width: 2rem;\n  padding-top: 0.2rem;\n  padding-left: 0.5rem;\n  position: absolute;\n  left: 7rem;\n  top: 1rem;\n}\n\n.move {\n  /*border-bottom: 1px solid #ccc;*/\n  /*box-shadow: inset 0 0 3rem rgba(0, 0, 0, 0.3);*/\n  border: 4px solid rgba(255,255,255,0.3);\n  border-radius: 4px;\n  color: #222;\n  font-size: 0.9rem;\n  height: 1.7rem;\n  margin: 0.25rem;\n  padding: 0;\n  text-align: center;\n}\n\n.move.long-text-move {\n  font-size: 0.7rem;\n}\n\n.pokemon-nickname {\n  font-size: 1.5rem;\n}\n\n.boxed-container,\n.dead-container {\n  margin: 0 auto;\n  margin-top: 1rem;\n}\n\n.dead-pokemon-container {\n  height: 5.1rem;\n  margin-bottom: 0.25rem;\n  position: relative;\n  width: 19rem;\n  vertical-align: middle;\n  text-align: left;\n}\n\n.dead-pokemon-container[data-league='true'] {\n  outline: 1px solid #eee8aa;\n}\n\n.dead-pokemon-container[data-league='true']::after {\n  content: '';\n  background: url(" + __webpack_require__(/*! ../../img/alola-champion-ribbon.png */ "./src/img/alola-champion-ribbon.png") + ");\n  display: block;\n  height: 40px;\n  width: 35px;\n  position: absolute;\n  top: 0.25rem;\n  right: 0.25rem;\n  opacity: 0.8;\n}\n\n.death-info-container {\n  width: 12rem;\n  display: inline-block;\n  vertical-align: middle;\n  margin-top: -8rem;\n}\n\n.dead-pokemon-container .pokemon-image {\n  border-radius: 0;\n  display: inline-block;\n  height: 5rem;\n  width: 5rem;\n  overflow: hidden;\n}\n\n.pokemon-causeofdeath {\n  font-size: 0.8rem;\n  display: inline-block;\n}\n\n.pokemon-container[data-champion='true'] .pokemon-info::after {\n  content: '';\n  display: block;\n  height: 40px;\n  width: 35px;\n  position: absolute;\n  top: 0.25rem;\n  right: 0.25rem;\n}\n\n.region-alola .pokemon-container[data-champion='true'] .pokemon-info::after {\n  background: url(" + __webpack_require__(/*! ../../img/alola-champion-ribbon.png */ "./src/img/alola-champion-ribbon.png") + ");\n}\n\n.badge {\n  height: 1rem;\n}\n\n[data-obtained='false'] {\n  -webkit-filter: grayscale(100%);\n}\n\n.trainer-container {\n  color: #eee;\n  padding: 0.25rem;\n  width: 100%;\n  background-size: cover, 50% auto;\n  background-position: top left, bottom left;\n}\n\n.team-container {\n  display: flex;\n  /* flex-direction: column; */\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: center;\n}\n\n.dead-pokemon-container {\n  background: #333;\n  border: 1px solid #010101;\n  /*color: #eee;*/\n}\n\n.boxed-pokemon-container {\n  display: inline-flex !important;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n.boxed-pokemon-image {\n  cursor: pointer;\n  background-size: cover;\n  background-position: center center;\n  display: inline-block;\n  height: 2rem;\n  width: 2rem;\n}\n\n.pokemon-causeofdeath {\n  color: #000;\n}\n\n.dead-pokemon-info {\n  color: #eee;\n  width: 200px;\n  vertical-align: top;\n  display: inline-block;\n  padding: 0.25rem;\n}\n\n.dead-pokemon-container {\n  display: inline-flex !important;\n  align-items: center;\n  margin-right: 2px;\n}\n\n.dead-container {\n  margin-left: 0;\n}\n\n.dead-pokemon-info,\n.pokemon-d-nickname strong,\n.pokemon-causeofdeath {\n  color: #fff;\n}\n\n.dead-pokemon-info {\n  margin: 0.5rem;\n}\n\n.pokemon-d-nickname {\n  font-size: 1rem;\n  font-weight: light !important;\n  margin-right: 0.5rem;\n  color: #eee;\n}\n\n.pokemon-d-nickname,\n.pokemon-levels {\n  display: inline-block;\n  font-size: 0.9rem;\n  text-align: center;\n  text-shadow: none;\n}\n\n.dead-pokemon-picture {\n  cursor: pointer;\n  height: 80px;\n  width: 76px;\n  background-size: cover;\n  background-position: center;\n}\n\n.pokemon-levels {\n  margin: 0 !important;\n  color: #ddd;\n}\n\n.selector {\n  margin: 0 auto;\n  max-width: 80rem;\n  padding: 0.5rem;\n}\n\n.selector button {\n  border: 0 solid transparent;\n  background: #333;\n  cursor: pointer;\n  color: #eee;\n  border-radius: 0.25rem;\n  padding: 0.5rem;\n}\n\n.selector button:hover {\n  background: #444;\n  transition: 300ms;\n}\n\n.trainer-container {\n  background: #333;\n  color: #eee;\n  border-bottom: 1px solid #000;\n  padding: 0.25rem;\n  width: 100%;\n  background-size: cover, 50% auto;\n  background-position: top left, bottom left;\n}\n\n.trainer-container div {\n  display: inline-block;\n  padding: 0.25rem;\n  text-align: center;\n}\n\n.logo {\n  height: 100%;\n  height: 2rem;\n}\n\n.trainer-container div span {\n  font-size: 0.8rem;\n  letter-spacing: 2px;\n}\n\n.trainer-image {\n  border-radius: 50%;\n  height: 3rem;\n  vertical-align: bottom;\n}\n\n.not-obtained {\n  filter: grayscale(100%);\n}\n\n.round {\n  border-radius: 50%;\n  display: inline-block;\n  height: 8rem;\n  width: 8rem;\n  padding: 0.25rem;\n  position: relative;\n  z-index: 10;\n}\n\n.square {\n  display: inline-block;\n  height: 8rem;\n  width: 8rem;\n  padding: 0.25rem;\n  position: relative;\n  z-index: 10;\n}\n\n.pokemon-image {\n  background-size: cover;\n  background-position: center center;\n  display: inline-block;\n  height: 7.5rem;\n  width: 7.5rem;\n}\n\n.pokemon-image.round {\n  border-radius: 50%;\n}\n\n.is-sprite {\n  background-size: auto;\n  background-repeat: no-repeat;\n}\n\n.pokemon-item {\n  background: #111;\n  border: 5px solid #fff;\n  bottom: 0;\n  height: 3rem;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  left: 12px;\n  padding: 0.5rem;\n  position: absolute;\n  width: 3rem;\n  z-index: 10;\n}\n\n.pokemon-item.round {\n  border-radius: 50%;\n}\n\n.pokemon-item.square {\n  border-radius: 0;\n}\n\n.pokemon-shiny {\n  background: #eee;\n  border-radius: 50%;\n  border: 2px solid #fff;\n  height: 2rem;\n  width: 2rem;\n  padding-top: 0.2rem;\n  padding-left: 0.5rem;\n  position: absolute;\n  left: 7rem;\n  top: 1rem;\n}\n\n.minimal {\n  min-width: 17rem;\n  justify-content: center;\n  flex-direction: column;\n  align-items: center;\n  text-align: center;\n}\n\n.minimal .pokemon-info {\n  background: transparent;\n  display: flex;\n  padding: 0;\n  height: auto;\n  width: auto;\n  margin-left: 0;\n}\n\n.pokemon-info {\n  border-radius: 0 4px 4px 0;\n  display: inline-block;\n  background: #111;\n  height: auto;\n  min-height: 8rem;\n  margin-left: -4rem;\n  position: relative;\n  width: 26rem;\n  vertical-align: top;\n  -webkit-filter: drop-shadow(0 0 1px #111);\n  padding-left: 4rem;\n  border-radius: 0.25rem;\n  overflow: hidden;\n}\n\n.pokemon-info span {\n  margin: 0 0.25rem;\n}\n\n.pokemon-info::before {\n  content: '';\n  border-color: transparent #111 transparent transparent;\n  border-width: 1.5rem;\n  border-style: solid;\n  left: -3rem;\n  top: calc(50% - 1.5rem);\n  position: absolute;\n  display: none;\n}\n\n.pokemon-info-inner {\n  display: inline-block;\n  padding: 0.5rem;\n  vertical-align: top;\n}\n\n.pokemon-moves {\n  background: transparent;\n  display: flex;\n  width: 100%;\n}\n\n.pokemon-moves.horizontal {\n  height: 2rem;\n  width: 100%;\n}\n\n.pokemon-moves.vertical {\n  height: 8rem;\n  width: 23%;\n  position: absolute;\n  top: 0;\n  flex-direction: column;\n  right: 6px;\n  justify-content: space-evenly;\n}\n\n.column {\n  flex-direction: column;\n  justify-content: center;\n}\n\n.move {\n  /*border-bottom: 1px solid #ccc;*/\n  /*box-shadow: inset 0 0 3rem rgba(0, 0, 0, 0.3);*/\n  align-items: center;\n  border: 0 solid transparent;\n  border-radius: 0;\n  border-radius: 4px;\n  display: flex;\n  font-size: 0.8rem;\n  justify-content: center;\n  margin: 0 0.25rem;\n  padding: 0;\n  text-align: center;\n  width: 100%;\n}\n\n.pokemon-nickname {\n  font-size: 1.5rem;\n}\n\n.boxed-pokemon-container {\n  background: #151515;\n  border: 1px solid #000;\n  border-radius: 4px;\n  display: inline-block;\n  margin: 2px;\n  width: 16%;\n  position: relative;\n}\n\n.pokemon-levels {\n  margin-top: 3.5rem;\n}\n\n.boxed-pokemon-info {\n  border-left: 1px solid #111;\n  display: inline-block;\n  /*position: absolute;*/\n  padding: 0.5rem;\n  top: 0;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable,\n.move {\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Fighting-type,\n.move.Fighting-type {\n  background: #a52a2a;\n  color: #eee;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Ice-type,\n.move.Ice-type {\n  background: #c2f1f2;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Fire-type,\n.move.Fire-type {\n  background: #eb3434;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Grass-type,\n.move.Grass-type {\n  background: #39bf3c;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Bug-type,\n.move.Bug-type {\n  background: #aee359;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Normal-type,\n.move.Normal-type {\n  background: #e1e3d3;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Steel-type,\n.move.Steel-type {\n  background: #b0b0b0;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Rock-type,\n.move.Rock-type {\n  background: #8f795d;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Ground-type,\n.move.Ground-type {\n  background: #9c6e21;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Poison-type,\n.move.Poison-type {\n  background: #75226b;\n  color: #eee;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Ghost-type,\n.move.Ghost-type {\n  background: #3b2238 !important;\n  color: #eee;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Water-type,\n.move.Water-type {\n  background: #5b64de;\n  color: #eee;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Electric-type,\n.move.Electric-type {\n  background: #e3e039;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Dark-type,\n.move.Dark-type {\n  background: #29291f;\n  color: #eee;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Fairy-type,\n.move.Fairy-type {\n  background: #ffc0cb;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Flying-type,\n.move.Flying-type {\n  background: #96d3e0;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Psychic-type,\n.move.Psychic-type {\n  background: #eb75dd;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Dragon-type,\n.move.Dragon-type {\n  background: #153f4d;\n  color: #fff;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.-type,\n.move.-type {\n  display: none;\n}\n\n.crystal .pokemon-container {\n  margin: 2px;\n  padding: 0;\n  width: 11rem;\n  height: 19rem;\n}\n\n.crystal .pokemon-info {\n  width: 100%;\n  position: absolute;\n  bottom: 0;\n  height: auto;\n  left: 0;\n  margin-left: 0;\n  padding: 0;\n  z-index: 100;\n  height: 9rem;\n  margin-left: 4px;\n}\n\n.crystal .pokemon-nickname {\n  display: block;\n}\n\n.crystal .pokemon-image {\n  height: 10rem;\n  width: 10rem;\n}\n\n.crystal .square,\n.crystal .bubble {\n  height: 11rem;\n  width: 11rem;\n}\n\n.default-light h3 {\n  color: #111;\n}\n\n.default-light .result-notes {\n  color: #111;\n}\n\n.default-light .container {\n  background-color: #eee;\n  border: 1px solid #666;\n}\n\n.default-light .pokemon-container {\n  background: transparent;\n}\n\n.default-light .pokemon-info {\n  background: #ddd;\n  color: #222;\n  filter: none;\n  -webkit-filter: none;\n}\n\n.default-light .boxed-pokemon-container {\n  background: #ddd;\n  border: 1px solid #ccc;\n  color: #333;\n}\n\n.default-light .dead-pokemon-container {\n  background: #ddd;\n  border-color: transparent;\n}\n\n.default-light .dead-pokemon-info,\n.default-light .pokemon-d-nickname,\n.default-light .pokemon-levels,\n.default-light .pokemon-causeofdeath {\n  color: #222;\n}\n\n.default-light .trainer-container {\n  color: #000;\n  border-bottom: transparent;\n}\n\n.default-light .boxed-pokemon-info {\n  border-left-color: #9a9a9a;\n}\n\n.default-light .gender-color-female {\n  color: #f35e5e;\n}\n\n.default-light .gender-color-male {\n  color: #5e9df3;\n}\n\n.default-light .rules-container {\n  color: #333;\n}\n\n.compact-crystal .pokemon-image {\n  filter: drop-shadow(0 0 4px #000);\n}\n\n.compact-crystal .pokemon-info {\n  width: 8rem;\n  padding: 0;\n  margin: 0;\n  background: transparent !important;\n  min-height: 4rem;\n}\n\n.compact-crystal .pokemon-nickname {\n  display: block;\n  font-size: 1rem;\n  text-transform: uppercase;\n  font-weight: bold;\n}\n\n.compact-crystal .pokemon-container {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n\n.compact-crystal .pokemon-info span {\n  margin: 0;\n  margin-right: 2px;\n}\n\n.cards .pokemon-info {\n  width: 100%;\n  min-height: 0;\n  background: rgba(0,0,0,0.4);\n  margin: 0 !important;\n  padding: 0;\n  overflow: visible;\n  margin-left: 0;\n  z-index: 10;\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  border-radius: 0;\n  background: linear-gradient(transparent, rgba(0,0,0,0.6));\n}\n\n.cards .boxed-pokemon-container {\n  background: rgba(0,0,0,0.4);\n  border: unset;\n  width: auto;\n}\n\n.cards .boxed-pokemon-info {\n  border: unset;\n}\n\n.cards .pokemon-container {\n  background: #222;\n  margin: 0.5rem;\n  width: 15rem;\n  display: flex;\n  height: 15rem;\n  flex-direction: column;\n  border-radius: 0.25rem;\n  overflow: hidden;\n}\n\n.cards .pokemon-image {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 15rem;\n  height: 15rem;\n}\n\n.cards .pokemon-image-wrapper {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n}\n\n.cards .round {\n  margin: 6px auto;\n}\n\n.cards .pokemon-main-info {\n  position: absolute;\n  bottom: 13rem;\n}\n\n.cards .dead-pokemon-container {\n  background: rgba(0,0,0,0.3);\n  border: none;\n  width: 10rem;\n  height: 10rem;\n  border-radius: 0.25rem;\n  overflow: hidden;\n  margin: 0 0.5rem;\n}\n\n.cards .dead-pokemon-picture.sprites-mode {\n  background-size: auto;\n  background-repeat: no-repeat;\n}\n\n.cards .dead-pokemon-picture {\n  width: 10rem;\n  height: 10rem;\n}\n\n.cards .dead-pokemon-info {\n  position: absolute;\n  bottom: 0;\n  background: linear-gradient(transparent, rgba(0,0,0,0.6));\n  margin: 0;\n  width: 100%;\n}\n\n.cards .move {\n  font-size: 0.7rem;\n}\n\n.cards .pokemon-item {\n  position: absolute;\n  z-index: 11;\n  border: none;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  top: 10rem;\n  left: 12rem;\n  background: transparent;\n}\n\n.generations .container {\n  position: relative;\n}\n\n.generations li {\n  background: rgba(0,0,0,0.2);\n  list-style-type: none;\n  border-radius: 0.25rem;\n  padding: 0.25rem;\n  margin: 0.25rem;\n  display: inline-block;\n}\n\n.generations .team-container {\n  width: 36%;\n  justify-content: flex-start;\n  display: inline-block;\n  margin-left: 4px;\n}\n\n.generations .pokemon-container {\n  padding: 0;\n  margin: 2px 0;\n}\n\n.generations .pokemon-info {\n  border-radius: 0;\n  background-size: 322px 10px;\n  background-image: linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);\n}\n\n.generations .pokemon-image-wrapper {\n  width: 10rem;\n  -webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);\n  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);\n}\n\n.generations .pokemon-image {\n  -webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);\n  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);\n  width: 9.5rem;\n}\n\n.generations .boxed-container {\n  width: 200px;\n  height: 420px;\n  display: inline-block;\n  background: #333;\n  border-radius: 0.25rem;\n  vertical-align: top;\n  background-size: 10px 10px;\n  background-image: linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);\n}\n\n.generations .move {\n  -webkit-clip-path: polygon(9% 0, 100% 1%, 100% 100%, 8% 100%, 0% 50%);\n  clip-path: polygon(9% 0, 100% 1%, 100% 100%, 8% 100%, 0% 50%);\n  border-radius: 0;\n}\n\n.generations .boxed-pokemon-container {\n  width: auto;\n  background: transparent;\n  border: none;\n  margin: 0;\n}\n\n.generations .boxed-pokemon-info {\n  display: none;\n}\n\n.generations .dead-container {\n  width: 710px;\n  display: inline-block;\n  vertical-align: top;\n  background-color: #333;\n  background-size: 10px 10px;\n  background-image: linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);\n  margin-left: 7px;\n  border-radius: 0.25rem;\n  height: 420px;\n}\n\n.generations .dead-pokemon-container {\n  width: 14rem;\n  height: 3rem;\n}\n\n.generations .pokemon-causeofdeath {\n  font-size: 0.7rem;\n}\n\n.generations .champs-container {\n  border-radius: 0.25rem;\n  width: 916px;\n  height: 212px;\n  position: absolute;\n  bottom: 148px;\n  right: 14px;\n  background-color: #333;\n  background-size: 10px 10px;\n  background-image: linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);\n  padding: 0.25rem;\n}\n\n.generations .rules-container {\n  position: absolute;\n  height: 200px;\n  width: 975px;\n  bottom: -50px;\n  right: 0;\n}\n\n.hexagon,\n.hexagons .trainer-wrapper img:nth-of-type(1),\n.hexagons .pokemon-image-wrapper,\n.hexagons .pokemon-image-wrapper::after,\n.hexagons .pokemon-image,\n.hexagons .pokemon-item,\n.hexagons .champs-pokemon {\n  -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);\n  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);\n}\n\n.hexagons.team-size-6 .pokemon-container:nth-of-type(5),\n.hexagons.team-size-6 .pokemon-container:nth-of-type(6) {\n  transform: translate(-124px, -62px);\n}\n\n.hexagons.team-size-6 .pokemon-container:nth-of-type(4) {\n  transform: translate(-124px, 186px);\n}\n\n.hexagons.team-size-5 .pokemon-container:nth-of-type(4) {\n  transform: translate(-372px, 186px);\n}\n\n.hexagons.team-size-5 .pokemon-container:nth-of-type(5) {\n  transform: translate(-248px, -62px);\n}\n\n.hexagons.team-size-4 .team-container,\n.hexagons.team-size-3 .team-container,\n.hexagons.team-size-2 .team-container,\n.hexagons.team-size-1 .team-container {\n  margin-left: 0;\n}\n\n.hexagons .team-container {\n  margin-left: 8rem;\n  margin-top: 0.5rem;\n}\n\n.hexagons .trainer-wrapper img:nth-of-type(1) {\n  border-radius: 0;\n}\n\n.hexagons .pokemon-container {\n  padding: 0;\n}\n\n.hexagons .pokemon-image-wrapper {\n  background: transparent;\n  border-radius: 0 !important;\n  height: 15.5rem;\n  width: 15.5rem;\n}\n\n.hexagons .pokemon-image-wrapper::after {\n  content: '';\n  height: 15rem;\n  width: 15rem;\n  position: absolute;\n  display: block;\n  top: 0.25rem;\n  z-index: 10;\n  background: linear-gradient(to bottom, rgba(0,0,0,0.75), transparent, rgba(0,0,0,0.7));\n}\n\n.hexagons .pokemon-image {\n  height: 15rem;\n  width: 15rem;\n}\n\n.hexagons .pokemon-item {\n  position: absolute;\n  bottom: 0;\n  left: calc(50% - 1.5rem);\n  border-radius: 0;\n  border: none;\n  background-size: 15rem;\n  background-position: center bottom;\n}\n\n.hexagons .pokemon-nature,\n.hexagons .pokemon-ability {\n  display: inline-block;\n  margin-left: 0.25rem;\n  margin-bottom: 2rem;\n}\n\n.hexagons .pokemon-info {\n  background: transparent;\n  position: absolute;\n  top: 4rem;\n  left: 0;\n  z-index: 10;\n  text-align: center;\n  width: 15.5rem;\n  margin: 0;\n  padding: 0;\n  height: 8rem;\n}\n\n.hexagons .pokemon-info-inner {\n  padding: 0;\n}\n\n.hexagons .pokemon-moves {\n  margin-top: 1rem;\n  display: flex;\n  position: absolute;\n  bottom: 0.25rem;\n  opacity: 0.6;\n  left: 0.25rem;\n  width: calc(100% - 0.5rem);\n}\n\n.hexagons .move {\n  border-radius: 0;\n  margin: 0;\n}\n\n.hexagons .boxed-container,\n.hexagons .champs-container,\n.hexagons .dead-container {\n  display: inline-block;\n  width: 33%;\n  vertical-align: top;\n}\n\n.hexagons .boxed-pokemon-container {\n  background: #333;\n  width: 48%;\n  border: none;\n}\n\n.hexagons .boxed-pokemon-info {\n  border: none;\n}\n\n.hexagons .dead-pokemon-container {\n  height: auto;\n  width: 100%;\n  border: none;\n  -webkit-clip-path: polygon(95% 0, 100% 50%, 95% 100%, 5% 100%, 0% 50%, 5% 0);\n  clip-path: polygon(95% 0, 100% 50%, 95% 100%, 5% 100%, 0% 50%, 5% 0);\n}\n\n.hexagons .dead-pokemon-info {\n  margin: 0;\n  width: 100%;\n}\n\n.hexagons .trainer-image {\n  border: none;\n}\n\n.hexagons .champs-pokemon:nth-of-type(n+8),\n.hexagons .champs-pokemon:nth-of-type(n+22),\n.hexagons .champs-pokemon:nth-of-type(n+36),\n.hexagons .champs-pokemon:nth-of-type(n+50),\n.hexagons .champs-pokemon:nth-of-type(n+64),\n.hexagons .champs-pokemon:nth-of-type(n+78),\n.hexagons .champs-pokemon:nth-of-type(n+92),\n.hexagons .champs-pokemon:nth-of-type(n+106) {\n  left: 24px;\n  top: -12px;\n  position: relative;\n}\n\n.hexagons .champs-pokemon:nth-of-type(n+15),\n.hexagons .champs-pokemon:nth-of-type(n+29),\n.hexagons .champs-pokemon:nth-of-type(n+43),\n.hexagons .champs-pokemon:nth-of-type(n+57),\n.hexagons .champs-pokemon:nth-of-type(n+71),\n.hexagons .champs-pokemon:nth-of-type(n+85) {\n  left: 0;\n  top: -23px;\n}\n\n", ""]);
 
 // exports
 
@@ -49059,6 +49059,17 @@ module.exports = __webpack_require__.p + "src/assets/download.b0eeaae9fb64efa8f7
 
 /***/ }),
 
+/***/ "./src/assets/hexagons-theme.png":
+/*!***************************************!*\
+  !*** ./src/assets/hexagons-theme.png ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "src/assets/hexagons-theme.eadcf1288697a2e7227b6c0bc99fe0e7.png";
+
+/***/ }),
+
 /***/ "./src/assets/img/boxed-box.png":
 /*!**************************************!*\
   !*** ./src/assets/img/boxed-box.png ***!
@@ -49255,6 +49266,7 @@ const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 const Loadable = __webpack_require__(/*! react-loadable */ "./node_modules/react-loadable/lib/index.js");
 __webpack_require__(/*! ./app.styl */ "./src/components/App/app.styl");
+const Hotkeys_1 = __webpack_require__(/*! components/Hotkeys */ "./src/components/Hotkeys/index.ts");
 function Loading() {
     return React.createElement("div", null, "Loading...");
 }
@@ -49272,24 +49284,20 @@ const Result = Loadable({
         return React.createElement(loaded.Result, null);
     }
 });
-const Hotkeys = Loadable({
-    loader: () => Promise.resolve().then(() => __webpack_require__(/*! components/Hotkeys */ "./src/components/Hotkeys/index.ts")),
-    loading: Loading,
-    render(loaded) {
-        return React.createElement(loaded.Hokeys, null);
-    }
-});
 class AppBase extends React.PureComponent {
     constructor(props) {
         super(props);
     }
     render() {
         return (React.createElement("div", { className: 'app', role: 'main' },
-            React.createElement(Hotkeys, null),
+            this.props.disableHotkeys ? null : React.createElement(Hotkeys_1.Hotkeys, null),
             React.createElement(Editor, null),
             React.createElement(Result, null)));
     }
 }
+AppBase.defaultProps = {
+    disableHotkeys: false,
+};
 exports.AppBase = AppBase;
 exports.App = react_redux_1.connect((state) => ({
     style: state.style,
@@ -49396,6 +49404,110 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(__webpack_require__(/*! ./BaseEditor */ "./src/components/BaseEditor/BaseEditor.tsx"));
+
+
+/***/ }),
+
+/***/ "./src/components/BoxedPokemon/BoxedPokemon.tsx":
+/*!******************************************************!*\
+  !*** ./src/components/BoxedPokemon/BoxedPokemon.tsx ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+const actions_1 = __webpack_require__(/*! actions */ "./src/actions/index.ts");
+const PokemonIcon_1 = __webpack_require__(/*! components/PokemonIcon */ "./src/components/PokemonIcon/index.ts");
+const Shared_1 = __webpack_require__(/*! components/Shared */ "./src/components/Shared/index.ts");
+exports.BoxedPokemonBase = (poke) => {
+    return (React.createElement("div", { className: 'boxed-pokemon-container' },
+        React.createElement(PokemonIcon_1.PokemonIcon, { species: poke.species, id: poke.id, style: { cursor: 'pointer' }, forme: poke.forme, shiny: poke.shiny }),
+        React.createElement("div", { className: 'boxed-pokemon-info' },
+            React.createElement("span", { className: 'boxed-pokemon-name' },
+                poke.nickname,
+                " ",
+                Shared_1.GenderElement(poke.gender),
+                ' ',
+                poke.level ? React.createElement("span", null,
+                    "lv. ",
+                    poke.level) : null))));
+};
+exports.BoxedPokemon = react_redux_1.connect(null, { selectPokemon: actions_1.selectPokemon })(exports.BoxedPokemonBase);
+
+
+/***/ }),
+
+/***/ "./src/components/BoxedPokemon/index.ts":
+/*!**********************************************!*\
+  !*** ./src/components/BoxedPokemon/index.ts ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./BoxedPokemon */ "./src/components/BoxedPokemon/BoxedPokemon.tsx"));
+
+
+/***/ }),
+
+/***/ "./src/components/ChampsPokemon/ChampsPokemon.tsx":
+/*!********************************************************!*\
+  !*** ./src/components/ChampsPokemon/ChampsPokemon.tsx ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const PokemonIcon_1 = __webpack_require__(/*! components/PokemonIcon */ "./src/components/PokemonIcon/index.ts");
+const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
+class ChampsPokemon extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (React.createElement("div", { className: 'champs-pokemon', style: {
+                height: '48px',
+                width: '48px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: utils_1.gameOfOriginToColor(this.props.gameOfOrigin),
+                cursor: 'pointer',
+            } },
+            React.createElement(PokemonIcon_1.PokemonIcon, Object.assign({}, this.props))));
+    }
+}
+exports.ChampsPokemon = ChampsPokemon;
+
+
+/***/ }),
+
+/***/ "./src/components/ChampsPokemon/index.ts":
+/*!***********************************************!*\
+  !*** ./src/components/ChampsPokemon/index.ts ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./ChampsPokemon */ "./src/components/ChampsPokemon/ChampsPokemon.tsx"));
 
 
 /***/ }),
@@ -49552,6 +49664,76 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(__webpack_require__(/*! ./DataEditor */ "./src/components/DataEditor/DataEditor.tsx"));
+
+
+/***/ }),
+
+/***/ "./src/components/DeadPokemon/DeadPokemon.tsx":
+/*!****************************************************!*\
+  !*** ./src/components/DeadPokemon/DeadPokemon.tsx ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+const Shared_1 = __webpack_require__(/*! components/Shared */ "./src/components/Shared/index.ts");
+const actions_1 = __webpack_require__(/*! actions */ "./src/actions/index.ts");
+const PokemonIcon_1 = __webpack_require__(/*! components/PokemonIcon */ "./src/components/PokemonIcon/index.ts");
+exports.DeadPokemonBase = (poke) => {
+    const style = poke.style;
+    const addForme = (species) => {
+        if (poke.forme) {
+            if (poke.forme === 'Alolan' || poke.forme === 'Alola') {
+                return `alolan-${species}`;
+            }
+            return species;
+        }
+        else {
+            return species;
+        }
+    };
+    const getClassname = () => poke.champion ? 'dead-pokemon-container champion' : 'dead-pokemon-container';
+    return (React.createElement("div", { className: getClassname(), "data-league": poke.champion },
+        React.createElement("span", { style: { filter: 'grayscale(100%)' } },
+            React.createElement(PokemonIcon_1.PokemonIconBase, Object.assign({}, poke))),
+        React.createElement("div", { className: 'dead-pokemon-info' },
+            React.createElement("div", { className: 'pokemon-d-nickname' },
+                poke.nickname,
+                " ",
+                Shared_1.GenderElement(poke.gender)),
+            React.createElement("div", { className: 'pokemon-levels' },
+                "Levels ",
+                poke.metLevel,
+                "\u2014",
+                poke.level),
+            React.createElement("br", null),
+            React.createElement("div", { className: 'pokemon-causeofdeath' }, poke.causeOfDeath))));
+};
+exports.DeadPokemon = react_redux_1.connect((state) => ({ style: state.style, game: state.game }), {
+    selectPokemon: actions_1.selectPokemon,
+})(exports.DeadPokemonBase);
+
+
+/***/ }),
+
+/***/ "./src/components/DeadPokemon/index.ts":
+/*!*********************************************!*\
+  !*** ./src/components/DeadPokemon/index.ts ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./DeadPokemon */ "./src/components/DeadPokemon/DeadPokemon.tsx"));
 
 
 /***/ }),
@@ -49773,7 +49955,6 @@ const actions_1 = __webpack_require__(/*! actions */ "./src/actions/index.ts");
 const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
 const core_1 = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
 const RulesEditor_1 = __webpack_require__(/*! components/RulesEditor */ "./src/components/RulesEditor/index.ts");
-const gameOfOriginToColor_1 = __webpack_require__(/*! components/Result/gameOfOriginToColor */ "./src/components/Result/gameOfOriginToColor.ts");
 const gameSubEditorStyle = {
     display: 'flex',
     justifyContent: 'space-between',
@@ -49785,7 +49966,7 @@ class GameEditorBase extends React.Component {
         this.onInput = e => {
             this.props.editGame({ name: e.target.value });
             this.props.editStyle({
-                bgColor: gameOfOriginToColor_1.gameOfOriginToColor(e.target.value),
+                bgColor: utils_1.gameOfOriginToColor(e.target.value),
             });
         };
         this.toggleDialog = _ => this.setState({ isOpen: !this.state.isOpen });
@@ -50152,7 +50333,13 @@ class CurrentPokemonEditBase extends React.Component {
                     'Timid',
                     'None',
                 ] }),
-            React.createElement(PokemonEditor_1.CurrentPokemonInput, { labelName: 'Ability', inputName: 'ability', placeholder: '', value: currentPokemon.ability, type: 'text' }),
+            React.createElement(Shared_1.Autocomplete, { items: utils_1.listOfAbilities, name: 'ability', label: 'Ability', placeholder: '', value: currentPokemon.ability || '', onChange: e => {
+                    const edit = {
+                        ability: e.target.value,
+                    };
+                    this.props.editPokemon(edit, this.state.selectedId);
+                    this.props.selectPokemon(this.state.selectedId);
+                } }),
             React.createElement(PokemonEditor_1.CurrentPokemonInput, { labelName: 'Moves', inputName: 'moves', placeholder: '', value: currentPokemon.moves, type: 'moves' }),
             this.state.expandedView ? this.moreInputs(currentPokemon) : null,
             React.createElement("br", null),
@@ -50192,7 +50379,6 @@ const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
 const actions_1 = __webpack_require__(/*! actions */ "./src/actions/index.ts");
-const Result_1 = __webpack_require__(/*! components/Result */ "./src/components/Result/index.ts");
 const Shared_1 = __webpack_require__(/*! components/Shared */ "./src/components/Shared/index.ts");
 const core_1 = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
 class CurrentPokemonInputBase extends React.Component {
@@ -50236,7 +50422,7 @@ class CurrentPokemonInputBase extends React.Component {
         if (type === 'moves') {
             return (React.createElement(Shared_1.ErrorBoundary, null,
                 React.createElement(core_1.TagInput, { tagProps: (v, i) => ({
-                        className: `${Result_1.getMoveType((v || '').toString().trim())}-type`,
+                        className: `${utils_1.getMoveType((v || '').toString().trim())}-type`,
                     }), onChange: values => {
                         console.log(values);
                         const edit = {
@@ -50375,6 +50561,7 @@ const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
 const _1 = __webpack_require__(/*! . */ "./src/components/PokemonEditor/index.ts");
 const AddPokemonButton_1 = __webpack_require__(/*! components/AddPokemonButton */ "./src/components/AddPokemonButton/index.ts");
 const BaseEditor_1 = __webpack_require__(/*! components/BaseEditor */ "./src/components/BaseEditor/index.ts");
+const Shared_1 = __webpack_require__(/*! components/Shared */ "./src/components/Shared/index.ts");
 __webpack_require__(/*! ../../assets/img/team-box.png */ "./src/assets/img/team-box.png");
 __webpack_require__(/*! ../../assets/img/dead-box.png */ "./src/assets/img/dead-box.png");
 exports.Box = ({ pokemon, tabTitle, boxId, filterString, }) => {
@@ -50390,7 +50577,7 @@ exports.Box = ({ pokemon, tabTitle, boxId, filterString, }) => {
                 textAlign: 'center',
                 width: '4rem',
             } }, tabTitle),
-        utils_1.pokemonByFilter(pokemon, filter)));
+        Shared_1.PokemonByFilter(pokemon, filter)));
 };
 class PokemonEditorBase extends React.Component {
     constructor(props) {
@@ -50477,6 +50664,10 @@ const formatSpeciesName = (species) => {
         return 'unknown';
     if (utils_1.listOfPokemon.indexOf(species) < 0)
         return 'unknown';
+    if (species === 'Nidoran♀')
+        return 'nidoran-f';
+    if (species === 'Nidoran♂')
+        return 'nidoran-m';
     if (species === 'Mr. Mime')
         return 'mr-mime';
     if (species === 'Farfetch\'d')
@@ -50539,123 +50730,6 @@ __export(__webpack_require__(/*! ./PokemonIcon */ "./src/components/PokemonIcon/
 
 /***/ }),
 
-/***/ "./src/components/Result/BoxedPokemon.tsx":
-/*!************************************************!*\
-  !*** ./src/components/Result/BoxedPokemon.tsx ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-const actions_1 = __webpack_require__(/*! actions */ "./src/actions/index.ts");
-const getGenderElement_1 = __webpack_require__(/*! ./getGenderElement */ "./src/components/Result/getGenderElement.tsx");
-const PokemonIcon_1 = __webpack_require__(/*! ../PokemonIcon */ "./src/components/PokemonIcon/index.ts");
-exports.BoxedPokemonBase = (poke) => {
-    return (React.createElement("div", { className: 'boxed-pokemon-container' },
-        React.createElement(PokemonIcon_1.PokemonIcon, { species: poke.species, id: poke.id, style: { cursor: 'pointer' } }),
-        React.createElement("div", { className: 'boxed-pokemon-info' },
-            React.createElement("span", { className: 'boxed-pokemon-name' },
-                poke.nickname,
-                " ",
-                getGenderElement_1.getGenderElement(poke.gender),
-                ' ',
-                poke.level ? React.createElement("span", null,
-                    "lv. ",
-                    poke.level) : null))));
-};
-exports.BoxedPokemon = react_redux_1.connect(null, { selectPokemon: actions_1.selectPokemon })(exports.BoxedPokemonBase);
-
-
-/***/ }),
-
-/***/ "./src/components/Result/ChampsPokemon.tsx":
-/*!*************************************************!*\
-  !*** ./src/components/Result/ChampsPokemon.tsx ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-const PokemonIcon_1 = __webpack_require__(/*! components/PokemonIcon */ "./src/components/PokemonIcon/index.ts");
-const gameOfOriginToColor_1 = __webpack_require__(/*! ./gameOfOriginToColor */ "./src/components/Result/gameOfOriginToColor.ts");
-class ChampsPokemon extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return (React.createElement("div", { style: {
-                width: '32px',
-                background: gameOfOriginToColor_1.gameOfOriginToColor(this.props.gameOfOrigin),
-                display: 'inline-block',
-                cursor: 'pointer',
-            } },
-            React.createElement(PokemonIcon_1.PokemonIcon, Object.assign({}, this.props))));
-    }
-}
-exports.ChampsPokemon = ChampsPokemon;
-
-
-/***/ }),
-
-/***/ "./src/components/Result/DeadPokemon.tsx":
-/*!***********************************************!*\
-  !*** ./src/components/Result/DeadPokemon.tsx ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-const getGenderElement_1 = __webpack_require__(/*! ./getGenderElement */ "./src/components/Result/getGenderElement.tsx");
-const actions_1 = __webpack_require__(/*! actions */ "./src/actions/index.ts");
-const PokemonIcon_1 = __webpack_require__(/*! components/PokemonIcon */ "./src/components/PokemonIcon/index.ts");
-exports.DeadPokemonBase = (poke) => {
-    const style = poke.style;
-    const addForme = (species) => {
-        if (poke.forme) {
-            if (poke.forme === 'Alolan' || poke.forme === 'Alola') {
-                return `alolan-${species}`;
-            }
-            return species;
-        }
-        else {
-            return species;
-        }
-    };
-    const getClassname = () => poke.champion ? 'dead-pokemon-container champion' : 'dead-pokemon-container';
-    return (React.createElement("div", { className: getClassname(), "data-league": poke.champion },
-        React.createElement("span", { style: { filter: 'grayscale(100%)' } },
-            React.createElement(PokemonIcon_1.PokemonIconBase, Object.assign({}, poke))),
-        React.createElement("div", { className: 'dead-pokemon-info' },
-            React.createElement("div", { className: 'pokemon-d-nickname' },
-                poke.nickname,
-                " ",
-                getGenderElement_1.getGenderElement(poke.gender)),
-            React.createElement("div", { className: 'pokemon-levels' },
-                "Levels ",
-                poke.metLevel,
-                "\u2014",
-                poke.level),
-            React.createElement("br", null),
-            React.createElement("div", { className: 'pokemon-causeofdeath' }, poke.causeOfDeath))));
-};
-exports.DeadPokemon = react_redux_1.connect((state) => ({ style: state.style, game: state.game }), {
-    selectPokemon: actions_1.selectPokemon,
-})(exports.DeadPokemonBase);
-
-
-/***/ }),
-
 /***/ "./src/components/Result/Result.styl":
 /*!*******************************************!*\
   !*** ./src/components/Result/Result.styl ***!
@@ -50707,9 +50781,9 @@ const react_custom_scrollbars_1 = __webpack_require__(/*! react-custom-scrollbar
 const domtoimage = __webpack_require__(/*! dom-to-image */ "./node_modules/dom-to-image/src/dom-to-image.js");
 const actions_1 = __webpack_require__(/*! actions */ "./src/actions/index.ts");
 const TeamPokemon_1 = __webpack_require__(/*! components/TeamPokemon */ "./src/components/TeamPokemon/index.ts");
-const DeadPokemon_1 = __webpack_require__(/*! ./DeadPokemon */ "./src/components/Result/DeadPokemon.tsx");
-const BoxedPokemon_1 = __webpack_require__(/*! ./BoxedPokemon */ "./src/components/Result/BoxedPokemon.tsx");
-const ChampsPokemon_1 = __webpack_require__(/*! ./ChampsPokemon */ "./src/components/Result/ChampsPokemon.tsx");
+const DeadPokemon_1 = __webpack_require__(/*! components/DeadPokemon */ "./src/components/DeadPokemon/index.ts");
+const BoxedPokemon_1 = __webpack_require__(/*! components/BoxedPokemon */ "./src/components/BoxedPokemon/index.ts");
+const ChampsPokemon_1 = __webpack_require__(/*! components/ChampsPokemon */ "./src/components/ChampsPokemon/index.ts");
 const TopBar_1 = __webpack_require__(/*! components/TopBar */ "./src/components/TopBar/index.ts");
 __webpack_require__(/*! ./Result.styl */ "./src/components/Result/Result.styl");
 class ResultBase extends React.PureComponent {
@@ -50738,14 +50812,7 @@ class ResultBase extends React.PureComponent {
         if (this.state.downloadError) {
             renderItems.push(React.createElement("div", { key: uuid(), className: 'pt-callout pt-intent-danger' }, "Image failed to download. Check that you are not using images that link to external sites."));
         }
-        return (React.createElement("div", { style: {
-                display: 'flex',
-                position: 'absolute',
-                left: '32%',
-                top: '2px',
-                width: '60%',
-                zIndex: 10,
-            } }, renderItems));
+        return (React.createElement(React.Fragment, null, renderItems));
     }
     renderBoxedPokemon() {
         return this.props.pokemon
@@ -50797,12 +50864,7 @@ class ResultBase extends React.PureComponent {
                     textAlign: 'center',
                     textShadow: '0 0 2px #222'
                 } }, game.name),
-            trainer.image ? (React.createElement("img", { style: {
-                    border: '2px solid rgba(255, 255, 255, 0.3)',
-                    borderRadius: '50%',
-                    height: '3rem',
-                    width: '3rem',
-                }, src: trainer.image ? trainer.image : 'img/moon.jpg', alt: 'Trainer Image' })) : null,
+            trainer.image ? (React.createElement("img", { className: 'trainer-image', src: utils_1.mapTrainerImage(trainer.image), alt: 'Trainer Image' })) : null,
             trainer.title ? (React.createElement("div", { className: 'nuzlocke-title' }, this.props.trainer.title)) : (React.createElement("div", { className: 'nuzlocke-title' },
                 this.props.game.name,
                 " Nuzlocke")),
@@ -50847,17 +50909,17 @@ class ResultBase extends React.PureComponent {
     render() {
         const { style, box, trainer, pokemon } = this.props;
         const getNumberOf = (status, pokemon) => pokemon.filter(v => v.hasOwnProperty('id')).filter(poke => poke.status === status).length;
+        const numberOfTeam = getNumberOf('Team', pokemon);
         const numberOfDead = getNumberOf('Dead', pokemon);
         const numberOfBoxed = getNumberOf('Boxed', pokemon);
         const numberOfChamps = getNumberOf('Champs', pokemon);
         const bgColor = style ? style.bgColor : '#383840';
         const topHeaderColor = style ? style.topHeaderColor : '#333333';
         return (React.createElement(react_custom_scrollbars_1.Scrollbars, { autoHide: true, autoHideTimeout: 1000, autoHideDuration: 200 },
-            this.renderErrors(),
-            React.createElement(TopBar_1.TopBar, { onClickDownload: e => this.toImage() }),
+            React.createElement(TopBar_1.TopBar, { onClickDownload: e => this.toImage() }, this.renderErrors()),
             React.createElement("div", { ref: this.resultRef, className: `result container ${(style.template &&
                     style.template.toLowerCase().replace(/\s/g, '-')) ||
-                    ''} region-${utils_1.getGameRegion(this.props.game.name)}`, style: {
+                    ''} region-${utils_1.getGameRegion(this.props.game.name)} team-size-${numberOfTeam}`, style: {
                     margin: '3rem auto',
                     backgroundColor: bgColor,
                     backgroundImage: `url(${style.backgroundImage})`,
@@ -50909,225 +50971,6 @@ exports.Result = react_redux_1.connect((state) => ({
 
 /***/ }),
 
-/***/ "./src/components/Result/gameOfOriginToColor.ts":
-/*!******************************************************!*\
-  !*** ./src/components/Result/gameOfOriginToColor.ts ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.gameOfOriginToColor = (game) => {
-    const gameToColor = {
-        Red: 'rgb(243, 86, 58)',
-        Blue: '#3675f8',
-        Yellow: '#efe414',
-        Green: '#03c242',
-        Gold: '#e0c503',
-        Silver: '#d8d8d8',
-        Cyrstal: '#95ffff',
-        Ruby: '#bc1a1a',
-        Sapphire: '#1a3abc',
-        Emerald: '#1abc58',
-        FireRed: '#ef4e21',
-        LeafGreen: '#46f279',
-        Diamond: '##7ebffc',
-        Pearl: '#ffa8bb',
-        Platinum: '#c6b1b1',
-        HeartGold: '#c9c782',
-        SoulSilver: '#c5d3db',
-        Black: '#090d0f',
-        'Black 2': '#061b26',
-        White: '#f9f9f9',
-        'White 2': '#f2e8e8',
-        X: '#963934',
-        Y: '#5bb7b3',
-        OmegaRuby: '#a53131',
-        AlphaSapphire: '#3161a5',
-        Sun: '#ed8d17',
-        Moon: '#ac17ed',
-        'Ultra Sun': '#e29b1f',
-        'Ultra Moon': '#ac17ed',
-        Colosseum: '#dfe0d2',
-        'XD Gale of Darkness': '#39104f',
-    };
-    return gameToColor[game] || '';
-};
-
-
-/***/ }),
-
-/***/ "./src/components/Result/getBackgroundGradient.ts":
-/*!********************************************************!*\
-  !*** ./src/components/Result/getBackgroundGradient.ts ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const typeToColor_1 = __webpack_require__(/*! ./typeToColor */ "./src/components/Result/typeToColor.ts");
-exports.getBackgroundGradient = (typeA, typeB) => {
-    if (typeB == null) {
-        if (typeA == null) {
-            return 'transparent';
-        }
-        else {
-            return `linear-gradient(to right, ${typeToColor_1.typeToColor(typeA)}, ${typeToColor_1.typeToColor(typeA)}`;
-        }
-    }
-    else {
-        return `linear-gradient(to right, ${typeToColor_1.typeToColor(typeA)}, ${typeToColor_1.typeToColor(typeB)}`;
-    }
-};
-
-
-/***/ }),
-
-/***/ "./src/components/Result/getGenderElement.tsx":
-/*!****************************************************!*\
-  !*** ./src/components/Result/getGenderElement.tsx ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-exports.getGenderElement = gender => {
-    if (gender === 'Male' || gender === 'm') {
-        return React.createElement("span", { className: 'pokmeon-gender gender-color-male' }, "\u2642");
-    }
-    else if (gender === 'Female' || gender === 'f') {
-        return React.createElement("span", { className: 'pokemon-gender gender-color-female' }, "\u2640");
-    }
-    else {
-        return null;
-    }
-};
-
-
-/***/ }),
-
-/***/ "./src/components/Result/getMoveType.ts":
-/*!**********************************************!*\
-  !*** ./src/components/Result/getMoveType.ts ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const Result_1 = __webpack_require__(/*! components/Result */ "./src/components/Result/index.ts");
-exports.getMoveType = move => {
-    for (const type in Result_1.movesByType) {
-        if (Result_1.movesByType.hasOwnProperty(type)) {
-            if (Result_1.movesByType[type].some((value, index) => {
-                return move === value;
-            }))
-                return type;
-        }
-    }
-    return 'Normal';
-};
-
-
-/***/ }),
-
-/***/ "./src/components/Result/getPokemonImage.ts":
-/*!**************************************************!*\
-  !*** ./src/components/Result/getPokemonImage.ts ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
-const sugiFormeNotation = forme => {
-    if (typeof forme === 'undefined')
-        return '';
-    if (forme != null || forme !== 'Normal' || forme === 'Alolan' || forme === 'Mega')
-        return '_f2';
-    if (forme === 'Sandy' || forme === 'Pau\'u')
-        return '_f3';
-    if (forme === 'Sensu')
-        return '_f4';
-    return '';
-};
-const getGameName = name => {
-    if (name === 'Red' || name === 'Blue')
-        return 'rb';
-    if (name === 'Ruby' ||
-        name === 'Sapphire' ||
-        name === 'FireRed' ||
-        name === 'LeafGreen' ||
-        name === 'Emerald') {
-        return 'emerald';
-    }
-    if (name === 'Diamond' || name === 'Pearl' || name === 'Platinum')
-        return 'dp';
-    if (name === 'HeartGold' || name === 'SoulSilver')
-        return 'hgss';
-    if (name === 'Black' || name === 'White' || name === 'White 2' || name === 'Black 2')
-        return 'blackwhite';
-    if (name === 'X' || name === 'Y' || name === 'OmegaRuby' || name === 'AlphaSapphire')
-        return 'xy';
-    if (name === 'Sun' || name === 'Moon' || name === 'Ultra Sun' || name === 'Ultra Moon')
-        return 'sunmoon';
-    if (name === 'Green' ||
-        name === 'Gold' ||
-        name === 'Silver' ||
-        name === 'Yellow' ||
-        name === 'Crystal') {
-        return name.toLowerCase();
-    }
-    return 'sm';
-};
-function getPokemonImage({ customImage, forme, species, name, style }) {
-    const leadingZerosNumber = (utils_1.speciesToNumber(species) || 0).toString().padStart(3, '0');
-    if (customImage) {
-        return `url(${customImage})`;
-    }
-    if (style.spritesMode &&
-        (name === 'Black' ||
-            name === 'Emerald' ||
-            name === 'Ruby' ||
-            name === 'Sapphire' ||
-            name === 'LeafGreen' ||
-            name === 'FireRed' ||
-            name === 'White' ||
-            name === 'Black 2' ||
-            name === 'White 2' ||
-            name === 'X' ||
-            name === 'Y' ||
-            name === 'OmegaRuby' ||
-            name === 'AlphaSapphire' ||
-            name === 'Sun' ||
-            name === 'Moon' ||
-            name === 'Ultra Sun' ||
-            name === 'Ultra Moon')) {
-        return `url(https://www.serebii.net/${getGameName(name)}/pokemon/${leadingZerosNumber}${utils_1.getForme(forme)}.png)`;
-    }
-    if (style.spritesMode) {
-        return `url(https://www.serebii.net/pokearth/sprites/${getGameName(name)}/${leadingZerosNumber}.png)`;
-    }
-    if (style.teamImages === 'sugimori') {
-        return `url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/${leadingZerosNumber}.png)`;
-    }
-    return `url(img/${(utils_1.addForme((species || '').replace(/\s/g, '').replace(/'/g, ''), forme) || 'missingno').toLowerCase()}.jpg)`;
-}
-exports.getPokemonImage = getPokemonImage;
-
-
-/***/ }),
-
 /***/ "./src/components/Result/index.ts":
 /*!****************************************!*\
   !*** ./src/components/Result/index.ts ***!
@@ -51137,821 +50980,9 @@ exports.getPokemonImage = getPokemonImage;
 
 "use strict";
 
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
 Object.defineProperty(exports, "__esModule", { value: true });
 var Result_1 = __webpack_require__(/*! ./Result */ "./src/components/Result/Result.tsx");
 exports.Result = Result_1.Result;
-__export(__webpack_require__(/*! ./gameOfOriginToColor */ "./src/components/Result/gameOfOriginToColor.ts"));
-__export(__webpack_require__(/*! ./getGenderElement */ "./src/components/Result/getGenderElement.tsx"));
-__export(__webpack_require__(/*! ./typeToColor */ "./src/components/Result/typeToColor.ts"));
-__export(__webpack_require__(/*! ./movesByType */ "./src/components/Result/movesByType.ts"));
-__export(__webpack_require__(/*! ./getBackgroundGradient */ "./src/components/Result/getBackgroundGradient.ts"));
-__export(__webpack_require__(/*! ./getPokemonImage */ "./src/components/Result/getPokemonImage.ts"));
-__export(__webpack_require__(/*! ./getMoveType */ "./src/components/Result/getMoveType.ts"));
-
-
-/***/ }),
-
-/***/ "./src/components/Result/movesByType.ts":
-/*!**********************************************!*\
-  !*** ./src/components/Result/movesByType.ts ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.movesByType = {
-    Bug: [
-        'Powder',
-        'Fell Stinger',
-        'Twineedle',
-        'Tail Glow',
-        'Struggle Bug',
-        'String Shot',
-        'Sticky Web',
-        'Attack Order',
-        'Steamroller',
-        'Spider Web',
-        'Silver Wind',
-        'Signal Beam',
-        'Savage Spin-Out',
-        'Rage Powder',
-        'Quiver Dance',
-        'U-turn',
-        'Pollen Puff',
-        'Pin Missile',
-        'Defend Order',
-        'X-Scissor',
-        'Megahorn',
-        'Lunge',
-        'Leech Life',
-        'Bug Bite',
-        'Bug Buzz',
-        'Infestation',
-        'Heal Order',
-        'Fury Cutter',
-        'First Impression',
-    ],
-    Dark: [
-        'Night Slash',
-        'Quash',
-        'Pursuit',
-        'Punishment',
-        'Power Trip',
-        'Bite',
-        'Black Hole Eclipse',
-        'Assurance',
-        'Topsy-Turvy',
-        'Throat Chop',
-        'Payback',
-        'Parting Shot',
-        'Thief',
-        'Taunt',
-        'Night Daze',
-        'Nasty Plot',
-        'Memento',
-        'Crunch',
-        'Malicious Moonsault',
-        'Brutal Swing',
-        'Snatch',
-        'Snarl',
-        'Dark Void',
-        'Switcheroo',
-        'Knock Off',
-        'Sucker Punch',
-        'Hyperspace Fury',
-        'Hone Claws',
-        'Darkest Lariat',
-        'Dark Pulse',
-        'Foul Play',
-        'Fling',
-        'Flatter',
-        'Beat Up',
-        'Torment',
-        'Embargo',
-        'Feint Attack',
-        'Faint Attack',
-        'Fake Tears',
-    ],
-    Dragon: [
-        'Dragon Claw',
-        'Clanging Scales',
-        'Dragon Tail',
-        'Dragon Rush',
-        'Dragon Rage',
-        'Core Enforcer',
-        'Dragon Pulse',
-        'Dragon Hammer',
-        'Dragon Dance',
-        'Dual Chop',
-        'Dragon Breath',
-        'Draco Meteor',
-        'Devastating Drake',
-        'Outrage',
-        'Roar of Time',
-        'Spacial Rend',
-        'Twister',
-        'Clangorous Soulblaze',
-    ],
-    Electric: [
-        '10,000,000 Volt Thunderbolt',
-        'Thunder',
-        'Zap Cannon',
-        'Zing Zap',
-        'Spark',
-        'Wild Charge',
-        'Magnetic Flux',
-        'Magnet Rise',
-        'Volt Tackle',
-        'Electroweb',
-        'Electro Ball',
-        'Electrify',
-        'Electric Terrain',
-        'Eerie Impulse',
-        'Volt Switch',
-        'Thunderbolt',
-        'Thunder Wave',
-        'Shock Wave',
-        'Thunder Shock',
-        'Ion Deluge',
-        'Stoked Sparksurfer',
-        'Parabolic Charge',
-        'Thunder Punch',
-        'Bolt Strike',
-        'Gigavolt Havoc',
-        'Discharge',
-        'Fusion Bolt',
-        'Catastropika',
-        'Nuzzle',
-        'Charge',
-        'Charge Beam',
-        'Thunder Fang',
-        'Plasma Fists',
-    ],
-    Fairy: [
-        'Dazzling Gleam',
-        'Sweet Kiss',
-        'Disarming Voice',
-        'Aromatic Mist',
-        'Baby-Doll Eyes',
-        'Draining Kiss',
-        'Light of Ruin',
-        'Fairy Lock',
-        'Fairy Wind',
-        'Guardian of Alola',
-        'Twinkle Tackle',
-        'Crafty Shield',
-        'Geomancy',
-        'Misty Terrain',
-        'Moonblast',
-        'Moonlight',
-        'Nature\'s Madness',
-        'Play Rough',
-        'Fleur Cannon',
-        'Floral Healing',
-        'Flower Shield',
-        'Charm',
-        'Let\'s Snuggle Forever',
-    ],
-    Fighting: [
-        'Seismic Toss',
-        'Secret Sword',
-        'Jump Kick',
-        'Karate Chop',
-        'Sacred Sword',
-        'Bulk Up',
-        'High Jump Kick',
-        'Rolling Kick',
-        'Rock Smash',
-        'Reversal',
-        'Arm Thrust',
-        'Cross Chop',
-        'Revenge',
-        'Close Combat',
-        'Quick Guard',
-        'Power-Up Punch',
-        'Hammer Arm',
-        'Low Kick',
-        'Final Gambit',
-        'Low Sweep',
-        'Vacuum Wave',
-        'Submission',
-        'Mach Punch',
-        'Brick Break',
-        'Mat Block',
-        'Circle Throw',
-        'Superpower',
-        'Storm Throw',
-        'Double Kick',
-        'Aura Sphere',
-        'Counter',
-        'All-Out Pummeling',
-        'Sky Uppercut',
-        'Detect',
-        'Drain Punch',
-        'Wake-Up Slap',
-        'Vital Throw',
-        'Flying Press',
-        'Focus Blast',
-        'Triple Kick',
-        'Focus Punch',
-        'Dynamic Punch',
-        'Force Palm',
-    ],
-    Fire: [
-        'Fire Blast',
-        'Overheat',
-        'Flare Blitz',
-        'Mystical Fire',
-        'Flamethrower',
-        'Fusion Flare',
-        'Flame Wheel',
-        'Flame Charge',
-        'Flame Burst',
-        'Blaze Kick',
-        'Fire Spin',
-        'Fire Punch',
-        'V-create',
-        'Magma Storm',
-        'Fire Pledge',
-        'Fire Lash',
-        'Fire Fang',
-        'Blue Flare',
-        'Fiery Dance',
-        'Blast Burn',
-        'Eruption',
-        'Lava Plume',
-        'Sacred Fire',
-        'Will-O-Wisp',
-        'Searing Shot',
-        'Ember',
-        'Heat Crash',
-        'Heat Wave',
-        'Shell Trap',
-        'Inferno Overdrive',
-        'Inferno',
-        'Incinerate',
-        'Sunny Day',
-        'Burn Up',
-        'Mind Blown',
-    ],
-    Flying: [
-        'Feather Dance',
-        'Air Slash',
-        'Roost',
-        'Supersonic Skystrike',
-        'Sky Drop',
-        'Aeroblast',
-        'Gust',
-        'Wing Attack',
-        'Oblivion Wing',
-        'Sky Attack',
-        'Dragon Ascent',
-        'Peck',
-        'Tailwind',
-        'Chatter',
-        'Defog',
-        'Air Cutter',
-        'Mirror Move',
-        'Aerial Ace',
-        'Fly',
-        'Acrobatics',
-        'Bounce',
-        'Brave Bird',
-        'Drill Peck',
-        'Beak Blast',
-        'Hurricane',
-        'Pluck',
-    ],
-    Ghost: [
-        'Nightmare',
-        'Night Shade',
-        'Never-Ending Nightmare',
-        'Phantom Force',
-        'Shadow Punch',
-        'Shadow Force',
-        'Moongeist Beam',
-        'Shadow Claw',
-        'Lick',
-        'Shadow Bone',
-        'Confuse Ray',
-        'Shadow Ball',
-        'Sinister Arrow Raid',
-        'Soul-Stealing 7-Star Strike',
-        'Astonish',
-        'Spite',
-        'Curse',
-        'Spirit Shackle',
-        'Hex',
-        'Trick-or-Treat',
-        'Ominous Wind',
-        'Destiny Bond',
-        'Spectral Thief',
-        'Shadow Sneak',
-        'Grudge',
-        'Menacing Moonraze Maelstrom',
-    ],
-    Grass: [
-        'Frenzy Plant',
-        'Strength Sap',
-        'Bullet Seed',
-        'Spore',
-        'Spiky Shield',
-        'Solar Blade',
-        'Solar Beam',
-        'Cotton Spore',
-        'Aromatherapy',
-        'Stun Spore',
-        'Sleep Powder',
-        'Cotton Guard',
-        'Worry Seed',
-        'Seed Flare',
-        'Ingrain',
-        'Seed Bomb',
-        'Vine Whip',
-        'Energy Ball',
-        'Razor Leaf',
-        'Leaf Blade',
-        'Leaf Storm',
-        'Leaf Tornado',
-        'Leafage',
-        'Leech Seed',
-        'Synthesis',
-        'Power Whip',
-        'Absorb',
-        'Magical Leaf',
-        'Grassy Terrain',
-        'Grass Whistle',
-        'Wood Hammer',
-        'Grass Pledge',
-        'Mega Drain',
-        'Grass Knot',
-        'Petal Dance',
-        'Giga Drain',
-        'Petal Blizzard',
-        'Bloom Doom',
-        'Forest\'s Curse',
-        'Horn Leech',
-        'Needle Arm',
-        'Trop Kick',
-    ],
-    Ground: [
-        'Sand Attack',
-        'Mud-Slap',
-        'Mud Sport',
-        'Bone Club',
-        'Mud Shot',
-        'Mud Bomb',
-        'Magnitude',
-        'Fissure',
-        'Precipice Blades',
-        'Tectonic Rage',
-        'Dig',
-        'Rototiller',
-        'Land\'s Wrath',
-        'Bone Rush',
-        'Sand Tomb',
-        'Bonemerang',
-        'Bulldoze',
-        'High Horsepower',
-        'Earthquake',
-        'Earth Power',
-        'Drill Run',
-        'Shore Up',
-        'Thousand Waves',
-        'Spikes',
-        'Thousand Arrows',
-        'Stomping Tantrum',
-    ],
-    Ice: [
-        'Hail',
-        'Frost Breath',
-        'Haze',
-        'Subzero Slammer',
-        'Sheer Cold',
-        'Icy Wind',
-        'Mist',
-        'Glaciate',
-        'Icicle Spear',
-        'Icicle Crash',
-        'Ice Shard',
-        'Ice Punch',
-        'Ice Hammer',
-        'Avalanche',
-        'Ice Fang',
-        'Ice Burn',
-        'Aurora Veil',
-        'Aurora Beam',
-        'Freeze-Dry',
-        'Blizzard',
-        'Ice Beam',
-        'Ice Ball',
-        'Freeze Shock',
-        'Powder Snow',
-    ],
-    Normal: [
-        'Bide',
-        'Hyper Voice',
-        'Horn Attack',
-        'Multi-Attack',
-        'Celebrate',
-        'Boomburst',
-        'Natural Gift',
-        'Nature Power',
-        'Fury Attack',
-        'Howl',
-        'Frustration',
-        'Hold Hands',
-        'Tackle',
-        'Hidden Power',
-        'Leer',
-        'Noble Roar',
-        'Harden',
-        'Happy Hour',
-        'Helping Hand',
-        'Cut',
-        'Odor Sleuth',
-        'Lock-On',
-        'Foresight',
-        'Body Slam',
-        'Follow Me',
-        'Pain Split',
-        'Focus Energy',
-        'Lovely Kiss',
-        'Pay Day',
-        'Block',
-        'Chip Away',
-        'Perish Song',
-        'Tail Whip',
-        'Swords Dance',
-        'Lucky Chant',
-        'Guillotine',
-        'Play Nice',
-        'Flash',
-        'Flail',
-        'Swift',
-        'Sweet Scent',
-        'Crush Claw',
-        'Swallow',
-        'Swagger',
-        'Techno Blast',
-        'Growth',
-        'Pound',
-        'Work Up',
-        'Whirlwind',
-        'Bind',
-        'Weather Ball',
-        'Supersonic',
-        'Growl',
-        'Present',
-        'Protect',
-        'Psych Up',
-        'Pulverizing Pancake',
-        'Horn Drill',
-        'Defense Curl',
-        'Bestow',
-        'Belly Drum',
-        'Quick Attack',
-        'Feint',
-        'Super Fang',
-        'Rage',
-        'False Swipe',
-        'Rapid Spin',
-        'Tail Slap',
-        'Tri Attack',
-        'Razor Wind',
-        'Recover',
-        'Recycle',
-        'Reflect Type',
-        'Refresh',
-        'Relic Song',
-        'Retaliate',
-        'Return',
-        'Revelation Dance',
-        'Fake Out',
-        'Facade',
-        'Roar',
-        'Baton Pass',
-        'Transform',
-        'Rock Climb',
-        'Uproar',
-        'Take Down',
-        'Extreme Speed',
-        'Disable',
-        'Extreme Evoboost',
-        'After You',
-        'Explosion',
-        'Tickle',
-        'Entrainment',
-        'Hold Back',
-        'Round',
-        'Breakneck Blitz',
-        'Endure',
-        'Safeguard',
-        'Judgment',
-        'Me First',
-        'Endeavor',
-        'Scary Face',
-        'Scratch',
-        'Screech',
-        'Encore',
-        'Secret Power',
-        'Mean Look',
-        'Heal Bell',
-        'Mega Kick',
-        'Comet Punch',
-        'Self-Destruct',
-        'Confide',
-        'Egg Bomb',
-        'Constrict',
-        'Echoed Voice',
-        'Mega Punch',
-        'Headbutt',
-        'Sharpen',
-        'Glare',
-        'Shell Smash',
-        'Vice Grip',
-        'Crush Grip',
-        'Barrage',
-        'Camouflage',
-        'Substitute',
-        'Conversion',
-        'Simple Beam',
-        'Sing',
-        'Conversion 2',
-        'Sketch',
-        'Skull Bash',
-        'Copycat',
-        'Wrap',
-        'Giga Impact',
-        'Slack Off',
-        'Slam',
-        'Slash',
-        'Metronome',
-        'Sleep Talk',
-        'Yawn',
-        'Milk Drink',
-        'Mimic',
-        'Mind Reader',
-        'Smelling Salts',
-        'Struggle',
-        'Smokescreen',
-        'Minimize',
-        'Snore',
-        'Thrash',
-        'Soft-Boiled',
-        'Head Charge',
-        'Trump Card',
-        'Sonic Boom',
-        'Covet',
-        'Hyper Beam',
-        'Wish',
-        'Tearful Look',
-        'Double-Edge',
-        'Double Team',
-        'Spike Cannon',
-        'Captivate',
-        'Fury Swipes',
-        'Double Slap',
-        'Spit Up',
-        'Double Hit',
-        'Splash',
-        'Morning Sun',
-        'Spotlight',
-        'Laser Focus',
-        'Attract',
-        'Wring Out',
-        'Stockpile',
-        'Assist',
-        'Stomp',
-        'Last Resort',
-        'Teeter Dance',
-        'Dizzy Punch',
-        'Strength',
-        'Hyper Fang',
-        'Acupressure',
-    ],
-    Poison: [
-        'Acid',
-        'Sludge Wave',
-        'Sludge Bomb',
-        'Sludge',
-        'Baneful Bunker',
-        'Coil',
-        'Toxic',
-        'Toxic Spikes',
-        'Toxic Thread',
-        'Belch',
-        'Purify',
-        'Clear Smog',
-        'Cross Poison',
-        'Smog',
-        'Poison Sting',
-        'Poison Powder',
-        'Poison Jab',
-        'Poison Gas',
-        'Poison Fang',
-        'Gastro Acid',
-        'Gunk Shot',
-        'Venom Drench',
-        'Venoshock',
-        'Acid Armor',
-        'Acid Spray',
-        'Acid Downpour',
-        'Poison Tail',
-    ],
-    Psychic: [
-        'Barrier',
-        'Psystrike',
-        'Psywave',
-        'Guard Swap',
-        'Future Sight',
-        'Zen Headbutt',
-        'Heal Block',
-        'Speed Swap',
-        'Calm Mind',
-        'Heal Pulse',
-        'Imprison',
-        'Healing Wish',
-        'Heart Stamp',
-        'Meditate',
-        'Trick',
-        'Heart Swap',
-        'Wonder Room',
-        'Confusion',
-        'Instruct',
-        'Teleport',
-        'Light Screen',
-        'Telekinesis',
-        'Shattered Psyche',
-        'Genesis Supernova',
-        'Reflect',
-        'Magic Room',
-        'Gravity',
-        'Hyperspace Hole',
-        'Stored Power',
-        'Rest',
-        'Hypnosis',
-        'Cosmic Power',
-        'Lunar Dance',
-        'Extrasensory',
-        'Luster Purge',
-        'Trick Room',
-        'Skill Swap',
-        'Power Split',
-        'Power Swap',
-        'Power Trick',
-        'Miracle Eye',
-        'Mirror Coat',
-        'Kinesis',
-        'Magic Coat',
-        'Dream Eater',
-        'Prismatic Laser',
-        'Role Play',
-        'Mist Ball',
-        'Psybeam',
-        'Guard Split',
-        'Ally Switch',
-        'Psychic',
-        'Psychic Fangs',
-        'Psychic Terrain',
-        'Synchronoise',
-        'Psycho Boost',
-        'Amnesia',
-        'Psycho Cut',
-        'Psycho Shift',
-        'Psyshock',
-        'Agility',
-        'Photon Geyser',
-        'Light That Burns The Sky',
-    ],
-    Rock: [
-        'Rock Throw',
-        'Diamond Storm',
-        'Ancient Power',
-        'Stealth Rock',
-        'Smack Down',
-        'Sandstorm',
-        'Rollout',
-        'Rock Wrecker',
-        'Rock Tomb',
-        'Stone Edge',
-        'Rock Slide',
-        'Rock Polish',
-        'Rock Blast',
-        'Power Gem',
-        'Wide Guard',
-        'Head Smash',
-        'Continental Crush',
-        'Accelerock',
-    ],
-    Steel: [
-        'Anchor Shot',
-        'Autotomize',
-        'Mirror Shot',
-        'Sunsteel Strike',
-        'Metal Sound',
-        'Metal Claw',
-        'Metal Burst',
-        'Magnet Bomb',
-        'King\'s Shield',
-        'Iron Tail',
-        'Iron Head',
-        'Iron Defense',
-        'Bullet Punch',
-        'Smart Strike',
-        'Heavy Slam',
-        'Meteor Mash',
-        'Gyro Ball',
-        'Gear Up',
-        'Gear Grind',
-        'Flash Cannon',
-        'Shift Gear',
-        'Corkscrew Crash',
-        'Doom Desire',
-        'Steel Wing',
-        'Splintered Stormshards',
-        'Searing Sunraze Smash',
-    ],
-    Water: [
-        'Brine',
-        'Rain Dance',
-        'Surf',
-        'Origin Pulse',
-        'Oceanic Operetta',
-        'Hydro Vortex',
-        'Water Gun',
-        'Water Pledge',
-        'Water Pulse',
-        'Water Shuriken',
-        'Water Sport',
-        'Water Spout',
-        'Waterfall',
-        'Hydro Pump',
-        'Whirlpool',
-        'Hydro Cannon',
-        'Muddy Water',
-        'Steam Eruption',
-        'Aqua Ring',
-        'Aqua Tail',
-        'Sparkling Aria',
-        'Withdraw',
-        'Scald',
-        'Aqua Jet',
-        'Clamp',
-        'Soak',
-        'Bubble',
-        'Liquidation',
-        'Dive',
-        'Crabhammer',
-        'Bubble Beam',
-        'Razor Shell',
-        'Octazooka',
-    ],
-};
-
-
-/***/ }),
-
-/***/ "./src/components/Result/typeToColor.ts":
-/*!**********************************************!*\
-  !*** ./src/components/Result/typeToColor.ts ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.typeToColor = (type) => {
-    if (type === 'None')
-        return null;
-    const types = {
-        Bug: '#AEE359',
-        Dark: '#29291F',
-        Dragon: '#153F4D',
-        Electric: '#E3E039',
-        Fairy: '#F0C7E5',
-        Fighting: '#a52a2a',
-        Fire: '#EB3434',
-        Flying: '#96D3E0',
-        Ghost: '#3B2238',
-        Grass: '#39BF3C',
-        Ground: '#9C6E21',
-        Ice: '#C2F1F2',
-        Normal: '#E1E3D3',
-        Poison: '#75226B',
-        Psychic: '#EB75DD',
-        Rock: '#8F795D',
-        Steel: '#888',
-        Water: '#5B64DE',
-    };
-    return types[type];
-};
 
 
 /***/ }),
@@ -52110,6 +51141,14 @@ class Autocomplete extends React.Component {
             this.setState({ visibleItems: [] });
         };
         this.handleKeyDown = e => {
+            if (e.which === 13) {
+                if (this.state.visibleItems.includes(this.state.currentValue)) {
+                    this.closeList(e);
+                }
+                else {
+                    this.selectItem(this.state.visibleItems[0]);
+                }
+            }
             if (e.which === 27 || e.which === 13 || e.which === 9) {
                 this.closeList(e);
             }
@@ -52162,7 +51201,7 @@ class Autocomplete extends React.Component {
     render() {
         return (React.createElement("div", { className: 'current-pokemon-input-wrapper autocomplete' },
             React.createElement("label", null, this.props.label),
-            React.createElement("input", { onKeyDown: this.handleKeyDown, onFocus: this.openList, placeholder: this.props.placeholder, name: this.props.name, type: 'text', onChange: this.updateItems, value: this.state.currentValue }),
+            React.createElement("input", { onKeyDown: this.handleKeyDown, onFocus: this.openList, onBlur: this.closeList, placeholder: this.props.placeholder, name: this.props.name, type: 'text', onChange: this.updateItems, value: this.state.currentValue }),
             this.state.isOpen ? (React.createElement("ul", { className: 'autocomplete-items has-nice-scrollbars' }, this.renderItems())) : null));
     }
 }
@@ -52206,6 +51245,65 @@ exports.ErrorBoundary = ErrorBoundary;
 
 /***/ }),
 
+/***/ "./src/components/Shared/GenderElement.tsx":
+/*!*************************************************!*\
+  !*** ./src/components/Shared/GenderElement.tsx ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+exports.GenderElement = gender => {
+    if (gender === 'Male' || gender === 'm') {
+        return React.createElement("span", { className: 'pokemon-gender gender-color-male' }, "\u2642");
+    }
+    else if (gender === 'Female' || gender === 'f') {
+        return React.createElement("span", { className: 'pokemon-gender gender-color-female' }, "\u2640");
+    }
+    else {
+        return null;
+    }
+};
+
+
+/***/ }),
+
+/***/ "./src/components/Shared/PokemonByFilter.tsx":
+/*!***************************************************!*\
+  !*** ./src/components/Shared/PokemonByFilter.tsx ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const core_1 = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
+const PokemonIcon_1 = __webpack_require__(/*! components/PokemonIcon */ "./src/components/PokemonIcon/index.ts");
+const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
+function PokemonByFilter(team, filter) {
+    let filterFunction;
+    if (filter != null)
+        filterFunction = poke => poke.status === filter;
+    if (filter == null)
+        filterFunction = poke => true;
+    return team
+        .filter(filterFunction)
+        .sort(utils_1.sortPokes)
+        .map((poke, index) => {
+        return (React.createElement(core_1.Tooltip, { key: index, content: poke.nickname || '', position: core_1.Position.TOP },
+            React.createElement(PokemonIcon_1.PokemonIcon, { id: poke.id, species: poke.species, forme: poke.forme, isShiny: poke.shiny })));
+    });
+}
+exports.PokemonByFilter = PokemonByFilter;
+
+
+/***/ }),
+
 /***/ "./src/components/Shared/index.ts":
 /*!****************************************!*\
   !*** ./src/components/Shared/index.ts ***!
@@ -52215,11 +51313,16 @@ exports.ErrorBoundary = ErrorBoundary;
 
 "use strict";
 
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
 Object.defineProperty(exports, "__esModule", { value: true });
 var Autocomplete_1 = __webpack_require__(/*! ./Autocomplete */ "./src/components/Shared/Autocomplete.tsx");
 exports.Autocomplete = Autocomplete_1.Autocomplete;
 var ErrorBoundary_1 = __webpack_require__(/*! ./ErrorBoundary */ "./src/components/Shared/ErrorBoundary.tsx");
 exports.ErrorBoundary = ErrorBoundary_1.ErrorBoundary;
+__export(__webpack_require__(/*! ./GenderElement */ "./src/components/Shared/GenderElement.tsx"));
+__export(__webpack_require__(/*! ./PokemonByFilter */ "./src/components/Shared/PokemonByFilter.tsx"));
 
 
 /***/ }),
@@ -52265,7 +51368,6 @@ const actions_1 = __webpack_require__(/*! actions */ "./src/actions/index.ts");
 const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
 const core_1 = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
 const BaseEditor_1 = __webpack_require__(/*! components/BaseEditor */ "./src/components/BaseEditor/index.ts");
-const gameOfOriginToColor_1 = __webpack_require__(/*! components/Result/gameOfOriginToColor */ "./src/components/Result/gameOfOriginToColor.ts");
 const editEvent = (e, props, name, game) => {
     const propName = name || e.target.name;
     props.editStyle({ [propName]: e.target.value });
@@ -52282,7 +51384,7 @@ const editEvent = (e, props, name, game) => {
     }
     if (propName === 'template' && e.target.value === 'Generations') {
         props.editStyle({
-            bgColor: gameOfOriginToColor_1.gameOfOriginToColor(game),
+            bgColor: utils_1.gameOfOriginToColor(game),
         });
     }
 };
@@ -52303,6 +51405,10 @@ exports.StyleEditorBase = (props) => {
             React.createElement("label", { className: 'pt-label pt-inline' }, "Template"),
             React.createElement("div", { className: 'pt-select' },
                 React.createElement("select", { name: 'template', onChange: e => editEvent(e, props, null, props.game.name), value: props.style.template }, utils_1.listOfThemes.map(o => React.createElement("option", { key: o }, o))))),
+        props.style.template === 'Hexagons' ?
+            React.createElement("div", { className: 'style-edit' },
+                React.createElement("h6", null, "Hexagons Template Options"))
+            : null,
         React.createElement("div", { className: 'style-edit' },
             React.createElement(core_1.RadioGroup, { className: 'radio-group', label: 'Image Style', onChange: e => editEvent(e, props, 'imageStyle'), selectedValue: props.style.imageStyle },
                 React.createElement(core_1.Radio, { label: 'Round', value: 'round' }),
@@ -52345,8 +51451,6 @@ exports.StyleEditorBase = (props) => {
             React.createElement(core_1.Checkbox, { checked: props.style.displayBadges, name: 'displayBadges', label: 'Display Badges', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'displayBadges') })),
         React.createElement("div", { className: 'style-edit' },
             React.createElement(core_1.Checkbox, { checked: props.style.displayRules, name: 'displayRules', label: 'Display Nuzlocke Rules', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'displayRules') })),
-        React.createElement("div", { className: 'style-edit' },
-            React.createElement(core_1.Checkbox, { checked: props.style.editorDarkMode, name: 'editorDarkMode', label: 'Editor Dark Mode', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'editorDarkMode') })),
         React.createElement("div", { className: 'style-edit' },
             React.createElement(core_1.Checkbox, { checked: props.style.oldMetLocationFormat, name: 'oldMetLocationFormat', label: 'Old Met Location Format', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'oldMetLocationFormat') })),
         React.createElement("div", { className: 'style-edit' },
@@ -52397,12 +51501,13 @@ __export(__webpack_require__(/*! ./StyleEditor */ "./src/components/StyleEditor/
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-const Result_1 = __webpack_require__(/*! components/Result */ "./src/components/Result/index.ts");
+const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
+const Shared_1 = __webpack_require__(/*! components/Shared */ "./src/components/Shared/index.ts");
 const actions_1 = __webpack_require__(/*! actions */ "./src/actions/index.ts");
 const generateMoves = moves => {
     return moves.map((move, index) => {
         move = move.trim();
-        const type = Result_1.getMoveType(move);
+        const type = utils_1.getMoveType(move);
         return (React.createElement("div", { key: index, className: `move ${type}-type ${move.length >= 12 ? 'long-text-move' : ''}` }, move));
     });
 };
@@ -52477,7 +51582,7 @@ class TeamPokemonBase extends React.Component {
         }, {});
         if (this.props.style.minimalTeamLayout) {
             return (React.createElement("div", Object.assign({ className: 'pokemon-container minimal' }, data),
-                React.createElement("div", { style: Object.assign({ backgroundImage: Result_1.getPokemonImage({
+                React.createElement("div", { style: Object.assign({ backgroundImage: utils_1.getPokemonImage({
                             customImage: poke.customImage,
                             forme: poke.forme,
                             species: poke.species,
@@ -52496,10 +51601,10 @@ class TeamPokemonBase extends React.Component {
             React.createElement("div", { role: 'presentation', onClick: e => this.props.selectPokemon(poke.id), className: `${this.props.style.imageStyle} pokemon-image-wrapper`, style: {
                     cursor: 'pointer',
                     background: this.props.style.teamPokemonBorder
-                        ? Result_1.getBackgroundGradient(poke.types != null ? poke.types[0] : '', poke.types != null ? poke.types[1] : '')
+                        ? utils_1.getBackgroundGradient(poke.types != null ? poke.types[0] : '', poke.types != null ? poke.types[1] : '')
                         : 'transparent',
                 } },
-                React.createElement("div", { style: Object.assign({ backgroundImage: Result_1.getPokemonImage({
+                React.createElement("div", { style: Object.assign({ backgroundImage: utils_1.getPokemonImage({
                             customImage: poke.customImage,
                             forme: poke.forme,
                             species: poke.species,
@@ -52507,7 +51612,8 @@ class TeamPokemonBase extends React.Component {
                             name: this.props.game.name,
                         }) }, spriteStyle), className: `pokemon-image ${(poke.species || 'missingno').toLowerCase()} ${this.props.style.imageStyle === 'round' ? 'round' : 'square'}` })),
             poke.item == null || poke.item === '' ? null : (React.createElement("div", { className: `pokemon-item ${this.props.style.itemStyle}`, style: {
-                    borderColor: Result_1.typeToColor(getFirstType) || 'transparent',
+                    borderColor: utils_1.typeToColor(getFirstType) || 'transparent',
+                    backgroundImage: style.template === 'Hexagons' ? utils_1.getBackgroundGradient(poke.types != null ? poke.types[0] : '', poke.types != null ? poke.types[1] : '') : '',
                 } },
                 React.createElement("img", { alt: poke.item, src: `icons/hold-item/${(poke.item || '')
                         .toLowerCase()
@@ -52517,7 +51623,7 @@ class TeamPokemonBase extends React.Component {
                     React.createElement("div", { className: 'pokemon-main-info' },
                         React.createElement("span", { style: { margin: '0.25rem 0 0' }, className: 'pokemon-nickname' }, poke.nickname),
                         React.createElement("span", { className: 'pokemon-name' }, poke.species),
-                        Result_1.getGenderElement(poke.gender),
+                        Shared_1.GenderElement(poke.gender),
                         poke.level ? (React.createElement("span", { className: 'pokemon-level' },
                             "lv. ",
                             poke.level)) : null),
@@ -52598,6 +51704,7 @@ class TopBarBase extends React.Component {
                 this.props.style.editorDarkMode ? 'Light' : 'Dark',
                 " Mode"),
             React.createElement(core_1.Button, { onClick: this.toggleDialog, className: 'pt-minimal', icon: 'star' }, "0.0.9-beta"),
+            this.props.children,
             React.createElement(core_1.Dialog, { isOpen: this.state.isOpen, onClose: this.closeDialog, icon: 'document', title: `Release Notes ${package_1.pkg.version}`, className: `release-dialog ${this.props.style.editorDarkMode ? 'pt-dark' : 'pt-light'}` },
                 React.createElement("div", { className: 'pt-dialog-body' },
                     React.createElement("div", { className: 'release-notes-wrapper' },
@@ -52789,14 +51896,15 @@ const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const BadgeInput_1 = __webpack_require__(/*! components/TrainerEditor/BadgeInput */ "./src/components/TrainerEditor/BadgeInput.tsx");
 const LinkedTrainerInfoEditField_1 = __webpack_require__(/*! components/TrainerEditor/LinkedTrainerInfoEditField */ "./src/components/TrainerEditor/LinkedTrainerInfoEditField.tsx");
 const core_1 = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
+const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
+const capitalize = (s) => s[0].toUpperCase() + s.slice(1);
 const SpanBlock = ({ text }) => (React.createElement("span", { style: {
-        background: '#e6eef1',
+        background: 'rgba(0, 0, 0, 0.1)',
         display: 'inline-block',
         padding: '0 3px',
         margin: '2px',
         borderRadius: '.25rem',
     } }, text));
-const trainerNames = ['Red', 'Blue', 'May', 'Moon', 'Sun', 'Dawn', 'Ethan', 'Hilda'];
 class TrainerInfoEditor extends React.Component {
     constructor(props) {
         super(props);
@@ -52814,7 +51922,7 @@ class TrainerInfoEditor extends React.Component {
             React.createElement(LinkedTrainerInfoEditField_1.LinkedTrainerInfoEditField, { onInput: this.onInput, label: React.createElement(core_1.Popover, { minimal: true, interactionKind: core_1.PopoverInteractionKind.HOVER, position: core_1.Position.BOTTOM, content: React.createElement(core_1.Menu, null,
                         "Type: image url. You can also specify a plain string of",
                         ' ',
-                        trainerNames.map(t => React.createElement(SpanBlock, { key: t, text: t }))) },
+                        utils_1.listOfTrainers.map(t => React.createElement(SpanBlock, { key: t, text: capitalize(t) }))) },
                     React.createElement("span", null,
                         "Trainer Image ",
                         React.createElement("span", { className: 'pt-icon pt-icon-info-sign' }))), name: 'image', placeholder: 'http://...' }),
@@ -52862,7 +51970,6 @@ __webpack_require__(/*! components/Shared/styles/base.styl */ "./src/components/
 __webpack_require__(/*! @blueprintjs/icons/lib/css/blueprint-icons.css */ "./node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css");
 __webpack_require__(/*! @blueprintjs/core/lib/css/blueprint.css */ "./node_modules/@blueprintjs/core/lib/css/blueprint.css");
 __webpack_require__(/*! @blueprintjs/table/lib/css/table.css */ "./node_modules/@blueprintjs/table/lib/css/table.css");
-const actions_1 = __webpack_require__(/*! actions */ "./src/actions/index.ts");
 const rollbarConfig = new Rollbar({
     accessToken: '357eab6297524e6facb1c48b0403d869',
     captureUncaught: true,
@@ -52893,9 +52000,6 @@ store_1.store.subscribe(() => {
     }
     else {
         document.body.style.background = '#fff';
-    }
-    if (typeof store_1.store.getState().box[0] === 'string') {
-        store_1.store.dispatch(actions_1.version0_0_6_BETA());
     }
 });
 
@@ -53513,6 +52617,41 @@ exports.StoreContext = StoreContext;
 
 /***/ }),
 
+/***/ "./src/utils/Types.ts":
+/*!****************************!*\
+  !*** ./src/utils/Types.ts ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Types;
+(function (Types) {
+    Types["Grass"] = "Grass";
+    Types["Fire"] = "Fire";
+    Types["Water"] = "Water";
+    Types["Electric"] = "Electric";
+    Types["Rock"] = "Rock";
+    Types["Ground"] = "Ground";
+    Types["Steel"] = "Steel";
+    Types["Flying"] = "Flying";
+    Types["Poison"] = "Poison";
+    Types["Psychic"] = "Psychic";
+    Types["Fighting"] = "Fighting";
+    Types["Bug"] = "Bug";
+    Types["Fairy"] = "Fairy";
+    Types["Normal"] = "Normal";
+    Types["Ice"] = "Ice";
+    Types["Dragon"] = "Dragon";
+    Types["Dark"] = "Dark";
+    Types["Ghost"] = "Ghost";
+})(Types = exports.Types || (exports.Types = {}));
+
+
+/***/ }),
+
 /***/ "./src/utils/addForme.ts":
 /*!*******************************!*\
   !*** ./src/utils/addForme.ts ***!
@@ -53552,6 +52691,56 @@ exports.addForme = (species, forme) => {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.choose = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+
+/***/ }),
+
+/***/ "./src/utils/gameOfOriginToColor.ts":
+/*!******************************************!*\
+  !*** ./src/utils/gameOfOriginToColor.ts ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.gameOfOriginToColor = (game) => {
+    const gameToColor = {
+        Red: 'rgb(243, 86, 58)',
+        Blue: '#3675f8',
+        Yellow: '#efe414',
+        Green: '#03c242',
+        Gold: '#e0c503',
+        Silver: '#d8d8d8',
+        Cyrstal: '#95ffff',
+        Ruby: '#bc1a1a',
+        Sapphire: '#1a3abc',
+        Emerald: '#1abc58',
+        FireRed: '#ef4e21',
+        LeafGreen: '#46f279',
+        Diamond: '##7ebffc',
+        Pearl: '#ffa8bb',
+        Platinum: '#c6b1b1',
+        HeartGold: '#c9c782',
+        SoulSilver: '#c5d3db',
+        Black: '#090d0f',
+        'Black 2': '#061b26',
+        White: '#f9f9f9',
+        'White 2': '#f2e8e8',
+        X: '#963934',
+        Y: '#5bb7b3',
+        OmegaRuby: '#a53131',
+        AlphaSapphire: '#3161a5',
+        Sun: '#ed8d17',
+        Moon: '#ac17ed',
+        'Ultra Sun': '#e29b1f',
+        'Ultra Moon': '#ac17ed',
+        Colosseum: '#dfe0d2',
+        'XD Gale of Darkness': '#39104f',
+    };
+    return gameToColor[game] || '';
+};
 
 
 /***/ }),
@@ -53617,6 +52806,7 @@ const badgeSelect = __webpack_require__(/*! assets/badge-select.png */ "./src/as
 const download = __webpack_require__(/*! assets/download.png */ "./src/assets/download.png");
 const cardsTheme = __webpack_require__(/*! assets/cards-theme.png */ "./src/assets/cards-theme.png");
 const spritesMode = __webpack_require__(/*! assets/sprites-mode.png */ "./src/assets/sprites-mode.png");
+const hexagonTheme = __webpack_require__(/*! assets/hexagons-theme.png */ "./src/assets/hexagons-theme.png");
 function generateReleaseNotes(version) {
     return releaseNotes[version] || '';
 }
@@ -53791,7 +52981,11 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 
 ## Features
 - **Autocomplete for Locations**: Abandoned Ship, Artisan Cave, Aether Paradise...
+- **Autocomplete for Abilities**: Noticing a pattern here?
 - **Hotkey support**: See the Hotkeys section below Style for more info
+- **Hexagon Theme**: Consider it a beta within a beta. Enjoy!
+
+![hexagontheme](${hexagonTheme})
 
 ## Fixes
 - Added nearly all Pokémon images
@@ -53802,6 +52996,8 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - You can now click on boxed pokemon icons in the Result panel again
 - Improved designs of several dialogs, such as the RulesEditor and Delete All Data screen
 - Changing a type should now work in all situations
+- Result notes have a bigger font-size and are bold
+- Improvements to Keyboard UX of Autocomplete
 
 ## Known Issues
 - Sugimori images can't be used with the download option (depending on browser)
@@ -54031,6 +53227,34 @@ exports.getAdditionalFormes = (species) => {
 
 /***/ }),
 
+/***/ "./src/utils/getBackgroundGradient.ts":
+/*!********************************************!*\
+  !*** ./src/utils/getBackgroundGradient.ts ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const typeToColor_1 = __webpack_require__(/*! ./typeToColor */ "./src/utils/typeToColor.ts");
+exports.getBackgroundGradient = (typeA, typeB) => {
+    if (typeB == null) {
+        if (typeA == null) {
+            return 'transparent';
+        }
+        else {
+            return `linear-gradient(to right, ${typeToColor_1.typeToColor(typeA)}, ${typeToColor_1.typeToColor(typeA)}`;
+        }
+    }
+    else {
+        return `linear-gradient(to right, ${typeToColor_1.typeToColor(typeA)}, ${typeToColor_1.typeToColor(typeB)}`;
+    }
+};
+
+
+/***/ }),
+
 /***/ "./src/utils/getBadges.ts":
 /*!********************************!*\
   !*** ./src/utils/getBadges.ts ***!
@@ -54253,6 +53477,121 @@ exports.getGameRegion = (name) => {
 
 /***/ }),
 
+/***/ "./src/utils/getMoveType.ts":
+/*!**********************************!*\
+  !*** ./src/utils/getMoveType.ts ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
+exports.getMoveType = move => {
+    for (const type in utils_1.movesByType) {
+        if (utils_1.movesByType.hasOwnProperty(type)) {
+            if (utils_1.movesByType[type].some((value, index) => {
+                return move === value;
+            }))
+                return type;
+        }
+    }
+    return 'Normal';
+};
+
+
+/***/ }),
+
+/***/ "./src/utils/getPokemonImage.ts":
+/*!**************************************!*\
+  !*** ./src/utils/getPokemonImage.ts ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
+const sugiFormeNotation = forme => {
+    if (typeof forme === 'undefined')
+        return '';
+    if (forme != null || forme !== 'Normal' || forme === 'Alolan' || forme === 'Mega')
+        return '_f2';
+    if (forme === 'Sandy' || forme === 'Pau\'u')
+        return '_f3';
+    if (forme === 'Sensu')
+        return '_f4';
+    return '';
+};
+const getGameName = name => {
+    if (name === 'Red' || name === 'Blue')
+        return 'rb';
+    if (name === 'Ruby' ||
+        name === 'Sapphire' ||
+        name === 'FireRed' ||
+        name === 'LeafGreen' ||
+        name === 'Emerald') {
+        return 'emerald';
+    }
+    if (name === 'Diamond' || name === 'Pearl' || name === 'Platinum')
+        return 'dp';
+    if (name === 'HeartGold' || name === 'SoulSilver')
+        return 'hgss';
+    if (name === 'Black' || name === 'White' || name === 'White 2' || name === 'Black 2')
+        return 'blackwhite';
+    if (name === 'X' || name === 'Y' || name === 'OmegaRuby' || name === 'AlphaSapphire')
+        return 'xy';
+    if (name === 'Sun' || name === 'Moon' || name === 'Ultra Sun' || name === 'Ultra Moon')
+        return 'sunmoon';
+    if (name === 'Green' ||
+        name === 'Gold' ||
+        name === 'Silver' ||
+        name === 'Yellow' ||
+        name === 'Crystal') {
+        return name.toLowerCase();
+    }
+    return 'sm';
+};
+function getPokemonImage({ customImage, forme, species, name, style }) {
+    const leadingZerosNumber = (utils_1.speciesToNumber(species) || 0).toString().padStart(3, '0');
+    if (customImage) {
+        return `url(${customImage})`;
+    }
+    if (style.spritesMode &&
+        (name === 'Black' ||
+            name === 'Emerald' ||
+            name === 'Ruby' ||
+            name === 'Sapphire' ||
+            name === 'LeafGreen' ||
+            name === 'FireRed' ||
+            name === 'White' ||
+            name === 'Black 2' ||
+            name === 'White 2' ||
+            name === 'X' ||
+            name === 'Y' ||
+            name === 'OmegaRuby' ||
+            name === 'AlphaSapphire' ||
+            name === 'Sun' ||
+            name === 'Moon' ||
+            name === 'Ultra Sun' ||
+            name === 'Ultra Moon')) {
+        return `url(https://www.serebii.net/${getGameName(name)}/pokemon/${leadingZerosNumber}${utils_1.getForme(forme)}.png)`;
+    }
+    if (style.spritesMode) {
+        return `url(https://www.serebii.net/pokearth/sprites/${getGameName(name)}/${leadingZerosNumber}.png)`;
+    }
+    if (style.teamImages === 'sugimori') {
+        return `url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/${leadingZerosNumber}.png)`;
+    }
+    return `url(img/${(utils_1.addForme((species || '').replace(/\s/g, '').replace(/'/g, ''), forme) || 'missingno').toLowerCase()}.jpg)`;
+}
+exports.getPokemonImage = getPokemonImage;
+
+
+/***/ }),
+
 /***/ "./src/utils/getSpriteIcon.ts":
 /*!************************************!*\
   !*** ./src/utils/getSpriteIcon.ts ***!
@@ -54319,36 +53658,45 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
+var choose_1 = __webpack_require__(/*! ./choose */ "./src/utils/choose.ts");
+exports.choose = choose_1.choose;
+var generateReleaseNotes_1 = __webpack_require__(/*! ./generateReleaseNotes */ "./src/utils/generateReleaseNotes.ts");
+exports.generateReleaseNotes = generateReleaseNotes_1.generateReleaseNotes;
+var getSpriteIcon_1 = __webpack_require__(/*! ./getSpriteIcon */ "./src/utils/getSpriteIcon.ts");
+exports.getSpriteIcon = getSpriteIcon_1.getSpriteIcon;
+var listOfThemes_1 = __webpack_require__(/*! ./listOfThemes */ "./src/utils/listOfThemes.ts");
+exports.listOfThemes = listOfThemes_1.listOfThemes;
+var matchSpeciesToTypes_1 = __webpack_require__(/*! ./matchSpeciesToTypes */ "./src/utils/matchSpeciesToTypes.ts");
+exports.matchSpeciesToTypes = matchSpeciesToTypes_1.matchSpeciesToTypes;
 var speciesToNumber_1 = __webpack_require__(/*! ./speciesToNumber */ "./src/utils/speciesToNumber.ts");
 exports.speciesToNumber = speciesToNumber_1.speciesToNumber;
 var StoreContext_1 = __webpack_require__(/*! ./StoreContext */ "./src/utils/StoreContext.ts");
 exports.StoreContext = StoreContext_1.StoreContext;
-var choose_1 = __webpack_require__(/*! ./choose */ "./src/utils/choose.ts");
-exports.choose = choose_1.choose;
-var getSpriteIcon_1 = __webpack_require__(/*! ./getSpriteIcon */ "./src/utils/getSpriteIcon.ts");
-exports.getSpriteIcon = getSpriteIcon_1.getSpriteIcon;
-var matchSpeciesToTypes_1 = __webpack_require__(/*! ./matchSpeciesToTypes */ "./src/utils/matchSpeciesToTypes.ts");
-exports.matchSpeciesToTypes = matchSpeciesToTypes_1.matchSpeciesToTypes;
+__export(__webpack_require__(/*! ./addForme */ "./src/utils/addForme.ts"));
+__export(__webpack_require__(/*! ./gameOfOriginToColor */ "./src/utils/gameOfOriginToColor.ts"));
 __export(__webpack_require__(/*! ./generateEmptyPokemon */ "./src/utils/generateEmptyPokemon.ts"));
 __export(__webpack_require__(/*! ./getAdditionalFormes */ "./src/utils/getAdditionalFormes.ts"));
-__export(__webpack_require__(/*! ./listOfItems */ "./src/utils/listOfItems.ts"));
-__export(__webpack_require__(/*! ./listOfGames */ "./src/utils/listOfGames.ts"));
-__export(__webpack_require__(/*! ./sortPokes */ "./src/utils/sortPokes.ts"));
-__export(__webpack_require__(/*! ./pokemonByFilter */ "./src/utils/pokemonByFilter.tsx"));
-__export(__webpack_require__(/*! ./levenshteinDistance */ "./src/utils/levenshteinDistance.ts"));
-__export(__webpack_require__(/*! ./addForme */ "./src/utils/addForme.ts"));
-__export(__webpack_require__(/*! ./styleDefaults */ "./src/utils/styleDefaults.ts"));
-var generateReleaseNotes_1 = __webpack_require__(/*! ./generateReleaseNotes */ "./src/utils/generateReleaseNotes.ts");
-exports.generateReleaseNotes = generateReleaseNotes_1.generateReleaseNotes;
+__export(__webpack_require__(/*! ./getBackgroundGradient */ "./src/utils/getBackgroundGradient.ts"));
 __export(__webpack_require__(/*! ./getBadges */ "./src/utils/getBadges.ts"));
-__export(__webpack_require__(/*! ./listOfPokemon */ "./src/utils/listOfPokemon.ts"));
-var listOfThemes_1 = __webpack_require__(/*! ./listOfThemes */ "./src/utils/listOfThemes.ts");
-exports.listOfThemes = listOfThemes_1.listOfThemes;
-__export(__webpack_require__(/*! ./getGameRegion */ "./src/utils/getGameRegion.ts"));
 __export(__webpack_require__(/*! ./getForme */ "./src/utils/getForme.ts"));
-__export(__webpack_require__(/*! ./listOfLocations */ "./src/utils/listOfLocations.ts"));
-__export(__webpack_require__(/*! ./noop */ "./src/utils/noop.ts"));
+__export(__webpack_require__(/*! ./getGameRegion */ "./src/utils/getGameRegion.ts"));
+__export(__webpack_require__(/*! ./getMoveType */ "./src/utils/getMoveType.ts"));
+__export(__webpack_require__(/*! ./getPokemonImage */ "./src/utils/getPokemonImage.ts"));
 __export(__webpack_require__(/*! ./hotkeyList */ "./src/utils/hotkeyList.ts"));
+__export(__webpack_require__(/*! ./levenshteinDistance */ "./src/utils/levenshteinDistance.ts"));
+__export(__webpack_require__(/*! ./listOfGames */ "./src/utils/listOfGames.ts"));
+__export(__webpack_require__(/*! ./listOfItems */ "./src/utils/listOfItems.ts"));
+__export(__webpack_require__(/*! ./listOfLocations */ "./src/utils/listOfLocations.ts"));
+__export(__webpack_require__(/*! ./listOfPokemon */ "./src/utils/listOfPokemon.ts"));
+__export(__webpack_require__(/*! ./movesByType */ "./src/utils/movesByType.ts"));
+__export(__webpack_require__(/*! ./noop */ "./src/utils/noop.ts"));
+__export(__webpack_require__(/*! ./sortPokes */ "./src/utils/sortPokes.ts"));
+__export(__webpack_require__(/*! ./styleDefaults */ "./src/utils/styleDefaults.ts"));
+__export(__webpack_require__(/*! ./typeToColor */ "./src/utils/typeToColor.ts"));
+__export(__webpack_require__(/*! ./mapTrainerImage */ "./src/utils/mapTrainerImage.ts"));
+__export(__webpack_require__(/*! ./listOfTrainers */ "./src/utils/listOfTrainers.ts"));
+__export(__webpack_require__(/*! ./listOfAbilities */ "./src/utils/listOfAbilities.ts"));
+__export(__webpack_require__(/*! ./Types */ "./src/utils/Types.ts"));
 
 
 /***/ }),
@@ -54390,6 +53738,256 @@ function levenshteinDistance(a, b) {
     return matrix[b.length][a.length];
 }
 exports.levenshteinDistance = levenshteinDistance;
+
+
+/***/ }),
+
+/***/ "./src/utils/listOfAbilities.ts":
+/*!**************************************!*\
+  !*** ./src/utils/listOfAbilities.ts ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.listOfAbilities = [
+    'Adaptability',
+    'Aerilate',
+    'Aftermath',
+    'Air Lock',
+    'Analytic',
+    'Anger Point',
+    'Anticipation',
+    'Arena Trap',
+    'Aroma Veil',
+    'Aura Break',
+    'Bad Dreams',
+    'Battery',
+    'Battle Armor',
+    'Battle Bond',
+    'Beast Boost',
+    'Berserk',
+    'Big Pecks',
+    'Blaze',
+    'Bulletproof',
+    'Cacophony',
+    'Cheek Pouch',
+    'Chlorophyll',
+    'Clear Body',
+    'Cloud Nine',
+    'Color Change',
+    'Comatose',
+    'Competitive',
+    'Compound Eyes',
+    'Contrary',
+    'Corrosion',
+    'Cursed Body',
+    'Cute Charm',
+    'Damp',
+    'Dancer',
+    'Dark Aura',
+    'Dazzling',
+    'Defeatist',
+    'Defiant',
+    'Delta Stream',
+    'Desolate Land',
+    'Disguise',
+    'Download',
+    'Drizzle',
+    'Drought',
+    'Dry Skin',
+    'Early Bird',
+    'Effect Spore',
+    'Electric Surge',
+    'Emergency Exit',
+    'Fairy Aura',
+    'Filter',
+    'Flame Body',
+    'Flare Boost',
+    'Flash Fire',
+    'Flower Gift',
+    'Flower Veil',
+    'Fluffy',
+    'Forecast',
+    'Forewarn',
+    'Friend Guard',
+    'Frisk',
+    'Full Metal Body',
+    'Fur Coat',
+    'Gale Wings',
+    'Galvanize',
+    'Gluttony',
+    'Gooey',
+    'Grass Pelt',
+    'Grassy Surge',
+    'Guts',
+    'Harvest',
+    'Healer',
+    'Heatproof',
+    'Heavy Metal',
+    'Honey Gather',
+    'Huge Power',
+    'Hustle',
+    'Hydration',
+    'Hyper Cutter',
+    'Ice Body',
+    'Illuminate',
+    'Illusion',
+    'Immunity',
+    'Imposter',
+    'Infiltrator',
+    'Innards Out',
+    'Inner Focus',
+    'Insomnia',
+    'Intimidate',
+    'Iron Barbs',
+    'Iron Fist',
+    'Justified',
+    'Keen Eye',
+    'Klutz',
+    'Leaf Guard',
+    'Levitate',
+    'Light Metal',
+    'Lightning Rod',
+    'Limber',
+    'Liquid Ooze',
+    'Liquid Voice',
+    'Long Reach',
+    'Magic Bounce',
+    'Magic Guard',
+    'Magician',
+    'Magma Armor',
+    'Magnet Pull',
+    'Marvel Scale',
+    'Mega Launcher',
+    'Merciless',
+    'Minus',
+    'Misty Surge',
+    'Mold Breaker',
+    'Moody',
+    'Motor Drive',
+    'Moxie',
+    'Multiscale',
+    'Multitype',
+    'Mummy',
+    'Natural Cure',
+    'Neuroforce',
+    'No Guard',
+    'Normalize',
+    'Oblivious',
+    'Overcoat',
+    'Overgrow',
+    'Own Tempo',
+    'Parental Bond',
+    'Pickpocket',
+    'Pickup',
+    'Pixilate',
+    'Plus',
+    'Poison Heal',
+    'Poison Point',
+    'Poison Touch',
+    'Power Construct',
+    'Power of Alchemy',
+    'Prankster',
+    'Pressure',
+    'Primordial Sea',
+    'Prism Armor',
+    'Protean',
+    'Psychic Surge',
+    'Pure Power',
+    'Queenly Majesty',
+    'Quick Feet',
+    'Rain Dish',
+    'Rattled',
+    'Receiver',
+    'Reckless',
+    'Refrigerate',
+    'Regenerator',
+    'Rivalry',
+    'RKS System',
+    'Rock Head',
+    'Rough Skin',
+    'Run Away',
+    'Sand Force',
+    'Sand Rush',
+    'Sand Stream',
+    'Sand Veil',
+    'Sap Sipper',
+    'Schooling',
+    'Scrappy',
+    'Serene Grace',
+    'Shadow Shield',
+    'Shadow Tag',
+    'Shed Skin',
+    'Sheer Force',
+    'Shell Armor',
+    'Shield Dust',
+    'Shields Down',
+    'Simple',
+    'Skill Link',
+    'Slow Start',
+    'Slush Rush',
+    'Sniper',
+    'Snow Cloak',
+    'Snow Warning',
+    'Solar Power',
+    'Solid Rock',
+    'Soul-Heart',
+    'Soundproof',
+    'Speed Boost',
+    'Stakeout',
+    'Stall',
+    'Stamina',
+    'Stance Change',
+    'Static',
+    'Steadfast',
+    'Steelworker',
+    'Stench',
+    'Sticky Hold',
+    'Storm Drain',
+    'Strong Jaw',
+    'Sturdy',
+    'Suction Cups',
+    'Super Luck',
+    'Surge Surfer',
+    'Swarm',
+    'Sweet Veil',
+    'Swift Swim',
+    'Symbiosis',
+    'Synchronize',
+    'Tangled Feet',
+    'Tangling Hair',
+    'Technician',
+    'Telepathy',
+    'Teravolt',
+    'Thick Fat',
+    'Tinted Lens',
+    'Torrent',
+    'Tough Claws',
+    'Toxic Boost',
+    'Trace',
+    'Triage',
+    'Truant',
+    'Turboblaze',
+    'Unaware',
+    'Unburden',
+    'Unnerve',
+    'Victory Star',
+    'Vital Spirit',
+    'Volt Absorb',
+    'Water Absorb',
+    'Water Bubble',
+    'Water Compaction',
+    'Water Veil',
+    'Weak Armor',
+    'White Smoke',
+    'Wimp Out',
+    'Wonder Guard',
+    'Wonder Skin',
+    'Zen Mode'
+];
 
 
 /***/ }),
@@ -55986,6 +55584,52 @@ exports.listOfThemes = ['Default Light', 'Default Dark', 'Cards', 'Generations',
 
 /***/ }),
 
+/***/ "./src/utils/listOfTrainers.ts":
+/*!*************************************!*\
+  !*** ./src/utils/listOfTrainers.ts ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.listOfTrainers = [
+    'dawn',
+    'may',
+    'sun',
+    'moon',
+    'lyra',
+    'nate',
+    'rosa'
+];
+
+
+/***/ }),
+
+/***/ "./src/utils/mapTrainerImage.ts":
+/*!**************************************!*\
+  !*** ./src/utils/mapTrainerImage.ts ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
+exports.mapTrainerImage = (trainer) => {
+    if (utils_1.listOfTrainers.includes(trainer.toLowerCase())) {
+        return `img/${trainer.toLowerCase()}.jpg`;
+    }
+    else {
+        return trainer;
+    }
+};
+
+
+/***/ }),
+
 /***/ "./src/utils/matchSpeciesToTypes.ts":
 /*!******************************************!*\
   !*** ./src/utils/matchSpeciesToTypes.ts ***!
@@ -55996,7 +55640,8 @@ exports.listOfThemes = ['Default Light', 'Default Dark', 'Cards', 'Generations',
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.matchSpeciesToTypes = (species) => {
+const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
+exports.matchSpeciesToTypes = (species, forme) => {
     switch (species) {
         case 'Bulbasaur':
         case 'Ivysaur':
@@ -56012,7 +55657,7 @@ exports.matchSpeciesToTypes = (species) => {
         case 'Victreebel':
         case 'Foongus':
         case 'Amoonguss':
-            return ['Grass', 'Poison'];
+            return [utils_1.Types.Grass, utils_1.Types.Poison];
         case 'Charmander':
         case 'Charmeleon':
         case 'Vulpix':
@@ -56043,13 +55688,13 @@ exports.matchSpeciesToTypes = (species) => {
         case 'Braixen':
         case 'Litten':
         case 'Torracat':
-            return ['Fire', 'Fire'];
+            return [utils_1.Types.Fire, utils_1.Types.Fire];
         case 'Charizard':
         case 'Moltres':
         case 'Ho-Oh':
         case 'Fletchinder':
         case 'Talonflame':
-            return ['Fire', 'Flying'];
+            return [utils_1.Types.Fire, utils_1.Types.Flying];
         case 'Squirtle':
         case 'Wartortle':
         case 'Blastoise':
@@ -56111,7 +55756,7 @@ exports.matchSpeciesToTypes = (species) => {
         case 'Brionne':
         case 'Wishiwashi':
         case 'Pyukumuku':
-            return ['Water', 'Water'];
+            return [utils_1.Types.Water, utils_1.Types.Water];
         case 'Mankey':
         case 'Primeape':
         case 'Machop':
@@ -56134,12 +55779,12 @@ exports.matchSpeciesToTypes = (species) => {
         case 'Pancham':
         case 'Crabrawler':
         case 'Passimian':
-            return ['Fighting', 'Fighting'];
+            return [utils_1.Types.Fighting, utils_1.Types.Fighting];
         case 'Tornadus':
-            return ['Flying', 'Flying'];
+            return [utils_1.Types.Flying, utils_1.Types.Flying];
         case 'Noibat':
         case 'Noivern':
-            return ['Flying', 'Dragon'];
+            return [utils_1.Types.Flying, utils_1.Types.Dragon];
         case 'Pidgey':
         case 'Pidgeotto':
         case 'Pidgeot':
@@ -56166,7 +55811,7 @@ exports.matchSpeciesToTypes = (species) => {
         case 'Pikipek':
         case 'Trumbeak':
         case 'Toucannon':
-            return ['Normal', 'Flying'];
+            return [utils_1.Types.Normal, utils_1.Types.Flying];
         case 'Misdreavus':
         case 'Shuppet':
         case 'Banette':
@@ -56176,114 +55821,114 @@ exports.matchSpeciesToTypes = (species) => {
         case 'Dusknoir':
         case 'Yamask':
         case 'Cofagrigus':
-            return ['Ghost', 'Ghost'];
+            return [utils_1.Types.Ghost, utils_1.Types.Ghost];
         case 'Gastly':
         case 'Haunter':
         case 'Gengar':
-            return ['Ghost', 'Poison'];
+            return [utils_1.Types.Ghost, utils_1.Types.Poison];
         case 'Drifloon':
         case 'Drifblim':
-            return ['Ghost', 'Flying'];
+            return [utils_1.Types.Ghost, utils_1.Types.Flying];
         case 'Spiritomb':
-            return ['Ghost', 'Dark'];
+            return [utils_1.Types.Ghost, utils_1.Types.Dark];
         case 'Giratina':
-            return ['Ghost', 'Dragon'];
+            return [utils_1.Types.Ghost, utils_1.Types.Dragon];
         case 'Litwick':
         case 'Lampent':
         case 'Chandelure':
-            return ['Ghost', 'Fire'];
+            return [utils_1.Types.Ghost, utils_1.Types.Fire];
         case 'Phantump':
         case 'Trevenant':
         case 'Pumpkaboo':
         case 'Gourgeist':
         case 'Dhelmise':
-            return ['Ghost', 'Grass'];
+            return [utils_1.Types.Ghost, utils_1.Types.Grass];
         case 'Sandygast':
         case 'Palossand':
-            return ['Ghost', 'Ground'];
+            return [utils_1.Types.Ghost, utils_1.Types.Ground];
         case 'Shedinja':
-            return ['Bug', 'Ghost'];
+            return [utils_1.Types.Bug, utils_1.Types.Ghost];
         case 'Sabeleye':
-            return ['Dark', 'Ghost'];
+            return [utils_1.Types.Dark, utils_1.Types.Ghost];
         case 'Rotom':
-            return ['Electric', 'Ghost'];
+            return [utils_1.Types.Electric, utils_1.Types.Ghost];
         case 'Blacephalon':
-            return ['Fire', 'Ghost'];
+            return [utils_1.Types.Fire, utils_1.Types.Ghost];
         case 'Decidueye':
-            return ['Grass', 'Ghost'];
+            return [utils_1.Types.Grass, utils_1.Types.Ghost];
         case 'Golett':
         case 'Golurk':
-            return ['Ground', 'Ghost'];
+            return [utils_1.Types.Ground, utils_1.Types.Ghost];
         case 'Froslass':
-            return ['Ice', 'Ghost'];
+            return [utils_1.Types.Ice, utils_1.Types.Ghost];
         case 'Hoopa':
         case 'Lunala':
-            return ['Psychic', 'Ghost'];
+            return [utils_1.Types.Psychic, utils_1.Types.Ghost];
         case 'Honedge':
         case 'Doublade':
         case 'Aegislash':
-            return ['Steel', 'Ghost'];
+            return [utils_1.Types.Steel, utils_1.Types.Ghost];
         case 'Frillish':
         case 'Jellicent':
-            return ['Water', 'Ghost'];
+            return [utils_1.Types.Water, utils_1.Types.Ghost];
         case 'Meditite':
         case 'Medicham':
-            return ['Fighting', 'Psychic'];
+            return [utils_1.Types.Fighting, utils_1.Types.Psychic];
         case 'Lucario':
-            return ['Fighting', 'Steel'];
+            return [utils_1.Types.Fighting, utils_1.Types.Steel];
         case 'Pangoro':
-            return ['Fighitng', 'Dark'];
+            return [utils_1.Types.Fighting, utils_1.Types.Dark];
         case 'Hawlucha':
-            return ['Fighting', 'Flying'];
+            return [utils_1.Types.Fighting, utils_1.Types.Flying];
         case 'Crabominable':
-            return ['Fighting', 'Ice'];
+            return [utils_1.Types.Fighting, utils_1.Types.Ice];
         case 'Heracross':
         case 'Buzzwole':
         case 'Pheromosa':
-            return ['Bug', 'Fighting'];
+            return [utils_1.Types.Bug, utils_1.Types.Fighting];
         case 'Scraggy':
         case 'Scrafty':
-            return ['Dark', 'Fighting'];
+            return [utils_1.Types.Dark, utils_1.Types.Fighting];
         case 'Hakamo-o':
         case 'Kommo-o':
-            return ['Dragon', 'Fighting'];
+            return [utils_1.Types.Dragon, utils_1.Types.Fighting];
         case 'Combusken':
         case 'Blaziken':
         case 'Monferno':
         case 'Infernape':
         case 'Pignite':
         case 'Emboar':
-            return ['Fire', 'Fighting'];
+            return [utils_1.Types.Fire, utils_1.Types.Fighting];
         case 'Breloom':
         case 'Virizion':
         case 'Chensaught':
-            return ['Grass', 'Fighting'];
+            return [utils_1.Types.Grass, utils_1.Types.Fighting];
         case 'Stufful':
         case 'Bewear':
-            return ['Normal', 'Fighting'];
+            return [utils_1.Types.Normal, utils_1.Types.Fighting];
         case 'Gallade':
-            return ['Psychic', 'Fighting'];
+            return [utils_1.Types.Psychic, utils_1.Types.Fighting];
         case 'Terrakon':
-            return ['Rock', 'Fighting'];
+            return [utils_1.Types.Rock, utils_1.Types.Fighting];
         case 'Cobalion':
-            return ['Steel', 'Fighting'];
+            return [utils_1.Types.Steel, utils_1.Types.Fighting];
         case 'Poliwrath':
         case 'Keldeo':
-            return ['Water', 'Fighting'];
+            return [utils_1.Types.Water, utils_1.Types.Fighting];
         case 'Croagunk':
         case 'Toxicroak':
-            return ['Poison', 'Fighting'];
+            return [utils_1.Types.Poison, utils_1.Types.Fighting];
         case 'Marshadow':
-            return ['Ghost', 'Fighting'];
+            return [utils_1.Types.Ghost, utils_1.Types.Fighting];
         case 'Dratini':
         case 'Dragonair':
         case 'Bagon':
         case 'Shelgon':
         case 'Druddigon':
-            return ['Dragon', 'Dragon'];
+            return [utils_1.Types.Dragon, utils_1.Types.Dragon];
         case 'Dragonite':
         case 'Salamence':
-            return ['Dragon', 'Flying'];
+            return [utils_1.Types.Dragon, utils_1.Types.Flying];
         case 'Omanyte':
         case 'Omastar':
         case 'Kabuto':
@@ -56293,10 +55938,859 @@ exports.matchSpeciesToTypes = (species) => {
         case 'Corsola':
         case 'Binacle':
         case 'Barbaracle':
-            return ['Water', 'Rock'];
+            return [utils_1.Types.Water, utils_1.Types.Rock];
+        case 'Caterpie':
+        case 'Metapod':
+        case 'Pinsir':
+        case 'Pineco':
+        case 'Wurmple':
+        case 'Silcoon':
+        case 'Volbeat':
+        case 'Illumise':
+        case 'Kricketot':
+        case 'Kricketune':
+        case 'Burmy':
+        case 'Karrablast':
+        case 'Shelmet':
+        case 'Accelogr':
+        case 'Scatterbug':
+        case 'Spewpa':
+        case 'Grubbin':
+            return [utils_1.Types.Bug, utils_1.Types.Bug];
+        case 'Joltik':
+        case 'Galvantula':
+        case 'Charjabug':
+        case 'Vikavolt':
+            return [utils_1.Types.Bug, utils_1.Types.Electric];
+        case 'Cutiefly':
+        case 'Ribombee':
+            return [utils_1.Types.Bug, utils_1.Types.Fairy];
+        case 'Larvesta':
+        case 'Volcarona':
+            return [utils_1.Types.Bug, utils_1.Types.Fire];
+        case 'Butterfree':
+        case 'Scyther':
+        case 'Ledyba':
+        case 'Ledian':
+        case 'Yanma':
+        case 'Beautifly':
+        case 'Masquerain':
+        case 'Ninjask':
+        case 'Mothim':
+        case 'Combee':
+        case 'Vespiquen':
+        case 'Yanmega':
+        case 'Vivillon':
+            return [utils_1.Types.Bug, utils_1.Types.Flying];
+        case 'Paras':
+        case 'Parasect':
+        case 'Sewaddle':
+        case 'Wormadam':
+        case 'Swadloon':
+        case 'Leavanny':
+            return [utils_1.Types.Bug, utils_1.Types.Grass];
+        case 'Nincada':
+            return [utils_1.Types.Bug, utils_1.Types.Ground];
+        case 'Weedle':
+        case 'Kakuna':
+        case 'Beedrill':
+        case 'Venonat':
+        case 'Venomoth':
+        case 'Spinarak':
+        case 'Ariados':
+        case 'Dustox':
+        case 'Venipede':
+        case 'Whirlipede':
+        case 'Scolipede':
+            return [utils_1.Types.Bug, utils_1.Types.Poison];
+        case 'Shuckle':
+        case 'Dwebble':
+        case 'Crustle':
+            return [utils_1.Types.Bug, utils_1.Types.Rock];
+        case 'Forretress':
+        case 'Scizor':
+        case 'Escavalier':
+        case 'Durant':
+        case 'Genesect':
+            return [utils_1.Types.Bug, utils_1.Types.Steel];
+        case 'Surskit':
+        case 'Wimpod':
+        case 'Golisopod':
+            return [utils_1.Types.Bug, utils_1.Types.Water];
+        case 'Dewpider':
+        case 'Araquanid':
+            return [utils_1.Types.Bug, utils_1.Types.Water];
+        case 'Anorith':
+        case 'Armaldo':
+            return [utils_1.Types.Rock, utils_1.Types.Bug];
+        case 'Skorupi':
+            return [utils_1.Types.Poison, utils_1.Types.Bug];
         default:
-            return ['Normal', 'Normal'];
+            return [utils_1.Types.Normal, utils_1.Types.Normal];
     }
+};
+
+
+/***/ }),
+
+/***/ "./src/utils/movesByType.ts":
+/*!**********************************!*\
+  !*** ./src/utils/movesByType.ts ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.movesByType = {
+    Bug: [
+        'Powder',
+        'Fell Stinger',
+        'Twineedle',
+        'Tail Glow',
+        'Struggle Bug',
+        'String Shot',
+        'Sticky Web',
+        'Attack Order',
+        'Steamroller',
+        'Spider Web',
+        'Silver Wind',
+        'Signal Beam',
+        'Savage Spin-Out',
+        'Rage Powder',
+        'Quiver Dance',
+        'U-turn',
+        'Pollen Puff',
+        'Pin Missile',
+        'Defend Order',
+        'X-Scissor',
+        'Megahorn',
+        'Lunge',
+        'Leech Life',
+        'Bug Bite',
+        'Bug Buzz',
+        'Infestation',
+        'Heal Order',
+        'Fury Cutter',
+        'First Impression',
+    ],
+    Dark: [
+        'Night Slash',
+        'Quash',
+        'Pursuit',
+        'Punishment',
+        'Power Trip',
+        'Bite',
+        'Black Hole Eclipse',
+        'Assurance',
+        'Topsy-Turvy',
+        'Throat Chop',
+        'Payback',
+        'Parting Shot',
+        'Thief',
+        'Taunt',
+        'Night Daze',
+        'Nasty Plot',
+        'Memento',
+        'Crunch',
+        'Malicious Moonsault',
+        'Brutal Swing',
+        'Snatch',
+        'Snarl',
+        'Dark Void',
+        'Switcheroo',
+        'Knock Off',
+        'Sucker Punch',
+        'Hyperspace Fury',
+        'Hone Claws',
+        'Darkest Lariat',
+        'Dark Pulse',
+        'Foul Play',
+        'Fling',
+        'Flatter',
+        'Beat Up',
+        'Torment',
+        'Embargo',
+        'Feint Attack',
+        'Faint Attack',
+        'Fake Tears',
+    ],
+    Dragon: [
+        'Dragon Claw',
+        'Clanging Scales',
+        'Dragon Tail',
+        'Dragon Rush',
+        'Dragon Rage',
+        'Core Enforcer',
+        'Dragon Pulse',
+        'Dragon Hammer',
+        'Dragon Dance',
+        'Dual Chop',
+        'Dragon Breath',
+        'Draco Meteor',
+        'Devastating Drake',
+        'Outrage',
+        'Roar of Time',
+        'Spacial Rend',
+        'Twister',
+        'Clangorous Soulblaze',
+    ],
+    Electric: [
+        '10,000,000 Volt Thunderbolt',
+        'Thunder',
+        'Zap Cannon',
+        'Zing Zap',
+        'Spark',
+        'Wild Charge',
+        'Magnetic Flux',
+        'Magnet Rise',
+        'Volt Tackle',
+        'Electroweb',
+        'Electro Ball',
+        'Electrify',
+        'Electric Terrain',
+        'Eerie Impulse',
+        'Volt Switch',
+        'Thunderbolt',
+        'Thunder Wave',
+        'Shock Wave',
+        'Thunder Shock',
+        'Ion Deluge',
+        'Stoked Sparksurfer',
+        'Parabolic Charge',
+        'Thunder Punch',
+        'Bolt Strike',
+        'Gigavolt Havoc',
+        'Discharge',
+        'Fusion Bolt',
+        'Catastropika',
+        'Nuzzle',
+        'Charge',
+        'Charge Beam',
+        'Thunder Fang',
+        'Plasma Fists',
+    ],
+    Fairy: [
+        'Dazzling Gleam',
+        'Sweet Kiss',
+        'Disarming Voice',
+        'Aromatic Mist',
+        'Baby-Doll Eyes',
+        'Draining Kiss',
+        'Light of Ruin',
+        'Fairy Lock',
+        'Fairy Wind',
+        'Guardian of Alola',
+        'Twinkle Tackle',
+        'Crafty Shield',
+        'Geomancy',
+        'Misty Terrain',
+        'Moonblast',
+        'Moonlight',
+        'Nature\'s Madness',
+        'Play Rough',
+        'Fleur Cannon',
+        'Floral Healing',
+        'Flower Shield',
+        'Charm',
+        'Let\'s Snuggle Forever',
+    ],
+    Fighting: [
+        'Seismic Toss',
+        'Secret Sword',
+        'Jump Kick',
+        'Karate Chop',
+        'Sacred Sword',
+        'Bulk Up',
+        'High Jump Kick',
+        'Rolling Kick',
+        'Rock Smash',
+        'Reversal',
+        'Arm Thrust',
+        'Cross Chop',
+        'Revenge',
+        'Close Combat',
+        'Quick Guard',
+        'Power-Up Punch',
+        'Hammer Arm',
+        'Low Kick',
+        'Final Gambit',
+        'Low Sweep',
+        'Vacuum Wave',
+        'Submission',
+        'Mach Punch',
+        'Brick Break',
+        'Mat Block',
+        'Circle Throw',
+        'Superpower',
+        'Storm Throw',
+        'Double Kick',
+        'Aura Sphere',
+        'Counter',
+        'All-Out Pummeling',
+        'Sky Uppercut',
+        'Detect',
+        'Drain Punch',
+        'Wake-Up Slap',
+        'Vital Throw',
+        'Flying Press',
+        'Focus Blast',
+        'Triple Kick',
+        'Focus Punch',
+        'Dynamic Punch',
+        'Force Palm',
+    ],
+    Fire: [
+        'Fire Blast',
+        'Overheat',
+        'Flare Blitz',
+        'Mystical Fire',
+        'Flamethrower',
+        'Fusion Flare',
+        'Flame Wheel',
+        'Flame Charge',
+        'Flame Burst',
+        'Blaze Kick',
+        'Fire Spin',
+        'Fire Punch',
+        'V-create',
+        'Magma Storm',
+        'Fire Pledge',
+        'Fire Lash',
+        'Fire Fang',
+        'Blue Flare',
+        'Fiery Dance',
+        'Blast Burn',
+        'Eruption',
+        'Lava Plume',
+        'Sacred Fire',
+        'Will-O-Wisp',
+        'Searing Shot',
+        'Ember',
+        'Heat Crash',
+        'Heat Wave',
+        'Shell Trap',
+        'Inferno Overdrive',
+        'Inferno',
+        'Incinerate',
+        'Sunny Day',
+        'Burn Up',
+        'Mind Blown',
+    ],
+    Flying: [
+        'Feather Dance',
+        'Air Slash',
+        'Roost',
+        'Supersonic Skystrike',
+        'Sky Drop',
+        'Aeroblast',
+        'Gust',
+        'Wing Attack',
+        'Oblivion Wing',
+        'Sky Attack',
+        'Dragon Ascent',
+        'Peck',
+        'Tailwind',
+        'Chatter',
+        'Defog',
+        'Air Cutter',
+        'Mirror Move',
+        'Aerial Ace',
+        'Fly',
+        'Acrobatics',
+        'Bounce',
+        'Brave Bird',
+        'Drill Peck',
+        'Beak Blast',
+        'Hurricane',
+        'Pluck',
+    ],
+    Ghost: [
+        'Nightmare',
+        'Night Shade',
+        'Never-Ending Nightmare',
+        'Phantom Force',
+        'Shadow Punch',
+        'Shadow Force',
+        'Moongeist Beam',
+        'Shadow Claw',
+        'Lick',
+        'Shadow Bone',
+        'Confuse Ray',
+        'Shadow Ball',
+        'Sinister Arrow Raid',
+        'Soul-Stealing 7-Star Strike',
+        'Astonish',
+        'Spite',
+        'Curse',
+        'Spirit Shackle',
+        'Hex',
+        'Trick-or-Treat',
+        'Ominous Wind',
+        'Destiny Bond',
+        'Spectral Thief',
+        'Shadow Sneak',
+        'Grudge',
+        'Menacing Moonraze Maelstrom',
+    ],
+    Grass: [
+        'Frenzy Plant',
+        'Strength Sap',
+        'Bullet Seed',
+        'Spore',
+        'Spiky Shield',
+        'Solar Blade',
+        'Solar Beam',
+        'Cotton Spore',
+        'Aromatherapy',
+        'Stun Spore',
+        'Sleep Powder',
+        'Cotton Guard',
+        'Worry Seed',
+        'Seed Flare',
+        'Ingrain',
+        'Seed Bomb',
+        'Vine Whip',
+        'Energy Ball',
+        'Razor Leaf',
+        'Leaf Blade',
+        'Leaf Storm',
+        'Leaf Tornado',
+        'Leafage',
+        'Leech Seed',
+        'Synthesis',
+        'Power Whip',
+        'Absorb',
+        'Magical Leaf',
+        'Grassy Terrain',
+        'Grass Whistle',
+        'Wood Hammer',
+        'Grass Pledge',
+        'Mega Drain',
+        'Grass Knot',
+        'Petal Dance',
+        'Giga Drain',
+        'Petal Blizzard',
+        'Bloom Doom',
+        'Forest\'s Curse',
+        'Horn Leech',
+        'Needle Arm',
+        'Trop Kick',
+    ],
+    Ground: [
+        'Sand Attack',
+        'Mud-Slap',
+        'Mud Sport',
+        'Bone Club',
+        'Mud Shot',
+        'Mud Bomb',
+        'Magnitude',
+        'Fissure',
+        'Precipice Blades',
+        'Tectonic Rage',
+        'Dig',
+        'Rototiller',
+        'Land\'s Wrath',
+        'Bone Rush',
+        'Sand Tomb',
+        'Bonemerang',
+        'Bulldoze',
+        'High Horsepower',
+        'Earthquake',
+        'Earth Power',
+        'Drill Run',
+        'Shore Up',
+        'Thousand Waves',
+        'Spikes',
+        'Thousand Arrows',
+        'Stomping Tantrum',
+    ],
+    Ice: [
+        'Hail',
+        'Frost Breath',
+        'Haze',
+        'Subzero Slammer',
+        'Sheer Cold',
+        'Icy Wind',
+        'Mist',
+        'Glaciate',
+        'Icicle Spear',
+        'Icicle Crash',
+        'Ice Shard',
+        'Ice Punch',
+        'Ice Hammer',
+        'Avalanche',
+        'Ice Fang',
+        'Ice Burn',
+        'Aurora Veil',
+        'Aurora Beam',
+        'Freeze-Dry',
+        'Blizzard',
+        'Ice Beam',
+        'Ice Ball',
+        'Freeze Shock',
+        'Powder Snow',
+    ],
+    Normal: [
+        'Bide',
+        'Hyper Voice',
+        'Horn Attack',
+        'Multi-Attack',
+        'Celebrate',
+        'Boomburst',
+        'Natural Gift',
+        'Nature Power',
+        'Fury Attack',
+        'Howl',
+        'Frustration',
+        'Hold Hands',
+        'Tackle',
+        'Hidden Power',
+        'Leer',
+        'Noble Roar',
+        'Harden',
+        'Happy Hour',
+        'Helping Hand',
+        'Cut',
+        'Odor Sleuth',
+        'Lock-On',
+        'Foresight',
+        'Body Slam',
+        'Follow Me',
+        'Pain Split',
+        'Focus Energy',
+        'Lovely Kiss',
+        'Pay Day',
+        'Block',
+        'Chip Away',
+        'Perish Song',
+        'Tail Whip',
+        'Swords Dance',
+        'Lucky Chant',
+        'Guillotine',
+        'Play Nice',
+        'Flash',
+        'Flail',
+        'Swift',
+        'Sweet Scent',
+        'Crush Claw',
+        'Swallow',
+        'Swagger',
+        'Techno Blast',
+        'Growth',
+        'Pound',
+        'Work Up',
+        'Whirlwind',
+        'Bind',
+        'Weather Ball',
+        'Supersonic',
+        'Growl',
+        'Present',
+        'Protect',
+        'Psych Up',
+        'Pulverizing Pancake',
+        'Horn Drill',
+        'Defense Curl',
+        'Bestow',
+        'Belly Drum',
+        'Quick Attack',
+        'Feint',
+        'Super Fang',
+        'Rage',
+        'False Swipe',
+        'Rapid Spin',
+        'Tail Slap',
+        'Tri Attack',
+        'Razor Wind',
+        'Recover',
+        'Recycle',
+        'Reflect Type',
+        'Refresh',
+        'Relic Song',
+        'Retaliate',
+        'Return',
+        'Revelation Dance',
+        'Fake Out',
+        'Facade',
+        'Roar',
+        'Baton Pass',
+        'Transform',
+        'Rock Climb',
+        'Uproar',
+        'Take Down',
+        'Extreme Speed',
+        'Disable',
+        'Extreme Evoboost',
+        'After You',
+        'Explosion',
+        'Tickle',
+        'Entrainment',
+        'Hold Back',
+        'Round',
+        'Breakneck Blitz',
+        'Endure',
+        'Safeguard',
+        'Judgment',
+        'Me First',
+        'Endeavor',
+        'Scary Face',
+        'Scratch',
+        'Screech',
+        'Encore',
+        'Secret Power',
+        'Mean Look',
+        'Heal Bell',
+        'Mega Kick',
+        'Comet Punch',
+        'Self-Destruct',
+        'Confide',
+        'Egg Bomb',
+        'Constrict',
+        'Echoed Voice',
+        'Mega Punch',
+        'Headbutt',
+        'Sharpen',
+        'Glare',
+        'Shell Smash',
+        'Vice Grip',
+        'Crush Grip',
+        'Barrage',
+        'Camouflage',
+        'Substitute',
+        'Conversion',
+        'Simple Beam',
+        'Sing',
+        'Conversion 2',
+        'Sketch',
+        'Skull Bash',
+        'Copycat',
+        'Wrap',
+        'Giga Impact',
+        'Slack Off',
+        'Slam',
+        'Slash',
+        'Metronome',
+        'Sleep Talk',
+        'Yawn',
+        'Milk Drink',
+        'Mimic',
+        'Mind Reader',
+        'Smelling Salts',
+        'Struggle',
+        'Smokescreen',
+        'Minimize',
+        'Snore',
+        'Thrash',
+        'Soft-Boiled',
+        'Head Charge',
+        'Trump Card',
+        'Sonic Boom',
+        'Covet',
+        'Hyper Beam',
+        'Wish',
+        'Tearful Look',
+        'Double-Edge',
+        'Double Team',
+        'Spike Cannon',
+        'Captivate',
+        'Fury Swipes',
+        'Double Slap',
+        'Spit Up',
+        'Double Hit',
+        'Splash',
+        'Morning Sun',
+        'Spotlight',
+        'Laser Focus',
+        'Attract',
+        'Wring Out',
+        'Stockpile',
+        'Assist',
+        'Stomp',
+        'Last Resort',
+        'Teeter Dance',
+        'Dizzy Punch',
+        'Strength',
+        'Hyper Fang',
+        'Acupressure',
+    ],
+    Poison: [
+        'Acid',
+        'Sludge Wave',
+        'Sludge Bomb',
+        'Sludge',
+        'Baneful Bunker',
+        'Coil',
+        'Toxic',
+        'Toxic Spikes',
+        'Toxic Thread',
+        'Belch',
+        'Purify',
+        'Clear Smog',
+        'Cross Poison',
+        'Smog',
+        'Poison Sting',
+        'Poison Powder',
+        'Poison Jab',
+        'Poison Gas',
+        'Poison Fang',
+        'Gastro Acid',
+        'Gunk Shot',
+        'Venom Drench',
+        'Venoshock',
+        'Acid Armor',
+        'Acid Spray',
+        'Acid Downpour',
+        'Poison Tail',
+    ],
+    Psychic: [
+        'Barrier',
+        'Psystrike',
+        'Psywave',
+        'Guard Swap',
+        'Future Sight',
+        'Zen Headbutt',
+        'Heal Block',
+        'Speed Swap',
+        'Calm Mind',
+        'Heal Pulse',
+        'Imprison',
+        'Healing Wish',
+        'Heart Stamp',
+        'Meditate',
+        'Trick',
+        'Heart Swap',
+        'Wonder Room',
+        'Confusion',
+        'Instruct',
+        'Teleport',
+        'Light Screen',
+        'Telekinesis',
+        'Shattered Psyche',
+        'Genesis Supernova',
+        'Reflect',
+        'Magic Room',
+        'Gravity',
+        'Hyperspace Hole',
+        'Stored Power',
+        'Rest',
+        'Hypnosis',
+        'Cosmic Power',
+        'Lunar Dance',
+        'Extrasensory',
+        'Luster Purge',
+        'Trick Room',
+        'Skill Swap',
+        'Power Split',
+        'Power Swap',
+        'Power Trick',
+        'Miracle Eye',
+        'Mirror Coat',
+        'Kinesis',
+        'Magic Coat',
+        'Dream Eater',
+        'Prismatic Laser',
+        'Role Play',
+        'Mist Ball',
+        'Psybeam',
+        'Guard Split',
+        'Ally Switch',
+        'Psychic',
+        'Psychic Fangs',
+        'Psychic Terrain',
+        'Synchronoise',
+        'Psycho Boost',
+        'Amnesia',
+        'Psycho Cut',
+        'Psycho Shift',
+        'Psyshock',
+        'Agility',
+        'Photon Geyser',
+        'Light That Burns The Sky',
+    ],
+    Rock: [
+        'Rock Throw',
+        'Diamond Storm',
+        'Ancient Power',
+        'Stealth Rock',
+        'Smack Down',
+        'Sandstorm',
+        'Rollout',
+        'Rock Wrecker',
+        'Rock Tomb',
+        'Stone Edge',
+        'Rock Slide',
+        'Rock Polish',
+        'Rock Blast',
+        'Power Gem',
+        'Wide Guard',
+        'Head Smash',
+        'Continental Crush',
+        'Accelerock',
+    ],
+    Steel: [
+        'Anchor Shot',
+        'Autotomize',
+        'Mirror Shot',
+        'Sunsteel Strike',
+        'Metal Sound',
+        'Metal Claw',
+        'Metal Burst',
+        'Magnet Bomb',
+        'King\'s Shield',
+        'Iron Tail',
+        'Iron Head',
+        'Iron Defense',
+        'Bullet Punch',
+        'Smart Strike',
+        'Heavy Slam',
+        'Meteor Mash',
+        'Gyro Ball',
+        'Gear Up',
+        'Gear Grind',
+        'Flash Cannon',
+        'Shift Gear',
+        'Corkscrew Crash',
+        'Doom Desire',
+        'Steel Wing',
+        'Splintered Stormshards',
+        'Searing Sunraze Smash',
+    ],
+    Water: [
+        'Brine',
+        'Rain Dance',
+        'Surf',
+        'Origin Pulse',
+        'Oceanic Operetta',
+        'Hydro Vortex',
+        'Water Gun',
+        'Water Pledge',
+        'Water Pulse',
+        'Water Shuriken',
+        'Water Sport',
+        'Water Spout',
+        'Waterfall',
+        'Hydro Pump',
+        'Whirlpool',
+        'Hydro Cannon',
+        'Muddy Water',
+        'Steam Eruption',
+        'Aqua Ring',
+        'Aqua Tail',
+        'Sparkling Aria',
+        'Withdraw',
+        'Scald',
+        'Aqua Jet',
+        'Clamp',
+        'Soak',
+        'Bubble',
+        'Liquidation',
+        'Dive',
+        'Crabhammer',
+        'Bubble Beam',
+        'Razor Shell',
+        'Octazooka',
+    ],
 };
 
 
@@ -56313,39 +56807,6 @@ exports.matchSpeciesToTypes = (species) => {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.noop = () => { };
-
-
-/***/ }),
-
-/***/ "./src/utils/pokemonByFilter.tsx":
-/*!***************************************!*\
-  !*** ./src/utils/pokemonByFilter.tsx ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-const core_1 = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
-const PokemonIcon_1 = __webpack_require__(/*! components/PokemonIcon */ "./src/components/PokemonIcon/index.ts");
-const sortPokes_1 = __webpack_require__(/*! ./sortPokes */ "./src/utils/sortPokes.ts");
-function pokemonByFilter(team, filter) {
-    let filterFunction;
-    if (filter != null)
-        filterFunction = poke => poke.status === filter;
-    if (filter == null)
-        filterFunction = poke => true;
-    return team
-        .filter(filterFunction)
-        .sort(sortPokes_1.sortPokes)
-        .map((poke, index) => {
-        return (React.createElement(core_1.Tooltip, { key: index, content: poke.nickname || '', position: core_1.Position.TOP },
-            React.createElement(PokemonIcon_1.PokemonIcon, { id: poke.id, species: poke.species, forme: poke.forme })));
-    });
-}
-exports.pokemonByFilter = pokemonByFilter;
 
 
 /***/ }),
@@ -56425,6 +56886,45 @@ exports.styleDefaults = {
     template: 'Default Dark',
     tileBackground: false,
     topHeaderColor: '#333333',
+};
+
+
+/***/ }),
+
+/***/ "./src/utils/typeToColor.ts":
+/*!**********************************!*\
+  !*** ./src/utils/typeToColor.ts ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.typeToColor = (type) => {
+    if (type === 'None')
+        return null;
+    const types = {
+        Bug: '#AEE359',
+        Dark: '#29291F',
+        Dragon: '#153F4D',
+        Electric: '#E3E039',
+        Fairy: '#F0C7E5',
+        Fighting: '#a52a2a',
+        Fire: '#EB3434',
+        Flying: '#96D3E0',
+        Ghost: '#3B2238',
+        Grass: '#39BF3C',
+        Ground: '#9C6E21',
+        Ice: '#C2F1F2',
+        Normal: '#E1E3D3',
+        Poison: '#75226B',
+        Psychic: '#EB75DD',
+        Rock: '#8F795D',
+        Steel: '#888',
+        Water: '#5B64DE',
+    };
+    return types[type];
 };
 
 

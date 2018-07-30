@@ -293,7 +293,7 @@
 - [x] Guzzlord
 - [x] Gyarados
 ## H
-- [ ] Hakamo-o
+- [x] Hakamo-o
 - [x] Happiny
 - [x] Hariyama
 - [x] Haunter
