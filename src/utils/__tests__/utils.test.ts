@@ -6,6 +6,7 @@ import {
     listOfPokemon,
     speciesToNumber
 } from 'utils';
+import { Generation } from '../getGameGeneration';
 
 const objectPropertiesWhere = (obj: object, filter: any) => Array.from(
     Object.values(obj)
@@ -67,6 +68,8 @@ describe('matchSpeciesToType', () => {
     it('returns a type for a Pokemon', () => {
         expect(matchSpeciesToTypes('Bulbasaur')).toEqual(['Grass', 'Poison']);
         expect(matchSpeciesToTypes('Charizard')).toEqual(['Fire', 'Flying']);
+        expect(matchSpeciesToTypes('Raichu', 'Alola')).toEqual(['Electric', 'Psychic']);
+        //expect(matchSpeciesToTypes('Clefairy', undefined, Generation.Gen1)).toEqual(['Normal', 'Normal']);
         listOfPokemon.map((pokemon, index) => {
             expect(matchSpeciesToTypes(pokemon).length).toBeGreaterThan(0);
         });

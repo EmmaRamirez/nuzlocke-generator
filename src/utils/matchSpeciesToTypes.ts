@@ -1,6 +1,94 @@
-import { Types } from 'utils';
+import { Types, Generation } from 'utils';
 
-export const matchSpeciesToTypes = (species: string, forme?: string): [Types, Types] => {
+const match  = ({ s, f, g, species, forme, generation }: { species: string[], forme?: string[], generation?: Generation[], s: string, f?: string, g?: Generation }) => {
+    if (species.includes(s)) {
+        if (generation) {
+            if (g && generation.includes(g)) {
+                if (forme && f && forme.includes(f)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            if (f && forme && forme.includes(f)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+    return false;
+};
+
+export const handleSpeciesTypeEdgeCases = ({ species, forme, generation }): [Types, Types] | null => {
+    const s = species;
+    const f = forme || undefined;
+    const g = generation || undefined;
+    const data = { s, f, g };
+    if (match({
+        ...data,
+        species: ['Rattata', 'Raticate'],
+        forme: ['Alola'],
+    })) return [Types.Dark, Types.Normal];
+
+    if (match({
+        ...data,
+        species: ['Raichu'],
+        forme: ['Alola']
+    })) return [Types.Electric, Types.Psychic];
+
+    if (match({
+        ...data,
+        species: ['Sandslash', 'Sandshrew'],
+        forme: ['Alola'],
+    })) return [Types.Ice, Types.Steel];
+
+    if (match({
+        ...data,
+        species: ['Vulpix'],
+        forme: ['Alola'],
+    })) return [Types.Ice, Types.Ice];
+
+    if (match({
+        ...data,
+        species: ['Ninetales'],
+        forme: ['Alola'],
+    })) return [Types.Ice, Types.Fairy];
+
+    if (match({
+        ...data,
+        species: ['Diglett', 'Dugtrio'],
+        forme: ['Alola'],
+    })) return [Types.Ground, Types.Steel];
+
+    if (match({
+        ...data,
+        species: ['Meowth', 'Persian'],
+        forme: ['Alola'],
+    })) return [Types.Dark, Types.Dark];
+
+    if (match({
+        ...data,
+        species: ['Geodude', 'Graveler', 'Golem'],
+        forme: ['Alola']
+    })) return [Types.Rock, Types.Electric];
+
+    if (match({
+        ...data,
+        species: ['Clefairy', 'Clefable', 'Cleffa'],
+        generation: [Generation.Gen1, Generation.Gen2, Generation.Gen3, Generation.Gen4,
+        Generation.Gen5]
+    })) return [Types.Normal, Types.Normal];
+
+    return null;
+};
+
+export const matchSpeciesToTypes = (species: string, forme?: string, generation?: Generation): [Types, Types] => {
+    const result = handleSpeciesTypeEdgeCases({ species, forme, generation });
+    if (result) return result;
     switch (species) {
         case 'Bulbasaur':
         case 'Ivysaur':
@@ -384,6 +472,153 @@ export const matchSpeciesToTypes = (species: string, forme?: string): [Types, Ty
             return [Types.Rock, Types.Bug];
         case 'Skorupi':
             return [Types.Poison, Types.Bug];
+        case 'Clefairy':
+        case 'Clefable':
+        case 'Cleffa':
+        case 'Togepi':
+        case 'Snubbull':
+        case 'Granbull':
+        case 'Flabébé':
+        case 'Floette':
+        case 'Florges':
+        case 'Spritzee':
+        case 'Aromatisse':
+        case 'Swirlix':
+        case 'Slurpuff':
+        case 'Sylveon':
+        case 'Xerneas':
+        case 'Comfey':
+            return [Types.Fairy, Types.Fairy];
+        case 'Togetic':
+        case 'Togekiss':
+            return [Types.Fairy, Types.Flying];
+        case 'Dedenne':
+        case 'Tapu Koko':
+            return [Types.Electric, Types.Fairy];
+        case 'Mimikyu':
+            return [Types.Ghost, Types.Fairy];
+        case 'Cottonee':
+        case 'Whimsicott':
+        case 'Morelull':
+        case 'Shiinotic':
+        case 'Tapu Bulu':
+            return [Types.Grass, Types.Fairy];
+        case 'Jigglypuff':
+        case 'Wigglytuff':
+        case 'Igglybuff':
+        case 'Azurill':
+            return [Types.Normal, Types.Fairy];
+        case 'Mr. Mime':
+        case 'Ralts':
+        case 'Kirlia':
+        case 'Gardevoir':
+        case 'Mime Jr.':
+        case 'Tapu Lele':
+            return [Types.Psychic, Types.Fairy];
+        case 'Carbink':
+        case 'Diancie':
+            return [Types.Rock, Types.Fairy];
+        case 'Mawile':
+        case 'Klefki':
+        case 'Magearna':
+            return [Types.Steel, Types.Fairy];
+        case 'Marill':
+        case 'Azumarill':
+        case 'Primarina':
+        case 'Tapu Fini':
+            return [Types.Water, Types.Fairy];
+        case 'Umbreon':
+        case 'Poochyena':
+        case 'Mightyena':
+        case 'Absol':
+        case 'Darkrai':
+        case 'Purrloin':
+        case 'Liepard':
+        case 'Zorua':
+        case 'Zoroark':
+            return [Types.Dark, Types.Dark];
+        case 'Deino':
+        case 'Zweilous':
+        case 'Hydreigon':
+        case 'Guzzlord':
+            return [Types.Dark, Types.Dragon];
+        case 'Hondour':
+        case 'Hondoom':
+            return [Types.Dark, Types.Fire];
+        case 'Murkrow':
+        case 'Honchkrow':
+        case 'Vullaby':
+        case 'Mandibuzz':
+        case 'Yveltal':
+            return [Types.Dark, Types.Flying];
+        case 'Sableye':
+            return [Types.Dark, Types.Ghost];
+        case 'Sneasel':
+        case 'Weavile':
+            return [Types.Dark, Types.Ice];
+        case 'Inkay':
+        case 'Malamar':
+            return [Types.Dark, Types.Psychic];
+        case 'Pawniard':
+        case 'Bisharp':
+            return [Types.Dark, Types.Steel];
+        case 'Incineroar':
+            return [Types.Fire, Types.Dark];
+        case 'Nuzleaf':
+        case 'Shiftry':
+        case 'Cacturne':
+            return [Types.Grass, Types.Dark];
+        case 'Sandile':
+        case 'Krokorok':
+        case 'Krookodile':
+            return [Types.Ground, Types.Dark];
+        case 'Stunky':
+        case 'Skuntank':
+        case 'Drapion':
+            return [Types.Poison, Types.Dark];
+        case 'Tyranitar':
+            return [Types.Rock, Types.Dark];
+        case 'Carvanha':
+        case 'Sharpedo':
+        case 'Crawdaunt':
+        case 'Greninja':
+            return [Types.Water, Types.Dark];
+        case 'Pikachu':
+        case 'Raichu':
+        case 'Voltorb':
+        case 'Electabuzz':
+        case 'Jolteon':
+        case 'Pichu':
+        case 'Mareep':
+        case 'Ampharos':
+        case 'Elekid':
+        case 'Raikou':
+        case 'Electrike':
+        case 'Manectric':
+        case 'Plusle':
+        case 'Minun':
+        case 'Shinx':
+        case 'Luxio':
+        case 'Luxray':
+        case 'Pachirisu':
+        case 'Electivire':
+        case 'Blitzle':
+        case 'Zebstrika':
+        case 'Tynamo':
+        case 'Elektrik':
+        case 'Elektross':
+        case 'Xurkitree':
+        case 'Zeraora':
+            return [Types.Electric, Types.Electric];
+        case 'Magnemite':
+        case 'Magenton':
+        case 'Magnezone':
+        case 'Togedemaru':
+            return [Types.Electric, Types.Steel];
+        case 'Zapdos':
+        case 'Emolga':
+        case 'Thundurus':
+            return [Types.Electric, Types.Flying];
         default:
             return [Types.Normal, Types.Normal];
     }

@@ -115,7 +115,7 @@ export class DataEditorBase extends React.Component<
         reader.readAsArrayBuffer(file);
 
         reader.addEventListener('load', function() {
-            const u = new Uint8Array(this.result);
+            const u = new Uint8Array(this.result as ArrayBuffer);
             const a = new Array(u.length);
             let i = u.length;
             while (i--) {
