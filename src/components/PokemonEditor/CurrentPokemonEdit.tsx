@@ -13,7 +13,7 @@ import {
 import { Pokemon } from 'models';
 import { onClick, Boxes } from 'types';
 import { CurrentPokemonInput } from 'components/PokemonEditor';
-import { LinkedDeletePokemonButton } from 'components/DeletePokemonButton';
+import { DeletePokemonButton } from 'components/DeletePokemonButton';
 import { Autocomplete } from 'components/Shared';
 import { selectPokemon, editPokemon } from 'actions';
 import { connect } from 'react-redux';
@@ -203,7 +203,7 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
                         type='select'
                         options={this.state.box.map(n => n.name)}
                     />
-                    <LinkedDeletePokemonButton id={this.state.selectedId} />
+                    <DeletePokemonButton id={this.state.selectedId} />
                 </span>
                 <Autocomplete
                     items={listOfPokemon}

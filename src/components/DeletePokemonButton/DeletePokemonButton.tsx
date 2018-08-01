@@ -1,20 +1,19 @@
 import * as React from 'react';
-import { compose, withState } from 'recompose';
 import { Alert, Intent } from '@blueprintjs/core';
-import { onClick } from '../../types';
 
-import { StoreContext } from '../../utils';
+import { deletePokemon, modifyDeletionConfirmation } from 'actions';
+import { connect } from 'react-redux';
 
 // const recomposeDelete = withState('dialogOn', 'setDialog', false);
 
 interface DeletePokemonButtonProps {
     id: string;
-    onClick: onClick & any;
-    onChange: (e?: React.SyntheticEvent<any>) => void;
+    confirmation?: boolean;
+    modifyDeletionConfirmation?: modifyDeletionConfirmation;
+    deletePokemon?: deletePokemon;
 }
 
-@StoreContext
-export class DeletePokemonButton extends React.Component<
+export class DeletePokemonButtonBase extends React.Component<
     DeletePokemonButtonProps,
     { dialogOn: boolean }
 > {
@@ -37,9 +36,9 @@ export class DeletePokemonButton extends React.Component<
             <div className='delete-pokemon-button'>
                 <Alert
                     icon='trash'
-                    isOpen={this.state.dialogOn && this.context.store.getState().confirmation}
+                    isOpen={this.state.dialogOn && this.props.confirmation as boolean}
                     onCancel={this.toggleDialog}
-                    onConfirm={this.props.onClick}
+                    onConfirm={e => this.props.deletePokemon && this.props.deletePokemon(this.props.id)}
                     confirmButtonText='Delete Pokemon'
                     cancelButtonText='Cancel'
                     intent={Intent.DANGER}>
@@ -49,7 +48,7 @@ export class DeletePokemonButton extends React.Component<
                     </p>
 
                     <label className='pt-control pt-checkbox .modifier'>
-                        <input onChange={e => this.props.onChange(e)} type='checkbox' />
+                        <input onChange={(event) => this.props.modifyDeletionConfirmation && this.props.modifyDeletionConfirmation(!event.target.checked)} type='checkbox' />
                         <span className='pt-control-indicator' />
                         Don't Ask Me For Confirmation Again
                     </label>
@@ -57,10 +56,10 @@ export class DeletePokemonButton extends React.Component<
                 <span
                     role='button'
                     onClick={e => {
-                        if (this.context.store.getState().confirmation) {
+                        if (this.props.confirmation) {
                             this.toggleDialog();
                         } else {
-                            this.props.onClick();
+                            this.props.deletePokemon && this.props.deletePokemon(this.props.id);
                         }
                     }}
                     className='pt-icon pt-icon-trash'
@@ -70,3 +69,12 @@ export class DeletePokemonButton extends React.Component<
         );
     }
 }
+
+export const DeletePokemonButton: any = connect(
+    (state: any) => ({
+        confirmation: state.confirmation,
+    }),
+    {
+        deletePokemon
+    }
+)(DeletePokemonButtonBase as any);

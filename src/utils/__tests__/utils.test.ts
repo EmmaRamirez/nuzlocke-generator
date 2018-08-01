@@ -4,9 +4,8 @@ import {
     styleDefaults,
     matchSpeciesToTypes,
     listOfPokemon,
-    speciesToNumber
+    speciesToNumber,
 } from 'utils';
-import { Generation } from '../getGameGeneration';
 
 const objectPropertiesWhere = (obj: object, filter: any) => Array.from(
     Object.values(obj)
