@@ -1,4 +1,4 @@
-import { GenderElementProps } from 'components';
+import { GenderElementProps } from 'components/Shared';
 import { Types, Game } from 'utils';
 
 export interface Pokemon {

@@ -78,7 +78,7 @@ module.exports = {
                 test: /\.(jpg|png|gif)$/,
                 loader: 'file-loader',
                 options: {
-                    name: '[path][name].[hash].[ext]',
+                    name: 'dist/[name].[hash].[ext]',
                 },
             },
             {
@@ -90,6 +90,7 @@ module.exports = {
     plugins: [
         new CopyWebpackPlugin([
             { from: './src/img', to: './img' },
+            { from: './src/assets/', to: './assets' },
             { from: './src/assets/icons', to: './icons' }
         ]),
 

@@ -49033,7 +49033,7 @@ exports.version0_0_6_BETA = version0_0_6_BETA;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/assets/badge-select.77c7f1ef7ac1326ec4c6109313b0c05b.png";
+module.exports = __webpack_require__.p + "dist/badge-select.77c7f1ef7ac1326ec4c6109313b0c05b.png";
 
 /***/ }),
 
@@ -49044,7 +49044,7 @@ module.exports = __webpack_require__.p + "src/assets/badge-select.77c7f1ef7ac132
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/assets/cards-theme.17e20843ad9d8737fe00a627985d5e06.png";
+module.exports = __webpack_require__.p + "dist/cards-theme.17e20843ad9d8737fe00a627985d5e06.png";
 
 /***/ }),
 
@@ -49055,7 +49055,7 @@ module.exports = __webpack_require__.p + "src/assets/cards-theme.17e20843ad9d873
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/assets/download.b0eeaae9fb64efa8f72028ae72a69069.png";
+module.exports = __webpack_require__.p + "dist/download.b0eeaae9fb64efa8f72028ae72a69069.png";
 
 /***/ }),
 
@@ -49066,7 +49066,7 @@ module.exports = __webpack_require__.p + "src/assets/download.b0eeaae9fb64efa8f7
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/assets/hexagons-theme.eadcf1288697a2e7227b6c0bc99fe0e7.png";
+module.exports = __webpack_require__.p + "dist/hexagons-theme.eadcf1288697a2e7227b6c0bc99fe0e7.png";
 
 /***/ }),
 
@@ -49077,7 +49077,7 @@ module.exports = __webpack_require__.p + "src/assets/hexagons-theme.eadcf1288697
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/assets/img/boxed-box.cd59f18c0496973abf5e7859142f6887.png";
+module.exports = __webpack_require__.p + "dist/boxed-box.cd59f18c0496973abf5e7859142f6887.png";
 
 /***/ }),
 
@@ -49088,7 +49088,7 @@ module.exports = __webpack_require__.p + "src/assets/img/boxed-box.cd59f18c04969
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/assets/img/champs-box.4b5f8d9323fac44ffeec8c9a5fdc226e.png";
+module.exports = __webpack_require__.p + "dist/champs-box.4b5f8d9323fac44ffeec8c9a5fdc226e.png";
 
 /***/ }),
 
@@ -49099,7 +49099,7 @@ module.exports = __webpack_require__.p + "src/assets/img/champs-box.4b5f8d9323fa
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/assets/img/croagunk.af493c7d74373acb775cd29be250998f.gif";
+module.exports = __webpack_require__.p + "dist/croagunk.af493c7d74373acb775cd29be250998f.gif";
 
 /***/ }),
 
@@ -49110,7 +49110,7 @@ module.exports = __webpack_require__.p + "src/assets/img/croagunk.af493c7d74373a
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/assets/img/dead-box.d249339336e54c5916984cf820ba72c2.png";
+module.exports = __webpack_require__.p + "dist/dead-box.d249339336e54c5916984cf820ba72c2.png";
 
 /***/ }),
 
@@ -49121,7 +49121,7 @@ module.exports = __webpack_require__.p + "src/assets/img/dead-box.d249339336e54c
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/assets/img/team-box-body.1766a13c7001bc8720223980986c4595.png";
+module.exports = __webpack_require__.p + "dist/team-box-body.1766a13c7001bc8720223980986c4595.png";
 
 /***/ }),
 
@@ -49132,7 +49132,7 @@ module.exports = __webpack_require__.p + "src/assets/img/team-box-body.1766a13c7
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/assets/img/team-box.9b9c52b663641bd69180e2a0778540c8.png";
+module.exports = __webpack_require__.p + "dist/team-box.9b9c52b663641bd69180e2a0778540c8.png";
 
 /***/ }),
 
@@ -49143,7 +49143,7 @@ module.exports = __webpack_require__.p + "src/assets/img/team-box.9b9c52b663641b
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/assets/img/trash.e0a3773985ba99fdf8779fc305c3af9f.png";
+module.exports = __webpack_require__.p + "dist/trash.e0a3773985ba99fdf8779fc305c3af9f.png";
 
 /***/ }),
 
@@ -49154,7 +49154,7 @@ module.exports = __webpack_require__.p + "src/assets/img/trash.e0a3773985ba99fdf
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/assets/pokeball.853392fa4d1cb36496424bd57501bdff.png";
+module.exports = __webpack_require__.p + "dist/pokeball.853392fa4d1cb36496424bd57501bdff.png";
 
 /***/ }),
 
@@ -49201,7 +49201,7 @@ module.exports = __webpack_require__.p + "fonts/b8d405dacda0d0c3ce80455074e92e64
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/assets/sprites-mode.66d9e9c3a10db108d15f766257048e9d.png";
+module.exports = __webpack_require__.p + "dist/sprites-mode.66d9e9c3a10db108d15f766257048e9d.png";
 
 /***/ }),
 
@@ -51912,7 +51912,7 @@ exports.TrainerInfoEditor = TrainerInfoEditor;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/img/alola-champion-ribbon.f7bcc3e9d37d73af5cda68702c6c87f9.png";
+module.exports = __webpack_require__.p + "dist/alola-champion-ribbon.f7bcc3e9d37d73af5cda68702c6c87f9.png";
 
 /***/ }),
 
