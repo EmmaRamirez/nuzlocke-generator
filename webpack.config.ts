@@ -78,7 +78,7 @@ module.exports = {
                 test: /\.(jpg|png|gif)$/,
                 loader: 'file-loader',
                 options: {
-                    name: 'dist/[name].[hash].[ext]',
+                    name: 'assets/[name].[hash].[ext]',
                 },
             },
             {
