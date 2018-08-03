@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export type GenderElementProps = 'Male' | 'm' | 'Female' | 'f' | 'genderless' | null;
+export type GenderElementProps = 'Male' | 'm' | 'Female' | 'f' | 'genderless' | null | undefined;
 
 export const GenderElement = (gender: GenderElementProps) => {
     if (gender === 'Male' || gender === 'm') {

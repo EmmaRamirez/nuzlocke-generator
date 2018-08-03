@@ -51981,13 +51981,14 @@ store_1.store.subscribe(() => {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
 exports.PokemonKeys = {
     id: '',
     species: '',
     nickname: '',
     status: '',
     level: 0,
-    gender: '',
+    gender: 'f',
     met: '',
     metLevel: 0,
     nature: '',
@@ -51996,7 +51997,7 @@ exports.PokemonKeys = {
     causeOfDeath: '',
     forme: '',
     item: '',
-    types: [],
+    types: [utils_1.Types.Normal, utils_1.Types.Normal],
     customImage: '',
     customIcon: '',
     shiny: false,
@@ -52006,7 +52007,7 @@ exports.PokemonKeys = {
     position: 0,
     wonderTradedFor: '',
     mvp: false,
-    gameOfOrigin: '',
+    gameOfOrigin: 'Red',
 };
 
 
@@ -52740,6 +52741,7 @@ exports.gameOfOriginToColor = (game) => {
 Object.defineProperty(exports, "__esModule", { value: true });
 const uuid = __webpack_require__(/*! uuid/v4 */ "./node_modules/uuid/v4.js");
 const _1 = __webpack_require__(/*! . */ "./src/utils/index.ts");
+const Types_1 = __webpack_require__(/*! ./Types */ "./src/utils/Types.ts");
 function generateEmptyPokemon(pokemon) {
     let position = 0;
     if (pokemon && pokemon.length > 0) {
@@ -52761,13 +52763,13 @@ function generateEmptyPokemon(pokemon) {
         species: '',
         nickname: '',
         status: genStatus(),
-        gender: 'Neutral',
+        gender: 'genderless',
         level: undefined,
         met: '',
         metLevel: undefined,
         nature: 'None',
         ability: '',
-        types: ['Normal', 'None'],
+        types: [Types_1.Types.Normal, Types_1.Types.Normal],
     };
 }
 exports.generateEmptyPokemon = generateEmptyPokemon;

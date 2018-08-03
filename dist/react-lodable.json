@@ -111,7 +111,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./errors": [
+  "../../common/errors": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
@@ -4453,7 +4453,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./internal/proc": [
+  "./proc": [
     {
       "id": "./node_modules/redux-saga/es/internal/proc.js",
       "name": "./node_modules/redux-saga/es/internal/proc.js",
