@@ -1,10 +1,13 @@
+import { GenderElementProps } from 'components';
+import { Types, Game } from 'utils';
+
 export interface Pokemon {
     id: string;
     species: string;
     nickname?: string;
     status?: string;
     level?: number;
-    gender?: string;
+    gender?: GenderElementProps;
     met?: string;
     metLevel?: number;
     nature?: string;
@@ -13,7 +16,7 @@ export interface Pokemon {
     causeOfDeath?: string;
     forme?: string;
     item?: string;
-    types?: string[];
+    types?: [Types, Types];
     customImage?: string;
     customIcon?: string;
     shiny?: boolean;
@@ -23,7 +26,7 @@ export interface Pokemon {
     position?: number;
     wonderTradedFor?: string;
     mvp?: boolean;
-    gameOfOrigin?: string;
+    gameOfOrigin?: Game;
 }
 
 // We export a non-type version when we need all the keys easily
@@ -33,7 +36,7 @@ export const PokemonKeys: Pokemon = {
     nickname: '',
     status: '',
     level: 0,
-    gender: '',
+    gender: 'f',
     met: '',
     metLevel: 0,
     nature: '',
@@ -42,7 +45,7 @@ export const PokemonKeys: Pokemon = {
     causeOfDeath: '',
     forme: '',
     item: '',
-    types: [],
+    types: [Types.Normal, Types.Normal],
     customImage: '',
     customIcon: '',
     shiny: false,
@@ -52,5 +55,5 @@ export const PokemonKeys: Pokemon = {
     position: 0,
     wonderTradedFor: '',
     mvp: false,
-    gameOfOrigin: '',
+    gameOfOrigin: 'Red',
 };

@@ -1,6 +1,7 @@
 import * as uuid from 'uuid/v4';
 import { Pokemon } from 'models';
 import { sortPokes } from '.';
+import { Types } from './Types';
 
 export function generateEmptyPokemon(pokemon?: Pokemon[]): Pokemon {
     let position = 0;
@@ -21,12 +22,12 @@ export function generateEmptyPokemon(pokemon?: Pokemon[]): Pokemon {
         species: '',
         nickname: '',
         status: genStatus(),
-        gender: 'Neutral',
+        gender: 'genderless',
         level: undefined,
         met: '',
         metLevel: undefined,
         nature: 'None',
         ability: '',
-        types: ['Normal', 'None'],
+        types: [Types.Normal, Types.Normal],
     };
 }
