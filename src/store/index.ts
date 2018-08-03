@@ -28,9 +28,9 @@ const config = {
     migrations: createMigrate(migrations, { debug: false }),
 };
 
-const history = createHistory();
+export const history = createHistory();
 
-const persistReducers = persistCombineReducers(config, reducers);
+export const persistReducers = persistCombineReducers(config, reducers);
 
 const middlewares:Middleware[] = [];
 
@@ -44,6 +44,8 @@ const sagaMiddleware = createSagaMiddleware();
 const routerMiddleware = createRouterMiddleware(history);
 
 middlewares.push(sagaMiddleware, routerMiddleware);
+
+export { middlewares };
 
 export const store = createStore(
     persistReducers,

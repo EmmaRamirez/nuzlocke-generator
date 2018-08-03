@@ -17,7 +17,6 @@ import 'components/Shared/styles/base.styl';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/table/lib/css/table.css';
-import { version0_0_6_BETA } from 'actions';
 
 const rollbarConfig = new Rollbar({
     accessToken: '357eab6297524e6facb1c48b0403d869',

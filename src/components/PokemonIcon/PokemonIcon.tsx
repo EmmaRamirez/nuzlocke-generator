@@ -6,11 +6,15 @@ import { selectPokemon } from 'actions';
 import { ErrorBoundary } from '../Shared';
 
 interface PokemonIconProps {
+    /** The id of the Pokemon, used for selection **/
     id?: string;
+    /** The id of the Pokemon **/
     species: string;
+    /** The forme of the Pokemon **/
     forme?: string;
     onClick: () => void;
     selectedId: string | null;
+    /** Renders its shiny version if true **/
     isShiny?: boolean;
     className?: string;
     style?: React.CSSProperties;

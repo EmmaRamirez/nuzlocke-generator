@@ -1,0 +1,20 @@
+{
+    "plugins": [
+        ["module-resolver", {
+            "root": ["./src", "./node_modules"],
+            "alias": {
+                "utils": "./src/utils",
+                "types": "./src/types",
+                "styles": "./src/styles",
+                "sagas": "./src/sagas",
+                "components": "./src/components",
+                "img": "./src/img",
+                "assets": "./src/assets",
+                "models": "./src/models",
+                "store": "./src/store",
+                "reducers": "./src/reducers",
+                "actions": "./src/actions"
+            }
+        }]
+    ]
+}

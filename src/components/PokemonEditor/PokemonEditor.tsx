@@ -49,12 +49,12 @@ export const Box = ({
     );
 };
 
-interface PokemonEditorProps {
+export interface PokemonEditorProps {
     team: Pokemon[];
     boxes: Boxes;
 }
 
-interface PokemonEditorState {
+export interface PokemonEditorState {
     isMassEditorOpen: boolean;
     isOpen: boolean;
 }
