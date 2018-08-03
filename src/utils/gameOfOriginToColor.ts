@@ -1,4 +1,6 @@
-export const gameOfOriginToColor = (game: string) => {
+import { Game } from 'utils';
+
+export const gameOfOriginToColor = (game: Game) => {
     const gameToColor = {
         Red: 'rgb(243, 86, 58)',
         Blue: '#3675f8',

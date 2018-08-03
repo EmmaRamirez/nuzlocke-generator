@@ -1,4 +1,6 @@
-export function getBadges(name) {
+import { Game } from 'utils';
+
+export function getBadges(name: Game) {
     if (
         name === 'Red' ||
         name === 'Blue' ||

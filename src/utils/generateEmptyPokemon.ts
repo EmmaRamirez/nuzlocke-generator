@@ -8,7 +8,7 @@ export function generateEmptyPokemon(pokemon?: Pokemon[]): Pokemon {
         try {
             position = parseInt(pokemon.sort(sortPokes)[pokemon.length - 1].position as any) + 1;
         } catch (e) {
-            console.log('Attempted to generate position, but failed.');
+            console.error('Attempted to generate position, but failed.', e);
         }
     }
     const genStatus = () => {
