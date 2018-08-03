@@ -1,20 +1,18 @@
 import { Button } from '@blueprintjs/core';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import * as uuid from 'uuid/v4';
 
 import { Pokemon } from 'models';
 import { Boxes } from 'types';
 
 import {
     generateEmptyPokemon,
-    pokemonByFilter,
 } from 'utils';
-import { CurrentPokemonEdit } from './CurrentPokemonEdit';
+import { CurrentPokemonEdit, MassEditor } from '.';
 
 import { AddPokemonButton } from 'components/AddPokemonButton';
-import { MassEditor } from './MassEditor';
 import { BaseEditor } from 'components/BaseEditor';
+import { PokemonByFilter } from 'components/Shared';
 
 require('../../assets/img/team-box.png');
 require('../../assets/img/dead-box.png');
@@ -46,17 +44,17 @@ export const Box = ({
             }}>
                 {tabTitle}
             </span>
-            {pokemonByFilter(pokemon, filter)}
+            {PokemonByFilter(pokemon, filter)}
         </div>
     );
 };
 
-interface PokemonEditorProps {
+export interface PokemonEditorProps {
     team: Pokemon[];
     boxes: Boxes;
 }
 
-interface PokemonEditorState {
+export interface PokemonEditorState {
     isMassEditorOpen: boolean;
     isOpen: boolean;
 }

@@ -1,20 +1,23 @@
 import * as React from 'react';
 
 import { Pokemon, Trainer } from 'models';
-import { getBadges, getGameRegion, sortPokes } from 'utils';
+import { getBadges, getGameRegion, sortPokes, mapTrainerImage } from 'utils';
 import { connect } from 'react-redux';
 import * as uuid from 'uuid/v4';
+import { Scrollbars } from 'react-custom-scrollbars';
 import * as domtoimage from 'dom-to-image';
 
 import { selectPokemon } from 'actions';
 
-import { TeamPokemon } from './TeamPokemon';
-import { DeadPokemon } from './DeadPokemon';
-import { BoxedPokemon } from './BoxedPokemon';
-import { ChampsPokemon } from './ChampsPokemon';
+import { TeamPokemon } from 'components/TeamPokemon';
+import { DeadPokemon } from 'components/DeadPokemon';
+import { BoxedPokemon } from 'components/BoxedPokemon';
+import { ChampsPokemon } from 'components/ChampsPokemon';
+import { TopBar } from 'components/TopBar';
+
+import { reducers } from 'reducers';
 
 import './Result.styl';
-import { Button, Intent, Callout } from '@blueprintjs/core';
 
 interface ResultProps {
     pokemon: Pokemon[];
@@ -48,7 +51,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             .filter(poke => poke.status === 'Team')
             .sort(sortPokes)
             .map((poke, index) => {
-                return <TeamPokemon key={index} {...poke} />;
+                return <TeamPokemon key={index} pokemon={poke} />;
             });
     }
 
@@ -70,17 +73,9 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             );
         }
         return (
-            <div
-                style={{
-                    display: 'flex',
-                    position: 'absolute',
-                    left: '32%',
-                    top: '2px',
-                    width: '60%',
-                    zIndex: 10,
-                }}>
+            <>
                 {renderItems}
-            </div>
+            </>
         );
     }
 
@@ -151,18 +146,14 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         width: '100px',
                         borderRadius: '.25rem',
                         textAlign: 'center',
+                        textShadow: '0 0 2px #222'
                     }}>
                     {game.name}
                 </div>
                 {trainer.image ? (
                     <img
-                        style={{
-                            border: '2px solid rgba(255, 255, 255, 0.3)',
-                            borderRadius: '50%',
-                            height: '3rem',
-                            width: '3rem',
-                        }}
-                        src={trainer.image ? trainer.image : 'img/moon.jpg'}
+                        className='trainer-image'
+                        src={mapTrainerImage(trainer.image)}
                         alt='Trainer Image'
                     />
                 ) : null}
@@ -248,38 +239,27 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     }
 
     public render() {
-        const { style, box, trainer } = this.props;
-        const numberOfDead = this.props.pokemon
-            .filter(v => v.hasOwnProperty('id'))
-            .filter(poke => poke.status === 'Dead').length;
-        const numberOfBoxed = this.props.pokemon
-            .filter(v => v.hasOwnProperty('id'))
-            .filter(poke => poke.status === 'Boxed').length;
-        const numberOfChamps = this.props.pokemon
-            .filter(v => v.hasOwnProperty('id'))
-            .filter(poke => poke.status === 'Champs').length;
-        // const numberOfBoxed = 1,
-        //     numberOfDead = 1,
-        //     numberOfChamps = 1;
+        const { style, box, trainer, pokemon } = this.props;
+        const getNumberOf = (status: string, pokemon: Pokemon[]) => pokemon.filter(v => v.hasOwnProperty('id')).filter(poke => poke.status === status).length;
+        const numberOfTeam = getNumberOf('Team', pokemon);
+        const numberOfDead = getNumberOf('Dead', pokemon);
+        const numberOfBoxed = getNumberOf('Boxed', pokemon);
+        const numberOfChamps = getNumberOf('Champs', pokemon);
         const bgColor = style ? style.bgColor : '#383840';
         const topHeaderColor = style ? style.topHeaderColor : '#333333';
         return (
-            <div>
-                {this.renderErrors()}
-                <Button style={{
-                    position: 'absolute',
-                    top: '2px',
-                    right: '112px',
-                }} icon='download' intent={Intent.PRIMARY} onClick={e => this.toImage()}>
-                    Download Image<sup>BETA</sup>
-                </Button>
+            <Scrollbars
+                autoHide
+                autoHideTimeout={1000}
+                autoHideDuration={200}>
+                <TopBar onClickDownload={e => this.toImage()} >{this.renderErrors()}</TopBar>
                 <div
                     ref={this.resultRef}
                     className={`result container ${(style.template &&
                         style.template.toLowerCase().replace(/\s/g, '-')) ||
-                        ''} region-${getGameRegion(this.props.game.name)}`}
+                        ''} region-${getGameRegion(this.props.game.name)} team-size-${numberOfTeam}`}
                     style={{
-                        margin: '3rem',
+                        margin: '3rem auto',
                         backgroundColor: bgColor,
                         backgroundImage: `url(${style.backgroundImage})`,
                         backgroundRepeat: style.tileBackground ? 'repeat' : 'no-repeat',
@@ -338,13 +318,13 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         </div>
                     ) : null}
                 </div>
-            </div>
+            </Scrollbars>
         );
     }
 }
 
-export const Result = connect(
-    (state: any) => ({
+export const Result = connect<Partial<typeof reducers>, any, any>(
+    (state: Partial<typeof reducers>) => ({
         pokemon: state.pokemon,
         game: state.game,
         trainer: state.trainer,

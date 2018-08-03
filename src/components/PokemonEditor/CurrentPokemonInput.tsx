@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { matchSpeciesToTypes } from 'utils';
+import { matchSpeciesToTypes, getMoveType } from 'utils';
 import { editPokemon, selectPokemon } from 'actions';
-import { movesByType, getMoveType } from 'components/Result';
 
 import { ErrorBoundary } from 'components/Shared';
 
@@ -15,6 +14,7 @@ interface CurrentPokemonInputProps {
     type: string;
     value: any;
     placeholder?: string;
+    disabled?: boolean;
     options?: string[];
     editPokemon?: any;
     selectedId: any;
@@ -60,7 +60,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         this.props.selectPokemon && this.props.selectPokemon(this.props.selectedId);
     };
 
-    public getInput({ labelName, inputName, type, value, placeholder, options }: any) {
+    public getInput({ labelName, disabled, inputName, type, value, placeholder, options }: any) {
         value = value == null ? '' : value;
         if (type === 'moves') {
             return (
@@ -92,6 +92,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                     name={inputName}
                     value={value}
                     placeholder={placeholder}
+                    disabled={disabled || false}
                 />
             );
         }

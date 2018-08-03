@@ -1,0 +1,26 @@
+---
+name: PokemonIcon
+menu: components
+---
+
+import { Playground, PropsTable } from 'docz';
+import { PokemonIconBase, PokemonIcon } from '.';
+
+# PokemonIcon
+
+<PropsTable of={PokemonIconBase} />
+
+## Basic Usage
+
+<Playground>
+    <PokemonIconBase
+        id='005'
+        species='Pikachu'
+    />
+
+    <PokemonIconBase
+        id='001'
+        species='Mew'
+        shiny={true}
+    />
+</Playground>

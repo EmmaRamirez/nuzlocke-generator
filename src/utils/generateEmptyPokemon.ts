@@ -1,14 +1,15 @@
 import * as uuid from 'uuid/v4';
 import { Pokemon } from 'models';
 import { sortPokes } from '.';
+import { Types } from './Types';
 
 export function generateEmptyPokemon(pokemon?: Pokemon[]): Pokemon {
     let position = 0;
     if (pokemon && pokemon.length > 0) {
         try {
             position = parseInt(pokemon.sort(sortPokes)[pokemon.length - 1].position as any) + 1;
-        } catch {
-            console.log('Attempted to generate position, but failed.');
+        } catch (e) {
+            console.error('Attempted to generate position, but failed.', e);
         }
     }
     const genStatus = () => {
@@ -21,12 +22,12 @@ export function generateEmptyPokemon(pokemon?: Pokemon[]): Pokemon {
         species: '',
         nickname: '',
         status: genStatus(),
-        gender: 'Neutral',
+        gender: 'genderless',
         level: undefined,
         met: '',
         metLevel: undefined,
         nature: 'None',
         ability: '',
-        types: ['Normal', 'None'],
+        types: [Types.Normal, Types.Normal],
     };
 }

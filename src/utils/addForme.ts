@@ -1,4 +1,4 @@
-export const addForme = (species: string | undefined, forme: string | undefined) => {
+export const addForme = (species: string | undefined, forme?: 'Alolan' | 'Mega') => {
     if (forme) {
         if (forme === 'Alolan') {
             return `alolan-${species}`;

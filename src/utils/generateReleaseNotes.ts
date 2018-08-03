@@ -2,6 +2,7 @@ const badgeSelect = require('assets/badge-select.png');
 const download = require('assets/download.png');
 const cardsTheme = require('assets/cards-theme.png');
 const spritesMode = require('assets/sprites-mode.png');
+const hexagonTheme = require('assets/hexagons-theme.png');
 
 export function generateReleaseNotes(version: string) {
     return releaseNotes[version] || '';
@@ -170,6 +171,33 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Not every Pokémon has an "artsy" image
 - Some gender differences don't have official art
 - Sometimes changing a type won't work unless you reload the page
+- Selecting a checkpoint sometimes undoes all others
+`,
+    '0.0.9-beta': `
+# Changelog
+
+## Features
+- **Autocomplete for Locations**: Abandoned Ship, Artisan Cave, Aether Paradise...
+- **Autocomplete for Abilities**: Noticing a pattern here?
+- **Hotkey support**: See the Hotkeys section below Style for more info
+- **Hexagon Theme**: Consider it a beta within a beta. Enjoy!
+
+![hexagontheme](${hexagonTheme})
+
+## Fixes
+- Added nearly all Pokémon images
+- Added images for plates, gems, and berries
+- Result is now scrollable for most platforms/browsers
+- Mass Editor now obeys dark mode
+- Faint Attack is now a move option alongside Feint Attack
+- You can now click on boxed pokemon icons in the Result panel again
+- Improved designs of several dialogs, such as the RulesEditor and Delete All Data screen
+- Changing a type should now work in all situations
+- Result notes have a bigger font-size and are bold
+- Improvements to Keyboard UX of Autocomplete
+
+## Known Issues
+- Sugimori images can't be used with the download option (depending on browser)
 - Selecting a checkpoint sometimes undoes all others
 `,
     '0.1.0-beta': `

@@ -3,6 +3,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const OfflinePlugin = require('offline-plugin');
 const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production' ? true : false;
 
@@ -88,10 +89,13 @@ module.exports = {
     },
     plugins: [
         new CopyWebpackPlugin([
-            { from: './src/index.html', to: './index.html' },
             { from: './src/img', to: './img' },
             { from: './src/assets/icons', to: './icons' }
         ]),
+
+        new HTMLWebpackPlugin({
+            template: './src/index.html',
+        }),
 
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),

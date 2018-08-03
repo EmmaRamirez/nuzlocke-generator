@@ -6,11 +6,15 @@ import { selectPokemon } from 'actions';
 import { ErrorBoundary } from '../Shared';
 
 interface PokemonIconProps {
+    /** The id of the Pokemon, used for selection **/
     id?: string;
+    /** The id of the Pokemon **/
     species: string;
+    /** The forme of the Pokemon **/
     forme?: string;
     onClick: () => void;
     selectedId: string | null;
+    /** Renders its shiny version if true **/
     isShiny?: boolean;
     className?: string;
     style?: React.CSSProperties;
@@ -19,6 +23,8 @@ interface PokemonIconProps {
 const formatSpeciesName = (species: string | null) => {
     if (species == null) return 'unknown';
     if (listOfPokemon.indexOf(species) < 0) return 'unknown';
+    if (species === 'Nidoran♀') return 'nidoran-f';
+    if (species === 'Nidoran♂') return 'nidoran-m';
     if (species === 'Mr. Mime') return 'mr-mime';
     if (species === 'Farfetch\'d') return 'farfetchd';
     if (species === 'Mime Jr.') return 'mime-jr';

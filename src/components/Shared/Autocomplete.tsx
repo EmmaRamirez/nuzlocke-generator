@@ -82,6 +82,13 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
     };
 
     private handleKeyDown = e => {
+        if (e.which === 13) {
+            if (this.state.visibleItems.includes(this.state.currentValue)) {
+                this.closeList(e);
+            } else {
+                this.selectItem(this.state.visibleItems[0]);
+            }
+        }
         if (e.which === 27 || e.which === 13 || e.which === 9) {
             this.closeList(e);
         }
@@ -107,6 +114,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
                 <input
                     onKeyDown={this.handleKeyDown}
                     onFocus={this.openList}
+                    onBlur={this.closeList}
                     placeholder={this.props.placeholder}
                     name={this.props.name}
                     type='text'

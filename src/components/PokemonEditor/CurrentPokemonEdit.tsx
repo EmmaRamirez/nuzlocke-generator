@@ -7,27 +7,37 @@ import {
     listOfPokemon,
     matchSpeciesToTypes,
     listOfItems,
+    listOfLocations,
+    listOfAbilities,
 } from 'utils';
 import { Pokemon } from 'models';
 import { onClick, Boxes } from 'types';
-import { CurrentPokemonInput } from './CurrentPokemonInput';
-import { LinkedDeletePokemonButton } from 'components/DeletePokemonButton';
-import { Autocomplete } from '../Shared';
+import { CurrentPokemonInput } from 'components/PokemonEditor';
+import { DeletePokemonButton } from 'components/DeletePokemonButton';
+import { Autocomplete } from 'components/Shared';
 import { selectPokemon, editPokemon } from 'actions';
+import { connect } from 'react-redux';
 import { listOfGames } from 'utils';
 import { PokemonIconBase } from 'components/PokemonIcon';
 
 const pokeball = require('assets/pokeball.png');
 
-interface CurrentPokemonEditState {
+export interface CurrentPokemonEditProps {
+    selectedId: Pokemon['id'];
+    box: any;
+    pokemon: Pokemon[];
+    selectPokemon: selectPokemon;
+    editPokemon: editPokemon;
+}
+
+export interface CurrentPokemonEditState {
     selectedId: string;
     expandedView: boolean;
     box: Boxes;
 }
 
-@StoreContext
-export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditState> {
-    constructor(props: any) {
+export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditProps, CurrentPokemonEditState> {
+    constructor(props) {
         super(props);
         this.state = {
             selectedId: '5',
@@ -37,12 +47,16 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
     }
 
     public componentWillMount() {
-        this.context.store.subscribe(() => {
-            this.setState({
-                selectedId: this.context.store.getState().selectedId,
-                box: this.context.store.getState().box,
-            });
+        this.setState({
+            selectedId: this.props.selectedId,
+            box: this.props.box
         });
+    }
+
+    public componentWillReceiveProps(nextProps, prevProps) {
+        if (nextProps.selectedId !== prevProps.selectedId) {
+            this.setState({ selectedId: nextProps.selectedId });
+        }
     }
 
     public moreInputs(currentPokemon: Pokemon) {
@@ -125,8 +139,8 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                         const edit = {
                             item: e.target.value,
                         };
-                        this.context.store.dispatch(editPokemon(edit, this.state.selectedId));
-                        this.context.store.dispatch(selectPokemon(this.state.selectedId));
+                        this.props.editPokemon(edit, this.state.selectedId);
+                        this.props.selectPokemon(this.state.selectedId);
                     }}
                 />
                 <CurrentPokemonInput
@@ -138,6 +152,7 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                 <CurrentPokemonInput
                     labelName='Position'
                     inputName='position'
+                    disabled={true}
                     value={currentPokemon.position}
                     type='text'
                 />
@@ -159,15 +174,7 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
     };
 
     public render() {
-        // const SpeciesComplete = new Autocomplete({
-        //     items: [],
-        //     placeholder: 'Missing No.',
-        //     name: 'species',
-        //     label: 'Species'
-        // }).typeOf<string>();
-        const currentPokemon = this.context.store
-            .getState()
-            .pokemon.find((v: Pokemon) => v.id === this.state.selectedId);
+        const currentPokemon = this.props.pokemon.find((v: Pokemon) => v.id === this.state.selectedId);
 
         if (currentPokemon == null) {
             return (
@@ -196,15 +203,8 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                         type='select'
                         options={this.state.box.map(n => n.name)}
                     />
-                    <LinkedDeletePokemonButton id={this.state.selectedId} />
+                    <DeletePokemonButton id={this.state.selectedId} />
                 </span>
-                {/* <CurrentPokemonInput
-                    labelName='Species'
-                    inputName='species'
-                    value={currentPokemon.species}
-                    placeholder='Missing No.'
-                    type='text'
-                /> */}
                 <Autocomplete
                     items={listOfPokemon}
                     name='species'
@@ -215,14 +215,12 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                         const edit = {
                             species: e.target.value,
                         };
-                        this.context.store.dispatch(editPokemon(edit, this.state.selectedId));
-                        this.context.store.dispatch(
-                            editPokemon(
-                                { types: matchSpeciesToTypes(e.target.value) },
-                                this.state.selectedId,
-                            ),
+                        this.props.editPokemon(edit, this.state.selectedId);
+                        this.props.editPokemon(
+                            { types: matchSpeciesToTypes(e.target.value) },
+                            this.state.selectedId,
                         );
-                        this.context.store.dispatch(selectPokemon(this.state.selectedId));
+                        this.props.selectPokemon(this.state.selectedId);
                     }}
                 />
                 <CurrentPokemonInput
@@ -239,12 +237,19 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                     value={currentPokemon.level}
                     type='text'
                 />
-                <CurrentPokemonInput
-                    labelName='Met Location'
-                    inputName='met'
+                <Autocomplete
+                    items={listOfLocations}
+                    name='met'
+                    label='Met Location'
                     placeholder='Pallet Town'
-                    value={currentPokemon.met}
-                    type='text'
+                    value={currentPokemon.met || ''}
+                    onChange={e => {
+                        const edit = {
+                            met: e.target.value,
+                        };
+                        this.props.editPokemon(edit, this.state.selectedId);
+                        this.props.selectPokemon(this.state.selectedId);
+                    }}
                 />
                 <CurrentPokemonInput
                     labelName='Met Level'
@@ -296,12 +301,19 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
                         'None',
                     ]}
                 />
-                <CurrentPokemonInput
-                    labelName='Ability'
-                    inputName='ability'
+                <Autocomplete
+                    items={listOfAbilities}
+                    name='ability'
+                    label='Ability'
                     placeholder=''
-                    value={currentPokemon.ability}
-                    type='text'
+                    value={currentPokemon.ability || ''}
+                    onChange={e => {
+                        const edit = {
+                            ability: e.target.value,
+                        };
+                        this.props.editPokemon(edit, this.state.selectedId);
+                        this.props.selectPokemon(this.state.selectedId);
+                    }}
                 />
                 <CurrentPokemonInput
                     labelName='Moves'
@@ -330,3 +342,15 @@ export class CurrentPokemonEdit extends React.Component<{}, CurrentPokemonEditSt
         );
     }
 }
+
+export const CurrentPokemonEdit = connect(
+    (state:any) => ({
+        box: state.box,
+        selectedId: state.selectedId,
+        pokemon: state.pokemon
+    }),
+    {
+        selectPokemon,
+        editPokemon
+    }
+)(CurrentPokemonEditBase);

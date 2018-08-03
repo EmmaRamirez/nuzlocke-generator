@@ -13,6 +13,7 @@ export interface MassEditorProps {
     isOpen?: any;
     toggleDialog?: any;
     pokemon: Pokemon[];
+    style: any;
     editPokemon: (edits: object, id: string) => void;
 }
 
@@ -97,7 +98,9 @@ export class MassEditorBase extends React.Component<MassEditorProps, { columnWid
                 icon='edit'
                 isOpen={this.props.isOpen}
                 onClose={this.props.toggleDialog}
-                className='wide-dialog'
+                className={`wide-dialog ${
+                    this.props.style.editorDarkMode ? 'pt-dark' : 'pt-light'
+                }`}
                 title='Mass Editor'>
                 <div className='pt-dialog-body'>
                     <AddPokemonButton
@@ -116,6 +119,7 @@ export class MassEditorBase extends React.Component<MassEditorProps, { columnWid
 export const MassEditor = connect(
     (state: any) => ({
         pokemon: state.pokemon,
+        style: state.style
     }),
     { editPokemon },
 )(MassEditorBase as any);

@@ -17,7 +17,6 @@ import 'components/Shared/styles/base.styl';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/table/lib/css/table.css';
-import { version0_0_6_BETA } from 'actions';
 
 const rollbarConfig = new Rollbar({
     accessToken: '357eab6297524e6facb1c48b0403d869',
@@ -37,10 +36,8 @@ const rollbarConfig = new Rollbar({
     enabled: window.location.pathname.includes('localhost') ? false : true,
 });
 
-// OfflinePluginRuntime.install({
-//     onUpdateReady: () => OfflinePluginRuntime.applyUpdate(),
-//     onUpdated: () => location.reload(),
-// });
+Rollbar.init(rollbarConfig as any);
+
 
 const mountNode = document.getElementById('app');
 const history = createHistory();
@@ -61,10 +58,5 @@ store.subscribe(() => {
         document.body.style.background = '#111';
     } else {
         document.body.style.background = '#fff';
-    }
-
-    // Check if state has old box format
-    if (typeof (store.getState() as any).box[0] === 'string') {
-        store.dispatch(version0_0_6_BETA());
     }
 });

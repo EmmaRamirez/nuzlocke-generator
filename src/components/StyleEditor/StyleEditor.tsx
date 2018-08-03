@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { editStyle } from 'actions';
-import { styleDefaults, listOfThemes } from 'utils';
+import { gameOfOriginToColor, styleDefaults, listOfThemes } from 'utils';
 import {
     RadioGroup,
     Radio,
@@ -10,7 +10,6 @@ import {
     Checkbox,
 } from '@blueprintjs/core';
 import { BaseEditor } from 'components/BaseEditor';
-import { gameOfOriginToColor } from 'components/Result/gameOfOriginToColor';
 
 const editEvent = (e, props: StyleEditorProps, name?, game?) => {
     const propName = name || e.target.name;
@@ -29,6 +28,12 @@ const editEvent = (e, props: StyleEditorProps, name?, game?) => {
     if (propName === 'template' && e.target.value === 'Generations') {
         props.editStyle({
             bgColor: gameOfOriginToColor(game),
+        });
+        props.editStyle({
+            resultHeight: 870
+        });
+        props.editStyle({
+            resultWidth: 1460
         });
     }
 };
@@ -80,6 +85,14 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                     </select>
                 </div>
             </div>
+
+            {
+                props.style.template === 'Hexagons' ?
+                <div className='style-edit'>
+                    <h6>Hexagons Template Options</h6>
+                </div>
+                : null
+            }
 
             <div className='style-edit'>
                 <RadioGroup
@@ -225,7 +238,6 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                     selectedValue={props.style.teamImages}>
                     <Radio label='Standard' value='standard' />
                     <Radio label='Sugimori' value='sugimori' />
-                    <Radio disabled label='Dream World' value='dreamworld' />
                 </RadioGroup>
             </div>
 
@@ -308,21 +320,6 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                             { ...e, target: { value: e.target.checked } },
                             props,
                             'displayRules',
-                        )
-                    }
-                />
-            </div>
-
-            <div className='style-edit'>
-                <Checkbox
-                    checked={props.style.editorDarkMode}
-                    name='editorDarkMode'
-                    label='Editor Dark Mode'
-                    onChange={(e: any) =>
-                        editEvent(
-                            { ...e, target: { value: e.target.checked } },
-                            props,
-                            'editorDarkMode',
                         )
                     }
                 />

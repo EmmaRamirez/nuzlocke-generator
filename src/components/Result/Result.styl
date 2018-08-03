@@ -1,3 +1,17 @@
+.top-bar {
+  padding: .25rem;
+  font-size: 1.15rem;
+  display flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(black, 0.33);
+}
+
+.pt-dark .top-bar {
+  background: rgb(34, 34, 34);
+}
+
+
 .container {
   border: 1px solid #ddd;
   // margin: .5rem auto;
@@ -26,6 +40,8 @@
 .result-notes {
   text-align: center;
   margin: .5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 
 .container {
@@ -69,7 +85,9 @@
 .trainer-image {
   border-radius: 50%;
   height: 3rem;
-  vertical-align: bottom;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  height: 3rem;
+  width: 3rem;
 }
 
 
@@ -87,7 +105,7 @@
 
 .badge-wrapper {
   display: inline-flex;
-  width: 200px;
+  width: 216px;
   flex-wrap: wrap;
   justify-content: center;
   margin-left: auto;
@@ -986,5 +1004,193 @@
     width: 975px;
     bottom: -50px;
     right: 0;
+  }
+}
+
+
+.hexagon {
+   -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.hexagons {
+
+  &.team-size-6 {
+    .pokemon-container:nth-of-type(5),
+    .pokemon-container:nth-of-type(6) {
+      transform: translate(-124px, -62px);
+    }
+
+    .pokemon-container:nth-of-type(4) {
+      transform: translate(-124px, 186px);
+    }
+  }
+
+  &.team-size-5 {
+    .pokemon-container:nth-of-type(4) {
+      transform: translate(-372px, 186px)
+    }
+    .pokemon-container:nth-of-type(5) {
+      transform: translate(-248px, -62px)
+    }
+  }
+
+  &.team-size-4,
+  &.team-size-3,
+  &.team-size-2,
+  &.team-size-1 {
+    .team-container {
+      margin-left: 0;
+    }
+  }
+
+  .team-container  {
+    margin-left: 8rem;
+    margin-top: .5rem;
+  }
+
+  .trainer-wrapper img:nth-of-type(1) {
+    @extends .hexagon;
+    border-radius: 0;
+  }
+
+  .pokemon-container {
+    padding: 0;
+  }
+  .pokemon-image-wrapper {
+    background: transparent;
+    border-radius: 0 !important;
+    height: 15.5rem;
+    width: 15.5rem;
+    @extends .hexagon;
+  }
+
+  .pokemon-image-wrapper::after {
+    content: '';
+    @extends .hexagon;
+    height: 15rem;
+    width: 15rem;
+    position: absolute;
+    display: block;
+    top: .25rem;
+    z-index: 10;
+    background: linear-gradient(to bottom, rgba(black, 0.75), transparent, rgba(black, 0.7));
+  }
+
+  .pokemon-image {
+    height: 15rem;
+    width: 15rem;
+    @extends .hexagon;
+  }
+
+  .pokemon-item {
+    @extends .hexagon;
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 1.5rem);
+    border-radius: 0;
+    border: none;
+    // background: transparent;
+    background-size: 15rem;
+    background-position: center bottom;
+  }
+
+  .champs-pokemon {
+    @extends .hexagon;
+  }
+
+  .pokemon-nature,
+  .pokemon-ability {
+    display: inline-block;
+    margin-left: 0.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .pokemon-info {
+    background: transparent;
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    z-index: 10;
+    text-align: center;
+    width: 15.5rem;
+    margin: 0;
+    padding: 0;
+    height: 8rem;
+  }
+
+  .pokemon-info-inner {
+    padding: 0;
+  }
+
+  .pokemon-moves {
+    margin-top: 1rem;
+    display: flex;
+    position: absolute;
+    bottom: 0.25rem;
+    opacity: 0.6;
+    left: 0.25rem;
+    width: calc(100% - .5rem);
+  }
+
+  .move {
+    border-radius: 0;
+    margin: 0;
+  }
+
+  .boxed-container, .champs-container, .dead-container {
+    display: inline-block;
+    width: 33%;
+    vertical-align: top;
+  }
+
+  .boxed-pokemon-container {
+    background: #333;
+    width: 48%;
+    border: none;
+  }
+
+  .boxed-pokemon-info {
+    border: none;
+  }
+
+  .dead-pokemon-container {
+    height: auto;
+    width: 100%;
+    border: none;
+    -webkit-clip-path: polygon(95% 0, 100% 50%, 95% 100%, 5% 100%, 0% 50%, 5% 0);
+    clip-path: polygon(95% 0, 100% 50%, 95% 100%, 5% 100%, 0% 50%, 5% 0);
+  }
+
+  .dead-pokemon-info {
+    margin: 0;
+    width: 100%;
+  }
+
+  .trainer-image {
+    border: none;
+  }
+
+  .champs-pokemon:nth-of-type(n+8),
+  .champs-pokemon:nth-of-type(n+22),
+  .champs-pokemon:nth-of-type(n+36),
+  .champs-pokemon:nth-of-type(n+50),
+  .champs-pokemon:nth-of-type(n+64),
+  .champs-pokemon:nth-of-type(n+78),
+  .champs-pokemon:nth-of-type(n+92),
+  .champs-pokemon:nth-of-type(n+106) {
+    left: 24px;
+    top: -12px;
+    position: relative;  
+  }
+
+  .champs-pokemon:nth-of-type(n+15),
+  .champs-pokemon:nth-of-type(n+29),
+  .champs-pokemon:nth-of-type(n+43),
+  .champs-pokemon:nth-of-type(n+57),
+  .champs-pokemon:nth-of-type(n+71),
+  .champs-pokemon:nth-of-type(n+85) {
+    left: 0;
+    top: -23px;  
   }
 }

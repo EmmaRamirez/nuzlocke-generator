@@ -1,9 +1,11 @@
 {
   "name": "nuzlocke-generator",
-  "version": "0.0.8-beta",
+  "version": "0.0.9-beta",
   "description": "A tool for generating nuzlocke team pics from data",
   "main": "index.js",
   "scripts": {
+    "cosmos": "cosmos",
+    "cosmos:export": "cosmos-export",
     "test": "jest --coverage --config jest-config.json",
     "prebuild": "npm run lint",
     "build": "webpack",
@@ -17,6 +19,7 @@
     "serve:heroku": "npm run build:production && heroku local web",
     "deploy": "npm run build && git push heroku master",
     "precommit": "npm run lint",
+    "docz": "docz dev",
     "prepush": "ts-node imageCheck.ts && npm run build:production && git add . && git commit --no-verify -m 'chore: update build'"
   },
   "engines": {
@@ -26,29 +29,17 @@
   "keywords": [],
   "author": "Emma Ramirez <ramirez.emma.g@gmail.com> (http://emmaramirez.me)",
   "license": "MIT",
-  "dependencies": {},
-  "jest": {
-    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
-    "transform": {
-      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "moduleNameMapper": {
-      "^.+\\.(css|styl)$": "<rootDir>stylus.config.js",
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js"
-    },
-    "testRegex": "/__tests__/.*\\.(ts|tsx|js)$"
+  "dependencies": {
+    "babel-plugin-module-resolver": "^3.1.1",
+    "docz": "^0.8.0",
+    "docz-plugin-css": "^0.8.0",
+    "html-webpack-plugin": "^3.2.0",
+    "redux-mock-store": "^1.5.3"
   },
   "devDependencies": {
-    "coveralls": "^3.0.2",
-    "husky": "^1.0.0-rc.12",
-    "ts-loader": "^4.4.2",
-    "tslint": "^5.10.0",
-    "tslint-loader": "^3.6.0",
+    "@blueprintjs/core": "^2.0.0",
+    "@blueprintjs/icons": "^2.0.0",
+    "@blueprintjs/table": "^2.0.0",
     "@types/chai": "^4.0.10",
     "@types/enzyme": "^2.8.12",
     "@types/express": "^4.11.0",
@@ -65,12 +56,10 @@
     "@types/react-router-dom": "^4.2.3",
     "@types/react-router-redux": "^5.0.11",
     "@types/redux-logger": "^3.0.5",
-    "@blueprintjs/core": "^2.0.0-rc.1",
-    "@blueprintjs/icons": "^2.0.0-rc.1",
-    "@blueprintjs/table": "^2.0.0-rc.1",
     "chai": "^4.1.2",
     "cheerio": "^1.0.0-rc.2",
     "copy-webpack-plugin": "^4.5.2",
+    "coveralls": "^3.0.2",
     "css-loader": "^0.28.7",
     "dom-to-image": "git+https://github.com/Keepsite/dom-to-image.git",
     "emotion": "^8.0.12",
@@ -78,6 +67,7 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "file-loader": "^1.1.11",
     "history": "^4.7.2",
+    "husky": "^1.0.0-rc.12",
     "imports-loader": "^0.7.1",
     "istanbul": "^0.4.5",
     "jest": "^23.3.0",
@@ -128,8 +118,11 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "ts-jest": "^23.0.0",
+    "ts-loader": "^4.4.2",
+    "tslint": "^5.10.0",
+    "tslint-loader": "^3.6.0",
     "tslint-microsoft-contrib": "^5.0.1",
-    "typescript": "^2.9.2",
+    "typescript": "^3.0.1",
     "url-loader": "^1.0.1",
     "uuid": "^3.1.0",
     "webpack": "4.14.0",

@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Button, IDialogProps, Dialog, Intent } from '@blueprintjs/core';
+import { Button, IDialogProps, Dialog, Intent, TextArea, Icon } from '@blueprintjs/core';
 import { connect } from 'react-redux';
-
 import { editRule, addRule, deleteRule, resetRules } from 'actions';
+
+import './RulesEditor.styl';
 
 export interface RulesEditorProps {
     rules: string[];
@@ -19,27 +20,17 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
 
     public renderRules() {
         return this.props.rules.map((rule, index) => (
-            <li key={index}>
-                <input
-                    style={{
-                        background: 'transparent',
-                        border: 'none',
-                        borderBottom: '1px dashed #222',
-                        width: '91%',
-                        textOverflow: 'ellipsis',
-                        margin: '.25rem',
-                    }}
-                    type='text'
+            <li className='rules-list-item' key={index}>
+                <div className='rule-no'>{ index + 1 }</div>
+                <TextArea
                     defaultValue={rule}
-                    onChange={e => this.props.editRule(index, e.target.value)}
+                    className='pt-fill'
+                    onChange={ (e:any) => this.props.editRule(index, e.target.value) }
+                    dir='auto'
                 />
-                <span
-                    role='action'
-                    style={{ cursor: 'pointer' }}
-                    title='Delete Rule'
-                    onClick={e => this.props.deleteRule(index)}
-                    className='pt-icon pt-icon-cross'
-                />
+                <div role='action' onClick={e => this.props.deleteRule(index)} className='rule-delete' title='Delete Rule'>
+                    <Icon intent={Intent.DANGER} role='action' style={{ cursor: 'pointer' }} icon={'trash'} />
+                </div>
             </li>
         ));
     }
@@ -66,7 +57,11 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
     public render() {
         return (
             <>
-                <ol>{this.renderRules()}</ol>
+                <ul style={{
+                    listStyleType: 'none',
+                    margin: '.5rem',
+                    padding: '0'
+                }}>{this.renderRules()}</ul>
                 {this.renderButtons()}
             </>
         );
@@ -74,13 +69,13 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
 }
 
 export const RulesEditorDialogBase = (
-    props: RulesEditorProps & { onClose: any; isOpen: boolean },
+    props: RulesEditorProps & { onClose: any; isOpen: boolean, style: any },
 ) => {
     return (
         <Dialog
             isOpen={props.isOpen}
             onClose={props.onClose}
-            className='rules-editor-dialog'
+            className={`rules-editor-dialog ${ props.style.editorDarkMode ? 'pt-dark' : 'pt-light' }`}
             title='Rules Editor'
             icon='edit'>
             <div className='pt-dialog-body'>
@@ -92,7 +87,6 @@ export const RulesEditorDialogBase = (
                     resetRules={props.resetRules}
                 />
             </div>
-            {/* <div className='pt-dialog-footer'>{new RulesEditor(props).renderButtons()}</div> */}
         </Dialog>
     );
 };
@@ -100,6 +94,7 @@ export const RulesEditorDialogBase = (
 export const RulesEditorDialog = connect(
     (state: any) => ({
         rules: state.rules,
+        style: state.style
     }),
     { editRule, addRule, deleteRule, resetRules },
 )(RulesEditorDialogBase as any);

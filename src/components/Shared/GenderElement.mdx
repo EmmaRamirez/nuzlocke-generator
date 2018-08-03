@@ -1,0 +1,22 @@
+---
+name: GenderElement
+menu: components
+---
+
+import { Playground, PropsTable } from 'docz';
+import { GenderElement } from './GenderElement';
+
+# GenderElement
+
+Kind of a loaded name, this component renders the glyph + color for Pokemon of a certain gender. Genderless returns null.
+
+```typescript
+export type GenderElementProps = 'Male' | 'm' | 'Female' | 'f' | 'genderless' | null;
+```
+
+## Basic Usage
+
+<Playground>
+    <GenderElement gender='f' />
+    <GenderElement gender={null} />
+</Playground>

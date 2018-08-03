@@ -1,29 +1,17 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
-import { Store } from 'redux';
 
 import { seeRelease, editRule } from 'actions';
-import { VersionTag } from './VersionTag';
-import { generateReleaseNotes } from 'utils';
 import * as Loadable from 'react-loadable';
 
-import { Dialog } from '@blueprintjs/core';
-
-import * as ReactMarkdown from 'react-markdown';
-
-const pkg = require('../../../package.json');
-const croagunk = require('assets/img/croagunk.gif');
 
 import './app.styl';
+import { Hotkeys } from 'components/Hotkeys';
 
 export interface AppProps {
-    seeRelease: seeRelease;
-    sawRelease: { [x: string]: boolean };
     style: any;
     rules: any;
-    editRule: any;
+    disableHotkeys?: boolean;
 }
 
 function Loading () {
@@ -46,52 +34,21 @@ const Result = Loadable({
     }
 });
 
-
-export class AppBase extends React.Component<AppProps, { isOpen: boolean }> {
+export class AppBase extends React.PureComponent<AppProps> {
     constructor(props: any) {
         super(props);
-        this.state = {
-            isOpen: !this.props.sawRelease[pkg.version],
-        };
     }
 
-    private closeDialog = e => {
-        this.props.seeRelease(pkg.version);
-        this.toggleDialog(null);
+    public static defaultProps = {
+        disableHotkeys: false,
     };
-
-    private toggleDialog = e => this.setState({ isOpen: !this.state.isOpen });
 
     public render() {
         return (
             <div className='app' role='main'>
+                { this.props.disableHotkeys ? null : <Hotkeys /> }
                 <Editor />
                 <Result />
-                <VersionTag
-                    version={pkg.version}
-                    onClick={this.toggleDialog}
-                    darkMode={this.props.style.editorDarkMode}
-                />
-                <Dialog
-                    isOpen={this.state.isOpen}
-                    onClose={this.closeDialog}
-                    icon='document'
-                    title={`Release Notes ${pkg.version}`}
-                    className={`release-dialog ${
-                        this.props.style.editorDarkMode ? 'pt-dark' : 'pt-light'
-                    }`}>
-                    <div className='pt-dialog-body'>
-                        <div className='release-notes-wrapper'>
-                            <h3 className='heading'>
-                                {pkg.version} <img alt='Croagunk' src={croagunk} />
-                            </h3>
-                            <ReactMarkdown
-                                className='release-notes'
-                                source={generateReleaseNotes(pkg.version)}
-                            />
-                        </div>
-                    </div>
-                </Dialog>
             </div>
         );
     }
@@ -99,12 +56,9 @@ export class AppBase extends React.Component<AppProps, { isOpen: boolean }> {
 
 export const App = connect(
     (state: any) => ({
-        sawRelease: state.sawRelease,
         style: state.style,
         rules: state.rules,
     }),
     {
-        seeRelease,
-        editRule,
     },
 )(AppBase);
