@@ -111,7 +111,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../common/errors": [
+  "./errors": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
