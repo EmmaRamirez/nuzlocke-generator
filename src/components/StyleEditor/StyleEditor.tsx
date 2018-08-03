@@ -29,6 +29,12 @@ const editEvent = (e, props: StyleEditorProps, name?, game?) => {
         props.editStyle({
             bgColor: gameOfOriginToColor(game),
         });
+        props.editStyle({
+            resultHeight: 870
+        });
+        props.editStyle({
+            resultWidth: 1460
+        });
     }
 };
 
