@@ -51351,6 +51351,12 @@ const editEvent = (e, props, name, game) => {
         props.editStyle({
             bgColor: utils_1.gameOfOriginToColor(game),
         });
+        props.editStyle({
+            resultHeight: 870
+        });
+        props.editStyle({
+            resultWidth: 1460
+        });
     }
 };
 exports.ColorEdit = ({ value, onChange, name }) => {
