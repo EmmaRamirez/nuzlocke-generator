@@ -1,17 +1,22 @@
 import * as React from 'react';
 import { Alert, Intent } from '@blueprintjs/core';
+import styled from 'react-emotion';
 
 import { deletePokemon, modifyDeletionConfirmation } from 'actions';
 import { connect } from 'react-redux';
 
-// const recomposeDelete = withState('dialogOn', 'setDialog', false);
-
-interface DeletePokemonButtonProps {
+export interface DeletePokemonButtonProps {
     id: string;
     confirmation?: boolean;
     modifyDeletionConfirmation?: modifyDeletionConfirmation;
     deletePokemon?: deletePokemon;
 }
+
+export const DeletePokemonButtonContainer = styled('div')`
+    color: red;
+    cursor: pointer;
+    margin-left: auto;
+`;
 
 export class DeletePokemonButtonBase extends React.Component<
     DeletePokemonButtonProps,
@@ -33,7 +38,7 @@ export class DeletePokemonButtonBase extends React.Component<
 
     public render() {
         return (
-            <div className='delete-pokemon-button'>
+            <DeletePokemonButtonContainer>
                 <Alert
                     icon='trash'
                     isOpen={this.state.dialogOn && this.props.confirmation as boolean}
@@ -65,7 +70,7 @@ export class DeletePokemonButtonBase extends React.Component<
                     className='pt-icon pt-icon-trash'
                     title='Delete Pokemon'
                 />
-            </div>
+            </DeletePokemonButtonContainer>
         );
     }
 }
