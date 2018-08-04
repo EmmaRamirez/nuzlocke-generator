@@ -100,7 +100,10 @@ module.exports = {
 
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
-            'PRODUCTION': JSON.stringify(true)
+            'PRODUCTION': JSON.stringify(true),
+            'features.themeEditing': JSON.stringify(true),
+            'features.fileUploads': JSON.stringify(false),
+            'features.multipleNuzlockes': JSON.stringify(false),
         }),
 
         new ReactLoadablePlugin({

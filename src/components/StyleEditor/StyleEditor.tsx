@@ -2,12 +2,14 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { editStyle } from 'actions';
-import { gameOfOriginToColor, styleDefaults, listOfThemes } from 'utils';
+import { gameOfOriginToColor, styleDefaults, listOfThemes, FEATURES } from 'utils';
 import {
     RadioGroup,
     Radio,
     TextArea,
     Checkbox,
+    Button,
+    Intent,
 } from '@blueprintjs/core';
 import { BaseEditor } from 'components/BaseEditor';
 
@@ -84,6 +86,15 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                         {listOfThemes.map(o => <option key={o}>{o}</option>)}
                     </select>
                 </div>
+                {
+                    FEATURES.themeEditing ?
+                    <Button
+                        style={{ marginLeft: '.25rem' }}
+                        intent={Intent.PRIMARY}
+                        className='pt-minimal'
+                    >Edit Theme</Button>
+                    : null
+                }
             </div>
 
             {
