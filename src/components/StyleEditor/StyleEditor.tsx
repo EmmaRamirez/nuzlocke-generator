@@ -12,6 +12,9 @@ import {
     Intent,
 } from '@blueprintjs/core';
 import { BaseEditor } from 'components/BaseEditor';
+import { cx } from 'emotion';
+
+import * as Styles from './styles';
 
 const editEvent = (e, props: StyleEditorProps, name?, game?) => {
     const propName = name || e.target.name;
@@ -40,7 +43,6 @@ const editEvent = (e, props: StyleEditorProps, name?, game?) => {
     }
 };
 
-// tslint:disable-next-line:no-empty-interfaces
 export interface StyleEditorProps {
     style: any;
     editStyle: editStyle;
@@ -49,11 +51,11 @@ export interface StyleEditorProps {
 
 export const ColorEdit = ({ value, onChange, name }) => {
     return (
-        <div className='color-edit-wrapper'>
+        <div className={cx(Styles.colorEditWrapper)}>
             <input
                 name={name}
                 onChange={onChange}
-                className='color-input'
+                className={cx(Styles.colorInput)}
                 type='color'
                 value={value}
             />
@@ -69,6 +71,17 @@ export const ColorEdit = ({ value, onChange, name }) => {
     );
 };
 
+export const IconsNextToTeamPokemon = (props) => (
+    <div className='style-edit'>
+        <Checkbox
+            checked={props.style.iconsNextToTeamPokemon}
+            name='iconsNextToTeamPokemon'
+            label='Icons Next to Team Pokemon'
+            onChange={(e:any) => editEvent({ ...e, target: { value: e.target.checked }}, props, 'iconsNextToTeamPokemon')}
+        />
+    </div>
+);
+
 export const StyleEditorBase = (props: StyleEditorProps) => {
     const getStyleProp = (prop: string) => {
         if (props && props.style && props.style[prop]) props.style[prop];
@@ -76,7 +89,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
     };
     return (
         <BaseEditor name='Style'>
-            <div className='style-edit'>
+            <div className={cx(Styles.styleEdit)}>
                 <label className='pt-label pt-inline'>Template</label>
                 <div className='pt-select'>
                     <select
@@ -99,15 +112,15 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
 
             {
                 props.style.template === 'Hexagons' ?
-                <div className='style-edit'>
+                <div className={cx(Styles.styleEdit)}>
                     <h6>Hexagons Template Options</h6>
                 </div>
                 : null
             }
 
-            <div className='style-edit'>
+            <div className={cx(Styles.styleEdit)}>
                 <RadioGroup
-                    className='radio-group'
+                    className={cx(Styles.radioGroup)}
                     label='Image Style'
                     onChange={e => editEvent(e, props, 'imageStyle')}
                     selectedValue={props.style.imageStyle}>
@@ -116,9 +129,9 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 </RadioGroup>
             </div>
 
-            <div className='style-edit'>
+            <div className={cx(Styles.styleEdit)}>
                 <RadioGroup
-                    className='radio-group'
+                    className={cx(Styles.radioGroup)}
                     label='Item Style'
                     onChange={e => editEvent(e, props, 'itemStyle')}
                     selectedValue={props.style.itemStyle}>
@@ -127,7 +140,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 </RadioGroup>
             </div>
 
-            <div className='style-edit'>
+            <div className={cx(Styles.styleEdit)}>
                 <label className='pt-label pt-inline'>Result Dimensions</label>
                 <input
                     name='resultWidth'
@@ -149,47 +162,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                     step='10'
                 />
             </div>
-
-            {/* <div className='style-edit'>
-                <label className='pt-label pt-inline'>Zoom Level</label>
-                <div>
-                    <ButtonGroup>
-                        <Button
-                            icon='zoom-out'
-                            onClick={e => {
-                                const newZoomLevel =
-                                    props.style.zoomLevel - 0.1 <= 0
-                                        ? 0
-                                        : props.style.zoomLevel - 0.1;
-                                editEvent({ target: { value: newZoomLevel } }, props, 'zoomLevel');
-                            }}
-                        />
-=                        <Button style={{ padding: '0 1.25rem' }}>
-                            <Slider
-                                onChange={value =>
-                                    editEvent({ target: { value } }, props, 'zoomLevel')
-                                }
-                                value={props.style.zoomLevel}
-                                min={0.2}
-                                max={2}
-                                stepSize={0.1}
-                            />
-                        </Button>
-                        <Button
-                            icon='zoom-in'
-                            onClick={e => {
-                                const newZoomLevel =
-                                    props.style.zoomLevel + 0.1 >= 2
-                                        ? 2
-                                        : props.style.zoomLevel + 0.1;
-                                editEvent({ target: { value: newZoomLevel } }, props, 'zoomLevel');
-                            }}
-                        />
-                    </ButtonGroup>
-                </div>
-            </div> */}
-
-            <div className='style-edit'>
+            <div className={cx(Styles.styleEdit)}>
                 <label className='pt-label pt-inline'>Background color</label>
                 <ColorEdit
                     onChange={e => editEvent(e, props)}
@@ -198,7 +171,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 />
             </div>
 
-            <div className='style-edit'>
+            <div className={cx(Styles.styleEdit)}>
                 <label className='pt-label pt-inline'>Header color</label>
                 <ColorEdit
                     name='topHeaderColor'
@@ -207,7 +180,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 />
             </div>
 
-            <div className='style-edit'>
+            <div className={cx(Styles.styleEdit)}>
                 <label className='pt-label pt-inline'>Background Image</label>
                 <input
                     value={props.style.backgroundImage}
@@ -217,6 +190,10 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 />
                 <span>{' '}</span>
                 <Checkbox
+                    style={{
+                        marginBottom: '0',
+                        marginLeft: '10px',
+                    }}
                     checked={props.style.tileBackground}
                     name='tileBackground'
                     label='Tile'
@@ -230,9 +207,9 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 />
             </div>
 
-            <div className='style-edit'>
+            <div className={cx(Styles.styleEdit)}>
                 <RadioGroup
-                    className='radio-group'
+                    className={cx(Styles.radioGroup)}
                     label='Moves Position'
                     onChange={e => editEvent(e, props, 'movesPosition')}
                     selectedValue={props.style.movesPosition}>
@@ -241,9 +218,9 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 </RadioGroup>
             </div>
 
-            <div className='style-edit'>
+            <div className={cx(Styles.styleEdit)}>
                 <RadioGroup
-                    className='radio-group'
+                    className={cx(Styles.radioGroup)}
                     label='Team Images'
                     onChange={e => editEvent(e, props, 'teamImages')}
                     selectedValue={props.style.teamImages}>
@@ -252,16 +229,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 </RadioGroup>
             </div>
 
-            {/* <div className='style-edit'>
-                <Checkbox
-                    checked={props.style.iconsNextToTeamPokemon}
-                    name='iconsNextToTeamPokemon'
-                    label='Icons Next to Team Pokemon'
-                    onChange={(e:any) => editEvent({ ...e, target: { value: e.target.checked }}, props, 'iconsNextToTeamPokemon')}
-                />
-            </div> */}
-
-            <div className='style-edit'>
+            <div className={cx(Styles.styleEdit)}>
                 <Checkbox
                     checked={props.style.teamPokemonBorder}
                     name='teamPokemonBorder'
@@ -276,7 +244,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 />
             </div>
 
-            <div className='style-edit'>
+            <div className={cx(Styles.styleEdit)}>
                 <Checkbox
                     checked={props.style.showPokemonMoves}
                     name='showPokemonMoves'
@@ -291,7 +259,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 />
             </div>
 
-            <div className='style-edit'>
+            <div className={cx(Styles.styleEdit)}>
                 <Checkbox
                     checked={props.style.minimalTeamLayout}
                     name='minimalTeamLayout'
@@ -306,7 +274,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 />
             </div>
 
-            <div className='style-edit'>
+            <div className={cx(Styles.styleEdit)}>
                 <Checkbox
                     checked={props.style.displayBadges}
                     name='displayBadges'
@@ -321,7 +289,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 />
             </div>
 
-            <div className='style-edit'>
+            <div className={cx(Styles.styleEdit)}>
                 <Checkbox
                     checked={props.style.displayRules}
                     name='displayRules'
@@ -336,7 +304,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 />
             </div>
 
-            <div className='style-edit'>
+            <div className={cx(Styles.styleEdit)}>
                 <Checkbox
                     checked={props.style.oldMetLocationFormat}
                     name='oldMetLocationFormat'
@@ -351,7 +319,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 />
             </div>
 
-            <div className='style-edit'>
+            <div className={cx(Styles.styleEdit)}>
                 <Checkbox
                     checked={props.style.grayScaleDeadPokemon}
                     name='grayScaleDeadPokemon'
@@ -366,7 +334,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 />
             </div>
 
-            <div className='style-edit'>
+            <div className={cx(Styles.styleEdit)}>
                 <Checkbox
                     checked={props.style.spritesMode}
                     name='spritesMode'
@@ -381,7 +349,7 @@ export const StyleEditorBase = (props: StyleEditorProps) => {
                 />
             </div>
 
-            <div className='style-edit'>
+            <div className={cx(Styles.styleEdit)}>
                 <Checkbox
                     checked={props.style.scaleSprites}
                     name='scaleSprites'
