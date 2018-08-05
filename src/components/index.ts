@@ -18,4 +18,5 @@ export * from './RulesEditor';
 export * from './Shared';
 export * from './StyleEditor';
 export * from './TeamPokemon';
+export * from './ThemeEditor';
 export * from './TrainerEditor';
