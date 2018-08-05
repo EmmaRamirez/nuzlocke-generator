@@ -21,14 +21,15 @@ interface PokemonIconProps {
 }
 
 const formatSpeciesName = (species: string | null) => {
+    console.info(species);
     if (species == null) return 'unknown';
-    if (listOfPokemon.indexOf(species) < 0) return 'unknown';
     if (species === 'Nidoran♀') return 'nidoran-f';
     if (species === 'Nidoran♂') return 'nidoran-m';
     if (species === 'Mr. Mime') return 'mr-mime';
-    if (species === 'Farfetch\'d') return 'farfetchd';
+    if (species.startsWith('Farfetch')) return 'farfetchd';
     if (species === 'Mime Jr.') return 'mime-jr';
     if (species === 'Flabébé') return 'flabebe';
+    if (listOfPokemon.indexOf(species) < 0) return 'unknown';
     return species.toLowerCase();
 };
 
