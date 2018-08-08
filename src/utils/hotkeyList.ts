@@ -19,6 +19,11 @@ export const hotkeyList: HotkeyList[] = [
         onKeyUp: 'nextPokemon',
     },
     {
+        key: 'n',
+        comment: `Add new Pok${accentedE}mon`,
+        onKeyUp: 'addPokemon',
+    },
+    {
         key: 'backspace',
         comment: `Delete Pok${accentedE}mon`,
         onKeyUp: 'deletePokemon',
