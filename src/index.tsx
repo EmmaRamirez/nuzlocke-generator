@@ -74,8 +74,16 @@ render(
 
 store.subscribe(() => {
     if ((store.getState() as any).style.editorDarkMode) {
-        document.body.style.background = '#111';
+        injectGlobal`
+            body {
+                background: #111;
+            }
+        `;
     } else {
-        document.body.style.background = '#fff';
+        injectGlobal`
+            body {
+                background: #fff;
+            }
+        `;
     }
 });

@@ -37,7 +37,7 @@ export const colorEditWrapper = css`
 export const styleEdit = css`
     align-items: center;
     align-content: center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #222;
     display: flex;
     padding: .5rem;
     width: 100%;
@@ -77,4 +77,9 @@ export const radioGroup = css`
     label.pt-label {
         margin: 0;
     }
+`;
+
+export const dialog = css`
+    padding-bottom: 0 !important;
+    width: 60% !important;
 `;

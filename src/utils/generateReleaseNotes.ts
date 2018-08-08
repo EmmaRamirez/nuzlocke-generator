@@ -200,6 +200,13 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Sugimori images can't be used with the download option (depending on browser)
 - Selecting a checkpoint sometimes undoes all others
 `,
-    '0.1.0-beta': `
+    '0.0.10-beta': `
+# Changelog
+
+## Features
+
+## Fixes
+
+## Known Issues
 `,
 };

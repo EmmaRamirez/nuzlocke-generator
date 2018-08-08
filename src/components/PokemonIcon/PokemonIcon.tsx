@@ -21,7 +21,6 @@ interface PokemonIconProps {
 }
 
 const formatSpeciesName = (species: string | null) => {
-    console.info(species);
     if (species == null) return 'unknown';
     if (species === 'Nidoran♀') return 'nidoran-f';
     if (species === 'Nidoran♂') return 'nidoran-m';

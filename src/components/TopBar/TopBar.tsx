@@ -60,7 +60,7 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                     className='pt-minimal'
                     icon='star'
                 >
-                    0.0.9-beta
+                    { pkg.version }
                 </Button>
                 { this.props.children }
                 <Dialog
