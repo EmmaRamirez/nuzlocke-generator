@@ -38,7 +38,7 @@ export interface LayoutProps {
     wrap: boolean;
 }
 
-export class Layout extends React.PureComponent<Partial<LayoutProps> {
+export class Layout extends React.PureComponent<Partial<LayoutProps>> {
     public static defaultProps = {
         display: LayoutDisplay.Block,
         direction: LayoutDirection.Row,
