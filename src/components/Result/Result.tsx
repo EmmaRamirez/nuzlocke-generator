@@ -1,23 +1,31 @@
 import * as React from 'react';
 
-import { Pokemon, Trainer } from 'models';
-import { getBadges, getGameRegion, sortPokes, mapTrainerImage } from 'utils';
 import { connect } from 'react-redux';
 import * as uuid from 'uuid/v4';
 import { Scrollbars } from 'react-custom-scrollbars';
 import * as domtoimage from 'dom-to-image';
+import { cx } from 'emotion';
 
 import { selectPokemon } from 'actions';
-
 import { TeamPokemon } from 'components/TeamPokemon';
 import { DeadPokemon } from 'components/DeadPokemon';
 import { BoxedPokemon } from 'components/BoxedPokemon';
 import { ChampsPokemon } from 'components/ChampsPokemon';
 import { TopBar } from 'components/TopBar';
-
+import { Pokemon, Trainer } from 'models';
 import { reducers } from 'reducers';
+import {
+    Styles as StyleState,
+    getBadges,
+    getGameRegion,
+    sortPokes,
+    mapTrainerImage
+} from 'utils';
+
+import * as Styles from './styles';
 
 import './Result.styl';
+import './themes.styl';
 
 interface ResultProps {
     pokemon: Pokemon[];
@@ -25,7 +33,7 @@ interface ResultProps {
     trainer: Trainer;
     box: { key: number; name: string }[];
     selectPokemon: selectPokemon;
-    style: any;
+    style: StyleState;
     rules: string[];
 }
 
@@ -201,26 +209,9 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     </div>
                 )}
                 <div className='badge-wrapper'>{this.renderBadgesOrTrials()}</div>
-                {/* <img alt='Trainer' className='trainer-image' src='' />
-                <div className='game-logo'>
-                    <span>
-                        <img src='' alt='Game Logo' />
-                    </span>
-                </div>
-                <div className='trainer-name'>
-                    <span>name</span>
-                    {trainer.name || ''}
-                </div> */}
             </div>
         );
     }
-
-    // private onResize = (e, { element, size }) => {
-    //     this.setState({
-    //         width: size.width,
-    //         height: size.height,
-    //     });
-    // };
 
     private async toImage() {
         const resultNode = this.resultRef.current;
@@ -265,8 +256,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         backgroundRepeat: style.tileBackground ? 'repeat' : 'no-repeat',
                         height: style.resultHeight + 'px',
                         marginBottom: '.5rem',
-                        transform: `scale(${style.zoomLevel})`,
-                        transformOrigin: '0 0',
+                        // transform: `scale(${style.zoomLevel})`,
+                        // transformOrigin: '0 0',
                         width: style.resultWidth + 'px',
                     }}>
                     <div className='trainer-container' style={{ backgroundColor: topHeaderColor }}>
