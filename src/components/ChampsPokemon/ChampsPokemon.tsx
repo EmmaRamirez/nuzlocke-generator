@@ -1,9 +1,12 @@
 import * as React from 'react';
 
 import { PokemonIcon } from 'components/PokemonIcon';
-import { gameOfOriginToColor } from 'utils';
+import { gameOfOriginToColor, Game } from 'utils';
+import { Pokemon } from 'models';
 
-export class ChampsPokemon extends React.Component<any> {
+export type ChampsPokemonProps = { [P in keyof Pokemon]?: any };
+
+export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
     constructor(props) {
         super(props);
     }
