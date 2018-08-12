@@ -50,6 +50,8 @@ export const componentResult = css`
 
 export const componentResult_dark = css`
     background-image: linear-gradient(to top, rgb(32, 40, 45) 0%, rgb(37, 50, 57) 100%);
+    min-width: 33%;
+    padding: 1rem;
 `;
 
 export const componentOptions = css`

@@ -52,6 +52,7 @@ export const Box = ({
 export interface PokemonEditorProps {
     team: Pokemon[];
     boxes: Boxes;
+    game: any;
 }
 
 export interface PokemonEditorState {
@@ -94,7 +95,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
             <>
                 <BaseEditor name='Pokemon'>
                     <div className='button-row' style={{ display: 'flex' }}>
-                        <AddPokemonButton defaultPokemon={generateEmptyPokemon(team)} />
+                        <AddPokemonButton defaultPokemon={{ ...generateEmptyPokemon(team), gameOfOrigin: this.props.game.name || 'None' }} />
                         <Button
                             icon={'heat-grid'}
                             onClick={this.openMassEditor}
@@ -124,6 +125,7 @@ export const PokemonEditor = connect(
     (state: any) => ({
         team: state.pokemon,
         boxes: state.box,
+        game: state.game,
     }),
     null,
 )(PokemonEditorBase);

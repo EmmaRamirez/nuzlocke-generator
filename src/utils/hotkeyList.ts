@@ -1,4 +1,4 @@
-const accentedE = '\xE9';
+import { accentedE } from 'utils';
 
 export interface HotkeyList {
     key: string;

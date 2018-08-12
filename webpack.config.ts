@@ -104,6 +104,7 @@ module.exports = {
             'features.themeEditing': JSON.stringify(true),
             'features.fileUploads': JSON.stringify(false),
             'features.multipleNuzlockes': JSON.stringify(false),
+            'features.copyingPokemon': JSON.stringify(false),
         }),
 
         new ReactLoadablePlugin({

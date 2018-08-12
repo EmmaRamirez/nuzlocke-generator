@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { Alert, Intent } from '@blueprintjs/core';
+import { Alert, Intent, Icon, Popover, Position, PopoverInteractionKind } from '@blueprintjs/core';
 import styled from 'react-emotion';
 
 import { deletePokemon, modifyDeletionConfirmation } from 'actions';
 import { connect } from 'react-redux';
+import { accentedE } from 'utils';
 
 export interface DeletePokemonButtonProps {
     id: string;
@@ -15,7 +16,6 @@ export interface DeletePokemonButtonProps {
 export const DeletePokemonButtonContainer = styled('div')`
     color: red;
     cursor: pointer;
-    margin-left: auto;
 `;
 
 export class DeletePokemonButtonBase extends React.Component<
@@ -58,18 +58,20 @@ export class DeletePokemonButtonBase extends React.Component<
                         Don't Ask Me For Confirmation Again
                     </label>
                 </Alert>
-                <span
-                    role='button'
-                    onClick={e => {
-                        if (this.props.confirmation) {
-                            this.toggleDialog();
-                        } else {
-                            this.props.deletePokemon && this.props.deletePokemon(this.props.id);
-                        }
-                    }}
-                    className='pt-icon pt-icon-trash'
-                    title='Delete Pokemon'
-                />
+                <Popover interactionKind={PopoverInteractionKind.HOVER} position={Position.TOP} content={`Delete Pok${accentedE}mon`}>
+                    <Icon
+                        role='button'
+                        onClick={e => {
+                            if (this.props.confirmation) {
+                                this.toggleDialog();
+                            } else {
+                                this.props.deletePokemon && this.props.deletePokemon(this.props.id);
+                            }
+                        }}
+                        icon='trash'
+                        title='Delete Pokemon'
+                    />
+                </Popover>
             </DeletePokemonButtonContainer>
         );
     }

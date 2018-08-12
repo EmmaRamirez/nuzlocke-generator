@@ -14,7 +14,7 @@ export const champsPokemon = (options) => css`
     align-items: center;
     justify-content: center;
     background: ${options.background};
-    padding: .25rem;
+    padding: ${options.padding};
     cursor: pointer;
 `;
 
@@ -32,9 +32,9 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
     }
 
     private static defaultProps = {
-        showNickname: true,
-        showGender: true,
-        showLevel: true,
+        showNickname: false,
+        showGender: false,
+        showLevel: false,
     };
 
     private getWidth = () => {
@@ -53,7 +53,8 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
                         background: gameOfOriginToColor(this.props.gameOfOrigin),
                         height: '48px',
                         width: this.getWidth(),
-                        margin: '4px',
+                        margin: 0,
+                        padding: 0,
                     })
                 )}>
                 <PokemonIcon {...this.props as any} />

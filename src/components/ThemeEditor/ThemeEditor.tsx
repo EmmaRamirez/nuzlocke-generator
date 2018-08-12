@@ -10,6 +10,7 @@ import { Button, ITreeNode, Tree, Classes, Menu, MenuItem } from '@blueprintjs/c
 import { BoxedPokemon } from '../BoxedPokemon';
 import { ColorEdit, ThemeSelect } from 'components/Shared';
 import { ChampsPokemon } from 'components';
+import { ComponentOptions, Options, Option } from './ComponentOptions';
 
 const modelPokemon: Pokemon = {
     ...generateEmptyPokemon(),
@@ -19,9 +20,10 @@ const modelPokemon: Pokemon = {
     level: 50,
     metLevel: 5,
     met: 'Viridian Forest',
+    gameOfOrigin: 'Red',
 };
 
-const componentTree: ITreeNode[] = [
+const componentTree: (ITreeNode & { options?: Option })[] = [
     {
         id: 0,
         hasCaret: false,
@@ -94,6 +96,7 @@ const componentTree: ITreeNode[] = [
         icon: 'style',
         isExpanded: true,
         label: 'Champs Pokemon',
+        options: Options.ChampsPokemon,
         childNodes: [
             {
                 id: 11,
@@ -172,6 +175,8 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
         if (currentNode) {
             const { label } = currentNode;
         }
+
+        console.log(currentNode);
         return (
             <>
                 <div className={cx(classWithDarkTheme(css, 'header', this.props.style.editorDarkMode))}><strong>Current Theme:</strong> <ThemeSelect theme={this.props.style.template} /></div>
@@ -190,10 +195,14 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
                     </div>
                     <div className={cx(css.componentView)}>
                         <div className={cx(this.props.style.template.toLowerCase(), classWithDarkTheme(css, 'componentResult', this.props.style.editorDarkMode ))}>
-                            {/* <BoxedPokemon
-                                {...modelPokemon}
-                            /> */}
-                            <ChampsPokemon {...modelPokemon} />
+                            { currentNode && currentNode.id === 12 &&
+                                <ChampsPokemon
+                                    showGender={currentNode.options.props.showGender}
+                                    showNickname={currentNode.options.props.showNickname}
+                                    showLevel={currentNode.options.props.showLevel}
+                                    {...modelPokemon}
+                                />
+                            }
                         </div>
                         <div className={cx(css.componentOptions)}>
                             <strong>{ this.getCurrentNode() == null ? '' : this.getCurrentNode().label} Options</strong>

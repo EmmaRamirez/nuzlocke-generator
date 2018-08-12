@@ -33,3 +33,4 @@ export * from './listOfAbilities';
 export * from './Types';
 export * from './features';
 export * from './getGameGeneration';
+export * from './accentedE';
