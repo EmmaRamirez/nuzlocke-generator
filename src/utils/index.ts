@@ -1,6 +1,7 @@
 export * from './choose';
 export * from './generateReleaseNotes';
 export * from './getSpriteIcon';
+export * from './classWithDarkTheme';
 export * from './listOfThemes';
 export * from './matchSpeciesToTypes';
 export * from './speciesToNumber';
