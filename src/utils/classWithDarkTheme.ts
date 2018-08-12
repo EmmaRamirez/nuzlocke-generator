@@ -1,4 +1,4 @@
 
 export const classWithDarkTheme = (css: any, name: string, condition: boolean = true) => {
-    return { name,  [css[`${name}_dark`]]: condition };
+    return { [css[name]]: true,  [css[`${name}_dark`]]: condition };
 };
