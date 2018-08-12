@@ -6,7 +6,15 @@ export const main = css`
 
 export const header = css`
     background: #fff;
-    border: 1px solid #eee;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: .5rem;
+`;
+
+export const header_dark = css`
+    background: #394b59;
+    border-top: 1px solid #111;
+    border-bottom: 1px solid #111;
     padding: .5rem;
 `;
 
@@ -34,11 +42,14 @@ export const componentView = css`
 
 export const componentResult = css`
     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
-    border: 1px solid #eee;
     padding: 1rem;
     & *:hover {
         outline: 1px dotted red;
     }
+`;
+
+export const componentResult_dark = css`
+    background-image: linear-gradient(to top, rgb(32, 40, 45) 0%, rgb(37, 50, 57) 100%);
 `;
 
 export const componentOptions = css`

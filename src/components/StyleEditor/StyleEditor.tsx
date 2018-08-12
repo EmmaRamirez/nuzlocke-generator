@@ -18,7 +18,7 @@ import { ColorEdit } from 'components/Shared';
 import { cx } from 'emotion';
 
 import * as Styles from './styles';
-import { ThemeEditor } from '../ThemeEditor';
+import { ThemeEditor } from 'components/ThemeEditor';
 
 const editEvent = (e, props: StyleEditorProps, name?, game?) => {
     const propName = name || e.target.name;
@@ -73,6 +73,10 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
     private toggleThemeEditor = e => this.setState({ isThemeEditorOpen: !this.state.isThemeEditorOpen });
     public render() {
         const props = this.props;
+        const styleEdit = cx(
+            Styles.styleEdit,
+            { [Styles.styleEdit_dark]: props.style.editorDarkMode }
+        );
         return (
             <BaseEditor name='Style'>
                 <Dialog
@@ -84,7 +88,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 >
                     <ThemeEditor />
                 </Dialog>
-                <div className={cx(Styles.styleEdit)}>
+                <div className={styleEdit}>
                     <label className='pt-label pt-inline'>Template</label>
                     <div className='pt-select'>
                         <select
@@ -108,13 +112,13 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
 
                 {
                     props.style.template === 'Hexagons' ?
-                    <div className={cx(Styles.styleEdit)}>
+                    <div className={styleEdit}>
                         <h6>Hexagons Template Options</h6>
                     </div>
                     : null
                 }
 
-                <div className={cx(Styles.styleEdit)}>
+                <div className={styleEdit}>
                     <RadioGroup
                         className={cx(Styles.radioGroup)}
                         label='Image Style'
@@ -125,7 +129,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     </RadioGroup>
                 </div>
 
-                <div className={cx(Styles.styleEdit)}>
+                <div className={styleEdit}>
                     <RadioGroup
                         className={cx(Styles.radioGroup)}
                         label='Item Style'
@@ -136,7 +140,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     </RadioGroup>
                 </div>
 
-                <div className={cx(Styles.styleEdit)}>
+                <div className={styleEdit}>
                     <label className='pt-label pt-inline'>Result Dimensions</label>
                     <input
                         name='resultWidth'
@@ -158,7 +162,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         step='10'
                     />
                 </div>
-                <div className={cx(Styles.styleEdit)}>
+                <div className={styleEdit}>
                     <label className='pt-label pt-inline'>Background color</label>
                     <ColorEdit
                         onChange={e => editEvent(e, props)}
@@ -167,7 +171,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     />
                 </div>
 
-                <div className={cx(Styles.styleEdit)}>
+                <div className={styleEdit}>
                     <label className='pt-label pt-inline'>Header color</label>
                     <ColorEdit
                         name='topHeaderColor'
@@ -176,7 +180,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     />
                 </div>
 
-                <div className={cx(Styles.styleEdit)}>
+                <div className={styleEdit}>
                     <label className='pt-label pt-inline'>Background Image</label>
                     <input
                         value={props.style.backgroundImage}
@@ -203,7 +207,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     />
                 </div>
 
-                <div className={cx(Styles.styleEdit)}>
+                <div className={styleEdit}>
                     <RadioGroup
                         className={cx(Styles.radioGroup)}
                         label='Moves Position'
@@ -214,7 +218,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     </RadioGroup>
                 </div>
 
-                <div className={cx(Styles.styleEdit)}>
+                <div className={styleEdit}>
                     <RadioGroup
                         className={cx(Styles.radioGroup)}
                         label='Team Images'
@@ -225,7 +229,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     </RadioGroup>
                 </div>
 
-                <div className={cx(Styles.styleEdit)}>
+                <div className={styleEdit}>
                     <Checkbox
                         checked={props.style.teamPokemonBorder}
                         name='teamPokemonBorder'
@@ -240,7 +244,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     />
                 </div>
 
-                <div className={cx(Styles.styleEdit)}>
+                <div className={styleEdit}>
                     <Checkbox
                         checked={props.style.showPokemonMoves}
                         name='showPokemonMoves'
@@ -255,7 +259,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     />
                 </div>
 
-                <div className={cx(Styles.styleEdit)}>
+                <div className={styleEdit}>
                     <Checkbox
                         checked={props.style.minimalTeamLayout}
                         name='minimalTeamLayout'
@@ -270,7 +274,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     />
                 </div>
 
-                <div className={cx(Styles.styleEdit)}>
+                <div className={styleEdit}>
                     <Checkbox
                         checked={props.style.displayBadges}
                         name='displayBadges'
@@ -285,7 +289,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     />
                 </div>
 
-                <div className={cx(Styles.styleEdit)}>
+                <div className={styleEdit}>
                     <Checkbox
                         checked={props.style.displayRules}
                         name='displayRules'
@@ -300,7 +304,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     />
                 </div>
 
-                <div className={cx(Styles.styleEdit)}>
+                <div className={styleEdit}>
                     <Checkbox
                         checked={props.style.oldMetLocationFormat}
                         name='oldMetLocationFormat'
@@ -315,7 +319,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     />
                 </div>
 
-                <div className={cx(Styles.styleEdit)}>
+                <div className={styleEdit}>
                     <Checkbox
                         checked={props.style.grayScaleDeadPokemon}
                         name='grayScaleDeadPokemon'
@@ -330,7 +334,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     />
                 </div>
 
-                <div className={cx(Styles.styleEdit)}>
+                <div className={styleEdit}>
                     <Checkbox
                         checked={props.style.spritesMode}
                         name='spritesMode'
@@ -345,7 +349,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     />
                 </div>
 
-                <div className={cx(Styles.styleEdit)}>
+                <div className={styleEdit}>
                     <Checkbox
                         checked={props.style.scaleSprites}
                         name='scaleSprites'

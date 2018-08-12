@@ -5,11 +5,11 @@ import { reducers } from 'reducers';
 
 import * as css from './styles';
 import { Pokemon } from 'models';
-import { Styles, generateEmptyPokemon, listOfThemes } from 'utils';
+import { Styles, generateEmptyPokemon, listOfThemes, classWithDarkTheme } from 'utils';
 import { Button, ITreeNode, Tree, Classes, Menu, MenuItem } from '@blueprintjs/core';
 import { BoxedPokemon } from '../BoxedPokemon';
 import { ColorEdit, ThemeSelect } from 'components/Shared';
-import { TeamPokemon } from '../TeamPokemon';
+import { ChampsPokemon } from 'components';
 
 const modelPokemon: Pokemon = {
     ...generateEmptyPokemon(),
@@ -90,6 +90,18 @@ const componentTree: ITreeNode[] = [
         ]
     },
     {
+        id: 12,
+        icon: 'style',
+        isExpanded: true,
+        label: 'Champs Pokemon',
+        childNodes: [
+            {
+                id: 11,
+                label: 'PokemonIcon',
+            }
+        ]
+    },
+    {
         id: 420,
         label: 'Custom CSS',
     }
@@ -162,7 +174,7 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
         }
         return (
             <>
-                <div className={cx(css.header)}><strong>Current Theme:</strong> <ThemeSelect theme={this.props.style.template} /></div>
+                <div className={cx(classWithDarkTheme(css, 'header', this.props.style.editorDarkMode))}><strong>Current Theme:</strong> <ThemeSelect theme={this.props.style.template} /></div>
                 <div className={cx(css.main)}>
                     <div className={cx(css.sidebar)}>
                         <label style={{ display: 'flex' }} className={Classes.LABEL}>
@@ -177,11 +189,11 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
                         />
                     </div>
                     <div className={cx(css.componentView)}>
-                        <div className={cx(this.props.style.template.toLowerCase(), css.componentResult)}>
+                        <div className={cx(this.props.style.template.toLowerCase(), classWithDarkTheme(css, 'componentResult', this.props.style.editorDarkMode ))}>
                             {/* <BoxedPokemon
                                 {...modelPokemon}
                             /> */}
-                            <TeamPokemon pokemon={modelPokemon} />
+                            <ChampsPokemon {...modelPokemon} />
                         </div>
                         <div className={cx(css.componentOptions)}>
                             <strong>{ this.getCurrentNode() == null ? '' : this.getCurrentNode().label} Options</strong>

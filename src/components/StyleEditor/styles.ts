@@ -26,6 +26,7 @@ export const colorInput = css`
     }
 `;
 
+
 export const colorEditWrapper = css`
     align-items: center;
     display: flex;
@@ -37,7 +38,7 @@ export const colorEditWrapper = css`
 export const styleEdit = css`
     align-items: center;
     align-content: center;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #ddd;
     display: flex;
     padding: .5rem;
     width: 100%;

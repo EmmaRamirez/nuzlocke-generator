@@ -1,8 +1,17 @@
 import * as React from 'react';
 import * as Styles from 'components/StyleEditor/styles';
-import { cx } from 'emotion';
+import { cx, css } from 'emotion';
+import { connect } from 'react-redux';
+import { classWithDarkTheme } from 'utils';
 
-export const ColorEdit = ({ value, onChange, name }) => {
+export interface ColorEditProps {
+    value?: any;
+    onChange: any;
+    name: any;
+    style: any;
+}
+
+export const ColorEditBase: React.SFC<ColorEditProps> = ({ value, onChange, name, style }) => {
     return (
         <div className={cx(Styles.colorEditWrapper)}>
             <input
@@ -16,10 +25,12 @@ export const ColorEdit = ({ value, onChange, name }) => {
                 style={{ border: 'none' }}
                 onChange={onChange}
                 type='text'
-                className='color-text-input'
+                className={cx(classWithDarkTheme(Styles, 'colorTextInput', style.editorDarkMode))}
                 name={name}
                 value={value}
             />
         </div>
     );
 };
+
+export const ColorEdit: any = connect((state: any) => ({ style: state.style }), null)(ColorEditBase as any);
