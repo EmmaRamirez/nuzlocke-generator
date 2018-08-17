@@ -9,6 +9,7 @@ export enum GenderTransformType {
 
 export const handleSignificantGenderDifference = (species: string, gender: GenderElementProps, type: GenderTransformType) => {
     const significantGenderDifferenceList = [
+        'Hippowdon',
         'Unfeazant',
         'Frillish',
         'Jellicent',

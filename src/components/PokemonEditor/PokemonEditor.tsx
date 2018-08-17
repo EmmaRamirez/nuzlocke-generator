@@ -33,11 +33,12 @@ export const Box = ({
         <div className={`box ${tabTitle}-box`}>
             {/* <LinkedTabTitle boxId={boxId} title={tabTitle} /> */}
             <span style={{
-                background: '#222',
-                borderRadius: '.25rem',
+                alignItems: 'center',
+                background: 'linear-gradient(to right, #111, transparent)',
                 color: '#eee',
-                display: 'inline-block',
-                margin: '.25rem',
+                display: 'inline-flex',
+                minHeight: '3rem',
+                justifyContent: 'center',
                 padding: '.25rem',
                 textAlign: 'center',
                 width: '4rem',

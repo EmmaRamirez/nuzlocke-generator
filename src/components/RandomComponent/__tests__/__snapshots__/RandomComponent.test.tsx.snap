@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RandomComponentBase /> renders the clicks section 1`] = `
+<div
+  className="clicks css-14ghush"
+>
+  0
+</div>
+`;

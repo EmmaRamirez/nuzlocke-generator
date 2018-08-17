@@ -10,6 +10,7 @@ import { getBackgroundGradient,
     } from 'utils';
 import { GenderElement } from 'components/Shared';
 import { selectPokemon } from 'actions';
+import { reducers } from 'reducers';
 
 
 const getMetLocationString = ({ poke, oldMetLocationFormat }: { poke: Pokemon, oldMetLocationFormat: boolean }):string | null => {
@@ -252,7 +253,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
 }
 
 export const TeamPokemon = connect(
-    (state: any) => ({
+    (state: Partial<typeof reducers>) => ({
         style: state.style,
         game: state.game,
     }),
