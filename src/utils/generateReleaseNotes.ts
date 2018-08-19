@@ -213,6 +213,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Fightinium Z now works
 - Farfetch'd is valid again, alongside any Pokémon with weird names
 - Scale sprites option now works properly
+- Margin should no longer affect result downloads
 
 ## Known Issues
 - Downloading images will fail if you have cross-origin (i.e. Sugimori or custom) images

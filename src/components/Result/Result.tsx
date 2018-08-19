@@ -38,6 +38,7 @@ interface ResultProps {
 }
 
 interface ResultState {
+    isDownloading: boolean;
     downloadError: string | null;
 }
 
@@ -47,6 +48,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         super(props);
         this.resultRef = React.createRef();
         this.state = {
+            isDownloading: false,
             downloadError: null
         };
     }
@@ -215,16 +217,18 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
 
     private async toImage() {
         const resultNode = this.resultRef.current;
+        this.setState({ isDownloading: true });
         try {
             const dataUrl = await domtoimage.toPng(resultNode);
             const link = document.createElement('a');
             link.download = `nuzlocke-${uuid()}.png`;
             link.href = dataUrl;
             link.click();
-            this.setState({ downloadError: null });
+            this.setState({ downloadError: null, isDownloading: false });
         } catch (e) {
             this.setState({
-                downloadError: 'Failed to download. This is likely due to your image containing an image resource that does not allow Cross-Origin'
+                downloadError: 'Failed to download. This is likely due to your image containing an image resource that does not allow Cross-Origin',
+                isDownloading: false,
             });
         }
     }
@@ -250,7 +254,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         style.template.toLowerCase().replace(/\s/g, '-')) ||
                         ''} region-${getGameRegion(this.props.game.name)} team-size-${numberOfTeam}`}
                     style={{
-                        margin: '3rem auto',
+                        margin: this.state.isDownloading ? '0' : '3rem auto',
                         backgroundColor: bgColor,
                         backgroundImage: `url(${style.backgroundImage})`,
                         backgroundRepeat: style.tileBackground ? 'repeat' : 'no-repeat',
