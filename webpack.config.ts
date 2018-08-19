@@ -1,9 +1,9 @@
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
-const OfflinePlugin = require('offline-plugin');
 const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+//const OfflinePlugin = require('offline-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production' ? true : false;
 
@@ -112,9 +112,9 @@ module.exports = {
             filename: './dist/react-lodable.json'
         }),
 
-        new OfflinePlugin({
-            excludes: ['**/*.js', '*.js']
-        })
+        // new OfflinePlugin({
+        //     excludes: ['**/*.js', '*.js']
+        // })
     ],
     externals: {
         fs: {},
