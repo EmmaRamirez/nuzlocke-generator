@@ -20109,7 +20109,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".pt-light .release-notes {\n  background: #fafafa;\n}\n\n.release-notes-wrapper .release-notes {\n  margin: 0.5rem;\n  padding: 1rem;\n}\n\n.release-notes-wrapper h1,\n.release-notes-wrapper h2,\n.release-notes-wrapper h3,\n.release-notes-wrapper h4 {\n  color: #333;\n}\n\n.release-notes-wrapper h1 {\n  font-size: 1.5rem !important;\n}\n\n.release-notes-wrapper h2 {\n  margin-top: 0.5rem;\n  font-size: 1.2rem !important;\n}\n\n.release-notes-wrapper h3 {\n  text-transform: uppercase;\n  margin: 0.5rem;\n  letter-spacing: 4px;\n  text-align: center;\n}\n\n.release-notes-wrapper p {\n  line-height: 1.4;\n  margin-top: 0.5rem;\n  display: flex;\n}\n\n.release-notes-wrapper p img {\n  max-height: 15rem;\n  margin: 0 auto;\n  max-width: 100%;\n}\n\n.release-notes-wrapper a {\n  margin-left: 4px;\n}\n\n.pt-dark .release-dialog h1,\n.pt-dark .release-dialog h2,\n.pt-dark .release-dialog h3,\n.pt-dark .release-dialog h4 {\n  color: #fff !important;\n}\n\n.release-dialog {\n  width: 620px !important;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable {\n  color: unset;\n}\n\n", ""]);
+exports.push([module.i, ".pt-light .release-notes {\n  background: #fafafa;\n}\n\n.release-notes-wrapper .release-notes {\n  margin: 0.5rem;\n  padding: 1rem;\n}\n\n.release-notes-wrapper h1 {\n  font-size: 1.5rem !important;\n}\n\n.release-notes-wrapper h2 {\n  margin-top: 0.5rem;\n  font-size: 1.2rem !important;\n}\n\n.release-notes-wrapper p {\n  line-height: 1.4;\n  margin-top: 0.5rem;\n  display: flex;\n}\n\n.release-notes-wrapper p img {\n  max-height: 15rem;\n  margin: 0 auto;\n  max-width: 100%;\n}\n\n.release-notes-wrapper a {\n  margin-left: 4px;\n}\n\n.pt-dark .release-dialog h1,\n.pt-dark .release-dialog h2,\n.pt-dark .release-dialog h3,\n.pt-dark .release-dialog h4 {\n  color: #fff !important;\n}\n\n.release-dialog {\n  width: 620px !important;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable {\n  color: unset;\n}\n\n", ""]);
 
 // exports
 
@@ -20128,7 +20128,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".editor {\n  border: 1px solid #eee;\n  height: 100vh;\n  overflow-y: scroll;\n  padding: 0.25rem;\n  width: 90%;\n}\n\n.editor.pt-dark {\n  border: 1px solid #000;\n}\n\n.editor:hover {\n  box-shadow: 0 0 4px #eee;\n}\n\n.pt-select select {\n  width: 100%;\n}\n\n.game-editor,\n.trainer-editor,\n.pokemon-editor,\n.style-editor,\n.hotkeys-editor {\n  padding: 0.3rem;\n}\n\n.base-editor {\n  border: 1px solid #fafafa;\n  border-top: 0 solid transparent !important;\n}\n\n.pt-dark .base-editor {\n  border: 1px solid #111;\n}\n\n.trainer-info-field {\n  align-items: center;\n  border-bottom: 1px solid #ddd;\n  display: flex;\n  justify-content: space-between;\n}\n\n.trainer-info-field input {\n  background: inherit;\n  border: 0 solid transparent;\n  border-left: 1px solid #eee;\n  border-radius: 2px;\n  color: inherit;\n  padding: 0.25rem;\n}\n\n.pt-dark .trainer-info-field {\n  border-bottom: 1px solid #394b59;\n}\n\n.pt-dark .trainer-info-field input {\n  border-left: 1px solid #394b59;\n}\n\n.tab.Dead-tab {\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/dead-box.png */ "./src/assets/img/dead-box.png") + ");\n}\n\n.tab.Champs-tab {\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/champs-box.png */ "./src/assets/img/champs-box.png") + ");\n}\n\n.tab.Boxed-tab {\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/boxed-box.png */ "./src/assets/img/boxed-box.png") + ");\n}\n\n.box-wrapper {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.box-wrapper .tab {\n  margin: 2px;\n}\n\n.pokemon-tab {\n  display: flex;\n  justify-content: center;\n}\n\n.current-pokemon {\n  border: 1px solid #ddd;\n  border-radius: 0.25rem;\n  margin: 0.25rem;\n  padding: 0.25rem;\n}\n\n.pt-dark .current-pokemon {\n  border: 1px solid #000;\n}\n\n.current-pokemon-header {\n  align-items: center;\n  display: flex;\n  justify-content: flex-start;\n}\n\n.current-pokemon-image {\n  padding: 0.25rem;\n  border: 1px solid #ccc;\n  border-radius: 50%;\n  height: 3rem;\n}\n\n.pt-dark .current-pokemon-image {\n  border: none;\n  background: #394b59;\n}\n\n.current-pokemon-input-wrapper {\n  display: inline-flex;\n  flex-direction: column;\n  padding: 0.25rem;\n  width: 11rem;\n}\n\n.current-pokemon-input-wrapper label {\n  font-size: 10px;\n}\n\n.current-pokemon-input-wrapper input {\n  border: 1px solid #eee;\n  padding: 0.25rem;\n}\n\n.current-pokemon-checkbox {\n  display: inline-flex;\n  flex-flow: row-reverse;\n  justify-content: flex-end;\n  width: 5rem;\n  transform: translateY(1rem);\n}\n\n.pt-dark .current-pokemon-input-wrapper input {\n  box-shadow: 0 0 0 0 rgba(19,124,189,0), 0 0 0 0 rgba(19,124,189,0), 0 0 0 0 rgba(19,124,189,0), inset 0 0 0 1px rgba(16,22,26,0.3), inset 0 1px 1px rgba(16,22,26,0.4);\n  background: rgba(16,22,26,0.3);\n  border: none;\n  color: #f5f8fa;\n}\n\n.pt-input-ghost {\n  border: 0 !important;\n  width: 0 !important;\n  flex: auto;\n}\n\n.small-input {\n  width: 5rem;\n}\n\n.current-pokemon-gender {\n  width: 6rem;\n}\n\n.current-pokemon-status {\n  width: 5.5rem;\n}\n\n.current-pokemon-moves {\n  width: 25rem;\n}\n\n.current-pokemon-nature {\n  width: 6.5rem;\n}\n\n.double-select-wrapper {\n  display: flex;\n}\n\n.status-wrapper {\n  display: inline-flex;\n  flex-flow: column;\n  padding: 0.25rem;\n  width: 30%;\n  vertical-align: top;\n}\n\n.status-wrapper span {\n  font-size: 10px;\n  width: 100%;\n}\n\ninput[name='metLevel'] {\n  color: #ccc;\n}\n\n.pt-dialog.wide-dialog {\n  width: 90% !important;\n}\n\n.has-nice-scrollbars::-webkit-scrollbar {\n  width: 5px;\n  height: 8px;\n  border-radius: 2px;\n  background-color: #fff;\n}\n\n.has-nice-scrollbars::-webkit-scrollbar-thumb {\n  background: #aaa;\n}\n\n.no-pokemon-selected {\n  display: flex;\n  align-items: center;\n  padding: 0.5rem;\n}\n\n.no-pokemon-selected p {\n  margin: 0.25rem;\n  padding-left: 0.25rem;\n}\n\n.box {\n  border-radius: 0.25rem;\n  padding: 0.25rem;\n  margin: 0.25rem;\n  display: flex;\n  align-items: center;\n  background-position: center;\n  flex-wrap: wrap;\n}\n\n.box .pokemon-icon {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 40px;\n  width: 40px;\n}\n\n.box .pokemon-icon img,\n.box .pokemon-icon {\n  cursor: pointer;\n  border: 1px solid transparent;\n  transition: 500ms all;\n}\n\n.box .pokemon-icon.selected {\n  border-radius: 50%;\n  background: rgba(0,0,0,0.33);\n  transition: 500ms all;\n}\n\n.pt-dark .box {\n  box-shadow: 0 0 0.25rem #000;\n}\n\n.Team-box {\n  background: #15db72;\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/team-box-body.png */ "./src/assets/img/team-box-body.png") + ");\n}\n\n.Boxed-box {\n  background: #1184d6;\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/boxed-box.png */ "./src/assets/img/boxed-box.png") + ");\n}\n\n.Dead-box {\n  background: #ce1831;\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/dead-box.png */ "./src/assets/img/dead-box.png") + ");\n}\n\n.Champs-box {\n  background: #e5db52;\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/champs-box.png */ "./src/assets/img/champs-box.png") + ");\n}\n\n", ""]);
+exports.push([module.i, ".editor {\n  border: 1px solid #eee;\n  height: 100vh;\n  overflow-y: scroll;\n  padding: 0.25rem;\n  width: 90%;\n}\n\n.editor.pt-dark {\n  border: 1px solid #000;\n}\n\n.editor:hover {\n  box-shadow: 0 0 4px #eee;\n}\n\n.pt-select select {\n  width: 100%;\n}\n\n.game-editor,\n.trainer-editor,\n.pokemon-editor,\n.style-editor,\n.hotkeys-editor {\n  padding: 0.3rem;\n}\n\n.base-editor {\n  border: 1px solid #fafafa;\n  border-top: 0 solid transparent !important;\n}\n\n.pt-dark .base-editor {\n  border: 1px solid #111;\n}\n\n.trainer-info-field {\n  align-items: center;\n  border-bottom: 1px solid #ddd;\n  display: flex;\n  justify-content: space-between;\n}\n\n.trainer-info-field input {\n  background: inherit;\n  border: 0 solid transparent;\n  border-left: 1px solid #eee;\n  border-radius: 2px;\n  color: inherit;\n  padding: 0.25rem;\n}\n\n.pt-dark .trainer-info-field {\n  border-bottom: 1px solid #394b59;\n}\n\n.pt-dark .trainer-info-field input {\n  border-left: 1px solid #394b59;\n}\n\n.box-wrapper {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.box-wrapper .tab {\n  margin: 2px;\n}\n\n.pokemon-tab {\n  display: flex;\n  justify-content: center;\n}\n\n.current-pokemon {\n  border: 1px solid #ddd;\n  border-radius: 0.25rem;\n  margin: 0.25rem;\n  padding: 0.25rem;\n}\n\n.pt-dark .current-pokemon {\n  border: 1px solid #000;\n}\n\n.current-pokemon-header {\n  align-items: center;\n  display: flex;\n  justify-content: flex-start;\n}\n\n.current-pokemon-image {\n  padding: 0.25rem;\n  border: 1px solid #ccc;\n  border-radius: 50%;\n  height: 3rem;\n}\n\n.pt-dark .current-pokemon-image {\n  border: none;\n  background: #394b59;\n}\n\n.current-pokemon-input-wrapper {\n  display: inline-flex;\n  flex-direction: column;\n  padding: 0.25rem;\n  width: 11rem;\n}\n\n.current-pokemon-input-wrapper label {\n  font-size: 10px;\n}\n\n.current-pokemon-input-wrapper input {\n  border: 1px solid #eee;\n  padding: 0.25rem;\n}\n\n.current-pokemon-checkbox {\n  display: inline-flex;\n  flex-flow: row-reverse;\n  justify-content: flex-end;\n  width: 5rem;\n  transform: translateY(1rem);\n}\n\n.pt-dark .current-pokemon-input-wrapper input {\n  box-shadow: 0 0 0 0 rgba(19,124,189,0), 0 0 0 0 rgba(19,124,189,0), 0 0 0 0 rgba(19,124,189,0), inset 0 0 0 1px rgba(16,22,26,0.3), inset 0 1px 1px rgba(16,22,26,0.4);\n  background: rgba(16,22,26,0.3);\n  border: none;\n  color: #f5f8fa;\n}\n\n.pt-input-ghost {\n  border: 0 !important;\n  width: 0 !important;\n  flex: auto;\n}\n\n.small-input {\n  width: 5rem;\n}\n\n.current-pokemon-gender {\n  width: 6rem;\n}\n\n.current-pokemon-status {\n  width: 5.5rem;\n}\n\n.current-pokemon-moves {\n  width: 25rem;\n}\n\n.current-pokemon-nature {\n  width: 6.5rem;\n}\n\n.double-select-wrapper {\n  display: flex;\n}\n\n.status-wrapper {\n  display: inline-flex;\n  flex-flow: column;\n  padding: 0.25rem;\n  width: 30%;\n  vertical-align: top;\n}\n\n.status-wrapper span {\n  font-size: 10px;\n  width: 100%;\n}\n\ninput[name='metLevel'] {\n  color: #ccc;\n}\n\n.pt-dialog.wide-dialog {\n  width: 90% !important;\n}\n\n.has-nice-scrollbars::-webkit-scrollbar {\n  width: 5px;\n  height: 8px;\n  border-radius: 2px;\n  background-color: #fff;\n}\n\n.has-nice-scrollbars::-webkit-scrollbar-thumb {\n  background: #aaa;\n}\n\n.no-pokemon-selected {\n  display: flex;\n  align-items: center;\n  padding: 0.5rem;\n}\n\n.no-pokemon-selected p {\n  margin: 0.25rem;\n  padding-left: 0.25rem;\n}\n\n.box {\n  border-radius: 0.25rem;\n  padding: 0.25rem;\n  margin: 0.25rem;\n  display: flex;\n  align-items: center;\n  background-position: center;\n  flex-wrap: wrap;\n}\n\n.box .pokemon-icon {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 40px;\n  width: 40px;\n}\n\n.box .pokemon-icon img,\n.box .pokemon-icon {\n  cursor: pointer;\n  border: 1px solid transparent;\n  transition: 500ms all;\n}\n\n.box .pokemon-icon.selected {\n  border-radius: 50%;\n  background: rgba(0,0,0,0.33);\n  transition: 500ms all;\n}\n\n.pt-dark .box {\n  box-shadow: 0 0 0.25rem #000;\n}\n\n.Team-box {\n  background: #15db72;\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/team-box-body.png */ "./src/assets/img/team-box-body.png") + ");\n}\n\n.Boxed-box {\n  background: #1184d6;\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/boxed-box.png */ "./src/assets/img/boxed-box.png") + ");\n}\n\n.Dead-box {\n  background: #ce1831;\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/dead-box.png */ "./src/assets/img/dead-box.png") + ");\n}\n\n.Champs-box {\n  background: #e5db52;\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/champs-box.png */ "./src/assets/img/champs-box.png") + ");\n}\n\n", ""]);
 
 // exports
 
@@ -50413,7 +50413,7 @@ function extend() {
 /*! exports provided: name, version, description, main, scripts, engines, keywords, author, license, dependencies, devDependencies, default */
 /***/ (function(module) {
 
-module.exports = {"name":"nuzlocke-generator","version":"0.0.10-beta","description":"A tool for generating nuzlocke team pics from data","main":"index.js","scripts":{"cosmos":"cosmos","cosmos:export":"cosmos-export","test":"jest --coverage --config jest-config.json","prebuild":"npm run lint","build":"webpack","build:production":"webpack","build:watch":"webpack --watch","clean":"rimraf dist","pretest":"npm run lint","format":"prettier --config .prettierrc --write **/**/*.{ts,tsx} && npm run lint","lint":"tslint --fix -c tslint.json 'src/**/*.{ts,tsx}'","serve":"webpack-serve","serve:heroku":"npm run build:production && heroku local web","deploy":"npm run build && git push heroku master","precommit":"npm run lint","docz":"docz dev","prepush":"ts-node imageCheck.ts && npm run build:production && git add . && git commit --no-verify -m 'chore: update build'"},"engines":{"node":"8.9.0","npm":"6.1.0"},"keywords":[],"author":"Emma Ramirez <ramirez.emma.g@gmail.com> (http://emmaramirez.me)","license":"MIT","dependencies":{"babel-plugin-module-resolver":"^3.1.1","docz":"^0.8.0","docz-plugin-css":"^0.8.0","html-webpack-plugin":"^3.2.0","redux-mock-store":"^1.5.3"},"devDependencies":{"@blueprintjs/core":"^2.0.0","@blueprintjs/icons":"^2.0.0","@blueprintjs/table":"^2.0.0","@types/chai":"^4.0.10","@types/enzyme":"^2.8.12","@types/express":"^4.11.0","@types/jest":"^23.1.4","@types/lodash":"^4.14.91","@types/mocha":"^2.2.45","@types/node":"^8.5.2","@types/pure-render-decorator":"^0.2.28","@types/react":"^16.4.6","@types/react-addons-css-transition-group":"^15.0.3","@types/react-dom":"^16.0.6","@types/react-redux":"^5.0.14","@types/react-router":"^4.0.20","@types/react-router-dom":"^4.2.3","@types/react-router-redux":"^5.0.11","@types/redux-logger":"^3.0.5","chai":"^4.1.2","cheerio":"^1.0.0-rc.2","copy-webpack-plugin":"^4.5.2","coveralls":"^3.0.2","css-loader":"^0.28.7","dom-to-image":"git+https://github.com/Keepsite/dom-to-image.git","emotion":"^8.0.12","enzyme":"^3.3.0","enzyme-adapter-react-16":"^1.1.1","file-loader":"^1.1.11","history":"^4.7.2","husky":"^1.0.0-rc.12","imports-loader":"^0.7.1","istanbul":"^0.4.5","jest":"^23.3.0","jest-css-modules":"^1.1.0","jest-enzyme":"^4.0.2","localforage":"^1.5.5","lodash":"^4.17.10","mocha":"^5.2.0","node-sass":"^4.9.0","offline-plugin":"^5.0.5","pokemon-savefile-parser":"^0.2.1","prettier":"^1.10.2","prop-types":"^15.6.0","pure-render-decorator":"^1.2.1","react":"^16.4.1","react-addons-css-transition-group":"^15.6.2","react-addons-test-utils":"^15.6.2","react-custom-scrollbars":"^4.2.1","react-docgen-typescript":"^1.2.0","react-dom":"^16.4.1","react-emotion":"^9.2.6","react-hot-loader":"^3.1.3","react-loadable":"^5.4.0","react-markdown":"^3.1.5","react-polyfills":"0.0.1","react-redux":"^5.0.6","react-router":"^4.2.0","react-router-dom":"^4.2.2","react-router-redux":"^5.0.0-alpha.9","react-styleguidist":"^6.1.0","react-test-renderer":"^15.6.2","react-transition-group":"^2.2.1","recompose":"^0.25.1","redux":"^3.7.2","redux-logger":"^3.0.6","redux-persist":"^5.4.0","redux-saga":"^0.15.6","redux-thunk":"^2.2.0","reflect-metadata":"^0.1.10","reselect":"^3.0.1","resolve-url-loader":"^2.3.0","rimraf":"^2.6.2","rollbar":"^2.4.2","rxjs":"^5.5.6","sass-loader":"^6.0.6","serviceworker-webpack-plugin":"^0.2.3","sinon":"^6.1.3","style-loader":"^0.18.2","stylus":"^0.54.5","stylus-loader":"^3.0.2","ts-jest":"^23.0.0","ts-loader":"^4.4.2","tslint":"^5.11.0","tslint-loader":"^3.6.0","tslint-microsoft-contrib":"^5.0.1","typescript":"^3.0.1","url-loader":"^1.0.1","uuid":"^3.1.0","webpack":"4.14.0","webpack-cli":"^3.0.8","webpack-dashboard":"^2.0.0","webpack-serve":"^1.0.4"}};
+module.exports = {"name":"nuzlocke-generator","version":"0.0.10-beta","description":"A tool for generating nuzlocke team pics from data","main":"index.js","scripts":{"cosmos":"cosmos","cosmos:export":"cosmos-export","test":"jest --coverage --config jest-config.json","prebuild":"npm run lint","build":"webpack","build:production":"webpack","build:watch":"webpack --watch","clean":"rimraf dist","pretest":"npm run lint","format":"prettier --config .prettierrc --write **/**/*.{ts,tsx} && npm run lint","lint":"tslint --fix -c tslint.json 'src/**/*.{ts,tsx}'","serve":"webpack-serve","serve:heroku":"npm run build:production && heroku local web","deploy":"npm run build && git push heroku master","precommit":"npm run lint","docz":"docz dev","prepush":"ts-node imageCheck.ts && npm run build:production && git add . && git commit --no-verify -m 'chore: update build'"},"engines":{"node":"8.9.0","npm":"6.1.0"},"keywords":[],"author":"Emma Ramirez <ramirez.emma.g@gmail.com> (http://emmaramirez.me)","license":"MIT","dependencies":{"babel-plugin-module-resolver":"^3.1.1","docz":"^0.8.0","docz-plugin-css":"^0.8.0","html-webpack-plugin":"^3.2.0","jest-emotion":"^9.2.7","redux-mock-store":"^1.5.3"},"devDependencies":{"@blueprintjs/core":"^2.0.0","@blueprintjs/icons":"^2.0.0","@blueprintjs/table":"^2.0.0","@types/chai":"^4.0.10","@types/enzyme":"^2.8.12","@types/express":"^4.11.0","@types/jest":"^23.1.4","@types/lodash":"^4.14.91","@types/mocha":"^2.2.45","@types/node":"^8.5.2","@types/pure-render-decorator":"^0.2.28","@types/react":"^16.4.6","@types/react-addons-css-transition-group":"^15.0.3","@types/react-dom":"^16.0.6","@types/react-redux":"^5.0.14","@types/react-router":"^4.0.20","@types/react-router-dom":"^4.2.3","@types/react-router-redux":"^5.0.11","@types/redux-logger":"^3.0.5","chai":"^4.1.2","cheerio":"^1.0.0-rc.2","copy-webpack-plugin":"^4.5.2","coveralls":"^3.0.2","css-loader":"^0.28.7","dom-to-image":"git+https://github.com/Keepsite/dom-to-image.git","emotion":"^8.0.12","enzyme":"^3.3.0","enzyme-adapter-react-16":"^1.1.1","file-loader":"^1.1.11","history":"^4.7.2","husky":"^1.0.0-rc.12","imports-loader":"^0.7.1","istanbul":"^0.4.5","jest":"^23.3.0","jest-css-modules":"^1.1.0","jest-enzyme":"^4.0.2","localforage":"^1.5.5","lodash":"^4.17.10","mocha":"^5.2.0","node-sass":"^4.9.0","offline-plugin":"^5.0.5","pokemon-savefile-parser":"^0.2.1","prettier":"^1.10.2","prop-types":"^15.6.0","pure-render-decorator":"^1.2.1","react":"^16.4.1","react-addons-css-transition-group":"^15.6.2","react-addons-test-utils":"^15.6.2","react-custom-scrollbars":"^4.2.1","react-docgen-typescript":"^1.2.0","react-dom":"^16.4.1","react-emotion":"^9.2.6","react-hot-loader":"^3.1.3","react-loadable":"^5.4.0","react-markdown":"^3.1.5","react-polyfills":"0.0.1","react-redux":"^5.0.6","react-router":"^4.2.0","react-router-dom":"^4.2.2","react-router-redux":"^5.0.0-alpha.9","react-styleguidist":"^6.1.0","react-test-renderer":"^15.6.2","react-transition-group":"^2.2.1","recompose":"^0.25.1","redux":"^3.7.2","redux-logger":"^3.0.6","redux-persist":"^5.4.0","redux-saga":"^0.15.6","redux-thunk":"^2.2.0","reflect-metadata":"^0.1.10","reselect":"^3.0.1","resolve-url-loader":"^2.3.0","rimraf":"^2.6.2","rollbar":"^2.4.2","rxjs":"^5.5.6","sass-loader":"^6.0.6","serviceworker-webpack-plugin":"^0.2.3","sinon":"^6.1.3","style-loader":"^0.18.2","stylus":"^0.54.5","stylus-loader":"^3.0.2","ts-jest":"^23.0.0","ts-loader":"^4.4.2","tslint":"^5.11.0","tslint-loader":"^3.6.0","tslint-microsoft-contrib":"^5.0.1","typescript":"^3.0.1","url-loader":"^1.0.1","uuid":"^3.1.0","webpack":"4.14.0","webpack-cli":"^3.0.8","webpack-dashboard":"^2.0.0","webpack-serve":"^1.0.4"}};
 
 /***/ }),
 
@@ -51623,6 +51623,7 @@ const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/rea
 const Shared_1 = __webpack_require__(/*! components/Shared */ "./src/components/Shared/index.ts");
 const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
 const actions_1 = __webpack_require__(/*! actions */ "./src/actions/index.ts");
+const PokemonIcon_1 = __webpack_require__(/*! components/PokemonIcon */ "./src/components/PokemonIcon/index.ts");
 exports.DeadPokemonBase = (poke) => {
     const style = poke.style;
     const addForme = (species) => {
@@ -51638,7 +51639,7 @@ exports.DeadPokemonBase = (poke) => {
     };
     const getClassname = () => poke.champion ? 'dead-pokemon-container champion' : 'dead-pokemon-container';
     return (React.createElement("div", { className: getClassname(), "data-league": poke.champion },
-        React.createElement("div", { role: 'presentation', onClick: e => poke.selectPokemon(poke.id), className: `dead-pokemon-picture ${poke.style.spritesMode ? 'sprites-mode' : ''}`, style: {
+        style.template !== 'Generations' ? React.createElement("div", { role: 'presentation', onClick: e => poke.selectPokemon(poke.id), className: `dead-pokemon-picture ${poke.style.spritesMode ? 'sprites-mode' : ''}`, style: {
                 backgroundImage: utils_1.getPokemonImage({
                     customImage: poke.customImage,
                     forme: poke.forme,
@@ -51647,7 +51648,10 @@ exports.DeadPokemonBase = (poke) => {
                     name: poke.game.name,
                 }),
                 filter: style.grayScaleDeadPokemon ? 'grayscale(100%)' : 'none',
-            } }),
+            } })
+            :
+                React.createElement("span", { style: { filter: 'grayscale(100%)' } },
+                    React.createElement(PokemonIcon_1.PokemonIconBase, Object.assign({}, poke))),
         React.createElement("div", { className: 'dead-pokemon-info' },
             React.createElement("div", { className: 'pokemon-d-nickname' },
                 poke.nickname,
@@ -52142,7 +52146,7 @@ const core_1 = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blu
 const actions_2 = __webpack_require__(/*! actions */ "./src/actions/index.ts");
 const pokeball = __webpack_require__(/*! assets/pokeball.png */ "./src/assets/pokeball.png");
 exports.CopyPokemonButton = ({ onClick }) => {
-    return (React.createElement(core_1.Popover, { interactionKind: core_1.PopoverInteractionKind.HOVER, position: core_1.Position.TOP, content: `Delete Pok${utils_2.accentedE}mon` },
+    return (React.createElement(core_1.Popover, { interactionKind: core_1.PopoverInteractionKind.HOVER, position: core_1.Position.TOP, content: `Copy Pok${utils_2.accentedE}mon` },
         React.createElement(core_1.Icon, { title: 'Copy Pokemon', icon: 'duplicate', className: emotion_1.cx(Styles.copyButton), onClick: onClick })));
 };
 class CurrentPokemonEditBase extends React.Component {
@@ -52518,10 +52522,13 @@ exports.Box = ({ pokemon, tabTitle, boxId, filterString, }) => {
     const filter = filterString === 'All' ? null : filterString;
     return (React.createElement("div", { className: `box ${tabTitle}-box` },
         React.createElement("span", { style: {
-                background: '#222',
+                alignItems: 'center',
+                background: 'rgba(33, 33, 33, 0.33)',
                 borderRadius: '.25rem',
                 color: '#eee',
-                display: 'inline-block',
+                display: 'inline-flex',
+                minHeight: '2rem',
+                justifyContent: 'center',
                 margin: '.25rem',
                 padding: '.25rem',
                 textAlign: 'center',
@@ -52961,6 +52968,239 @@ exports.Result = react_redux_1.connect((state) => ({
 Object.defineProperty(exports, "__esModule", { value: true });
 var Result_1 = __webpack_require__(/*! ./Result */ "./src/components/Result/Result.tsx");
 exports.Result = Result_1.Result;
+
+
+/***/ }),
+
+/***/ "./src/components/Result/styles.ts":
+/*!*****************************************!*\
+  !*** ./src/components/Result/styles.ts ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const emotion_1 = __webpack_require__(/*! emotion */ "./node_modules/emotion/dist/index.es.js");
+exports.topBar = emotion_1.css `
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.33);
+    color: #111;
+    display: flex;
+    font-size: 1.15rem;
+    justify-content: center;
+    padding: .5rem;
+`;
+exports.topBar_dark = emotion_1.css `
+    background: #222;
+    color: #fff !important;
+    button {
+        color: #fff !important;
+    }
+`;
+exports.heading = emotion_1.css `
+    align-items: center;
+    color: #111;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 4px;
+    margin: 0.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+`;
+exports.heading_dark = emotion_1.css `
+    color: #eee;
+`;
+exports.container = emotion_1.css `
+    border: 1px solid #111;
+    height: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    padding-bottom: .5rem;
+    position: relative;
+    width: 100%;
+`;
+exports.h3 = emotion_1.css `
+    color: #eee;
+    letter-spacing: 4px;
+    margin: .5rem;
+    text-align: center;
+    text-transform: uppercase;
+`;
+exports.callout_dark = emotion_1.css `
+    color: white;
+`;
+exports.resultNotes = emotion_1.css `
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: .5rem;
+    text-align: center;
+`;
+exports.genderColorFemale = emotion_1.css `
+    color: pink;
+`;
+exports.genderColorMale = emotion_1.css `
+    color: lightblue;
+`;
+exports.pokemonContainer = emotion_1.css `
+    display: inline-block;
+    padding: 1rem;
+    position: relative;
+`;
+exports.trainerContainer = emotion_1.css `
+    background-position: top left, bottom left;
+    background-size: cover, 50% auto;
+    background: #333;
+    border-bottom: 1px solid #000;
+    color: #eee;
+    padding: .25rem;
+    width: 100%;
+`;
+exports.trainerImage = emotion_1.css `
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+`;
+exports.trainerWrapper = emotion_1.css `
+    align-content: center;
+    align-items: center;
+    display: flex;
+`;
+exports.nuzlockeTitle = emotion_1.css `
+    display: inline-flex;
+    font-size: 1.5rem;
+    font-weight: light;
+`;
+exports.badgeWrapper = emotion_1.css `
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: 1rem;
+    width: 216px;
+
+    img {
+        height: 1.5rem;
+    }
+`;
+exports.move = emotion_1.css `
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    color: #222;
+    font-size: .9rem;
+    height: 1.7rem;
+    margin: .25rem;
+    padding: 0;
+    text-align: center;
+    &.long-text-move {
+        font-size: .7rem;
+    }
+`;
+exports.pokemonNickname = emotion_1.css `
+    font-size: 1.5rem;
+`;
+exports.pokemonShiny = emotion_1.css `
+    background: #eee;
+    border-radius: 50%;
+    border: 2px solid white;
+    height: 2rem;
+    width: 2rem;
+    padding-top: .2rem;
+    padding-left: .5rem;
+    position: absolute;
+    left: 7rem;
+    top: 1rem;
+`;
+exports.square = emotion_1.css `
+    border-radius: 50%;
+    display: inline-block;
+    height: 8rem;
+    width: 8rem;
+    padding: .25rem;
+    position: relative;
+    z-index: 10;
+`;
+exports.round = emotion_1.css `
+    display: inline-block;
+    height: 8rem;
+    width: 8rem;
+    padding: .25rem;
+    position: relative;
+    z-index: 10;
+`;
+exports.pokemonImage = emotion_1.css `
+    background-size: cover;
+    background-position: center center;
+    display: inline-block;
+    height: 7.5rem;
+    width: 7.5rem;
+    &.square {
+
+    }
+    &.round {
+        border-radius: 50%;
+    }
+`;
+exports.isSprite = emotion_1.css `
+    background-size: auto;
+    background-repeat: no-repeat;
+`;
+exports.pokemonItem = emotion_1.css `
+    background: #111;
+    border: 5px solid white;
+    bottom: 0;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 12px;
+    padding: .5rem;
+    position: absolute;
+    width: 3rem;
+    z-index: 10;
+    &.round {
+        border-radius: 50%;
+    }
+    &.square {
+        border-radius: 0;
+    }
+`;
+exports.minimal = emotion_1.css `
+    min-width: 17rem;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+`;
+exports.minimalPokemonInfo = emotion_1.css `
+    background: transparent;
+    display: flex;
+    padding: 0;
+    height: auto;
+    width: auto;
+    margin-left: 0;
+`;
+exports.pokemonInfo = emotion_1.css `
+    border-radius: 0 4px 4px 0;
+    display: inline-block;
+    background: #111;
+    height: auto;
+    min-height: 8rem;
+    margin-left: -4rem;
+    position: relative;
+    width: 26rem;
+    vertical-align: top;
+    filter: drop-shadow(0 0 1px #111);
+    padding-left: 4rem;
+    border-radius: .25rem;
+    overflow: hidden;
+    span {
+        margin: 0 .25rem;
+    }
+`;
 
 
 /***/ }),
@@ -53716,7 +53956,7 @@ class TeamPokemonInfo extends React.PureComponent {
                     " nature")) : null,
                 pokemon.ability ? React.createElement("div", { className: 'pokemon-ability' }, pokemon.ability) : null),
             style.showPokemonMoves ?
-                React.createElement(Moves, { moves: pokemon.moves, movesPosition: style.movesPosition })
+                React.createElement(Moves, { generation: this.props.generation, moves: pokemon.moves, movesPosition: style.movesPosition })
                 : null));
     }
 }
@@ -53746,7 +53986,7 @@ class Moves extends React.Component {
     generateMoves(moves) {
         return moves && moves.map((move, index) => {
             move = move.trim();
-            const type = utils_1.getMoveType(move);
+            const type = utils_1.handleMovesGenerationsExceptions({ move: move, generation: this.props.generation, originalType: utils_1.getMoveType(move) });
             return (React.createElement("div", { key: index, className: `move ${type}-type ${move.length >= 12 ? 'long-text-move' : ''}` }, move));
         });
     }
@@ -53826,7 +54066,7 @@ class TeamPokemonBase extends React.Component {
                 React.createElement("img", { alt: poke.item, src: `icons/hold-item/${(poke.item || '')
                         .toLowerCase()
                         .replace(/\s/g, '-')}.png` }))),
-            React.createElement(TeamPokemonInfo, { style: style, pokemon: pokemon })));
+            React.createElement(TeamPokemonInfo, { generation: utils_1.getGameGeneration(this.props.game.name), style: style, pokemon: pokemon })));
     }
 }
 exports.TeamPokemonBase = TeamPokemonBase;
@@ -54196,8 +54436,11 @@ const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/rea
 const ReactMarkdown = __webpack_require__(/*! react-markdown */ "./node_modules/react-markdown/lib/react-markdown.js");
 const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
 const actions_1 = __webpack_require__(/*! actions */ "./src/actions/index.ts");
+const styles = __webpack_require__(/*! components/Result/styles */ "./src/components/Result/styles.ts");
 const package_1 = __webpack_require__(/*! package */ "./src/package/index.ts");
+const emotion_1 = __webpack_require__(/*! emotion */ "./node_modules/emotion/dist/index.es.js");
 const croagunk = __webpack_require__(/*! assets/img/croagunk.gif */ "./src/assets/img/croagunk.gif");
+const darkModeStyle = (mode) => mode ? { color: '#fff' } : {};
 class TopBarBase extends React.Component {
     constructor() {
         super(...arguments);
@@ -54211,23 +54454,23 @@ class TopBarBase extends React.Component {
         this.toggleDialog = _ => this.setState({ isOpen: !this.state.isOpen });
     }
     render() {
-        return (React.createElement("div", { className: `pt-header top-bar ${this.props.style.editorDarkMode ? 'pt-dark' : 'pt-light'}` },
-            React.createElement(core_1.Button, { onClick: _ => this.props.changeEditorSize(!this.props.editor.minimized), className: 'pt-minimal', icon: this.props.editor.minimized ? 'minimize' : 'maximize' },
+        return (React.createElement("div", { className: emotion_1.cx(utils_1.classWithDarkTheme(styles, 'topBar', this.props.style.editorDarkMode)) },
+            React.createElement(core_1.Button, { style: darkModeStyle(this.props.style.editorDarkMode), onClick: _ => this.props.changeEditorSize(!this.props.editor.minimized), className: 'pt-minimal', icon: this.props.editor.minimized ? 'minimize' : 'maximize' },
                 this.props.editor.minimized ? 'Maximize' : 'Minimize',
                 " Editor"),
-            React.createElement(core_1.Button, { onClick: this.props.onClickDownload, className: 'pt-minimal', icon: 'download' }, "Download Image"),
-            React.createElement(core_1.Button, { onClick: _ => { this.props.editStyle({ editorDarkMode: !this.props.style.editorDarkMode }); }, className: 'pt-minimal', icon: this.props.style.editorDarkMode ? 'flash' : 'moon' },
+            React.createElement(core_1.Button, { style: darkModeStyle(this.props.style.editorDarkMode), onClick: this.props.onClickDownload, className: 'pt-minimal', icon: 'download' }, "Download Image"),
+            React.createElement(core_1.Button, { style: darkModeStyle(this.props.style.editorDarkMode), onClick: _ => { this.props.editStyle({ editorDarkMode: !this.props.style.editorDarkMode }); }, className: 'pt-minimal', icon: this.props.style.editorDarkMode ? 'flash' : 'moon' },
                 this.props.style.editorDarkMode ? 'Light' : 'Dark',
                 " Mode"),
-            React.createElement(core_1.Button, { onClick: this.toggleDialog, className: 'pt-minimal', icon: 'star' }, package_1.pkg.version),
+            React.createElement(core_1.Button, { style: darkModeStyle(this.props.style.editorDarkMode), onClick: this.toggleDialog, className: 'pt-minimal', icon: 'star' }, package_1.pkg.version),
             this.props.children,
             React.createElement(core_1.Dialog, { isOpen: this.state.isOpen, onClose: this.closeDialog, icon: 'document', title: `Release Notes ${package_1.pkg.version}`, className: `release-dialog ${this.props.style.editorDarkMode ? 'pt-dark' : 'pt-light'}` },
                 React.createElement("div", { className: 'pt-dialog-body' },
                     React.createElement("div", { className: 'release-notes-wrapper' },
-                        React.createElement("h3", { className: 'heading' },
+                        React.createElement("h3", { className: emotion_1.cx(utils_1.classWithDarkTheme(styles, 'heading', this.props.style.editorDarkMode)) },
                             package_1.pkg.version,
                             " ",
-                            React.createElement("img", { alt: 'Croagunk', src: croagunk })),
+                            React.createElement("img", { style: { display: 'inline' }, alt: 'Croagunk', src: croagunk })),
                         React.createElement(ReactMarkdown, { className: 'release-notes', source: utils_1.generateReleaseNotes(package_1.pkg.version) }))))));
     }
 }
@@ -55325,7 +55568,7 @@ exports.choose = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.classWithDarkTheme = (css, name, condition = true) => {
-    return { name, [css[`${name}_dark`]]: condition };
+    return { [css[name]]: true, [css[`${name}_dark`]]: condition };
 };
 
 
@@ -55343,9 +55586,9 @@ exports.classWithDarkTheme = (css, name, condition = true) => {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FEATURES = Object.freeze({
     fileUploads: false,
-    themeEditing: true,
+    themeEditing: false,
     multipleNuzlockes: false,
-    copyingPokemon: false,
+    copyingPokemon: true,
 });
 
 
@@ -55365,7 +55608,7 @@ exports.gameOfOriginToColor = (game) => {
     const gameToColor = {
         Red: 'rgb(243, 86, 58)',
         Blue: '#3675f8',
-        Yellow: '#efe414',
+        Yellow: '#fdd33c',
         Green: '#03c242',
         Gold: '#e0c503',
         Silver: '#d8d8d8',
@@ -56143,7 +56386,7 @@ exports.getGameGeneration = (game) => {
     const Gen4 = ['Diamond', 'Pearl', 'Platinum', 'HeartGold', 'SoulSilver'];
     const Gen5 = ['Black', 'Black 2', 'White', 'White 2'];
     const Gen6 = ['X', 'Y', 'OmegaRuby', 'AlphaSapphire'];
-    const Gen7 = ['Sun', 'Moon', 'Ultra Moon', 'Ultra Sun'];
+    const Gen7 = ['Sun', 'Moon', 'Ultra Moon', 'Ultra Sun', 'Let\'s Go Eevee', 'Let\'s Go Pikachu'];
     if (Gen1.includes(game))
         return Generation.Gen1;
     if (Gen2.includes(game))
@@ -56228,16 +56471,18 @@ exports.getGameRegion = (game) => {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
-exports.getMoveType = move => {
+const Types_1 = __webpack_require__(/*! ./Types */ "./src/utils/Types.ts");
+exports.getMoveType = (move) => {
     for (const type in utils_1.movesByType) {
         if (utils_1.movesByType.hasOwnProperty(type)) {
-            if (utils_1.movesByType[type].some((value, index) => {
+            if (utils_1.movesByType[type].some((value) => {
                 return move === value;
-            }))
-                return type;
+            })) {
+                return Types_1.Types[type];
+            }
         }
     }
-    return 'Normal';
+    return Types_1.Types.Normal;
 };
 
 
@@ -56353,6 +56598,43 @@ exports.getSpriteIcon = (species, forme) => {
 
 /***/ }),
 
+/***/ "./src/utils/handleMovesGenerationExceptions.ts":
+/*!******************************************************!*\
+  !*** ./src/utils/handleMovesGenerationExceptions.ts ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
+const Types_1 = __webpack_require__(/*! ./Types */ "./src/utils/Types.ts");
+exports.handleMovesGenerationsExceptions = ({ move, generation, originalType }) => {
+    if (generation === utils_1.Generation.Gen1) {
+        if (move === 'Bite')
+            return Types_1.Types.Normal;
+        if (move === 'Sand Attack')
+            return Types_1.Types.Normal;
+        if (move === 'Karate Chop')
+            return Types_1.Types.Normal;
+        if (move === 'Gust')
+            return Types_1.Types.Normal;
+    }
+    if (generation === (utils_1.Generation.Gen1 || utils_1.Generation.Gen2 || utils_1.Generation.Gen3 || utils_1.Generation.Gen4 || utils_1.Generation.Gen5)) {
+        if (move === 'Charm')
+            return Types_1.Types.Normal;
+        if (move === 'Moonlight')
+            return Types_1.Types.Normal;
+        if (move === 'Sweet Kiss')
+            return Types_1.Types.Normal;
+    }
+    return originalType;
+};
+
+
+/***/ }),
+
 /***/ "./src/utils/hotkeyList.ts":
 /*!*********************************!*\
   !*** ./src/utils/hotkeyList.ts ***!
@@ -56363,26 +56645,25 @@ exports.getSpriteIcon = (species, forme) => {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
 exports.hotkeyList = [
     {
         key: 'j',
-        comment: `Previous Pok${utils_1.accentedE}mon`,
+        comment: `Previous Pok\xE9mon`,
         onKeyUp: 'previousPokemon',
     },
     {
         key: 'k',
-        comment: `Next Pok${utils_1.accentedE}mon`,
+        comment: `Next Pok\xE9mon`,
         onKeyUp: 'nextPokemon',
     },
     {
         key: 'n',
-        comment: `Add new Pok${utils_1.accentedE}mon`,
+        comment: `Add new Pok\xE9mon`,
         onKeyUp: 'addPokemon',
     },
     {
         key: 'backspace',
-        comment: `Delete Pok${utils_1.accentedE}mon`,
+        comment: `Delete Pok\xE9mon`,
         onKeyUp: 'deletePokemon',
     }
 ];
@@ -56439,6 +56720,7 @@ __export(__webpack_require__(/*! ./Types */ "./src/utils/Types.ts"));
 __export(__webpack_require__(/*! ./features */ "./src/utils/features.ts"));
 __export(__webpack_require__(/*! ./getGameGeneration */ "./src/utils/getGameGeneration.ts"));
 __export(__webpack_require__(/*! ./accentedE */ "./src/utils/accentedE.ts"));
+__export(__webpack_require__(/*! ./handleMovesGenerationExceptions */ "./src/utils/handleMovesGenerationExceptions.ts"));
 
 
 /***/ }),
@@ -59072,6 +59354,7 @@ exports.movesByType = {
         'Dragon Hammer',
         'Dragon Dance',
         'Dual Chop',
+        'DragonBreath',
         'Dragon Breath',
         'Draco Meteor',
         'Devastating Drake',
@@ -59101,9 +59384,11 @@ exports.movesByType = {
         'Thunder Wave',
         'Shock Wave',
         'Thunder Shock',
+        'Thunder Shock',
         'Ion Deluge',
         'Stoked Sparksurfer',
         'Parabolic Charge',
+        'ThunderPunch',
         'Thunder Punch',
         'Bolt Strike',
         'Gigavolt Havoc',
@@ -59148,8 +59433,10 @@ exports.movesByType = {
         'Karate Chop',
         'Sacred Sword',
         'Bulk Up',
+        'Hi Jump Kick',
         'High Jump Kick',
         'Rolling Kick',
+        'AncientPower',
         'Rock Smash',
         'Reversal',
         'Arm Thrust',
@@ -59183,6 +59470,7 @@ exports.movesByType = {
         'Focus Blast',
         'Triple Kick',
         'Focus Punch',
+        'DynamicPunch',
         'Dynamic Punch',
         'Force Palm',
     ],
@@ -59224,6 +59512,7 @@ exports.movesByType = {
         'Mind Blown',
     ],
     Flying: [
+        'FeatherDance',
         'Feather Dance',
         'Air Slash',
         'Roost',
@@ -59286,6 +59575,7 @@ exports.movesByType = {
         'Spore',
         'Spiky Shield',
         'Solar Blade',
+        'SolarBeam',
         'Solar Beam',
         'Cotton Spore',
         'Aromatherapy',
@@ -59309,6 +59599,7 @@ exports.movesByType = {
         'Absorb',
         'Magical Leaf',
         'Grassy Terrain',
+        'Grasswhistle',
         'Grass Whistle',
         'Wood Hammer',
         'Grass Pledge',
@@ -59324,6 +59615,7 @@ exports.movesByType = {
         'Trop Kick',
     ],
     Ground: [
+        'Sand-Attack',
         'Sand Attack',
         'Mud-Slap',
         'Mud Sport',
@@ -59464,6 +59756,7 @@ exports.movesByType = {
         'Rock Climb',
         'Uproar',
         'Take Down',
+        'ExtremeSpeed',
         'Extreme Speed',
         'Disable',
         'Extreme Evoboost',
@@ -59488,6 +59781,7 @@ exports.movesByType = {
         'Heal Bell',
         'Mega Kick',
         'Comet Punch',
+        'SelfDestruct',
         'Self-Destruct',
         'Confide',
         'Egg Bomb',
@@ -59498,6 +59792,7 @@ exports.movesByType = {
         'Sharpen',
         'Glare',
         'Shell Smash',
+        'ViceGrip',
         'Vice Grip',
         'Crush Grip',
         'Barrage',
@@ -59521,15 +59816,19 @@ exports.movesByType = {
         'Milk Drink',
         'Mimic',
         'Mind Reader',
+        'SmellingSalt',
         'Smelling Salts',
         'Struggle',
+        'SmokeScreen',
         'Smokescreen',
         'Minimize',
         'Snore',
         'Thrash',
+        'SoftBoiled',
         'Soft-Boiled',
         'Head Charge',
         'Trump Card',
+        'SonicBoom',
         'Sonic Boom',
         'Covet',
         'Hyper Beam',
@@ -59540,6 +59839,7 @@ exports.movesByType = {
         'Spike Cannon',
         'Captivate',
         'Fury Swipes',
+        'DoubleSlap',
         'Double Slap',
         'Spit Up',
         'Double Hit',
@@ -59575,6 +59875,7 @@ exports.movesByType = {
         'Cross Poison',
         'Smog',
         'Poison Sting',
+        'PoisonPowder',
         'Poison Powder',
         'Poison Jab',
         'Poison Gas',
@@ -59733,6 +60034,7 @@ exports.movesByType = {
         'Dive',
         'Crabhammer',
         'Bubble Beam',
+        'BubbleBeam',
         'Razor Shell',
         'Octazooka',
     ],
