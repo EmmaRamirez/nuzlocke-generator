@@ -26,26 +26,26 @@ export const DeadPokemonBase = (
         poke.champion ? 'dead-pokemon-container champion' : 'dead-pokemon-container';
     return (
         <div className={getClassname()} data-league={poke.champion}>
-            <div
-                role='presentation'
-                onClick={e => poke.selectPokemon(poke.id)}
-                className={`dead-pokemon-picture ${poke.style.spritesMode ? 'sprites-mode' : ''}`}
-                style={{
-                    backgroundImage: getPokemonImage({
-                        customImage: poke.customImage,
-                        forme: poke.forme,
-                        species: poke.species,
-                        style: poke.style,
-                        name: poke.game.name,
-                    }),
-                    filter: style.grayScaleDeadPokemon ? 'grayscale(100%)' : 'none',
-                }}
-            />
-            {/*
+                { style.template !== 'Generations' ? <div
+                    role='presentation'
+                    onClick={e => poke.selectPokemon(poke.id)}
+                    className={`dead-pokemon-picture ${poke.style.spritesMode ? 'sprites-mode' : ''}`}
+                    style={{
+                        backgroundImage: getPokemonImage({
+                            customImage: poke.customImage,
+                            forme: poke.forme,
+                            species: poke.species,
+                            style: poke.style,
+                            name: poke.game.name,
+                        }),
+                        filter: style.grayScaleDeadPokemon ? 'grayscale(100%)' : 'none',
+                    }}
+                />
+                :
                 <span style={{ filter: 'grayscale(100%)' }}>
                     <PokemonIconBase {...poke as any} />
                 </span>
-            */}
+            }
             <div className='dead-pokemon-info'>
                 <div className='pokemon-d-nickname'>
                     {poke.nickname} {GenderElement(poke.gender)}
