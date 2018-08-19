@@ -709,7 +709,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../icon/icon": [
+  "./icon/icon": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/icon/icon.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/icon/icon.js",
@@ -737,7 +737,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../menu/menu": [
+  "./menu/menu": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/menu/menu.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/menu/menu.js",
@@ -765,7 +765,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../menu/menuItem": [
+  "./menu/menuItem": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/menu/menuItem.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/menu/menuItem.js",
@@ -849,7 +849,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./overlay/overlay": [
+  "../overlay/overlay": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
@@ -877,7 +877,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./popover/popover": [
+  "../popover/popover": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/popover/popover.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/popover/popover.js",
@@ -1101,7 +1101,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./text/text": [
+  "../text/text": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
