@@ -51624,6 +51624,9 @@ const Shared_1 = __webpack_require__(/*! components/Shared */ "./src/components/
 const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
 const actions_1 = __webpack_require__(/*! actions */ "./src/actions/index.ts");
 const PokemonIcon_1 = __webpack_require__(/*! components/PokemonIcon */ "./src/components/PokemonIcon/index.ts");
+const spriteStyle = (style) => style.spritesMode && !style.scaleSprites
+    ? { backgroundSize: 'auto', backgroundRepeat: 'no-repeat' }
+    : { backgroundSize: 'cover', backgroundRepeat: 'no-repeat' };
 exports.DeadPokemonBase = (poke) => {
     const style = poke.style;
     const addForme = (species) => {
@@ -51639,16 +51642,13 @@ exports.DeadPokemonBase = (poke) => {
     };
     const getClassname = () => poke.champion ? 'dead-pokemon-container champion' : 'dead-pokemon-container';
     return (React.createElement("div", { className: getClassname(), "data-league": poke.champion },
-        style.template !== 'Generations' ? React.createElement("div", { role: 'presentation', onClick: e => poke.selectPokemon(poke.id), className: `dead-pokemon-picture ${poke.style.spritesMode ? 'sprites-mode' : ''}`, style: {
-                backgroundImage: utils_1.getPokemonImage({
+        style.template !== 'Generations' ? React.createElement("div", { role: 'presentation', onClick: e => poke.selectPokemon(poke.id), className: `dead-pokemon-picture ${poke.style.spritesMode ? 'sprites-mode' : ''}`, style: Object.assign({ backgroundImage: utils_1.getPokemonImage({
                     customImage: poke.customImage,
                     forme: poke.forme,
                     species: poke.species,
                     style: poke.style,
                     name: poke.game.name,
-                }),
-                filter: style.grayScaleDeadPokemon ? 'grayscale(100%)' : 'none',
-            } })
+                }) }, spriteStyle(style), { filter: style.grayScaleDeadPokemon ? 'grayscale(100%)' : 'none' }) })
             :
                 React.createElement("span", { style: { filter: 'grayscale(100%)' } },
                     React.createElement(PokemonIcon_1.PokemonIconBase, Object.assign({}, poke))),
@@ -54005,9 +54005,9 @@ class TeamPokemonBase extends React.Component {
         const { pokemon, style, game, selectPokemon } = this.props;
         const poke = pokemon;
         const getFirstType = poke.types ? poke.types[0] : 'Normal';
-        const spriteStyle = this.props.style.spritesMode
+        const spriteStyle = this.props.style.spritesMode && !this.props.style.scaleSprites
             ? { backgroundSize: 'auto', backgroundRepeat: 'no-repeat' }
-            : {};
+            : { backgroundSize: 'cover', backgroundRepeat: 'no-repeat' };
         const addProp = item => {
             const propName = `data-${item.toLowerCase()}`;
             if (item === 'type')
@@ -55907,10 +55907,19 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 # Changelog
 
 ## Features
+- **Copy Pokémon Button**: Copies the current Pokémon
+- **N hotkey**: Creates a New Pokémon
 
 ## Fixes
+- Earlier gen move names are now valid (Sand-Attack, Hi Jump Kick, etc)
+- Likewise, move types are now correct for their Generation (Gust is Normal in Gen 1, etc)
+- Fightinium Z now works
+- Farfetch'd is valid again, alongside any Pokémon with weird names
+- Scale sprites option now works properly
 
 ## Known Issues
+- Downloading images will fail if you have cross-origin (i.e. Sugimori or custom) images
+- It has also failed on some Windows + Firefox installations
 `,
 };
 
