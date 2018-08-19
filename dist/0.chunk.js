@@ -1,2020 +1,224 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[0],{
-
-/***/ "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Editor/editor.styl":
+(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{"./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Editor/editor.styl":
 /*!************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/resolve-url-loader!./node_modules/stylus-loader!./src/components/Editor/editor.styl ***!
   \************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".editor {\n  border: 1px solid #eee;\n  height: 100vh;\n  overflow-y: scroll;\n  padding: 0.25rem;\n  width: 90%;\n}\n\n.editor.pt-dark {\n  border: 1px solid #000;\n}\n\n.editor:hover {\n  box-shadow: 0 0 4px #eee;\n}\n\n.pt-select select {\n  width: 100%;\n}\n\n.game-editor,\n.trainer-editor,\n.pokemon-editor,\n.style-editor,\n.hotkeys-editor {\n  padding: 0.3rem;\n}\n\n.base-editor {\n  border: 1px solid #fafafa;\n  border-top: 0 solid transparent !important;\n}\n\n.pt-dark .base-editor {\n  border: 1px solid #111;\n}\n\n.trainer-info-field {\n  align-items: center;\n  border-bottom: 1px solid #ddd;\n  display: flex;\n  justify-content: space-between;\n}\n\n.trainer-info-field input {\n  background: inherit;\n  border: 0 solid transparent;\n  border-left: 1px solid #eee;\n  border-radius: 2px;\n  color: inherit;\n  padding: 0.25rem;\n}\n\n.pt-dark .trainer-info-field {\n  border-bottom: 1px solid #394b59;\n}\n\n.pt-dark .trainer-info-field input {\n  border-left: 1px solid #394b59;\n}\n\n.box-wrapper {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.box-wrapper .tab {\n  margin: 2px;\n}\n\n.pokemon-tab {\n  display: flex;\n  justify-content: center;\n}\n\n.current-pokemon {\n  border: 1px solid #ddd;\n  border-radius: 0.25rem;\n  margin: 0.25rem;\n  padding: 0.25rem;\n}\n\n.pt-dark .current-pokemon {\n  border: 1px solid #000;\n}\n\n.current-pokemon-header {\n  align-items: center;\n  display: flex;\n  justify-content: flex-start;\n}\n\n.current-pokemon-image {\n  padding: 0.25rem;\n  border: 1px solid #ccc;\n  border-radius: 50%;\n  height: 3rem;\n}\n\n.pt-dark .current-pokemon-image {\n  border: none;\n  background: #394b59;\n}\n\n.current-pokemon-input-wrapper {\n  display: inline-flex;\n  flex-direction: column;\n  padding: 0.25rem;\n  width: 11rem;\n}\n\n.current-pokemon-input-wrapper label {\n  font-size: 10px;\n}\n\n.current-pokemon-input-wrapper input {\n  border: 1px solid #eee;\n  padding: 0.25rem;\n}\n\n.current-pokemon-checkbox {\n  display: inline-flex;\n  flex-flow: row-reverse;\n  justify-content: flex-end;\n  width: 5rem;\n  transform: translateY(1rem);\n}\n\n.pt-dark .current-pokemon-input-wrapper input {\n  box-shadow: 0 0 0 0 rgba(19,124,189,0), 0 0 0 0 rgba(19,124,189,0), 0 0 0 0 rgba(19,124,189,0), inset 0 0 0 1px rgba(16,22,26,0.3), inset 0 1px 1px rgba(16,22,26,0.4);\n  background: rgba(16,22,26,0.3);\n  border: none;\n  color: #f5f8fa;\n}\n\n.pt-input-ghost {\n  border: 0 !important;\n  width: 0 !important;\n  flex: auto;\n}\n\n.small-input {\n  width: 5rem;\n}\n\n.current-pokemon-gender {\n  width: 6rem;\n}\n\n.current-pokemon-status {\n  width: 5.5rem;\n}\n\n.current-pokemon-moves {\n  width: 25rem;\n}\n\n.current-pokemon-nature {\n  width: 6.5rem;\n}\n\n.double-select-wrapper {\n  display: flex;\n}\n\n.status-wrapper {\n  display: inline-flex;\n  flex-flow: column;\n  padding: 0.25rem;\n  width: 30%;\n  vertical-align: top;\n}\n\n.status-wrapper span {\n  font-size: 10px;\n  width: 100%;\n}\n\ninput[name='metLevel'] {\n  color: #ccc;\n}\n\n.pt-dialog.wide-dialog {\n  width: 90% !important;\n}\n\n.has-nice-scrollbars::-webkit-scrollbar {\n  width: 5px;\n  height: 8px;\n  border-radius: 2px;\n  background-color: #fff;\n}\n\n.has-nice-scrollbars::-webkit-scrollbar-thumb {\n  background: #aaa;\n}\n\n.no-pokemon-selected {\n  display: flex;\n  align-items: center;\n  padding: 0.5rem;\n}\n\n.no-pokemon-selected p {\n  margin: 0.25rem;\n  padding-left: 0.25rem;\n}\n\n.box {\n  border-radius: 0.25rem;\n  padding: 0.25rem;\n  margin: 0.25rem;\n  display: flex;\n  align-items: center;\n  background-position: center;\n  flex-wrap: wrap;\n}\n\n.box .pokemon-icon {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 40px;\n  width: 40px;\n}\n\n.box .pokemon-icon img,\n.box .pokemon-icon {\n  cursor: pointer;\n  border: 1px solid transparent;\n  transition: 500ms all;\n}\n\n.box .pokemon-icon.selected {\n  border-radius: 50%;\n  background: rgba(0,0,0,0.33);\n  transition: 500ms all;\n}\n\n.pt-dark .box {\n  box-shadow: 0 0 0.25rem #000;\n}\n\n.Team-box {\n  background: #15db72;\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/team-box-body.png */ "./src/assets/img/team-box-body.png") + ");\n}\n\n.Boxed-box {\n  background: #1184d6;\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/boxed-box.png */ "./src/assets/img/boxed-box.png") + ");\n}\n\n.Dead-box {\n  background: #ce1831;\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/dead-box.png */ "./src/assets/img/dead-box.png") + ");\n}\n\n.Champs-box {\n  background: #e5db52;\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/champs-box.png */ "./src/assets/img/champs-box.png") + ");\n}\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/RulesEditor/RulesEditor.styl":
+/*! no static exports found */function(e,t,n){(e.exports=n(/*! ../../../node_modules/css-loader/lib/css-base.js */"./node_modules/css-loader/lib/css-base.js")(void 0)).push([e.i,".editor {\n  border: 1px solid #eee;\n  height: 100vh;\n  overflow-y: scroll;\n  padding: 0.25rem;\n  width: 90%;\n}\n\n.editor.pt-dark {\n  border: 1px solid #000;\n}\n\n.editor:hover {\n  box-shadow: 0 0 4px #eee;\n}\n\n.pt-select select {\n  width: 100%;\n}\n\n.game-editor,\n.trainer-editor,\n.pokemon-editor,\n.style-editor,\n.hotkeys-editor {\n  padding: 0.3rem;\n}\n\n.base-editor {\n  border: 1px solid #fafafa;\n  border-top: 0 solid transparent !important;\n}\n\n.pt-dark .base-editor {\n  border: 1px solid #111;\n}\n\n.trainer-info-field {\n  align-items: center;\n  border-bottom: 1px solid #ddd;\n  display: flex;\n  justify-content: space-between;\n}\n\n.trainer-info-field input {\n  background: inherit;\n  border: 0 solid transparent;\n  border-left: 1px solid #eee;\n  border-radius: 2px;\n  color: inherit;\n  padding: 0.25rem;\n}\n\n.pt-dark .trainer-info-field {\n  border-bottom: 1px solid #394b59;\n}\n\n.pt-dark .trainer-info-field input {\n  border-left: 1px solid #394b59;\n}\n\n.box-wrapper {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.box-wrapper .tab {\n  margin: 2px;\n}\n\n.pokemon-tab {\n  display: flex;\n  justify-content: center;\n}\n\n.current-pokemon {\n  border: 1px solid #ddd;\n  border-radius: 0.25rem;\n  margin: 0.25rem;\n  padding: 0.25rem;\n}\n\n.pt-dark .current-pokemon {\n  border: 1px solid #000;\n}\n\n.current-pokemon-header {\n  align-items: center;\n  display: flex;\n  justify-content: flex-start;\n}\n\n.current-pokemon-image {\n  padding: 0.25rem;\n  border: 1px solid #ccc;\n  border-radius: 50%;\n  height: 3rem;\n}\n\n.pt-dark .current-pokemon-image {\n  border: none;\n  background: #394b59;\n}\n\n.current-pokemon-input-wrapper {\n  display: inline-flex;\n  flex-direction: column;\n  padding: 0.25rem;\n  width: 11rem;\n}\n\n.current-pokemon-input-wrapper label {\n  font-size: 10px;\n}\n\n.current-pokemon-input-wrapper input {\n  border: 1px solid #eee;\n  padding: 0.25rem;\n}\n\n.current-pokemon-checkbox {\n  display: inline-flex;\n  flex-flow: row-reverse;\n  justify-content: flex-end;\n  width: 5rem;\n  transform: translateY(1rem);\n}\n\n.pt-dark .current-pokemon-input-wrapper input {\n  box-shadow: 0 0 0 0 rgba(19,124,189,0), 0 0 0 0 rgba(19,124,189,0), 0 0 0 0 rgba(19,124,189,0), inset 0 0 0 1px rgba(16,22,26,0.3), inset 0 1px 1px rgba(16,22,26,0.4);\n  background: rgba(16,22,26,0.3);\n  border: none;\n  color: #f5f8fa;\n}\n\n.pt-input-ghost {\n  border: 0 !important;\n  width: 0 !important;\n  flex: auto;\n}\n\n.small-input {\n  width: 5rem;\n}\n\n.current-pokemon-gender {\n  width: 6rem;\n}\n\n.current-pokemon-status {\n  width: 5.5rem;\n}\n\n.current-pokemon-moves {\n  width: 25rem;\n}\n\n.current-pokemon-nature {\n  width: 6.5rem;\n}\n\n.double-select-wrapper {\n  display: flex;\n}\n\n.status-wrapper {\n  display: inline-flex;\n  flex-flow: column;\n  padding: 0.25rem;\n  width: 30%;\n  vertical-align: top;\n}\n\n.status-wrapper span {\n  font-size: 10px;\n  width: 100%;\n}\n\ninput[name='metLevel'] {\n  color: #ccc;\n}\n\n.pt-dialog.wide-dialog {\n  width: 90% !important;\n}\n\n.has-nice-scrollbars::-webkit-scrollbar {\n  width: 5px;\n  height: 8px;\n  border-radius: 2px;\n  background-color: #fff;\n}\n\n.has-nice-scrollbars::-webkit-scrollbar-thumb {\n  background: #aaa;\n}\n\n.no-pokemon-selected {\n  display: flex;\n  align-items: center;\n  padding: 0.5rem;\n}\n\n.no-pokemon-selected p {\n  margin: 0.25rem;\n  padding-left: 0.25rem;\n}\n\n.box {\n  border-radius: 0.25rem;\n  padding: 0.25rem;\n  margin: 0.25rem;\n  display: flex;\n  align-items: center;\n  background-position: center;\n  flex-wrap: wrap;\n}\n\n.box .pokemon-icon {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 40px;\n  width: 40px;\n}\n\n.box .pokemon-icon img,\n.box .pokemon-icon {\n  cursor: pointer;\n  border: 1px solid transparent;\n  transition: 500ms all;\n}\n\n.box .pokemon-icon.selected {\n  border-radius: 50%;\n  background: rgba(0,0,0,0.33);\n  transition: 500ms all;\n}\n\n.pt-dark .box {\n  box-shadow: 0 0 0.25rem #000;\n}\n\n.Team-box {\n  background: #15db72;\n  background-image: url("+n(/*! ../../assets/img/team-box-body.png */"./src/assets/img/team-box-body.png")+");\n}\n\n.Boxed-box {\n  background: #1184d6;\n  background-image: url("+n(/*! ../../assets/img/boxed-box.png */"./src/assets/img/boxed-box.png")+");\n}\n\n.Dead-box {\n  background: #ce1831;\n  background-image: url("+n(/*! ../../assets/img/dead-box.png */"./src/assets/img/dead-box.png")+");\n}\n\n.Champs-box {\n  background: #e5db52;\n  background-image: url("+n(/*! ../../assets/img/champs-box.png */"./src/assets/img/champs-box.png")+");\n}\n\n",""])},"./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/RulesEditor/RulesEditor.styl":
 /*!**********************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/resolve-url-loader!./node_modules/stylus-loader!./src/components/RulesEditor/RulesEditor.styl ***!
   \**********************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".rules-editor-dialog {\n  padding-bottom: 0 !important;\n}\n\n.rule-no,\n.rule-delete {\n  padding: 0.25rem;\n  text-align: center;\n  height: 100%;\n  width: 1.5rem;\n}\n\n.rule-delete {\n  cursor: pointer;\n}\n\n.rules-list-item {\n  background: rgba(0,0,0,0.05);\n  border-radius: 0.25rem;\n  align-items: center;\n  display: flex;\n  justify-content: space-around;\n  margin: 0.25rem 0;\n  min-height: 2rem;\n}\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./src/assets/img/boxed-box.png":
+/*! no static exports found */function(e,t,n){(e.exports=n(/*! ../../../node_modules/css-loader/lib/css-base.js */"./node_modules/css-loader/lib/css-base.js")(void 0)).push([e.i,".rules-editor-dialog {\n  padding-bottom: 0 !important;\n}\n\n.rule-no,\n.rule-delete {\n  padding: 0.25rem;\n  text-align: center;\n  height: 100%;\n  width: 1.5rem;\n}\n\n.rule-delete {\n  cursor: pointer;\n}\n\n.rules-list-item {\n  background: rgba(0,0,0,0.05);\n  border-radius: 0.25rem;\n  align-items: center;\n  display: flex;\n  justify-content: space-around;\n  margin: 0.25rem 0;\n  min-height: 2rem;\n}\n\n",""])},"./src/assets/img/boxed-box.png":
 /*!**************************************!*\
   !*** ./src/assets/img/boxed-box.png ***!
   \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/boxed-box.cd59f18c0496973abf5e7859142f6887.png";
-
-/***/ }),
-
-/***/ "./src/assets/img/champs-box.png":
+/*! no static exports found */function(e,t,n){e.exports=n.p+"assets/boxed-box.cd59f18c0496973abf5e7859142f6887.png"},"./src/assets/img/champs-box.png":
 /*!***************************************!*\
   !*** ./src/assets/img/champs-box.png ***!
   \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/champs-box.4b5f8d9323fac44ffeec8c9a5fdc226e.png";
-
-/***/ }),
-
-/***/ "./src/assets/img/dead-box.png":
+/*! no static exports found */function(e,t,n){e.exports=n.p+"assets/champs-box.4b5f8d9323fac44ffeec8c9a5fdc226e.png"},"./src/assets/img/dead-box.png":
 /*!*************************************!*\
   !*** ./src/assets/img/dead-box.png ***!
   \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/dead-box.d249339336e54c5916984cf820ba72c2.png";
-
-/***/ }),
-
-/***/ "./src/assets/img/team-box-body.png":
+/*! no static exports found */function(e,t,n){e.exports=n.p+"assets/dead-box.d249339336e54c5916984cf820ba72c2.png"},"./src/assets/img/team-box-body.png":
 /*!******************************************!*\
   !*** ./src/assets/img/team-box-body.png ***!
   \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/team-box-body.1766a13c7001bc8720223980986c4595.png";
-
-/***/ }),
-
-/***/ "./src/assets/img/team-box.png":
+/*! no static exports found */function(e,t,n){e.exports=n.p+"assets/team-box-body.1766a13c7001bc8720223980986c4595.png"},"./src/assets/img/team-box.png":
 /*!*************************************!*\
   !*** ./src/assets/img/team-box.png ***!
   \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/team-box.9b9c52b663641bd69180e2a0778540c8.png";
-
-/***/ }),
-
-/***/ "./src/assets/img/trash.png":
+/*! no static exports found */function(e,t,n){e.exports=n.p+"assets/team-box.9b9c52b663641bd69180e2a0778540c8.png"},"./src/assets/img/trash.png":
 /*!**********************************!*\
   !*** ./src/assets/img/trash.png ***!
   \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/trash.e0a3773985ba99fdf8779fc305c3af9f.png";
-
-/***/ }),
-
-/***/ "./src/assets/pokeball.png":
+/*! no static exports found */function(e,t,n){e.exports=n.p+"assets/trash.e0a3773985ba99fdf8779fc305c3af9f.png"},"./src/assets/pokeball.png":
 /*!*********************************!*\
   !*** ./src/assets/pokeball.png ***!
   \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/pokeball.853392fa4d1cb36496424bd57501bdff.png";
-
-/***/ }),
-
-/***/ "./src/components/AddPokemonButton/AddPokemonButton.tsx":
+/*! no static exports found */function(e,t,n){e.exports=n.p+"assets/pokeball.853392fa4d1cb36496424bd57501bdff.png"},"./src/components/AddPokemonButton/AddPokemonButton.tsx":
 /*!**************************************************************!*\
   !*** ./src/components/AddPokemonButton/AddPokemonButton.tsx ***!
   \**************************************************************/
-/*! exports provided: AddPokemonButtonBase, AddPokemonButton */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddPokemonButtonBase", function() { return AddPokemonButtonBase; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddPokemonButton", function() { return AddPokemonButton; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! actions */ "./src/actions/index.ts");
-
-
-
-const AddPokemonButtonBase = ({ onClick }) => (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: 'pt-intent-success pt-button add-new-pokemon', onClick: e => {
-        e.preventDefault();
-        onClick && onClick();
-    } },
-    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: 'pt-icon-add' }),
-    " \u00A0Add New Pokemon"));
-const AddPokemonButton = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, (dispatch, ownProps) => ({
-    onClick: () => {
-        dispatch(Object(actions__WEBPACK_IMPORTED_MODULE_2__["addPokemon"])(ownProps.defaultPokemon));
-        dispatch(Object(actions__WEBPACK_IMPORTED_MODULE_2__["selectPokemon"])(ownProps.defaultPokemon.id));
-    },
-}))(AddPokemonButtonBase);
-
-
-/***/ }),
-
-/***/ "./src/components/AddPokemonButton/index.ts":
+/*! exports provided: AddPokemonButtonBase, AddPokemonButton */function(e,t,n){"use strict";n.r(t),n.d(t,"AddPokemonButtonBase",function(){return a}),n.d(t,"AddPokemonButton",function(){return i});var o=n(/*! react */"./node_modules/react/index.js"),r=n(/*! react-redux */"./node_modules/react-redux/es/index.js"),s=n(/*! actions */"./src/actions/index.ts");const a=({onClick:e})=>o.createElement("button",{className:"pt-intent-success pt-button add-new-pokemon",onClick:t=>{t.preventDefault(),e&&e()}},o.createElement("span",{className:"pt-icon-add"}),"  Add New Pokemon"),i=Object(r.connect)(null,(e,t)=>({onClick:()=>{e(Object(s.addPokemon)(t.defaultPokemon)),e(Object(s.selectPokemon)(t.defaultPokemon.id))}}))(a)},"./src/components/AddPokemonButton/index.ts":
 /*!**************************************************!*\
   !*** ./src/components/AddPokemonButton/index.ts ***!
   \**************************************************/
-/*! exports provided: AddPokemonButtonBase, AddPokemonButton */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _AddPokemonButton__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddPokemonButton */ "./src/components/AddPokemonButton/AddPokemonButton.tsx");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AddPokemonButtonBase", function() { return _AddPokemonButton__WEBPACK_IMPORTED_MODULE_0__["AddPokemonButtonBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AddPokemonButton", function() { return _AddPokemonButton__WEBPACK_IMPORTED_MODULE_0__["AddPokemonButton"]; });
-
-
-
-
-/***/ }),
-
-/***/ "./src/components/Admin/Admin.tsx":
+/*! exports provided: AddPokemonButtonBase, AddPokemonButton */function(e,t,n){"use strict";n.r(t);var o=n(/*! ./AddPokemonButton */"./src/components/AddPokemonButton/AddPokemonButton.tsx");n.d(t,"AddPokemonButtonBase",function(){return o.AddPokemonButtonBase}),n.d(t,"AddPokemonButton",function(){return o.AddPokemonButton})},"./src/components/Admin/Admin.tsx":
 /*!****************************************!*\
   !*** ./src/components/Admin/Admin.tsx ***!
   \****************************************/
-/*! exports provided: Admin */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Admin", function() { return Admin; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-class Admin extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, "Admin");
-    }
-}
-
-
-/***/ }),
-
-/***/ "./src/components/Admin/index.ts":
+/*! exports provided: Admin */function(e,t,n){"use strict";n.r(t),n.d(t,"Admin",function(){return r});var o=n(/*! react */"./node_modules/react/index.js");class r extends o.Component{constructor(e){super(e)}render(){return o.createElement("div",null,"Admin")}}},"./src/components/Admin/index.ts":
 /*!***************************************!*\
   !*** ./src/components/Admin/index.ts ***!
   \***************************************/
-/*! exports provided: Admin */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Admin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Admin */ "./src/components/Admin/Admin.tsx");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Admin", function() { return _Admin__WEBPACK_IMPORTED_MODULE_0__["Admin"]; });
-
-
-
-
-/***/ }),
-
-/***/ "./src/components/BaseEditor/BaseEditor.tsx":
+/*! exports provided: Admin */function(e,t,n){"use strict";n.r(t);var o=n(/*! ./Admin */"./src/components/Admin/Admin.tsx");n.d(t,"Admin",function(){return o.Admin})},"./src/components/BaseEditor/BaseEditor.tsx":
 /*!**************************************************!*\
   !*** ./src/components/BaseEditor/BaseEditor.tsx ***!
   \**************************************************/
-/*! exports provided: BaseEditor */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BaseEditor", function() { return BaseEditor; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-const baseEditorStyle = {
-    cursor: 'pointer',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-};
-class BaseEditor extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-    constructor(props) {
-        super(props);
-        this.toggleEditor = e => {
-            this.setState({ isOpen: !this.state.isOpen });
-        };
-        this.state = {
-            isOpen: true,
-        };
-    }
-    render() {
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: `${this.props.name.toLowerCase()}-editor base-editor` },
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h4", { title: `${this.state.isOpen ? 'Collapse' : 'Open'} this editor.`, style: baseEditorStyle, onClick: this.toggleEditor },
-                this.props.name,
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: `pt-icon pt-icon-caret-${this.state.isOpen ? 'up' : 'down'}` })),
-            this.state.isOpen ? this.props.children : null));
-    }
-}
-
-
-/***/ }),
-
-/***/ "./src/components/BaseEditor/index.ts":
+/*! exports provided: BaseEditor */function(e,t,n){"use strict";n.r(t),n.d(t,"BaseEditor",function(){return s});var o=n(/*! react */"./node_modules/react/index.js");const r={cursor:"pointer",display:"flex",justifyContent:"space-between",alignItems:"center"};class s extends o.Component{constructor(e){super(e),this.toggleEditor=(e=>{this.setState({isOpen:!this.state.isOpen})}),this.state={isOpen:!0}}render(){return o.createElement("div",{className:`${this.props.name.toLowerCase()}-editor base-editor`},o.createElement("h4",{title:`${this.state.isOpen?"Collapse":"Open"} this editor.`,style:r,onClick:this.toggleEditor},this.props.name,o.createElement("span",{className:`pt-icon pt-icon-caret-${this.state.isOpen?"up":"down"}`})),this.state.isOpen?this.props.children:null)}}},"./src/components/BaseEditor/index.ts":
 /*!********************************************!*\
   !*** ./src/components/BaseEditor/index.ts ***!
   \********************************************/
-/*! exports provided: BaseEditor */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _BaseEditor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BaseEditor */ "./src/components/BaseEditor/BaseEditor.tsx");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BaseEditor", function() { return _BaseEditor__WEBPACK_IMPORTED_MODULE_0__["BaseEditor"]; });
-
-
-
-
-/***/ }),
-
-/***/ "./src/components/DataEditor/DataEditor.tsx":
+/*! exports provided: BaseEditor */function(e,t,n){"use strict";n.r(t);var o=n(/*! ./BaseEditor */"./src/components/BaseEditor/BaseEditor.tsx");n.d(t,"BaseEditor",function(){return o.BaseEditor})},"./src/components/DataEditor/DataEditor.tsx":
 /*!**************************************************!*\
   !*** ./src/components/DataEditor/DataEditor.tsx ***!
   \**************************************************/
-/*! exports provided: DataEditorBase, DataEditor */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataEditorBase", function() { return DataEditorBase; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataEditor", function() { return DataEditor; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
-/* harmony import */ var components_PokemonIcon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! components/PokemonIcon */ "./src/components/PokemonIcon/index.ts");
-/* harmony import */ var components_Shared__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! components/Shared */ "./src/components/Shared/index.ts");
-/* harmony import */ var uuid_v4__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! uuid/v4 */ "./node_modules/uuid/v4.js");
-/* harmony import */ var uuid_v4__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(uuid_v4__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! store */ "./src/store/index.ts");
-/* harmony import */ var actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! actions */ "./src/actions/index.ts");
-
-
-
-
-
-
-
-
-const trash = __webpack_require__(/*! assets/img/trash.png */ "./src/assets/img/trash.png");
-const hexEncode = function (str) {
-    let hex, i;
-    let result = '';
-    for (i = 0; i < str.length; i++) {
-        hex = str.charCodeAt(i).toString(16);
-        result += ('000' + hex).slice(-4);
-    }
-    return result;
-};
-class DataEditorBase extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-    constructor(props) {
-        super(props);
-        this.confirmImport = e => {
-            this.props.replaceState(JSON.parse(this.state.data));
-        };
-        this.importState = () => {
-            this.setState({ mode: 'import' });
-            this.setState({ isOpen: true });
-        };
-        this.exportState = state => {
-            this.setState({
-                mode: 'export',
-            });
-            delete state.router;
-            delete state._persist;
-            this.setState({ isOpen: true });
-            this.setState({
-                href: `data:text/plain;charset=utf-8,${encodeURIComponent(JSON.stringify(state))}`,
-            });
-        };
-        this.uploadFile = e => {
-            const file = this.fileInput.files[0];
-            const reader = new FileReader();
-            reader.readAsArrayBuffer(file);
-            reader.addEventListener('load', function () {
-                const u = new Uint8Array(this.result);
-                const a = new Array(u.length);
-                let i = u.length;
-                while (i--) {
-                    a[i] = (u[i] < 16 ? '0' : '') + u[i].toString(16);
-                }
-                console.log(a);
-            });
-        };
-        this.clearAllData = e => {
-            store__WEBPACK_IMPORTED_MODULE_6__["persistor"].purge();
-            window.location.reload();
-        };
-        this.toggleClearingData = e => this.setState({ isClearAllDataOpen: !this.state.isClearAllDataOpen });
-        this.state = {
-            isOpen: false,
-            isClearAllDataOpen: false,
-            mode: 'export',
-            data: '',
-            href: '',
-        };
-    }
-    renderTeam(data) {
-        let d;
-        try {
-            d = JSON.parse(data);
-        }
-        catch (_a) {
-            d = { pokemon: false };
-        }
-        console.log(d);
-        if (d.pokemon) {
-            return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'team-icons', style: {
-                    background: 'rgba(0, 0, 0, 0.1)',
-                    borderRadius: '.25rem',
-                    margin: '.25rem',
-                    marginTop: '.5rem',
-                    display: 'flex',
-                    justifyContent: 'center',
-                } }, d.pokemon.filter(p => p.status === 'Team').map(p => {
-                return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_PokemonIcon__WEBPACK_IMPORTED_MODULE_3__["PokemonIconBase"], Object.assign({ key: p.id }, p));
-            })));
-        }
-        else {
-            return null;
-        }
-    }
-    render() {
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { style: { padding: '1rem' } },
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["Alert"], { onConfirm: this.clearAllData, isOpen: this.state.isClearAllDataOpen, onCancel: this.toggleClearingData, cancelButtonText: 'Nevermind', confirmButtonText: 'Delete Anyway', className: this.props.state.style.editorDarkMode ? 'pt-dark' : 'pt-light', style: { maxWidth: '600px' }, intent: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["Intent"].DANGER },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { style: { display: 'flex' } },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { style: { height: '10rem' }, src: trash, alt: 'Sad Trubbish' }),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { style: { fontSize: '1.2rem', padding: '1rem' } }, "This will permanently delete all your local storage data, with no way to retrieve it. Are you sure you want to do this?"))),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["Dialog"], { isOpen: this.state.isOpen, onClose: e => this.setState({ isOpen: false }), title: this.state.mode === 'export'
-                    ? 'Exported Nuzlocke Save'
-                    : 'Import Nuzlocke Save', icon: 'floppy-disk' }, this.state.mode === 'export' ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null,
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["Callout"], null, "Copy this and paste it somewhere safe!"),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { style: { height: '40vh', overflow: 'auto' }, className: 'pt-dialog-body has-nice-scrollbars' },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { suppressContentEditableWarning: true, contentEditable: true }, JSON.stringify(this.props.state, null, 2))),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'pt-dialog-footer' },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("a", { href: this.state.href, download: `nuzlocke_${uuid_v4__WEBPACK_IMPORTED_MODULE_5__()}.json` },
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["Button"], { icon: 'download', intent: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["Intent"].PRIMARY }, "Download"))))) : (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null,
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'pt-dialog-body has-nice-scrollbars' },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["TextArea"], { className: 'custom-css-input pt-fill', onChange: (e) => this.setState({ data: e.target.value }), placeholder: 'Paste nuzlocke.json contents here', value: this.state.data, large: true }),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_Shared__WEBPACK_IMPORTED_MODULE_4__["ErrorBoundary"], null, this.renderTeam(this.state.data))),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'pt-dialog-footer' },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["ButtonGroup"], null,
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["Button"], { intent: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["Intent"].PRIMARY, onClick: this.confirmImport, text: 'Upload', icon: 'upload' }),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["Button"], { icon: 'tick', intent: this.state.data === '' ? _blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["Intent"].NONE : _blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["Intent"].SUCCESS, onClick: this.confirmImport, disabled: this.state.data === '' ? true : false, text: 'Confirm' })))))),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["ButtonGroup"], null,
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["Button"], { onClick: e => this.importState(), icon: 'import', className: 'pt-intent-primary' }, "Import Data"),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["Button"], { onClick: e => this.exportState(this.props.state), icon: 'export' }, "Export Data")),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["Button"], { icon: 'trash', onClick: this.toggleClearingData, intent: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["Intent"].DANGER, className: 'pt-minimal' }, "Clear All Data")));
-    }
-}
-const DataEditor = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])((state) => ({ state: state }), {
-    replaceState: actions__WEBPACK_IMPORTED_MODULE_7__["replaceState"],
-})(DataEditorBase);
-
-
-/***/ }),
-
-/***/ "./src/components/DataEditor/index.ts":
+/*! exports provided: DataEditorBase, DataEditor */function(e,t,n){"use strict";n.r(t),n.d(t,"DataEditorBase",function(){return u}),n.d(t,"DataEditor",function(){return p});var o=n(/*! react */"./node_modules/react/index.js"),r=n(/*! react-redux */"./node_modules/react-redux/es/index.js"),s=n(/*! @blueprintjs/core */"./node_modules/@blueprintjs/core/lib/esm/index.js"),a=n(/*! components/PokemonIcon */"./src/components/PokemonIcon/index.ts"),i=n(/*! components/Shared */"./src/components/Shared/index.ts"),l=n(/*! uuid/v4 */"./node_modules/uuid/v4.js"),d=n(/*! store */"./src/store/index.ts"),c=n(/*! actions */"./src/actions/index.ts");const m=n(/*! assets/img/trash.png */"./src/assets/img/trash.png");class u extends o.Component{constructor(e){super(e),this.confirmImport=(e=>{this.props.replaceState(JSON.parse(this.state.data))}),this.importState=(()=>{this.setState({mode:"import"}),this.setState({isOpen:!0})}),this.exportState=(e=>{this.setState({mode:"export"}),delete e.router,delete e._persist,this.setState({isOpen:!0}),this.setState({href:`data:text/plain;charset=utf-8,${encodeURIComponent(JSON.stringify(e))}`})}),this.uploadFile=(e=>{const t=this.fileInput.files[0],n=new FileReader;n.readAsArrayBuffer(t),n.addEventListener("load",function(){const e=new Uint8Array(this.result),t=new Array(e.length);let n=e.length;for(;n--;)t[n]=(e[n]<16?"0":"")+e[n].toString(16);console.log(t)})}),this.clearAllData=(e=>{d.persistor.purge(),window.location.reload()}),this.toggleClearingData=(e=>this.setState({isClearAllDataOpen:!this.state.isClearAllDataOpen})),this.state={isOpen:!1,isClearAllDataOpen:!1,mode:"export",data:"",href:""}}renderTeam(e){let t;try{t=JSON.parse(e)}catch(e){t={pokemon:!1}}return console.log(t),t.pokemon?o.createElement("div",{className:"team-icons",style:{background:"rgba(0, 0, 0, 0.1)",borderRadius:".25rem",margin:".25rem",marginTop:".5rem",display:"flex",justifyContent:"center"}},t.pokemon.filter(e=>"Team"===e.status).map(e=>o.createElement(a.PokemonIconBase,Object.assign({key:e.id},e)))):null}render(){return o.createElement("div",{style:{padding:"1rem"}},o.createElement(s.Alert,{onConfirm:this.clearAllData,isOpen:this.state.isClearAllDataOpen,onCancel:this.toggleClearingData,cancelButtonText:"Nevermind",confirmButtonText:"Delete Anyway",className:this.props.state.style.editorDarkMode?"pt-dark":"pt-light",style:{maxWidth:"600px"},intent:s.Intent.DANGER},o.createElement("div",{style:{display:"flex"}},o.createElement("img",{style:{height:"10rem"},src:m,alt:"Sad Trubbish"}),o.createElement("p",{style:{fontSize:"1.2rem",padding:"1rem"}},"This will permanently delete all your local storage data, with no way to retrieve it. Are you sure you want to do this?"))),o.createElement(s.Dialog,{isOpen:this.state.isOpen,onClose:e=>this.setState({isOpen:!1}),title:"export"===this.state.mode?"Exported Nuzlocke Save":"Import Nuzlocke Save",icon:"floppy-disk"},"export"===this.state.mode?o.createElement(o.Fragment,null,o.createElement(s.Callout,null,"Copy this and paste it somewhere safe!"),o.createElement("div",{style:{height:"40vh",overflow:"auto"},className:"pt-dialog-body has-nice-scrollbars"},o.createElement("span",{suppressContentEditableWarning:!0,contentEditable:!0},JSON.stringify(this.props.state,null,2))),o.createElement("div",{className:"pt-dialog-footer"},o.createElement("a",{href:this.state.href,download:`nuzlocke_${l()}.json`},o.createElement(s.Button,{icon:"download",intent:s.Intent.PRIMARY},"Download")))):o.createElement(o.Fragment,null,o.createElement("div",{className:"pt-dialog-body has-nice-scrollbars"},o.createElement(s.TextArea,{className:"custom-css-input pt-fill",onChange:e=>this.setState({data:e.target.value}),placeholder:"Paste nuzlocke.json contents here",value:this.state.data,large:!0}),o.createElement(i.ErrorBoundary,null,this.renderTeam(this.state.data))),o.createElement("div",{className:"pt-dialog-footer"},o.createElement(s.ButtonGroup,null,o.createElement(s.Button,{intent:s.Intent.PRIMARY,onClick:this.confirmImport,text:"Upload",icon:"upload"}),o.createElement(s.Button,{icon:"tick",intent:""===this.state.data?s.Intent.NONE:s.Intent.SUCCESS,onClick:this.confirmImport,disabled:""===this.state.data,text:"Confirm"}))))),o.createElement(s.ButtonGroup,null,o.createElement(s.Button,{onClick:e=>this.importState(),icon:"import",className:"pt-intent-primary"},"Import Data"),o.createElement(s.Button,{onClick:e=>this.exportState(this.props.state),icon:"export"},"Export Data")),o.createElement("br",null),o.createElement("br",null),o.createElement(s.Button,{icon:"trash",onClick:this.toggleClearingData,intent:s.Intent.DANGER,className:"pt-minimal"},"Clear All Data"))}}const p=Object(r.connect)(e=>({state:e}),{replaceState:c.replaceState})(u)},"./src/components/DataEditor/index.ts":
 /*!********************************************!*\
   !*** ./src/components/DataEditor/index.ts ***!
   \********************************************/
-/*! exports provided: DataEditorBase, DataEditor */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _DataEditor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DataEditor */ "./src/components/DataEditor/DataEditor.tsx");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DataEditorBase", function() { return _DataEditor__WEBPACK_IMPORTED_MODULE_0__["DataEditorBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DataEditor", function() { return _DataEditor__WEBPACK_IMPORTED_MODULE_0__["DataEditor"]; });
-
-
-
-
-/***/ }),
-
-/***/ "./src/components/DeletePokemonButton/DeletePokemonButton.tsx":
+/*! exports provided: DataEditorBase, DataEditor */function(e,t,n){"use strict";n.r(t);var o=n(/*! ./DataEditor */"./src/components/DataEditor/DataEditor.tsx");n.d(t,"DataEditorBase",function(){return o.DataEditorBase}),n.d(t,"DataEditor",function(){return o.DataEditor})},"./src/components/DeletePokemonButton/DeletePokemonButton.tsx":
 /*!********************************************************************!*\
   !*** ./src/components/DeletePokemonButton/DeletePokemonButton.tsx ***!
   \********************************************************************/
-/*! exports provided: DeletePokemonButtonContainer, DeletePokemonButtonBase, DeletePokemonButton */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DeletePokemonButtonContainer", function() { return DeletePokemonButtonContainer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DeletePokemonButtonBase", function() { return DeletePokemonButtonBase; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DeletePokemonButton", function() { return DeletePokemonButton; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _blueprintjs_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
-/* harmony import */ var react_emotion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-emotion */ "./node_modules/react-emotion/dist/index.esm.js");
-/* harmony import */ var actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! actions */ "./src/actions/index.ts");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! utils */ "./src/utils/index.ts");
-
-
-
-
-
-
-const DeletePokemonButtonContainer = Object(react_emotion__WEBPACK_IMPORTED_MODULE_2__["default"])('div') `
+/*! exports provided: DeletePokemonButtonContainer, DeletePokemonButtonBase, DeletePokemonButton */function(e,t,n){"use strict";n.r(t),n.d(t,"DeletePokemonButtonContainer",function(){return d}),n.d(t,"DeletePokemonButtonBase",function(){return c}),n.d(t,"DeletePokemonButton",function(){return m});var o=n(/*! react */"./node_modules/react/index.js"),r=n(/*! @blueprintjs/core */"./node_modules/@blueprintjs/core/lib/esm/index.js"),s=n(/*! react-emotion */"./node_modules/react-emotion/dist/index.esm.js"),a=n(/*! actions */"./src/actions/index.ts"),i=n(/*! react-redux */"./node_modules/react-redux/es/index.js"),l=n(/*! utils */"./src/utils/index.ts");const d=Object(s["default"])("div")`
     color: red;
     cursor: pointer;
-`;
-class DeletePokemonButtonBase extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-    constructor(props) {
-        super(props);
-        this.state = {
-            dialogOn: false,
-        };
-        this.toggleDialog = this.toggleDialog.bind(this);
-    }
-    toggleDialog() {
-        this.setState({
-            dialogOn: !this.state.dialogOn,
-        });
-    }
-    render() {
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](DeletePokemonButtonContainer, null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_1__["Alert"], { icon: 'trash', isOpen: this.state.dialogOn && this.props.confirmation, onCancel: this.toggleDialog, onConfirm: e => this.props.deletePokemon && this.props.deletePokemon(this.props.id), confirmButtonText: 'Delete Pokemon', cancelButtonText: 'Cancel', intent: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_1__["Intent"].DANGER },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "This will delete the currently selected Pokemon. Are you sure you want to do that?"),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", { className: 'pt-control pt-checkbox .modifier' },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { onChange: (event) => this.props.modifyDeletionConfirmation && this.props.modifyDeletionConfirmation(!event.target.checked), type: 'checkbox' }),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: 'pt-control-indicator' }),
-                    "Don't Ask Me For Confirmation Again")),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_1__["Popover"], { interactionKind: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_1__["PopoverInteractionKind"].HOVER, position: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_1__["Position"].TOP, content: `Delete Pok${utils__WEBPACK_IMPORTED_MODULE_5__["accentedE"]}mon` },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_1__["Icon"], { role: 'button', onClick: e => {
-                        if (this.props.confirmation) {
-                            this.toggleDialog();
-                        }
-                        else {
-                            this.props.deletePokemon && this.props.deletePokemon(this.props.id);
-                        }
-                    }, icon: 'trash', title: 'Delete Pokemon' }))));
-    }
-}
-const DeletePokemonButton = Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])((state) => ({
-    confirmation: state.confirmation,
-}), {
-    deletePokemon: actions__WEBPACK_IMPORTED_MODULE_3__["deletePokemon"]
-})(DeletePokemonButtonBase);
-
-
-/***/ }),
-
-/***/ "./src/components/DeletePokemonButton/index.ts":
+`;class c extends o.Component{constructor(e){super(e),this.state={dialogOn:!1},this.toggleDialog=this.toggleDialog.bind(this)}toggleDialog(){this.setState({dialogOn:!this.state.dialogOn})}render(){return o.createElement(d,null,o.createElement(r.Alert,{icon:"trash",isOpen:this.state.dialogOn&&this.props.confirmation,onCancel:this.toggleDialog,onConfirm:e=>this.props.deletePokemon&&this.props.deletePokemon(this.props.id),confirmButtonText:"Delete Pokemon",cancelButtonText:"Cancel",intent:r.Intent.DANGER},o.createElement("p",null,"This will delete the currently selected Pokemon. Are you sure you want to do that?"),o.createElement("label",{className:"pt-control pt-checkbox .modifier"},o.createElement("input",{onChange:e=>this.props.modifyDeletionConfirmation&&this.props.modifyDeletionConfirmation(!e.target.checked),type:"checkbox"}),o.createElement("span",{className:"pt-control-indicator"}),"Don't Ask Me For Confirmation Again")),o.createElement(r.Popover,{interactionKind:r.PopoverInteractionKind.HOVER,position:r.Position.TOP,content:`Delete Pok${l.accentedE}mon`},o.createElement(r.Icon,{role:"button",onClick:e=>{this.props.confirmation?this.toggleDialog():this.props.deletePokemon&&this.props.deletePokemon(this.props.id)},icon:"trash",title:"Delete Pokemon"})))}}const m=Object(i.connect)(e=>({confirmation:e.confirmation}),{deletePokemon:a.deletePokemon})(c)},"./src/components/DeletePokemonButton/index.ts":
 /*!*****************************************************!*\
   !*** ./src/components/DeletePokemonButton/index.ts ***!
   \*****************************************************/
-/*! exports provided: DeletePokemonButtonContainer, DeletePokemonButtonBase, DeletePokemonButton */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _DeletePokemonButton__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeletePokemonButton */ "./src/components/DeletePokemonButton/DeletePokemonButton.tsx");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DeletePokemonButtonContainer", function() { return _DeletePokemonButton__WEBPACK_IMPORTED_MODULE_0__["DeletePokemonButtonContainer"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DeletePokemonButtonBase", function() { return _DeletePokemonButton__WEBPACK_IMPORTED_MODULE_0__["DeletePokemonButtonBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DeletePokemonButton", function() { return _DeletePokemonButton__WEBPACK_IMPORTED_MODULE_0__["DeletePokemonButton"]; });
-
-
-
-
-/***/ }),
-
-/***/ "./src/components/Editor/Editor.tsx":
+/*! exports provided: DeletePokemonButtonContainer, DeletePokemonButtonBase, DeletePokemonButton */function(e,t,n){"use strict";n.r(t);var o=n(/*! ./DeletePokemonButton */"./src/components/DeletePokemonButton/DeletePokemonButton.tsx");n.d(t,"DeletePokemonButtonContainer",function(){return o.DeletePokemonButtonContainer}),n.d(t,"DeletePokemonButtonBase",function(){return o.DeletePokemonButtonBase}),n.d(t,"DeletePokemonButton",function(){return o.DeletePokemonButton})},"./src/components/Editor/Editor.tsx":
 /*!******************************************!*\
   !*** ./src/components/Editor/Editor.tsx ***!
   \******************************************/
-/*! exports provided: EditorBase, Editor */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditorBase", function() { return EditorBase; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Editor", function() { return Editor; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_custom_scrollbars__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-custom-scrollbars */ "./node_modules/react-custom-scrollbars/lib/index.js");
-/* harmony import */ var react_custom_scrollbars__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_custom_scrollbars__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var components_GameEditor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! components/GameEditor */ "./src/components/GameEditor/index.ts");
-/* harmony import */ var components_PokemonEditor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! components/PokemonEditor */ "./src/components/PokemonEditor/index.ts");
-/* harmony import */ var components_StyleEditor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! components/StyleEditor */ "./src/components/StyleEditor/index.ts");
-/* harmony import */ var components_TrainerEditor_TrainerEditor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! components/TrainerEditor/TrainerEditor */ "./src/components/TrainerEditor/TrainerEditor.tsx");
-/* harmony import */ var components_DataEditor__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! components/DataEditor */ "./src/components/DataEditor/index.ts");
-/* harmony import */ var components_HotkeysEditor__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! components/HotkeysEditor */ "./src/components/HotkeysEditor/index.ts");
-/* harmony import */ var _editor_styl__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./editor.styl */ "./src/components/Editor/editor.styl");
-/* harmony import */ var _editor_styl__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_editor_styl__WEBPACK_IMPORTED_MODULE_9__);
-
-
-
-
-
-
-
-
-
-
-class EditorBase extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        const minimized = this.props.editor.minimized;
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_custom_scrollbars__WEBPACK_IMPORTED_MODULE_1__["Scrollbars"], { autoHide: true, autoHideTimeout: 1000, autoHideDuration: 200, className: `editor ${this.props.style.editorDarkMode ? 'pt-dark' : ''}`, style: {
-                width: minimized ? '0%' : '33%',
-                marginLeft: minimized ? '-30rem' : '0',
-                minWidth: '30rem',
-                maxWidth: '40rem',
-                height: '100vh',
-                padding: '.25rem',
-                background: this.props.style.editorDarkMode ? '#222' : '#fff',
-            } },
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_GameEditor__WEBPACK_IMPORTED_MODULE_3__["GameEditor"], null),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_TrainerEditor_TrainerEditor__WEBPACK_IMPORTED_MODULE_6__["TrainerEditor"], null),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_PokemonEditor__WEBPACK_IMPORTED_MODULE_4__["PokemonEditor"], null),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_StyleEditor__WEBPACK_IMPORTED_MODULE_5__["StyleEditor"], null),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_HotkeysEditor__WEBPACK_IMPORTED_MODULE_8__["HotkeysEditor"], null),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_DataEditor__WEBPACK_IMPORTED_MODULE_7__["DataEditor"], null)));
-    }
-}
-const Editor = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])((state) => ({
-    editor: state.editor,
-    style: state.style,
-}), null)(EditorBase);
-
-
-/***/ }),
-
-/***/ "./src/components/Editor/editor.styl":
+/*! exports provided: EditorBase, Editor */function(e,t,n){"use strict";n.r(t),n.d(t,"EditorBase",function(){return u}),n.d(t,"Editor",function(){return p});var o=n(/*! react */"./node_modules/react/index.js"),r=n(/*! react-custom-scrollbars */"./node_modules/react-custom-scrollbars/lib/index.js"),s=n(/*! react-redux */"./node_modules/react-redux/es/index.js"),a=n(/*! components/GameEditor */"./src/components/GameEditor/index.ts"),i=n(/*! components/PokemonEditor */"./src/components/PokemonEditor/index.ts"),l=n(/*! components/StyleEditor */"./src/components/StyleEditor/index.ts"),d=n(/*! components/TrainerEditor/TrainerEditor */"./src/components/TrainerEditor/TrainerEditor.tsx"),c=n(/*! components/DataEditor */"./src/components/DataEditor/index.ts"),m=n(/*! components/HotkeysEditor */"./src/components/HotkeysEditor/index.ts");n(/*! ./editor.styl */"./src/components/Editor/editor.styl");class u extends o.Component{constructor(e){super(e)}render(){const e=this.props.editor.minimized;return o.createElement(r.Scrollbars,{autoHide:!0,autoHideTimeout:1e3,autoHideDuration:200,className:`editor ${this.props.style.editorDarkMode?"pt-dark":""}`,style:{width:e?"0%":"33%",marginLeft:e?"-30rem":"0",minWidth:"30rem",maxWidth:"40rem",height:"100vh",padding:".25rem",background:this.props.style.editorDarkMode?"#222":"#fff"}},o.createElement(a.GameEditor,null),o.createElement(d.TrainerEditor,null),o.createElement(i.PokemonEditor,null),o.createElement(l.StyleEditor,null),o.createElement(m.HotkeysEditor,null),o.createElement(c.DataEditor,null))}}const p=Object(s.connect)(e=>({editor:e.editor,style:e.style}),null)(u)},"./src/components/Editor/editor.styl":
 /*!*******************************************!*\
   !*** ./src/components/Editor/editor.styl ***!
   \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/resolve-url-loader!../../../node_modules/stylus-loader!./editor.styl */ "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Editor/editor.styl");
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {}
-
-/***/ }),
-
-/***/ "./src/components/Editor/index.ts":
+/*! no static exports found */function(e,t,n){var o=n(/*! !../../../node_modules/css-loader!../../../node_modules/resolve-url-loader!../../../node_modules/stylus-loader!./editor.styl */"./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Editor/editor.styl");"string"==typeof o&&(o=[[e.i,o,""]]);var r={transform:void 0};n(/*! ../../../node_modules/style-loader/lib/addStyles.js */"./node_modules/style-loader/lib/addStyles.js")(o,r);o.locals&&(e.exports=o.locals)},"./src/components/Editor/index.ts":
 /*!****************************************!*\
   !*** ./src/components/Editor/index.ts ***!
   \****************************************/
-/*! exports provided: Editor */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Editor */ "./src/components/Editor/Editor.tsx");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Editor", function() { return _Editor__WEBPACK_IMPORTED_MODULE_0__["Editor"]; });
-
-
-
-
-/***/ }),
-
-/***/ "./src/components/GameEditor/GameEditor.tsx":
+/*! exports provided: Editor */function(e,t,n){"use strict";n.r(t);var o=n(/*! ./Editor */"./src/components/Editor/Editor.tsx");n.d(t,"Editor",function(){return o.Editor})},"./src/components/GameEditor/GameEditor.tsx":
 /*!**************************************************!*\
   !*** ./src/components/GameEditor/GameEditor.tsx ***!
   \**************************************************/
-/*! exports provided: GameEditorBase, GameEditor */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GameEditorBase", function() { return GameEditorBase; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GameEditor", function() { return GameEditor; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! actions */ "./src/actions/index.ts");
-/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! utils */ "./src/utils/index.ts");
-/* harmony import */ var _blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
-/* harmony import */ var components_RulesEditor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! components/RulesEditor */ "./src/components/RulesEditor/index.ts");
-
-
-
-
-
-
-const gameSubEditorStyle = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    paddingBottom: '.25rem',
-};
-class GameEditorBase extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-    constructor(props) {
-        super(props);
-        this.onInput = e => {
-            this.props.editGame({ name: e.target.value });
-            this.props.editStyle({
-                bgColor: Object(utils__WEBPACK_IMPORTED_MODULE_3__["gameOfOriginToColor"])(e.target.value),
-            });
-        };
-        this.toggleDialog = _ => this.setState({ isOpen: !this.state.isOpen });
-        this.state = {
-            isOpen: false,
-        };
-    }
-    render() {
-        const { game } = this.props;
-        const RED = components_RulesEditor__WEBPACK_IMPORTED_MODULE_5__["RulesEditorDialog"];
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](RED, { isOpen: this.state.isOpen, onClose: this.toggleDialog }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'game-editor' },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h4", { style: { display: 'flex', alignContent: 'flex-end' } }, "Game"),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { style: gameSubEditorStyle },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'pt-select' },
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("select", { onChange: this.onInput, value: game.name }, utils__WEBPACK_IMPORTED_MODULE_3__["listOfGames"].map(game => react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("option", { key: game }, game)))),
-                    utils__WEBPACK_IMPORTED_MODULE_3__["FEATURES"].multipleNuzlockes ?
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Popover"], { minimal: true, content: react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Menu"], null), position: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Position"].BOTTOM },
-                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Button"], { icon: 'exchange' }, "Switch Nuzlockes"))
-                        : null,
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Button"], { onClick: this.toggleDialog, icon: 'list', intent: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Intent"].PRIMARY }, "Modify Rules")))));
-    }
-}
-const GameEditor = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])((state) => ({ game: state.game, editor: state.editor }), {
-    editGame: actions__WEBPACK_IMPORTED_MODULE_2__["editGame"],
-    editStyle: actions__WEBPACK_IMPORTED_MODULE_2__["editStyle"],
-    changeEditorSize: actions__WEBPACK_IMPORTED_MODULE_2__["changeEditorSize"],
-})(GameEditorBase);
-
-
-/***/ }),
-
-/***/ "./src/components/GameEditor/index.ts":
+/*! exports provided: GameEditorBase, GameEditor */function(e,t,n){"use strict";n.r(t),n.d(t,"GameEditorBase",function(){return c}),n.d(t,"GameEditor",function(){return m});var o=n(/*! react */"./node_modules/react/index.js"),r=n(/*! react-redux */"./node_modules/react-redux/es/index.js"),s=n(/*! actions */"./src/actions/index.ts"),a=n(/*! utils */"./src/utils/index.ts"),i=n(/*! @blueprintjs/core */"./node_modules/@blueprintjs/core/lib/esm/index.js"),l=n(/*! components/RulesEditor */"./src/components/RulesEditor/index.ts");const d={display:"flex",justifyContent:"space-between",paddingBottom:".25rem"};class c extends o.Component{constructor(e){super(e),this.onInput=(e=>{this.props.editGame({name:e.target.value}),this.props.editStyle({bgColor:Object(a.gameOfOriginToColor)(e.target.value)})}),this.toggleDialog=(e=>this.setState({isOpen:!this.state.isOpen})),this.state={isOpen:!1}}render(){const{game:e}=this.props,t=l.RulesEditorDialog;return o.createElement(o.Fragment,null,o.createElement(t,{isOpen:this.state.isOpen,onClose:this.toggleDialog}),o.createElement("div",{className:"game-editor"},o.createElement("h4",{style:{display:"flex",alignContent:"flex-end"}},"Game"),o.createElement("div",{style:d},o.createElement("div",{className:"pt-select"},o.createElement("select",{onChange:this.onInput,value:e.name},a.listOfGames.map(e=>o.createElement("option",{key:e},e)))),a.FEATURES.multipleNuzlockes?o.createElement(i.Popover,{minimal:!0,content:o.createElement(i.Menu,null),position:i.Position.BOTTOM},o.createElement(i.Button,{icon:"exchange"},"Switch Nuzlockes")):null,o.createElement(i.Button,{onClick:this.toggleDialog,icon:"list",intent:i.Intent.PRIMARY},"Modify Rules"))))}}const m=Object(r.connect)(e=>({game:e.game,editor:e.editor}),{editGame:s.editGame,editStyle:s.editStyle,changeEditorSize:s.changeEditorSize})(c)},"./src/components/GameEditor/index.ts":
 /*!********************************************!*\
   !*** ./src/components/GameEditor/index.ts ***!
   \********************************************/
-/*! exports provided: GameEditorBase, GameEditor */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _GameEditor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GameEditor */ "./src/components/GameEditor/GameEditor.tsx");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GameEditorBase", function() { return _GameEditor__WEBPACK_IMPORTED_MODULE_0__["GameEditorBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GameEditor", function() { return _GameEditor__WEBPACK_IMPORTED_MODULE_0__["GameEditor"]; });
-
-
-
-
-/***/ }),
-
-/***/ "./src/components/HotkeysEditor/HotkeysEditor.tsx":
+/*! exports provided: GameEditorBase, GameEditor */function(e,t,n){"use strict";n.r(t);var o=n(/*! ./GameEditor */"./src/components/GameEditor/GameEditor.tsx");n.d(t,"GameEditorBase",function(){return o.GameEditorBase}),n.d(t,"GameEditor",function(){return o.GameEditor})},"./src/components/HotkeysEditor/HotkeysEditor.tsx":
 /*!********************************************************!*\
   !*** ./src/components/HotkeysEditor/HotkeysEditor.tsx ***!
   \********************************************************/
-/*! exports provided: HotkeysEditor */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HotkeysEditor", function() { return HotkeysEditor; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var components_BaseEditor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! components/BaseEditor */ "./src/components/BaseEditor/index.ts");
-/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! utils */ "./src/utils/index.ts");
-
-
-
-class HotkeysEditor extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_BaseEditor__WEBPACK_IMPORTED_MODULE_1__["BaseEditor"], { name: 'Hotkeys' },
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("ul", { style: { listStyleType: 'none', paddingLeft: '1rem' }, className: 'hotkey-list' }, utils__WEBPACK_IMPORTED_MODULE_2__["hotkeyList"].map(item => (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("li", { style: { display: 'flex' } },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("kbd", { style: { margin: '4px' }, className: 'pt-code' }, item.key),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { style: { margin: '4px' } }, item.comment)))))));
-    }
-}
-
-
-/***/ }),
-
-/***/ "./src/components/HotkeysEditor/index.ts":
+/*! exports provided: HotkeysEditor */function(e,t,n){"use strict";n.r(t),n.d(t,"HotkeysEditor",function(){return a});var o=n(/*! react */"./node_modules/react/index.js"),r=n(/*! components/BaseEditor */"./src/components/BaseEditor/index.ts"),s=n(/*! utils */"./src/utils/index.ts");class a extends o.Component{constructor(e){super(e)}render(){return o.createElement(r.BaseEditor,{name:"Hotkeys"},o.createElement("ul",{style:{listStyleType:"none",paddingLeft:"1rem"},className:"hotkey-list"},s.hotkeyList.map(e=>o.createElement("li",{style:{display:"flex"}},o.createElement("kbd",{style:{margin:"4px"},className:"pt-code"},e.key),o.createElement("div",{style:{margin:"4px"}},e.comment)))))}}},"./src/components/HotkeysEditor/index.ts":
 /*!***********************************************!*\
   !*** ./src/components/HotkeysEditor/index.ts ***!
   \***********************************************/
-/*! exports provided: HotkeysEditor */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _HotkeysEditor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./HotkeysEditor */ "./src/components/HotkeysEditor/HotkeysEditor.tsx");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HotkeysEditor", function() { return _HotkeysEditor__WEBPACK_IMPORTED_MODULE_0__["HotkeysEditor"]; });
-
-
-
-
-/***/ }),
-
-/***/ "./src/components/PokemonEditor/Box.tsx":
+/*! exports provided: HotkeysEditor */function(e,t,n){"use strict";n.r(t);var o=n(/*! ./HotkeysEditor */"./src/components/HotkeysEditor/HotkeysEditor.tsx");n.d(t,"HotkeysEditor",function(){return o.HotkeysEditor})},"./src/components/PokemonEditor/Box.tsx":
 /*!**********************************************!*\
   !*** ./src/components/PokemonEditor/Box.tsx ***!
   \**********************************************/
-/*! exports provided: Box */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Box", function() { return Box; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! utils */ "./src/utils/index.ts");
-/* harmony import */ var actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! actions */ "./src/actions/index.ts");
-/* harmony import */ var components_Shared__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! components/Shared */ "./src/components/Shared/index.ts");
-/* harmony import */ var react_dnd__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-dnd */ "./node_modules/react-dnd/lib/index.js");
-/* harmony import */ var react_dnd__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_dnd__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! store */ "./src/store/index.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-
-const boxSource = {
-    drop(props, monitor, component) {
-        const newStatus = props.name;
-        store__WEBPACK_IMPORTED_MODULE_5__["store"].dispatch(Object(actions__WEBPACK_IMPORTED_MODULE_2__["editPokemon"])({ status: newStatus }, monitor.getItem().id));
-        return {};
-    },
-    hover(props, monitor) {
-        return { isHovering: monitor.isOver({ shallow: true }) };
-    }
-};
-let Box = class Box extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-    render() {
-        const { pokemon, name, boxId, filterString, connectDropTarget, canDrop } = this.props;
-        const filter = filterString === 'All' ? undefined : filterString;
-        return connectDropTarget(react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: `box ${name}-box` },
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { style: {
-                    alignItems: 'center',
-                    background: canDrop ? 'black' : 'rgba(33, 33, 33, 0.33)',
-                    borderRadius: '.25rem',
-                    color: '#eee',
-                    display: 'inline-flex',
-                    minHeight: '2rem',
-                    justifyContent: 'center',
-                    margin: '.25rem',
-                    padding: '.25rem',
-                    textAlign: 'center',
-                    width: '4rem',
-                } }, name),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_Shared__WEBPACK_IMPORTED_MODULE_3__["PokemonByFilter"], { team: pokemon, filter: filter })));
-    }
-};
-Box = __decorate([
-    Object(react_dnd__WEBPACK_IMPORTED_MODULE_4__["DropTarget"])(utils__WEBPACK_IMPORTED_MODULE_1__["dragAndDrop"].ICON, boxSource, (connect, monitor) => ({
-        connectDropTarget: connect.dropTarget(),
-        canDrop: monitor.canDrop()
-    }))
-], Box);
-
-
-
-/***/ }),
-
-/***/ "./src/components/PokemonEditor/CurrentPokemonEdit.tsx":
+/*! exports provided: Box */function(e,t,n){"use strict";n.r(t),n.d(t,"Box",function(){return c});var o=n(/*! react */"./node_modules/react/index.js"),r=n(/*! utils */"./src/utils/index.ts"),s=n(/*! actions */"./src/actions/index.ts"),a=n(/*! components/Shared */"./src/components/Shared/index.ts"),i=n(/*! react-dnd */"./node_modules/react-dnd/lib/index.js"),l=n(/*! store */"./src/store/index.ts");const d={drop(e,t,n){const o=e.name;return l.store.dispatch(Object(s.editPokemon)({status:o},t.getItem().id)),{}},hover:(e,t)=>({isHovering:t.isOver({shallow:!0})})};let c=class extends o.Component{render(){const{pokemon:e,name:t,boxId:n,filterString:r,connectDropTarget:s,canDrop:i}=this.props,l="All"===r?void 0:r;return s(o.createElement("div",{className:`box ${t}-box`},o.createElement("span",{style:{alignItems:"center",background:i?"black":"rgba(33, 33, 33, 0.33)",borderRadius:".25rem",color:"#eee",display:"inline-flex",minHeight:"2rem",justifyContent:"center",margin:".25rem",padding:".25rem",textAlign:"center",width:"4rem"}},t),o.createElement(a.PokemonByFilter,{team:e,filter:l})))}};c=function(e,t,n,o){var r,s=arguments.length,a=s<3?t:null===o?o=Object.getOwnPropertyDescriptor(t,n):o;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,n,o);else for(var i=e.length-1;i>=0;i--)(r=e[i])&&(a=(s<3?r(a):s>3?r(t,n,a):r(t,n))||a);return s>3&&a&&Object.defineProperty(t,n,a),a}([Object(i.DropTarget)(r.dragAndDrop.ICON,d,(e,t)=>({connectDropTarget:e.dropTarget(),canDrop:t.canDrop()}))],c)},"./src/components/PokemonEditor/CurrentPokemonEdit.tsx":
 /*!*************************************************************!*\
   !*** ./src/components/PokemonEditor/CurrentPokemonEdit.tsx ***!
   \*************************************************************/
-/*! exports provided: CopyPokemonButton, CurrentPokemonEditBase, CurrentPokemonEdit */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CopyPokemonButton", function() { return CopyPokemonButton; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CurrentPokemonEditBase", function() { return CurrentPokemonEditBase; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CurrentPokemonEdit", function() { return CurrentPokemonEdit; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! utils */ "./src/utils/index.ts");
-/* harmony import */ var components_PokemonEditor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! components/PokemonEditor */ "./src/components/PokemonEditor/index.ts");
-/* harmony import */ var components_DeletePokemonButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! components/DeletePokemonButton */ "./src/components/DeletePokemonButton/index.ts");
-/* harmony import */ var components_Shared__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! components/Shared */ "./src/components/Shared/index.ts");
-/* harmony import */ var actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! actions */ "./src/actions/index.ts");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var components_PokemonIcon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! components/PokemonIcon */ "./src/components/PokemonIcon/index.ts");
-/* harmony import */ var emotion__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! emotion */ "./node_modules/emotion/dist/index.es.js");
-/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./styles */ "./src/components/PokemonEditor/styles.ts");
-/* harmony import */ var uuid_v4__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! uuid/v4 */ "./node_modules/uuid/v4.js");
-/* harmony import */ var uuid_v4__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(uuid_v4__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _blueprintjs_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const pokeball = __webpack_require__(/*! assets/pokeball.png */ "./src/assets/pokeball.png");
-const CopyPokemonButton = ({ onClick }) => {
-    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_11__["Popover"], { interactionKind: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_11__["PopoverInteractionKind"].HOVER, position: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_11__["Position"].TOP, content: `Copy Pok${utils__WEBPACK_IMPORTED_MODULE_1__["accentedE"]}mon` },
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_11__["Icon"], { title: 'Copy Pokemon', icon: 'duplicate', className: Object(emotion__WEBPACK_IMPORTED_MODULE_8__["cx"])(_styles__WEBPACK_IMPORTED_MODULE_9__["copyButton"]), onClick: onClick })));
-};
-class CurrentPokemonEditBase extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-    constructor(props) {
-        super(props);
-        this.copyPokemon = e => {
-            const currentPokemon = this.getCurrentPokemon();
-            if (currentPokemon) {
-                const newPokemon = Object.assign({}, currentPokemon, { id: uuid_v4__WEBPACK_IMPORTED_MODULE_10__(), position: currentPokemon.position + 1 });
-                this.props.addPokemon(newPokemon);
-            }
-        };
-        this.expandView = (e) => {
-            this.setState({
-                expandedView: !this.state.expandedView,
-            });
-        };
-        this.state = {
-            selectedId: '5',
-            box: [],
-            expandedView: false,
-        };
-    }
-    componentWillMount() {
-        this.setState({
-            selectedId: this.props.selectedId,
-            box: this.props.box
-        });
-    }
-    componentWillReceiveProps(nextProps, prevProps) {
-        if (nextProps.selectedId !== prevProps.selectedId) {
-            this.setState({ selectedId: nextProps.selectedId });
-        }
-    }
-    moreInputs(currentPokemon) {
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'expanded-edit' },
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_PokemonEditor__WEBPACK_IMPORTED_MODULE_2__["CurrentPokemonInput"], { labelName: 'Forme', inputName: 'forme', placeholder: '', value: currentPokemon.forme, type: 'select', options: ['Normal', ...Object(utils__WEBPACK_IMPORTED_MODULE_1__["getAdditionalFormes"])(currentPokemon.species)] }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_PokemonEditor__WEBPACK_IMPORTED_MODULE_2__["CurrentPokemonInput"], { labelName: 'Types', inputName: 'types', value: currentPokemon.types, type: 'double-select', options: [
-                    'Bug',
-                    'Dark',
-                    'Dragon',
-                    'Electric',
-                    'Fairy',
-                    'Fighting',
-                    'Fire',
-                    'Flying',
-                    'Ghost',
-                    'Grass',
-                    'Ground',
-                    'Ice',
-                    'Normal',
-                    'Poison',
-                    'Psychic',
-                    'Rock',
-                    'Steel',
-                    'Water',
-                    'None',
-                ] }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_PokemonEditor__WEBPACK_IMPORTED_MODULE_2__["CurrentPokemonInput"], { labelName: 'Shiny', inputName: 'shiny', value: currentPokemon.shiny, type: 'checkbox' }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_PokemonEditor__WEBPACK_IMPORTED_MODULE_2__["CurrentPokemonInput"], { labelName: 'Champion', inputName: 'champion', value: currentPokemon.champion, type: 'checkbox' }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_PokemonEditor__WEBPACK_IMPORTED_MODULE_2__["CurrentPokemonInput"], { labelName: 'Custom Image', inputName: 'customImage', placeholder: 'http://..', value: currentPokemon.customImage, type: 'text' }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_PokemonEditor__WEBPACK_IMPORTED_MODULE_2__["CurrentPokemonInput"], { labelName: 'Custom Icon', inputName: 'customIcon', placeholder: 'http://..', value: currentPokemon.customIcon, type: 'text' }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_PokemonEditor__WEBPACK_IMPORTED_MODULE_2__["CurrentPokemonInput"], { labelName: 'Cause of Death', inputName: 'causeOfDeath', value: currentPokemon.causeOfDeath, type: 'text' }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_Shared__WEBPACK_IMPORTED_MODULE_4__["Autocomplete"], { items: utils__WEBPACK_IMPORTED_MODULE_1__["listOfItems"], name: 'item', label: 'Item', placeholder: 'Item', value: currentPokemon.item || '', onChange: e => {
-                    const edit = {
-                        item: e.target.value,
-                    };
-                    this.props.editPokemon(edit, this.state.selectedId);
-                    this.props.selectPokemon(this.state.selectedId);
-                } }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_PokemonEditor__WEBPACK_IMPORTED_MODULE_2__["CurrentPokemonInput"], { labelName: 'Wonder Traded', inputName: 'wonderTradedFor', value: currentPokemon.wonderTradedFor, type: 'text' }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_PokemonEditor__WEBPACK_IMPORTED_MODULE_2__["CurrentPokemonInput"], { labelName: 'Position', inputName: 'position', disabled: true, value: currentPokemon.position, type: 'text' }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_PokemonEditor__WEBPACK_IMPORTED_MODULE_2__["CurrentPokemonInput"], { labelName: 'Game of Origin', inputName: 'gameOfOrigin', value: currentPokemon.gameOfOrigin, type: 'select', options: utils__WEBPACK_IMPORTED_MODULE_1__["listOfGames"] })));
-    }
-    getCurrentPokemon() {
-        return this.props.pokemon.find((v) => v.id === this.state.selectedId);
-    }
-    render() {
-        const currentPokemon = this.getCurrentPokemon();
-        if (currentPokemon == null) {
-            return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'current-pokemon no-pokemon-selected' },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { alt: 'pokeball', src: pokeball }),
-                " ",
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Select a Pok\u00E9mon to edit")));
-        }
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'current-pokemon' },
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: 'current-pokemon-header' },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_PokemonIcon__WEBPACK_IMPORTED_MODULE_7__["PokemonIconBase"], { className: 'current-pokemon-image', id: currentPokemon.id, species: currentPokemon.species, forme: currentPokemon.forme, isShiny: currentPokemon.shiny, selectedId: null, onClick: () => { } }),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_PokemonEditor__WEBPACK_IMPORTED_MODULE_2__["CurrentPokemonInput"], { labelName: 'Status', inputName: 'status', value: currentPokemon.status, type: 'select', options: this.state.box.map(n => n.name) }),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: Object(emotion__WEBPACK_IMPORTED_MODULE_8__["cx"])(_styles__WEBPACK_IMPORTED_MODULE_9__["iconBar"]) },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CopyPokemonButton, { onClick: this.copyPokemon }),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_DeletePokemonButton__WEBPACK_IMPORTED_MODULE_3__["DeletePokemonButton"], { id: this.state.selectedId }))),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_Shared__WEBPACK_IMPORTED_MODULE_4__["Autocomplete"], { items: utils__WEBPACK_IMPORTED_MODULE_1__["listOfPokemon"], name: 'species', label: 'Species', placeholder: 'Missing No.', value: currentPokemon.species, onChange: e => {
-                    const edit = {
-                        species: e.target.value,
-                    };
-                    this.props.editPokemon(edit, this.state.selectedId);
-                    this.props.editPokemon({ types: Object(utils__WEBPACK_IMPORTED_MODULE_1__["matchSpeciesToTypes"])(e.target.value) }, this.state.selectedId);
-                    this.props.selectPokemon(this.state.selectedId);
-                } }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_PokemonEditor__WEBPACK_IMPORTED_MODULE_2__["CurrentPokemonInput"], { labelName: 'Nickname', inputName: 'nickname', value: currentPokemon.nickname, placeholder: 'Fluffy', type: 'text' }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_PokemonEditor__WEBPACK_IMPORTED_MODULE_2__["CurrentPokemonInput"], { labelName: 'Level', inputName: 'level', placeholder: '5', value: currentPokemon.level, type: 'text' }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_Shared__WEBPACK_IMPORTED_MODULE_4__["Autocomplete"], { items: utils__WEBPACK_IMPORTED_MODULE_1__["listOfLocations"], name: 'met', label: 'Met Location', placeholder: 'Pallet Town', value: currentPokemon.met || '', onChange: e => {
-                    const edit = {
-                        met: e.target.value,
-                    };
-                    this.props.editPokemon(edit, this.state.selectedId);
-                    this.props.selectPokemon(this.state.selectedId);
-                } }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_PokemonEditor__WEBPACK_IMPORTED_MODULE_2__["CurrentPokemonInput"], { labelName: 'Met Level', inputName: 'metLevel', placeholder: '5', value: currentPokemon.metLevel, type: 'text' }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_PokemonEditor__WEBPACK_IMPORTED_MODULE_2__["CurrentPokemonInput"], { labelName: 'Gender', inputName: 'gender', placeholder: '', value: currentPokemon.gender, type: 'select', options: ['Male', 'Female', 'Neutral'] }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_PokemonEditor__WEBPACK_IMPORTED_MODULE_2__["CurrentPokemonInput"], { labelName: 'Nature', inputName: 'nature', placeholder: 'Sassy', value: currentPokemon.nature, type: 'select', options: [
-                    'Adamant',
-                    'Bashful',
-                    'Bold',
-                    'Brave',
-                    'Calm',
-                    'Careful',
-                    'Docile',
-                    'Gentle',
-                    'Hardy',
-                    'Hasty',
-                    'Impish',
-                    'Jolly',
-                    'Lax',
-                    'Lonely',
-                    'Mild',
-                    'Modest',
-                    'Naive',
-                    'Naughty',
-                    'Quiet',
-                    'Quirky',
-                    'Rash',
-                    'Relaxed',
-                    'Sassy',
-                    'Serious',
-                    'Timid',
-                    'None',
-                ] }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_Shared__WEBPACK_IMPORTED_MODULE_4__["Autocomplete"], { items: utils__WEBPACK_IMPORTED_MODULE_1__["listOfAbilities"], name: 'ability', label: 'Ability', placeholder: '', value: currentPokemon.ability || '', onChange: e => {
-                    const edit = {
-                        ability: e.target.value,
-                    };
-                    this.props.editPokemon(edit, this.state.selectedId);
-                    this.props.selectPokemon(this.state.selectedId);
-                } }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_PokemonEditor__WEBPACK_IMPORTED_MODULE_2__["CurrentPokemonInput"], { labelName: 'Moves', inputName: 'moves', placeholder: '', value: currentPokemon.moves, type: 'moves' }),
-            this.state.expandedView ? this.moreInputs(currentPokemon) : null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("br", null),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { onClick: this.expandView, "data-expandedview": this.state.expandedView.toString(), className: 'pt-button pt-intent-primary pt-fill current-pokemon-more' },
-                this.state.expandedView ? (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null,
-                    "Less ",
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: 'pt-icon-symbol-triangle-up' }))) : (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null,
-                    "More ",
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: 'pt-icon-symbol-triangle-down' }))),
-                ' ')));
-    }
-}
-const CurrentPokemonEdit = Object(react_redux__WEBPACK_IMPORTED_MODULE_6__["connect"])((state) => ({
-    box: state.box,
-    selectedId: state.selectedId,
-    pokemon: state.pokemon
-}), {
-    selectPokemon: actions__WEBPACK_IMPORTED_MODULE_5__["selectPokemon"],
-    editPokemon: actions__WEBPACK_IMPORTED_MODULE_5__["editPokemon"],
-    addPokemon: actions__WEBPACK_IMPORTED_MODULE_5__["addPokemon"],
-})(CurrentPokemonEditBase);
-
-
-/***/ }),
-
-/***/ "./src/components/PokemonEditor/CurrentPokemonInput.tsx":
+/*! exports provided: CopyPokemonButton, CurrentPokemonEditBase, CurrentPokemonEdit */function(e,t,n){"use strict";n.r(t),n.d(t,"CopyPokemonButton",function(){return g}),n.d(t,"CurrentPokemonEditBase",function(){return k}),n.d(t,"CurrentPokemonEdit",function(){return x});var o=n(/*! react */"./node_modules/react/index.js"),r=n(/*! utils */"./src/utils/index.ts"),s=n(/*! components/PokemonEditor */"./src/components/PokemonEditor/index.ts"),a=n(/*! components/DeletePokemonButton */"./src/components/DeletePokemonButton/index.ts"),i=n(/*! components/Shared */"./src/components/Shared/index.ts"),l=n(/*! actions */"./src/actions/index.ts"),d=n(/*! react-redux */"./node_modules/react-redux/es/index.js"),c=n(/*! components/PokemonIcon */"./src/components/PokemonIcon/index.ts"),m=n(/*! emotion */"./node_modules/emotion/dist/index.es.js"),u=n(/*! ./styles */"./src/components/PokemonEditor/styles.ts"),p=n(/*! uuid/v4 */"./node_modules/uuid/v4.js"),E=n(/*! @blueprintjs/core */"./node_modules/@blueprintjs/core/lib/esm/index.js");const h=n(/*! assets/pokeball.png */"./src/assets/pokeball.png"),g=({onClick:e})=>o.createElement(E.Popover,{interactionKind:E.PopoverInteractionKind.HOVER,position:E.Position.TOP,content:`Copy Pok${r.accentedE}mon`},o.createElement(E.Icon,{title:"Copy Pokemon",icon:"duplicate",className:Object(m.cx)(u.copyButton),onClick:e}));class k extends o.Component{constructor(e){super(e),this.copyPokemon=(e=>{const t=this.getCurrentPokemon();if(t){const e=Object.assign({},t,{id:p(),position:t.position+1});this.props.addPokemon(e)}}),this.expandView=(e=>{this.setState({expandedView:!this.state.expandedView})}),this.state={selectedId:"5",box:[],expandedView:!1}}componentWillMount(){this.setState({selectedId:this.props.selectedId,box:this.props.box})}componentWillReceiveProps(e,t){e.selectedId!==t.selectedId&&this.setState({selectedId:e.selectedId})}moreInputs(e){return o.createElement("div",{className:"expanded-edit"},o.createElement(s.CurrentPokemonInput,{labelName:"Forme",inputName:"forme",placeholder:"",value:e.forme,type:"select",options:["Normal",...Object(r.getAdditionalFormes)(e.species)]}),o.createElement(s.CurrentPokemonInput,{labelName:"Types",inputName:"types",value:e.types,type:"double-select",options:["Bug","Dark","Dragon","Electric","Fairy","Fighting","Fire","Flying","Ghost","Grass","Ground","Ice","Normal","Poison","Psychic","Rock","Steel","Water","None"]}),o.createElement(s.CurrentPokemonInput,{labelName:"Shiny",inputName:"shiny",value:e.shiny,type:"checkbox"}),o.createElement(s.CurrentPokemonInput,{labelName:"Champion",inputName:"champion",value:e.champion,type:"checkbox"}),o.createElement(s.CurrentPokemonInput,{labelName:"Custom Image",inputName:"customImage",placeholder:"http://..",value:e.customImage,type:"text"}),o.createElement(s.CurrentPokemonInput,{labelName:"Custom Icon",inputName:"customIcon",placeholder:"http://..",value:e.customIcon,type:"text"}),o.createElement(s.CurrentPokemonInput,{labelName:"Cause of Death",inputName:"causeOfDeath",value:e.causeOfDeath,type:"text"}),o.createElement(i.Autocomplete,{items:r.listOfItems,name:"item",label:"Item",placeholder:"Item",value:e.item||"",onChange:e=>{const t={item:e.target.value};this.props.editPokemon(t,this.state.selectedId),this.props.selectPokemon(this.state.selectedId)}}),o.createElement(s.CurrentPokemonInput,{labelName:"Wonder Traded",inputName:"wonderTradedFor",value:e.wonderTradedFor,type:"text"}),o.createElement(s.CurrentPokemonInput,{labelName:"Position",inputName:"position",disabled:!0,value:e.position,type:"text"}),o.createElement(s.CurrentPokemonInput,{labelName:"Game of Origin",inputName:"gameOfOrigin",value:e.gameOfOrigin,type:"select",options:r.listOfGames}))}getCurrentPokemon(){return this.props.pokemon.find(e=>e.id===this.state.selectedId)}render(){const e=this.getCurrentPokemon();return null==e?o.createElement("div",{className:"current-pokemon no-pokemon-selected"},o.createElement("img",{alt:"pokeball",src:h})," ",o.createElement("p",null,"Select a Pokémon to edit")):o.createElement("div",{className:"current-pokemon"},o.createElement("span",{className:"current-pokemon-header"},o.createElement(c.PokemonIconBase,{className:"current-pokemon-image",id:e.id,species:e.species,forme:e.forme,isShiny:e.shiny,selectedId:null,onClick:()=>{}}),o.createElement(s.CurrentPokemonInput,{labelName:"Status",inputName:"status",value:e.status,type:"select",options:this.state.box.map(e=>e.name)}),o.createElement("div",{className:Object(m.cx)(u.iconBar)},o.createElement(g,{onClick:this.copyPokemon}),o.createElement(a.DeletePokemonButton,{id:this.state.selectedId}))),o.createElement(i.Autocomplete,{items:r.listOfPokemon,name:"species",label:"Species",placeholder:"Missing No.",value:e.species,onChange:e=>{const t={species:e.target.value};this.props.editPokemon(t,this.state.selectedId),this.props.editPokemon({types:Object(r.matchSpeciesToTypes)(e.target.value)},this.state.selectedId),this.props.selectPokemon(this.state.selectedId)}}),o.createElement(s.CurrentPokemonInput,{labelName:"Nickname",inputName:"nickname",value:e.nickname,placeholder:"Fluffy",type:"text"}),o.createElement(s.CurrentPokemonInput,{labelName:"Level",inputName:"level",placeholder:"5",value:e.level,type:"text"}),o.createElement(i.Autocomplete,{items:r.listOfLocations,name:"met",label:"Met Location",placeholder:"Pallet Town",value:e.met||"",onChange:e=>{const t={met:e.target.value};this.props.editPokemon(t,this.state.selectedId),this.props.selectPokemon(this.state.selectedId)}}),o.createElement(s.CurrentPokemonInput,{labelName:"Met Level",inputName:"metLevel",placeholder:"5",value:e.metLevel,type:"text"}),o.createElement(s.CurrentPokemonInput,{labelName:"Gender",inputName:"gender",placeholder:"",value:e.gender,type:"select",options:["Male","Female","Neutral"]}),o.createElement(s.CurrentPokemonInput,{labelName:"Nature",inputName:"nature",placeholder:"Sassy",value:e.nature,type:"select",options:["Adamant","Bashful","Bold","Brave","Calm","Careful","Docile","Gentle","Hardy","Hasty","Impish","Jolly","Lax","Lonely","Mild","Modest","Naive","Naughty","Quiet","Quirky","Rash","Relaxed","Sassy","Serious","Timid","None"]}),o.createElement(i.Autocomplete,{items:r.listOfAbilities,name:"ability",label:"Ability",placeholder:"",value:e.ability||"",onChange:e=>{const t={ability:e.target.value};this.props.editPokemon(t,this.state.selectedId),this.props.selectPokemon(this.state.selectedId)}}),o.createElement(s.CurrentPokemonInput,{labelName:"Moves",inputName:"moves",placeholder:"",value:e.moves,type:"moves"}),this.state.expandedView?this.moreInputs(e):null,o.createElement("br",null),o.createElement("button",{onClick:this.expandView,"data-expandedview":this.state.expandedView.toString(),className:"pt-button pt-intent-primary pt-fill current-pokemon-more"},this.state.expandedView?o.createElement("span",null,"Less ",o.createElement("span",{className:"pt-icon-symbol-triangle-up"})):o.createElement("span",null,"More ",o.createElement("span",{className:"pt-icon-symbol-triangle-down"}))," "))}}const x=Object(d.connect)(e=>({box:e.box,selectedId:e.selectedId,pokemon:e.pokemon}),{selectPokemon:l.selectPokemon,editPokemon:l.editPokemon,addPokemon:l.addPokemon})(k)},"./src/components/PokemonEditor/CurrentPokemonInput.tsx":
 /*!**************************************************************!*\
   !*** ./src/components/PokemonEditor/CurrentPokemonInput.tsx ***!
   \**************************************************************/
-/*! exports provided: CurrentPokemonInputBase, CurrentPokemonInput */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CurrentPokemonInputBase", function() { return CurrentPokemonInputBase; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CurrentPokemonInput", function() { return CurrentPokemonInput; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! utils */ "./src/utils/index.ts");
-/* harmony import */ var actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! actions */ "./src/actions/index.ts");
-/* harmony import */ var components_Shared__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! components/Shared */ "./src/components/Shared/index.ts");
-/* harmony import */ var _blueprintjs_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
-
-
-
-
-
-
-class CurrentPokemonInputBase extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-    constructor(props) {
-        super(props);
-        this.onChange = (e, inputName, position, value) => {
-            let edit;
-            if (inputName === 'types' && position != null) {
-                edit = {
-                    [inputName]: value,
-                };
-                edit[inputName][position] = e.target.value;
-            }
-            else if (inputName === 'species') {
-                edit = {
-                    [inputName]: e.target.value,
-                    types: Object(utils__WEBPACK_IMPORTED_MODULE_2__["matchSpeciesToTypes"])(e.target.value),
-                };
-            }
-            else if (inputName === 'moves') {
-                edit = {
-                    [inputName]: e.target.value,
-                };
-            }
-            else if (inputName === 'champion' || inputName === 'shiny') {
-                edit = {
-                    [inputName]: e.target.checked,
-                };
-            }
-            else {
-                edit = {
-                    [inputName]: e.target.value,
-                };
-            }
-            this.props.editPokemon && this.props.editPokemon(edit, this.props.selectedId);
-            this.props.selectPokemon && this.props.selectPokemon(this.props.selectedId);
-        };
-    }
-    getInput({ labelName, disabled, inputName, type, value, placeholder, options }) {
-        value = value == null ? '' : value;
-        if (type === 'moves') {
-            return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_Shared__WEBPACK_IMPORTED_MODULE_4__["ErrorBoundary"], null,
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_5__["TagInput"], { tagProps: (v, i) => ({
-                        className: `${Object(utils__WEBPACK_IMPORTED_MODULE_2__["getMoveType"])((v || '').toString().trim())}-type`,
-                    }), onChange: values => {
-                        console.log(values);
-                        const edit = {
-                            moves: values,
-                        };
-                        this.props.editPokemon &&
-                            this.props.editPokemon(edit, this.props.selectedId);
-                        this.props.selectPokemon &&
-                            this.props.selectPokemon(this.props.selectedId);
-                    }, values: value || [] })));
-        }
-        if (type === 'text') {
-            return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { onChange: event => this.onChange(event, inputName), type: type, name: inputName, value: value, placeholder: placeholder, disabled: disabled || false }));
-        }
-        if (type === 'select') {
-            return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'pt-select' },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("select", { onChange: event => this.onChange(event, inputName), value: value, name: inputName }, options
-                    ? options.map((item, index) => react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("option", { key: index }, item))
-                    : null)));
-        }
-        if (type === 'checkbox') {
-            return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", { className: 'pt-control pt-checkbox' },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { onChange: e => this.onChange(e, inputName), checked: value, type: type, name: inputName }),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: 'pt-control-indicator' })));
-        }
-        if (type === 'double-select') {
-            return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: 'double-select-wrapper' },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'pt-select' },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("select", { onChange: e => this.onChange(e, inputName, 0, value), value: value[0] == null ? 'None' : value[0], name: inputName }, options
-                        ? options.map((item, index) => (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("option", { value: item, key: index }, item)))
-                        : null)),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, "\u00A0"),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'pt-select' },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("select", { onChange: e => this.onChange(e, inputName, 1, value), value: value[1] == null ? 'None' : value[1], name: inputName }, options
-                        ? options.map((item, index) => (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("option", { value: item, key: index }, item)))
-                        : null))));
-        }
-        return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, "No input type provided.");
-    }
-    render() {
-        const { labelName, inputName, type, value, placeholder, options } = this.props;
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: `current-pokemon-input-wrapper current-pokemon-${type} current-pokemon-${inputName}` },
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, labelName),
-            this.getInput({ labelName, inputName, type, value, placeholder, options })));
-    }
-}
-const CurrentPokemonInput = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])((state) => ({
-    selectedId: state.selectedId,
-}), { editPokemon: actions__WEBPACK_IMPORTED_MODULE_3__["editPokemon"], selectPokemon: actions__WEBPACK_IMPORTED_MODULE_3__["selectPokemon"] })(CurrentPokemonInputBase);
-
-
-/***/ }),
-
-/***/ "./src/components/PokemonEditor/MassEditor.tsx":
+/*! exports provided: CurrentPokemonInputBase, CurrentPokemonInput */function(e,t,n){"use strict";n.r(t),n.d(t,"CurrentPokemonInputBase",function(){return d}),n.d(t,"CurrentPokemonInput",function(){return c});var o=n(/*! react */"./node_modules/react/index.js"),r=n(/*! react-redux */"./node_modules/react-redux/es/index.js"),s=n(/*! utils */"./src/utils/index.ts"),a=n(/*! actions */"./src/actions/index.ts"),i=n(/*! components/Shared */"./src/components/Shared/index.ts"),l=n(/*! @blueprintjs/core */"./node_modules/@blueprintjs/core/lib/esm/index.js");class d extends o.Component{constructor(e){super(e),this.onChange=((e,t,n,o)=>{let r;"types"===t&&null!=n?(r={[t]:o})[t][n]=e.target.value:r="species"===t?{[t]:e.target.value,types:Object(s.matchSpeciesToTypes)(e.target.value)}:"moves"===t?{[t]:e.target.value}:"champion"===t||"shiny"===t?{[t]:e.target.checked}:{[t]:e.target.value},this.props.editPokemon&&this.props.editPokemon(r,this.props.selectedId),this.props.selectPokemon&&this.props.selectPokemon(this.props.selectedId)})}getInput({labelName:e,disabled:t,inputName:n,type:r,value:a,placeholder:d,options:c}){return a=null==a?"":a,"moves"===r?o.createElement(i.ErrorBoundary,null,o.createElement(l.TagInput,{tagProps:(e,t)=>({className:`${Object(s.getMoveType)((e||"").toString().trim())}-type`}),onChange:e=>{console.log(e);const t={moves:e};this.props.editPokemon&&this.props.editPokemon(t,this.props.selectedId),this.props.selectPokemon&&this.props.selectPokemon(this.props.selectedId)},values:a||[]})):"text"===r?o.createElement("input",{onChange:e=>this.onChange(e,n),type:r,name:n,value:a,placeholder:d,disabled:t||!1}):"select"===r?o.createElement("div",{className:"pt-select"},o.createElement("select",{onChange:e=>this.onChange(e,n),value:a,name:n},c?c.map((e,t)=>o.createElement("option",{key:t},e)):null)):"checkbox"===r?o.createElement("label",{className:"pt-control pt-checkbox"},o.createElement("input",{onChange:e=>this.onChange(e,n),checked:a,type:r,name:n}),o.createElement("span",{className:"pt-control-indicator"})):"double-select"===r?o.createElement("span",{className:"double-select-wrapper"},o.createElement("div",{className:"pt-select"},o.createElement("select",{onChange:e=>this.onChange(e,n,0,a),value:null==a[0]?"None":a[0],name:n},c?c.map((e,t)=>o.createElement("option",{value:e,key:t},e)):null)),o.createElement("span",null," "),o.createElement("div",{className:"pt-select"},o.createElement("select",{onChange:e=>this.onChange(e,n,1,a),value:null==a[1]?"None":a[1],name:n},c?c.map((e,t)=>o.createElement("option",{value:e,key:t},e)):null))):o.createElement("div",null,"No input type provided.")}render(){const{labelName:e,inputName:t,type:n,value:r,placeholder:s,options:a}=this.props;return o.createElement("span",{className:`current-pokemon-input-wrapper current-pokemon-${n} current-pokemon-${t}`},o.createElement("label",null,e),this.getInput({labelName:e,inputName:t,type:n,value:r,placeholder:s,options:a}))}}const c=Object(r.connect)(e=>({selectedId:e.selectedId}),{editPokemon:a.editPokemon,selectPokemon:a.selectPokemon})(d)},"./src/components/PokemonEditor/MassEditor.tsx":
 /*!*****************************************************!*\
   !*** ./src/components/PokemonEditor/MassEditor.tsx ***!
   \*****************************************************/
-/*! exports provided: SortableColumnMenu, MassEditorBase, MassEditor */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SortableColumnMenu", function() { return SortableColumnMenu; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MassEditorBase", function() { return MassEditorBase; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MassEditor", function() { return MassEditor; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
-/* harmony import */ var _blueprintjs_table__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @blueprintjs/table */ "./node_modules/@blueprintjs/table/lib/esm/index.js");
-/* harmony import */ var components_AddPokemonButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! components/AddPokemonButton */ "./src/components/AddPokemonButton/index.ts");
-/* harmony import */ var actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! actions */ "./src/actions/index.ts");
-/* harmony import */ var models__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! models */ "./src/models/index.ts");
-/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! utils */ "./src/utils/index.ts");
-
-
-
-
-
-
-
-
-class SortableColumnMenu extends react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"] {
-    render() {
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["Menu"], null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["MenuItem"], { icon: 'sort-asc', onClick: _ => null, text: 'Sort Asc' }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["MenuItem"], { icon: 'sort-desc', onClick: _ => null, text: 'Sort Desc' })));
-    }
-}
-class MassEditorBase extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-    renderMenu() {
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["Menu"], null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["MenuItem"], { icon: 'sort-asc', onClick: _ => null, text: 'Sort Asc' }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["MenuItem"], { icon: 'sort-desc', onClick: _ => null, text: 'Sort Desc' })));
-    }
-    renderColumns(pokemon) {
-        return Object.keys(models__WEBPACK_IMPORTED_MODULE_6__["PokemonKeys"])
-            .filter(k => k !== 'id')
-            .map(key => {
-            return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_table__WEBPACK_IMPORTED_MODULE_3__["Column"], { key: key, name: key, cellRenderer: r => (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_table__WEBPACK_IMPORTED_MODULE_3__["EditableCell"], { onConfirm: (v, _, c) => {
-                        let value = v;
-                        if (key === 'types') {
-                            value = v.split(',').map(s => s.trim());
-                        }
-                        if (key === 'moves') {
-                            value = v.split(',').map(s => s.trim());
-                        }
-                        this.props.editPokemon({
-                            [key]: value,
-                        }, pokemon[r].id);
-                    }, value: pokemon[r][key] })) }));
-        });
-    }
-    render() {
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_2__["Dialog"], { icon: 'edit', isOpen: this.props.isOpen, onClose: this.props.toggleDialog, className: `wide-dialog ${this.props.style.editorDarkMode ? 'pt-dark' : 'pt-light'}`, title: 'Mass Editor' },
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'pt-dialog-body' },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_AddPokemonButton__WEBPACK_IMPORTED_MODULE_4__["AddPokemonButton"], { defaultPokemon: Object(utils__WEBPACK_IMPORTED_MODULE_7__["generateEmptyPokemon"])(this.props.pokemon) }),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { style: { padding: '.25rem' } }),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_table__WEBPACK_IMPORTED_MODULE_3__["Table"], { defaultColumnWidth: 100, numRows: this.props.pokemon.length, numFrozenColumns: 1 }, this.renderColumns(this.props.pokemon.sort(utils__WEBPACK_IMPORTED_MODULE_7__["sortPokes"]))))));
-    }
-}
-const MassEditor = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])((state) => ({
-    pokemon: state.pokemon,
-    style: state.style
-}), { editPokemon: actions__WEBPACK_IMPORTED_MODULE_5__["editPokemon"] })(MassEditorBase);
-
-
-/***/ }),
-
-/***/ "./src/components/PokemonEditor/PokemonEditor.tsx":
+/*! exports provided: SortableColumnMenu, MassEditorBase, MassEditor */function(e,t,n){"use strict";n.r(t),n.d(t,"SortableColumnMenu",function(){return m}),n.d(t,"MassEditorBase",function(){return u}),n.d(t,"MassEditor",function(){return p});var o=n(/*! react */"./node_modules/react/index.js"),r=n(/*! react-redux */"./node_modules/react-redux/es/index.js"),s=n(/*! @blueprintjs/core */"./node_modules/@blueprintjs/core/lib/esm/index.js"),a=n(/*! @blueprintjs/table */"./node_modules/@blueprintjs/table/lib/esm/index.js"),i=n(/*! components/AddPokemonButton */"./src/components/AddPokemonButton/index.ts"),l=n(/*! actions */"./src/actions/index.ts"),d=n(/*! models */"./src/models/index.ts"),c=n(/*! utils */"./src/utils/index.ts");class m extends o.PureComponent{render(){return o.createElement(s.Menu,null,o.createElement(s.MenuItem,{icon:"sort-asc",onClick:e=>null,text:"Sort Asc"}),o.createElement(s.MenuItem,{icon:"sort-desc",onClick:e=>null,text:"Sort Desc"}))}}class u extends o.Component{renderMenu(){return o.createElement(s.Menu,null,o.createElement(s.MenuItem,{icon:"sort-asc",onClick:e=>null,text:"Sort Asc"}),o.createElement(s.MenuItem,{icon:"sort-desc",onClick:e=>null,text:"Sort Desc"}))}renderColumns(e){return Object.keys(d.PokemonKeys).filter(e=>"id"!==e).map(t=>o.createElement(a.Column,{key:t,name:t,cellRenderer:n=>o.createElement(a.EditableCell,{onConfirm:(o,r,s)=>{let a=o;"types"===t&&(a=o.split(",").map(e=>e.trim())),"moves"===t&&(a=o.split(",").map(e=>e.trim())),this.props.editPokemon({[t]:a},e[n].id)},value:e[n][t]})}))}render(){return o.createElement(s.Dialog,{icon:"edit",isOpen:this.props.isOpen,onClose:this.props.toggleDialog,className:`wide-dialog ${this.props.style.editorDarkMode?"pt-dark":"pt-light"}`,title:"Mass Editor"},o.createElement("div",{className:"pt-dialog-body"},o.createElement(i.AddPokemonButton,{defaultPokemon:Object(c.generateEmptyPokemon)(this.props.pokemon)}),o.createElement("div",{style:{padding:".25rem"}}),o.createElement(a.Table,{defaultColumnWidth:100,numRows:this.props.pokemon.length,numFrozenColumns:1},this.renderColumns(this.props.pokemon.sort(c.sortPokes)))))}}const p=Object(r.connect)(e=>({pokemon:e.pokemon,style:e.style}),{editPokemon:l.editPokemon})(u)},"./src/components/PokemonEditor/PokemonEditor.tsx":
 /*!********************************************************!*\
   !*** ./src/components/PokemonEditor/PokemonEditor.tsx ***!
   \********************************************************/
-/*! exports provided: PokemonEditorBase, PokemonEditor */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PokemonEditorBase", function() { return PokemonEditorBase; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PokemonEditor", function() { return PokemonEditor; });
-/* harmony import */ var _blueprintjs_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! utils */ "./src/utils/index.ts");
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! . */ "./src/components/PokemonEditor/index.ts");
-/* harmony import */ var components_AddPokemonButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! components/AddPokemonButton */ "./src/components/AddPokemonButton/index.ts");
-/* harmony import */ var components_BaseEditor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! components/BaseEditor */ "./src/components/BaseEditor/index.ts");
-/* harmony import */ var _Box__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Box */ "./src/components/PokemonEditor/Box.tsx");
-
-
-
-
-
-
-
-
-__webpack_require__(/*! ../../assets/img/team-box.png */ "./src/assets/img/team-box.png");
-__webpack_require__(/*! ../../assets/img/dead-box.png */ "./src/assets/img/dead-box.png");
-class PokemonEditorBase extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
-    constructor(props) {
-        super(props);
-        this.openMassEditor = e => {
-            this.setState({
-                isMassEditorOpen: true,
-            });
-        };
-        this.toggleEditor = e => this.setState({ isOpen: !this.state.isOpen });
-        this.state = {
-            isMassEditorOpen: false,
-            isOpen: true,
-        };
-    }
-    componentDidMount() { }
-    renderBoxes(boxes, team) {
-        return boxes.map(({ key, name }) => {
-            return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_Box__WEBPACK_IMPORTED_MODULE_7__["Box"], { key: key, pokemon: team, name: name, boxId: key, filterString: name });
-        });
-    }
-    render() {
-        const { team, boxes } = this.props;
-        const { isOpen } = this.state;
-        return (react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null,
-            react__WEBPACK_IMPORTED_MODULE_1__["createElement"](components_BaseEditor__WEBPACK_IMPORTED_MODULE_6__["BaseEditor"], { name: 'Pokemon' },
-                react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", { className: 'button-row', style: { display: 'flex' } },
-                    react__WEBPACK_IMPORTED_MODULE_1__["createElement"](components_AddPokemonButton__WEBPACK_IMPORTED_MODULE_5__["AddPokemonButton"], { defaultPokemon: Object.assign({}, Object(utils__WEBPACK_IMPORTED_MODULE_3__["generateEmptyPokemon"])(team), { gameOfOrigin: this.props.game.name || 'None' }) }),
-                    react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_0__["Button"], { icon: 'heat-grid', onClick: this.openMassEditor, style: { marginLeft: 'auto' }, className: 'pt-intent-primary pt-minimal' }, "Open Mass Editor")),
-                react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("br", null),
-                this.renderBoxes(boxes, team),
-                react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("br", null),
-                react__WEBPACK_IMPORTED_MODULE_1__["createElement"](___WEBPACK_IMPORTED_MODULE_4__["CurrentPokemonEdit"], null)),
-            react__WEBPACK_IMPORTED_MODULE_1__["createElement"](___WEBPACK_IMPORTED_MODULE_4__["MassEditor"], { isOpen: this.state.isMassEditorOpen, toggleDialog: e => this.setState({ isMassEditorOpen: !this.state.isMassEditorOpen }) })));
-    }
-}
-const PokemonEditor = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])((state) => ({
-    team: state.pokemon,
-    boxes: state.box,
-    game: state.game,
-}), null)(PokemonEditorBase);
-
-
-/***/ }),
-
-/***/ "./src/components/PokemonEditor/index.ts":
+/*! exports provided: PokemonEditorBase, PokemonEditor */function(e,t,n){"use strict";n.r(t),n.d(t,"PokemonEditorBase",function(){return m}),n.d(t,"PokemonEditor",function(){return u});var o=n(/*! @blueprintjs/core */"./node_modules/@blueprintjs/core/lib/esm/index.js"),r=n(/*! react */"./node_modules/react/index.js"),s=n(/*! react-redux */"./node_modules/react-redux/es/index.js"),a=n(/*! utils */"./src/utils/index.ts"),i=n(/*! . */"./src/components/PokemonEditor/index.ts"),l=n(/*! components/AddPokemonButton */"./src/components/AddPokemonButton/index.ts"),d=n(/*! components/BaseEditor */"./src/components/BaseEditor/index.ts"),c=n(/*! ./Box */"./src/components/PokemonEditor/Box.tsx");n(/*! ../../assets/img/team-box.png */"./src/assets/img/team-box.png"),n(/*! ../../assets/img/dead-box.png */"./src/assets/img/dead-box.png");class m extends r.Component{constructor(e){super(e),this.openMassEditor=(e=>{this.setState({isMassEditorOpen:!0})}),this.toggleEditor=(e=>this.setState({isOpen:!this.state.isOpen})),this.state={isMassEditorOpen:!1,isOpen:!0}}componentDidMount(){}renderBoxes(e,t){return e.map(({key:e,name:n})=>r.createElement(c.Box,{key:e,pokemon:t,name:n,boxId:e,filterString:n}))}render(){const{team:e,boxes:t}=this.props,{isOpen:n}=this.state;return r.createElement(r.Fragment,null,r.createElement(d.BaseEditor,{name:"Pokemon"},r.createElement("div",{className:"button-row",style:{display:"flex"}},r.createElement(l.AddPokemonButton,{defaultPokemon:Object.assign({},Object(a.generateEmptyPokemon)(e),{gameOfOrigin:this.props.game.name||"None"})}),r.createElement(o.Button,{icon:"heat-grid",onClick:this.openMassEditor,style:{marginLeft:"auto"},className:"pt-intent-primary pt-minimal"},"Open Mass Editor")),r.createElement("br",null),this.renderBoxes(t,e),r.createElement("br",null),r.createElement(i.CurrentPokemonEdit,null)),r.createElement(i.MassEditor,{isOpen:this.state.isMassEditorOpen,toggleDialog:e=>this.setState({isMassEditorOpen:!this.state.isMassEditorOpen})}))}}const u=Object(s.connect)(e=>({team:e.pokemon,boxes:e.box,game:e.game}),null)(m)},"./src/components/PokemonEditor/index.ts":
 /*!***********************************************!*\
   !*** ./src/components/PokemonEditor/index.ts ***!
   \***********************************************/
-/*! exports provided: PokemonEditorBase, PokemonEditor, SortableColumnMenu, MassEditorBase, MassEditor, CopyPokemonButton, CurrentPokemonEditBase, CurrentPokemonEdit, CurrentPokemonInputBase, CurrentPokemonInput */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _PokemonEditor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PokemonEditor */ "./src/components/PokemonEditor/PokemonEditor.tsx");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PokemonEditorBase", function() { return _PokemonEditor__WEBPACK_IMPORTED_MODULE_0__["PokemonEditorBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PokemonEditor", function() { return _PokemonEditor__WEBPACK_IMPORTED_MODULE_0__["PokemonEditor"]; });
-
-/* harmony import */ var _MassEditor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MassEditor */ "./src/components/PokemonEditor/MassEditor.tsx");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SortableColumnMenu", function() { return _MassEditor__WEBPACK_IMPORTED_MODULE_1__["SortableColumnMenu"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MassEditorBase", function() { return _MassEditor__WEBPACK_IMPORTED_MODULE_1__["MassEditorBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MassEditor", function() { return _MassEditor__WEBPACK_IMPORTED_MODULE_1__["MassEditor"]; });
-
-/* harmony import */ var _CurrentPokemonEdit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CurrentPokemonEdit */ "./src/components/PokemonEditor/CurrentPokemonEdit.tsx");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CopyPokemonButton", function() { return _CurrentPokemonEdit__WEBPACK_IMPORTED_MODULE_2__["CopyPokemonButton"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CurrentPokemonEditBase", function() { return _CurrentPokemonEdit__WEBPACK_IMPORTED_MODULE_2__["CurrentPokemonEditBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CurrentPokemonEdit", function() { return _CurrentPokemonEdit__WEBPACK_IMPORTED_MODULE_2__["CurrentPokemonEdit"]; });
-
-/* harmony import */ var _CurrentPokemonInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CurrentPokemonInput */ "./src/components/PokemonEditor/CurrentPokemonInput.tsx");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CurrentPokemonInputBase", function() { return _CurrentPokemonInput__WEBPACK_IMPORTED_MODULE_3__["CurrentPokemonInputBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CurrentPokemonInput", function() { return _CurrentPokemonInput__WEBPACK_IMPORTED_MODULE_3__["CurrentPokemonInput"]; });
-
-
-
-
-
-
-
-/***/ }),
-
-/***/ "./src/components/PokemonEditor/styles.ts":
+/*! exports provided: PokemonEditorBase, PokemonEditor, SortableColumnMenu, MassEditorBase, MassEditor, CopyPokemonButton, CurrentPokemonEditBase, CurrentPokemonEdit, CurrentPokemonInputBase, CurrentPokemonInput */function(e,t,n){"use strict";n.r(t);var o=n(/*! ./PokemonEditor */"./src/components/PokemonEditor/PokemonEditor.tsx");n.d(t,"PokemonEditorBase",function(){return o.PokemonEditorBase}),n.d(t,"PokemonEditor",function(){return o.PokemonEditor});var r=n(/*! ./MassEditor */"./src/components/PokemonEditor/MassEditor.tsx");n.d(t,"SortableColumnMenu",function(){return r.SortableColumnMenu}),n.d(t,"MassEditorBase",function(){return r.MassEditorBase}),n.d(t,"MassEditor",function(){return r.MassEditor});var s=n(/*! ./CurrentPokemonEdit */"./src/components/PokemonEditor/CurrentPokemonEdit.tsx");n.d(t,"CopyPokemonButton",function(){return s.CopyPokemonButton}),n.d(t,"CurrentPokemonEditBase",function(){return s.CurrentPokemonEditBase}),n.d(t,"CurrentPokemonEdit",function(){return s.CurrentPokemonEdit});var a=n(/*! ./CurrentPokemonInput */"./src/components/PokemonEditor/CurrentPokemonInput.tsx");n.d(t,"CurrentPokemonInputBase",function(){return a.CurrentPokemonInputBase}),n.d(t,"CurrentPokemonInput",function(){return a.CurrentPokemonInput})},"./src/components/PokemonEditor/styles.ts":
 /*!************************************************!*\
   !*** ./src/components/PokemonEditor/styles.ts ***!
   \************************************************/
-/*! exports provided: iconBar, copyButton */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "iconBar", function() { return iconBar; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "copyButton", function() { return copyButton; });
-/* harmony import */ var emotion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! emotion */ "./node_modules/emotion/dist/index.es.js");
-
-const iconBar = emotion__WEBPACK_IMPORTED_MODULE_0__["css"] `
+/*! exports provided: iconBar, copyButton */function(e,t,n){"use strict";n.r(t),n.d(t,"iconBar",function(){return r}),n.d(t,"copyButton",function(){return s});var o=n(/*! emotion */"./node_modules/emotion/dist/index.es.js");const r=o["css"]`
     align-items: center;
     display: flex;
     margin-left: auto;
     * {
         margin: .25rem;
     }
-`;
-const copyButton = emotion__WEBPACK_IMPORTED_MODULE_0__["css"] `
+`,s=o["css"]`
     color: lightblue;
     margin-left: auto;
     pointer: cursor;
-`;
-
-
-/***/ }),
-
-/***/ "./src/components/RulesEditor/RulesEditor.styl":
+`},"./src/components/RulesEditor/RulesEditor.styl":
 /*!*****************************************************!*\
   !*** ./src/components/RulesEditor/RulesEditor.styl ***!
   \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/resolve-url-loader!../../../node_modules/stylus-loader!./RulesEditor.styl */ "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/RulesEditor/RulesEditor.styl");
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {}
-
-/***/ }),
-
-/***/ "./src/components/RulesEditor/RulesEditor.tsx":
+/*! no static exports found */function(e,t,n){var o=n(/*! !../../../node_modules/css-loader!../../../node_modules/resolve-url-loader!../../../node_modules/stylus-loader!./RulesEditor.styl */"./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/RulesEditor/RulesEditor.styl");"string"==typeof o&&(o=[[e.i,o,""]]);var r={transform:void 0};n(/*! ../../../node_modules/style-loader/lib/addStyles.js */"./node_modules/style-loader/lib/addStyles.js")(o,r);o.locals&&(e.exports=o.locals)},"./src/components/RulesEditor/RulesEditor.tsx":
 /*!****************************************************!*\
   !*** ./src/components/RulesEditor/RulesEditor.tsx ***!
   \****************************************************/
-/*! exports provided: RulesEditor, RulesEditorDialogBase, RulesEditorDialog */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RulesEditor", function() { return RulesEditor; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RulesEditorDialogBase", function() { return RulesEditorDialogBase; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RulesEditorDialog", function() { return RulesEditorDialog; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _blueprintjs_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! actions */ "./src/actions/index.ts");
-/* harmony import */ var _RulesEditor_styl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./RulesEditor.styl */ "./src/components/RulesEditor/RulesEditor.styl");
-/* harmony import */ var _RulesEditor_styl__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_RulesEditor_styl__WEBPACK_IMPORTED_MODULE_4__);
-
-
-
-
-
-class RulesEditor extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-    constructor(props) {
-        super(props);
-    }
-    renderRules() {
-        return this.props.rules.map((rule, index) => (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("li", { className: 'rules-list-item', key: index },
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'rule-no' }, index + 1),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_1__["TextArea"], { defaultValue: rule, className: 'pt-fill', onChange: (e) => this.props.editRule(index, e.target.value), dir: 'auto' }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { role: 'action', onClick: e => this.props.deleteRule(index), className: 'rule-delete', title: 'Delete Rule' },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_1__["Icon"], { intent: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_1__["Intent"].DANGER, role: 'action', style: { cursor: 'pointer' }, icon: 'trash' })))));
-    }
-    renderButtons() {
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_1__["Button"], { onClick: _ => this.props.addRule(), intent: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_1__["Intent"].PRIMARY }, "Add Rule"),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_1__["Button"], { style: { marginLeft: '1rem' }, onClick: _ => {
-                    this.props.resetRules();
-                    this.forceUpdate();
-                }, intent: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_1__["Intent"].WARNING }, "Reset Rules")));
-    }
-    render() {
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("ul", { style: {
-                    listStyleType: 'none',
-                    margin: '.5rem',
-                    padding: '0'
-                } }, this.renderRules()),
-            this.renderButtons()));
-    }
-}
-const RulesEditorDialogBase = (props) => {
-    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_1__["Dialog"], { isOpen: props.isOpen, onClose: props.onClose, className: `rules-editor-dialog ${props.style.editorDarkMode ? 'pt-dark' : 'pt-light'}`, title: 'Rules Editor', icon: 'edit' },
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'pt-dialog-body' },
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](RulesEditor, { rules: props.rules, editRule: props.editRule, addRule: props.addRule, deleteRule: props.deleteRule, resetRules: props.resetRules }))));
-};
-const RulesEditorDialog = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])((state) => ({
-    rules: state.rules,
-    style: state.style
-}), { editRule: actions__WEBPACK_IMPORTED_MODULE_3__["editRule"], addRule: actions__WEBPACK_IMPORTED_MODULE_3__["addRule"], deleteRule: actions__WEBPACK_IMPORTED_MODULE_3__["deleteRule"], resetRules: actions__WEBPACK_IMPORTED_MODULE_3__["resetRules"] })(RulesEditorDialogBase);
-
-
-/***/ }),
-
-/***/ "./src/components/RulesEditor/index.ts":
+/*! exports provided: RulesEditor, RulesEditorDialogBase, RulesEditorDialog */function(e,t,n){"use strict";n.r(t),n.d(t,"RulesEditor",function(){return i}),n.d(t,"RulesEditorDialogBase",function(){return l}),n.d(t,"RulesEditorDialog",function(){return d});var o=n(/*! react */"./node_modules/react/index.js"),r=n(/*! @blueprintjs/core */"./node_modules/@blueprintjs/core/lib/esm/index.js"),s=n(/*! react-redux */"./node_modules/react-redux/es/index.js"),a=n(/*! actions */"./src/actions/index.ts");n(/*! ./RulesEditor.styl */"./src/components/RulesEditor/RulesEditor.styl");class i extends o.Component{constructor(e){super(e)}renderRules(){return this.props.rules.map((e,t)=>o.createElement("li",{className:"rules-list-item",key:t},o.createElement("div",{className:"rule-no"},t+1),o.createElement(r.TextArea,{defaultValue:e,className:"pt-fill",onChange:e=>this.props.editRule(t,e.target.value),dir:"auto"}),o.createElement("div",{role:"action",onClick:e=>this.props.deleteRule(t),className:"rule-delete",title:"Delete Rule"},o.createElement(r.Icon,{intent:r.Intent.DANGER,role:"action",style:{cursor:"pointer"},icon:"trash"}))))}renderButtons(){return o.createElement(o.Fragment,null,o.createElement(r.Button,{onClick:e=>this.props.addRule(),intent:r.Intent.PRIMARY},"Add Rule"),o.createElement(r.Button,{style:{marginLeft:"1rem"},onClick:e=>{this.props.resetRules(),this.forceUpdate()},intent:r.Intent.WARNING},"Reset Rules"))}render(){return o.createElement(o.Fragment,null,o.createElement("ul",{style:{listStyleType:"none",margin:".5rem",padding:"0"}},this.renderRules()),this.renderButtons())}}const l=e=>o.createElement(r.Dialog,{isOpen:e.isOpen,onClose:e.onClose,className:`rules-editor-dialog ${e.style.editorDarkMode?"pt-dark":"pt-light"}`,title:"Rules Editor",icon:"edit"},o.createElement("div",{className:"pt-dialog-body"},o.createElement(i,{rules:e.rules,editRule:e.editRule,addRule:e.addRule,deleteRule:e.deleteRule,resetRules:e.resetRules}))),d=Object(s.connect)(e=>({rules:e.rules,style:e.style}),{editRule:a.editRule,addRule:a.addRule,deleteRule:a.deleteRule,resetRules:a.resetRules})(l)},"./src/components/RulesEditor/index.ts":
 /*!*********************************************!*\
   !*** ./src/components/RulesEditor/index.ts ***!
   \*********************************************/
-/*! exports provided: RulesEditor, RulesEditorDialogBase, RulesEditorDialog */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _RulesEditor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RulesEditor */ "./src/components/RulesEditor/RulesEditor.tsx");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RulesEditor", function() { return _RulesEditor__WEBPACK_IMPORTED_MODULE_0__["RulesEditor"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RulesEditorDialogBase", function() { return _RulesEditor__WEBPACK_IMPORTED_MODULE_0__["RulesEditorDialogBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RulesEditorDialog", function() { return _RulesEditor__WEBPACK_IMPORTED_MODULE_0__["RulesEditorDialog"]; });
-
-
-
-
-/***/ }),
-
-/***/ "./src/components/StyleEditor/StyleEditor.tsx":
+/*! exports provided: RulesEditor, RulesEditorDialogBase, RulesEditorDialog */function(e,t,n){"use strict";n.r(t);var o=n(/*! ./RulesEditor */"./src/components/RulesEditor/RulesEditor.tsx");n.d(t,"RulesEditor",function(){return o.RulesEditor}),n.d(t,"RulesEditorDialogBase",function(){return o.RulesEditorDialogBase}),n.d(t,"RulesEditorDialog",function(){return o.RulesEditorDialog})},"./src/components/StyleEditor/StyleEditor.tsx":
 /*!****************************************************!*\
   !*** ./src/components/StyleEditor/StyleEditor.tsx ***!
   \****************************************************/
-/*! exports provided: IconsNextToTeamPokemon, StyleEditorBase, StyleEditor */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IconsNextToTeamPokemon", function() { return IconsNextToTeamPokemon; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StyleEditorBase", function() { return StyleEditorBase; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StyleEditor", function() { return StyleEditor; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! actions */ "./src/actions/index.ts");
-/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! utils */ "./src/utils/index.ts");
-/* harmony import */ var _blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
-/* harmony import */ var components_BaseEditor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! components/BaseEditor */ "./src/components/BaseEditor/index.ts");
-/* harmony import */ var components_Shared__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! components/Shared */ "./src/components/Shared/index.ts");
-/* harmony import */ var emotion__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! emotion */ "./node_modules/emotion/dist/index.es.js");
-/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./styles */ "./src/components/StyleEditor/styles.ts");
-/* harmony import */ var components_ThemeEditor__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! components/ThemeEditor */ "./src/components/ThemeEditor/index.ts");
-
-
-
-
-
-
-
-
-
-
-const editEvent = (e, props, name, game) => {
-    const propName = name || e.target.name;
-    props.editStyle({ [propName]: e.target.value });
-    if (propName === 'template' && e.target.value === 'Default Light') {
-        props.editStyle({ bgColor: '#eeeeee' });
-        props.editStyle({ topHeaderColor: '#dedede' });
-    }
-    if (propName === 'template' && e.target.value === 'Default Dark') {
-        props.editStyle({ bgColor: '#383840' });
-        props.editStyle({ topHeaderColor: '#333333' });
-    }
-    if (propName === 'template' && e.target.value === 'Cards') {
-        props.editStyle({ imageStyle: 'square' });
-    }
-    if (propName === 'template' && e.target.value === 'Generations') {
-        props.editStyle({
-            bgColor: Object(utils__WEBPACK_IMPORTED_MODULE_3__["gameOfOriginToColor"])(game),
-        });
-        props.editStyle({
-            resultHeight: 870
-        });
-        props.editStyle({
-            resultWidth: 1460
-        });
-    }
-};
-const IconsNextToTeamPokemon = (props) => (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'style-edit' },
-    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Checkbox"], { checked: props.style.iconsNextToTeamPokemon, name: 'iconsNextToTeamPokemon', label: 'Icons Next to Team Pokemon', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'iconsNextToTeamPokemon') })));
-class StyleEditorBase extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-    constructor() {
-        super(...arguments);
-        this.state = { isThemeEditorOpen: false };
-        this.toggleThemeEditor = e => this.setState({ isThemeEditorOpen: !this.state.isThemeEditorOpen });
-    }
-    render() {
-        const props = this.props;
-        const styleEdit = Object(emotion__WEBPACK_IMPORTED_MODULE_7__["cx"])(_styles__WEBPACK_IMPORTED_MODULE_8__["styleEdit"], { [_styles__WEBPACK_IMPORTED_MODULE_8__["styleEdit_dark"]]: props.style.editorDarkMode });
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_BaseEditor__WEBPACK_IMPORTED_MODULE_5__["BaseEditor"], { name: 'Style' },
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Dialog"], { isOpen: this.state.isThemeEditorOpen, onClose: this.toggleThemeEditor, title: 'Theme Editor', icon: 'style', className: Object(emotion__WEBPACK_IMPORTED_MODULE_7__["cx"])(_styles__WEBPACK_IMPORTED_MODULE_8__["dialog"], { [_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Classes"].DARK]: props.style.editorDarkMode }) },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_ThemeEditor__WEBPACK_IMPORTED_MODULE_9__["ThemeEditor"], null)),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: styleEdit },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", { className: 'pt-label pt-inline' }, "Template"),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'pt-select' },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("select", { name: 'template', onChange: e => editEvent(e, props, null, props.game.name), value: props.style.template }, utils__WEBPACK_IMPORTED_MODULE_3__["listOfThemes"].map(o => react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("option", { key: o }, o)))),
-                utils__WEBPACK_IMPORTED_MODULE_3__["FEATURES"].themeEditing ?
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Button"], { onClick: this.toggleThemeEditor, style: { marginLeft: '.25rem' }, intent: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Intent"].PRIMARY, className: 'pt-minimal' }, "Edit Theme")
-                    : null),
-            props.style.template === 'Hexagons' ?
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: styleEdit },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h6", null, "Hexagons Template Options"))
-                : null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: styleEdit },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["RadioGroup"], { className: Object(emotion__WEBPACK_IMPORTED_MODULE_7__["cx"])(_styles__WEBPACK_IMPORTED_MODULE_8__["radioGroup"]), label: 'Image Style', onChange: e => editEvent(e, props, 'imageStyle'), selectedValue: props.style.imageStyle },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Radio"], { label: 'Round', value: 'round' }),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Radio"], { label: 'Square', value: 'square' }))),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: styleEdit },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["RadioGroup"], { className: Object(emotion__WEBPACK_IMPORTED_MODULE_7__["cx"])(_styles__WEBPACK_IMPORTED_MODULE_8__["radioGroup"]), label: 'Item Style', onChange: e => editEvent(e, props, 'itemStyle'), selectedValue: props.style.itemStyle },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Radio"], { label: 'Round', value: 'round' }),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Radio"], { label: 'Square', value: 'square' }))),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: styleEdit },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", { className: 'pt-label pt-inline' }, "Result Dimensions"),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { name: 'resultWidth', className: 'pt-input small-input', onChange: e => editEvent(e, props), value: props.style.resultWidth, type: 'number', min: '0', step: '10' }),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { style: { marginRight: '0' }, className: 'pt-icon pt-icon-cross' }),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { name: 'resultHeight', className: 'pt-input small-input', onChange: e => editEvent(e, props), value: props.style.resultHeight, type: 'number', min: '0', step: '10' })),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: styleEdit },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", { className: 'pt-label pt-inline' }, "Background color"),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_Shared__WEBPACK_IMPORTED_MODULE_6__["ColorEdit"], { onChange: e => editEvent(e, props), name: 'bgColor', value: props.style.bgColor })),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: styleEdit },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", { className: 'pt-label pt-inline' }, "Header color"),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_Shared__WEBPACK_IMPORTED_MODULE_6__["ColorEdit"], { name: 'topHeaderColor', onChange: e => editEvent(e, props), value: props.style.topHeaderColor })),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: styleEdit },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", { className: 'pt-label pt-inline' }, "Background Image"),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { value: props.style.backgroundImage, name: 'backgroundImage', onChange: e => editEvent(e, props), className: 'pt-input' }),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, ' '),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Checkbox"], { style: {
-                        marginBottom: '0',
-                        marginLeft: '10px',
-                    }, checked: props.style.tileBackground, name: 'tileBackground', label: 'Tile', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'tileBackground') })),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: styleEdit },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["RadioGroup"], { className: Object(emotion__WEBPACK_IMPORTED_MODULE_7__["cx"])(_styles__WEBPACK_IMPORTED_MODULE_8__["radioGroup"]), label: 'Moves Position', onChange: e => editEvent(e, props, 'movesPosition'), selectedValue: props.style.movesPosition },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Radio"], { label: 'Horizontal', value: 'horizontal' }),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Radio"], { label: 'Vertical', value: 'vertical' }))),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: styleEdit },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["RadioGroup"], { className: Object(emotion__WEBPACK_IMPORTED_MODULE_7__["cx"])(_styles__WEBPACK_IMPORTED_MODULE_8__["radioGroup"]), label: 'Team Images', onChange: e => editEvent(e, props, 'teamImages'), selectedValue: props.style.teamImages },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Radio"], { label: 'Standard', value: 'standard' }),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Radio"], { label: 'Sugimori', value: 'sugimori' }))),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: styleEdit },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Checkbox"], { checked: props.style.teamPokemonBorder, name: 'teamPokemonBorder', label: 'Team Pokemon Gradient Backgrounds', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'teamPokemonBorder') })),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: styleEdit },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Checkbox"], { checked: props.style.showPokemonMoves, name: 'showPokemonMoves', label: 'Show Pokemon Moves', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'showPokemonMoves') })),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: styleEdit },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Checkbox"], { checked: props.style.minimalTeamLayout, name: 'minimalTeamLayout', label: 'Minimal Team Layout', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'minimalTeamLayout') })),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: styleEdit },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Checkbox"], { checked: props.style.displayBadges, name: 'displayBadges', label: 'Display Badges', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'displayBadges') })),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: styleEdit },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Checkbox"], { checked: props.style.displayRules, name: 'displayRules', label: 'Display Nuzlocke Rules', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'displayRules') })),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: styleEdit },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Checkbox"], { checked: props.style.oldMetLocationFormat, name: 'oldMetLocationFormat', label: 'Old Met Location Format', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'oldMetLocationFormat') })),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: styleEdit },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Checkbox"], { checked: props.style.grayScaleDeadPokemon, name: 'grayScaleDeadPokemon', label: 'Gray Scale Filter Dead Pokemon Images', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'grayScaleDeadPokemon') })),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: styleEdit },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Checkbox"], { checked: props.style.spritesMode, name: 'spritesMode', label: 'Sprites Mode', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'spritesMode') })),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: styleEdit },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["Checkbox"], { checked: props.style.scaleSprites, name: 'scaleSprites', label: 'Scale Sprites', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'scaleSprites') })),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'custom-css-input-wrapper' },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", { style: { padding: '.5rem' }, className: 'pt-label' }, "Custom CSS "),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_4__["TextArea"], { large: true, onChange: e => editEvent(e, props, 'customCSS'), className: 'custom-css-input pt-fill', value: props.style.customCSS }),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("style", null, props.style.customCSS))));
-    }
-}
-const StyleEditor = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])((state) => ({ style: state.style, game: state.game }), {
-    editStyle: actions__WEBPACK_IMPORTED_MODULE_2__["editStyle"],
-})(StyleEditorBase);
-
-
-/***/ }),
-
-/***/ "./src/components/StyleEditor/index.ts":
+/*! exports provided: IconsNextToTeamPokemon, StyleEditorBase, StyleEditor */function(e,t,n){"use strict";n.r(t),n.d(t,"IconsNextToTeamPokemon",function(){return E}),n.d(t,"StyleEditorBase",function(){return h}),n.d(t,"StyleEditor",function(){return g});var o=n(/*! react */"./node_modules/react/index.js"),r=n(/*! react-redux */"./node_modules/react-redux/es/index.js"),s=n(/*! actions */"./src/actions/index.ts"),a=n(/*! utils */"./src/utils/index.ts"),i=n(/*! @blueprintjs/core */"./node_modules/@blueprintjs/core/lib/esm/index.js"),l=n(/*! components/BaseEditor */"./src/components/BaseEditor/index.ts"),d=n(/*! components/Shared */"./src/components/Shared/index.ts"),c=n(/*! emotion */"./node_modules/emotion/dist/index.es.js"),m=n(/*! ./styles */"./src/components/StyleEditor/styles.ts"),u=n(/*! components/ThemeEditor */"./src/components/ThemeEditor/index.ts");const p=(e,t,n,o)=>{const r=n||e.target.name;t.editStyle({[r]:e.target.value}),"template"===r&&"Default Light"===e.target.value&&(t.editStyle({bgColor:"#eeeeee"}),t.editStyle({topHeaderColor:"#dedede"})),"template"===r&&"Default Dark"===e.target.value&&(t.editStyle({bgColor:"#383840"}),t.editStyle({topHeaderColor:"#333333"})),"template"===r&&"Cards"===e.target.value&&t.editStyle({imageStyle:"square"}),"template"===r&&"Generations"===e.target.value&&(t.editStyle({bgColor:Object(a.gameOfOriginToColor)(o)}),t.editStyle({resultHeight:870}),t.editStyle({resultWidth:1460}))},E=e=>o.createElement("div",{className:"style-edit"},o.createElement(i.Checkbox,{checked:e.style.iconsNextToTeamPokemon,name:"iconsNextToTeamPokemon",label:"Icons Next to Team Pokemon",onChange:t=>p(Object.assign({},t,{target:{value:t.target.checked}}),e,"iconsNextToTeamPokemon")}));class h extends o.Component{constructor(){super(...arguments),this.state={isThemeEditorOpen:!1},this.toggleThemeEditor=(e=>this.setState({isThemeEditorOpen:!this.state.isThemeEditorOpen}))}render(){const e=this.props,t=Object(c.cx)(m.styleEdit,{[m.styleEdit_dark]:e.style.editorDarkMode});return o.createElement(l.BaseEditor,{name:"Style"},o.createElement(i.Dialog,{isOpen:this.state.isThemeEditorOpen,onClose:this.toggleThemeEditor,title:"Theme Editor",icon:"style",className:Object(c.cx)(m.dialog,{[i.Classes.DARK]:e.style.editorDarkMode})},o.createElement(u.ThemeEditor,null)),o.createElement("div",{className:t},o.createElement("label",{className:"pt-label pt-inline"},"Template"),o.createElement("div",{className:"pt-select"},o.createElement("select",{name:"template",onChange:t=>p(t,e,null,e.game.name),value:e.style.template},a.listOfThemes.map(e=>o.createElement("option",{key:e},e)))),a.FEATURES.themeEditing?o.createElement(i.Button,{onClick:this.toggleThemeEditor,style:{marginLeft:".25rem"},intent:i.Intent.PRIMARY,className:"pt-minimal"},"Edit Theme"):null),"Hexagons"===e.style.template?o.createElement("div",{className:t},o.createElement("h6",null,"Hexagons Template Options")):null,o.createElement("div",{className:t},o.createElement(i.RadioGroup,{className:Object(c.cx)(m.radioGroup),label:"Image Style",onChange:t=>p(t,e,"imageStyle"),selectedValue:e.style.imageStyle},o.createElement(i.Radio,{label:"Round",value:"round"}),o.createElement(i.Radio,{label:"Square",value:"square"}))),o.createElement("div",{className:t},o.createElement(i.RadioGroup,{className:Object(c.cx)(m.radioGroup),label:"Item Style",onChange:t=>p(t,e,"itemStyle"),selectedValue:e.style.itemStyle},o.createElement(i.Radio,{label:"Round",value:"round"}),o.createElement(i.Radio,{label:"Square",value:"square"}))),o.createElement("div",{className:t},o.createElement("label",{className:"pt-label pt-inline"},"Result Dimensions"),o.createElement("input",{name:"resultWidth",className:"pt-input small-input",onChange:t=>p(t,e),value:e.style.resultWidth,type:"number",min:"0",step:"10"}),o.createElement("span",{style:{marginRight:"0"},className:"pt-icon pt-icon-cross"}),o.createElement("input",{name:"resultHeight",className:"pt-input small-input",onChange:t=>p(t,e),value:e.style.resultHeight,type:"number",min:"0",step:"10"})),o.createElement("div",{className:t},o.createElement("label",{className:"pt-label pt-inline"},"Background color"),o.createElement(d.ColorEdit,{onChange:t=>p(t,e),name:"bgColor",value:e.style.bgColor})),o.createElement("div",{className:t},o.createElement("label",{className:"pt-label pt-inline"},"Header color"),o.createElement(d.ColorEdit,{name:"topHeaderColor",onChange:t=>p(t,e),value:e.style.topHeaderColor})),o.createElement("div",{className:t},o.createElement("label",{className:"pt-label pt-inline"},"Background Image"),o.createElement("input",{value:e.style.backgroundImage,name:"backgroundImage",onChange:t=>p(t,e),className:"pt-input"}),o.createElement("span",null," "),o.createElement(i.Checkbox,{style:{marginBottom:"0",marginLeft:"10px"},checked:e.style.tileBackground,name:"tileBackground",label:"Tile",onChange:t=>p(Object.assign({},t,{target:{value:t.target.checked}}),e,"tileBackground")})),o.createElement("div",{className:t},o.createElement(i.RadioGroup,{className:Object(c.cx)(m.radioGroup),label:"Moves Position",onChange:t=>p(t,e,"movesPosition"),selectedValue:e.style.movesPosition},o.createElement(i.Radio,{label:"Horizontal",value:"horizontal"}),o.createElement(i.Radio,{label:"Vertical",value:"vertical"}))),o.createElement("div",{className:t},o.createElement(i.RadioGroup,{className:Object(c.cx)(m.radioGroup),label:"Team Images",onChange:t=>p(t,e,"teamImages"),selectedValue:e.style.teamImages},o.createElement(i.Radio,{label:"Standard",value:"standard"}),o.createElement(i.Radio,{label:"Sugimori",value:"sugimori"}))),o.createElement("div",{className:t},o.createElement(i.Checkbox,{checked:e.style.teamPokemonBorder,name:"teamPokemonBorder",label:"Team Pokemon Gradient Backgrounds",onChange:t=>p(Object.assign({},t,{target:{value:t.target.checked}}),e,"teamPokemonBorder")})),o.createElement("div",{className:t},o.createElement(i.Checkbox,{checked:e.style.showPokemonMoves,name:"showPokemonMoves",label:"Show Pokemon Moves",onChange:t=>p(Object.assign({},t,{target:{value:t.target.checked}}),e,"showPokemonMoves")})),o.createElement("div",{className:t},o.createElement(i.Checkbox,{checked:e.style.minimalTeamLayout,name:"minimalTeamLayout",label:"Minimal Team Layout",onChange:t=>p(Object.assign({},t,{target:{value:t.target.checked}}),e,"minimalTeamLayout")})),o.createElement("div",{className:t},o.createElement(i.Checkbox,{checked:e.style.displayBadges,name:"displayBadges",label:"Display Badges",onChange:t=>p(Object.assign({},t,{target:{value:t.target.checked}}),e,"displayBadges")})),o.createElement("div",{className:t},o.createElement(i.Checkbox,{checked:e.style.displayRules,name:"displayRules",label:"Display Nuzlocke Rules",onChange:t=>p(Object.assign({},t,{target:{value:t.target.checked}}),e,"displayRules")})),o.createElement("div",{className:t},o.createElement(i.Checkbox,{checked:e.style.oldMetLocationFormat,name:"oldMetLocationFormat",label:"Old Met Location Format",onChange:t=>p(Object.assign({},t,{target:{value:t.target.checked}}),e,"oldMetLocationFormat")})),o.createElement("div",{className:t},o.createElement(i.Checkbox,{checked:e.style.grayScaleDeadPokemon,name:"grayScaleDeadPokemon",label:"Gray Scale Filter Dead Pokemon Images",onChange:t=>p(Object.assign({},t,{target:{value:t.target.checked}}),e,"grayScaleDeadPokemon")})),o.createElement("div",{className:t},o.createElement(i.Checkbox,{checked:e.style.spritesMode,name:"spritesMode",label:"Sprites Mode",onChange:t=>p(Object.assign({},t,{target:{value:t.target.checked}}),e,"spritesMode")})),o.createElement("div",{className:t},o.createElement(i.Checkbox,{checked:e.style.scaleSprites,name:"scaleSprites",label:"Scale Sprites",onChange:t=>p(Object.assign({},t,{target:{value:t.target.checked}}),e,"scaleSprites")})),o.createElement("div",{className:"custom-css-input-wrapper"},o.createElement("label",{style:{padding:".5rem"},className:"pt-label"},"Custom CSS "),o.createElement(i.TextArea,{large:!0,onChange:t=>p(t,e,"customCSS"),className:"custom-css-input pt-fill",value:e.style.customCSS}),o.createElement("style",null,e.style.customCSS)))}}const g=Object(r.connect)(e=>({style:e.style,game:e.game}),{editStyle:s.editStyle})(h)},"./src/components/StyleEditor/index.ts":
 /*!*********************************************!*\
   !*** ./src/components/StyleEditor/index.ts ***!
   \*********************************************/
-/*! exports provided: IconsNextToTeamPokemon, StyleEditorBase, StyleEditor */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _StyleEditor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./StyleEditor */ "./src/components/StyleEditor/StyleEditor.tsx");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "IconsNextToTeamPokemon", function() { return _StyleEditor__WEBPACK_IMPORTED_MODULE_0__["IconsNextToTeamPokemon"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StyleEditorBase", function() { return _StyleEditor__WEBPACK_IMPORTED_MODULE_0__["StyleEditorBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StyleEditor", function() { return _StyleEditor__WEBPACK_IMPORTED_MODULE_0__["StyleEditor"]; });
-
-
-
-
-/***/ }),
-
-/***/ "./src/components/ThemeEditor/ComponentOptions.ts":
+/*! exports provided: IconsNextToTeamPokemon, StyleEditorBase, StyleEditor */function(e,t,n){"use strict";n.r(t);var o=n(/*! ./StyleEditor */"./src/components/StyleEditor/StyleEditor.tsx");n.d(t,"IconsNextToTeamPokemon",function(){return o.IconsNextToTeamPokemon}),n.d(t,"StyleEditorBase",function(){return o.StyleEditorBase}),n.d(t,"StyleEditor",function(){return o.StyleEditor})},"./src/components/ThemeEditor/ComponentOptions.ts":
 /*!********************************************************!*\
   !*** ./src/components/ThemeEditor/ComponentOptions.ts ***!
   \********************************************************/
-/*! exports provided: ComponentOptions, Options */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ComponentOptions", function() { return ComponentOptions; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Options", function() { return Options; });
-var ComponentOptions;
-(function (ComponentOptions) {
-    ComponentOptions["BackgroundColor"] = "Background Color";
-    ComponentOptions["TextColor"] = "Text Color";
-    ComponentOptions["Padding"] = "Padding";
-    ComponentOptions["Margin"] = "Margin";
-    ComponentOptions["BorderRadius"] = "Border Radius";
-})(ComponentOptions || (ComponentOptions = {}));
-const Options = {
-    ChampsPokemon: {
-        styles: [
-            ComponentOptions.BorderRadius,
-            ComponentOptions.Padding,
-            ComponentOptions.Margin,
-        ],
-        props: {
-            showNickname: true,
-            showGender: false,
-            showLevel: false,
-        }
-    }
-};
-
-
-/***/ }),
-
-/***/ "./src/components/ThemeEditor/ThemeEditor.tsx":
+/*! exports provided: ComponentOptions, Options */function(e,t,n){"use strict";var o;n.r(t),n.d(t,"ComponentOptions",function(){return o}),n.d(t,"Options",function(){return r}),function(e){e.BackgroundColor="Background Color",e.TextColor="Text Color",e.Padding="Padding",e.Margin="Margin",e.BorderRadius="Border Radius"}(o||(o={}));const r={ChampsPokemon:{styles:[o.BorderRadius,o.Padding,o.Margin],props:{showNickname:!0,showGender:!1,showLevel:!1}}}},"./src/components/ThemeEditor/ThemeEditor.tsx":
 /*!****************************************************!*\
   !*** ./src/components/ThemeEditor/ThemeEditor.tsx ***!
   \****************************************************/
-/*! exports provided: NumericValue, ThemeEditorBase, ThemeEditor */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NumericValue", function() { return NumericValue; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ThemeEditorBase", function() { return ThemeEditorBase; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ThemeEditor", function() { return ThemeEditor; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var emotion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! emotion */ "./node_modules/emotion/dist/index.es.js");
-/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styles */ "./src/components/ThemeEditor/styles.ts");
-/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! utils */ "./src/utils/index.ts");
-/* harmony import */ var _blueprintjs_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
-/* harmony import */ var components_Shared__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! components/Shared */ "./src/components/Shared/index.ts");
-/* harmony import */ var components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! components */ "./src/components/index.ts");
-/* harmony import */ var _ComponentOptions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ComponentOptions */ "./src/components/ThemeEditor/ComponentOptions.ts");
-
-
-
-
-
-
-
-
-
-const modelPokemon = Object.assign({}, Object(utils__WEBPACK_IMPORTED_MODULE_4__["generateEmptyPokemon"])(), { species: 'Pikachu', nickname: 'Pika Pika', gender: 'm', level: 50, metLevel: 5, met: 'Viridian Forest', gameOfOrigin: 'Red' });
-const componentTree = [
-    {
-        id: 0,
-        hasCaret: false,
-        label: 'Body'
-    },
-    {
-        id: 1,
-        icon: 'style',
-        isExpanded: true,
-        label: 'Header',
-        childNodes: [
-            {
-                id: 2,
-                label: 'Title',
-            },
-            {
-                id: 3,
-                label: 'Trainer Picture',
-            },
-        ]
-    },
-    {
-        id: 4,
-        icon: 'style',
-        isExpanded: true,
-        label: 'Team Pokemon',
-        childNodes: [
-            {
-                id: 5,
-                label: 'Info',
-                childNodes: [
-                    {
-                        id: 6,
-                        label: 'Moves',
-                    },
-                    {
-                        id: 7,
-                        label: 'Nickname Text',
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        id: 8,
-        icon: 'style',
-        isExpanded: true,
-        label: 'Boxed Pokemon',
-        childNodes: [
-            {
-                id: 9,
-                label: 'Info',
-            }
-        ]
-    },
-    {
-        id: 10,
-        icon: 'style',
-        isExpanded: true,
-        label: 'Dead Pokemon',
-        childNodes: [
-            {
-                id: 11,
-                label: 'Info',
-            }
-        ]
-    },
-    {
-        id: 12,
-        icon: 'style',
-        isExpanded: true,
-        label: 'Champs Pokemon',
-        options: _ComponentOptions__WEBPACK_IMPORTED_MODULE_8__["Options"].ChampsPokemon,
-        childNodes: [
-            {
-                id: 11,
-                label: 'PokemonIcon',
-            }
-        ]
-    },
-    {
-        id: 420,
-        label: 'Custom CSS',
-    }
-];
-const NumericValue = ({ name, value, onInput }) => react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: Object(emotion__WEBPACK_IMPORTED_MODULE_2__["cx"])(_styles__WEBPACK_IMPORTED_MODULE_3__["componentOption"]) },
-    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", { className: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_5__["Classes"].LABEL }, name),
-    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { name: name, onInput: onInput, type: 'text', value: value }));
-class ThemeEditorBase extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-    constructor() {
-        super(...arguments);
-        this.state = { componentTree: [] };
-        this.onNodeClick = (node, _nodePath, e) => {
-            const originallySelected = node.isSelected;
-            if (!e.shiftKey) {
-                this.forEachNode(this.state.componentTree, n => (n.isSelected = false));
-            }
-            node.isSelected = originallySelected == null ? true : !originallySelected;
-            this.setState(this.state);
-        };
-        this.onNodeCollapse = (node) => {
-            node.isExpanded = false;
-            this.setState(this.state);
-        };
-        this.onNodeExpand = (node) => {
-            node.isExpanded = true;
-            this.setState(this.state);
-        };
-    }
-    componentWillMount() {
-        this.setState({ componentTree: componentTree });
-    }
-    getCurrentNode() {
-        let currentNode;
-        const selectedNodes = this.forEachNode(this.state.componentTree, (node) => {
-            if (node.isSelected)
-                currentNode = node;
-        });
-        return currentNode;
-    }
-    forEachNode(nodes, callback) {
-        if (nodes == null) {
-            return;
-        }
-        for (const node of nodes) {
-            callback(node);
-            this.forEachNode(node.childNodes, callback);
-        }
-    }
-    render() {
-        const currentNode = this.getCurrentNode() == null ? null : this.getCurrentNode();
-        if (currentNode) {
-            const { label } = currentNode;
-        }
-        console.log(currentNode);
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: Object(emotion__WEBPACK_IMPORTED_MODULE_2__["cx"])(Object(utils__WEBPACK_IMPORTED_MODULE_4__["classWithDarkTheme"])(_styles__WEBPACK_IMPORTED_MODULE_3__, 'header', this.props.style.editorDarkMode)) },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("strong", null, "Current Theme:"),
-                " ",
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_Shared__WEBPACK_IMPORTED_MODULE_6__["ThemeSelect"], { theme: this.props.style.template })),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: Object(emotion__WEBPACK_IMPORTED_MODULE_2__["cx"])(_styles__WEBPACK_IMPORTED_MODULE_3__["main"]) },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: Object(emotion__WEBPACK_IMPORTED_MODULE_2__["cx"])(_styles__WEBPACK_IMPORTED_MODULE_3__["sidebar"]) },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", { style: { display: 'flex' }, className: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_5__["Classes"].LABEL },
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { style: { margin: '4px', width: 'calc(80% - 8px)' }, className: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_5__["Classes"].INPUT, type: 'text', placeholder: 'Filter...' }),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_5__["Button"], { style: { width: '20%' }, icon: 'search', className: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_5__["Classes"].MINIMAL })),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_5__["Tree"], { contents: componentTree, onNodeClick: this.onNodeClick, onNodeCollapse: this.onNodeCollapse, onNodeExpand: this.onNodeExpand })),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: Object(emotion__WEBPACK_IMPORTED_MODULE_2__["cx"])(_styles__WEBPACK_IMPORTED_MODULE_3__["componentView"]) },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: Object(emotion__WEBPACK_IMPORTED_MODULE_2__["cx"])(this.props.style.template.toLowerCase(), Object(utils__WEBPACK_IMPORTED_MODULE_4__["classWithDarkTheme"])(_styles__WEBPACK_IMPORTED_MODULE_3__, 'componentResult', this.props.style.editorDarkMode)) }, currentNode && currentNode.id === 12 &&
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components__WEBPACK_IMPORTED_MODULE_7__["ChampsPokemon"], Object.assign({ showGender: currentNode.options.props.showGender, showNickname: currentNode.options.props.showNickname, showLevel: currentNode.options.props.showLevel }, modelPokemon))),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: Object(emotion__WEBPACK_IMPORTED_MODULE_2__["cx"])(_styles__WEBPACK_IMPORTED_MODULE_3__["componentOptions"]) },
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("strong", null,
-                            this.getCurrentNode() == null ? '' : this.getCurrentNode().label,
-                            " Options"),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_5__["Menu"], null,
-                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null,
-                                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: Object(emotion__WEBPACK_IMPORTED_MODULE_2__["cx"])(_styles__WEBPACK_IMPORTED_MODULE_3__["componentOption"]) },
-                                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", { className: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_5__["Classes"].LABEL }, "Background Color"),
-                                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_Shared__WEBPACK_IMPORTED_MODULE_6__["ColorEdit"], { value: '#222222', name: 'BoxedPokemon', onChange: null })),
-                                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: Object(emotion__WEBPACK_IMPORTED_MODULE_2__["cx"])(_styles__WEBPACK_IMPORTED_MODULE_3__["componentOption"]) },
-                                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", { className: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_5__["Classes"].LABEL }, "Text Color"),
-                                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_Shared__WEBPACK_IMPORTED_MODULE_6__["ColorEdit"], { value: '#EEEEEE', name: 'BoxedPokemon', onChange: null })),
-                                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumericValue, { name: 'Border Radius', value: '4px', onInput: null }),
-                                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumericValue, { name: 'Padding', value: '0px', onInput: null }),
-                                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumericValue, { name: 'Margin', value: '0px', onInput: null }))))))));
-    }
-}
-const ThemeEditor = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])((state) => ({
-    style: state.style
-}), null)(ThemeEditorBase);
-
-
-/***/ }),
-
-/***/ "./src/components/ThemeEditor/index.ts":
+/*! exports provided: NumericValue, ThemeEditorBase, ThemeEditor */function(e,t,n){"use strict";n.r(t),n.d(t,"NumericValue",function(){return E}),n.d(t,"ThemeEditorBase",function(){return h}),n.d(t,"ThemeEditor",function(){return g});var o=n(/*! react */"./node_modules/react/index.js"),r=n(/*! react-redux */"./node_modules/react-redux/es/index.js"),s=n(/*! emotion */"./node_modules/emotion/dist/index.es.js"),a=n(/*! ./styles */"./src/components/ThemeEditor/styles.ts"),i=n(/*! utils */"./src/utils/index.ts"),l=n(/*! @blueprintjs/core */"./node_modules/@blueprintjs/core/lib/esm/index.js"),d=n(/*! components/Shared */"./src/components/Shared/index.ts"),c=n(/*! components */"./src/components/index.ts"),m=n(/*! ./ComponentOptions */"./src/components/ThemeEditor/ComponentOptions.ts");const u=Object.assign({},Object(i.generateEmptyPokemon)(),{species:"Pikachu",nickname:"Pika Pika",gender:"m",level:50,metLevel:5,met:"Viridian Forest",gameOfOrigin:"Red"}),p=[{id:0,hasCaret:!1,label:"Body"},{id:1,icon:"style",isExpanded:!0,label:"Header",childNodes:[{id:2,label:"Title"},{id:3,label:"Trainer Picture"}]},{id:4,icon:"style",isExpanded:!0,label:"Team Pokemon",childNodes:[{id:5,label:"Info",childNodes:[{id:6,label:"Moves"},{id:7,label:"Nickname Text"}]}]},{id:8,icon:"style",isExpanded:!0,label:"Boxed Pokemon",childNodes:[{id:9,label:"Info"}]},{id:10,icon:"style",isExpanded:!0,label:"Dead Pokemon",childNodes:[{id:11,label:"Info"}]},{id:12,icon:"style",isExpanded:!0,label:"Champs Pokemon",options:m.Options.ChampsPokemon,childNodes:[{id:11,label:"PokemonIcon"}]},{id:420,label:"Custom CSS"}],E=({name:e,value:t,onInput:n})=>o.createElement("div",{className:Object(s.cx)(a.componentOption)},o.createElement("label",{className:l.Classes.LABEL},e),o.createElement("input",{name:e,onInput:n,type:"text",value:t}));class h extends o.Component{constructor(){super(...arguments),this.state={componentTree:[]},this.onNodeClick=((e,t,n)=>{const o=e.isSelected;n.shiftKey||this.forEachNode(this.state.componentTree,e=>e.isSelected=!1),e.isSelected=null==o||!o,this.setState(this.state)}),this.onNodeCollapse=(e=>{e.isExpanded=!1,this.setState(this.state)}),this.onNodeExpand=(e=>{e.isExpanded=!0,this.setState(this.state)})}componentWillMount(){this.setState({componentTree:p})}getCurrentNode(){let e;this.forEachNode(this.state.componentTree,t=>{t.isSelected&&(e=t)});return e}forEachNode(e,t){if(null!=e)for(const n of e)t(n),this.forEachNode(n.childNodes,t)}render(){const e=null==this.getCurrentNode()?null:this.getCurrentNode();if(e){const{label:t}=e}return console.log(e),o.createElement(o.Fragment,null,o.createElement("div",{className:Object(s.cx)(Object(i.classWithDarkTheme)(a,"header",this.props.style.editorDarkMode))},o.createElement("strong",null,"Current Theme:")," ",o.createElement(d.ThemeSelect,{theme:this.props.style.template})),o.createElement("div",{className:Object(s.cx)(a.main)},o.createElement("div",{className:Object(s.cx)(a.sidebar)},o.createElement("label",{style:{display:"flex"},className:l.Classes.LABEL},o.createElement("input",{style:{margin:"4px",width:"calc(80% - 8px)"},className:l.Classes.INPUT,type:"text",placeholder:"Filter..."}),o.createElement(l.Button,{style:{width:"20%"},icon:"search",className:l.Classes.MINIMAL})),o.createElement(l.Tree,{contents:p,onNodeClick:this.onNodeClick,onNodeCollapse:this.onNodeCollapse,onNodeExpand:this.onNodeExpand})),o.createElement("div",{className:Object(s.cx)(a.componentView)},o.createElement("div",{className:Object(s.cx)(this.props.style.template.toLowerCase(),Object(i.classWithDarkTheme)(a,"componentResult",this.props.style.editorDarkMode))},e&&12===e.id&&o.createElement(c.ChampsPokemon,Object.assign({showGender:e.options.props.showGender,showNickname:e.options.props.showNickname,showLevel:e.options.props.showLevel},u))),o.createElement("div",{className:Object(s.cx)(a.componentOptions)},o.createElement("strong",null,null==this.getCurrentNode()?"":this.getCurrentNode().label," Options"),o.createElement(l.Menu,null,o.createElement(o.Fragment,null,o.createElement("div",{className:Object(s.cx)(a.componentOption)},o.createElement("label",{className:l.Classes.LABEL},"Background Color"),o.createElement(d.ColorEdit,{value:"#222222",name:"BoxedPokemon",onChange:null})),o.createElement("div",{className:Object(s.cx)(a.componentOption)},o.createElement("label",{className:l.Classes.LABEL},"Text Color"),o.createElement(d.ColorEdit,{value:"#EEEEEE",name:"BoxedPokemon",onChange:null})),o.createElement(E,{name:"Border Radius",value:"4px",onInput:null}),o.createElement(E,{name:"Padding",value:"0px",onInput:null}),o.createElement(E,{name:"Margin",value:"0px",onInput:null})))))))}}const g=Object(r.connect)(e=>({style:e.style}),null)(h)},"./src/components/ThemeEditor/index.ts":
 /*!*********************************************!*\
   !*** ./src/components/ThemeEditor/index.ts ***!
   \*********************************************/
-/*! exports provided: NumericValue, ThemeEditorBase, ThemeEditor */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ThemeEditor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ThemeEditor */ "./src/components/ThemeEditor/ThemeEditor.tsx");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NumericValue", function() { return _ThemeEditor__WEBPACK_IMPORTED_MODULE_0__["NumericValue"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ThemeEditorBase", function() { return _ThemeEditor__WEBPACK_IMPORTED_MODULE_0__["ThemeEditorBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ThemeEditor", function() { return _ThemeEditor__WEBPACK_IMPORTED_MODULE_0__["ThemeEditor"]; });
-
-
-
-
-/***/ }),
-
-/***/ "./src/components/ThemeEditor/styles.ts":
+/*! exports provided: NumericValue, ThemeEditorBase, ThemeEditor */function(e,t,n){"use strict";n.r(t);var o=n(/*! ./ThemeEditor */"./src/components/ThemeEditor/ThemeEditor.tsx");n.d(t,"NumericValue",function(){return o.NumericValue}),n.d(t,"ThemeEditorBase",function(){return o.ThemeEditorBase}),n.d(t,"ThemeEditor",function(){return o.ThemeEditor})},"./src/components/ThemeEditor/styles.ts":
 /*!**********************************************!*\
   !*** ./src/components/ThemeEditor/styles.ts ***!
   \**********************************************/
-/*! exports provided: main, header, header_dark, sidebar, componentList, listItem, componentView, componentResult, componentResult_dark, componentOptions, componentOption */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "main", function() { return main; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "header", function() { return header; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "header_dark", function() { return header_dark; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sidebar", function() { return sidebar; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "componentList", function() { return componentList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listItem", function() { return listItem; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "componentView", function() { return componentView; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "componentResult", function() { return componentResult; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "componentResult_dark", function() { return componentResult_dark; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "componentOptions", function() { return componentOptions; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "componentOption", function() { return componentOption; });
-/* harmony import */ var emotion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! emotion */ "./node_modules/emotion/dist/index.es.js");
-
-const main = emotion__WEBPACK_IMPORTED_MODULE_0__["css"] `
+/*! exports provided: main, header, header_dark, sidebar, componentList, listItem, componentView, componentResult, componentResult_dark, componentOptions, componentOption */function(e,t,n){"use strict";n.r(t),n.d(t,"main",function(){return r}),n.d(t,"header",function(){return s}),n.d(t,"header_dark",function(){return a}),n.d(t,"sidebar",function(){return i}),n.d(t,"componentList",function(){return l}),n.d(t,"listItem",function(){return d}),n.d(t,"componentView",function(){return c}),n.d(t,"componentResult",function(){return m}),n.d(t,"componentResult_dark",function(){return u}),n.d(t,"componentOptions",function(){return p}),n.d(t,"componentOption",function(){return E});var o=n(/*! emotion */"./node_modules/emotion/dist/index.es.js");const r=o["css"]`
     display: flex;
-`;
-const header = emotion__WEBPACK_IMPORTED_MODULE_0__["css"] `
+`,s=o["css"]`
     background: #fff;
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
     padding: .5rem;
-`;
-const header_dark = emotion__WEBPACK_IMPORTED_MODULE_0__["css"] `
+`,a=o["css"]`
     background: #394b59;
     border-top: 1px solid #111;
     border-bottom: 1px solid #111;
     padding: .5rem;
-`;
-const sidebar = emotion__WEBPACK_IMPORTED_MODULE_0__["css"] `
+`,i=o["css"]`
     width: 30%;
-`;
-const componentList = emotion__WEBPACK_IMPORTED_MODULE_0__["css"] `
+`,l=o["css"]`
     background: white;
     list-style-type: none;
     margin: 0;
     padding: 0;
-`;
-const listItem = emotion__WEBPACK_IMPORTED_MODULE_0__["css"] `
+`,d=o["css"]`
     border-bottom: 1px solid #ccc;
     list-style-type: none;
     padding: .25rem;
-`;
-const componentView = emotion__WEBPACK_IMPORTED_MODULE_0__["css"] `
+`,c=o["css"]`
     display: flex;
     width: 100%;
-`;
-const componentResult = emotion__WEBPACK_IMPORTED_MODULE_0__["css"] `
+`,m=o["css"]`
     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
     padding: 1rem;
     & *:hover {
         outline: 1px dotted red;
     }
-`;
-const componentResult_dark = emotion__WEBPACK_IMPORTED_MODULE_0__["css"] `
+`,u=o["css"]`
     background-image: linear-gradient(to top, rgb(32, 40, 45) 0%, rgb(37, 50, 57) 100%);
     min-width: 33%;
     padding: 1rem;
-`;
-const componentOptions = emotion__WEBPACK_IMPORTED_MODULE_0__["css"] `
+`,p=o["css"]`
     padding: .5rem;
-`;
-const componentOption = emotion__WEBPACK_IMPORTED_MODULE_0__["css"] `
+`,E=o["css"]`
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -2023,525 +227,45 @@ const componentOption = emotion__WEBPACK_IMPORTED_MODULE_0__["css"] `
         margin: 0 !important;
         width: 60%;
     }
-`;
-
-
-/***/ }),
-
-/***/ "./src/components/TrainerEditor/BadgeInput.tsx":
+`},"./src/components/TrainerEditor/BadgeInput.tsx":
 /*!*****************************************************!*\
   !*** ./src/components/TrainerEditor/BadgeInput.tsx ***!
   \*****************************************************/
-/*! exports provided: BadgeInputBase, BadgeInput */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BadgeInputBase", function() { return BadgeInputBase; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BadgeInput", function() { return BadgeInput; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! utils */ "./src/utils/index.ts");
-/* harmony import */ var components_TrainerEditor_TrainerInfoEditField__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! components/TrainerEditor/TrainerInfoEditField */ "./src/components/TrainerEditor/TrainerInfoEditField.tsx");
-/* harmony import */ var actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! actions */ "./src/actions/index.ts");
-/* harmony import */ var _blueprintjs_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
-
-
-
-
-
-
-const handleDeletion = (badges, badge) => {
-    badges.delete(badge);
-    return badges;
-};
-class BadgeInputBase extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-    constructor(props) {
-        super(props);
-        this.state = {
-            badges: new Set([]),
-        };
-    }
-    componentWillMount() {
-        this.setState({ badges: new Set(this.props.trainer.badges) });
-    }
-    render() {
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_TrainerEditor_TrainerInfoEditField__WEBPACK_IMPORTED_MODULE_3__["TrainerInfoEditField"], { label: 'Checkpoints (Badges)', name: 'badges', placeholder: '...', value: null, onChange: null, element: inputProps => (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_5__["Popover"], { minimal: true, content: react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_5__["Menu"], null, Object(utils__WEBPACK_IMPORTED_MODULE_2__["getBadges"])(this.props.game.name).map(badge => (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_5__["Checkbox"], { onChange: (e) => {
-                        this.setState({
-                            badges: this.state.badges.has(badge)
-                                ? handleDeletion(this.state.badges, badge)
-                                : this.state.badges.add(badge),
-                        }, () => {
-                            this.props.editTrainer({
-                                badges: Array.from(this.state.badges),
-                            });
-                        });
-                    }, checked: this.props.trainer &&
-                        this.props.trainer.badges &&
-                        this.props.trainer.badges.includes(badge), key: badge, label: badge })))), position: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_5__["Position"].BOTTOM },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_5__["Button"], { style: {
-                        borderRadius: 0,
-                        width: '160px',
-                    } }, "Select Checkpoints"))) }));
-    }
-}
-const BadgeInput = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])((state) => ({
-    trainer: state.trainer,
-    game: state.game,
-}), {
-    editTrainer: actions__WEBPACK_IMPORTED_MODULE_4__["editTrainer"],
-})(BadgeInputBase);
-
-
-/***/ }),
-
-/***/ "./src/components/TrainerEditor/LinkedTrainerInfoEditField.tsx":
+/*! exports provided: BadgeInputBase, BadgeInput */function(e,t,n){"use strict";n.r(t),n.d(t,"BadgeInputBase",function(){return c}),n.d(t,"BadgeInput",function(){return m});var o=n(/*! react */"./node_modules/react/index.js"),r=n(/*! react-redux */"./node_modules/react-redux/es/index.js"),s=n(/*! utils */"./src/utils/index.ts"),a=n(/*! components/TrainerEditor/TrainerInfoEditField */"./src/components/TrainerEditor/TrainerInfoEditField.tsx"),i=n(/*! actions */"./src/actions/index.ts"),l=n(/*! @blueprintjs/core */"./node_modules/@blueprintjs/core/lib/esm/index.js");const d=(e,t)=>(e.delete(t),e);class c extends o.Component{constructor(e){super(e),this.state={badges:new Set([])}}componentWillMount(){this.setState({badges:new Set(this.props.trainer.badges)})}render(){return o.createElement(a.TrainerInfoEditField,{label:"Checkpoints (Badges)",name:"badges",placeholder:"...",value:null,onChange:null,element:e=>o.createElement(l.Popover,{minimal:!0,content:o.createElement(l.Menu,null,Object(s.getBadges)(this.props.game.name).map(e=>o.createElement(l.Checkbox,{onChange:t=>{this.setState({badges:this.state.badges.has(e)?d(this.state.badges,e):this.state.badges.add(e)},()=>{this.props.editTrainer({badges:Array.from(this.state.badges)})})},checked:this.props.trainer&&this.props.trainer.badges&&this.props.trainer.badges.includes(e),key:e,label:e}))),position:l.Position.BOTTOM},o.createElement(l.Button,{style:{borderRadius:0,width:"160px"}},"Select Checkpoints"))})}}const m=Object(r.connect)(e=>({trainer:e.trainer,game:e.game}),{editTrainer:i.editTrainer})(c)},"./src/components/TrainerEditor/LinkedTrainerInfoEditField.tsx":
 /*!*********************************************************************!*\
   !*** ./src/components/TrainerEditor/LinkedTrainerInfoEditField.tsx ***!
   \*********************************************************************/
-/*! exports provided: LinkedTrainerInfoEditField */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LinkedTrainerInfoEditField", function() { return LinkedTrainerInfoEditField; });
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions */ "./src/actions/index.ts");
-/* harmony import */ var _TrainerInfoEditField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TrainerInfoEditField */ "./src/components/TrainerEditor/TrainerInfoEditField.tsx");
-
-
-
-const mapStateToProps = (state, ownProps) => {
-    return {
-        value: state.trainer[ownProps.name],
-    };
-};
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        onChange: e => {
-            dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_1__["editTrainer"])({
-                [ownProps.name]: e.target.value,
-            }));
-        },
-    };
-};
-const LinkedTrainerInfoEditField = Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_TrainerInfoEditField__WEBPACK_IMPORTED_MODULE_2__["TrainerInfoEditField"]);
-
-
-/***/ }),
-
-/***/ "./src/components/TrainerEditor/TrainerEditor.tsx":
+/*! exports provided: LinkedTrainerInfoEditField */function(e,t,n){"use strict";n.r(t),n.d(t,"LinkedTrainerInfoEditField",function(){return a});var o=n(/*! react-redux */"./node_modules/react-redux/es/index.js"),r=n(/*! ../../actions */"./src/actions/index.ts"),s=n(/*! ./TrainerInfoEditField */"./src/components/TrainerEditor/TrainerInfoEditField.tsx");const a=Object(o.connect)((e,t)=>({value:e.trainer[t.name]}),(e,t)=>({onChange:n=>{e(Object(r.editTrainer)({[t.name]:n.target.value}))}}))(s.TrainerInfoEditField)},"./src/components/TrainerEditor/TrainerEditor.tsx":
 /*!********************************************************!*\
   !*** ./src/components/TrainerEditor/TrainerEditor.tsx ***!
   \********************************************************/
-/*! exports provided: TrainerEditor */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TrainerEditor", function() { return TrainerEditor; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var components_TrainerEditor_TrainerInfoEditor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! components/TrainerEditor/TrainerInfoEditor */ "./src/components/TrainerEditor/TrainerInfoEditor.tsx");
-/* harmony import */ var components_BaseEditor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! components/BaseEditor */ "./src/components/BaseEditor/index.ts");
-
-
-
-class TrainerEditor extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-    render() {
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_BaseEditor__WEBPACK_IMPORTED_MODULE_2__["BaseEditor"], { name: 'Trainer' },
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_TrainerEditor_TrainerInfoEditor__WEBPACK_IMPORTED_MODULE_1__["TrainerInfoEditor"], null)));
-    }
-}
-
-
-/***/ }),
-
-/***/ "./src/components/TrainerEditor/TrainerInfoEditField.tsx":
+/*! exports provided: TrainerEditor */function(e,t,n){"use strict";n.r(t),n.d(t,"TrainerEditor",function(){return a});var o=n(/*! react */"./node_modules/react/index.js"),r=n(/*! components/TrainerEditor/TrainerInfoEditor */"./src/components/TrainerEditor/TrainerInfoEditor.tsx"),s=n(/*! components/BaseEditor */"./src/components/BaseEditor/index.ts");class a extends o.Component{render(){return o.createElement(s.BaseEditor,{name:"Trainer"},o.createElement(r.TrainerInfoEditor,null))}}},"./src/components/TrainerEditor/TrainerInfoEditField.tsx":
 /*!***************************************************************!*\
   !*** ./src/components/TrainerEditor/TrainerInfoEditField.tsx ***!
   \***************************************************************/
-/*! exports provided: TrainerInfoEditField */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TrainerInfoEditField", function() { return TrainerInfoEditField; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-const TrainerInfoEditField = ({ label, name, placeholder, onChange, value, element }) => (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'trainer-info-field' },
-    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, label),
-    element ? (element({ label, name, placeholder, onChange, value })) : (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: 'text', value: value, onChange: onChange, placeholder: placeholder, name: name }))));
-
-
-/***/ }),
-
-/***/ "./src/components/TrainerEditor/TrainerInfoEditor.tsx":
+/*! exports provided: TrainerInfoEditField */function(e,t,n){"use strict";n.r(t),n.d(t,"TrainerInfoEditField",function(){return r});var o=n(/*! react */"./node_modules/react/index.js");const r=({label:e,name:t,placeholder:n,onChange:r,value:s,element:a})=>o.createElement("div",{className:"trainer-info-field"},o.createElement("label",null,e),a?a({label:e,name:t,placeholder:n,onChange:r,value:s}):o.createElement("input",{type:"text",value:s,onChange:r,placeholder:n,name:t}))},"./src/components/TrainerEditor/TrainerInfoEditor.tsx":
 /*!************************************************************!*\
   !*** ./src/components/TrainerEditor/TrainerInfoEditor.tsx ***!
   \************************************************************/
-/*! exports provided: TrainerInfoEditor */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TrainerInfoEditor", function() { return TrainerInfoEditor; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var components_TrainerEditor_BadgeInput__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! components/TrainerEditor/BadgeInput */ "./src/components/TrainerEditor/BadgeInput.tsx");
-/* harmony import */ var components_TrainerEditor_LinkedTrainerInfoEditField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! components/TrainerEditor/LinkedTrainerInfoEditField */ "./src/components/TrainerEditor/LinkedTrainerInfoEditField.tsx");
-/* harmony import */ var _blueprintjs_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
-/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! utils */ "./src/utils/index.ts");
-
-
-
-
-
-const capitalize = (s) => s[0].toUpperCase() + s.slice(1);
-const SpanBlock = ({ text }) => (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { style: {
-        background: 'rgba(0, 0, 0, 0.1)',
-        display: 'inline-block',
-        padding: '0 3px',
-        margin: '2px',
-        borderRadius: '.25rem',
-    } }, text));
-class TrainerInfoEditor extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-    constructor(props) {
-        super(props);
-        this.onInput = e => { };
-    }
-    render() {
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: 'trainer-info-editor' },
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_TrainerEditor_LinkedTrainerInfoEditField__WEBPACK_IMPORTED_MODULE_2__["LinkedTrainerInfoEditField"], { onInput: this.onInput, label: 'Trainer Name', name: 'name', placeholder: 'Trainer Name' }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_TrainerEditor_LinkedTrainerInfoEditField__WEBPACK_IMPORTED_MODULE_2__["LinkedTrainerInfoEditField"], { onInput: this.onInput, label: 'ID', name: 'id', placeholder: 'Trainer ID' }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_TrainerEditor_LinkedTrainerInfoEditField__WEBPACK_IMPORTED_MODULE_2__["LinkedTrainerInfoEditField"], { onInput: this.onInput, label: 'Time', name: 'time', placeholder: '0:00' }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_TrainerEditor_LinkedTrainerInfoEditField__WEBPACK_IMPORTED_MODULE_2__["LinkedTrainerInfoEditField"], { onInput: this.onInput, label: 'Money', name: 'money', placeholder: '$0' }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_TrainerEditor_LinkedTrainerInfoEditField__WEBPACK_IMPORTED_MODULE_2__["LinkedTrainerInfoEditField"], { onInput: this.onInput, label: 'Title', name: 'title', placeholder: '' }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_TrainerEditor_BadgeInput__WEBPACK_IMPORTED_MODULE_1__["BadgeInput"], null),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_TrainerEditor_LinkedTrainerInfoEditField__WEBPACK_IMPORTED_MODULE_2__["LinkedTrainerInfoEditField"], { onInput: this.onInput, label: 'Exp Share', name: 'expShareStatus', placeholder: 'off' }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_TrainerEditor_LinkedTrainerInfoEditField__WEBPACK_IMPORTED_MODULE_2__["LinkedTrainerInfoEditField"], { onInput: this.onInput, label: react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_3__["Popover"], { minimal: true, interactionKind: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_3__["PopoverInteractionKind"].HOVER, position: _blueprintjs_core__WEBPACK_IMPORTED_MODULE_3__["Position"].BOTTOM, content: react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_blueprintjs_core__WEBPACK_IMPORTED_MODULE_3__["Menu"], null,
-                        "Type: image url. You can also specify a plain string of",
-                        ' ',
-                        utils__WEBPACK_IMPORTED_MODULE_4__["listOfTrainers"].map(t => react__WEBPACK_IMPORTED_MODULE_0__["createElement"](SpanBlock, { key: t, text: capitalize(t) }))) },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null,
-                        "Trainer Image ",
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: 'pt-icon pt-icon-info-sign' }))), name: 'image', placeholder: 'http://...' }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](components_TrainerEditor_LinkedTrainerInfoEditField__WEBPACK_IMPORTED_MODULE_2__["LinkedTrainerInfoEditField"], { onInput: this.onInput, label: 'Notes', name: 'notes', placeholder: '' })));
-    }
-}
-
-
-/***/ }),
-
-/***/ "./src/components/TrainerEditor/index.ts":
+/*! exports provided: TrainerInfoEditor */function(e,t,n){"use strict";n.r(t),n.d(t,"TrainerInfoEditor",function(){return c});var o=n(/*! react */"./node_modules/react/index.js"),r=n(/*! components/TrainerEditor/BadgeInput */"./src/components/TrainerEditor/BadgeInput.tsx"),s=n(/*! components/TrainerEditor/LinkedTrainerInfoEditField */"./src/components/TrainerEditor/LinkedTrainerInfoEditField.tsx"),a=n(/*! @blueprintjs/core */"./node_modules/@blueprintjs/core/lib/esm/index.js"),i=n(/*! utils */"./src/utils/index.ts");const l=e=>e[0].toUpperCase()+e.slice(1),d=({text:e})=>o.createElement("span",{style:{background:"rgba(0, 0, 0, 0.1)",display:"inline-block",padding:"0 3px",margin:"2px",borderRadius:".25rem"}},e);class c extends o.Component{constructor(e){super(e),this.onInput=(e=>{})}render(){return o.createElement("div",{className:"trainer-info-editor"},o.createElement(s.LinkedTrainerInfoEditField,{onInput:this.onInput,label:"Trainer Name",name:"name",placeholder:"Trainer Name"}),o.createElement(s.LinkedTrainerInfoEditField,{onInput:this.onInput,label:"ID",name:"id",placeholder:"Trainer ID"}),o.createElement(s.LinkedTrainerInfoEditField,{onInput:this.onInput,label:"Time",name:"time",placeholder:"0:00"}),o.createElement(s.LinkedTrainerInfoEditField,{onInput:this.onInput,label:"Money",name:"money",placeholder:"$0"}),o.createElement(s.LinkedTrainerInfoEditField,{onInput:this.onInput,label:"Title",name:"title",placeholder:""}),o.createElement(r.BadgeInput,null),o.createElement(s.LinkedTrainerInfoEditField,{onInput:this.onInput,label:"Exp Share",name:"expShareStatus",placeholder:"off"}),o.createElement(s.LinkedTrainerInfoEditField,{onInput:this.onInput,label:o.createElement(a.Popover,{minimal:!0,interactionKind:a.PopoverInteractionKind.HOVER,position:a.Position.BOTTOM,content:o.createElement(a.Menu,null,"Type: image url. You can also specify a plain string of"," ",i.listOfTrainers.map(e=>o.createElement(d,{key:e,text:l(e)})))},o.createElement("span",null,"Trainer Image ",o.createElement("span",{className:"pt-icon pt-icon-info-sign"}))),name:"image",placeholder:"http://..."}),o.createElement(s.LinkedTrainerInfoEditField,{onInput:this.onInput,label:"Notes",name:"notes",placeholder:""}))}}},"./src/components/TrainerEditor/index.ts":
 /*!***********************************************!*\
   !*** ./src/components/TrainerEditor/index.ts ***!
   \***********************************************/
-/*! exports provided: TrainerEditor, BadgeInputBase, BadgeInput, TrainerInfoEditField, TrainerInfoEditor */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _TrainerEditor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TrainerEditor */ "./src/components/TrainerEditor/TrainerEditor.tsx");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TrainerEditor", function() { return _TrainerEditor__WEBPACK_IMPORTED_MODULE_0__["TrainerEditor"]; });
-
-/* harmony import */ var _BadgeInput__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BadgeInput */ "./src/components/TrainerEditor/BadgeInput.tsx");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BadgeInputBase", function() { return _BadgeInput__WEBPACK_IMPORTED_MODULE_1__["BadgeInputBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BadgeInput", function() { return _BadgeInput__WEBPACK_IMPORTED_MODULE_1__["BadgeInput"]; });
-
-/* harmony import */ var _TrainerInfoEditField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TrainerInfoEditField */ "./src/components/TrainerEditor/TrainerInfoEditField.tsx");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TrainerInfoEditField", function() { return _TrainerInfoEditField__WEBPACK_IMPORTED_MODULE_2__["TrainerInfoEditField"]; });
-
-/* harmony import */ var _TrainerInfoEditor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TrainerInfoEditor */ "./src/components/TrainerEditor/TrainerInfoEditor.tsx");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TrainerInfoEditor", function() { return _TrainerInfoEditor__WEBPACK_IMPORTED_MODULE_3__["TrainerInfoEditor"]; });
-
-
-
-
-
-
-
-/***/ }),
-
-/***/ "./src/components/index.ts":
+/*! exports provided: TrainerEditor, BadgeInputBase, BadgeInput, TrainerInfoEditField, TrainerInfoEditor */function(e,t,n){"use strict";n.r(t);var o=n(/*! ./TrainerEditor */"./src/components/TrainerEditor/TrainerEditor.tsx");n.d(t,"TrainerEditor",function(){return o.TrainerEditor});var r=n(/*! ./BadgeInput */"./src/components/TrainerEditor/BadgeInput.tsx");n.d(t,"BadgeInputBase",function(){return r.BadgeInputBase}),n.d(t,"BadgeInput",function(){return r.BadgeInput});var s=n(/*! ./TrainerInfoEditField */"./src/components/TrainerEditor/TrainerInfoEditField.tsx");n.d(t,"TrainerInfoEditField",function(){return s.TrainerInfoEditField});var a=n(/*! ./TrainerInfoEditor */"./src/components/TrainerEditor/TrainerInfoEditor.tsx");n.d(t,"TrainerInfoEditor",function(){return a.TrainerInfoEditor})},"./src/components/index.ts":
 /*!*********************************!*\
   !*** ./src/components/index.ts ***!
   \*********************************/
-/*! exports provided: Editor, Result, Autocomplete, ErrorBoundary, AddPokemonButtonBase, AddPokemonButton, Admin, AppBase, App, BaseEditor, BoxedPokemonBase, BoxedPokemon, champsPokemon, ChampsPokemon, DataEditorBase, DataEditor, DeadPokemonBase, DeadPokemon, DeletePokemonButtonContainer, DeletePokemonButtonBase, DeletePokemonButton, GameEditorBase, GameEditor, HotkeysBase, Hotkeys, HotkeysEditor, PokemonEditorBase, PokemonEditor, SortableColumnMenu, MassEditorBase, MassEditor, CopyPokemonButton, CurrentPokemonEditBase, CurrentPokemonEdit, CurrentPokemonInputBase, CurrentPokemonInput, PokemonIconBase, PokemonIcon, RulesEditor, RulesEditorDialogBase, RulesEditorDialog, Gender, GenderElement, PokemonByFilterBase, PokemonByFilter, ColorEditBase, ColorEdit, ThemeSelectBase, ThemeSelect, IconsNextToTeamPokemon, StyleEditorBase, StyleEditor, TeamPokemonInfo, TeamPokemonBaseMinimal, Moves, TeamPokemonBase, TeamPokemon, NumericValue, ThemeEditorBase, ThemeEditor, TrainerEditor, BadgeInputBase, BadgeInput, TrainerInfoEditField, TrainerInfoEditor */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _AddPokemonButton__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddPokemonButton */ "./src/components/AddPokemonButton/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AddPokemonButtonBase", function() { return _AddPokemonButton__WEBPACK_IMPORTED_MODULE_0__["AddPokemonButtonBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AddPokemonButton", function() { return _AddPokemonButton__WEBPACK_IMPORTED_MODULE_0__["AddPokemonButton"]; });
-
-/* harmony import */ var _Admin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Admin */ "./src/components/Admin/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Admin", function() { return _Admin__WEBPACK_IMPORTED_MODULE_1__["Admin"]; });
-
-/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App */ "./src/components/App/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AppBase", function() { return _App__WEBPACK_IMPORTED_MODULE_2__["AppBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "App", function() { return _App__WEBPACK_IMPORTED_MODULE_2__["App"]; });
-
-/* harmony import */ var _BaseEditor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BaseEditor */ "./src/components/BaseEditor/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BaseEditor", function() { return _BaseEditor__WEBPACK_IMPORTED_MODULE_3__["BaseEditor"]; });
-
-/* harmony import */ var _BoxedPokemon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./BoxedPokemon */ "./src/components/BoxedPokemon/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BoxedPokemonBase", function() { return _BoxedPokemon__WEBPACK_IMPORTED_MODULE_4__["BoxedPokemonBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BoxedPokemon", function() { return _BoxedPokemon__WEBPACK_IMPORTED_MODULE_4__["BoxedPokemon"]; });
-
-/* harmony import */ var _ChampsPokemon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ChampsPokemon */ "./src/components/ChampsPokemon/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "champsPokemon", function() { return _ChampsPokemon__WEBPACK_IMPORTED_MODULE_5__["champsPokemon"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ChampsPokemon", function() { return _ChampsPokemon__WEBPACK_IMPORTED_MODULE_5__["ChampsPokemon"]; });
-
-/* harmony import */ var _DataEditor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./DataEditor */ "./src/components/DataEditor/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DataEditorBase", function() { return _DataEditor__WEBPACK_IMPORTED_MODULE_6__["DataEditorBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DataEditor", function() { return _DataEditor__WEBPACK_IMPORTED_MODULE_6__["DataEditor"]; });
-
-/* harmony import */ var _DeadPokemon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./DeadPokemon */ "./src/components/DeadPokemon/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DeadPokemonBase", function() { return _DeadPokemon__WEBPACK_IMPORTED_MODULE_7__["DeadPokemonBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DeadPokemon", function() { return _DeadPokemon__WEBPACK_IMPORTED_MODULE_7__["DeadPokemon"]; });
-
-/* harmony import */ var _DeletePokemonButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./DeletePokemonButton */ "./src/components/DeletePokemonButton/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DeletePokemonButtonContainer", function() { return _DeletePokemonButton__WEBPACK_IMPORTED_MODULE_8__["DeletePokemonButtonContainer"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DeletePokemonButtonBase", function() { return _DeletePokemonButton__WEBPACK_IMPORTED_MODULE_8__["DeletePokemonButtonBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DeletePokemonButton", function() { return _DeletePokemonButton__WEBPACK_IMPORTED_MODULE_8__["DeletePokemonButton"]; });
-
-/* harmony import */ var _Editor__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Editor */ "./src/components/Editor/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Editor", function() { return _Editor__WEBPACK_IMPORTED_MODULE_9__["Editor"]; });
-
-/* harmony import */ var _GameEditor__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./GameEditor */ "./src/components/GameEditor/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GameEditorBase", function() { return _GameEditor__WEBPACK_IMPORTED_MODULE_10__["GameEditorBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GameEditor", function() { return _GameEditor__WEBPACK_IMPORTED_MODULE_10__["GameEditor"]; });
-
-/* harmony import */ var _Hotkeys__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Hotkeys */ "./src/components/Hotkeys/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HotkeysBase", function() { return _Hotkeys__WEBPACK_IMPORTED_MODULE_11__["HotkeysBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Hotkeys", function() { return _Hotkeys__WEBPACK_IMPORTED_MODULE_11__["Hotkeys"]; });
-
-/* harmony import */ var _HotkeysEditor__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./HotkeysEditor */ "./src/components/HotkeysEditor/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HotkeysEditor", function() { return _HotkeysEditor__WEBPACK_IMPORTED_MODULE_12__["HotkeysEditor"]; });
-
-/* harmony import */ var _PokemonEditor__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./PokemonEditor */ "./src/components/PokemonEditor/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PokemonEditorBase", function() { return _PokemonEditor__WEBPACK_IMPORTED_MODULE_13__["PokemonEditorBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PokemonEditor", function() { return _PokemonEditor__WEBPACK_IMPORTED_MODULE_13__["PokemonEditor"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SortableColumnMenu", function() { return _PokemonEditor__WEBPACK_IMPORTED_MODULE_13__["SortableColumnMenu"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MassEditorBase", function() { return _PokemonEditor__WEBPACK_IMPORTED_MODULE_13__["MassEditorBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MassEditor", function() { return _PokemonEditor__WEBPACK_IMPORTED_MODULE_13__["MassEditor"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CopyPokemonButton", function() { return _PokemonEditor__WEBPACK_IMPORTED_MODULE_13__["CopyPokemonButton"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CurrentPokemonEditBase", function() { return _PokemonEditor__WEBPACK_IMPORTED_MODULE_13__["CurrentPokemonEditBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CurrentPokemonEdit", function() { return _PokemonEditor__WEBPACK_IMPORTED_MODULE_13__["CurrentPokemonEdit"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CurrentPokemonInputBase", function() { return _PokemonEditor__WEBPACK_IMPORTED_MODULE_13__["CurrentPokemonInputBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CurrentPokemonInput", function() { return _PokemonEditor__WEBPACK_IMPORTED_MODULE_13__["CurrentPokemonInput"]; });
-
-/* harmony import */ var _PokemonIcon__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./PokemonIcon */ "./src/components/PokemonIcon/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PokemonIconBase", function() { return _PokemonIcon__WEBPACK_IMPORTED_MODULE_14__["PokemonIconBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PokemonIcon", function() { return _PokemonIcon__WEBPACK_IMPORTED_MODULE_14__["PokemonIcon"]; });
-
-/* harmony import */ var _Result__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./Result */ "./src/components/Result/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Result", function() { return _Result__WEBPACK_IMPORTED_MODULE_15__["Result"]; });
-
-/* harmony import */ var _RulesEditor__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./RulesEditor */ "./src/components/RulesEditor/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RulesEditor", function() { return _RulesEditor__WEBPACK_IMPORTED_MODULE_16__["RulesEditor"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RulesEditorDialogBase", function() { return _RulesEditor__WEBPACK_IMPORTED_MODULE_16__["RulesEditorDialogBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RulesEditorDialog", function() { return _RulesEditor__WEBPACK_IMPORTED_MODULE_16__["RulesEditorDialog"]; });
-
-/* harmony import */ var _Shared__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./Shared */ "./src/components/Shared/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Autocomplete", function() { return _Shared__WEBPACK_IMPORTED_MODULE_17__["Autocomplete"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ErrorBoundary", function() { return _Shared__WEBPACK_IMPORTED_MODULE_17__["ErrorBoundary"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Gender", function() { return _Shared__WEBPACK_IMPORTED_MODULE_17__["Gender"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GenderElement", function() { return _Shared__WEBPACK_IMPORTED_MODULE_17__["GenderElement"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PokemonByFilterBase", function() { return _Shared__WEBPACK_IMPORTED_MODULE_17__["PokemonByFilterBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PokemonByFilter", function() { return _Shared__WEBPACK_IMPORTED_MODULE_17__["PokemonByFilter"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ColorEditBase", function() { return _Shared__WEBPACK_IMPORTED_MODULE_17__["ColorEditBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ColorEdit", function() { return _Shared__WEBPACK_IMPORTED_MODULE_17__["ColorEdit"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ThemeSelectBase", function() { return _Shared__WEBPACK_IMPORTED_MODULE_17__["ThemeSelectBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ThemeSelect", function() { return _Shared__WEBPACK_IMPORTED_MODULE_17__["ThemeSelect"]; });
-
-/* harmony import */ var _StyleEditor__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./StyleEditor */ "./src/components/StyleEditor/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "IconsNextToTeamPokemon", function() { return _StyleEditor__WEBPACK_IMPORTED_MODULE_18__["IconsNextToTeamPokemon"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StyleEditorBase", function() { return _StyleEditor__WEBPACK_IMPORTED_MODULE_18__["StyleEditorBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StyleEditor", function() { return _StyleEditor__WEBPACK_IMPORTED_MODULE_18__["StyleEditor"]; });
-
-/* harmony import */ var _TeamPokemon__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./TeamPokemon */ "./src/components/TeamPokemon/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TeamPokemonInfo", function() { return _TeamPokemon__WEBPACK_IMPORTED_MODULE_19__["TeamPokemonInfo"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TeamPokemonBaseMinimal", function() { return _TeamPokemon__WEBPACK_IMPORTED_MODULE_19__["TeamPokemonBaseMinimal"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Moves", function() { return _TeamPokemon__WEBPACK_IMPORTED_MODULE_19__["Moves"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TeamPokemonBase", function() { return _TeamPokemon__WEBPACK_IMPORTED_MODULE_19__["TeamPokemonBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TeamPokemon", function() { return _TeamPokemon__WEBPACK_IMPORTED_MODULE_19__["TeamPokemon"]; });
-
-/* harmony import */ var _ThemeEditor__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./ThemeEditor */ "./src/components/ThemeEditor/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NumericValue", function() { return _ThemeEditor__WEBPACK_IMPORTED_MODULE_20__["NumericValue"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ThemeEditorBase", function() { return _ThemeEditor__WEBPACK_IMPORTED_MODULE_20__["ThemeEditorBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ThemeEditor", function() { return _ThemeEditor__WEBPACK_IMPORTED_MODULE_20__["ThemeEditor"]; });
-
-/* harmony import */ var _TrainerEditor__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./TrainerEditor */ "./src/components/TrainerEditor/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TrainerEditor", function() { return _TrainerEditor__WEBPACK_IMPORTED_MODULE_21__["TrainerEditor"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BadgeInputBase", function() { return _TrainerEditor__WEBPACK_IMPORTED_MODULE_21__["BadgeInputBase"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BadgeInput", function() { return _TrainerEditor__WEBPACK_IMPORTED_MODULE_21__["BadgeInput"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TrainerInfoEditField", function() { return _TrainerEditor__WEBPACK_IMPORTED_MODULE_21__["TrainerInfoEditField"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TrainerInfoEditor", function() { return _TrainerEditor__WEBPACK_IMPORTED_MODULE_21__["TrainerInfoEditor"]; });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/***/ }),
-
-/***/ "./src/models/Pokemon.ts":
+/*! exports provided: Editor, Result, Autocomplete, ErrorBoundary, AddPokemonButtonBase, AddPokemonButton, Admin, AppBase, App, BaseEditor, BoxedPokemonBase, BoxedPokemon, champsPokemon, ChampsPokemon, DataEditorBase, DataEditor, DeadPokemonBase, DeadPokemon, DeletePokemonButtonContainer, DeletePokemonButtonBase, DeletePokemonButton, GameEditorBase, GameEditor, HotkeysBase, Hotkeys, HotkeysEditor, PokemonEditorBase, PokemonEditor, SortableColumnMenu, MassEditorBase, MassEditor, CopyPokemonButton, CurrentPokemonEditBase, CurrentPokemonEdit, CurrentPokemonInputBase, CurrentPokemonInput, PokemonIconBase, PokemonIcon, RulesEditor, RulesEditorDialogBase, RulesEditorDialog, Gender, GenderElement, PokemonByFilterBase, PokemonByFilter, ColorEditBase, ColorEdit, ThemeSelectBase, ThemeSelect, IconsNextToTeamPokemon, StyleEditorBase, StyleEditor, TeamPokemonInfo, TeamPokemonBaseMinimal, Moves, TeamPokemonBase, TeamPokemon, NumericValue, ThemeEditorBase, ThemeEditor, TrainerEditor, BadgeInputBase, BadgeInput, TrainerInfoEditField, TrainerInfoEditor */function(e,t,n){"use strict";n.r(t);var o=n(/*! ./AddPokemonButton */"./src/components/AddPokemonButton/index.ts");n.d(t,"AddPokemonButtonBase",function(){return o.AddPokemonButtonBase}),n.d(t,"AddPokemonButton",function(){return o.AddPokemonButton});var r=n(/*! ./Admin */"./src/components/Admin/index.ts");n.d(t,"Admin",function(){return r.Admin});var s=n(/*! ./App */"./src/components/App/index.ts");n.d(t,"AppBase",function(){return s.AppBase}),n.d(t,"App",function(){return s.App});var a=n(/*! ./BaseEditor */"./src/components/BaseEditor/index.ts");n.d(t,"BaseEditor",function(){return a.BaseEditor});var i=n(/*! ./BoxedPokemon */"./src/components/BoxedPokemon/index.ts");n.d(t,"BoxedPokemonBase",function(){return i.BoxedPokemonBase}),n.d(t,"BoxedPokemon",function(){return i.BoxedPokemon});var l=n(/*! ./ChampsPokemon */"./src/components/ChampsPokemon/index.ts");n.d(t,"champsPokemon",function(){return l.champsPokemon}),n.d(t,"ChampsPokemon",function(){return l.ChampsPokemon});var d=n(/*! ./DataEditor */"./src/components/DataEditor/index.ts");n.d(t,"DataEditorBase",function(){return d.DataEditorBase}),n.d(t,"DataEditor",function(){return d.DataEditor});var c=n(/*! ./DeadPokemon */"./src/components/DeadPokemon/index.ts");n.d(t,"DeadPokemonBase",function(){return c.DeadPokemonBase}),n.d(t,"DeadPokemon",function(){return c.DeadPokemon});var m=n(/*! ./DeletePokemonButton */"./src/components/DeletePokemonButton/index.ts");n.d(t,"DeletePokemonButtonContainer",function(){return m.DeletePokemonButtonContainer}),n.d(t,"DeletePokemonButtonBase",function(){return m.DeletePokemonButtonBase}),n.d(t,"DeletePokemonButton",function(){return m.DeletePokemonButton});var u=n(/*! ./Editor */"./src/components/Editor/index.ts");n.d(t,"Editor",function(){return u.Editor});var p=n(/*! ./GameEditor */"./src/components/GameEditor/index.ts");n.d(t,"GameEditorBase",function(){return p.GameEditorBase}),n.d(t,"GameEditor",function(){return p.GameEditor});var E=n(/*! ./Hotkeys */"./src/components/Hotkeys/index.ts");n.d(t,"HotkeysBase",function(){return E.HotkeysBase}),n.d(t,"Hotkeys",function(){return E.Hotkeys});var h=n(/*! ./HotkeysEditor */"./src/components/HotkeysEditor/index.ts");n.d(t,"HotkeysEditor",function(){return h.HotkeysEditor});var g=n(/*! ./PokemonEditor */"./src/components/PokemonEditor/index.ts");n.d(t,"PokemonEditorBase",function(){return g.PokemonEditorBase}),n.d(t,"PokemonEditor",function(){return g.PokemonEditor}),n.d(t,"SortableColumnMenu",function(){return g.SortableColumnMenu}),n.d(t,"MassEditorBase",function(){return g.MassEditorBase}),n.d(t,"MassEditor",function(){return g.MassEditor}),n.d(t,"CopyPokemonButton",function(){return g.CopyPokemonButton}),n.d(t,"CurrentPokemonEditBase",function(){return g.CurrentPokemonEditBase}),n.d(t,"CurrentPokemonEdit",function(){return g.CurrentPokemonEdit}),n.d(t,"CurrentPokemonInputBase",function(){return g.CurrentPokemonInputBase}),n.d(t,"CurrentPokemonInput",function(){return g.CurrentPokemonInput});var k=n(/*! ./PokemonIcon */"./src/components/PokemonIcon/index.ts");n.d(t,"PokemonIconBase",function(){return k.PokemonIconBase}),n.d(t,"PokemonIcon",function(){return k.PokemonIcon});var x=n(/*! ./Result */"./src/components/Result/index.ts");n.d(t,"Result",function(){return x.Result});var f=n(/*! ./RulesEditor */"./src/components/RulesEditor/index.ts");n.d(t,"RulesEditor",function(){return f.RulesEditor}),n.d(t,"RulesEditorDialogBase",function(){return f.RulesEditorDialogBase}),n.d(t,"RulesEditorDialog",function(){return f.RulesEditorDialog});var b=n(/*! ./Shared */"./src/components/Shared/index.ts");n.d(t,"Autocomplete",function(){return b.Autocomplete}),n.d(t,"ErrorBoundary",function(){return b.ErrorBoundary}),n.d(t,"Gender",function(){return b.Gender}),n.d(t,"GenderElement",function(){return b.GenderElement}),n.d(t,"PokemonByFilterBase",function(){return b.PokemonByFilterBase}),n.d(t,"PokemonByFilter",function(){return b.PokemonByFilter}),n.d(t,"ColorEditBase",function(){return b.ColorEditBase}),n.d(t,"ColorEdit",function(){return b.ColorEdit}),n.d(t,"ThemeSelectBase",function(){return b.ThemeSelectBase}),n.d(t,"ThemeSelect",function(){return b.ThemeSelect});var y=n(/*! ./StyleEditor */"./src/components/StyleEditor/index.ts");n.d(t,"IconsNextToTeamPokemon",function(){return y.IconsNextToTeamPokemon}),n.d(t,"StyleEditorBase",function(){return y.StyleEditorBase}),n.d(t,"StyleEditor",function(){return y.StyleEditor});var v=n(/*! ./TeamPokemon */"./src/components/TeamPokemon/index.ts");n.d(t,"TeamPokemonInfo",function(){return v.TeamPokemonInfo}),n.d(t,"TeamPokemonBaseMinimal",function(){return v.TeamPokemonBaseMinimal}),n.d(t,"Moves",function(){return v.Moves}),n.d(t,"TeamPokemonBase",function(){return v.TeamPokemonBase}),n.d(t,"TeamPokemon",function(){return v.TeamPokemon});var P=n(/*! ./ThemeEditor */"./src/components/ThemeEditor/index.ts");n.d(t,"NumericValue",function(){return P.NumericValue}),n.d(t,"ThemeEditorBase",function(){return P.ThemeEditorBase}),n.d(t,"ThemeEditor",function(){return P.ThemeEditor});var C=n(/*! ./TrainerEditor */"./src/components/TrainerEditor/index.ts");n.d(t,"TrainerEditor",function(){return C.TrainerEditor}),n.d(t,"BadgeInputBase",function(){return C.BadgeInputBase}),n.d(t,"BadgeInput",function(){return C.BadgeInput}),n.d(t,"TrainerInfoEditField",function(){return C.TrainerInfoEditField}),n.d(t,"TrainerInfoEditor",function(){return C.TrainerInfoEditor})},"./src/models/Pokemon.ts":
 /*!*******************************!*\
   !*** ./src/models/Pokemon.ts ***!
   \*******************************/
-/*! exports provided: PokemonKeys */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PokemonKeys", function() { return PokemonKeys; });
-/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! utils */ "./src/utils/index.ts");
-
-const PokemonKeys = {
-    id: '',
-    species: '',
-    nickname: '',
-    status: '',
-    level: 0,
-    gender: 'f',
-    met: '',
-    metLevel: 0,
-    nature: '',
-    ability: '',
-    moves: [],
-    causeOfDeath: '',
-    forme: '',
-    item: '',
-    types: [utils__WEBPACK_IMPORTED_MODULE_0__["Types"].Normal, utils__WEBPACK_IMPORTED_MODULE_0__["Types"].Normal],
-    customImage: '',
-    customIcon: '',
-    shiny: false,
-    champion: false,
-    badges: [],
-    num: '',
-    position: 0,
-    wonderTradedFor: '',
-    mvp: false,
-    gameOfOrigin: 'Red',
-};
-
-
-/***/ }),
-
-/***/ "./src/models/Trainer.ts":
+/*! exports provided: PokemonKeys */function(e,t,n){"use strict";n.r(t),n.d(t,"PokemonKeys",function(){return r});var o=n(/*! utils */"./src/utils/index.ts");const r={id:"",species:"",nickname:"",status:"",level:0,gender:"f",met:"",metLevel:0,nature:"",ability:"",moves:[],causeOfDeath:"",forme:"",item:"",types:[o.Types.Normal,o.Types.Normal],customImage:"",customIcon:"",shiny:!1,champion:!1,badges:[],num:"",position:0,wonderTradedFor:"",mvp:!1,gameOfOrigin:"Red"}},"./src/models/Trainer.ts":
 /*!*******************************!*\
   !*** ./src/models/Trainer.ts ***!
   \*******************************/
-/*! exports provided: TrainerKeys */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TrainerKeys", function() { return TrainerKeys; });
-const TrainerKeys = {
-    name: 'Red',
-    id: '00123',
-    time: '04:33',
-    money: 1244,
-    badges: ['boulder-badge'],
-    expShareStatus: 'ON',
-    image: 'http://placeholder.com',
-    title: 'Trainer Title',
-    notes: 'None yet.',
-    totalTime: '190:33',
-};
-
-
-/***/ }),
-
-/***/ "./src/models/index.ts":
+/*! exports provided: TrainerKeys */function(e,t,n){"use strict";n.r(t),n.d(t,"TrainerKeys",function(){return o});const o={name:"Red",id:"00123",time:"04:33",money:1244,badges:["boulder-badge"],expShareStatus:"ON",image:"http://placeholder.com",title:"Trainer Title",notes:"None yet.",totalTime:"190:33"}},"./src/models/index.ts":
 /*!*****************************!*\
   !*** ./src/models/index.ts ***!
   \*****************************/
-/*! exports provided: PokemonKeys, TrainerKeys */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Pokemon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pokemon */ "./src/models/Pokemon.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PokemonKeys", function() { return _Pokemon__WEBPACK_IMPORTED_MODULE_0__["PokemonKeys"]; });
-
-/* harmony import */ var _Trainer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Trainer */ "./src/models/Trainer.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TrainerKeys", function() { return _Trainer__WEBPACK_IMPORTED_MODULE_1__["TrainerKeys"]; });
-
-
-
-
-
-/***/ })
-
-}]);
+/*! exports provided: PokemonKeys, TrainerKeys */function(e,t,n){"use strict";n.r(t);var o=n(/*! ./Pokemon */"./src/models/Pokemon.ts");n.d(t,"PokemonKeys",function(){return o.PokemonKeys});var r=n(/*! ./Trainer */"./src/models/Trainer.ts");n.d(t,"TrainerKeys",function(){return r.TrainerKeys})}}]);
 //# sourceMappingURL=0.chunk.js.map
