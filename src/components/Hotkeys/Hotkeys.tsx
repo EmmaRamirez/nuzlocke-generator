@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { reducers } from 'reducers';
-import { selectPokemon, deletePokemon } from 'actions';
+import { selectPokemon, deletePokemon, addPokemon } from 'actions';
 import { Pokemon } from 'models';
-import { sortPokes, sortPokesReverse, noop } from 'utils';
+import { sortPokes, sortPokesReverse, noop, generateEmptyPokemon } from 'utils';
 import { selectedId } from 'reducers/selectedId';
 import { hotkeyList } from 'utils';
 
 export interface HotkeysProps {
     selectPokemon: selectPokemon;
     deletePokemon: deletePokemon;
+    addPokemon: addPokemon;
     pokemon: Pokemon[];
     selectedId: string;
 }
@@ -103,6 +104,10 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
         console.log('k', poke, position, nextPoke, id);
     }
 
+    private addPokemon () {
+        this.props.addPokemon(generateEmptyPokemon(this.props.pokemon));
+    }
+
     private deletePokemon () {
         this.props.deletePokemon(this.props.selectedId);
     }
@@ -120,5 +125,6 @@ export const Hotkeys = connect(
     {
         selectPokemon,
         deletePokemon,
+        addPokemon,
     }
 )(HotkeysBase as any);

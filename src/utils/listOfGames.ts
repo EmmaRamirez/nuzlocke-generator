@@ -1,4 +1,5 @@
-export type Game = 'Red' |
+export type Game = 'None' |
+    'Red' |
     'Blue' |
     'Green' |
     'Yellow' |
@@ -33,6 +34,7 @@ export type Game = 'Red' |
     'Let\'s Go Pikachu';
 
 export const listOfGames: Game[] = [
+    'None',
     'Red',
     'Blue',
     'Green',

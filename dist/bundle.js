@@ -19604,6 +19604,50 @@ function cellClassNames(rowIndex, columnIndex) {
 
 /***/ }),
 
+/***/ "./node_modules/@emotion/is-prop-valid/dist/is-prop-valid.esm.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@emotion/is-prop-valid/dist/is-prop-valid.esm.js ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _emotion_memoize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @emotion/memoize */ "./node_modules/@emotion/memoize/dist/memoize.esm.js");
+
+
+var reactPropsRegex = /^((children|dangerouslySetInnerHTML|key|ref|autoFocus|defaultValue|defaultChecked|innerHTML|suppressContentEditableWarning|accept|acceptCharset|accessKey|action|allowFullScreen|allowTransparency|alt|async|autoComplete|autoPlay|capture|cellPadding|cellSpacing|charSet|checked|cite|classID|className|cols|colSpan|content|contentEditable|contextMenu|controls|controlsList|coords|crossOrigin|data|dateTime|default|defer|dir|disabled|download|draggable|encType|form|formAction|formEncType|formMethod|formNoValidate|formTarget|frameBorder|headers|height|hidden|high|href|hrefLang|htmlFor|httpEquiv|id|inputMode|integrity|is|keyParams|keyType|kind|label|lang|list|loop|low|marginHeight|marginWidth|max|maxLength|media|mediaGroup|method|min|minLength|multiple|muted|name|nonce|noValidate|open|optimum|pattern|placeholder|playsInline|poster|preload|profile|radioGroup|readOnly|referrerPolicy|rel|required|reversed|role|rows|rowSpan|sandbox|scope|scoped|scrolling|seamless|selected|shape|size|sizes|slot|span|spellCheck|src|srcDoc|srcLang|srcSet|start|step|style|summary|tabIndex|target|title|type|useMap|value|width|wmode|wrap|about|datatype|inlist|prefix|property|resource|typeof|vocab|autoCapitalize|autoCorrect|autoSave|color|itemProp|itemScope|itemType|itemID|itemRef|results|security|unselectable|accentHeight|accumulate|additive|alignmentBaseline|allowReorder|alphabetic|amplitude|arabicForm|ascent|attributeName|attributeType|autoReverse|azimuth|baseFrequency|baselineShift|baseProfile|bbox|begin|bias|by|calcMode|capHeight|clip|clipPathUnits|clipPath|clipRule|colorInterpolation|colorInterpolationFilters|colorProfile|colorRendering|contentScriptType|contentStyleType|cursor|cx|cy|d|decelerate|descent|diffuseConstant|direction|display|divisor|dominantBaseline|dur|dx|dy|edgeMode|elevation|enableBackground|end|exponent|externalResourcesRequired|fill|fillOpacity|fillRule|filter|filterRes|filterUnits|floodColor|floodOpacity|focusable|fontFamily|fontSize|fontSizeAdjust|fontStretch|fontStyle|fontVariant|fontWeight|format|from|fr|fx|fy|g1|g2|glyphName|glyphOrientationHorizontal|glyphOrientationVertical|glyphRef|gradientTransform|gradientUnits|hanging|horizAdvX|horizOriginX|ideographic|imageRendering|in|in2|intercept|k|k1|k2|k3|k4|kernelMatrix|kernelUnitLength|kerning|keyPoints|keySplines|keyTimes|lengthAdjust|letterSpacing|lightingColor|limitingConeAngle|local|markerEnd|markerMid|markerStart|markerHeight|markerUnits|markerWidth|mask|maskContentUnits|maskUnits|mathematical|mode|numOctaves|offset|opacity|operator|order|orient|orientation|origin|overflow|overlinePosition|overlineThickness|panose1|paintOrder|pathLength|patternContentUnits|patternTransform|patternUnits|pointerEvents|points|pointsAtX|pointsAtY|pointsAtZ|preserveAlpha|preserveAspectRatio|primitiveUnits|r|radius|refX|refY|renderingIntent|repeatCount|repeatDur|requiredExtensions|requiredFeatures|restart|result|rotate|rx|ry|scale|seed|shapeRendering|slope|spacing|specularConstant|specularExponent|speed|spreadMethod|startOffset|stdDeviation|stemh|stemv|stitchTiles|stopColor|stopOpacity|strikethroughPosition|strikethroughThickness|string|stroke|strokeDasharray|strokeDashoffset|strokeLinecap|strokeLinejoin|strokeMiterlimit|strokeOpacity|strokeWidth|surfaceScale|systemLanguage|tableValues|targetX|targetY|textAnchor|textDecoration|textRendering|textLength|to|transform|u1|u2|underlinePosition|underlineThickness|unicode|unicodeBidi|unicodeRange|unitsPerEm|vAlphabetic|vHanging|vIdeographic|vMathematical|values|vectorEffect|version|vertAdvY|vertOriginX|vertOriginY|viewBox|viewTarget|visibility|widths|wordSpacing|writingMode|x|xHeight|x1|x2|xChannelSelector|xlinkActuate|xlinkArcrole|xlinkHref|xlinkRole|xlinkShow|xlinkTitle|xlinkType|xmlBase|xmlns|xmlnsXlink|xmlLang|xmlSpace|y|y1|y2|yChannelSelector|z|zoomAndPan|for|class)|(on[A-Z].*)|((data|aria)-.*))$/i;
+var index = Object(_emotion_memoize__WEBPACK_IMPORTED_MODULE_0__["default"])(RegExp.prototype.test.bind(reactPropsRegex));
+
+/* harmony default export */ __webpack_exports__["default"] = (index);
+//# sourceMappingURL=is-prop-valid.esm.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/@emotion/memoize/dist/memoize.esm.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@emotion/memoize/dist/memoize.esm.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function memoize(fn) {
+  var cache = {};
+  return function (arg) {
+    if (cache[arg] === undefined) cache[arg] = fn(arg);
+    return cache[arg];
+  };
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (memoize);
+//# sourceMappingURL=memoize.esm.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/add-px-to-style/index.js":
 /*!***********************************************!*\
   !*** ./node_modules/add-px-to-style/index.js ***!
@@ -19787,6 +19831,215 @@ function collapse(value) {
 
 /***/ }),
 
+/***/ "./node_modules/create-emotion-styled/dist/index.esm.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/create-emotion-styled/dist/index.esm.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _emotion_is_prop_valid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/is-prop-valid */ "./node_modules/@emotion/is-prop-valid/dist/is-prop-valid.esm.js");
+
+
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+
+var channel = '__EMOTION_THEMING__';
+
+// https://github.com/styled-components/styled-components/blob/e05b3fe247e9d956bcde786cec376e32afb85bca/src/utils/create-broadcast.js
+
+var _contextTypes;
+var contextTypes = (_contextTypes = {}, _contextTypes[channel] = prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.object, _contextTypes);
+
+function setTheme(theme) {
+  this.setState({
+    theme: theme
+  });
+}
+var testPickPropsOnStringTag = _emotion_is_prop_valid__WEBPACK_IMPORTED_MODULE_1__["default"];
+var testPickPropsOnComponent = function testPickPropsOnComponent(key) {
+  return key !== 'theme' && key !== 'innerRef';
+};
+var testAlwaysTrue = function testAlwaysTrue() {
+  return true;
+};
+var pickAssign = function pickAssign(testFn, target) {
+  var i = 2;
+  var length = arguments.length;
+
+  for (; i < length; i++) {
+    var source = arguments[i];
+
+    var _key = void 0;
+
+    for (_key in source) {
+      if (testFn(_key)) {
+        target[_key] = source[_key];
+      }
+    }
+  }
+
+  return target;
+};
+
+function createEmotionStyled(emotion, view) {
+  var _createStyled = function createStyled(tag, options) {
+    if (false) {}
+
+    var staticClassName;
+    var identifierName;
+    var stableClassName;
+    var shouldForwardProp;
+
+    if (options !== undefined) {
+      staticClassName = options.e;
+      identifierName = options.label;
+      stableClassName = options.target;
+      shouldForwardProp = tag.__emotion_forwardProp && options.shouldForwardProp ? function (propName) {
+        return tag.__emotion_forwardProp(propName) && // $FlowFixMe
+        options.shouldForwardProp(propName);
+      } : options.shouldForwardProp;
+    }
+
+    var isReal = tag.__emotion_real === tag;
+    var baseTag = staticClassName === undefined ? isReal && tag.__emotion_base || tag : tag;
+
+    if (typeof shouldForwardProp !== 'function') {
+      shouldForwardProp = typeof baseTag === 'string' && baseTag.charAt(0) === baseTag.charAt(0).toLowerCase() ? testPickPropsOnStringTag : testPickPropsOnComponent;
+    }
+
+    return function () {
+      var args = arguments;
+      var styles = isReal && tag.__emotion_styles !== undefined ? tag.__emotion_styles.slice(0) : [];
+
+      if (identifierName !== undefined) {
+        styles.push("label:" + identifierName + ";");
+      }
+
+      if (staticClassName === undefined) {
+        if (args[0] == null || args[0].raw === undefined) {
+          styles.push.apply(styles, args);
+        } else {
+          styles.push(args[0][0]);
+          var len = args.length;
+          var i = 1;
+
+          for (; i < len; i++) {
+            styles.push(args[i], args[0][i]);
+          }
+        }
+      }
+
+      var Styled =
+      /*#__PURE__*/
+      function (_view$Component) {
+        _inheritsLoose(Styled, _view$Component);
+
+        function Styled() {
+          return _view$Component.apply(this, arguments) || this;
+        }
+
+        var _proto = Styled.prototype;
+
+        _proto.componentWillMount = function componentWillMount() {
+          if (this.context[channel] !== undefined) {
+            this.unsubscribe = this.context[channel].subscribe(setTheme.bind(this));
+          }
+        };
+
+        _proto.componentWillUnmount = function componentWillUnmount() {
+          if (this.unsubscribe !== undefined) {
+            this.context[channel].unsubscribe(this.unsubscribe);
+          }
+        };
+
+        _proto.render = function render() {
+          var props = this.props,
+              state = this.state;
+          this.mergedProps = pickAssign(testAlwaysTrue, {}, props, {
+            theme: state !== null && state.theme || props.theme || {}
+          });
+          var className = '';
+          var classInterpolations = [];
+
+          if (props.className) {
+            if (staticClassName === undefined) {
+              className += emotion.getRegisteredStyles(classInterpolations, props.className);
+            } else {
+              className += props.className + " ";
+            }
+          }
+
+          if (staticClassName === undefined) {
+            className += emotion.css.apply(this, styles.concat(classInterpolations));
+          } else {
+            className += staticClassName;
+          }
+
+          if (stableClassName !== undefined) {
+            className += " " + stableClassName;
+          }
+
+          return view.createElement(baseTag, // $FlowFixMe
+          pickAssign(shouldForwardProp, {}, props, {
+            className: className,
+            ref: props.innerRef
+          }));
+        };
+
+        return Styled;
+      }(view.Component);
+
+      Styled.displayName = identifierName !== undefined ? identifierName : "Styled(" + (typeof baseTag === 'string' ? baseTag : baseTag.displayName || baseTag.name || 'Component') + ")";
+
+      if (tag.defaultProps !== undefined) {
+        // $FlowFixMe
+        Styled.defaultProps = tag.defaultProps;
+      }
+
+      Styled.contextTypes = contextTypes;
+      Styled.__emotion_styles = styles;
+      Styled.__emotion_base = baseTag;
+      Styled.__emotion_real = Styled;
+      Styled.__emotion_forwardProp = shouldForwardProp;
+      Object.defineProperty(Styled, 'toString', {
+        enumerable: false,
+        value: function value() {
+          if (false) {} // $FlowFixMe
+
+
+          return "." + stableClassName;
+        }
+      });
+
+      Styled.withComponent = function (nextTag, nextOptions) {
+        return _createStyled(nextTag, nextOptions !== undefined ? // $FlowFixMe
+        pickAssign(testAlwaysTrue, {}, options, nextOptions) : options).apply(void 0, styles);
+      };
+
+      return Styled;
+    };
+  };
+
+  if (false) {}
+
+  return _createStyled;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (createEmotionStyled);
+//# sourceMappingURL=index.esm.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/@blueprintjs/core/lib/css/blueprint.css":
 /*!**************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/resolve-url-loader!./node_modules/@blueprintjs/core/lib/css/blueprint.css ***!
@@ -19856,7 +20109,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".pt-light .release-notes {\n  background: #fafafa;\n}\n\n.release-notes-wrapper .release-notes {\n  margin: 0.5rem;\n  padding: 1rem;\n}\n\n.release-notes-wrapper h1,\n.release-notes-wrapper h2,\n.release-notes-wrapper h3,\n.release-notes-wrapper h4 {\n  color: #333;\n}\n\n.release-notes-wrapper h1 {\n  font-size: 1.5rem !important;\n}\n\n.release-notes-wrapper h2 {\n  margin-top: 0.5rem;\n  font-size: 1.2rem !important;\n}\n\n.release-notes-wrapper h3 {\n  text-transform: uppercase;\n  margin: 0.5rem;\n  letter-spacing: 4px;\n  text-align: center;\n}\n\n.release-notes-wrapper p {\n  line-height: 1.4;\n  margin-top: 0.5rem;\n  display: flex;\n}\n\n.release-notes-wrapper p img {\n  max-height: 15rem;\n  margin: 0 auto;\n  max-width: 100%;\n}\n\n.release-notes-wrapper a {\n  margin-left: 4px;\n}\n\n.pt-dark .release-dialog h1,\n.pt-dark .release-dialog h2,\n.pt-dark .release-dialog h3,\n.pt-dark .release-dialog h4 {\n  color: #fff !important;\n}\n\n.release-dialog {\n  width: 620px !important;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable {\n  color: unset;\n}\n\n", ""]);
+exports.push([module.i, ".pt-light .release-notes {\n  background: #fafafa;\n}\n\n.release-notes-wrapper .release-notes {\n  margin: 0.5rem;\n  padding: 1rem;\n}\n\n.release-notes-wrapper h1 {\n  font-size: 1.5rem !important;\n}\n\n.release-notes-wrapper h2 {\n  margin-top: 0.5rem;\n  font-size: 1.2rem !important;\n}\n\n.release-notes-wrapper p {\n  line-height: 1.4;\n  margin-top: 0.5rem;\n  display: flex;\n}\n\n.release-notes-wrapper p img {\n  max-height: 15rem;\n  margin: 0 auto;\n  max-width: 100%;\n}\n\n.release-notes-wrapper a {\n  margin-left: 4px;\n}\n\n.pt-dark .release-dialog h1,\n.pt-dark .release-dialog h2,\n.pt-dark .release-dialog h3,\n.pt-dark .release-dialog h4 {\n  color: #fff !important;\n}\n\n.release-dialog {\n  width: 620px !important;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable {\n  color: unset;\n}\n\n", ""]);
 
 // exports
 
@@ -19875,7 +20128,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".editor {\n  border: 1px solid #eee;\n  height: 100vh;\n  overflow-y: scroll;\n  padding: 0.25rem;\n  width: 90%;\n}\n\n.editor.pt-dark {\n  border: 1px solid #000;\n}\n\n.editor:hover {\n  box-shadow: 0 0 4px #eee;\n}\n\n.pt-select select {\n  width: 100%;\n}\n\n.game-editor,\n.trainer-editor,\n.pokemon-editor,\n.style-editor,\n.hotkeys-editor {\n  padding: 0.3rem;\n}\n\n.base-editor {\n  border: 1px solid #fafafa;\n  border-top: 0 solid transparent !important;\n}\n\n.pt-dark .base-editor {\n  border: 1px solid #111;\n}\n\n.trainer-info-field {\n  align-items: center;\n  border-bottom: 1px solid #ddd;\n  display: flex;\n  justify-content: space-between;\n}\n\n.trainer-info-field input {\n  background: inherit;\n  border: 0 solid transparent;\n  border-left: 1px solid #eee;\n  border-radius: 2px;\n  color: inherit;\n  padding: 0.25rem;\n}\n\n.pt-dark .trainer-info-field {\n  border-bottom: 1px solid #394b59;\n}\n\n.pt-dark .trainer-info-field input {\n  border-left: 1px solid #394b59;\n}\n\n.tab.Dead-tab {\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/dead-box.png */ "./src/assets/img/dead-box.png") + ");\n}\n\n.tab.Champs-tab {\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/champs-box.png */ "./src/assets/img/champs-box.png") + ");\n}\n\n.tab.Boxed-tab {\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/boxed-box.png */ "./src/assets/img/boxed-box.png") + ");\n}\n\n.box-wrapper {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.box-wrapper .tab {\n  margin: 2px;\n}\n\n.pokemon-tab {\n  display: flex;\n  justify-content: center;\n}\n\n.current-pokemon {\n  border: 1px solid #ddd;\n  border-radius: 0.25rem;\n  margin: 0.25rem;\n  padding: 0.25rem;\n}\n\n.pt-dark .current-pokemon {\n  border: 1px solid #000;\n}\n\n.current-pokemon-header {\n  align-items: center;\n  display: flex;\n  justify-content: flex-start;\n}\n\n.current-pokemon-image {\n  padding: 0.25rem;\n  border: 1px solid #ccc;\n  border-radius: 50%;\n  height: 3rem;\n}\n\n.pt-dark .current-pokemon-image {\n  border: none;\n  background: #394b59;\n}\n\n.current-pokemon-input-wrapper {\n  display: inline-flex;\n  flex-direction: column;\n  padding: 0.25rem;\n  width: 11rem;\n}\n\n.current-pokemon-input-wrapper label {\n  font-size: 10px;\n}\n\n.current-pokemon-input-wrapper input {\n  border: 1px solid #eee;\n  padding: 0.25rem;\n}\n\n.current-pokemon-checkbox {\n  display: inline-flex;\n  flex-flow: row-reverse;\n  justify-content: flex-end;\n  width: 5rem;\n  transform: translateY(1rem);\n}\n\n.pt-dark .current-pokemon-input-wrapper input {\n  box-shadow: 0 0 0 0 rgba(19,124,189,0), 0 0 0 0 rgba(19,124,189,0), 0 0 0 0 rgba(19,124,189,0), inset 0 0 0 1px rgba(16,22,26,0.3), inset 0 1px 1px rgba(16,22,26,0.4);\n  background: rgba(16,22,26,0.3);\n  border: none;\n  color: #f5f8fa;\n}\n\n.pt-input-ghost {\n  border: 0 !important;\n  width: 0 !important;\n  flex: auto;\n}\n\n.small-input {\n  width: 5rem;\n}\n\n.current-pokemon-gender {\n  width: 6rem;\n}\n\n.current-pokemon-status {\n  width: 5.5rem;\n}\n\n.current-pokemon-moves {\n  width: 25rem;\n}\n\n.current-pokemon-nature {\n  width: 6.5rem;\n}\n\n.double-select-wrapper {\n  display: flex;\n}\n\n.status-wrapper {\n  display: inline-flex;\n  flex-flow: column;\n  padding: 0.25rem;\n  width: 30%;\n  vertical-align: top;\n}\n\n.status-wrapper span {\n  font-size: 10px;\n  width: 100%;\n}\n\ninput[name='metLevel'] {\n  color: #ccc;\n}\n\n.pt-dialog.wide-dialog {\n  width: 90% !important;\n}\n\n.has-nice-scrollbars::-webkit-scrollbar {\n  width: 5px;\n  height: 8px;\n  border-radius: 2px;\n  background-color: #fff;\n}\n\n.has-nice-scrollbars::-webkit-scrollbar-thumb {\n  background: #aaa;\n}\n\n.style-edit {\n  align-items: center;\n  align-content: center;\n  border-bottom: 1px solid #ddd;\n  display: flex;\n  padding: 0.5rem;\n  width: 100%;\n}\n\n.style-edit label.pt-label {\n  margin: 0;\n  min-width: 10rem;\n}\n\n.style-edit span {\n  display: inline-block;\n  margin-right: 0.25rem;\n}\n\n.style-edit .pt-control {\n  margin-bottom: 0;\n}\n\n.pt-dark .style-edit {\n  border-bottom: 1px solid #111;\n}\n\n.radio-group {\n  align-content: center;\n  align-items: center;\n  display: flex;\n}\n\n.radio-group .pt-control {\n  border-radius: 0.25rem;\n  margin: 0.25rem;\n}\n\n.radio-group label.pt-label {\n  margin: 0;\n}\n\n.color-input {\n  padding: 0;\n  margin-left: 0.25rem;\n  border: none;\n  background: #fff;\n  border-radius: 50%;\n  width: 1rem;\n  height: 1rem;\n  -webkit-appearance: none;\n}\n\n.color-input::-webkit-color-swatch {\n  border: none;\n  border-radius: 50%;\n  padding: 0;\n}\n\n.color-input::-webkit-color-swatch-wrapper {\n  border: none;\n  border-radius: 50%;\n  padding: 0;\n}\n\n.color-edit-wrapper {\n  align-items: center;\n  display: flex;\n}\n\n.color-edit-wrapper input[type='text'] {\n  padding-left: 0.5rem;\n}\n\n.pt-dark .color-text-input {\n  background: rgba(16,22,26,0.3);\n  color: #eee;\n}\n\n.no-pokemon-selected {\n  display: flex;\n  align-items: center;\n  padding: 0.5rem;\n}\n\n.no-pokemon-selected p {\n  margin: 0.25rem;\n  padding-left: 0.25rem;\n}\n\n.box {\n  border-radius: 0.25rem;\n  padding: 0.25rem;\n  margin: 0.25rem;\n  display: flex;\n  align-items: center;\n  background-position: center;\n  flex-wrap: wrap;\n}\n\n.box .pokemon-icon {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 40px;\n  width: 40px;\n}\n\n.box .pokemon-icon img,\n.box .pokemon-icon {\n  cursor: pointer;\n  border: 1px solid transparent;\n  transition: 500ms all;\n}\n\n.box .pokemon-icon.selected {\n  border-radius: 50%;\n  background: rgba(0,0,0,0.33);\n  transition: 500ms all;\n}\n\n.pt-dark .box {\n  box-shadow: 0 0 0.25rem #000;\n}\n\n.Team-box {\n  background: #15db72;\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/team-box-body.png */ "./src/assets/img/team-box-body.png") + ");\n}\n\n.Boxed-box {\n  background: #1184d6;\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/boxed-box.png */ "./src/assets/img/boxed-box.png") + ");\n}\n\n.Dead-box {\n  background: #ce1831;\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/dead-box.png */ "./src/assets/img/dead-box.png") + ");\n}\n\n.Champs-box {\n  background: #e5db52;\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/champs-box.png */ "./src/assets/img/champs-box.png") + ");\n}\n\n", ""]);
+exports.push([module.i, ".editor {\n  border: 1px solid #eee;\n  height: 100vh;\n  overflow-y: scroll;\n  padding: 0.25rem;\n  width: 90%;\n}\n\n.editor.pt-dark {\n  border: 1px solid #000;\n}\n\n.editor:hover {\n  box-shadow: 0 0 4px #eee;\n}\n\n.pt-select select {\n  width: 100%;\n}\n\n.game-editor,\n.trainer-editor,\n.pokemon-editor,\n.style-editor,\n.hotkeys-editor {\n  padding: 0.3rem;\n}\n\n.base-editor {\n  border: 1px solid #fafafa;\n  border-top: 0 solid transparent !important;\n}\n\n.pt-dark .base-editor {\n  border: 1px solid #111;\n}\n\n.trainer-info-field {\n  align-items: center;\n  border-bottom: 1px solid #ddd;\n  display: flex;\n  justify-content: space-between;\n}\n\n.trainer-info-field input {\n  background: inherit;\n  border: 0 solid transparent;\n  border-left: 1px solid #eee;\n  border-radius: 2px;\n  color: inherit;\n  padding: 0.25rem;\n}\n\n.pt-dark .trainer-info-field {\n  border-bottom: 1px solid #394b59;\n}\n\n.pt-dark .trainer-info-field input {\n  border-left: 1px solid #394b59;\n}\n\n.box-wrapper {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n\n.box-wrapper .tab {\n  margin: 2px;\n}\n\n.pokemon-tab {\n  display: flex;\n  justify-content: center;\n}\n\n.current-pokemon {\n  border: 1px solid #ddd;\n  border-radius: 0.25rem;\n  margin: 0.25rem;\n  padding: 0.25rem;\n}\n\n.pt-dark .current-pokemon {\n  border: 1px solid #000;\n}\n\n.current-pokemon-header {\n  align-items: center;\n  display: flex;\n  justify-content: flex-start;\n}\n\n.current-pokemon-image {\n  padding: 0.25rem;\n  border: 1px solid #ccc;\n  border-radius: 50%;\n  height: 3rem;\n}\n\n.pt-dark .current-pokemon-image {\n  border: none;\n  background: #394b59;\n}\n\n.current-pokemon-input-wrapper {\n  display: inline-flex;\n  flex-direction: column;\n  padding: 0.25rem;\n  width: 11rem;\n}\n\n.current-pokemon-input-wrapper label {\n  font-size: 10px;\n}\n\n.current-pokemon-input-wrapper input {\n  border: 1px solid #eee;\n  padding: 0.25rem;\n}\n\n.current-pokemon-checkbox {\n  display: inline-flex;\n  flex-flow: row-reverse;\n  justify-content: flex-end;\n  width: 5rem;\n  transform: translateY(1rem);\n}\n\n.pt-dark .current-pokemon-input-wrapper input {\n  box-shadow: 0 0 0 0 rgba(19,124,189,0), 0 0 0 0 rgba(19,124,189,0), 0 0 0 0 rgba(19,124,189,0), inset 0 0 0 1px rgba(16,22,26,0.3), inset 0 1px 1px rgba(16,22,26,0.4);\n  background: rgba(16,22,26,0.3);\n  border: none;\n  color: #f5f8fa;\n}\n\n.pt-input-ghost {\n  border: 0 !important;\n  width: 0 !important;\n  flex: auto;\n}\n\n.small-input {\n  width: 5rem;\n}\n\n.current-pokemon-gender {\n  width: 6rem;\n}\n\n.current-pokemon-status {\n  width: 5.5rem;\n}\n\n.current-pokemon-moves {\n  width: 25rem;\n}\n\n.current-pokemon-nature {\n  width: 6.5rem;\n}\n\n.double-select-wrapper {\n  display: flex;\n}\n\n.status-wrapper {\n  display: inline-flex;\n  flex-flow: column;\n  padding: 0.25rem;\n  width: 30%;\n  vertical-align: top;\n}\n\n.status-wrapper span {\n  font-size: 10px;\n  width: 100%;\n}\n\ninput[name='metLevel'] {\n  color: #ccc;\n}\n\n.pt-dialog.wide-dialog {\n  width: 90% !important;\n}\n\n.has-nice-scrollbars::-webkit-scrollbar {\n  width: 5px;\n  height: 8px;\n  border-radius: 2px;\n  background-color: #fff;\n}\n\n.has-nice-scrollbars::-webkit-scrollbar-thumb {\n  background: #aaa;\n}\n\n.no-pokemon-selected {\n  display: flex;\n  align-items: center;\n  padding: 0.5rem;\n}\n\n.no-pokemon-selected p {\n  margin: 0.25rem;\n  padding-left: 0.25rem;\n}\n\n.box {\n  border-radius: 0.25rem;\n  padding: 0.25rem;\n  margin: 0.25rem;\n  display: flex;\n  align-items: center;\n  background-position: center;\n  flex-wrap: wrap;\n}\n\n.box .pokemon-icon {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 40px;\n  width: 40px;\n}\n\n.box .pokemon-icon img,\n.box .pokemon-icon {\n  cursor: pointer;\n  border: 1px solid transparent;\n  transition: 500ms all;\n}\n\n.box .pokemon-icon.selected {\n  border-radius: 50%;\n  background: rgba(0,0,0,0.33);\n  transition: 500ms all;\n}\n\n.pt-dark .box {\n  box-shadow: 0 0 0.25rem #000;\n}\n\n.Team-box {\n  background: #15db72;\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/team-box-body.png */ "./src/assets/img/team-box-body.png") + ");\n}\n\n.Boxed-box {\n  background: #1184d6;\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/boxed-box.png */ "./src/assets/img/boxed-box.png") + ");\n}\n\n.Dead-box {\n  background: #ce1831;\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/dead-box.png */ "./src/assets/img/dead-box.png") + ");\n}\n\n.Champs-box {\n  background: #e5db52;\n  background-image: url(" + __webpack_require__(/*! ../../assets/img/champs-box.png */ "./src/assets/img/champs-box.png") + ");\n}\n\n", ""]);
 
 // exports
 
@@ -19894,7 +20147,26 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".top-bar {\n  padding: 0.25rem;\n  font-size: 1.15rem;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-bottom: 1px solid rgba(0,0,0,0.33);\n}\n\n.pt-dark .top-bar {\n  background: #222;\n}\n\n.container {\n  border: 1px solid #ddd;\n  padding-bottom: 0.5rem;\n  position: relative;\n  overflow: hidden;\n  width: 100%;\n  height: 100%;\n}\n\n.container h3 {\n  text-transform: uppercase;\n  margin: 0.5rem;\n  letter-spacing: 4px;\n  text-align: center;\n  color: #eee;\n}\n\n.pt-dark .pt-callout {\n  color: #fff;\n}\n\n.result-notes {\n  text-align: center;\n  margin: 0.5rem;\n  font-size: 1.25rem;\n  font-weight: bold;\n}\n\n.container {\n  padding-bottom: 1rem;\n  background-color: #383840;\n  border: 1px solid #111;\n  color: #eee;\n  margin: 0 auto;\n}\n\n.gender-color-female {\n  color: #ffc0cb;\n}\n\n.gender-color-male {\n  color: #add8e6;\n}\n\n.pokemon-container {\n  display: inline-block;\n  padding: 1rem;\n  position: relative;\n}\n\n.logo {\n  height: 2.5rem;\n}\n\n.trainer-container div span {\n  font-size: 0.8rem;\n  letter-spacing: 2px;\n}\n\n.trainer-image {\n  border-radius: 50%;\n  height: 3rem;\n  border: 2px solid rgba(255,255,255,0.3);\n  height: 3rem;\n  width: 3rem;\n}\n\n.trainer-wrapper {\n  display: flex !important;\n  align-items: center;\n  align-content: center;\n}\n\n.nuzlocke-title {\n  display: inline-flex;\n  font-size: 1.5rem;\n  font-weight: light;\n}\n\n.badge-wrapper {\n  display: inline-flex;\n  width: 216px;\n  flex-wrap: wrap;\n  justify-content: center;\n  margin-left: auto;\n  margin-right: 3rem;\n}\n\n.badge-wrapper img {\n  height: 1.5rem;\n}\n\n.pokemon-shiny {\n  background: #eee;\n  border-radius: 50%;\n  border: 2px solid #fff;\n  height: 2rem;\n  width: 2rem;\n  padding-top: 0.2rem;\n  padding-left: 0.5rem;\n  position: absolute;\n  left: 7rem;\n  top: 1rem;\n}\n\n.move {\n  /*border-bottom: 1px solid #ccc;*/\n  /*box-shadow: inset 0 0 3rem rgba(0, 0, 0, 0.3);*/\n  border: 4px solid rgba(255,255,255,0.3);\n  border-radius: 4px;\n  color: #222;\n  font-size: 0.9rem;\n  height: 1.7rem;\n  margin: 0.25rem;\n  padding: 0;\n  text-align: center;\n}\n\n.move.long-text-move {\n  font-size: 0.7rem;\n}\n\n.pokemon-nickname {\n  font-size: 1.5rem;\n}\n\n.boxed-container,\n.dead-container {\n  margin: 0 auto;\n  margin-top: 1rem;\n}\n\n.dead-pokemon-container {\n  height: 5.1rem;\n  margin-bottom: 0.25rem;\n  position: relative;\n  width: 19rem;\n  vertical-align: middle;\n  text-align: left;\n}\n\n.dead-pokemon-container[data-league='true'] {\n  outline: 1px solid #eee8aa;\n}\n\n.dead-pokemon-container[data-league='true']::after {\n  content: '';\n  background: url(" + __webpack_require__(/*! ../../img/alola-champion-ribbon.png */ "./src/img/alola-champion-ribbon.png") + ");\n  display: block;\n  height: 40px;\n  width: 35px;\n  position: absolute;\n  top: 0.25rem;\n  right: 0.25rem;\n  opacity: 0.8;\n}\n\n.death-info-container {\n  width: 12rem;\n  display: inline-block;\n  vertical-align: middle;\n  margin-top: -8rem;\n}\n\n.dead-pokemon-container .pokemon-image {\n  border-radius: 0;\n  display: inline-block;\n  height: 5rem;\n  width: 5rem;\n  overflow: hidden;\n}\n\n.pokemon-causeofdeath {\n  font-size: 0.8rem;\n  display: inline-block;\n}\n\n.pokemon-container[data-champion='true'] .pokemon-info::after {\n  content: '';\n  display: block;\n  height: 40px;\n  width: 35px;\n  position: absolute;\n  top: 0.25rem;\n  right: 0.25rem;\n}\n\n.region-alola .pokemon-container[data-champion='true'] .pokemon-info::after {\n  background: url(" + __webpack_require__(/*! ../../img/alola-champion-ribbon.png */ "./src/img/alola-champion-ribbon.png") + ");\n}\n\n.badge {\n  height: 1rem;\n}\n\n[data-obtained='false'] {\n  -webkit-filter: grayscale(100%);\n}\n\n.trainer-container {\n  color: #eee;\n  padding: 0.25rem;\n  width: 100%;\n  background-size: cover, 50% auto;\n  background-position: top left, bottom left;\n}\n\n.team-container {\n  display: flex;\n  /* flex-direction: column; */\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: center;\n}\n\n.dead-pokemon-container {\n  background: #333;\n  border: 1px solid #010101;\n  /*color: #eee;*/\n}\n\n.boxed-pokemon-container {\n  display: inline-flex !important;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n.boxed-pokemon-image {\n  cursor: pointer;\n  background-size: cover;\n  background-position: center center;\n  display: inline-block;\n  height: 2rem;\n  width: 2rem;\n}\n\n.pokemon-causeofdeath {\n  color: #000;\n}\n\n.dead-pokemon-info {\n  color: #eee;\n  width: 200px;\n  vertical-align: top;\n  display: inline-block;\n  padding: 0.25rem;\n}\n\n.dead-pokemon-container {\n  display: inline-flex !important;\n  align-items: center;\n  margin-right: 2px;\n}\n\n.dead-container {\n  margin-left: 0;\n}\n\n.dead-pokemon-info,\n.pokemon-d-nickname strong,\n.pokemon-causeofdeath {\n  color: #fff;\n}\n\n.dead-pokemon-info {\n  margin: 0.5rem;\n}\n\n.pokemon-d-nickname {\n  font-size: 1rem;\n  font-weight: light !important;\n  margin-right: 0.5rem;\n  color: #eee;\n}\n\n.pokemon-d-nickname,\n.pokemon-levels {\n  display: inline-block;\n  font-size: 0.9rem;\n  text-align: center;\n  text-shadow: none;\n}\n\n.dead-pokemon-picture {\n  cursor: pointer;\n  height: 80px;\n  width: 76px;\n  background-size: cover;\n  background-position: center;\n}\n\n.pokemon-levels {\n  margin: 0 !important;\n  color: #ddd;\n}\n\n.selector {\n  margin: 0 auto;\n  max-width: 80rem;\n  padding: 0.5rem;\n}\n\n.selector button {\n  border: 0 solid transparent;\n  background: #333;\n  cursor: pointer;\n  color: #eee;\n  border-radius: 0.25rem;\n  padding: 0.5rem;\n}\n\n.selector button:hover {\n  background: #444;\n  transition: 300ms;\n}\n\n.trainer-container {\n  background: #333;\n  color: #eee;\n  border-bottom: 1px solid #000;\n  padding: 0.25rem;\n  width: 100%;\n  background-size: cover, 50% auto;\n  background-position: top left, bottom left;\n}\n\n.trainer-container div {\n  display: inline-block;\n  padding: 0.25rem;\n  text-align: center;\n}\n\n.logo {\n  height: 100%;\n  height: 2rem;\n}\n\n.trainer-container div span {\n  font-size: 0.8rem;\n  letter-spacing: 2px;\n}\n\n.trainer-image {\n  border-radius: 50%;\n  height: 3rem;\n  vertical-align: bottom;\n}\n\n.not-obtained {\n  filter: grayscale(100%);\n}\n\n.round {\n  border-radius: 50%;\n  display: inline-block;\n  height: 8rem;\n  width: 8rem;\n  padding: 0.25rem;\n  position: relative;\n  z-index: 10;\n}\n\n.square {\n  display: inline-block;\n  height: 8rem;\n  width: 8rem;\n  padding: 0.25rem;\n  position: relative;\n  z-index: 10;\n}\n\n.pokemon-image {\n  background-size: cover;\n  background-position: center center;\n  display: inline-block;\n  height: 7.5rem;\n  width: 7.5rem;\n}\n\n.pokemon-image.round {\n  border-radius: 50%;\n}\n\n.is-sprite {\n  background-size: auto;\n  background-repeat: no-repeat;\n}\n\n.pokemon-item {\n  background: #111;\n  border: 5px solid #fff;\n  bottom: 0;\n  height: 3rem;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  left: 12px;\n  padding: 0.5rem;\n  position: absolute;\n  width: 3rem;\n  z-index: 10;\n}\n\n.pokemon-item.round {\n  border-radius: 50%;\n}\n\n.pokemon-item.square {\n  border-radius: 0;\n}\n\n.pokemon-shiny {\n  background: #eee;\n  border-radius: 50%;\n  border: 2px solid #fff;\n  height: 2rem;\n  width: 2rem;\n  padding-top: 0.2rem;\n  padding-left: 0.5rem;\n  position: absolute;\n  left: 7rem;\n  top: 1rem;\n}\n\n.minimal {\n  min-width: 17rem;\n  justify-content: center;\n  flex-direction: column;\n  align-items: center;\n  text-align: center;\n}\n\n.minimal .pokemon-info {\n  background: transparent;\n  display: flex;\n  padding: 0;\n  height: auto;\n  width: auto;\n  margin-left: 0;\n}\n\n.pokemon-info {\n  border-radius: 0 4px 4px 0;\n  display: inline-block;\n  background: #111;\n  height: auto;\n  min-height: 8rem;\n  margin-left: -4rem;\n  position: relative;\n  width: 26rem;\n  vertical-align: top;\n  -webkit-filter: drop-shadow(0 0 1px #111);\n  padding-left: 4rem;\n  border-radius: 0.25rem;\n  overflow: hidden;\n}\n\n.pokemon-info span {\n  margin: 0 0.25rem;\n}\n\n.pokemon-info::before {\n  content: '';\n  border-color: transparent #111 transparent transparent;\n  border-width: 1.5rem;\n  border-style: solid;\n  left: -3rem;\n  top: calc(50% - 1.5rem);\n  position: absolute;\n  display: none;\n}\n\n.pokemon-info-inner {\n  display: inline-block;\n  padding: 0.5rem;\n  vertical-align: top;\n}\n\n.pokemon-moves {\n  background: transparent;\n  display: flex;\n  width: 100%;\n}\n\n.pokemon-moves.horizontal {\n  height: 2rem;\n  width: 100%;\n}\n\n.pokemon-moves.vertical {\n  height: 8rem;\n  width: 23%;\n  position: absolute;\n  top: 0;\n  flex-direction: column;\n  right: 6px;\n  justify-content: space-evenly;\n}\n\n.column {\n  flex-direction: column;\n  justify-content: center;\n}\n\n.move {\n  /*border-bottom: 1px solid #ccc;*/\n  /*box-shadow: inset 0 0 3rem rgba(0, 0, 0, 0.3);*/\n  align-items: center;\n  border: 0 solid transparent;\n  border-radius: 0;\n  border-radius: 4px;\n  display: flex;\n  font-size: 0.8rem;\n  justify-content: center;\n  margin: 0 0.25rem;\n  padding: 0;\n  text-align: center;\n  width: 100%;\n}\n\n.pokemon-nickname {\n  font-size: 1.5rem;\n}\n\n.boxed-pokemon-container {\n  background: #151515;\n  border: 1px solid #000;\n  border-radius: 4px;\n  display: inline-block;\n  margin: 2px;\n  width: 16%;\n  position: relative;\n}\n\n.pokemon-levels {\n  margin-top: 3.5rem;\n}\n\n.boxed-pokemon-info {\n  border-left: 1px solid #111;\n  display: inline-block;\n  /*position: absolute;*/\n  padding: 0.5rem;\n  top: 0;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable,\n.move {\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Fighting-type,\n.move.Fighting-type {\n  background: #a52a2a;\n  color: #eee;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Ice-type,\n.move.Ice-type {\n  background: #c2f1f2;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Fire-type,\n.move.Fire-type {\n  background: #eb3434;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Grass-type,\n.move.Grass-type {\n  background: #39bf3c;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Bug-type,\n.move.Bug-type {\n  background: #aee359;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Normal-type,\n.move.Normal-type {\n  background: #e1e3d3;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Steel-type,\n.move.Steel-type {\n  background: #b0b0b0;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Rock-type,\n.move.Rock-type {\n  background: #8f795d;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Ground-type,\n.move.Ground-type {\n  background: #9c6e21;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Poison-type,\n.move.Poison-type {\n  background: #75226b;\n  color: #eee;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Ghost-type,\n.move.Ghost-type {\n  background: #3b2238 !important;\n  color: #eee;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Water-type,\n.move.Water-type {\n  background: #5b64de;\n  color: #eee;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Electric-type,\n.move.Electric-type {\n  background: #e3e039;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Dark-type,\n.move.Dark-type {\n  background: #29291f;\n  color: #eee;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Fairy-type,\n.move.Fairy-type {\n  background: #ffc0cb;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Flying-type,\n.move.Flying-type {\n  background: #96d3e0;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Psychic-type,\n.move.Psychic-type {\n  background: #eb75dd;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Dragon-type,\n.move.Dragon-type {\n  background: #153f4d;\n  color: #fff;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.-type,\n.move.-type {\n  display: none;\n}\n\n.crystal .pokemon-container {\n  margin: 2px;\n  padding: 0;\n  width: 11rem;\n  height: 19rem;\n}\n\n.crystal .pokemon-info {\n  width: 100%;\n  position: absolute;\n  bottom: 0;\n  height: auto;\n  left: 0;\n  margin-left: 0;\n  padding: 0;\n  z-index: 100;\n  height: 9rem;\n  margin-left: 4px;\n}\n\n.crystal .pokemon-nickname {\n  display: block;\n}\n\n.crystal .pokemon-image {\n  height: 10rem;\n  width: 10rem;\n}\n\n.crystal .square,\n.crystal .bubble {\n  height: 11rem;\n  width: 11rem;\n}\n\n.default-light h3 {\n  color: #111;\n}\n\n.default-light .result-notes {\n  color: #111;\n}\n\n.default-light .container {\n  background-color: #eee;\n  border: 1px solid #666;\n}\n\n.default-light .pokemon-container {\n  background: transparent;\n}\n\n.default-light .pokemon-info {\n  background: #ddd;\n  color: #222;\n  filter: none;\n  -webkit-filter: none;\n}\n\n.default-light .boxed-pokemon-container {\n  background: #ddd;\n  border: 1px solid #ccc;\n  color: #333;\n}\n\n.default-light .dead-pokemon-container {\n  background: #ddd;\n  border-color: transparent;\n}\n\n.default-light .dead-pokemon-info,\n.default-light .pokemon-d-nickname,\n.default-light .pokemon-levels,\n.default-light .pokemon-causeofdeath {\n  color: #222;\n}\n\n.default-light .trainer-container {\n  color: #000;\n  border-bottom: transparent;\n}\n\n.default-light .boxed-pokemon-info {\n  border-left-color: #9a9a9a;\n}\n\n.default-light .gender-color-female {\n  color: #f35e5e;\n}\n\n.default-light .gender-color-male {\n  color: #5e9df3;\n}\n\n.default-light .rules-container {\n  color: #333;\n}\n\n.compact-crystal .pokemon-image {\n  filter: drop-shadow(0 0 4px #000);\n}\n\n.compact-crystal .pokemon-info {\n  width: 8rem;\n  padding: 0;\n  margin: 0;\n  background: transparent !important;\n  min-height: 4rem;\n}\n\n.compact-crystal .pokemon-nickname {\n  display: block;\n  font-size: 1rem;\n  text-transform: uppercase;\n  font-weight: bold;\n}\n\n.compact-crystal .pokemon-container {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n\n.compact-crystal .pokemon-info span {\n  margin: 0;\n  margin-right: 2px;\n}\n\n.cards .pokemon-info {\n  width: 100%;\n  min-height: 0;\n  background: rgba(0,0,0,0.4);\n  margin: 0 !important;\n  padding: 0;\n  overflow: visible;\n  margin-left: 0;\n  z-index: 10;\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  border-radius: 0;\n  background: linear-gradient(transparent, rgba(0,0,0,0.6));\n}\n\n.cards .boxed-pokemon-container {\n  background: rgba(0,0,0,0.4);\n  border: unset;\n  width: auto;\n}\n\n.cards .boxed-pokemon-info {\n  border: unset;\n}\n\n.cards .pokemon-container {\n  background: #222;\n  margin: 0.5rem;\n  width: 15rem;\n  display: flex;\n  height: 15rem;\n  flex-direction: column;\n  border-radius: 0.25rem;\n  overflow: hidden;\n}\n\n.cards .pokemon-image {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 15rem;\n  height: 15rem;\n}\n\n.cards .pokemon-image-wrapper {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n}\n\n.cards .round {\n  margin: 6px auto;\n}\n\n.cards .pokemon-main-info {\n  position: absolute;\n  bottom: 13rem;\n}\n\n.cards .dead-pokemon-container {\n  background: rgba(0,0,0,0.3);\n  border: none;\n  width: 10rem;\n  height: 10rem;\n  border-radius: 0.25rem;\n  overflow: hidden;\n  margin: 0 0.5rem;\n}\n\n.cards .dead-pokemon-picture.sprites-mode {\n  background-size: auto;\n  background-repeat: no-repeat;\n}\n\n.cards .dead-pokemon-picture {\n  width: 10rem;\n  height: 10rem;\n}\n\n.cards .dead-pokemon-info {\n  position: absolute;\n  bottom: 0;\n  background: linear-gradient(transparent, rgba(0,0,0,0.6));\n  margin: 0;\n  width: 100%;\n}\n\n.cards .move {\n  font-size: 0.7rem;\n}\n\n.cards .pokemon-item {\n  position: absolute;\n  z-index: 11;\n  border: none;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  top: 10rem;\n  left: 12rem;\n  background: transparent;\n}\n\n.generations .container {\n  position: relative;\n}\n\n.generations li {\n  background: rgba(0,0,0,0.2);\n  list-style-type: none;\n  border-radius: 0.25rem;\n  padding: 0.25rem;\n  margin: 0.25rem;\n  display: inline-block;\n}\n\n.generations .team-container {\n  width: 36%;\n  justify-content: flex-start;\n  display: inline-block;\n  margin-left: 4px;\n}\n\n.generations .pokemon-container {\n  padding: 0;\n  margin: 2px 0;\n}\n\n.generations .pokemon-info {\n  border-radius: 0;\n  background-size: 322px 10px;\n  background-image: linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);\n}\n\n.generations .pokemon-image-wrapper {\n  width: 10rem;\n  -webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);\n  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);\n}\n\n.generations .pokemon-image {\n  -webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);\n  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);\n  width: 9.5rem;\n}\n\n.generations .boxed-container {\n  width: 200px;\n  height: 420px;\n  display: inline-block;\n  background: #333;\n  border-radius: 0.25rem;\n  vertical-align: top;\n  background-size: 10px 10px;\n  background-image: linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);\n}\n\n.generations .move {\n  -webkit-clip-path: polygon(9% 0, 100% 1%, 100% 100%, 8% 100%, 0% 50%);\n  clip-path: polygon(9% 0, 100% 1%, 100% 100%, 8% 100%, 0% 50%);\n  border-radius: 0;\n}\n\n.generations .boxed-pokemon-container {\n  width: auto;\n  background: transparent;\n  border: none;\n  margin: 0;\n}\n\n.generations .boxed-pokemon-info {\n  display: none;\n}\n\n.generations .dead-container {\n  width: 710px;\n  display: inline-block;\n  vertical-align: top;\n  background-color: #333;\n  background-size: 10px 10px;\n  background-image: linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);\n  margin-left: 7px;\n  border-radius: 0.25rem;\n  height: 420px;\n}\n\n.generations .dead-pokemon-container {\n  width: 14rem;\n  height: 3rem;\n}\n\n.generations .pokemon-causeofdeath {\n  font-size: 0.7rem;\n}\n\n.generations .champs-container {\n  border-radius: 0.25rem;\n  width: 916px;\n  height: 212px;\n  position: absolute;\n  bottom: 148px;\n  right: 14px;\n  background-color: #333;\n  background-size: 10px 10px;\n  background-image: linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);\n  padding: 0.25rem;\n}\n\n.generations .rules-container {\n  position: absolute;\n  height: 200px;\n  width: 975px;\n  bottom: -50px;\n  right: 0;\n}\n\n.hexagon,\n.hexagons .trainer-wrapper img:nth-of-type(1),\n.hexagons .pokemon-image-wrapper,\n.hexagons .pokemon-image-wrapper::after,\n.hexagons .pokemon-image,\n.hexagons .pokemon-item,\n.hexagons .champs-pokemon {\n  -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);\n  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);\n}\n\n.hexagons.team-size-6 .pokemon-container:nth-of-type(5),\n.hexagons.team-size-6 .pokemon-container:nth-of-type(6) {\n  transform: translate(-124px, -62px);\n}\n\n.hexagons.team-size-6 .pokemon-container:nth-of-type(4) {\n  transform: translate(-124px, 186px);\n}\n\n.hexagons.team-size-5 .pokemon-container:nth-of-type(4) {\n  transform: translate(-372px, 186px);\n}\n\n.hexagons.team-size-5 .pokemon-container:nth-of-type(5) {\n  transform: translate(-248px, -62px);\n}\n\n.hexagons.team-size-4 .team-container,\n.hexagons.team-size-3 .team-container,\n.hexagons.team-size-2 .team-container,\n.hexagons.team-size-1 .team-container {\n  margin-left: 0;\n}\n\n.hexagons .team-container {\n  margin-left: 8rem;\n  margin-top: 0.5rem;\n}\n\n.hexagons .trainer-wrapper img:nth-of-type(1) {\n  border-radius: 0;\n}\n\n.hexagons .pokemon-container {\n  padding: 0;\n}\n\n.hexagons .pokemon-image-wrapper {\n  background: transparent;\n  border-radius: 0 !important;\n  height: 15.5rem;\n  width: 15.5rem;\n}\n\n.hexagons .pokemon-image-wrapper::after {\n  content: '';\n  height: 15rem;\n  width: 15rem;\n  position: absolute;\n  display: block;\n  top: 0.25rem;\n  z-index: 10;\n  background: linear-gradient(to bottom, rgba(0,0,0,0.75), transparent, rgba(0,0,0,0.7));\n}\n\n.hexagons .pokemon-image {\n  height: 15rem;\n  width: 15rem;\n}\n\n.hexagons .pokemon-item {\n  position: absolute;\n  bottom: 0;\n  left: calc(50% - 1.5rem);\n  border-radius: 0;\n  border: none;\n  background-size: 15rem;\n  background-position: center bottom;\n}\n\n.hexagons .pokemon-nature,\n.hexagons .pokemon-ability {\n  display: inline-block;\n  margin-left: 0.25rem;\n  margin-bottom: 2rem;\n}\n\n.hexagons .pokemon-info {\n  background: transparent;\n  position: absolute;\n  top: 4rem;\n  left: 0;\n  z-index: 10;\n  text-align: center;\n  width: 15.5rem;\n  margin: 0;\n  padding: 0;\n  height: 8rem;\n}\n\n.hexagons .pokemon-info-inner {\n  padding: 0;\n}\n\n.hexagons .pokemon-moves {\n  margin-top: 1rem;\n  display: flex;\n  position: absolute;\n  bottom: 0.25rem;\n  opacity: 0.6;\n  left: 0.25rem;\n  width: calc(100% - 0.5rem);\n}\n\n.hexagons .move {\n  border-radius: 0;\n  margin: 0;\n}\n\n.hexagons .boxed-container,\n.hexagons .champs-container,\n.hexagons .dead-container {\n  display: inline-block;\n  width: 33%;\n  vertical-align: top;\n}\n\n.hexagons .boxed-pokemon-container {\n  background: #333;\n  width: 48%;\n  border: none;\n}\n\n.hexagons .boxed-pokemon-info {\n  border: none;\n}\n\n.hexagons .dead-pokemon-container {\n  height: auto;\n  width: 100%;\n  border: none;\n  -webkit-clip-path: polygon(95% 0, 100% 50%, 95% 100%, 5% 100%, 0% 50%, 5% 0);\n  clip-path: polygon(95% 0, 100% 50%, 95% 100%, 5% 100%, 0% 50%, 5% 0);\n}\n\n.hexagons .dead-pokemon-info {\n  margin: 0;\n  width: 100%;\n}\n\n.hexagons .trainer-image {\n  border: none;\n}\n\n.hexagons .champs-pokemon:nth-of-type(n+8),\n.hexagons .champs-pokemon:nth-of-type(n+22),\n.hexagons .champs-pokemon:nth-of-type(n+36),\n.hexagons .champs-pokemon:nth-of-type(n+50),\n.hexagons .champs-pokemon:nth-of-type(n+64),\n.hexagons .champs-pokemon:nth-of-type(n+78),\n.hexagons .champs-pokemon:nth-of-type(n+92),\n.hexagons .champs-pokemon:nth-of-type(n+106) {\n  left: 24px;\n  top: -12px;\n  position: relative;\n}\n\n.hexagons .champs-pokemon:nth-of-type(n+15),\n.hexagons .champs-pokemon:nth-of-type(n+29),\n.hexagons .champs-pokemon:nth-of-type(n+43),\n.hexagons .champs-pokemon:nth-of-type(n+57),\n.hexagons .champs-pokemon:nth-of-type(n+71),\n.hexagons .champs-pokemon:nth-of-type(n+85) {\n  left: 0;\n  top: -23px;\n}\n\n", ""]);
+exports.push([module.i, ".top-bar {\n  padding: 0.25rem;\n  font-size: 1.15rem;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-bottom: 1px solid rgba(0,0,0,0.33);\n}\n\n.pt-dark .top-bar {\n  background: #222;\n}\n\n.container {\n  border: 1px solid #ddd;\n  padding-bottom: 0.5rem;\n  position: relative;\n  overflow: hidden;\n  width: 100%;\n  height: 100%;\n}\n\n.container h3 {\n  text-transform: uppercase;\n  margin: 0.5rem;\n  letter-spacing: 4px;\n  text-align: center;\n  color: #eee;\n}\n\n.pt-dark .pt-callout {\n  color: #fff;\n}\n\n.result-notes {\n  text-align: center;\n  margin: 0.5rem;\n  font-size: 1.25rem;\n  font-weight: bold;\n}\n\n.container {\n  padding-bottom: 1rem;\n  background-color: #383840;\n  border: 1px solid #111;\n  color: #eee;\n  margin: 0 auto;\n}\n\n.gender-color-female {\n  color: #ffc0cb;\n}\n\n.gender-color-male {\n  color: #add8e6;\n}\n\n.pokemon-container {\n  display: inline-block;\n  padding: 1rem;\n  position: relative;\n}\n\n.logo {\n  height: 2.5rem;\n}\n\n.trainer-container div span {\n  font-size: 0.8rem;\n  letter-spacing: 2px;\n}\n\n.trainer-image {\n  border-radius: 50%;\n  height: 3rem;\n  border: 2px solid rgba(255,255,255,0.3);\n  height: 3rem;\n  width: 3rem;\n}\n\n.trainer-wrapper {\n  display: flex !important;\n  align-items: center;\n  align-content: center;\n}\n\n.nuzlocke-title {\n  display: inline-flex;\n  font-size: 1.5rem;\n  font-weight: light;\n}\n\n.badge-wrapper {\n  display: inline-flex;\n  width: 216px;\n  flex-wrap: wrap;\n  justify-content: center;\n  margin-left: auto;\n  margin-right: 3rem;\n}\n\n.badge-wrapper img {\n  height: 1.5rem;\n}\n\n.pokemon-shiny {\n  background: #eee;\n  border-radius: 50%;\n  border: 2px solid #fff;\n  height: 2rem;\n  width: 2rem;\n  padding-top: 0.2rem;\n  padding-left: 0.5rem;\n  position: absolute;\n  left: 7rem;\n  top: 1rem;\n}\n\n.move {\n  /*border-bottom: 1px solid #ccc;*/\n  /*box-shadow: inset 0 0 3rem rgba(0, 0, 0, 0.3);*/\n  border: 4px solid rgba(255,255,255,0.3);\n  border-radius: 4px;\n  color: #222;\n  font-size: 0.9rem;\n  height: 1.7rem;\n  margin: 0.25rem;\n  padding: 0;\n  text-align: center;\n}\n\n.move.long-text-move {\n  font-size: 0.7rem;\n}\n\n.pokemon-nickname {\n  font-size: 1.5rem;\n}\n\n.boxed-container,\n.dead-container {\n  margin: 0 auto;\n  margin-top: 1rem;\n}\n\n.dead-pokemon-container {\n  height: 5.1rem;\n  margin-bottom: 0.25rem;\n  position: relative;\n  width: 19rem;\n  vertical-align: middle;\n  text-align: left;\n}\n\n.dead-pokemon-container[data-league='true'] {\n  outline: 1px solid #eee8aa;\n}\n\n.dead-pokemon-container[data-league='true']::after {\n  content: '';\n  background: url(" + __webpack_require__(/*! ../../img/alola-champion-ribbon.png */ "./src/img/alola-champion-ribbon.png") + ");\n  display: block;\n  height: 40px;\n  width: 35px;\n  position: absolute;\n  top: 0.25rem;\n  right: 0.25rem;\n  opacity: 0.8;\n}\n\n.death-info-container {\n  width: 12rem;\n  display: inline-block;\n  vertical-align: middle;\n  margin-top: -8rem;\n}\n\n.dead-pokemon-container .pokemon-image {\n  border-radius: 0;\n  display: inline-block;\n  height: 5rem;\n  width: 5rem;\n  overflow: hidden;\n}\n\n.pokemon-causeofdeath {\n  font-size: 0.8rem;\n  display: inline-block;\n}\n\n.pokemon-container[data-champion='true'] .pokemon-info::after {\n  content: '';\n  display: block;\n  height: 40px;\n  width: 35px;\n  position: absolute;\n  top: 0.25rem;\n  right: 0.25rem;\n}\n\n.region-alola .pokemon-container[data-champion='true'] .pokemon-info::after {\n  background: url(" + __webpack_require__(/*! ../../img/alola-champion-ribbon.png */ "./src/img/alola-champion-ribbon.png") + ");\n}\n\n.badge {\n  height: 1rem;\n}\n\n[data-obtained='false'] {\n  -webkit-filter: grayscale(100%);\n}\n\n.trainer-container {\n  color: #eee;\n  padding: 0.25rem;\n  width: 100%;\n  background-size: cover, 50% auto;\n  background-position: top left, bottom left;\n}\n\n.team-container {\n  display: flex;\n  /* flex-direction: column; */\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: center;\n}\n\n.dead-pokemon-container {\n  background: #333;\n  border: 1px solid #010101;\n  /*color: #eee;*/\n}\n\n.boxed-pokemon-container {\n  display: inline-flex !important;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n.boxed-pokemon-image {\n  cursor: pointer;\n  background-size: cover;\n  background-position: center center;\n  display: inline-block;\n  height: 2rem;\n  width: 2rem;\n}\n\n.pokemon-causeofdeath {\n  color: #000;\n}\n\n.dead-pokemon-info {\n  color: #eee;\n  width: 200px;\n  vertical-align: top;\n  display: inline-block;\n  padding: 0.25rem;\n}\n\n.dead-pokemon-container {\n  display: inline-flex !important;\n  align-items: center;\n  margin-right: 2px;\n}\n\n.dead-container {\n  margin-left: 0;\n}\n\n.dead-pokemon-info,\n.pokemon-d-nickname strong,\n.pokemon-causeofdeath {\n  color: #fff;\n}\n\n.dead-pokemon-info {\n  margin: 0.5rem;\n}\n\n.pokemon-d-nickname {\n  font-size: 1rem;\n  font-weight: light !important;\n  margin-right: 0.5rem;\n  color: #eee;\n}\n\n.pokemon-d-nickname,\n.pokemon-levels {\n  display: inline-block;\n  font-size: 0.9rem;\n  text-align: center;\n  text-shadow: none;\n}\n\n.dead-pokemon-picture {\n  cursor: pointer;\n  height: 80px;\n  width: 76px;\n  background-size: cover;\n  background-position: center;\n}\n\n.pokemon-levels {\n  margin: 0 !important;\n  color: #ddd;\n}\n\n.selector {\n  margin: 0 auto;\n  max-width: 80rem;\n  padding: 0.5rem;\n}\n\n.selector button {\n  border: 0 solid transparent;\n  background: #333;\n  cursor: pointer;\n  color: #eee;\n  border-radius: 0.25rem;\n  padding: 0.5rem;\n}\n\n.selector button:hover {\n  background: #444;\n  transition: 300ms;\n}\n\n.trainer-container {\n  background: #333;\n  color: #eee;\n  border-bottom: 1px solid #000;\n  padding: 0.25rem;\n  width: 100%;\n  background-size: cover, 50% auto;\n  background-position: top left, bottom left;\n}\n\n.trainer-container div {\n  display: inline-block;\n  padding: 0.25rem;\n  text-align: center;\n}\n\n.logo {\n  height: 100%;\n  height: 2rem;\n}\n\n.trainer-container div span {\n  font-size: 0.8rem;\n  letter-spacing: 2px;\n}\n\n.trainer-image {\n  border-radius: 50%;\n  height: 3rem;\n  vertical-align: bottom;\n}\n\n.not-obtained {\n  filter: grayscale(100%);\n}\n\n.round {\n  border-radius: 50%;\n  display: inline-block;\n  height: 8rem;\n  width: 8rem;\n  padding: 0.25rem;\n  position: relative;\n  z-index: 10;\n}\n\n.square {\n  display: inline-block;\n  height: 8rem;\n  width: 8rem;\n  padding: 0.25rem;\n  position: relative;\n  z-index: 10;\n}\n\n.pokemon-image {\n  background-size: cover;\n  background-position: center center;\n  display: inline-block;\n  height: 7.5rem;\n  width: 7.5rem;\n}\n\n.pokemon-image.round {\n  border-radius: 50%;\n}\n\n.is-sprite {\n  background-size: auto;\n  background-repeat: no-repeat;\n}\n\n.pokemon-item {\n  background: #111;\n  border: 5px solid #fff;\n  bottom: 0;\n  height: 3rem;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  left: 12px;\n  padding: 0.5rem;\n  position: absolute;\n  width: 3rem;\n  z-index: 10;\n}\n\n.pokemon-item.round {\n  border-radius: 50%;\n}\n\n.pokemon-item.square {\n  border-radius: 0;\n}\n\n.pokemon-shiny {\n  background: #eee;\n  border-radius: 50%;\n  border: 2px solid #fff;\n  height: 2rem;\n  width: 2rem;\n  padding-top: 0.2rem;\n  padding-left: 0.5rem;\n  position: absolute;\n  left: 7rem;\n  top: 1rem;\n}\n\n.minimal {\n  min-width: 17rem;\n  justify-content: center;\n  flex-direction: column;\n  align-items: center;\n  text-align: center;\n}\n\n.minimal .pokemon-info {\n  background: transparent;\n  display: flex;\n  padding: 0;\n  height: auto;\n  width: auto;\n  margin-left: 0;\n}\n\n.pokemon-info {\n  border-radius: 0 4px 4px 0;\n  display: inline-block;\n  background: #111;\n  height: auto;\n  min-height: 8rem;\n  margin-left: -4rem;\n  position: relative;\n  width: 26rem;\n  vertical-align: top;\n  -webkit-filter: drop-shadow(0 0 1px #111);\n  padding-left: 4rem;\n  border-radius: 0.25rem;\n  overflow: hidden;\n}\n\n.pokemon-info span {\n  margin: 0 0.25rem;\n}\n\n.pokemon-info::before {\n  content: '';\n  border-color: transparent #111 transparent transparent;\n  border-width: 1.5rem;\n  border-style: solid;\n  left: -3rem;\n  top: calc(50% - 1.5rem);\n  position: absolute;\n  display: none;\n}\n\n.pokemon-info-inner {\n  display: inline-block;\n  padding: 0.5rem;\n  vertical-align: top;\n}\n\n.pokemon-moves {\n  background: transparent;\n  display: flex;\n  width: 100%;\n}\n\n.pokemon-moves.horizontal {\n  height: 2rem;\n  width: 100%;\n}\n\n.pokemon-moves.vertical {\n  height: 8rem;\n  width: 23%;\n  position: absolute;\n  top: 0;\n  flex-direction: column;\n  right: 6px;\n  justify-content: space-evenly;\n}\n\n.column {\n  flex-direction: column;\n  justify-content: center;\n}\n\n.move {\n  /*border-bottom: 1px solid #ccc;*/\n  /*box-shadow: inset 0 0 3rem rgba(0, 0, 0, 0.3);*/\n  align-items: center;\n  border: 0 solid transparent;\n  border-radius: 0;\n  border-radius: 4px;\n  display: flex;\n  font-size: 0.8rem;\n  justify-content: center;\n  margin: 0 0.25rem;\n  padding: 0;\n  text-align: center;\n  width: 100%;\n}\n\n.pokemon-nickname {\n  font-size: 1.5rem;\n}\n\n.boxed-pokemon-container {\n  background: #151515;\n  border: 1px solid #000;\n  border-radius: 4px;\n  color: #fff;\n  display: inline-block;\n  margin: 2px;\n  position: relative;\n}\n\n.container .boxed-pokemon-container {\n  width: 16%;\n}\n\n.pokemon-levels {\n  margin-top: 3.5rem;\n}\n\n.boxed-pokemon-info {\n  border-left: 1px solid #111;\n  display: inline-block;\n  /*position: absolute;*/\n  padding: 0.5rem;\n  top: 0;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable,\n.move {\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Fighting-type,\n.move.Fighting-type {\n  background: #a52a2a;\n  color: #eee;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Ice-type,\n.move.Ice-type {\n  background: #c2f1f2;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Fire-type,\n.move.Fire-type {\n  background: #eb3434;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Grass-type,\n.move.Grass-type {\n  background: #39bf3c;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Bug-type,\n.move.Bug-type {\n  background: #aee359;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Normal-type,\n.move.Normal-type {\n  background: #e1e3d3;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Steel-type,\n.move.Steel-type {\n  background: #b0b0b0;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Rock-type,\n.move.Rock-type {\n  background: #8f795d;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Ground-type,\n.move.Ground-type {\n  background: #9c6e21;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Poison-type,\n.move.Poison-type {\n  background: #75226b;\n  color: #eee;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Ghost-type,\n.move.Ghost-type {\n  background: #3b2238 !important;\n  color: #eee;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Water-type,\n.move.Water-type {\n  background: #5b64de;\n  color: #eee;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Electric-type,\n.move.Electric-type {\n  background: #e3e039;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Dark-type,\n.move.Dark-type {\n  background: #29291f;\n  color: #eee;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Fairy-type,\n.move.Fairy-type {\n  background: #ffc0cb;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Flying-type,\n.move.Flying-type {\n  background: #96d3e0;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Psychic-type,\n.move.Psychic-type {\n  background: #eb75dd;\n  color: #000;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.Dragon-type,\n.move.Dragon-type {\n  background: #153f4d;\n  color: #fff;\n}\n\n.pt-tag-input .pt-tag.pt-tag-removable.-type,\n.move.-type {\n  display: none;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Result/themes.styl":
+/*!************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/resolve-url-loader!./node_modules/stylus-loader!./src/components/Result/themes.styl ***!
+  \************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".crystal .pokemon-container {\n  margin: 2px;\n  padding: 0;\n  width: 11rem;\n  height: 19rem;\n}\n\n.crystal .pokemon-info {\n  width: 100%;\n  position: absolute;\n  bottom: 0;\n  height: auto;\n  left: 0;\n  margin-left: 0;\n  padding: 0;\n  z-index: 100;\n  height: 9rem;\n  margin-left: 4px;\n}\n\n.crystal .pokemon-nickname {\n  display: block;\n}\n\n.crystal .pokemon-image {\n  height: 10rem;\n  width: 10rem;\n}\n\n.crystal .square,\n.crystal .bubble {\n  height: 11rem;\n  width: 11rem;\n}\n\n.default-light h3 {\n  color: #111;\n}\n\n.default-light .result-notes {\n  color: #111;\n}\n\n.default-light .container {\n  background-color: #eee;\n  border: 1px solid #666;\n}\n\n.default-light .pokemon-container {\n  background: transparent;\n}\n\n.default-light .pokemon-info {\n  background: #ddd;\n  color: #222;\n  filter: none;\n  -webkit-filter: none;\n}\n\n.default-light .boxed-pokemon-container {\n  background: #ddd;\n  border: 1px solid #ccc;\n  color: #333;\n}\n\n.default-light .dead-pokemon-container {\n  background: #ddd;\n  border-color: transparent;\n}\n\n.default-light .dead-pokemon-info,\n.default-light .pokemon-d-nickname,\n.default-light .pokemon-levels,\n.default-light .pokemon-causeofdeath {\n  color: #222;\n}\n\n.default-light .trainer-container {\n  color: #000;\n  border-bottom: transparent;\n}\n\n.default-light .boxed-pokemon-info {\n  border-left-color: #9a9a9a;\n}\n\n.default-light .gender-color-female {\n  color: #f35e5e;\n}\n\n.default-light .gender-color-male {\n  color: #5e9df3;\n}\n\n.default-light .rules-container {\n  color: #333;\n}\n\n.compact-crystal .pokemon-image {\n  filter: drop-shadow(0 0 4px #000);\n}\n\n.compact-crystal .pokemon-info {\n  width: 8rem;\n  padding: 0;\n  margin: 0;\n  background: transparent !important;\n  min-height: 4rem;\n}\n\n.compact-crystal .pokemon-nickname {\n  display: block;\n  font-size: 1rem;\n  text-transform: uppercase;\n  font-weight: bold;\n}\n\n.compact-crystal .pokemon-container {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n\n.compact-crystal .pokemon-info span {\n  margin: 0;\n  margin-right: 2px;\n}\n\n.cards .pokemon-info {\n  color: #fff;\n  width: 100%;\n  min-height: 0;\n  background: rgba(0,0,0,0.4);\n  margin: 0 !important;\n  padding: 0;\n  overflow: visible;\n  margin-left: 0;\n  z-index: 10;\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  border-radius: 0;\n  background: linear-gradient(transparent, rgba(0,0,0,0.6));\n}\n\n.cards .boxed-pokemon-container {\n  background: rgba(0,0,0,0.4);\n  border: unset;\n  width: auto;\n}\n\n.cards .boxed-pokemon-info {\n  border: unset;\n}\n\n.cards .pokemon-container {\n  background: #222;\n  margin: 0.5rem;\n  width: 15rem;\n  display: flex;\n  height: 15rem;\n  flex-direction: column;\n  border-radius: 0.25rem;\n  overflow: hidden;\n}\n\n.cards .pokemon-image {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 15rem;\n  height: 15rem;\n}\n\n.cards .pokemon-image-wrapper {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n}\n\n.cards .round {\n  margin: 6px auto;\n}\n\n.cards .pokemon-main-info {\n  position: absolute;\n  bottom: 13rem;\n}\n\n.cards .dead-pokemon-container {\n  background: rgba(0,0,0,0.3);\n  border: none;\n  width: 10rem;\n  height: 10rem;\n  border-radius: 0.25rem;\n  overflow: hidden;\n  margin: 0 0.5rem;\n}\n\n.cards .dead-pokemon-picture.sprites-mode {\n  background-size: auto;\n  background-repeat: no-repeat;\n}\n\n.cards .dead-pokemon-picture {\n  width: 10rem;\n  height: 10rem;\n}\n\n.cards .dead-pokemon-info {\n  position: absolute;\n  bottom: 0;\n  background: linear-gradient(transparent, rgba(0,0,0,0.6));\n  margin: 0;\n  width: 100%;\n}\n\n.cards .move {\n  font-size: 0.7rem;\n}\n\n.cards .pokemon-item {\n  position: absolute;\n  z-index: 11;\n  border: none;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  top: 10rem;\n  left: 12rem;\n  background: transparent;\n}\n\n.generations .container {\n  position: relative;\n}\n\n.generations li {\n  background: rgba(0,0,0,0.2);\n  list-style-type: none;\n  border-radius: 0.25rem;\n  padding: 0.25rem;\n  margin: 0.25rem;\n  display: inline-block;\n}\n\n.generations .team-container {\n  width: 36%;\n  justify-content: flex-start;\n  display: inline-block;\n  margin-left: 4px;\n}\n\n.generations .pokemon-container {\n  padding: 0;\n  margin: 2px 0;\n}\n\n.generations .pokemon-info {\n  border-radius: 0;\n  background-size: 322px 10px;\n  background-image: linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);\n}\n\n.generations .pokemon-image-wrapper {\n  width: 10rem;\n  -webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);\n  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);\n}\n\n.generations .pokemon-image {\n  -webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);\n  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);\n  width: 9.5rem;\n}\n\n.generations .boxed-container {\n  width: 200px;\n  height: 420px;\n  display: inline-block;\n  background: #333;\n  border-radius: 0.25rem;\n  vertical-align: top;\n  background-size: 10px 10px;\n  background-image: linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);\n}\n\n.generations .move {\n  -webkit-clip-path: polygon(9% 0, 100% 1%, 100% 100%, 8% 100%, 0% 50%);\n  clip-path: polygon(9% 0, 100% 1%, 100% 100%, 8% 100%, 0% 50%);\n  border-radius: 0;\n}\n\n.generations .boxed-pokemon-container {\n  width: auto;\n  background: transparent;\n  border: none;\n  margin: 0;\n}\n\n.generations .boxed-pokemon-info {\n  display: none;\n}\n\n.generations .dead-container {\n  width: 710px;\n  display: inline-block;\n  vertical-align: top;\n  background-color: #333;\n  background-size: 10px 10px;\n  background-image: linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);\n  margin-left: 7px;\n  border-radius: 0.25rem;\n  height: 420px;\n}\n\n.generations .dead-pokemon-container {\n  width: 14rem;\n  height: 3rem;\n}\n\n.generations .pokemon-causeofdeath {\n  font-size: 0.7rem;\n}\n\n.generations .champs-container {\n  border-radius: 0.25rem;\n  width: 916px;\n  height: 212px;\n  position: absolute;\n  bottom: 148px;\n  right: 14px;\n  background-color: #333;\n  background-size: 10px 10px;\n  background-image: linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);\n  padding: 0.25rem;\n}\n\n.generations .rules-container {\n  position: absolute;\n  height: 200px;\n  width: 975px;\n  bottom: -50px;\n  right: 0;\n}\n\n.hexagon,\n.hexagons .trainer-wrapper img:nth-of-type(1),\n.hexagons .pokemon-image-wrapper,\n.hexagons .pokemon-image-wrapper::after,\n.hexagons .pokemon-image,\n.hexagons .pokemon-item,\n.hexagons .champs-pokemon {\n  -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);\n  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);\n}\n\n.hexagons.team-size-6 .pokemon-container:nth-of-type(5),\n.hexagons.team-size-6 .pokemon-container:nth-of-type(6) {\n  transform: translate(-124px, -62px);\n}\n\n.hexagons.team-size-6 .pokemon-container:nth-of-type(4) {\n  transform: translate(-124px, 186px);\n}\n\n.hexagons.team-size-5 .pokemon-container:nth-of-type(4) {\n  transform: translate(-372px, 186px);\n}\n\n.hexagons.team-size-5 .pokemon-container:nth-of-type(5) {\n  transform: translate(-248px, -62px);\n}\n\n.hexagons.team-size-4 .team-container,\n.hexagons.team-size-3 .team-container,\n.hexagons.team-size-2 .team-container,\n.hexagons.team-size-1 .team-container {\n  margin-left: 0;\n}\n\n.hexagons .team-container {\n  margin-left: 8rem;\n  margin-top: 0.5rem;\n}\n\n.hexagons .trainer-wrapper img:nth-of-type(1) {\n  border-radius: 0;\n}\n\n.hexagons .pokemon-container {\n  padding: 0;\n}\n\n.hexagons .pokemon-image-wrapper {\n  background: transparent;\n  border-radius: 0 !important;\n  height: 15.5rem;\n  width: 15.5rem;\n}\n\n.hexagons .pokemon-image-wrapper::after {\n  content: '';\n  height: 15rem;\n  width: 15rem;\n  position: absolute;\n  display: block;\n  top: 0.25rem;\n  z-index: 10;\n  background: linear-gradient(to bottom, rgba(0,0,0,0.75), transparent, rgba(0,0,0,0.7));\n}\n\n.hexagons .pokemon-image {\n  height: 15rem;\n  width: 15rem;\n}\n\n.hexagons .pokemon-item {\n  position: absolute;\n  bottom: 0;\n  left: calc(50% - 1.5rem);\n  border-radius: 0;\n  border: none;\n  background-size: 15rem;\n  background-position: center bottom;\n}\n\n.hexagons .pokemon-nature,\n.hexagons .pokemon-ability {\n  display: inline-block;\n  margin-left: 0.25rem;\n  margin-bottom: 2rem;\n}\n\n.hexagons .pokemon-info {\n  background: transparent;\n  color: #fff;\n  position: absolute;\n  top: 4rem;\n  left: 0;\n  z-index: 10;\n  text-align: center;\n  width: 15.5rem;\n  margin: 0;\n  padding: 0;\n  height: 8rem;\n}\n\n.hexagons .pokemon-info-inner {\n  padding: 0;\n}\n\n.hexagons .pokemon-moves {\n  margin-top: 1rem;\n  display: flex;\n  position: absolute;\n  bottom: 0.25rem;\n  opacity: 0.6;\n  left: 0.25rem;\n  width: calc(100% - 0.5rem);\n}\n\n.hexagons .move {\n  border-radius: 0;\n  margin: 0;\n}\n\n.hexagons .boxed-container,\n.hexagons .champs-container,\n.hexagons .dead-container {\n  display: inline-block;\n  width: 33%;\n  vertical-align: top;\n}\n\n.hexagons .boxed-pokemon-container {\n  background: #333;\n  width: 48%;\n  border: none;\n}\n\n.hexagons .boxed-pokemon-info {\n  border: none;\n}\n\n.hexagons .dead-pokemon-container {\n  height: auto;\n  width: 100%;\n  border: none;\n  -webkit-clip-path: polygon(95% 0, 100% 50%, 95% 100%, 5% 100%, 0% 50%, 5% 0);\n  clip-path: polygon(95% 0, 100% 50%, 95% 100%, 5% 100%, 0% 50%, 5% 0);\n}\n\n.hexagons .dead-pokemon-info {\n  margin: 0;\n  width: 100%;\n}\n\n.hexagons .trainer-image {\n  border: none;\n}\n\n.hexagons .champs-pokemon:nth-of-type(n+8),\n.hexagons .champs-pokemon:nth-of-type(n+22),\n.hexagons .champs-pokemon:nth-of-type(n+36),\n.hexagons .champs-pokemon:nth-of-type(n+50),\n.hexagons .champs-pokemon:nth-of-type(n+64),\n.hexagons .champs-pokemon:nth-of-type(n+78),\n.hexagons .champs-pokemon:nth-of-type(n+92),\n.hexagons .champs-pokemon:nth-of-type(n+106) {\n  left: 24px;\n  top: -12px;\n  position: relative;\n}\n\n.hexagons .champs-pokemon:nth-of-type(n+15),\n.hexagons .champs-pokemon:nth-of-type(n+29),\n.hexagons .champs-pokemon:nth-of-type(n+43),\n.hexagons .champs-pokemon:nth-of-type(n+57),\n.hexagons .champs-pokemon:nth-of-type(n+71),\n.hexagons .champs-pokemon:nth-of-type(n+85) {\n  left: 0;\n  top: -23px;\n}\n\n", ""]);
 
 // exports
 
@@ -21975,6 +22247,1475 @@ THE SOFTWARE.
   }
 
 }(self));
+
+
+/***/ }),
+
+/***/ "./node_modules/emotion-utils/dist/index.es.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/emotion-utils/dist/index.es.js ***!
+  \*****************************************************/
+/*! exports provided: memoize, STYLES_KEY, TARGET_KEY, unitless, hashString, Stylis */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "memoize", function() { return memoize; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "STYLES_KEY", function() { return STYLES_KEY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TARGET_KEY", function() { return TARGET_KEY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unitless", function() { return unitless; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hashString", function() { return hashString; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Stylis", function() { return pa; });
+// murmurhash2 via https://gist.github.com/raycmorgan/588423
+function hashString(str) {
+  return hash(str, str.length).toString(36);
+}
+
+function hash(str, seed) {
+  var m = 0x5bd1e995;
+  var r = 24;
+  var h = seed ^ str.length;
+  var length = str.length;
+  var currentIndex = 0;
+
+  while (length >= 4) {
+    var k = UInt32(str, currentIndex);
+    k = Umul32(k, m);
+    k ^= k >>> r;
+    k = Umul32(k, m);
+    h = Umul32(h, m);
+    h ^= k;
+    currentIndex += 4;
+    length -= 4;
+  }
+
+  switch (length) {
+    case 3:
+      h ^= UInt16(str, currentIndex);
+      h ^= str.charCodeAt(currentIndex + 2) << 16;
+      h = Umul32(h, m);
+      break;
+
+    case 2:
+      h ^= UInt16(str, currentIndex);
+      h = Umul32(h, m);
+      break;
+
+    case 1:
+      h ^= str.charCodeAt(currentIndex);
+      h = Umul32(h, m);
+      break;
+  }
+
+  h ^= h >>> 13;
+  h = Umul32(h, m);
+  h ^= h >>> 15;
+  return h >>> 0;
+}
+
+function UInt32(str, pos) {
+  return str.charCodeAt(pos++) + (str.charCodeAt(pos++) << 8) + (str.charCodeAt(pos++) << 16) + (str.charCodeAt(pos) << 24);
+}
+
+function UInt16(str, pos) {
+  return str.charCodeAt(pos++) + (str.charCodeAt(pos++) << 8);
+}
+
+function Umul32(n, m) {
+  n = n | 0;
+  m = m | 0;
+  var nlo = n & 0xffff;
+  var nhi = n >>> 16;
+  var res = nlo * m + ((nhi * m & 0xffff) << 16) | 0;
+  return res;
+}
+
+var pa = function fa(ha) {
+  function V(b, c, d, k, l) {
+    for (var a = 0, f = 0, n = 0, e = 0, h, q, m, v = 0, A = 0, B = 0, x = 0, C = 0, p = 0, G = 0, r = 0, N = q = 0, L = 0, t = 0, D = d.length, F = D - 1, g = "", u = "", S = "", M = "", H; r < D;) {
+      m = d.charCodeAt(r);
+      r === F && 0 !== f + e + n + a && (0 !== f && (m = 47 === f ? 10 : 47), e = n = a = 0, D++, F++);
+
+      if (0 === f + e + n + a) {
+        if (r === F && (0 < q && (g = g.replace(P, "")), 0 < g.trim().length)) {
+          switch (m) {
+            case 32:
+            case 9:
+            case 59:
+            case 13:
+            case 10:
+              break;
+
+            default:
+              g += d.charAt(r);
+          }
+
+          m = 59;
+        }
+
+        if (1 === N) switch (m) {
+          case 123:
+          case 125:
+          case 59:
+          case 34:
+          case 39:
+          case 40:
+          case 41:
+          case 44:
+            N = 0;
+
+          case 9:
+          case 13:
+          case 10:
+          case 32:
+            break;
+
+          default:
+            for (N = 0, t = r, h = m, r--, m = 59; t < D;) {
+              switch (d.charCodeAt(++t)) {
+                case 10:
+                case 13:
+                case 59:
+                  r++, m = h;
+
+                case 58:
+                case 123:
+                  t = D;
+              }
+            }
+
+        }
+
+        switch (m) {
+          case 123:
+            g = g.trim();
+            h = g.charCodeAt(0);
+            x = 1;
+
+            for (t = ++r; r < D;) {
+              m = d.charCodeAt(r);
+
+              switch (m) {
+                case 123:
+                  x++;
+                  break;
+
+                case 125:
+                  x--;
+              }
+
+              if (0 === x) break;
+              r++;
+            }
+
+            p = d.substring(t, r);
+            0 === h && (h = (g = g.replace(qa, "").trim()).charCodeAt(0));
+
+            switch (h) {
+              case 64:
+                0 < q && (g = g.replace(P, ""));
+                q = g.charCodeAt(1);
+
+                switch (q) {
+                  case 100:
+                  case 109:
+                  case 115:
+                  case 45:
+                    h = c;
+                    break;
+
+                  default:
+                    h = W;
+                }
+
+                p = V(c, h, p, q, l + 1);
+                t = p.length;
+                0 < X && 0 === t && (t = g.length);
+                0 < E && (h = ia(W, g, L), H = O(3, p, h, c, I, y, t, q, l), g = h.join(""), void 0 !== H && 0 === (t = (p = H.trim()).length) && (q = 0, p = ""));
+                if (0 < t) switch (q) {
+                  case 115:
+                    g = g.replace(ra, sa);
+
+                  case 100:
+                  case 109:
+                  case 45:
+                    p = g + "{" + p + "}";
+                    break;
+
+                  case 107:
+                    g = g.replace(ta, "$1 $2" + (0 < Q ? T : ""));
+                    p = g + "{" + p + "}";
+                    p = 1 === w || 2 === w && U("@" + p, 3) ? "@-webkit-" + p + "@" + p : "@" + p;
+                    break;
+
+                  default:
+                    p = g + p, 112 === k && (p = (u += p, ""));
+                } else p = "";
+                break;
+
+              default:
+                p = V(c, ia(c, g, L), p, k, l + 1);
+            }
+
+            S += p;
+            p = L = q = G = N = C = 0;
+            g = "";
+            m = d.charCodeAt(++r);
+            break;
+
+          case 125:
+          case 59:
+            g = (0 < q ? g.replace(P, "") : g).trim();
+            if (1 < (t = g.length)) switch (0 === G && (h = g.charCodeAt(0), 45 === h || 96 < h && 123 > h) && (t = (g = g.replace(" ", ":")).length), 0 < E && void 0 !== (H = O(1, g, c, b, I, y, u.length, k, l)) && 0 === (t = (g = H.trim()).length) && (g = "\x00\x00"), h = g.charCodeAt(0), q = g.charCodeAt(1), h + q) {
+              case 0:
+                break;
+
+              case 169:
+              case 163:
+                M += g + d.charAt(r);
+                break;
+
+              default:
+                58 !== g.charCodeAt(t - 1) && (u += ja(g, h, q, g.charCodeAt(2)));
+            }
+            L = q = G = N = C = 0;
+            g = "";
+            m = d.charCodeAt(++r);
+        }
+      }
+
+      switch (m) {
+        case 13:
+        case 10:
+          if (0 === f + e + n + a + ka) switch (B) {
+            case 41:
+            case 39:
+            case 34:
+            case 64:
+            case 126:
+            case 62:
+            case 42:
+            case 43:
+            case 47:
+            case 45:
+            case 58:
+            case 44:
+            case 59:
+            case 123:
+            case 125:
+              break;
+
+            default:
+              0 < G && (N = 1);
+          }
+          47 === f ? f = 0 : 0 === z + C && (q = 1, g += "\x00");
+          0 < E * la && O(0, g, c, b, I, y, u.length, k, l);
+          y = 1;
+          I++;
+          break;
+
+        case 59:
+        case 125:
+          if (0 === f + e + n + a) {
+            y++;
+            break;
+          }
+
+        default:
+          y++;
+          h = d.charAt(r);
+
+          switch (m) {
+            case 9:
+            case 32:
+              if (0 === e + a + f) switch (v) {
+                case 44:
+                case 58:
+                case 9:
+                case 32:
+                  h = "";
+                  break;
+
+                default:
+                  32 !== m && (h = " ");
+              }
+              break;
+
+            case 0:
+              h = "\\0";
+              break;
+
+            case 12:
+              h = "\\f";
+              break;
+
+            case 11:
+              h = "\\v";
+              break;
+
+            case 38:
+              0 === e + f + a && 0 < z && (q = L = 1, h = "\f" + h);
+              break;
+
+            case 108:
+              if (0 === e + f + a + J && 0 < G) switch (r - G) {
+                case 2:
+                  112 === v && 58 === d.charCodeAt(r - 3) && (J = v);
+
+                case 8:
+                  111 === A && (J = A);
+              }
+              break;
+
+            case 58:
+              0 === e + f + a && (G = r);
+              break;
+
+            case 44:
+              0 === f + n + e + a && (q = 1, h += "\r");
+              break;
+
+            case 34:
+              0 === f && (e = e === m ? 0 : 0 === e ? m : e);
+              break;
+
+            case 39:
+              0 === f && (e = e === m ? 0 : 0 === e ? m : e);
+              break;
+
+            case 91:
+              0 === e + f + n && a++;
+              break;
+
+            case 93:
+              0 === e + f + n && a--;
+              break;
+
+            case 41:
+              0 === e + f + a && n--;
+              break;
+
+            case 40:
+              if (0 === e + f + a) {
+                if (0 === C) switch (2 * v + 3 * A) {
+                  case 533:
+                    break;
+
+                  default:
+                    x = 0, C = 1;
+                }
+                n++;
+              }
+
+              break;
+
+            case 64:
+              0 === f + n + e + a + G + p && (p = 1);
+              break;
+
+            case 42:
+            case 47:
+              if (!(0 < e + a + n)) switch (f) {
+                case 0:
+                  switch (2 * m + 3 * d.charCodeAt(r + 1)) {
+                    case 235:
+                      f = 47;
+                      break;
+
+                    case 220:
+                      t = r, f = 42;
+                  }
+
+                  break;
+
+                case 42:
+                  47 === m && 42 === v && (33 === d.charCodeAt(t + 2) && (u += d.substring(t, r + 1)), h = "", f = 0);
+              }
+          }
+
+          if (0 === f) {
+            if (0 === z + e + a + p && 107 !== k && 59 !== m) switch (m) {
+              case 44:
+              case 126:
+              case 62:
+              case 43:
+              case 41:
+              case 40:
+                if (0 === C) {
+                  switch (v) {
+                    case 9:
+                    case 32:
+                    case 10:
+                    case 13:
+                      h += "\x00";
+                      break;
+
+                    default:
+                      h = "\x00" + h + (44 === m ? "" : "\x00");
+                  }
+
+                  q = 1;
+                } else switch (m) {
+                  case 40:
+                    C = ++x;
+                    break;
+
+                  case 41:
+                    0 === (C = --x) && (q = 1, h += "\x00");
+                }
+
+                break;
+
+              case 9:
+              case 32:
+                switch (v) {
+                  case 0:
+                  case 123:
+                  case 125:
+                  case 59:
+                  case 44:
+                  case 12:
+                  case 9:
+                  case 32:
+                  case 10:
+                  case 13:
+                    break;
+
+                  default:
+                    0 === C && (q = 1, h += "\x00");
+                }
+
+            }
+            g += h;
+            32 !== m && 9 !== m && (B = m);
+          }
+
+      }
+
+      A = v;
+      v = m;
+      r++;
+    }
+
+    t = u.length;
+    0 < X && 0 === t && 0 === S.length && 0 === c[0].length === !1 && (109 !== k || 1 === c.length && (0 < z ? K : R) === c[0]) && (t = c.join(",").length + 2);
+
+    if (0 < t) {
+      if (0 === z && 107 !== k) {
+        d = 0;
+        a = c.length;
+
+        for (f = Array(a); d < a; ++d) {
+          v = c[d].split(ua);
+          A = "";
+          B = 0;
+
+          for (D = v.length; B < D; ++B) {
+            if (!(0 === (x = (e = v[B]).length) && 1 < D)) {
+              r = A.charCodeAt(A.length - 1);
+              L = e.charCodeAt(0);
+              n = "";
+              if (0 !== B) switch (r) {
+                case 42:
+                case 126:
+                case 62:
+                case 43:
+                case 32:
+                case 40:
+                  break;
+
+                default:
+                  n = " ";
+              }
+
+              switch (L) {
+                case 38:
+                  e = n + K;
+
+                case 126:
+                case 62:
+                case 43:
+                case 32:
+                case 41:
+                case 40:
+                  break;
+
+                case 91:
+                  e = n + e + K;
+                  break;
+
+                case 58:
+                  switch (2 * e.charCodeAt(1) + 3 * e.charCodeAt(2)) {
+                    case 530:
+                      if (0 < Y) {
+                        e = n + e.substring(8, x - 1);
+                        break;
+                      }
+
+                    default:
+                      if (1 > B || 1 > v[B - 1].length) e = n + K + e;
+                  }
+
+                  break;
+
+                case 44:
+                  n = "";
+
+                default:
+                  e = 1 < x && 0 < e.indexOf(":") ? n + e.replace(va, "$1" + K + "$2") : n + e + K;
+              }
+
+              A += e;
+            }
+          }
+
+          f[d] = A.replace(P, "").trim();
+        }
+
+        c = f;
+      }
+
+      h = c;
+      if (0 < E && (H = O(2, u, h, b, I, y, t, k, l), void 0 !== H && 0 === (u = H).length)) return M + u + S;
+      u = h.join(",") + "{" + u + "}";
+
+      if (0 !== w * J) {
+        2 !== w || U(u, 2) || (J = 0);
+
+        switch (J) {
+          case 111:
+            u = u.replace(wa, ":-moz-$1") + u;
+            break;
+
+          case 112:
+            u = u.replace(Z, "::-webkit-input-$1") + u.replace(Z, "::-moz-$1") + u.replace(Z, ":-ms-input-$1") + u;
+        }
+
+        J = 0;
+      }
+    }
+
+    return M + u + S;
+  }
+
+  function ia(b, c, d) {
+    var k = c.trim().split(xa);
+    c = k;
+    var l = k.length,
+        a = b.length;
+
+    switch (a) {
+      case 0:
+      case 1:
+        var f = 0;
+
+        for (b = 0 === a ? "" : b[0] + " "; f < l; ++f) {
+          c[f] = ma(b, c[f], d, a).trim();
+        }
+
+        break;
+
+      default:
+        var n = f = 0;
+
+        for (c = []; f < l; ++f) {
+          for (var e = 0; e < a; ++e) {
+            c[n++] = ma(b[e] + " ", k[f], d, a).trim();
+          }
+        }
+
+    }
+
+    return c;
+  }
+
+  function ma(b, c, d, k) {
+    var l = c.charCodeAt(0);
+    33 > l && (l = (c = c.trim()).charCodeAt(0));
+
+    switch (l) {
+      case 38:
+        switch (z + k) {
+          case 0:
+          case 1:
+            if (0 === b.trim().length) break;
+
+          default:
+            return c.replace(M, "$1" + b.trim());
+        }
+
+        break;
+
+      case 58:
+        switch (c.charCodeAt(1)) {
+          case 103:
+            if (0 < Y && 0 < z) return c.replace(ya, "$1").replace(M, "$1" + R);
+            break;
+
+          default:
+            return b.trim() + c;
+        }
+
+      default:
+        if (0 < d * z && 0 < c.indexOf("\f")) return c.replace(M, (58 === b.charCodeAt(0) ? "" : "$1") + b.trim());
+    }
+
+    return b + c;
+  }
+
+  function ja(b, c, d, k) {
+    var l = 0,
+        a = b + ";";
+    c = 2 * c + 3 * d + 4 * k;
+
+    if (944 === c) {
+      l = a.length;
+      b = a.indexOf(":", 9) + 1;
+      d = a.substring(0, b).trim();
+      k = a.substring(b, l - 1).trim();
+
+      switch (a.charCodeAt(9) * Q) {
+        case 0:
+          break;
+
+        case 45:
+          if (110 !== a.charCodeAt(10)) break;
+
+        default:
+          for (a = k.split((k = "", za)), b = c = 0, l = a.length; c < l; b = 0, ++c) {
+            for (var f = a[c], n = f.split(Aa); f = n[b];) {
+              var e = f.charCodeAt(0);
+              if (1 === Q && (64 < e && 90 > e || 96 < e && 123 > e || 95 === e || 45 === e && 45 !== f.charCodeAt(1))) switch (isNaN(parseFloat(f)) + (-1 !== f.indexOf("("))) {
+                case 1:
+                  switch (f) {
+                    case "infinite":
+                    case "alternate":
+                    case "backwards":
+                    case "running":
+                    case "normal":
+                    case "forwards":
+                    case "both":
+                    case "none":
+                    case "linear":
+                    case "ease":
+                    case "ease-in":
+                    case "ease-out":
+                    case "ease-in-out":
+                    case "paused":
+                    case "reverse":
+                    case "alternate-reverse":
+                    case "inherit":
+                    case "initial":
+                    case "unset":
+                    case "step-start":
+                    case "step-end":
+                      break;
+
+                    default:
+                      f += T;
+                  }
+
+              }
+              n[b++] = f;
+            }
+
+            k += (0 === c ? "" : ",") + n.join(" ");
+          }
+
+      }
+
+      k = d + k + ";";
+      return 1 === w || 2 === w && U(k, 1) ? "-webkit-" + k + k : k;
+    }
+
+    if (0 === w || 2 === w && !U(a, 1)) return a;
+
+    switch (c) {
+      case 1015:
+        return 45 === a.charCodeAt(9) ? "-webkit-" + a + a : a;
+
+      case 951:
+        return 116 === a.charCodeAt(3) ? "-webkit-" + a + a : a;
+
+      case 963:
+        return 110 === a.charCodeAt(5) ? "-webkit-" + a + a : a;
+
+      case 1009:
+        if (100 !== a.charCodeAt(4)) break;
+
+      case 969:
+      case 942:
+        return "-webkit-" + a + a;
+
+      case 978:
+        return "-webkit-" + a + "-moz-" + a + a;
+
+      case 1019:
+      case 983:
+        return "-webkit-" + a + "-moz-" + a + "-ms-" + a + a;
+
+      case 883:
+        return 45 === a.charCodeAt(8) ? "-webkit-" + a + a : a;
+
+      case 932:
+        if (45 === a.charCodeAt(4)) switch (a.charCodeAt(5)) {
+          case 103:
+            return "-webkit-box-" + a.replace("-grow", "") + "-webkit-" + a + "-ms-" + a.replace("grow", "positive") + a;
+
+          case 115:
+            return "-webkit-" + a + "-ms-" + a.replace("shrink", "negative") + a;
+
+          case 98:
+            return "-webkit-" + a + "-ms-" + a.replace("basis", "preferred-size") + a;
+        }
+        return "-webkit-" + a + "-ms-" + a + a;
+
+      case 964:
+        return "-webkit-" + a + "-ms-flex-" + a + a;
+
+      case 1023:
+        if (99 !== a.charCodeAt(8)) break;
+        b = a.substring(a.indexOf(":", 15)).replace("flex-", "").replace("space-between", "justify");
+        return "-webkit-box-pack" + b + "-webkit-" + a + "-ms-flex-pack" + b + a;
+
+      case 1005:
+        return Ba.test(a) ? a.replace(na, ":-webkit-") + a.replace(na, ":-moz-") + a : a;
+
+      case 1E3:
+        b = a.substring(13).trim();
+        l = b.indexOf("-") + 1;
+
+        switch (b.charCodeAt(0) + b.charCodeAt(l)) {
+          case 226:
+            b = a.replace(aa, "tb");
+            break;
+
+          case 232:
+            b = a.replace(aa, "tb-rl");
+            break;
+
+          case 220:
+            b = a.replace(aa, "lr");
+            break;
+
+          default:
+            return a;
+        }
+
+        return "-webkit-" + a + "-ms-" + b + a;
+
+      case 1017:
+        if (-1 === a.indexOf("sticky", 9)) break;
+
+      case 975:
+        l = (a = b).length - 10;
+        b = (33 === a.charCodeAt(l) ? a.substring(0, l) : a).substring(b.indexOf(":", 7) + 1).trim();
+
+        switch (c = b.charCodeAt(0) + (b.charCodeAt(7) | 0)) {
+          case 203:
+            if (111 > b.charCodeAt(8)) break;
+
+          case 115:
+            a = a.replace(b, "-webkit-" + b) + ";" + a;
+            break;
+
+          case 207:
+          case 102:
+            a = a.replace(b, "-webkit-" + (102 < c ? "inline-" : "") + "box") + ";" + a.replace(b, "-webkit-" + b) + ";" + a.replace(b, "-ms-" + b + "box") + ";" + a;
+        }
+
+        return a + ";";
+
+      case 938:
+        if (45 === a.charCodeAt(5)) switch (a.charCodeAt(6)) {
+          case 105:
+            return b = a.replace("-items", ""), "-webkit-" + a + "-webkit-box-" + b + "-ms-flex-" + b + a;
+
+          case 115:
+            return "-webkit-" + a + "-ms-flex-item-" + a.replace(Ca, "") + a;
+
+          default:
+            return "-webkit-" + a + "-ms-flex-line-pack" + a.replace("align-content", "") + a;
+        }
+        break;
+
+      case 953:
+        if (0 < (l = a.indexOf("-content", 9)) && 109 === a.charCodeAt(l - 3) && 45 !== a.charCodeAt(l - 4)) return b = a.substring(l - 3), "width:-webkit-" + b + "width:-moz-" + b + "width:" + b;
+        break;
+
+      case 962:
+        if (a = "-webkit-" + a + (102 === a.charCodeAt(5) ? "-ms-" + a : "") + a, 211 === d + k && 105 === a.charCodeAt(13) && 0 < a.indexOf("transform", 10)) return a.substring(0, a.indexOf(";", 27) + 1).replace(Da, "$1-webkit-$2") + a;
+    }
+
+    return a;
+  }
+
+  function U(b, c) {
+    var d = b.indexOf(1 === c ? ":" : "{"),
+        k = b.substring(0, 3 !== c ? d : 10);
+    d = b.substring(d + 1, b.length - 1);
+    return ba(2 !== c ? k : k.replace(Ea, "$1"), d, c);
+  }
+
+  function sa(b, c) {
+    var d = ja(c, c.charCodeAt(0), c.charCodeAt(1), c.charCodeAt(2));
+    return d !== c + ";" ? d.replace(Fa, " or ($1)").substring(4) : "(" + c + ")";
+  }
+
+  function O(b, c, d, k, l, a, f, n, e) {
+    for (var h = 0, q = c, m; h < E; ++h) {
+      switch (m = ca[h].call(F, b, q, d, k, l, a, f, n, e)) {
+        case void 0:
+        case !1:
+        case !0:
+        case null:
+          break;
+
+        default:
+          q = m;
+      }
+    }
+
+    switch (q) {
+      case void 0:
+      case !1:
+      case !0:
+      case null:
+      case c:
+        break;
+
+      default:
+        return q;
+    }
+  }
+
+  function da(b) {
+    switch (b) {
+      case void 0:
+      case null:
+        E = ca.length = 0;
+        break;
+
+      default:
+        switch (b.constructor) {
+          case Array:
+            for (var c = 0, d = b.length; c < d; ++c) {
+              da(b[c]);
+            }
+
+            break;
+
+          case Function:
+            ca[E++] = b;
+            break;
+
+          case Boolean:
+            la = !!b | 0;
+        }
+
+    }
+
+    return da;
+  }
+
+  function ea(b) {
+    for (var c in b) {
+      var d = b[c];
+
+      switch (c) {
+        case "keyframe":
+          Q = d | 0;
+          break;
+
+        case "global":
+          Y = d | 0;
+          break;
+
+        case "cascade":
+          z = d | 0;
+          break;
+
+        case "compress":
+          oa = d | 0;
+          break;
+
+        case "semicolon":
+          ka = d | 0;
+          break;
+
+        case "preserve":
+          X = d | 0;
+          break;
+
+        case "prefix":
+          ba = null, d ? "function" !== typeof d ? w = 1 : (w = 2, ba = d) : w = 0;
+      }
+    }
+
+    return ea;
+  }
+
+  function F(b, c) {
+    if (void 0 !== this && this.constructor === F) return fa(b);
+    var d = b,
+        k = d.charCodeAt(0);
+    33 > k && (k = (d = d.trim()).charCodeAt(0));
+    0 < Q && (T = d.replace(Ga, 91 === k ? "" : "-"));
+    k = 1;
+    1 === z ? R = d : K = d;
+    d = [R];
+
+    if (0 < E) {
+      var l = O(-1, c, d, d, I, y, 0, 0, 0);
+      void 0 !== l && "string" === typeof l && (c = l);
+    }
+
+    var a = V(W, d, c, 0, 0);
+    0 < E && (l = O(-2, a, d, d, I, y, a.length, 0, 0), void 0 !== l && "string" !== typeof (a = l) && (k = 0));
+    K = R = T = "";
+    J = 0;
+    y = I = 1;
+    return 0 === oa * k ? a : a.replace(P, "").replace(Ha, "").replace(Ia, "$1").replace(Ja, "$1").replace(Ka, " ");
+  }
+
+  var qa = /^\0+/g,
+      P = /[\0\r\f]/g,
+      na = /: */g,
+      Ba = /zoo|gra/,
+      Da = /([,: ])(transform)/g,
+      za = /,+\s*(?![^(]*[)])/g,
+      Aa = / +\s*(?![^(]*[)])/g,
+      ua = / *[\0] */g,
+      xa = /,\r+?/g,
+      M = /([\t\r\n ])*\f?&/g,
+      ya = /:global\(((?:[^\(\)\[\]]*|\[.*\]|\([^\(\)]*\))*)\)/g,
+      Ga = /\W+/g,
+      ta = /@(k\w+)\s*(\S*)\s*/,
+      Z = /::(place)/g,
+      wa = /:(read-only)/g,
+      Ha = /\s+(?=[{\];=:>])/g,
+      Ia = /([[}=:>])\s+/g,
+      Ja = /(\{[^{]+?);(?=\})/g,
+      Ka = /\s{2,}/g,
+      va = /([^\(])(:+) */g,
+      aa = /[svh]\w+-[tblr]{2}/,
+      ra = /\(\s*(.*)\s*\)/g,
+      Fa = /([^]*?);/g,
+      Ca = /-self|flex-/g,
+      Ea = /[^]*?(:[rp][el]a[\w-]+)[^]*/,
+      y = 1,
+      I = 1,
+      J = 0,
+      z = 1,
+      w = 1,
+      Y = 1,
+      oa = 0,
+      ka = 0,
+      X = 0,
+      W = [],
+      ca = [],
+      E = 0,
+      ba = null,
+      la = 0,
+      Q = 1,
+      T = "",
+      K = "",
+      R = "";
+  F.use = da;
+  F.set = ea;
+  void 0 !== ha && ea(ha);
+  return F;
+};
+
+//  weak
+function memoize(fn) {
+  var cache = {};
+  return function (arg) {
+    if (cache[arg] === undefined) cache[arg] = fn(arg);
+    return cache[arg];
+  };
+}
+var STYLES_KEY = '__emotion_styles';
+var TARGET_KEY = '__emotion_target';
+var unitless = {
+  animationIterationCount: 1,
+  borderImageOutset: 1,
+  borderImageSlice: 1,
+  borderImageWidth: 1,
+  boxFlex: 1,
+  boxFlexGroup: 1,
+  boxOrdinalGroup: 1,
+  columnCount: 1,
+  columns: 1,
+  flex: 1,
+  flexGrow: 1,
+  flexPositive: 1,
+  flexShrink: 1,
+  flexNegative: 1,
+  flexOrder: 1,
+  gridRow: 1,
+  gridRowEnd: 1,
+  gridRowSpan: 1,
+  gridRowStart: 1,
+  gridColumn: 1,
+  gridColumnEnd: 1,
+  gridColumnSpan: 1,
+  gridColumnStart: 1,
+  fontWeight: 1,
+  lineClamp: 1,
+  lineHeight: 1,
+  opacity: 1,
+  order: 1,
+  orphans: 1,
+  tabSize: 1,
+  widows: 1,
+  zIndex: 1,
+  zoom: 1,
+  // SVG-related properties
+  fillOpacity: 1,
+  floodOpacity: 1,
+  stopOpacity: 1,
+  strokeDasharray: 1,
+  strokeDashoffset: 1,
+  strokeMiterlimit: 1,
+  strokeOpacity: 1,
+  strokeWidth: 1
+};
+
+
+//# sourceMappingURL=index.es.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/emotion/dist/index.es.js":
+/*!***********************************************!*\
+  !*** ./node_modules/emotion/dist/index.es.js ***!
+  \***********************************************/
+/*! exports provided: sheet, useStylisPlugin, registered, inserted, css, keyframes, injectGlobal, fontFace, getRegisteredStyles, merge, cx, hydrate, flush */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sheet", function() { return sheet; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useStylisPlugin", function() { return useStylisPlugin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "registered", function() { return registered; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "inserted", function() { return inserted; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "css", function() { return css; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "keyframes", function() { return keyframes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "injectGlobal", function() { return injectGlobal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontFace", function() { return fontFace; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getRegisteredStyles", function() { return getRegisteredStyles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "merge", function() { return merge; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cx", function() { return cx; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hydrate", function() { return hydrate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "flush", function() { return flush; });
+/* harmony import */ var emotion_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! emotion-utils */ "./node_modules/emotion-utils/dist/index.es.js");
+/* harmony import */ var stylis_rule_sheet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! stylis-rule-sheet */ "./node_modules/stylis-rule-sheet/index.js");
+/* harmony import */ var stylis_rule_sheet__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(stylis_rule_sheet__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+/*
+
+high performance StyleSheet for css-in-js systems
+
+- uses multiple style tags behind the scenes for millions of rules
+- uses `insertRule` for appending in production for *much* faster performance
+- 'polyfills' on server side
+
+// usage
+
+import StyleSheet from 'glamor/lib/sheet'
+let styleSheet = new StyleSheet()
+
+styleSheet.inject()
+- 'injects' the stylesheet into the page (or into memory if on server)
+
+styleSheet.insert('#box { border: 1px solid red; }')
+- appends a css rule into the stylesheet
+
+styleSheet.flush()
+- empties the stylesheet of all its contents
+
+*/
+function sheetForTag(tag) {
+  if (tag.sheet) {
+    return tag.sheet;
+  } // this weirdness brought to you by firefox
+
+
+  for (var i = 0; i < document.styleSheets.length; i++) {
+    if (document.styleSheets[i].ownerNode === tag) {
+      return document.styleSheets[i];
+    }
+  }
+}
+
+function makeStyleTag() {
+  var tag = document.createElement('style');
+  tag.type = 'text/css';
+  tag.setAttribute('data-emotion', '');
+  tag.appendChild(document.createTextNode(''));
+  document.head.appendChild(tag);
+  return tag;
+}
+
+var StyleSheet =
+/*#__PURE__*/
+function () {
+  function StyleSheet() {
+    this.isBrowser = typeof window !== 'undefined';
+    this.isSpeedy = "production" === 'production'; // the big drawback here is that the css won't be editable in devtools
+
+    this.tags = [];
+    this.ctr = 0;
+  }
+
+  var _proto = StyleSheet.prototype;
+
+  _proto.inject = function inject() {
+    if (this.injected) {
+      throw new Error('already injected!');
+    }
+
+    if (this.isBrowser) {
+      this.tags[0] = makeStyleTag();
+    } else {
+      // server side 'polyfill'. just enough behavior to be useful.
+      this.sheet = [];
+    }
+
+    this.injected = true;
+  };
+
+  _proto.speedy = function speedy(bool) {
+    if (this.ctr !== 0) {
+      // cannot change speedy mode after inserting any rule to sheet. Either call speedy(${bool}) earlier in your app, or call flush() before speedy(${bool})
+      throw new Error("cannot change speedy now");
+    }
+
+    this.isSpeedy = !!bool;
+  };
+
+  _proto.insert = function insert(rule, sourceMap) {
+    if (this.isBrowser) {
+      // this is the ultrafast version, works across browsers
+      if (this.isSpeedy) {
+        var tag = this.tags[this.tags.length - 1];
+        var sheet = sheetForTag(tag);
+
+        try {
+          sheet.insertRule(rule, sheet.cssRules.length);
+        } catch (e) {
+          if (false) {}
+        }
+      } else {
+        var _tag = makeStyleTag();
+
+        this.tags.push(_tag);
+
+        _tag.appendChild(document.createTextNode(rule + (sourceMap || '')));
+      }
+
+      this.ctr++;
+
+      if (this.ctr % 65000 === 0) {
+        this.tags.push(makeStyleTag());
+      }
+    } else {
+      // enough 'spec compliance' to be able to extract the rules later
+      // in other words, just the rule
+      this.sheet.push(rule);
+    }
+  };
+
+  _proto.flush = function flush() {
+    if (this.isBrowser) {
+      this.tags.forEach(function (tag) {
+        return tag.parentNode.removeChild(tag);
+      });
+      this.tags = [];
+      this.ctr = 0; // todo - look for remnants in document.styleSheets
+    } else {
+      // simpler on server
+      this.sheet = [];
+    }
+
+    this.injected = false;
+  };
+
+  return StyleSheet;
+}();
+
+var sheet = new StyleSheet(); // 🚀
+
+sheet.inject();
+var stylisOptions = {
+  keyframe: false
+};
+
+if (false) {}
+
+var stylis = new emotion_utils__WEBPACK_IMPORTED_MODULE_0__["Stylis"](stylisOptions);
+var externalStylisPlugins = [];
+var use = stylis.use;
+
+function insertRule(rule) {
+  sheet.insert(rule, currentSourceMap);
+}
+
+var insertionPlugin = stylis_rule_sheet__WEBPACK_IMPORTED_MODULE_1___default()(insertRule);
+var useStylisPlugin = function useStylisPlugin(plugin) {
+  externalStylisPlugins.push(plugin);
+  use(null)(externalStylisPlugins)(insertionPlugin);
+};
+var registered = {};
+var inserted = {};
+var currentSourceMap = '';
+stylis.use(insertionPlugin);
+
+function handleInterpolation(interpolation, couldBeSelectorInterpolation) {
+  if (interpolation == null) {
+    return '';
+  }
+
+  switch (typeof interpolation) {
+    case 'boolean':
+      return '';
+
+    case 'function':
+      if (interpolation[emotion_utils__WEBPACK_IMPORTED_MODULE_0__["STYLES_KEY"]] !== undefined) {
+        if (false) {}
+
+        return "." + interpolation[emotion_utils__WEBPACK_IMPORTED_MODULE_0__["TARGET_KEY"]];
+      }
+
+      return handleInterpolation.call(this, this === undefined ? interpolation() : interpolation(this.mergedProps, this.context), couldBeSelectorInterpolation);
+
+    case 'object':
+      return createStringFromObject.call(this, interpolation);
+
+    default:
+      var cached = registered[interpolation];
+      return couldBeSelectorInterpolation === false && cached !== undefined ? cached : interpolation;
+  }
+}
+
+var hyphenateRegex = /[A-Z]|^ms/g;
+var processStyleName = Object(emotion_utils__WEBPACK_IMPORTED_MODULE_0__["memoize"])(function (styleName) {
+  return styleName.replace(hyphenateRegex, '-$&').toLowerCase();
+});
+
+var processStyleValue = function processStyleValue(key, value) {
+  if (value === undefined || value === null || typeof value === 'boolean') return '';
+
+  if (emotion_utils__WEBPACK_IMPORTED_MODULE_0__["unitless"][key] !== 1 && key.charCodeAt(1) !== 45 && // custom properties
+  !isNaN(value) && value !== 0) {
+    return value + 'px';
+  }
+
+  return value;
+};
+
+var objectToStringCache = new WeakMap();
+
+function createStringFromObject(obj) {
+  if (objectToStringCache.has(obj)) {
+    return objectToStringCache.get(obj);
+  }
+
+  var string = '';
+
+  if (Array.isArray(obj)) {
+    obj.forEach(function (interpolation) {
+      string += handleInterpolation.call(this, interpolation, false);
+    }, this);
+  } else {
+    Object.keys(obj).forEach(function (key) {
+      if (typeof obj[key] !== 'object') {
+        if (registered[obj[key]] !== undefined) {
+          string += key + "{" + registered[obj[key]] + "}";
+        } else {
+          string += processStyleName(key) + ":" + processStyleValue(key, obj[key]) + ";";
+        }
+      } else {
+        string += key + "{" + handleInterpolation.call(this, obj[key], false) + "}";
+      }
+    }, this);
+  }
+
+  objectToStringCache.set(obj, string);
+  return string;
+}
+
+function isLastCharDot(string) {
+  return string.charCodeAt(string.length - 1) === 46; // .
+}
+
+var hash;
+var name;
+var labelPattern = /label:\s*([^\s;\n]+)\s*[;\n]/g;
+
+function createStyles(strings) {
+  var stringMode = true;
+  var styles = '';
+  var identifierName = '';
+
+  if (strings == null || strings.raw === undefined) {
+    stringMode = false;
+    styles = handleInterpolation.call(this, strings, false);
+  } else {
+    styles = strings[0];
+  }
+
+  for (var _len = arguments.length, interpolations = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    interpolations[_key - 1] = arguments[_key];
+  }
+
+  interpolations.forEach(function (interpolation, i) {
+    styles += handleInterpolation.call(this, interpolation, isLastCharDot(styles));
+
+    if (stringMode === true && strings[i + 1] !== undefined) {
+      styles += strings[i + 1];
+    }
+  }, this);
+  styles = styles.replace(labelPattern, function (match, p1) {
+    identifierName += "-" + p1;
+    return '';
+  });
+  hash = Object(emotion_utils__WEBPACK_IMPORTED_MODULE_0__["hashString"])(styles + identifierName);
+  name = hash + identifierName;
+  return styles;
+}
+
+if (false) { var oldStylis, sourceMapRegEx; }
+
+function css() {
+  var styles = createStyles.apply(this, arguments);
+  var selector = "css-" + name;
+
+  if (registered[selector] === undefined) {
+    registered[selector] = styles;
+  }
+
+  if (inserted[hash] === undefined) {
+    stylis("." + selector, styles);
+    inserted[hash] = true;
+  }
+
+  return selector;
+}
+function keyframes() {
+  var styles = createStyles.apply(this, arguments);
+  var animation = "animation-" + name;
+
+  if (inserted[hash] === undefined) {
+    stylis('', "@keyframes " + animation + "{" + styles + "}");
+    inserted[hash] = true;
+  }
+
+  return animation;
+}
+function injectGlobal() {
+  var styles = createStyles.apply(this, arguments);
+
+  if (inserted[hash] === undefined) {
+    stylis('', styles);
+    inserted[hash] = true;
+  }
+}
+function fontFace() {
+  var styles = createStyles.apply(void 0, arguments);
+
+  if (inserted[hash] === undefined) {
+    stylis('', "@font-face{" + styles + "}");
+    inserted[hash] = true;
+  }
+}
+function getRegisteredStyles(registeredStyles, classNames) {
+  var rawClassName = '';
+  classNames.split(' ').forEach(function (className) {
+    if (registered[className] !== undefined) {
+      registeredStyles.push(className);
+    } else {
+      rawClassName += className + " ";
+    }
+  });
+  return rawClassName;
+}
+function merge(className, sourceMap) {
+  var registeredStyles = [];
+  var rawClassName = getRegisteredStyles(registeredStyles, className);
+
+  if (registeredStyles.length < 2) {
+    return className;
+  }
+
+  return rawClassName + css(registeredStyles, sourceMap);
+}
+
+function classnames() {
+  var len = arguments.length;
+  var i = 0;
+  var cls = '';
+
+  for (; i < len; i++) {
+    var arg = arguments[i];
+    if (arg == null) continue;
+    var next = cls && cls + ' ' || cls;
+
+    switch (typeof arg) {
+      case 'boolean':
+        break;
+
+      case 'function':
+        cls = next + classnames(arg());
+        break;
+
+      case 'object':
+        {
+          if (Array.isArray(arg)) {
+            cls = next + classnames.apply(null, arg);
+          } else {
+            for (var k in arg) {
+              if (arg[k]) {
+                cls && (cls += ' ');
+                cls += k;
+              }
+            }
+          }
+
+          break;
+        }
+
+      default:
+        {
+          cls = next + arg;
+        }
+    }
+  }
+
+  return cls;
+}
+
+function cx() {
+  return merge(classnames.apply(void 0, arguments));
+}
+function hydrate(ids) {
+  ids.forEach(function (id) {
+    inserted[id] = true;
+  });
+}
+function flush() {
+  sheet.flush();
+  inserted = {};
+  registered = {};
+  sheet.inject();
+}
+
+
+//# sourceMappingURL=index.es.js.map
 
 
 /***/ }),
@@ -31017,6 +32758,58 @@ if (true) {
   checkDCE();
   module.exports = __webpack_require__(/*! ./cjs/react-dom.production.min.js */ "./node_modules/react-dom/cjs/react-dom.production.min.js");
 } else {}
+
+
+/***/ }),
+
+/***/ "./node_modules/react-emotion/dist/index.esm.js":
+/*!******************************************************!*\
+  !*** ./node_modules/react-emotion/dist/index.esm.js ***!
+  \******************************************************/
+/*! exports provided: sheet, useStylisPlugin, registered, inserted, css, keyframes, injectGlobal, fontFace, getRegisteredStyles, merge, cx, hydrate, flush, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var emotion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! emotion */ "./node_modules/emotion/dist/index.es.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sheet", function() { return emotion__WEBPACK_IMPORTED_MODULE_1__["sheet"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "useStylisPlugin", function() { return emotion__WEBPACK_IMPORTED_MODULE_1__["useStylisPlugin"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "registered", function() { return emotion__WEBPACK_IMPORTED_MODULE_1__["registered"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "inserted", function() { return emotion__WEBPACK_IMPORTED_MODULE_1__["inserted"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "css", function() { return emotion__WEBPACK_IMPORTED_MODULE_1__["css"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "keyframes", function() { return emotion__WEBPACK_IMPORTED_MODULE_1__["keyframes"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "injectGlobal", function() { return emotion__WEBPACK_IMPORTED_MODULE_1__["injectGlobal"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "fontFace", function() { return emotion__WEBPACK_IMPORTED_MODULE_1__["fontFace"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getRegisteredStyles", function() { return emotion__WEBPACK_IMPORTED_MODULE_1__["getRegisteredStyles"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "merge", function() { return emotion__WEBPACK_IMPORTED_MODULE_1__["merge"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "cx", function() { return emotion__WEBPACK_IMPORTED_MODULE_1__["cx"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "hydrate", function() { return emotion__WEBPACK_IMPORTED_MODULE_1__["hydrate"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "flush", function() { return emotion__WEBPACK_IMPORTED_MODULE_1__["flush"]; });
+
+/* harmony import */ var create_emotion_styled__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! create-emotion-styled */ "./node_modules/create-emotion-styled/dist/index.esm.js");
+
+
+
+
+
+var index = Object(create_emotion_styled__WEBPACK_IMPORTED_MODULE_2__["default"])(emotion__WEBPACK_IMPORTED_MODULE_1__, react__WEBPACK_IMPORTED_MODULE_0___default.a);
+
+/* harmony default export */ __webpack_exports__["default"] = (index);
+//# sourceMappingURL=index.esm.js.map
 
 
 /***/ }),
@@ -46289,6 +48082,64 @@ module.exports = function (css) {
 
 /***/ }),
 
+/***/ "./node_modules/stylis-rule-sheet/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/stylis-rule-sheet/index.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+(function (factory) {
+	 true ? (module['exports'] = factory()) :
+		undefined
+}(function () {
+
+	'use strict'
+
+	return function (insertRule) {
+		var delimiter = '/*|*/'
+		var needle = delimiter+'}'
+
+		function toSheet (block) {
+			if (block)
+				try {
+					insertRule(block + '}')
+				} catch (e) {}
+		}
+
+		return function ruleSheet (context, content, selectors, parents, line, column, length, ns, depth, at) {
+			switch (context) {
+				// property
+				case 1:
+					// @import
+					if (depth === 0 && content.charCodeAt(0) === 64)
+						return insertRule(content+';'), ''
+					break
+				// selector
+				case 2:
+					if (ns === 0)
+						return content + delimiter
+					break
+				// at-rule
+				case 3:
+					switch (ns) {
+						// @font-face, @page
+						case 102:
+						case 112:
+							return insertRule(selectors[0]+content), ''
+						default:
+							return content + (at === 0 ? delimiter : '')
+					}
+				case -2:
+					content.split(needle).forEach(toSheet)
+			}
+		}
+	}
+}))
+
+
+/***/ }),
+
 /***/ "./node_modules/symbol-observable/index.js":
 /*!*************************************************!*\
   !*** ./node_modules/symbol-observable/index.js ***!
@@ -48562,7 +50413,7 @@ function extend() {
 /*! exports provided: name, version, description, main, scripts, engines, keywords, author, license, dependencies, devDependencies, default */
 /***/ (function(module) {
 
-module.exports = {"name":"nuzlocke-generator","version":"0.0.9-beta","description":"A tool for generating nuzlocke team pics from data","main":"index.js","scripts":{"cosmos":"cosmos","cosmos:export":"cosmos-export","test":"jest --coverage --config jest-config.json","prebuild":"npm run lint","build":"webpack","build:production":"webpack","build:watch":"webpack --watch","clean":"rimraf dist","pretest":"npm run lint","format":"prettier --config .prettierrc --write **/**/*.{ts,tsx} && npm run lint","lint":"tslint --fix -c tslint.json 'src/**/*.{ts,tsx}'","serve":"webpack-serve","serve:heroku":"npm run build:production && heroku local web","deploy":"npm run build && git push heroku master","precommit":"npm run lint","docz":"docz dev","prepush":"ts-node imageCheck.ts && npm run build:production && git add . && git commit --no-verify -m 'chore: update build'"},"engines":{"node":"8.9.0","npm":"6.1.0"},"keywords":[],"author":"Emma Ramirez <ramirez.emma.g@gmail.com> (http://emmaramirez.me)","license":"MIT","dependencies":{"babel-plugin-module-resolver":"^3.1.1","docz":"^0.8.0","docz-plugin-css":"^0.8.0","html-webpack-plugin":"^3.2.0","redux-mock-store":"^1.5.3"},"devDependencies":{"@blueprintjs/core":"^2.0.0","@blueprintjs/icons":"^2.0.0","@blueprintjs/table":"^2.0.0","@types/chai":"^4.0.10","@types/enzyme":"^2.8.12","@types/express":"^4.11.0","@types/jest":"^23.1.4","@types/lodash":"^4.14.91","@types/mocha":"^2.2.45","@types/node":"^8.5.2","@types/pure-render-decorator":"^0.2.28","@types/react":"^16.4.6","@types/react-addons-css-transition-group":"^15.0.3","@types/react-dom":"^16.0.6","@types/react-redux":"^5.0.14","@types/react-router":"^4.0.20","@types/react-router-dom":"^4.2.3","@types/react-router-redux":"^5.0.11","@types/redux-logger":"^3.0.5","chai":"^4.1.2","cheerio":"^1.0.0-rc.2","copy-webpack-plugin":"^4.5.2","coveralls":"^3.0.2","css-loader":"^0.28.7","dom-to-image":"git+https://github.com/Keepsite/dom-to-image.git","emotion":"^8.0.12","enzyme":"^3.3.0","enzyme-adapter-react-16":"^1.1.1","file-loader":"^1.1.11","history":"^4.7.2","husky":"^1.0.0-rc.12","imports-loader":"^0.7.1","istanbul":"^0.4.5","jest":"^23.3.0","jest-css-modules":"^1.1.0","jest-enzyme":"^4.0.2","localforage":"^1.5.5","lodash":"^4.17.10","mocha":"^5.2.0","node-sass":"^4.9.0","offline-plugin":"^5.0.5","pokemon-savefile-parser":"^0.2.1","prettier":"^1.10.2","prop-types":"^15.6.0","pure-render-decorator":"^1.2.1","react":"^16.4.1","react-addons-css-transition-group":"^15.6.2","react-addons-test-utils":"^15.6.2","react-custom-scrollbars":"^4.2.1","react-docgen-typescript":"^1.2.0","react-dom":"^16.4.1","react-hot-loader":"^3.1.3","react-loadable":"^5.4.0","react-markdown":"^3.1.5","react-polyfills":"0.0.1","react-redux":"^5.0.6","react-router":"^4.2.0","react-router-dom":"^4.2.2","react-router-redux":"^5.0.0-alpha.9","react-styleguidist":"^6.1.0","react-test-renderer":"^15.6.2","react-transition-group":"^2.2.1","recompose":"^0.25.1","redux":"^3.7.2","redux-logger":"^3.0.6","redux-persist":"^5.4.0","redux-saga":"^0.15.6","redux-thunk":"^2.2.0","reflect-metadata":"^0.1.10","reselect":"^3.0.1","resolve-url-loader":"^2.3.0","rimraf":"^2.6.2","rollbar":"^2.4.2","rxjs":"^5.5.6","sass-loader":"^6.0.6","serviceworker-webpack-plugin":"^0.2.3","sinon":"^6.1.3","style-loader":"^0.18.2","stylus":"^0.54.5","stylus-loader":"^3.0.2","ts-jest":"^23.0.0","ts-loader":"^4.4.2","tslint":"^5.10.0","tslint-loader":"^3.6.0","tslint-microsoft-contrib":"^5.0.1","typescript":"^3.0.1","url-loader":"^1.0.1","uuid":"^3.1.0","webpack":"4.14.0","webpack-cli":"^3.0.8","webpack-dashboard":"^2.0.0","webpack-serve":"^1.0.4"}};
+module.exports = {"name":"nuzlocke-generator","version":"0.0.10-beta","description":"A tool for generating nuzlocke team pics from data","main":"index.js","scripts":{"cosmos":"cosmos","cosmos:export":"cosmos-export","test":"jest --coverage --config jest-config.json","prebuild":"npm run lint","build":"webpack","build:production":"webpack","build:watch":"webpack --watch","clean":"rimraf dist","pretest":"npm run lint","format":"prettier --config .prettierrc --write **/**/*.{ts,tsx} && npm run lint","lint":"tslint --fix -c tslint.json 'src/**/*.{ts,tsx}'","serve":"webpack-serve","serve:heroku":"npm run build:production && heroku local web","deploy":"npm run build && git push heroku master","precommit":"npm run lint","docz":"docz dev","prepush":"ts-node imageCheck.ts && npm run build:production && git add . && git commit --no-verify -m 'chore: update build'"},"engines":{"node":"8.9.0","npm":"6.1.0"},"keywords":[],"author":"Emma Ramirez <ramirez.emma.g@gmail.com> (http://emmaramirez.me)","license":"MIT","dependencies":{"babel-plugin-module-resolver":"^3.1.1","docz":"^0.8.0","docz-plugin-css":"^0.8.0","html-webpack-plugin":"^3.2.0","jest-emotion":"^9.2.7","redux-mock-store":"^1.5.3"},"devDependencies":{"@blueprintjs/core":"^2.0.0","@blueprintjs/icons":"^2.0.0","@blueprintjs/table":"^2.0.0","@types/chai":"^4.0.10","@types/enzyme":"^2.8.12","@types/express":"^4.11.0","@types/jest":"^23.1.4","@types/lodash":"^4.14.91","@types/mocha":"^2.2.45","@types/node":"^8.5.2","@types/pure-render-decorator":"^0.2.28","@types/react":"^16.4.6","@types/react-addons-css-transition-group":"^15.0.3","@types/react-dom":"^16.0.6","@types/react-redux":"^5.0.14","@types/react-router":"^4.0.20","@types/react-router-dom":"^4.2.3","@types/react-router-redux":"^5.0.11","@types/redux-logger":"^3.0.5","chai":"^4.1.2","cheerio":"^1.0.0-rc.2","copy-webpack-plugin":"^4.5.2","coveralls":"^3.0.2","css-loader":"^0.28.7","dom-to-image":"git+https://github.com/Keepsite/dom-to-image.git","emotion":"^8.0.12","enzyme":"^3.3.0","enzyme-adapter-react-16":"^1.1.1","file-loader":"^1.1.11","history":"^4.7.2","husky":"^1.0.0-rc.12","imports-loader":"^0.7.1","istanbul":"^0.4.5","jest":"^23.3.0","jest-css-modules":"^1.1.0","jest-enzyme":"^4.0.2","localforage":"^1.5.5","lodash":"^4.17.10","mocha":"^5.2.0","node-sass":"^4.9.0","offline-plugin":"^5.0.5","pokemon-savefile-parser":"^0.2.1","prettier":"^1.10.2","prop-types":"^15.6.0","pure-render-decorator":"^1.2.1","react":"^16.4.1","react-addons-css-transition-group":"^15.6.2","react-addons-test-utils":"^15.6.2","react-custom-scrollbars":"^4.2.1","react-docgen-typescript":"^1.2.0","react-dom":"^16.4.1","react-emotion":"^9.2.6","react-hot-loader":"^3.1.3","react-loadable":"^5.4.0","react-markdown":"^3.1.5","react-polyfills":"0.0.1","react-redux":"^5.0.6","react-router":"^4.2.0","react-router-dom":"^4.2.2","react-router-redux":"^5.0.0-alpha.9","react-styleguidist":"^6.1.0","react-test-renderer":"^15.6.2","react-transition-group":"^2.2.1","recompose":"^0.25.1","redux":"^3.7.2","redux-logger":"^3.0.6","redux-persist":"^5.4.0","redux-saga":"^0.15.6","redux-thunk":"^2.2.0","reflect-metadata":"^0.1.10","reselect":"^3.0.1","resolve-url-loader":"^2.3.0","rimraf":"^2.6.2","rollbar":"^2.4.2","rxjs":"^5.5.6","sass-loader":"^6.0.6","serviceworker-webpack-plugin":"^0.2.3","sinon":"^6.1.3","style-loader":"^0.18.2","stylus":"^0.54.5","stylus-loader":"^3.0.2","ts-jest":"^23.0.0","ts-loader":"^4.4.2","tslint":"^5.11.0","tslint-loader":"^3.6.0","tslint-microsoft-contrib":"^5.0.1","typescript":"^3.0.1","url-loader":"^1.0.1","uuid":"^3.1.0","webpack":"4.14.0","webpack-cli":"^3.0.8","webpack-dashboard":"^2.0.0","webpack-serve":"^1.0.4"}};
 
 /***/ }),
 
@@ -49274,6 +51125,46 @@ __export(__webpack_require__(/*! ./AddPokemonButton */ "./src/components/AddPoke
 
 /***/ }),
 
+/***/ "./src/components/Admin/Admin.tsx":
+/*!****************************************!*\
+  !*** ./src/components/Admin/Admin.tsx ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+class Admin extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return React.createElement("div", null, "Admin");
+    }
+}
+exports.Admin = Admin;
+
+
+/***/ }),
+
+/***/ "./src/components/Admin/index.ts":
+/*!***************************************!*\
+  !*** ./src/components/Admin/index.ts ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Admin_1 = __webpack_require__(/*! ./Admin */ "./src/components/Admin/Admin.tsx");
+exports.Admin = Admin_1.Admin;
+
+
+/***/ }),
+
 /***/ "./src/components/App/App.tsx":
 /*!************************************!*\
   !*** ./src/components/App/App.tsx ***!
@@ -49494,23 +51385,49 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const PokemonIcon_1 = __webpack_require__(/*! components/PokemonIcon */ "./src/components/PokemonIcon/index.ts");
 const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
+const Shared_1 = __webpack_require__(/*! ../Shared */ "./src/components/Shared/index.ts");
+const emotion_1 = __webpack_require__(/*! emotion */ "./node_modules/emotion/dist/index.es.js");
+exports.champsPokemon = (options) => emotion_1.css `
+    height: ${options.height};
+    width: ${options.width};
+    margin: ${options.margin};
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: ${options.background};
+    padding: ${options.padding};
+    cursor: pointer;
+`;
 class ChampsPokemon extends React.Component {
     constructor(props) {
         super(props);
+        this.getWidth = () => {
+            const base = 48;
+            return base +
+                (this.props.showGender ? 24 : 0) +
+                (this.props.showNickname ? 128 : 0) +
+                (this.props.showLevel ? 24 : 0);
+        };
     }
     render() {
-        return (React.createElement("div", { className: 'champs-pokemon', style: {
-                height: '48px',
-                width: '48px',
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+        return (React.createElement("div", { className: emotion_1.cx(exports.champsPokemon({
                 background: utils_1.gameOfOriginToColor(this.props.gameOfOrigin),
-                cursor: 'pointer',
-            } },
-            React.createElement(PokemonIcon_1.PokemonIcon, Object.assign({}, this.props))));
+                height: '48px',
+                width: this.getWidth(),
+                margin: 0,
+                padding: 0,
+            })) },
+            React.createElement(PokemonIcon_1.PokemonIcon, Object.assign({}, this.props)),
+            this.props.showNickname && this.props.nickname,
+            this.props.showGender && Shared_1.GenderElement(this.props.gender),
+            this.props.showLevel && ` Lv ${this.props.level}`));
     }
 }
+ChampsPokemon.defaultProps = {
+    showNickname: false,
+    showGender: false,
+    showLevel: false,
+};
 exports.ChampsPokemon = ChampsPokemon;
 
 
@@ -49599,6 +51516,7 @@ class DataEditorBase extends React.Component {
         };
         this.clearAllData = e => {
             store_1.persistor.purge();
+            window.location.reload();
         };
         this.toggleClearingData = e => this.setState({ isClearAllDataOpen: !this.state.isClearAllDataOpen });
         this.state = {
@@ -49703,8 +51621,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 const Shared_1 = __webpack_require__(/*! components/Shared */ "./src/components/Shared/index.ts");
+const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
 const actions_1 = __webpack_require__(/*! actions */ "./src/actions/index.ts");
 const PokemonIcon_1 = __webpack_require__(/*! components/PokemonIcon */ "./src/components/PokemonIcon/index.ts");
+const spriteStyle = (style) => style.spritesMode && !style.scaleSprites
+    ? { backgroundSize: 'auto', backgroundRepeat: 'no-repeat' }
+    : { backgroundSize: 'cover', backgroundRepeat: 'no-repeat' };
 exports.DeadPokemonBase = (poke) => {
     const style = poke.style;
     const addForme = (species) => {
@@ -49720,8 +51642,16 @@ exports.DeadPokemonBase = (poke) => {
     };
     const getClassname = () => poke.champion ? 'dead-pokemon-container champion' : 'dead-pokemon-container';
     return (React.createElement("div", { className: getClassname(), "data-league": poke.champion },
-        React.createElement("span", { style: { filter: 'grayscale(100%)' } },
-            React.createElement(PokemonIcon_1.PokemonIconBase, Object.assign({}, poke))),
+        style.template !== 'Generations' ? React.createElement("div", { role: 'presentation', onClick: e => poke.selectPokemon(poke.id), className: `dead-pokemon-picture ${poke.style.spritesMode ? 'sprites-mode' : ''}`, style: Object.assign({ backgroundImage: utils_1.getPokemonImage({
+                    customImage: poke.customImage,
+                    forme: poke.forme,
+                    species: poke.species,
+                    style: poke.style,
+                    name: poke.game.name,
+                }) }, spriteStyle(style), { filter: style.grayScaleDeadPokemon ? 'grayscale(100%)' : 'none' }) })
+            :
+                React.createElement("span", { style: { filter: 'grayscale(100%)' } },
+                    React.createElement(PokemonIcon_1.PokemonIconBase, Object.assign({}, poke))),
         React.createElement("div", { className: 'dead-pokemon-info' },
             React.createElement("div", { className: 'pokemon-d-nickname' },
                 poke.nickname,
@@ -49772,8 +51702,14 @@ __export(__webpack_require__(/*! ./DeadPokemon */ "./src/components/DeadPokemon/
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const core_1 = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
+const react_emotion_1 = __webpack_require__(/*! react-emotion */ "./node_modules/react-emotion/dist/index.esm.js");
 const actions_1 = __webpack_require__(/*! actions */ "./src/actions/index.ts");
 const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
+exports.DeletePokemonButtonContainer = react_emotion_1.default('div') `
+    color: red;
+    cursor: pointer;
+`;
 class DeletePokemonButtonBase extends React.Component {
     constructor(props) {
         super(props);
@@ -49788,21 +51724,22 @@ class DeletePokemonButtonBase extends React.Component {
         });
     }
     render() {
-        return (React.createElement("div", { className: 'delete-pokemon-button' },
+        return (React.createElement(exports.DeletePokemonButtonContainer, null,
             React.createElement(core_1.Alert, { icon: 'trash', isOpen: this.state.dialogOn && this.props.confirmation, onCancel: this.toggleDialog, onConfirm: e => this.props.deletePokemon && this.props.deletePokemon(this.props.id), confirmButtonText: 'Delete Pokemon', cancelButtonText: 'Cancel', intent: core_1.Intent.DANGER },
                 React.createElement("p", null, "This will delete the currently selected Pokemon. Are you sure you want to do that?"),
                 React.createElement("label", { className: 'pt-control pt-checkbox .modifier' },
                     React.createElement("input", { onChange: (event) => this.props.modifyDeletionConfirmation && this.props.modifyDeletionConfirmation(!event.target.checked), type: 'checkbox' }),
                     React.createElement("span", { className: 'pt-control-indicator' }),
                     "Don't Ask Me For Confirmation Again")),
-            React.createElement("span", { role: 'button', onClick: e => {
-                    if (this.props.confirmation) {
-                        this.toggleDialog();
-                    }
-                    else {
-                        this.props.deletePokemon && this.props.deletePokemon(this.props.id);
-                    }
-                }, className: 'pt-icon pt-icon-trash', title: 'Delete Pokemon' })));
+            React.createElement(core_1.Popover, { interactionKind: core_1.PopoverInteractionKind.HOVER, position: core_1.Position.TOP, content: `Delete Pok${utils_1.accentedE}mon` },
+                React.createElement(core_1.Icon, { role: 'button', onClick: e => {
+                        if (this.props.confirmation) {
+                            this.toggleDialog();
+                        }
+                        else {
+                            this.props.deletePokemon && this.props.deletePokemon(this.props.id);
+                        }
+                    }, icon: 'trash', title: 'Delete Pokemon' }))));
     }
 }
 exports.DeletePokemonButtonBase = DeletePokemonButtonBase;
@@ -49971,6 +51908,10 @@ class GameEditorBase extends React.Component {
                 React.createElement("div", { style: gameSubEditorStyle },
                     React.createElement("div", { className: 'pt-select' },
                         React.createElement("select", { onChange: this.onInput, value: game.name }, utils_1.listOfGames.map(game => React.createElement("option", { key: game }, game)))),
+                    utils_1.FEATURES.multipleNuzlockes ?
+                        React.createElement(core_1.Popover, { minimal: true, content: React.createElement(core_1.Menu, null), position: core_1.Position.BOTTOM },
+                            React.createElement(core_1.Button, { icon: 'exchange' }, "Switch Nuzlockes"))
+                        : null,
                     React.createElement(core_1.Button, { onClick: this.toggleDialog, icon: 'list', intent: core_1.Intent.PRIMARY }, "Modify Rules")))));
     }
 }
@@ -50091,6 +52032,9 @@ class HotkeysBase extends React.PureComponent {
         this.props.selectPokemon(id);
         console.log('k', poke, position, nextPoke, id);
     }
+    addPokemon() {
+        this.props.addPokemon(utils_1.generateEmptyPokemon(this.props.pokemon));
+    }
     deletePokemon() {
         this.props.deletePokemon(this.props.selectedId);
     }
@@ -50105,6 +52049,7 @@ exports.Hotkeys = react_redux_1.connect((state) => ({
 }), {
     selectPokemon: actions_1.selectPokemon,
     deletePokemon: actions_1.deletePokemon,
+    addPokemon: actions_1.addPokemon,
 })(HotkeysBase);
 
 
@@ -50194,10 +52139,26 @@ const actions_1 = __webpack_require__(/*! actions */ "./src/actions/index.ts");
 const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 const utils_2 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
 const PokemonIcon_1 = __webpack_require__(/*! components/PokemonIcon */ "./src/components/PokemonIcon/index.ts");
+const emotion_1 = __webpack_require__(/*! emotion */ "./node_modules/emotion/dist/index.es.js");
+const Styles = __webpack_require__(/*! ./styles */ "./src/components/PokemonEditor/styles.ts");
+const uuid = __webpack_require__(/*! uuid/v4 */ "./node_modules/uuid/v4.js");
+const core_1 = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
+const actions_2 = __webpack_require__(/*! actions */ "./src/actions/index.ts");
 const pokeball = __webpack_require__(/*! assets/pokeball.png */ "./src/assets/pokeball.png");
+exports.CopyPokemonButton = ({ onClick }) => {
+    return (React.createElement(core_1.Popover, { interactionKind: core_1.PopoverInteractionKind.HOVER, position: core_1.Position.TOP, content: `Copy Pok${utils_2.accentedE}mon` },
+        React.createElement(core_1.Icon, { title: 'Copy Pokemon', icon: 'duplicate', className: emotion_1.cx(Styles.copyButton), onClick: onClick })));
+};
 class CurrentPokemonEditBase extends React.Component {
     constructor(props) {
         super(props);
+        this.copyPokemon = e => {
+            const currentPokemon = this.getCurrentPokemon();
+            if (currentPokemon) {
+                const newPokemon = Object.assign({}, currentPokemon, { id: uuid(), position: currentPokemon.position + 1 });
+                this.props.addPokemon(newPokemon);
+            }
+        };
         this.expandView = (e) => {
             this.setState({
                 expandedView: !this.state.expandedView,
@@ -50260,8 +52221,11 @@ class CurrentPokemonEditBase extends React.Component {
             React.createElement(PokemonEditor_1.CurrentPokemonInput, { labelName: 'Position', inputName: 'position', disabled: true, value: currentPokemon.position, type: 'text' }),
             React.createElement(PokemonEditor_1.CurrentPokemonInput, { labelName: 'Game of Origin', inputName: 'gameOfOrigin', value: currentPokemon.gameOfOrigin, type: 'select', options: utils_2.listOfGames })));
     }
+    getCurrentPokemon() {
+        return this.props.pokemon.find((v) => v.id === this.state.selectedId);
+    }
     render() {
-        const currentPokemon = this.props.pokemon.find((v) => v.id === this.state.selectedId);
+        const currentPokemon = this.getCurrentPokemon();
         if (currentPokemon == null) {
             return (React.createElement("div", { className: 'current-pokemon no-pokemon-selected' },
                 React.createElement("img", { alt: 'pokeball', src: pokeball }),
@@ -50272,7 +52236,9 @@ class CurrentPokemonEditBase extends React.Component {
             React.createElement("span", { className: 'current-pokemon-header' },
                 React.createElement(PokemonIcon_1.PokemonIconBase, { className: 'current-pokemon-image', id: currentPokemon.id, species: currentPokemon.species, forme: currentPokemon.forme, isShiny: currentPokemon.shiny, selectedId: null, onClick: () => { } }),
                 React.createElement(PokemonEditor_1.CurrentPokemonInput, { labelName: 'Status', inputName: 'status', value: currentPokemon.status, type: 'select', options: this.state.box.map(n => n.name) }),
-                React.createElement(DeletePokemonButton_1.DeletePokemonButton, { id: this.state.selectedId })),
+                React.createElement("div", { className: emotion_1.cx(Styles.iconBar) },
+                    React.createElement(exports.CopyPokemonButton, { onClick: this.copyPokemon }),
+                    React.createElement(DeletePokemonButton_1.DeletePokemonButton, { id: this.state.selectedId }))),
             React.createElement(Shared_1.Autocomplete, { items: utils_1.listOfPokemon, name: 'species', label: 'Species', placeholder: 'Missing No.', value: currentPokemon.species, onChange: e => {
                     const edit = {
                         species: e.target.value,
@@ -50346,7 +52312,8 @@ exports.CurrentPokemonEdit = react_redux_1.connect((state) => ({
     pokemon: state.pokemon
 }), {
     selectPokemon: actions_1.selectPokemon,
-    editPokemon: actions_1.editPokemon
+    editPokemon: actions_1.editPokemon,
+    addPokemon: actions_2.addPokemon,
 })(CurrentPokemonEditBase);
 
 
@@ -50555,10 +52522,13 @@ exports.Box = ({ pokemon, tabTitle, boxId, filterString, }) => {
     const filter = filterString === 'All' ? null : filterString;
     return (React.createElement("div", { className: `box ${tabTitle}-box` },
         React.createElement("span", { style: {
-                background: '#222',
+                alignItems: 'center',
+                background: 'rgba(33, 33, 33, 0.33)',
                 borderRadius: '.25rem',
                 color: '#eee',
-                display: 'inline-block',
+                display: 'inline-flex',
+                minHeight: '2rem',
+                justifyContent: 'center',
                 margin: '.25rem',
                 padding: '.25rem',
                 textAlign: 'center',
@@ -50592,7 +52562,7 @@ class PokemonEditorBase extends React.Component {
         return (React.createElement(React.Fragment, null,
             React.createElement(BaseEditor_1.BaseEditor, { name: 'Pokemon' },
                 React.createElement("div", { className: 'button-row', style: { display: 'flex' } },
-                    React.createElement(AddPokemonButton_1.AddPokemonButton, { defaultPokemon: utils_1.generateEmptyPokemon(team) }),
+                    React.createElement(AddPokemonButton_1.AddPokemonButton, { defaultPokemon: Object.assign({}, utils_1.generateEmptyPokemon(team), { gameOfOrigin: this.props.game.name || 'None' }) }),
                     React.createElement(core_1.Button, { icon: 'heat-grid', onClick: this.openMassEditor, style: { marginLeft: 'auto' }, className: 'pt-intent-primary pt-minimal' }, "Open Mass Editor")),
                 React.createElement("br", null),
                 this.renderBoxes(boxes, team),
@@ -50605,6 +52575,7 @@ exports.PokemonEditorBase = PokemonEditorBase;
 exports.PokemonEditor = react_redux_1.connect((state) => ({
     team: state.pokemon,
     boxes: state.box,
+    game: state.game,
 }), null)(PokemonEditorBase);
 
 
@@ -50631,6 +52602,34 @@ __export(__webpack_require__(/*! ./CurrentPokemonInput */ "./src/components/Poke
 
 /***/ }),
 
+/***/ "./src/components/PokemonEditor/styles.ts":
+/*!************************************************!*\
+  !*** ./src/components/PokemonEditor/styles.ts ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const emotion_1 = __webpack_require__(/*! emotion */ "./node_modules/emotion/dist/index.es.js");
+exports.iconBar = emotion_1.css `
+    align-items: center;
+    display: flex;
+    margin-left: auto;
+    * {
+        margin: .25rem;
+    }
+`;
+exports.copyButton = emotion_1.css `
+    color: lightblue;
+    margin-left: auto;
+    pointer: cursor;
+`;
+
+
+/***/ }),
+
 /***/ "./src/components/PokemonIcon/PokemonIcon.tsx":
 /*!****************************************************!*\
   !*** ./src/components/PokemonIcon/PokemonIcon.tsx ***!
@@ -50649,20 +52648,20 @@ const Shared_1 = __webpack_require__(/*! ../Shared */ "./src/components/Shared/i
 const formatSpeciesName = (species) => {
     if (species == null)
         return 'unknown';
-    if (utils_1.listOfPokemon.indexOf(species) < 0)
-        return 'unknown';
     if (species === 'Nidoran♀')
         return 'nidoran-f';
     if (species === 'Nidoran♂')
         return 'nidoran-m';
     if (species === 'Mr. Mime')
         return 'mr-mime';
-    if (species === 'Farfetch\'d')
+    if (species.startsWith('Farfetch'))
         return 'farfetchd';
     if (species === 'Mime Jr.')
         return 'mime-jr';
     if (species === 'Flabébé')
         return 'flabebe';
+    if (utils_1.listOfPokemon.indexOf(species) < 0)
+        return 'unknown';
     return species.toLowerCase();
 };
 const getForme = (forme) => {
@@ -50761,7 +52760,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
 const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 const uuid = __webpack_require__(/*! uuid/v4 */ "./node_modules/uuid/v4.js");
 const react_custom_scrollbars_1 = __webpack_require__(/*! react-custom-scrollbars */ "./node_modules/react-custom-scrollbars/lib/index.js");
@@ -50772,12 +52770,15 @@ const DeadPokemon_1 = __webpack_require__(/*! components/DeadPokemon */ "./src/c
 const BoxedPokemon_1 = __webpack_require__(/*! components/BoxedPokemon */ "./src/components/BoxedPokemon/index.ts");
 const ChampsPokemon_1 = __webpack_require__(/*! components/ChampsPokemon */ "./src/components/ChampsPokemon/index.ts");
 const TopBar_1 = __webpack_require__(/*! components/TopBar */ "./src/components/TopBar/index.ts");
+const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
 __webpack_require__(/*! ./Result.styl */ "./src/components/Result/Result.styl");
+__webpack_require__(/*! ./themes.styl */ "./src/components/Result/themes.styl");
 class ResultBase extends React.PureComponent {
     constructor(props) {
         super(props);
         this.resultRef = React.createRef();
         this.state = {
+            isDownloading: false,
             downloadError: null
         };
     }
@@ -50878,17 +52879,19 @@ class ResultBase extends React.PureComponent {
     toImage() {
         return __awaiter(this, void 0, void 0, function* () {
             const resultNode = this.resultRef.current;
+            this.setState({ isDownloading: true });
             try {
                 const dataUrl = yield domtoimage.toPng(resultNode);
                 const link = document.createElement('a');
                 link.download = `nuzlocke-${uuid()}.png`;
                 link.href = dataUrl;
                 link.click();
-                this.setState({ downloadError: null });
+                this.setState({ downloadError: null, isDownloading: false });
             }
             catch (e) {
                 this.setState({
-                    downloadError: 'Failed to download. This is likely due to your image containing an image resource that does not allow Cross-Origin'
+                    downloadError: 'Failed to download. This is likely due to your image containing an image resource that does not allow Cross-Origin',
+                    isDownloading: false,
                 });
             }
         });
@@ -50907,14 +52910,12 @@ class ResultBase extends React.PureComponent {
             React.createElement("div", { ref: this.resultRef, className: `result container ${(style.template &&
                     style.template.toLowerCase().replace(/\s/g, '-')) ||
                     ''} region-${utils_1.getGameRegion(this.props.game.name)} team-size-${numberOfTeam}`, style: {
-                    margin: '3rem auto',
+                    margin: this.state.isDownloading ? '0' : '3rem auto',
                     backgroundColor: bgColor,
                     backgroundImage: `url(${style.backgroundImage})`,
                     backgroundRepeat: style.tileBackground ? 'repeat' : 'no-repeat',
                     height: style.resultHeight + 'px',
                     marginBottom: '.5rem',
-                    transform: `scale(${style.zoomLevel})`,
-                    transformOrigin: '0 0',
                     width: style.resultWidth + 'px',
                 } },
                 React.createElement("div", { className: 'trainer-container', style: { backgroundColor: topHeaderColor } }, this.renderTrainer()),
@@ -50971,6 +52972,264 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Result_1 = __webpack_require__(/*! ./Result */ "./src/components/Result/Result.tsx");
 exports.Result = Result_1.Result;
 
+
+/***/ }),
+
+/***/ "./src/components/Result/styles.ts":
+/*!*****************************************!*\
+  !*** ./src/components/Result/styles.ts ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const emotion_1 = __webpack_require__(/*! emotion */ "./node_modules/emotion/dist/index.es.js");
+exports.topBar = emotion_1.css `
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.33);
+    color: #111;
+    display: flex;
+    font-size: 1.15rem;
+    justify-content: center;
+    padding: .5rem;
+`;
+exports.topBar_dark = emotion_1.css `
+    background: #222;
+    color: #fff !important;
+    button {
+        color: #fff !important;
+    }
+`;
+exports.heading = emotion_1.css `
+    align-items: center;
+    color: #111;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 4px;
+    margin: 0.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+`;
+exports.heading_dark = emotion_1.css `
+    color: #eee;
+`;
+exports.container = emotion_1.css `
+    border: 1px solid #111;
+    height: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    padding-bottom: .5rem;
+    position: relative;
+    width: 100%;
+`;
+exports.h3 = emotion_1.css `
+    color: #eee;
+    letter-spacing: 4px;
+    margin: .5rem;
+    text-align: center;
+    text-transform: uppercase;
+`;
+exports.callout_dark = emotion_1.css `
+    color: white;
+`;
+exports.resultNotes = emotion_1.css `
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: .5rem;
+    text-align: center;
+`;
+exports.genderColorFemale = emotion_1.css `
+    color: pink;
+`;
+exports.genderColorMale = emotion_1.css `
+    color: lightblue;
+`;
+exports.pokemonContainer = emotion_1.css `
+    display: inline-block;
+    padding: 1rem;
+    position: relative;
+`;
+exports.trainerContainer = emotion_1.css `
+    background-position: top left, bottom left;
+    background-size: cover, 50% auto;
+    background: #333;
+    border-bottom: 1px solid #000;
+    color: #eee;
+    padding: .25rem;
+    width: 100%;
+`;
+exports.trainerImage = emotion_1.css `
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+`;
+exports.trainerWrapper = emotion_1.css `
+    align-content: center;
+    align-items: center;
+    display: flex;
+`;
+exports.nuzlockeTitle = emotion_1.css `
+    display: inline-flex;
+    font-size: 1.5rem;
+    font-weight: light;
+`;
+exports.badgeWrapper = emotion_1.css `
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: 1rem;
+    width: 216px;
+
+    img {
+        height: 1.5rem;
+    }
+`;
+exports.move = emotion_1.css `
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    color: #222;
+    font-size: .9rem;
+    height: 1.7rem;
+    margin: .25rem;
+    padding: 0;
+    text-align: center;
+    &.long-text-move {
+        font-size: .7rem;
+    }
+`;
+exports.pokemonNickname = emotion_1.css `
+    font-size: 1.5rem;
+`;
+exports.pokemonShiny = emotion_1.css `
+    background: #eee;
+    border-radius: 50%;
+    border: 2px solid white;
+    height: 2rem;
+    width: 2rem;
+    padding-top: .2rem;
+    padding-left: .5rem;
+    position: absolute;
+    left: 7rem;
+    top: 1rem;
+`;
+exports.square = emotion_1.css `
+    border-radius: 50%;
+    display: inline-block;
+    height: 8rem;
+    width: 8rem;
+    padding: .25rem;
+    position: relative;
+    z-index: 10;
+`;
+exports.round = emotion_1.css `
+    display: inline-block;
+    height: 8rem;
+    width: 8rem;
+    padding: .25rem;
+    position: relative;
+    z-index: 10;
+`;
+exports.pokemonImage = emotion_1.css `
+    background-size: cover;
+    background-position: center center;
+    display: inline-block;
+    height: 7.5rem;
+    width: 7.5rem;
+    &.square {
+
+    }
+    &.round {
+        border-radius: 50%;
+    }
+`;
+exports.isSprite = emotion_1.css `
+    background-size: auto;
+    background-repeat: no-repeat;
+`;
+exports.pokemonItem = emotion_1.css `
+    background: #111;
+    border: 5px solid white;
+    bottom: 0;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 12px;
+    padding: .5rem;
+    position: absolute;
+    width: 3rem;
+    z-index: 10;
+    &.round {
+        border-radius: 50%;
+    }
+    &.square {
+        border-radius: 0;
+    }
+`;
+exports.minimal = emotion_1.css `
+    min-width: 17rem;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+`;
+exports.minimalPokemonInfo = emotion_1.css `
+    background: transparent;
+    display: flex;
+    padding: 0;
+    height: auto;
+    width: auto;
+    margin-left: 0;
+`;
+exports.pokemonInfo = emotion_1.css `
+    border-radius: 0 4px 4px 0;
+    display: inline-block;
+    background: #111;
+    height: auto;
+    min-height: 8rem;
+    margin-left: -4rem;
+    position: relative;
+    width: 26rem;
+    vertical-align: top;
+    filter: drop-shadow(0 0 1px #111);
+    padding-left: 4rem;
+    border-radius: .25rem;
+    overflow: hidden;
+    span {
+        margin: 0 .25rem;
+    }
+`;
+
+
+/***/ }),
+
+/***/ "./src/components/Result/themes.styl":
+/*!*******************************************!*\
+  !*** ./src/components/Result/themes.styl ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/resolve-url-loader!../../../node_modules/stylus-loader!./themes.styl */ "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Result/themes.styl");
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {}
 
 /***/ }),
 
@@ -51197,6 +53456,31 @@ exports.Autocomplete = Autocomplete;
 
 /***/ }),
 
+/***/ "./src/components/Shared/ColorEdit.tsx":
+/*!*********************************************!*\
+  !*** ./src/components/Shared/ColorEdit.tsx ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const Styles = __webpack_require__(/*! components/StyleEditor/styles */ "./src/components/StyleEditor/styles.ts");
+const emotion_1 = __webpack_require__(/*! emotion */ "./node_modules/emotion/dist/index.es.js");
+const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
+exports.ColorEditBase = ({ value, onChange, name, style }) => {
+    return (React.createElement("div", { className: emotion_1.cx(Styles.colorEditWrapper) },
+        React.createElement("input", { name: name, onChange: onChange, className: emotion_1.cx(Styles.colorInput), type: 'color', value: value }),
+        React.createElement("input", { style: { border: 'none' }, onChange: onChange, type: 'text', className: emotion_1.cx(utils_1.classWithDarkTheme(Styles, 'colorTextInput', style.editorDarkMode)), name: name, value: value })));
+};
+exports.ColorEdit = react_redux_1.connect((state) => ({ style: state.style }), null)(exports.ColorEditBase);
+
+
+/***/ }),
+
 /***/ "./src/components/Shared/ErrorBoundary.tsx":
 /*!*************************************************!*\
   !*** ./src/components/Shared/ErrorBoundary.tsx ***!
@@ -51243,6 +53527,24 @@ exports.ErrorBoundary = ErrorBoundary;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+class Gender {
+    static isMale(gender) {
+        if (gender === 'm' || gender === 'Male')
+            return true;
+        return false;
+    }
+    static isFemale(gender) {
+        if (gender === 'f' || gender === 'Female')
+            return true;
+        return false;
+    }
+    static isGenderless(gender) {
+        if (gender === 'genderless' || gender == null)
+            return true;
+        return false;
+    }
+}
+exports.Gender = Gender;
 exports.GenderElement = (gender) => {
     if (gender === 'Male' || gender === 'm') {
         return React.createElement("span", { className: 'pokemon-gender gender-color-male' }, "\u2642");
@@ -51291,6 +53593,28 @@ exports.PokemonByFilter = PokemonByFilter;
 
 /***/ }),
 
+/***/ "./src/components/Shared/ThemeSelect.tsx":
+/*!***********************************************!*\
+  !*** ./src/components/Shared/ThemeSelect.tsx ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+const core_1 = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
+const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
+const actions_1 = __webpack_require__(/*! actions */ "./src/actions/index.ts");
+exports.ThemeSelectBase = ({ theme, onChange }) => React.createElement("div", { className: core_1.Classes.SELECT },
+    React.createElement("select", { value: theme, onChange: e => onChange({ template: e.target.value }) }, utils_1.listOfThemes.map(o => React.createElement("option", { value: o }, o))));
+exports.ThemeSelect = react_redux_1.connect(null, { onChange: actions_1.editStyle })(exports.ThemeSelectBase);
+
+
+/***/ }),
+
 /***/ "./src/components/Shared/index.ts":
 /*!****************************************!*\
   !*** ./src/components/Shared/index.ts ***!
@@ -51310,6 +53634,8 @@ var ErrorBoundary_1 = __webpack_require__(/*! ./ErrorBoundary */ "./src/componen
 exports.ErrorBoundary = ErrorBoundary_1.ErrorBoundary;
 __export(__webpack_require__(/*! ./GenderElement */ "./src/components/Shared/GenderElement.tsx"));
 __export(__webpack_require__(/*! ./PokemonByFilter */ "./src/components/Shared/PokemonByFilter.tsx"));
+__export(__webpack_require__(/*! ./ColorEdit */ "./src/components/Shared/ColorEdit.tsx"));
+__export(__webpack_require__(/*! ./ThemeSelect */ "./src/components/Shared/ThemeSelect.tsx"));
 
 
 /***/ }),
@@ -51355,6 +53681,10 @@ const actions_1 = __webpack_require__(/*! actions */ "./src/actions/index.ts");
 const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
 const core_1 = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
 const BaseEditor_1 = __webpack_require__(/*! components/BaseEditor */ "./src/components/BaseEditor/index.ts");
+const Shared_1 = __webpack_require__(/*! components/Shared */ "./src/components/Shared/index.ts");
+const emotion_1 = __webpack_require__(/*! emotion */ "./node_modules/emotion/dist/index.es.js");
+const Styles = __webpack_require__(/*! ./styles */ "./src/components/StyleEditor/styles.ts");
+const ThemeEditor_1 = __webpack_require__(/*! components/ThemeEditor */ "./src/components/ThemeEditor/index.ts");
 const editEvent = (e, props, name, game) => {
     const propName = name || e.target.name;
     props.editStyle({ [propName]: e.target.value });
@@ -51381,85 +53711,94 @@ const editEvent = (e, props, name, game) => {
         });
     }
 };
-exports.ColorEdit = ({ value, onChange, name }) => {
-    return (React.createElement("div", { className: 'color-edit-wrapper' },
-        React.createElement("input", { name: name, onChange: onChange, className: 'color-input', type: 'color', value: value }),
-        React.createElement("input", { style: { border: 'none' }, onChange: onChange, type: 'text', className: 'color-text-input', name: name, value: value })));
-};
-exports.StyleEditorBase = (props) => {
-    const getStyleProp = (prop) => {
-        if (props && props.style && props.style[prop])
-            props.style[prop];
-        else
-            return utils_1.styleDefaults[prop];
-    };
-    return (React.createElement(BaseEditor_1.BaseEditor, { name: 'Style' },
-        React.createElement("div", { className: 'style-edit' },
-            React.createElement("label", { className: 'pt-label pt-inline' }, "Template"),
-            React.createElement("div", { className: 'pt-select' },
-                React.createElement("select", { name: 'template', onChange: e => editEvent(e, props, null, props.game.name), value: props.style.template }, utils_1.listOfThemes.map(o => React.createElement("option", { key: o }, o))))),
-        props.style.template === 'Hexagons' ?
-            React.createElement("div", { className: 'style-edit' },
-                React.createElement("h6", null, "Hexagons Template Options"))
-            : null,
-        React.createElement("div", { className: 'style-edit' },
-            React.createElement(core_1.RadioGroup, { className: 'radio-group', label: 'Image Style', onChange: e => editEvent(e, props, 'imageStyle'), selectedValue: props.style.imageStyle },
-                React.createElement(core_1.Radio, { label: 'Round', value: 'round' }),
-                React.createElement(core_1.Radio, { label: 'Square', value: 'square' }))),
-        React.createElement("div", { className: 'style-edit' },
-            React.createElement(core_1.RadioGroup, { className: 'radio-group', label: 'Item Style', onChange: e => editEvent(e, props, 'itemStyle'), selectedValue: props.style.itemStyle },
-                React.createElement(core_1.Radio, { label: 'Round', value: 'round' }),
-                React.createElement(core_1.Radio, { label: 'Square', value: 'square' }))),
-        React.createElement("div", { className: 'style-edit' },
-            React.createElement("label", { className: 'pt-label pt-inline' }, "Result Dimensions"),
-            React.createElement("input", { name: 'resultWidth', className: 'pt-input small-input', onChange: e => editEvent(e, props), value: props.style.resultWidth, type: 'number', min: '0', step: '10' }),
-            React.createElement("span", { style: { marginRight: '0' }, className: 'pt-icon pt-icon-cross' }),
-            React.createElement("input", { name: 'resultHeight', className: 'pt-input small-input', onChange: e => editEvent(e, props), value: props.style.resultHeight, type: 'number', min: '0', step: '10' })),
-        React.createElement("div", { className: 'style-edit' },
-            React.createElement("label", { className: 'pt-label pt-inline' }, "Background color"),
-            React.createElement(exports.ColorEdit, { onChange: e => editEvent(e, props), name: 'bgColor', value: props.style.bgColor })),
-        React.createElement("div", { className: 'style-edit' },
-            React.createElement("label", { className: 'pt-label pt-inline' }, "Header color"),
-            React.createElement(exports.ColorEdit, { name: 'topHeaderColor', onChange: e => editEvent(e, props), value: props.style.topHeaderColor })),
-        React.createElement("div", { className: 'style-edit' },
-            React.createElement("label", { className: 'pt-label pt-inline' }, "Background Image"),
-            React.createElement("input", { value: props.style.backgroundImage, name: 'backgroundImage', onChange: e => editEvent(e, props), className: 'pt-input' }),
-            React.createElement("span", null, ' '),
-            React.createElement(core_1.Checkbox, { checked: props.style.tileBackground, name: 'tileBackground', label: 'Tile', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'tileBackground') })),
-        React.createElement("div", { className: 'style-edit' },
-            React.createElement(core_1.RadioGroup, { className: 'radio-group', label: 'Moves Position', onChange: e => editEvent(e, props, 'movesPosition'), selectedValue: props.style.movesPosition },
-                React.createElement(core_1.Radio, { label: 'Horizontal', value: 'horizontal' }),
-                React.createElement(core_1.Radio, { label: 'Vertical', value: 'vertical' }))),
-        React.createElement("div", { className: 'style-edit' },
-            React.createElement(core_1.RadioGroup, { className: 'radio-group', label: 'Team Images', onChange: e => editEvent(e, props, 'teamImages'), selectedValue: props.style.teamImages },
-                React.createElement(core_1.Radio, { label: 'Standard', value: 'standard' }),
-                React.createElement(core_1.Radio, { label: 'Sugimori', value: 'sugimori' }))),
-        React.createElement("div", { className: 'style-edit' },
-            React.createElement(core_1.Checkbox, { checked: props.style.teamPokemonBorder, name: 'teamPokemonBorder', label: 'Team Pokemon Gradient Backgrounds', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'teamPokemonBorder') })),
-        React.createElement("div", { className: 'style-edit' },
-            React.createElement(core_1.Checkbox, { checked: props.style.showPokemonMoves, name: 'showPokemonMoves', label: 'Show Pokemon Moves', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'showPokemonMoves') })),
-        React.createElement("div", { className: 'style-edit' },
-            React.createElement(core_1.Checkbox, { checked: props.style.minimalTeamLayout, name: 'minimalTeamLayout', label: 'Minimal Team Layout', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'minimalTeamLayout') })),
-        React.createElement("div", { className: 'style-edit' },
-            React.createElement(core_1.Checkbox, { checked: props.style.displayBadges, name: 'displayBadges', label: 'Display Badges', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'displayBadges') })),
-        React.createElement("div", { className: 'style-edit' },
-            React.createElement(core_1.Checkbox, { checked: props.style.displayRules, name: 'displayRules', label: 'Display Nuzlocke Rules', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'displayRules') })),
-        React.createElement("div", { className: 'style-edit' },
-            React.createElement(core_1.Checkbox, { checked: props.style.oldMetLocationFormat, name: 'oldMetLocationFormat', label: 'Old Met Location Format', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'oldMetLocationFormat') })),
-        React.createElement("div", { className: 'style-edit' },
-            React.createElement(core_1.Checkbox, { checked: props.style.grayScaleDeadPokemon, name: 'grayScaleDeadPokemon', label: 'Gray Scale Filter Dead Pokemon Images', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'grayScaleDeadPokemon') })),
-        React.createElement("div", { className: 'style-edit' },
-            React.createElement(core_1.Checkbox, { checked: props.style.spritesMode, name: 'spritesMode', label: 'Sprites Mode', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'spritesMode') })),
-        React.createElement("div", { className: 'style-edit' },
-            React.createElement(core_1.Checkbox, { checked: props.style.scaleSprites, name: 'scaleSprites', label: 'Scale Sprites', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'scaleSprites') })),
-        React.createElement("div", { className: 'custom-css-input-wrapper' },
-            React.createElement("label", { style: { padding: '.5rem' }, className: 'pt-label' }, "Custom CSS "),
-            React.createElement(core_1.TextArea, { large: true, onChange: e => editEvent(e, props, 'customCSS'), className: 'custom-css-input pt-fill', value: props.style.customCSS }),
-            React.createElement("style", null, props.style.customCSS))));
-};
+exports.IconsNextToTeamPokemon = (props) => (React.createElement("div", { className: 'style-edit' },
+    React.createElement(core_1.Checkbox, { checked: props.style.iconsNextToTeamPokemon, name: 'iconsNextToTeamPokemon', label: 'Icons Next to Team Pokemon', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'iconsNextToTeamPokemon') })));
+class StyleEditorBase extends React.Component {
+    constructor() {
+        super(...arguments);
+        this.state = { isThemeEditorOpen: false };
+        this.toggleThemeEditor = e => this.setState({ isThemeEditorOpen: !this.state.isThemeEditorOpen });
+    }
+    render() {
+        const props = this.props;
+        const styleEdit = emotion_1.cx(Styles.styleEdit, { [Styles.styleEdit_dark]: props.style.editorDarkMode });
+        return (React.createElement(BaseEditor_1.BaseEditor, { name: 'Style' },
+            React.createElement(core_1.Dialog, { isOpen: this.state.isThemeEditorOpen, onClose: this.toggleThemeEditor, title: 'Theme Editor', icon: 'style', className: emotion_1.cx(Styles.dialog, { [core_1.Classes.DARK]: props.style.editorDarkMode }) },
+                React.createElement(ThemeEditor_1.ThemeEditor, null)),
+            React.createElement("div", { className: styleEdit },
+                React.createElement("label", { className: 'pt-label pt-inline' }, "Template"),
+                React.createElement("div", { className: 'pt-select' },
+                    React.createElement("select", { name: 'template', onChange: e => editEvent(e, props, null, props.game.name), value: props.style.template }, utils_1.listOfThemes.map(o => React.createElement("option", { key: o }, o)))),
+                utils_1.FEATURES.themeEditing ?
+                    React.createElement(core_1.Button, { onClick: this.toggleThemeEditor, style: { marginLeft: '.25rem' }, intent: core_1.Intent.PRIMARY, className: 'pt-minimal' }, "Edit Theme")
+                    : null),
+            props.style.template === 'Hexagons' ?
+                React.createElement("div", { className: styleEdit },
+                    React.createElement("h6", null, "Hexagons Template Options"))
+                : null,
+            React.createElement("div", { className: styleEdit },
+                React.createElement(core_1.RadioGroup, { className: emotion_1.cx(Styles.radioGroup), label: 'Image Style', onChange: e => editEvent(e, props, 'imageStyle'), selectedValue: props.style.imageStyle },
+                    React.createElement(core_1.Radio, { label: 'Round', value: 'round' }),
+                    React.createElement(core_1.Radio, { label: 'Square', value: 'square' }))),
+            React.createElement("div", { className: styleEdit },
+                React.createElement(core_1.RadioGroup, { className: emotion_1.cx(Styles.radioGroup), label: 'Item Style', onChange: e => editEvent(e, props, 'itemStyle'), selectedValue: props.style.itemStyle },
+                    React.createElement(core_1.Radio, { label: 'Round', value: 'round' }),
+                    React.createElement(core_1.Radio, { label: 'Square', value: 'square' }))),
+            React.createElement("div", { className: styleEdit },
+                React.createElement("label", { className: 'pt-label pt-inline' }, "Result Dimensions"),
+                React.createElement("input", { name: 'resultWidth', className: 'pt-input small-input', onChange: e => editEvent(e, props), value: props.style.resultWidth, type: 'number', min: '0', step: '10' }),
+                React.createElement("span", { style: { marginRight: '0' }, className: 'pt-icon pt-icon-cross' }),
+                React.createElement("input", { name: 'resultHeight', className: 'pt-input small-input', onChange: e => editEvent(e, props), value: props.style.resultHeight, type: 'number', min: '0', step: '10' })),
+            React.createElement("div", { className: styleEdit },
+                React.createElement("label", { className: 'pt-label pt-inline' }, "Background color"),
+                React.createElement(Shared_1.ColorEdit, { onChange: e => editEvent(e, props), name: 'bgColor', value: props.style.bgColor })),
+            React.createElement("div", { className: styleEdit },
+                React.createElement("label", { className: 'pt-label pt-inline' }, "Header color"),
+                React.createElement(Shared_1.ColorEdit, { name: 'topHeaderColor', onChange: e => editEvent(e, props), value: props.style.topHeaderColor })),
+            React.createElement("div", { className: styleEdit },
+                React.createElement("label", { className: 'pt-label pt-inline' }, "Background Image"),
+                React.createElement("input", { value: props.style.backgroundImage, name: 'backgroundImage', onChange: e => editEvent(e, props), className: 'pt-input' }),
+                React.createElement("span", null, ' '),
+                React.createElement(core_1.Checkbox, { style: {
+                        marginBottom: '0',
+                        marginLeft: '10px',
+                    }, checked: props.style.tileBackground, name: 'tileBackground', label: 'Tile', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'tileBackground') })),
+            React.createElement("div", { className: styleEdit },
+                React.createElement(core_1.RadioGroup, { className: emotion_1.cx(Styles.radioGroup), label: 'Moves Position', onChange: e => editEvent(e, props, 'movesPosition'), selectedValue: props.style.movesPosition },
+                    React.createElement(core_1.Radio, { label: 'Horizontal', value: 'horizontal' }),
+                    React.createElement(core_1.Radio, { label: 'Vertical', value: 'vertical' }))),
+            React.createElement("div", { className: styleEdit },
+                React.createElement(core_1.RadioGroup, { className: emotion_1.cx(Styles.radioGroup), label: 'Team Images', onChange: e => editEvent(e, props, 'teamImages'), selectedValue: props.style.teamImages },
+                    React.createElement(core_1.Radio, { label: 'Standard', value: 'standard' }),
+                    React.createElement(core_1.Radio, { label: 'Sugimori', value: 'sugimori' }))),
+            React.createElement("div", { className: styleEdit },
+                React.createElement(core_1.Checkbox, { checked: props.style.teamPokemonBorder, name: 'teamPokemonBorder', label: 'Team Pokemon Gradient Backgrounds', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'teamPokemonBorder') })),
+            React.createElement("div", { className: styleEdit },
+                React.createElement(core_1.Checkbox, { checked: props.style.showPokemonMoves, name: 'showPokemonMoves', label: 'Show Pokemon Moves', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'showPokemonMoves') })),
+            React.createElement("div", { className: styleEdit },
+                React.createElement(core_1.Checkbox, { checked: props.style.minimalTeamLayout, name: 'minimalTeamLayout', label: 'Minimal Team Layout', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'minimalTeamLayout') })),
+            React.createElement("div", { className: styleEdit },
+                React.createElement(core_1.Checkbox, { checked: props.style.displayBadges, name: 'displayBadges', label: 'Display Badges', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'displayBadges') })),
+            React.createElement("div", { className: styleEdit },
+                React.createElement(core_1.Checkbox, { checked: props.style.displayRules, name: 'displayRules', label: 'Display Nuzlocke Rules', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'displayRules') })),
+            React.createElement("div", { className: styleEdit },
+                React.createElement(core_1.Checkbox, { checked: props.style.oldMetLocationFormat, name: 'oldMetLocationFormat', label: 'Old Met Location Format', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'oldMetLocationFormat') })),
+            React.createElement("div", { className: styleEdit },
+                React.createElement(core_1.Checkbox, { checked: props.style.grayScaleDeadPokemon, name: 'grayScaleDeadPokemon', label: 'Gray Scale Filter Dead Pokemon Images', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'grayScaleDeadPokemon') })),
+            React.createElement("div", { className: styleEdit },
+                React.createElement(core_1.Checkbox, { checked: props.style.spritesMode, name: 'spritesMode', label: 'Sprites Mode', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'spritesMode') })),
+            React.createElement("div", { className: styleEdit },
+                React.createElement(core_1.Checkbox, { checked: props.style.scaleSprites, name: 'scaleSprites', label: 'Scale Sprites', onChange: (e) => editEvent(Object.assign({}, e, { target: { value: e.target.checked } }), props, 'scaleSprites') })),
+            React.createElement("div", { className: 'custom-css-input-wrapper' },
+                React.createElement("label", { style: { padding: '.5rem' }, className: 'pt-label' }, "Custom CSS "),
+                React.createElement(core_1.TextArea, { large: true, onChange: e => editEvent(e, props, 'customCSS'), className: 'custom-css-input pt-fill', value: props.style.customCSS }),
+                React.createElement("style", null, props.style.customCSS))));
+    }
+}
+exports.StyleEditorBase = StyleEditorBase;
 exports.StyleEditor = react_redux_1.connect((state) => ({ style: state.style, game: state.game }), {
     editStyle: actions_1.editStyle,
-})(exports.StyleEditorBase);
+})(StyleEditorBase);
 
 
 /***/ }),
@@ -51482,6 +53821,95 @@ __export(__webpack_require__(/*! ./StyleEditor */ "./src/components/StyleEditor/
 
 /***/ }),
 
+/***/ "./src/components/StyleEditor/styles.ts":
+/*!**********************************************!*\
+  !*** ./src/components/StyleEditor/styles.ts ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const emotion_1 = __webpack_require__(/*! emotion */ "./node_modules/emotion/dist/index.es.js");
+exports.colorTextInput_dark = emotion_1.css `
+    background: rgba(16, 22, 26, 0.3);
+    color: #eee;
+`;
+exports.colorInput = emotion_1.css `
+    background: #fff;
+    border-radius: 50%;
+    border: none;
+    height: 1rem;
+    margin-left: .25rem;
+    padding: 0;
+    width: 1rem;
+    -webkit-apperance: none;
+    &::-webkit-color-swatch {
+        border: none;
+        border-radius: 50%;
+        padding: 0;
+    }
+    &::-webkit-color-swatch-wrapper {
+        border: none;
+        border-radius: 50%;
+        padding: 0;
+    }
+`;
+exports.colorEditWrapper = emotion_1.css `
+    align-items: center;
+    display: flex;
+    input[type='text'] {
+        padding-left: .5rem;
+    }
+`;
+exports.styleEdit = emotion_1.css `
+    align-items: center;
+    align-content: center;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    padding: .5rem;
+    width: 100%;
+    .pt-label {
+        margin: 0;
+        min-width: 10rem;
+    }
+    .span {
+        display: inline-block;
+        margin-right: .25rem;
+    }
+`;
+exports.styleEdit_dark = emotion_1.css `
+    border-bottom: 1px solid #111;
+`;
+exports.styleEditLabel = emotion_1.css `
+`;
+exports.styleEditSpan = emotion_1.css `
+
+`;
+exports.styleEditPtControl = emotion_1.css `
+    margin-bottom: 0;
+`;
+exports.radioGroup = emotion_1.css `
+    align-content: center;
+    align-items: center;
+    display: flex;
+    .pt-control {
+        border-radius: .25rem;
+        margin: .25rem;
+    }
+    label.pt-label {
+        margin: 0;
+    }
+`;
+exports.dialog = emotion_1.css `
+    padding-bottom: 0 !important;
+    width: 60% !important;
+`;
+
+
+/***/ }),
+
 /***/ "./src/components/TeamPokemon/TeamPokemon.tsx":
 /*!****************************************************!*\
   !*** ./src/components/TeamPokemon/TeamPokemon.tsx ***!
@@ -51497,36 +53925,81 @@ const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/rea
 const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
 const Shared_1 = __webpack_require__(/*! components/Shared */ "./src/components/Shared/index.ts");
 const actions_1 = __webpack_require__(/*! actions */ "./src/actions/index.ts");
-const generateMoves = moves => {
-    return moves.map((move, index) => {
-        move = move.trim();
-        const type = utils_1.getMoveType(move);
-        return (React.createElement("div", { key: index, className: `move ${type}-type ${move.length >= 12 ? 'long-text-move' : ''}` }, move));
-    });
-};
-const generateMetData = (props) => {
-    const { pokemon } = props;
-    const poke = pokemon;
+const getMetLocationString = ({ poke, oldMetLocationFormat }) => {
     const determinePreposition = () => poke.met && poke.met.toLocaleLowerCase().startsWith('route') ? 'on' : 'in';
+    const met = poke.met || '';
+    const metLevel = poke.metLevel || '';
     if (poke.met) {
-        if (props.style.oldMetLocationFormat) {
-            return (React.createElement("div", { className: 'pokemon-location' },
-                poke.met === 'Starter'
-                    ? poke.met
-                    : `Met ${determinePreposition()} ${poke.met}`,
-                poke.metLevel ? `, from lv.${poke.metLevel}` : null));
+        if (oldMetLocationFormat) {
+            return `Met ${determinePreposition()} ${met}, from lv.${metLevel}`;
         }
         else {
-            return (React.createElement("div", { className: 'pokemon-location' },
-                "Met Location: ",
-                poke.met,
-                poke.metLevel ? `, at lv.${poke.metLevel}` : null));
+            return `Met Location: ${met} at lv.${metLevel}`;
         }
     }
     else {
         return null;
     }
 };
+class TeamPokemonInfo extends React.PureComponent {
+    render() {
+        const { pokemon, style } = this.props;
+        return (React.createElement("div", { className: 'pokemon-info' },
+            React.createElement("div", { className: 'pokemon-info-inner' },
+                React.createElement("div", { className: 'pokemon-main-info' },
+                    React.createElement("span", { style: { margin: '0.25rem 0 0' }, className: 'pokemon-nickname' }, pokemon.nickname),
+                    React.createElement("span", { className: 'pokemon-name' }, pokemon.species),
+                    Shared_1.GenderElement(pokemon.gender),
+                    pokemon.level ? (React.createElement("span", { className: 'pokemon-level' },
+                        "lv. ",
+                        pokemon.level)) : null),
+                React.createElement("div", { className: 'pokemon-met' }, getMetLocationString({ poke: pokemon, oldMetLocationFormat: style.oldMetLocationFormat })),
+                pokemon.nature && pokemon.nature !== 'None' ? (React.createElement("div", { className: 'pokemon-nature' },
+                    React.createElement("strong", null, pokemon.nature),
+                    " nature")) : null,
+                pokemon.ability ? React.createElement("div", { className: 'pokemon-ability' }, pokemon.ability) : null),
+            style.showPokemonMoves ?
+                React.createElement(Moves, { generation: this.props.generation, moves: pokemon.moves, movesPosition: style.movesPosition })
+                : null));
+    }
+}
+exports.TeamPokemonInfo = TeamPokemonInfo;
+class TeamPokemonBaseMinimal extends React.PureComponent {
+    render() {
+        const { pokemon } = this.props;
+        return (React.createElement("div", { className: 'pokemon-container minimal' },
+            React.createElement("div", { style: Object.assign({ backgroundImage: utils_1.getPokemonImage({
+                        customImage: pokemon.customImage,
+                        forme: pokemon.forme,
+                        species: pokemon.species,
+                        style: this.props.style,
+                        name: this.props.game.name,
+                    }) }, this.props.spriteStyle), className: `pokemon-image ${(pokemon.species || 'missingno').toLowerCase()} ${this.props.style.imageStyle === 'round' ? 'round' : 'square'}` }),
+            React.createElement("div", { className: 'pokemon-info' },
+                React.createElement("div", { className: 'pokemon-info-inner' },
+                    React.createElement("span", { className: 'pokemon-nickname' }, pokemon.nickname),
+                    React.createElement("span", { className: 'pokemon-name' }, pokemon.species),
+                    pokemon.level ? (React.createElement("span", { className: 'pokemon-level' },
+                        "lv. ",
+                        pokemon.level)) : null))));
+    }
+}
+exports.TeamPokemonBaseMinimal = TeamPokemonBaseMinimal;
+class Moves extends React.Component {
+    generateMoves(moves) {
+        return moves && moves.map((move, index) => {
+            move = move.trim();
+            const type = utils_1.handleMovesGenerationsExceptions({ move: move, generation: this.props.generation, originalType: utils_1.getMoveType(move) });
+            return (React.createElement("div", { key: index, className: `move ${type}-type ${move.length >= 12 ? 'long-text-move' : ''}` }, move));
+        });
+    }
+    render() {
+        if (this.props.moves == null)
+            return null;
+        return (React.createElement("div", { className: `pokemon-moves ${this.props.movesPosition}` }, this.generateMoves(this.props.moves)));
+    }
+}
+exports.Moves = Moves;
 class TeamPokemonBase extends React.Component {
     constructor(props) {
         super(props);
@@ -51534,11 +54007,10 @@ class TeamPokemonBase extends React.Component {
     render() {
         const { pokemon, style, game, selectPokemon } = this.props;
         const poke = pokemon;
-        const moves = poke.moves == null ? ('') : (React.createElement("div", { className: `pokemon-moves ${this.props.style.movesPosition}` }, generateMoves(poke.moves)));
         const getFirstType = poke.types ? poke.types[0] : 'Normal';
-        const spriteStyle = this.props.style.spritesMode
+        const spriteStyle = this.props.style.spritesMode && !this.props.style.scaleSprites
             ? { backgroundSize: 'auto', backgroundRepeat: 'no-repeat' }
-            : {};
+            : { backgroundSize: 'cover', backgroundRepeat: 'no-repeat' };
         const addProp = item => {
             const propName = `data-${item.toLowerCase()}`;
             if (item === 'type')
@@ -51574,21 +54046,7 @@ class TeamPokemonBase extends React.Component {
             return Object.assign({}, prev, addProp(curr));
         }, {});
         if (this.props.style.minimalTeamLayout) {
-            return (React.createElement("div", Object.assign({ className: 'pokemon-container minimal' }, data),
-                React.createElement("div", { style: Object.assign({ backgroundImage: utils_1.getPokemonImage({
-                            customImage: poke.customImage,
-                            forme: poke.forme,
-                            species: poke.species,
-                            style: this.props.style,
-                            name: this.props.game.name,
-                        }) }, spriteStyle), className: `pokemon-image ${(poke.species || 'missingno').toLowerCase()} ${this.props.style.imageStyle === 'round' ? 'round' : 'square'}` }),
-                React.createElement("div", { className: 'pokemon-info' },
-                    React.createElement("div", { className: 'pokemon-info-inner' },
-                        React.createElement("span", { className: 'pokemon-nickname' }, poke.nickname),
-                        React.createElement("span", { className: 'pokemon-name' }, poke.species),
-                        poke.level ? (React.createElement("span", { className: 'pokemon-level' },
-                            "lv. ",
-                            poke.level)) : null))));
+            return React.createElement(TeamPokemonBaseMinimal, { selectPokemon: selectPokemon, style: style, game: game, spriteStyle: spriteStyle, pokemon: poke });
         }
         return (React.createElement("div", Object.assign({ className: 'pokemon-container' }, data),
             React.createElement("div", { role: 'presentation', onClick: e => this.props.selectPokemon(poke.id), className: `${this.props.style.imageStyle} pokemon-image-wrapper`, style: {
@@ -51611,21 +54069,7 @@ class TeamPokemonBase extends React.Component {
                 React.createElement("img", { alt: poke.item, src: `icons/hold-item/${(poke.item || '')
                         .toLowerCase()
                         .replace(/\s/g, '-')}.png` }))),
-            React.createElement("div", { className: 'pokemon-info' },
-                React.createElement("div", { className: 'pokemon-info-inner' },
-                    React.createElement("div", { className: 'pokemon-main-info' },
-                        React.createElement("span", { style: { margin: '0.25rem 0 0' }, className: 'pokemon-nickname' }, poke.nickname),
-                        React.createElement("span", { className: 'pokemon-name' }, poke.species),
-                        Shared_1.GenderElement(poke.gender),
-                        poke.level ? (React.createElement("span", { className: 'pokemon-level' },
-                            "lv. ",
-                            poke.level)) : null),
-                    generateMetData(this.props),
-                    poke.nature && poke.nature !== 'None' ? (React.createElement("div", { className: 'pokemon-nature' },
-                        React.createElement("strong", null, poke.nature),
-                        " nature")) : null,
-                    poke.ability ? React.createElement("div", { className: 'pokemon-ability' }, poke.ability) : null),
-                this.props.style.showPokemonMoves ? moves : null)));
+            React.createElement(TeamPokemonInfo, { generation: utils_1.getGameGeneration(this.props.game.name), style: style, pokemon: pokemon })));
     }
 }
 exports.TeamPokemonBase = TeamPokemonBase;
@@ -51657,6 +54101,328 @@ __export(__webpack_require__(/*! ./TeamPokemon */ "./src/components/TeamPokemon/
 
 /***/ }),
 
+/***/ "./src/components/ThemeEditor/ComponentOptions.ts":
+/*!********************************************************!*\
+  !*** ./src/components/ThemeEditor/ComponentOptions.ts ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var ComponentOptions;
+(function (ComponentOptions) {
+    ComponentOptions["BackgroundColor"] = "Background Color";
+    ComponentOptions["TextColor"] = "Text Color";
+    ComponentOptions["Padding"] = "Padding";
+    ComponentOptions["Margin"] = "Margin";
+    ComponentOptions["BorderRadius"] = "Border Radius";
+})(ComponentOptions = exports.ComponentOptions || (exports.ComponentOptions = {}));
+exports.Options = {
+    ChampsPokemon: {
+        styles: [
+            ComponentOptions.BorderRadius,
+            ComponentOptions.Padding,
+            ComponentOptions.Margin,
+        ],
+        props: {
+            showNickname: true,
+            showGender: false,
+            showLevel: false,
+        }
+    }
+};
+
+
+/***/ }),
+
+/***/ "./src/components/ThemeEditor/ThemeEditor.tsx":
+/*!****************************************************!*\
+  !*** ./src/components/ThemeEditor/ThemeEditor.tsx ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+const emotion_1 = __webpack_require__(/*! emotion */ "./node_modules/emotion/dist/index.es.js");
+const css = __webpack_require__(/*! ./styles */ "./src/components/ThemeEditor/styles.ts");
+const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
+const core_1 = __webpack_require__(/*! @blueprintjs/core */ "./node_modules/@blueprintjs/core/lib/esm/index.js");
+const Shared_1 = __webpack_require__(/*! components/Shared */ "./src/components/Shared/index.ts");
+const components_1 = __webpack_require__(/*! components */ "./src/components/index.ts");
+const ComponentOptions_1 = __webpack_require__(/*! ./ComponentOptions */ "./src/components/ThemeEditor/ComponentOptions.ts");
+const modelPokemon = Object.assign({}, utils_1.generateEmptyPokemon(), { species: 'Pikachu', nickname: 'Pika Pika', gender: 'm', level: 50, metLevel: 5, met: 'Viridian Forest', gameOfOrigin: 'Red' });
+const componentTree = [
+    {
+        id: 0,
+        hasCaret: false,
+        label: 'Body'
+    },
+    {
+        id: 1,
+        icon: 'style',
+        isExpanded: true,
+        label: 'Header',
+        childNodes: [
+            {
+                id: 2,
+                label: 'Title',
+            },
+            {
+                id: 3,
+                label: 'Trainer Picture',
+            },
+        ]
+    },
+    {
+        id: 4,
+        icon: 'style',
+        isExpanded: true,
+        label: 'Team Pokemon',
+        childNodes: [
+            {
+                id: 5,
+                label: 'Info',
+                childNodes: [
+                    {
+                        id: 6,
+                        label: 'Moves',
+                    },
+                    {
+                        id: 7,
+                        label: 'Nickname Text',
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        id: 8,
+        icon: 'style',
+        isExpanded: true,
+        label: 'Boxed Pokemon',
+        childNodes: [
+            {
+                id: 9,
+                label: 'Info',
+            }
+        ]
+    },
+    {
+        id: 10,
+        icon: 'style',
+        isExpanded: true,
+        label: 'Dead Pokemon',
+        childNodes: [
+            {
+                id: 11,
+                label: 'Info',
+            }
+        ]
+    },
+    {
+        id: 12,
+        icon: 'style',
+        isExpanded: true,
+        label: 'Champs Pokemon',
+        options: ComponentOptions_1.Options.ChampsPokemon,
+        childNodes: [
+            {
+                id: 11,
+                label: 'PokemonIcon',
+            }
+        ]
+    },
+    {
+        id: 420,
+        label: 'Custom CSS',
+    }
+];
+exports.NumericValue = ({ name, value, onInput }) => React.createElement("div", { className: emotion_1.cx(css.componentOption) },
+    React.createElement("label", { className: core_1.Classes.LABEL }, name),
+    React.createElement("input", { name: name, onInput: onInput, type: 'text', value: value }));
+class ThemeEditorBase extends React.Component {
+    constructor() {
+        super(...arguments);
+        this.state = { componentTree: [] };
+        this.onNodeClick = (node, _nodePath, e) => {
+            const originallySelected = node.isSelected;
+            if (!e.shiftKey) {
+                this.forEachNode(this.state.componentTree, n => (n.isSelected = false));
+            }
+            node.isSelected = originallySelected == null ? true : !originallySelected;
+            this.setState(this.state);
+        };
+        this.onNodeCollapse = (node) => {
+            node.isExpanded = false;
+            this.setState(this.state);
+        };
+        this.onNodeExpand = (node) => {
+            node.isExpanded = true;
+            this.setState(this.state);
+        };
+    }
+    componentWillMount() {
+        this.setState({ componentTree: componentTree });
+    }
+    getCurrentNode() {
+        let currentNode;
+        const selectedNodes = this.forEachNode(this.state.componentTree, (node) => {
+            if (node.isSelected)
+                currentNode = node;
+        });
+        return currentNode;
+    }
+    forEachNode(nodes, callback) {
+        if (nodes == null) {
+            return;
+        }
+        for (const node of nodes) {
+            callback(node);
+            this.forEachNode(node.childNodes, callback);
+        }
+    }
+    render() {
+        const currentNode = this.getCurrentNode() == null ? null : this.getCurrentNode();
+        if (currentNode) {
+            const { label } = currentNode;
+        }
+        console.log(currentNode);
+        return (React.createElement(React.Fragment, null,
+            React.createElement("div", { className: emotion_1.cx(utils_1.classWithDarkTheme(css, 'header', this.props.style.editorDarkMode)) },
+                React.createElement("strong", null, "Current Theme:"),
+                " ",
+                React.createElement(Shared_1.ThemeSelect, { theme: this.props.style.template })),
+            React.createElement("div", { className: emotion_1.cx(css.main) },
+                React.createElement("div", { className: emotion_1.cx(css.sidebar) },
+                    React.createElement("label", { style: { display: 'flex' }, className: core_1.Classes.LABEL },
+                        React.createElement("input", { style: { margin: '4px', width: 'calc(80% - 8px)' }, className: core_1.Classes.INPUT, type: 'text', placeholder: 'Filter...' }),
+                        React.createElement(core_1.Button, { style: { width: '20%' }, icon: 'search', className: core_1.Classes.MINIMAL })),
+                    React.createElement(core_1.Tree, { contents: componentTree, onNodeClick: this.onNodeClick, onNodeCollapse: this.onNodeCollapse, onNodeExpand: this.onNodeExpand })),
+                React.createElement("div", { className: emotion_1.cx(css.componentView) },
+                    React.createElement("div", { className: emotion_1.cx(this.props.style.template.toLowerCase(), utils_1.classWithDarkTheme(css, 'componentResult', this.props.style.editorDarkMode)) }, currentNode && currentNode.id === 12 &&
+                        React.createElement(components_1.ChampsPokemon, Object.assign({ showGender: currentNode.options.props.showGender, showNickname: currentNode.options.props.showNickname, showLevel: currentNode.options.props.showLevel }, modelPokemon))),
+                    React.createElement("div", { className: emotion_1.cx(css.componentOptions) },
+                        React.createElement("strong", null,
+                            this.getCurrentNode() == null ? '' : this.getCurrentNode().label,
+                            " Options"),
+                        React.createElement(core_1.Menu, null,
+                            React.createElement(React.Fragment, null,
+                                React.createElement("div", { className: emotion_1.cx(css.componentOption) },
+                                    React.createElement("label", { className: core_1.Classes.LABEL }, "Background Color"),
+                                    React.createElement(Shared_1.ColorEdit, { value: '#222222', name: 'BoxedPokemon', onChange: null })),
+                                React.createElement("div", { className: emotion_1.cx(css.componentOption) },
+                                    React.createElement("label", { className: core_1.Classes.LABEL }, "Text Color"),
+                                    React.createElement(Shared_1.ColorEdit, { value: '#EEEEEE', name: 'BoxedPokemon', onChange: null })),
+                                React.createElement(exports.NumericValue, { name: 'Border Radius', value: '4px', onInput: null }),
+                                React.createElement(exports.NumericValue, { name: 'Padding', value: '0px', onInput: null }),
+                                React.createElement(exports.NumericValue, { name: 'Margin', value: '0px', onInput: null }))))))));
+    }
+}
+exports.ThemeEditorBase = ThemeEditorBase;
+exports.ThemeEditor = react_redux_1.connect((state) => ({
+    style: state.style
+}), null)(ThemeEditorBase);
+
+
+/***/ }),
+
+/***/ "./src/components/ThemeEditor/index.ts":
+/*!*********************************************!*\
+  !*** ./src/components/ThemeEditor/index.ts ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./ThemeEditor */ "./src/components/ThemeEditor/ThemeEditor.tsx"));
+
+
+/***/ }),
+
+/***/ "./src/components/ThemeEditor/styles.ts":
+/*!**********************************************!*\
+  !*** ./src/components/ThemeEditor/styles.ts ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const emotion_1 = __webpack_require__(/*! emotion */ "./node_modules/emotion/dist/index.es.js");
+exports.main = emotion_1.css `
+    display: flex;
+`;
+exports.header = emotion_1.css `
+    background: #fff;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: .5rem;
+`;
+exports.header_dark = emotion_1.css `
+    background: #394b59;
+    border-top: 1px solid #111;
+    border-bottom: 1px solid #111;
+    padding: .5rem;
+`;
+exports.sidebar = emotion_1.css `
+    width: 30%;
+`;
+exports.componentList = emotion_1.css `
+    background: white;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+`;
+exports.listItem = emotion_1.css `
+    border-bottom: 1px solid #ccc;
+    list-style-type: none;
+    padding: .25rem;
+`;
+exports.componentView = emotion_1.css `
+    display: flex;
+    width: 100%;
+`;
+exports.componentResult = emotion_1.css `
+    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+    padding: 1rem;
+    & *:hover {
+        outline: 1px dotted red;
+    }
+`;
+exports.componentResult_dark = emotion_1.css `
+    background-image: linear-gradient(to top, rgb(32, 40, 45) 0%, rgb(37, 50, 57) 100%);
+    min-width: 33%;
+    padding: 1rem;
+`;
+exports.componentOptions = emotion_1.css `
+    padding: .5rem;
+`;
+exports.componentOption = emotion_1.css `
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem;
+    .pt-label {
+        margin: 0 !important;
+        width: 60%;
+    }
+`;
+
+
+/***/ }),
+
 /***/ "./src/components/TopBar/TopBar.tsx":
 /*!******************************************!*\
   !*** ./src/components/TopBar/TopBar.tsx ***!
@@ -51673,8 +54439,11 @@ const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/rea
 const ReactMarkdown = __webpack_require__(/*! react-markdown */ "./node_modules/react-markdown/lib/react-markdown.js");
 const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
 const actions_1 = __webpack_require__(/*! actions */ "./src/actions/index.ts");
+const styles = __webpack_require__(/*! components/Result/styles */ "./src/components/Result/styles.ts");
 const package_1 = __webpack_require__(/*! package */ "./src/package/index.ts");
+const emotion_1 = __webpack_require__(/*! emotion */ "./node_modules/emotion/dist/index.es.js");
 const croagunk = __webpack_require__(/*! assets/img/croagunk.gif */ "./src/assets/img/croagunk.gif");
+const darkModeStyle = (mode) => mode ? { color: '#fff' } : {};
 class TopBarBase extends React.Component {
     constructor() {
         super(...arguments);
@@ -51688,23 +54457,23 @@ class TopBarBase extends React.Component {
         this.toggleDialog = _ => this.setState({ isOpen: !this.state.isOpen });
     }
     render() {
-        return (React.createElement("div", { className: `pt-header top-bar ${this.props.style.editorDarkMode ? 'pt-dark' : 'pt-light'}` },
-            React.createElement(core_1.Button, { onClick: _ => this.props.changeEditorSize(!this.props.editor.minimized), className: 'pt-minimal', icon: this.props.editor.minimized ? 'minimize' : 'maximize' },
+        return (React.createElement("div", { className: emotion_1.cx(utils_1.classWithDarkTheme(styles, 'topBar', this.props.style.editorDarkMode)) },
+            React.createElement(core_1.Button, { style: darkModeStyle(this.props.style.editorDarkMode), onClick: _ => this.props.changeEditorSize(!this.props.editor.minimized), className: 'pt-minimal', icon: this.props.editor.minimized ? 'minimize' : 'maximize' },
                 this.props.editor.minimized ? 'Maximize' : 'Minimize',
                 " Editor"),
-            React.createElement(core_1.Button, { onClick: this.props.onClickDownload, className: 'pt-minimal', icon: 'download' }, "Download Image"),
-            React.createElement(core_1.Button, { onClick: _ => { this.props.editStyle({ editorDarkMode: !this.props.style.editorDarkMode }); }, className: 'pt-minimal', icon: this.props.style.editorDarkMode ? 'flash' : 'moon' },
+            React.createElement(core_1.Button, { style: darkModeStyle(this.props.style.editorDarkMode), onClick: this.props.onClickDownload, className: 'pt-minimal', icon: 'download' }, "Download Image"),
+            React.createElement(core_1.Button, { style: darkModeStyle(this.props.style.editorDarkMode), onClick: _ => { this.props.editStyle({ editorDarkMode: !this.props.style.editorDarkMode }); }, className: 'pt-minimal', icon: this.props.style.editorDarkMode ? 'flash' : 'moon' },
                 this.props.style.editorDarkMode ? 'Light' : 'Dark',
                 " Mode"),
-            React.createElement(core_1.Button, { onClick: this.toggleDialog, className: 'pt-minimal', icon: 'star' }, "0.0.9-beta"),
+            React.createElement(core_1.Button, { style: darkModeStyle(this.props.style.editorDarkMode), onClick: this.toggleDialog, className: 'pt-minimal', icon: 'star' }, package_1.pkg.version),
             this.props.children,
             React.createElement(core_1.Dialog, { isOpen: this.state.isOpen, onClose: this.closeDialog, icon: 'document', title: `Release Notes ${package_1.pkg.version}`, className: `release-dialog ${this.props.style.editorDarkMode ? 'pt-dark' : 'pt-light'}` },
                 React.createElement("div", { className: 'pt-dialog-body' },
                     React.createElement("div", { className: 'release-notes-wrapper' },
-                        React.createElement("h3", { className: 'heading' },
+                        React.createElement("h3", { className: emotion_1.cx(utils_1.classWithDarkTheme(styles, 'heading', this.props.style.editorDarkMode)) },
                             package_1.pkg.version,
                             " ",
-                            React.createElement("img", { alt: 'Croagunk', src: croagunk })),
+                            React.createElement("img", { style: { display: 'inline' }, alt: 'Croagunk', src: croagunk })),
                         React.createElement(ReactMarkdown, { className: 'release-notes', source: utils_1.generateReleaseNotes(package_1.pkg.version) }))))));
     }
 }
@@ -51927,6 +54696,66 @@ exports.TrainerInfoEditor = TrainerInfoEditor;
 
 /***/ }),
 
+/***/ "./src/components/TrainerEditor/index.ts":
+/*!***********************************************!*\
+  !*** ./src/components/TrainerEditor/index.ts ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./TrainerEditor */ "./src/components/TrainerEditor/TrainerEditor.tsx"));
+__export(__webpack_require__(/*! ./BadgeInput */ "./src/components/TrainerEditor/BadgeInput.tsx"));
+__export(__webpack_require__(/*! ./TrainerInfoEditField */ "./src/components/TrainerEditor/TrainerInfoEditField.tsx"));
+__export(__webpack_require__(/*! ./TrainerInfoEditor */ "./src/components/TrainerEditor/TrainerInfoEditor.tsx"));
+
+
+/***/ }),
+
+/***/ "./src/components/index.ts":
+/*!*********************************!*\
+  !*** ./src/components/index.ts ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./AddPokemonButton */ "./src/components/AddPokemonButton/index.ts"));
+__export(__webpack_require__(/*! ./Admin */ "./src/components/Admin/index.ts"));
+__export(__webpack_require__(/*! ./App */ "./src/components/App/index.ts"));
+__export(__webpack_require__(/*! ./BaseEditor */ "./src/components/BaseEditor/index.ts"));
+__export(__webpack_require__(/*! ./BoxedPokemon */ "./src/components/BoxedPokemon/index.ts"));
+__export(__webpack_require__(/*! ./ChampsPokemon */ "./src/components/ChampsPokemon/index.ts"));
+__export(__webpack_require__(/*! ./DataEditor */ "./src/components/DataEditor/index.ts"));
+__export(__webpack_require__(/*! ./DeadPokemon */ "./src/components/DeadPokemon/index.ts"));
+__export(__webpack_require__(/*! ./DeletePokemonButton */ "./src/components/DeletePokemonButton/index.ts"));
+__export(__webpack_require__(/*! ./Editor */ "./src/components/Editor/index.ts"));
+__export(__webpack_require__(/*! ./GameEditor */ "./src/components/GameEditor/index.ts"));
+__export(__webpack_require__(/*! ./Hotkeys */ "./src/components/Hotkeys/index.ts"));
+__export(__webpack_require__(/*! ./HotkeysEditor */ "./src/components/HotkeysEditor/index.ts"));
+__export(__webpack_require__(/*! ./PokemonEditor */ "./src/components/PokemonEditor/index.ts"));
+__export(__webpack_require__(/*! ./PokemonIcon */ "./src/components/PokemonIcon/index.ts"));
+__export(__webpack_require__(/*! ./Result */ "./src/components/Result/index.ts"));
+__export(__webpack_require__(/*! ./RulesEditor */ "./src/components/RulesEditor/index.ts"));
+__export(__webpack_require__(/*! ./Shared */ "./src/components/Shared/index.ts"));
+__export(__webpack_require__(/*! ./StyleEditor */ "./src/components/StyleEditor/index.ts"));
+__export(__webpack_require__(/*! ./TeamPokemon */ "./src/components/TeamPokemon/index.ts"));
+__export(__webpack_require__(/*! ./ThemeEditor */ "./src/components/ThemeEditor/index.ts"));
+__export(__webpack_require__(/*! ./TrainerEditor */ "./src/components/TrainerEditor/index.ts"));
+
+
+/***/ }),
+
 /***/ "./src/img/alola-champion-ribbon.png":
 /*!*******************************************!*\
   !*** ./src/img/alola-champion-ribbon.png ***!
@@ -51956,6 +54785,7 @@ const react_router_1 = __webpack_require__(/*! react-router */ "./node_modules/r
 const react_router_redux_1 = __webpack_require__(/*! react-router-redux */ "./node_modules/react-router-redux/es/index.js");
 const react_1 = __webpack_require__(/*! redux-persist/es/integration/react */ "./node_modules/redux-persist/es/integration/react.js");
 const Rollbar = __webpack_require__(/*! rollbar */ "./node_modules/rollbar/dist/rollbar.umd.min.js");
+const emotion_1 = __webpack_require__(/*! emotion */ "./node_modules/emotion/dist/index.es.js");
 const App_1 = __webpack_require__(/*! ./components/App */ "./src/components/App/index.ts");
 const store_1 = __webpack_require__(/*! ./store */ "./src/store/index.ts");
 __webpack_require__(/*! assets/pokemon-font.css */ "./src/assets/pokemon-font.css");
@@ -51963,6 +54793,23 @@ __webpack_require__(/*! components/Shared/styles/base.styl */ "./src/components/
 __webpack_require__(/*! @blueprintjs/icons/lib/css/blueprint-icons.css */ "./node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css");
 __webpack_require__(/*! @blueprintjs/core/lib/css/blueprint.css */ "./node_modules/@blueprintjs/core/lib/css/blueprint.css");
 __webpack_require__(/*! @blueprintjs/table/lib/css/table.css */ "./node_modules/@blueprintjs/table/lib/css/table.css");
+emotion_1.injectGlobal `
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Helvetica';
+    }
+
+    .app {
+        display: flex;
+        height: 100%;
+        width: 100%;
+    }
+`;
 const rollbarConfig = new Rollbar({
     accessToken: '357eab6297524e6facb1c48b0403d869',
     captureUncaught: true,
@@ -51989,10 +54836,18 @@ react_dom_1.render(React.createElement(react_redux_1.Provider, { store: store_1.
             React.createElement(react_router_1.Route, { exact: true, path: '/', component: App_1.App })))), mountNode);
 store_1.store.subscribe(() => {
     if (store_1.store.getState().style.editorDarkMode) {
-        document.body.style.background = '#111';
+        emotion_1.injectGlobal `
+            body {
+                background: #111;
+            }
+        `;
     }
     else {
-        document.body.style.background = '#fff';
+        emotion_1.injectGlobal `
+            body {
+                background: #fff;
+            }
+        `;
     }
 });
 
@@ -52647,6 +55502,21 @@ var Types;
 
 /***/ }),
 
+/***/ "./src/utils/accentedE.ts":
+/*!********************************!*\
+  !*** ./src/utils/accentedE.ts ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.accentedE = '\xE9';
+
+
+/***/ }),
+
 /***/ "./src/utils/addForme.ts":
 /*!*******************************!*\
   !*** ./src/utils/addForme.ts ***!
@@ -52690,6 +55560,23 @@ exports.choose = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 /***/ }),
 
+/***/ "./src/utils/classWithDarkTheme.ts":
+/*!*****************************************!*\
+  !*** ./src/utils/classWithDarkTheme.ts ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.classWithDarkTheme = (css, name, condition = true) => {
+    return { [css[name]]: true, [css[`${name}_dark`]]: condition };
+};
+
+
+/***/ }),
+
 /***/ "./src/utils/features.ts":
 /*!*******************************!*\
   !*** ./src/utils/features.ts ***!
@@ -52701,7 +55588,10 @@ exports.choose = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FEATURES = Object.freeze({
-    fileUploads: true,
+    fileUploads: false,
+    themeEditing: false,
+    multipleNuzlockes: false,
+    copyingPokemon: true,
 });
 
 
@@ -52721,7 +55611,7 @@ exports.gameOfOriginToColor = (game) => {
     const gameToColor = {
         Red: 'rgb(243, 86, 58)',
         Blue: '#3675f8',
-        Yellow: '#efe414',
+        Yellow: '#fdd33c',
         Green: '#03c242',
         Gold: '#e0c503',
         Silver: '#d8d8d8',
@@ -53016,7 +55906,25 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Sugimori images can't be used with the download option (depending on browser)
 - Selecting a checkpoint sometimes undoes all others
 `,
-    '0.1.0-beta': `
+    '0.0.10-beta': `
+# Changelog
+
+## Features
+- **Copy Pokémon Button**: Copies the current Pokémon
+- **N hotkey**: Creates a New Pokémon
+
+## Fixes
+- Earlier gen move names are now valid (Sand-Attack, Hi Jump Kick, etc)
+- Likewise, move types are now correct for their Generation (Gust is Normal in Gen 1, etc)
+- Fightinium Z now works
+- Farfetch'd is valid again, alongside any Pokémon with weird names
+- Scale sprites option now works properly
+- Margin should no longer affect result downloads
+- \`Game Of Origin\` value now defaults to current game
+
+## Known Issues
+- Downloading images will fail if you have cross-origin (i.e. Sugimori or custom) images
+- It has also failed on some Windows + Firefox installations
 `,
 };
 
@@ -53492,7 +56400,7 @@ exports.getGameGeneration = (game) => {
     const Gen4 = ['Diamond', 'Pearl', 'Platinum', 'HeartGold', 'SoulSilver'];
     const Gen5 = ['Black', 'Black 2', 'White', 'White 2'];
     const Gen6 = ['X', 'Y', 'OmegaRuby', 'AlphaSapphire'];
-    const Gen7 = ['Sun', 'Moon', 'Ultra Moon', 'Ultra Sun'];
+    const Gen7 = ['Sun', 'Moon', 'Ultra Moon', 'Ultra Sun', 'Let\'s Go Eevee', 'Let\'s Go Pikachu'];
     if (Gen1.includes(game))
         return Generation.Gen1;
     if (Gen2.includes(game))
@@ -53577,16 +56485,18 @@ exports.getGameRegion = (game) => {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
-exports.getMoveType = move => {
+const Types_1 = __webpack_require__(/*! ./Types */ "./src/utils/Types.ts");
+exports.getMoveType = (move) => {
     for (const type in utils_1.movesByType) {
         if (utils_1.movesByType.hasOwnProperty(type)) {
-            if (utils_1.movesByType[type].some((value, index) => {
+            if (utils_1.movesByType[type].some((value) => {
                 return move === value;
-            }))
-                return type;
+            })) {
+                return Types_1.Types[type];
+            }
         }
     }
-    return 'Normal';
+    return Types_1.Types.Normal;
 };
 
 
@@ -53702,6 +56612,43 @@ exports.getSpriteIcon = (species, forme) => {
 
 /***/ }),
 
+/***/ "./src/utils/handleMovesGenerationExceptions.ts":
+/*!******************************************************!*\
+  !*** ./src/utils/handleMovesGenerationExceptions.ts ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = __webpack_require__(/*! utils */ "./src/utils/index.ts");
+const Types_1 = __webpack_require__(/*! ./Types */ "./src/utils/Types.ts");
+exports.handleMovesGenerationsExceptions = ({ move, generation, originalType }) => {
+    if (generation === utils_1.Generation.Gen1) {
+        if (move === 'Bite')
+            return Types_1.Types.Normal;
+        if (move === 'Sand Attack')
+            return Types_1.Types.Normal;
+        if (move === 'Karate Chop')
+            return Types_1.Types.Normal;
+        if (move === 'Gust')
+            return Types_1.Types.Normal;
+    }
+    if (generation === (utils_1.Generation.Gen1 || utils_1.Generation.Gen2 || utils_1.Generation.Gen3 || utils_1.Generation.Gen4 || utils_1.Generation.Gen5)) {
+        if (move === 'Charm')
+            return Types_1.Types.Normal;
+        if (move === 'Moonlight')
+            return Types_1.Types.Normal;
+        if (move === 'Sweet Kiss')
+            return Types_1.Types.Normal;
+    }
+    return originalType;
+};
+
+
+/***/ }),
+
 /***/ "./src/utils/hotkeyList.ts":
 /*!*********************************!*\
   !*** ./src/utils/hotkeyList.ts ***!
@@ -53712,21 +56659,25 @@ exports.getSpriteIcon = (species, forme) => {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const accentedE = '\xE9';
 exports.hotkeyList = [
     {
         key: 'j',
-        comment: `Previous Pok${accentedE}mon`,
+        comment: `Previous Pok\xE9mon`,
         onKeyUp: 'previousPokemon',
     },
     {
         key: 'k',
-        comment: `Next Pok${accentedE}mon`,
+        comment: `Next Pok\xE9mon`,
         onKeyUp: 'nextPokemon',
     },
     {
+        key: 'n',
+        comment: `Add new Pok\xE9mon`,
+        onKeyUp: 'addPokemon',
+    },
+    {
         key: 'backspace',
-        comment: `Delete Pok${accentedE}mon`,
+        comment: `Delete Pok\xE9mon`,
         onKeyUp: 'deletePokemon',
     }
 ];
@@ -53750,6 +56701,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __export(__webpack_require__(/*! ./choose */ "./src/utils/choose.ts"));
 __export(__webpack_require__(/*! ./generateReleaseNotes */ "./src/utils/generateReleaseNotes.ts"));
 __export(__webpack_require__(/*! ./getSpriteIcon */ "./src/utils/getSpriteIcon.ts"));
+__export(__webpack_require__(/*! ./classWithDarkTheme */ "./src/utils/classWithDarkTheme.ts"));
 __export(__webpack_require__(/*! ./listOfThemes */ "./src/utils/listOfThemes.ts"));
 __export(__webpack_require__(/*! ./matchSpeciesToTypes */ "./src/utils/matchSpeciesToTypes.ts"));
 __export(__webpack_require__(/*! ./speciesToNumber */ "./src/utils/speciesToNumber.ts"));
@@ -53781,6 +56733,8 @@ __export(__webpack_require__(/*! ./listOfAbilities */ "./src/utils/listOfAbiliti
 __export(__webpack_require__(/*! ./Types */ "./src/utils/Types.ts"));
 __export(__webpack_require__(/*! ./features */ "./src/utils/features.ts"));
 __export(__webpack_require__(/*! ./getGameGeneration */ "./src/utils/getGameGeneration.ts"));
+__export(__webpack_require__(/*! ./accentedE */ "./src/utils/accentedE.ts"));
+__export(__webpack_require__(/*! ./handleMovesGenerationExceptions */ "./src/utils/handleMovesGenerationExceptions.ts"));
 
 
 /***/ }),
@@ -54087,6 +57041,7 @@ exports.listOfAbilities = [
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.listOfGames = [
+    'None',
     'Red',
     'Blue',
     'Green',
@@ -56413,6 +59368,7 @@ exports.movesByType = {
         'Dragon Hammer',
         'Dragon Dance',
         'Dual Chop',
+        'DragonBreath',
         'Dragon Breath',
         'Draco Meteor',
         'Devastating Drake',
@@ -56442,9 +59398,11 @@ exports.movesByType = {
         'Thunder Wave',
         'Shock Wave',
         'Thunder Shock',
+        'Thunder Shock',
         'Ion Deluge',
         'Stoked Sparksurfer',
         'Parabolic Charge',
+        'ThunderPunch',
         'Thunder Punch',
         'Bolt Strike',
         'Gigavolt Havoc',
@@ -56489,8 +59447,10 @@ exports.movesByType = {
         'Karate Chop',
         'Sacred Sword',
         'Bulk Up',
+        'Hi Jump Kick',
         'High Jump Kick',
         'Rolling Kick',
+        'AncientPower',
         'Rock Smash',
         'Reversal',
         'Arm Thrust',
@@ -56524,6 +59484,7 @@ exports.movesByType = {
         'Focus Blast',
         'Triple Kick',
         'Focus Punch',
+        'DynamicPunch',
         'Dynamic Punch',
         'Force Palm',
     ],
@@ -56565,6 +59526,7 @@ exports.movesByType = {
         'Mind Blown',
     ],
     Flying: [
+        'FeatherDance',
         'Feather Dance',
         'Air Slash',
         'Roost',
@@ -56627,6 +59589,7 @@ exports.movesByType = {
         'Spore',
         'Spiky Shield',
         'Solar Blade',
+        'SolarBeam',
         'Solar Beam',
         'Cotton Spore',
         'Aromatherapy',
@@ -56650,6 +59613,7 @@ exports.movesByType = {
         'Absorb',
         'Magical Leaf',
         'Grassy Terrain',
+        'Grasswhistle',
         'Grass Whistle',
         'Wood Hammer',
         'Grass Pledge',
@@ -56665,6 +59629,7 @@ exports.movesByType = {
         'Trop Kick',
     ],
     Ground: [
+        'Sand-Attack',
         'Sand Attack',
         'Mud-Slap',
         'Mud Sport',
@@ -56805,6 +59770,7 @@ exports.movesByType = {
         'Rock Climb',
         'Uproar',
         'Take Down',
+        'ExtremeSpeed',
         'Extreme Speed',
         'Disable',
         'Extreme Evoboost',
@@ -56829,6 +59795,7 @@ exports.movesByType = {
         'Heal Bell',
         'Mega Kick',
         'Comet Punch',
+        'SelfDestruct',
         'Self-Destruct',
         'Confide',
         'Egg Bomb',
@@ -56839,6 +59806,7 @@ exports.movesByType = {
         'Sharpen',
         'Glare',
         'Shell Smash',
+        'ViceGrip',
         'Vice Grip',
         'Crush Grip',
         'Barrage',
@@ -56862,15 +59830,19 @@ exports.movesByType = {
         'Milk Drink',
         'Mimic',
         'Mind Reader',
+        'SmellingSalt',
         'Smelling Salts',
         'Struggle',
+        'SmokeScreen',
         'Smokescreen',
         'Minimize',
         'Snore',
         'Thrash',
+        'SoftBoiled',
         'Soft-Boiled',
         'Head Charge',
         'Trump Card',
+        'SonicBoom',
         'Sonic Boom',
         'Covet',
         'Hyper Beam',
@@ -56881,6 +59853,7 @@ exports.movesByType = {
         'Spike Cannon',
         'Captivate',
         'Fury Swipes',
+        'DoubleSlap',
         'Double Slap',
         'Spit Up',
         'Double Hit',
@@ -56916,6 +59889,7 @@ exports.movesByType = {
         'Cross Poison',
         'Smog',
         'Poison Sting',
+        'PoisonPowder',
         'Poison Powder',
         'Poison Jab',
         'Poison Gas',
@@ -57074,6 +60048,7 @@ exports.movesByType = {
         'Dive',
         'Crabhammer',
         'Bubble Beam',
+        'BubbleBeam',
         'Razor Shell',
         'Octazooka',
     ],

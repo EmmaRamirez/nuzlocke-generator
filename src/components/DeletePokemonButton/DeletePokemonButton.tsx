@@ -1,17 +1,22 @@
 import * as React from 'react';
-import { Alert, Intent } from '@blueprintjs/core';
+import { Alert, Intent, Icon, Popover, Position, PopoverInteractionKind } from '@blueprintjs/core';
+import styled from 'react-emotion';
 
 import { deletePokemon, modifyDeletionConfirmation } from 'actions';
 import { connect } from 'react-redux';
+import { accentedE } from 'utils';
 
-// const recomposeDelete = withState('dialogOn', 'setDialog', false);
-
-interface DeletePokemonButtonProps {
+export interface DeletePokemonButtonProps {
     id: string;
     confirmation?: boolean;
     modifyDeletionConfirmation?: modifyDeletionConfirmation;
     deletePokemon?: deletePokemon;
 }
+
+export const DeletePokemonButtonContainer = styled('div')`
+    color: red;
+    cursor: pointer;
+`;
 
 export class DeletePokemonButtonBase extends React.Component<
     DeletePokemonButtonProps,
@@ -33,7 +38,7 @@ export class DeletePokemonButtonBase extends React.Component<
 
     public render() {
         return (
-            <div className='delete-pokemon-button'>
+            <DeletePokemonButtonContainer>
                 <Alert
                     icon='trash'
                     isOpen={this.state.dialogOn && this.props.confirmation as boolean}
@@ -53,19 +58,21 @@ export class DeletePokemonButtonBase extends React.Component<
                         Don't Ask Me For Confirmation Again
                     </label>
                 </Alert>
-                <span
-                    role='button'
-                    onClick={e => {
-                        if (this.props.confirmation) {
-                            this.toggleDialog();
-                        } else {
-                            this.props.deletePokemon && this.props.deletePokemon(this.props.id);
-                        }
-                    }}
-                    className='pt-icon pt-icon-trash'
-                    title='Delete Pokemon'
-                />
-            </div>
+                <Popover interactionKind={PopoverInteractionKind.HOVER} position={Position.TOP} content={`Delete Pok${accentedE}mon`}>
+                    <Icon
+                        role='button'
+                        onClick={e => {
+                            if (this.props.confirmation) {
+                                this.toggleDialog();
+                            } else {
+                                this.props.deletePokemon && this.props.deletePokemon(this.props.id);
+                            }
+                        }}
+                        icon='trash'
+                        title='Delete Pokemon'
+                    />
+                </Popover>
+            </DeletePokemonButtonContainer>
         );
     }
 }

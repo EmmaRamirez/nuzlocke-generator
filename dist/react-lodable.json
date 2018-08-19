@@ -793,7 +793,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./navbar/navbarDivider": [
+  "./navbarDivider": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarDivider.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarDivider.js",
@@ -2081,6 +2081,34 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "@emotion/is-prop-valid": [
+    {
+      "id": "./node_modules/@emotion/is-prop-valid/dist/is-prop-valid.esm.js",
+      "name": "./node_modules/@emotion/is-prop-valid/dist/is-prop-valid.esm.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/@emotion/is-prop-valid/dist/is-prop-valid.esm.js",
+      "name": "./node_modules/@emotion/is-prop-valid/dist/is-prop-valid.esm.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "@emotion/memoize": [
+    {
+      "id": "./node_modules/@emotion/memoize/dist/memoize.esm.js",
+      "name": "./node_modules/@emotion/memoize/dist/memoize.esm.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/@emotion/memoize/dist/memoize.esm.js",
+      "name": "./node_modules/@emotion/memoize/dist/memoize.esm.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "add-px-to-style": [
     {
       "id": "./node_modules/add-px-to-style/index.js",
@@ -2179,6 +2207,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "create-emotion-styled": [
+    {
+      "id": "./node_modules/create-emotion-styled/dist/index.esm.js",
+      "name": "./node_modules/create-emotion-styled/dist/index.esm.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/create-emotion-styled/dist/index.esm.js",
+      "name": "./node_modules/create-emotion-styled/dist/index.esm.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "!!../../../../css-loader/index.js!../../../../resolve-url-loader/index.js!./blueprint.css": [
     {
       "id": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/@blueprintjs/core/lib/css/blueprint.css",
@@ -2259,6 +2301,20 @@
     {
       "id": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Result/Result.styl",
       "name": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Result/Result.styl",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "!!../../../node_modules/css-loader/index.js!../../../node_modules/resolve-url-loader/index.js!../../../node_modules/stylus-loader/index.js!./themes.styl": [
+    {
+      "id": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Result/themes.styl",
+      "name": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Result/themes.styl",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Result/themes.styl",
+      "name": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Result/themes.styl",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -2413,6 +2469,34 @@
     {
       "id": "./node_modules/dom4/build/dom4.max.js",
       "name": "./node_modules/dom4/build/dom4.max.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "emotion-utils": [
+    {
+      "id": "./node_modules/emotion-utils/dist/index.es.js",
+      "name": "./node_modules/emotion-utils/dist/index.es.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/emotion-utils/dist/index.es.js",
+      "name": "./node_modules/emotion-utils/dist/index.es.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "emotion": [
+    {
+      "id": "./node_modules/emotion/dist/index.es.js",
+      "name": "./node_modules/emotion/dist/index.es.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/emotion/dist/index.es.js",
+      "name": "./node_modules/emotion/dist/index.es.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -3271,8 +3355,44 @@
       "publicPath": "bundle.js"
     },
     {
+      "id": "./src/components/PokemonEditor/styles.ts",
+      "name": "./src/components/PokemonEditor/styles.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/StyleEditor/styles.ts",
+      "name": "./src/components/StyleEditor/styles.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/ThemeEditor/styles.ts",
+      "name": "./src/components/ThemeEditor/styles.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
       "id": "./node_modules/react-custom-scrollbars/lib/Scrollbars/styles.js",
       "name": "./node_modules/react-custom-scrollbars/lib/Scrollbars/styles.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./src/components/PokemonEditor/styles.ts",
+      "name": "./src/components/PokemonEditor/styles.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./src/components/StyleEditor/styles.ts",
+      "name": "./src/components/StyleEditor/styles.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./src/components/ThemeEditor/styles.ts",
+      "name": "./src/components/ThemeEditor/styles.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -3385,6 +3505,20 @@
     {
       "id": "./node_modules/react-dom/index.js",
       "name": "./node_modules/react-dom/index.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "react-emotion": [
+    {
+      "id": "./node_modules/react-emotion/dist/index.esm.js",
+      "name": "./node_modules/react-emotion/dist/index.esm.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-emotion/dist/index.esm.js",
+      "name": "./node_modules/react-emotion/dist/index.esm.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -4453,7 +4587,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./proc": [
+  "./internal/proc": [
     {
       "id": "./node_modules/redux-saga/es/internal/proc.js",
       "name": "./node_modules/redux-saga/es/internal/proc.js",
@@ -5447,6 +5581,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "stylis-rule-sheet": [
+    {
+      "id": "./node_modules/stylis-rule-sheet/index.js",
+      "name": "./node_modules/stylis-rule-sheet/index.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/stylis-rule-sheet/index.js",
+      "name": "./node_modules/stylis-rule-sheet/index.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "symbol-observable": [
     {
       "id": "./node_modules/symbol-observable/index.js",
@@ -6397,6 +6545,32 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./Admin": [
+    {
+      "id": "./src/components/Admin/Admin.tsx",
+      "name": "./src/components/Admin/Admin.tsx",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/Admin/index.ts",
+      "name": "./src/components/Admin/index.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/Admin/Admin.tsx",
+      "name": "./src/components/Admin/Admin.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./src/components/Admin/index.ts",
+      "name": "./src/components/Admin/index.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./App": [
     {
       "id": "./src/components/App/App.tsx",
@@ -6873,6 +7047,34 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "components/Result/styles": [
+    {
+      "id": "./src/components/Result/styles.ts",
+      "name": "./src/components/Result/styles.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/Result/styles.ts",
+      "name": "./src/components/Result/styles.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./themes.styl": [
+    {
+      "id": "./src/components/Result/themes.styl",
+      "name": "./src/components/Result/themes.styl",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/Result/themes.styl",
+      "name": "./src/components/Result/themes.styl",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./RulesEditor.styl": [
     {
       "id": "./src/components/RulesEditor/RulesEditor.styl",
@@ -6943,6 +7145,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./ColorEdit": [
+    {
+      "id": "./src/components/Shared/ColorEdit.tsx",
+      "name": "./src/components/Shared/ColorEdit.tsx",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/Shared/ColorEdit.tsx",
+      "name": "./src/components/Shared/ColorEdit.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./ErrorBoundary": [
     {
       "id": "./src/components/Shared/ErrorBoundary.tsx",
@@ -6981,6 +7197,20 @@
     {
       "id": "./src/components/Shared/PokemonByFilter.tsx",
       "name": "./src/components/Shared/PokemonByFilter.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./ThemeSelect": [
+    {
+      "id": "./src/components/Shared/ThemeSelect.tsx",
+      "name": "./src/components/Shared/ThemeSelect.tsx",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/Shared/ThemeSelect.tsx",
+      "name": "./src/components/Shared/ThemeSelect.tsx",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -7065,6 +7295,48 @@
     {
       "id": "./src/components/TeamPokemon/index.ts",
       "name": "./src/components/TeamPokemon/index.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./ComponentOptions": [
+    {
+      "id": "./src/components/ThemeEditor/ComponentOptions.ts",
+      "name": "./src/components/ThemeEditor/ComponentOptions.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/ThemeEditor/ComponentOptions.ts",
+      "name": "./src/components/ThemeEditor/ComponentOptions.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./ThemeEditor": [
+    {
+      "id": "./src/components/ThemeEditor/ThemeEditor.tsx",
+      "name": "./src/components/ThemeEditor/ThemeEditor.tsx",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/ThemeEditor/ThemeEditor.tsx",
+      "name": "./src/components/ThemeEditor/ThemeEditor.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "components/ThemeEditor": [
+    {
+      "id": "./src/components/ThemeEditor/index.ts",
+      "name": "./src/components/ThemeEditor/index.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/ThemeEditor/index.ts",
+      "name": "./src/components/ThemeEditor/index.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -7163,6 +7435,34 @@
     {
       "id": "./src/components/TrainerEditor/TrainerInfoEditor.tsx",
       "name": "./src/components/TrainerEditor/TrainerInfoEditor.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./TrainerEditor": [
+    {
+      "id": "./src/components/TrainerEditor/index.ts",
+      "name": "./src/components/TrainerEditor/index.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/TrainerEditor/index.ts",
+      "name": "./src/components/TrainerEditor/index.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "components": [
+    {
+      "id": "./src/components/index.ts",
+      "name": "./src/components/index.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/index.ts",
+      "name": "./src/components/index.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -7475,6 +7775,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./accentedE": [
+    {
+      "id": "./src/utils/accentedE.ts",
+      "name": "./src/utils/accentedE.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/utils/accentedE.ts",
+      "name": "./src/utils/accentedE.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./addForme": [
     {
       "id": "./src/utils/addForme.ts",
@@ -7499,6 +7813,20 @@
     {
       "id": "./src/utils/choose.ts",
       "name": "./src/utils/choose.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./classWithDarkTheme": [
+    {
+      "id": "./src/utils/classWithDarkTheme.ts",
+      "name": "./src/utils/classWithDarkTheme.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/utils/classWithDarkTheme.ts",
+      "name": "./src/utils/classWithDarkTheme.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -7681,6 +8009,20 @@
     {
       "id": "./src/utils/getSpriteIcon.ts",
       "name": "./src/utils/getSpriteIcon.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./handleMovesGenerationExceptions": [
+    {
+      "id": "./src/utils/handleMovesGenerationExceptions.ts",
+      "name": "./src/utils/handleMovesGenerationExceptions.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/utils/handleMovesGenerationExceptions.ts",
+      "name": "./src/utils/handleMovesGenerationExceptions.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
