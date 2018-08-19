@@ -175,7 +175,7 @@
       "publicPath": "2.chunk.js.map"
     }
   ],
-  "./../../webpack/buildin/global.js": [
+  "./../webpack/buildin/global.js": [
     {
       "id": "./node_modules/webpack/buildin/global.js",
       "name": "./node_modules/webpack/buildin/global.js",
@@ -2977,8 +2977,20 @@
     {
       "id": "./src/actions/index.ts",
       "name": "./src/actions/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/actions/index.ts",
+      "name": "./src/actions/index.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/actions/index.ts",
+      "name": "./src/actions/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./saveNuzlocke": [
@@ -3003,8 +3015,20 @@
     {
       "id": "./src/actions/saveNuzlocke.ts",
       "name": "./src/actions/saveNuzlocke.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/actions/saveNuzlocke.ts",
+      "name": "./src/actions/saveNuzlocke.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/actions/saveNuzlocke.ts",
+      "name": "./src/actions/saveNuzlocke.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./addPokemon": [
@@ -3029,8 +3053,20 @@
     {
       "id": "./src/actions/addPokemon.ts",
       "name": "./src/actions/addPokemon.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/actions/addPokemon.ts",
+      "name": "./src/actions/addPokemon.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/actions/addPokemon.ts",
+      "name": "./src/actions/addPokemon.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./deletePokemon": [
@@ -3055,8 +3091,20 @@
     {
       "id": "./src/actions/deletePokemon.ts",
       "name": "./src/actions/deletePokemon.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/actions/deletePokemon.ts",
+      "name": "./src/actions/deletePokemon.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/actions/deletePokemon.ts",
+      "name": "./src/actions/deletePokemon.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./editPokemon": [
@@ -3081,8 +3129,20 @@
     {
       "id": "./src/actions/editPokemon.ts",
       "name": "./src/actions/editPokemon.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/actions/editPokemon.ts",
+      "name": "./src/actions/editPokemon.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/actions/editPokemon.ts",
+      "name": "./src/actions/editPokemon.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./editBox": [
@@ -3107,8 +3167,20 @@
     {
       "id": "./src/actions/editBox.ts",
       "name": "./src/actions/editBox.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/actions/editBox.ts",
+      "name": "./src/actions/editBox.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/actions/editBox.ts",
+      "name": "./src/actions/editBox.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./selectPokemon": [
@@ -3133,8 +3205,20 @@
     {
       "id": "./src/actions/selectPokemon.ts",
       "name": "./src/actions/selectPokemon.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/actions/selectPokemon.ts",
+      "name": "./src/actions/selectPokemon.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/actions/selectPokemon.ts",
+      "name": "./src/actions/selectPokemon.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./modifyDeletionConfirmation": [
@@ -3159,8 +3243,20 @@
     {
       "id": "./src/actions/modifyDeletionConfirmation.ts",
       "name": "./src/actions/modifyDeletionConfirmation.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/actions/modifyDeletionConfirmation.ts",
+      "name": "./src/actions/modifyDeletionConfirmation.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/actions/modifyDeletionConfirmation.ts",
+      "name": "./src/actions/modifyDeletionConfirmation.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./editGame": [
@@ -3185,8 +3281,20 @@
     {
       "id": "./src/actions/editGame.ts",
       "name": "./src/actions/editGame.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/actions/editGame.ts",
+      "name": "./src/actions/editGame.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/actions/editGame.ts",
+      "name": "./src/actions/editGame.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./editTrainer": [
@@ -3211,8 +3319,20 @@
     {
       "id": "./src/actions/editTrainer.ts",
       "name": "./src/actions/editTrainer.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/actions/editTrainer.ts",
+      "name": "./src/actions/editTrainer.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/actions/editTrainer.ts",
+      "name": "./src/actions/editTrainer.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./addHistoryEntry": [
@@ -3237,8 +3357,20 @@
     {
       "id": "./src/actions/addHistoryEntry.ts",
       "name": "./src/actions/addHistoryEntry.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/actions/addHistoryEntry.ts",
+      "name": "./src/actions/addHistoryEntry.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/actions/addHistoryEntry.ts",
+      "name": "./src/actions/addHistoryEntry.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./editStyle": [
@@ -3263,8 +3395,20 @@
     {
       "id": "./src/actions/editStyle.ts",
       "name": "./src/actions/editStyle.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/actions/editStyle.ts",
+      "name": "./src/actions/editStyle.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/actions/editStyle.ts",
+      "name": "./src/actions/editStyle.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./changeEditorSize": [
@@ -3289,8 +3433,20 @@
     {
       "id": "./src/actions/changeEditorSize.ts",
       "name": "./src/actions/changeEditorSize.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/actions/changeEditorSize.ts",
+      "name": "./src/actions/changeEditorSize.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/actions/changeEditorSize.ts",
+      "name": "./src/actions/changeEditorSize.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./seeRelease": [
@@ -3315,8 +3471,20 @@
     {
       "id": "./src/actions/seeRelease.ts",
       "name": "./src/actions/seeRelease.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/actions/seeRelease.ts",
+      "name": "./src/actions/seeRelease.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/actions/seeRelease.ts",
+      "name": "./src/actions/seeRelease.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./createCustomType": [
@@ -3341,8 +3509,20 @@
     {
       "id": "./src/actions/createCustomType.ts",
       "name": "./src/actions/createCustomType.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/actions/createCustomType.ts",
+      "name": "./src/actions/createCustomType.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/actions/createCustomType.ts",
+      "name": "./src/actions/createCustomType.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./replaceState": [
@@ -3367,8 +3547,20 @@
     {
       "id": "./src/actions/replaceState.ts",
       "name": "./src/actions/replaceState.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/actions/replaceState.ts",
+      "name": "./src/actions/replaceState.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/actions/replaceState.ts",
+      "name": "./src/actions/replaceState.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./rules": [
@@ -3411,6 +3603,18 @@
     {
       "id": "./src/actions/rules.ts",
       "name": "./src/actions/rules.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/reducers/rules.ts",
+      "name": "./src/reducers/rules.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/actions/rules.ts",
+      "name": "./src/actions/rules.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
     },
@@ -3419,6 +3623,18 @@
       "name": "./src/reducers/rules.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/actions/rules.ts",
+      "name": "./src/actions/rules.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
+    },
+    {
+      "id": "./src/reducers/rules.ts",
+      "name": "./src/reducers/rules.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./nuzlockes": [
@@ -3443,8 +3659,20 @@
     {
       "id": "./src/actions/nuzlockes.ts",
       "name": "./src/actions/nuzlockes.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/actions/nuzlockes.ts",
+      "name": "./src/actions/nuzlockes.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/actions/nuzlockes.ts",
+      "name": "./src/actions/nuzlockes.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./version006": [
@@ -3469,8 +3697,20 @@
     {
       "id": "./src/actions/version006.ts",
       "name": "./src/actions/version006.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/actions/version006.ts",
+      "name": "./src/actions/version006.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/actions/version006.ts",
+      "name": "./src/actions/version006.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "utils": [
@@ -3495,8 +3735,20 @@
     {
       "id": "./src/utils/index.ts",
       "name": "./src/utils/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/index.ts",
+      "name": "./src/utils/index.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/index.ts",
+      "name": "./src/utils/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./choose": [
@@ -3521,8 +3773,20 @@
     {
       "id": "./src/utils/choose.ts",
       "name": "./src/utils/choose.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/choose.ts",
+      "name": "./src/utils/choose.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/choose.ts",
+      "name": "./src/utils/choose.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./generateReleaseNotes": [
@@ -3547,8 +3811,20 @@
     {
       "id": "./src/utils/generateReleaseNotes.ts",
       "name": "./src/utils/generateReleaseNotes.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/generateReleaseNotes.ts",
+      "name": "./src/utils/generateReleaseNotes.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/generateReleaseNotes.ts",
+      "name": "./src/utils/generateReleaseNotes.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "assets/badge-select.png": [
@@ -3573,8 +3849,20 @@
     {
       "id": "./src/assets/badge-select.png",
       "name": "./src/assets/badge-select.png",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/assets/badge-select.png",
+      "name": "./src/assets/badge-select.png",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/assets/badge-select.png",
+      "name": "./src/assets/badge-select.png",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "assets/download.png": [
@@ -3599,8 +3887,20 @@
     {
       "id": "./src/assets/download.png",
       "name": "./src/assets/download.png",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/assets/download.png",
+      "name": "./src/assets/download.png",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/assets/download.png",
+      "name": "./src/assets/download.png",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "assets/cards-theme.png": [
@@ -3625,8 +3925,20 @@
     {
       "id": "./src/assets/cards-theme.png",
       "name": "./src/assets/cards-theme.png",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/assets/cards-theme.png",
+      "name": "./src/assets/cards-theme.png",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/assets/cards-theme.png",
+      "name": "./src/assets/cards-theme.png",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "assets/sprites-mode.png": [
@@ -3651,8 +3963,20 @@
     {
       "id": "./src/assets/sprites-mode.png",
       "name": "./src/assets/sprites-mode.png",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/assets/sprites-mode.png",
+      "name": "./src/assets/sprites-mode.png",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/assets/sprites-mode.png",
+      "name": "./src/assets/sprites-mode.png",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "assets/hexagons-theme.png": [
@@ -3677,8 +4001,20 @@
     {
       "id": "./src/assets/hexagons-theme.png",
       "name": "./src/assets/hexagons-theme.png",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/assets/hexagons-theme.png",
+      "name": "./src/assets/hexagons-theme.png",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/assets/hexagons-theme.png",
+      "name": "./src/assets/hexagons-theme.png",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./getSpriteIcon": [
@@ -3703,8 +4039,20 @@
     {
       "id": "./src/utils/getSpriteIcon.ts",
       "name": "./src/utils/getSpriteIcon.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/getSpriteIcon.ts",
+      "name": "./src/utils/getSpriteIcon.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/getSpriteIcon.ts",
+      "name": "./src/utils/getSpriteIcon.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./speciesToNumber": [
@@ -3729,8 +4077,20 @@
     {
       "id": "./src/utils/speciesToNumber.ts",
       "name": "./src/utils/speciesToNumber.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/speciesToNumber.ts",
+      "name": "./src/utils/speciesToNumber.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/speciesToNumber.ts",
+      "name": "./src/utils/speciesToNumber.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./listOfPokemon": [
@@ -3755,8 +4115,20 @@
     {
       "id": "./src/utils/listOfPokemon.ts",
       "name": "./src/utils/listOfPokemon.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/listOfPokemon.ts",
+      "name": "./src/utils/listOfPokemon.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/listOfPokemon.ts",
+      "name": "./src/utils/listOfPokemon.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./getForme": [
@@ -3781,8 +4153,20 @@
     {
       "id": "./src/utils/getForme.ts",
       "name": "./src/utils/getForme.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/getForme.ts",
+      "name": "./src/utils/getForme.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/getForme.ts",
+      "name": "./src/utils/getForme.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./classWithDarkTheme": [
@@ -3807,8 +4191,20 @@
     {
       "id": "./src/utils/classWithDarkTheme.ts",
       "name": "./src/utils/classWithDarkTheme.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/classWithDarkTheme.ts",
+      "name": "./src/utils/classWithDarkTheme.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/classWithDarkTheme.ts",
+      "name": "./src/utils/classWithDarkTheme.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./listOfThemes": [
@@ -3833,8 +4229,20 @@
     {
       "id": "./src/utils/listOfThemes.ts",
       "name": "./src/utils/listOfThemes.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/listOfThemes.ts",
+      "name": "./src/utils/listOfThemes.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/listOfThemes.ts",
+      "name": "./src/utils/listOfThemes.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./matchSpeciesToTypes": [
@@ -3859,8 +4267,20 @@
     {
       "id": "./src/utils/matchSpeciesToTypes.ts",
       "name": "./src/utils/matchSpeciesToTypes.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/matchSpeciesToTypes.ts",
+      "name": "./src/utils/matchSpeciesToTypes.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/matchSpeciesToTypes.ts",
+      "name": "./src/utils/matchSpeciesToTypes.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./StoreContext": [
@@ -3885,8 +4305,20 @@
     {
       "id": "./src/utils/StoreContext.ts",
       "name": "./src/utils/StoreContext.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/StoreContext.ts",
+      "name": "./src/utils/StoreContext.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/StoreContext.ts",
+      "name": "./src/utils/StoreContext.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./addForme": [
@@ -3911,8 +4343,20 @@
     {
       "id": "./src/utils/addForme.ts",
       "name": "./src/utils/addForme.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/addForme.ts",
+      "name": "./src/utils/addForme.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/addForme.ts",
+      "name": "./src/utils/addForme.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./gameOfOriginToColor": [
@@ -3937,8 +4381,20 @@
     {
       "id": "./src/utils/gameOfOriginToColor.ts",
       "name": "./src/utils/gameOfOriginToColor.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/gameOfOriginToColor.ts",
+      "name": "./src/utils/gameOfOriginToColor.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/gameOfOriginToColor.ts",
+      "name": "./src/utils/gameOfOriginToColor.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./generateEmptyPokemon": [
@@ -3963,8 +4419,20 @@
     {
       "id": "./src/utils/generateEmptyPokemon.ts",
       "name": "./src/utils/generateEmptyPokemon.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/generateEmptyPokemon.ts",
+      "name": "./src/utils/generateEmptyPokemon.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/generateEmptyPokemon.ts",
+      "name": "./src/utils/generateEmptyPokemon.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "uuid/v4": [
@@ -4067,8 +4535,20 @@
     {
       "id": "./src/utils/Types.ts",
       "name": "./src/utils/Types.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/Types.ts",
+      "name": "./src/utils/Types.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/Types.ts",
+      "name": "./src/utils/Types.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./getAdditionalFormes": [
@@ -4093,8 +4573,20 @@
     {
       "id": "./src/utils/getAdditionalFormes.ts",
       "name": "./src/utils/getAdditionalFormes.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/getAdditionalFormes.ts",
+      "name": "./src/utils/getAdditionalFormes.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/getAdditionalFormes.ts",
+      "name": "./src/utils/getAdditionalFormes.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./getBackgroundGradient": [
@@ -4119,8 +4611,20 @@
     {
       "id": "./src/utils/getBackgroundGradient.ts",
       "name": "./src/utils/getBackgroundGradient.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/getBackgroundGradient.ts",
+      "name": "./src/utils/getBackgroundGradient.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/getBackgroundGradient.ts",
+      "name": "./src/utils/getBackgroundGradient.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./typeToColor": [
@@ -4145,8 +4649,20 @@
     {
       "id": "./src/utils/typeToColor.ts",
       "name": "./src/utils/typeToColor.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/typeToColor.ts",
+      "name": "./src/utils/typeToColor.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/typeToColor.ts",
+      "name": "./src/utils/typeToColor.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./getBadges": [
@@ -4171,8 +4687,20 @@
     {
       "id": "./src/utils/getBadges.ts",
       "name": "./src/utils/getBadges.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/getBadges.ts",
+      "name": "./src/utils/getBadges.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/getBadges.ts",
+      "name": "./src/utils/getBadges.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./getGameRegion": [
@@ -4197,8 +4725,20 @@
     {
       "id": "./src/utils/getGameRegion.ts",
       "name": "./src/utils/getGameRegion.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/getGameRegion.ts",
+      "name": "./src/utils/getGameRegion.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/getGameRegion.ts",
+      "name": "./src/utils/getGameRegion.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./getMoveType": [
@@ -4223,8 +4763,20 @@
     {
       "id": "./src/utils/getMoveType.ts",
       "name": "./src/utils/getMoveType.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/getMoveType.ts",
+      "name": "./src/utils/getMoveType.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/getMoveType.ts",
+      "name": "./src/utils/getMoveType.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./getPokemonImage": [
@@ -4249,8 +4801,20 @@
     {
       "id": "./src/utils/getPokemonImage.ts",
       "name": "./src/utils/getPokemonImage.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/getPokemonImage.ts",
+      "name": "./src/utils/getPokemonImage.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/getPokemonImage.ts",
+      "name": "./src/utils/getPokemonImage.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./hotkeyList": [
@@ -4275,8 +4839,20 @@
     {
       "id": "./src/utils/hotkeyList.ts",
       "name": "./src/utils/hotkeyList.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/hotkeyList.ts",
+      "name": "./src/utils/hotkeyList.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/hotkeyList.ts",
+      "name": "./src/utils/hotkeyList.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./levenshteinDistance": [
@@ -4301,8 +4877,20 @@
     {
       "id": "./src/utils/levenshteinDistance.ts",
       "name": "./src/utils/levenshteinDistance.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/levenshteinDistance.ts",
+      "name": "./src/utils/levenshteinDistance.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/levenshteinDistance.ts",
+      "name": "./src/utils/levenshteinDistance.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./listOfGames": [
@@ -4327,8 +4915,20 @@
     {
       "id": "./src/utils/listOfGames.ts",
       "name": "./src/utils/listOfGames.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/listOfGames.ts",
+      "name": "./src/utils/listOfGames.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/listOfGames.ts",
+      "name": "./src/utils/listOfGames.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./listOfItems": [
@@ -4353,8 +4953,20 @@
     {
       "id": "./src/utils/listOfItems.ts",
       "name": "./src/utils/listOfItems.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/listOfItems.ts",
+      "name": "./src/utils/listOfItems.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/listOfItems.ts",
+      "name": "./src/utils/listOfItems.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./listOfLocations": [
@@ -4379,8 +4991,20 @@
     {
       "id": "./src/utils/listOfLocations.ts",
       "name": "./src/utils/listOfLocations.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/listOfLocations.ts",
+      "name": "./src/utils/listOfLocations.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/listOfLocations.ts",
+      "name": "./src/utils/listOfLocations.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./movesByType": [
@@ -4405,8 +5029,20 @@
     {
       "id": "./src/utils/movesByType.ts",
       "name": "./src/utils/movesByType.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/movesByType.ts",
+      "name": "./src/utils/movesByType.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/movesByType.ts",
+      "name": "./src/utils/movesByType.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./noop": [
@@ -4417,20 +5053,8 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./node_modules/lodash/noop.js",
-      "name": "./node_modules/lodash/noop.js",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
       "id": "./src/utils/noop.ts",
       "name": "./src/utils/noop.ts",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    },
-    {
-      "id": "./node_modules/lodash/noop.js",
-      "name": "./node_modules/lodash/noop.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     },
@@ -4443,20 +5067,20 @@
     {
       "id": "./src/utils/noop.ts",
       "name": "./src/utils/noop.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/noop.ts",
+      "name": "./src/utils/noop.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
     },
     {
-      "id": "./node_modules/lodash/noop.js",
-      "name": "./node_modules/lodash/noop.js",
-      "file": "2.chunk.js",
-      "publicPath": "2.chunk.js"
-    },
-    {
-      "id": "./node_modules/lodash/noop.js",
-      "name": "./node_modules/lodash/noop.js",
-      "file": "2.chunk.js.map",
-      "publicPath": "2.chunk.js.map"
+      "id": "./src/utils/noop.ts",
+      "name": "./src/utils/noop.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./sortPokes": [
@@ -4481,8 +5105,20 @@
     {
       "id": "./src/utils/sortPokes.ts",
       "name": "./src/utils/sortPokes.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/sortPokes.ts",
+      "name": "./src/utils/sortPokes.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/sortPokes.ts",
+      "name": "./src/utils/sortPokes.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./styleDefaults": [
@@ -4507,8 +5143,20 @@
     {
       "id": "./src/utils/styleDefaults.ts",
       "name": "./src/utils/styleDefaults.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/styleDefaults.ts",
+      "name": "./src/utils/styleDefaults.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/styleDefaults.ts",
+      "name": "./src/utils/styleDefaults.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./mapTrainerImage": [
@@ -4533,8 +5181,20 @@
     {
       "id": "./src/utils/mapTrainerImage.ts",
       "name": "./src/utils/mapTrainerImage.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/mapTrainerImage.ts",
+      "name": "./src/utils/mapTrainerImage.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/mapTrainerImage.ts",
+      "name": "./src/utils/mapTrainerImage.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./listOfTrainers": [
@@ -4559,8 +5219,20 @@
     {
       "id": "./src/utils/listOfTrainers.ts",
       "name": "./src/utils/listOfTrainers.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/listOfTrainers.ts",
+      "name": "./src/utils/listOfTrainers.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/listOfTrainers.ts",
+      "name": "./src/utils/listOfTrainers.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./listOfAbilities": [
@@ -4585,8 +5257,20 @@
     {
       "id": "./src/utils/listOfAbilities.ts",
       "name": "./src/utils/listOfAbilities.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/listOfAbilities.ts",
+      "name": "./src/utils/listOfAbilities.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/listOfAbilities.ts",
+      "name": "./src/utils/listOfAbilities.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./features": [
@@ -4611,8 +5295,20 @@
     {
       "id": "./src/utils/features.ts",
       "name": "./src/utils/features.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/features.ts",
+      "name": "./src/utils/features.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/features.ts",
+      "name": "./src/utils/features.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./getGameGeneration": [
@@ -4637,8 +5333,20 @@
     {
       "id": "./src/utils/getGameGeneration.ts",
       "name": "./src/utils/getGameGeneration.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/getGameGeneration.ts",
+      "name": "./src/utils/getGameGeneration.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/getGameGeneration.ts",
+      "name": "./src/utils/getGameGeneration.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./accentedE": [
@@ -4663,8 +5371,20 @@
     {
       "id": "./src/utils/accentedE.ts",
       "name": "./src/utils/accentedE.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/accentedE.ts",
+      "name": "./src/utils/accentedE.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/accentedE.ts",
+      "name": "./src/utils/accentedE.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./handleMovesGenerationExceptions": [
@@ -4689,8 +5409,20 @@
     {
       "id": "./src/utils/handleMovesGenerationExceptions.ts",
       "name": "./src/utils/handleMovesGenerationExceptions.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/handleMovesGenerationExceptions.ts",
+      "name": "./src/utils/handleMovesGenerationExceptions.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/handleMovesGenerationExceptions.ts",
+      "name": "./src/utils/handleMovesGenerationExceptions.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./dragAndDrop": [
@@ -4715,8 +5447,20 @@
     {
       "id": "./src/utils/dragAndDrop.ts",
       "name": "./src/utils/dragAndDrop.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/utils/dragAndDrop.ts",
+      "name": "./src/utils/dragAndDrop.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/utils/dragAndDrop.ts",
+      "name": "./src/utils/dragAndDrop.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./store": [
@@ -4741,8 +5485,20 @@
     {
       "id": "./src/store/index.ts",
       "name": "./src/store/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/store/index.ts",
+      "name": "./src/store/index.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/store/index.ts",
+      "name": "./src/store/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "redux-logger": [
@@ -4953,7 +5709,7 @@
       "publicPath": "2.chunk.js.map"
     }
   ],
-  "./internal/proc": [
+  "./proc": [
     {
       "id": "./node_modules/redux-saga/es/internal/proc.js",
       "name": "./node_modules/redux-saga/es/internal/proc.js",
@@ -5599,8 +6355,20 @@
     {
       "id": "./src/reducers/index.ts",
       "name": "./src/reducers/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/reducers/index.ts",
+      "name": "./src/reducers/index.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/reducers/index.ts",
+      "name": "./src/reducers/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./nuzlocke": [
@@ -5625,8 +6393,20 @@
     {
       "id": "./src/reducers/nuzlocke.ts",
       "name": "./src/reducers/nuzlocke.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/reducers/nuzlocke.ts",
+      "name": "./src/reducers/nuzlocke.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/reducers/nuzlocke.ts",
+      "name": "./src/reducers/nuzlocke.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./pokemon": [
@@ -5651,8 +6431,20 @@
     {
       "id": "./src/reducers/pokemon.ts",
       "name": "./src/reducers/pokemon.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/reducers/pokemon.ts",
+      "name": "./src/reducers/pokemon.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/reducers/pokemon.ts",
+      "name": "./src/reducers/pokemon.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./box": [
@@ -5677,8 +6469,20 @@
     {
       "id": "./src/reducers/box.ts",
       "name": "./src/reducers/box.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/reducers/box.ts",
+      "name": "./src/reducers/box.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/reducers/box.ts",
+      "name": "./src/reducers/box.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./confirmation": [
@@ -5703,8 +6507,20 @@
     {
       "id": "./src/reducers/confirmation.ts",
       "name": "./src/reducers/confirmation.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/reducers/confirmation.ts",
+      "name": "./src/reducers/confirmation.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/reducers/confirmation.ts",
+      "name": "./src/reducers/confirmation.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./selectedId": [
@@ -5729,8 +6545,20 @@
     {
       "id": "./src/reducers/selectedId.ts",
       "name": "./src/reducers/selectedId.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/reducers/selectedId.ts",
+      "name": "./src/reducers/selectedId.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/reducers/selectedId.ts",
+      "name": "./src/reducers/selectedId.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./game": [
@@ -5755,8 +6583,20 @@
     {
       "id": "./src/reducers/game.ts",
       "name": "./src/reducers/game.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/reducers/game.ts",
+      "name": "./src/reducers/game.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/reducers/game.ts",
+      "name": "./src/reducers/game.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./trainer": [
@@ -5781,8 +6621,20 @@
     {
       "id": "./src/reducers/trainer.ts",
       "name": "./src/reducers/trainer.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/reducers/trainer.ts",
+      "name": "./src/reducers/trainer.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/reducers/trainer.ts",
+      "name": "./src/reducers/trainer.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./history": [
@@ -5807,8 +6659,20 @@
     {
       "id": "./src/reducers/history.ts",
       "name": "./src/reducers/history.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/reducers/history.ts",
+      "name": "./src/reducers/history.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/reducers/history.ts",
+      "name": "./src/reducers/history.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./style": [
@@ -5833,8 +6697,20 @@
     {
       "id": "./src/reducers/style.ts",
       "name": "./src/reducers/style.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/reducers/style.ts",
+      "name": "./src/reducers/style.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/reducers/style.ts",
+      "name": "./src/reducers/style.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./sawRelease": [
@@ -5859,8 +6735,20 @@
     {
       "id": "./src/reducers/sawRelease.ts",
       "name": "./src/reducers/sawRelease.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/reducers/sawRelease.ts",
+      "name": "./src/reducers/sawRelease.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/reducers/sawRelease.ts",
+      "name": "./src/reducers/sawRelease.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./editor": [
@@ -5885,8 +6773,20 @@
     {
       "id": "./src/reducers/editor.ts",
       "name": "./src/reducers/editor.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/reducers/editor.ts",
+      "name": "./src/reducers/editor.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/reducers/editor.ts",
+      "name": "./src/reducers/editor.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "../sagas": [
@@ -5911,8 +6811,20 @@
     {
       "id": "./src/sagas/index.ts",
       "name": "./src/sagas/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/sagas/index.ts",
+      "name": "./src/sagas/index.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/sagas/index.ts",
+      "name": "./src/sagas/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "../../package.json": [
@@ -5937,8 +6849,20 @@
     {
       "id": "./package.json",
       "name": "./package.json",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./package.json",
+      "name": "./package.json",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./package.json",
+      "name": "./package.json",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "assets/pokemon-font.css": [
@@ -6413,7 +7337,7 @@
       "publicPath": "2.chunk.js.map"
     }
   ],
-  "./utils/matchesType": [
+  "../utils/matchesType": [
     {
       "id": "./node_modules/dnd-core/lib/utils/matchesType.js",
       "name": "./node_modules/dnd-core/lib/utils/matchesType.js",
@@ -6803,7 +7727,7 @@
       "publicPath": "2.chunk.js.map"
     }
   ],
-  "./isFunction": [
+  "lodash/isFunction": [
     {
       "id": "./node_modules/lodash/isFunction.js",
       "name": "./node_modules/lodash/isFunction.js",
@@ -8671,6 +9595,32 @@
     {
       "id": "./node_modules/lodash/_Set.js",
       "name": "./node_modules/lodash/_Set.js",
+      "file": "2.chunk.js.map",
+      "publicPath": "2.chunk.js.map"
+    }
+  ],
+  "lodash/noop": [
+    {
+      "id": "./node_modules/lodash/noop.js",
+      "name": "./node_modules/lodash/noop.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/noop.js",
+      "name": "./node_modules/lodash/noop.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./node_modules/lodash/noop.js",
+      "name": "./node_modules/lodash/noop.js",
+      "file": "2.chunk.js",
+      "publicPath": "2.chunk.js"
+    },
+    {
+      "id": "./node_modules/lodash/noop.js",
+      "name": "./node_modules/lodash/noop.js",
       "file": "2.chunk.js.map",
       "publicPath": "2.chunk.js.map"
     }
@@ -10661,8 +11611,20 @@
     {
       "id": "./src/components/StyleEditor/styles.ts",
       "name": "./src/components/StyleEditor/styles.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/StyleEditor/styles.ts",
+      "name": "./src/components/StyleEditor/styles.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/StyleEditor/styles.ts",
+      "name": "./src/components/StyleEditor/styles.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     },
     {
       "id": "./node_modules/react-custom-scrollbars/lib/Scrollbars/styles.js",
@@ -10939,8 +11901,20 @@
     {
       "id": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Result/Result.styl",
       "name": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Result/Result.styl",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Result/Result.styl",
+      "name": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Result/Result.styl",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Result/Result.styl",
+      "name": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Result/Result.styl",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "!!../../../node_modules/css-loader/index.js!../../../node_modules/resolve-url-loader/index.js!../../../node_modules/stylus-loader/index.js!./themes.styl": [
@@ -10953,8 +11927,20 @@
     {
       "id": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Result/themes.styl",
       "name": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Result/themes.styl",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Result/themes.styl",
+      "name": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Result/themes.styl",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Result/themes.styl",
+      "name": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Result/themes.styl",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "!!../../../node_modules/css-loader/index.js!../../../node_modules/resolve-url-loader/index.js!../../../node_modules/stylus-loader/index.js!./Autocomplete.styl": [
@@ -10967,8 +11953,20 @@
     {
       "id": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Shared/Autocomplete.styl",
       "name": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Shared/Autocomplete.styl",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Shared/Autocomplete.styl",
+      "name": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Shared/Autocomplete.styl",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Shared/Autocomplete.styl",
+      "name": "./node_modules/css-loader/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/stylus-loader/index.js!./src/components/Shared/Autocomplete.styl",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "assets/img/croagunk.gif": [
@@ -10981,8 +11979,20 @@
     {
       "id": "./src/assets/img/croagunk.gif",
       "name": "./src/assets/img/croagunk.gif",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/assets/img/croagunk.gif",
+      "name": "./src/assets/img/croagunk.gif",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/assets/img/croagunk.gif",
+      "name": "./src/assets/img/croagunk.gif",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./BoxedPokemon": [
@@ -10995,8 +12005,20 @@
     {
       "id": "./src/components/BoxedPokemon/BoxedPokemon.tsx",
       "name": "./src/components/BoxedPokemon/BoxedPokemon.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/BoxedPokemon/BoxedPokemon.tsx",
+      "name": "./src/components/BoxedPokemon/BoxedPokemon.tsx",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/BoxedPokemon/BoxedPokemon.tsx",
+      "name": "./src/components/BoxedPokemon/BoxedPokemon.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "components/BoxedPokemon": [
@@ -11009,8 +12031,20 @@
     {
       "id": "./src/components/BoxedPokemon/index.ts",
       "name": "./src/components/BoxedPokemon/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/BoxedPokemon/index.ts",
+      "name": "./src/components/BoxedPokemon/index.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/BoxedPokemon/index.ts",
+      "name": "./src/components/BoxedPokemon/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./ChampsPokemon": [
@@ -11023,8 +12057,20 @@
     {
       "id": "./src/components/ChampsPokemon/ChampsPokemon.tsx",
       "name": "./src/components/ChampsPokemon/ChampsPokemon.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/ChampsPokemon/ChampsPokemon.tsx",
+      "name": "./src/components/ChampsPokemon/ChampsPokemon.tsx",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/ChampsPokemon/ChampsPokemon.tsx",
+      "name": "./src/components/ChampsPokemon/ChampsPokemon.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "components/ChampsPokemon": [
@@ -11037,8 +12083,20 @@
     {
       "id": "./src/components/ChampsPokemon/index.ts",
       "name": "./src/components/ChampsPokemon/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/ChampsPokemon/index.ts",
+      "name": "./src/components/ChampsPokemon/index.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/ChampsPokemon/index.ts",
+      "name": "./src/components/ChampsPokemon/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./DeadPokemon": [
@@ -11051,8 +12109,20 @@
     {
       "id": "./src/components/DeadPokemon/DeadPokemon.tsx",
       "name": "./src/components/DeadPokemon/DeadPokemon.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/DeadPokemon/DeadPokemon.tsx",
+      "name": "./src/components/DeadPokemon/DeadPokemon.tsx",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/DeadPokemon/DeadPokemon.tsx",
+      "name": "./src/components/DeadPokemon/DeadPokemon.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "components/DeadPokemon": [
@@ -11065,8 +12135,20 @@
     {
       "id": "./src/components/DeadPokemon/index.ts",
       "name": "./src/components/DeadPokemon/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/DeadPokemon/index.ts",
+      "name": "./src/components/DeadPokemon/index.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/DeadPokemon/index.ts",
+      "name": "./src/components/DeadPokemon/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./PokemonIcon": [
@@ -11079,8 +12161,20 @@
     {
       "id": "./src/components/PokemonIcon/PokemonIcon.tsx",
       "name": "./src/components/PokemonIcon/PokemonIcon.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/PokemonIcon/PokemonIcon.tsx",
+      "name": "./src/components/PokemonIcon/PokemonIcon.tsx",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/PokemonIcon/PokemonIcon.tsx",
+      "name": "./src/components/PokemonIcon/PokemonIcon.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "components/PokemonIcon": [
@@ -11093,8 +12187,20 @@
     {
       "id": "./src/components/PokemonIcon/index.ts",
       "name": "./src/components/PokemonIcon/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/PokemonIcon/index.ts",
+      "name": "./src/components/PokemonIcon/index.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/PokemonIcon/index.ts",
+      "name": "./src/components/PokemonIcon/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./Result.styl": [
@@ -11107,8 +12213,20 @@
     {
       "id": "./src/components/Result/Result.styl",
       "name": "./src/components/Result/Result.styl",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/Result/Result.styl",
+      "name": "./src/components/Result/Result.styl",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/Result/Result.styl",
+      "name": "./src/components/Result/Result.styl",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./Result": [
@@ -11121,8 +12239,20 @@
     {
       "id": "./src/components/Result/Result.tsx",
       "name": "./src/components/Result/Result.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/Result/Result.tsx",
+      "name": "./src/components/Result/Result.tsx",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/Result/Result.tsx",
+      "name": "./src/components/Result/Result.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "components/Result": [
@@ -11135,8 +12265,20 @@
     {
       "id": "./src/components/Result/index.ts",
       "name": "./src/components/Result/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/Result/index.ts",
+      "name": "./src/components/Result/index.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/Result/index.ts",
+      "name": "./src/components/Result/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "components/Result/styles": [
@@ -11149,8 +12291,20 @@
     {
       "id": "./src/components/Result/styles.ts",
       "name": "./src/components/Result/styles.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/Result/styles.ts",
+      "name": "./src/components/Result/styles.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/Result/styles.ts",
+      "name": "./src/components/Result/styles.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./themes.styl": [
@@ -11163,8 +12317,20 @@
     {
       "id": "./src/components/Result/themes.styl",
       "name": "./src/components/Result/themes.styl",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/Result/themes.styl",
+      "name": "./src/components/Result/themes.styl",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/Result/themes.styl",
+      "name": "./src/components/Result/themes.styl",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./Autocomplete.styl": [
@@ -11177,8 +12343,20 @@
     {
       "id": "./src/components/Shared/Autocomplete.styl",
       "name": "./src/components/Shared/Autocomplete.styl",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/Shared/Autocomplete.styl",
+      "name": "./src/components/Shared/Autocomplete.styl",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/Shared/Autocomplete.styl",
+      "name": "./src/components/Shared/Autocomplete.styl",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./Autocomplete": [
@@ -11191,8 +12369,20 @@
     {
       "id": "./src/components/Shared/Autocomplete.tsx",
       "name": "./src/components/Shared/Autocomplete.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/Shared/Autocomplete.tsx",
+      "name": "./src/components/Shared/Autocomplete.tsx",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/Shared/Autocomplete.tsx",
+      "name": "./src/components/Shared/Autocomplete.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./ColorEdit": [
@@ -11205,8 +12395,20 @@
     {
       "id": "./src/components/Shared/ColorEdit.tsx",
       "name": "./src/components/Shared/ColorEdit.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/Shared/ColorEdit.tsx",
+      "name": "./src/components/Shared/ColorEdit.tsx",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/Shared/ColorEdit.tsx",
+      "name": "./src/components/Shared/ColorEdit.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./ErrorBoundary": [
@@ -11219,8 +12421,20 @@
     {
       "id": "./src/components/Shared/ErrorBoundary.tsx",
       "name": "./src/components/Shared/ErrorBoundary.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/Shared/ErrorBoundary.tsx",
+      "name": "./src/components/Shared/ErrorBoundary.tsx",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/Shared/ErrorBoundary.tsx",
+      "name": "./src/components/Shared/ErrorBoundary.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./GenderElement": [
@@ -11233,8 +12447,20 @@
     {
       "id": "./src/components/Shared/GenderElement.tsx",
       "name": "./src/components/Shared/GenderElement.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/Shared/GenderElement.tsx",
+      "name": "./src/components/Shared/GenderElement.tsx",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/Shared/GenderElement.tsx",
+      "name": "./src/components/Shared/GenderElement.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./PokemonByFilter": [
@@ -11247,8 +12473,20 @@
     {
       "id": "./src/components/Shared/PokemonByFilter.tsx",
       "name": "./src/components/Shared/PokemonByFilter.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/Shared/PokemonByFilter.tsx",
+      "name": "./src/components/Shared/PokemonByFilter.tsx",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/Shared/PokemonByFilter.tsx",
+      "name": "./src/components/Shared/PokemonByFilter.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./ThemeSelect": [
@@ -11261,11 +12499,23 @@
     {
       "id": "./src/components/Shared/ThemeSelect.tsx",
       "name": "./src/components/Shared/ThemeSelect.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/Shared/ThemeSelect.tsx",
+      "name": "./src/components/Shared/ThemeSelect.tsx",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/Shared/ThemeSelect.tsx",
+      "name": "./src/components/Shared/ThemeSelect.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
-  "../Shared": [
+  "components/Shared": [
     {
       "id": "./src/components/Shared/index.ts",
       "name": "./src/components/Shared/index.ts",
@@ -11275,8 +12525,20 @@
     {
       "id": "./src/components/Shared/index.ts",
       "name": "./src/components/Shared/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/Shared/index.ts",
+      "name": "./src/components/Shared/index.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/Shared/index.ts",
+      "name": "./src/components/Shared/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./TeamPokemon": [
@@ -11289,8 +12551,20 @@
     {
       "id": "./src/components/TeamPokemon/TeamPokemon.tsx",
       "name": "./src/components/TeamPokemon/TeamPokemon.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/TeamPokemon/TeamPokemon.tsx",
+      "name": "./src/components/TeamPokemon/TeamPokemon.tsx",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/TeamPokemon/TeamPokemon.tsx",
+      "name": "./src/components/TeamPokemon/TeamPokemon.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "components/TeamPokemon": [
@@ -11303,8 +12577,20 @@
     {
       "id": "./src/components/TeamPokemon/index.ts",
       "name": "./src/components/TeamPokemon/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/TeamPokemon/index.ts",
+      "name": "./src/components/TeamPokemon/index.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/TeamPokemon/index.ts",
+      "name": "./src/components/TeamPokemon/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./TopBar": [
@@ -11317,8 +12603,20 @@
     {
       "id": "./src/components/TopBar/TopBar.tsx",
       "name": "./src/components/TopBar/TopBar.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/TopBar/TopBar.tsx",
+      "name": "./src/components/TopBar/TopBar.tsx",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/TopBar/TopBar.tsx",
+      "name": "./src/components/TopBar/TopBar.tsx",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "components/TopBar": [
@@ -11331,8 +12629,20 @@
     {
       "id": "./src/components/TopBar/index.ts",
       "name": "./src/components/TopBar/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/components/TopBar/index.ts",
+      "name": "./src/components/TopBar/index.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/components/TopBar/index.ts",
+      "name": "./src/components/TopBar/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "../../img/alola-champion-ribbon.png": [
@@ -11345,8 +12655,20 @@
     {
       "id": "./src/img/alola-champion-ribbon.png",
       "name": "./src/img/alola-champion-ribbon.png",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/img/alola-champion-ribbon.png",
+      "name": "./src/img/alola-champion-ribbon.png",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/img/alola-champion-ribbon.png",
+      "name": "./src/img/alola-champion-ribbon.png",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "package": [
@@ -11359,8 +12681,20 @@
     {
       "id": "./src/package/index.ts",
       "name": "./src/package/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js"
+    },
+    {
+      "id": "./src/package/index.ts",
+      "name": "./src/package/index.ts",
       "file": "1.chunk.js.map",
       "publicPath": "1.chunk.js.map"
+    },
+    {
+      "id": "./src/package/index.ts",
+      "name": "./src/package/index.ts",
+      "file": "1.1712e677f2ec8e8c54ab.hot-update.js.map",
+      "publicPath": "1.1712e677f2ec8e8c54ab.hot-update.js.map"
     }
   ],
   "./focusStyleManager": [
@@ -11461,7 +12795,7 @@
       "publicPath": "2.chunk.js.map"
     }
   ],
-  "../../common/errors": [
+  "./errors": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
@@ -12427,7 +13761,7 @@
       "publicPath": "2.chunk.js.map"
     }
   ],
-  "./toast": [
+  "./toast/toast": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/toast/toast.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/toast/toast.js",
@@ -12973,7 +14307,7 @@
       "publicPath": "2.chunk.js.map"
     }
   ],
-  "./../../../../../process/browser.js": [
+  "./../../process/browser.js": [
     {
       "id": "./node_modules/process/browser.js",
       "name": "./node_modules/process/browser.js",
@@ -14443,7 +15777,7 @@
       "publicPath": "3.chunk.js.map"
     }
   ],
-  "./common/classes": [
+  "../common/classes": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
@@ -14471,7 +15805,7 @@
       "publicPath": "3.chunk.js.map"
     }
   ],
-  "./common/context": [
+  "../common/context": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/context.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/context.js",
@@ -14527,7 +15861,7 @@
       "publicPath": "3.chunk.js.map"
     }
   ],
-  "./common/grid": [
+  "./grid": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/grid.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/grid.js",
@@ -14569,7 +15903,7 @@
       "publicPath": "3.chunk.js.map"
     }
   ],
-  "./common/internal/focusedCellUtils": [
+  "../common/internal/focusedCellUtils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/internal/focusedCellUtils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/internal/focusedCellUtils.js",
@@ -14639,7 +15973,7 @@
       "publicPath": "3.chunk.js.map"
     }
   ],
-  "./common/rect": [
+  "./rect": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/rect.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/rect.js",
@@ -14653,7 +15987,7 @@
       "publicPath": "3.chunk.js.map"
     }
   ],
-  "./common/renderMode": [
+  "./renderMode": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/renderMode.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/renderMode.js",
@@ -14681,7 +16015,7 @@
       "publicPath": "3.chunk.js.map"
     }
   ],
-  "./common/utils": [
+  "../../common/utils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
@@ -14975,7 +16309,7 @@
       "publicPath": "3.chunk.js.map"
     }
   ],
-  "./locator": [
+  "../../locator": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/locator.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/locator.js",

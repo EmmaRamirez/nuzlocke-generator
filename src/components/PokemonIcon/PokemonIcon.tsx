@@ -33,6 +33,7 @@ const formatSpeciesName = (species: string | null) => {
     if (species.startsWith('Farfetch')) return 'farfetchd';
     if (species === 'Mime Jr.') return 'mime-jr';
     if (species === 'Flabébé') return 'flabebe';
+    if (species.startsWith('Tapu')) return species.toLowerCase().replace(/\s/, '-');
     if (listOfPokemon.indexOf(species) < 0) return 'unknown';
     return species.toLowerCase();
 };
