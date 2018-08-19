@@ -11,6 +11,7 @@ import { PokemonByFilter } from 'components/Shared';
 import { DropTarget } from 'react-dnd';
 import { store } from 'store';
 
+
 const boxSource = {
     drop(props, monitor, component) {
         const newStatus = props.name;
@@ -41,7 +42,7 @@ export interface BoxProps {
 export class Box extends React.Component<BoxProps> {
     public render() {
         const { pokemon, name, boxId, filterString, connectDropTarget, canDrop } = this.props;
-        const filter = filterString === 'All' ? null : filterString;
+        const filter = filterString === 'All' ? undefined : filterString;
         return connectDropTarget!(
             <div className={`box ${name}-box`}>
                 <span style={{
@@ -59,7 +60,7 @@ export class Box extends React.Component<BoxProps> {
                 }}>
                     {name}
                 </span>
-                {PokemonByFilter(pokemon, filter!)}
+                <PokemonByFilter team={pokemon} filter={filter} />
             </div>
         );
     }
