@@ -154,9 +154,9 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
         const poke = pokemon;
 
         const getFirstType = poke.types ? poke.types[0] : 'Normal';
-        const spriteStyle = this.props.style.spritesMode
+        const spriteStyle = this.props.style.spritesMode && !this.props.style.scaleSprites
             ? { backgroundSize: 'auto', backgroundRepeat: 'no-repeat' }
-            : {};
+            : { backgroundSize: 'cover', backgroundRepeat: 'no-repeat' };
 
         const addProp = item => {
             const propName = `data-${item.toLowerCase()}`;

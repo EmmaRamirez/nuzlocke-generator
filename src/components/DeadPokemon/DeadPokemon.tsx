@@ -7,6 +7,10 @@ import { getBackgroundGradient, getPokemonImage, getSpriteIcon, speciesToNumber 
 import { selectPokemon } from 'actions';
 import { PokemonIconBase } from 'components/PokemonIcon';
 
+const spriteStyle = (style) => style.spritesMode && !style.scaleSprites
+            ? { backgroundSize: 'auto', backgroundRepeat: 'no-repeat' }
+            : { backgroundSize: 'cover', backgroundRepeat: 'no-repeat' };
+
 export const DeadPokemonBase = (
     poke: Pokemon & { selectPokemon } & { style: any } & { game: any },
 ) => {
@@ -38,6 +42,7 @@ export const DeadPokemonBase = (
                             style: poke.style,
                             name: poke.game.name,
                         }),
+                        ...spriteStyle(style),
                         filter: style.grayScaleDeadPokemon ? 'grayscale(100%)' : 'none',
                     }}
                 />

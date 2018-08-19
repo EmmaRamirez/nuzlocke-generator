@@ -204,9 +204,18 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 # Changelog
 
 ## Features
+- **Copy Pokémon Button**: Copies the current Pokémon
+- **N hotkey**: Creates a New Pokémon
 
 ## Fixes
+- Earlier gen move names are now valid (Sand-Attack, Hi Jump Kick, etc)
+- Likewise, move types are now correct for their Generation (Gust is Normal in Gen 1, etc)
+- Fightinium Z now works
+- Farfetch'd is valid again, alongside any Pokémon with weird names
+- Scale sprites option now works properly
 
 ## Known Issues
+- Downloading images will fail if you have cross-origin (i.e. Sugimori or custom) images
+- It has also failed on some Windows + Firefox installations
 `,
 };
