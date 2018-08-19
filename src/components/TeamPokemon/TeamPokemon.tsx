@@ -6,7 +6,10 @@ import { getBackgroundGradient,
         typeToColor,
         getPokemonImage,
         getMoveType,
-        Styles
+        Styles,
+        Generation,
+        handleMovesGenerationsExceptions,
+        getGameGeneration,
     } from 'utils';
 import { GenderElement } from 'components/Shared';
 import { selectPokemon } from 'actions';
@@ -30,6 +33,7 @@ const getMetLocationString = ({ poke, oldMetLocationFormat }: { poke: Pokemon, o
 };
 
 export interface TeamPokemonInfoProps {
+    generation: Generation;
     style: Styles;
     pokemon: Pokemon;
 }
@@ -61,7 +65,7 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                     {pokemon.ability ? <div className='pokemon-ability'>{pokemon.ability}</div> : null}
                 </div>
                 {style.showPokemonMoves ?
-                    <Moves moves={pokemon.moves} movesPosition={style.movesPosition} />
+                    <Moves generation={this.props.generation} moves={pokemon.moves} movesPosition={style.movesPosition} />
                 : null}
             </div>
         );
@@ -110,6 +114,7 @@ export class TeamPokemonBaseMinimal extends React.PureComponent<TeamPokemonBaseP
 }
 
 export interface MovesProps {
+    generation: Generation;
     moves: Pokemon['moves'];
     movesPosition?: Styles['movesPosition'];
 }
@@ -118,7 +123,7 @@ export class Moves extends React.Component<MovesProps> {
     private generateMoves (moves: MovesProps['moves']) {
         return moves && moves.map((move, index) => {
             move = move.trim();
-            const type = getMoveType(move);
+            const type = handleMovesGenerationsExceptions({ move: move, generation: this.props.generation, originalType: getMoveType(move) });
             return (
                 <div
                     key={index}
@@ -246,7 +251,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                         />
                     </div>
                 )}
-                <TeamPokemonInfo style={style} pokemon={pokemon} />
+                <TeamPokemonInfo generation={getGameGeneration(this.props.game.name)} style={style} pokemon={pokemon} />
             </div>
         );
     }
