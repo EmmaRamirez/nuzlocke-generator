@@ -35,7 +35,7 @@ export interface BoxProps {
     canDrop?: boolean;
 }
 
-@DropTarget(dragAndDrop.ICON, boxSource, (connect, monitor) => ({
+@DropTarget('ICON', boxSource, (connect, monitor) => ({
     connectDropTarget: connect.dropTarget(),
     canDrop: monitor.canDrop()
 }))
