@@ -4,6 +4,7 @@ import { getSpriteIcon, speciesToNumber, listOfPokemon, dragAndDrop } from 'util
 import { pokemon } from 'reducers/pokemon';
 import { selectPokemon } from 'actions';
 import { ErrorBoundary } from '../Shared';
+import { store } from 'store';
 import { DragSource, ConnectDragSource } from 'react-dnd';
 
 interface PokemonIconProps {
@@ -42,50 +43,48 @@ const getForme = (forme) => {
 
 const iconSource = {
     beginDrag(props: PokemonIconProps) {
-        console.log('drag has begun');
-        return null;
+        console.log('drag has begun', props);
+        store.dispatch(selectPokemon(props.id!));
+        return {
+            id: props.id
+        };
+    },
+    isDragging(props, monitor) {
+        return {
+            id: props.id
+        };
     }
 };
 
-@DragSource(dragAndDrop.ICON, iconSource, (connect, monitor) => ({
+@DragSource(dragAndDrop.ICON, iconSource as any, (connect, monitor) => ({
     connectDragSource: connect.dragSource(),
     isDragging: monitor.isDragging()
 }))
 export class PokemonIconBase extends React.Component<PokemonIconProps> {
-    public iconRef: React.RefObject<HTMLDivElement>;
 
     constructor(props) {
         super(props);
-        this.iconRef = React.createRef();
-    }
-
-    public componentDidUpdate() {
-        const node = this.iconRef.current;
     }
 
     public render() {
-        const { id, species, forme, onClick, selectedId, className, isShiny, style } = this.props;
-        return (
-            <ErrorBoundary>
-                <div
-                    role='icon'
-                    onClick={e => {
-                        e.preventDefault();
-                        onClick && onClick();
-                    }}
-                    ref={this.iconRef}
-                    id={id}
-                    style={style}
-                    className={
-                        `${id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'}${className || ''}`
-                    }>
-                    <img
-                      alt={species}
-                      src={`icons/pokemon/${isShiny ? 'shiny' : 'regular'}/${formatSpeciesName(species)}.png`}
-                    />
-                    { this.props.isDragging ? 'I AM BEING DRAGGED' : null }
-                </div>
-            </ErrorBoundary>
+        const { connectDragSource, isDragging, id, species, forme, onClick, selectedId, className, isShiny, style } = this.props;
+        return connectDragSource!(
+            <div
+                role='icon'
+                onClick={e => {
+                    e.preventDefault();
+                    onClick && onClick();
+                }}
+                id={id}
+                style={style}
+                className={
+                    `${id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'}${className || ''} ${isDragging ? 'opacity-medium' : ''}`
+                }>
+                <img
+                    alt={species}
+                    src={`icons/pokemon/${isShiny ? 'shiny' : 'regular'}/${formatSpeciesName(species)}.png`}
+                />
+            </div>
         );
     }
 }

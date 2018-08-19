@@ -14,53 +14,12 @@ import { AddPokemonButton } from 'components/AddPokemonButton';
 import { BaseEditor } from 'components/BaseEditor';
 import { PokemonByFilter } from 'components/Shared';
 import { DropTarget, ConnectDropTarget } from 'react-dnd';
+import { Box } from './Box';
 
 require('../../assets/img/team-box.png');
 require('../../assets/img/dead-box.png');
 
-const boxSource = {
-    drop() {
-        console.log('dropped');
-    }
-};
 
-export interface BoxProps {
-    pokemon: Pokemon[];
-    name: string;
-    boxId: number;
-    filterString: string;
-    connectDropTarget?: ConnectDropTarget;
-}
-
-@DropTarget(dragAndDrop.ICON, boxSource, (connect, monitor) => {
-    connectDropTarget: connect.dropTarget();
-}))
-export class Box extends React.Component<BoxProps> {
-    public render() {
-        const { pokemon, name, boxId, filterString, connectDropTarget } = this.props;
-        const filter = filterString === 'All' ? null : filterString;
-        return connectDropTarget!(
-            <div className={`box ${name}-box`}>
-                <span style={{
-                    alignItems: 'center',
-                    background: 'rgba(33, 33, 33, 0.33)',
-                    borderRadius: '.25rem',
-                    color: '#eee',
-                    display: 'inline-flex',
-                    minHeight: '2rem',
-                    justifyContent: 'center',
-                    margin: '.25rem',
-                    padding: '.25rem',
-                    textAlign: 'center',
-                    width: '4rem',
-                }}>
-                    {name}
-                </span>
-                {PokemonByFilter(pokemon, filter!)}
-            </div>
-        );
-    }
-}
 
 export interface PokemonEditorProps {
     team: Pokemon[];
@@ -81,8 +40,6 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
             isOpen: true,
         };
     }
-
-    private boxes: HTMLDivElement | null;
 
     public componentDidMount() {}
 
@@ -123,7 +80,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                     <CurrentPokemonEdit />
                 </BaseEditor>
                 <MassEditor
-                    // @ts-ignore
+                    // @ts-ignore: Props issues with isMassEditorOpen/isOpen
                     isOpen={this.state.isMassEditorOpen}
                     toggleDialog={e =>
                         this.setState({ isMassEditorOpen: !this.state.isMassEditorOpen })

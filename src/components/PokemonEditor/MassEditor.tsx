@@ -10,7 +10,7 @@ import { currentId } from 'async_hooks';
 import { pokemon } from 'reducers/pokemon';
 
 export interface MassEditorProps {
-    isOpen?: any;
+    isOpen: any;
     toggleDialog?: any;
     pokemon: Pokemon[];
     style: any;
