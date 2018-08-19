@@ -55,7 +55,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../common/abstractPureComponent": [
+  "./abstractPureComponent": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/abstractPureComponent.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/abstractPureComponent.js",
@@ -69,7 +69,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../common/alignment": [
+  "./alignment": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/alignment.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/alignment.js",
@@ -83,7 +83,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../common/classes": [
+  "./classes": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/classes.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/classes.js",
@@ -111,7 +111,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./errors": [
+  "../../common/errors": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
@@ -167,7 +167,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../common/keys": [
+  "./keys": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/keys.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/keys.js",
@@ -181,7 +181,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../common/position": [
+  "./position": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/position.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/position.js",
@@ -195,7 +195,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../common/props": [
+  "./props": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/props.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/props.js",
@@ -837,7 +837,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./overlay/overlay": [
+  "../overlay/overlay": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
@@ -865,7 +865,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./popover/popover": [
+  "../popover/popover": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/popover/popover.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/popover/popover.js",
@@ -907,7 +907,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./portal/portal": [
+  "../portal/portal": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/portal/portal.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/portal/portal.js",
@@ -991,7 +991,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./spinner/spinner": [
+  "./spinner": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/spinner/spinner.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/spinner/spinner.js",
@@ -1089,7 +1089,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./text/text": [
+  "../text/text": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
@@ -1439,7 +1439,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/classes": [
+  "../../common/classes": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
@@ -1509,7 +1509,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../errors": [
+  "../common/errors": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/errors.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/errors.js",
@@ -1565,7 +1565,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/internal/focusedCellUtils": [
+  "./common/internal/focusedCellUtils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/internal/focusedCellUtils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/internal/focusedCellUtils.js",
@@ -1677,7 +1677,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/utils": [
+  "../../common/utils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
@@ -1971,7 +1971,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./locator": [
+  "../../locator": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/locator.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/locator.js",
@@ -4805,7 +4805,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "lodash/isFunction": [
+  "./isFunction": [
     {
       "id": "./node_modules/lodash/isFunction.js",
       "name": "./node_modules/lodash/isFunction.js",
@@ -4931,7 +4931,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "lodash/noop": [
+  "./noop": [
     {
       "id": "./node_modules/lodash/noop.js",
       "name": "./node_modules/lodash/noop.js",
@@ -4939,8 +4939,20 @@
       "publicPath": "bundle.js"
     },
     {
+      "id": "./src/utils/noop.ts",
+      "name": "./src/utils/noop.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
       "id": "./node_modules/lodash/noop.js",
       "name": "./node_modules/lodash/noop.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./src/utils/noop.ts",
+      "name": "./src/utils/noop.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -8299,7 +8311,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./../../webpack/buildin/module.js": [
+  "./../webpack/buildin/module.js": [
     {
       "id": "./node_modules/webpack/buildin/module.js",
       "name": "./node_modules/webpack/buildin/module.js",
@@ -10591,20 +10603,6 @@
     {
       "id": "./src/utils/movesByType.ts",
       "name": "./src/utils/movesByType.ts",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "./noop": [
-    {
-      "id": "./src/utils/noop.ts",
-      "name": "./src/utils/noop.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./src/utils/noop.ts",
-      "name": "./src/utils/noop.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
