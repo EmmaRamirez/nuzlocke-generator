@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { getSpriteIcon, speciesToNumber, StoreContext, listOfPokemon } from '../../utils';
+import { getSpriteIcon, speciesToNumber, listOfPokemon, dragAndDrop } from 'utils';
 import { pokemon } from 'reducers/pokemon';
 import { selectPokemon } from 'actions';
 import { ErrorBoundary } from '../Shared';
+import { DragSource, ConnectDragSource } from 'react-dnd';
 
 interface PokemonIconProps {
     /** The id of the Pokemon, used for selection **/
@@ -18,6 +19,9 @@ interface PokemonIconProps {
     isShiny?: boolean;
     className?: string;
     style?: React.CSSProperties;
+
+    connectDragSource?: ConnectDragSource;
+    isDragging?: boolean;
 }
 
 const formatSpeciesName = (species: string | null) => {
@@ -36,6 +40,17 @@ const getForme = (forme) => {
     return '';
 };
 
+const iconSource = {
+    beginDrag(props: PokemonIconProps) {
+        console.log('drag has begun');
+        return null;
+    }
+};
+
+@DragSource(dragAndDrop.ICON, iconSource, (connect, monitor) => ({
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging()
+}))
 export class PokemonIconBase extends React.Component<PokemonIconProps> {
     public iconRef: React.RefObject<HTMLDivElement>;
 
@@ -68,6 +83,7 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
                       alt={species}
                       src={`icons/pokemon/${isShiny ? 'shiny' : 'regular'}/${formatSpeciesName(species)}.png`}
                     />
+                    { this.props.isDragging ? 'I AM BEING DRAGGED' : null }
                 </div>
             </ErrorBoundary>
         );

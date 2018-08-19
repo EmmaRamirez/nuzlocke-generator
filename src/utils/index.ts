@@ -35,3 +35,4 @@ export * from './features';
 export * from './getGameGeneration';
 export * from './accentedE';
 export * from './handleMovesGenerationExceptions';
+export * from './dragAndDrop';
