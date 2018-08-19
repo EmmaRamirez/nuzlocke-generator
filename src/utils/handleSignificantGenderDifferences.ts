@@ -7,16 +7,22 @@ export enum GenderTransformType {
     Sprite,
 }
 
-export const handleSignificantGenderDifference = (species: string, gender: GenderElementProps, type: GenderTransformType) => {
-    const significantGenderDifferenceList = [
-        'Hippowdon',
-        'Unfeazant',
-        'Frillish',
-        'Jellicent',
-        'Pyroar',
-        'Meowstic'
-    ];
-    if (significantGenderDifferenceList.includes(species)) {
+export const significantGenderDifferenceList = [
+    'Hippowdon',
+    'Unfeazant',
+    'Frillish',
+    'Jellicent',
+    'Pyroar',
+    'Meowstic'
+];
+
+export const handleSignificantGenderDifference = (
+    species: string,
+    gender: GenderElementProps,
+    type: GenderTransformType,
+    sdl = significantGenderDifferenceList
+) => {
+    if (sdl.includes(species)) {
         if (type === GenderTransformType.Standard) {
             if (Gender.isMale(gender)) {
 

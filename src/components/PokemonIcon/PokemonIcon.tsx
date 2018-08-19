@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { getSpriteIcon, speciesToNumber, listOfPokemon, dragAndDrop } from 'utils';
+import { getFormeSuffix, getSpriteIcon, speciesToNumber, listOfPokemon, dragAndDrop, significantGenderDifferenceList } from 'utils';
+import { Gender } from 'components/Shared';
 import { pokemon } from 'reducers/pokemon';
 import { selectPokemon } from 'actions';
 import { ErrorBoundary } from '../Shared';
@@ -55,6 +56,13 @@ const iconSource = {
             id: props.id
         };
     }
+};
+
+export const getIconURL = ({ id, species, forme, shiny, gender }) => {
+    const baseURL = `icons/pokemon/`;
+    const isShiny = shiny ? 'shiny' : 'regular';
+    const isFemaleSpecific = significantGenderDifferenceList.includes(species) && Gender.isFemale(gender) ? `female/` : '';
+    return `${baseURL}${isShiny}/${isFemaleSpecific}${formatSpeciesName(species)}${getFormeSuffix(forme)}.png`;
 };
 
 @DragSource(dragAndDrop.ICON, iconSource as any, (connect, monitor) => ({
