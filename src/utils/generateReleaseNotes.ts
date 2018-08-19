@@ -204,6 +204,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 # Changelog
 
 ## Features
+- **Drag and Drop**: It's finally here!
 - **Copy Pokémon Button**: Copies the current Pokémon
 - **N hotkey**: Creates a New Pokémon
 
@@ -219,5 +220,6 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 ## Known Issues
 - Downloading images will fail if you have cross-origin (i.e. Sugimori or custom) images
 - It has also failed on some Windows + Firefox installations
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
 };
