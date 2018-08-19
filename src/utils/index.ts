@@ -34,3 +34,4 @@ export * from './Types';
 export * from './features';
 export * from './getGameGeneration';
 export * from './accentedE';
+export * from './handleMovesGenerationExceptions';
