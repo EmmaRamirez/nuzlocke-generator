@@ -13,6 +13,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
+        chunkFilename: '[name].chunk.js'
     },
     mode: 'development',
     devtool: 'source-map',
@@ -111,9 +112,9 @@ module.exports = {
             filename: './dist/react-lodable.json'
         }),
 
-        // new OfflinePlugin({
-        //     excludes: ['**/*.js', '*.js']
-        // })
+        new OfflinePlugin({
+            excludes: ['**/*.js', '*.js']
+        })
     ],
     externals: {
         fs: {},
