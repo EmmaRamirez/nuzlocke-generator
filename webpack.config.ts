@@ -34,6 +34,9 @@ module.exports = {
     stats: {
         warnings: false,
     },
+    optimization: {
+        minimize: true
+    },
     module: {
         rules: [
             {
