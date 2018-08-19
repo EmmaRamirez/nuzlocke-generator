@@ -40,15 +40,6 @@
   input
     border-left: 1px solid #394b59;
 
-.tab.Dead-tab
-  background-image: url('../../assets/img/dead-box.png');
-
-.tab.Champs-tab
-  background-image: url('../../assets/img/champs-box.png');
-
-.tab.Boxed-tab
-  background-image: url('../../assets/img/boxed-box.png');
-
 .box-wrapper
   display: flex;
   flex-wrap: wrap;
@@ -170,7 +161,7 @@ input[name='metLevel']
 
 .box
   border-radius: .25rem;
-  // padding: .25rem;
+  padding: .25rem;
   margin: .25rem;
   display: flex;
   align-items: center;
@@ -185,9 +176,6 @@ input[name='metLevel']
   .pokemon-icon img,
   .pokemon-icon
     cursor: pointer;
-    // min-height: 40px;
-    // max-height: 42px;
-    // max-width: 42px;
     border: 1px solid transparent;
     transition: 500ms all;
   .pokemon-icon.selected

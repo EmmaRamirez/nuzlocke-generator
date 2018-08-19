@@ -4,9 +4,12 @@ import { connect } from 'react-redux';
 import { reducers } from 'reducers';
 import * as ReactMarkdown from 'react-markdown';
 
-import { generateReleaseNotes } from 'utils';
+import { generateReleaseNotes, classWithDarkTheme } from 'utils';
 import { changeEditorSize, editStyle, seeRelease } from 'actions';
+import * as styles from 'components/Result/styles';
 import { pkg } from 'package';
+import { cx } from 'emotion';
+import { style } from 'reducers/style';
 
 const croagunk = require('assets/img/croagunk.gif');
 
@@ -26,6 +29,8 @@ export interface TopBarState {
     isOpen: boolean;
 }
 
+const darkModeStyle = (mode) => mode ? { color: '#fff' } : {};
+
 export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
     public state = {
         isOpen: !this.props.sawRelease[pkg.version]
@@ -40,15 +45,17 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
 
     public render() {
         return (
-            <div className={`pt-header top-bar ${this.props.style.editorDarkMode ? 'pt-dark' : 'pt-light' }`}>
+            <div className={cx(classWithDarkTheme(styles, 'topBar', this.props.style.editorDarkMode))}>
                 <Button
+                    style={darkModeStyle(this.props.style.editorDarkMode)}
                     onClick={_ => this.props.changeEditorSize(!this.props.editor.minimized)}
                     className='pt-minimal' icon={ this.props.editor.minimized ? 'minimize' : 'maximize'}
                 >
                     { this.props.editor.minimized ? 'Maximize' : 'Minimize' } Editor
                 </Button>
-                <Button onClick={this.props.onClickDownload} className='pt-minimal' icon='download'>Download Image</Button>
+                <Button style={darkModeStyle(this.props.style.editorDarkMode)} onClick={this.props.onClickDownload} className='pt-minimal' icon='download'>Download Image</Button>
                 <Button
+                    style={darkModeStyle(this.props.style.editorDarkMode)}
                     onClick={_ => { this.props.editStyle({ editorDarkMode: !this.props.style.editorDarkMode }); }}
                     className='pt-minimal'
                     icon={this.props.style.editorDarkMode ? 'flash' : 'moon'}
@@ -56,6 +63,7 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                     { this.props.style.editorDarkMode ? 'Light' : 'Dark'} Mode
                 </Button>
                 <Button
+                    style={darkModeStyle(this.props.style.editorDarkMode)}
                     onClick={this.toggleDialog}
                     className='pt-minimal'
                     icon='star'
@@ -73,8 +81,8 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                     }`}>
                     <div className='pt-dialog-body'>
                         <div className='release-notes-wrapper'>
-                            <h3 className='heading'>
-                                {pkg.version} <img alt='Croagunk' src={croagunk} />
+                            <h3 className={cx(classWithDarkTheme(styles, 'heading', this.props.style.editorDarkMode))}>
+                                {pkg.version} <img style={{ display: 'inline' }} alt='Croagunk' src={croagunk} />
                             </h3>
                             <ReactMarkdown
                                 className='release-notes'

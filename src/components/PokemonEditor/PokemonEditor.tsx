@@ -34,11 +34,13 @@ export const Box = ({
             {/* <LinkedTabTitle boxId={boxId} title={tabTitle} /> */}
             <span style={{
                 alignItems: 'center',
-                background: 'linear-gradient(to right, #111, transparent)',
+                background: 'rgba(33, 33, 33, 0.33)',
+                borderRadius: '.25rem',
                 color: '#eee',
                 display: 'inline-flex',
-                minHeight: '3rem',
+                minHeight: '2rem',
                 justifyContent: 'center',
+                margin: '.25rem',
                 padding: '.25rem',
                 textAlign: 'center',
                 width: '4rem',

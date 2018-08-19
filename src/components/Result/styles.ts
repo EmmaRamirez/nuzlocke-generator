@@ -3,14 +3,35 @@ import { css } from 'emotion';
 export const topBar = css`
     align-items: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.33);
+    color: #111;
     display: flex;
     font-size: 1.15rem;
     justify-content: center;
-    padding: .25rem;
+    padding: .5rem;
 `;
 
 export const topBar_dark = css`
     background: #222;
+    color: #fff !important;
+    button {
+        color: #fff !important;
+    }
+`;
+
+export const heading = css`
+    align-items: center;
+    color: #111;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 4px;
+    margin: 0.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+`;
+
+export const heading_dark = css`
+    color: #eee;
 `;
 
 export const container = css`
