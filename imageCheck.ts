@@ -1,5 +1,5 @@
-import * as fs from 'fs';
-import * as chalk from 'chalk';
+const fs = require('fs');
+const chalk = require('chalk');
 
 import { listOfPokemon } from './src/utils/listOfPokemon';
 
