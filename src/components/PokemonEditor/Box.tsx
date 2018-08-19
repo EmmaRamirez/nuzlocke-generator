@@ -32,7 +32,6 @@ export interface BoxProps {
     filterString: string;
     connectDropTarget?: any;
     canDrop?: boolean;
-    isHovering?: boolean;
 }
 
 @DropTarget(dragAndDrop.ICON, boxSource, (connect, monitor) => ({
@@ -41,13 +40,13 @@ export interface BoxProps {
 }))
 export class Box extends React.Component<BoxProps> {
     public render() {
-        const { pokemon, name, boxId, filterString, connectDropTarget } = this.props;
+        const { pokemon, name, boxId, filterString, connectDropTarget, canDrop } = this.props;
         const filter = filterString === 'All' ? null : filterString;
         return connectDropTarget!(
             <div className={`box ${name}-box`}>
                 <span style={{
                     alignItems: 'center',
-                    background: 'rgba(33, 33, 33, 0.33)',
+                    background: canDrop ? 'black' : 'rgba(33, 33, 33, 0.33)',
                     borderRadius: '.25rem',
                     color: '#eee',
                     display: 'inline-flex',
