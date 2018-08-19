@@ -52778,6 +52778,7 @@ class ResultBase extends React.PureComponent {
         super(props);
         this.resultRef = React.createRef();
         this.state = {
+            isDownloading: false,
             downloadError: null
         };
     }
@@ -52878,17 +52879,19 @@ class ResultBase extends React.PureComponent {
     toImage() {
         return __awaiter(this, void 0, void 0, function* () {
             const resultNode = this.resultRef.current;
+            this.setState({ isDownloading: true });
             try {
                 const dataUrl = yield domtoimage.toPng(resultNode);
                 const link = document.createElement('a');
                 link.download = `nuzlocke-${uuid()}.png`;
                 link.href = dataUrl;
                 link.click();
-                this.setState({ downloadError: null });
+                this.setState({ downloadError: null, isDownloading: false });
             }
             catch (e) {
                 this.setState({
-                    downloadError: 'Failed to download. This is likely due to your image containing an image resource that does not allow Cross-Origin'
+                    downloadError: 'Failed to download. This is likely due to your image containing an image resource that does not allow Cross-Origin',
+                    isDownloading: false,
                 });
             }
         });
@@ -52907,7 +52910,7 @@ class ResultBase extends React.PureComponent {
             React.createElement("div", { ref: this.resultRef, className: `result container ${(style.template &&
                     style.template.toLowerCase().replace(/\s/g, '-')) ||
                     ''} region-${utils_1.getGameRegion(this.props.game.name)} team-size-${numberOfTeam}`, style: {
-                    margin: '3rem auto',
+                    margin: this.state.isDownloading ? '0' : '3rem auto',
                     backgroundColor: bgColor,
                     backgroundImage: `url(${style.backgroundImage})`,
                     backgroundRepeat: style.tileBackground ? 'repeat' : 'no-repeat',
@@ -55916,6 +55919,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Fightinium Z now works
 - Farfetch'd is valid again, alongside any Pokémon with weird names
 - Scale sprites option now works properly
+- Margin should no longer affect result downloads
 
 ## Known Issues
 - Downloading images will fail if you have cross-origin (i.e. Sugimori or custom) images
