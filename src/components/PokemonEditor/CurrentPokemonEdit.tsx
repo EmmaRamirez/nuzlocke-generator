@@ -17,10 +17,38 @@ import { DeletePokemonButton } from 'components/DeletePokemonButton';
 import { Autocomplete } from 'components/Shared';
 import { selectPokemon, editPokemon } from 'actions';
 import { connect } from 'react-redux';
-import { listOfGames } from 'utils';
+import { listOfGames, accentedE } from 'utils';
 import { PokemonIconBase } from 'components/PokemonIcon';
+import { cx } from 'emotion';
+import * as Styles from './styles';
+import * as uuid from 'uuid/v4';
+import { Classes, Icon, Popover, Position, PopoverInteractionKind } from '@blueprintjs/core';
+import { addPokemon } from 'actions';
 
 const pokeball = require('assets/pokeball.png');
+
+export interface CopyPokemonButtonProps {
+    onClick: (event: React.MouseEvent<SVGElement>) => void;
+}
+
+export const CopyPokemonButton: React.SFC<CopyPokemonButtonProps> = ({ onClick }: CopyPokemonButtonProps) => {
+    return (
+        <Popover interactionKind={PopoverInteractionKind.HOVER} position={Position.TOP} content={`Copy Pok${accentedE}mon`}>
+            <Icon title='Copy Pokemon' icon='duplicate' className={cx(Styles.copyButton)} onClick={onClick} />
+        </Popover>
+    );
+};
+
+// export const CopyPokemonButton = connect(
+//     null,
+//     (dispatch, ownProps: CopyPokemonButtonProps) => {
+//         const id = ownProps.id;
+
+//         return {
+//             onClick: dispatch(addPokemon(copiedPokemon))
+//         };
+//     }
+// );
 
 export interface CurrentPokemonEditProps {
     selectedId: Pokemon['id'];
@@ -28,6 +56,7 @@ export interface CurrentPokemonEditProps {
     pokemon: Pokemon[];
     selectPokemon: selectPokemon;
     editPokemon: editPokemon;
+    addPokemon: addPokemon;
 }
 
 export interface CurrentPokemonEditState {
@@ -56,6 +85,14 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
     public componentWillReceiveProps(nextProps, prevProps) {
         if (nextProps.selectedId !== prevProps.selectedId) {
             this.setState({ selectedId: nextProps.selectedId });
+        }
+    }
+
+    private copyPokemon = e => {
+        const currentPokemon = this.getCurrentPokemon();
+        if (currentPokemon) {
+            const newPokemon = { ...currentPokemon, id: uuid(), position: currentPokemon.position! + 1 };
+            this.props.addPokemon(newPokemon);
         }
     }
 
@@ -173,8 +210,12 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
         });
     };
 
+    private getCurrentPokemon () {
+        return this.props.pokemon.find((v: Pokemon) => v.id === this.state.selectedId);
+    }
+
     public render() {
-        const currentPokemon = this.props.pokemon.find((v: Pokemon) => v.id === this.state.selectedId);
+        const currentPokemon = this.getCurrentPokemon();
 
         if (currentPokemon == null) {
             return (
@@ -203,7 +244,10 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
                         type='select'
                         options={this.state.box.map(n => n.name)}
                     />
-                    <DeletePokemonButton id={this.state.selectedId} />
+                    <div className={cx(Styles.iconBar)}>
+                        <CopyPokemonButton onClick={this.copyPokemon} />
+                        <DeletePokemonButton id={this.state.selectedId} />
+                    </div>
                 </span>
                 <Autocomplete
                     items={listOfPokemon}
@@ -351,6 +395,7 @@ export const CurrentPokemonEdit = connect(
     }),
     {
         selectPokemon,
-        editPokemon
+        editPokemon,
+        addPokemon,
     }
 )(CurrentPokemonEditBase);

@@ -33,10 +33,13 @@ export const Box = ({
         <div className={`box ${tabTitle}-box`}>
             {/* <LinkedTabTitle boxId={boxId} title={tabTitle} /> */}
             <span style={{
-                background: '#222',
+                alignItems: 'center',
+                background: 'rgba(33, 33, 33, 0.33)',
                 borderRadius: '.25rem',
                 color: '#eee',
-                display: 'inline-block',
+                display: 'inline-flex',
+                minHeight: '2rem',
+                justifyContent: 'center',
                 margin: '.25rem',
                 padding: '.25rem',
                 textAlign: 'center',
@@ -52,6 +55,7 @@ export const Box = ({
 export interface PokemonEditorProps {
     team: Pokemon[];
     boxes: Boxes;
+    game: any;
 }
 
 export interface PokemonEditorState {
@@ -94,7 +98,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
             <>
                 <BaseEditor name='Pokemon'>
                     <div className='button-row' style={{ display: 'flex' }}>
-                        <AddPokemonButton defaultPokemon={generateEmptyPokemon(team)} />
+                        <AddPokemonButton defaultPokemon={{ ...generateEmptyPokemon(team), gameOfOrigin: this.props.game.name || 'None' }} />
                         <Button
                             icon={'heat-grid'}
                             onClick={this.openMassEditor}
@@ -124,6 +128,7 @@ export const PokemonEditor = connect(
     (state: any) => ({
         team: state.pokemon,
         boxes: state.box,
+        game: state.game,
     }),
     null,
 )(PokemonEditorBase);

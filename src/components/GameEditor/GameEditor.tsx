@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { editGame, changeEditorSize, editStyle } from 'actions';
-import { gameOfOriginToColor, listOfGames } from 'utils';
+import { gameOfOriginToColor, listOfGames, FEATURES } from 'utils';
 
-import { Button, Intent } from '@blueprintjs/core';
+import { Button, Intent, Popover, Position, Menu } from '@blueprintjs/core';
 import { RulesEditorDialog } from 'components/RulesEditor';
 
 export interface GameEditorProps {
@@ -54,9 +54,11 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                                 {listOfGames.map(game => <option key={game}>{game}</option>)}
                             </select>
                         </div>
-                        {/* <Popover minimal={true} content={<Menu />} position={Position.BOTTOM}>
-                            <Button icon='exchange'>Switch Nuzlockes</Button>
-                        </Popover> */}
+                        { FEATURES.multipleNuzlockes ?
+                            <Popover minimal={true} content={<Menu />} position={Position.BOTTOM}>
+                                <Button icon='exchange'>Switch Nuzlockes</Button>
+                            </Popover>
+                        : null }
                         <Button onClick={this.toggleDialog} icon='list' intent={Intent.PRIMARY}>
                             Modify Rules
                         </Button>

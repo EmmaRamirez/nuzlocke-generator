@@ -34,7 +34,7 @@ function missingByGeneration (list) {
                 generationMissing.push(pokemon);
             }
         }
-        return `${chalk.blue(`[Gen ${idx + 1}]`)}: ${chalk.yellow(`${generationTotal}/${total}`)} ${chalk.red(toPercentage(generationTotal, total)) }, missing: ${generationMissing.length === 0 ? 'none' : generationMissing.join(', ')}\n`;
+        return `${(chalk as any).blue(`[Gen ${idx + 1}]`)}: ${(chalk as any).yellow(`${generationTotal}/${total}`)} ${(chalk as any).red(toPercentage(generationTotal, total)) }, missing: ${generationMissing.length === 0 ? 'none' : generationMissing.join(', ')}\n`;
     });
 
     console.log(resultMap.join('\n'));
@@ -57,7 +57,7 @@ for (const pokemon of pokemonList) {
 
 fs.writeFile(targetFile, buildFile.join('\n'), (err) => {
     if (err) throw new Error('Failed to write file.');
-    console.log(`Wrote ${targetFile} file with ${exists}/${listOfPokemon.length} ${chalk.green(toPercentage(exists, listOfPokemon.length))} entries.`);
+    console.log(`Wrote ${targetFile} file with ${exists}/${listOfPokemon.length} ${(chalk as any).green(toPercentage(exists, listOfPokemon.length))} entries.`);
 });
 
 missingByGeneration(listOfPokemon);

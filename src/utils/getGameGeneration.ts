@@ -19,7 +19,7 @@ export const getGameGeneration = (game: Game) => {
     const Gen4: Game[] = ['Diamond', 'Pearl', 'Platinum', 'HeartGold', 'SoulSilver'];
     const Gen5: Game[] = ['Black', 'Black 2', 'White', 'White 2'];
     const Gen6: Game[] = ['X', 'Y', 'OmegaRuby', 'AlphaSapphire'];
-    const Gen7: Game[] = ['Sun', 'Moon', 'Ultra Moon', 'Ultra Sun'];
+    const Gen7: Game[] = ['Sun', 'Moon', 'Ultra Moon', 'Ultra Sun', 'Let\'s Go Eevee', 'Let\'s Go Pikachu'];
 
     if (Gen1.includes(game)) return Generation.Gen1;
     if (Gen2.includes(game)) return Generation.Gen2;

@@ -4,7 +4,7 @@ export const gameOfOriginToColor = (game: Game) => {
     const gameToColor = {
         Red: 'rgb(243, 86, 58)',
         Blue: '#3675f8',
-        Yellow: '#efe414',
+        Yellow: '#fdd33c',
         Green: '#03c242',
         Gold: '#e0c503',
         Silver: '#d8d8d8',
