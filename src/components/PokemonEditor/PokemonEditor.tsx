@@ -6,51 +6,20 @@ import { Pokemon } from 'models';
 import { Boxes } from 'types';
 
 import {
-    generateEmptyPokemon,
+    generateEmptyPokemon, dragAndDrop,
 } from 'utils';
 import { CurrentPokemonEdit, MassEditor } from '.';
 
 import { AddPokemonButton } from 'components/AddPokemonButton';
 import { BaseEditor } from 'components/BaseEditor';
 import { PokemonByFilter } from 'components/Shared';
+import { DropTarget, ConnectDropTarget } from 'react-dnd';
+import { Box } from './Box';
 
 require('../../assets/img/team-box.png');
 require('../../assets/img/dead-box.png');
 
-export const Box = ({
-    pokemon,
-    tabTitle,
-    boxId,
-    filterString,
-}: {
-    pokemon;
-    tabTitle;
-    boxId;
-    filterString?;
-}) => {
-    const filter = filterString === 'All' ? null : filterString;
-    return (
-        <div className={`box ${tabTitle}-box`}>
-            {/* <LinkedTabTitle boxId={boxId} title={tabTitle} /> */}
-            <span style={{
-                alignItems: 'center',
-                background: 'rgba(33, 33, 33, 0.33)',
-                borderRadius: '.25rem',
-                color: '#eee',
-                display: 'inline-flex',
-                minHeight: '2rem',
-                justifyContent: 'center',
-                margin: '.25rem',
-                padding: '.25rem',
-                textAlign: 'center',
-                width: '4rem',
-            }}>
-                {tabTitle}
-            </span>
-            {PokemonByFilter(pokemon, filter)}
-        </div>
-    );
-};
+
 
 export interface PokemonEditorProps {
     team: Pokemon[];
@@ -72,8 +41,6 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
         };
     }
 
-    private boxes: HTMLDivElement | null;
-
     public componentDidMount() {}
 
     private openMassEditor = e => {
@@ -86,7 +53,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
 
     private renderBoxes(boxes, team) {
         return boxes.map(({ key, name }) => {
-            return <Box key={key} pokemon={team} tabTitle={name} boxId={key} filterString={name} />;
+            return <Box key={key} pokemon={team} name={name} boxId={key} filterString={name} />;
         });
     }
 
@@ -113,7 +80,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                     <CurrentPokemonEdit />
                 </BaseEditor>
                 <MassEditor
-                    // @ts-ignore
+                    // @ts-ignore: Props issues with isMassEditorOpen/isOpen
                     isOpen={this.state.isMassEditorOpen}
                     toggleDialog={e =>
                         this.setState({ isMassEditorOpen: !this.state.isMassEditorOpen })

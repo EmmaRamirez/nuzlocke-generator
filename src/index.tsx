@@ -18,6 +18,8 @@ import 'components/Shared/styles/base.styl';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/table/lib/css/table.css';
+import { DragDropContextProvider } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 injectGlobal`
     *,
@@ -34,6 +36,10 @@ injectGlobal`
         display: flex;
         height: 100%;
         width: 100%;
+    }
+
+    .opacity-medium {
+        oapcity: 0.5;
     }
 `;
 
@@ -64,9 +70,11 @@ const history = createHistory();
 render(
     <Provider store={store}>
         <PersistGate loading={<div>Loading...</div>} onBeforeLift={null} persistor={persistor}>
-            <ConnectedRouter history={history}>
-                <Route exact path='/' component={App} />
-            </ConnectedRouter>
+            <DragDropContextProvider backend={HTML5Backend}>
+                <ConnectedRouter history={history}>
+                    <Route exact path='/' component={App} />
+                </ConnectedRouter>
+            </DragDropContextProvider>
         </PersistGate>
     </Provider>,
     mountNode,

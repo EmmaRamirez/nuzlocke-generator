@@ -20,7 +20,7 @@ You should find it at `localhost:8080`.
 
 ## Features
 - Record your nuzlocke with a flashy image
-- Save data on each of your Pokémon as `json` file
+- Save data on each of your Pokémon as a `json` file
 - Flexible style editing for multiple scenarios
 
 If you have ideas for features of fixes, please tell me! I want to make this app as useful as possible.
@@ -38,6 +38,4 @@ None yet.
 
 ## Legal
 
-<small>
 I don't own Pokemon or any of the images except those of the app itself. All rights belong to their respective parties, including The Pokemon Company International and Nintendo. This application itself independent of copyrighted content is licensed under MIT.
-</small>
