@@ -83,6 +83,12 @@ export const handleSpeciesTypeEdgeCases = ({ species, forme, generation }): [Typ
         Generation.Gen5]
     })) return [Types.Normal, Types.Normal];
 
+    if (match({
+        ...data,
+        species: ['Ralts', 'Kirlia', 'Gardevoir', 'Mr. Mime', 'Mime Jr.'],
+        generation: [Generation.Gen1, Generation.Gen2, Generation.Gen3, Generation.Gen4, Generation.Gen5]
+    })) return [Types.Psychic, Types.Psychic];
+
     return null;
 };
 
