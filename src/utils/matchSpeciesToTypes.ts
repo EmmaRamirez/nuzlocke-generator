@@ -204,6 +204,11 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
         case 'Wishiwashi':
         case 'Pyukumuku':
             return [Types.Water, Types.Water];
+        case 'Slowpoke':
+        case 'Slowbro':
+        case 'Slowking':
+        case 'Starmie':
+            return [Types.Water, Types.Psychic];
         case 'Mankey':
         case 'Primeape':
         case 'Machop':
