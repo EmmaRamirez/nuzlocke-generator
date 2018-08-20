@@ -309,7 +309,7 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
                     placeholder=''
                     value={currentPokemon.gender}
                     type='select'
-                    options={['Male', 'Female', 'Neutral']}
+                    options={['Neutral', 'Male', 'Female']}
                 />
                 <CurrentPokemonInput
                     labelName='Nature'
