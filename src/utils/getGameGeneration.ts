@@ -12,7 +12,7 @@ export enum Generation {
     Gen8
 }
 
-export const getGameGeneration = (game: Game) => {
+export const getGameGeneration = (game: Game): Generation => {
     const Gen1: Game[] = ['Red', 'Blue', 'Yellow', 'Green'];
     const Gen2: Game[] = ['Gold', 'Silver', 'Crystal'];
     const Gen3: Game[] = ['Ruby', 'Sapphire', 'Emerald', 'FireRed', 'LeafGreen', 'Colosseum', 'XD Gale of Darkness'];
@@ -29,5 +29,5 @@ export const getGameGeneration = (game: Game) => {
     if (Gen6.includes(game)) return Generation.Gen6;
     if (Gen7.includes(game)) return Generation.Gen7;
 
-    throw new ReferenceError('No Generation was matched for game: ' + game);
+    return Generation.Gen7;
 };
