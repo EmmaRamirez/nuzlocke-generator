@@ -20,7 +20,8 @@ const Grid = (({ team, filterFunction }: {
                             id={poke.id}
                             species={poke.species}
                             forme={poke.forme}
-                            isShiny={poke.shiny}
+                            shiny={poke.shiny}
+                            gender={poke.gender}
                         />
                     </Tooltip>
             ))}</>

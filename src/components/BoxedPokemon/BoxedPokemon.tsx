@@ -16,6 +16,7 @@ export const BoxedPokemonBase = (poke: Pokemon & { selectPokemon }) => {
                 style={{ cursor: 'pointer' }}
                 forme={poke.forme}
                 shiny={poke.shiny}
+                gender={poke.gender}
             />
             <div className='boxed-pokemon-info'>
                 <span className='boxed-pokemon-name'>

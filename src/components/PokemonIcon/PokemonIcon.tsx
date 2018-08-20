@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { getFormeSuffix, getSpriteIcon, speciesToNumber, listOfPokemon, significantGenderDifferenceList } from 'utils';
-import { Gender } from 'components/Shared';
+import { Gender, GenderElementProps } from 'components/Shared';
 import { pokemon } from 'reducers/pokemon';
 import { selectPokemon } from 'actions';
 import { ErrorBoundary } from '../Shared';
@@ -15,10 +15,12 @@ interface PokemonIconProps {
     species: string;
     /** The forme of the Pokemon **/
     forme?: string;
+    /** The gender of the Pokemon */
+    gender?: GenderElementProps;
     onClick: () => void;
     selectedId: string | null;
     /** Renders its shiny version if true **/
-    isShiny?: boolean;
+    shiny?: boolean;
     className?: string;
     style?: React.CSSProperties;
 
@@ -76,7 +78,7 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
     }
 
     public render() {
-        const { connectDragSource, isDragging, id, species, forme, onClick, selectedId, className, isShiny, style } = this.props;
+        const { connectDragSource, isDragging, id, gender, species, forme, onClick, selectedId, className, shiny, style } = this.props;
         return connectDragSource!(
             <div
                 role='icon'
@@ -91,7 +93,7 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
                 }>
                 <img
                     alt={species}
-                    src={`icons/pokemon/${isShiny ? 'shiny' : 'regular'}/${formatSpeciesName(species)}.png`}
+                    src={getIconURL({ id, species, forme, shiny, gender })}
                 />
             </div>
         );
