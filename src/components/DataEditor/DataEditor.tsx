@@ -7,6 +7,7 @@ import * as uuid from 'uuid/v4';
 import { persistor } from 'store';
 import { replaceState } from 'actions';
 import { style } from 'reducers/style';
+import { reducers } from 'reducers';
 // import { parseFile } from 'pokemon-savefile-parser';
 
 const trash = require('assets/img/trash.png');
@@ -149,7 +150,7 @@ export class DataEditorBase extends React.Component<
                     onCancel={this.toggleClearingData}
                     cancelButtonText='Nevermind'
                     confirmButtonText='Delete Anyway'
-                    className={this.props.state.style.editorDarkMode ? 'pt-dark' : 'pt-light'}
+                    className={this.props.state.style.spritesMode ? 'pt-dark' : 'pt-light'}
                     style={{ maxWidth: '600px' }}
                     intent={Intent.DANGER}
                 >
@@ -254,6 +255,6 @@ export class DataEditorBase extends React.Component<
     }
 }
 
-export const DataEditor = connect((state: any) => ({ state: state }), {
+export const DataEditor = connect((state: typeof reducers) => ({ state: state }), {
     replaceState,
 })(DataEditorBase as any);
