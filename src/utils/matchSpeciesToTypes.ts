@@ -78,6 +78,12 @@ export const handleSpeciesTypeEdgeCases = ({ species, forme, generation }): [Typ
 
     if (match({
         ...data,
+        species: ['Marowak'],
+        forme: ['Alola'],
+    })) return [Types.Ghost, Types.Fire];
+
+    if (match({
+        ...data,
         species: ['Clefairy', 'Clefable', 'Cleffa'],
         generation: [Generation.Gen1, Generation.Gen2, Generation.Gen3, Generation.Gen4,
         Generation.Gen5]
@@ -240,6 +246,22 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
             return [Types.Fighting, Types.Fighting];
         case 'Tornadus':
             return [Types.Flying, Types.Flying];
+        case 'Sandshrew':
+        case 'Sandslash':
+        case 'Diglett':
+        case 'Dugtrio':
+        case 'Cubone':
+        case 'Marowak':
+        case 'Groudon':
+        case 'Phanpy':
+        case 'Donphan':
+        case 'Trapinch':
+        case 'Hippopotas':
+        case 'Hippowdon':
+        case 'Drilbur':
+        case 'Mudbray':
+        case 'Mudsdale':
+            return [Types.Ground, Types.Ground];
         case 'Noibat':
         case 'Noivern':
             return [Types.Flying, Types.Dragon];
