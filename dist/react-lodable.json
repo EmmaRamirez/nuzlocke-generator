@@ -1439,7 +1439,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../common/classes": [
+  "./common/classes": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
@@ -1565,7 +1565,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/internal/focusedCellUtils": [
+  "./focusedCellUtils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/internal/focusedCellUtils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/internal/focusedCellUtils.js",
@@ -1677,7 +1677,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../common/utils": [
+  "../common/utils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
@@ -1971,7 +1971,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../locator": [
+  "./locator": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/locator.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/locator.js",
@@ -4805,7 +4805,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "lodash/isFunction": [
+  "./isFunction": [
     {
       "id": "./node_modules/lodash/isFunction.js",
       "name": "./node_modules/lodash/isFunction.js",
@@ -4931,7 +4931,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "lodash/noop": [
+  "./noop": [
     {
       "id": "./node_modules/lodash/noop.js",
       "name": "./node_modules/lodash/noop.js",
@@ -4939,8 +4939,20 @@
       "publicPath": "bundle.js"
     },
     {
+      "id": "./src/utils/noop.ts",
+      "name": "./src/utils/noop.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
       "id": "./node_modules/lodash/noop.js",
       "name": "./node_modules/lodash/noop.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./src/utils/noop.ts",
+      "name": "./src/utils/noop.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -10591,20 +10603,6 @@
     {
       "id": "./src/utils/movesByType.ts",
       "name": "./src/utils/movesByType.ts",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "./noop": [
-    {
-      "id": "./src/utils/noop.ts",
-      "name": "./src/utils/noop.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./src/utils/noop.ts",
-      "name": "./src/utils/noop.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
