@@ -222,4 +222,13 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - It has also failed on some Windows + Firefox installations
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
+    '0.0.11-beta': `
+# Changelog
+
+## Features
+
+## Fixes
+
+## Known Issues
+`,
 };
