@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { reducers } from 'reducers';
 
-import { seeRelease, editRule } from 'actions';
 import * as Loadable from 'react-loadable';
 
 
@@ -55,7 +55,7 @@ export class AppBase extends React.PureComponent<AppProps> {
 }
 
 export const App = connect(
-    (state: any) => ({
+    (state: Partial<typeof reducers>) => ({
         style: state.style,
         rules: state.rules,
     }),

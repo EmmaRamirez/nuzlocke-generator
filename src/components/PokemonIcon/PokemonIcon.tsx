@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { getSpriteIcon, speciesToNumber, StoreContext, listOfPokemon } from '../../utils';
+import { getFormeSuffix, getSpriteIcon, speciesToNumber, listOfPokemon, significantGenderDifferenceList } from 'utils';
+import { Gender, GenderElementProps } from 'components/Shared';
 import { pokemon } from 'reducers/pokemon';
 import { selectPokemon } from 'actions';
 import { ErrorBoundary } from '../Shared';
+import { store } from 'store';
+import { DragSource, ConnectDragSource } from 'react-dnd';
 
 interface PokemonIconProps {
     /** The id of the Pokemon, used for selection **/
@@ -12,23 +15,29 @@ interface PokemonIconProps {
     species: string;
     /** The forme of the Pokemon **/
     forme?: string;
+    /** The gender of the Pokemon */
+    gender?: GenderElementProps;
     onClick: () => void;
     selectedId: string | null;
     /** Renders its shiny version if true **/
-    isShiny?: boolean;
+    shiny?: boolean;
     className?: string;
     style?: React.CSSProperties;
+
+    connectDragSource?: ConnectDragSource;
+    isDragging?: boolean;
 }
 
 const formatSpeciesName = (species: string | null) => {
     if (species == null) return 'unknown';
-    if (listOfPokemon.indexOf(species) < 0) return 'unknown';
     if (species === 'Nidoran♀') return 'nidoran-f';
     if (species === 'Nidoran♂') return 'nidoran-m';
     if (species === 'Mr. Mime') return 'mr-mime';
-    if (species === 'Farfetch\'d') return 'farfetchd';
+    if (species.startsWith('Farfetch')) return 'farfetchd';
     if (species === 'Mime Jr.') return 'mime-jr';
     if (species === 'Flabébé') return 'flabebe';
+    if (species.startsWith('Tapu')) return species.toLowerCase().replace(/\s/, '-');
+    if (listOfPokemon.indexOf(species) < 0) return 'unknown';
     return species.toLowerCase();
 };
 
@@ -36,40 +45,57 @@ const getForme = (forme) => {
     return '';
 };
 
+const iconSource = {
+    beginDrag(props: PokemonIconProps) {
+        console.log('drag has begun', props);
+        store.dispatch(selectPokemon(props.id!));
+        return {
+            id: props.id
+        };
+    },
+    isDragging(props, monitor) {
+        return {
+            id: props.id
+        };
+    }
+};
+
+export const getIconURL = ({ id, species, forme, shiny, gender }) => {
+    const baseURL = `icons/pokemon/`;
+    const isShiny = shiny ? 'shiny' : 'regular';
+    const isFemaleSpecific = significantGenderDifferenceList.includes(species) && Gender.isFemale(gender) ? `female/` : '';
+    return `${baseURL}${isShiny}/${isFemaleSpecific}${formatSpeciesName(species)}${getFormeSuffix(forme)}.png`;
+};
+
+@DragSource('ICON', iconSource as any, (connect, monitor) => ({
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging()
+}))
 export class PokemonIconBase extends React.Component<PokemonIconProps> {
-    public iconRef: React.RefObject<HTMLDivElement>;
 
     constructor(props) {
         super(props);
-        this.iconRef = React.createRef();
-    }
-
-    public componentDidUpdate() {
-        const node = this.iconRef.current;
     }
 
     public render() {
-        const { id, species, forme, onClick, selectedId, className, isShiny, style } = this.props;
-        return (
-            <ErrorBoundary>
-                <div
-                    role='icon'
-                    onClick={e => {
-                        e.preventDefault();
-                        onClick && onClick();
-                    }}
-                    ref={this.iconRef}
-                    id={id}
-                    style={style}
-                    className={
-                        `${id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'}${className || ''}`
-                    }>
-                    <img
-                      alt={species}
-                      src={`icons/pokemon/${isShiny ? 'shiny' : 'regular'}/${formatSpeciesName(species)}.png`}
-                    />
-                </div>
-            </ErrorBoundary>
+        const { connectDragSource, isDragging, id, gender, species, forme, onClick, selectedId, className, shiny, style } = this.props;
+        return connectDragSource!(
+            <div
+                role='icon'
+                onClick={e => {
+                    e.preventDefault();
+                    onClick && onClick();
+                }}
+                id={id}
+                style={style}
+                className={
+                    `${id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'}${className || ''} ${isDragging ? 'opacity-medium' : ''}`
+                }>
+                <img
+                    alt={species}
+                    src={getIconURL({ id, species, forme, shiny, gender })}
+                />
+            </div>
         );
     }
 }

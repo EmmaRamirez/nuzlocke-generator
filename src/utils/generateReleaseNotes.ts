@@ -200,6 +200,26 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Sugimori images can't be used with the download option (depending on browser)
 - Selecting a checkpoint sometimes undoes all others
 `,
-    '0.1.0-beta': `
+    '0.0.10-beta': `
+# Changelog
+
+## Features
+- **Drag and Drop**: It's finally here!
+- **Copy Pokémon Button**: Copies the current Pokémon
+- **N hotkey**: Creates a New Pokémon
+
+## Fixes
+- Earlier gen move names are now valid (Sand-Attack, Hi Jump Kick, etc)
+- Likewise, move types are now correct for their Generation (Gust is Normal in Gen 1, etc)
+- Fightinium Z now works
+- Farfetch'd is valid again, alongside any Pokémon with weird names
+- Scale sprites option now works properly
+- Margin should no longer affect result downloads
+- \`Game Of Origin\` value now defaults to current game
+
+## Known Issues
+- Downloading images will fail if you have cross-origin (i.e. Sugimori or custom) images
+- It has also failed on some Windows + Firefox installations
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
 };

@@ -1,9 +1,9 @@
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
-const OfflinePlugin = require('offline-plugin');
 const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+//const OfflinePlugin = require('offline-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production' ? true : false;
 
@@ -13,6 +13,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
+        chunkFilename: '[name].chunk.js'
     },
     mode: 'development',
     devtool: 'source-map',
@@ -32,6 +33,9 @@ module.exports = {
     },
     stats: {
         warnings: false,
+    },
+    optimization: {
+        minimize: true
     },
     module: {
         rules: [
@@ -100,7 +104,11 @@ module.exports = {
 
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
-            'PRODUCTION': JSON.stringify(true)
+            'PRODUCTION': JSON.stringify(true),
+            'features.themeEditing': JSON.stringify(false),
+            'features.fileUploads': JSON.stringify(false),
+            'features.multipleNuzlockes': JSON.stringify(false),
+            'features.copyingPokemon': JSON.stringify(true),
         }),
 
         new ReactLoadablePlugin({

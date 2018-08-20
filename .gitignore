@@ -10,6 +10,8 @@ test/__snapshots__
 *.env
 env
 src/img/dev
+nuzlockes
+.docz
 
 # Runtime data
 pids

@@ -1,6 +1,7 @@
 export * from './choose';
 export * from './generateReleaseNotes';
 export * from './getSpriteIcon';
+export * from './classWithDarkTheme';
 export * from './listOfThemes';
 export * from './matchSpeciesToTypes';
 export * from './speciesToNumber';
@@ -32,3 +33,8 @@ export * from './listOfAbilities';
 export * from './Types';
 export * from './features';
 export * from './getGameGeneration';
+export * from './accentedE';
+export * from './handleMovesGenerationExceptions';
+export * from './handleSignificantGenderDifferences';
+export * from './dragAndDrop';
+export * from './getFormeSuffix';

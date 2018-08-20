@@ -134,6 +134,7 @@ export class DataEditorBase extends React.Component<
 
     private clearAllData = e => {
         persistor.purge();
+        window.location.reload();
     };
 
     private toggleClearingData = e =>

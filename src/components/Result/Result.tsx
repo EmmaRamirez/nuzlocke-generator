@@ -1,23 +1,31 @@
 import * as React from 'react';
 
-import { Pokemon, Trainer } from 'models';
-import { getBadges, getGameRegion, sortPokes, mapTrainerImage } from 'utils';
 import { connect } from 'react-redux';
 import * as uuid from 'uuid/v4';
 import { Scrollbars } from 'react-custom-scrollbars';
 import * as domtoimage from 'dom-to-image';
+import { cx } from 'emotion';
 
 import { selectPokemon } from 'actions';
-
 import { TeamPokemon } from 'components/TeamPokemon';
 import { DeadPokemon } from 'components/DeadPokemon';
 import { BoxedPokemon } from 'components/BoxedPokemon';
 import { ChampsPokemon } from 'components/ChampsPokemon';
 import { TopBar } from 'components/TopBar';
-
+import { Pokemon, Trainer } from 'models';
 import { reducers } from 'reducers';
+import {
+    Styles as StyleState,
+    getBadges,
+    getGameRegion,
+    sortPokes,
+    mapTrainerImage
+} from 'utils';
+
+import * as Styles from './styles';
 
 import './Result.styl';
+import './themes.styl';
 
 interface ResultProps {
     pokemon: Pokemon[];
@@ -25,11 +33,12 @@ interface ResultProps {
     trainer: Trainer;
     box: { key: number; name: string }[];
     selectPokemon: selectPokemon;
-    style: any;
+    style: StyleState;
     rules: string[];
 }
 
 interface ResultState {
+    isDownloading: boolean;
     downloadError: string | null;
 }
 
@@ -39,6 +48,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         super(props);
         this.resultRef = React.createRef();
         this.state = {
+            isDownloading: false,
             downloadError: null
         };
     }
@@ -201,39 +211,24 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     </div>
                 )}
                 <div className='badge-wrapper'>{this.renderBadgesOrTrials()}</div>
-                {/* <img alt='Trainer' className='trainer-image' src='' />
-                <div className='game-logo'>
-                    <span>
-                        <img src='' alt='Game Logo' />
-                    </span>
-                </div>
-                <div className='trainer-name'>
-                    <span>name</span>
-                    {trainer.name || ''}
-                </div> */}
             </div>
         );
     }
 
-    // private onResize = (e, { element, size }) => {
-    //     this.setState({
-    //         width: size.width,
-    //         height: size.height,
-    //     });
-    // };
-
     private async toImage() {
         const resultNode = this.resultRef.current;
+        this.setState({ isDownloading: true });
         try {
             const dataUrl = await domtoimage.toPng(resultNode);
             const link = document.createElement('a');
             link.download = `nuzlocke-${uuid()}.png`;
             link.href = dataUrl;
             link.click();
-            this.setState({ downloadError: null });
+            this.setState({ downloadError: null, isDownloading: false });
         } catch (e) {
             this.setState({
-                downloadError: 'Failed to download. This is likely due to your image containing an image resource that does not allow Cross-Origin'
+                downloadError: 'Failed to download. This is likely due to your image containing an image resource that does not allow Cross-Origin',
+                isDownloading: false,
             });
         }
     }
@@ -259,14 +254,14 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         style.template.toLowerCase().replace(/\s/g, '-')) ||
                         ''} region-${getGameRegion(this.props.game.name)} team-size-${numberOfTeam}`}
                     style={{
-                        margin: '3rem auto',
+                        margin: this.state.isDownloading ? '0' : '3rem auto',
                         backgroundColor: bgColor,
                         backgroundImage: `url(${style.backgroundImage})`,
                         backgroundRepeat: style.tileBackground ? 'repeat' : 'no-repeat',
                         height: style.resultHeight + 'px',
                         marginBottom: '.5rem',
-                        transform: `scale(${style.zoomLevel})`,
-                        transformOrigin: '0 0',
+                        // transform: `scale(${style.zoomLevel})`,
+                        // transformOrigin: '0 0',
                         width: style.resultWidth + 'px',
                     }}>
                     <div className='trainer-container' style={{ backgroundColor: topHeaderColor }}>

@@ -1,16 +1,18 @@
 import { movesByType } from 'utils';
+import { Types } from './Types';
 
-export const getMoveType = move => {
+export const getMoveType = (move: string): Types => {
     for (const type in movesByType) {
         if (movesByType.hasOwnProperty(type)) {
             if (
-                movesByType[type].some((value, index) => {
+                movesByType[type].some((value) => {
                     return move === value;
                 })
-            )
-                return type;
+            ) {
+                return Types[type];
+            }
         }
     }
 
-    return 'Normal';
+    return Types.Normal;
 };
