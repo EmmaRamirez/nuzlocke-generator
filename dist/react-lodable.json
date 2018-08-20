@@ -991,7 +991,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./spinner": [
+  "./spinner/spinner": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/spinner/spinner.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/spinner/spinner.js",
@@ -1439,7 +1439,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/classes": [
+  "./common/classes": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
@@ -8311,7 +8311,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./../../webpack/buildin/module.js": [
+  "./../webpack/buildin/module.js": [
     {
       "id": "./node_modules/webpack/buildin/module.js",
       "name": "./node_modules/webpack/buildin/module.js",
