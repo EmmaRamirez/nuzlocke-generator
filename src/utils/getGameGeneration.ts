@@ -13,7 +13,7 @@ export enum Generation {
 }
 
 export const getGameGeneration = (game: Game) => {
-    const Gen1: Game[] = ['Red', 'Blue', 'Yellow', 'Green'];
+    const Gen1: Game[] = ['None', 'Red', 'Blue', 'Yellow', 'Green'];
     const Gen2: Game[] = ['Gold', 'Silver', 'Crystal'];
     const Gen3: Game[] = ['Ruby', 'Sapphire', 'Emerald', 'FireRed', 'LeafGreen', 'Colosseum', 'XD Gale of Darkness'];
     const Gen4: Game[] = ['Diamond', 'Pearl', 'Platinum', 'HeartGold', 'SoulSilver'];
