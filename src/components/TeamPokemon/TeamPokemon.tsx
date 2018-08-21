@@ -41,8 +41,9 @@ export interface TeamPokemonInfoProps {
 export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
     public render() {
         const { pokemon, style } = this.props;
+        const accentColor = style ? style.accentColor : '#111111';
         return (
-            <div className='pokemon-info'>
+            <div className='pokemon-info' style={{ background: accentColor }}>
                 <div className='pokemon-info-inner'>
                     <div className='pokemon-main-info'>
                         <span style={{ margin: '0.25rem 0 0' }} className='pokemon-nickname'>
@@ -157,6 +158,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
         const spriteStyle = this.props.style.spritesMode && !this.props.style.scaleSprites
             ? { backgroundSize: 'auto', backgroundRepeat: 'no-repeat' }
             : { backgroundSize: 'cover', backgroundRepeat: 'no-repeat' };
+
 
         const addProp = item => {
             const propName = `data-${item.toLowerCase()}`;

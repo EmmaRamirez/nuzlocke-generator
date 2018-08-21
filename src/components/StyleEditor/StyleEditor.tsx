@@ -110,13 +110,13 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     }
                 </div>
 
-                {
+                {/* {
                     props.style.template === 'Hexagons' ?
                     <div className={styleEdit}>
                         <h6>Hexagons Template Options</h6>
                     </div>
                     : null
-                }
+                } */}
 
                 <div className={styleEdit}>
                     <RadioGroup
@@ -168,6 +168,15 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         onChange={e => editEvent(e, props)}
                         name={'bgColor'}
                         value={props.style.bgColor}
+                    />
+                </div>
+
+                <div className={styleEdit}>
+                    <label className='pt-label pt-inline'>Accent color</label>
+                    <ColorEdit
+                        onChange={e => editEvent(e, props)}
+                        name={'accentColor'}
+                        value={props.style.accentColor}
                     />
                 </div>
 

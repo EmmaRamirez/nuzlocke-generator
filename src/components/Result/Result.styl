@@ -282,12 +282,7 @@
 
 
 
-.pokemon-causeofdeath {
-  color: black;
-}
-
 .dead-pokemon-info {
-  color: #eee;
   width: 200px;
   vertical-align: top;
   display: inline-block;
@@ -307,7 +302,7 @@
 .dead-pokemon-info,
 .pokemon-d-nickname strong,
 .pokemon-causeofdeath {
-  color: white;
+  // color: white;
 }
 
 .dead-pokemon-info {
@@ -318,7 +313,6 @@
   font-size: 1rem;
   font-weight: light !important;
   margin-right: .5rem;
-  color: #eee;
 }
 
 .pokemon-d-nickname,
@@ -331,7 +325,8 @@
 
 .dead-pokemon-picture {
   cursor: pointer;
-  height: 80px;
+  // TODO: This is really, really bad
+  height: 79px;
   width: 76px;
   background-size: cover;
   background-position: center;
@@ -339,27 +334,6 @@
 
 .pokemon-levels {
   margin: 0 !important;
-  color: #ddd;
-}
-
-.selector {
-  margin: 0 auto;
-  max-width: 80rem;
-  padding: .5rem;
-}
-
-.selector button {
-  border: 0 solid transparent;
-  background: #333;
-  cursor: pointer;
-  color: #eee;
-  border-radius: .25rem;
-  padding: .5rem;
-}
-
-.selector button:hover {
-  background: #444;
-  transition: 300ms;
 }
 
 
@@ -495,14 +469,13 @@
 .pokemon-info {
   border-radius: 0 4px 4px 0;
   display: inline-block;
-  background: #111;
   height: auto;
   min-height: 8rem;
   margin-left: -4rem;
   position: relative;
   width: 26rem;
   vertical-align: top;
-  -webkit-filter: drop-shadow(0 0 1px #111);
+  filter: drop-shadow(0 0 1px #111);
   padding-left: 4rem;
   border-radius: .25rem;
   overflow: hidden;

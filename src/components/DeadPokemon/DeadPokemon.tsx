@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { Pokemon } from 'models';
 import { GenderElement } from 'components/Shared';
-import { getBackgroundGradient, getPokemonImage, getSpriteIcon, speciesToNumber } from 'utils';
+import { getBackgroundGradient, getPokemonImage, getSpriteIcon, speciesToNumber, getContrastColor } from 'utils';
 import { selectPokemon } from 'actions';
 import { PokemonIconBase } from 'components/PokemonIcon';
 
@@ -28,8 +28,13 @@ export const DeadPokemonBase = (
     };
     const getClassname = () =>
         poke.champion ? 'dead-pokemon-container champion' : 'dead-pokemon-container';
+    const getAccentColor = (prop) => prop.style ? prop.style.accentColor : '#111111';
+    console.log(`deadPokemonColor`, getAccentColor(poke));
     return (
-        <div className={getClassname()} data-league={poke.champion}>
+        <div className={getClassname()} data-league={poke.champion} style={{
+            background: getAccentColor(poke),
+            color: getContrastColor(getAccentColor(poke))
+        }}>
                 { style.template !== 'Generations' ? <div
                     role='presentation'
                     onClick={e => poke.selectPokemon(poke.id)}

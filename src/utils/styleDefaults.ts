@@ -3,6 +3,7 @@ export type OrientationType = 'vertical' | 'horizonal';
 export type TeamImagesType = 'standard' | 'sugimori' | 'dream world';
 
 export interface Styles {
+    accentColor: string;
     backgroundImage: string;
     bgColor: string;
     customCSS: string;
@@ -29,6 +30,7 @@ export interface Styles {
 }
 
 export const styleDefaults: Styles = {
+    accentColor: '#111111',
     backgroundImage: '',
     bgColor: '#383840',
     customCSS: ``,

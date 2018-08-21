@@ -52,7 +52,7 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
                     icon='badge'
                 >
                     <div className={Classes.DIALOG_BODY}>
-                        <CheckpointsEditor />
+                        <CheckpointsEditor checkpoints={this.state.badges} />
                     </div>
                 </Dialog>
                 <TrainerInfoEditField

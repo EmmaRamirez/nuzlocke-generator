@@ -242,6 +242,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         const numberOfChamps = getNumberOf('Champs', pokemon);
         const bgColor = style ? style.bgColor : '#383840';
         const topHeaderColor = style ? style.topHeaderColor : '#333333';
+        const accentColor = style ? style.accentColor : '#111111';
         return (
             <Scrollbars
                 autoHide
