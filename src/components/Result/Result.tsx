@@ -19,7 +19,8 @@ import {
     getBadges,
     getGameRegion,
     sortPokes,
-    mapTrainerImage
+    mapTrainerImage,
+    getContrastColor
 } from 'utils';
 
 import * as Styles from './styles';
@@ -150,13 +151,12 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             <div className='trainer-wrapper'>
                 <div
                     style={{
-                        color: '#eee',
+                        color: getContrastColor(style.bgColor),
                         background: style.bgColor,
                         marginRight: '.5rem',
                         width: '100px',
                         borderRadius: '.25rem',
                         textAlign: 'center',
-                        textShadow: '0 0 2px #222'
                     }}>
                     {game.name}
                 </div>
@@ -248,7 +248,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                 autoHide
                 autoHideTimeout={1000}
                 autoHideDuration={200}>
-                <TopBar onClickDownload={e => this.toImage()} >{this.renderErrors()}</TopBar>
+                <TopBar onClickDownload={() => this.toImage()} >{this.renderErrors()}</TopBar>
                 <div
                     ref={this.resultRef}
                     className={`result container ${(style.template &&

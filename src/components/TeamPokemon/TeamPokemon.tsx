@@ -10,6 +10,7 @@ import { getBackgroundGradient,
         Generation,
         handleMovesGenerationsExceptions,
         getGameGeneration,
+        getContrastColor,
     } from 'utils';
 import { GenderElement } from 'components/Shared';
 import { selectPokemon } from 'actions';
@@ -43,7 +44,10 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
         const { pokemon, style } = this.props;
         const accentColor = style ? style.accentColor : '#111111';
         return (
-            <div className='pokemon-info' style={{ background: accentColor }}>
+            <div className='pokemon-info' style={{
+                background: accentColor,
+                color: getContrastColor(accentColor)
+            }}>
                 <div className='pokemon-info-inner'>
                     <div className='pokemon-main-info'>
                         <span style={{ margin: '0.25rem 0 0' }} className='pokemon-nickname'>
@@ -84,7 +88,7 @@ export class TeamPokemonBaseMinimal extends React.PureComponent<TeamPokemonBaseP
     public render() {
         const { pokemon } = this.props;
         return (
-            <div className='pokemon-container minimal'>
+            <div className='pokemon-container minimal' style={{ color: getContrastColor(this.props.style.bgColor) }}>
                 <div
                     style={{
                         backgroundImage: getPokemonImage({
