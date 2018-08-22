@@ -4,7 +4,7 @@ import { sortPokes } from '.';
 import { Types } from './Types';
 
 export function generateEmptyPokemon(pokemon?: Pokemon[]): Pokemon {
-    let position = 0;
+    let position: number = 0;
     if (pokemon && pokemon.length > 0) {
         try {
             position = parseInt(pokemon.sort(sortPokes)[pokemon.length - 1].position as any) + 1;

@@ -136,9 +136,9 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             ? 'obtained'
                             : 'not-obtained'
                     }
-                    key={badge}
-                    alt={badge}
-                    src={`./img/${badge}.png`}
+                    key={badge.name}
+                    alt={badge.name}
+                    src={`./img/${badge.image}.png`}
                 />
             );
         });

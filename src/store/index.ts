@@ -18,6 +18,15 @@ const migrations = {
             box: undefined,
         };
     },
+    '0.0.11-beta': state => {
+        return {
+            ...state,
+            trainer: {
+                ...state.trainer,
+                badges: []
+            }
+        };
+    }
 };
 
 const config = {

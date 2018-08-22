@@ -621,6 +621,7 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
         case 'Voltorb':
         case 'Electabuzz':
         case 'Jolteon':
+        case 'Electrode':
         case 'Pichu':
         case 'Mareep':
         case 'Ampharos':

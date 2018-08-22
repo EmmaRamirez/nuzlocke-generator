@@ -226,9 +226,18 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 # Changelog
 
 ## Features
+- **Checkpoints Editor**: Custom badges, trials, battles, whatever!
+- **Accent colors**: more control over the look of your Nuzlocke!
 
 ## Fixes
+- Games with the label \`None\` now default as the latest Generation
 
 ## Known Issues
+- Downloading images will fail with certain resources
+    - Sugimori images
+    - Sprites
+    - Custom images
+- This is because they contain "cross-origin" resources, which taint the process for downloading
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
 };
