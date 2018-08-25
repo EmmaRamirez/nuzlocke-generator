@@ -235,6 +235,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Fixed an issue where Crystal's color didn't appear due to a typo
 - Sprite images now use pixelated image rendering. Check out the difference!
 - The \`Exp Share\` field for Trainer data has been deprecated. Please use rules instead
+- Cut down overall image sizes by about 10%
 
 ## Known Issues
 - Downloading images will fail with certain resources
