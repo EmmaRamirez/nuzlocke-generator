@@ -3,6 +3,8 @@ const download = require('assets/download.png');
 const cardsTheme = require('assets/cards-theme.png');
 const spritesMode = require('assets/sprites-mode.png');
 const hexagonTheme = require('assets/hexagons-theme.png');
+const compactTheme = require('assets/compact-theme.png');
+const imageRender = require('assets/image-render.jpg');
 
 export function generateReleaseNotes(version: string) {
     return releaseNotes[version] || '';
@@ -229,13 +231,18 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - **Checkpoints Editor**: Custom badges, trials, battles, whatever!
 - **Accent colors**: more control over the look of your Nuzlocke!
     - Text auto-adjusts to contrast with your accent color
+- **Compact Theme**: helps fit more data on the page
+
+![compactTheme](${compactTheme})
 
 ## Fixes
 - Games with the label \`None\` now default as the latest Generation
 - Fixed an issue where Crystal's color didn't appear due to a typo
+![imageRender](${imageRender})
 - Sprite images now use pixelated image rendering. Check out the difference!
 - The \`Exp Share\` field for Trainer data has been deprecated. Please use rules instead
 - Cut down overall image sizes by about 10%
+- Gold's color is now more subtle
 
 ## Known Issues
 - Downloading images will fail with certain resources
