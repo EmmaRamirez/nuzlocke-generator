@@ -5,7 +5,9 @@ export const checkpointsEditor = css`
 `;
 
 export const checkpointsList = css`
+    height: 60vh;
     margin: 0;
+    overflow: auto;
     padding: 0;
 `;
 
@@ -42,4 +44,12 @@ export const checkpointImage = (size = 2) => css`
 export const checkpointSelect = css`
     align-items: center;
     width: 200px;
+`;
+
+export const checkpointImageUploadWrapper = css`
+    margin-left: auto;
+`;
+
+export const checkpointButtons = css`
+    padding: 1rem;
 `;

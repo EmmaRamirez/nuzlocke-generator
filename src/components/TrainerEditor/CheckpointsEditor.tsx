@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { cx, css } from 'react-emotion';
-import { Classes } from '@blueprintjs/core';
+import { Classes, Button, Icon, Intent } from '@blueprintjs/core';
 import { classWithDarkTheme, Styles } from 'utils';
 import * as styles from './style';
 import { connect } from 'react-redux';
 import { Badge } from 'models';
 import { DeepSet } from 'utils';
+import { style } from 'reducers/style';
 
 
 export interface CheckpointsSelectProps {
@@ -32,6 +33,10 @@ export interface CheckpointsEditorProps {
 
 export class CheckpointsEditorBase extends React.Component<CheckpointsEditorProps> {
 
+    private addCheckpoint = e => {
+        console.log(e);
+    }
+
     private renderCheckpoints (checkpoints: CheckpointsEditorProps['checkpoints']) {
         return checkpoints && checkpoints.toArray().map((checkpoint, key) => {
             return (
@@ -41,6 +46,7 @@ export class CheckpointsEditorBase extends React.Component<CheckpointsEditorProp
                         <input className={Classes.INPUT} type='text' value={ checkpoint.name } />
                     </div>
                     <CheckpointsSelect checkpoint={checkpoint} />
+                    <div className={cx(styles.checkpointImageUploadWrapper)}>Use Custom Image <input type='file' /></div>
                 </li>
             );
         });
@@ -51,6 +57,9 @@ export class CheckpointsEditorBase extends React.Component<CheckpointsEditorProp
             <ul className={cx(styles.checkpointsList)}>
                 { this.renderCheckpoints(this.props.checkpoints) }
             </ul>
+            <div className={cx(styles.checkpointButtons)}>
+                <Button onClick={this.addCheckpoint} intent={Intent.SUCCESS}><Icon icon='plus' /> Add Checkpoint</Button>
+            </div>
         </div>;
     }
 }

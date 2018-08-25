@@ -228,9 +228,11 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 ## Features
 - **Checkpoints Editor**: Custom badges, trials, battles, whatever!
 - **Accent colors**: more control over the look of your Nuzlocke!
+    - Text auto-adjusts to contrast with your accent color
 
 ## Fixes
 - Games with the label \`None\` now default as the latest Generation
+- Fixed an issue where Crystal's color didn't appear due to a typo
 
 ## Known Issues
 - Downloading images will fail with certain resources

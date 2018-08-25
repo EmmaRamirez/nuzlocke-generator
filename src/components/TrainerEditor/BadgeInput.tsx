@@ -59,6 +59,7 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
                     className={cx(Classes.DIALOG, { [Classes.DARK]: this.props.style.editorDarkMode}) }
                     title='Checkpoints Editor'
                     icon='badge'
+                    style={{ width: '50vw' }}
                 >
                     <div className={Classes.DIALOG_BODY}>
                         <CheckpointsEditor checkpoints={new DeepSet(getBadges(this.props.game.name))} />
