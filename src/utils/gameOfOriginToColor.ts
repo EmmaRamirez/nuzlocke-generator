@@ -1,14 +1,15 @@
 import { Game } from 'utils';
 
 export const gameOfOriginToColor = (game: Game) => {
-    const gameToColor = {
+    type gameToColor = { [G in Game]?: string };
+    const gameToColor: gameToColor = {
         Red: 'rgb(243, 86, 58)',
         Blue: '#3675f8',
         Yellow: '#fdd33c',
         Green: '#03c242',
         Gold: '#e0c503',
         Silver: '#d8d8d8',
-        Cyrstal: '#95ffff',
+        Crystal: '#98bbcd',
         Ruby: '#bc1a1a',
         Sapphire: '#1a3abc',
         Emerald: '#1abc58',

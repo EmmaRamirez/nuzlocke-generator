@@ -5,6 +5,7 @@ import {
     matchSpeciesToTypes,
     listOfPokemon,
     speciesToNumber,
+    mapTrainerImage,
 } from 'utils';
 import { DeepSet } from '../DeepSet';
 
@@ -88,5 +89,54 @@ describe('DeepSet', () => {
     it('returns an array', () => {
         const d = new DeepSet(['a', 'b', 'c', 'd']);
         expect(d.toArray()).toEqual(['a', 'b', 'c', 'd']);
+    });
+
+    it('#add', () => {
+        const d = new DeepSet([
+            { name: 'kay' },
+            { name: 'bebe' },
+            { name: 'yellow' },
+            { name: 'bebe', type: 'green' },
+        ]);
+        d.add({ name: 'kay' });
+        console.log(d);
+        expect(d.toArray().length).toBe(4);
+    });
+
+    it('#has', () => {
+        const d = new DeepSet([
+            { name: 'kay' },
+            { name: 'bebe' },
+            { name: 'yellow' },
+            { name: 'bebe', type: 'green' },
+        ]);
+        expect(d.has({ name: 'bebe', type: 'green' })).toBe(true);
+    });
+
+    it('#delete', () => {
+        const d = new DeepSet([
+            { name: 'kay' },
+            { name: 'bebe' },
+            { name: 'yellow' },
+            { name: 'bebe', type: 'green' },
+        ]);
+        d.delete({ name: 'kay' });
+        expect(d.toArray().length).toBe(3);
+    });
+
+    it('#cheapCompare', () => {
+        const k = { name: 'kay' };
+        const k2 = { name: 'kay' };
+        console.log(DeepSet.cheapCompare(k, k2));
+        expect(DeepSet.cheapCompare(k, k2)).toBe(true);
+    });
+});
+
+describe('MapTrainerToImage', () => {
+    it('returns an image if it matches', () => {
+        const t = mapTrainerImage('Ethan');
+        expect(t).toContain('ethan');
+        const u = mapTrainerImage('not gonna work');
+        expect(u).toBe('not gonna work');
     });
 });

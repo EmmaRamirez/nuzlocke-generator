@@ -22,32 +22,32 @@ export function getBadges(name: Game): Badge[] {
         ];
     }
 
-    // if (
-    //     name === 'Gold' ||
-    //     name === 'Silver' ||
-    //     name === 'Crystal' ||
-    //     name === 'HeartGold' ||
-    //     name === 'SoulSilver'
-    // ) {
-    //     return [
-    //         'zephyr-badge',
-    //         'hive-badge',
-    //         'plain-badge',
-    //         'fog-badge',
-    //         'storm-badge',
-    //         'mineral-badge',
-    //         'glacier-badge',
-    //         'rising-badge',
-    //         'boulder-badge',
-    //         'cascade-badge',
-    //         'thunder-badge',
-    //         'rainbow-badge',
-    //         'soul-badge',
-    //         'marsh-badge',
-    //         'volcano-badge',
-    //         'earth-badge',
-    //     ];
-    // }
+    if (
+        name === 'Gold' ||
+        name === 'Silver' ||
+        name === 'Crystal' ||
+        name === 'HeartGold' ||
+        name === 'SoulSilver'
+    ) {
+        return [
+            { name: 'Zephyr Badge', image: 'zephyr-badge' },
+            { name: 'Hive Badge', image: 'hive-badge' },
+            { name: 'Plain Badge', image: 'plain-badge' },
+            { name: 'Fog Badge', image: 'fog-badge' },
+            { name: 'Storm Badge', image: 'storm-badge' },
+            { name: 'Mineral Badge', image: 'mineral-badge' },
+            { name: 'Glacier Badge', image: 'glacier-badge' },
+            { name: 'Rising Badge', image: 'rising-badge' },
+            { name: 'Boulder Badge', image: 'boulder-badge' },
+            { name: 'Cascade Badge', image: 'cascade-badge' },
+            { name: 'Thunder Badge', image: 'thunder-badge' },
+            { name: 'Rainbow Badge', image: 'rainbow-badge' },
+            { name: 'Soul Badge', image: 'soul-badge' },
+            { name: 'Marsh Badge', image: 'marsh-badge' },
+            { name: 'Volcano Badge', image: 'volcano-badge' },
+            { name: 'Earth Badge', image: 'earth-badge' },
+        ];
+    }
 
     // if (
     //     name === 'Ruby' ||
