@@ -1,7 +1,5 @@
 import * as deepEqual from 'deep-equal';
 import { noop } from './noop';
-// export function DeepSet<T>(arr?: T): void { }
-
 
 export class DeepSet<T> {
     private set: T[];
