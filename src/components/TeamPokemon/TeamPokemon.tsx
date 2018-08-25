@@ -49,8 +49,12 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
         return (
             <div className='pokemon-info' style={{
                 backgroundColor: isCardsTheme ? undefined : accentColor,
-                backgroundImage: isCardsTheme ? undefined : `linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px)`,
-                color: getContrastColor(accentColor)
+                // backgroundImage: isCardsTheme ? undefined : `linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px)`,
+                backgroundImage: getBackgroundGradient(
+                    pokemon.types != null ? pokemon.types[1] : '',
+                    pokemon.types != null ? pokemon.types[0] : '',
+                ),
+                color: getContrastColor(typeToColor(pokemon.types![0]))
             }}>
                 <div className='pokemon-info-inner'>
                     <div className='pokemon-main-info'>
@@ -176,8 +180,8 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
 
         const getFirstType = poke.types ? poke.types[0] : 'Normal';
         const spriteStyle = this.props.style.spritesMode && !this.props.style.scaleSprites
-            ? { backgroundSize: 'auto', backgroundRepeat: 'no-repeat' }
-            : { backgroundSize: 'cover', backgroundRepeat: 'no-repeat' };
+            ? { backgroundSize: 'auto', backgroundRepeat: 'no-repeat', imageRendering: 'pixelated' }
+            : { backgroundSize: 'cover', backgroundRepeat: 'no-repeat', imageRendering: 'pixelated' };
 
 
         const addProp = item => {
