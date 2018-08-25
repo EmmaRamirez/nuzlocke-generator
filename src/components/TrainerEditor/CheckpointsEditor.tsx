@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { cx, css } from 'react-emotion';
-import { Classes, Button, Icon, Intent } from '@blueprintjs/core';
+import { Classes, Button, Icon, Intent, Toaster } from '@blueprintjs/core';
 import { classWithDarkTheme, Styles } from 'utils';
 import * as styles from './style';
 import { connect } from 'react-redux';
@@ -13,14 +13,31 @@ export interface CheckpointsSelectProps {
     checkpoint: Badge;
 }
 
-export class CheckpointsSelect extends React.Component<CheckpointsSelectProps> {
+export interface CheckpointsSelectState {
+    showOptions: boolean;
+}
+
+export class CheckpointsSelect extends React.Component<CheckpointsSelectProps, CheckpointsSelectState> {
+    public state = { showOptions: false };
+
+    private openSelect = e => {
+        this.setState({ showOptions: true });
+    }
+
+    private renderOptions() {
+        return <div>
+            <img className={cx(styles.checkpointImage(1))} alt={'fdsaf'} src={`./img/rainbow-badge.png`} /> Boulder
+        </div>;
+    }
+
     public render() {
         const { checkpoint } = this.props;
         return (
-            <div className={cx(Classes.SELECT, Classes.BUTTON, styles.checkpointSelect)}>
-                <span>
+            <div role='select' onClick={this.openSelect} className={cx(Classes.SELECT, Classes.BUTTON, styles.checkpointSelect)}>
+                <div>
                     <img className={cx(styles.checkpointImage(1))} alt={checkpoint.name} src={`./img/boulder-badge.png`} /> Boulder
-                </span>
+                </div>
+                { this.state.showOptions && this.renderOptions() }
             </div>
         );
     }
@@ -37,6 +54,16 @@ export class CheckpointsEditorBase extends React.Component<CheckpointsEditorProp
         console.log(e);
     }
 
+    private onUpload = e => {
+        const size = e.target.files[0].size / 1024 / 1024;
+        if (size > 0.5) {
+            const toaster = Toaster.create();
+            toaster.show({ message: `File size of 500KB exceeded. File was ${size.toFixed(2)}MB`, intent: Intent.DANGER });
+        } else {
+
+        }
+    }
+
     private renderCheckpoints (checkpoints: CheckpointsEditorProps['checkpoints']) {
         return checkpoints && checkpoints.toArray().map((checkpoint, key) => {
             return (
@@ -46,7 +73,8 @@ export class CheckpointsEditorBase extends React.Component<CheckpointsEditorProp
                         <input className={Classes.INPUT} type='text' value={ checkpoint.name } />
                     </div>
                     <CheckpointsSelect checkpoint={checkpoint} />
-                    <div className={cx(styles.checkpointImageUploadWrapper)}>Use Custom Image <input type='file' /></div>
+                    <div className={cx(styles.checkpointImageUploadWrapper)}>Use Custom Image <input onChange={this.onUpload} type='file' /></div>
+                    <Icon className={cx(styles.checkpointDelete)} icon='trash' />
                 </li>
             );
         });
@@ -58,7 +86,7 @@ export class CheckpointsEditorBase extends React.Component<CheckpointsEditorProp
                 { this.renderCheckpoints(this.props.checkpoints) }
             </ul>
             <div className={cx(styles.checkpointButtons)}>
-                <Button onClick={this.addCheckpoint} intent={Intent.SUCCESS}><Icon icon='plus' /> Add Checkpoint</Button>
+                <Button icon='plus' onClick={this.addCheckpoint} intent={Intent.SUCCESS}>{' '}Add Checkpoint</Button>
             </div>
         </div>;
     }

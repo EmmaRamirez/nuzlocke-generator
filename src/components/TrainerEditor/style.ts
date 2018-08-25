@@ -53,3 +53,7 @@ export const checkpointImageUploadWrapper = css`
 export const checkpointButtons = css`
     padding: 1rem;
 `;
+
+export const checkpointDelete = css`
+    color: red;
+`;

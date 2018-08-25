@@ -19,6 +19,13 @@ const has = (badges: Badge[] | undefined, badge: Badge) => {
     return false;
 };
 
+const isEmpty = (value: any) => {
+    if (value == null) return true;
+    if (value.toString() === '') return true;
+    if (!value.length) return true;
+    return false;
+}
+
 export class TrainerResultBase extends React.Component<TrainerResultProps> {
     private renderBadgesOrTrials() {
         const { name } = this.props.game;
@@ -71,42 +78,34 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                 ) : (
                     <div className='nuzlocke-title'>{this.props.game.name} Nuzlocke</div>
                 )}
-                {trainer.name == null || trainer.name === '' ? null : (
+                {isEmpty(trainer.name) ? null : (
                     <div className='name column'>
                         <div>name</div>
                         <div style={bottomTextStyle}>{trainer.name}</div>
                     </div>
                 )}
-                {trainer.money == null || trainer.money.toString() === '' ? null : (
+                {isEmpty(trainer.money) '' ? null : (
                     <div className='money column'>
                         <div>money</div>
                         <div style={bottomTextStyle}>{trainer.money}</div>
                     </div>
                 )}
-                {trainer.time == null || trainer.time === '' ? null : (
+                {isEmpty(trainer.time) ? null : (
                     <div className='time column'>
                         <div>time</div>
                         <div style={bottomTextStyle}>{trainer.time}</div>
                     </div>
                 )}
-                {trainer.id == null || trainer.id === '' ? null : (
+                {isEmpty(trainer.id) ? null : (
                     <div className='id column'>
                         <div>ID</div>
                         <div style={bottomTextStyle}>{trainer.id}</div>
                     </div>
                 )}
-                {trainer.totalTime == null || trainer.totalTime === '' ? null : (
+                {isEmpty(trainer.totalTime) ? null : (
                     <div className='time column'>
                         <div>time</div>
                         <div style={bottomTextStyle}>{trainer.totalTime}</div>
-                    </div>
-                )}
-                {trainer.expShareStatus == null || trainer.expShareStatus === '' ? null : (
-                    <div className='expShareStatus column'>
-                        <div>Exp Share</div>
-                        <div style={bottomTextStyle}>
-                            {(trainer.expShareStatus || '').toUpperCase()}
-                        </div>
                     </div>
                 )}
                 <div className='badge-wrapper'>{this.renderBadgesOrTrials()}</div>
