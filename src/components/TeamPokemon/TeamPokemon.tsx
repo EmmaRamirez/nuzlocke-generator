@@ -252,7 +252,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                                 style: this.props.style,
                                 name: this.props.game.name,
                             }),
-                            ...spriteStyle,
+                            ...spriteStyle as React.CSSProperties,
                         }}
                         className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()} ${
                             this.props.style.imageStyle === 'round' ? 'round' : 'square'
