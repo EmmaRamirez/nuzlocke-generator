@@ -535,6 +535,10 @@
 }
 
 .compact {
+  .container {
+    border: none;
+  }
+
   .team-container {
     display: flex;
   }
@@ -575,7 +579,8 @@
     margin: .25rem;
   }
 
-  .boxed-container {
+  .boxed-container,
+  .dead-container {
     margin-top: 0;
   }
 
@@ -591,9 +596,13 @@
     margin-left: 0;
   }
 
+  .dead-pokemon-container {
+    margin-bottom: 0;
+  }
+
   h3 {
     margin: 0;
     padding: .25rem;
-    background: rgba(0, 0, 0, 0.25);
+    background: rgba(0, 0, 0, 0.1);
   }
 }

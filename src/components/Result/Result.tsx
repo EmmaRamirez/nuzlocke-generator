@@ -187,7 +187,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                                     display: 'flex',
                                     flexWrap: 'wrap',
                                     justifyContent: 'flex-start',
-                                    margin: '.5rem',
+                                    margin: this.props.style.template === 'Compact' ? 0 : '.5rem',
                                 }}>
                                 {this.renderDeadPokemon()}
                             </div>
