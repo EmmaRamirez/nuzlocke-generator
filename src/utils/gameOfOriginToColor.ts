@@ -7,7 +7,7 @@ export const gameOfOriginToColor = (game: Game) => {
         Blue: '#3675f8',
         Yellow: '#fdd33c',
         Green: '#03c242',
-        Gold: '#e0c503',
+        Gold: '#E6BE8A',
         Silver: '#d8d8d8',
         Crystal: '#98bbcd',
         Ruby: '#bc1a1a',
