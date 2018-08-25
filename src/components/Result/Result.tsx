@@ -11,15 +11,14 @@ import { TeamPokemon } from 'components/TeamPokemon';
 import { DeadPokemon } from 'components/DeadPokemon';
 import { BoxedPokemon } from 'components/BoxedPokemon';
 import { ChampsPokemon } from 'components/ChampsPokemon';
+import { TrainerResult } from 'components/Result';
 import { TopBar } from 'components/TopBar';
-import { Pokemon, Trainer, Badge } from 'models';
+import { Pokemon, Trainer } from 'models';
 import { reducers } from 'reducers';
 import {
     Styles as StyleState,
-    getBadges,
     getGameRegion,
     sortPokes,
-    mapTrainerImage,
     getContrastColor
 } from 'utils';
 
@@ -42,14 +41,6 @@ interface ResultState {
     isDownloading: boolean;
     downloadError: string | null;
 }
-
-const has = (badges: Badge[] | undefined, badge: Badge) => {
-    if (badges) {
-        return badges.some(b => b.name === badge.name);
-    }
-    return false;
-};
-
 
 export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     public resultRef: React.RefObject<HTMLDivElement>;
@@ -125,101 +116,6 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             });
     }
 
-    private renderBadgesOrTrials() {
-        const { name } = this.props.game;
-
-        if (!this.props.style.displayBadges) {
-            return null;
-        }
-
-        return getBadges(name).map((badge, index) => {
-            // @ts-ignore
-            return (
-                <img
-                    className={
-                        has(this.props.trainer.badges, badge)
-                            ? 'obtained'
-                            : 'not-obtained'
-                    }
-                    key={badge.name}
-                    alt={badge.name}
-                    src={`./img/${badge.image}.png`}
-                />
-            );
-        });
-    }
-
-    private renderTrainer() {
-        const { trainer, game, style } = this.props;
-        const bottomTextStyle: any = { fontSize: '1.1rem', fontWeight: 'bold' };
-        return (
-            <div className='trainer-wrapper'>
-                <div
-                    style={{
-                        color: getContrastColor(style.bgColor),
-                        background: style.bgColor,
-                        marginRight: '.5rem',
-                        width: '100px',
-                        borderRadius: '.25rem',
-                        textAlign: 'center',
-                    }}>
-                    {game.name}
-                </div>
-                {trainer.image ? (
-                    <img
-                        className='trainer-image'
-                        src={mapTrainerImage(trainer.image)}
-                        alt='Trainer Image'
-                    />
-                ) : null}
-                {trainer.title ? (
-                    <div className='nuzlocke-title'>{this.props.trainer.title}</div>
-                ) : (
-                    <div className='nuzlocke-title'>{this.props.game.name} Nuzlocke</div>
-                )}
-                {trainer.name == null || trainer.name === '' ? null : (
-                    <div className='name column'>
-                        <div>name</div>
-                        <div style={bottomTextStyle}>{trainer.name}</div>
-                    </div>
-                )}
-                {trainer.money == null || trainer.money.toString() === '' ? null : (
-                    <div className='money column'>
-                        <div>money</div>
-                        <div style={bottomTextStyle}>{trainer.money}</div>
-                    </div>
-                )}
-                {trainer.time == null || trainer.time === '' ? null : (
-                    <div className='time column'>
-                        <div>time</div>
-                        <div style={bottomTextStyle}>{trainer.time}</div>
-                    </div>
-                )}
-                {trainer.id == null || trainer.id === '' ? null : (
-                    <div className='id column'>
-                        <div>ID</div>
-                        <div style={bottomTextStyle}>{trainer.id}</div>
-                    </div>
-                )}
-                {trainer.totalTime == null || trainer.totalTime === '' ? null : (
-                    <div className='time column'>
-                        <div>time</div>
-                        <div style={bottomTextStyle}>{trainer.totalTime}</div>
-                    </div>
-                )}
-                {trainer.expShareStatus == null || trainer.expShareStatus === '' ? null : (
-                    <div className='expShareStatus column'>
-                        <div>Exp Share</div>
-                        <div style={bottomTextStyle}>
-                            {(trainer.expShareStatus || '').toUpperCase()}
-                        </div>
-                    </div>
-                )}
-                <div className='badge-wrapper'>{this.renderBadgesOrTrials()}</div>
-            </div>
-        );
-    }
-
     private async toImage() {
         const resultNode = this.resultRef.current;
         this.setState({ isDownloading: true });
@@ -271,21 +167,21 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         width: style.resultWidth + 'px',
                     }}>
                     <div className='trainer-container' style={{ backgroundColor: topHeaderColor }}>
-                        {this.renderTrainer()}
+                        <TrainerResult />
                     </div>
                     {trainer && trainer.notes ? (
-                        <div className='result-notes'>{trainer.notes}</div>
+                        <div style={{ color: getContrastColor(bgColor) }} className='result-notes'>{trainer.notes}</div>
                     ) : null}
                     <div className='team-container'>{this.renderTeamPokemon()}</div>
                     {numberOfBoxed > 0 ? (
                         <div className='boxed-container'>
-                            <h3>{box[1].name}</h3>
+                            <h3 style={{ color: getContrastColor(bgColor) }}>{box[1].name}</h3>
                             <div style={{ marginLeft: '1rem' }}>{this.renderBoxedPokemon()}</div>
                         </div>
                     ) : null}
                     {numberOfDead > 0 ? (
                         <div className='dead-container'>
-                            <h3>{box[2].name}</h3>
+                            <h3 style={{ color: getContrastColor(bgColor) }}>{box[2].name}</h3>
                             <div
                                 style={{
                                     display: 'flex',
@@ -299,7 +195,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     ) : null}
                     {numberOfChamps > 0 ? (
                         <div className='champs-container'>
-                            <h3>{box[3].name}</h3>
+                            <h3 style={{ color: getContrastColor(bgColor) }}>{box[3].name}</h3>
                             <div
                                 style={{
                                     margin: '.5rem',
@@ -310,8 +206,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     ) : null}
                     {style.displayRules ? (
                         <div className='rules-container'>
-                            <h3>Rules</h3>
-                            <ol>
+                            <h3 style={{ color: getContrastColor(bgColor) }}>Rules</h3>
+                            <ol style={{ color: getContrastColor(bgColor) }}>
                                 {this.props.rules.map((rule, index) => {
                                     return <li key={index}>{rule}</li>;
                                 })}

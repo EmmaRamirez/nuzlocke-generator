@@ -1,8 +1,7 @@
-import {
-    ThemeManager,
-    DefaultDarkTheme,
-    HexagonsTheme
-} from '..';
+import { Theme } from '../Theme';
+import { HexagonsTheme } from '../HexagonsTheme';
+import { DefaultDarkTheme } from '../DefaultDarkTheme';
+import { ThemeManager } from '../ThemeManager';
 
 describe('ThemeManager', () => {
     it('#constructor', () => {

@@ -11,10 +11,12 @@ import { getBackgroundGradient,
         handleMovesGenerationsExceptions,
         getGameGeneration,
         getContrastColor,
+        gameOfOriginToColor,
     } from 'utils';
 import { GenderElement } from 'components/Shared';
 import { selectPokemon } from 'actions';
 import { reducers } from 'reducers';
+import * as Color from 'color';
 
 
 const getMetLocationString = ({ poke, oldMetLocationFormat }: { poke: Pokemon, oldMetLocationFormat: boolean }):string | null => {
@@ -43,9 +45,11 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
     public render() {
         const { pokemon, style } = this.props;
         const accentColor = style ? style.accentColor : '#111111';
+        const isCardsTheme = this.props.style.template === 'Cards';
         return (
             <div className='pokemon-info' style={{
-                background: accentColor,
+                backgroundColor: isCardsTheme ? undefined : accentColor,
+                backgroundImage: isCardsTheme ? undefined : `linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px)`,
                 color: getContrastColor(accentColor)
             }}>
                 <div className='pokemon-info-inner'>
@@ -59,6 +63,18 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                             <span className='pokemon-level'>lv. {pokemon.level}</span>
                         ) : null}
                     </div>
+                    {/* <span style={{
+                            background: gameOfOriginToColor(pokemon.gameOfOrigin!),
+                            color: getContrastColor(gameOfOriginToColor(pokemon.gameOfOrigin!)),
+                            borderRadius: '.25rem',
+                            display: 'inline-block',
+                            fontSize: '90%',
+                            margin: 0,
+                            padding: '.25rem',
+                            textAlign: 'center',
+                            width: '200px',
+                        }}>{ pokemon.gameOfOrigin }
+                    </span> */}
                     <div className='pokemon-met'>
                         { getMetLocationString({ poke: pokemon, oldMetLocationFormat: style.oldMetLocationFormat }) }
                     </div>
