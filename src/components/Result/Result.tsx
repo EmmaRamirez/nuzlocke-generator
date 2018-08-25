@@ -176,7 +176,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     {numberOfBoxed > 0 ? (
                         <div className='boxed-container'>
                             <h3 style={{ color: getContrastColor(bgColor) }}>{box[1].name}</h3>
-                            <div style={{ marginLeft: '1rem' }}>{this.renderBoxedPokemon()}</div>
+                            <div className='boxed-container-inner'>{this.renderBoxedPokemon()}</div>
                         </div>
                     ) : null}
                     {numberOfDead > 0 ? (
@@ -198,7 +198,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             <h3 style={{ color: getContrastColor(bgColor) }}>{box[3].name}</h3>
                             <div
                                 style={{
-                                    margin: '.5rem',
+                                    margin: this.props.style.template === 'Compact' ?  0 : '.5rem',
                                 }}>
                                 {this.renderChampsPokemon()}
                             </div>
