@@ -5,6 +5,7 @@ import { classWithDarkTheme, Styles } from 'utils';
 import * as styles from './style';
 import { connect } from 'react-redux';
 import { Badge } from 'models';
+import { DeepSet } from 'utils';
 
 
 export interface CheckpointsSelectProps {
@@ -25,14 +26,14 @@ export class CheckpointsSelect extends React.Component<CheckpointsSelectProps> {
 }
 
 export interface CheckpointsEditorProps {
-    checkpoints?: Set<Badge>;
+    checkpoints?: DeepSet<Badge>;
     style: Styles;
 }
 
 export class CheckpointsEditorBase extends React.Component<CheckpointsEditorProps> {
 
     private renderCheckpoints (checkpoints: CheckpointsEditorProps['checkpoints']) {
-        return checkpoints && Array.from(checkpoints).map((checkpoint, key) => {
+        return checkpoints && checkpoints.toArray().map((checkpoint, key) => {
             return (
                 <li key={key} className={cx(classWithDarkTheme(styles, 'checkpointsItem', this.props.style.editorDarkMode))}>
                     <div className={cx(styles.checkpointName)}>

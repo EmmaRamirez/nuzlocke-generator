@@ -16,5 +16,5 @@ export enum Types {
     Ice = 'Ice',
     Dragon = 'Dragon',
     Dark = 'Dark',
-    Ghost = 'Ghost'
+    Ghost = 'Ghost',
 }

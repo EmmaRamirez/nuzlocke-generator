@@ -10,7 +10,7 @@ import { Button, ITreeNode, Tree, Classes, Menu, MenuItem } from '@blueprintjs/c
 import { BoxedPokemon } from '../BoxedPokemon';
 import { ColorEdit, ThemeSelect } from 'components/Shared';
 import { ChampsPokemon } from 'components';
-import { ComponentOptions, Options, Option } from './ComponentOptions';
+import {  } from 'themes';
 
 const modelPokemon: Pokemon = {
     ...generateEmptyPokemon(),
@@ -23,7 +23,7 @@ const modelPokemon: Pokemon = {
     gameOfOrigin: 'Red',
 };
 
-const componentTree: (ITreeNode & { options?: Option })[] = [
+const componentTree: (ITreeNode & { options?: any })[] = [
     {
         id: 0,
         hasCaret: false,
@@ -96,7 +96,7 @@ const componentTree: (ITreeNode & { options?: Option })[] = [
         icon: 'style',
         isExpanded: true,
         label: 'Champs Pokemon',
-        options: Options.ChampsPokemon,
+        // options: Options.ChampsPokemon,
         childNodes: [
             {
                 id: 11,

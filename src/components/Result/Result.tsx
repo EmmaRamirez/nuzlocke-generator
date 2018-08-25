@@ -12,7 +12,7 @@ import { DeadPokemon } from 'components/DeadPokemon';
 import { BoxedPokemon } from 'components/BoxedPokemon';
 import { ChampsPokemon } from 'components/ChampsPokemon';
 import { TopBar } from 'components/TopBar';
-import { Pokemon, Trainer } from 'models';
+import { Pokemon, Trainer, Badge } from 'models';
 import { reducers } from 'reducers';
 import {
     Styles as StyleState,
@@ -42,6 +42,14 @@ interface ResultState {
     isDownloading: boolean;
     downloadError: string | null;
 }
+
+const has = (badges: Badge[] | undefined, badge: Badge) => {
+    if (badges) {
+        return badges.some(b => b.name === badge.name);
+    }
+    return false;
+};
+
 
 export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     public resultRef: React.RefObject<HTMLDivElement>;
@@ -128,11 +136,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             // @ts-ignore
             return (
                 <img
-                    // @ts-ignore
                     className={
-                        this.props.trainer &&
-                        this.props.trainer.badges &&
-                        this.props.trainer.badges.includes(badge)
+                        has(this.props.trainer.badges, badge)
                             ? 'obtained'
                             : 'not-obtained'
                     }

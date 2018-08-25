@@ -6,6 +6,7 @@ import {
     listOfPokemon,
     speciesToNumber,
 } from 'utils';
+import { DeepSet } from '../DeepSet';
 
 const objectPropertiesWhere = (obj: object, filter: any) => Array.from(
     Object.values(obj)
@@ -59,7 +60,7 @@ describe('styleDefaults', () => {
         expect(typeof styleDefaults).toBe('object');
         expect(styleDefaults.imageStyle).toBe('round');
         expect(objectPropertiesWhere(styleDefaults, p => p === 'round')).toBe(2);
-        expect(objectPropertiesWhere(styleDefaults, p => p)).toBe(12);
+        expect(objectPropertiesWhere(styleDefaults, p => p)).toBe(13);
     });
 });
 
@@ -80,5 +81,12 @@ describe('speciesToNumber', () => {
         expect(speciesToNumber('Bulbasaur')).toBe(1);
         expect(speciesToNumber('Zeraora')).toBe(807);
         expect(typeof speciesToNumber(choose(listOfPokemon))).toBe('number');
+    });
+});
+
+describe('DeepSet', () => {
+    it('returns an array', () => {
+        const d = new DeepSet(['a', 'b', 'c', 'd']);
+        expect(d.toArray()).toEqual(['a', 'b', 'c', 'd']);
     });
 });

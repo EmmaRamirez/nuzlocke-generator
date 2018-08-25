@@ -7,9 +7,9 @@ import { editTrainer } from 'actions';
 import { Trainer, Badge } from 'models';
 
 import { Popover, Menu, Button, Position, Checkbox, Dialog, Classes } from '@blueprintjs/core';
-import { DeepSet } from './DeepSet';
 import { CheckpointsEditor } from './CheckpointsEditor';
 import { cx } from 'emotion';
+import { DeepSet } from 'utils';
 
 export interface BadgeInputProps {
     trainer: Trainer;
@@ -19,11 +19,11 @@ export interface BadgeInputProps {
 }
 
 export interface BadgeInputState {
-    badges: DeepSet<Badge>;
+    badges: Set<Badge>;
     isOpen: boolean;
 }
 
-const handleDeletion = (badges: DeepSet<Badge>, badge: Badge) => {
+const handleDeletion = (badges: Set<Badge>, badge: Badge) => {
     badges.delete(badge);
     return badges;
 };
@@ -39,16 +39,21 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
     constructor(props) {
         super(props);
         this.state = {
-            badges: new DeepSet([]),
+            badges: new Set([]),
             isOpen: false,
         };
     }
 
     public componentWillMount() {
-        this.setState({ badges: new DeepSet(this.props.trainer.badges) });
+        this.setState({ badges: new Set(this.props.trainer.badges) });
     }
 
     private toggleCheckpointsEditor = e => this.setState({ isOpen: !this.state.isOpen });
+
+    private add (badges: Set<Badge>, b: Badge) {
+        badges.add(b);
+        return badges;
+    }
 
     public render() {
         return (
@@ -61,7 +66,7 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
                     icon='badge'
                 >
                     <div className={Classes.DIALOG_BODY}>
-                        <CheckpointsEditor checkpoints={new Set(getBadges(this.props.game.name))} />
+                        <CheckpointsEditor checkpoints={new DeepSet(getBadges(this.props.game.name))} />
                     </div>
                 </Dialog>
                 <TrainerInfoEditField
@@ -82,7 +87,7 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
                                                     {
                                                         badges: has(this.props.trainer.badges, badge)
                                                             ? handleDeletion(this.state.badges, badge)
-                                                            : this.state.badges.add(badge),
+                                                            : this.add(this.state.badges, badge),
                                                     },
                                                     () => {
                                                         this.props.editTrainer({
