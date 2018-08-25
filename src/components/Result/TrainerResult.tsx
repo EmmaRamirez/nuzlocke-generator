@@ -24,7 +24,7 @@ const isEmpty = (value: any) => {
     if (value.toString() === '') return true;
     if (!value.length) return true;
     return false;
-}
+};
 
 export class TrainerResultBase extends React.Component<TrainerResultProps> {
     private renderBadgesOrTrials() {
@@ -84,7 +84,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                         <div style={bottomTextStyle}>{trainer.name}</div>
                     </div>
                 )}
-                {isEmpty(trainer.money) '' ? null : (
+                {isEmpty(trainer.money) ? null : (
                     <div className='money column'>
                         <div>money</div>
                         <div style={bottomTextStyle}>{trainer.money}</div>
