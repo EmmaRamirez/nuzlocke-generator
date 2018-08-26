@@ -6,5 +6,6 @@ export const listOfTrainers = [
     'moon',
     'lyra',
     'nate',
-    'rosa'
+    'rosa',
+    'ethan',
 ];

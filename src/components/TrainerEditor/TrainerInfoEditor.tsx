@@ -65,12 +65,6 @@ export class TrainerInfoEditor extends React.Component<{}, {}> {
                 <BadgeInput />
                 <LinkedTrainerInfoEditField
                     onInput={this.onInput}
-                    label='Exp Share'
-                    name='expShareStatus'
-                    placeholder='off'
-                />
-                <LinkedTrainerInfoEditField
-                    onInput={this.onInput}
                     label={
                         <Popover
                             minimal={true}

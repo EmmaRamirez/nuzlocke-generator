@@ -78,10 +78,22 @@ export const handleSpeciesTypeEdgeCases = ({ species, forme, generation }): [Typ
 
     if (match({
         ...data,
+        species: ['Marowak'],
+        forme: ['Alola'],
+    })) return [Types.Ghost, Types.Fire];
+
+    if (match({
+        ...data,
         species: ['Clefairy', 'Clefable', 'Cleffa'],
         generation: [Generation.Gen1, Generation.Gen2, Generation.Gen3, Generation.Gen4,
         Generation.Gen5]
     })) return [Types.Normal, Types.Normal];
+
+    if (match({
+        ...data,
+        species: ['Ralts', 'Kirlia', 'Gardevoir', 'Mr. Mime', 'Mime Jr.'],
+        generation: [Generation.Gen1, Generation.Gen2, Generation.Gen3, Generation.Gen4, Generation.Gen5]
+    })) return [Types.Psychic, Types.Psychic];
 
     return null;
 };
@@ -204,6 +216,11 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
         case 'Wishiwashi':
         case 'Pyukumuku':
             return [Types.Water, Types.Water];
+        case 'Slowpoke':
+        case 'Slowbro':
+        case 'Slowking':
+        case 'Starmie':
+            return [Types.Water, Types.Psychic];
         case 'Mankey':
         case 'Primeape':
         case 'Machop':
@@ -229,6 +246,22 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
             return [Types.Fighting, Types.Fighting];
         case 'Tornadus':
             return [Types.Flying, Types.Flying];
+        case 'Sandshrew':
+        case 'Sandslash':
+        case 'Diglett':
+        case 'Dugtrio':
+        case 'Cubone':
+        case 'Marowak':
+        case 'Groudon':
+        case 'Phanpy':
+        case 'Donphan':
+        case 'Trapinch':
+        case 'Hippopotas':
+        case 'Hippowdon':
+        case 'Drilbur':
+        case 'Mudbray':
+        case 'Mudsdale':
+            return [Types.Ground, Types.Ground];
         case 'Noibat':
         case 'Noivern':
             return [Types.Flying, Types.Dragon];
@@ -588,6 +621,7 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
         case 'Voltorb':
         case 'Electabuzz':
         case 'Jolteon':
+        case 'Electrode':
         case 'Pichu':
         case 'Mareep':
         case 'Ampharos':

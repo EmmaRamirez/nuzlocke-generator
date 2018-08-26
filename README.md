@@ -16,7 +16,9 @@ You should find it at `localhost:8080`.
 
 ## A Preview
 
-![alt](./src/assets/media.png)
+![alt](./src/assets/media-one.png)
+
+![alt](./src/assets/media-two.png)
 
 ## Features
 - Record your nuzlocke with a flashy image

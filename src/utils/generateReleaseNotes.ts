@@ -3,6 +3,8 @@ const download = require('assets/download.png');
 const cardsTheme = require('assets/cards-theme.png');
 const spritesMode = require('assets/sprites-mode.png');
 const hexagonTheme = require('assets/hexagons-theme.png');
+const compactTheme = require('assets/compact-theme.png');
+const imageRender = require('assets/image-render.png');
 
 export function generateReleaseNotes(version: string) {
     return releaseNotes[version] || '';
@@ -220,6 +222,32 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 ## Known Issues
 - Downloading images will fail if you have cross-origin (i.e. Sugimori or custom) images
 - It has also failed on some Windows + Firefox installations
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`,
+    '0.0.11-beta': `
+# Changelog
+
+## Features
+- **Accent colors**: more control over the look of your Nuzlocke!
+    - Text auto-adjusts to contrast with your accent color
+- **Compact Theme**: helps fit more data on the page
+
+![compactTheme](${compactTheme})
+
+## Fixes
+- Autocomplete allows clicking on the items again!
+- Download Image gets disabled if cross-origin resources are detected
+- Games with the label \`None\` now default as the latest Generation
+- Fixed an issue where Crystal's color didn't appear due to a typo
+- Sprite images now use pixelated image rendering. Check out the difference!
+
+![imageRender](${imageRender})
+- The \`Exp Share\` field for Trainer data has been deprecated. Please use rules instead
+- Cut down overall image sizes by about 10%
+- Gold's color is now more subtle
+
+## Known Issues
+- Downloading images will fail if they contain "cross-origin" resources, which taint the process for downloading
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
 };

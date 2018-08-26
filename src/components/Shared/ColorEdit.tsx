@@ -2,12 +2,12 @@ import * as React from 'react';
 import * as Styles from 'components/StyleEditor/styles';
 import { cx, css } from 'emotion';
 import { connect } from 'react-redux';
-import { classWithDarkTheme } from 'utils';
+import { classWithDarkTheme, Styles as StyleType } from 'utils';
 
 export interface ColorEditProps {
     value?: any;
-    onChange: any;
-    name: any;
+    onChange: (e?: React.ChangeEvent<HTMLInputElement>) => void;
+    name: keyof StyleType;
     style: any;
 }
 

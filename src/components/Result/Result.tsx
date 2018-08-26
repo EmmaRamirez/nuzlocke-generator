@@ -11,15 +11,15 @@ import { TeamPokemon } from 'components/TeamPokemon';
 import { DeadPokemon } from 'components/DeadPokemon';
 import { BoxedPokemon } from 'components/BoxedPokemon';
 import { ChampsPokemon } from 'components/ChampsPokemon';
+import { TrainerResult } from 'components/Result';
 import { TopBar } from 'components/TopBar';
 import { Pokemon, Trainer } from 'models';
 import { reducers } from 'reducers';
 import {
     Styles as StyleState,
-    getBadges,
     getGameRegion,
     sortPokes,
-    mapTrainerImage
+    getContrastColor
 } from 'utils';
 
 import * as Styles from './styles';
@@ -116,105 +116,6 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             });
     }
 
-    private renderBadgesOrTrials() {
-        const { name } = this.props.game;
-
-        if (!this.props.style.displayBadges) {
-            return null;
-        }
-
-        return getBadges(name).map((badge, index) => {
-            // @ts-ignore
-            return (
-                <img
-                    // @ts-ignore
-                    className={
-                        this.props.trainer &&
-                        this.props.trainer.badges &&
-                        this.props.trainer.badges.includes(badge)
-                            ? 'obtained'
-                            : 'not-obtained'
-                    }
-                    key={badge}
-                    alt={badge}
-                    src={`./img/${badge}.png`}
-                />
-            );
-        });
-    }
-
-    private renderTrainer() {
-        const { trainer, game, style } = this.props;
-        const bottomTextStyle: any = { fontSize: '1.1rem', fontWeight: 'bold' };
-        return (
-            <div className='trainer-wrapper'>
-                <div
-                    style={{
-                        color: '#eee',
-                        background: style.bgColor,
-                        marginRight: '.5rem',
-                        width: '100px',
-                        borderRadius: '.25rem',
-                        textAlign: 'center',
-                        textShadow: '0 0 2px #222'
-                    }}>
-                    {game.name}
-                </div>
-                {trainer.image ? (
-                    <img
-                        className='trainer-image'
-                        src={mapTrainerImage(trainer.image)}
-                        alt='Trainer Image'
-                    />
-                ) : null}
-                {trainer.title ? (
-                    <div className='nuzlocke-title'>{this.props.trainer.title}</div>
-                ) : (
-                    <div className='nuzlocke-title'>{this.props.game.name} Nuzlocke</div>
-                )}
-                {trainer.name == null || trainer.name === '' ? null : (
-                    <div className='name column'>
-                        <div>name</div>
-                        <div style={bottomTextStyle}>{trainer.name}</div>
-                    </div>
-                )}
-                {trainer.money == null || trainer.money.toString() === '' ? null : (
-                    <div className='money column'>
-                        <div>money</div>
-                        <div style={bottomTextStyle}>{trainer.money}</div>
-                    </div>
-                )}
-                {trainer.time == null || trainer.time === '' ? null : (
-                    <div className='time column'>
-                        <div>time</div>
-                        <div style={bottomTextStyle}>{trainer.time}</div>
-                    </div>
-                )}
-                {trainer.id == null || trainer.id === '' ? null : (
-                    <div className='id column'>
-                        <div>ID</div>
-                        <div style={bottomTextStyle}>{trainer.id}</div>
-                    </div>
-                )}
-                {trainer.totalTime == null || trainer.totalTime === '' ? null : (
-                    <div className='time column'>
-                        <div>time</div>
-                        <div style={bottomTextStyle}>{trainer.totalTime}</div>
-                    </div>
-                )}
-                {trainer.expShareStatus == null || trainer.expShareStatus === '' ? null : (
-                    <div className='expShareStatus column'>
-                        <div>Exp Share</div>
-                        <div style={bottomTextStyle}>
-                            {(trainer.expShareStatus || '').toUpperCase()}
-                        </div>
-                    </div>
-                )}
-                <div className='badge-wrapper'>{this.renderBadgesOrTrials()}</div>
-            </div>
-        );
-    }
-
     private async toImage() {
         const resultNode = this.resultRef.current;
         this.setState({ isDownloading: true });
@@ -242,12 +143,13 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         const numberOfChamps = getNumberOf('Champs', pokemon);
         const bgColor = style ? style.bgColor : '#383840';
         const topHeaderColor = style ? style.topHeaderColor : '#333333';
+        const accentColor = style ? style.accentColor : '#111111';
         return (
             <Scrollbars
                 autoHide
                 autoHideTimeout={1000}
                 autoHideDuration={200}>
-                <TopBar onClickDownload={e => this.toImage()} >{this.renderErrors()}</TopBar>
+                <TopBar onClickDownload={() => this.toImage()} >{this.renderErrors()}</TopBar>
                 <div
                     ref={this.resultRef}
                     className={`result container ${(style.template &&
@@ -258,6 +160,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         backgroundColor: bgColor,
                         backgroundImage: `url(${style.backgroundImage})`,
                         backgroundRepeat: style.tileBackground ? 'repeat' : 'no-repeat',
+                        border: 'none',
                         height: style.resultHeight + 'px',
                         marginBottom: '.5rem',
                         // transform: `scale(${style.zoomLevel})`,
@@ -265,27 +168,27 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         width: style.resultWidth + 'px',
                     }}>
                     <div className='trainer-container' style={{ backgroundColor: topHeaderColor }}>
-                        {this.renderTrainer()}
+                        <TrainerResult />
                     </div>
                     {trainer && trainer.notes ? (
-                        <div className='result-notes'>{trainer.notes}</div>
+                        <div style={{ color: getContrastColor(bgColor) }} className='result-notes'>{trainer.notes}</div>
                     ) : null}
                     <div className='team-container'>{this.renderTeamPokemon()}</div>
                     {numberOfBoxed > 0 ? (
                         <div className='boxed-container'>
-                            <h3>{box[1].name}</h3>
-                            <div style={{ marginLeft: '1rem' }}>{this.renderBoxedPokemon()}</div>
+                            <h3 style={{ color: getContrastColor(bgColor) }}>{box[1].name}</h3>
+                            <div className='boxed-container-inner'>{this.renderBoxedPokemon()}</div>
                         </div>
                     ) : null}
                     {numberOfDead > 0 ? (
                         <div className='dead-container'>
-                            <h3>{box[2].name}</h3>
+                            <h3 style={{ color: getContrastColor(bgColor) }}>{box[2].name}</h3>
                             <div
                                 style={{
                                     display: 'flex',
                                     flexWrap: 'wrap',
                                     justifyContent: 'flex-start',
-                                    margin: '.5rem',
+                                    margin: this.props.style.template === 'Compact' ? 0 : '.5rem',
                                 }}>
                                 {this.renderDeadPokemon()}
                             </div>
@@ -293,10 +196,10 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     ) : null}
                     {numberOfChamps > 0 ? (
                         <div className='champs-container'>
-                            <h3>{box[3].name}</h3>
+                            <h3 style={{ color: getContrastColor(bgColor) }}>{box[3].name}</h3>
                             <div
                                 style={{
-                                    margin: '.5rem',
+                                    margin: this.props.style.template === 'Compact' ?  0 : '.5rem',
                                 }}>
                                 {this.renderChampsPokemon()}
                             </div>
@@ -304,8 +207,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     ) : null}
                     {style.displayRules ? (
                         <div className='rules-container'>
-                            <h3>Rules</h3>
-                            <ol>
+                            <h3 style={{ color: getContrastColor(bgColor) }}>Rules</h3>
+                            <ol style={{ color: getContrastColor(bgColor) }}>
                                 {this.props.rules.map((rule, index) => {
                                     return <li key={index}>{rule}</li>;
                                 })}

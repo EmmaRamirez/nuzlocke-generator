@@ -38,3 +38,6 @@ export * from './handleMovesGenerationExceptions';
 export * from './handleSignificantGenderDifferences';
 export * from './dragAndDrop';
 export * from './getFormeSuffix';
+export * from './getContrastColor';
+export * from './DeepSet';
+export * from './isEmpty';

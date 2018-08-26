@@ -1,9 +1,11 @@
+import { Badge } from './Badge';
+
 export interface Trainer {
     name?: string;
     id?: string | number;
     time?: string;
     money?: number;
-    badges?: string[];
+    badges?: Badge[];
     expShareStatus?: string;
     image?: string;
     title?: string;
@@ -16,7 +18,7 @@ export const TrainerKeys: Trainer = {
     id: '00123',
     time: '04:33',
     money: 1244,
-    badges: ['boulder-badge'],
+    badges: [],
     expShareStatus: 'ON',
     image: 'http://placeholder.com',
     title: 'Trainer Title',

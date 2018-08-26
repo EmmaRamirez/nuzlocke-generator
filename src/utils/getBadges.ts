@@ -1,6 +1,7 @@
 import { Game } from 'utils';
+import { Badge } from 'models';
 
-export function getBadges(name: Game) {
+export function getBadges(name: Game): Badge[] {
     if (
         name === 'Red' ||
         name === 'Blue' ||
@@ -10,14 +11,14 @@ export function getBadges(name: Game) {
         name === 'LeafGreen'
     ) {
         return [
-            'boulder-badge',
-            'cascade-badge',
-            'thunder-badge',
-            'rainbow-badge',
-            'soul-badge',
-            'marsh-badge',
-            'volcano-badge',
-            'earth-badge',
+            { name: 'Boulder Badge', image: 'boulder-badge' },
+            { name: 'Cascade Badge', image: 'cascade-badge' },
+            { name: 'Thunder Badge', image: 'thunder-badge' },
+            { name: 'Rainbow Badge', image: 'rainbow-badge' },
+            { name: 'Soul Badge', image: 'soul-badge' },
+            { name: 'Marsh Badge', image: 'marsh-badge' },
+            { name: 'Volcano Badge', image: 'volcano-badge' },
+            { name: 'Earth Badge', image: 'earth-badge' },
         ];
     }
 
@@ -29,22 +30,22 @@ export function getBadges(name: Game) {
         name === 'SoulSilver'
     ) {
         return [
-            'zephyr-badge',
-            'hive-badge',
-            'plain-badge',
-            'fog-badge',
-            'storm-badge',
-            'mineral-badge',
-            'glacier-badge',
-            'rising-badge',
-            'boulder-badge',
-            'cascade-badge',
-            'thunder-badge',
-            'rainbow-badge',
-            'soul-badge',
-            'marsh-badge',
-            'volcano-badge',
-            'earth-badge',
+            { name: 'Zephyr Badge', image: 'zephyr-badge' },
+            { name: 'Hive Badge', image: 'hive-badge' },
+            { name: 'Plain Badge', image: 'plain-badge' },
+            { name: 'Fog Badge', image: 'fog-badge' },
+            { name: 'Storm Badge', image: 'storm-badge' },
+            { name: 'Mineral Badge', image: 'mineral-badge' },
+            { name: 'Glacier Badge', image: 'glacier-badge' },
+            { name: 'Rising Badge', image: 'rising-badge' },
+            { name: 'Boulder Badge', image: 'boulder-badge' },
+            { name: 'Cascade Badge', image: 'cascade-badge' },
+            { name: 'Thunder Badge', image: 'thunder-badge' },
+            { name: 'Rainbow Badge', image: 'rainbow-badge' },
+            { name: 'Soul Badge', image: 'soul-badge' },
+            { name: 'Marsh Badge', image: 'marsh-badge' },
+            { name: 'Volcano Badge', image: 'volcano-badge' },
+            { name: 'Earth Badge', image: 'earth-badge' },
         ];
     }
 
@@ -56,99 +57,99 @@ export function getBadges(name: Game) {
         name === 'OmegaRuby'
     ) {
         return [
-            'stone-badge',
-            'knuckle-badge',
-            'dynamo-badge',
-            'heat-badge',
-            'balance-badge',
-            'feather-badge',
-            'mind-badge',
-            'rain-badge',
+            { name: 'Stone Badge', image: 'stone-badge' },
+            { name: 'Knuckle Badge', image: 'knuckle-badge' },
+            { name: 'Dynamo Badge', image: 'dynamo-badge'},
+            { name: 'Heat Badge', image: 'heat-badge'},
+            { name: 'Balance Badge', image: 'balance-badge'},
+            { name: 'Feather Badge', image: 'feather-badge'},
+            { name: 'Mind Badge', image: 'mind-badge'},
+            { name: 'Rain Badge', image: 'rain-badge'},
         ];
     }
 
     if (name === 'Diamond' || name === 'Pearl' || name === 'Platinum') {
         return [
-            'coal-badge',
-            'forest-badge',
-            'cobble-badge',
-            'fen-badge',
-            'relic-badge',
-            'mine-badge',
-            'icicle-badge',
-            'beacon-badge',
+            { name: 'Coal Badge', image: 'coal-badge'},
+            { name: 'Forest Badge', image: 'forest-badge'},
+            { name: 'Cobble Badge', image: 'cobble-badge'},
+            { name: 'Fen Badge', image: 'fen-badge'},
+            { name: 'Relic Badge', image: 'relic-badge'},
+            { name: 'Mine Badge', image: 'mine-badge'},
+            { name: 'Icicle Badge', image: 'icicle-badge'},
+            { name: 'Beacon Badge', image: 'beacon-badge'},
         ];
     }
 
     if (name === 'Black' || name === 'White') {
         return [
-            'trio-badge',
-            'basic-badge',
-            'insect-badge',
-            'bolt-badge',
-            'quake-badge',
-            'jet-badge',
-            'freeze-badge',
-            'legend-badge',
+            { name: 'Trio Badge', image: 'trio-badge'},
+            { name: 'Basic Badge', image: 'basic-badge'},
+            { name: 'Insect Badge', image: 'insect-badge'},
+            { name: 'Bolt Badge', image: 'bolt-badge'},
+            { name: 'Quake Badge', image: 'quake-badge'},
+            { name: 'Jet Badge', image: 'jet-badge'},
+            { name: 'Freeze Badge', image: 'freeze-badge'},
+            { name: 'Legend Badge', image: 'legend-badge'},
         ];
     }
 
     if (name === 'Black 2' || name === 'White 2') {
         return [
-            'basic-badge',
-            'toxic-badge',
-            'insect-badge',
-            'bolt-badge',
-            'quake-badge',
-            'jet-badge',
-            'legend-badge',
-            'wave-badge',
+            { name: 'Basic Badge', image: 'basic-badge'},
+            { name: 'Toxic Badge', image: 'toxic-badge'},
+            { name: 'Insect Badge', image: 'insect-badge'},
+            { name: 'Bolt Badge', image: 'bolt-badge'},
+            { name: 'Quake Badge', image: 'quake-badge'},
+            { name: 'Jet Badge', image: 'jet-badge'},
+            { name: 'Legend Badge', image: 'legend-badge'},
+            { name: 'Wave Badge', image: 'wave-badge'},
         ];
     }
 
     if (name === 'X' || name === 'Y') {
         return [
-            'bug-badge',
-            'cliff-badge',
-            'rumble-badge',
-            'plant-badge',
-            'voltage-badge',
-            'fairy-badge',
-            'psychic-badge',
-            'iceberg-badge',
+            { name: 'Bug Badge', image: 'bug-badge'},
+            { name: 'Cliff Badge', image: 'cliff-badge'},
+            { name: 'Rumble Badge', image: 'rumble-badge'},
+            { name: 'Plant Badge', image: 'plant-badge'},
+            { name: 'Voltage Badge', image: 'voltage-badge'},
+            { name: 'Fairy Badge', image: 'fairy-badge'},
+            { name: 'Psychic Badge', image: 'psychic-badge'},
+            { name: 'Iceberg Badge', image: 'iceberg-badge'},
         ];
     }
 
     if (name === 'Sun' || name === 'Moon') {
         return [
-            'normalium-z',
-            'fightium-z',
-            'waterium-z',
-            'firium-z',
-            'grassium-z',
-            'rockium-z',
-            'electrium-z',
-            'ghostium-z',
-            'darkinium-z',
-            'dragonium-z',
-            'groundium-z',
+            { name: 'Normalium Z', image: 'normalium-z'},
+            { name: 'Fightium Z', image: 'fightium-z'},
+            { name: 'Waterium Z', image: 'waterium-z'},
+            { name: 'Firium Z', image: 'firium-z'},
+            { name: 'Grassium Z', image: 'grassium-z'},
+            { name: 'Rockium Z', image: 'rockium-z'},
+            { name: 'Electrium Z', image: 'electrium-z'},
+            { name: 'Ghostium Z', image: 'ghostium-z'},
+            { name: 'Darkinium Z', image: 'darkinium-z'},
+            { name: 'Dragonium Z', image: 'dragonium-z'},
+            { name: 'Groundium Z', image: 'groundium-z'},
         ];
     }
 
     if (name === 'Ultra Sun' || name === 'Ultra Moon') {
         return [
-            'normalium-z',
-            'fightium-z',
-            'waterium-z',
-            'firium-z',
-            'grassium-z',
-            'rockium-z',
-            'electrium-z',
-            'ghostium-z',
-            'darkinium-z',
-            'dragonium-z',
-            'fairium-z',
-            'groundium-z',
+            { name: 'Normalium Z', image: 'normalium-z'},
+            { name: 'Fightium Z', image: 'fightium-z'},
+            { name: 'Waterium Z', image: 'waterium-z'},
+            { name: 'Firium Z', image: 'firium-z'},
+            { name: 'Grassium Z', image: 'grassium-z'},
+            { name: 'Rockium Z', image: 'rockium-z'},
+            { name: 'Electrium Z', image: 'electrium-z'},
+            { name: 'Ghostium Z', image: 'ghostium-z'},
+            { name: 'Darkinium Z', image: 'darkinium-z'},
+            { name: 'Dragonium Z', image: 'dragonium-z'},
+            { name: 'Fairium Z', image: 'fairium-z'},
+            { name: 'Groundium Z', image: 'groundium-z'},
         ];
     }
 

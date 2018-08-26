@@ -3,13 +3,19 @@ import { connect } from 'react-redux';
 
 import { Pokemon } from 'models';
 import { selectPokemon } from 'actions';
-import { getBackgroundGradient, getSpriteIcon, speciesToNumber } from 'utils';
+import { getBackgroundGradient, getSpriteIcon, speciesToNumber, getContrastColor } from 'utils';
 import { PokemonIcon } from 'components/PokemonIcon';
 import { GenderElement } from 'components/Shared';
 
-export const BoxedPokemonBase = (poke: Pokemon & { selectPokemon }) => {
+const getAccentColor = (prop) => prop.style ? prop.style.accentColor : '#111111';
+
+// TODO: Convert to class
+export const BoxedPokemonBase = (poke: Pokemon & { selectPokemon } & { style }) => {
     return (
-        <div className='boxed-pokemon-container'>
+        <div className='boxed-pokemon-container' style={{
+            background: getAccentColor(poke),
+            color: getContrastColor(getAccentColor(poke)),
+        }}>
             <PokemonIcon
                 species={poke.species}
                 id={poke.id}
@@ -18,7 +24,7 @@ export const BoxedPokemonBase = (poke: Pokemon & { selectPokemon }) => {
                 shiny={poke.shiny}
                 gender={poke.gender}
             />
-            <div className='boxed-pokemon-info'>
+            <div className='boxed-pokemon-info' style={{ borderLeftColor: getAccentColor(poke) }}>
                 <span className='boxed-pokemon-name'>
                     {poke.nickname} {GenderElement(poke.gender)}{' '}
                     {poke.level ? <span>lv. {poke.level}</span> : null}
@@ -28,4 +34,4 @@ export const BoxedPokemonBase = (poke: Pokemon & { selectPokemon }) => {
     );
 };
 
-export const BoxedPokemon = connect(null, { selectPokemon })(BoxedPokemonBase);
+export const BoxedPokemon = connect((state: any) => ({ style: state.style }), { selectPokemon })(BoxedPokemonBase);

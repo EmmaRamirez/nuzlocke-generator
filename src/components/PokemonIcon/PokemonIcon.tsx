@@ -64,6 +64,7 @@ export const getIconURL = ({ id, species, forme, shiny, gender }) => {
     const baseURL = `icons/pokemon/`;
     const isShiny = shiny ? 'shiny' : 'regular';
     const isFemaleSpecific = significantGenderDifferenceList.includes(species) && Gender.isFemale(gender) ? `female/` : '';
+    if (species === 'Egg') return `${baseURL}egg.png`;
     return `${baseURL}${isShiny}/${isFemaleSpecific}${formatSpeciesName(species)}${getFormeSuffix(forme)}.png`;
 };
 

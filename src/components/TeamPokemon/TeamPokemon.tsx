@@ -10,10 +10,13 @@ import { getBackgroundGradient,
         Generation,
         handleMovesGenerationsExceptions,
         getGameGeneration,
+        getContrastColor,
+        gameOfOriginToColor,
     } from 'utils';
 import { GenderElement } from 'components/Shared';
 import { selectPokemon } from 'actions';
 import { reducers } from 'reducers';
+import * as Color from 'color';
 
 
 const getMetLocationString = ({ poke, oldMetLocationFormat }: { poke: Pokemon, oldMetLocationFormat: boolean }):string | null => {
@@ -41,8 +44,18 @@ export interface TeamPokemonInfoProps {
 export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
     public render() {
         const { pokemon, style } = this.props;
+        const accentColor = style ? style.accentColor : '#111111';
+        const isCardsTheme = this.props.style.template === 'Cards';
         return (
-            <div className='pokemon-info'>
+            <div className='pokemon-info' style={{
+                backgroundColor: isCardsTheme ? undefined : accentColor,
+                // backgroundImage: isCardsTheme ? undefined : `linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px)`,
+                backgroundImage: getBackgroundGradient(
+                    pokemon.types != null ? pokemon.types[1] : '',
+                    pokemon.types != null ? pokemon.types[0] : '',
+                ),
+                color: getContrastColor(typeToColor(pokemon.types![0]))
+            }}>
                 <div className='pokemon-info-inner'>
                     <div className='pokemon-main-info'>
                         <span style={{ margin: '0.25rem 0 0' }} className='pokemon-nickname'>
@@ -54,6 +67,18 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                             <span className='pokemon-level'>lv. {pokemon.level}</span>
                         ) : null}
                     </div>
+                    {/* <span style={{
+                            background: gameOfOriginToColor(pokemon.gameOfOrigin!),
+                            color: getContrastColor(gameOfOriginToColor(pokemon.gameOfOrigin!)),
+                            borderRadius: '.25rem',
+                            display: 'inline-block',
+                            fontSize: '90%',
+                            margin: 0,
+                            padding: '.25rem',
+                            textAlign: 'center',
+                            width: '200px',
+                        }}>{ pokemon.gameOfOrigin }
+                    </span> */}
                     <div className='pokemon-met'>
                         { getMetLocationString({ poke: pokemon, oldMetLocationFormat: style.oldMetLocationFormat }) }
                     </div>
@@ -83,7 +108,7 @@ export class TeamPokemonBaseMinimal extends React.PureComponent<TeamPokemonBaseP
     public render() {
         const { pokemon } = this.props;
         return (
-            <div className='pokemon-container minimal'>
+            <div className='pokemon-container minimal' style={{ color: getContrastColor(this.props.style.bgColor) }}>
                 <div
                     style={{
                         backgroundImage: getPokemonImage({
@@ -155,8 +180,9 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
 
         const getFirstType = poke.types ? poke.types[0] : 'Normal';
         const spriteStyle = this.props.style.spritesMode && !this.props.style.scaleSprites
-            ? { backgroundSize: 'auto', backgroundRepeat: 'no-repeat' }
-            : { backgroundSize: 'cover', backgroundRepeat: 'no-repeat' };
+            ? { backgroundSize: 'auto', backgroundRepeat: 'no-repeat', imageRendering: 'pixelated' }
+            : { backgroundSize: 'cover', backgroundRepeat: 'no-repeat', imageRendering: 'pixelated' };
+
 
         const addProp = item => {
             const propName = `data-${item.toLowerCase()}`;
@@ -226,7 +252,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                                 style: this.props.style,
                                 name: this.props.game.name,
                             }),
-                            ...spriteStyle,
+                            ...spriteStyle as React.CSSProperties,
                         }}
                         className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()} ${
                             this.props.style.imageStyle === 'round' ? 'round' : 'square'
