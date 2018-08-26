@@ -97,17 +97,17 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
                                             label={badge.name}
                                         />
                                     ))}
-                                    <Button onClick={this.toggleCheckpointsEditor} className='pt-minimal'>Customize Checkpoints</Button>
+                                    {/* <Button onClick={this.toggleCheckpointsEditor} className='pt-minimal'>Customize Checkpoints</Button> */}
                                 </Menu>
                             }
                             position={Position.BOTTOM}>
-                            {/* <Button
+                            <Button
                                 style={{
                                     borderRadius: 0,
                                     width: '170px',
                                 }}>
                                 Select Checkpoints
-                            </Button> */}
+                            </Button>
                         </Popover>
                     )}
                 />

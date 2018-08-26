@@ -46,15 +46,16 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
         const { pokemon, style } = this.props;
         const accentColor = style ? style.accentColor : '#111111';
         const isCardsTheme = this.props.style.template === 'Cards';
+        const isCompactTheme = this.props.style.template === 'Compact';
         return (
             <div className='pokemon-info' style={{
                 backgroundColor: isCardsTheme ? undefined : accentColor,
                 // backgroundImage: isCardsTheme ? undefined : `linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px)`,
-                backgroundImage: getBackgroundGradient(
+                backgroundImage: isCompactTheme ? getBackgroundGradient(
                     pokemon.types != null ? pokemon.types[1] : '',
                     pokemon.types != null ? pokemon.types[0] : '',
-                ),
-                color: getContrastColor(typeToColor(pokemon.types![0]))
+                ) : undefined,
+                color: isCompactTheme ? getContrastColor(typeToColor(pokemon.types![0])) : getContrastColor(accentColor)
             }}>
                 <div className='pokemon-info-inner'>
                     <div className='pokemon-main-info'>
