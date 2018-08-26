@@ -228,7 +228,6 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 # Changelog
 
 ## Features
-- **Checkpoints Editor**: Custom badges, trials, battles, whatever!
 - **Accent colors**: more control over the look of your Nuzlocke!
     - Text auto-adjusts to contrast with your accent color
 - **Compact Theme**: helps fit more data on the page

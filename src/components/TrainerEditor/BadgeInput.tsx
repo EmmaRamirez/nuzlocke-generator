@@ -7,7 +7,7 @@ import { editTrainer } from 'actions';
 import { Trainer, Badge } from 'models';
 
 import { Popover, Menu, Button, Position, Checkbox, Dialog, Classes } from '@blueprintjs/core';
-import { CheckpointsEditor } from './CheckpointsEditor';
+// import { CheckpointsEditor } from './CheckpointsEditor';
 import { cx } from 'emotion';
 import { DeepSet } from 'utils';
 
@@ -53,7 +53,7 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
     public render() {
         return (
             <>
-                <Dialog
+                {/* <Dialog
                     isOpen={this.state.isOpen}
                     onClose={this.toggleCheckpointsEditor}
                     className={cx(Classes.DIALOG, { [Classes.DARK]: this.props.style.editorDarkMode}) }
@@ -64,7 +64,7 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
                     <div className={Classes.DIALOG_BODY}>
                         <CheckpointsEditor checkpoints={new DeepSet(getBadges(this.props.game.name))} />
                     </div>
-                </Dialog>
+                </Dialog> */}
                 <TrainerInfoEditField
                     label='Checkpoints'
                     name='badges'
@@ -101,13 +101,13 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
                                 </Menu>
                             }
                             position={Position.BOTTOM}>
-                            <Button
+                            {/* <Button
                                 style={{
                                     borderRadius: 0,
                                     width: '170px',
                                 }}>
                                 Select Checkpoints
-                            </Button>
+                            </Button> */}
                         </Popover>
                     )}
                 />
