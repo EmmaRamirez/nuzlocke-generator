@@ -4,7 +4,7 @@ const cardsTheme = require('assets/cards-theme.png');
 const spritesMode = require('assets/sprites-mode.png');
 const hexagonTheme = require('assets/hexagons-theme.png');
 const compactTheme = require('assets/compact-theme.png');
-const imageRender = require('assets/image-render.jpg');
+const imageRender = require('assets/image-render.png');
 
 export function generateReleaseNotes(version: string) {
     return releaseNotes[version] || '';
@@ -236,20 +236,19 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 ![compactTheme](${compactTheme})
 
 ## Fixes
+- Autocomplete allows clicking on the items again!
+- Download Image gets disabled if cross-origin resources are detected
 - Games with the label \`None\` now default as the latest Generation
 - Fixed an issue where Crystal's color didn't appear due to a typo
-![imageRender](${imageRender})
 - Sprite images now use pixelated image rendering. Check out the difference!
+
+![imageRender](${imageRender})
 - The \`Exp Share\` field for Trainer data has been deprecated. Please use rules instead
 - Cut down overall image sizes by about 10%
 - Gold's color is now more subtle
 
 ## Known Issues
-- Downloading images will fail with certain resources
-    - Sugimori images
-    - Sprites
-    - Custom images
-- This is because they contain "cross-origin" resources, which taint the process for downloading
+- Downloading images will fail if they contain "cross-origin" resources, which taint the process for downloading
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
 };

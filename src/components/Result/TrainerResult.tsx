@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { OrientationType, mapTrainerImage, Game, Styles, getContrastColor, getBadges } from 'utils';
+import { OrientationType, mapTrainerImage, Game, Styles, getContrastColor, getBadges, isEmpty } from 'utils';
 import { connect } from 'react-redux';
 import { reducers } from 'reducers';
 import { Trainer, Badge } from 'models';
@@ -16,13 +16,6 @@ const has = (badges: Badge[] | undefined, badge: Badge) => {
     if (badges) {
         return badges.some(b => b.name === badge.name);
     }
-    return false;
-};
-
-const isEmpty = (value: any) => {
-    if (value == null) return true;
-    if (value.toString() === '') return true;
-    if (!value.length) return true;
     return false;
 };
 

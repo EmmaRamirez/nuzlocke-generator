@@ -67,18 +67,27 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
     }
 
     private updateItems = (e: any) => {
-        this.setState({
-            currentValue: e.target.value,
-            visibleItems: this.props.items.filter(i => i.startsWith(e.target.value)),
-        });
+        if (e.target.value === '') {
+            this.setState({
+                currentValue: e.target.value,
+                visibleItems: this.props.items,
+            });
+        } else {
+            this.setState({
+                currentValue: e.target.value,
+                visibleItems: this.props.items.filter(i => i.startsWith(e.target.value)),
+            });
+        }
         this.props.onChange(e);
     };
 
     private openList = e => this.setState({ isOpen: true });
 
     private closeList = e => {
-        this.setState({ isOpen: false });
-        this.setState({ visibleItems: [] });
+        setTimeout(() => {
+            this.setState({ isOpen: false });
+            this.setState({ visibleItems: [] });
+        }, 250);
     };
 
     private handleKeyDown = e => {

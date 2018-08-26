@@ -160,6 +160,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         backgroundColor: bgColor,
                         backgroundImage: `url(${style.backgroundImage})`,
                         backgroundRepeat: style.tileBackground ? 'repeat' : 'no-repeat',
+                        border: 'none',
                         height: style.resultHeight + 'px',
                         marginBottom: '.5rem',
                         // transform: `scale(${style.zoomLevel})`,
