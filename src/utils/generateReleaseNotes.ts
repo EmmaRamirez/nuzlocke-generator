@@ -250,4 +250,14 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Downloading images will fail if they contain "cross-origin" resources, which taint the process for downloading
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
+    '0.0.12-beta': `# Changelog
+
+## Features
+
+## Fixes
+
+## Known Issues
+- Downloading images will fail if they contain "cross-origin" resources, which taint the process for downloading
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`
 };
