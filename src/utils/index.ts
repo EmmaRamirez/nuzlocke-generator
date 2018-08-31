@@ -41,3 +41,4 @@ export * from './getFormeSuffix';
 export * from './getContrastColor';
 export * from './DeepSet';
 export * from './isEmpty';
+export * from './capitalize';

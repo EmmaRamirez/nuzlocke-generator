@@ -34,6 +34,10 @@ const editEvent = (e, props: StyleEditorProps, name?, game?) => {
     if (propName === 'template' && e.target.value === 'Cards') {
         props.editStyle({ imageStyle: 'square' });
     }
+    if (propName === 'template' && e.target.value === 'Hexagons') {
+        props.editStyle({ resultWidth: 1320 });
+        props.editStyle({ accentColor: 'transparent' });
+    }
     if (propName === 'template' && e.target.value === 'Generations') {
         props.editStyle({
             bgColor: gameOfOriginToColor(game),
@@ -44,6 +48,7 @@ const editEvent = (e, props: StyleEditorProps, name?, game?) => {
         props.editStyle({
             resultWidth: 1460
         });
+        props.editStyle({ movesPosition: 'vertical' });
     }
 };
 

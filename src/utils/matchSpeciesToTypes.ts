@@ -221,6 +221,9 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
         case 'Slowking':
         case 'Starmie':
             return [Types.Water, Types.Psychic];
+        case 'Gyarados':
+        case 'Mantine':
+            return [Types.Water, Types.Flying];
         case 'Mankey':
         case 'Primeape':
         case 'Machop':
@@ -262,6 +265,14 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
         case 'Mudbray':
         case 'Mudsdale':
             return [Types.Ground, Types.Ground];
+        case 'Geodude':
+        case 'Graveler':
+        case 'Golem':
+        case 'Onix':
+        case 'Rhyhorn':
+        case 'Rhydon':
+        case 'Rhyperior':
+            return [Types.Rock, Types.Ground];
         case 'Noibat':
         case 'Noivern':
             return [Types.Flying, Types.Dragon];

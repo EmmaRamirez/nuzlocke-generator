@@ -114,10 +114,11 @@ export class TeamPokemonBaseMinimal extends React.PureComponent<TeamPokemonBaseP
                     style={{
                         backgroundImage: getPokemonImage({
                             customImage: pokemon.customImage,
-                            forme: pokemon.forme,
+                            forme: pokemon.forme as any,
                             species: pokemon.species,
                             style: this.props.style,
                             name: this.props.game.name,
+                            shiny: pokemon.shiny,
                         }),
                         ...this.props.spriteStyle,
                     }}
@@ -248,8 +249,9 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                         style={{
                             backgroundImage: getPokemonImage({
                                 customImage: poke.customImage,
-                                forme: poke.forme,
+                                forme: poke.forme as any,
                                 species: poke.species,
+                                shiny: poke.shiny,
                                 style: this.props.style,
                                 name: this.props.game.name,
                             }),

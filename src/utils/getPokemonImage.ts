@@ -1,4 +1,6 @@
 import { addForme, getSpriteIcon, speciesToNumber, getForme } from 'utils';
+import { Styles } from './styleDefaults';
+import { capitalize } from './capitalize';
 
 const sugiFormeNotation = forme => {
     if (typeof forme === 'undefined') return '';
@@ -41,7 +43,16 @@ const getGameName = name => {
     return 'sm';
 };
 
-export function getPokemonImage({ customImage, forme, species, name, style }) {
+export interface GetPokemonImage {
+    customImage?: string
+    forme?: 'Alolan' | 'Mega'
+    species: string
+    name?: string
+    style: Styles
+    shiny?: boolean
+}
+
+export function getPokemonImage({ customImage, forme, species, name, style, shiny }: GetPokemonImage) {
     const leadingZerosNumber = (speciesToNumber(species) || 0).toString().padStart(3, '0');
 
     if (customImage) {
@@ -72,9 +83,15 @@ export function getPokemonImage({ customImage, forme, species, name, style }) {
         )}/pokemon/${leadingZerosNumber}${getForme(forme)}.png)`;
     }
     if (style.spritesMode) {
-        return `url(https://www.serebii.net/pokearth/sprites/${getGameName(
-            name,
-        )}/${leadingZerosNumber}.png)`;
+        if (!shiny) {
+            return `url(https://www.serebii.net/pokearth/sprites/${getGameName(
+                name,
+            )}/${leadingZerosNumber}.png)`;
+        } else {
+            return `url(https://www.serebii.net/Shiny/${capitalize(getGameName(
+                name,
+            ))}/${leadingZerosNumber}.png)`;
+        }
     }
     if (style.teamImages === 'sugimori') {
         return `url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/${leadingZerosNumber}.png)`;

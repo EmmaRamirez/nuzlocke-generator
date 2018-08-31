@@ -255,6 +255,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 ## Features
 
 ## Fixes
+- Autofixes on Hexagons template
 
 ## Known Issues
 - Downloading images will fail if they contain "cross-origin" resources, which taint the process for downloading

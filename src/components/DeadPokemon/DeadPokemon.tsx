@@ -42,7 +42,8 @@ export const DeadPokemonBase = (
                     style={{
                         backgroundImage: getPokemonImage({
                             customImage: poke.customImage,
-                            forme: poke.forme,
+                            forme: poke.forme as any,
+                            shiny: poke.shiny,
                             species: poke.species,
                             style: poke.style,
                             name: poke.game.name,
