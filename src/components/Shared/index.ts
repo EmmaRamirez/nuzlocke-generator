@@ -4,3 +4,4 @@ export * from './GenderElement';
 export * from './PokemonByFilter';
 export * from './ColorEdit';
 export * from './ThemeSelect';
+export * from './ReleaseDialog';

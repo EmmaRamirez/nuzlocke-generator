@@ -103,7 +103,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             .filter(v => v.hasOwnProperty('id'))
             .filter(poke => poke.status === 'Champs')
             .map((poke, index) => {
-                return <ChampsPokemon key={index} {...poke} />;
+                return <ChampsPokemon useSprites={this.props.style.useSpritesForChampsPokemon} key={index} {...poke} />;
             });
     }
 

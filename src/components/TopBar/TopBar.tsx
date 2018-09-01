@@ -1,18 +1,16 @@
 import * as React from 'react';
-import { Dialog, Button, Classes } from '@blueprintjs/core';
+import { Button, Classes } from '@blueprintjs/core';
 import { connect } from 'react-redux';
 import { reducers } from 'reducers';
-import * as ReactMarkdown from 'react-markdown';
 
-import { generateReleaseNotes, classWithDarkTheme, isEmpty } from 'utils';
+import { classWithDarkTheme, isEmpty } from 'utils';
 import { changeEditorSize, editStyle, seeRelease } from 'actions';
 import * as styles from 'components/Result/styles';
 import { pkg } from 'package';
 import { cx } from 'emotion';
-import { style } from 'reducers/style';
 import { Pokemon } from 'models';
+import { ReleaseDialog } from 'components/Shared';
 
-const croagunk = require('assets/img/croagunk.gif');
 
 export interface TopBarProps {
     onClickDownload: any;
@@ -90,26 +88,7 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                     { pkg.version }
                 </Button>
                 { this.props.children }
-                <Dialog
-                    isOpen={this.state.isOpen}
-                    onClose={this.closeDialog}
-                    icon='document'
-                    title={`Release Notes ${pkg.version}`}
-                    className={`release-dialog ${
-                        this.props.style.editorDarkMode ? 'pt-dark' : 'pt-light'
-                    }`}>
-                    <div className='pt-dialog-body'>
-                        <div className='release-notes-wrapper'>
-                            <h3 className={cx(classWithDarkTheme(styles, 'heading', this.props.style.editorDarkMode))}>
-                                {pkg.version} <img style={{ display: 'inline' }} alt='Croagunk' src={croagunk} />
-                            </h3>
-                            <ReactMarkdown
-                                className='release-notes'
-                                source={generateReleaseNotes(pkg.version)}
-                            />
-                        </div>
-                    </div>
-                </Dialog>
+                <ReleaseDialog style={this.props.style} isOpen={this.state.isOpen} onClose={this.closeDialog} />
             </div>
         );
     }

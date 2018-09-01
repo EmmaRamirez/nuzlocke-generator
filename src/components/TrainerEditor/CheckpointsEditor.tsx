@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { cx, css } from 'react-emotion';
-import { Classes, Button, Icon, Intent, Toaster } from '@blueprintjs/core';
+import { Classes, Button, Icon, Intent, Toaster, Popover, PopoverInteractionKind } from '@blueprintjs/core';
 import { classWithDarkTheme, Styles } from 'utils';
 import * as styles from './style';
 import { connect } from 'react-redux';
@@ -25,20 +25,26 @@ export class CheckpointsSelect extends React.Component<CheckpointsSelectProps, C
     }
 
     private renderOptions() {
-        return <div>
-            <img className={cx(styles.checkpointImage(1))} alt={'fdsaf'} src={`./img/rainbow-badge.png`} /> Boulder
+        return <div style={{ padding: '1rem' }}>
+            <span>
+                <img className={cx(styles.checkpointImage(1))} alt={'fdsaf'} src={`./img/rainbow-badge.png`} /> Rainbow
+            </span>
+            <span>
+                <img className={cx(styles.checkpointImage(1))} alt={'fdsa'} src={`./img/fog-badge.png`} /> Fog
+            </span>
         </div>;
     }
 
     public render() {
         const { checkpoint } = this.props;
         return (
-            <div role='select' onClick={this.openSelect} className={cx(Classes.SELECT, Classes.BUTTON, styles.checkpointSelect)}>
-                <div>
-                    <img className={cx(styles.checkpointImage(1))} alt={checkpoint.name} src={`./img/boulder-badge.png`} /> Boulder
+            <Popover minimal interactionKind={PopoverInteractionKind.CLICK} content={this.renderOptions()}>
+                <div role='select' onClick={this.openSelect} className={cx(Classes.SELECT, Classes.BUTTON, styles.checkpointSelect)}>
+                    <div>
+                        <img className={cx(styles.checkpointImage(1))} alt={checkpoint.name} src={`./img/${checkpoint.image}.png`} /> {checkpoint.name}
+                    </div>
                 </div>
-                { this.state.showOptions && this.renderOptions() }
-            </div>
+            </Popover>
         );
     }
 }
@@ -73,7 +79,7 @@ export class CheckpointsEditorBase extends React.Component<CheckpointsEditorProp
                         <input className={Classes.INPUT} type='text' value={ checkpoint.name } />
                     </div>
                     <CheckpointsSelect checkpoint={checkpoint} />
-                    <div className={cx(styles.checkpointImageUploadWrapper)}>Use Custom Image <input onChange={this.onUpload} type='file' /></div>
+                    {/* <div className={cx(styles.checkpointImageUploadWrapper)}>Use Custom Image <input onChange={this.onUpload} type='file' /></div> */}
                     <Icon className={cx(styles.checkpointDelete)} icon='trash' />
                 </li>
             );

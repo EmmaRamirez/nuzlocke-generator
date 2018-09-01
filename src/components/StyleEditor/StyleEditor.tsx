@@ -16,6 +16,7 @@ import {
 import { BaseEditor } from 'components/BaseEditor';
 import { ColorEdit } from 'components/Shared';
 import { cx } from 'emotion';
+import { reducers } from 'reducers';
 
 import * as Styles from './styles';
 import { ThemeEditor } from 'components/ThemeEditor';
@@ -67,7 +68,7 @@ export const IconsNextToTeamPokemon = (props) => (
         <Checkbox
             checked={props.style.iconsNextToTeamPokemon}
             name='iconsNextToTeamPokemon'
-            label='Icons Next to Team Pokemon'
+            label='Icons Next to Team Pokémon'
             onChange={(e:any) => editEvent({ ...e, target: { value: e.target.checked }}, props, 'iconsNextToTeamPokemon')}
         />
     </div>
@@ -247,7 +248,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     <Checkbox
                         checked={props.style.teamPokemonBorder}
                         name='teamPokemonBorder'
-                        label='Team Pokemon Gradient Backgrounds'
+                        label='Team Pokémon Gradient Backgrounds'
                         onChange={(e: any) =>
                             editEvent(
                                 { ...e, target: { value: e.target.checked } },
@@ -262,7 +263,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     <Checkbox
                         checked={props.style.showPokemonMoves}
                         name='showPokemonMoves'
-                        label='Show Pokemon Moves'
+                        label='Show Pokémon Moves'
                         onChange={(e: any) =>
                             editEvent(
                                 { ...e, target: { value: e.target.checked } },
@@ -337,7 +338,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     <Checkbox
                         checked={props.style.grayScaleDeadPokemon}
                         name='grayScaleDeadPokemon'
-                        label='Gray Scale Filter Dead Pokemon Images'
+                        label='Gray Scale Filter Dead Pokémon Images'
                         onChange={(e: any) =>
                             editEvent(
                                 { ...e, target: { value: e.target.checked } },
@@ -378,6 +379,21 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     />
                 </div>
 
+                <div className={styleEdit}>
+                    <Checkbox
+                        checked={props.style.useSpritesForChampsPokemon}
+                        name='useSpritesForChampsPokemon'
+                        label='Use Sprites for Champs Pokémon'
+                        onChange={(e: any) =>
+                            editEvent(
+                                { ...e, target: { value: e.target.checked } },
+                                props,
+                                'useSpritesForChampsPokemon',
+                            )
+                        }
+                    />
+                </div>
+
                 <div className='custom-css-input-wrapper'>
                     <label style={{ padding: '.5rem' }} className='pt-label'>
                         Custom CSS {/*<a href=''>Check out Layout Guide</a>*/}
@@ -395,6 +411,6 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
     }
 }
 
-export const StyleEditor = connect((state: any) => ({ style: state.style, game: state.game }), {
+export const StyleEditor = connect((state: Partial<typeof reducers>) => ({ style: state.style, game: state.game }), {
     editStyle,
 })(StyleEditorBase);
