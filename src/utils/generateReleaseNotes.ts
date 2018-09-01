@@ -253,9 +253,11 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
     '0.0.12-beta': `# Changelog
 
 ## Features
+- Sprites mode for Champs Pokemon
 
 ## Fixes
-- Autofixes on Hexagons template
+- Autofixes on Hexagons, Generations templates
+- Fixes for Farfetch'd, Mime Jr., and Mr. Mime
 
 ## Known Issues
 - Downloading images will fail if they contain "cross-origin" resources, which taint the process for downloading

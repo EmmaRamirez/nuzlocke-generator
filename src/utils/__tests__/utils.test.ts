@@ -75,6 +75,13 @@ describe('matchSpeciesToType', () => {
             expect(matchSpeciesToTypes(pokemon).length).toBeGreaterThan(0);
         });
     });
+
+    it('works for every pokemon', () => {
+        const noMatches = listOfPokemon.filter(pokemon => matchSpeciesToTypes(pokemon) == null);
+        console.log(noMatches.length);
+        console.log(noMatches);
+        expect(false).toBe(true);
+    });
 });
 
 describe('speciesToNumber', () => {

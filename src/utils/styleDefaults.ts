@@ -27,6 +27,7 @@ export interface Styles {
     template: string;
     tileBackground: boolean;
     topHeaderColor: string;
+    useSpritesForChampsPokemon: boolean;
 }
 
 export const styleDefaults: Styles = {
@@ -54,4 +55,5 @@ export const styleDefaults: Styles = {
     template: 'Default Dark',
     tileBackground: false,
     topHeaderColor: '#333333',
+    useSpritesForChampsPokemon: false,
 };

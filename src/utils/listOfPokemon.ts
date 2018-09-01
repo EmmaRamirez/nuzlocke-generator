@@ -81,7 +81,7 @@ export const listOfPokemon = [
     'Slowbro',
     'Magnemite',
     'Magneton',
-    'Farfetch’d',
+    'Farfetch\'d',
     'Doduo',
     'Dodrio',
     'Seel',
