@@ -5,7 +5,7 @@ import { classWithDarkTheme, Styles } from 'utils';
 import * as styles from './style';
 import { connect } from 'react-redux';
 import { Badge } from 'models';
-import { DeepSet } from 'utils';
+import { DeepSet, getAllBadges } from 'utils';
 import { style } from 'reducers/style';
 
 
@@ -18,20 +18,13 @@ export interface CheckpointsSelectState {
 }
 
 export class CheckpointsSelect extends React.Component<CheckpointsSelectProps, CheckpointsSelectState> {
-    public state = { showOptions: false };
-
-    private openSelect = e => {
-        this.setState({ showOptions: true });
-    }
-
     private renderOptions() {
-        return <div style={{ padding: '1rem' }}>
-            <span>
-                <img className={cx(styles.checkpointImage(1))} alt={'fdsaf'} src={`./img/rainbow-badge.png`} /> Rainbow
-            </span>
-            <span>
-                <img className={cx(styles.checkpointImage(1))} alt={'fdsa'} src={`./img/fog-badge.png`} /> Fog
-            </span>
+        return <div style={{ padding: '1rem', height: '400px', overflowY: 'auto' }}>
+            { getAllBadges().map((badge, key) => {
+                return <Button key={key} style={{ display: 'block' }} className={Classes.MINIMAL}>
+                    <img className={cx(styles.checkpointImage(1))} alt={badge.name} src={`./img/${badge.image}.png`} /> {badge.name}
+                </Button>;
+            }) }
         </div>;
     }
 
@@ -39,7 +32,7 @@ export class CheckpointsSelect extends React.Component<CheckpointsSelectProps, C
         const { checkpoint } = this.props;
         return (
             <Popover minimal interactionKind={PopoverInteractionKind.CLICK} content={this.renderOptions()}>
-                <div role='select' onClick={this.openSelect} className={cx(Classes.SELECT, Classes.BUTTON, styles.checkpointSelect)}>
+                <div role='select' className={cx(Classes.SELECT, Classes.BUTTON)}>
                     <div>
                         <img className={cx(styles.checkpointImage(1))} alt={checkpoint.name} src={`./img/${checkpoint.image}.png`} /> {checkpoint.name}
                     </div>

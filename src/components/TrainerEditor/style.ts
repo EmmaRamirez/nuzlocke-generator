@@ -42,8 +42,7 @@ export const checkpointImage = (size = 2) => css`
 `;
 
 export const checkpointSelect = css`
-    align-items: center;
-    width: 200px;
+    height: 400px;
 `;
 
 export const checkpointImageUploadWrapper = css`

@@ -155,3 +155,16 @@ export function getBadges(name: Game): Badge[] {
 
     return [];
 }
+
+export function getAllBadges() {
+    return [
+        ...getBadges('Gold'),
+        ...getBadges('Emerald'),
+        ...getBadges('Platinum'),
+        { name: 'Trio Badge', image: 'trio-badge'},
+        { name: 'Freeze Badge', image: 'freeze-badge'},
+        ...getBadges('Black 2'),
+        ...getBadges('X'),
+        ...getBadges('Ultra Sun'),
+    ];
+}
