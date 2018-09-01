@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { PokemonIcon } from 'components/PokemonIcon';
-import { gameOfOriginToColor, Game } from 'utils';
+import { gameOfOriginToColor, Game, getPokemonImage, Styles } from 'utils';
 import { Pokemon } from 'models';
 import { GenderElement, GenderElementProps } from '../Shared';
 import { css, cx } from 'emotion';
@@ -24,6 +24,7 @@ export type ChampsPokemonProps = {
     showNickname?: boolean;
     showGender?: boolean;
     showLevel?: boolean;
+    useSprites?: boolean;
 };
 
 export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
@@ -45,6 +46,26 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
             (this.props.showLevel ? 24 : 0);
     }
 
+    private getPokemonImage() {
+        return <div style={{
+            backgroundImage: getPokemonImage({
+                customImage: this.props.customImage,
+                forme: this.props.forme,
+                species: this.props.species,
+                name: this.props.gameOfOrigin,
+                shiny: this.props.shiny,
+                style: {
+                    spritesMode: true,
+                    teamImages: null
+                } as any
+            }),
+            backgroundPosition: 'center center',
+            backgroundSize: 'contain',
+            height: this.getWidth(),
+            width: this.getWidth(),
+        }} />;
+    }
+
     public render() {
         return (
             <div
@@ -57,7 +78,7 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
                         padding: 0,
                     })
                 )}>
-                <PokemonIcon {...this.props as any} />
+                { this.props.useSprites ? <PokemonIcon {...this.props as any} /> : this.getPokemonImage() }
                 { this.props.showNickname && this.props.nickname }
                 { this.props.showGender && GenderElement(this.props.gender) }
                 { this.props.showLevel && ` Lv ${this.props.level}` }
