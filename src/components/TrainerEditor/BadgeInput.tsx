@@ -10,6 +10,7 @@ import { Popover, Menu, Button, Position, Checkbox, Dialog, Classes } from '@blu
 import { CheckpointsEditor } from './CheckpointsEditor';
 import { cx } from 'emotion';
 import { DeepSet } from 'utils';
+import { State } from 'state';
 
 export interface BadgeInputProps {
     trainer: Trainer;
@@ -60,7 +61,6 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
                     canOutsideClickClose={false}
                     title='Checkpoints Editor'
                     icon='badge'
-                    style={{ width: '50vw' }}
                 >
                     <div className={Classes.DIALOG_BODY}>
                         <CheckpointsEditor checkpoints={new DeepSet(getBadges(this.props.game.name))} />
@@ -118,7 +118,7 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
 }
 
 export const BadgeInput = connect(
-    (state: any) => ({
+    (state: Pick<State, keyof State>) => ({
         trainer: state.trainer,
         game: state.game,
         style: state.style,

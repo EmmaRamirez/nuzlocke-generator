@@ -6,6 +6,7 @@ import * as styles from './style';
 import { connect } from 'react-redux';
 import { Badge } from 'models';
 import { DeepSet, getAllBadges } from 'utils';
+import { State } from 'state';
 import { style } from 'reducers/style';
 
 
@@ -92,6 +93,6 @@ export class CheckpointsEditorBase extends React.Component<CheckpointsEditorProp
 }
 
 export const CheckpointsEditor: React.ComponentClass<Partial<CheckpointsEditorProps>> = connect(
-    (state: any) => ({ style: state.style }),
+    (state: Pick<State, keyof State>) => ({ style: state.style }),
     null
 )(CheckpointsEditorBase);
