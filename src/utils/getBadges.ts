@@ -159,12 +159,18 @@ export function getBadges(name: Game): Badge[] {
 export function getAllBadges() {
     return [
         ...getBadges('Gold'),
+        { name: 'Champion', image: 'champion-ribbon' },
         ...getBadges('Emerald'),
+        { name: 'Hoenn Champion', image: 'hoenn-champion-ribbon' },
         ...getBadges('Platinum'),
+        { name: 'Sinnoh Champion', image: 'sinnoh-champion-ribbon' },
         { name: 'Trio Badge', image: 'trio-badge'},
         { name: 'Freeze Badge', image: 'freeze-badge'},
         ...getBadges('Black 2'),
+        { name: 'Unova Champion', image: 'unova-champion-ribbon' },
         ...getBadges('X'),
+        { name: 'Kalos Champion', image: 'kalos-champion-ribbon' },
         ...getBadges('Ultra Sun'),
+        { name: 'Alola Champion', image: 'alola-champion-ribbon' }
     ];
 }

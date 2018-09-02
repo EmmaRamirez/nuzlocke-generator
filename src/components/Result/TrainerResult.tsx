@@ -37,7 +37,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                     }
                     key={badge.name}
                     alt={badge.name}
-                    src={`./img/${badge.image}.png`}
+                    src={`./img/checkpoints/${badge.image}.png`}
                 />
             );
         });

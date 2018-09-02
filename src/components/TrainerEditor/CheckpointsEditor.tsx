@@ -22,7 +22,7 @@ export class CheckpointsSelect extends React.Component<CheckpointsSelectProps, C
         return <div style={{ padding: '1rem', height: '400px', overflowY: 'auto' }}>
             { getAllBadges().map((badge, key) => {
                 return <Button key={key} style={{ display: 'block' }} className={Classes.MINIMAL}>
-                    <img className={cx(styles.checkpointImage(1))} alt={badge.name} src={`./img/${badge.image}.png`} /> {badge.name}
+                    <img className={cx(styles.checkpointImage(1))} alt={badge.name} src={`./img/checkpoints/${badge.image}.png`} /> {badge.name}
                 </Button>;
             }) }
         </div>;
@@ -32,9 +32,9 @@ export class CheckpointsSelect extends React.Component<CheckpointsSelectProps, C
         const { checkpoint } = this.props;
         return (
             <Popover minimal interactionKind={PopoverInteractionKind.CLICK} content={this.renderOptions()}>
-                <div role='select' className={cx(Classes.SELECT, Classes.BUTTON)}>
+                <div role='select' className={cx(styles.checkpointSelect, Classes.SELECT, Classes.BUTTON)}>
                     <div>
-                        <img className={cx(styles.checkpointImage(1))} alt={checkpoint.name} src={`./img/${checkpoint.image}.png`} /> {checkpoint.name}
+                        <img className={cx(styles.checkpointImage(1))} alt={checkpoint.name} src={`./img/checkpoints/${checkpoint.image}.png`} /> {checkpoint.name}
                     </div>
                 </div>
             </Popover>
@@ -68,7 +68,7 @@ export class CheckpointsEditorBase extends React.Component<CheckpointsEditorProp
             return (
                 <li key={key} className={cx(classWithDarkTheme(styles, 'checkpointsItem', this.props.style.editorDarkMode))}>
                     <div className={cx(styles.checkpointName)}>
-                        <img className={cx(styles.checkpointImage())} alt={checkpoint.name} src={`./img/${checkpoint.image}.png`} />
+                        <img className={cx(styles.checkpointImage())} alt={checkpoint.name} src={`./img/checkpoints/${checkpoint.image}.png`} />
                         <input className={Classes.INPUT} type='text' value={ checkpoint.name } />
                     </div>
                     <CheckpointsSelect checkpoint={checkpoint} />
