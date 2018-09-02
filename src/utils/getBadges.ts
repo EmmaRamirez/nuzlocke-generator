@@ -3,12 +3,14 @@ import { Badge } from 'models';
 
 export function getBadges(name: Game): Badge[] {
     if (
-        name === 'Red' ||
-        name === 'Blue' ||
-        name === 'Yellow' ||
-        name === 'Green' ||
-        name === 'FireRed' ||
-        name === 'LeafGreen'
+        name === 'Red'              ||
+        name === 'Blue'             ||
+        name === 'Yellow'           ||
+        name === 'Green'            ||
+        name === 'FireRed'          ||
+        name === 'LeafGreen'        ||
+        name === 'Let\'s Go Eevee'  ||
+        name === 'Let\'s Go Pikachu'
     ) {
         return [
             { name: 'Boulder Badge', image: 'boulder-badge' },
@@ -23,10 +25,10 @@ export function getBadges(name: Game): Badge[] {
     }
 
     if (
-        name === 'Gold' ||
-        name === 'Silver' ||
-        name === 'Crystal' ||
-        name === 'HeartGold' ||
+        name === 'Gold'         ||
+        name === 'Silver'       ||
+        name === 'Crystal'      ||
+        name === 'HeartGold'    ||
         name === 'SoulSilver'
     ) {
         return [
@@ -50,10 +52,10 @@ export function getBadges(name: Game): Badge[] {
     }
 
     if (
-        name === 'Ruby' ||
-        name === 'Sapphire' ||
-        name === 'Emerald' ||
-        name === 'AlphaSapphire' ||
+        name === 'Ruby'             ||
+        name === 'Sapphire'         ||
+        name === 'Emerald'          ||
+        name === 'AlphaSapphire'    ||
         name === 'OmegaRuby'
     ) {
         return [
