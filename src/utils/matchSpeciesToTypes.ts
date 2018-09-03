@@ -131,7 +131,18 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
         case 'Grovyle':
         case 'Sceptile':
         case 'Bellossom':
+        case 'Servine':
+        case 'Serperior':
+        case 'Cherubi':
+        case 'Cherrim':
+        case 'Petilil':
+        case 'Lilligant':
+        case 'Leafeon':
+        case 'Turtwig':
+        case 'Grotle':
             return [Types.Grass, Types.Grass];
+        case 'Torterra':
+            return [Types.Grass, Types.Ground];
         case 'Hoppip':
         case 'Skiploom':
         case 'Jumpluff':
@@ -317,6 +328,7 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
         case 'Rhyhorn':
         case 'Rhydon':
         case 'Rhyperior':
+        case 'Sudowoodo':
             return [Types.Rock, Types.Ground];
         /**
          * @type Ghost
@@ -450,6 +462,9 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
         case 'Binacle':
         case 'Barbaracle':
             return [Types.Water, Types.Rock];
+        /**
+         * @type Bug
+         */
         case 'Caterpie':
         case 'Metapod':
         case 'Pinsir':
@@ -536,6 +551,24 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
             return [Types.Rock, Types.Bug];
         case 'Skorupi':
             return [Types.Poison, Types.Bug];
+        case 'Wooper':
+        case 'Quagsire':
+        case 'Marshtomp':
+        case 'Swampert':
+        case 'Gastrodon':
+        case 'Barboach':
+        case 'Whiscash':
+            return [Types.Water, Types.Ground];
+        case 'Mr. Mime':
+        case 'Ralts':
+        case 'Kirlia':
+        case 'Gardevoir':
+        case 'Mime Jr.':
+        case 'Tapu Lele':
+            return [Types.Psychic, Types.Fairy];
+        /**
+         * @type Fairy
+         */
         case 'Clefairy':
         case 'Clefable':
         case 'Cleffa':
@@ -572,13 +605,6 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
         case 'Igglybuff':
         case 'Azurill':
             return [Types.Normal, Types.Fairy];
-        case 'Mr. Mime':
-        case 'Ralts':
-        case 'Kirlia':
-        case 'Gardevoir':
-        case 'Mime Jr.':
-        case 'Tapu Lele':
-            return [Types.Psychic, Types.Fairy];
         case 'Carbink':
         case 'Diancie':
             return [Types.Rock, Types.Fairy];
@@ -658,7 +684,7 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
         case 'Electrode':
         case 'Pichu':
         case 'Mareep':
-        case 'Flaafy':
+        case 'Flaaffy':
         case 'Ampharos':
         case 'Elekid':
         case 'Raikou':
@@ -702,7 +728,33 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
         case 'Mewtwo':
         case 'Mew':
         case 'Unown':
-        case 'Wobuffet':
+        case 'Wobbuffet':
+        case 'Espeon':
+        case 'Spoink':
+        case 'Grumpig':
+        case 'Chimecho':
+        case 'Wynaut':
+        case 'Deoxys':
+        case 'Chingling':
+        case 'Uxie':
+        case 'Mesprit':
+        case 'Azelf':
+        case 'Cresselia':
+        case 'Munna':
+        case 'Musharna':
+        case 'Gothita':
+        case 'Gothorita':
+        case 'Gothitelle':
+        case 'Solosis':
+        case 'Duosion':
+        case 'Reuniclus':
+        case 'Elgyem':
+        case 'Beeheeyem':
+        case 'Espurr':
+        case 'Meowstic':
+        case 'Cosmog':
+        case 'Cosmoem':
+        case 'Necrozma':
             return [Types.Psychic, Types.Psychic];
         case 'Magcargo':
             return [Types.Fire, Types.Rock];
@@ -753,9 +805,6 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
             return [Types.Ground, Types.Ice];
         case 'Kingdra':
             return [Types.Water, Types.Dragon];
-        case 'Marshtomp':
-        case 'Swampert':
-            return [Types.Water, Types.Ground];
         case 'Jynx':
         case 'Smoochum':
             return [Types.Ice, Types.Psychic];
@@ -774,6 +823,8 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
         case 'Lickitung':
         case 'Kangaskhan':
         case 'Snorlax':
+        case 'Teddiursa':
+        case 'Ursaring':
         case 'Aipom':
         case 'Chansey':
         case 'Blissey':
@@ -838,6 +889,197 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
             return [Types.Normal, Types.Psychic];
         case 'Bibarel':
             return [Types.Normal, Types.Water];
+        case 'Steelix':
+            return [Types.Steel, Types.Ground];
+        case 'Qwilfish':
+            return [Types.Water, Types.Poison];
+        case 'Skarmory':
+            return [Types.Steel, Types.Flying];
+        case 'Houndour':
+        case 'Houndoom':
+            return [Types.Dark, Types.Fire];
+        case 'Larvitar':
+        case 'Pupitar':
+            return [Types.Rock, Types.Ground];
+        case 'Lotad':
+        case 'Lombre':
+        case 'Ludicolo':
+            return [Types.Grass, Types.Water];
+        case 'Gligar':
+        case 'Gliscor':
+            return [Types.Ground, Types.Flying];
+        case 'Pelipper':
+        case 'Wingull':
+            return [Types.Water, Types.Flying];
+        case 'Aron':
+        case 'Lairon':
+        case 'Aggron':
+            return [Types.Rock, Types.Steel];
+        case 'Gulpin':
+        case 'Swalot':
+            return [Types.Poison, Types.Poison];
+        case 'Numel':
+        case 'Camerupt':
+            return [Types.Fire, Types.Ground];
+        case 'Altaria':
+            return [Types.Dragon, Types.Flying];
+        case 'Baltoy':
+        case 'Claydol':
+            return [Types.Ground, Types.Psychic];
+        case 'Lileep':
+        case 'Cradily':
+            return [Types.Rock, Types.Grass];
+        case 'Lunatone':
+        case 'Solrock':
+            return [Types.Rock, Types.Psychic];
+        case 'Snorunt':
+        case 'Glalie':
+        case 'Regice':
+        case 'Glaceon':
+        case 'Vanillite':
+        case 'Vanillish':
+        case 'Vanilluxe':
+        case 'Cubchoo':
+        case 'Beartic':
+        case 'Cryogonal':
+        case 'Bergmite':
+        case 'Avalugg':
+            return [Types.Ice, Types.Ice];
+        case 'Beldum':
+        case 'Metang':
+        case 'Metagross':
+        case 'Jirachi':
+            return [Types.Steel, Types.Psychic];
+        case 'Regirock':
+            return [Types.Rock, Types.Rock];
+        case 'Cascoon':
+            return [Types.Bug, Types.Bug];
+        case 'Nosepass':
+            return [Types.Rock, Types.Rock];
+        case 'Seedot':
+        case 'Shroomish':
+            return [Types.Grass, Types.Grass];
+        case 'Vibrava':
+        case 'Flygon':
+        case 'Gible':
+        case 'Gabite':
+        case 'Garchomp':
+            return [Types.Dragon, Types.Ground];
+        case 'Cacnea':
+            return [Types.Grass, Types.Grass];
+        case 'Seviper':
+            return [Types.Poison, Types.Poison];
+        case 'Tropius':
+            return [Types.Grass, Types.Flying];
+        case 'Spheal':
+        case 'Sealeo':
+        case 'Walrein':
+            return [Types.Water, Types.Ice];
+        case 'Relicanth':
+            return [Types.Rock, Types.Water];
+        case 'Registeel':
+            return [Types.Steel, Types.Steel];
+            // 'Latias',
+            // 'Latios',
+            // 'Rayquaza',
+            // 'Empoleon',
+            // 'Cranidos',
+            // 'Rampardos',
+            // 'Shieldon',
+            // 'Bastiodon',
+            // 'Bronzor',
+            // 'Bronzong',
+            // 'Bonsly',
+            // 'Carnivine',
+            // 'Mantyke',
+            // 'Snover',
+            // 'Abomasnow',
+            // 'Probopass',
+            // 'Dialga',
+            // 'Palkia',
+            // 'Heatran',
+            // 'Shaymin',
+            // 'Victini',
+            // 'Snivy',
+            // 'Pansage',
+            // 'Simisage',
+            // 'Roggenrola',
+            // 'Boldore',
+            // 'Gigalith',
+            // 'Woobat',
+            // 'Swoobat',
+            // 'Excadrill',
+            // 'Palpitoad',
+            // 'Seismitoad',
+            // 'Maractus',
+            // 'Sigilyph',
+            // 'Tirtouga',
+            // 'Archen',
+            // 'Archeops',
+            // 'Trubbish',
+            // 'Garbodor',
+            // 'Ducklett',
+            // 'Swanna',
+            // 'Ferroseed',
+            // 'Ferrothorn',
+            // 'Klink',
+            // 'Klang',
+            // 'Klinklang',
+            // 'Eelektrik',
+            // 'Eelektross',
+            // 'Beheeyem',
+            // 'Axew',
+            // 'Fraxure',
+            // 'Haxorus',
+            // 'Accelgor',
+            // 'Stunfisk',
+            // 'Terrakion',
+            // 'Reshiram',
+            // 'Zekrom',
+            // 'Landorus',
+            // 'Kyurem',
+            // 'Chespin',
+            // 'Quilladin',
+            // 'Chesnaught',
+            // 'Delphox',
+            // 'Litleo',
+            // 'Pyroar',
+            // 'Skiddo',
+            // 'Gogoat',
+            // 'Skrelp',
+            // 'Dragalge',
+            // 'Helioptile',
+            // 'Heliolisk',
+            // 'Tyrunt',
+            // 'Tyrantrum',
+            // 'Amaura',
+            // 'Aurorus',
+            // 'Goomy',
+            // 'Sliggoo',
+            // 'Goodra',
+            // 'Zygarde',
+            // 'Volcanion',
+            // 'Oricorio',
+            // 'Rockruff',
+            // 'Lycanroc',
+            //  'Mareanie',
+            // 'Toxapex',
+            // 'Fomantis',
+            // 'Lurantis',
+            // 'Salandit',
+            // 'Salazzle',
+            // 'Bounsweet',
+            // 'Steenee',
+            // 'Tsareena',
+            // 'Minior',
+            // 'Turtonator',
+            // 'Bruxish',
+            // 'Jangmo-o',
+            // 'Solgaleo',
+            // 'Nihilego',
+            // 'Celesteela',
+            // 'Kartana',
+        case 'Taillow':
         case 'Pidgey':
         case 'Pidgeotto':
         case 'Pidgeot':
@@ -848,7 +1090,6 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
         case 'Dodrio':
         case 'Hoothoot':
         case 'Noctowl':
-        case 'Tailow':
         case 'Swellow':
         case 'Swablu':
         case 'Starly':
@@ -867,6 +1108,6 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
             return [Types.Normal, Types.Flying];
         default:
             // @ts-ignore
-            return null;
+            return [Types.Normal, Types.Normal];
     }
 };

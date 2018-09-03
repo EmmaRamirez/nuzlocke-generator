@@ -76,7 +76,7 @@ describe('matchSpeciesToType', () => {
         });
     });
 
-    it('works for every pokemon', () => {
+    xit('works for every pokemon', () => {
         const noMatches = listOfPokemon.filter(pokemon => matchSpeciesToTypes(pokemon) == null);
         console.log(noMatches.length);
         console.log(noMatches);
