@@ -14,7 +14,7 @@ import { Pokemon } from 'models';
 import { onClick, Boxes } from 'types';
 import { CurrentPokemonInput } from 'components/PokemonEditor';
 import { DeletePokemonButton } from 'components/DeletePokemonButton';
-import { Autocomplete } from 'components/Shared';
+import { Autocomplete, ErrorBoundary } from 'components/Shared';
 import { selectPokemon, editPokemon } from 'actions';
 import { connect } from 'react-redux';
 import { listOfGames, accentedE } from 'utils';
@@ -250,24 +250,26 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
                         <DeletePokemonButton id={this.state.selectedId} />
                     </div>
                 </span>
-                <Autocomplete
-                    items={listOfPokemon}
-                    name='species'
-                    label='Species'
-                    placeholder='Missing No.'
-                    value={currentPokemon.species}
-                    onChange={e => {
-                        const edit = {
-                            species: e.target.value,
-                        };
-                        this.props.editPokemon(edit, this.state.selectedId);
-                        this.props.editPokemon(
-                            { types: matchSpeciesToTypes(e.target.value) },
-                            this.state.selectedId,
-                        );
-                        this.props.selectPokemon(this.state.selectedId);
-                    }}
-                />
+                <ErrorBoundary>
+                    <Autocomplete
+                        items={listOfPokemon}
+                        name='species'
+                        label='Species'
+                        placeholder='Missing No.'
+                        value={currentPokemon.species}
+                        onChange={e => {
+                            const edit = {
+                                species: e.target.value,
+                            };
+                            this.props.editPokemon(edit, this.state.selectedId);
+                            this.props.editPokemon(
+                                { types: matchSpeciesToTypes(e.target.value) },
+                                this.state.selectedId,
+                            );
+                            this.props.selectPokemon(this.state.selectedId);
+                        }}
+                    />
+                </ErrorBoundary>
                 <CurrentPokemonInput
                     labelName='Nickname'
                     inputName='nickname'

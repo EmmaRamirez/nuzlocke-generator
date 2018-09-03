@@ -17,6 +17,7 @@ export class DeepSet<T> {
         } else {
             this.set.push(item);
         }
+        return new DeepSet(this.set);
     }
 
     public delete(item: T, key = this.key) {

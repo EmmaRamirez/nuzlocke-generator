@@ -44,14 +44,23 @@ export class CheckpointsSelect extends React.Component<CheckpointsSelectProps, C
 }
 
 export interface CheckpointsEditorProps {
-    checkpoints?: DeepSet<Badge>;
+    checkpoints: DeepSet<Badge>;
     style: Styles;
 }
 
-export class CheckpointsEditorBase extends React.Component<CheckpointsEditorProps> {
+export interface CheckpointsEditorState {
+    checkpoints: DeepSet<Badge>;
+}
+
+export class CheckpointsEditorBase extends React.Component<CheckpointsEditorProps, CheckpointsEditorState> {
+    public componentWillMount() {
+        this.setState({ checkpoints: this.props.checkpoints });
+    }
 
     private addCheckpoint = e => {
-        console.log(e);
+        this.setState({
+            checkpoints: this.state.checkpoints!.add({ name: 'Empty Badge', image: 'unknown' })
+        });
     }
 
     private onUpload = e => {
@@ -64,7 +73,7 @@ export class CheckpointsEditorBase extends React.Component<CheckpointsEditorProp
         }
     }
 
-    private renderCheckpoints (checkpoints: CheckpointsEditorProps['checkpoints']) {
+    private renderCheckpoints (checkpoints: CheckpointsEditorState['checkpoints']) {
         return checkpoints && checkpoints.toArray().map((checkpoint, key) => {
             return (
                 <li key={key} className={cx(classWithDarkTheme(styles, 'checkpointsItem', this.props.style.editorDarkMode))}>
@@ -83,16 +92,15 @@ export class CheckpointsEditorBase extends React.Component<CheckpointsEditorProp
     public render() {
         return <div className={cx(styles.checkpointsEditor)}>
             <ul className={cx(styles.checkpointsList)}>
-                { this.renderCheckpoints(this.props.checkpoints) }
+                { this.renderCheckpoints(this.state.checkpoints) }
             </ul>
             <div className={cx(styles.checkpointButtons)}>
-                <Button icon='plus' onClick={this.addCheckpoint} intent={Intent.SUCCESS}>{' '}Add Checkpoint</Button>
+                <Button onClick={this.addCheckpoint} icon='plus' intent={Intent.SUCCESS}>{' '}Add Checkpoint</Button>
             </div>
         </div>;
     }
 }
 
-export const CheckpointsEditor: React.ComponentClass<Partial<CheckpointsEditorProps>> = connect(
+export const CheckpointsEditor = connect(
     (state: Pick<State, keyof State>) => ({ style: state.style }),
-    null
 )(CheckpointsEditorBase);

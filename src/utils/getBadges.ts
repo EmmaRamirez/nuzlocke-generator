@@ -173,6 +173,7 @@ export function getAllBadges() {
         ...getBadges('X'),
         { name: 'Kalos Champion', image: 'kalos-champion-ribbon' },
         ...getBadges('Ultra Sun'),
-        { name: 'Alola Champion', image: 'alola-champion-ribbon' }
+        { name: 'Alola Champion', image: 'alola-champion-ribbon' },
+        { name: 'Empty Badge', image: 'unknown' },
     ];
 }
