@@ -260,6 +260,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Autofixes on Hexagons, Generations templates
 - Fixes for Farfetch'd, Mime Jr., and Mr. Mime
 - Fixed colors for Diamond version
+- All Pokémon now have default typings
 
 ## Known Issues
 - Downloading images will fail if they contain "cross-origin" resources, which taint the process for downloading

@@ -11,6 +11,7 @@ export interface State {
     pokemon: Pokemon[];
     rules: string[];
     sawRelease: { [v: string]: boolean };
+    selectedId: string;
     style: Styles;
     theme: Theme;
     trainer: Trainer;
