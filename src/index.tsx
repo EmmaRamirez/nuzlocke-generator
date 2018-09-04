@@ -69,13 +69,22 @@ const history = createHistory();
 
 render(
     <Provider store={store}>
-        <PersistGate loading={<div>Loading...</div>} onBeforeLift={null} persistor={persistor}>
+        {
+            process.env.NODE_ENV !== 'test' ?
+            <PersistGate loading={<div>Loading...</div>} onBeforeLift={null} persistor={persistor}>
+                <DragDropContextProvider backend={HTML5Backend}>
+                    <ConnectedRouter history={history}>
+                        <Route exact path='/' component={App} />
+                    </ConnectedRouter>
+                </DragDropContextProvider>
+            </PersistGate>
+            :
             <DragDropContextProvider backend={HTML5Backend}>
                 <ConnectedRouter history={history}>
                     <Route exact path='/' component={App} />
                 </ConnectedRouter>
             </DragDropContextProvider>
-        </PersistGate>
+        }
     </Provider>,
     mountNode,
 );

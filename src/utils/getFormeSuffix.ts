@@ -30,7 +30,7 @@ export enum Forme {
     Exclamation = 'exclamation',
     Question = 'question',
 
-    // Mega = 'mega',
+    Mega = 'mega',
     'Mega-X' = 'mega-x',
     'Mega-Y' = 'mega-y',
 
