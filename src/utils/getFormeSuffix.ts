@@ -1,4 +1,6 @@
 export enum Forme {
+    // NOTE: Normal is not technically considered a "forme"
+
     A = 'a',
     B = 'b',
     C = 'c',
@@ -32,6 +34,7 @@ export enum Forme {
     MegaX = 'mega-x',
     MegaY = 'mega-y',
 
+    Alolan = 'alola',
 
     Sunny = 'sunny',
     Rainy = 'rainy',
