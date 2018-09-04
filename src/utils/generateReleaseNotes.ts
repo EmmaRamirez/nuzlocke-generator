@@ -263,9 +263,10 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Fixed colors for Diamond version
 - All Pokémon now have default typings
 - Typed Hidden Power can now be inputted as \`HP Fire\`, \`HP Water\`, etc
+- Shuffled around fields in Pokémon editor
 
 ## Known Issues
-- Downloading images will fail if they contain "cross-origin" resources, which taint the process for downloading
+- Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `
 };
