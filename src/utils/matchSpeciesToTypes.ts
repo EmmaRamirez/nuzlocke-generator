@@ -979,12 +979,16 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
             return [Types.Rock, Types.Water];
         case 'Registeel':
             return [Types.Steel, Types.Steel];
-            // 'Latias',
-            // 'Latios',
-            // 'Rayquaza',
-            // 'Empoleon',
-            // 'Cranidos',
-            // 'Rampardos',
+        case 'Latias':
+        case 'Latios':
+            return [Types.Dragon, Types.Psychic];
+        case 'Rayquaza':
+            return [Types.Dragon, Types.Flying];
+        case 'Empoleon':
+            return [Types.Water, Types.Steel];
+        case 'Cranidos':
+        case 'Rampardos':
+            return [Types.Rock, Types.Rock];
             // 'Shieldon',
             // 'Bastiodon',
             // 'Bronzor',

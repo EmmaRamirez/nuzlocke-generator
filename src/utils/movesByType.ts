@@ -33,6 +33,7 @@ export const movesByType: MovesByType = {
         'Heal Order',
         'Fury Cutter',
         'First Impression',
+        'HP Bug',
     ],
     Dark: [
         'Night Slash',
@@ -74,6 +75,7 @@ export const movesByType: MovesByType = {
         'Feint Attack',
         'Faint Attack',
         'Fake Tears',
+        'HP Dark',
     ],
     Dragon: [
         'Dragon Claw',
@@ -95,6 +97,7 @@ export const movesByType: MovesByType = {
         'Spacial Rend',
         'Twister',
         'Clangorous Soulblaze',
+        'HP Dragon',
     ],
     Electric: [
         '10,000,000 Volt Thunderbolt',
@@ -132,6 +135,7 @@ export const movesByType: MovesByType = {
         'Charge Beam',
         'Thunder Fang',
         'Plasma Fists',
+        'HP Electric',
     ],
     Fairy: [
         'Dazzling Gleam',
@@ -205,6 +209,7 @@ export const movesByType: MovesByType = {
         'DynamicPunch',
         'Dynamic Punch',
         'Force Palm',
+        'HP Fighting',
     ],
     Fire: [
         'Fire Blast',
@@ -242,6 +247,7 @@ export const movesByType: MovesByType = {
         'Sunny Day',
         'Burn Up',
         'Mind Blown',
+        'HP Fire',
     ],
     Flying: [
         'FeatherDance',
@@ -271,6 +277,7 @@ export const movesByType: MovesByType = {
         'Beak Blast',
         'Hurricane',
         'Pluck',
+        'HP Flying',
     ],
     Ghost: [
         'Nightmare',
@@ -299,6 +306,7 @@ export const movesByType: MovesByType = {
         'Shadow Sneak',
         'Grudge',
         'Menacing Moonraze Maelstrom',
+        'HP Ghost',
     ],
     Grass: [
         'Frenzy Plant',
@@ -345,6 +353,7 @@ export const movesByType: MovesByType = {
         'Horn Leech',
         'Needle Arm',
         'Trop Kick',
+        'HP Grass',
     ],
     Ground: [
         'Sand-Attack',
@@ -374,6 +383,7 @@ export const movesByType: MovesByType = {
         'Spikes',
         'Thousand Arrows',
         'Stomping Tantrum',
+        'HP Ground',
     ],
     Ice: [
         'Hail',
@@ -400,6 +410,7 @@ export const movesByType: MovesByType = {
         'Ice Ball',
         'Freeze Shock',
         'Powder Snow',
+        'HP Ice',
     ],
     Normal: [
         'Bide',
@@ -620,6 +631,7 @@ export const movesByType: MovesByType = {
         'Acid Spray',
         'Acid Downpour',
         'Poison Tail',
+        'HP Poison',
     ],
     Psychic: [
         'Barrier',
@@ -685,6 +697,7 @@ export const movesByType: MovesByType = {
         'Agility',
         'Photon Geyser',
         'Light That Burns The Sky',
+        'HP Psychic',
     ],
     Rock: [
         'Rock Throw',
@@ -705,6 +718,7 @@ export const movesByType: MovesByType = {
         'Head Smash',
         'Continental Crush',
         'Accelerock',
+        'HP Rock',
     ],
     Steel: [
         'Anchor Shot',
@@ -733,6 +747,7 @@ export const movesByType: MovesByType = {
         'Steel Wing',
         'Splintered Stormshards',
         'Searing Sunraze Smash',
+        'HP Steel',
     ],
     Water: [
         'Brine',
@@ -769,5 +784,6 @@ export const movesByType: MovesByType = {
         'BubbleBeam',
         'Razor Shell',
         'Octazooka',
+        'HP Water',
     ],
 };

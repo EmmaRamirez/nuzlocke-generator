@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { OrientationType, mapTrainerImage, Game, Styles, getContrastColor, getBadges, isEmpty } from 'utils';
 import { connect } from 'react-redux';
-import { reducers } from 'reducers';
 import { Trainer, Badge } from 'models';
+import { State } from 'state';
 
 export interface TrainerResultProps {
     orientation: OrientationType;
@@ -45,7 +45,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
 
     public render() {
         const { trainer, game, style } = this.props;
-        const bottomTextStyle: any = { fontSize: '1.1rem', fontWeight: 'bold' };
+        const bottomTextStyle: React.CSSProperties = { fontSize: '1.1rem', fontWeight: 'bold' };
         return (
             <div className='trainer-wrapper'>
                 <div
@@ -108,10 +108,9 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
 }
 
 export const TrainerResult = connect(
-    (state: any) => ({
+    (state: Pick<State, keyof State>) => ({
         style: state.style,
         trainer: state.trainer,
         game: state.game,
     }),
-    null
-)(TrainerResultBase as any);
+)(TrainerResultBase);

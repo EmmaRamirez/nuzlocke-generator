@@ -254,13 +254,15 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 
 ## Features
 - **Checkpoints Editor**: will support custom images in Beta 13
-- **Sprites Mode**: for Champs Pokemon
+- **Sprites Mode**: for Champs Pokémon
+- **Egg property**: in Pokémon Editor
 
 ## Fixes
 - Autofixes on Hexagons, Generations templates
 - Fixes for Farfetch'd, Mime Jr., and Mr. Mime
 - Fixed colors for Diamond version
 - All Pokémon now have default typings
+- Typed Hidden Power can now be inputted as \`HP Fire\`, \`HP Water\`, etc
 
 ## Known Issues
 - Downloading images will fail if they contain "cross-origin" resources, which taint the process for downloading

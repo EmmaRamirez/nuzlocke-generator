@@ -168,7 +168,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         width: style.resultWidth + 'px',
                     }}>
                     <div className='trainer-container' style={{ backgroundColor: topHeaderColor }}>
-                        <TrainerResult />
+                        <TrainerResult orientation={this.props.style.trainerSectionOrientation} />
                     </div>
                     {trainer && trainer.notes ? (
                         <div style={{ color: getContrastColor(bgColor) }} className='result-notes'>{trainer.notes}</div>

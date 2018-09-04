@@ -7,21 +7,22 @@ import { editPokemon, selectPokemon } from 'actions';
 import { ErrorBoundary } from 'components/Shared';
 
 import { TagInput } from '@blueprintjs/core';
+import { State } from 'state';
 
 interface CurrentPokemonInputProps {
     labelName: string;
     inputName: string;
-    type: string;
+    type: 'number' | 'text' | 'select' | 'checkbox' | 'double-select' | 'moves';
     value: any;
     placeholder?: string;
     disabled?: boolean;
     options?: string[];
-    editPokemon?: any;
-    selectedId: any;
-    selectPokemon?: any;
+    editPokemon: editPokemon;
+    selectedId: string;
+    selectPokemon: selectPokemon;
 }
 
-export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInputProps, {}> {
+export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInputProps> {
     constructor(props: CurrentPokemonInputProps) {
         super(props);
     }
@@ -50,6 +51,12 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         } else if (inputName === 'champion' || inputName === 'shiny') {
             edit = {
                 [inputName]: e.target.checked,
+            };
+        } else if (inputName === 'egg') {
+            edit = {
+                [inputName]: e.target.checked,
+                species: 'Egg',
+                nickname: 'Egg',
             };
         } else {
             edit = {
@@ -85,6 +92,18 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
             );
         }
         if (type === 'text') {
+            return (
+                <input
+                    onChange={event => this.onChange(event, inputName)}
+                    type={type}
+                    name={inputName}
+                    value={value}
+                    placeholder={placeholder}
+                    disabled={disabled || false}
+                />
+            );
+        }
+        if (type === 'number') {
             return (
                 <input
                     onChange={event => this.onChange(event, inputName)}
@@ -173,9 +192,9 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
     }
 }
 
-export const CurrentPokemonInput: any = connect(
-    (state: any) => ({
+export const CurrentPokemonInput = connect(
+    (state: Pick<State, keyof State>) => ({
         selectedId: state.selectedId,
     }),
     { editPokemon, selectPokemon },
-)(CurrentPokemonInputBase as any);
+)(CurrentPokemonInputBase);

@@ -2,7 +2,6 @@ export interface EvolutionTree {
     [species: string]: EvolutionTree | null;
 }
 
-
 export const EvolutionTree: EvolutionTree = {
     'Bulbasaur': {
         'Ivysaur': {
@@ -37,7 +36,31 @@ export const EvolutionTree: EvolutionTree = {
     'Rattata': {
         'Raticate': null,
     },
-
+    'Pichu': {
+        'Pikachu': {
+            'Raichu': null
+        }
+    },
+    'Ekans': {
+        'Arbok': null,
+    },
+    'Sandshrew': {
+        'Sandlsash': null,
+    },
+    'Spearow': {
+        'Fearow': null
+    },
+    'Zubat': {
+        'Golbat': {
+            'Crobat': null
+        }
+    },
+    'Poliwag': {
+        'Poliwhirl': {
+            'Poliwrath': null,
+            'Politoed': null,
+        }
+    },
     'Eevee': {
         'Flareon': null,
         'Jolteon': null,

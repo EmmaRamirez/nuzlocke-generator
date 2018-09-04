@@ -50,16 +50,20 @@ export interface CheckpointsEditorProps {
 
 export interface CheckpointsEditorState {
     checkpoints: DeepSet<Badge>;
+    badgeNumber: number;
 }
 
 export class CheckpointsEditorBase extends React.Component<CheckpointsEditorProps, CheckpointsEditorState> {
+    public state = { checkpoints: new DeepSet([]) as unknown as DeepSet<Badge>, badgeNumber: 1 };
+
     public componentWillMount() {
         this.setState({ checkpoints: this.props.checkpoints });
     }
 
     private addCheckpoint = e => {
         this.setState({
-            checkpoints: this.state.checkpoints!.add({ name: 'Empty Badge', image: 'unknown' })
+            badgeNumber: this.state.badgeNumber + 1,
+            checkpoints: this.state.checkpoints!.add({ name: `Empty Badge ${this.state.badgeNumber}`, image: 'unknown' })
         });
     }
 

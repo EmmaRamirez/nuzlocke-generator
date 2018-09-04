@@ -13,6 +13,7 @@ import {
     Dialog,
     Classes,
 } from '@blueprintjs/core';
+import { State } from 'state';
 import { BaseEditor } from 'components/BaseEditor';
 import { ColorEdit } from 'components/Shared';
 import { cx } from 'emotion';
@@ -21,7 +22,7 @@ import { reducers } from 'reducers';
 import * as Styles from './styles';
 import { ThemeEditor } from 'components/ThemeEditor';
 
-const editEvent = (e, props: StyleEditorProps, name?, game?) => {
+const editEvent = (e, props: StyleEditorProps, name?: keyof State['style'], game?) => {
     const propName = name || e.target.name;
     props.editStyle({ [propName]: e.target.value });
     if (propName === 'template' && e.target.value === 'Default Light') {
@@ -99,7 +100,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     <div className='pt-select'>
                         <select
                             name='template'
-                            onChange={e => editEvent(e, props, null, props.game.name)}
+                            onChange={e => editEvent(e, props, undefined, props.game.name)}
                             value={props.style.template}>
                             {listOfThemes.map(o => <option key={o}>{o}</option>)}
                         </select>
@@ -228,6 +229,17 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         label='Moves Position'
                         onChange={e => editEvent(e, props, 'movesPosition')}
                         selectedValue={props.style.movesPosition}>
+                        <Radio label='Horizontal' value='horizontal' />
+                        <Radio label='Vertical' value='vertical' />
+                    </RadioGroup>
+                </div>
+
+                <div className={styleEdit}>
+                    <RadioGroup
+                        className={cx(Styles.radioGroup)}
+                        label='Trainer Section Position'
+                        onChange={e => editEvent(e, props, 'trainerSectionOrientation')}
+                        selectedValue={props.style.trainerSectionOrientation}>
                         <Radio label='Horizontal' value='horizontal' />
                         <Radio label='Vertical' value='vertical' />
                     </RadioGroup>
