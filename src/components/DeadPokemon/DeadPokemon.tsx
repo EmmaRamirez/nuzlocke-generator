@@ -1,18 +1,19 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Pokemon } from 'models';
+import { Pokemon, Game } from 'models';
 import { GenderElement } from 'components/Shared';
-import { getBackgroundGradient, getPokemonImage, getSpriteIcon, speciesToNumber, getContrastColor } from 'utils';
+import { getBackgroundGradient, getPokemonImage, getSpriteIcon, speciesToNumber, getContrastColor, Styles } from 'utils';
 import { selectPokemon } from 'actions';
 import { PokemonIconBase } from 'components/PokemonIcon';
+import { State } from 'state';
 
 const spriteStyle = (style) => style.spritesMode && !style.scaleSprites
             ? { backgroundSize: 'auto', backgroundRepeat: 'no-repeat' }
             : { backgroundSize: 'cover', backgroundRepeat: 'no-repeat' };
 
 export const DeadPokemonBase = (
-    poke: Pokemon & { selectPokemon } & { style: any } & { game: any },
+    poke: Pokemon & { selectPokemon } & { style: Styles } & { game: Game },
 ) => {
     const style = poke.style;
     const addForme = (species: string | undefined) => {
@@ -71,6 +72,6 @@ export const DeadPokemonBase = (
     );
 };
 
-export const DeadPokemon = connect((state: any) => ({ style: state.style, game: state.game }), {
+export const DeadPokemon = connect((state: Pick<State, keyof State>) => ({ style: state.style, game: state.game }), {
     selectPokemon,
 })(DeadPokemonBase);

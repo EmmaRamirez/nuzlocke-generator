@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { Pokemon } from 'models';
 import { Boxes } from 'types';
+import { State } from 'state';
 
 import {
     generateEmptyPokemon, dragAndDrop,
@@ -92,7 +93,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
 }
 
 export const PokemonEditor = connect(
-    (state: any) => ({
+    (state: Pick<State, keyof State>) => ({
         team: state.pokemon,
         boxes: state.box,
         game: state.game,
