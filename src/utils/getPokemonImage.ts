@@ -5,10 +5,11 @@ import { Game } from 'utils';
 
 const sugiFormeNotation = forme => {
     if (typeof forme === 'undefined') return '';
+    if (forme === 'Normal') return '';
     // If the forme exists, we default to '_f2'
-    if (forme != null || forme !== 'Normal' || forme === 'Alolan' || forme === 'Mega') return '_f2';
+    if (forme != null || forme !== 'Normal' || forme === 'Alolan' || forme === 'Mega' || forme === 'Mega-X') return '_f2';
     // Pokemon with more than 1 extra forme have different notations
-    if (forme === 'Sandy' || forme === 'Pau\'u') return '_f3';
+    if (forme === 'Sandy' || forme === 'Pau\'u' || forme === 'Mega-Y') return '_f3';
     if (forme === 'Sensu') return '_f4';
     return '';
 };
@@ -95,7 +96,7 @@ export function getPokemonImage({ customImage, forme, species, name, style, shin
         }
     }
     if (style.teamImages === 'sugimori') {
-        return `url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/${leadingZerosNumber}.png)`;
+        return `url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/${leadingZerosNumber}${sugiFormeNotation(forme)}.png)`;
     }
     return `url(img/${(
         addForme((species || '').replace(/\s/g, '').replace(/'/g, ''), forme) || 'missingno'
