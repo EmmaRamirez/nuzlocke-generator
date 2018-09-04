@@ -39,7 +39,7 @@ export interface CopyPokemonButtonProps {
 
 export const CopyPokemonButton: React.SFC<CopyPokemonButtonProps> = ({ onClick }: CopyPokemonButtonProps) => {
     return (
-        <Popover interactionKind={PopoverInteractionKind.HOVER} position={Position.TOP} content={`Copy Pok${accentedE}mon`}>
+        <Popover interactionKind={PopoverInteractionKind.HOVER} position={Position.TOP} content={<div style={{ padding: '1rem' }}>{`Copy Pok${accentedE}mon`}</div>}>
             <Icon title='Copy Pokemon' icon='duplicate' className={cx(Styles.copyButton)} onClick={onClick} />
         </Popover>
     );

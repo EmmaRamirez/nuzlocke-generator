@@ -58,7 +58,7 @@ export class DeletePokemonButtonBase extends React.Component<
                         Don't Ask Me For Confirmation Again
                     </label>
                 </Alert>
-                <Popover interactionKind={PopoverInteractionKind.HOVER} position={Position.TOP} content={`Delete Pok${accentedE}mon`}>
+        <Popover interactionKind={PopoverInteractionKind.HOVER} position={Position.TOP} content={<div style={{ padding: '1rem' }}>{`Delete Pok${accentedE}mon`}</div>}>
                     <Icon
                         role='button'
                         onClick={e => {
