@@ -256,6 +256,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - **Checkpoints Editor**: will support custom images in Beta 13
 - **Sprites Mode**: for Champs Pokémon
 - **Egg property**: in Pokémon Editor
+- **Alolan formes**: now have first-class support
 
 ## Fixes
 - Autofixes on Hexagons, Generations templates
