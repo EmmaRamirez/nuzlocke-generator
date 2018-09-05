@@ -252,6 +252,7 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
                         forme={currentPokemon.forme}
                         shiny={currentPokemon.shiny}
                         gender={currentPokemon.gender}
+                        customIcon={currentPokemon.customIcon}
                         selectedId={null}
                         onClick={() => {}}
                     />

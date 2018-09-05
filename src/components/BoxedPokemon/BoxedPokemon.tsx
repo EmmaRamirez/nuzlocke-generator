@@ -23,6 +23,8 @@ export const BoxedPokemonBase = (poke: Pokemon & { selectPokemon } & { style }) 
                 forme={poke.forme}
                 shiny={poke.shiny}
                 gender={poke.gender}
+                customIcon={poke.customIcon}
+                className={'boxed-pokemon-icon'}
             />
             <div className='boxed-pokemon-info' style={{ borderLeftColor: getAccentColor(poke) }}>
                 <span className='boxed-pokemon-name'>

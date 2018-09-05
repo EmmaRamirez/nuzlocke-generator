@@ -8,6 +8,12 @@ export const addForme = (species: string | undefined, forme?: keyof typeof Forme
         if (forme === 'Mega') {
             return `${species}-mega`;
         }
+        if (forme === 'Mega-X') {
+            return `${species}-mega-x`;
+        }
+        if (forme === 'Mega-Y') {
+            return `${species}-mega-y`;
+        }
         if (forme === 'D') {
             return `${species}-d`;
         }

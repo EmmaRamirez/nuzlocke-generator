@@ -17,6 +17,7 @@ interface PokemonIconProps {
     forme?: string;
     /** The gender of the Pokemon */
     gender?: GenderElementProps;
+    customIcon?: string;
     onClick: () => void;
     selectedId: string | null;
     /** Renders its shiny version if true **/
@@ -60,11 +61,12 @@ const iconSource = {
     }
 };
 
-export const getIconURL = ({ id, species, forme, shiny, gender }) => {
+export const getIconURL = ({ id, species, forme, shiny, gender, customIcon }) => {
     const baseURL = `icons/pokemon/`;
     const isShiny = shiny ? 'shiny' : 'regular';
     const isFemaleSpecific = significantGenderDifferenceList.includes(species) && Gender.isFemale(gender) ? `female/` : '';
     if (species === 'Egg') return `${baseURL}egg.png`;
+    if (customIcon) return customIcon;
     return `${baseURL}${isShiny}/${isFemaleSpecific}${formatSpeciesName(species)}${getFormeSuffix(forme)}.png`;
 };
 
@@ -79,7 +81,7 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
     }
 
     public render() {
-        const { connectDragSource, isDragging, id, gender, species, forme, onClick, selectedId, className, shiny, style } = this.props;
+        const { connectDragSource, isDragging, id, gender, species, forme, onClick, selectedId, className, shiny, style, customIcon } = this.props;
         return connectDragSource!(
             <div
                 role='icon'
@@ -90,11 +92,12 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
                 id={id}
                 style={style}
                 className={
-                    `${id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'}${className || ''} ${isDragging ? 'opacity-medium' : ''}`
+                    `${id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'} ${className || ''} ${isDragging ? 'opacity-medium' : ''}`
                 }>
                 <img
+                    style={{ maxHeight: '100%' }}
                     alt={species}
-                    src={getIconURL({ id, species, forme, shiny, gender })}
+                    src={getIconURL({ id, species, forme, shiny, gender, customIcon })}
                 />
             </div>
         );

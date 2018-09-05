@@ -2,6 +2,7 @@ import { addForme, getSpriteIcon, speciesToNumber, getForme } from 'utils';
 import { Styles } from './styleDefaults';
 import { capitalize } from './capitalize';
 import { Game } from 'utils';
+import { Forme } from './getFormeSuffix';
 
 const sugiFormeNotation = forme => {
     if (typeof forme === 'undefined') return '';
@@ -47,7 +48,7 @@ const getGameName = (name: Game) => {
 
 export interface GetPokemonImage {
     customImage?: string
-    forme?: 'Alolan' | 'Mega'
+    forme?: keyof typeof Forme;
     species: string
     name?: string
     style: Styles
