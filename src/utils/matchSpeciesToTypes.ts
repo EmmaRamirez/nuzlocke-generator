@@ -84,10 +84,16 @@ export const handleSpeciesTypeEdgeCases = ({ species, forme, generation }): [Typ
 
     if (match({
         ...data,
-        species: ['Clefairy', 'Clefable', 'Cleffa'],
+        species: ['Clefairy', 'Clefable', 'Cleffa', 'Togepi'],
         generation: [Generation.Gen1, Generation.Gen2, Generation.Gen3, Generation.Gen4,
         Generation.Gen5]
     })) return [Types.Normal, Types.Normal];
+
+    if (match({
+        ...data,
+        species: ['Togetic', 'Togekiss'],
+        generation: [Generation.Gen1, Generation.Gen2, Generation.Gen3, Generation.Gen4, Generation.Gen5],
+    })) return [Types.Normal, Types.Flying];
 
     if (match({
         ...data,
@@ -140,6 +146,9 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
         case 'Leafeon':
         case 'Turtwig':
         case 'Grotle':
+        case 'Carnivine':
+        case 'Fomantis':
+        case 'Lurantis':
             return [Types.Grass, Types.Grass];
         case 'Torterra':
             return [Types.Grass, Types.Ground];
@@ -989,18 +998,25 @@ export const matchSpeciesToTypes = (species: string, forme?: string, generation?
         case 'Cranidos':
         case 'Rampardos':
             return [Types.Rock, Types.Rock];
-            // 'Shieldon',
-            // 'Bastiodon',
-            // 'Bronzor',
-            // 'Bronzong',
-            // 'Bonsly',
-            // 'Carnivine',
-            // 'Mantyke',
-            // 'Snover',
-            // 'Abomasnow',
-            // 'Probopass',
-            // 'Dialga',
-            // 'Palkia',
+        case 'Shieldon':
+        case 'Bastiodon':
+            return [Types.Rock, Types.Steel];
+        case 'Bronzor':
+        case 'Bronzong':
+            return [Types.Steel, Types.Psychic];
+        case 'Bonsly':
+            return [Types.Rock, Types.Rock];
+        case 'Mantyke':
+            return [Types.Water, Types.Flying];
+        case 'Snover':
+        case 'Abomasnow':
+            return [Types.Grass, Types.Ice];
+        case 'Probopass':
+            return [Types.Rock, Types.Steel];
+        case 'Dialga':
+            return [Types.Dragon, Types.Steel];
+        case 'Palkia':
+            return [Types.Dragon, Types.Water];
             // 'Heatran',
             // 'Shaymin',
             // 'Victini',
