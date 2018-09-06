@@ -60,14 +60,14 @@ export class CheckpointsEditorBase extends React.Component<CheckpointsEditorProp
         this.setState({ checkpoints: this.props.checkpoints });
     }
 
-    private addCheckpoint = e => {
+    private addCheckpoint = (e: any) => {
         this.setState({
             badgeNumber: this.state.badgeNumber + 1,
             checkpoints: this.state.checkpoints!.add({ name: `Empty Badge ${this.state.badgeNumber}`, image: 'unknown' })
         });
     }
 
-    private onUpload = e => {
+    private onUpload = (e: any) => {
         const size = e.target.files[0].size / 1024 / 1024;
         if (size > 0.5) {
             const toaster = Toaster.create();
@@ -81,6 +81,7 @@ export class CheckpointsEditorBase extends React.Component<CheckpointsEditorProp
         return checkpoints && checkpoints.toArray().map((checkpoint, key) => {
             return (
                 <li key={key} className={cx(classWithDarkTheme(styles, 'checkpointsItem', this.props.style.editorDarkMode))}>
+                    <Icon icon='drag-handle-vertical' />
                     <div className={cx(styles.checkpointName)}>
                         <img className={cx(styles.checkpointImage())} alt={checkpoint.name} src={`./img/checkpoints/${checkpoint.image}.png`} />
                         <input className={Classes.INPUT} type='text' value={ checkpoint.name } />

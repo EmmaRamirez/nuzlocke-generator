@@ -1,5 +1,5 @@
 import { GenderElementProps } from 'components/Shared';
-import { Types, Game } from 'utils';
+import { Types, Game, Forme } from 'utils';
 
 export interface Pokemon {
     id: string;
@@ -14,7 +14,7 @@ export interface Pokemon {
     ability?: string;
     moves?: string[];
     causeOfDeath?: string;
-    forme?: string;
+    forme?: Forme;
     item?: string;
     types?: [Types, Types];
     customImage?: string;
@@ -45,7 +45,7 @@ export const PokemonKeys: Pokemon = {
     ability: '',
     moves: [],
     causeOfDeath: '',
-    forme: '',
+    forme: Forme.Normal,
     item: '',
     types: [Types.Normal, Types.Normal],
     customImage: '',

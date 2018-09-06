@@ -182,7 +182,7 @@ export class Moves extends React.Component<MovesProps> {
 }
 
 export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
-    constructor(props) {
+    constructor(props: TeamPokemonBaseProps) {
         super(props);
     }
 
@@ -196,7 +196,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
             : { backgroundSize: 'cover', backgroundRepeat: 'no-repeat', imageRendering: 'pixelated' };
 
 
-        const addProp = item => {
+        const addProp = (item: any) => {
             const propName = `data-${item.toLowerCase()}`;
             if (item === 'type') return { [propName]: poke[item].join(' ') };
             if (poke[item] == null || poke[item] === '') return {};

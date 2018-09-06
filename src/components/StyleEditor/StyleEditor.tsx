@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { editStyle } from 'actions';
-import { gameOfOriginToColor, styleDefaults, listOfThemes, FEATURES } from 'utils';
+import { gameOfOriginToColor, styleDefaults, listOfThemes, FEATURES, Game } from 'utils';
 import {
     RadioGroup,
     Radio,
@@ -22,7 +22,7 @@ import { reducers } from 'reducers';
 import * as Styles from './styles';
 import { ThemeEditor } from 'components/ThemeEditor';
 
-const editEvent = (e, props: StyleEditorProps, name?: keyof State['style'], game?) => {
+const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'], game?: Game) => {
     const propName = name || e.target.name;
     props.editStyle({ [propName]: e.target.value });
     if (propName === 'template' && e.target.value === 'Default Light') {
@@ -42,7 +42,7 @@ const editEvent = (e, props: StyleEditorProps, name?: keyof State['style'], game
     }
     if (propName === 'template' && e.target.value === 'Generations') {
         props.editStyle({
-            bgColor: gameOfOriginToColor(game),
+            bgColor: game ? gameOfOriginToColor(game) : '',
         });
         props.editStyle({
             resultHeight: 870

@@ -1,12 +1,16 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { getFormeSuffix, getSpriteIcon, speciesToNumber, listOfPokemon, significantGenderDifferenceList } from 'utils';
+import { getFormeSuffix, getSpriteIcon, speciesToNumber, listOfPokemon, significantGenderDifferenceList, Forme } from 'utils';
 import { Gender, GenderElementProps } from 'components/Shared';
 import { pokemon } from 'reducers/pokemon';
 import { selectPokemon } from 'actions';
 import { ErrorBoundary } from '../Shared';
 import { store } from 'store';
 import { DragSource, ConnectDragSource } from 'react-dnd';
+import { Pokemon } from 'models';
+import { Dispatch } from 'redux';
+import { State } from 'state';
+import { Omit } from 'ramda';
 
 interface PokemonIconProps {
     /** The id of the Pokemon, used for selection **/
@@ -42,7 +46,7 @@ const formatSpeciesName = (species: string | null) => {
     return species.toLowerCase();
 };
 
-const getForme = (forme) => {
+const getForme = (forme: Forme) => {
     return '';
 };
 
@@ -54,20 +58,22 @@ const iconSource = {
             id: props.id
         };
     },
-    isDragging(props, monitor) {
+    isDragging(props: PokemonIconProps) {
         return {
             id: props.id
         };
     }
 };
 
-export const getIconURL = ({ id, species, forme, shiny, gender, customIcon }) => {
+type getIconURLArgs = Pick<Pokemon, 'id' | 'species' | 'forme' | 'shiny' | 'gender' | 'customIcon'>;
+
+export const getIconURL = ({ id, species, forme, shiny, gender, customIcon }: getIconURLArgs) => {
     const baseURL = `icons/pokemon/`;
     const isShiny = shiny ? 'shiny' : 'regular';
     const isFemaleSpecific = significantGenderDifferenceList.includes(species) && Gender.isFemale(gender) ? `female/` : '';
     if (species === 'Egg') return `${baseURL}egg.png`;
     if (customIcon) return customIcon;
-    return `${baseURL}${isShiny}/${isFemaleSpecific}${formatSpeciesName(species)}${getFormeSuffix(forme)}.png`;
+    return `${baseURL}${isShiny}/${isFemaleSpecific}${formatSpeciesName(species)}${getFormeSuffix(Forme[forme ? forme : 'Normal'])}.png`;
 };
 
 @DragSource('ICON', iconSource as any, (connect, monitor) => ({
@@ -76,7 +82,7 @@ export const getIconURL = ({ id, species, forme, shiny, gender, customIcon }) =>
 }))
 export class PokemonIconBase extends React.Component<PokemonIconProps> {
 
-    constructor(props) {
+    constructor(props: any) {
         super(props);
     }
 
@@ -97,25 +103,25 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
                 <img
                     style={{ maxHeight: '100%' }}
                     alt={species}
-                    src={getIconURL({ id, species, forme, shiny, gender, customIcon })}
+                    src={getIconURL({ id, species, forme, shiny, gender, customIcon } as getIconURLArgs)}
                 />
             </div>
         );
     }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch: Dispatch<State>, ownProps: Omit<PokemonIconProps, 'onClick' | 'selectedId'>) => {
     return {
         onClick: () => {
-            dispatch(selectPokemon(ownProps.id));
+            dispatch(selectPokemon(ownProps.id!));
         },
     };
 };
 
 
-export const PokemonIcon = connect(
-    (state: any) => ({ selectedId: state.selectedId }),
+export const PokemonIcon: React.ComponentClass<Omit<PokemonIconProps, 'onClick' | 'selectedId'>> = connect(
+    (state: Pick<State, keyof State>) => ({ selectedId: state.selectedId }),
     mapDispatchToProps
 )(
-    PokemonIconBase,
+    PokemonIconBase as any
 );

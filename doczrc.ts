@@ -1,4 +1,5 @@
 import { css } from 'docz-plugin-css';
+import { BabelRC } from 'docz-core/dist/utils/babelrc';
 
 // tslint:disable-next-line:no-default-export
 export default {
@@ -16,7 +17,7 @@ export default {
         }
     },
     protocol: 'http',
-    modifyBabelRc: (babelrc) => {
+    modifyBabelRc: (babelrc: BabelRC) => {
         babelrc.babelrc = true;
         babelrc.presets = [];
 

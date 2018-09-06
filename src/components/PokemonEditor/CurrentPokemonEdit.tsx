@@ -12,6 +12,7 @@ import {
     getGameGeneration,
     listOfNatures,
     Game,
+    Forme,
 } from 'utils';
 import { Pokemon } from 'models';
 import { onClick, Boxes } from 'types';
@@ -45,17 +46,6 @@ export const CopyPokemonButton: React.SFC<CopyPokemonButtonProps> = ({ onClick }
     );
 };
 
-// export const CopyPokemonButton = connect(
-//     null,
-//     (dispatch, ownProps: CopyPokemonButtonProps) => {
-//         const id = ownProps.id;
-
-//         return {
-//             onClick: dispatch(addPokemon(copiedPokemon))
-//         };
-//     }
-// );
-
 export interface CurrentPokemonEditProps {
     selectedId: Pokemon['id'];
     box: any;
@@ -73,7 +63,7 @@ export interface CurrentPokemonEditState {
 }
 
 export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditProps, CurrentPokemonEditState> {
-    constructor(props) {
+    constructor(props: CurrentPokemonEditProps) {
         super(props);
         this.state = {
             selectedId: '5',
@@ -89,7 +79,7 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
         });
     }
 
-    public componentWillReceiveProps(nextProps, prevProps) {
+    public componentWillReceiveProps(nextProps: CurrentPokemonEditProps, prevProps: CurrentPokemonEditProps) {
         if (nextProps.selectedId !== prevProps.selectedId) {
             this.setState({ selectedId: nextProps.selectedId });
         }
@@ -284,7 +274,7 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
                                 this.props.editPokemon(
                                     { types: matchSpeciesToTypes(
                                         e.target.value,
-                                        currentPokemon.forme,
+                                        currentPokemon.forme as Forme,
                                         getGameGeneration(this.props.game.name as Game)
                                     ) },
                                     this.state.selectedId,

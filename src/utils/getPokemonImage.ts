@@ -2,9 +2,9 @@ import { addForme, getSpriteIcon, speciesToNumber, getForme } from 'utils';
 import { Styles } from './styleDefaults';
 import { capitalize } from './capitalize';
 import { Game } from 'utils';
-import { Forme } from './getFormeSuffix';
+import { Forme } from './Forme';
 
-const sugiFormeNotation = forme => {
+const sugiFormeNotation = (forme: Forme) => {
     if (typeof forme === 'undefined') return '';
     if (forme === 'Normal') return '';
     // If the forme exists, we default to '_f2'
@@ -97,7 +97,7 @@ export function getPokemonImage({ customImage, forme, species, name, style, shin
         }
     }
     if (style.teamImages === 'sugimori') {
-        return `url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/${leadingZerosNumber}${sugiFormeNotation(forme)}.png)`;
+        return `url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/${leadingZerosNumber}${sugiFormeNotation(Forme[forme ? forme : 'Normal'])}.png)`;
     }
     return `url(img/${(
         addForme((species || '').replace(/\s/g, '').replace(/'/g, ''), forme) || 'missingno'

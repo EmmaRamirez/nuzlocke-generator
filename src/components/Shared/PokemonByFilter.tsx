@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Tooltip, Position } from '@blueprintjs/core';
 import { Pokemon } from 'models';
 import { PokemonIcon } from 'components/PokemonIcon';
-import { sortPokes } from 'utils';
+import { sortPokes, noop } from 'utils';
 import { connect } from 'react-redux';
 import { editPokemon } from 'actions';
 
@@ -45,14 +45,14 @@ export class PokemonByFilterBase extends React.Component<PokemonByFilterProps> {
         this.setState({ team: this.props.team });
     }
 
-    public componentWillReceiveProps(nextProps, prevProps) {
+    public componentWillReceiveProps(nextProps: PokemonByFilterProps, prevProps: PokemonByFilterProps) {
         this.setState({ team: nextProps.team });
     }
 
-    private getFilterFunction(filter) {
-        if (filter != null) return poke => poke.status === filter;
-        if (filter == null) return poke => true;
-        return poke => true;
+    private getFilterFunction(filter: string | null = null) {
+        if (filter != null) return (poke: Pokemon) => poke.status === filter;
+        if (filter == null) return (poke: Pokemon) => true;
+        return (poke: Pokemon) => true;
     }
 
     public render() {

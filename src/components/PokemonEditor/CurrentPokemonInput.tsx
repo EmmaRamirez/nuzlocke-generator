@@ -151,7 +151,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                             value={value[0] == null ? 'None' : value[0]}
                             name={inputName}>
                             {options
-                                ? options.map((item, index) => (
+                                ? options.map((item: string, index: number) => (
                                       <option value={item} key={index}>
                                           {item}
                                       </option>

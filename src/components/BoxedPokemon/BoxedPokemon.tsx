@@ -3,14 +3,18 @@ import { connect } from 'react-redux';
 
 import { Pokemon } from 'models';
 import { selectPokemon } from 'actions';
-import { getBackgroundGradient, getSpriteIcon, speciesToNumber, getContrastColor } from 'utils';
+import { getBackgroundGradient, getSpriteIcon, speciesToNumber, getContrastColor, Styles } from 'utils';
 import { PokemonIcon } from 'components/PokemonIcon';
 import { GenderElement } from 'components/Shared';
 
-const getAccentColor = (prop) => prop.style ? prop.style.accentColor : '#111111';
+type BoxedPokemonProps = Pokemon & { selectPokemon: selectPokemon } & { style: Styles };
+
+
+const getAccentColor = (prop: BoxedPokemonProps) => prop.style ? prop.style.accentColor : '#111111';
+
 
 // TODO: Convert to class
-export const BoxedPokemonBase = (poke: Pokemon & { selectPokemon } & { style }) => {
+export const BoxedPokemonBase = (poke: BoxedPokemonProps) => {
     return (
         <div className='boxed-pokemon-container' style={{
             background: getAccentColor(poke),

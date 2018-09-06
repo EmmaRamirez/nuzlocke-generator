@@ -3,22 +3,23 @@ import { connect } from 'react-redux';
 
 import { Pokemon, Game } from 'models';
 import { GenderElement } from 'components/Shared';
-import { getBackgroundGradient, getPokemonImage, getSpriteIcon, speciesToNumber, getContrastColor, Styles } from 'utils';
+import { getBackgroundGradient, getPokemonImage, getSpriteIcon, speciesToNumber, getContrastColor, Styles, Forme } from 'utils';
 import { selectPokemon } from 'actions';
 import { PokemonIconBase } from 'components/PokemonIcon';
 import { State } from 'state';
 
-const spriteStyle = (style) => style.spritesMode && !style.scaleSprites
+const spriteStyle = (style: Styles) => style.spritesMode && !style.scaleSprites
             ? { backgroundSize: 'auto', backgroundRepeat: 'no-repeat' }
             : { backgroundSize: 'cover', backgroundRepeat: 'no-repeat' };
 
+// TODO: Convert to Class
 export const DeadPokemonBase = (
-    poke: Pokemon & { selectPokemon } & { style: Styles } & { game: Game },
+    poke: Pokemon & { selectPokemon: selectPokemon } & { style: Styles } & { game: Game },
 ) => {
     const style = poke.style;
     const addForme = (species: string | undefined) => {
         if (poke.forme) {
-            if (poke.forme === 'Alolan' || poke.forme === 'Alola') {
+            if (poke.forme === Forme.Alolan) {
                 return `alolan-${species}`;
             }
 
@@ -29,7 +30,7 @@ export const DeadPokemonBase = (
     };
     const getClassname = () =>
         poke.champion ? 'dead-pokemon-container champion' : 'dead-pokemon-container';
-    const getAccentColor = (prop) => prop.style ? prop.style.accentColor : '#111111';
+    const getAccentColor = (prop: any) => prop.style ? prop.style.accentColor : '#111111';
     console.log(`deadPokemonColor`, getAccentColor(poke));
     return (
         <div className={getClassname()} data-league={poke.champion} style={{

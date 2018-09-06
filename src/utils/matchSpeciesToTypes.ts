@@ -1,4 +1,5 @@
 import { Types, Generation } from 'utils';
+import { Forme } from './Forme';
 
 const match  = ({ s, f, g, species, forme, generation }: { species: string[], forme?: string[], generation?: Generation[], s: string, f?: string, g?: Generation }) => {
     if (species.includes(s)) {
@@ -23,7 +24,7 @@ const match  = ({ s, f, g, species, forme, generation }: { species: string[], fo
     return false;
 };
 
-export const handleSpeciesTypeEdgeCases = ({ species, forme, generation }): [Types, Types] | null => {
+export const handleSpeciesTypeEdgeCases = ({ species, forme, generation }: { species: string, forme?: Forme, generation?: Generation}): [Types, Types] | null => {
     const s = species;
     const f = forme || undefined;
     const g = generation || undefined;
@@ -104,7 +105,7 @@ export const handleSpeciesTypeEdgeCases = ({ species, forme, generation }): [Typ
     return null;
 };
 
-export const matchSpeciesToTypes = (species: string, forme?: string, generation?: Generation): [Types, Types] => {
+export const matchSpeciesToTypes = (species: string, forme?: Forme, generation?: Generation): [Types, Types] => {
     const result = handleSpeciesTypeEdgeCases({ species, forme, generation });
     if (result) return result;
     switch (species) {

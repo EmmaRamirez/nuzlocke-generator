@@ -5,11 +5,11 @@ export const getMoveType = (move: string): Types => {
     for (const type in movesByType) {
         if (movesByType.hasOwnProperty(type)) {
             if (
-                movesByType[type].some((value) => {
+                movesByType[type as Types].some((value) => {
                     return move === value;
                 })
             ) {
-                return Types[type];
+                return Types[type as Types];
             }
         }
     }

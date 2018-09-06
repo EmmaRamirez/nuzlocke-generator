@@ -1,4 +1,3 @@
-import * as deepEqual from 'deep-equal';
 import { noop } from './noop';
 
 export class DeepSet<T> {
@@ -32,7 +31,7 @@ export class DeepSet<T> {
         return this.set;
     }
 
-    public static cheapCompare (o, i) {
+    public static cheapCompare (o: any, i: any) {
         return  JSON.stringify(o) === JSON.stringify(i);
     }
 }

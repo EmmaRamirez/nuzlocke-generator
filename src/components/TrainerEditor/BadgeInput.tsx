@@ -25,7 +25,7 @@ export interface BadgeInputState {
 }
 
 export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputState> {
-    constructor(props) {
+    constructor(props: BadgeInputProps) {
         super(props);
         this.state = {
             badges: new DeepSet(),
@@ -37,9 +37,9 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
         this.setState({ badges: new DeepSet(this.props.trainer.badges) });
     }
 
-    private toggleCheckpointsEditor = e => this.setState({ isOpen: !this.state.isOpen });
+    private toggleCheckpointsEditor = (e: React.SyntheticEvent<HTMLElement>) => this.setState({ isOpen: !this.state.isOpen });
 
-    private handleBadge(badge): DeepSet<Badge> {
+    private handleBadge(badge: Badge): DeepSet<Badge> {
         const mutableBadges = this.state.badges;
         if (mutableBadges.has(badge)) {
             mutableBadges.delete(badge);
@@ -70,7 +70,7 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
                     label='Checkpoints'
                     name='badges'
                     placeholder='...'
-                    value={null}
+                    value={''}
                     onChange={null}
                     element={inputProps => (
                         <Popover

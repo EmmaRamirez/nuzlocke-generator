@@ -6,7 +6,7 @@ import { Pokemon } from 'models';
 import { GenderElement, GenderElementProps } from '../Shared';
 import { css, cx } from 'emotion';
 
-export const champsPokemon = (options) => css`
+export const champsPokemon = (options: any) => css`
     height: ${options.height};
     width: ${options.width};
     margin: ${options.margin};
@@ -28,9 +28,6 @@ export type ChampsPokemonProps = {
 };
 
 export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
-    constructor(props) {
-        super(props);
-    }
 
     private static defaultProps = {
         showNickname: false,
