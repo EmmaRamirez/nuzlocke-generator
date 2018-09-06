@@ -2,14 +2,9 @@ import * as React from 'react';
 
 import { connect } from 'react-redux';
 import * as uuid from 'uuid/v4';
-// @ts-ignore
 import { Scrollbars } from 'react-custom-scrollbars';
-// @ts-ignore
 import * as domtoimage from 'dom-to-image';
 import { cx } from 'emotion';
-
-declare const domtoimage: any;
-declare const Scrollbars: React.ComponentClass<any>;
 
 import { selectPokemon } from 'actions';
 import { TeamPokemon, TeamPokemonBaseProps } from 'components/TeamPokemon';

@@ -1,7 +1,10 @@
-import { Forme } from './getFormeSuffix';
+import { Forme } from './Forme';
 
 export const addForme = (species: string | undefined, forme?: keyof typeof Forme) => {
     if (forme) {
+        if (forme === 'Normal') {
+            return species;
+        }
         if (forme === 'Alolan') {
             return `alolan-${species}`;
         }

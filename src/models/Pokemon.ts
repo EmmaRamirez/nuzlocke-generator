@@ -45,7 +45,7 @@ export const PokemonKeys: Pokemon = {
     ability: '',
     moves: [],
     causeOfDeath: '',
-    forme: Forme.Normal,
+    forme: 'Normal' as Forme,
     item: '',
     types: [Types.Normal, Types.Normal],
     customImage: '',

@@ -5,6 +5,7 @@ import {
     matchSpeciesToTypes,
     listOfPokemon,
     speciesToNumber,
+    Forme,
     mapTrainerImage,
 } from 'utils';
 import { DeepSet } from '../DeepSet';
@@ -69,7 +70,7 @@ describe('matchSpeciesToType', () => {
     it('returns a type for a Pokemon', () => {
         expect(matchSpeciesToTypes('Bulbasaur')).toEqual(['Grass', 'Poison']);
         expect(matchSpeciesToTypes('Charizard')).toEqual(['Fire', 'Flying']);
-        expect(matchSpeciesToTypes('Raichu', 'Alola')).toEqual(['Electric', 'Psychic']);
+        expect(matchSpeciesToTypes('Raichu', Forme.Alolan)).toEqual(['Electric', 'Psychic']);
         //expect(matchSpeciesToTypes('Clefairy', undefined, Generation.Gen1)).toEqual(['Normal', 'Normal']);
         listOfPokemon.map((pokemon, index) => {
             expect(matchSpeciesToTypes(pokemon).length).toBeGreaterThan(0);

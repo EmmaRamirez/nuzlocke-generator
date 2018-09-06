@@ -266,6 +266,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Typed Hidden Power can now be inputted as \`HP Fire\`, \`HP Water\`, etc
 - Shuffled around fields in Pokémon editor
 - Fixed issues with custom icons not working
+- Decreased length of move text for font-size shrinking to happen
 
 ## Known Issues
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
