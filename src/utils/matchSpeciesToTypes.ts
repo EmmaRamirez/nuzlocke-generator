@@ -8,6 +8,7 @@ const match  = ({ s, f, g, species, forme, generation }: { species: string[], fo
                 if (forme && f && forme.includes(f)) {
                     return true;
                 } else {
+                    if (forme == null) return true;
                     return false;
                 }
             } else {
@@ -32,55 +33,55 @@ export const handleSpeciesTypeEdgeCases = ({ species, forme, generation }: { spe
     if (match({
         ...data,
         species: ['Rattata', 'Raticate'],
-        forme: ['Alola'],
+        forme: [Forme.Alolan],
     })) return [Types.Dark, Types.Normal];
 
     if (match({
         ...data,
         species: ['Raichu'],
-        forme: ['Alola']
+        forme: [Forme.Alolan]
     })) return [Types.Electric, Types.Psychic];
 
     if (match({
         ...data,
         species: ['Sandslash', 'Sandshrew'],
-        forme: ['Alola'],
+        forme: [Forme.Alolan],
     })) return [Types.Ice, Types.Steel];
 
     if (match({
         ...data,
         species: ['Vulpix'],
-        forme: ['Alola'],
+        forme: [Forme.Alolan],
     })) return [Types.Ice, Types.Ice];
 
     if (match({
         ...data,
         species: ['Ninetales'],
-        forme: ['Alola'],
+        forme: [Forme.Alolan],
     })) return [Types.Ice, Types.Fairy];
 
     if (match({
         ...data,
         species: ['Diglett', 'Dugtrio'],
-        forme: ['Alola'],
+        forme: [Forme.Alolan],
     })) return [Types.Ground, Types.Steel];
 
     if (match({
         ...data,
         species: ['Meowth', 'Persian'],
-        forme: ['Alola'],
+        forme: [Forme.Alolan],
     })) return [Types.Dark, Types.Dark];
 
     if (match({
         ...data,
         species: ['Geodude', 'Graveler', 'Golem'],
-        forme: ['Alola']
+        forme: [Forme.Alolan]
     })) return [Types.Rock, Types.Electric];
 
     if (match({
         ...data,
         species: ['Marowak'],
-        forme: ['Alola'],
+        forme: [Forme.Alolan],
     })) return [Types.Ghost, Types.Fire];
 
     if (match({

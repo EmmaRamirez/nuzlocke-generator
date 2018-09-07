@@ -1,6 +1,8 @@
-export const typeToColor = (type: string): string | null => {
+import { Types } from './Types';
+
+export const typeToColor = (type: keyof typeof Types | 'None'): string | null => {
     if (type === 'None') return null;
-    const types: any = {
+    const types: Record<keyof typeof Types, string> = {
         Bug: '#AEE359',
         Dark: '#29291F',
         Dragon: '#153F4D',

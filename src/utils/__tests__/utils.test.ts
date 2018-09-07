@@ -7,8 +7,12 @@ import {
     speciesToNumber,
     Forme,
     mapTrainerImage,
+    Generation,
+    typeToColor,
 } from 'utils';
+import * as Color from 'color';
 import { DeepSet } from '../DeepSet';
+import { Types } from '../Types';
 
 const objectPropertiesWhere = (obj: object, filter: any) => Array.from(
     Object.values(obj)
@@ -71,7 +75,9 @@ describe('matchSpeciesToType', () => {
         expect(matchSpeciesToTypes('Bulbasaur')).toEqual(['Grass', 'Poison']);
         expect(matchSpeciesToTypes('Charizard')).toEqual(['Fire', 'Flying']);
         expect(matchSpeciesToTypes('Raichu', Forme.Alolan)).toEqual(['Electric', 'Psychic']);
-        //expect(matchSpeciesToTypes('Clefairy', undefined, Generation.Gen1)).toEqual(['Normal', 'Normal']);
+        expect(matchSpeciesToTypes('Rattata', Forme.Alolan, Generation.Gen7)).toEqual(['Dark', 'Normal']);
+        expect(matchSpeciesToTypes('Clefairy', undefined, Generation.Gen1)).toEqual(['Normal', 'Normal']);
+        expect(matchSpeciesToTypes('Togetic', undefined, Generation.Gen1)).toEqual(['Normal', 'Flying']);
         listOfPokemon.map((pokemon, index) => {
             expect(matchSpeciesToTypes(pokemon).length).toBeGreaterThan(0);
         });
@@ -146,5 +152,12 @@ describe('MapTrainerToImage', () => {
         expect(t).toContain('ethan');
         const u = mapTrainerImage('not gonna work');
         expect(u).toBe('not gonna work');
+    });
+});
+
+describe('TypeToColor', () => {
+    it('returns a color', () => {
+        expect(typeToColor(Types.Bug)).toBe('#AEE359');
+        expect(typeToColor('None')).toBe(null);
     });
 });
