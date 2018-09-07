@@ -2,7 +2,7 @@ import { Button } from '@blueprintjs/core';
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Pokemon } from 'models';
+import { Pokemon, Game } from 'models';
 import { Boxes } from 'types';
 import { State } from 'state';
 
@@ -25,7 +25,7 @@ require('../../assets/img/dead-box.png');
 export interface PokemonEditorProps {
     team: Pokemon[];
     boxes: Boxes;
-    game: any;
+    game: Game;
 }
 
 export interface PokemonEditorState {
