@@ -61,8 +61,8 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                 backgroundColor: isCardsTheme ? undefined : accentColor,
                 // backgroundImage: isCardsTheme ? undefined : `linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px)`,
                 backgroundImage: isCompactTheme ? getBackgroundGradient(
-                    pokemon.types != null ? pokemon.types[1] : '',
-                    pokemon.types != null ? pokemon.types[0] : '',
+                    pokemon.types != null ? pokemon.types[1] : 'Normal',
+                    pokemon.types != null ? pokemon.types[0] : 'Normal',
                 ) : undefined,
                 color: isCompactTheme ? getContrastColor(typeToColor(getTypeOrNone())) : getContrastColor(accentColor)
             }}>
@@ -219,8 +219,8 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                         cursor: 'pointer',
                         background: this.props.style.teamPokemonBorder
                             ? getBackgroundGradient(
-                                poke.types != null ? poke.types[0] : '',
-                                poke.types != null ? poke.types[1] : '',
+                                poke.types != null ? poke.types[0] : 'Normal',
+                                poke.types != null ? poke.types[1] : 'Normal',
                             )
                             : 'transparent',
                     }}>
@@ -247,8 +247,8 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                         style={{
                             borderColor: typeToColor(getFirstType) || 'transparent',
                             backgroundImage: style.template === 'Hexagons' ? getBackgroundGradient(
-                                poke.types != null ? poke.types[0] : '',
-                                poke.types != null ? poke.types[1] : '',
+                                poke.types != null ? poke.types[0] : 'Normal',
+                                poke.types != null ? poke.types[1] : 'Normal',
                             ) : '',
                         }}>
                         <img
