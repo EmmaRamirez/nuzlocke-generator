@@ -13,6 +13,7 @@ describe('<BadgeInput />', () => {
                 trainer={TrainerKeys}
                 game={{ name: 'Emerald' }}
                 editTrainer={editTrainer}
+                enableCheckpointsEditor={false}
             />,
         );
         // TODO: Write proper test -- this component needs to be refactored
