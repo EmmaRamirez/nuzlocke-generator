@@ -232,5 +232,5 @@ export const listOfAbilities = [
     'Wimp Out',
     'Wonder Guard',
     'Wonder Skin',
-    'Zen Mode'
+    'Zen Mode',
 ];

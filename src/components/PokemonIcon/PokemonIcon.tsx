@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { getFormeSuffix, getSpriteIcon, speciesToNumber, listOfPokemon, significantGenderDifferenceList, Forme } from 'utils';
+import {
+    getFormeSuffix,
+    getSpriteIcon,
+    speciesToNumber,
+    listOfPokemon,
+    significantGenderDifferenceList,
+    Forme,
+} from 'utils';
 import { Gender, GenderElementProps } from 'components/Shared';
 import { pokemon } from 'reducers/pokemon';
 import { selectPokemon } from 'actions';
@@ -55,14 +62,14 @@ const iconSource = {
         console.log('drag has begun', props);
         store.dispatch(selectPokemon(props.id!));
         return {
-            id: props.id
+            id: props.id,
         };
     },
     isDragging(props: PokemonIconProps) {
         return {
-            id: props.id
+            id: props.id,
         };
-    }
+    },
 };
 
 type getIconURLArgs = Pick<Pokemon, 'id' | 'species' | 'forme' | 'shiny' | 'gender' | 'customIcon'>;
@@ -70,24 +77,41 @@ type getIconURLArgs = Pick<Pokemon, 'id' | 'species' | 'forme' | 'shiny' | 'gend
 export const getIconURL = ({ id, species, forme, shiny, gender, customIcon }: getIconURLArgs) => {
     const baseURL = `icons/pokemon/`;
     const isShiny = shiny ? 'shiny' : 'regular';
-    const isFemaleSpecific = significantGenderDifferenceList.includes(species) && Gender.isFemale(gender) ? `female/` : '';
+    const isFemaleSpecific =
+        significantGenderDifferenceList.includes(species) && Gender.isFemale(gender)
+            ? `female/`
+            : '';
     if (species === 'Egg') return `${baseURL}egg.png`;
     if (customIcon) return customIcon;
-    return `${baseURL}${isShiny}/${isFemaleSpecific}${formatSpeciesName(species)}${getFormeSuffix(Forme[forme ? forme : 'Normal'])}.png`;
+    return `${baseURL}${isShiny}/${isFemaleSpecific}${formatSpeciesName(species)}${getFormeSuffix(
+        Forme[forme ? forme : 'Normal'],
+    )}.png`;
 };
 
 @DragSource('ICON', iconSource as any, (connect, monitor) => ({
     connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging()
+    isDragging: monitor.isDragging(),
 }))
 export class PokemonIconBase extends React.Component<PokemonIconProps> {
-
     constructor(props: any) {
         super(props);
     }
 
     public render() {
-        const { connectDragSource, isDragging, id, gender, species, forme, onClick, selectedId, className, shiny, style, customIcon } = this.props;
+        const {
+            connectDragSource,
+            isDragging,
+            id,
+            gender,
+            species,
+            forme,
+            onClick,
+            selectedId,
+            className,
+            shiny,
+            style,
+            customIcon,
+        } = this.props;
         return connectDragSource!(
             <div
                 role='icon'
@@ -97,20 +121,30 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
                 }}
                 id={id}
                 style={style}
-                className={
-                    `${id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'} ${className || ''} ${isDragging ? 'opacity-medium' : ''}`
-                }>
+                className={`${
+                    id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'
+                } ${className || ''} ${isDragging ? 'opacity-medium' : ''}`}>
                 <img
                     style={{ maxHeight: '100%' }}
                     alt={species}
-                    src={getIconURL({ id, species, forme, shiny, gender, customIcon } as getIconURLArgs)}
+                    src={getIconURL({
+                        id,
+                        species,
+                        forme,
+                        shiny,
+                        gender,
+                        customIcon,
+                    } as getIconURLArgs)}
                 />
-            </div>
+            </div>,
         );
     }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<State>, ownProps: Omit<PokemonIconProps, 'onClick' | 'selectedId'>) => {
+const mapDispatchToProps = (
+    dispatch: Dispatch<State>,
+    ownProps: Omit<PokemonIconProps, 'onClick' | 'selectedId'>,
+) => {
     return {
         onClick: () => {
             dispatch(selectPokemon(ownProps.id!));
@@ -118,10 +152,9 @@ const mapDispatchToProps = (dispatch: Dispatch<State>, ownProps: Omit<PokemonIco
     };
 };
 
-
-export const PokemonIcon: React.ComponentClass<Omit<PokemonIconProps, 'onClick' | 'selectedId'>> = connect(
+export const PokemonIcon: React.ComponentClass<
+    Omit<PokemonIconProps, 'onClick' | 'selectedId'>
+> = connect(
     (state: Pick<State, keyof State>) => ({ selectedId: state.selectedId }),
-    mapDispatchToProps
-)(
-    PokemonIconBase as any
-);
+    mapDispatchToProps,
+)(PokemonIconBase as any);

@@ -12,12 +12,21 @@ describe('<PokemonEditor />', () => {
             pokemon: [generateEmptyPokemon(), generateEmptyPokemon()],
             style: {
                 editorDarkMode: false,
-            }
+            },
         } as State);
-        const wrapper = mount(<Provider store={store}><PokemonEditorBase team={[]} boxes={[]} game={{ name: 'Red' }} /></Provider>);
+        const wrapper = mount(
+            <Provider store={store}>
+                <PokemonEditorBase team={[]} boxes={[]} game={{ name: 'Red' }} />
+            </Provider>,
+        );
         expect(wrapper).toBeDefined();
         expect(wrapper.debug()).toContain('BaseEditor');
-        expect(wrapper.find('.pt-intent-primary').first().text()).toContain('Open Mass Editor');
+        expect(
+            wrapper
+                .find('.pt-intent-primary')
+                .first()
+                .text(),
+        ).toContain('Open Mass Editor');
     });
 });
 

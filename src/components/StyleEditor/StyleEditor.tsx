@@ -45,10 +45,10 @@ const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'],
             bgColor: game ? gameOfOriginToColor(game) : '',
         });
         props.editStyle({
-            resultHeight: 870
+            resultHeight: 870,
         });
         props.editStyle({
-            resultWidth: 1460
+            resultWidth: 1460,
         });
         props.editStyle({ movesPosition: 'vertical' });
     }
@@ -64,26 +64,32 @@ export interface StyleEditorState {
     isThemeEditorOpen: boolean;
 }
 
-export const IconsNextToTeamPokemon = (props) => (
+export const IconsNextToTeamPokemon = props => (
     <div className='style-edit'>
         <Checkbox
             checked={props.style.iconsNextToTeamPokemon}
             name='iconsNextToTeamPokemon'
             label='Icons Next to Team Pokémon'
-            onChange={(e:any) => editEvent({ ...e, target: { value: e.target.checked }}, props, 'iconsNextToTeamPokemon')}
+            onChange={(e: any) =>
+                editEvent(
+                    { ...e, target: { value: e.target.checked } },
+                    props,
+                    'iconsNextToTeamPokemon',
+                )
+            }
         />
     </div>
 );
 
 export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEditorState> {
     public state = { isThemeEditorOpen: false };
-    private toggleThemeEditor = e => this.setState({ isThemeEditorOpen: !this.state.isThemeEditorOpen });
+    private toggleThemeEditor = e =>
+        this.setState({ isThemeEditorOpen: !this.state.isThemeEditorOpen });
     public render() {
         const props = this.props;
-        const styleEdit = cx(
-            Styles.styleEdit,
-            { [Styles.styleEdit_dark]: props.style.editorDarkMode }
-        );
+        const styleEdit = cx(Styles.styleEdit, {
+            [Styles.styleEdit_dark]: props.style.editorDarkMode,
+        });
         return (
             <BaseEditor name='Style'>
                 <Dialog
@@ -91,8 +97,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     onClose={this.toggleThemeEditor}
                     title='Theme Editor'
                     icon='style'
-                    className={cx(Styles.dialog, { [Classes.DARK]: props.style.editorDarkMode })}
-                >
+                    className={cx(Styles.dialog, { [Classes.DARK]: props.style.editorDarkMode })}>
                     <ThemeEditor />
                 </Dialog>
                 <div className={styleEdit}>
@@ -105,16 +110,15 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                             {listOfThemes.map(o => <option key={o}>{o}</option>)}
                         </select>
                     </div>
-                    {
-                        FEATURES.themeEditing ?
+                    {FEATURES.themeEditing ? (
                         <Button
                             onClick={this.toggleThemeEditor}
                             style={{ marginLeft: '.25rem' }}
                             intent={Intent.PRIMARY}
-                            className='pt-minimal'
-                        >Edit Theme</Button>
-                        : null
-                    }
+                            className='pt-minimal'>
+                            Edit Theme
+                        </Button>
+                    ) : null}
                 </div>
 
                 {/* {
@@ -204,7 +208,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         onChange={e => editEvent(e, props)}
                         className='pt-input'
                     />
-                    <span>{' '}</span>
+                    <span> </span>
                     <Checkbox
                         style={{
                             marginBottom: '0',
@@ -418,11 +422,14 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     />
                     <style>{props.style.customCSS}</style>
                 </div>
-        </BaseEditor>
+            </BaseEditor>
         );
     }
 }
 
-export const StyleEditor = connect((state: Partial<typeof reducers>) => ({ style: state.style, game: state.game }), {
-    editStyle,
-})(StyleEditorBase);
+export const StyleEditor = connect(
+    (state: Partial<typeof reducers>) => ({ style: state.style, game: state.game }),
+    {
+        editStyle,
+    },
+)(StyleEditorBase);

@@ -11,7 +11,15 @@ export interface TrainerInfoEditField {
     element?: (inputProps: Omit<TrainerInfoEditField, 'element'>) => any;
 }
 
-export const TrainerInfoEditField = ({ label, name, placeholder, onChange, onInput, value, element }: TrainerInfoEditField) => (
+export const TrainerInfoEditField = ({
+    label,
+    name,
+    placeholder,
+    onChange,
+    onInput,
+    value,
+    element,
+}: TrainerInfoEditField) => (
     <div className='trainer-info-field'>
         <label>{label}</label>
         {element ? (

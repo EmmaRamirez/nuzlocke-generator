@@ -1,7 +1,21 @@
 import { Types, Generation } from 'utils';
 import { Forme } from './Forme';
 
-const match  = ({ s, f, g, species, forme, generation }: { species: string[], forme?: string[], generation?: Generation[], s: string, f?: string, g?: Generation }) => {
+const match = ({
+    s,
+    f,
+    g,
+    species,
+    forme,
+    generation,
+}: {
+    species: string[];
+    forme?: string[];
+    generation?: Generation[];
+    s: string;
+    f?: string;
+    g?: Generation;
+}) => {
     if (species.includes(s)) {
         if (generation) {
             if (g && generation.includes(g)) {
@@ -25,88 +39,153 @@ const match  = ({ s, f, g, species, forme, generation }: { species: string[], fo
     return false;
 };
 
-export const handleSpeciesTypeEdgeCases = ({ species, forme, generation }: { species: string, forme?: Forme, generation?: Generation}): [Types, Types] | null => {
+export const handleSpeciesTypeEdgeCases = ({
+    species,
+    forme,
+    generation,
+}: {
+    species: string;
+    forme?: Forme;
+    generation?: Generation;
+}): [Types, Types] | null => {
     const s = species;
     const f = forme || undefined;
     const g = generation || undefined;
     const data = { s, f, g };
-    if (match({
-        ...data,
-        species: ['Rattata', 'Raticate'],
-        forme: [Forme.Alolan],
-    })) return [Types.Dark, Types.Normal];
+    if (
+        match({
+            ...data,
+            species: ['Rattata', 'Raticate'],
+            forme: [Forme.Alolan],
+        })
+    )
+        return [Types.Dark, Types.Normal];
 
-    if (match({
-        ...data,
-        species: ['Raichu'],
-        forme: [Forme.Alolan]
-    })) return [Types.Electric, Types.Psychic];
+    if (
+        match({
+            ...data,
+            species: ['Raichu'],
+            forme: [Forme.Alolan],
+        })
+    )
+        return [Types.Electric, Types.Psychic];
 
-    if (match({
-        ...data,
-        species: ['Sandslash', 'Sandshrew'],
-        forme: [Forme.Alolan],
-    })) return [Types.Ice, Types.Steel];
+    if (
+        match({
+            ...data,
+            species: ['Sandslash', 'Sandshrew'],
+            forme: [Forme.Alolan],
+        })
+    )
+        return [Types.Ice, Types.Steel];
 
-    if (match({
-        ...data,
-        species: ['Vulpix'],
-        forme: [Forme.Alolan],
-    })) return [Types.Ice, Types.Ice];
+    if (
+        match({
+            ...data,
+            species: ['Vulpix'],
+            forme: [Forme.Alolan],
+        })
+    )
+        return [Types.Ice, Types.Ice];
 
-    if (match({
-        ...data,
-        species: ['Ninetales'],
-        forme: [Forme.Alolan],
-    })) return [Types.Ice, Types.Fairy];
+    if (
+        match({
+            ...data,
+            species: ['Ninetales'],
+            forme: [Forme.Alolan],
+        })
+    )
+        return [Types.Ice, Types.Fairy];
 
-    if (match({
-        ...data,
-        species: ['Diglett', 'Dugtrio'],
-        forme: [Forme.Alolan],
-    })) return [Types.Ground, Types.Steel];
+    if (
+        match({
+            ...data,
+            species: ['Diglett', 'Dugtrio'],
+            forme: [Forme.Alolan],
+        })
+    )
+        return [Types.Ground, Types.Steel];
 
-    if (match({
-        ...data,
-        species: ['Meowth', 'Persian'],
-        forme: [Forme.Alolan],
-    })) return [Types.Dark, Types.Dark];
+    if (
+        match({
+            ...data,
+            species: ['Meowth', 'Persian'],
+            forme: [Forme.Alolan],
+        })
+    )
+        return [Types.Dark, Types.Dark];
 
-    if (match({
-        ...data,
-        species: ['Geodude', 'Graveler', 'Golem'],
-        forme: [Forme.Alolan]
-    })) return [Types.Rock, Types.Electric];
+    if (
+        match({
+            ...data,
+            species: ['Geodude', 'Graveler', 'Golem'],
+            forme: [Forme.Alolan],
+        })
+    )
+        return [Types.Rock, Types.Electric];
 
-    if (match({
-        ...data,
-        species: ['Marowak'],
-        forme: [Forme.Alolan],
-    })) return [Types.Ghost, Types.Fire];
+    if (
+        match({
+            ...data,
+            species: ['Marowak'],
+            forme: [Forme.Alolan],
+        })
+    )
+        return [Types.Ghost, Types.Fire];
 
-    if (match({
-        ...data,
-        species: ['Clefairy', 'Clefable', 'Cleffa', 'Togepi'],
-        generation: [Generation.Gen1, Generation.Gen2, Generation.Gen3, Generation.Gen4,
-        Generation.Gen5]
-    })) return [Types.Normal, Types.Normal];
+    if (
+        match({
+            ...data,
+            species: ['Clefairy', 'Clefable', 'Cleffa', 'Togepi'],
+            generation: [
+                Generation.Gen1,
+                Generation.Gen2,
+                Generation.Gen3,
+                Generation.Gen4,
+                Generation.Gen5,
+            ],
+        })
+    )
+        return [Types.Normal, Types.Normal];
 
-    if (match({
-        ...data,
-        species: ['Togetic', 'Togekiss'],
-        generation: [Generation.Gen1, Generation.Gen2, Generation.Gen3, Generation.Gen4, Generation.Gen5],
-    })) return [Types.Normal, Types.Flying];
+    if (
+        match({
+            ...data,
+            species: ['Togetic', 'Togekiss'],
+            generation: [
+                Generation.Gen1,
+                Generation.Gen2,
+                Generation.Gen3,
+                Generation.Gen4,
+                Generation.Gen5,
+            ],
+        })
+    )
+        return [Types.Normal, Types.Flying];
 
-    if (match({
-        ...data,
-        species: ['Ralts', 'Kirlia', 'Gardevoir', 'Mr. Mime', 'Mime Jr.'],
-        generation: [Generation.Gen1, Generation.Gen2, Generation.Gen3, Generation.Gen4, Generation.Gen5]
-    })) return [Types.Psychic, Types.Psychic];
+    if (
+        match({
+            ...data,
+            species: ['Ralts', 'Kirlia', 'Gardevoir', 'Mr. Mime', 'Mime Jr.'],
+            generation: [
+                Generation.Gen1,
+                Generation.Gen2,
+                Generation.Gen3,
+                Generation.Gen4,
+                Generation.Gen5,
+            ],
+        })
+    )
+        return [Types.Psychic, Types.Psychic];
 
     return null;
 };
 
-export const matchSpeciesToTypes = (species: string, forme?: Forme, generation?: Generation): [Types, Types] => {
+export const matchSpeciesToTypes = (
+    species: string,
+    forme?: Forme,
+    generation?: Generation,
+): [Types, Types] => {
     const result = handleSpeciesTypeEdgeCases({ species, forme, generation });
     if (result) return result;
     switch (species) {
@@ -776,7 +855,7 @@ export const matchSpeciesToTypes = (species: string, forme?: Forme, generation?:
         case 'Tentacool':
         case 'Tentacruel':
             return [Types.Water, Types.Poison];
-        case 'Farfetch\’d':
+        case 'Farfetch’d':
             return [Types.Normal, Types.Flying];
         case 'Dewgong':
         case 'Cloyster':
@@ -1019,88 +1098,88 @@ export const matchSpeciesToTypes = (species: string, forme?: Forme, generation?:
             return [Types.Dragon, Types.Steel];
         case 'Palkia':
             return [Types.Dragon, Types.Water];
-            // 'Heatran',
-            // 'Shaymin',
-            // 'Victini',
-            // 'Snivy',
-            // 'Pansage',
-            // 'Simisage',
-            // 'Roggenrola',
-            // 'Boldore',
-            // 'Gigalith',
-            // 'Woobat',
-            // 'Swoobat',
-            // 'Excadrill',
-            // 'Palpitoad',
-            // 'Seismitoad',
-            // 'Maractus',
-            // 'Sigilyph',
-            // 'Tirtouga',
-            // 'Archen',
-            // 'Archeops',
-            // 'Trubbish',
-            // 'Garbodor',
-            // 'Ducklett',
-            // 'Swanna',
-            // 'Ferroseed',
-            // 'Ferrothorn',
-            // 'Klink',
-            // 'Klang',
-            // 'Klinklang',
-            // 'Eelektrik',
-            // 'Eelektross',
-            // 'Beheeyem',
-            // 'Axew',
-            // 'Fraxure',
-            // 'Haxorus',
-            // 'Accelgor',
-            // 'Stunfisk',
-            // 'Terrakion',
-            // 'Reshiram',
-            // 'Zekrom',
-            // 'Landorus',
-            // 'Kyurem',
-            // 'Chespin',
-            // 'Quilladin',
-            // 'Chesnaught',
-            // 'Delphox',
-            // 'Litleo',
-            // 'Pyroar',
-            // 'Skiddo',
-            // 'Gogoat',
-            // 'Skrelp',
-            // 'Dragalge',
-            // 'Helioptile',
-            // 'Heliolisk',
-            // 'Tyrunt',
-            // 'Tyrantrum',
-            // 'Amaura',
-            // 'Aurorus',
-            // 'Goomy',
-            // 'Sliggoo',
-            // 'Goodra',
-            // 'Zygarde',
-            // 'Volcanion',
-            // 'Oricorio',
-            // 'Rockruff',
-            // 'Lycanroc',
-            //  'Mareanie',
-            // 'Toxapex',
-            // 'Fomantis',
-            // 'Lurantis',
-            // 'Salandit',
-            // 'Salazzle',
-            // 'Bounsweet',
-            // 'Steenee',
-            // 'Tsareena',
-            // 'Minior',
-            // 'Turtonator',
-            // 'Bruxish',
-            // 'Jangmo-o',
-            // 'Solgaleo',
-            // 'Nihilego',
-            // 'Celesteela',
-            // 'Kartana',
+        // 'Heatran',
+        // 'Shaymin',
+        // 'Victini',
+        // 'Snivy',
+        // 'Pansage',
+        // 'Simisage',
+        // 'Roggenrola',
+        // 'Boldore',
+        // 'Gigalith',
+        // 'Woobat',
+        // 'Swoobat',
+        // 'Excadrill',
+        // 'Palpitoad',
+        // 'Seismitoad',
+        // 'Maractus',
+        // 'Sigilyph',
+        // 'Tirtouga',
+        // 'Archen',
+        // 'Archeops',
+        // 'Trubbish',
+        // 'Garbodor',
+        // 'Ducklett',
+        // 'Swanna',
+        // 'Ferroseed',
+        // 'Ferrothorn',
+        // 'Klink',
+        // 'Klang',
+        // 'Klinklang',
+        // 'Eelektrik',
+        // 'Eelektross',
+        // 'Beheeyem',
+        // 'Axew',
+        // 'Fraxure',
+        // 'Haxorus',
+        // 'Accelgor',
+        // 'Stunfisk',
+        // 'Terrakion',
+        // 'Reshiram',
+        // 'Zekrom',
+        // 'Landorus',
+        // 'Kyurem',
+        // 'Chespin',
+        // 'Quilladin',
+        // 'Chesnaught',
+        // 'Delphox',
+        // 'Litleo',
+        // 'Pyroar',
+        // 'Skiddo',
+        // 'Gogoat',
+        // 'Skrelp',
+        // 'Dragalge',
+        // 'Helioptile',
+        // 'Heliolisk',
+        // 'Tyrunt',
+        // 'Tyrantrum',
+        // 'Amaura',
+        // 'Aurorus',
+        // 'Goomy',
+        // 'Sliggoo',
+        // 'Goodra',
+        // 'Zygarde',
+        // 'Volcanion',
+        // 'Oricorio',
+        // 'Rockruff',
+        // 'Lycanroc',
+        //  'Mareanie',
+        // 'Toxapex',
+        // 'Fomantis',
+        // 'Lurantis',
+        // 'Salandit',
+        // 'Salazzle',
+        // 'Bounsweet',
+        // 'Steenee',
+        // 'Tsareena',
+        // 'Minior',
+        // 'Turtonator',
+        // 'Bruxish',
+        // 'Jangmo-o',
+        // 'Solgaleo',
+        // 'Nihilego',
+        // 'Celesteela',
+        // 'Kartana',
         case 'Taillow':
         case 'Pidgey':
         case 'Pidgeotto':

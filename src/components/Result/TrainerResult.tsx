@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { OrientationType, mapTrainerImage, Game, Styles, getContrastColor, getBadges, isEmpty } from 'utils';
+import {
+    OrientationType,
+    mapTrainerImage,
+    Game,
+    Styles,
+    getContrastColor,
+    getBadges,
+    isEmpty,
+} from 'utils';
 import { connect } from 'react-redux';
 import { Trainer, Badge } from 'models';
 import { State } from 'state';
@@ -27,14 +35,10 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
             return null;
         }
 
-        return getBadges(name).map((badge) => {
+        return getBadges(name).map(badge => {
             return (
                 <img
-                    className={
-                        has(this.props.trainer.badges, badge)
-                            ? 'obtained'
-                            : 'not-obtained'
-                    }
+                    className={has(this.props.trainer.badges, badge) ? 'obtained' : 'not-obtained'}
                     key={badge.name}
                     alt={badge.name}
                     src={`./img/checkpoints/${badge.image}.png`}
@@ -107,10 +111,8 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
     }
 }
 
-export const TrainerResult = connect(
-    (state: Pick<State, keyof State>) => ({
-        style: state.style,
-        trainer: state.trainer,
-        game: state.game,
-    }),
-)(TrainerResultBase);
+export const TrainerResult = connect((state: Pick<State, keyof State>) => ({
+    style: state.style,
+    trainer: state.trainer,
+    game: state.game,
+}))(TrainerResultBase);

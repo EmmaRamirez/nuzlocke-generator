@@ -23,15 +23,13 @@ export interface ShapeInputState {
 export class ShapeInput extends React.Component<ShapeInputProps> {
     public state = { selectedShape: Shape.Circle };
 
-    public renderShape () {
+    public renderShape() {}
 
-    }
-
-    public render () {
+    public render() {
         return (
             <div className={Classes.INPUT}>
                 <div className='shape'>
-                    { this.renderShape }
+                    {this.renderShape}
                     <input type='text' />
                 </div>
             </div>

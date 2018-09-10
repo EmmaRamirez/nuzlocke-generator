@@ -11,13 +11,12 @@ export interface ThemeSelectProps {
     onChange?: Function;
 }
 
-export const ThemeSelectBase = ({ theme, onChange }) => <div className={Classes.SELECT}>
-    <select value={theme} onChange={e => onChange({ template: e.target.value })}>
-        { listOfThemes.map(o => <option value={o}>{ o }</option>) }
-    </select>
-</div>;
+export const ThemeSelectBase = ({ theme, onChange }) => (
+    <div className={Classes.SELECT}>
+        <select value={theme} onChange={e => onChange({ template: e.target.value })}>
+            {listOfThemes.map(o => <option value={o}>{o}</option>)}
+        </select>
+    </div>
+);
 
-export const ThemeSelect = connect(
-    null,
-    { onChange: editStyle }
-)(ThemeSelectBase);
+export const ThemeSelect = connect(null, { onChange: editStyle })(ThemeSelectBase);

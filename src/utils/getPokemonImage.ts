@@ -8,7 +8,14 @@ const sugiFormeNotation = (forme: Forme) => {
     if (typeof forme === 'undefined') return '';
     if (forme === 'Normal') return '';
     // If the forme exists, we default to '_f2'
-    if (forme != null || forme !== 'Normal' || forme === 'Alolan' || forme === 'Mega' || forme === 'Mega-X') return '_f2';
+    if (
+        forme != null ||
+        forme !== 'Normal' ||
+        forme === 'Alolan' ||
+        forme === 'Mega' ||
+        forme === 'Mega-X'
+    )
+        return '_f2';
     // Pokemon with more than 1 extra forme have different notations
     if (forme === 'Sandy' || forme === 'Pau\'u' || forme === 'Mega-Y') return '_f3';
     if (forme === 'Sensu') return '_f4';
@@ -47,15 +54,22 @@ const getGameName = (name: Game) => {
 };
 
 export interface GetPokemonImage {
-    customImage?: string
+    customImage?: string;
     forme?: keyof typeof Forme;
-    species: string
-    name?: string
-    style: Styles
-    shiny?: boolean
+    species: string;
+    name?: string;
+    style: Styles;
+    shiny?: boolean;
 }
 
-export function getPokemonImage({ customImage, forme, species, name, style, shiny }: GetPokemonImage) {
+export function getPokemonImage({
+    customImage,
+    forme,
+    species,
+    name,
+    style,
+    shiny,
+}: GetPokemonImage) {
     const leadingZerosNumber = (speciesToNumber(species) || 0).toString().padStart(3, '0');
 
     if (customImage) {
@@ -91,13 +105,15 @@ export function getPokemonImage({ customImage, forme, species, name, style, shin
                 name as Game,
             )}/${leadingZerosNumber}.png)`;
         } else {
-            return `url(https://www.serebii.net/Shiny/${capitalize(getGameName(
-                name as Game,
-            ))}/${leadingZerosNumber}.png)`;
+            return `url(https://www.serebii.net/Shiny/${capitalize(
+                getGameName(name as Game),
+            )}/${leadingZerosNumber}.png)`;
         }
     }
     if (style.teamImages === 'sugimori') {
-        return `url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/${leadingZerosNumber}${sugiFormeNotation(Forme[forme ? forme : 'Normal'])}.png)`;
+        return `url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/${leadingZerosNumber}${sugiFormeNotation(
+            Forme[forme ? forme : 'Normal'],
+        )}.png)`;
     }
     return `url(img/${(
         addForme((species || '').replace(/\s/g, '').replace(/'/g, ''), forme) || 'missingno'

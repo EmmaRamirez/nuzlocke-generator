@@ -41,9 +41,11 @@ export class DeletePokemonButtonBase extends React.Component<
             <DeletePokemonButtonContainer>
                 <Alert
                     icon='trash'
-                    isOpen={this.state.dialogOn && this.props.confirmation as boolean}
+                    isOpen={this.state.dialogOn && (this.props.confirmation as boolean)}
                     onCancel={this.toggleDialog}
-                    onConfirm={e => this.props.deletePokemon && this.props.deletePokemon(this.props.id)}
+                    onConfirm={e =>
+                        this.props.deletePokemon && this.props.deletePokemon(this.props.id)
+                    }
                     confirmButtonText='Delete Pokemon'
                     cancelButtonText='Cancel'
                     intent={Intent.DANGER}>
@@ -53,12 +55,21 @@ export class DeletePokemonButtonBase extends React.Component<
                     </p>
 
                     <label className='pt-control pt-checkbox .modifier'>
-                        <input onChange={(event) => this.props.modifyDeletionConfirmation && this.props.modifyDeletionConfirmation(!event.target.checked)} type='checkbox' />
+                        <input
+                            onChange={event =>
+                                this.props.modifyDeletionConfirmation &&
+                                this.props.modifyDeletionConfirmation(!event.target.checked)
+                            }
+                            type='checkbox'
+                        />
                         <span className='pt-control-indicator' />
                         Don't Ask Me For Confirmation Again
                     </label>
                 </Alert>
-        <Popover interactionKind={PopoverInteractionKind.HOVER} position={Position.TOP} content={<div style={{ padding: '1rem' }}>{`Delete Pok${accentedE}mon`}</div>}>
+                <Popover
+                    interactionKind={PopoverInteractionKind.HOVER}
+                    position={Position.TOP}
+                    content={<div style={{ padding: '1rem' }}>{`Delete Pok${accentedE}mon`}</div>}>
                     <Icon
                         role='button'
                         onClick={e => {
@@ -82,6 +93,6 @@ export const DeletePokemonButton: any = connect(
         confirmation: state.confirmation,
     }),
     {
-        deletePokemon
-    }
+        deletePokemon,
+    },
 )(DeletePokemonButtonBase as any);

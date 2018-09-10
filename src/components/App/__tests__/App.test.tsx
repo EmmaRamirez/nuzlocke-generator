@@ -9,7 +9,11 @@ import { Provider } from 'react-redux';
 describe('<App />', () => {
     it('renders', () => {
         const store = configureStore()({});
-        const wrapper = mount(<Provider store={store}><App disableHotkeys={true} style={styleDefaults} rules={['1', '2']} /></Provider>);
+        const wrapper = mount(
+            <Provider store={store}>
+                <App disableHotkeys={true} style={styleDefaults} rules={['1', '2']} />
+            </Provider>,
+        );
         expect(wrapper).toBeDefined();
     });
 });

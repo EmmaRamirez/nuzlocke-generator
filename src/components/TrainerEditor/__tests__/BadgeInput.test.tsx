@@ -7,7 +7,14 @@ import { styleDefaults } from 'utils';
 
 describe('<BadgeInput />', () => {
     it('renders its contents', () => {
-        const wrapper = mount(<BadgeInput style={styleDefaults} trainer={TrainerKeys} game={{ name: 'Emerald' }} editTrainer={editTrainer} />);
+        const wrapper = mount(
+            <BadgeInput
+                style={styleDefaults}
+                trainer={TrainerKeys}
+                game={{ name: 'Emerald' }}
+                editTrainer={editTrainer}
+            />,
+        );
         // TODO: Write proper test -- this component needs to be refactored
         expect(wrapper).toBeDefined();
     });

@@ -471,5 +471,5 @@ export const listOfLocations = [
     'Ultra Space Wilds',
     'Vast Poni Canyon',
     'Verdant Cavern',
-    'Wela Volcano Park'
-  ];
+    'Wela Volcano Park',
+];

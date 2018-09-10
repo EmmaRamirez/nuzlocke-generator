@@ -40,5 +40,4 @@ export enum Forme {
     Sunny = 'sunny',
     Rainy = 'rainy',
     Snowy = 'snowy',
-
 }

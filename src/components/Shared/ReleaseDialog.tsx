@@ -26,8 +26,16 @@ export class ReleaseDialog extends React.Component<IDialogProps & ReleaseDialogP
                 }`}>
                 <div className='pt-dialog-body'>
                     <div className='release-notes-wrapper'>
-                        <h3 className={cx(classWithDarkTheme(styles, 'heading', this.props.style.editorDarkMode))}>
-                            {pkg.version} <img style={{ display: 'inline' }} alt='Croagunk' src={croagunk} />
+                        <h3
+                            className={cx(
+                                classWithDarkTheme(
+                                    styles,
+                                    'heading',
+                                    this.props.style.editorDarkMode,
+                                ),
+                            )}>
+                            {pkg.version}{' '}
+                            <img style={{ display: 'inline' }} alt='Croagunk' src={croagunk} />
                         </h3>
                         <ReactMarkdown
                             className='release-notes'

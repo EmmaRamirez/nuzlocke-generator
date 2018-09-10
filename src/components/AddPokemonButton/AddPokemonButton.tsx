@@ -14,12 +14,9 @@ export const AddPokemonButtonBase = ({ onClick }: { onClick: onClick }) => (
     </button>
 );
 
-export const AddPokemonButton = connect(
-    null,
-    (dispatch, ownProps:any) => ({
-        onClick: () => {
-            dispatch(addPokemon(ownProps.defaultPokemon));
-            dispatch(selectPokemon(ownProps.defaultPokemon.id));
-        },
-    })
-)(AddPokemonButtonBase);
+export const AddPokemonButton = connect(null, (dispatch, ownProps: any) => ({
+    onClick: () => {
+        dispatch(addPokemon(ownProps.defaultPokemon));
+        dispatch(selectPokemon(ownProps.defaultPokemon.id));
+    },
+}))(AddPokemonButtonBase);

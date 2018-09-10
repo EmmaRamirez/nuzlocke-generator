@@ -38,10 +38,20 @@ export interface CopyPokemonButtonProps {
     onClick: (event: React.MouseEvent<SVGElement>) => void;
 }
 
-export const CopyPokemonButton: React.SFC<CopyPokemonButtonProps> = ({ onClick }: CopyPokemonButtonProps) => {
+export const CopyPokemonButton: React.SFC<CopyPokemonButtonProps> = ({
+    onClick,
+}: CopyPokemonButtonProps) => {
     return (
-        <Popover interactionKind={PopoverInteractionKind.HOVER} position={Position.TOP} content={<div style={{ padding: '1rem' }}>{`Copy Pok${accentedE}mon`}</div>}>
-            <Icon title='Copy Pokemon' icon='duplicate' className={cx(Styles.copyButton)} onClick={onClick} />
+        <Popover
+            interactionKind={PopoverInteractionKind.HOVER}
+            position={Position.TOP}
+            content={<div style={{ padding: '1rem' }}>{`Copy Pok${accentedE}mon`}</div>}>
+            <Icon
+                title='Copy Pokemon'
+                icon='duplicate'
+                className={cx(Styles.copyButton)}
+                onClick={onClick}
+            />
         </Popover>
     );
 };
@@ -62,7 +72,10 @@ export interface CurrentPokemonEditState {
     box: Boxes;
 }
 
-export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditProps, CurrentPokemonEditState> {
+export class CurrentPokemonEditBase extends React.Component<
+    CurrentPokemonEditProps,
+    CurrentPokemonEditState
+> {
     constructor(props: CurrentPokemonEditProps) {
         super(props);
         this.state = {
@@ -75,11 +88,14 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
     public componentWillMount() {
         this.setState({
             selectedId: this.props.selectedId,
-            box: this.props.box
+            box: this.props.box,
         });
     }
 
-    public componentWillReceiveProps(nextProps: CurrentPokemonEditProps, prevProps: CurrentPokemonEditProps) {
+    public componentWillReceiveProps(
+        nextProps: CurrentPokemonEditProps,
+        prevProps: CurrentPokemonEditProps,
+    ) {
         if (nextProps.selectedId !== prevProps.selectedId) {
             this.setState({ selectedId: nextProps.selectedId });
         }
@@ -88,10 +104,14 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
     private copyPokemon = e => {
         const currentPokemon = this.getCurrentPokemon();
         if (currentPokemon) {
-            const newPokemon = { ...currentPokemon, id: uuid(), position: currentPokemon.position! + 1 };
+            const newPokemon = {
+                ...currentPokemon,
+                id: uuid(),
+                position: currentPokemon.position! + 1,
+            };
             this.props.addPokemon(newPokemon);
         }
-    }
+    };
 
     public moreInputs(currentPokemon: Pokemon) {
         return (
@@ -217,7 +237,7 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
         });
     };
 
-    private getCurrentPokemon () {
+    private getCurrentPokemon() {
         return this.props.pokemon.find((v: Pokemon) => v.id === this.state.selectedId);
     }
 
@@ -272,11 +292,13 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
                                 };
                                 this.props.editPokemon(edit, this.state.selectedId);
                                 this.props.editPokemon(
-                                    { types: matchSpeciesToTypes(
-                                        e.target.value,
-                                        currentPokemon.forme as Forme,
-                                        getGameGeneration(this.props.game.name as Game)
-                                    ) },
+                                    {
+                                        types: matchSpeciesToTypes(
+                                            e.target.value,
+                                            currentPokemon.forme as Forme,
+                                            getGameGeneration(this.props.game.name as Game),
+                                        ),
+                                    },
                                     this.state.selectedId,
                                 );
                                 this.props.selectPokemon(this.state.selectedId);
@@ -382,7 +404,7 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
 }
 
 export const CurrentPokemonEdit = connect(
-    (state:Pick<State, keyof State>) => ({
+    (state: Pick<State, keyof State>) => ({
         box: state.box,
         selectedId: state.selectedId,
         pokemon: state.pokemon,
@@ -392,5 +414,5 @@ export const CurrentPokemonEdit = connect(
         selectPokemon,
         editPokemon,
         addPokemon,
-    }
+    },
 )(CurrentPokemonEditBase);

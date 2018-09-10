@@ -17,7 +17,6 @@ export * from './getGameRegion';
 export * from './getMoveType';
 export * from './getPokemonImage';
 export * from './hotkeyList';
-export * from './levenshteinDistance';
 export * from './listOfGames';
 export * from './listOfItems';
 export * from './listOfLocations';

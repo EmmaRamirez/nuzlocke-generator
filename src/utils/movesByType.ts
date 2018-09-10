@@ -1,6 +1,6 @@
 import { Types } from 'utils';
 
-export type MovesByType = {[ T in Types]: string[] };
+export type MovesByType = { [T in Types]: string[] };
 
 export const movesByType: MovesByType = {
     Bug: [

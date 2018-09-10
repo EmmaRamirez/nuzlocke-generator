@@ -28,8 +28,10 @@ export class SortableColumnMenu extends React.PureComponent {
     }
 }
 
-export class MassEditorBase extends React.Component<MassEditorProps, { columnWidths: ITableProps['columnWidths'][] }> {
-
+export class MassEditorBase extends React.Component<
+    MassEditorProps,
+    { columnWidths: ITableProps['columnWidths'][] }
+> {
     // public getColumnWidths() {
     //     // Convert each poke in Pokemon Array into flat Array []
     //     // Evaluate Array as 0 or 1
@@ -82,8 +84,7 @@ export class MassEditorBase extends React.Component<MassEditorProps, { columnWid
                                         },
                                         pokemon[r].id,
                                     );
-                                    }
-                                }
+                                }}
                                 value={pokemon[r][key]}
                             />
                         )}
@@ -103,11 +104,12 @@ export class MassEditorBase extends React.Component<MassEditorProps, { columnWid
                 }`}
                 title='Mass Editor'>
                 <div className='pt-dialog-body'>
-                    <AddPokemonButton
-                        defaultPokemon={generateEmptyPokemon(this.props.pokemon)}
-                    />
+                    <AddPokemonButton defaultPokemon={generateEmptyPokemon(this.props.pokemon)} />
                     <div style={{ padding: '.25rem' }} />
-                    <Table defaultColumnWidth={100} numRows={this.props.pokemon.length} numFrozenColumns={1}>
+                    <Table
+                        defaultColumnWidth={100}
+                        numRows={this.props.pokemon.length}
+                        numFrozenColumns={1}>
                         {this.renderColumns(this.props.pokemon.sort(sortPokes))}
                     </Table>
                 </div>
@@ -119,7 +121,7 @@ export class MassEditorBase extends React.Component<MassEditorProps, { columnWid
 export const MassEditor = connect(
     (state: any) => ({
         pokemon: state.pokemon,
-        style: state.style
+        style: state.style,
     }),
     { editPokemon },
 )(MassEditorBase as any);

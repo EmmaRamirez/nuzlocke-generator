@@ -6,9 +6,7 @@ import { Pokemon, Game } from 'models';
 import { Boxes } from 'types';
 import { State } from 'state';
 
-import {
-    generateEmptyPokemon, dragAndDrop,
-} from 'utils';
+import { generateEmptyPokemon, dragAndDrop } from 'utils';
 import { CurrentPokemonEdit, MassEditor } from '.';
 
 import { AddPokemonButton } from 'components/AddPokemonButton';
@@ -19,8 +17,6 @@ import { Box } from './Box';
 
 require('../../assets/img/team-box.png');
 require('../../assets/img/dead-box.png');
-
-
 
 export interface PokemonEditorProps {
     team: Pokemon[];
@@ -66,7 +62,12 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
             <>
                 <BaseEditor name='Pokemon'>
                     <div className='button-row' style={{ display: 'flex' }}>
-                        <AddPokemonButton defaultPokemon={{ ...generateEmptyPokemon(team), gameOfOrigin: this.props.game.name || 'None' }} />
+                        <AddPokemonButton
+                            defaultPokemon={{
+                                ...generateEmptyPokemon(team),
+                                gameOfOrigin: this.props.game.name || 'None',
+                            }}
+                        />
                         <Button
                             icon={'heat-grid'}
                             onClick={this.openMassEditor}

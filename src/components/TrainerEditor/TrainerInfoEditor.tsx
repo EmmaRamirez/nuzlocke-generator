@@ -7,7 +7,7 @@ import { Popover, PopoverInteractionKind, Position, Menu } from '@blueprintjs/co
 
 import { listOfTrainers } from 'utils';
 
-const capitalize = (s:string) => s[0].toUpperCase() + s.slice(1);
+const capitalize = (s: string) => s[0].toUpperCase() + s.slice(1);
 
 const SpanBlock = ({ text }) => (
     <span
@@ -62,7 +62,7 @@ export class TrainerInfoEditor extends React.Component<{}, {}> {
                     name='title'
                     placeholder=''
                 />
-                <BadgeInput />
+                <BadgeInput enableCheckpointsEditor={false} />
                 <LinkedTrainerInfoEditField
                     onInput={this.onInput}
                     label={
@@ -73,7 +73,9 @@ export class TrainerInfoEditor extends React.Component<{}, {}> {
                             content={
                                 <Menu>
                                     Type: image url. You can also specify a plain string of{' '}
-                                    {listOfTrainers.map(t => <SpanBlock key={t} text={capitalize(t)} />)}
+                                    {listOfTrainers.map(t => (
+                                        <SpanBlock key={t} text={capitalize(t)} />
+                                    ))}
                                 </Menu>
                             }>
                             <span>

@@ -1,1 +1,8 @@
-export const listOfThemes = ['Default Light', 'Default Dark', 'Cards', 'Generations', 'Hexagons', 'Compact'].sort();
+export const listOfThemes = [
+    'Default Light',
+    'Default Dark',
+    'Cards',
+    'Generations',
+    'Hexagons',
+    'Compact',
+].sort();

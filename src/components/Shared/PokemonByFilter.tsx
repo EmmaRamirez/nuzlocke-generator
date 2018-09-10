@@ -6,12 +6,16 @@ import { sortPokes, noop } from 'utils';
 import { connect } from 'react-redux';
 import { editPokemon } from 'actions';
 
-const Grid = (({ team, filterFunction }: {
-    team: Pokemon[],
-    filterFunction: (value: Pokemon, index: number, array: Pokemon[]) => boolean
+const Grid = ({
+    team,
+    filterFunction,
+}: {
+    team: Pokemon[];
+    filterFunction: (value: Pokemon, index: number, array: Pokemon[]) => boolean;
 }) => {
     return (
-            <>{team
+        <>
+            {team
                 .filter(filterFunction)
                 .sort(sortPokes)
                 .map((poke, index) => (
@@ -25,10 +29,10 @@ const Grid = (({ team, filterFunction }: {
                             customIcon={poke.customIcon}
                         />
                     </Tooltip>
-            ))}</>
+                ))}
+        </>
     );
-});
-
+};
 
 export interface PokemonByFilterProps {
     team: Pokemon[];
@@ -45,7 +49,10 @@ export class PokemonByFilterBase extends React.Component<PokemonByFilterProps> {
         this.setState({ team: this.props.team });
     }
 
-    public componentWillReceiveProps(nextProps: PokemonByFilterProps, prevProps: PokemonByFilterProps) {
+    public componentWillReceiveProps(
+        nextProps: PokemonByFilterProps,
+        prevProps: PokemonByFilterProps,
+    ) {
         this.setState({ team: nextProps.team });
     }
 
@@ -62,9 +69,6 @@ export class PokemonByFilterBase extends React.Component<PokemonByFilterProps> {
     }
 }
 
-export const PokemonByFilter = connect(
-    null,
-    {
-        editPokemon
-    }
-)(PokemonByFilterBase);
+export const PokemonByFilter = connect(null, {
+    editPokemon,
+})(PokemonByFilterBase);

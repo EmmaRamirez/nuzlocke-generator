@@ -18,9 +18,7 @@ export const champsPokemon = (options: any) => css`
     cursor: pointer;
 `;
 
-export type ChampsPokemonProps = {
-    [P in keyof Pokemon]?: any;
-} & {
+export type ChampsPokemonProps = { [P in keyof Pokemon]?: any } & {
     showNickname?: boolean;
     showGender?: boolean;
     showLevel?: boolean;
@@ -28,7 +26,6 @@ export type ChampsPokemonProps = {
 };
 
 export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
-
     private static defaultProps = {
         showNickname: false,
         showGender: false,
@@ -37,30 +34,36 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
 
     private getWidth = () => {
         const base = 48;
-        return base +
+        return (
+            base +
             (this.props.showGender ? 24 : 0) +
             (this.props.showNickname ? 128 : 0) +
-            (this.props.showLevel ? 24 : 0);
-    }
+            (this.props.showLevel ? 24 : 0)
+        );
+    };
 
     private getPokemonImage() {
-        return <div style={{
-            backgroundImage: getPokemonImage({
-                customImage: this.props.customImage,
-                forme: this.props.forme,
-                species: this.props.species,
-                name: this.props.gameOfOrigin,
-                shiny: this.props.shiny,
-                style: {
-                    spritesMode: true,
-                    teamImages: null
-                } as any
-            }),
-            backgroundPosition: 'center center',
-            backgroundSize: 'contain',
-            height: this.getWidth(),
-            width: this.getWidth(),
-        }} />;
+        return (
+            <div
+                style={{
+                    backgroundImage: getPokemonImage({
+                        customImage: this.props.customImage,
+                        forme: this.props.forme,
+                        species: this.props.species,
+                        name: this.props.gameOfOrigin,
+                        shiny: this.props.shiny,
+                        style: {
+                            spritesMode: true,
+                            teamImages: null,
+                        } as any,
+                    }),
+                    backgroundPosition: 'center center',
+                    backgroundSize: 'contain',
+                    height: this.getWidth(),
+                    width: this.getWidth(),
+                }}
+            />
+        );
     }
 
     public render() {
@@ -73,12 +76,16 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
                         width: this.getWidth(),
                         margin: 0,
                         padding: 0,
-                    })
+                    }),
                 )}>
-                { this.props.useSprites ? this.getPokemonImage() : <PokemonIcon {...this.props as any} /> }
-                { this.props.showNickname && this.props.nickname }
-                { this.props.showGender && GenderElement(this.props.gender) }
-                { this.props.showLevel && ` Lv ${this.props.level}` }
+                {this.props.useSprites ? (
+                    this.getPokemonImage()
+                ) : (
+                    <PokemonIcon {...this.props as any} />
+                )}
+                {this.props.showNickname && this.props.nickname}
+                {this.props.showGender && GenderElement(this.props.gender)}
+                {this.props.showLevel && ` Lv ${this.props.level}`}
             </div>
         );
     }
