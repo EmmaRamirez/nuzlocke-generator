@@ -1,6 +1,7 @@
 import { EDIT_BOX, REPLACE_STATE, VERSION_0_0_6_BETA, Action } from 'actions';
+import { Boxes } from 'types';
 
-const defaultBoxes: { key: number; name: string }[] = [
+const defaultBoxes: Boxes = [
     {
         key: 0,
         name: 'Team',

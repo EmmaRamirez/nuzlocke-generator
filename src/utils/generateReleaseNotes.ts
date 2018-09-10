@@ -250,4 +250,36 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Downloading images will fail if they contain "cross-origin" resources, which taint the process for downloading
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
+    '0.0.12-beta': `# Changelog
+
+## Features
+- **Checkpoints Editor**: will support custom images in Beta 13
+- **Sprites Mode**: for Champs Pokémon
+- **Egg property**: in Pokémon Editor
+- **Alolan formes**: now have first-class support
+
+## Fixes
+- Autofixes on Hexagons, Generations templates
+- Fixes for Farfetch'd, Mime Jr., and Mr. Mime
+- Fixed colors for Diamond version
+- All Pokémon now have default typings
+- Typed Hidden Power can now be inputted as \`HP Fire\`, \`HP Water\`, etc
+- Shuffled around fields in Pokémon editor
+- Fixed issues with custom icons not working
+- Decreased length of move text for font-size shrinking to happen
+
+## Known Issues
+- Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`,
+    '0.0.13-beta': `# Changelog
+
+## Features
+
+## Fixes
+
+## Known Issues
+- Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`,
 };

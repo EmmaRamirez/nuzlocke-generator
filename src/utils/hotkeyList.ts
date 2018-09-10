@@ -27,5 +27,5 @@ export const hotkeyList: HotkeyList[] = [
         key: 'backspace',
         comment: `Delete Pok\xE9mon`,
         onKeyUp: 'deletePokemon',
-    }
+    },
 ];

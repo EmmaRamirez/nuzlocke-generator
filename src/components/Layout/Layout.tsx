@@ -51,15 +51,16 @@ export class Layout extends React.PureComponent<Partial<LayoutProps>> {
         const { display, direction, alignment, spacing, wrap } = this.props;
         return (
             <div
-                style={{
-                    display: display,
-                    flexDirection: direction,
-                    justifyContent: spacing,
-                    alignItems: alignment,
-                    flexWrap: wrap,
-                } as React.CSSProperties}
-            >
-                { this.props.children }
+                style={
+                    {
+                        display: display,
+                        flexDirection: direction,
+                        justifyContent: spacing,
+                        alignItems: alignment,
+                        flexWrap: wrap,
+                    } as React.CSSProperties
+                }>
+                {this.props.children}
             </div>
         );
     }

@@ -7,15 +7,17 @@ import { editTrainer } from 'actions';
 import { Trainer, Badge } from 'models';
 
 import { Popover, Menu, Button, Position, Checkbox, Dialog, Classes } from '@blueprintjs/core';
-// import { CheckpointsEditor } from './CheckpointsEditor';
+import { CheckpointsEditor } from './CheckpointsEditor';
 import { cx } from 'emotion';
 import { DeepSet } from 'utils';
+import { State } from 'state';
 
 export interface BadgeInputProps {
     trainer: Trainer;
     game: any;
     editTrainer: any;
     style: Styles;
+    enableCheckpointsEditor: boolean;
 }
 
 export interface BadgeInputState {
@@ -24,7 +26,7 @@ export interface BadgeInputState {
 }
 
 export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputState> {
-    constructor(props) {
+    constructor(props: BadgeInputProps) {
         super(props);
         this.state = {
             badges: new DeepSet(),
@@ -36,9 +38,10 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
         this.setState({ badges: new DeepSet(this.props.trainer.badges) });
     }
 
-    private toggleCheckpointsEditor = e => this.setState({ isOpen: !this.state.isOpen });
+    private toggleCheckpointsEditor = (e: React.SyntheticEvent<HTMLElement>) =>
+        this.setState({ isOpen: !this.state.isOpen });
 
-    private handleBadge(badge): DeepSet<Badge> {
+    private handleBadge(badge: Badge): DeepSet<Badge> {
         const mutableBadges = this.state.badges;
         if (mutableBadges.has(badge)) {
             mutableBadges.delete(badge);
@@ -53,23 +56,29 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
     public render() {
         return (
             <>
-                {/* <Dialog
-                    isOpen={this.state.isOpen}
-                    onClose={this.toggleCheckpointsEditor}
-                    className={cx(Classes.DIALOG, { [Classes.DARK]: this.props.style.editorDarkMode}) }
-                    title='Checkpoints Editor'
-                    icon='badge'
-                    style={{ width: '50vw' }}
-                >
-                    <div className={Classes.DIALOG_BODY}>
-                        <CheckpointsEditor checkpoints={new DeepSet(getBadges(this.props.game.name))} />
-                    </div>
-                </Dialog> */}
+                {this.props.enableCheckpointsEditor ? (
+                    <Dialog
+                        isOpen={this.state.isOpen}
+                        onClose={this.toggleCheckpointsEditor}
+                        className={cx(Classes.DIALOG, {
+                            [Classes.DARK]: this.props.style.editorDarkMode,
+                        })}
+                        canOutsideClickClose={false}
+                        title='Checkpoints Editor'
+                        icon='badge'
+                        style={{ width: '33rem' }}>
+                        <div className={Classes.DIALOG_BODY}>
+                            <CheckpointsEditor
+                                checkpoints={new DeepSet(getBadges(this.props.game.name))}
+                            />
+                        </div>
+                    </Dialog>
+                ) : null}
                 <TrainerInfoEditField
                     label='Checkpoints'
                     name='badges'
                     placeholder='...'
-                    value={null}
+                    value={''}
                     onChange={null}
                     element={inputProps => (
                         <Popover
@@ -90,14 +99,18 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
                                                     },
                                                 );
                                             }}
-                                            checked={
-                                                this.state.badges.has(badge)
-                                            }
+                                            checked={this.state.badges.has(badge)}
                                             key={badge.name}
                                             label={badge.name}
                                         />
                                     ))}
-                                    {/* <Button onClick={this.toggleCheckpointsEditor} className='pt-minimal'>Customize Checkpoints</Button> */}
+                                    {this.props.enableCheckpointsEditor ? (
+                                        <Button
+                                            onClick={this.toggleCheckpointsEditor}
+                                            className='pt-minimal'>
+                                            Customize Checkpoints
+                                        </Button>
+                                    ) : null}
                                 </Menu>
                             }
                             position={Position.BOTTOM}>
@@ -117,7 +130,7 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
 }
 
 export const BadgeInput = connect(
-    (state: any) => ({
+    (state: Pick<State, keyof State>) => ({
         trainer: state.trainer,
         game: state.game,
         style: state.style,

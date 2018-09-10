@@ -5,9 +5,14 @@ import {
     matchSpeciesToTypes,
     listOfPokemon,
     speciesToNumber,
+    Forme,
     mapTrainerImage,
+    Generation,
+    typeToColor,
 } from 'utils';
+import * as Color from 'color';
 import { DeepSet } from '../DeepSet';
+import { Types } from '../Types';
 
 const objectPropertiesWhere = (obj: object, filter: any) => Array.from(
     Object.values(obj)
@@ -61,7 +66,7 @@ describe('styleDefaults', () => {
         expect(typeof styleDefaults).toBe('object');
         expect(styleDefaults.imageStyle).toBe('round');
         expect(objectPropertiesWhere(styleDefaults, p => p === 'round')).toBe(2);
-        expect(objectPropertiesWhere(styleDefaults, p => p)).toBe(13);
+        expect(objectPropertiesWhere(styleDefaults, p => p)).toBe(14);
     });
 });
 
@@ -69,11 +74,20 @@ describe('matchSpeciesToType', () => {
     it('returns a type for a Pokemon', () => {
         expect(matchSpeciesToTypes('Bulbasaur')).toEqual(['Grass', 'Poison']);
         expect(matchSpeciesToTypes('Charizard')).toEqual(['Fire', 'Flying']);
-        expect(matchSpeciesToTypes('Raichu', 'Alola')).toEqual(['Electric', 'Psychic']);
-        //expect(matchSpeciesToTypes('Clefairy', undefined, Generation.Gen1)).toEqual(['Normal', 'Normal']);
+        expect(matchSpeciesToTypes('Raichu', Forme.Alolan)).toEqual(['Electric', 'Psychic']);
+        expect(matchSpeciesToTypes('Rattata', Forme.Alolan, Generation.Gen7)).toEqual(['Dark', 'Normal']);
+        expect(matchSpeciesToTypes('Clefairy', undefined, Generation.Gen1)).toEqual(['Normal', 'Normal']);
+        expect(matchSpeciesToTypes('Togetic', undefined, Generation.Gen1)).toEqual(['Normal', 'Flying']);
         listOfPokemon.map((pokemon, index) => {
             expect(matchSpeciesToTypes(pokemon).length).toBeGreaterThan(0);
         });
+    });
+
+    xit('works for every pokemon', () => {
+        const noMatches = listOfPokemon.filter(pokemon => matchSpeciesToTypes(pokemon) == null);
+        console.log(noMatches.length);
+        console.log(noMatches);
+        expect(false).toBe(true);
     });
 });
 
@@ -138,5 +152,12 @@ describe('MapTrainerToImage', () => {
         expect(t).toContain('ethan');
         const u = mapTrainerImage('not gonna work');
         expect(u).toBe('not gonna work');
+    });
+});
+
+describe('TypeToColor', () => {
+    it('returns a color', () => {
+        expect(typeToColor(Types.Bug)).toBe('#AEE359');
+        expect(typeToColor('None')).toBe(null);
     });
 });

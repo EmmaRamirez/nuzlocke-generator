@@ -1,10 +1,4 @@
-import {
-    HistoryEntry,
-    Pokemon,
-    PokemonKeys,
-    Trainer,
-    TrainerKeys
-} from '..';
+import { HistoryEntry, Pokemon, PokemonKeys, Trainer, TrainerKeys } from '..';
 
 describe('Models', () => {
     describe('Pokemon', () => {

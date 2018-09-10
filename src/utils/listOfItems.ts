@@ -210,5 +210,5 @@ export const listOfItems = [
     'Power Belt',
     'Power Bracer',
     'Power Lens',
-    'Power Weight'
+    'Power Weight',
 ];

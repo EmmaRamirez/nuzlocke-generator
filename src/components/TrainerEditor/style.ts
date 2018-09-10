@@ -37,7 +37,7 @@ export const checkpointName = css`
 `;
 
 export const checkpointImage = (size = 2) => css`
-    height: ${size}rem;
+    width: ${size}rem;
     margin: 0 .25rem;
 `;
 

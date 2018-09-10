@@ -13,6 +13,7 @@ import { style } from './style';
 import { sawRelease } from './sawRelease';
 import { editor } from './editor';
 import { rules } from './rules';
+import { checkpoints } from './checkpoints';
 
 export const reducers = {
     box,

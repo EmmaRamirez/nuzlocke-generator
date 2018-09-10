@@ -1,23 +1,34 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Pokemon } from 'models';
+import { Pokemon, Game } from 'models';
 import { GenderElement } from 'components/Shared';
-import { getBackgroundGradient, getPokemonImage, getSpriteIcon, speciesToNumber, getContrastColor } from 'utils';
+import {
+    getBackgroundGradient,
+    getPokemonImage,
+    getSpriteIcon,
+    speciesToNumber,
+    getContrastColor,
+    Styles,
+    Forme,
+} from 'utils';
 import { selectPokemon } from 'actions';
 import { PokemonIconBase } from 'components/PokemonIcon';
+import { State } from 'state';
 
-const spriteStyle = (style) => style.spritesMode && !style.scaleSprites
-            ? { backgroundSize: 'auto', backgroundRepeat: 'no-repeat' }
-            : { backgroundSize: 'cover', backgroundRepeat: 'no-repeat' };
+const spriteStyle = (style: Styles) =>
+    style.spritesMode && !style.scaleSprites
+        ? { backgroundSize: 'auto', backgroundRepeat: 'no-repeat' }
+        : { backgroundSize: 'cover', backgroundRepeat: 'no-repeat' };
 
+// TODO: Convert to Class
 export const DeadPokemonBase = (
-    poke: Pokemon & { selectPokemon } & { style: any } & { game: any },
+    poke: Pokemon & { selectPokemon: selectPokemon } & { style: Styles } & { game: Game },
 ) => {
     const style = poke.style;
     const addForme = (species: string | undefined) => {
         if (poke.forme) {
-            if (poke.forme === 'Alolan' || poke.forme === 'Alola') {
+            if (poke.forme === Forme.Alolan) {
                 return `alolan-${species}`;
             }
 
@@ -28,21 +39,28 @@ export const DeadPokemonBase = (
     };
     const getClassname = () =>
         poke.champion ? 'dead-pokemon-container champion' : 'dead-pokemon-container';
-    const getAccentColor = (prop) => prop.style ? prop.style.accentColor : '#111111';
+    const getAccentColor = (prop: any) => (prop.style ? prop.style.accentColor : '#111111');
     console.log(`deadPokemonColor`, getAccentColor(poke));
     return (
-        <div className={getClassname()} data-league={poke.champion} style={{
-            background: getAccentColor(poke),
-            color: getContrastColor(getAccentColor(poke))
-        }}>
-                { style.template !== 'Generations' ? <div
+        <div
+            className={getClassname()}
+            data-league={poke.champion}
+            style={{
+                background: getAccentColor(poke),
+                color: getContrastColor(getAccentColor(poke)),
+            }}>
+            {style.template !== 'Generations' ? (
+                <div
                     role='presentation'
                     onClick={e => poke.selectPokemon(poke.id)}
-                    className={`dead-pokemon-picture ${poke.style.spritesMode ? 'sprites-mode' : ''}`}
+                    className={`dead-pokemon-picture ${
+                        poke.style.spritesMode ? 'sprites-mode' : ''
+                    }`}
                     style={{
                         backgroundImage: getPokemonImage({
                             customImage: poke.customImage,
-                            forme: poke.forme,
+                            forme: poke.forme as any,
+                            shiny: poke.shiny,
                             species: poke.species,
                             style: poke.style,
                             name: poke.game.name,
@@ -51,11 +69,11 @@ export const DeadPokemonBase = (
                         filter: style.grayScaleDeadPokemon ? 'grayscale(100%)' : 'none',
                     }}
                 />
-                :
+            ) : (
                 <span style={{ filter: 'grayscale(100%)' }}>
                     <PokemonIconBase {...poke as any} />
                 </span>
-            }
+            )}
             <div className='dead-pokemon-info'>
                 <div className='pokemon-d-nickname'>
                     {poke.nickname} {GenderElement(poke.gender)}
@@ -70,6 +88,9 @@ export const DeadPokemonBase = (
     );
 };
 
-export const DeadPokemon = connect((state: any) => ({ style: state.style, game: state.game }), {
-    selectPokemon,
-})(DeadPokemonBase);
+export const DeadPokemon = connect(
+    (state: Pick<State, keyof State>) => ({ style: state.style, game: state.game }),
+    {
+        selectPokemon,
+    },
+)(DeadPokemonBase);

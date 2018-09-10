@@ -19,3 +19,5 @@ export * from './nuzlockes';
 export * from './version006';
 export * from './editTheme';
 export * from './addCustomCheckpoint';
+export * from './editCheckpoint';
+export * from './deleteCheckpoint';

@@ -2,16 +2,20 @@ import * as React from 'react';
 import { Tooltip, Position } from '@blueprintjs/core';
 import { Pokemon } from 'models';
 import { PokemonIcon } from 'components/PokemonIcon';
-import { sortPokes } from 'utils';
+import { sortPokes, noop } from 'utils';
 import { connect } from 'react-redux';
 import { editPokemon } from 'actions';
 
-const Grid = (({ team, filterFunction }: {
-    team: Pokemon[],
-    filterFunction: (value: Pokemon, index: number, array: Pokemon[]) => boolean
+const Grid = ({
+    team,
+    filterFunction,
+}: {
+    team: Pokemon[];
+    filterFunction: (value: Pokemon, index: number, array: Pokemon[]) => boolean;
 }) => {
     return (
-            <>{team
+        <>
+            {team
                 .filter(filterFunction)
                 .sort(sortPokes)
                 .map((poke, index) => (
@@ -22,12 +26,13 @@ const Grid = (({ team, filterFunction }: {
                             forme={poke.forme}
                             shiny={poke.shiny}
                             gender={poke.gender}
+                            customIcon={poke.customIcon}
                         />
                     </Tooltip>
-            ))}</>
+                ))}
+        </>
     );
-});
-
+};
 
 export interface PokemonByFilterProps {
     team: Pokemon[];
@@ -44,14 +49,17 @@ export class PokemonByFilterBase extends React.Component<PokemonByFilterProps> {
         this.setState({ team: this.props.team });
     }
 
-    public componentWillReceiveProps(nextProps, prevProps) {
+    public componentWillReceiveProps(
+        nextProps: PokemonByFilterProps,
+        prevProps: PokemonByFilterProps,
+    ) {
         this.setState({ team: nextProps.team });
     }
 
-    private getFilterFunction(filter) {
-        if (filter != null) return poke => poke.status === filter;
-        if (filter == null) return poke => true;
-        return poke => true;
+    private getFilterFunction(filter: string | null = null) {
+        if (filter != null) return (poke: Pokemon) => poke.status === filter;
+        if (filter == null) return (poke: Pokemon) => true;
+        return (poke: Pokemon) => true;
     }
 
     public render() {
@@ -61,9 +69,6 @@ export class PokemonByFilterBase extends React.Component<PokemonByFilterProps> {
     }
 }
 
-export const PokemonByFilter = connect(
-    null,
-    {
-        editPokemon
-    }
-)(PokemonByFilterBase);
+export const PokemonByFilter = connect(null, {
+    editPokemon,
+})(PokemonByFilterBase);

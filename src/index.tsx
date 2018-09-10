@@ -47,7 +47,7 @@ const rollbarConfig = new Rollbar({
     accessToken: '357eab6297524e6facb1c48b0403d869',
     captureUncaught: true,
     payload: {
-        context: store
+        context: store,
     },
     autoInstrument: {
         network: false,
@@ -63,19 +63,26 @@ const rollbarConfig = new Rollbar({
 
 Rollbar.init(rollbarConfig as any);
 
-
 const mountNode = document.getElementById('app');
 const history = createHistory();
 
 render(
     <Provider store={store}>
-        <PersistGate loading={<div>Loading...</div>} onBeforeLift={null} persistor={persistor}>
+        {process.env.NODE_ENV !== 'test' ? (
+            <PersistGate loading={<div>Loading...</div>} onBeforeLift={null} persistor={persistor}>
+                <DragDropContextProvider backend={HTML5Backend}>
+                    <ConnectedRouter history={history}>
+                        <Route exact path='/' component={App} />
+                    </ConnectedRouter>
+                </DragDropContextProvider>
+            </PersistGate>
+        ) : (
             <DragDropContextProvider backend={HTML5Backend}>
                 <ConnectedRouter history={history}>
                     <Route exact path='/' component={App} />
                 </ConnectedRouter>
             </DragDropContextProvider>
-        </PersistGate>
+        )}
     </Provider>,
     mountNode,
 );

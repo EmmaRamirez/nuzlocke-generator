@@ -12,7 +12,6 @@ import { reducers } from 'reducers';
 
 const trash = require('assets/img/trash.png');
 
-
 export interface DataEditorProps {
     state: any;
     replaceState: replaceState;
@@ -38,10 +37,7 @@ const hexEncode = function(str: string) {
     return result;
 };
 
-export class DataEditorBase extends React.Component<
-    DataEditorProps,
-    DataEditorState
-> {
+export class DataEditorBase extends React.Component<DataEditorProps, DataEditorState> {
     public textarea: any;
     public fileInput: any;
 
@@ -152,8 +148,7 @@ export class DataEditorBase extends React.Component<
                     confirmButtonText='Delete Anyway'
                     className={this.props.state.style.spritesMode ? 'pt-dark' : 'pt-light'}
                     style={{ maxWidth: '600px' }}
-                    intent={Intent.DANGER}
-                >
+                    intent={Intent.DANGER}>
                     <div style={{ display: 'flex' }}>
                         <img style={{ height: '10rem' }} src={trash} alt='Sad Trubbish' />
                         <p style={{ fontSize: '1.2rem', padding: '1rem' }}>
@@ -203,12 +198,12 @@ export class DataEditorBase extends React.Component<
                             </div>
                             <div className='pt-dialog-footer'>
                                 <ButtonGroup>
-                                    <Button
+                                    {/* <Button
                                         intent={Intent.PRIMARY}
                                         onClick={this.confirmImport}
                                         text='Upload'
                                         icon='upload'
-                                    />
+                                    /> */}
                                     <Button
                                         icon='tick'
                                         intent={

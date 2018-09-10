@@ -45,20 +45,18 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
             <>
                 <RED isOpen={this.state.isOpen} onClose={this.toggleDialog} />
                 <div className='game-editor'>
-                    <h4 style={{ display: 'flex', alignContent: 'flex-end' }}>
-                        Game
-                    </h4>
+                    <h4 style={{ display: 'flex', alignContent: 'flex-end' }}>Game</h4>
                     <div style={gameSubEditorStyle}>
                         <div className='pt-select'>
                             <select onChange={this.onInput} value={game.name}>
                                 {listOfGames.map(game => <option key={game}>{game}</option>)}
                             </select>
                         </div>
-                        { FEATURES.multipleNuzlockes ?
+                        {FEATURES.multipleNuzlockes ? (
                             <Popover minimal={true} content={<Menu />} position={Position.BOTTOM}>
                                 <Button icon='exchange'>Switch Nuzlockes</Button>
                             </Popover>
-                        : null }
+                        ) : null}
                         <Button onClick={this.toggleDialog} icon='list' intent={Intent.PRIMARY}>
                             Modify Rules
                         </Button>

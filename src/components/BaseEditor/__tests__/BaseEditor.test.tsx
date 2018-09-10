@@ -9,7 +9,11 @@ describe('<BaseEditor />', () => {
     });
 
     it('renders its children', () => {
-        const wrapper = mount(<BaseEditor name='test'><div>Hello World!</div></BaseEditor>);
+        const wrapper = mount(
+            <BaseEditor name='test'>
+                <div>Hello World!</div>
+            </BaseEditor>,
+        );
         expect(wrapper.contains(<div>Hello World!</div>)).toBe(true);
     });
 });

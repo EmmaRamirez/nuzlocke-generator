@@ -7,7 +7,7 @@ export interface ZoomLevelProps {
 }
 
 export class ZoomLevel extends React.Component<ZoomLevelProps> {
-    public render () {
+    public render() {
         const { style, editEvent } = this.props;
         return (
             <div className='style-edit'>
@@ -18,13 +18,12 @@ export class ZoomLevel extends React.Component<ZoomLevelProps> {
                             icon='zoom-out'
                             onClick={e => {
                                 const newZoomLevel =
-                                    style.zoomLevel - 0.1 <= 0
-                                        ? 0
-                                        : style.zoomLevel - 0.1;
+                                    style.zoomLevel - 0.1 <= 0 ? 0 : style.zoomLevel - 0.1;
                                 editEvent({ target: { value: newZoomLevel } }, null, 'zoomLevel');
                             }}
                         />
-=                        <Button style={{ padding: '0 1.25rem' }}>
+                        ={' '}
+                        <Button style={{ padding: '0 1.25rem' }}>
                             <Slider
                                 onChange={value =>
                                     editEvent({ target: { value } }, null, 'zoomLevel')
@@ -39,9 +38,7 @@ export class ZoomLevel extends React.Component<ZoomLevelProps> {
                             icon='zoom-in'
                             onClick={e => {
                                 const newZoomLevel =
-                                    style.zoomLevel + 0.1 >= 2
-                                        ? 2
-                                        : style.zoomLevel + 0.1;
+                                    style.zoomLevel + 0.1 >= 2 ? 2 : style.zoomLevel + 0.1;
                                 editEvent({ target: { value: newZoomLevel } }, null, 'zoomLevel');
                             }}
                         />

@@ -3,21 +3,17 @@ import { Styles } from 'utils';
 
 export class HexagonsTheme implements Theme {
     public name = 'Hexagons';
-    public disablesStyles: Partial<keyof Styles>[] = [ 'movesPosition' ];
+    public disablesStyles: Partial<keyof Styles>[] = ['movesPosition'];
 
-    public createStyles (options) {
+    public createStyles(options) {
         return {
-            ChampsPokemon: {}
+            ChampsPokemon: {},
         };
     }
 
-    public onThemeInit() {
+    public onThemeInit() {}
 
-    }
-
-    public onThemePreview() {
-
-    }
+    public onThemePreview() {}
 
     public themeOptions = [
         {
@@ -27,7 +23,7 @@ export class HexagonsTheme implements Theme {
                 step: 0.1,
                 min: 0,
                 max: 0,
-            }
-        }
+            },
+        },
     ];
 }

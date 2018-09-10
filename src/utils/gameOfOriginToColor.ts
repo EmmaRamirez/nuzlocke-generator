@@ -15,7 +15,7 @@ export const gameOfOriginToColor = (game: Game) => {
         Emerald: '#1abc58',
         FireRed: '#ef4e21',
         LeafGreen: '#46f279',
-        Diamond: '##7ebffc',
+        Diamond: '#7ebffc',
         Pearl: '#ffa8bb',
         Platinum: '#c6b1b1',
         HeartGold: '#c9c782',

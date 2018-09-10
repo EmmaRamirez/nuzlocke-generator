@@ -22,7 +22,7 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
         super(props);
         this.globalHotkeysEvents = {
             handleKeyDown: this.handleKeyDown,
-            handleKeyUp: this.handleKeyUp
+            handleKeyUp: this.handleKeyUp,
         };
     }
 
@@ -36,10 +36,9 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
         document && document.removeEventListener('keyup', this.globalHotkeysEvents.handleKeyUp);
     }
 
-
     private handleKeyDown = (e: KeyboardEvent) => {
         return;
-    }
+    };
 
     private handleKeyUp = (e: KeyboardEvent) => {
         hotkeyList.map(hotkey => {
@@ -51,7 +50,7 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
                 }
             }
         });
-    }
+    };
 
     private isTextInput(e: KeyboardEvent) {
         const elem = e.target as HTMLElement;
@@ -78,15 +77,15 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
         return true;
     }
 
-    private getFirstPokemonId () {
+    private getFirstPokemonId() {
         return this.props.pokemon.sort(sortPokes)[0].id;
     }
 
-    private getLastPokemonId () {
+    private getLastPokemonId() {
         return this.props.pokemon.sort(sortPokesReverse)[0].id;
     }
 
-    private previousPokemon () {
+    private previousPokemon() {
         const poke = this.props.pokemon.find(p => p.id === this.props.selectedId);
         const position = poke!.position;
         const prevPoke = this.props.pokemon.find(p => p.position === position! - 1);
@@ -95,7 +94,7 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
         console.log('j', poke, position, prevPoke, id);
     }
 
-    private nextPokemon () {
+    private nextPokemon() {
         const poke = this.props.pokemon.find(p => p.id === this.props.selectedId);
         const position = poke!.position;
         const nextPoke = this.props.pokemon.find(p => p.position === position! + 1);
@@ -104,11 +103,11 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
         console.log('k', poke, position, nextPoke, id);
     }
 
-    private addPokemon () {
+    private addPokemon() {
         this.props.addPokemon(generateEmptyPokemon(this.props.pokemon));
     }
 
-    private deletePokemon () {
+    private deletePokemon() {
         this.props.deletePokemon(this.props.selectedId);
     }
 
@@ -120,11 +119,11 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
 export const Hotkeys = connect(
     (state: Partial<typeof reducers>) => ({
         pokemon: state.pokemon,
-        selectedId: state.selectedId
+        selectedId: state.selectedId,
     }),
     {
         selectPokemon,
         deletePokemon,
         addPokemon,
-    }
+    },
 )(HotkeysBase as any);

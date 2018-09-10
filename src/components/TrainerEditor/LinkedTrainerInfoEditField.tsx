@@ -1,16 +1,18 @@
-import { connect } from 'react-redux';
+import { connect, Dispatch } from 'react-redux';
 import { editTrainer } from '../../actions';
 import { TrainerInfoEditField } from './TrainerInfoEditField';
+import { State } from 'state';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state: Pick<State, keyof State>, ownProps: TrainerInfoEditField) => {
     return {
+        // @ts-ignore
         value: state.trainer[ownProps.name],
     };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch: Dispatch<State>, ownProps: TrainerInfoEditField) => {
     return {
-        onChange: e => {
+        onChange: (e: any) => {
             dispatch(
                 editTrainer({
                     [ownProps.name]: e.target.value,
@@ -21,5 +23,5 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 export const LinkedTrainerInfoEditField = connect(mapStateToProps, mapDispatchToProps)(
-    TrainerInfoEditField,
+    TrainerInfoEditField as any,
 );

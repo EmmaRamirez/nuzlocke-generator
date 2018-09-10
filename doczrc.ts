@@ -1,9 +1,10 @@
 import { css } from 'docz-plugin-css';
+import { BabelRC } from 'docz-core/dist/utils/babelrc';
 
 // tslint:disable-next-line:no-default-export
 export default {
     typescript: true,
-    dest: './docs',
+    title: 'Nuzlocke Design System',
     plugins: [
         css({
             preprocessor: 'stylus',
@@ -15,5 +16,11 @@ export default {
             primary: 'tomato'
         }
     },
-    indexHtml: './docs.html',
+    protocol: 'http',
+    modifyBabelRc: (babelrc: BabelRC) => {
+        babelrc.babelrc = true;
+        babelrc.presets = [];
+
+        return babelrc;
+    }
 };

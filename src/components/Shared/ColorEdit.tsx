@@ -33,4 +33,6 @@ export const ColorEditBase: React.SFC<ColorEditProps> = ({ value, onChange, name
     );
 };
 
-export const ColorEdit: any = connect((state: any) => ({ style: state.style }), null)(ColorEditBase as any);
+export const ColorEdit: any = connect((state: any) => ({ style: state.style }), null)(
+    ColorEditBase as any,
+);

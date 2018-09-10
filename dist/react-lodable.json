@@ -1,4 +1,18 @@
 {
+  "../../../dist/img/alola-champion-ribbon.png": [
+    {
+      "id": "./dist/img/alola-champion-ribbon.png",
+      "name": "./dist/img/alola-champion-ribbon.png",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./dist/img/alola-champion-ribbon.png",
+      "name": "./dist/img/alola-champion-ribbon.png",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "@blueprintjs/core/lib/css/blueprint.css": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/css/blueprint.css",
@@ -781,7 +795,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./navbarDivider": [
+  "./navbar/navbarDivider": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarDivider.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarDivider.js",
@@ -795,7 +809,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./navbarGroup": [
+  "./navbar/navbarGroup": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarGroup.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarGroup.js",
@@ -809,7 +823,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./navbarHeading": [
+  "./navbar/navbarHeading": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarHeading.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarHeading.js",
@@ -837,7 +851,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../overlay/overlay": [
+  "./overlay/overlay": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
@@ -865,7 +879,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../popover/popover": [
+  "./popover/popover": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/popover/popover.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/popover/popover.js",
@@ -1089,7 +1103,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../text/text": [
+  "./text/text": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
@@ -1509,7 +1523,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/errors": [
+  "../errors": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/errors.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/errors.js",
@@ -1565,7 +1579,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/internal/focusedCellUtils": [
+  "../common/internal/focusedCellUtils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/internal/focusedCellUtils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/internal/focusedCellUtils.js",
@@ -1677,7 +1691,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/utils": [
+  "./common/utils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
@@ -1971,7 +1985,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./locator": [
+  "../../locator": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/locator.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/locator.js",
@@ -8563,6 +8577,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./deleteCheckpoint": [
+    {
+      "id": "./src/actions/deleteCheckpoint.ts",
+      "name": "./src/actions/deleteCheckpoint.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/actions/deleteCheckpoint.ts",
+      "name": "./src/actions/deleteCheckpoint.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./deletePokemon": [
     {
       "id": "./src/actions/deletePokemon.ts",
@@ -8587,6 +8615,20 @@
     {
       "id": "./src/actions/editBox.ts",
       "name": "./src/actions/editBox.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./editCheckpoint": [
+    {
+      "id": "./src/actions/editCheckpoint.ts",
+      "name": "./src/actions/editCheckpoint.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/actions/editCheckpoint.ts",
+      "name": "./src/actions/editCheckpoint.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -9465,6 +9507,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./CurrentPokemonLayoutItem": [
+    {
+      "id": "./src/components/PokemonEditor/CurrentPokemonLayoutItem.tsx",
+      "name": "./src/components/PokemonEditor/CurrentPokemonLayoutItem.tsx",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/PokemonEditor/CurrentPokemonLayoutItem.tsx",
+      "name": "./src/components/PokemonEditor/CurrentPokemonLayoutItem.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./MassEditor": [
     {
       "id": "./src/components/PokemonEditor/MassEditor.tsx",
@@ -9515,16 +9571,18 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/PokemonIcon/index.ts",
-      "name": "./src/components/PokemonIcon/index.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
       "id": "./src/components/PokemonIcon/PokemonIcon.tsx",
       "name": "./src/components/PokemonIcon/PokemonIcon.tsx",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
+    }
+  ],
+  "components/PokemonIcon": [
+    {
+      "id": "./src/components/PokemonIcon/index.ts",
+      "name": "./src/components/PokemonIcon/index.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
     },
     {
       "id": "./src/components/PokemonIcon/index.ts",
@@ -9741,6 +9799,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./ReleaseDialog": [
+    {
+      "id": "./src/components/Shared/ReleaseDialog.tsx",
+      "name": "./src/components/Shared/ReleaseDialog.tsx",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/Shared/ReleaseDialog.tsx",
+      "name": "./src/components/Shared/ReleaseDialog.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./ThemeSelect": [
     {
       "id": "./src/components/Shared/ThemeSelect.tsx",
@@ -9755,7 +9827,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./Shared": [
+  "components/Shared": [
     {
       "id": "./src/components/Shared/index.ts",
       "name": "./src/components/Shared/index.ts",
@@ -9807,6 +9879,20 @@
     {
       "id": "./src/components/StyleEditor/index.ts",
       "name": "./src/components/StyleEditor/index.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./Moves": [
+    {
+      "id": "./src/components/TeamPokemon/Moves.tsx",
+      "name": "./src/components/TeamPokemon/Moves.tsx",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/TeamPokemon/Moves.tsx",
+      "name": "./src/components/TeamPokemon/Moves.tsx",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -9907,6 +9993,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./CheckpointsEditor": [
+    {
+      "id": "./src/components/TrainerEditor/CheckpointsEditor.tsx",
+      "name": "./src/components/TrainerEditor/CheckpointsEditor.tsx",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/TrainerEditor/CheckpointsEditor.tsx",
+      "name": "./src/components/TrainerEditor/CheckpointsEditor.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "components/TrainerEditor/LinkedTrainerInfoEditField": [
     {
       "id": "./src/components/TrainerEditor/LinkedTrainerInfoEditField.tsx",
@@ -9977,6 +10077,32 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./style": [
+    {
+      "id": "./src/components/TrainerEditor/style.ts",
+      "name": "./src/components/TrainerEditor/style.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/reducers/style.ts",
+      "name": "./src/reducers/style.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/TrainerEditor/style.ts",
+      "name": "./src/components/TrainerEditor/style.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./src/reducers/style.ts",
+      "name": "./src/reducers/style.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "components": [
     {
       "id": "./src/components/index.ts",
@@ -9987,20 +10113,6 @@
     {
       "id": "./src/components/index.ts",
       "name": "./src/components/index.ts",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "../../img/alola-champion-ribbon.png": [
-    {
-      "id": "./src/img/alola-champion-ribbon.png",
-      "name": "./src/img/alola-champion-ribbon.png",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./src/img/alola-champion-ribbon.png",
-      "name": "./src/img/alola-champion-ribbon.png",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -10215,20 +10327,6 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./style": [
-    {
-      "id": "./src/reducers/style.ts",
-      "name": "./src/reducers/style.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./src/reducers/style.ts",
-      "name": "./src/reducers/style.ts",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
   "./trainer": [
     {
       "id": "./src/reducers/trainer.ts",
@@ -10285,6 +10383,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./Forme": [
+    {
+      "id": "./src/utils/Forme.ts",
+      "name": "./src/utils/Forme.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/utils/Forme.ts",
+      "name": "./src/utils/Forme.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./StoreContext": [
     {
       "id": "./src/utils/StoreContext.ts",
@@ -10337,6 +10449,20 @@
     {
       "id": "./src/utils/addForme.ts",
       "name": "./src/utils/addForme.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./capitalize": [
+    {
+      "id": "./src/utils/capitalize.ts",
+      "name": "./src/utils/capitalize.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/utils/capitalize.ts",
+      "name": "./src/utils/capitalize.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -10663,20 +10789,6 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./levenshteinDistance": [
-    {
-      "id": "./src/utils/levenshteinDistance.ts",
-      "name": "./src/utils/levenshteinDistance.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./src/utils/levenshteinDistance.ts",
-      "name": "./src/utils/levenshteinDistance.ts",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
   "./listOfAbilities": [
     {
       "id": "./src/utils/listOfAbilities.ts",
@@ -10729,6 +10841,20 @@
     {
       "id": "./src/utils/listOfLocations.ts",
       "name": "./src/utils/listOfLocations.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./listOfNatures": [
+    {
+      "id": "./src/utils/listOfNatures.ts",
+      "name": "./src/utils/listOfNatures.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/utils/listOfNatures.ts",
+      "name": "./src/utils/listOfNatures.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }

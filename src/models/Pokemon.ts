@@ -1,5 +1,5 @@
 import { GenderElementProps } from 'components/Shared';
-import { Types, Game } from 'utils';
+import { Types, Game, Forme } from 'utils';
 
 export interface Pokemon {
     id: string;
@@ -14,7 +14,7 @@ export interface Pokemon {
     ability?: string;
     moves?: string[];
     causeOfDeath?: string;
-    forme?: string;
+    forme?: Forme;
     item?: string;
     types?: [Types, Types];
     customImage?: string;
@@ -27,6 +27,8 @@ export interface Pokemon {
     wonderTradedFor?: string;
     mvp?: boolean;
     gameOfOrigin?: Game;
+    egg?: boolean;
+    hidden?: boolean;
 }
 
 // We export a non-type version when we need all the keys easily
@@ -43,7 +45,7 @@ export const PokemonKeys: Pokemon = {
     ability: '',
     moves: [],
     causeOfDeath: '',
-    forme: '',
+    forme: 'Normal' as Forme,
     item: '',
     types: [Types.Normal, Types.Normal],
     customImage: '',
@@ -56,4 +58,6 @@ export const PokemonKeys: Pokemon = {
     wonderTradedFor: '',
     mvp: false,
     gameOfOrigin: 'Red',
+    egg: false,
+    hidden: false,
 };

@@ -7,7 +7,7 @@ import * as domtoimage from 'dom-to-image';
 import { cx } from 'emotion';
 
 import { selectPokemon } from 'actions';
-import { TeamPokemon } from 'components/TeamPokemon';
+import { TeamPokemon, TeamPokemonBaseProps } from 'components/TeamPokemon';
 import { DeadPokemon } from 'components/DeadPokemon';
 import { BoxedPokemon } from 'components/BoxedPokemon';
 import { ChampsPokemon } from 'components/ChampsPokemon';
@@ -15,12 +15,7 @@ import { TrainerResult } from 'components/Result';
 import { TopBar } from 'components/TopBar';
 import { Pokemon, Trainer } from 'models';
 import { reducers } from 'reducers';
-import {
-    Styles as StyleState,
-    getGameRegion,
-    sortPokes,
-    getContrastColor
-} from 'utils';
+import { Styles as StyleState, getGameRegion, sortPokes, getContrastColor } from 'utils';
 
 import * as Styles from './styles';
 
@@ -44,12 +39,12 @@ interface ResultState {
 
 export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     public resultRef: React.RefObject<HTMLDivElement>;
-    constructor(props) {
+    constructor(props: ResultProps) {
         super(props);
         this.resultRef = React.createRef();
         this.state = {
             isDownloading: false,
-            downloadError: null
+            downloadError: null,
         };
     }
 
@@ -77,16 +72,12 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         if (this.state.downloadError) {
             renderItems.push(
                 <div key={uuid()} className='pt-callout pt-intent-danger'>
-                    Image failed to download. Check that you are not using images
-                    that link to external sites.
-                </div>
+                    Image failed to download. Check that you are not using images that link to
+                    external sites.
+                </div>,
             );
         }
-        return (
-            <>
-                {renderItems}
-            </>
-        );
+        return <>{renderItems}</>;
     }
 
     private renderBoxedPokemon() {
@@ -103,7 +94,13 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             .filter(v => v.hasOwnProperty('id'))
             .filter(poke => poke.status === 'Champs')
             .map((poke, index) => {
-                return <ChampsPokemon key={index} {...poke} />;
+                return (
+                    <ChampsPokemon
+                        useSprites={this.props.style.useSpritesForChampsPokemon}
+                        key={index}
+                        {...poke}
+                    />
+                );
             });
     }
 
@@ -128,7 +125,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             this.setState({ downloadError: null, isDownloading: false });
         } catch (e) {
             this.setState({
-                downloadError: 'Failed to download. This is likely due to your image containing an image resource that does not allow Cross-Origin',
+                downloadError:
+                    'Failed to download. This is likely due to your image containing an image resource that does not allow Cross-Origin',
                 isDownloading: false,
             });
         }
@@ -136,7 +134,9 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
 
     public render() {
         const { style, box, trainer, pokemon } = this.props;
-        const getNumberOf = (status: string, pokemon: Pokemon[]) => pokemon.filter(v => v.hasOwnProperty('id')).filter(poke => poke.status === status).length;
+        const getNumberOf = (status: string, pokemon: Pokemon[]) =>
+            pokemon.filter(v => v.hasOwnProperty('id')).filter(poke => poke.status === status)
+                .length;
         const numberOfTeam = getNumberOf('Team', pokemon);
         const numberOfDead = getNumberOf('Dead', pokemon);
         const numberOfBoxed = getNumberOf('Boxed', pokemon);
@@ -145,16 +145,15 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         const topHeaderColor = style ? style.topHeaderColor : '#333333';
         const accentColor = style ? style.accentColor : '#111111';
         return (
-            <Scrollbars
-                autoHide
-                autoHideTimeout={1000}
-                autoHideDuration={200}>
-                <TopBar onClickDownload={() => this.toImage()} >{this.renderErrors()}</TopBar>
+            <Scrollbars autoHide autoHideTimeout={1000} autoHideDuration={200}>
+                <TopBar onClickDownload={() => this.toImage()}>{this.renderErrors()}</TopBar>
                 <div
                     ref={this.resultRef}
                     className={`result container ${(style.template &&
                         style.template.toLowerCase().replace(/\s/g, '-')) ||
-                        ''} region-${getGameRegion(this.props.game.name)} team-size-${numberOfTeam}`}
+                        ''} region-${getGameRegion(
+                        this.props.game.name,
+                    )} team-size-${numberOfTeam}`}
                     style={{
                         margin: this.state.isDownloading ? '0' : '3rem auto',
                         backgroundColor: bgColor,
@@ -168,10 +167,12 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         width: style.resultWidth + 'px',
                     }}>
                     <div className='trainer-container' style={{ backgroundColor: topHeaderColor }}>
-                        <TrainerResult />
+                        <TrainerResult orientation={this.props.style.trainerSectionOrientation} />
                     </div>
                     {trainer && trainer.notes ? (
-                        <div style={{ color: getContrastColor(bgColor) }} className='result-notes'>{trainer.notes}</div>
+                        <div style={{ color: getContrastColor(bgColor) }} className='result-notes'>
+                            {trainer.notes}
+                        </div>
                     ) : null}
                     <div className='team-container'>{this.renderTeamPokemon()}</div>
                     {numberOfBoxed > 0 ? (
@@ -199,7 +200,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             <h3 style={{ color: getContrastColor(bgColor) }}>{box[3].name}</h3>
                             <div
                                 style={{
-                                    margin: this.props.style.template === 'Compact' ?  0 : '.5rem',
+                                    margin: this.props.style.template === 'Compact' ? 0 : '.5rem',
                                 }}>
                                 {this.renderChampsPokemon()}
                             </div>

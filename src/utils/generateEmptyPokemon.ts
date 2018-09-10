@@ -29,5 +29,6 @@ export function generateEmptyPokemon(pokemon?: Pokemon[]): Pokemon {
         nature: 'None',
         ability: '',
         types: [Types.Normal, Types.Normal],
+        egg: false,
     };
 }

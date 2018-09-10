@@ -23,10 +23,10 @@ const migrations = {
             ...state,
             trainer: {
                 ...state.trainer,
-                badges: []
-            }
+                badges: [],
+            },
         };
-    }
+    },
 };
 
 const config = {
@@ -41,10 +41,10 @@ export const history = createHistory();
 
 export const persistReducers = persistCombineReducers(config, reducers);
 
-const middlewares:Middleware[] = [];
+export const middlewares: Middleware[] = [];
 
-if (process.env.NODE_ENV === 'test') { }
-else {
+if (process.env.NODE_ENV === 'test') {
+} else {
     const loggerMiddleware = createLogger();
     middlewares.push(loggerMiddleware);
 }
@@ -54,12 +54,7 @@ const routerMiddleware = createRouterMiddleware(history);
 
 middlewares.push(sagaMiddleware, routerMiddleware);
 
-export { middlewares };
-
-export const store = createStore(
-    persistReducers,
-    applyMiddleware(...middlewares),
-);
+export const store = createStore(persistReducers, applyMiddleware(...middlewares));
 
 export const persistor = persistStore(store, null, () => store.getState());
 

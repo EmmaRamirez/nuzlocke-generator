@@ -7,8 +7,8 @@ export interface PropOptions {
 }
 
 export type Option = {
-    styles?: CSSProperties,
-    props?: Partial<PropOptions>,
+    styles?: CSSProperties;
+    props?: Partial<PropOptions>;
 };
 
 export type OptionItems = 'ChampsPokemon';

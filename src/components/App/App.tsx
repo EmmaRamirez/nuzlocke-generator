@@ -4,7 +4,6 @@ import { reducers } from 'reducers';
 
 import * as Loadable from 'react-loadable';
 
-
 import './app.styl';
 import { Hotkeys } from 'components/Hotkeys';
 
@@ -14,7 +13,7 @@ export interface AppProps {
     disableHotkeys?: boolean;
 }
 
-function Loading () {
+function Loading() {
     return <div>Loading...</div>;
 }
 
@@ -23,7 +22,7 @@ const Editor = Loadable({
     loading: Loading,
     render(loaded) {
         return <loaded.Editor />;
-    }
+    },
 });
 
 const Result = Loadable({
@@ -31,7 +30,7 @@ const Result = Loadable({
     loading: Loading,
     render(loaded) {
         return <loaded.Result />;
-    }
+    },
 });
 
 export class AppBase extends React.PureComponent<AppProps> {
@@ -46,7 +45,7 @@ export class AppBase extends React.PureComponent<AppProps> {
     public render() {
         return (
             <div className='app' role='main'>
-                { this.props.disableHotkeys ? null : <Hotkeys /> }
+                {this.props.disableHotkeys ? null : <Hotkeys />}
                 <Editor />
                 <Result />
             </div>
@@ -59,6 +58,5 @@ export const App = connect(
         style: state.style,
         rules: state.rules,
     }),
-    {
-    },
+    {},
 )(AppBase);

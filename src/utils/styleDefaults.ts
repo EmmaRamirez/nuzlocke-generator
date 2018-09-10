@@ -27,6 +27,8 @@ export interface Styles {
     template: string;
     tileBackground: boolean;
     topHeaderColor: string;
+    trainerSectionOrientation: OrientationType;
+    useSpritesForChampsPokemon: boolean;
 }
 
 export const styleDefaults: Styles = {
@@ -54,4 +56,6 @@ export const styleDefaults: Styles = {
     template: 'Default Dark',
     tileBackground: false,
     topHeaderColor: '#333333',
+    trainerSectionOrientation: 'horizonal' as OrientationType,
+    useSpritesForChampsPokemon: false,
 };

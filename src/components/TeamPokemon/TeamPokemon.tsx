@@ -2,24 +2,29 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { Pokemon } from 'models';
-import { getBackgroundGradient,
-        typeToColor,
-        getPokemonImage,
-        getMoveType,
-        Styles,
-        Generation,
-        handleMovesGenerationsExceptions,
-        getGameGeneration,
-        getContrastColor,
-        gameOfOriginToColor,
-    } from 'utils';
+import {
+    getBackgroundGradient,
+    typeToColor,
+    getPokemonImage,
+    Styles,
+    Generation,
+    getGameGeneration,
+    getContrastColor,
+    gameOfOriginToColor,
+} from 'utils';
 import { GenderElement } from 'components/Shared';
 import { selectPokemon } from 'actions';
 import { reducers } from 'reducers';
+import { Moves } from './Moves';
 import * as Color from 'color';
 
-
-const getMetLocationString = ({ poke, oldMetLocationFormat }: { poke: Pokemon, oldMetLocationFormat: boolean }):string | null => {
+const getMetLocationString = ({
+    poke,
+    oldMetLocationFormat,
+}: {
+    poke: Pokemon;
+    oldMetLocationFormat: boolean;
+}): string | null => {
     const determinePreposition = () =>
         poke.met && poke.met.toLocaleLowerCase().startsWith('route') ? 'on' : 'in';
     const met = poke.met || '';
@@ -47,16 +52,32 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
         const accentColor = style ? style.accentColor : '#111111';
         const isCardsTheme = this.props.style.template === 'Cards';
         const isCompactTheme = this.props.style.template === 'Compact';
+        const getTypeOrNone = () => {
+            if (pokemon) {
+                if (pokemon.types) {
+                    if (pokemon.types.length) {
+                        return pokemon.types[0];
+                    }
+                }
+            }
+            return 'None';
+        };
         return (
-            <div className='pokemon-info' style={{
-                backgroundColor: isCardsTheme ? undefined : accentColor,
-                // backgroundImage: isCardsTheme ? undefined : `linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px)`,
-                backgroundImage: isCompactTheme ? getBackgroundGradient(
-                    pokemon.types != null ? pokemon.types[1] : '',
-                    pokemon.types != null ? pokemon.types[0] : '',
-                ) : undefined,
-                color: isCompactTheme ? getContrastColor(typeToColor(pokemon.types![0])) : getContrastColor(accentColor)
-            }}>
+            <div
+                className='pokemon-info'
+                style={{
+                    backgroundColor: isCardsTheme ? undefined : accentColor,
+                    // backgroundImage: isCardsTheme ? undefined : `linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px)`,
+                    backgroundImage: isCompactTheme
+                        ? getBackgroundGradient(
+                              pokemon.types != null ? pokemon.types[1] : 'Normal',
+                              pokemon.types != null ? pokemon.types[0] : 'Normal',
+                          )
+                        : undefined,
+                    color: isCompactTheme
+                        ? getContrastColor(typeToColor(getTypeOrNone()))
+                        : getContrastColor(accentColor),
+                }}>
                 <div className='pokemon-info-inner'>
                     <div className='pokemon-main-info'>
                         <span style={{ margin: '0.25rem 0 0' }} className='pokemon-nickname'>
@@ -81,43 +102,57 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                         }}>{ pokemon.gameOfOrigin }
                     </span> */}
                     <div className='pokemon-met'>
-                        { getMetLocationString({ poke: pokemon, oldMetLocationFormat: style.oldMetLocationFormat }) }
+                        {getMetLocationString({
+                            poke: pokemon,
+                            oldMetLocationFormat: style.oldMetLocationFormat,
+                        })}
                     </div>
                     {pokemon.nature && pokemon.nature !== 'None' ? (
                         <div className='pokemon-nature'>
                             <strong>{pokemon.nature}</strong> nature
                         </div>
                     ) : null}
-                    {pokemon.ability ? <div className='pokemon-ability'>{pokemon.ability}</div> : null}
+                    {pokemon.ability ? (
+                        <div className='pokemon-ability'>{pokemon.ability}</div>
+                    ) : null}
                 </div>
-                {style.showPokemonMoves ?
-                    <Moves generation={this.props.generation} moves={pokemon.moves} movesPosition={style.movesPosition} />
-                : null}
+                {style.showPokemonMoves ? (
+                    <Moves
+                        generation={this.props.generation}
+                        moves={pokemon.moves}
+                        movesPosition={style.movesPosition}
+                    />
+                ) : null}
             </div>
         );
     }
 }
 
 export interface TeamPokemonBaseProps {
-    pokemon: Pokemon
+    pokemon: Pokemon;
     game: any;
     style: any;
     selectPokemon: selectPokemon;
 }
 
-export class TeamPokemonBaseMinimal extends React.PureComponent<TeamPokemonBaseProps & { spriteStyle: object }> {
+export class TeamPokemonBaseMinimal extends React.PureComponent<
+    TeamPokemonBaseProps & { spriteStyle: object }
+> {
     public render() {
         const { pokemon } = this.props;
         return (
-            <div className='pokemon-container minimal' style={{ color: getContrastColor(this.props.style.bgColor) }}>
+            <div
+                className='pokemon-container minimal'
+                style={{ color: getContrastColor(this.props.style.bgColor) }}>
                 <div
                     style={{
                         backgroundImage: getPokemonImage({
                             customImage: pokemon.customImage,
-                            forme: pokemon.forme,
+                            forme: pokemon.forme as any,
                             species: pokemon.species,
                             style: this.props.style,
                             name: this.props.game.name,
+                            shiny: pokemon.shiny,
                         }),
                         ...this.props.spriteStyle,
                     }}
@@ -139,39 +174,8 @@ export class TeamPokemonBaseMinimal extends React.PureComponent<TeamPokemonBaseP
     }
 }
 
-export interface MovesProps {
-    generation: Generation;
-    moves: Pokemon['moves'];
-    movesPosition?: Styles['movesPosition'];
-}
-
-export class Moves extends React.Component<MovesProps> {
-    private generateMoves (moves: MovesProps['moves']) {
-        return moves && moves.map((move, index) => {
-            move = move.trim();
-            const type = handleMovesGenerationsExceptions({ move: move, generation: this.props.generation, originalType: getMoveType(move) });
-            return (
-                <div
-                    key={index}
-                    className={`move ${type}-type ${move.length >= 12 ? 'long-text-move' : ''}`}>
-                    {move}
-                </div>
-            );
-        });
-    }
-
-    public render() {
-        if (this.props.moves == null) return null;
-        return (
-            <div className={`pokemon-moves ${this.props.movesPosition}`}>
-                { this.generateMoves(this.props.moves) }
-            </div>
-        );
-    }
-}
-
 export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
-    constructor(props) {
+    constructor(props: TeamPokemonBaseProps) {
         super(props);
     }
 
@@ -180,12 +184,20 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
         const poke = pokemon;
 
         const getFirstType = poke.types ? poke.types[0] : 'Normal';
-        const spriteStyle = this.props.style.spritesMode && !this.props.style.scaleSprites
-            ? { backgroundSize: 'auto', backgroundRepeat: 'no-repeat', imageRendering: 'pixelated' }
-            : { backgroundSize: 'cover', backgroundRepeat: 'no-repeat', imageRendering: 'pixelated' };
+        const spriteStyle =
+            this.props.style.spritesMode && !this.props.style.scaleSprites
+                ? {
+                      backgroundSize: 'auto',
+                      backgroundRepeat: 'no-repeat',
+                      imageRendering: 'pixelated',
+                  }
+                : {
+                      backgroundSize: 'cover',
+                      backgroundRepeat: 'no-repeat',
+                      imageRendering: 'pixelated',
+                  };
 
-
-        const addProp = item => {
+        const addProp = (item: any) => {
             const propName = `data-${item.toLowerCase()}`;
             if (item === 'type') return { [propName]: poke[item].join(' ') };
             if (poke[item] == null || poke[item] === '') return {};
@@ -220,13 +232,15 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
         }, {});
 
         if (this.props.style.minimalTeamLayout) {
-            return <TeamPokemonBaseMinimal
-                        selectPokemon={selectPokemon}
-                        style={style}
-                        game={game}
-                        spriteStyle={spriteStyle}
-                        pokemon={poke}
-                    />;
+            return (
+                <TeamPokemonBaseMinimal
+                    selectPokemon={selectPokemon}
+                    style={style}
+                    game={game}
+                    spriteStyle={spriteStyle}
+                    pokemon={poke}
+                />
+            );
         }
 
         return (
@@ -239,21 +253,22 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                         cursor: 'pointer',
                         background: this.props.style.teamPokemonBorder
                             ? getBackgroundGradient(
-                                poke.types != null ? poke.types[0] : '',
-                                poke.types != null ? poke.types[1] : '',
-                            )
+                                  poke.types != null ? poke.types[0] : 'Normal',
+                                  poke.types != null ? poke.types[1] : 'Normal',
+                              )
                             : 'transparent',
                     }}>
                     <div
                         style={{
                             backgroundImage: getPokemonImage({
                                 customImage: poke.customImage,
-                                forme: poke.forme,
+                                forme: poke.forme as any,
                                 species: poke.species,
+                                shiny: poke.shiny,
                                 style: this.props.style,
                                 name: this.props.game.name,
                             }),
-                            ...spriteStyle as React.CSSProperties,
+                            ...(spriteStyle as React.CSSProperties),
                         }}
                         className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()} ${
                             this.props.style.imageStyle === 'round' ? 'round' : 'square'
@@ -265,10 +280,13 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                         className={`pokemon-item ${this.props.style.itemStyle}`}
                         style={{
                             borderColor: typeToColor(getFirstType) || 'transparent',
-                            backgroundImage: style.template === 'Hexagons' ? getBackgroundGradient(
-                                poke.types != null ? poke.types[0] : '',
-                                poke.types != null ? poke.types[1] : '',
-                            ) : '',
+                            backgroundImage:
+                                style.template === 'Hexagons'
+                                    ? getBackgroundGradient(
+                                          poke.types != null ? poke.types[0] : 'Normal',
+                                          poke.types != null ? poke.types[1] : 'Normal',
+                                      )
+                                    : '',
                         }}>
                         <img
                             alt={poke.item}
@@ -278,7 +296,11 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                         />
                     </div>
                 )}
-                <TeamPokemonInfo generation={getGameGeneration(this.props.game.name)} style={style} pokemon={pokemon} />
+                <TeamPokemonInfo
+                    generation={getGameGeneration(this.props.game.name)}
+                    style={style}
+                    pokemon={pokemon}
+                />
             </div>
         );
     }
