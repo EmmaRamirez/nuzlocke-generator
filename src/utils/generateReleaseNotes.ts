@@ -278,6 +278,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 
 
 ## Fixes
+- Option \`Use Sprites for Champs Pokemon\` now correctly prevents Result download
 
 ## Known Issues
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading

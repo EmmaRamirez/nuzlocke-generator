@@ -3,19 +3,20 @@ import { Button, Classes } from '@blueprintjs/core';
 import { connect } from 'react-redux';
 import { reducers } from 'reducers';
 
-import { classWithDarkTheme, isEmpty } from 'utils';
+import { classWithDarkTheme, isEmpty, Styles, TeamImagesType } from 'utils';
 import { changeEditorSize, editStyle, seeRelease } from 'actions';
 import * as styles from 'components/Result/styles';
 import { pkg } from 'package';
 import { cx } from 'emotion';
-import { Pokemon } from 'models';
+import { Pokemon, Editor } from 'models';
 import { ReleaseDialog } from 'components/Shared';
+import { State } from 'state';
 
 export interface TopBarProps {
-    onClickDownload: any;
+    onClickDownload: (e?: React.MouseEvent<HTMLElement>) => void;
 
-    editor: any;
-    style: any;
+    editor: Editor;
+    style: Styles;
     sawRelease: { [x: string]: boolean };
 
     changeEditorSize: changeEditorSize;
@@ -44,8 +45,9 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
 
     private isDownloadDisabled() {
         return (
-            this.props.style.teamImages === 'Sugimori' ||
+            this.props.style.teamImages === 'Sugimori' as TeamImagesType ||
             this.props.style.spritesMode ||
+            this.props.style.useSpritesForChampsPokemon ||
             this.props.pokemon.some(p => p.status === 'Team' && !isEmpty(p.customImage))
         );
     }
@@ -106,8 +108,8 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
     }
 }
 
-export const TopBar = connect<Partial<typeof reducers>, any, any>(
-    (state: Partial<typeof reducers>) => ({
+export const TopBar = connect(
+    (state: Pick<State, keyof State>) => ({
         editor: state.editor,
         style: state.style,
         sawRelease: state.sawRelease,
