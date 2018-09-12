@@ -274,6 +274,8 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
     '0.0.13-beta': `# Changelog
 
 ## Features
+- **Hidden attribute**: hide Pokémon from the Result, simple as that
+
 
 ## Fixes
 

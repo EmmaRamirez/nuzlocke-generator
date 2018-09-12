@@ -170,6 +170,12 @@ export class CurrentPokemonEditBase extends React.Component<
                         value={currentPokemon.egg}
                         type='checkbox'
                     />
+                    <CurrentPokemonInput
+                        labelName='Hidden'
+                        inputName='hidden'
+                        value={currentPokemon.hidden}
+                        type='checkbox'
+                    />
                 </CurrentPokemonLayoutItem>
                 <CurrentPokemonInput
                     labelName='Custom Image'

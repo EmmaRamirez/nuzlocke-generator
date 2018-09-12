@@ -29,6 +29,7 @@ interface PokemonIconProps {
     /** The gender of the Pokemon */
     gender?: GenderElementProps;
     customIcon?: string;
+    hidden?: boolean;
     onClick: () => void;
     selectedId: string | null;
     /** Renders its shiny version if true **/
@@ -110,8 +111,10 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
             className,
             shiny,
             style,
+            hidden,
             customIcon,
         } = this.props;
+        const imageStyle = { maxHeight: '100%', opacity: hidden ? 0.5 : 1 };
         return connectDragSource!(
             <div
                 role='icon'
@@ -125,7 +128,7 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
                     id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'
                 } ${className || ''} ${isDragging ? 'opacity-medium' : ''}`}>
                 <img
-                    style={{ maxHeight: '100%' }}
+                    style={imageStyle}
                     alt={species}
                     src={getIconURL({
                         id,
