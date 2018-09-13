@@ -85,7 +85,7 @@ export const getIconURL = ({ id, species, forme, shiny, gender, customIcon }: ge
     if (species === 'Egg') return `${baseURL}egg.png`;
     if (customIcon) return customIcon;
     return `${baseURL}${isShiny}/${isFemaleSpecific}${formatSpeciesName(species)}${getFormeSuffix(
-        Forme[forme ? forme : 'Normal'],
+        forme as keyof typeof Forme
     )}.png`;
 };
 
