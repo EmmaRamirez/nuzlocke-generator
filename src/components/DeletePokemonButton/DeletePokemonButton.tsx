@@ -5,12 +5,13 @@ import styled from 'react-emotion';
 import { deletePokemon, modifyDeletionConfirmation } from 'actions';
 import { connect } from 'react-redux';
 import { accentedE } from 'utils';
+import { State } from 'state';
 
 export interface DeletePokemonButtonProps {
-    id: string;
-    confirmation?: boolean;
-    modifyDeletionConfirmation?: modifyDeletionConfirmation;
-    deletePokemon?: deletePokemon;
+    id?: string;
+    confirmation: boolean;
+    modifyDeletionConfirmation: modifyDeletionConfirmation;
+    deletePokemon: deletePokemon;
 }
 
 export const DeletePokemonButtonContainer = styled('div')`
@@ -44,7 +45,7 @@ export class DeletePokemonButtonBase extends React.Component<
                     isOpen={this.state.dialogOn && (this.props.confirmation as boolean)}
                     onCancel={this.toggleDialog}
                     onConfirm={e =>
-                        this.props.deletePokemon && this.props.deletePokemon(this.props.id)
+                        this.props.deletePokemon && this.props.id && this.props.deletePokemon(this.props.id)
                     }
                     confirmButtonText='Delete Pokemon'
                     cancelButtonText='Cancel'
@@ -76,7 +77,7 @@ export class DeletePokemonButtonBase extends React.Component<
                             if (this.props.confirmation) {
                                 this.toggleDialog();
                             } else {
-                                this.props.deletePokemon && this.props.deletePokemon(this.props.id);
+                                this.props.deletePokemon && this.props.id && this.props.deletePokemon(this.props.id);
                             }
                         }}
                         icon='trash'
@@ -88,11 +89,12 @@ export class DeletePokemonButtonBase extends React.Component<
     }
 }
 
-export const DeletePokemonButton: any = connect(
-    (state: any) => ({
+export const DeletePokemonButton = connect(
+    (state: Pick<State, keyof State>) => ({
         confirmation: state.confirmation,
     }),
     {
         deletePokemon,
+        modifyDeletionConfirmation,
     },
-)(DeletePokemonButtonBase as any);
+)(DeletePokemonButtonBase);
