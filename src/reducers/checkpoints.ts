@@ -8,22 +8,20 @@ import {
     deleteCheckpoint,
 } from 'actions';
 import { Badge } from 'models';
-import { DeepSet } from 'utils';
-import { EDIT } from '@blueprintjs/icons/lib/esm/generated/iconNames';
 
 export type Checkpoints = Badge[];
 
 export function checkpoints(
     state: Checkpoints = [],
-    action: Action<ADD_CUSTOM_CHECKPOINT | EDIT_CHECKPOINT | DELETE_CHECKPOINT>,
+    action: ReturnType<addCustomCheckpoint | editCheckpoint | deleteCheckpoint>,
 ) {
     switch (action.type) {
         case ADD_CUSTOM_CHECKPOINT:
-            return state;
+            return [ ...state, action.checkpoint ];
         case EDIT_CHECKPOINT:
-            return state;
+            return [ ...state.filter(c => c.name !== action.name), { ...state.find(c => c.name === action.name), ...action.edits as Partial<Badge> } ];
         case DELETE_CHECKPOINT:
-            return state;
+            return state.filter(c => c.name !== action.name);
         default:
             return state;
     }
