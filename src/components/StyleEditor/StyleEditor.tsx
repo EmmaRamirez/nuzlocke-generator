@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { editStyle } from 'actions';
-import { gameOfOriginToColor, styleDefaults, listOfThemes, FEATURES, Game } from 'utils';
+import { gameOfOriginToColor, styleDefaults, listOfThemes, FEATURES, Game, OrientationType } from 'utils';
 import {
     RadioGroup,
     Radio,
@@ -35,6 +35,7 @@ const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'],
     }
     if (propName === 'template' && e.target.value === 'Cards') {
         props.editStyle({ imageStyle: 'square' });
+        props.editStyle({ movesPosition: 'horizontal' as OrientationType });
     }
     if (propName === 'template' && e.target.value === 'Hexagons') {
         props.editStyle({ resultWidth: 1320 });
