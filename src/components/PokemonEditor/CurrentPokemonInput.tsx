@@ -55,7 +55,6 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         } else if (inputName === 'egg') {
             edit = {
                 [inputName]: e.target.checked,
-                species: 'Egg',
                 nickname: 'Egg',
             };
         } else {

@@ -290,6 +290,7 @@ export class CurrentPokemonEditBase extends React.Component<
                             items={listOfPokemon}
                             name='species'
                             label='Species'
+                            disabled={currentPokemon.egg}
                             placeholder='Missing No.'
                             value={currentPokemon.species}
                             onChange={e => {

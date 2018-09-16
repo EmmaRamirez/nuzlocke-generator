@@ -1,8 +1,8 @@
 import { Game } from 'utils';
 
 export const gameOfOriginToColor = (game: Game) => {
-    type gameToColor = { [G in Game]?: string };
-    const gameToColor: gameToColor = {
+    type GameToColor = { [G in Game]?: string };
+    const gameToColor: GameToColor = {
         Red: 'rgb(243, 86, 58)',
         Blue: '#3675f8',
         Yellow: '#fdd33c',

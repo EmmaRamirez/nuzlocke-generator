@@ -5,6 +5,7 @@ export interface AutocompleteProps {
     placeholder?: string;
     name?: string;
     label?: string;
+    disabled?: boolean;
     value: string;
     onChange: any;
 }
@@ -129,6 +130,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
                     type='text'
                     onChange={this.updateItems}
                     value={this.state.currentValue}
+                    disabled={this.props.disabled}
                 />
                 {this.state.isOpen ? (
                     <ul className='autocomplete-items has-nice-scrollbars'>{this.renderItems()}</ul>

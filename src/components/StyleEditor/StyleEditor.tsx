@@ -40,6 +40,7 @@ const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'],
     if (propName === 'template' && e.target.value === 'Hexagons') {
         props.editStyle({ resultWidth: 1320 });
         props.editStyle({ accentColor: 'transparent' });
+        props.editStyle({ movesPosition: 'horizontal' as OrientationType });
     }
     if (propName === 'template' && e.target.value === 'Generations') {
         props.editStyle({
@@ -447,7 +448,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
 }
 
 export const StyleEditor = connect(
-    (state: Partial<typeof reducers>) => ({ style: state.style, game: state.game }),
+    (state: Pick<State, keyof State>) => ({ style: state.style, game: state.game }),
     {
         editStyle,
     },
