@@ -88,7 +88,7 @@ render(
 );
 
 store.subscribe(() => {
-    if ((store.getState() as any).style.editorDarkMode) {
+    if (store.getState().style.editorDarkMode) {
         injectGlobal`
             body {
                 background: #111;

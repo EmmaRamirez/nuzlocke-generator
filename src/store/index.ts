@@ -8,6 +8,8 @@ import storage from 'redux-persist/lib/storage';
 
 import { reducers } from '../reducers';
 import { rootSaga } from '../sagas';
+import { State } from 'state';
+import { Store } from 'react-redux';
 
 const pkg = require('../../package.json');
 
@@ -54,8 +56,8 @@ const routerMiddleware = createRouterMiddleware(history);
 
 middlewares.push(sagaMiddleware, routerMiddleware);
 
-export const store = createStore(persistReducers, applyMiddleware(...middlewares));
+export const store: Store<State> = createStore(persistReducers, applyMiddleware(...middlewares));
 
-export const persistor = persistStore(store, null, () => store.getState());
+export const persistor = persistStore(store, null);
 
 sagaMiddleware.run(rootSaga);

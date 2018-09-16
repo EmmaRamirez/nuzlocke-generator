@@ -46,6 +46,9 @@ const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'],
             bgColor: game ? gameOfOriginToColor(game) : '',
         });
         props.editStyle({
+            minimalBoxedLayout: true,
+        });
+        props.editStyle({
             resultHeight: 870,
         });
         props.editStyle({
@@ -301,6 +304,21 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                                 { ...e, target: { value: e.target.checked } },
                                 props,
                                 'minimalTeamLayout',
+                            )
+                        }
+                    />
+                </div>
+
+                <div className={styleEdit}>
+                    <Checkbox
+                        checked={props.style.minimalBoxedLayout}
+                        name='minimalBoxedLayout'
+                        label='Minimal Boxed Layout'
+                        onChange={(e: any) =>
+                            editEvent(
+                                { ...e, target: { value: e.target.checked } },
+                                props,
+                                'minimalBoxedLayout',
                             )
                         }
                     />

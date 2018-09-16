@@ -275,10 +275,11 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 
 ## Features
 - **Hidden attribute**: hide Pokémon from the Result, simple as that
-
+- **Boxed layout toggling**: to minimal or, err, not minimal
 
 ## Fixes
 - Option \`Use Sprites for Champs Pokemon\` now correctly prevents Result download
+- Alolan forme icons now work again
 
 ## Known Issues
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading

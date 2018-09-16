@@ -6,6 +6,8 @@ import { Pokemon } from 'models';
 import { sortPokes, sortPokesReverse, noop, generateEmptyPokemon } from 'utils';
 import { selectedId } from 'reducers/selectedId';
 import { hotkeyList } from 'utils';
+import { persistor } from 'store';
+import { State } from 'state';
 
 export interface HotkeysProps {
     selectPokemon: selectPokemon;
@@ -85,6 +87,10 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
         return this.props.pokemon.sort(sortPokesReverse)[0].id;
     }
 
+    private manualSave() {
+        persistor.flush().then(res => console.log(res));
+    }
+
     private previousPokemon() {
         const poke = this.props.pokemon.find(p => p.id === this.props.selectedId);
         const position = poke!.position;
@@ -117,7 +123,7 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
 }
 
 export const Hotkeys = connect(
-    (state: Partial<typeof reducers>) => ({
+    (state: Pick<State, keyof State>) => ({
         pokemon: state.pokemon,
         selectedId: state.selectedId,
     }),
@@ -126,4 +132,4 @@ export const Hotkeys = connect(
         deletePokemon,
         addPokemon,
     },
-)(HotkeysBase as any);
+)(HotkeysBase);

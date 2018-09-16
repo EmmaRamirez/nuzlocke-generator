@@ -42,7 +42,7 @@ export class DeletePokemonButtonBase extends React.Component<
             <DeletePokemonButtonContainer>
                 <Alert
                     icon='trash'
-                    isOpen={this.state.dialogOn && (this.props.confirmation as boolean)}
+                    isOpen={this.state.dialogOn && this.props.confirmation}
                     onCancel={this.toggleDialog}
                     onConfirm={e =>
                         this.props.deletePokemon && this.props.id && this.props.deletePokemon(this.props.id)
