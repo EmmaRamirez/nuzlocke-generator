@@ -11,9 +11,11 @@ import { CheckpointsEditor } from './CheckpointsEditor';
 import { cx } from 'emotion';
 import { DeepSet } from 'utils';
 import { State } from 'state';
+import { Checkpoints } from 'reducers/checkpoints';
 
 export interface BadgeInputProps {
     trainer: Trainer;
+    checkpoints: Checkpoints;
     game: any;
     editTrainer: any;
     style: Styles;
@@ -21,7 +23,6 @@ export interface BadgeInputProps {
 }
 
 export interface BadgeInputState {
-    badges: DeepSet<Badge>;
     isOpen: boolean;
 }
 
@@ -29,31 +30,15 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
     constructor(props: BadgeInputProps) {
         super(props);
         this.state = {
-            badges: new DeepSet(),
             isOpen: false,
         };
-    }
-
-    public componentWillMount() {
-        this.setState({ badges: new DeepSet(this.props.trainer.badges) });
     }
 
     private toggleCheckpointsEditor = (e: React.SyntheticEvent<HTMLElement>) =>
         this.setState({ isOpen: !this.state.isOpen });
 
-    private handleBadge(badge: Badge): DeepSet<Badge> {
-        const mutableBadges = this.state.badges;
-        if (mutableBadges.has(badge)) {
-            mutableBadges.delete(badge);
-            return mutableBadges;
-        } else {
-            mutableBadges.add(badge);
-            return mutableBadges;
-        }
-        return mutableBadges;
-    }
-
     public render() {
+        const trainerBadges = this.props.trainer.badges ? this.props.trainer.badges : [];
         return (
             <>
                 {this.props.enableCheckpointsEditor ? (
@@ -69,7 +54,7 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
                         style={{ width: '33rem' }}>
                         <div className={Classes.DIALOG_BODY}>
                             <CheckpointsEditor
-                                checkpoints={new DeepSet(getBadges(this.props.game.name))}
+                                checkpoints={this.props.checkpoints}
                             />
                         </div>
                     </Dialog>
@@ -85,21 +70,20 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
                             minimal={true}
                             content={
                                 <Menu>
-                                    {getBadges(this.props.game.name).map(badge => (
+                                    {this.props.checkpoints.map(badge => (
                                         <Checkbox
                                             onChange={(e: any) => {
-                                                this.setState(
-                                                    {
-                                                        badges: this.handleBadge(badge),
-                                                    },
-                                                    () => {
-                                                        this.props.editTrainer({
-                                                            badges: this.state.badges.toArray(),
-                                                        });
-                                                    },
-                                                );
+                                                if (trainerBadges.includes(badge)) {
+                                                    this.props.editTrainer({
+                                                        badges: trainerBadges.filter(b => b.name !== badge.name)
+                                                    });
+                                                } {
+                                                    this.props.editTrainer({
+                                                        badges: [...trainerBadges, badge ]
+                                                    });
+                                                }
                                             }}
-                                            checked={this.state.badges.has(badge)}
+                                            checked={trainerBadges.includes(badge)}
                                             key={badge.name}
                                             label={badge.name}
                                         />
@@ -131,6 +115,7 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
 
 export const BadgeInput = connect(
     (state: Pick<State, keyof State>) => ({
+        checkpoints: state.checkpoints,
         trainer: state.trainer,
         game: state.game,
         style: state.style,

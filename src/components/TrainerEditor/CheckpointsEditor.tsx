@@ -16,9 +16,12 @@ import { Badge } from 'models';
 import { DeepSet, getAllBadges } from 'utils';
 import { State } from 'state';
 import { style } from 'reducers/style';
+import { Checkpoints } from 'reducers/checkpoints';
+import { addCustomCheckpoint, editCheckpoint, deleteCheckpoint } from 'actions';
 
 export interface CheckpointsSelectProps {
     checkpoint: Badge;
+    editCheckpoint: editCheckpoint;
 }
 
 export interface CheckpointsSelectState {
@@ -29,12 +32,15 @@ export class CheckpointsSelect extends React.Component<
     CheckpointsSelectProps,
     CheckpointsSelectState
 > {
-    private renderOptions() {
+    private renderOptions(checkpointTargetName) {
         return (
             <div style={{ padding: '1rem', height: '400px', overflowY: 'auto' }}>
                 {getAllBadges().map((badge, key) => {
                     return (
-                        <Button key={key} style={{ display: 'block' }} className={Classes.MINIMAL}>
+                        <Button onClick={e => {
+                            this.props.editCheckpoint({ image: badge.image }, checkpointTargetName);
+                            console.log(e);
+                            }} key={key} style={{ display: 'block' }} className={Classes.MINIMAL}>
                             <img
                                 className={cx(styles.checkpointImage(1))}
                                 alt={badge.name}
@@ -54,7 +60,7 @@ export class CheckpointsSelect extends React.Component<
             <Popover
                 minimal
                 interactionKind={PopoverInteractionKind.CLICK}
-                content={this.renderOptions()}>
+                content={this.renderOptions(checkpoint.name)}>
                 <div
                     role='select'
                     className={cx(styles.checkpointSelect, Classes.SELECT, Classes.BUTTON)}>
@@ -73,12 +79,14 @@ export class CheckpointsSelect extends React.Component<
 }
 
 export interface CheckpointsEditorProps {
-    checkpoints: DeepSet<Badge>;
+    checkpoints: Checkpoints;
     style: Styles;
+    addCheckpoint: addCustomCheckpoint;
+    editCheckpoint: editCheckpoint;
+    deleteCheckpoint: deleteCheckpoint;
 }
 
 export interface CheckpointsEditorState {
-    checkpoints: DeepSet<Badge>;
     badgeNumber: number;
 }
 
@@ -86,19 +94,13 @@ export class CheckpointsEditorBase extends React.Component<
     CheckpointsEditorProps,
     CheckpointsEditorState
 > {
-    public state = { checkpoints: (new DeepSet([]) as unknown) as DeepSet<Badge>, badgeNumber: 1 };
-
-    public componentWillMount() {
-        this.setState({ checkpoints: this.props.checkpoints });
-    }
+    public state = { badgeNumber: 0 };
 
     private addCheckpoint = (e: any) => {
         this.setState({
             badgeNumber: this.state.badgeNumber + 1,
-            checkpoints: this.state.checkpoints!.add({
-                name: `Empty Badge ${this.state.badgeNumber}`,
-                image: 'unknown',
-            }),
+        }, () => {
+            this.props.addCheckpoint({ name: `Custom Badge ${this.state.badgeNumber}`, image: 'unknown' });
         });
     };
 
@@ -114,10 +116,10 @@ export class CheckpointsEditorBase extends React.Component<
         }
     };
 
-    private renderCheckpoints(checkpoints: CheckpointsEditorState['checkpoints']) {
+    private renderCheckpoints(checkpoints: Checkpoints) {
         return (
             checkpoints &&
-            checkpoints.toArray().map((checkpoint, key) => {
+            checkpoints.map((checkpoint, key) => {
                 return (
                     <li
                         key={key}
@@ -135,11 +137,11 @@ export class CheckpointsEditorBase extends React.Component<
                                 alt={checkpoint.name}
                                 src={`./img/checkpoints/${checkpoint.image}.png`}
                             />
-                            <input className={Classes.INPUT} type='text' value={checkpoint.name} />
+                            <input onChange={e => this.props.editCheckpoint({ name: e.target.name }, e.target.name)} className={Classes.INPUT} type='text' value={checkpoint.name} />
                         </div>
-                        <CheckpointsSelect checkpoint={checkpoint} />
+                        <CheckpointsSelect editCheckpoint={editCheckpoint} checkpoint={checkpoint} />
                         {/* <div className={cx(styles.checkpointImageUploadWrapper)}>Use Custom Image <input onChange={this.onUpload} type='file' /></div> */}
-                        <Icon className={cx(styles.checkpointDelete)} icon='trash' />
+                        <Icon style={{ cursor: 'pointer' }} onClick={e => this.props.deleteCheckpoint(checkpoint.name)} className={cx(styles.checkpointDelete)} icon='trash' />
                     </li>
                 );
             })
@@ -150,7 +152,7 @@ export class CheckpointsEditorBase extends React.Component<
         return (
             <div className={cx(styles.checkpointsEditor)}>
                 <ul className={cx(styles.checkpointsList)}>
-                    {this.renderCheckpoints(this.state.checkpoints)}
+                    {this.renderCheckpoints(this.props.checkpoints)}
                 </ul>
                 <div className={cx(styles.checkpointButtons)}>
                     <Button onClick={this.addCheckpoint} icon='plus' intent={Intent.SUCCESS}>
@@ -163,6 +165,13 @@ export class CheckpointsEditorBase extends React.Component<
     }
 }
 
-export const CheckpointsEditor = connect((state: Pick<State, keyof State>) => ({
-    style: state.style,
-}))(CheckpointsEditorBase);
+export const CheckpointsEditor = connect(
+    (state: Pick<State, keyof State>) => ({
+        style: state.style,
+    }),
+    {
+        addCheckpoint: addCustomCheckpoint,
+        editCheckpoint,
+        deleteCheckpoint,
+    }
+)(CheckpointsEditorBase);
