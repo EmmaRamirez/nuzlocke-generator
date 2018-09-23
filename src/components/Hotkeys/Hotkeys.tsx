@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { Toaster, Intent } from '@blueprintjs/core';
 import { reducers } from 'reducers';
 import { selectPokemon, deletePokemon, addPokemon } from 'actions';
 import { Pokemon } from 'models';
@@ -88,7 +89,21 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
     }
 
     private manualSave() {
-        persistor.flush().then(res => console.log(res));
+        persistor.flush()
+            .then(res => {
+                const toaster = Toaster.create();
+                toaster.show({
+                    message: `Save successful!`,
+                    intent: Intent.SUCCESS,
+                });
+            })
+            .catch(err => {
+            const toaster = Toaster.create();
+            toaster.show({
+                message: `Saved failed. Please try again.`,
+                intent: Intent.DANGER,
+            });
+        });
     }
 
     private previousPokemon() {
