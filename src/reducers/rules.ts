@@ -21,7 +21,7 @@ export function rules(
                 return action.rule;
             });
         case DELETE_RULE:
-            return state.filter((_, index) => index !== action.target);
+            return state.filter((_, index) => index + 1 !== action.target);
         case RESET_RULES:
             return initialState;
         default:

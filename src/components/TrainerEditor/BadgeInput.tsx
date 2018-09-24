@@ -73,17 +73,17 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
                                     {this.props.checkpoints.map(badge => (
                                         <Checkbox
                                             onChange={(e: any) => {
-                                                if (trainerBadges.includes(badge)) {
+                                                if (!e.target.checked || trainerBadges.some(b => b.name === badge.name)) {
                                                     this.props.editTrainer({
                                                         badges: trainerBadges.filter(b => b.name !== badge.name)
                                                     });
-                                                } {
+                                                } else {
                                                     this.props.editTrainer({
                                                         badges: [...trainerBadges, badge ]
                                                     });
                                                 }
                                             }}
-                                            checked={trainerBadges.includes(badge)}
+                                            checked={trainerBadges.some(b => b.name === badge.name)}
                                             key={badge.name}
                                             label={badge.name}
                                         />

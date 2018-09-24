@@ -274,6 +274,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
     '0.0.13-beta': `# Changelog
 
 ## Features
+- **Custom checkpoints editor**: swap out badges, rename badges, etc
 - **Hidden attribute**: hide Pokémon from the Result, simple as that
 - **Boxed layout toggling**: to minimal or, err, not minimal
 

@@ -1,11 +1,8 @@
-import { accentedE } from 'utils';
-import { HotkeysBase } from 'components/Hotkeys';
-
 export interface HotkeyList {
     key: string;
     comment: string;
     onKeyUp?: string;
-    onKeyDown?: keyof HotkeysBase;
+    onKeyDown?: string;
 }
 
 export const hotkeyList: HotkeyList[] = [
@@ -27,7 +24,7 @@ export const hotkeyList: HotkeyList[] = [
     {
         key: 's',
         comment: `Manual Save`,
-        onKeyDown: 'manualSave' as keyof HotkeysBase,
+        onKeyUp: 'manualSave',
     },
     {
         key: 'backspace',

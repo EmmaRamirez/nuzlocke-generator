@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { cx, css } from 'react-emotion';
+import { cx } from 'react-emotion';
 import {
     Classes,
     Button,
@@ -13,15 +13,14 @@ import { classWithDarkTheme, Styles } from 'utils';
 import * as styles from './style';
 import { connect } from 'react-redux';
 import { Badge } from 'models';
-import { DeepSet, getAllBadges } from 'utils';
+import { getAllBadges } from 'utils';
 import { State } from 'state';
-import { style } from 'reducers/style';
 import { Checkpoints } from 'reducers/checkpoints';
-import { addCustomCheckpoint, editCheckpoint, deleteCheckpoint } from 'actions';
+import { addCustomCheckpoint, editCheckpoint, deleteCheckpoint, reorderCheckpoints } from 'actions';
 
 export interface CheckpointsSelectProps {
     checkpoint: Badge;
-    editCheckpoint: editCheckpoint;
+    onEdit: (img, name) => void;
 }
 
 export interface CheckpointsSelectState {
@@ -37,10 +36,7 @@ export class CheckpointsSelect extends React.Component<
             <div style={{ padding: '1rem', height: '400px', overflowY: 'auto' }}>
                 {getAllBadges().map((badge, key) => {
                     return (
-                        <Button onClick={e => {
-                            this.props.editCheckpoint({ image: badge.image }, checkpointTargetName);
-                            console.log(e);
-                            }} key={key} style={{ display: 'block' }} className={Classes.MINIMAL}>
+                        <Button onClick={e => this.props.onEdit({ image: badge.image }, checkpointTargetName)} key={key} name={badge.name} style={{ display: 'block' }} className={Classes.MINIMAL}>
                             <img
                                 className={cx(styles.checkpointImage(1))}
                                 alt={badge.name}
@@ -84,6 +80,7 @@ export interface CheckpointsEditorProps {
     addCheckpoint: addCustomCheckpoint;
     editCheckpoint: editCheckpoint;
     deleteCheckpoint: deleteCheckpoint;
+    reorderCheckpoints: reorderCheckpoints;
 }
 
 export interface CheckpointsEditorState {
@@ -116,11 +113,13 @@ export class CheckpointsEditorBase extends React.Component<
         }
     };
 
+    private onSortEnd = ({ oldIndex, newIndex }) => this.props.reorderCheckpoints(oldIndex, newIndex);
+
     private renderCheckpoints(checkpoints: Checkpoints) {
         return (
             checkpoints &&
             checkpoints.map((checkpoint, key) => {
-                return (
+                return () => (
                     <li
                         key={key}
                         className={cx(
@@ -130,16 +129,16 @@ export class CheckpointsEditorBase extends React.Component<
                                 this.props.style.editorDarkMode,
                             ),
                         )}>
-                        <Icon icon='drag-handle-vertical' />
+                        {/* <Icon icon='drag-handle-vertical' /> */}
                         <div className={cx(styles.checkpointName)}>
                             <img
                                 className={cx(styles.checkpointImage())}
                                 alt={checkpoint.name}
                                 src={`./img/checkpoints/${checkpoint.image}.png`}
                             />
-                            <input onChange={e => this.props.editCheckpoint({ name: e.target.name }, e.target.name)} className={Classes.INPUT} type='text' value={checkpoint.name} />
+                            <input onChange={e => this.props.editCheckpoint({ name: e.target.value }, checkpoint.name)} className={Classes.INPUT} type='text' value={checkpoint.name} />
                         </div>
-                        <CheckpointsSelect editCheckpoint={editCheckpoint} checkpoint={checkpoint} />
+                        <CheckpointsSelect onEdit={(i, n) => this.props.editCheckpoint(i, n)} checkpoint={checkpoint} />
                         {/* <div className={cx(styles.checkpointImageUploadWrapper)}>Use Custom Image <input onChange={this.onUpload} type='file' /></div> */}
                         <Icon style={{ cursor: 'pointer' }} onClick={e => this.props.deleteCheckpoint(checkpoint.name)} className={cx(styles.checkpointDelete)} icon='trash' />
                     </li>
@@ -173,5 +172,6 @@ export const CheckpointsEditor = connect(
         addCheckpoint: addCustomCheckpoint,
         editCheckpoint,
         deleteCheckpoint,
+        reorderCheckpoints,
     }
 )(CheckpointsEditorBase);
