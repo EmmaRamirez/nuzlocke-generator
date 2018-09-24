@@ -48,14 +48,13 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
             edit = {
                 [inputName]: e.target.value,
             };
-        } else if (inputName === 'champion' || inputName === 'shiny') {
+        } else if (inputName === 'champion' || inputName === 'shiny' || inputName === 'hidden') {
             edit = {
                 [inputName]: e.target.checked,
             };
         } else if (inputName === 'egg') {
             edit = {
                 [inputName]: e.target.checked,
-                species: 'Egg',
                 nickname: 'Egg',
             };
         } else {

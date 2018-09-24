@@ -14,6 +14,7 @@ export interface Styles {
     imageStyle: RadiusType;
     itemStyle: RadiusType;
     grayScaleDeadPokemon: boolean;
+    minimalBoxedLayout: boolean;
     minimalTeamLayout: boolean;
     movesPosition: OrientationType;
     oldMetLocationFormat: boolean;
@@ -43,6 +44,7 @@ export const styleDefaults: Styles = {
     imageStyle: 'round',
     itemStyle: 'round',
     grayScaleDeadPokemon: false,
+    minimalBoxedLayout: false,
     minimalTeamLayout: false,
     movesPosition: 'horizontal' as OrientationType,
     oldMetLocationFormat: false,

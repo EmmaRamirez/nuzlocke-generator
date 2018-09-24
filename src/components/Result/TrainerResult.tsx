@@ -11,34 +11,30 @@ import {
 import { connect } from 'react-redux';
 import { Trainer, Badge } from 'models';
 import { State } from 'state';
+import { Checkpoints } from 'reducers/checkpoints';
 
 export interface TrainerResultProps {
     orientation: OrientationType;
 
+    checkpoints: Checkpoints;
     trainer: Trainer;
     game: { name: Game };
     style: Styles;
 }
 
-const has = (badges: Badge[] | undefined, badge: Badge) => {
-    if (badges) {
-        return badges.some(b => b.name === badge.name);
-    }
-    return false;
-};
-
 export class TrainerResultBase extends React.Component<TrainerResultProps> {
     private renderBadgesOrTrials() {
         const { name } = this.props.game;
+        const trainerBadges = this.props.trainer.badges ? this.props.trainer.badges : [];
 
         if (!this.props.style.displayBadges) {
             return null;
         }
 
-        return getBadges(name).map(badge => {
+        return this.props.checkpoints.map(badge => {
             return (
                 <img
-                    className={has(this.props.trainer.badges, badge) ? 'obtained' : 'not-obtained'}
+                    className={trainerBadges.some(b => b.name === badge.name) ? 'obtained' : 'not-obtained'}
                     key={badge.name}
                     alt={badge.name}
                     src={`./img/checkpoints/${badge.image}.png`}
@@ -112,6 +108,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
 }
 
 export const TrainerResult = connect((state: Pick<State, keyof State>) => ({
+    checkpoints: state.checkpoints,
     style: state.style,
     trainer: state.trainer,
     game: state.game,

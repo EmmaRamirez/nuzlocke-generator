@@ -21,18 +21,20 @@ import { Omit } from 'ramda';
 
 interface PokemonIconProps {
     /** The id of the Pokemon, used for selection **/
-    id?: string;
+    id?: Pokemon['id'];
     /** The id of the Pokemon **/
-    species: string;
+    species: Pokemon['species'];
     /** The forme of the Pokemon **/
-    forme?: string;
+    forme?: Pokemon['forme'];
     /** The gender of the Pokemon */
     gender?: GenderElementProps;
-    customIcon?: string;
+    customIcon?: Pokemon['customIcon'];
+    hidden?: Pokemon['hidden'];
+    egg?: Pokemon['egg'];
     onClick: () => void;
     selectedId: string | null;
     /** Renders its shiny version if true **/
-    shiny?: boolean;
+    shiny?: Pokemon['shiny'];
     className?: string;
     style?: React.CSSProperties;
 
@@ -72,19 +74,19 @@ const iconSource = {
     },
 };
 
-type getIconURLArgs = Pick<Pokemon, 'id' | 'species' | 'forme' | 'shiny' | 'gender' | 'customIcon'>;
+type IconURLArgs = Pick<Pokemon, 'id' | 'species' | 'forme' | 'shiny' | 'gender' | 'customIcon' | 'egg'>;
 
-export const getIconURL = ({ id, species, forme, shiny, gender, customIcon }: getIconURLArgs) => {
+export const getIconURL = ({ id, species, forme, shiny, gender, customIcon, egg }: IconURLArgs) => {
     const baseURL = `icons/pokemon/`;
     const isShiny = shiny ? 'shiny' : 'regular';
     const isFemaleSpecific =
         significantGenderDifferenceList.includes(species) && Gender.isFemale(gender)
             ? `female/`
             : '';
-    if (species === 'Egg') return `${baseURL}egg.png`;
+    if (species === 'Egg' || egg) return `${baseURL}egg.png`;
     if (customIcon) return customIcon;
     return `${baseURL}${isShiny}/${isFemaleSpecific}${formatSpeciesName(species)}${getFormeSuffix(
-        Forme[forme ? forme : 'Normal'],
+        forme as keyof typeof Forme
     )}.png`;
 };
 
@@ -110,8 +112,10 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
             className,
             shiny,
             style,
+            hidden,
             customIcon,
         } = this.props;
+        const imageStyle = { maxHeight: '100%', opacity: hidden ? 0.5 : 1 };
         return connectDragSource!(
             <div
                 role='icon'
@@ -125,7 +129,7 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
                     id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'
                 } ${className || ''} ${isDragging ? 'opacity-medium' : ''}`}>
                 <img
-                    style={{ maxHeight: '100%' }}
+                    style={imageStyle}
                     alt={species}
                     src={getIconURL({
                         id,
@@ -134,7 +138,7 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
                         shiny,
                         gender,
                         customIcon,
-                    } as getIconURLArgs)}
+                    } as IconURLArgs)}
                 />
             </div>,
         );

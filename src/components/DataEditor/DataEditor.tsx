@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Button, ButtonGroup, Dialog, Callout, TextArea, Intent, Alert } from '@blueprintjs/core';
+import { Button, ButtonGroup, Dialog, Callout, TextArea, Intent, Alert, Toaster } from '@blueprintjs/core';
 import { PokemonIconBase } from 'components/PokemonIcon';
 import { ErrorBoundary } from 'components/Shared';
 import * as uuid from 'uuid/v4';
@@ -37,6 +37,15 @@ const hexEncode = function(str: string) {
     return result;
 };
 
+const isValidJSON = (data: string): boolean => {
+    try {
+        JSON.parse(data);
+        return true;
+    } catch (e) {
+        return false;
+    }
+};
+
 export class DataEditorBase extends React.Component<DataEditorProps, DataEditorState> {
     public textarea: any;
     public fileInput: any;
@@ -50,6 +59,18 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
             data: '',
             href: '',
         };
+    }
+
+    private uploadJSON = e => {
+        if (isValidJSON(e.target.value)) {
+            this.setState({ data: e.target.value });
+        } else {
+            const toaster = Toaster.create();
+            toaster.show({
+                message: `Failed to parse invalid JSON`,
+                intent: Intent.DANGER,
+            });
+        }
     }
 
     private confirmImport = e => {
@@ -189,7 +210,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                             <div className='pt-dialog-body has-nice-scrollbars'>
                                 <TextArea
                                     className='custom-css-input pt-fill'
-                                    onChange={(e: any) => this.setState({ data: e.target.value })}
+                                    onChange={this.uploadJSON}
                                     placeholder='Paste nuzlocke.json contents here'
                                     value={this.state.data}
                                     large={true}

@@ -9,6 +9,7 @@ describe('<BadgeInput />', () => {
     it('renders its contents', () => {
         const wrapper = mount(
             <BadgeInput
+                checkpoints={[]}
                 style={styleDefaults}
                 trainer={TrainerKeys}
                 game={{ name: 'Emerald' }}

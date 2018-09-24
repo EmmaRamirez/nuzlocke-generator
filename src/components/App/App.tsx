@@ -6,8 +6,12 @@ import * as Loadable from 'react-loadable';
 
 import './app.styl';
 import { Hotkeys } from 'components/Hotkeys';
+import { getBadges } from 'utils';
+import { State } from 'state';
+import { addCustomCheckpoint } from 'actions';
 
 export interface AppProps {
+    game: any;
     style: any;
     rules: any;
     disableHotkeys?: boolean;
@@ -54,7 +58,8 @@ export class AppBase extends React.PureComponent<AppProps> {
 }
 
 export const App = connect(
-    (state: Partial<typeof reducers>) => ({
+    (state: Pick<State, keyof State>) => ({
+        game: state.game,
         style: state.style,
         rules: state.rules,
     }),

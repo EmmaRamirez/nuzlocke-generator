@@ -54,6 +54,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         return this.props.pokemon
             .filter(v => v.hasOwnProperty('id'))
             .filter(poke => poke.status === 'Team')
+            .filter(poke => !poke.hidden)
             .sort(sortPokes)
             .map((poke, index) => {
                 return <TeamPokemon key={index} pokemon={poke} />;
@@ -84,6 +85,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         return this.props.pokemon
             .filter(v => v.hasOwnProperty('id'))
             .filter(poke => poke.status === 'Boxed')
+            .filter(poke => !poke.hidden)
             .map((poke, index) => {
                 return <BoxedPokemon key={index} {...poke} />;
             });
@@ -93,6 +95,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         return this.props.pokemon
             .filter(v => v.hasOwnProperty('id'))
             .filter(poke => poke.status === 'Champs')
+            .filter(poke => !poke.hidden)
             .map((poke, index) => {
                 return (
                     <ChampsPokemon
@@ -108,6 +111,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         return this.props.pokemon
             .filter(v => v.hasOwnProperty('id'))
             .filter(poke => poke.status === 'Dead')
+            .filter(poke => !poke.hidden)
             .map((poke, index) => {
                 return <DeadPokemon key={index} {...poke} />;
             });

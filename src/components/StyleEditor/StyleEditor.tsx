@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { editStyle } from 'actions';
-import { gameOfOriginToColor, styleDefaults, listOfThemes, FEATURES, Game } from 'utils';
+import { gameOfOriginToColor, styleDefaults, listOfThemes, FEATURES, Game, OrientationType } from 'utils';
 import {
     RadioGroup,
     Radio,
@@ -35,14 +35,19 @@ const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'],
     }
     if (propName === 'template' && e.target.value === 'Cards') {
         props.editStyle({ imageStyle: 'square' });
+        props.editStyle({ movesPosition: 'horizontal' as OrientationType });
     }
     if (propName === 'template' && e.target.value === 'Hexagons') {
         props.editStyle({ resultWidth: 1320 });
         props.editStyle({ accentColor: 'transparent' });
+        props.editStyle({ movesPosition: 'horizontal' as OrientationType });
     }
     if (propName === 'template' && e.target.value === 'Generations') {
         props.editStyle({
             bgColor: game ? gameOfOriginToColor(game) : '',
+        });
+        props.editStyle({
+            minimalBoxedLayout: true,
         });
         props.editStyle({
             resultHeight: 870,
@@ -307,6 +312,21 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
 
                 <div className={styleEdit}>
                     <Checkbox
+                        checked={props.style.minimalBoxedLayout}
+                        name='minimalBoxedLayout'
+                        label='Minimal Boxed Layout'
+                        onChange={(e: any) =>
+                            editEvent(
+                                { ...e, target: { value: e.target.checked } },
+                                props,
+                                'minimalBoxedLayout',
+                            )
+                        }
+                    />
+                </div>
+
+                <div className={styleEdit}>
+                    <Checkbox
                         checked={props.style.displayBadges}
                         name='displayBadges'
                         label='Display Badges'
@@ -428,7 +448,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
 }
 
 export const StyleEditor = connect(
-    (state: Partial<typeof reducers>) => ({ style: state.style, game: state.game }),
+    (state: Pick<State, keyof State>) => ({ style: state.style, game: state.game }),
     {
         editStyle,
     },

@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { editGame, changeEditorSize, editStyle } from 'actions';
+import { editGame, changeEditorSize, editStyle, resetCheckpoints } from 'actions';
 import { gameOfOriginToColor, listOfGames, FEATURES } from 'utils';
 
 import { Button, Intent, Popover, Position, Menu } from '@blueprintjs/core';
 import { RulesEditorDialog } from 'components/RulesEditor';
+import { State } from 'state';
 
 export interface GameEditorProps {
     game: any;
@@ -12,6 +13,7 @@ export interface GameEditorProps {
     editor: any;
     editStyle: editStyle;
     changeEditorSize: changeEditorSize;
+    resetCheckpoints: resetCheckpoints;
 }
 
 const gameSubEditorStyle: any = {
@@ -33,6 +35,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
         this.props.editStyle({
             bgColor: gameOfOriginToColor(e.target.value),
         });
+        this.props.resetCheckpoints(e.target.value);
     };
 
     private toggleDialog = _ => this.setState({ isOpen: !this.state.isOpen });
@@ -67,8 +70,9 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
     }
 }
 
-export const GameEditor = connect((state: any) => ({ game: state.game, editor: state.editor }), {
+export const GameEditor = connect((state: Pick<State, keyof State>) => ({ game: state.game, editor: state.editor }), {
     editGame,
     editStyle,
     changeEditorSize,
+    resetCheckpoints,
 })(GameEditorBase as any);

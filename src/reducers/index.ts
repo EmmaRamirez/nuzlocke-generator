@@ -17,6 +17,7 @@ import { checkpoints } from './checkpoints';
 
 export const reducers = {
     box,
+    checkpoints,
     confirmation,
     game,
     nuzlocke,

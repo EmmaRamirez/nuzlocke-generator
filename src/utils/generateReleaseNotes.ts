@@ -253,7 +253,6 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
     '0.0.12-beta': `# Changelog
 
 ## Features
-- **Checkpoints Editor**: will support custom images in Beta 13
 - **Sprites Mode**: for Champs Pokémon
 - **Egg property**: in Pokémon Editor
 - **Alolan formes**: now have first-class support
@@ -275,8 +274,14 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
     '0.0.13-beta': `# Changelog
 
 ## Features
+- **Custom checkpoints editor**: swap out badges, rename badges, etc
+- **Hidden attribute**: hide Pokémon from the Result, simple as that
+- **Boxed layout toggling**: to minimal or, err, not minimal
 
 ## Fixes
+- Option \`Use Sprites for Champs Pokemon\` now correctly prevents Result download
+- Alolan forme icons now work again
+- Fixes for the Egg checkbox
 
 ## Known Issues
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading

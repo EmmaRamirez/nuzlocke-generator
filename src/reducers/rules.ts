@@ -14,18 +14,16 @@ export function rules(
         case ADD_RULE:
             return [...state, ''];
         case EDIT_RULE:
-            const newState = state;
-            newState[action.target] = action.rule;
-            return newState;
+            return state.map((rule, index) => {
+                if (index !== action.target) {
+                    return rule;
+                }
+                return action.rule;
+            });
         case DELETE_RULE:
-            return state.filter((_, i) => i !== action.target);
+            return state.filter((_, index) => index + 1 !== action.target);
         case RESET_RULES:
-            let newState2 = state;
-            newState2[2] = '';
-            newState2[1] = '';
-            newState2[0] = initialState[0];
-            newState2 = initialState;
-            return newState2;
+            return initialState;
         default:
             return state;
     }

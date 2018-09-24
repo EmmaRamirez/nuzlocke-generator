@@ -1,11 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { Toaster, Intent } from '@blueprintjs/core';
 import { reducers } from 'reducers';
 import { selectPokemon, deletePokemon, addPokemon } from 'actions';
 import { Pokemon } from 'models';
 import { sortPokes, sortPokesReverse, noop, generateEmptyPokemon } from 'utils';
 import { selectedId } from 'reducers/selectedId';
 import { hotkeyList } from 'utils';
+import { persistor } from 'store';
+import { State } from 'state';
 
 export interface HotkeysProps {
     selectPokemon: selectPokemon;
@@ -85,6 +88,24 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
         return this.props.pokemon.sort(sortPokesReverse)[0].id;
     }
 
+    private manualSave() {
+        persistor.flush()
+            .then(res => {
+                const toaster = Toaster.create();
+                toaster.show({
+                    message: `Save successful!`,
+                    intent: Intent.SUCCESS,
+                });
+            })
+            .catch(err => {
+            const toaster = Toaster.create();
+            toaster.show({
+                message: `Saved failed. Please try again.`,
+                intent: Intent.DANGER,
+            });
+        });
+    }
+
     private previousPokemon() {
         const poke = this.props.pokemon.find(p => p.id === this.props.selectedId);
         const position = poke!.position;
@@ -117,7 +138,7 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
 }
 
 export const Hotkeys = connect(
-    (state: Partial<typeof reducers>) => ({
+    (state: Pick<State, keyof State>) => ({
         pokemon: state.pokemon,
         selectedId: state.selectedId,
     }),
@@ -126,4 +147,4 @@ export const Hotkeys = connect(
         deletePokemon,
         addPokemon,
     },
-)(HotkeysBase as any);
+)(HotkeysBase);

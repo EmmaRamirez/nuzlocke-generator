@@ -1,5 +1,3 @@
-import { accentedE } from 'utils';
-
 export interface HotkeyList {
     key: string;
     comment: string;
@@ -22,6 +20,11 @@ export const hotkeyList: HotkeyList[] = [
         key: 'n',
         comment: `Add new Pok\xE9mon`,
         onKeyUp: 'addPokemon',
+    },
+    {
+        key: 's',
+        comment: `Manual Save`,
+        onKeyUp: 'manualSave',
     },
     {
         key: 'backspace',
