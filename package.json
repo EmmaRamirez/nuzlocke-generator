@@ -44,7 +44,6 @@
     "ramda": "^0.25.0",
     "react-dnd": "^5.0.0",
     "react-dnd-html5-backend": "^5.0.1",
-    "react-sortable-hoc": "^0.8.3",
     "redux-mock-store": "^1.5.3"
   },
   "devDependencies": {
@@ -74,8 +73,8 @@
     "css-loader": "^0.28.7",
     "dom-to-image": "git+https://github.com/Keepsite/dom-to-image.git",
     "emotion": "^8.0.12",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "file-loader": "^1.1.11",
     "history": "^4.7.2",
     "husky": "^1.0.0-rc.12",
@@ -93,7 +92,7 @@
     "prettier": "^1.10.2",
     "prop-types": "^15.6.0",
     "pure-render-decorator": "^1.2.1",
-    "react": "^16.5.0",
+    "react": "^16.5.2",
     "react-addons-css-transition-group": "^15.6.2",
     "react-addons-test-utils": "^15.6.2",
     "react-custom-scrollbars": "^4.2.1",

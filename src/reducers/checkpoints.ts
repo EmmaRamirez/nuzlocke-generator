@@ -13,7 +13,6 @@ import {
 } from 'actions';
 import { Badge } from 'models';
 import { getBadges, Game } from 'utils';
-import { arrayMove } from 'react-sortable-hoc';
 
 export type Checkpoints = Badge[];
 
@@ -25,7 +24,8 @@ export function checkpoints(
         case RESET_CHECKPOINTS:
             return getBadges(action.game as Game);
         case REORDER_CHECKPOINTS:
-            return arrayMove(state, action.oldIndex as number, action.newIndex as number);
+            // return arrayMove(state, action.oldIndex as number, action.newIndex as number);
+            return state;
         case ADD_CUSTOM_CHECKPOINT:
             return [ ...state, action.checkpoint ];
         case EDIT_CHECKPOINT:
