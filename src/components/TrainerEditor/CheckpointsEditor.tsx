@@ -119,7 +119,7 @@ export class CheckpointsEditorBase extends React.Component<
         return (
             checkpoints &&
             checkpoints.map((checkpoint, key) => {
-                return () => (
+                return (
                     <li
                         key={key}
                         className={cx(
