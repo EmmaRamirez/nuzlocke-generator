@@ -51,7 +51,7 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
                         canOutsideClickClose={false}
                         title='Checkpoints Editor'
                         icon='badge'
-                        style={{ width: '33rem' }}>
+                        style={{ width: '44rem' }}>
                         <div className={Classes.DIALOG_BODY}>
                             <CheckpointsEditor
                                 checkpoints={this.props.checkpoints}

@@ -47,7 +47,9 @@ export const checkpointSelect = css`
 `;
 
 export const checkpointImageUploadWrapper = css`
-    margin-left: auto;
+    align-items: center;
+    margin: .25rem;
+    position: relative;
 `;
 
 export const checkpointButtons = css`
