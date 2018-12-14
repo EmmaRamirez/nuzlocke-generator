@@ -418,7 +418,6 @@ export const matchSpeciesToTypes = (
         case 'Rhyhorn':
         case 'Rhydon':
         case 'Rhyperior':
-        case 'Sudowoodo':
             return [Types.Rock, Types.Ground];
         /**
          * @type Ghost
@@ -1040,11 +1039,16 @@ export const matchSpeciesToTypes = (
         case 'Metagross':
         case 'Jirachi':
             return [Types.Steel, Types.Psychic];
-        case 'Regirock':
-            return [Types.Rock, Types.Rock];
         case 'Cascoon':
             return [Types.Bug, Types.Bug];
         case 'Nosepass':
+        case 'Sudowoodo':
+        case 'Regirock':
+        case 'Roggenrola':
+        case 'Boldore':
+        case 'Gigalith':
+        case 'Rockruff':
+        case 'Lycanroc':
             return [Types.Rock, Types.Rock];
         case 'Seedot':
         case 'Shroomish':
