@@ -141,10 +141,10 @@ export class CheckpointsEditorBase extends React.Component<
                             <input onChange={e => this.props.editCheckpoint({ name: e.target.value }, checkpoint.name)} className={Classes.INPUT} type='text' value={checkpoint.name} />
                         </div>
                         <CheckpointsSelect onEdit={(i, n) => this.props.editCheckpoint(i, n)} checkpoint={checkpoint} />
-                        <div className={cx(styles.checkpointImageUploadWrapper)}>
+                        {/* <div className={cx(styles.checkpointImageUploadWrapper)}>
                             <Button icon='upload'>Upload Image</Button>
                             <input style={{ cursor: 'pointer', opacity: 0, position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} onChange={this.onUpload} type='file' />
-                        </div>
+                        </div> */}
                         <Icon style={{ cursor: 'pointer' }} onClick={e => this.props.deleteCheckpoint(checkpoint.name)} className={cx(styles.checkpointDelete)} icon='trash' />
                     </li>
                 );
