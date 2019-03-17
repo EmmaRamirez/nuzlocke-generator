@@ -80,7 +80,6 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                     <CurrentPokemonEdit />
                 </BaseEditor>
                 <MassEditor
-                    // @ts-ignore: Props issues with isMassEditorOpen/isOpen
                     isOpen={this.state.isMassEditorOpen}
                     toggleDialog={e =>
                         this.setState({ isMassEditorOpen: !this.state.isMassEditorOpen })

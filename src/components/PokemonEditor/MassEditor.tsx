@@ -8,11 +8,11 @@ import { Pokemon, PokemonKeys } from 'models';
 import { generateEmptyPokemon, sortPokes } from 'utils';
 
 export interface MassEditorProps {
-    isOpen: any;
+    isOpen: boolean;
     toggleDialog?: any;
     pokemon: Pokemon[];
     style: any;
-    editPokemon: (edits: object, id: string) => void;
+    editPokemon: (edits: object, id: string) => any;
 }
 
 export class SortableColumnMenu extends React.PureComponent {
@@ -117,9 +117,9 @@ export class MassEditorBase extends React.Component<
 }
 
 export const MassEditor = connect(
-    (state: any) => ({
+    (state: any, props) => ({
         pokemon: state.pokemon,
         style: state.style,
     }),
     { editPokemon },
-)(MassEditorBase as any);
+)(MassEditorBase);

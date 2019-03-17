@@ -1,6 +1,6 @@
 import { noop } from './noop';
 
-export class DeepSet<T extends object> {
+export class DeepSet<T> {
     private set: T[];
     public key: keyof T;
 
