@@ -1,4 +1,30 @@
 {
+  "undefined": [
+    {
+      "id": 0,
+      "name": null,
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": 1,
+      "name": null,
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": 0,
+      "name": null,
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": 1,
+      "name": null,
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "@blueprintjs/core/lib/css/blueprint.css": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/css/blueprint.css",
@@ -725,7 +751,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./menu/menu": [
+  "../menu/menu": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/menu/menu.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/menu/menu.js",
@@ -753,7 +779,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./menu/menuItem": [
+  "../menu/menuItem": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/menu/menuItem.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/menu/menuItem.js",
@@ -865,7 +891,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../popover/popover": [
+  "./popover/popover": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/popover/popover.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/popover/popover.js",
@@ -907,7 +933,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../portal/portal": [
+  "./portal/portal": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/portal/portal.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/portal/portal.js",
@@ -1089,7 +1115,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../text/text": [
+  "./text/text": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
@@ -1817,7 +1843,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./draggable": [
+  "./interactions/draggable": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/interactions/draggable.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/interactions/draggable.js",
@@ -4805,7 +4831,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./isFunction": [
+  "lodash/isFunction": [
     {
       "id": "./node_modules/lodash/isFunction.js",
       "name": "./node_modules/lodash/isFunction.js",
@@ -5015,6 +5041,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "loglevelnext/dist/loglevelnext": [
+    {
+      "id": "./node_modules/loglevelnext/dist/loglevelnext.js",
+      "name": "./node_modules/loglevelnext/dist/loglevelnext.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/loglevelnext/dist/loglevelnext.js",
+      "name": "./node_modules/loglevelnext/dist/loglevelnext.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "markdown-escapes": [
     {
       "id": "./node_modules/markdown-escapes/index.js",
@@ -5179,6 +5219,74 @@
     {
       "id": "./node_modules/prop-types/lib/ReactPropTypesSecret.js",
       "name": "./node_modules/prop-types/lib/ReactPropTypesSecret.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "punycode": [
+    {
+      "id": "./node_modules/punycode/punycode.js",
+      "name": "./node_modules/punycode/punycode.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/punycode/punycode.js",
+      "name": "./node_modules/punycode/punycode.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./decode": [
+    {
+      "id": "./node_modules/querystring-es3/decode.js",
+      "name": "./node_modules/querystring-es3/decode.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/remark-parse/lib/decode.js",
+      "name": "./node_modules/remark-parse/lib/decode.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/querystring-es3/decode.js",
+      "name": "./node_modules/querystring-es3/decode.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./node_modules/remark-parse/lib/decode.js",
+      "name": "./node_modules/remark-parse/lib/decode.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./encode": [
+    {
+      "id": "./node_modules/querystring-es3/encode.js",
+      "name": "./node_modules/querystring-es3/encode.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/querystring-es3/encode.js",
+      "name": "./node_modules/querystring-es3/encode.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "querystring": [
+    {
+      "id": "./node_modules/querystring-es3/index.js",
+      "name": "./node_modules/querystring-es3/index.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/querystring-es3/index.js",
+      "name": "./node_modules/querystring-es3/index.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -7165,20 +7273,6 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./decode": [
-    {
-      "id": "./node_modules/remark-parse/lib/decode.js",
-      "name": "./node_modules/remark-parse/lib/decode.js",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./node_modules/remark-parse/lib/decode.js",
-      "name": "./node_modules/remark-parse/lib/decode.js",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
   "./defaults": [
     {
       "id": "./node_modules/remark-parse/lib/defaults.js",
@@ -8201,6 +8295,34 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "url": [
+    {
+      "id": "./node_modules/url/url.js",
+      "name": "./node_modules/url/url.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/url/url.js",
+      "name": "./node_modules/url/url.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./util": [
+    {
+      "id": "./node_modules/url/util.js",
+      "name": "./node_modules/url/util.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/url/util.js",
+      "name": "./node_modules/url/util.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./lib/bytesToUuid": [
     {
       "id": "./node_modules/uuid/lib/bytesToUuid.js",
@@ -8327,6 +8449,62 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./hot": [
+    {
+      "id": "./node_modules/webpack-hot-client/client/hot.js",
+      "name": "./node_modules/webpack-hot-client/client/hot.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/webpack-hot-client/client/hot.js",
+      "name": "./node_modules/webpack-hot-client/client/hot.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "webpack-hot-client/client?8cb99dfc-ba0b-426d-9828-27ec4c9be3e8": [
+    {
+      "id": "./node_modules/webpack-hot-client/client/index.js?8cb99dfc-ba0b-426d-9828-27ec4c9be3e8",
+      "name": "./node_modules/webpack-hot-client/client/index.js?8cb99dfc-ba0b-426d-9828-27ec4c9be3e8",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/webpack-hot-client/client/index.js?8cb99dfc-ba0b-426d-9828-27ec4c9be3e8",
+      "name": "./node_modules/webpack-hot-client/client/index.js?8cb99dfc-ba0b-426d-9828-27ec4c9be3e8",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./log": [
+    {
+      "id": "./node_modules/webpack-hot-client/client/log.js",
+      "name": "./node_modules/webpack-hot-client/client/log.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/webpack-hot-client/client/log.js",
+      "name": "./node_modules/webpack-hot-client/client/log.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./socket": [
+    {
+      "id": "./node_modules/webpack-hot-client/client/socket.js",
+      "name": "./node_modules/webpack-hot-client/client/socket.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/webpack-hot-client/client/socket.js",
+      "name": "./node_modules/webpack-hot-client/client/socket.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./../../webpack/buildin/global.js": [
     {
       "id": "./node_modules/webpack/buildin/global.js",
@@ -8341,7 +8519,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./../../webpack/buildin/module.js": [
+  "./../webpack/buildin/module.js": [
     {
       "id": "./node_modules/webpack/buildin/module.js",
       "name": "./node_modules/webpack/buildin/module.js",

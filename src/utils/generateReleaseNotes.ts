@@ -290,7 +290,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
     '0.0.14-beta': `# Changelog
 
 ## Features
-- ** Added Meltan, Melmetal, Grookey, Scorbunny, Sobble
+- Added Meltan, Melmetal, Grookey, Scorbunny, Sobble
 
 ## Fixes
 - Sudowoodo is now properly recognized as a Rock type
