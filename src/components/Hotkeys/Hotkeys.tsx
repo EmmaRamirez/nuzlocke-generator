@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Toaster, Intent } from '@blueprintjs/core';
-import { reducers } from 'reducers';
 import { selectPokemon, deletePokemon, addPokemon } from 'actions';
 import { Pokemon } from 'models';
 import { sortPokes, sortPokesReverse, noop, generateEmptyPokemon } from 'utils';
-import { selectedId } from 'reducers/selectedId';
 import { hotkeyList } from 'utils';
 import { persistor } from 'store';
 import { State } from 'state';

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { editStyle } from 'actions';
-import { gameOfOriginToColor, styleDefaults, listOfThemes, FEATURES, Game, OrientationType } from 'utils';
+import { gameOfOriginToColor, listOfThemes, FEATURES, Game, OrientationType } from 'utils';
 import {
     RadioGroup,
     Radio,
@@ -17,7 +17,6 @@ import { State } from 'state';
 import { BaseEditor } from 'components/BaseEditor';
 import { ColorEdit } from 'components/Shared';
 import { cx } from 'emotion';
-import { reducers } from 'reducers';
 
 import * as Styles from './styles';
 import { ThemeEditor } from 'components/ThemeEditor';

@@ -1,14 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { reducers } from 'reducers';
 
 import * as Loadable from 'react-loadable';
 
 import './app.styl';
 import { Hotkeys } from 'components/Hotkeys';
-import { getBadges } from 'utils';
 import { State } from 'state';
-import { addCustomCheckpoint } from 'actions';
 
 export interface AppProps {
     game: any;

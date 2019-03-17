@@ -1,20 +1,18 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Dialog, Menu, MenuItem } from '@blueprintjs/core';
-import { Table, Column, EditableCell, ColumnHeaderCell, ITableProps } from '@blueprintjs/table';
+import { Table, Column, EditableCell, ITableProps } from '@blueprintjs/table';
 import { AddPokemonButton } from 'components/AddPokemonButton';
 import { editPokemon } from 'actions';
 import { Pokemon, PokemonKeys } from 'models';
 import { generateEmptyPokemon, sortPokes } from 'utils';
-import { currentId } from 'async_hooks';
-import { pokemon } from 'reducers/pokemon';
 
 export interface MassEditorProps {
-    isOpen: any;
+    isOpen: boolean;
     toggleDialog?: any;
     pokemon: Pokemon[];
     style: any;
-    editPokemon: (edits: object, id: string) => void;
+    editPokemon: (edits: object, id: string) => any;
 }
 
 export class SortableColumnMenu extends React.PureComponent {
@@ -73,10 +71,10 @@ export class MassEditorBase extends React.Component<
                                 onConfirm={(v, _, c) => {
                                     let value: any = v;
                                     if (key === 'types') {
-                                        value = v.split(',').map(s => s.trim());
+                                        value = v && v.split(',').map(s => s.trim());
                                     }
                                     if (key === 'moves') {
-                                        value = v.split(',').map(s => s.trim());
+                                        value = v && v.split(',').map(s => s.trim());
                                     }
                                     this.props.editPokemon(
                                         {
@@ -119,9 +117,9 @@ export class MassEditorBase extends React.Component<
 }
 
 export const MassEditor = connect(
-    (state: any) => ({
+    (state: any, props) => ({
         pokemon: state.pokemon,
         style: state.style,
     }),
     { editPokemon },
-)(MassEditorBase as any);
+)(MassEditorBase);

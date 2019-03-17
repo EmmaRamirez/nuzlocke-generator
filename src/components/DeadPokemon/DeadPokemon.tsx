@@ -4,10 +4,7 @@ import { connect } from 'react-redux';
 import { Pokemon, Game } from 'models';
 import { GenderElement } from 'components/Shared';
 import {
-    getBackgroundGradient,
     getPokemonImage,
-    getSpriteIcon,
-    speciesToNumber,
     getContrastColor,
     Styles,
     Forme,
@@ -40,7 +37,6 @@ export const DeadPokemonBase = (
     const getClassname = () =>
         poke.champion ? 'dead-pokemon-container champion' : 'dead-pokemon-container';
     const getAccentColor = (prop: any) => (prop.style ? prop.style.accentColor : '#111111');
-    console.log(`deadPokemonColor`, getAccentColor(poke));
     return (
         <div
             className={getClassname()}

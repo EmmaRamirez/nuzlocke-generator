@@ -230,6 +230,7 @@ export const matchSpeciesToTypes = (
         case 'Carnivine':
         case 'Fomantis':
         case 'Lurantis':
+        case 'Grookey':
             return [Types.Grass, Types.Grass];
         case 'Torterra':
             return [Types.Grass, Types.Ground];
@@ -274,6 +275,7 @@ export const matchSpeciesToTypes = (
         case 'Braixen':
         case 'Litten':
         case 'Torracat':
+        case 'Scorbunny':
             return [Types.Fire, Types.Fire];
         case 'Charizard':
         case 'Moltres':
@@ -346,6 +348,7 @@ export const matchSpeciesToTypes = (
         case 'Brionne':
         case 'Wishiwashi':
         case 'Pyukumuku':
+        case 'Sobble':
             return [Types.Water, Types.Water];
         case 'Slowpoke':
         case 'Slowbro':
@@ -418,7 +421,6 @@ export const matchSpeciesToTypes = (
         case 'Rhyhorn':
         case 'Rhydon':
         case 'Rhyperior':
-        case 'Sudowoodo':
             return [Types.Rock, Types.Ground];
         /**
          * @type Ghost
@@ -1040,11 +1042,16 @@ export const matchSpeciesToTypes = (
         case 'Metagross':
         case 'Jirachi':
             return [Types.Steel, Types.Psychic];
-        case 'Regirock':
-            return [Types.Rock, Types.Rock];
         case 'Cascoon':
             return [Types.Bug, Types.Bug];
         case 'Nosepass':
+        case 'Sudowoodo':
+        case 'Regirock':
+        case 'Roggenrola':
+        case 'Boldore':
+        case 'Gigalith':
+        case 'Rockruff':
+        case 'Lycanroc':
             return [Types.Rock, Types.Rock];
         case 'Seedot':
         case 'Shroomish':
@@ -1068,6 +1075,8 @@ export const matchSpeciesToTypes = (
         case 'Relicanth':
             return [Types.Rock, Types.Water];
         case 'Registeel':
+        case 'Melmetal':
+        case 'Meltan':
             return [Types.Steel, Types.Steel];
         case 'Latias':
         case 'Latios':

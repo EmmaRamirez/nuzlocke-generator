@@ -806,4 +806,9 @@ export const listOfPokemon = [
     'Stakataka',
     'Blacephalon',
     'Zeraora',
+    'Meltan',
+    'Melmetal',
+    'Grookey',
+    'Scorbunny',
+    'Sobble'
 ];

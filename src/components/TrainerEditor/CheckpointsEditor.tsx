@@ -103,17 +103,19 @@ export class CheckpointsEditorBase extends React.Component<
 
     private onUpload = (e: any) => {
         const size = e.target.files[0].size / 1024 / 1024;
+        const toaster = Toaster.create();
         if (size > 0.5) {
-            const toaster = Toaster.create();
             toaster.show({
                 message: `File size of 500KB exceeded. File was ${size.toFixed(2)}MB`,
                 intent: Intent.DANGER,
             });
         } else {
+            toaster.show({
+                message: `Upload successful!`,
+                intent: Intent.SUCCESS,
+            });
         }
     };
-
-    private onSortEnd = ({ oldIndex, newIndex }) => this.props.reorderCheckpoints(oldIndex, newIndex);
 
     private renderCheckpoints(checkpoints: Checkpoints) {
         return (
@@ -139,7 +141,10 @@ export class CheckpointsEditorBase extends React.Component<
                             <input onChange={e => this.props.editCheckpoint({ name: e.target.value }, checkpoint.name)} className={Classes.INPUT} type='text' value={checkpoint.name} />
                         </div>
                         <CheckpointsSelect onEdit={(i, n) => this.props.editCheckpoint(i, n)} checkpoint={checkpoint} />
-                        {/* <div className={cx(styles.checkpointImageUploadWrapper)}>Use Custom Image <input onChange={this.onUpload} type='file' /></div> */}
+                        {/* <div className={cx(styles.checkpointImageUploadWrapper)}>
+                            <Button icon='upload'>Upload Image</Button>
+                            <input style={{ cursor: 'pointer', opacity: 0, position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} onChange={this.onUpload} type='file' />
+                        </div> */}
                         <Icon style={{ cursor: 'pointer' }} onClick={e => this.props.deleteCheckpoint(checkpoint.name)} className={cx(styles.checkpointDelete)} icon='trash' />
                     </li>
                 );

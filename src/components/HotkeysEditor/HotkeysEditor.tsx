@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 import { BaseEditor } from 'components/BaseEditor';
 import { hotkeyList } from 'utils';
 

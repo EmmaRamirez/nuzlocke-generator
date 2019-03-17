@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 import { PokemonIcon } from 'components/PokemonIcon';
-import { gameOfOriginToColor, Game, getPokemonImage, Styles } from 'utils';
+import { gameOfOriginToColor, Game, getPokemonImage } from 'utils';
 import { Pokemon } from 'models';
-import { GenderElement, GenderElementProps } from '../Shared';
+import { GenderElement } from '../Shared';
 import { css, cx } from 'emotion';
 
 export const champsPokemon = (options: any) => css`

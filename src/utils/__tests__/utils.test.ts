@@ -9,6 +9,7 @@ import {
     mapTrainerImage,
     Generation,
     typeToColor,
+    isEmpty,
 } from 'utils';
 import * as Color from 'color';
 import { DeepSet } from '../DeepSet';
@@ -55,6 +56,21 @@ describe('choose', () => {
         for (let i = 0; i > 10; i++) {
             (expect as any)(chosenDice).toBeOneOf(dice);
         }
+    });
+});
+
+describe('isEmpty', () => {
+    it('works with nulls or undefineds', () => {
+        expect(isEmpty(null)).toBe(true);
+        expect(isEmpty(undefined)).toBe(true);
+    });
+
+    it('works with empty strings', () => {
+        expect(isEmpty('')).toBe(true);
+    });
+
+    it('works with empty arrays', () => {
+        expect(isEmpty([])).toBe(true);
     });
 });
 

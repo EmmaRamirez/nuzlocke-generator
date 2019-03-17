@@ -287,4 +287,20 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
+    '0.0.14-beta': `# Changelog
+
+## Features
+- ** Added Meltan, Melmetal, Grookey, Scorbunny, Sobble
+
+## Fixes
+- Sudowoodo is now properly recognized as a Rock type
+- More testing and dependency updates
+
+## Known Issues
+- Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`,
+    '0.0.15-beta': `# Changelog
+
+`
 };
