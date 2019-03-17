@@ -4,6 +4,8 @@ export function history(state = [], action: Action<ADD_HISTORY_ENTRY | REPLACE_S
     switch (action.type) {
         case ADD_HISTORY_ENTRY:
             return [...state, action.history];
+        case REMOVE_HISTORY_ENTRY:
+            return state.filter(h => h.id !== action.id);
         case REPLACE_STATE:
             return action.replaceWith.history;
         default:
