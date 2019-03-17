@@ -795,7 +795,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./navbar/navbarGroup": [
+  "./navbarGroup": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarGroup.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarGroup.js",
@@ -1439,7 +1439,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/classes": [
+  "../common/classes": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
@@ -1817,7 +1817,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./draggable": [
+  "./interactions/draggable": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/interactions/draggable.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/interactions/draggable.js",
@@ -9759,7 +9759,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "components/Shared": [
+  "../Shared": [
     {
       "id": "./src/components/Shared/index.ts",
       "name": "./src/components/Shared/index.ts",
