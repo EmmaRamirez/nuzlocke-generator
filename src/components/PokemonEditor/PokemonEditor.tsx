@@ -6,13 +6,11 @@ import { Pokemon, Game } from 'models';
 import { Boxes } from 'types';
 import { State } from 'state';
 
-import { generateEmptyPokemon, dragAndDrop } from 'utils';
+import { generateEmptyPokemon } from 'utils';
 import { CurrentPokemonEdit, MassEditor } from '.';
 
 import { AddPokemonButton } from 'components/AddPokemonButton';
 import { BaseEditor } from 'components/BaseEditor';
-import { PokemonByFilter } from 'components/Shared';
-import { DropTarget, ConnectDropTarget } from 'react-dnd';
 import { Box } from './Box';
 
 require('../../assets/img/team-box.png');

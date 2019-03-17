@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { connect, Dispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { Classes } from '@blueprintjs/core';
 
 import { listOfThemes } from 'utils';
-import { reducers } from 'reducers';
 import { editStyle } from 'actions';
 
 export interface ThemeSelectProps {

@@ -2,16 +2,12 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import {
     getFormeSuffix,
-    getSpriteIcon,
-    speciesToNumber,
     listOfPokemon,
     significantGenderDifferenceList,
     Forme,
 } from 'utils';
 import { Gender, GenderElementProps } from 'components/Shared';
-import { pokemon } from 'reducers/pokemon';
 import { selectPokemon } from 'actions';
-import { ErrorBoundary } from '../Shared';
 import { store } from 'store';
 import { DragSource, ConnectDragSource } from 'react-dnd';
 import { Pokemon } from 'models';

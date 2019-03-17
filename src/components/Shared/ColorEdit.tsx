@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as Styles from 'components/StyleEditor/styles';
-import { cx, css } from 'emotion';
+import { cx } from 'emotion';
 import { connect } from 'react-redux';
 import { classWithDarkTheme, Styles as StyleType } from 'utils';
 

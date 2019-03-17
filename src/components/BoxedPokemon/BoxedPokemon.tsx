@@ -5,9 +5,6 @@ import { css, cx } from 'emotion';
 import { Pokemon } from 'models';
 import { selectPokemon } from 'actions';
 import {
-    getBackgroundGradient,
-    getSpriteIcon,
-    speciesToNumber,
     getContrastColor,
     Styles,
 } from 'utils';

@@ -1,15 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { getBadges, Styles } from 'utils';
+import { Styles } from 'utils';
 import { TrainerInfoEditField } from 'components/TrainerEditor/TrainerInfoEditField';
 import { editTrainer } from 'actions';
-import { Trainer, Badge } from 'models';
+import { Trainer } from 'models';
 
 import { Popover, Menu, Button, Position, Checkbox, Dialog, Classes } from '@blueprintjs/core';
 import { CheckpointsEditor } from './CheckpointsEditor';
 import { cx } from 'emotion';
-import { DeepSet } from 'utils';
 import { State } from 'state';
 import { Checkpoints } from 'reducers/checkpoints';
 
