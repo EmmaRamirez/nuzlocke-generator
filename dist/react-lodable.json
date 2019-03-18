@@ -55,7 +55,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../common/abstractPureComponent": [
+  "./abstractPureComponent": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/abstractPureComponent.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/abstractPureComponent.js",
@@ -111,7 +111,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./errors": [
+  "../../common/errors": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
@@ -181,7 +181,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../common/position": [
+  "./position": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/position.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/position.js",
@@ -1159,7 +1159,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./treeNode": [
+  "./tree/treeNode": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/tree/treeNode.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/tree/treeNode.js",
@@ -1383,7 +1383,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./formats/jsonFormat": [
+  "./cell/formats/jsonFormat": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/jsonFormat.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/jsonFormat.js",
@@ -1397,7 +1397,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./formats/truncatedFormat": [
+  "./cell/formats/truncatedFormat": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/truncatedFormat.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/truncatedFormat.js",
@@ -1439,7 +1439,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/classes": [
+  "./common/classes": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
@@ -1971,7 +1971,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./locator": [
+  "../../locator": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/locator.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/locator.js",
@@ -4805,7 +4805,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "lodash/isFunction": [
+  "./isFunction": [
     {
       "id": "./node_modules/lodash/isFunction.js",
       "name": "./node_modules/lodash/isFunction.js",
@@ -9773,7 +9773,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../Shared": [
+  "components/Shared": [
     {
       "id": "./src/components/Shared/index.ts",
       "name": "./src/components/Shared/index.ts",
