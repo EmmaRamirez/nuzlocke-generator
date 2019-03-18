@@ -837,7 +837,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./overlay/overlay": [
+  "../overlay/overlay": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
@@ -1089,7 +1089,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./text/text": [
+  "../text/text": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
@@ -1103,7 +1103,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./toast": [
+  "./toast/toast": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/toast/toast.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/toast/toast.js",
@@ -1439,7 +1439,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/classes": [
+  "../common/classes": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
@@ -1467,7 +1467,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/context": [
+  "./common/context": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/context.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/context.js",
@@ -1817,7 +1817,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./draggable": [
+  "./interactions/draggable": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/interactions/draggable.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/interactions/draggable.js",
@@ -10063,7 +10063,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "/Users/emma/Code/nuzlocke-generator/src/index.tsx": [
+  "./src/index.tsx": [
     {
       "id": "./src/index.tsx",
       "name": "./src/index.tsx",
