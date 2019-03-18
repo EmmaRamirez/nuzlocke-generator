@@ -93,9 +93,9 @@ module.exports = {
     },
     plugins: [
         new CopyWebpackPlugin([
-            { from: path.resolve(__dirname, 'src/img'), to: path.resolve(__dirname, '/img') },
-            { from: path.resolve(__dirname, 'src/assets/'), to: path.resolve(__dirname, '/assets') },
-            { from: path.resolve(__dirname, 'src/assets/icons'), to: path.resolve(__dirname, '/icons') }
+            { from: path.resolve(__dirname, 'src/img'), to: path.resolve(__dirname, 'dist/img') },
+            { from: path.resolve(__dirname, 'src/assets/'), to: path.resolve(__dirname, 'dist/assets') },
+            { from: path.resolve(__dirname, 'src/assets/icons'), to: path.resolve(__dirname, 'dist/icons') }
         ]),
 
         new HTMLWebpackPlugin({
