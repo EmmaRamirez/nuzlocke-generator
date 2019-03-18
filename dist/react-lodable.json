@@ -111,7 +111,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./errors": [
+  "../../common/errors": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
@@ -837,7 +837,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../overlay/overlay": [
+  "./overlay/overlay": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
@@ -1089,7 +1089,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../text/text": [
+  "./text/text": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
@@ -1131,7 +1131,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./tooltip/tooltip": [
+  "../tooltip/tooltip": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/tooltip/tooltip.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/tooltip/tooltip.js",
@@ -1383,7 +1383,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./formats/jsonFormat": [
+  "./cell/formats/jsonFormat": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/jsonFormat.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/jsonFormat.js",
@@ -1397,7 +1397,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./formats/truncatedFormat": [
+  "./cell/formats/truncatedFormat": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/truncatedFormat.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/truncatedFormat.js",
@@ -1439,7 +1439,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/classes": [
+  "./common/classes": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
@@ -1453,7 +1453,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/clipboard": [
+  "./clipboard": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/clipboard.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/clipboard.js",
@@ -1971,7 +1971,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./locator": [
+  "../../locator": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/locator.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/locator.js",
@@ -9773,7 +9773,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "components/Shared": [
+  "../Shared": [
     {
       "id": "./src/components/Shared/index.ts",
       "name": "./src/components/Shared/index.ts",
@@ -9981,7 +9981,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "components/TrainerEditor/TrainerInfoEditField": [
+  "./TrainerInfoEditField": [
     {
       "id": "./src/components/TrainerEditor/TrainerInfoEditField.tsx",
       "name": "./src/components/TrainerEditor/TrainerInfoEditField.tsx",
