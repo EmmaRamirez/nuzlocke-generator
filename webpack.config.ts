@@ -9,7 +9,7 @@ const isProduction = process.env.NODE_ENV === 'production' ? true : false;
 
 // tslint:disable-next-line:no-default-export
 module.exports = {
-    entry: './src/index.tsx',
+    entry: path.resolve(__dirname, 'src/index.tsx'),
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
@@ -93,13 +93,13 @@ module.exports = {
     },
     plugins: [
         new CopyWebpackPlugin([
-            { from: './src/img', to: './img' },
-            { from: './src/assets/', to: './assets' },
-            { from: './src/assets/icons', to: './icons' }
+            { from: path.resolve(__dirname, 'src/img'), to: path.resolve(__dirname, '/img') },
+            { from: path.resolve(__dirname, 'src/assets/'), to: path.resolve(__dirname, '/assets') },
+            { from: path.resolve(__dirname, 'src/assets/icons'), to: path.resolve(__dirname, '/icons') }
         ]),
 
         new HTMLWebpackPlugin({
-            template: './src/index.html',
+            template: path.resolve(__dirname, 'src/index.html'),
         }),
 
         new webpack.DefinePlugin({
@@ -112,7 +112,7 @@ module.exports = {
         }),
 
         new ReactLoadablePlugin({
-            filename: './dist/react-lodable.json'
+            filename: path.resolve(__dirname, 'dist/react-lodable.json')
         }),
 
         // new OfflinePlugin({
