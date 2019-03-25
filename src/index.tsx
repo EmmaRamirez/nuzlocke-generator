@@ -48,6 +48,7 @@ const rollbarConfig = new Rollbar({
     captureUncaught: true,
     payload: {
         context: store,
+        environment: 'production',
     },
     autoInstrument: {
         network: false,
@@ -58,7 +59,7 @@ const rollbarConfig = new Rollbar({
     },
     maxItems: 20,
     captureIp: false,
-    enabled: window.location.pathname.includes('localhost') ? false : true,
+    enabled: window.location.hostname.includes('localhost') ? false : true,
 });
 
 Rollbar.init(rollbarConfig as any);
