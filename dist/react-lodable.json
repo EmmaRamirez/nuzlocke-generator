@@ -781,7 +781,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./navbarDivider": [
+  "./navbar/navbarDivider": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarDivider.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarDivider.js",
@@ -795,7 +795,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./navbarGroup": [
+  "./navbar/navbarGroup": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarGroup.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarGroup.js",
@@ -809,7 +809,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./navbarHeading": [
+  "./navbar/navbarHeading": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarHeading.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarHeading.js",
@@ -837,7 +837,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../overlay/overlay": [
+  "./overlay/overlay": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
@@ -1089,7 +1089,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../text/text": [
+  "./text/text": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
@@ -1131,7 +1131,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./tooltip/tooltip": [
+  "../tooltip/tooltip": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/tooltip/tooltip.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/tooltip/tooltip.js",
@@ -1453,7 +1453,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/clipboard": [
+  "./clipboard": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/clipboard.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/clipboard.js",
@@ -1649,7 +1649,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/renderMode": [
+  "./renderMode": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/renderMode.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/renderMode.js",
@@ -1971,7 +1971,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./locator": [
+  "../../locator": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/locator.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/locator.js",
