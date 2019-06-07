@@ -810,5 +810,12 @@ export const listOfPokemon = [
     'Melmetal',
     'Grookey',
     'Scorbunny',
-    'Sobble'
+    'Sobble',
+    'Drednaw',
+    'Wooloo',
+    'Corvinight',
+    'Gossifleur',
+    'Eldegoss',
+    'Zacian',
+    'Zamazenta',
 ];

@@ -231,6 +231,8 @@ export const matchSpeciesToTypes = (
         case 'Fomantis':
         case 'Lurantis':
         case 'Grookey':
+        case 'Gossifleur':
+        case 'Eldegoss':
             return [Types.Grass, Types.Grass];
         case 'Torterra':
             return [Types.Grass, Types.Ground];
@@ -553,6 +555,7 @@ export const matchSpeciesToTypes = (
         case 'Corsola':
         case 'Binacle':
         case 'Barbaracle':
+        case 'Drednaw':
             return [Types.Water, Types.Rock];
         /**
          * @type Bug
@@ -967,6 +970,7 @@ export const matchSpeciesToTypes = (
         case 'Type: Null':
         case 'Silvally':
         case 'Komala':
+        case 'Wooloo':
             return [Types.Normal, Types.Normal];
         case 'Drampa':
             return [Types.Normal, Types.Dragon];
@@ -986,6 +990,8 @@ export const matchSpeciesToTypes = (
         case 'Qwilfish':
             return [Types.Water, Types.Poison];
         case 'Skarmory':
+        case 'Celesteela':
+        case 'Corvinight':
             return [Types.Steel, Types.Flying];
         case 'Houndour':
         case 'Houndoom':
