@@ -1,30 +1,4 @@
 {
-  "undefined": [
-    {
-      "id": 0,
-      "name": null,
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": 1,
-      "name": null,
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": 0,
-      "name": null,
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    },
-    {
-      "id": 1,
-      "name": null,
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
   "@blueprintjs/core/lib/css/blueprint.css": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/css/blueprint.css",
@@ -863,7 +837,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./overlay/overlay": [
+  "../overlay/overlay": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
@@ -891,7 +865,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./popover/popover": [
+  "../popover/popover": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/popover/popover.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/popover/popover.js",
@@ -933,7 +907,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./portal/portal": [
+  "../portal/portal": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/portal/portal.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/portal/portal.js",
@@ -1115,7 +1089,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./text/text": [
+  "../text/text": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
@@ -1409,7 +1383,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./cell/formats/jsonFormat": [
+  "./formats/jsonFormat": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/jsonFormat.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/jsonFormat.js",
@@ -1423,7 +1397,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./cell/formats/truncatedFormat": [
+  "./formats/truncatedFormat": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/truncatedFormat.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/truncatedFormat.js",
@@ -1465,7 +1439,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/classes": [
+  "./common/classes": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
@@ -1479,7 +1453,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./clipboard": [
+  "./common/clipboard": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/clipboard.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/clipboard.js",
@@ -1493,7 +1467,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/context": [
+  "./common/context": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/context.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/context.js",
@@ -1549,7 +1523,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./grid": [
+  "./common/grid": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/grid.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/grid.js",
@@ -1591,7 +1565,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/internal/focusedCellUtils": [
+  "./common/internal/focusedCellUtils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/internal/focusedCellUtils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/internal/focusedCellUtils.js",
@@ -1661,7 +1635,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./rect": [
+  "./common/rect": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/rect.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/rect.js",
@@ -1675,7 +1649,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./renderMode": [
+  "./common/renderMode": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/renderMode.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/renderMode.js",
@@ -1703,7 +1677,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../common/utils": [
+  "./common/utils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
@@ -1997,7 +1971,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../locator": [
+  "./locator": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/locator.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/locator.js",
@@ -2809,7 +2783,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../utils/matchesType": [
+  "./utils/matchesType": [
     {
       "id": "./node_modules/dnd-core/lib/utils/matchesType.js",
       "name": "./node_modules/dnd-core/lib/utils/matchesType.js",
@@ -4831,7 +4805,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "lodash/isFunction": [
+  "./isFunction": [
     {
       "id": "./node_modules/lodash/isFunction.js",
       "name": "./node_modules/lodash/isFunction.js",
@@ -5041,20 +5015,6 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "loglevelnext/dist/loglevelnext": [
-    {
-      "id": "./node_modules/loglevelnext/dist/loglevelnext.js",
-      "name": "./node_modules/loglevelnext/dist/loglevelnext.js",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./node_modules/loglevelnext/dist/loglevelnext.js",
-      "name": "./node_modules/loglevelnext/dist/loglevelnext.js",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
   "markdown-escapes": [
     {
       "id": "./node_modules/markdown-escapes/index.js",
@@ -5219,74 +5179,6 @@
     {
       "id": "./node_modules/prop-types/lib/ReactPropTypesSecret.js",
       "name": "./node_modules/prop-types/lib/ReactPropTypesSecret.js",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "punycode": [
-    {
-      "id": "./node_modules/punycode/punycode.js",
-      "name": "./node_modules/punycode/punycode.js",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./node_modules/punycode/punycode.js",
-      "name": "./node_modules/punycode/punycode.js",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "./decode": [
-    {
-      "id": "./node_modules/querystring-es3/decode.js",
-      "name": "./node_modules/querystring-es3/decode.js",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./node_modules/remark-parse/lib/decode.js",
-      "name": "./node_modules/remark-parse/lib/decode.js",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./node_modules/querystring-es3/decode.js",
-      "name": "./node_modules/querystring-es3/decode.js",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    },
-    {
-      "id": "./node_modules/remark-parse/lib/decode.js",
-      "name": "./node_modules/remark-parse/lib/decode.js",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "./encode": [
-    {
-      "id": "./node_modules/querystring-es3/encode.js",
-      "name": "./node_modules/querystring-es3/encode.js",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./node_modules/querystring-es3/encode.js",
-      "name": "./node_modules/querystring-es3/encode.js",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "querystring": [
-    {
-      "id": "./node_modules/querystring-es3/index.js",
-      "name": "./node_modules/querystring-es3/index.js",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./node_modules/querystring-es3/index.js",
-      "name": "./node_modules/querystring-es3/index.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -7021,7 +6913,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./proc": [
+  "./internal/proc": [
     {
       "id": "./node_modules/redux-saga/es/internal/proc.js",
       "name": "./node_modules/redux-saga/es/internal/proc.js",
@@ -7269,6 +7161,20 @@
     {
       "id": "./node_modules/remark-parse/lib/block-elements.json",
       "name": "./node_modules/remark-parse/lib/block-elements.json",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./decode": [
+    {
+      "id": "./node_modules/remark-parse/lib/decode.js",
+      "name": "./node_modules/remark-parse/lib/decode.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/remark-parse/lib/decode.js",
+      "name": "./node_modules/remark-parse/lib/decode.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -8295,34 +8201,6 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "url": [
-    {
-      "id": "./node_modules/url/url.js",
-      "name": "./node_modules/url/url.js",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./node_modules/url/url.js",
-      "name": "./node_modules/url/url.js",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "./util": [
-    {
-      "id": "./node_modules/url/util.js",
-      "name": "./node_modules/url/util.js",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./node_modules/url/util.js",
-      "name": "./node_modules/url/util.js",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
   "./lib/bytesToUuid": [
     {
       "id": "./node_modules/uuid/lib/bytesToUuid.js",
@@ -8449,62 +8327,6 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./hot": [
-    {
-      "id": "./node_modules/webpack-hot-client/client/hot.js",
-      "name": "./node_modules/webpack-hot-client/client/hot.js",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./node_modules/webpack-hot-client/client/hot.js",
-      "name": "./node_modules/webpack-hot-client/client/hot.js",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "webpack-hot-client/client?22071b13-8c23-4a57-b937-6e1f19523a74": [
-    {
-      "id": "./node_modules/webpack-hot-client/client/index.js?22071b13-8c23-4a57-b937-6e1f19523a74",
-      "name": "./node_modules/webpack-hot-client/client/index.js?22071b13-8c23-4a57-b937-6e1f19523a74",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./node_modules/webpack-hot-client/client/index.js?22071b13-8c23-4a57-b937-6e1f19523a74",
-      "name": "./node_modules/webpack-hot-client/client/index.js?22071b13-8c23-4a57-b937-6e1f19523a74",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "./log": [
-    {
-      "id": "./node_modules/webpack-hot-client/client/log.js",
-      "name": "./node_modules/webpack-hot-client/client/log.js",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./node_modules/webpack-hot-client/client/log.js",
-      "name": "./node_modules/webpack-hot-client/client/log.js",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "./socket": [
-    {
-      "id": "./node_modules/webpack-hot-client/client/socket.js",
-      "name": "./node_modules/webpack-hot-client/client/socket.js",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./node_modules/webpack-hot-client/client/socket.js",
-      "name": "./node_modules/webpack-hot-client/client/socket.js",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
   "./../../webpack/buildin/global.js": [
     {
       "id": "./node_modules/webpack/buildin/global.js",
@@ -8519,7 +8341,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./../webpack/buildin/module.js": [
+  "./../../webpack/buildin/module.js": [
     {
       "id": "./node_modules/webpack/buildin/module.js",
       "name": "./node_modules/webpack/buildin/module.js",
@@ -9211,18 +9033,16 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/AddPokemonButton/AddPokemonButton.tsx",
-      "name": "./src/components/AddPokemonButton/AddPokemonButton.tsx",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "components/AddPokemonButton": [
-    {
       "id": "./src/components/AddPokemonButton/index.ts",
       "name": "./src/components/AddPokemonButton/index.ts",
       "file": "bundle.js",
       "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/AddPokemonButton/AddPokemonButton.tsx",
+      "name": "./src/components/AddPokemonButton/AddPokemonButton.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
     },
     {
       "id": "./src/components/AddPokemonButton/index.ts",
@@ -9447,18 +9267,16 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/DeletePokemonButton/DeletePokemonButton.tsx",
-      "name": "./src/components/DeletePokemonButton/DeletePokemonButton.tsx",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "components/DeletePokemonButton": [
-    {
       "id": "./src/components/DeletePokemonButton/index.ts",
       "name": "./src/components/DeletePokemonButton/index.ts",
       "file": "bundle.js",
       "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/DeletePokemonButton/DeletePokemonButton.tsx",
+      "name": "./src/components/DeletePokemonButton/DeletePokemonButton.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
     },
     {
       "id": "./src/components/DeletePokemonButton/index.ts",
@@ -9825,18 +9643,16 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/RulesEditor/RulesEditor.tsx",
-      "name": "./src/components/RulesEditor/RulesEditor.tsx",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "components/RulesEditor": [
-    {
       "id": "./src/components/RulesEditor/index.ts",
       "name": "./src/components/RulesEditor/index.ts",
       "file": "bundle.js",
       "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/RulesEditor/RulesEditor.tsx",
+      "name": "./src/components/RulesEditor/RulesEditor.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
     },
     {
       "id": "./src/components/RulesEditor/index.ts",
@@ -9957,7 +9773,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "components/Shared": [
+  "../Shared": [
     {
       "id": "./src/components/Shared/index.ts",
       "name": "./src/components/Shared/index.ts",
@@ -10063,18 +9879,16 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/ThemeEditor/ThemeEditor.tsx",
-      "name": "./src/components/ThemeEditor/ThemeEditor.tsx",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "components/ThemeEditor": [
-    {
       "id": "./src/components/ThemeEditor/index.ts",
       "name": "./src/components/ThemeEditor/index.ts",
       "file": "bundle.js",
       "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/ThemeEditor/ThemeEditor.tsx",
+      "name": "./src/components/ThemeEditor/ThemeEditor.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
     },
     {
       "id": "./src/components/ThemeEditor/index.ts",
