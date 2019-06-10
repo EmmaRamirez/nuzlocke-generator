@@ -30,6 +30,7 @@ export interface Styles {
     topHeaderColor: string;
     trainerSectionOrientation: OrientationType;
     useSpritesForChampsPokemon: boolean;
+    displayGameOriginForBoxedAndDead: boolean;
 }
 
 export const styleDefaults: Styles = {
@@ -60,4 +61,5 @@ export const styleDefaults: Styles = {
     topHeaderColor: '#333333',
     trainerSectionOrientation: 'horizonal' as OrientationType,
     useSpritesForChampsPokemon: false,
+    displayGameOriginForBoxedAndDead: false,
 };

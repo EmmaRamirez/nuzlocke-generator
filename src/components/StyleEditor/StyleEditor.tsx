@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { editStyle } from 'actions';
-import { gameOfOriginToColor, listOfThemes, FEATURES, Game, OrientationType } from 'utils';
+import { gameOfOriginToColor, listOfThemes, FEATURES, Game, OrientationType, Styles as StylesType } from 'utils';
 import {
     RadioGroup,
     Radio,
@@ -59,7 +59,7 @@ const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'],
 };
 
 export interface StyleEditorProps {
-    style: any;
+    style: StylesType;
     editStyle: editStyle;
     game: any;
 }
@@ -424,6 +424,21 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                                 { ...e, target: { value: e.target.checked } },
                                 props,
                                 'useSpritesForChampsPokemon',
+                            )
+                        }
+                    />
+                </div>
+
+                <div className={styleEdit}>
+                    <Checkbox
+                        checked={props.style.displayGameOriginForBoxedAndDead}
+                        name='displayGameOriginForBoxedAndDead'
+                        label='Display Game Origin for Boxed and Dead'
+                        onChange={(e: any) =>
+                            editEvent(
+                                { ...e, target: { value: e.target.checked } },
+                                props,
+                                'displayGameOriginForBoxedAndDead',
                             )
                         }
                     />
