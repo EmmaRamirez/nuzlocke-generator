@@ -444,6 +444,25 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     />
                 </div>
 
+                <div className={styleEdit} style={{
+                    marginLeft: '1rem',
+                    opacity: props.style.displayGameOriginForBoxedAndDead ? '1' : '0.3',
+                    pointerEvents: props.style.displayGameOriginForBoxedAndDead ? undefined : 'none'
+                } as any}>
+                    <Checkbox
+                        checked={props.style.displayBackgroundInsteadOfBadge}
+                        name='displayBackgroundInsteadOfBadge'
+                        label='Display Background Color Instead of Badge'
+                        onChange={(e: any) =>
+                            editEvent(
+                                { ...e, target: { value: e.target.checked } },
+                                props,
+                                'displayBackgroundInsteadOfBadge',
+                            )
+                        }
+                    />
+                </div>
+
                 <div className='custom-css-input-wrapper'>
                     <label style={{ padding: '.5rem' }} className='pt-label'>
                         Custom CSS {/*<a href=''>Check out Layout Guide</a>*/}

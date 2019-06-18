@@ -31,6 +31,7 @@ export interface Styles {
     trainerSectionOrientation: OrientationType;
     useSpritesForChampsPokemon: boolean;
     displayGameOriginForBoxedAndDead: boolean;
+    displayBackgroundInsteadOfBadge: boolean;
 }
 
 export const styleDefaults: Styles = {
@@ -62,4 +63,5 @@ export const styleDefaults: Styles = {
     trainerSectionOrientation: 'horizonal' as OrientationType,
     useSpritesForChampsPokemon: false,
     displayGameOriginForBoxedAndDead: false,
+    displayBackgroundInsteadOfBadge: false,
 };

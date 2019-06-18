@@ -8,6 +8,7 @@ import {
     getContrastColor,
     Styles,
     Forme,
+    gameOfOriginToColor,
 } from 'utils';
 import { selectPokemon } from 'actions';
 import { PokemonIconBase } from 'components/PokemonIcon';
@@ -37,13 +38,15 @@ export const DeadPokemonBase = (
     const getClassname = () =>
         poke.champion ? 'dead-pokemon-container champion' : 'dead-pokemon-container';
     const getAccentColor = (prop: any) => (prop.style ? prop.style.accentColor : '#111111');
+    const useGameOfOriginColor = poke.gameOfOrigin && poke.style.displayGameOriginForBoxedAndDead && poke.style.displayBackgroundInsteadOfBadge;
+
     return (
         <div
             className={getClassname()}
             data-league={poke.champion}
             style={{
-                background: getAccentColor(poke),
-                color: getContrastColor(getAccentColor(poke)),
+                background: useGameOfOriginColor ? gameOfOriginToColor(poke.gameOfOrigin!) : getAccentColor(poke),
+                color: useGameOfOriginColor ? getContrastColor(gameOfOriginToColor(poke.gameOfOrigin!)) : getContrastColor(getAccentColor(poke)),
             }}>
             {style.template !== 'Generations' ? (
                 <div
@@ -79,6 +82,16 @@ export const DeadPokemonBase = (
                 </div>
                 <br />
                 <div className='pokemon-causeofdeath'>{poke.causeOfDeath}</div>
+                {style.displayGameOriginForBoxedAndDead && !poke.style.displayBackgroundInsteadOfBadge && poke.gameOfOrigin &&
+                    <span className='pokemon-gameoforigin' style={{
+                        fontSize: '80%',
+                        borderRadius: '.25rem',
+                        margin: '.25rem',
+                        padding: '.25rem',
+                        background: gameOfOriginToColor(poke.gameOfOrigin),
+                        color: getContrastColor(gameOfOriginToColor(poke.gameOfOrigin)),
+                    }}>{poke.gameOfOrigin}</span>
+                }
             </div>
         </div>
     );

@@ -189,12 +189,10 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                 ? {
                       backgroundSize: 'auto',
                       backgroundRepeat: 'no-repeat',
-                      imageRendering: 'pixelated',
                   }
                 : {
                       backgroundSize: 'cover',
                       backgroundRepeat: 'no-repeat',
-                      imageRendering: 'pixelated',
                   };
 
         const addProp = (item: any) => {
@@ -314,4 +312,8 @@ export const TeamPokemon = connect(
     {
         selectPokemon,
     },
+    null,
+    {
+        pure: false
+    }
 )(TeamPokemonBase);
