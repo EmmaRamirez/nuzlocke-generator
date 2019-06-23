@@ -18,13 +18,9 @@ type BoxedPokemonProps = Pokemon & { selectPokemon: selectPokemon } & { style: S
 const getAccentColor = (prop: BoxedPokemonProps) =>
     prop.style ? prop.style.accentColor : '#111111';
 
-const boxedPokemonContainer = css`
-    width: calc(100% / 6);
-`;
-
-const boxedPokemonContainer_minimal = css`
-    width: auto;
-`;
+const determineWidth = (isMinimal, numerator): any => {
+    return isMinimal ? 'auto' : `calc(95% / ${numerator})`;
+};
 
 // TODO: Convert to class
 export const BoxedPokemonBase = (poke: BoxedPokemonProps) => {
@@ -32,10 +28,11 @@ export const BoxedPokemonBase = (poke: BoxedPokemonProps) => {
     const useGameOfOriginColor = poke.gameOfOrigin && poke.style.displayGameOriginForBoxedAndDead && poke.style.displayBackgroundInsteadOfBadge;
     return (
         <div
-            className={cx(isMinimal ? boxedPokemonContainer_minimal : boxedPokemonContainer, 'boxed-pokemon-container')}
+            className={cx('boxed-pokemon-container')}
             style={{
                 background: useGameOfOriginColor ? gameOfOriginToColor(poke.gameOfOrigin!) : getAccentColor(poke),
                 color: useGameOfOriginColor ? getContrastColor(gameOfOriginToColor(poke.gameOfOrigin!)) : getContrastColor(getAccentColor(poke)),
+                width: determineWidth(isMinimal, poke.style.boxedPokemonPerLine)
             }}>
             <PokemonIcon
                 species={poke.species}

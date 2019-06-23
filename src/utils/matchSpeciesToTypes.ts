@@ -178,6 +178,21 @@ export const handleSpeciesTypeEdgeCases = ({
     )
         return [Types.Psychic, Types.Psychic];
 
+    if (
+        match({
+            ...data,
+            species: ['Mawile'],
+            generation: [
+                Generation.Gen1,
+                Generation.Gen2,
+                Generation.Gen3,
+                Generation.Gen4,
+                Generation.Gen5,
+            ]
+        })
+    )
+        return [Types.Steel, Types.Steel];
+
     return null;
 };
 

@@ -170,11 +170,31 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     <input
                         name='resultHeight'
                         className='pt-input small-input'
+                        style={{
+                            opacity: props.style.useAutoHeight ? 0.3 : 1
+                        }}
                         onChange={e => editEvent(e, props)}
                         value={props.style.resultHeight}
                         type='number'
                         min='0'
                         step='10'
+                    />
+                    <span> </span>
+                    <Checkbox
+                        style={{
+                            marginBottom: '0',
+                            marginLeft: '10px',
+                        }}
+                        checked={props.style.useAutoHeight}
+                        name='useAutoHeight'
+                        label='Auto Height'
+                        onChange={(e: any) =>
+                            editEvent(
+                                { ...e, target: { value: e.target.checked } },
+                                props,
+                                'useAutoHeight',
+                            )
+                        }
                     />
                 </div>
                 <div className={styleEdit}>
@@ -262,6 +282,20 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         <Radio label='Standard' value='standard' />
                         <Radio label='Sugimori' value='sugimori' />
                     </RadioGroup>
+                </div>
+
+                <div className={styleEdit}>
+                    <label className='pt-label pt-inline'>Pokemon Per Line (Boxed)</label>
+                    <input
+                        name='boxedPokemonPerLine'
+                        className='pt-input small-input'
+                        onChange={e => editEvent(e, props)}
+                        value={props.style.boxedPokemonPerLine}
+                        type='number'
+                        min='01'
+                        step='1'
+                        max='20'
+                    />
                 </div>
 
                 <div className={styleEdit}>

@@ -30,8 +30,10 @@ export interface Styles {
     topHeaderColor: string;
     trainerSectionOrientation: OrientationType;
     useSpritesForChampsPokemon: boolean;
+    boxedPokemonPerLine: number;
     displayGameOriginForBoxedAndDead: boolean;
     displayBackgroundInsteadOfBadge: boolean;
+    useAutoHeight: boolean;
 }
 
 export const styleDefaults: Styles = {
@@ -62,6 +64,8 @@ export const styleDefaults: Styles = {
     topHeaderColor: '#333333',
     trainerSectionOrientation: 'horizonal' as OrientationType,
     useSpritesForChampsPokemon: false,
+    boxedPokemonPerLine: 6,
     displayGameOriginForBoxedAndDead: false,
     displayBackgroundInsteadOfBadge: false,
+    useAutoHeight: false,
 };
