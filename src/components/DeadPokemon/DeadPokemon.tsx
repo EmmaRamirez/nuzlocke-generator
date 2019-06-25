@@ -86,7 +86,8 @@ export const DeadPokemonBase = (
                     <span className='pokemon-gameoforigin' style={{
                         fontSize: '80%',
                         borderRadius: '.25rem',
-                        margin: '.25rem',
+                        margin: '0',
+                        marginTop: '.25rem',
                         padding: '.25rem',
                         background: gameOfOriginToColor(poke.gameOfOrigin),
                         color: getContrastColor(gameOfOriginToColor(poke.gameOfOrigin)),
