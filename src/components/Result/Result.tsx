@@ -139,7 +139,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     public render() {
         const { style, box, trainer, pokemon } = this.props;
         const getNumberOf = (status: string, pokemon: Pokemon[]) =>
-            pokemon.filter(v => v.hasOwnProperty('id')).filter(poke => poke.status === status)
+            pokemon.filter(v => v.hasOwnProperty('id')).filter(poke => poke.status === status && !poke.hidden)
                 .length;
         const numberOfTeam = getNumberOf('Team', pokemon);
         const numberOfDead = getNumberOf('Dead', pokemon);
@@ -164,7 +164,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         backgroundImage: `url(${style.backgroundImage})`,
                         backgroundRepeat: style.tileBackground ? 'repeat' : 'no-repeat',
                         border: 'none',
-                        height: style.resultHeight + 'px',
+                        height: style.useAutoHeight ? 'auto' : style.resultHeight + 'px',
                         marginBottom: '.5rem',
                         // transform: `scale(${style.zoomLevel})`,
                         // transformOrigin: '0 0',

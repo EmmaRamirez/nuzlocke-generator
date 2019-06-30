@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { editStyle } from 'actions';
-import { gameOfOriginToColor, listOfThemes, FEATURES, Game, OrientationType } from 'utils';
+import { gameOfOriginToColor, listOfThemes, FEATURES, Game, OrientationType, Styles as StylesType } from 'utils';
 import {
     RadioGroup,
     Radio,
@@ -59,7 +59,7 @@ const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'],
 };
 
 export interface StyleEditorProps {
-    style: any;
+    style: StylesType;
     editStyle: editStyle;
     game: any;
 }
@@ -170,11 +170,31 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     <input
                         name='resultHeight'
                         className='pt-input small-input'
+                        style={{
+                            opacity: props.style.useAutoHeight ? 0.3 : 1
+                        }}
                         onChange={e => editEvent(e, props)}
                         value={props.style.resultHeight}
                         type='number'
                         min='0'
                         step='10'
+                    />
+                    <span> </span>
+                    <Checkbox
+                        style={{
+                            marginBottom: '0',
+                            marginLeft: '10px',
+                        }}
+                        checked={props.style.useAutoHeight}
+                        name='useAutoHeight'
+                        label='Auto Height'
+                        onChange={(e: any) =>
+                            editEvent(
+                                { ...e, target: { value: e.target.checked } },
+                                props,
+                                'useAutoHeight',
+                            )
+                        }
                     />
                 </div>
                 <div className={styleEdit}>
@@ -265,6 +285,20 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
+                    <label className='pt-label pt-inline'>Pokemon Per Line (Boxed)</label>
+                    <input
+                        name='boxedPokemonPerLine'
+                        className='pt-input small-input'
+                        onChange={e => editEvent(e, props)}
+                        value={props.style.boxedPokemonPerLine}
+                        type='number'
+                        min='01'
+                        step='1'
+                        max='20'
+                    />
+                </div>
+
+                <div className={styleEdit}>
                     <Checkbox
                         checked={props.style.teamPokemonBorder}
                         name='teamPokemonBorder'
@@ -319,6 +353,21 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                                 { ...e, target: { value: e.target.checked } },
                                 props,
                                 'minimalBoxedLayout',
+                            )
+                        }
+                    />
+                </div>
+
+                <div className={styleEdit}>
+                    <Checkbox
+                        checked={props.style.minimalDeadLayout}
+                        name='minimalDeadLayout'
+                        label='Minimal Dead Layout'
+                        onChange={(e: any) =>
+                            editEvent(
+                                { ...e, target: { value: e.target.checked } },
+                                props,
+                                'minimalDeadLayout',
                             )
                         }
                     />
@@ -424,6 +473,40 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                                 { ...e, target: { value: e.target.checked } },
                                 props,
                                 'useSpritesForChampsPokemon',
+                            )
+                        }
+                    />
+                </div>
+
+                <div className={styleEdit}>
+                    <Checkbox
+                        checked={props.style.displayGameOriginForBoxedAndDead}
+                        name='displayGameOriginForBoxedAndDead'
+                        label='Display Game Origin for Boxed and Dead'
+                        onChange={(e: any) =>
+                            editEvent(
+                                { ...e, target: { value: e.target.checked } },
+                                props,
+                                'displayGameOriginForBoxedAndDead',
+                            )
+                        }
+                    />
+                </div>
+
+                <div className={styleEdit} style={{
+                    marginLeft: '1rem',
+                    opacity: props.style.displayGameOriginForBoxedAndDead ? '1' : '0.3',
+                    pointerEvents: props.style.displayGameOriginForBoxedAndDead ? undefined : 'none'
+                } as any}>
+                    <Checkbox
+                        checked={props.style.displayBackgroundInsteadOfBadge}
+                        name='displayBackgroundInsteadOfBadge'
+                        label='Display Background Color Instead of Badge'
+                        onChange={(e: any) =>
+                            editEvent(
+                                { ...e, target: { value: e.target.checked } },
+                                props,
+                                'displayBackgroundInsteadOfBadge',
                             )
                         }
                     />

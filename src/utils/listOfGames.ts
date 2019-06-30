@@ -32,7 +32,9 @@ export type Game =
     | 'Colosseum'
     | 'XD Gale of Darkness'
     | 'Let\'s Go Eevee'
-    | 'Let\'s Go Pikachu';
+    | 'Let\'s Go Pikachu'
+    | 'Sword'
+    | 'Shield';
 
 export const listOfGames: Game[] = [
     'None',
@@ -69,5 +71,7 @@ export const listOfGames: Game[] = [
     'XD Gale of Darkness',
     'Let\'s Go Eevee',
     'Let\'s Go Pikachu',
+    'Sword',
+    'Shield',
     //'Custom...',
 ];

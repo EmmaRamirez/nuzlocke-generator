@@ -155,6 +155,10 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         window.location.reload();
     };
 
+    private writeAllData = () => {
+        persistor.flush();
+    };
+
     private toggleClearingData = e =>
         this.setState({ isClearAllDataOpen: !this.state.isClearAllDataOpen });
 
@@ -248,6 +252,9 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     </Button>
                     <Button onClick={e => this.exportState(this.props.state)} icon='export'>
                         Export Data
+                    </Button>
+                    <Button className='pt-minimal' intent={Intent.SUCCESS} onClick={this.writeAllData} icon='floppy-disk'>
+                        Force Save
                     </Button>
                     {/* <Button icon='add' intent={Intent.SUCCESS}>
                         New Nuzlocke

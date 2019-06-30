@@ -301,6 +301,21 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
     '0.0.15-beta': `# Changelog
+## Features
+- Added Dreadnaw, Gossifleur, Eldegoss, Corvinight, Wooloo, Zamazenta, and Zacian, also Yamper & Impidimp
+- You can now display the Game of Origin for a Pokémon outside of Champs
+- You can now set the # of Pokemon that appear per line in Boxed
+- Auto Height option for Results
+- Force Save option, for when you want to be really, really sure
+- A minimal layout style added for Dead Pokémon
 
+## Fixes
+- Hidden now properly affects title display
+- Loudred now has an image associated with it
+
+
+## Known Issues
+- Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `
 };

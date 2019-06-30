@@ -7,6 +7,7 @@ import { selectPokemon } from 'actions';
 import {
     getContrastColor,
     Styles,
+    gameOfOriginToColor,
 } from 'utils';
 import { PokemonIcon } from 'components/PokemonIcon';
 import { GenderElement } from 'components/Shared';
@@ -17,23 +18,21 @@ type BoxedPokemonProps = Pokemon & { selectPokemon: selectPokemon } & { style: S
 const getAccentColor = (prop: BoxedPokemonProps) =>
     prop.style ? prop.style.accentColor : '#111111';
 
-const boxedPokemonContainer = css`
-    width: calc(100% / 6);
-`;
-
-const boxedPokemonContainer_minimal = css`
-    width: auto;
-`;
+const determineWidth = (isMinimal, numerator): any => {
+    return isMinimal ? 'auto' : `calc(95% / ${numerator})`;
+};
 
 // TODO: Convert to class
 export const BoxedPokemonBase = (poke: BoxedPokemonProps) => {
     const isMinimal = poke.style.minimalBoxedLayout;
+    const useGameOfOriginColor = poke.gameOfOrigin && poke.style.displayGameOriginForBoxedAndDead && poke.style.displayBackgroundInsteadOfBadge;
     return (
         <div
-            className={cx(isMinimal ? boxedPokemonContainer_minimal : boxedPokemonContainer, 'boxed-pokemon-container')}
+            className={cx('boxed-pokemon-container')}
             style={{
-                background: getAccentColor(poke),
-                color: getContrastColor(getAccentColor(poke)),
+                background: useGameOfOriginColor ? gameOfOriginToColor(poke.gameOfOrigin!) : getAccentColor(poke),
+                color: useGameOfOriginColor ? getContrastColor(gameOfOriginToColor(poke.gameOfOrigin!)) : getContrastColor(getAccentColor(poke)),
+                width: determineWidth(isMinimal, poke.style.boxedPokemonPerLine)
             }}>
             <PokemonIcon
                 species={poke.species}
@@ -47,10 +46,20 @@ export const BoxedPokemonBase = (poke: BoxedPokemonProps) => {
             />
             { isMinimal ?
                     null :
-                <div className='boxed-pokemon-info' style={{ borderLeftColor: getAccentColor(poke) }}>
+                <div className='boxed-pokemon-info' style={{ borderLeftColor: useGameOfOriginColor ? getContrastColor(gameOfOriginToColor(poke.gameOfOrigin!)) : getAccentColor(poke) }}>
                     <span className='boxed-pokemon-name'>
                         {poke.nickname} {GenderElement(poke.gender)}{' '}
                         {poke.level ? <span>lv. {poke.level}</span> : null}
+                        {poke.style.displayGameOriginForBoxedAndDead && !poke.style.displayBackgroundInsteadOfBadge && poke.gameOfOrigin &&
+                            <span className='boxed-pokemon-gameoforigin' style={{
+                                background: gameOfOriginToColor(poke.gameOfOrigin),
+                                color: getContrastColor(gameOfOriginToColor(poke.gameOfOrigin)),
+                                fontSize: '80%',
+                                borderRadius: '.25rem',
+                                margin: '.25rem',
+                                padding: '.25rem',
+                            }}>{poke.gameOfOrigin}</span>
+                        }
                     </span>
                 </div>
             }
