@@ -360,6 +360,21 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
 
                 <div className={styleEdit}>
                     <Checkbox
+                        checked={props.style.minimalDeadLayout}
+                        name='minimalDeadLayout'
+                        label='Minimal Dead Layout'
+                        onChange={(e: any) =>
+                            editEvent(
+                                { ...e, target: { value: e.target.checked } },
+                                props,
+                                'minimalDeadLayout',
+                            )
+                        }
+                    />
+                </div>
+
+                <div className={styleEdit}>
+                    <Checkbox
                         checked={props.style.displayBadges}
                         name='displayBadges'
                         label='Display Badges'

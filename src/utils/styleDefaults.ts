@@ -16,6 +16,7 @@ export interface Styles {
     grayScaleDeadPokemon: boolean;
     minimalBoxedLayout: boolean;
     minimalTeamLayout: boolean;
+    minimalDeadLayout: boolean;
     movesPosition: OrientationType;
     oldMetLocationFormat: boolean;
     resultHeight: string | number;
@@ -50,6 +51,7 @@ export const styleDefaults: Styles = {
     grayScaleDeadPokemon: false,
     minimalBoxedLayout: false,
     minimalTeamLayout: false,
+    minimalDeadLayout: false,
     movesPosition: 'horizontal' as OrientationType,
     oldMetLocationFormat: false,
     resultHeight: '900',

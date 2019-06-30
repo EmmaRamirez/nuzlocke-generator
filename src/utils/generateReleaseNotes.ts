@@ -303,9 +303,11 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
     '0.0.15-beta': `# Changelog
 ## Features
 - Added Dreadnaw, Gossifleur, Eldegoss, Corvinight, Wooloo, Zamazenta, and Zacian, also Yamper & Impidimp
-- You can now display the Game of Origin for a Pokemon outside of Champs
+- You can now display the Game of Origin for a Pokémon outside of Champs
 - You can now set the # of Pokemon that appear per line in Boxed
 - Auto Height option for Results
+- Force Save option, for when you want to be really, really sure
+- A minimal layout style added for Dead Pokémon
 
 ## Fixes
 - Hidden now properly affects title display

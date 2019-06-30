@@ -40,6 +40,45 @@ export const DeadPokemonBase = (
     const getAccentColor = (prop: any) => (prop.style ? prop.style.accentColor : '#111111');
     const useGameOfOriginColor = poke.gameOfOrigin && poke.style.displayGameOriginForBoxedAndDead && poke.style.displayBackgroundInsteadOfBadge;
 
+    if (style.minimalDeadLayout) {
+        return (
+            <div
+                className={getClassname()}
+                data-league={poke.champion}
+                style={{
+                    background: useGameOfOriginColor ? gameOfOriginToColor(poke.gameOfOrigin!) : getAccentColor(poke),
+                    color: useGameOfOriginColor ? getContrastColor(gameOfOriginToColor(poke.gameOfOrigin!)) : getContrastColor(getAccentColor(poke)),
+                    height: 'auto',
+                    fontSize: '90%',
+                }}>
+                <span style={{ filter: 'grayscale(100%)' }}>
+                    <PokemonIconBase {...poke as any} />
+                </span>
+                <div className='dead-pokemon-info' style={{margin: 0, padding: 0}}>
+                    <div className='pokemon-d-nickname'>
+                        {poke.nickname} {GenderElement(poke.gender)}
+                    </div>
+                    <div className='pokemon-levels'>
+                        Levels {poke.metLevel}&mdash;{poke.level}
+                    </div>
+                    <div className='pokemon-causeofdeath'>{poke.causeOfDeath}</div>
+                    {style.displayGameOriginForBoxedAndDead && !poke.style.displayBackgroundInsteadOfBadge && poke.gameOfOrigin &&
+                        <span className='pokemon-gameoforigin' style={{
+                            fontSize: '80%',
+                            borderRadius: '.25rem',
+                            margin: '0',
+                            marginTop: '.25rem',
+                            padding: '.25rem',
+                            display: 'inline-block',
+                            background: gameOfOriginToColor(poke.gameOfOrigin),
+                            color: getContrastColor(gameOfOriginToColor(poke.gameOfOrigin)),
+                        }}>{poke.gameOfOrigin}</span>
+                    }
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div
             className={getClassname()}
