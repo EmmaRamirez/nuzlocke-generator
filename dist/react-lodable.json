@@ -39,16 +39,16 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "webpack-hot-client/client?4b45123e-a2e5-4d1e-84bb-3e9dce08e33f": [
+  "webpack-hot-client/client?a643aa65-47d8-4bf1-aafe-1be92ecf960c": [
     {
-      "id": "./node_modules/webpack-hot-client/client/index.js?4b45123e-a2e5-4d1e-84bb-3e9dce08e33f",
-      "name": "./node_modules/webpack-hot-client/client/index.js?4b45123e-a2e5-4d1e-84bb-3e9dce08e33f",
+      "id": "./node_modules/webpack-hot-client/client/index.js?a643aa65-47d8-4bf1-aafe-1be92ecf960c",
+      "name": "./node_modules/webpack-hot-client/client/index.js?a643aa65-47d8-4bf1-aafe-1be92ecf960c",
       "file": "bundle.js",
       "publicPath": "bundle.js"
     },
     {
-      "id": "./node_modules/webpack-hot-client/client/index.js?4b45123e-a2e5-4d1e-84bb-3e9dce08e33f",
-      "name": "./node_modules/webpack-hot-client/client/index.js?4b45123e-a2e5-4d1e-84bb-3e9dce08e33f",
+      "id": "./node_modules/webpack-hot-client/client/index.js?a643aa65-47d8-4bf1-aafe-1be92ecf960c",
+      "name": "./node_modules/webpack-hot-client/client/index.js?a643aa65-47d8-4bf1-aafe-1be92ecf960c",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -1763,7 +1763,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./errors": [
+  "../../common/errors": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
@@ -3037,7 +3037,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./tag/tag": [
+  "../tag/tag": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/tag/tag.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/tag/tag.js",
@@ -4349,7 +4349,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "components/Shared": [
+  "../Shared": [
     {
       "id": "./src/components/Shared/index.ts",
       "name": "./src/components/Shared/index.ts",
@@ -6009,7 +6009,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./proc": [
+  "./internal/proc": [
     {
       "id": "./node_modules/redux-saga/es/internal/proc.js",
       "name": "./node_modules/redux-saga/es/internal/proc.js",
@@ -6665,7 +6665,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../utils/matchesType": [
+  "./utils/matchesType": [
     {
       "id": "./node_modules/dnd-core/lib/utils/matchesType.js",
       "name": "./node_modules/dnd-core/lib/utils/matchesType.js",
@@ -6875,7 +6875,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "lodash/isFunction": [
+  "./isFunction": [
     {
       "id": "./node_modules/lodash/isFunction.js",
       "name": "./node_modules/lodash/isFunction.js",
@@ -9157,7 +9157,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/classes": [
+  "./common/classes": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
@@ -9185,7 +9185,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./cell/formats/jsonFormat": [
+  "./formats/jsonFormat": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/jsonFormat.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/jsonFormat.js",
@@ -9199,7 +9199,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./cell/formats/truncatedFormat": [
+  "./formats/truncatedFormat": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/truncatedFormat.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/truncatedFormat.js",
@@ -9213,7 +9213,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../common/utils": [
+  "../common/utils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
@@ -9227,7 +9227,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../locator": [
+  "./locator": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/locator.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/locator.js",
@@ -9241,7 +9241,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./rect": [
+  "./common/rect": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/rect.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/rect.js",
@@ -9269,7 +9269,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./interactions/draggable": [
+  "./draggable": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/interactions/draggable.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/interactions/draggable.js",
@@ -9325,7 +9325,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./clipboard": [
+  "./common/clipboard": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/clipboard.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/clipboard.js",
@@ -9339,7 +9339,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./grid": [
+  "./common/grid": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/grid.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/grid.js",
@@ -9367,7 +9367,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./renderMode": [
+  "./common/renderMode": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/renderMode.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/renderMode.js",
@@ -9465,7 +9465,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/errors": [
+  "../errors": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/errors.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/errors.js",
