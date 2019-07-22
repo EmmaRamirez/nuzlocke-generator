@@ -39,16 +39,16 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "webpack-hot-client/client?a643aa65-47d8-4bf1-aafe-1be92ecf960c": [
+  "webpack-hot-client/client?df5adc31-bce8-4361-84d3-5c456abfa399": [
     {
-      "id": "./node_modules/webpack-hot-client/client/index.js?a643aa65-47d8-4bf1-aafe-1be92ecf960c",
-      "name": "./node_modules/webpack-hot-client/client/index.js?a643aa65-47d8-4bf1-aafe-1be92ecf960c",
+      "id": "./node_modules/webpack-hot-client/client/index.js?df5adc31-bce8-4361-84d3-5c456abfa399",
+      "name": "./node_modules/webpack-hot-client/client/index.js?df5adc31-bce8-4361-84d3-5c456abfa399",
       "file": "bundle.js",
       "publicPath": "bundle.js"
     },
     {
-      "id": "./node_modules/webpack-hot-client/client/index.js?a643aa65-47d8-4bf1-aafe-1be92ecf960c",
-      "name": "./node_modules/webpack-hot-client/client/index.js?a643aa65-47d8-4bf1-aafe-1be92ecf960c",
+      "id": "./node_modules/webpack-hot-client/client/index.js?df5adc31-bce8-4361-84d3-5c456abfa399",
+      "name": "./node_modules/webpack-hot-client/client/index.js?df5adc31-bce8-4361-84d3-5c456abfa399",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -1959,7 +1959,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./popover/popover": [
+  "../popover/popover": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/popover/popover.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/popover/popover.js",
@@ -2057,7 +2057,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./overlay/overlay": [
+  "../overlay/overlay": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
@@ -2309,7 +2309,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./icon/icon": [
+  "../icon/icon": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/icon/icon.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/icon/icon.js",
@@ -2393,7 +2393,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./dialog/dialog": [
+  "../dialog/dialog": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/dialog/dialog.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/dialog/dialog.js",
@@ -2491,7 +2491,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./menu/menu": [
+  "../menu/menu": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/menu/menu.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/menu/menu.js",
@@ -2505,7 +2505,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./menu/menuItem": [
+  "../menu/menuItem": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/menu/menuItem.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/menu/menuItem.js",
@@ -2519,7 +2519,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./text/text": [
+  "../text/text": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
@@ -3037,7 +3037,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../tag/tag": [
+  "./tag/tag": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/tag/tag.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/tag/tag.js",
@@ -4211,10 +4211,16 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "components/AddPokemonButton": [
+  "./AddPokemonButton": [
     {
       "id": "./src/components/AddPokemonButton/index.ts",
       "name": "./src/components/AddPokemonButton/index.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/AddPokemonButton/AddPokemonButton.tsx",
+      "name": "./src/components/AddPokemonButton/AddPokemonButton.tsx",
       "file": "bundle.js",
       "publicPath": "bundle.js"
     },
@@ -4223,14 +4229,6 @@
       "name": "./src/components/AddPokemonButton/index.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
-    }
-  ],
-  "./AddPokemonButton": [
-    {
-      "id": "./src/components/AddPokemonButton/AddPokemonButton.tsx",
-      "name": "./src/components/AddPokemonButton/AddPokemonButton.tsx",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
     },
     {
       "id": "./src/components/AddPokemonButton/AddPokemonButton.tsx",
@@ -4265,82 +4263,76 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "components/BaseEditor": [
-    {
-      "id": "./src/components/BaseEditor/index.ts",
-      "name": "./src/components/BaseEditor/index.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./src/components/BaseEditor/index.ts",
-      "name": "./src/components/BaseEditor/index.ts",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
   "./BaseEditor": [
     {
-      "id": "./src/components/BaseEditor/BaseEditor.tsx",
-      "name": "./src/components/BaseEditor/BaseEditor.tsx",
+      "id": "./src/components/BaseEditor/index.ts",
+      "name": "./src/components/BaseEditor/index.ts",
       "file": "bundle.js",
       "publicPath": "bundle.js"
     },
     {
       "id": "./src/components/BaseEditor/BaseEditor.tsx",
       "name": "./src/components/BaseEditor/BaseEditor.tsx",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/BaseEditor/index.ts",
+      "name": "./src/components/BaseEditor/index.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
-    }
-  ],
-  "components/BoxedPokemon": [
-    {
-      "id": "./src/components/BoxedPokemon/index.ts",
-      "name": "./src/components/BoxedPokemon/index.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/BoxedPokemon/index.ts",
-      "name": "./src/components/BoxedPokemon/index.ts",
+      "id": "./src/components/BaseEditor/BaseEditor.tsx",
+      "name": "./src/components/BaseEditor/BaseEditor.tsx",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
   ],
   "./BoxedPokemon": [
     {
-      "id": "./src/components/BoxedPokemon/BoxedPokemon.tsx",
-      "name": "./src/components/BoxedPokemon/BoxedPokemon.tsx",
+      "id": "./src/components/BoxedPokemon/index.ts",
+      "name": "./src/components/BoxedPokemon/index.ts",
       "file": "bundle.js",
       "publicPath": "bundle.js"
     },
     {
       "id": "./src/components/BoxedPokemon/BoxedPokemon.tsx",
       "name": "./src/components/BoxedPokemon/BoxedPokemon.tsx",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/BoxedPokemon/index.ts",
+      "name": "./src/components/BoxedPokemon/index.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
-    }
-  ],
-  "components/PokemonIcon": [
-    {
-      "id": "./src/components/PokemonIcon/index.ts",
-      "name": "./src/components/PokemonIcon/index.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/PokemonIcon/index.ts",
-      "name": "./src/components/PokemonIcon/index.ts",
+      "id": "./src/components/BoxedPokemon/BoxedPokemon.tsx",
+      "name": "./src/components/BoxedPokemon/BoxedPokemon.tsx",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
   ],
   "./PokemonIcon": [
     {
+      "id": "./src/components/PokemonIcon/index.ts",
+      "name": "./src/components/PokemonIcon/index.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
       "id": "./src/components/PokemonIcon/PokemonIcon.tsx",
       "name": "./src/components/PokemonIcon/PokemonIcon.tsx",
       "file": "bundle.js",
       "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/PokemonIcon/index.ts",
+      "name": "./src/components/PokemonIcon/index.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
     },
     {
       "id": "./src/components/PokemonIcon/PokemonIcon.tsx",
@@ -4349,7 +4341,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../Shared": [
+  "./Shared": [
     {
       "id": "./src/components/Shared/index.ts",
       "name": "./src/components/Shared/index.ts",
@@ -6107,7 +6099,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./effects": [
+  "redux-saga/effects": [
     {
       "id": "./node_modules/redux-saga/es/effects.js",
       "name": "./node_modules/redux-saga/es/effects.js",
@@ -6875,7 +6867,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./isFunction": [
+  "lodash/isFunction": [
     {
       "id": "./node_modules/lodash/isFunction.js",
       "name": "./node_modules/lodash/isFunction.js",
@@ -8527,54 +8519,50 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "components/ChampsPokemon": [
-    {
-      "id": "./src/components/ChampsPokemon/index.ts",
-      "name": "./src/components/ChampsPokemon/index.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./src/components/ChampsPokemon/index.ts",
-      "name": "./src/components/ChampsPokemon/index.ts",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
   "./ChampsPokemon": [
     {
-      "id": "./src/components/ChampsPokemon/ChampsPokemon.tsx",
-      "name": "./src/components/ChampsPokemon/ChampsPokemon.tsx",
+      "id": "./src/components/ChampsPokemon/index.ts",
+      "name": "./src/components/ChampsPokemon/index.ts",
       "file": "bundle.js",
       "publicPath": "bundle.js"
     },
     {
       "id": "./src/components/ChampsPokemon/ChampsPokemon.tsx",
       "name": "./src/components/ChampsPokemon/ChampsPokemon.tsx",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/ChampsPokemon/index.ts",
+      "name": "./src/components/ChampsPokemon/index.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
-    }
-  ],
-  "components/DataEditor": [
-    {
-      "id": "./src/components/DataEditor/index.ts",
-      "name": "./src/components/DataEditor/index.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/DataEditor/index.ts",
-      "name": "./src/components/DataEditor/index.ts",
+      "id": "./src/components/ChampsPokemon/ChampsPokemon.tsx",
+      "name": "./src/components/ChampsPokemon/ChampsPokemon.tsx",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
   ],
   "./DataEditor": [
     {
+      "id": "./src/components/DataEditor/index.ts",
+      "name": "./src/components/DataEditor/index.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
       "id": "./src/components/DataEditor/DataEditor.tsx",
       "name": "./src/components/DataEditor/DataEditor.tsx",
       "file": "bundle.js",
       "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/DataEditor/index.ts",
+      "name": "./src/components/DataEditor/index.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
     },
     {
       "id": "./src/components/DataEditor/DataEditor.tsx",
@@ -8597,54 +8585,50 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "components/DeadPokemon": [
-    {
-      "id": "./src/components/DeadPokemon/index.ts",
-      "name": "./src/components/DeadPokemon/index.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./src/components/DeadPokemon/index.ts",
-      "name": "./src/components/DeadPokemon/index.ts",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
   "./DeadPokemon": [
     {
-      "id": "./src/components/DeadPokemon/DeadPokemon.tsx",
-      "name": "./src/components/DeadPokemon/DeadPokemon.tsx",
+      "id": "./src/components/DeadPokemon/index.ts",
+      "name": "./src/components/DeadPokemon/index.ts",
       "file": "bundle.js",
       "publicPath": "bundle.js"
     },
     {
       "id": "./src/components/DeadPokemon/DeadPokemon.tsx",
       "name": "./src/components/DeadPokemon/DeadPokemon.tsx",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/DeadPokemon/index.ts",
+      "name": "./src/components/DeadPokemon/index.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
-    }
-  ],
-  "components/DeletePokemonButton": [
-    {
-      "id": "./src/components/DeletePokemonButton/index.ts",
-      "name": "./src/components/DeletePokemonButton/index.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/DeletePokemonButton/index.ts",
-      "name": "./src/components/DeletePokemonButton/index.ts",
+      "id": "./src/components/DeadPokemon/DeadPokemon.tsx",
+      "name": "./src/components/DeadPokemon/DeadPokemon.tsx",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
   ],
   "./DeletePokemonButton": [
     {
+      "id": "./src/components/DeletePokemonButton/index.ts",
+      "name": "./src/components/DeletePokemonButton/index.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
       "id": "./src/components/DeletePokemonButton/DeletePokemonButton.tsx",
       "name": "./src/components/DeletePokemonButton/DeletePokemonButton.tsx",
       "file": "bundle.js",
       "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/DeletePokemonButton/index.ts",
+      "name": "./src/components/DeletePokemonButton/index.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
     },
     {
       "id": "./src/components/DeletePokemonButton/DeletePokemonButton.tsx",
@@ -8961,54 +8945,50 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "components/GameEditor": [
-    {
-      "id": "./src/components/GameEditor/index.ts",
-      "name": "./src/components/GameEditor/index.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./src/components/GameEditor/index.ts",
-      "name": "./src/components/GameEditor/index.ts",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
   "./GameEditor": [
     {
-      "id": "./src/components/GameEditor/GameEditor.tsx",
-      "name": "./src/components/GameEditor/GameEditor.tsx",
+      "id": "./src/components/GameEditor/index.ts",
+      "name": "./src/components/GameEditor/index.ts",
       "file": "bundle.js",
       "publicPath": "bundle.js"
     },
     {
       "id": "./src/components/GameEditor/GameEditor.tsx",
       "name": "./src/components/GameEditor/GameEditor.tsx",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/GameEditor/index.ts",
+      "name": "./src/components/GameEditor/index.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
-    }
-  ],
-  "components/RulesEditor": [
-    {
-      "id": "./src/components/RulesEditor/index.ts",
-      "name": "./src/components/RulesEditor/index.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/RulesEditor/index.ts",
-      "name": "./src/components/RulesEditor/index.ts",
+      "id": "./src/components/GameEditor/GameEditor.tsx",
+      "name": "./src/components/GameEditor/GameEditor.tsx",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
   ],
   "./RulesEditor": [
     {
+      "id": "./src/components/RulesEditor/index.ts",
+      "name": "./src/components/RulesEditor/index.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
       "id": "./src/components/RulesEditor/RulesEditor.tsx",
       "name": "./src/components/RulesEditor/RulesEditor.tsx",
       "file": "bundle.js",
       "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/RulesEditor/index.ts",
+      "name": "./src/components/RulesEditor/index.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
     },
     {
       "id": "./src/components/RulesEditor/RulesEditor.tsx",
@@ -9045,10 +9025,16 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "components/PokemonEditor": [
+  "./PokemonEditor": [
     {
       "id": "./src/components/PokemonEditor/index.ts",
       "name": "./src/components/PokemonEditor/index.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/PokemonEditor/PokemonEditor.tsx",
+      "name": "./src/components/PokemonEditor/PokemonEditor.tsx",
       "file": "bundle.js",
       "publicPath": "bundle.js"
     },
@@ -9057,14 +9043,6 @@
       "name": "./src/components/PokemonEditor/index.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
-    }
-  ],
-  "./PokemonEditor": [
-    {
-      "id": "./src/components/PokemonEditor/PokemonEditor.tsx",
-      "name": "./src/components/PokemonEditor/PokemonEditor.tsx",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
     },
     {
       "id": "./src/components/PokemonEditor/PokemonEditor.tsx",
@@ -9157,7 +9135,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/classes": [
+  "../common/classes": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
@@ -9185,7 +9163,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./formats/jsonFormat": [
+  "./cell/formats/jsonFormat": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/jsonFormat.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/jsonFormat.js",
@@ -9199,7 +9177,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./formats/truncatedFormat": [
+  "./cell/formats/truncatedFormat": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/truncatedFormat.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/truncatedFormat.js",
@@ -9227,7 +9205,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./locator": [
+  "../../locator": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/locator.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/locator.js",
@@ -9269,7 +9247,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./draggable": [
+  "./interactions/draggable": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/interactions/draggable.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/interactions/draggable.js",
@@ -9325,7 +9303,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/clipboard": [
+  "./clipboard": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/clipboard.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/clipboard.js",
@@ -9451,7 +9429,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/internal/focusedCellUtils": [
+  "./common/internal/focusedCellUtils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/internal/focusedCellUtils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/internal/focusedCellUtils.js",
@@ -9465,7 +9443,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../errors": [
+  "./common/errors": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/errors.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/errors.js",
@@ -9955,54 +9933,50 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "components/StyleEditor": [
-    {
-      "id": "./src/components/StyleEditor/index.ts",
-      "name": "./src/components/StyleEditor/index.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./src/components/StyleEditor/index.ts",
-      "name": "./src/components/StyleEditor/index.ts",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
   "./StyleEditor": [
     {
-      "id": "./src/components/StyleEditor/StyleEditor.tsx",
-      "name": "./src/components/StyleEditor/StyleEditor.tsx",
+      "id": "./src/components/StyleEditor/index.ts",
+      "name": "./src/components/StyleEditor/index.ts",
       "file": "bundle.js",
       "publicPath": "bundle.js"
     },
     {
       "id": "./src/components/StyleEditor/StyleEditor.tsx",
       "name": "./src/components/StyleEditor/StyleEditor.tsx",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/StyleEditor/index.ts",
+      "name": "./src/components/StyleEditor/index.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
-    }
-  ],
-  "components/ThemeEditor": [
-    {
-      "id": "./src/components/ThemeEditor/index.ts",
-      "name": "./src/components/ThemeEditor/index.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/ThemeEditor/index.ts",
-      "name": "./src/components/ThemeEditor/index.ts",
+      "id": "./src/components/StyleEditor/StyleEditor.tsx",
+      "name": "./src/components/StyleEditor/StyleEditor.tsx",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
   ],
   "./ThemeEditor": [
     {
+      "id": "./src/components/ThemeEditor/index.ts",
+      "name": "./src/components/ThemeEditor/index.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
       "id": "./src/components/ThemeEditor/ThemeEditor.tsx",
       "name": "./src/components/ThemeEditor/ThemeEditor.tsx",
       "file": "bundle.js",
       "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/ThemeEditor/index.ts",
+      "name": "./src/components/ThemeEditor/index.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
     },
     {
       "id": "./src/components/ThemeEditor/ThemeEditor.tsx",
@@ -10011,10 +9985,16 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "components/TrainerEditor/TrainerEditor": [
+  "./TrainerEditor": [
     {
       "id": "./src/components/TrainerEditor/TrainerEditor.tsx",
       "name": "./src/components/TrainerEditor/TrainerEditor.tsx",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/TrainerEditor/index.ts",
+      "name": "./src/components/TrainerEditor/index.ts",
       "file": "bundle.js",
       "publicPath": "bundle.js"
     },
@@ -10023,9 +10003,15 @@
       "name": "./src/components/TrainerEditor/TrainerEditor.tsx",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./src/components/TrainerEditor/index.ts",
+      "name": "./src/components/TrainerEditor/index.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
     }
   ],
-  "components/TrainerEditor/TrainerInfoEditor": [
+  "./TrainerInfoEditor": [
     {
       "id": "./src/components/TrainerEditor/TrainerInfoEditor.tsx",
       "name": "./src/components/TrainerEditor/TrainerInfoEditor.tsx",
@@ -10095,10 +10081,16 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "components/HotkeysEditor": [
+  "./HotkeysEditor": [
     {
       "id": "./src/components/HotkeysEditor/index.ts",
       "name": "./src/components/HotkeysEditor/index.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/HotkeysEditor/HotkeysEditor.tsx",
+      "name": "./src/components/HotkeysEditor/HotkeysEditor.tsx",
       "file": "bundle.js",
       "publicPath": "bundle.js"
     },
@@ -10107,14 +10099,6 @@
       "name": "./src/components/HotkeysEditor/index.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
-    }
-  ],
-  "./HotkeysEditor": [
-    {
-      "id": "./src/components/HotkeysEditor/HotkeysEditor.tsx",
-      "name": "./src/components/HotkeysEditor/HotkeysEditor.tsx",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
     },
     {
       "id": "./src/components/HotkeysEditor/HotkeysEditor.tsx",
@@ -10235,10 +10219,16 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "components/TeamPokemon": [
+  "./TeamPokemon": [
     {
       "id": "./src/components/TeamPokemon/index.ts",
       "name": "./src/components/TeamPokemon/index.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/TeamPokemon/TeamPokemon.tsx",
+      "name": "./src/components/TeamPokemon/TeamPokemon.tsx",
       "file": "bundle.js",
       "publicPath": "bundle.js"
     },
@@ -10247,14 +10237,6 @@
       "name": "./src/components/TeamPokemon/index.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
-    }
-  ],
-  "./TeamPokemon": [
-    {
-      "id": "./src/components/TeamPokemon/TeamPokemon.tsx",
-      "name": "./src/components/TeamPokemon/TeamPokemon.tsx",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
     },
     {
       "id": "./src/components/TeamPokemon/TeamPokemon.tsx",
@@ -10371,20 +10353,6 @@
     {
       "id": "./src/components/Result/TrainerResult.tsx",
       "name": "./src/components/Result/TrainerResult.tsx",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "./TrainerEditor": [
-    {
-      "id": "./src/components/TrainerEditor/index.ts",
-      "name": "./src/components/TrainerEditor/index.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./src/components/TrainerEditor/index.ts",
-      "name": "./src/components/TrainerEditor/index.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
