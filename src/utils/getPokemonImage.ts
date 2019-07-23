@@ -1,4 +1,4 @@
-import { addForme, getSpriteIcon, speciesToNumber, getForme } from 'utils';
+import { addForme, speciesToNumber, getForme } from 'utils';
 import { Styles } from './styleDefaults';
 import { capitalize } from './capitalize';
 import { Game } from 'utils';
@@ -39,7 +39,8 @@ const getGameName = (name: Game) => {
         return 'blackwhite';
     if (name === 'X' || name === 'Y' || name === 'OmegaRuby' || name === 'AlphaSapphire')
         return 'xy';
-    if (name === 'Sun' || name === 'Moon' || name === 'Ultra Sun' || name === 'Ultra Moon')
+    if (name === 'Sun' || name === 'Moon' || name === 'Ultra Sun' || name === 'Ultra Moon'
+        || name === 'Colosseum' || name === 'XD Gale of Darkness')
         return 'sunmoon';
     if (
         name === 'Green' ||
@@ -53,11 +54,47 @@ const getGameName = (name: Game) => {
     return 'sm';
 };
 
+const getGameNameSerebii = (name: Game) => {
+    switch (name) {
+        case 'Black':
+        case 'Black 2':
+        case 'White':
+        case 'White 2':
+            return 'BW';
+        case 'Gold':
+            return 'Gold';
+        case 'Silver':
+            return 'Silver';
+        case 'Crystal':
+            return 'Crystal';
+        case 'Ruby':
+        case 'Sapphire':
+            return 'RuSa';
+        case 'FireRed':
+        case 'LeafGreen':
+            return 'FRLG';
+        case 'Emerald':
+            return 'Em';
+        case 'Diamond':
+        case 'Pearl':
+        case 'Platinum':
+            return 'DP';
+        case 'HeartGold':
+        case 'SoulSilver':
+            return 'HGSS';
+        case 'X':
+        case 'Y':
+            return 'XY';
+        default:
+            return 'SM';
+    }
+};
+
 export interface GetPokemonImage {
     customImage?: string;
     forme?: keyof typeof Forme;
     species: string;
-    name?: string;
+    name?: Game;
     style: Styles;
     shiny?: boolean;
 }
@@ -75,6 +112,7 @@ export function getPokemonImage({
     if (customImage) {
         return `url(${customImage})`;
     }
+
     if (
         style.spritesMode &&
         (name === 'Black' ||
@@ -93,11 +131,19 @@ export function getPokemonImage({
             name === 'Sun' ||
             name === 'Moon' ||
             name === 'Ultra Sun' ||
-            name === 'Ultra Moon')
+            name === 'Ultra Moon' ||
+            name === 'Colosseum' ||
+            name === 'XD Gale of Darkness')
     ) {
-        return `url(https://www.serebii.net/${getGameName(
-            name,
-        )}/pokemon/${leadingZerosNumber}${getForme(forme)}.png)`;
+        if (!shiny) {
+            return `url(https://www.serebii.net/${getGameName(
+                name,
+            )}/pokemon/${leadingZerosNumber}${getForme(forme)}.png)`;
+        } else {
+            return `url(https://www.serebii.net/Shiny/${capitalize(
+                getGameNameSerebii(name as Game),
+            )}/${leadingZerosNumber}.png)`;
+        }
     }
     if (style.spritesMode) {
         if (!shiny) {
@@ -105,11 +151,13 @@ export function getPokemonImage({
                 name as Game,
             )}/${leadingZerosNumber}.png)`;
         } else {
-            return `url(https://www.serebii.net/Shiny/${capitalize(
-                getGameName(name as Game),
-            )}/${leadingZerosNumber}.png)`;
+            return `url(https://www.serebii.net/Shiny/${
+                getGameNameSerebii(name as Game)
+            }/${leadingZerosNumber}.png)`;
         }
     }
+
+
     if (style.teamImages === 'sugimori') {
         return `url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/${leadingZerosNumber}${sugiFormeNotation(
             Forme[forme ? forme : 'Normal'],
