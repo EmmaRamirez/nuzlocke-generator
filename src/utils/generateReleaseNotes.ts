@@ -323,7 +323,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 ## Features
 
 ## Fixes
-- Fix issues with shinies not showing up in Sprites mode
+- Fix issues with shinies from certain games not showing up in Sprites mode
 
 ## Known Issues
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading

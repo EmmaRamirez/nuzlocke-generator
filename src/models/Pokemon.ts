@@ -29,6 +29,7 @@ export interface Pokemon {
     gameOfOrigin?: Game;
     egg?: boolean;
     hidden?: boolean;
+    extraData?: object;
 }
 
 // We export a non-type version when we need all the keys easily
@@ -60,4 +61,5 @@ export const PokemonKeys: Pokemon = {
     gameOfOrigin: 'Red',
     egg: false,
     hidden: false,
+    extraData: {},
 };

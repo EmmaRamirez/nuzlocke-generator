@@ -8,7 +8,9 @@ import { persistor } from 'store';
 import { replaceState } from 'actions';
 import { style } from 'reducers/style';
 import { reducers } from 'reducers';
-// import { parseFile } from 'pokemon-savefile-parser';
+import { parseFile } from 'pokemon-savefile-parser/gen1.js';
+import converter from 'hex2dec';
+import { Game } from 'models';
 
 const trash = require('assets/img/trash.png');
 
@@ -126,27 +128,36 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         }
     }
 
-    private uploadFile = e => {
+    private static determineGame (isYellow: boolean): Game {
+        if (isYellow) return {name: 'Yellow'};
+        return {name: 'Red'};
+    }
+
+    private uploadFile = (replaceState, state) => e => {
         const file = this.fileInput.files[0];
         const reader = new FileReader();
+
 
         reader.readAsArrayBuffer(file);
 
         reader.addEventListener('load', function() {
             const u = new Uint8Array(this.result as ArrayBuffer);
-            const a = new Array(u.length);
-            let i = u.length;
-            while (i--) {
-                a[i] = (u[i] < 16 ? '0' : '') + u[i].toString(16);
-            }
-            console.log(a);
-            // parseFile(a, 'nuzlocke')
-            //     .then(res => {
-            //         console.log(res);
-            //     })
-            //     .catch(err => {
-            //         console.error(err);
-            //     });
+
+            console.log(u);
+            parseFile(u, 'nuzlocke')
+                .then(res => {
+                    res.pokemon = res.pokemon.filter(poke => poke.species);
+                    const data = {game: DataEditorBase.determineGame(res.isYellow), pokemon: res.pokemon, trainer: res.trainer};
+                    const newState = { ...state, ...data };
+
+                    replaceState(newState);
+                    console.log(
+                        newState
+                    );
+                })
+                .catch(err => {
+                    console.error(err);
+                });
         });
     };
 
@@ -223,12 +234,6 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                             </div>
                             <div className='pt-dialog-footer'>
                                 <ButtonGroup>
-                                    {/* <Button
-                                        intent={Intent.PRIMARY}
-                                        onClick={this.confirmImport}
-                                        text='Upload'
-                                        icon='upload'
-                                    /> */}
                                     <Button
                                         icon='tick'
                                         intent={
@@ -243,6 +248,10 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         </>
                     )}
                 </Dialog>
+                <div className='pt-label pt-inline' style={{ padding: '.25rem 0', paddingBottom: '.5rem' }}>
+                    <label className='pt-label pt-text-muted'>Upload Save file</label>
+                    <input style={{ padding: '.25rem' }} className='pt-button' ref={ref => this.fileInput = ref } onChange={this.uploadFile(this.props.replaceState, this.props.state)} type='file' id='file' name='file' accept='.sav' />
+                </div>
                 <ButtonGroup>
                     <Button
                         onClick={e => this.importState()}
@@ -269,10 +278,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     className='pt-minimal'>
                     Clear All Data
                 </Button>
-                {/* <div className='pt-label pt-inline' style={{ padding: '1rem' }}>
-                    <span>Upload Save file</span>
-                    <input ref={ref => this.fileInput = ref } onChange={this.uploadFile} type='file' id='file' name='file' accept='.sav' />
-                </div> */}
+                <br />
             </div>
         );
     }

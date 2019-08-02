@@ -15,7 +15,7 @@ import {
     Forme,
 } from 'utils';
 import { Pokemon } from 'models';
-import { onClick, Boxes } from 'types';
+import { Boxes } from 'types';
 import { CurrentPokemonInput } from 'components/PokemonEditor';
 import { DeletePokemonButton } from 'components/DeletePokemonButton';
 import { Autocomplete, ErrorBoundary } from 'components/Shared';
@@ -26,10 +26,9 @@ import { PokemonIconBase } from 'components/PokemonIcon';
 import { cx } from 'emotion';
 import * as Styles from './styles';
 import * as uuid from 'uuid/v4';
-import { Classes, Icon, Popover, Position, PopoverInteractionKind } from '@blueprintjs/core';
+import { Classes, Icon, Popover, Position, PopoverInteractionKind, TextArea } from '@blueprintjs/core';
 import { addPokemon } from 'actions';
 import { State } from 'state';
-import { game } from 'reducers/game';
 import { CurrentPokemonLayoutItem } from './CurrentPokemonLayoutItem';
 
 const pokeball = require('assets/pokeball.png');
@@ -232,6 +231,12 @@ export class CurrentPokemonEditBase extends React.Component<
                         type='select'
                         options={listOfGames}
                     />
+                </CurrentPokemonLayoutItem>
+                <CurrentPokemonLayoutItem>
+                    <label className={Classes.LABEL}>Extra Data</label>
+                    <TextArea disabled>
+                        {currentPokemon.extraData && JSON.stringify(currentPokemon.extraData)}
+                    </TextArea>
                 </CurrentPokemonLayoutItem>
             </div>
         );
