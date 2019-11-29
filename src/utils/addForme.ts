@@ -8,6 +8,9 @@ export const addForme = (species: string | undefined, forme?: keyof typeof Forme
         if (forme === 'Alolan') {
             return `alolan-${species}`;
         }
+        if (forme === 'Galarian') {
+            return `galarian-${species}`;
+        }
         if (forme === 'Mega') {
             return `${species}-mega`;
         }

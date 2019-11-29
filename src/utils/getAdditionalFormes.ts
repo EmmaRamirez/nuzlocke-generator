@@ -138,7 +138,6 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
         s === 'ninetales' ||
         s === 'diglett' ||
         s === 'dugtrio' ||
-        s === 'meowth' ||
         s === 'persian' ||
         s === 'geodude' ||
         s === 'graveler' ||
@@ -149,6 +148,27 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
         s === 'marowak'
     ) {
         return ['Alolan'];
+    }
+    if (
+        s === 'meowth'
+    ) {
+        return ['Alolan', 'Galarian'];
+    }
+    if (
+        s === 'ponyta' ||
+        s === 'rapidash' ||
+        s === 'farfetch\'d' ||
+        s === 'weezing' ||
+        s === 'mr. mime' ||
+        s === 'corsola' ||
+        s === 'zigzagoon' ||
+        s === 'linoone' ||
+        s === 'darumaka' ||
+        s === 'darmanitan' ||
+        s === 'yamask' ||
+        s === 'stunfisk'
+    ) {
+        return ['Galarian'];
     }
     if (
         s === 'venusaur' ||
