@@ -75,7 +75,6 @@ const iconSource = {
 type IconURLArgs = Pick<Pokemon, 'id' | 'species' | 'forme' | 'shiny' | 'gender' | 'customIcon' | 'egg'>;
 
 export const isGalarianForme = (forme: Forme, num: number) => {
-    console.log(forme, num);
     const ids = [52, 77, 78, 83, 110, 122, 222, 263, 264, 554, 555, 562, 618];
     if (ids.includes(num) && (forme as string) === 'Galarian') return true;
     return false;
@@ -93,8 +92,6 @@ export const getIconURL = ({ id, species, forme, shiny, gender, customIcon, egg 
 
     if (species === 'Egg' || egg) return `${baseURL}egg.png`;
     if (customIcon) return customIcon;
-
-    console.log(isGalarianForme(forme!, num!));
 
     if (forme && num && isGalarianForme(forme, num) || num && num >= 810) {
         return `https://www.serebii.net/pokedex-swsh/icon/${leadingZerosNumber}${getFormeSWSH(forme as Forme)}.png`;

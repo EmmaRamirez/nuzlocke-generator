@@ -8,7 +8,7 @@ import { persistor } from 'store';
 import { replaceState } from 'actions';
 import { style } from 'reducers/style';
 import { reducers } from 'reducers';
-import { parseFile } from 'pokemon-savefile-parser/gen1.js';
+// import { parseFile } from 'pokemon-savefile-parser/gen1.ts';
 import converter from 'hex2dec';
 import { Game } from 'models';
 
@@ -144,20 +144,20 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
             const u = new Uint8Array(this.result as ArrayBuffer);
 
             console.log(u);
-            parseFile(u, 'nuzlocke')
-                .then(res => {
-                    res.pokemon = res.pokemon.filter(poke => poke.species);
-                    const data = {game: DataEditorBase.determineGame(res.isYellow), pokemon: res.pokemon, trainer: res.trainer};
-                    const newState = { ...state, ...data };
+            // parseFile(u, 'nuzlocke')
+            //     .then(res => {
+            //         res.pokemon = res.pokemon.filter(poke => poke.species);
+            //         const data = {game: DataEditorBase.determineGame(res.isYellow), pokemon: res.pokemon, trainer: res.trainer};
+            //         const newState = { ...state, ...data };
 
-                    replaceState(newState);
-                    console.log(
-                        newState
-                    );
-                })
-                .catch(err => {
-                    console.error(err);
-                });
+            //         replaceState(newState);
+            //         console.log(
+            //             newState
+            //         );
+            //     })
+            //     .catch(err => {
+            //         console.error(err);
+            //     });
         });
     };
 
