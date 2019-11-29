@@ -155,6 +155,32 @@ export function getBadges(name: Game): Badge[] {
         ];
     }
 
+    if (name === 'Sword') {
+        return [
+            { name: 'Grass Badge', image: 'grass-badge' },
+            { name: 'Water Badge', image: 'water-badge' },
+            { name: 'Fire Badge', image: 'fire-badge' },
+            { name: 'Fighting Badge', image: 'fighting-badge' },
+            { name: 'Fairy Badge', image: 'galar-fairy-badge' },
+            { name: 'Rock Badge', image: 'rock-badge' },
+            { name: 'Dark Badge', image: 'dark-badge' },
+            { name: 'Dragon Badge', image: 'dragon-badge' },
+        ];
+    }
+
+    if (name === 'Shield') {
+        return [
+            { name: 'Grass Badge', image: 'grass-badge' },
+            { name: 'Water Badge', image: 'water-badge' },
+            { name: 'Fire Badge', image: 'fire-badge' },
+            { name: 'Ghost Badge', image: 'ghost-badge' },
+            { name: 'Fairy Badge', image: 'galar-fairy-badge' },
+            { name: 'Ice Badge', image: 'ice-badge' },
+            { name: 'Dark Badge', image: 'dark-badge' },
+            { name: 'Dragon Badge', image: 'dragon-badge' },
+        ];
+    }
+
     return [];
 }
 
@@ -174,6 +200,9 @@ export function getAllBadges() {
         { name: 'Kalos Champion', image: 'kalos-champion-ribbon' },
         ...getBadges('Ultra Sun'),
         { name: 'Alola Champion', image: 'alola-champion-ribbon' },
+        ...getBadges('Sword'),
+        { name: 'Ghost Badge', image: 'ghost-badge' },
+        { name: 'Ice Badge', image: 'ice-badge' },
         { name: 'Empty Badge', image: 'unknown' },
     ];
 }

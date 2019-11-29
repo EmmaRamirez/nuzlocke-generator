@@ -405,6 +405,36 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
 
                 <div className={styleEdit}>
                     <Checkbox
+                        checked={props.style.displayExtraData}
+                        name='displayExtraData'
+                        label='Display Extra Data from Save Files'
+                        onChange={(e: any) =>
+                            editEvent(
+                                { ...e, target: { value: e.target.checked } },
+                                props,
+                                'displayExtraData',
+                            )
+                        }
+                    />
+                </div>
+
+                <div className={styleEdit}>
+                    <Checkbox
+                        checked={props.style.usePokemonGBAFont}
+                        name='usePokemonGBAFont'
+                        label='Use Pokémon GBA Font'
+                        onChange={(e: any) =>
+                            editEvent(
+                                { ...e, target: { value: e.target.checked } },
+                                props,
+                                'usePokemonGBAFont',
+                            )
+                        }
+                    />
+                </div>
+
+                <div className={styleEdit}>
+                    <Checkbox
                         checked={props.style.oldMetLocationFormat}
                         name='oldMetLocationFormat'
                         label='Old Met Location Format'

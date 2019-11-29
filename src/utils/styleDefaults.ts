@@ -10,6 +10,8 @@ export interface Styles {
     displayBadges: boolean;
     displayRules: boolean;
     editorDarkMode: boolean;
+    font: string;
+    usePokemonGBAFont: boolean;
     iconsNextToTeamPokemon: boolean;
     imageStyle: RadiusType;
     itemStyle: RadiusType;
@@ -34,6 +36,7 @@ export interface Styles {
     boxedPokemonPerLine: number;
     displayGameOriginForBoxedAndDead: boolean;
     displayBackgroundInsteadOfBadge: boolean;
+    displayExtraData: boolean;
     useAutoHeight: boolean;
 }
 
@@ -45,6 +48,7 @@ export const styleDefaults: Styles = {
     displayBadges: true,
     displayRules: false,
     editorDarkMode: false,
+    font: 'Open Sans',
     iconsNextToTeamPokemon: false,
     imageStyle: 'round',
     itemStyle: 'round',
@@ -69,5 +73,7 @@ export const styleDefaults: Styles = {
     boxedPokemonPerLine: 6,
     displayGameOriginForBoxedAndDead: false,
     displayBackgroundInsteadOfBadge: false,
+    displayExtraData: true,
     useAutoHeight: false,
+    usePokemonGBAFont: false,
 };

@@ -127,6 +127,105 @@ export const handleSpeciesTypeEdgeCases = ({
     if (
         match({
             ...data,
+            species: ['Meowth'],
+            forme: [Forme.Galarian],
+        })
+    )
+        return [Types.Steel, Types.Steel];
+
+    if (
+        match({
+            ...data,
+            species: ['Ponyta'],
+            forme: [Forme.Galarian],
+        })
+    )
+        return [Types.Psychic, Types.Psychic];
+
+    if (
+        match({
+            ...data,
+            species: ['Rapidash'],
+            forme: [Forme.Galarian],
+        })
+    )
+        return [Types.Fairy, Types.Psychic];
+
+    if (
+        match({
+            ...data,
+            species: ['Farfetch\'d'],
+            forme: [Forme.Galarian],
+        })
+    )
+        return [Types.Fighting, Types.Fighting];
+
+    if (
+        match({
+            ...data,
+            species: ['Weezing'],
+            forme: [Forme.Galarian],
+        })
+    )
+        return [Types.Poison, Types.Fairy];
+
+    if (
+        match({
+            ...data,
+            species: ['Mr. Mime'],
+            forme: [Forme.Galarian],
+        })
+    )
+        return [Types.Ice, Types.Psychic];
+
+    if (
+        match({
+            ...data,
+            species: ['Corsola'],
+            forme: [Forme.Galarian],
+        })
+    )
+        return [Types.Ghost, Types.Ghost];
+
+    if (
+        match({
+            ...data,
+            species: ['Zigzagoon', 'Linoone'],
+            forme: [Forme.Galarian],
+        })
+    )
+         return [Types.Dark, Types.Normal];
+
+    if (
+        match({
+            ...data,
+            species: ['Darumaka', 'Darmanitan'],
+            forme: [Forme.Galarian],
+        })
+    )
+        return [Types.Ice, Types.Ice];
+
+    if (
+        match({
+            ...data,
+            species: ['Yamask'],
+            forme: [Forme.Galarian],
+        })
+    )
+        return [Types.Ground, Types.Ghost];
+
+    if (
+        match({
+            ...data,
+            species: ['Stunfisk'],
+            forme: [Forme.Galarian],
+        })
+    )
+        return [Types.Ground, Types.Steel];
+
+    if (
+        match({
+            ...data,
             species: ['Marowak'],
             forme: [Forme.Alolan],
         })
@@ -246,6 +345,8 @@ export const matchSpeciesToTypes = (
         case 'Fomantis':
         case 'Lurantis':
         case 'Grookey':
+        case 'Thwackey':
+        case 'Rillaboom':
         case 'Gossifleur':
         case 'Eldegoss':
             return [Types.Grass, Types.Grass];
@@ -293,6 +394,8 @@ export const matchSpeciesToTypes = (
         case 'Litten':
         case 'Torracat':
         case 'Scorbunny':
+        case 'Raboot':
+        case 'Cinderace':
             return [Types.Fire, Types.Fire];
         case 'Charizard':
         case 'Moltres':
@@ -366,6 +469,8 @@ export const matchSpeciesToTypes = (
         case 'Wishiwashi':
         case 'Pyukumuku':
         case 'Sobble':
+        case 'Drizzile':
+        case 'Inteleon':
             return [Types.Water, Types.Water];
         case 'Slowpoke':
         case 'Slowbro':
@@ -405,6 +510,8 @@ export const matchSpeciesToTypes = (
          * @type Flying
          */
         case 'Tornadus':
+        case 'Rookidee':
+        case 'Corvisquire':
             return [Types.Flying, Types.Flying];
         case 'Noibat':
         case 'Noivern':
@@ -736,6 +843,8 @@ export const matchSpeciesToTypes = (
         case 'Liepard':
         case 'Zorua':
         case 'Zoroark':
+        case 'Nickit':
+        case 'Thievul':
             return [Types.Dark, Types.Dark];
         case 'Deino':
         case 'Zweilous':
@@ -1064,7 +1173,11 @@ export const matchSpeciesToTypes = (
         case 'Jirachi':
             return [Types.Steel, Types.Psychic];
         case 'Cascoon':
+        case 'Blipbug':
             return [Types.Bug, Types.Bug];
+        case 'Dottler':
+        case 'Orbeetle':
+            return [Types.Bug, Types.Psychic];
         case 'Nosepass':
         case 'Sudowoodo':
         case 'Regirock':
@@ -1128,6 +1241,101 @@ export const matchSpeciesToTypes = (
             return [Types.Dragon, Types.Steel];
         case 'Palkia':
             return [Types.Dragon, Types.Water];
+        case 'Obstagoon':
+            return [Types.Dark, Types.Normal];
+        case 'Perrserker':
+            return [Types.Steel, Types.Steel];
+        case 'Cursola':
+            return [Types.Ghost, Types.Ghost];
+        case 'Sirfetch\'d':
+        case 'Falinks':
+            return [Types.Fighting, Types.Fighting];
+        case 'Mr. Rime':
+            return [Types.Ice, Types.Psychic];
+        case 'Runerigus':
+            return [Types.Ground, Types.Ghost];
+        case 'Chewtle':
+            return [Types.Water, Types.Water];
+        case 'Yamper':
+        case 'Boltund':
+            return [Types.Electric, Types.Electric];
+        case 'Rolycoly':
+            return [Types.Rock, Types.Rock];
+        case 'Carkol':
+        case 'Coalossal':
+            return [Types.Rock, Types.Fire];
+        case 'Applin':
+        case 'Flapple':
+        case 'Appletun':
+            return [Types.Grass, Types.Dragon];
+        case 'Silicobra':
+        case 'Sandaconda':
+            return [Types.Ground, Types.Ground];
+        case 'Cramorant':
+            return [Types.Flying, Types.Water];
+        case 'Arrokuda':
+        case 'Barraskewda':
+            return [Types.Water, Types.Water];
+        case 'Toxel':
+        case 'Toxtricity':
+            return [Types.Electric, Types.Poison];
+        case 'Sizzlipede':
+        case 'Centiskorch':
+            return [Types.Fire, Types.Bug];
+        case 'Clobbopus':
+        case 'Grapploct':
+            return [Types.Fighting, Types.Fighting];
+        case 'Sinistea':
+        case 'Polteageist':
+            return [Types.Ghost, Types.Ghost];
+        case 'Hetenna':
+        case 'Hattrem':
+            return [Types.Psychic, Types.Psychic];
+        case 'Hattrene':
+            return [Types.Psychic, Types.Fairy];
+        case 'Impidimp':
+        case 'Morgrem':
+        case 'Grimmsnarl':
+            return [Types.Dark, Types.Fairy];
+        case 'Milcery':
+        case 'Alcremie':
+            return [Types.Fairy, Types.Fairy];
+        case 'Pincurchin':
+            return [Types.Electric, Types.Electric];
+        case 'Snom':
+        case 'Frosmoth':
+            return [Types.Ice, Types.Bug];
+        case 'Stonjourner':
+            return [Types.Rock, Types.Rock];
+        case 'Eiscue':
+            return [Types.Ice, Types.Ice];
+        case 'Indeedee':
+            return [Types.Psychic, Types.Psychic];
+        case 'Morpeko':
+            return [Types.Electric, Types.Dark];
+        case 'Cufant':
+        case 'Copperajah':
+            return [Types.Steel, Types.Steel];
+        case 'Dracozolt':
+            return [Types.Electric, Types.Dragon];
+        case 'Arctozolt':
+            return [Types.Electric, Types.Ice];
+        case 'Dracovish':
+            return [Types.Water, Types.Dragon];
+        case 'Arctovish':
+            return [Types.Water, Types.Ice];
+        case 'Duralodon':
+            return [Types.Steel, Types.Dragon];
+        case 'Dreepy':
+        case 'Drakloak':
+        case 'Dragapult':
+            return [Types.Dragon, Types.Ghost];
+        case 'Zacian':
+            return [Types.Fairy, Types.Fairy];
+        case 'Zamazenta':
+            return [Types.Fighting, Types.Fighting];
+        case 'Eternatus':
+            return [Types.Poison, Types.Dragon];
         // 'Heatran',
         // 'Shaymin',
         // 'Victini',

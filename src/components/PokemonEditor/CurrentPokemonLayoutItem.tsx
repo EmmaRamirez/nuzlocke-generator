@@ -7,10 +7,14 @@ const style = {
         display: flex;
         width: 100%;
     `,
+    disabled: css`
+        pointer-events: none;
+        opacity: 0.85;
+    `,
 };
 
-export class CurrentPokemonLayoutItem extends React.PureComponent {
+export class CurrentPokemonLayoutItem extends React.PureComponent<{disabled?: boolean}> {
     public render() {
-        return <div className={cx(style.Layout)}>{this.props.children}</div>;
+        return <div className={cx(style.Layout, this.props.disabled && style.disabled)}>{this.props.children}</div>;
     }
 }

@@ -6,7 +6,7 @@
     "js"
   ],
   "transform": {
-    "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    "\\.(js|ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
   },
   "modulePaths": [
     "/src"

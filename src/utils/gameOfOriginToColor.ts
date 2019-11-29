@@ -34,8 +34,8 @@ export const gameOfOriginToColor = (game: Game) => {
         'Ultra Moon': '#ac17ed',
         Colosseum: '#dfe0d2',
         'XD Gale of Darkness': '#39104f',
-        Sword: 'cyan',
-        Shield: 'magenta',
+        Sword: '#48A9A6',
+        Shield: '#C1474D',
     };
 
     return gameToColor[game] || '';

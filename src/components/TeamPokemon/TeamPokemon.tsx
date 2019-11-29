@@ -62,6 +62,13 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
             }
             return 'None';
         };
+        const stat = (stat, statName) => (
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', margin: '0 2px'}}>
+                <div>{statName}</div>
+                <div>{stat}</div>
+            </div>
+        );
+
         return (
             <div
                 className='pokemon-info'
@@ -115,6 +122,15 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                     {pokemon.ability ? (
                         <div className='pokemon-ability'>{pokemon.ability}</div>
                     ) : null}
+                    {style.displayExtraData && pokemon.extraData ? (
+                        <div style={{display: 'flex', justifyContent: 'space-evenly', fontSize: '12px', width: '255px'}}>
+                            {stat(pokemon.extraData['currentHp'], 'HP')}
+                            {stat(pokemon.extraData['attack'], 'ATK')}
+                            {stat(pokemon.extraData['defense'], 'DEF')}
+                            {stat(pokemon.extraData['special'], 'SPC')}
+                            {stat(pokemon.extraData['speed'], 'SPE')}
+                        </div>
+                     ) : null}
                 </div>
                 {style.showPokemonMoves ? (
                     <Moves

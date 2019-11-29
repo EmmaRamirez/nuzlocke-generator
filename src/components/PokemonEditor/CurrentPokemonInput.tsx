@@ -6,7 +6,7 @@ import { editPokemon, selectPokemon } from 'actions';
 
 import { ErrorBoundary } from 'components/Shared';
 
-import { TagInput } from '@blueprintjs/core';
+import { TagInput, Classes } from '@blueprintjs/core';
 import { State } from 'state';
 
 interface CurrentPokemonInputProps {
@@ -15,6 +15,7 @@ interface CurrentPokemonInputProps {
     type: 'number' | 'text' | 'select' | 'checkbox' | 'double-select' | 'moves';
     value: any;
     placeholder?: string;
+    transform?: (v: any) => string;
     disabled?: boolean;
     options?: string[];
     editPokemon: editPokemon;
@@ -26,6 +27,10 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
     constructor(props: CurrentPokemonInputProps) {
         super(props);
     }
+
+    public static defaultProps = {
+        disabled: false,
+    };
 
     public onChange = (
         e: React.SyntheticEvent<any> & any,
@@ -66,7 +71,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         this.props.selectPokemon && this.props.selectPokemon(this.props.selectedId);
     };
 
-    public getInput({ labelName, disabled, inputName, type, value, placeholder, options }: any) {
+    public getInput({ labelName, transform, disabled, inputName, type, value, placeholder, options }: any) {
         value = value == null ? '' : value;
         if (type === 'moves') {
             return (
@@ -98,7 +103,8 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                     name={inputName}
                     value={value}
                     placeholder={placeholder}
-                    disabled={disabled || false}
+                    disabled={disabled}
+                    className={disabled && `${Classes.DISABLED} ${Classes.TEXT_MUTED}`}
                 />
             );
         }
@@ -110,7 +116,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                     name={inputName}
                     value={value}
                     placeholder={placeholder}
-                    disabled={disabled || false}
+                    disabled={disabled}
                 />
             );
         }

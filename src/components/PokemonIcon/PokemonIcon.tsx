@@ -2,9 +2,11 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import {
     getFormeSuffix,
+    getForme as getFormeSWSH,
     listOfPokemon,
     significantGenderDifferenceList,
     Forme,
+    speciesToNumber,
 } from 'utils';
 import { Gender, GenderElementProps } from 'components/Shared';
 import { selectPokemon } from 'actions';
@@ -72,6 +74,12 @@ const iconSource = {
 
 type IconURLArgs = Pick<Pokemon, 'id' | 'species' | 'forme' | 'shiny' | 'gender' | 'customIcon' | 'egg'>;
 
+export const isGalarianForme = (forme: Forme, num: number) => {
+    const ids = [52, 77, 78, 83, 110, 122, 222, 263, 264, 554, 555, 562, 618];
+    if (ids.includes(num) && (forme as string) === 'Galarian') return true;
+    return false;
+};
+
 export const getIconURL = ({ id, species, forme, shiny, gender, customIcon, egg }: IconURLArgs) => {
     const baseURL = `icons/pokemon/`;
     const isShiny = shiny ? 'shiny' : 'regular';
@@ -79,8 +87,16 @@ export const getIconURL = ({ id, species, forme, shiny, gender, customIcon, egg 
         significantGenderDifferenceList.includes(species) && Gender.isFemale(gender)
             ? `female/`
             : '';
+    const num = speciesToNumber(species);
+    const leadingZerosNumber = num && num.toString().padStart(3, '0');
+
     if (species === 'Egg' || egg) return `${baseURL}egg.png`;
     if (customIcon) return customIcon;
+
+    if (forme && num && isGalarianForme(forme, num) || num && num >= 810) {
+        return `https://www.serebii.net/pokedex-swsh/icon/${leadingZerosNumber}${getFormeSWSH(forme as Forme)}.png`;
+    }
+
     return `${baseURL}${isShiny}/${isFemaleSpecific}${formatSpeciesName(species)}${getFormeSuffix(
         forme as keyof typeof Forme
     )}.png`;
@@ -111,7 +127,7 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
             hidden,
             customIcon,
         } = this.props;
-        const imageStyle = { maxHeight: '100%', opacity: hidden ? 0.5 : 1 };
+        const imageStyle = { maxHeight: '100%', opacity: hidden ? 0.5 : 1, height: '32px', };
         return connectDragSource!(
             <div
                 role='icon'

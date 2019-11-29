@@ -317,5 +317,18 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 ## Known Issues
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`,
+    '0.0.16-beta': `# Changelog
+
+## Features
+- **Sword and Shield**: Pokémon data, icons, badges, and more!
+- GBA-style font option
+
+## Fixes
+- Fix issues with shinies from certain games not showing up in Sprites mode
+
+## Known Issues
+- Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `
 };

@@ -2,6 +2,7 @@ export const getForme = forme => {
     if (forme === 'Alolan') {
         return '-a';
     }
+    if (forme === 'Galarian') return '-g';
     if (forme === 'Heart') return '-h';
     if (forme === 'Star') return '-s';
     if (forme === 'Diamond') return '-d';

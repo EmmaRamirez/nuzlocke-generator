@@ -82,7 +82,7 @@ describe('styleDefaults', () => {
         expect(typeof styleDefaults).toBe('object');
         expect(styleDefaults.imageStyle).toBe('round');
         expect(objectPropertiesWhere(styleDefaults, p => p === 'round')).toBe(2);
-        expect(objectPropertiesWhere(styleDefaults, p => p)).toBe(15);
+        expect(objectPropertiesWhere(styleDefaults, p => p)).toBe(17);
     });
 });
 
