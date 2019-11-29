@@ -36,6 +36,7 @@ export enum Forme {
     'Mega-Y' = 'mega-y',
 
     Alolan = 'alola',
+    Galarian = 'galar',
 
     Sunny = 'sunny',
     Rainy = 'rainy',

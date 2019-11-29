@@ -248,10 +248,12 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         </>
                     )}
                 </Dialog>
+                {/*
                 <div className='pt-label pt-inline' style={{ padding: '.25rem 0', paddingBottom: '.5rem' }}>
                     <label className='pt-label pt-text-muted'>Upload Save file</label>
                     <input style={{ padding: '.25rem' }} className='pt-button' ref={ref => this.fileInput = ref } onChange={this.uploadFile(this.props.replaceState, this.props.state)} type='file' id='file' name='file' accept='.sav' />
                 </div>
+                */}
                 <ButtonGroup>
                     <Button
                         onClick={e => this.importState()}

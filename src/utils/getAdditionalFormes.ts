@@ -48,6 +48,8 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
             'X',
             'Y',
             'Z',
+            '!',
+            '?'
         ];
     }
     if (s === 'castform') {
@@ -201,6 +203,9 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
     }
     if (s === 'kyogre' || s === 'groudon') {
         return ['Primal'];
+    }
+    if (s === 'Alcremie') {
+        return ['Vanilla Cream', 'Matcha Cream', 'Ruby Cream', 'Mint Cream', 'Lemon Cream', 'Salted Cream', 'Ruby Swirl', 'Caramel Swirl', 'Rainbow Swirl'];
     }
     return [];
 };

@@ -23,6 +23,12 @@ export interface TrainerResultProps {
 }
 
 export class TrainerResultBase extends React.Component<TrainerResultProps> {
+
+    private isSWSH() {
+        const {name} = this.props.game;
+        return name === 'Sword' || name === 'Shield';
+    }
+
     private renderBadgesOrTrials() {
         const { name } = this.props.game;
         const trainerBadges = this.props.trainer.badges ? this.props.trainer.badges : [];
@@ -31,10 +37,22 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
             return null;
         }
 
-        return this.props.checkpoints.map(badge => {
+        const swshPositions = [
+            {bottom: 0, right: 0},
+            {right: '-9px', top: '2px', height: '24px'},
+            {bottom: '11px', left: '20px'},
+            {bottom: '2px', left: '9px'},
+            {bottom: '3px', left: '28.5px', height: '33px'},
+            {top: '-3px', left: '23px'},
+            {left: '14px', top: '5px', height: '25px'},
+            {left: '3px', top: '2px', height: '32px'},
+        ];
+
+        return this.props.checkpoints.map((badge, index) => {
             return (
                 <img
                     className={trainerBadges.some(b => b.name === badge.name) ? 'obtained' : 'not-obtained'}
+                    style={this.isSWSH() ? {position: 'absolute', ...swshPositions[index]} : {}}
                     key={badge.name}
                     alt={badge.name}
                     src={`./img/checkpoints/${badge.image}.png`}
@@ -101,7 +119,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                         <div style={bottomTextStyle}>{trainer.totalTime}</div>
                     </div>
                 )}
-                <div className='badge-wrapper'>{this.renderBadgesOrTrials()}</div>
+                <div className='badge-wrapper' style={this.isSWSH() ? {height: '3rem', width: '3rem', position: 'relative'} : {}}>{this.renderBadgesOrTrials()}</div>
             </div>
         );
     }

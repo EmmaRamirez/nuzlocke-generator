@@ -51,6 +51,9 @@ const getGameName = (name: Game) => {
     ) {
         return name.toLowerCase();
     }
+    if (name === 'Sword' || name === 'Shield') {
+        return 'swordshield';
+    }
     return 'sm';
 };
 
@@ -85,6 +88,9 @@ const getGameNameSerebii = (name: Game) => {
         case 'X':
         case 'Y':
             return 'XY';
+        case 'Sword':
+        case 'Shield':
+            return 'swordshield';
         default:
             return 'SM';
     }
@@ -132,6 +138,8 @@ export function getPokemonImage({
             name === 'Moon' ||
             name === 'Ultra Sun' ||
             name === 'Ultra Moon' ||
+            name === 'Sword' ||
+            name === 'Shield' ||
             name === 'Colosseum' ||
             name === 'XD Gale of Darkness')
     ) {

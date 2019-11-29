@@ -5,6 +5,7 @@ import {
     listOfPokemon,
     significantGenderDifferenceList,
     Forme,
+    speciesToNumber,
 } from 'utils';
 import { Gender, GenderElementProps } from 'components/Shared';
 import { selectPokemon } from 'actions';
@@ -79,8 +80,14 @@ export const getIconURL = ({ id, species, forme, shiny, gender, customIcon, egg 
         significantGenderDifferenceList.includes(species) && Gender.isFemale(gender)
             ? `female/`
             : '';
+    const num = speciesToNumber(species);
     if (species === 'Egg' || egg) return `${baseURL}egg.png`;
     if (customIcon) return customIcon;
+
+    if (num && num >= 810) {
+        return `https://www.serebii.net/pokedex-swsh/icon/${num}.png`;
+    }
+
     return `${baseURL}${isShiny}/${isFemaleSpecific}${formatSpeciesName(species)}${getFormeSuffix(
         forme as keyof typeof Forme
     )}.png`;
@@ -111,7 +118,7 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
             hidden,
             customIcon,
         } = this.props;
-        const imageStyle = { maxHeight: '100%', opacity: hidden ? 0.5 : 1 };
+        const imageStyle = { maxHeight: '100%', opacity: hidden ? 0.5 : 1, height: '32px', };
         return connectDragSource!(
             <div
                 role='icon'

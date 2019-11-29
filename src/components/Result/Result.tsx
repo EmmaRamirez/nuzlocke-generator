@@ -159,6 +159,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         this.props.game.name,
                     )} team-size-${numberOfTeam}`}
                     style={{
+                        fontFamily: style.usePokemonGBAFont ? 'pokemon_font' : 'inherit',
                         margin: this.state.isDownloading ? '0' : '3rem auto',
                         backgroundColor: bgColor,
                         backgroundImage: `url(${style.backgroundImage})`,

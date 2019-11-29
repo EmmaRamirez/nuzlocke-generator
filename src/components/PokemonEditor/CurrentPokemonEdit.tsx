@@ -232,11 +232,14 @@ export class CurrentPokemonEditBase extends React.Component<
                         options={listOfGames}
                     />
                 </CurrentPokemonLayoutItem>
-                <CurrentPokemonLayoutItem>
-                    <label className={Classes.LABEL}>Extra Data</label>
-                    <TextArea disabled>
-                        {currentPokemon.extraData && JSON.stringify(currentPokemon.extraData)}
-                    </TextArea>
+                <CurrentPokemonLayoutItem disabled>
+                    {currentPokemon.extraData && <CurrentPokemonInput
+                        labelName='Extra Data'
+                        inputName='extraData'
+                        type='text'
+                        disabled
+                        value={JSON.stringify(currentPokemon.extraData)}
+                    />}
                 </CurrentPokemonLayoutItem>
             </div>
         );

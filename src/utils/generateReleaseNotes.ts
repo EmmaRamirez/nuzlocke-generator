@@ -321,6 +321,8 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
     '0.0.16-beta': `# Changelog
 
 ## Features
+- **Sword and Shield**: Pokémon data, icons, badges, and more!
+- GBA-style font option
 
 ## Fixes
 - Fix issues with shinies from certain games not showing up in Sprites mode
