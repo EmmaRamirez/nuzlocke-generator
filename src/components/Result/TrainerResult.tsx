@@ -61,11 +61,26 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
         });
     }
 
+    private getBadgeWrapperStyles(orientation) {
+        let style = {};
+        if (this.isSWSH()) {
+            style = {height: '3rem', width: '3rem', position: 'relative'}
+        }
+        if (orientation === 'vertical') {
+            style = {...style, margin: '0'};
+        }
+        return style;
+    }
+
     public render() {
-        const { trainer, game, style } = this.props;
+        const { trainer, game, style, orientation } = this.props;
+        console.log(orientation);
         const bottomTextStyle: React.CSSProperties = { fontSize: '1.1rem', fontWeight: 'bold' };
         return (
-            <div className='trainer-wrapper'>
+            <div className='trainer-wrapper' style={orientation === 'vertical' ? {
+                display: 'flex',
+                flexDirection: 'column',
+            } : {}}>
                 <div
                     style={{
                         color: getContrastColor(style.bgColor),
@@ -119,7 +134,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                         <div style={bottomTextStyle}>{trainer.totalTime}</div>
                     </div>
                 )}
-                <div className='badge-wrapper' style={this.isSWSH() ? {height: '3rem', width: '3rem', position: 'relative'} : {}}>{this.renderBadgesOrTrials()}</div>
+                <div className='badge-wrapper' style={this.getBadgeWrapperStyles(orientation)}>{this.renderBadgesOrTrials()}</div>
             </div>
         );
     }

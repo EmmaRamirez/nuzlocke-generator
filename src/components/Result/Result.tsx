@@ -15,7 +15,7 @@ import { TrainerResult } from 'components/Result';
 import { TopBar } from 'components/TopBar';
 import { Pokemon, Trainer } from 'models';
 import { reducers } from 'reducers';
-import { Styles as StyleState, getGameRegion, sortPokes, getContrastColor } from 'utils';
+import { Styles as StyleState, getGameRegion, sortPokes, getContrastColor, OrientationType } from 'utils';
 
 import * as Styles from './styles';
 
@@ -148,6 +148,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         const bgColor = style ? style.bgColor : '#383840';
         const topHeaderColor = style ? style.topHeaderColor : '#333333';
         const accentColor = style ? style.accentColor : '#111111';
+        const trainerSectionOrientation = this.props.style.trainerSectionOrientation;
         return (
             <Scrollbars autoHide autoHideTimeout={1000} autoHideDuration={200}>
                 <TopBar onClickDownload={() => this.toImage()}>{this.renderErrors()}</TopBar>
@@ -171,15 +172,23 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         // transformOrigin: '0 0',
                         width: style.resultWidth + 'px',
                     }}>
-                    <div className='trainer-container' style={{ backgroundColor: topHeaderColor }}>
-                        <TrainerResult orientation={this.props.style.trainerSectionOrientation} />
+                    <div className='trainer-container' style={ trainerSectionOrientation === 'vertical' ?
+                        { backgroundColor: topHeaderColor,
+                            width: '20%',
+                            position: 'absolute',
+                            height: '100%'
+                        }
+                    : { backgroundColor: topHeaderColor }}>
+                        <TrainerResult orientation={trainerSectionOrientation} />
                     </div>
                     {trainer && trainer.notes ? (
                         <div style={{ color: getContrastColor(bgColor) }} className='result-notes'>
                             {trainer.notes}
                         </div>
                     ) : null}
-                    <div className='team-container'>{this.renderTeamPokemon()}</div>
+                    <div style={trainerSectionOrientation === 'vertical' ? {
+                        paddingLeft: '20%',
+                    } : {}} className='team-container'>{this.renderTeamPokemon()}</div>
                     {numberOfBoxed > 0 ? (
                         <div className='boxed-container'>
                             <h3 style={{ color: getContrastColor(bgColor) }}>{box[1].name}</h3>
