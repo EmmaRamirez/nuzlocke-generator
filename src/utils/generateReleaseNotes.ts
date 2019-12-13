@@ -334,15 +334,16 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
     '0.0.17-beta': `# Changelog
 
 ## Features
-- Held items can now be displayed as text
 - **Bug Reporter**: You can now report bugs from within the UI!
+- Held items can now be displayed as text
+- Several improvements to the Trainer section in vertical mode
 
 ## Fixes
 - Added Gigantamax sprites and forme option
 - Added images that were missing for some Gen 8 Pokémon
 - Fixed images and sprites for Rotom formes
-- Fixed image/icons for Zygarde, Unown, Rotom, Oricorio
-- Fixed dimension issues with vertical Trainer Section position
+- Fixed image/icons for Zygarde, Unown, Rotom, Oricorio, Shaymin and more!
+- Fixed dimension issues with vertical Trainer section position
 
 ## Known Issues
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading

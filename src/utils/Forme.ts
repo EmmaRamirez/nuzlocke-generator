@@ -57,4 +57,12 @@ export enum Forme {
     'Pa\'u' = 'pa-u',
     'Pom-Pom' = 'pom-pom',
     Sensu = 'sensu',
+
+    'Dawn Wings' = 'dawn-wings',
+    'Dusk Mane' = 'dusk-mane',
+    Ultra = 'ultra',
+
+    Sky = 'sky',
+
+    Origin = 'origin',
 }

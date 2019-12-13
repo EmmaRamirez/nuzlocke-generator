@@ -50,9 +50,16 @@ export const addForme = (species: string | undefined, forme?: keyof typeof Forme
             'Pom-Pom',
             'Pa\'u',
 
+            'Dawn Wings',
+            'Dusk Mane',
+            'Ultra',
+
+            'Origin',
+            'Sky',
+
 
         ].includes(forme)) {
-            return `${species}-${forme.replace(/\'/g, '-').toLowerCase()}`;
+            return `${species}-${forme.replace(/\s/g, '-').replace(/\'/g, '-').toLowerCase()}`;
         }
         return species;
     } else {
