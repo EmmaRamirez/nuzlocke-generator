@@ -191,7 +191,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     ) : null}
                     <div style={paddingForVerticalTrainerSection} className='team-container'>{this.renderTeamPokemon()}</div>
                     {numberOfBoxed > 0 ? (
-                        <div className='boxed-container'>
+                        <div style={paddingForVerticalTrainerSection} className='boxed-container'>
                             <h3 style={{ color: getContrastColor(bgColor) }}>{box[1].name}</h3>
                             <div className='boxed-container-inner'>{this.renderBoxedPokemon()}</div>
                         </div>

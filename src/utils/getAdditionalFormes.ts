@@ -118,7 +118,7 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
     if (s === 'hoopa') {
         return ['Confined', 'Unbound'];
     }
-    if (s === 'Oricorio') {
+    if (s === 'oricorio') {
         return ['Baile', 'Pom-Pom', 'Pa\'u', 'Sensu'];
     }
     if (s === 'lycanroc') {
@@ -127,7 +127,7 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
     if (s === 'wishiwashi') {
         return ['Solo', 'School'];
     }
-    if (s === 'Necroza') {
+    if (s === 'necrozma') {
         return ['Dusk Mane', 'Dawn Wings', 'Ultra'];
     }
     if (

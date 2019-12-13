@@ -46,4 +46,9 @@ export enum Forme {
     Sunny = 'sunny',
     Rainy = 'rainy',
     Snowy = 'snowy',
+
+    Summer = 'summer',
+    Spring = 'spring',
+    Autumn = 'autumn',
+    Winter = 'winter',
 }

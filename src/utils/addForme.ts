@@ -23,14 +23,28 @@ export const addForme = (species: string | undefined, forme?: keyof typeof Forme
         if (forme === 'D') {
             return `${species}-d`;
         }
-        if (['Heat', 'Frost', 'Fan', 'Heat', 'Mow'].includes(forme)) {
-            return `${species}-${forme.toLowerCase()}`;
-        }
         if (forme === '10%') {
             return species + '-10';
         }
         if (forme === 'Complete') {
             return species + '-complete';
+        }
+        // Forms that don't require special formatting
+        if ([
+            'Heat',
+            'Frost',
+            'Fan',
+            'Heat',
+            'Mow',
+
+            'Summer',
+            'Spring',
+            'Autumn',
+            'Winter',
+
+
+        ].includes(forme)) {
+            return `${species}-${forme.toLowerCase()}`;
         }
         return species;
     } else {
