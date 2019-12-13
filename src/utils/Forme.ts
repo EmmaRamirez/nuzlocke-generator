@@ -1,3 +1,4 @@
+// TODO: Refactor, this Forme enum is used for Icons
 export enum Forme {
     // NOTE: Normal is not technically considered a "forme"
     Normal = 'Normal',
@@ -51,4 +52,9 @@ export enum Forme {
     Spring = 'spring',
     Autumn = 'autumn',
     Winter = 'winter',
+
+    Baile = 'baile',
+    'Pa\'u' = 'pa-u',
+    'Pom-Pom' = 'pom-pom',
+    Sensu = 'sensu',
 }

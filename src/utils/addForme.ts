@@ -3,6 +3,9 @@ import { Forme } from './Forme';
 export const addForme = (species: string | undefined, forme?: keyof typeof Forme) => {
     if (forme) {
         if (forme === 'Normal') {
+            if (species === 'Oricorio') {
+                return `${species}-baile`;
+            }
             return species;
         }
         if (forme === 'Alolan') {
@@ -42,9 +45,14 @@ export const addForme = (species: string | undefined, forme?: keyof typeof Forme
             'Autumn',
             'Winter',
 
+            'Sensu',
+            'Baile',
+            'Pom-Pom',
+            'Pa\'u',
+
 
         ].includes(forme)) {
-            return `${species}-${forme.toLowerCase()}`;
+            return `${species}-${forme.replace(/\'/g, '-').toLowerCase()}`;
         }
         return species;
     } else {

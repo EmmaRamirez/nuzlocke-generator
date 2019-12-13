@@ -6,6 +6,7 @@ export interface BaseEditorState {
 
 export interface BaseEditorProps {
     name: string;
+    defaultOpen?: boolean;
 }
 
 const baseEditorStyle: any = {
@@ -16,10 +17,14 @@ const baseEditorStyle: any = {
 };
 
 export class BaseEditor extends React.Component<BaseEditorProps, BaseEditorState> {
+    public static defaultProps = {
+        defaultOpen: true,
+    };
+
     constructor(props) {
         super(props);
         this.state = {
-            isOpen: true,
+            isOpen: this.props.defaultOpen!,
         };
     }
 

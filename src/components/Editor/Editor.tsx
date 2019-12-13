@@ -10,6 +10,7 @@ import { DataEditor } from 'components/DataEditor';
 import { HotkeysEditor } from 'components/HotkeysEditor';
 
 import './editor.styl';
+import { BugReporter } from 'components/BugReporter';
 
 /**
  * The main editor interface.
@@ -42,6 +43,7 @@ export class EditorBase extends React.Component<{ editor: any; style: any }, {}>
                 <StyleEditor />
                 <HotkeysEditor />
                 <DataEditor />
+                <BugReporter />
             </Scrollbars>
         );
     }
@@ -53,4 +55,4 @@ export const Editor = connect(
         style: state.style,
     }),
     null,
-)(EditorBase);
+)(EditorBase as any);

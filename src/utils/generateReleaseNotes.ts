@@ -335,13 +335,13 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 
 ## Features
 - Held items can now be displayed as text
+- **Bug Reporter**: You can now report bugs from within the UI!
 
 ## Fixes
 - Added Gigantamax sprites and forme option
 - Added images that were missing for some Gen 8 Pokémon
 - Fixed images and sprites for Rotom formes
-- Fixed image/icons for Zygarde formes
-- Fixed icons for Unown ! and ? formes
+- Fixed image/icons for Zygarde, Unown, Rotom, Oricorio
 - Fixed dimension issues with vertical Trainer Section position
 
 ## Known Issues
