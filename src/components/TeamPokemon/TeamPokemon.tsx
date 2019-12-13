@@ -90,7 +90,11 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                         <span style={{ margin: '0.25rem 0 0' }} className='pokemon-nickname'>
                             {pokemon.nickname}
                         </span>
-                        <span className='pokemon-name'>{pokemon.species}</span>
+                        <span className='pokemon-name'>{pokemon.species}{
+                            pokemon.item && style.displayItemAsText ?
+                                ` @ ${pokemon.item}`
+                            : null
+                        }</span>
                         {GenderElement(pokemon.gender)}
                         {pokemon.level ? (
                             <span className='pokemon-level'>lv. {pokemon.level}</span>
@@ -289,7 +293,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                         }`}
                     />
                 </div>
-                {poke.item == null || poke.item === '' ? null : (
+                {poke.item && !style.displayItemAsText ? (
                     <div
                         className={`pokemon-item ${this.props.style.itemStyle}`}
                         style={{
@@ -306,10 +310,11 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                             alt={poke.item}
                             src={`icons/hold-item/${(poke.item || '')
                                 .toLowerCase()
+                                .replace(/\'/g, '')
                                 .replace(/\s/g, '-')}.png`}
                         />
                     </div>
-                )}
+                ) : null}
                 <TeamPokemonInfo
                     generation={getGameGeneration(this.props.game.name)}
                     style={style}

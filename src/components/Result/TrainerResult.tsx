@@ -30,10 +30,11 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
     }
 
     private renderBadgesOrTrials() {
+        const { checkpoints, style, trainer } = this.props;
         const { name } = this.props.game;
-        const trainerBadges = this.props.trainer.badges ? this.props.trainer.badges : [];
+        const trainerBadges = trainer.badges ? trainer.badges : [];
 
-        if (!this.props.style.displayBadges) {
+        if (!style.displayBadges) {
             return null;
         }
 
@@ -48,11 +49,11 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
             {left: '3px', top: '2px', height: '32px'},
         ];
 
-        return this.props.checkpoints.map((badge, index) => {
+        return checkpoints.map((badge, index) => {
             return (
                 <img
                     className={trainerBadges.some(b => b.name === badge.name) ? 'obtained' : 'not-obtained'}
-                    style={this.isSWSH() ? {position: 'absolute', ...swshPositions[index]} : {}}
+                    style={this.isSWSH() && !trainer.hasEditedCheckpoints ? {position: 'absolute', ...swshPositions[index]} : {}}
                     key={badge.name}
                     alt={badge.name}
                     src={`./img/checkpoints/${badge.image}.png`}
@@ -62,9 +63,10 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
     }
 
     private getBadgeWrapperStyles(orientation) {
+        const {trainer} = this.props;
         let style = {};
-        if (this.isSWSH()) {
-            style = {height: '3rem', width: '3rem', position: 'relative'}
+        if (this.isSWSH() && !trainer.hasEditedCheckpoints) {
+            style = {height: '3rem', width: '3rem', position: 'relative'};
         }
         if (orientation === 'vertical') {
             style = {...style, margin: '0'};
@@ -74,7 +76,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
 
     public render() {
         const { trainer, game, style, orientation } = this.props;
-        console.log(orientation);
+        const isVertical = orientation === 'vertical';
         const bottomTextStyle: React.CSSProperties = { fontSize: '1.1rem', fontWeight: 'bold' };
         return (
             <div className='trainer-wrapper' style={orientation === 'vertical' ? {
@@ -85,7 +87,8 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                     style={{
                         color: getContrastColor(style.bgColor),
                         background: style.bgColor,
-                        marginRight: '.5rem',
+                        margin: isVertical ? '4px' : '0',
+                        marginRight: isVertical ? '0' : '.5rem',
                         width: '100px',
                         borderRadius: '.25rem',
                         textAlign: 'center',

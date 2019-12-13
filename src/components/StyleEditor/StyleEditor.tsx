@@ -153,6 +153,21 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         <Radio label='Round' value='round' />
                         <Radio label='Square' value='square' />
                     </RadioGroup>
+                    <Checkbox
+                        style={{
+                            margin: '4px'
+                        }}
+                        checked={props.style.displayItemAsText}
+                        name='displayItemAsText'
+                        label='Display Items as Text'
+                        onChange={(e: any) =>
+                            editEvent(
+                                { ...e, target: { value: e.target.checked } },
+                                props,
+                                'displayItemAsText',
+                            )
+                        }
+                    />
                 </div>
 
                 <div className={styleEdit}>

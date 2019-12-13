@@ -28,8 +28,8 @@ export enum Forme {
     X = 'x',
     Y = 'y',
     Z = 'z',
-    Exclamation = 'exclamation',
-    Question = 'question',
+    '!' = 'exclamation',
+    '?' = 'question',
 
     Mega = 'mega',
     'Mega-X' = 'mega-x',
@@ -37,6 +37,11 @@ export enum Forme {
 
     Alolan = 'alola',
     Galarian = 'galar',
+    Gigantamax = 'gigantamax',
+
+    '10%' = '10-percent',
+    '50%' = '50-percent',
+    Complete = 'complete',
 
     Sunny = 'sunny',
     Rainy = 'rainy',

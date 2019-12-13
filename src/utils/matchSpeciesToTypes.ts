@@ -1396,7 +1396,8 @@ export const matchSpeciesToTypes = (
         // 'Goomy',
         // 'Sliggoo',
         // 'Goodra',
-        // 'Zygarde',
+        case 'Zygarde':
+            return [Types.Dragon, Types.Ground];
         // 'Volcanion',
         // 'Oricorio',
         // 'Rockruff',

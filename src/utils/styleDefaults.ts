@@ -38,6 +38,7 @@ export interface Styles {
     displayBackgroundInsteadOfBadge: boolean;
     displayExtraData: boolean;
     useAutoHeight: boolean;
+    displayItemAsText: boolean;
 }
 
 export const styleDefaults: Styles = {
@@ -76,4 +77,5 @@ export const styleDefaults: Styles = {
     displayExtraData: true,
     useAutoHeight: false,
     usePokemonGBAFont: false,
+    displayItemAsText: false,
 };

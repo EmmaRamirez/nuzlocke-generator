@@ -330,5 +330,22 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 ## Known Issues
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`,
+    '0.0.17-beta': `# Changelog
+
+## Features
+- Held items can now be displayed as text
+
+## Fixes
+- Added Gigantamax sprites and forme option
+- Added images that were missing for some Gen 8 Pokémon
+- Fixed images and sprites for Rotom formes
+- Fixed image/icons for Zygarde formes
+- Fixed icons for Unown ! and ? formes
+- Fixed dimension issues with vertical Trainer Section position
+
+## Known Issues
+- Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `
 };

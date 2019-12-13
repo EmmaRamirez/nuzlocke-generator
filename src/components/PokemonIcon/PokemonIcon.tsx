@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import {
-    getFormeSuffix,
+    getIconFormeSuffix,
     getForme as getFormeSWSH,
     listOfPokemon,
     significantGenderDifferenceList,
@@ -75,8 +75,14 @@ const iconSource = {
 type IconURLArgs = Pick<Pokemon, 'id' | 'species' | 'forme' | 'shiny' | 'gender' | 'customIcon' | 'egg'>;
 
 export const isGalarianForme = (forme: Forme, num: number) => {
-    const ids = [52, 77, 78, 83, 110, 122, 222, 263, 264, 554, 555, 562, 618];
-    if (ids.includes(num) && (forme as string) === 'Galarian') return true;
+    const ids = [
+        // Gigantamax
+        6, 12, 25, 68, 94, 99, 131, 133, 143, 569, 809,
+        // Galarian
+        52, 77, 78, 83, 110, 122, 222, 263, 264, 554, 555, 562, 618
+    ];
+    const isGalarianOrGigantamax = (forme as string) === 'Galarian' || (forme as string) === 'Gigantamax';
+    if (ids.includes(num) && isGalarianOrGigantamax) return true;
     return false;
 };
 
@@ -97,7 +103,7 @@ export const getIconURL = ({ id, species, forme, shiny, gender, customIcon, egg 
         return `https://www.serebii.net/pokedex-swsh/icon/${leadingZerosNumber}${getFormeSWSH(forme as Forme)}.png`;
     }
 
-    return `${baseURL}${isShiny}/${isFemaleSpecific}${formatSpeciesName(species)}${getFormeSuffix(
+    return `${baseURL}${isShiny}/${isFemaleSpecific}${formatSpeciesName(species)}${getIconFormeSuffix(
         forme as keyof typeof Forme
     )}.png`;
 };
