@@ -51,13 +51,16 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
 
         return checkpoints.map((badge, index) => {
             return (
-                <img
-                    className={trainerBadges.some(b => b.name === badge.name) ? 'obtained' : 'not-obtained'}
-                    style={this.isSWSH() && !trainer.hasEditedCheckpoints ? {position: 'absolute', ...swshPositions[index]} : {}}
-                    key={badge.name}
-                    alt={badge.name}
-                    src={`./img/checkpoints/${badge.image}.png`}
-                />
+                <>
+                    <img
+                        className={trainerBadges.some(b => b.name === badge.name) ? 'obtained' : 'not-obtained'}
+                        style={this.isSWSH() && !trainer.hasEditedCheckpoints ? {position: 'absolute', ...swshPositions[index]} : {}}
+                        key={badge.name}
+                        alt={badge.name}
+                        src={`./img/checkpoints/${badge.image}.png`}
+                    />
+                    {badge.name === 'Rising Badge' ? <br/> : null}
+                </>
             );
         });
     }
@@ -93,6 +96,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                         background: style.bgColor,
                         margin: isVertical ? '4px' : '0',
                         marginRight: isVertical ? '0' : '.5rem',
+                        marginLeft: isVertical ? '0' : '.5rem',
                         width: '100px',
                         borderRadius: '.25rem',
                         textAlign: 'center',
