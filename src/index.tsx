@@ -88,19 +88,3 @@ render(
     </Provider>,
     mountNode,
 );
-
-store.subscribe(() => {
-    if (store.getState().style.editorDarkMode) {
-        injectGlobal`
-            body {
-                background: #111 !important;
-            }
-        `;
-    } else {
-        injectGlobal`
-            body {
-                background: #fff !important;
-            }
-        `;
-    }
-});

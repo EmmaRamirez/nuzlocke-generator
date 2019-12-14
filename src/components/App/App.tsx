@@ -44,8 +44,11 @@ export class AppBase extends React.PureComponent<AppProps> {
     };
 
     public render() {
+        const {style} = this.props;
         return (
-            <div className='app' role='main'>
+            <div className='app' role='main' style={{
+                background: style.editorDarkMode ? '#111' : '#fff',
+            }}>
                 {this.props.disableHotkeys ? null : <Hotkeys />}
                 <Editor />
                 <Result />
