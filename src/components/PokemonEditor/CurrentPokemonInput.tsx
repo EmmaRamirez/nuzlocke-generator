@@ -8,6 +8,7 @@ import { ErrorBoundary } from 'components/Shared';
 
 import { TagInput, Classes } from '@blueprintjs/core';
 import { State } from 'state';
+import { Pokemon } from 'models';
 
 interface CurrentPokemonInputProps {
     labelName: string;
@@ -21,6 +22,7 @@ interface CurrentPokemonInputProps {
     editPokemon: editPokemon;
     selectedId: string;
     selectPokemon: selectPokemon;
+    pokemon?: Pokemon;
 }
 
 export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInputProps> {
@@ -37,6 +39,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         inputName: string,
         position?: number,
         value?: any,
+        pokemon?: Pokemon,
     ) => {
         let edit;
         if (inputName === 'types' && position != null) {
@@ -62,6 +65,11 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                 [inputName]: e.target.checked,
                 nickname: 'Egg',
             };
+        } else if (inputName === 'forme') {
+            edit = {
+                forme: e.target.value,
+                types: pokemon && matchSpeciesToTypes(pokemon.species, e.target.value),
+            };
         } else {
             edit = {
                 [inputName]: e.target.value,
@@ -71,7 +79,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         this.props.selectPokemon && this.props.selectPokemon(this.props.selectedId);
     };
 
-    public getInput({ labelName, transform, disabled, inputName, type, value, placeholder, options }: any) {
+    public getInput({ labelName, transform, disabled, inputName, type, value, placeholder, options, pokemon }: any) {
         value = value == null ? '' : value;
         if (type === 'moves') {
             return (
@@ -124,7 +132,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
             return (
                 <div className='pt-select'>
                     <select
-                        onChange={event => this.onChange(event, inputName)}
+                        onChange={event => this.onChange(event, inputName, undefined, undefined, pokemon)}
                         value={value}
                         name={inputName}>
                         {options
@@ -186,12 +194,12 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
     }
 
     public render() {
-        const { labelName, inputName, type, value, placeholder, options } = this.props;
+        const { labelName, inputName, type, value, placeholder, options, pokemon } = this.props;
         return (
             <span
                 className={`current-pokemon-input-wrapper current-pokemon-${type} current-pokemon-${inputName}`}>
                 <label>{labelName}</label>
-                {this.getInput({ labelName, inputName, type, value, placeholder, options })}
+                {this.getInput({ labelName, inputName, type, value, placeholder, options, pokemon })}
             </span>
         );
     }

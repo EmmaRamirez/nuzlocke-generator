@@ -15,7 +15,7 @@ import { TrainerResult } from 'components/Result';
 import { TopBar } from 'components/TopBar';
 import { Pokemon, Trainer } from 'models';
 import { reducers } from 'reducers';
-import { Styles as StyleState, getGameRegion, sortPokes, getContrastColor } from 'utils';
+import { Styles as StyleState, getGameRegion, sortPokes, getContrastColor, OrientationType } from 'utils';
 
 import * as Styles from './styles';
 
@@ -148,6 +148,10 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         const bgColor = style ? style.bgColor : '#383840';
         const topHeaderColor = style ? style.topHeaderColor : '#333333';
         const accentColor = style ? style.accentColor : '#111111';
+        const trainerSectionOrientation = this.props.style.trainerSectionOrientation;
+        const paddingForVerticalTrainerSection = trainerSectionOrientation === 'vertical' ? {
+            paddingLeft: '20%',
+        } : {};
         return (
             <Scrollbars autoHide autoHideTimeout={1000} autoHideDuration={200}>
                 <TopBar onClickDownload={() => this.toImage()}>{this.renderErrors()}</TopBar>
@@ -171,23 +175,30 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         // transformOrigin: '0 0',
                         width: style.resultWidth + 'px',
                     }}>
-                    <div className='trainer-container' style={{ backgroundColor: topHeaderColor }}>
-                        <TrainerResult orientation={this.props.style.trainerSectionOrientation} />
+                    <div className='trainer-container' style={ trainerSectionOrientation === 'vertical' ?
+                        { backgroundColor: topHeaderColor,
+                            width: '20%',
+                            position: 'absolute',
+                            height: '102%',
+                            display: 'flex',
+                        }
+                    : { backgroundColor: topHeaderColor }}>
+                        <TrainerResult orientation={trainerSectionOrientation} />
                     </div>
                     {trainer && trainer.notes ? (
                         <div style={{ color: getContrastColor(bgColor) }} className='result-notes'>
                             {trainer.notes}
                         </div>
                     ) : null}
-                    <div className='team-container'>{this.renderTeamPokemon()}</div>
+                    <div style={paddingForVerticalTrainerSection} className='team-container'>{this.renderTeamPokemon()}</div>
                     {numberOfBoxed > 0 ? (
-                        <div className='boxed-container'>
+                        <div style={paddingForVerticalTrainerSection} className='boxed-container'>
                             <h3 style={{ color: getContrastColor(bgColor) }}>{box[1].name}</h3>
                             <div className='boxed-container-inner'>{this.renderBoxedPokemon()}</div>
                         </div>
                     ) : null}
                     {numberOfDead > 0 ? (
-                        <div className='dead-container'>
+                        <div style={paddingForVerticalTrainerSection} className='dead-container'>
                             <h3 style={{ color: getContrastColor(bgColor) }}>{box[2].name}</h3>
                             <div
                                 style={{
@@ -201,7 +212,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         </div>
                     ) : null}
                     {numberOfChamps > 0 ? (
-                        <div className='champs-container'>
+                        <div style={paddingForVerticalTrainerSection} className='champs-container'>
                             <h3 style={{ color: getContrastColor(bgColor) }}>{box[3].name}</h3>
                             <div
                                 style={{
@@ -212,7 +223,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         </div>
                     ) : null}
                     {style.displayRules ? (
-                        <div className='rules-container'>
+                        <div style={paddingForVerticalTrainerSection} className='rules-container'>
                             <h3 style={{ color: getContrastColor(bgColor) }}>Rules</h3>
                             <ol style={{ color: getContrastColor(bgColor) }}>
                                 {this.props.rules.map((rule, index) => {

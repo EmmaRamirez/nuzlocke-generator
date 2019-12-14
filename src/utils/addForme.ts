@@ -3,6 +3,9 @@ import { Forme } from './Forme';
 export const addForme = (species: string | undefined, forme?: keyof typeof Forme) => {
     if (forme) {
         if (forme === 'Normal') {
+            if (species === 'Oricorio') {
+                return `${species}-baile`;
+            }
             return species;
         }
         if (forme === 'Alolan') {
@@ -22,6 +25,45 @@ export const addForme = (species: string | undefined, forme?: keyof typeof Forme
         }
         if (forme === 'D') {
             return `${species}-d`;
+        }
+        if (forme === '10%') {
+            return species + '-10';
+        }
+        if (forme === 'Complete') {
+            return species + '-complete';
+        }
+        // Forms that don't require special formatting
+        if ([
+            'Heat',
+            'Frost',
+            'Fan',
+            'Heat',
+            'Mow',
+
+            'Summer',
+            'Spring',
+            'Autumn',
+            'Winter',
+
+            'Sensu',
+            'Baile',
+            'Pom-Pom',
+            'Pa\'u',
+
+            'Dawn Wings',
+            'Dusk Mane',
+            'Ultra',
+
+            'Origin',
+            'Sky',
+
+            'Attack',
+            'Defense',
+            'Speed',
+
+
+        ].includes(forme)) {
+            return `${species}-${forme.replace(/\s/g, '-').replace(/\'/g, '-').toLowerCase()}`;
         }
         return species;
     } else {

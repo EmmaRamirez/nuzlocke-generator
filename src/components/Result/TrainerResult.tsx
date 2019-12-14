@@ -30,10 +30,11 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
     }
 
     private renderBadgesOrTrials() {
+        const { checkpoints, style, trainer } = this.props;
         const { name } = this.props.game;
-        const trainerBadges = this.props.trainer.badges ? this.props.trainer.badges : [];
+        const trainerBadges = trainer.badges ? trainer.badges : [];
 
-        if (!this.props.style.displayBadges) {
+        if (!style.displayBadges) {
             return null;
         }
 
@@ -48,11 +49,11 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
             {left: '3px', top: '2px', height: '32px'},
         ];
 
-        return this.props.checkpoints.map((badge, index) => {
+        return checkpoints.map((badge, index) => {
             return (
                 <img
                     className={trainerBadges.some(b => b.name === badge.name) ? 'obtained' : 'not-obtained'}
-                    style={this.isSWSH() ? {position: 'absolute', ...swshPositions[index]} : {}}
+                    style={this.isSWSH() && !trainer.hasEditedCheckpoints ? {position: 'absolute', ...swshPositions[index]} : {}}
                     key={badge.name}
                     alt={badge.name}
                     src={`./img/checkpoints/${badge.image}.png`}
@@ -61,19 +62,41 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
         });
     }
 
+    private getBadgeWrapperStyles(orientation) {
+        const {trainer} = this.props;
+        let style = {};
+        if (this.isSWSH() && !trainer.hasEditedCheckpoints) {
+            style = {height: '3rem', width: '3rem', position: 'relative', padding: '.25rem'};
+        }
+        if (orientation === 'vertical') {
+            style = {...style, margin: '0', padding: '.25rem'};
+        }
+        return style;
+    }
+
     public render() {
-        const { trainer, game, style } = this.props;
-        const bottomTextStyle: React.CSSProperties = { fontSize: '1.1rem', fontWeight: 'bold' };
+        const { trainer, game, style, orientation } = this.props;
+        const isVertical = orientation === 'vertical';
+        const bottomTextStyle: React.CSSProperties = { fontSize: '1.1rem', fontWeight: 'bold', padding: '2px', };
+        const baseDivStyle = isVertical ? {padding: '2px'} : {padding: '.25rem'};
         return (
-            <div className='trainer-wrapper'>
+            <div className='trainer-wrapper' style={orientation === 'vertical' ? {
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: '100%',
+            } : {}}>
                 <div
                     style={{
                         color: getContrastColor(style.bgColor),
                         background: style.bgColor,
-                        marginRight: '.5rem',
+                        margin: isVertical ? '4px' : '0',
+                        marginRight: isVertical ? '0' : '.5rem',
                         width: '100px',
                         borderRadius: '.25rem',
                         textAlign: 'center',
+                        padding: '2px',
                     }}>
                     {game.name}
                 </div>
@@ -85,41 +108,41 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                     />
                 ) : null}
                 {trainer.title ? (
-                    <div className='nuzlocke-title'>{this.props.trainer.title}</div>
+                    <div style={baseDivStyle} className='nuzlocke-title'>{this.props.trainer.title}</div>
                 ) : (
-                    <div className='nuzlocke-title'>{this.props.game.name} Nuzlocke</div>
+                    <div style={baseDivStyle} className='nuzlocke-title'>{this.props.game.name} Nuzlocke</div>
                 )}
                 {isEmpty(trainer.name) ? null : (
-                    <div className='name column'>
-                        <div>name</div>
+                    <div style={baseDivStyle} className='name column'>
+                        <div style={baseDivStyle}>name</div>
                         <div style={bottomTextStyle}>{trainer.name}</div>
                     </div>
                 )}
                 {isEmpty(trainer.money) ? null : (
-                    <div className='money column'>
-                        <div>money</div>
+                    <div style={baseDivStyle} className='money column'>
+                        <div style={baseDivStyle}>money</div>
                         <div style={bottomTextStyle}>{trainer.money}</div>
                     </div>
                 )}
                 {isEmpty(trainer.time) ? null : (
-                    <div className='time column'>
-                        <div>time</div>
+                    <div style={baseDivStyle} className='time column'>
+                        <div style={baseDivStyle}>time</div>
                         <div style={bottomTextStyle}>{trainer.time}</div>
                     </div>
                 )}
                 {isEmpty(trainer.id) ? null : (
-                    <div className='id column'>
-                        <div>ID</div>
+                    <div style={baseDivStyle} className='id column'>
+                        <div style={baseDivStyle}>ID</div>
                         <div style={bottomTextStyle}>{trainer.id}</div>
                     </div>
                 )}
                 {isEmpty(trainer.totalTime) ? null : (
-                    <div className='time column'>
-                        <div>time</div>
+                    <div style={baseDivStyle} className='time column'>
+                        <div style={baseDivStyle}>time</div>
                         <div style={bottomTextStyle}>{trainer.totalTime}</div>
                     </div>
                 )}
-                <div className='badge-wrapper' style={this.isSWSH() ? {height: '3rem', width: '3rem', position: 'relative'} : {}}>{this.renderBadgesOrTrials()}</div>
+                <div className='badge-wrapper' style={this.getBadgeWrapperStyles(orientation)}>{this.renderBadgesOrTrials()}</div>
             </div>
         );
     }

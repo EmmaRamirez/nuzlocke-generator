@@ -29,6 +29,7 @@ injectGlobal`
     }
 
     body {
+        background: #fff;
         font-family: 'Helvetica';
     }
 
@@ -92,13 +93,13 @@ store.subscribe(() => {
     if (store.getState().style.editorDarkMode) {
         injectGlobal`
             body {
-                background: #111;
+                background: #111 !important;
             }
         `;
     } else {
         injectGlobal`
             body {
-                background: #fff;
+                background: #fff !important;
             }
         `;
     }

@@ -11,6 +11,7 @@ export interface Trainer {
     title?: string;
     notes?: string;
     totalTime?: string;
+    hasEditedCheckpoints?: boolean;
 }
 
 export const TrainerKeys: Trainer = {
@@ -24,4 +25,5 @@ export const TrainerKeys: Trainer = {
     title: 'Trainer Title',
     notes: 'None yet.',
     totalTime: '190:33',
+    hasEditedCheckpoints: false,
 };

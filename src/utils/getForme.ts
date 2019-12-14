@@ -3,6 +3,7 @@ export const getForme = forme => {
         return '-a';
     }
     if (forme === 'Galarian') return '-g';
+    if (forme === 'Gigantamax') return '-gi';
     if (forme === 'Heart') return '-h';
     if (forme === 'Star') return '-s';
     if (forme === 'Diamond') return '-d';

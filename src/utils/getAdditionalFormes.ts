@@ -15,6 +15,7 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
             'Kalos Cap',
             'Alola Cap',
             'Partner Cap',
+            'Gigantamax',
         ];
     }
     if (s === 'pichu') {
@@ -55,7 +56,7 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
     if (s === 'castform') {
         return ['Sunny', 'Rainy', 'Snowy'];
     }
-    if (s === 'Deoxys') {
+    if (s === 'deoxys') {
         return ['Attack', 'Defense', 'Speed'];
     }
     if (s === 'burmy' || s === 'wormadam') {
@@ -111,12 +112,13 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
         ];
     }
     if (s === 'zygarde') {
-        return ['10%', '50%', 'Complete'];
+        // Removal of 50% is to avoid confusion
+        return ['10%', 'Complete'];
     }
     if (s === 'hoopa') {
         return ['Confined', 'Unbound'];
     }
-    if (s === 'Oricorio') {
+    if (s === 'oricorio') {
         return ['Baile', 'Pom-Pom', 'Pa\'u', 'Sensu'];
     }
     if (s === 'lycanroc') {
@@ -125,7 +127,7 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
     if (s === 'wishiwashi') {
         return ['Solo', 'School'];
     }
-    if (s === 'Necroza') {
+    if (s === 'necrozma') {
         return ['Dusk Mane', 'Dawn Wings', 'Ultra'];
     }
     if (
@@ -174,7 +176,6 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
         s === 'venusaur' ||
         s === 'blastoise' ||
         s === 'alakazam' ||
-        s === 'gengar' ||
         s === 'kangaskhan' ||
         s === 'pinsir' ||
         s === 'gyarados' ||
@@ -218,14 +219,46 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
     ) {
         return ['Mega'];
     }
-    if (s === 'charizard' || s === 'mewtwo') {
+    if (s === 'gengar') {
+        return ['Mega', 'Gigantamax'];
+    }
+    if (s === 'mewtwo') {
         return ['Mega-X', 'Mega-Y'];
+    }
+    if (s === 'charizard') {
+        return ['Mega-X', 'Mega-Y', 'Gigantamax'];
     }
     if (s === 'kyogre' || s === 'groudon') {
         return ['Primal'];
     }
-    if (s === 'Alcremie') {
+    if (s === 'alcremie') {
         return ['Vanilla Cream', 'Matcha Cream', 'Ruby Cream', 'Mint Cream', 'Lemon Cream', 'Salted Cream', 'Ruby Swirl', 'Caramel Swirl', 'Rainbow Swirl'];
+    }
+    if (
+        s === 'snorlax' ||
+        s === 'eevee' ||
+        s === 'butterfree' ||
+        s === 'corvinight' ||
+        s === 'alcremie' ||
+        s === 'drednaw' ||
+        s === 'machamp' ||
+        s === 'toxtricity' ||
+        s === 'melmetal' ||
+        s === 'coalossal' ||
+        s === 'sandaconda' ||
+        s === 'centiskorch' ||
+        s === 'grimmsnarl' ||
+        s === 'hatterene' ||
+        s === 'copperajah' ||
+        s === 'duralodon' ||
+        s === 'flapple' ||
+        s === 'appletun' ||
+        s === 'orbeetle' ||
+        s === 'garbodor' ||
+        s === 'kingler' ||
+        s === 'lapras'
+    ) {
+        return ['Gigantamax'];
     }
     return [];
 };
