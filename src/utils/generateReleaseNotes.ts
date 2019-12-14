@@ -350,10 +350,12 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
     '0.0.18-beta': `# Changelog
-
-## Features
-
 ## Fixes
+- Fixed the disaster that was Generations theme with vertical trainer orientation
+- Fixed some issues with BugReporter not working
+- Fixed badge misalignment for Johto games
+- Fixed jank when alternating between Light and Dark mode
+
 
 ## Known Issues
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading

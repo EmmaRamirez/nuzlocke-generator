@@ -61,9 +61,11 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
             headers: {
                 Accept: 'application/vnd.github.cloak-preview',
                 Authorization: `Token ${process.env.GH_ACCESS_TOKEN}`,
+                'Content-Type': 'application/json',
             },
+            mode: 'cors',
             body: JSON.stringify({
-                title: 'Bug Report',
+                title: userReport,
                 body: `${userReport}
 
 \`\`\`json
