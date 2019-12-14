@@ -4,7 +4,7 @@
     padding: 0;
     width: 11rem;
     height: 19rem;
-    
+
   }
 
   .pokemon-info {
@@ -142,7 +142,7 @@
       border: unset;
       width: auto;
   }
-  
+
   .boxed-pokemon-info {
     border: unset;
   }
@@ -191,7 +191,7 @@
 
   .dead-pokemon-picture.sprites-mode {
     background-size: auto;
-    background-repeat: no-repeat;  
+    background-repeat: no-repeat;
   }
 
   .dead-pokemon-picture {
@@ -212,7 +212,7 @@
   }
 
   .pokemon-item {
-    position: absolute; 
+    position: absolute;
     z-index: 11;
     border: none;
     display: flex;
@@ -228,6 +228,38 @@
 
 
 .generations {
+    &.vertical-trainer {
+        .pokemon-image-wrapper {
+            position: absolute;
+            left: -160px;
+        }
+        .team-container {
+            padding-left: 30% !important;
+        }
+        .dead-container,
+        .boxed-container,
+        .champs-container {
+            width: 100%;
+            height: auto;
+            margin: unset;
+            position: relative;
+            top: unset;
+            left: unset;
+            bottom: unset;
+            right: unset;
+            margin: .25rem;
+            padding-left: 0% !important;
+        }
+        .statuses-wrapper {
+            margin-top: 1rem;
+            margin-left: 16%;
+            display: inline-flex;
+            width: 46%;
+            vertical-align: top;
+            flex-direction: column;
+        }
+    }
+
   .container {
     position: relative;
   }
@@ -247,7 +279,7 @@
     margin-left: 4px;
   }
 
-  
+
   .pokemon-container {
     padding: 0;
     margin: 2px 0;
@@ -265,7 +297,7 @@
     -webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
     clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
   }
-  
+
   .pokemon-image {
     -webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
     clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
@@ -281,7 +313,7 @@
     vertical-align: top;
     background-size: 10px 10px;
     background-image: linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);
-  
+
   }
 
   .move {
@@ -515,7 +547,7 @@
   .champs-pokemon:nth-of-type(n+106) {
     left: 24px;
     top: -12px;
-    position: relative;  
+    position: relative;
   }
 
   .champs-pokemon:nth-of-type(n+15),
@@ -525,7 +557,7 @@
   .champs-pokemon:nth-of-type(n+71),
   .champs-pokemon:nth-of-type(n+85) {
     left: 0;
-    top: -23px;  
+    top: -23px;
   }
 }
 
@@ -606,7 +638,7 @@
   .pokemon-item {
     left: 90px;
     background: transparent;
-    border-width: 0;  
+    border-width: 0;
   }
 
   .pokemon-info-inner {

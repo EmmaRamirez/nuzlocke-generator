@@ -152,6 +152,39 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         const paddingForVerticalTrainerSection = trainerSectionOrientation === 'vertical' ? {
             paddingLeft: '20%',
         } : {};
+        const teamContainer = <div style={paddingForVerticalTrainerSection} className='team-container'>{this.renderTeamPokemon()}</div>;
+        const boxedContainer = numberOfBoxed > 0 ? (
+            <div style={paddingForVerticalTrainerSection} className='boxed-container'>
+                <h3 style={{ color: getContrastColor(bgColor) }}>{box[1].name}</h3>
+                <div className='boxed-container-inner'>{this.renderBoxedPokemon()}</div>
+            </div>
+        ) : null;
+        const deadContainer = numberOfDead > 0 ? (
+            <div style={paddingForVerticalTrainerSection} className='dead-container'>
+                <h3 style={{ color: getContrastColor(bgColor) }}>{box[2].name}</h3>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        justifyContent: 'flex-start',
+                        margin: this.props.style.template === 'Compact' ? 0 : '.5rem',
+                    }}>
+                    {this.renderDeadPokemon()}
+                </div>
+            </div>
+        ) : null;
+        const champsContainer = numberOfChamps > 0 ? (
+            <div style={paddingForVerticalTrainerSection} className='champs-container'>
+                <h3 style={{ color: getContrastColor(bgColor) }}>{box[3].name}</h3>
+                <div
+                    style={{
+                        margin: this.props.style.template === 'Compact' ? 0 : '.5rem',
+                    }}>
+                    {this.renderChampsPokemon()}
+                </div>
+            </div>
+        ) : null;
+
         return (
             <Scrollbars autoHide autoHideTimeout={1000} autoHideDuration={200}>
                 <TopBar onClickDownload={() => this.toImage()}>{this.renderErrors()}</TopBar>
@@ -161,7 +194,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         style.template.toLowerCase().replace(/\s/g, '-')) ||
                         ''} region-${getGameRegion(
                         this.props.game.name,
-                    )} team-size-${numberOfTeam}`}
+                    )} team-size-${numberOfTeam} ${trainerSectionOrientation}-trainer`}
                     style={{
                         fontFamily: style.usePokemonGBAFont ? 'pokemon_font' : 'inherit',
                         margin: this.state.isDownloading ? '0' : '3rem auto',
@@ -190,38 +223,19 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             {trainer.notes}
                         </div>
                     ) : null}
-                    <div style={paddingForVerticalTrainerSection} className='team-container'>{this.renderTeamPokemon()}</div>
-                    {numberOfBoxed > 0 ? (
-                        <div style={paddingForVerticalTrainerSection} className='boxed-container'>
-                            <h3 style={{ color: getContrastColor(bgColor) }}>{box[1].name}</h3>
-                            <div className='boxed-container-inner'>{this.renderBoxedPokemon()}</div>
+                    {teamContainer}
+                    {style.template === 'Generations' && trainerSectionOrientation === 'vertical' ?
+                        <div className='statuses-wrapper'>
+                            {boxedContainer}
+                            {deadContainer}
+                            {champsContainer}
                         </div>
-                    ) : null}
-                    {numberOfDead > 0 ? (
-                        <div style={paddingForVerticalTrainerSection} className='dead-container'>
-                            <h3 style={{ color: getContrastColor(bgColor) }}>{box[2].name}</h3>
-                            <div
-                                style={{
-                                    display: 'flex',
-                                    flexWrap: 'wrap',
-                                    justifyContent: 'flex-start',
-                                    margin: this.props.style.template === 'Compact' ? 0 : '.5rem',
-                                }}>
-                                {this.renderDeadPokemon()}
-                            </div>
-                        </div>
-                    ) : null}
-                    {numberOfChamps > 0 ? (
-                        <div style={paddingForVerticalTrainerSection} className='champs-container'>
-                            <h3 style={{ color: getContrastColor(bgColor) }}>{box[3].name}</h3>
-                            <div
-                                style={{
-                                    margin: this.props.style.template === 'Compact' ? 0 : '.5rem',
-                                }}>
-                                {this.renderChampsPokemon()}
-                            </div>
-                        </div>
-                    ) : null}
+                    : <>
+                        {boxedContainer}
+                        {deadContainer}
+                        {champsContainer}
+                    </>
+                    }
                     {style.displayRules ? (
                         <div style={paddingForVerticalTrainerSection} className='rules-container'>
                             <h3 style={{ color: getContrastColor(bgColor) }}>Rules</h3>
