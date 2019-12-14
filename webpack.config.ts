@@ -104,6 +104,7 @@ module.exports = {
 
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
+            'process.env.GH_ACCESS_TOKEN': JSON.stringify(process.env.GH_ACCESS_TOKEN),
             'PRODUCTION': JSON.stringify(true),
             'features.themeEditing': JSON.stringify(false),
             'features.fileUploads': JSON.stringify(false),
