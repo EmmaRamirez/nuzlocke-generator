@@ -66,10 +66,10 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
         const {trainer} = this.props;
         let style = {};
         if (this.isSWSH() && !trainer.hasEditedCheckpoints) {
-            style = {height: '3rem', width: '3rem', position: 'relative'};
+            style = {height: '3rem', width: '3rem', position: 'relative', padding: '.25rem'};
         }
         if (orientation === 'vertical') {
-            style = {...style, margin: '0'};
+            style = {...style, margin: '0', padding: '.25rem'};
         }
         return style;
     }
@@ -77,11 +77,15 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
     public render() {
         const { trainer, game, style, orientation } = this.props;
         const isVertical = orientation === 'vertical';
-        const bottomTextStyle: React.CSSProperties = { fontSize: '1.1rem', fontWeight: 'bold' };
+        const bottomTextStyle: React.CSSProperties = { fontSize: '1.1rem', fontWeight: 'bold', padding: '2px', };
+        const baseDivStyle = isVertical ? {padding: '2px'} : {padding: '.25rem'};
         return (
             <div className='trainer-wrapper' style={orientation === 'vertical' ? {
                 display: 'flex',
                 flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: '100%',
             } : {}}>
                 <div
                     style={{
@@ -92,6 +96,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                         width: '100px',
                         borderRadius: '.25rem',
                         textAlign: 'center',
+                        padding: '2px',
                     }}>
                     {game.name}
                 </div>
@@ -103,37 +108,37 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                     />
                 ) : null}
                 {trainer.title ? (
-                    <div className='nuzlocke-title'>{this.props.trainer.title}</div>
+                    <div style={baseDivStyle} className='nuzlocke-title'>{this.props.trainer.title}</div>
                 ) : (
-                    <div className='nuzlocke-title'>{this.props.game.name} Nuzlocke</div>
+                    <div style={baseDivStyle} className='nuzlocke-title'>{this.props.game.name} Nuzlocke</div>
                 )}
                 {isEmpty(trainer.name) ? null : (
-                    <div className='name column'>
-                        <div>name</div>
+                    <div style={baseDivStyle} className='name column'>
+                        <div style={baseDivStyle}>name</div>
                         <div style={bottomTextStyle}>{trainer.name}</div>
                     </div>
                 )}
                 {isEmpty(trainer.money) ? null : (
-                    <div className='money column'>
-                        <div>money</div>
+                    <div style={baseDivStyle} className='money column'>
+                        <div style={baseDivStyle}>money</div>
                         <div style={bottomTextStyle}>{trainer.money}</div>
                     </div>
                 )}
                 {isEmpty(trainer.time) ? null : (
-                    <div className='time column'>
-                        <div>time</div>
+                    <div style={baseDivStyle} className='time column'>
+                        <div style={baseDivStyle}>time</div>
                         <div style={bottomTextStyle}>{trainer.time}</div>
                     </div>
                 )}
                 {isEmpty(trainer.id) ? null : (
-                    <div className='id column'>
-                        <div>ID</div>
+                    <div style={baseDivStyle} className='id column'>
+                        <div style={baseDivStyle}>ID</div>
                         <div style={bottomTextStyle}>{trainer.id}</div>
                     </div>
                 )}
                 {isEmpty(trainer.totalTime) ? null : (
-                    <div className='time column'>
-                        <div>time</div>
+                    <div style={baseDivStyle} className='time column'>
+                        <div style={baseDivStyle}>time</div>
                         <div style={bottomTextStyle}>{trainer.totalTime}</div>
                     </div>
                 )}

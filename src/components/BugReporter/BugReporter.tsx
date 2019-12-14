@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseEditor } from 'components/BaseEditor';
-import { Button, Intent, TextArea, Checkbox } from '@blueprintjs/core';
+import { Button, Intent, TextArea, Checkbox, Toaster } from '@blueprintjs/core';
 import { connect } from 'react-redux';
 
 export interface BugReporterProps {
@@ -66,7 +66,9 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
                 title: 'Bug Report',
                 body: `${userReport}
 
-                \`\`\`${state}\`\`\`
+\`\`\`json
+${JSON.stringify(state)}
+\`\`\`
                 `,
                 assigness: ['EmmaRamirez'],
                 labels: [
@@ -76,7 +78,16 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
             }),
         })
             .then(res => res.json())
-            .then(data => console.log(data));
+            .then(data => {
+                if (data && data.url) {
+                    const toaster = Toaster.create();
+                    toaster.show({
+                        message: `Bug report sent!`,
+                        intent: Intent.SUCCESS,
+                    });
+                    this.setState({userReport: ''});
+                }
+            });
     }
 }
 

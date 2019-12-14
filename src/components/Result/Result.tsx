@@ -179,7 +179,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         { backgroundColor: topHeaderColor,
                             width: '20%',
                             position: 'absolute',
-                            height: '102%'
+                            height: '102%',
+                            display: 'flex',
                         }
                     : { backgroundColor: topHeaderColor }}>
                         <TrainerResult orientation={trainerSectionOrientation} />

@@ -65,4 +65,8 @@ export enum Forme {
     Sky = 'sky',
 
     Origin = 'origin',
+
+    Attack = 'attack',
+    Defense = 'defense',
+    Speed = 'speed',
 }

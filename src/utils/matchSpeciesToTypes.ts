@@ -292,6 +292,15 @@ export const handleSpeciesTypeEdgeCases = ({
     )
         return [Types.Steel, Types.Steel];
 
+
+    if (match({
+        ...data,
+        species: ['Shaymin'],
+        forme: ['Sky'],
+    })) {
+        return [Types.Grass, Types.Flying];
+    }
+
     return null;
 };
 
@@ -349,6 +358,7 @@ export const matchSpeciesToTypes = (
         case 'Rillaboom':
         case 'Gossifleur':
         case 'Eldegoss':
+        case 'Shaymin':
             return [Types.Grass, Types.Grass];
         case 'Torterra':
             return [Types.Grass, Types.Ground];

@@ -122,6 +122,7 @@ export class CurrentPokemonEditBase extends React.Component<
                     value={currentPokemon.forme}
                     type='select'
                     options={['Normal', ...getAdditionalFormes(currentPokemon.species)]}
+                    pokemon={currentPokemon}
                 />
                 <CurrentPokemonInput
                     labelName='Types'
