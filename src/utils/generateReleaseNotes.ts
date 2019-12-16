@@ -361,4 +361,18 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
     `,
+    '0.0.19-beta': `# Changelog
+## Fixes
+- Fixed font size when using Pokémon GBA Font
+- Added incense items and sprites
+- Collapsing the Style editor no longer disables custom CSS
+- Mega stones now appear in Autocomplete for items
+- Fixed location grammar for "Starter"
+
+
+
+## Known Issues
+- Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+    `,
 };

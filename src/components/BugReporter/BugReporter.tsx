@@ -88,6 +88,12 @@ ${JSON.stringify(state)}
                         intent: Intent.SUCCESS,
                     });
                     this.setState({userReport: ''});
+                } else {
+                    const toaster = Toaster.create();
+                    toaster.show({
+                        message: `Bug report failed. Please try again.`,
+                        intent: Intent.DANGER,
+                    });
                 }
             });
     }

@@ -1,6 +1,7 @@
 export type RadiusType = 'round' | 'square';
 export type OrientationType = 'vertical' | 'horizonal';
 export type TeamImagesType = 'standard' | 'sugimori' | 'dream world';
+export type RulesLocation = 'inside trainer section' | 'bottom' | 'top';
 
 export interface Styles {
     accentColor: string;
@@ -39,6 +40,7 @@ export interface Styles {
     displayExtraData: boolean;
     useAutoHeight: boolean;
     displayItemAsText: boolean;
+    displayRulesLocation: RulesLocation;
 }
 
 export const styleDefaults: Styles = {
@@ -78,4 +80,5 @@ export const styleDefaults: Styles = {
     useAutoHeight: false,
     usePokemonGBAFont: false,
     displayItemAsText: false,
+    displayRulesLocation: 'bottom' as RulesLocation,
 };

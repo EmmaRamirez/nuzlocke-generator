@@ -20,6 +20,7 @@ export interface TrainerResultProps {
     trainer: Trainer;
     game: { name: Game };
     style: Styles;
+    rules: string[];
 }
 
 export class TrainerResultBase extends React.Component<TrainerResultProps> {
@@ -91,6 +92,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                 width: '100%',
             } : {}}>
                 <div
+                    className='trainer-game-badge'
                     style={{
                         color: getContrastColor(style.bgColor),
                         background: style.bgColor,
@@ -147,6 +149,16 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                     </div>
                 )}
                 <div className='badge-wrapper' style={this.getBadgeWrapperStyles(orientation)}>{this.renderBadgesOrTrials()}</div>
+                {style.displayRules && style.displayRulesLocation === 'inside trainer section' ? (
+                    <div style={{marginTop: '1rem'}} className='rules-container'>
+                        <h3>Rules</h3>
+                        <ol style={{paddingLeft: '20px', textAlign: 'left'}}>
+                            {this.props.rules.map((rule, index) => {
+                                return <li key={index}>{rule}</li>;
+                            })}
+                        </ol>
+                    </div>
+                ) : null}
             </div>
         );
     }
@@ -157,4 +169,5 @@ export const TrainerResult = connect((state: Pick<State, keyof State>) => ({
     style: state.style,
     trainer: state.trainer,
     game: state.game,
+    rules: state.rules,
 }))(TrainerResultBase);
