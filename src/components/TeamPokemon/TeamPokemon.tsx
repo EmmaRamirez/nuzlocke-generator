@@ -30,6 +30,9 @@ const getMetLocationString = ({
     const met = poke.met || '';
     const metLevel = poke.metLevel || '';
     if (poke.met) {
+        if (poke.met.toLocaleLowerCase() === 'starter') {
+            return `Met as ${met} at lv.${metLevel}`;
+        }
         if (oldMetLocationFormat) {
             return `Met ${determinePreposition()} ${met}, from lv.${metLevel}`;
         } else {
