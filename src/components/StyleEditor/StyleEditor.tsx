@@ -267,6 +267,20 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
+                    <label className='pt-label pt-inline'>Rules Location</label>
+                    <div className='pt-select'>
+                        <select
+                            name='displayRulesLocation'
+                            onChange={e => editEvent(e, props, undefined)}
+                            value={props.style.displayRulesLocation}>
+                            <option key={'inside trainer section'}>{'inside trainer section'}</option>
+                            <option key={'bottom'}>bottom</option>
+                            <option key={'top'}>top</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div className={styleEdit}>
                     <RadioGroup
                         className={cx(Styles.radioGroup)}
                         label='Moves Position'

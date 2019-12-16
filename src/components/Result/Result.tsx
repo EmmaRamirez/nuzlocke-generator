@@ -184,10 +184,21 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                 </div>
             </div>
         ) : null;
+        const rulesContainer =  (
+            <div style={paddingForVerticalTrainerSection} className='rules-container'>
+                <h3 style={{ color: getContrastColor(bgColor) }}>Rules</h3>
+                <ol style={{ color: getContrastColor(bgColor) }}>
+                    {this.props.rules.map((rule, index) => {
+                        return <li key={index}>{rule}</li>;
+                    })}
+                </ol>
+            </div>
+        );
 
         return (
             <Scrollbars autoHide autoHideTimeout={1000} autoHideDuration={200}>
                 <TopBar onClickDownload={() => this.toImage()}>{this.renderErrors()}</TopBar>
+                <style>{style.customCSS}</style>
                 <div
                     ref={this.resultRef}
                     className={`result container ${(style.template &&
@@ -197,6 +208,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     )} team-size-${numberOfTeam} ${trainerSectionOrientation}-trainer`}
                     style={{
                         fontFamily: style.usePokemonGBAFont ? 'pokemon_font' : 'inherit',
+                        fontSize: style.usePokemonGBAFont ? '125%' : '100%',
                         margin: this.state.isDownloading ? '0' : '3rem auto',
                         backgroundColor: bgColor,
                         backgroundImage: `url(${style.backgroundImage})`,
@@ -223,6 +235,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             {trainer.notes}
                         </div>
                     ) : null}
+                    {style.displayRules && style.displayRulesLocation === 'top' ? rulesContainer : null}
                     {teamContainer}
                     {style.template === 'Generations' && trainerSectionOrientation === 'vertical' ?
                         <div className='statuses-wrapper'>
@@ -236,16 +249,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         {champsContainer}
                     </>
                     }
-                    {style.displayRules ? (
-                        <div style={paddingForVerticalTrainerSection} className='rules-container'>
-                            <h3 style={{ color: getContrastColor(bgColor) }}>Rules</h3>
-                            <ol style={{ color: getContrastColor(bgColor) }}>
-                                {this.props.rules.map((rule, index) => {
-                                    return <li key={index}>{rule}</li>;
-                                })}
-                            </ol>
-                        </div>
-                    ) : null}
+                    {style.displayRules && style.displayRulesLocation === 'bottom' ? rulesContainer : null}
                 </div>
             </Scrollbars>
         );
