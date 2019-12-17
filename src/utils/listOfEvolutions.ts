@@ -47,6 +47,34 @@ export const EvolutionTree: EvolutionTree = {
     Sandshrew: {
         Sandlsash: null,
     },
+    'Nidoran♂': {
+        Nidorina: {
+            Nidoqueen: null,
+        }
+    },
+    'Nidoran♀': {
+        Nidorino: {
+            Nidoking: null,
+        }
+    },
+    Igglybuff: {
+        Jigglypuff: {
+            Wigglytuff: null,
+        }
+    },
+    Oddish: {
+        Gloom: {
+            Vilplume: null,
+            Bellossom: null,
+        }
+    },
+    Paras: {
+        Parasect: null,
+    },
+    Meowth: {
+        Persian: null,
+        Perrserker: null,
+    },
     Spearow: {
         Fearow: null,
     },

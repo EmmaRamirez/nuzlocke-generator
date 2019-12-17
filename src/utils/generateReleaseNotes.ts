@@ -362,13 +362,18 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
     `,
     '0.0.19-beta': `# Changelog
+## Features
+- You can now modify Trainer section dimensions
+
 ## Fixes
 - Fixed font size when using Pokémon GBA Font
 - Added incense items and sprites
 - Collapsing the Style editor no longer disables custom CSS
 - Mega stones now appear in Autocomplete for items
 - Fixed location grammar for "Starter"
-
+- Fixed an issue where reports would not go through due to size limitations
+  - Made it clearer in UI when report sending fails
+- Added width/height labels to dimension inputs
 
 
 ## Known Issues

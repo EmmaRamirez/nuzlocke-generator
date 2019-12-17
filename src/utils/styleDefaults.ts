@@ -24,6 +24,9 @@ export interface Styles {
     oldMetLocationFormat: boolean;
     resultHeight: string | number;
     resultWidth: string | number;
+    trainerHeight: string | number;
+    trainerWidth: string | number;
+    trainerAuto: boolean;
     scaleSprites: boolean;
     showPokemonMoves: boolean;
     spritesMode: boolean;
@@ -81,4 +84,7 @@ export const styleDefaults: Styles = {
     usePokemonGBAFont: false,
     displayItemAsText: false,
     displayRulesLocation: 'bottom' as RulesLocation,
+    trainerWidth: '20%',
+    trainerHeight: '100%',
+    trainerAuto: true,
 };
