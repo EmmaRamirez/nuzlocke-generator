@@ -56,6 +56,18 @@ const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'],
         });
         props.editStyle({ movesPosition: 'vertical' });
     }
+    // if (propName === 'trainerSectionOrientation' && e.target.value === 'vertical') {
+    //     props.editStyle({
+    //         trainerWidth: props.style.trainerHeight,
+    //         trainerHeight: props.style.trainerWidth,
+    //     });
+    // }
+    // if (propName === 'trainerSectionOrientation' && e.target.value === 'horizontal') {
+    //     props.editStyle({
+    //         trainerWidth: props.style.trainerHeight,
+    //         trainerHeight: props.style.trainerWidth,
+    //     });
+    // }
 };
 
 export interface StyleEditorProps {
@@ -114,7 +126,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                             {listOfThemes.map(o => <option key={o}>{o}</option>)}
                         </select>
                     </div>
-                    {FEATURES.themeEditing ? (
+                    {!FEATURES.themeEditing ? (
                         <Button
                             onClick={this.toggleThemeEditor}
                             style={{ marginLeft: '.25rem' }}
@@ -172,6 +184,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
 
                 <div className={styleEdit}>
                     <label className='pt-label pt-inline'>Result Dimensions</label>
+                    <span style={{ fontSize: '80%', marginRight: '2px' }}>w</span>
                     <input
                         name='resultWidth'
                         className='pt-input small-input'
@@ -182,6 +195,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         step='10'
                     />
                     <span style={{ marginRight: '0' }} className='pt-icon pt-icon-cross' />
+                    <span style={{ fontSize: '80%', marginRight: '2px' }}>h</span>
                     <input
                         name='resultHeight'
                         className='pt-input small-input'
@@ -212,6 +226,60 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         }
                     />
                 </div>
+
+                <div className={styleEdit}>
+                    <label className='pt-label pt-inline'>Trainer Dimensions</label>
+                    <span style={{ fontSize: '80%', marginRight: '2px' }}>w</span>
+                    <input
+                        name='trainerWidth'
+                        className='pt-input small-input'
+                        onChange={e => editEvent(e, props)}
+                        style={{
+                            opacity: props.style.trainerAuto ? 0.3 : 1,
+                        }}
+                        value={props.style.trainerWidth}
+                    />
+                    <span style={{ marginRight: '0' }} className='pt-icon pt-icon-cross' />
+                    <span style={{ fontSize: '80%', marginRight: '2px' }}>h</span>
+                    <input
+                        name='trainerHeight'
+                        className='pt-input small-input'
+                        style={{
+                            opacity: props.style.trainerAuto ? 0.3 : 1,
+                        }}
+                        onChange={e => editEvent(e, props)}
+                        value={props.style.trainerHeight}
+                    />
+                    <span> </span>
+                    <Checkbox
+                        style={{
+                            marginBottom: '0',
+                            marginLeft: '10px',
+                        }}
+                        checked={props.style.trainerAuto}
+                        name='trainerAuto'
+                        label='Auto Dimensions'
+                        onChange={(e: any) =>
+                            editEvent(
+                                { ...e, target: { value: e.target.checked } },
+                                props,
+                                'trainerAuto',
+                            )
+                        }
+                    />
+                </div>
+
+                <div className={styleEdit}>
+                    <RadioGroup
+                        className={cx(Styles.radioGroup)}
+                        label='Trainer Section Position'
+                        onChange={e => editEvent(e, props, 'trainerSectionOrientation')}
+                        selectedValue={props.style.trainerSectionOrientation}>
+                        <Radio label='Horizontal' value='horizontal' />
+                        <Radio label='Vertical' value='vertical' />
+                    </RadioGroup>
+                </div>
+
                 <div className={styleEdit}>
                     <label className='pt-label pt-inline'>Background color</label>
                     <ColorEdit
@@ -286,17 +354,6 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         label='Moves Position'
                         onChange={e => editEvent(e, props, 'movesPosition')}
                         selectedValue={props.style.movesPosition}>
-                        <Radio label='Horizontal' value='horizontal' />
-                        <Radio label='Vertical' value='vertical' />
-                    </RadioGroup>
-                </div>
-
-                <div className={styleEdit}>
-                    <RadioGroup
-                        className={cx(Styles.radioGroup)}
-                        label='Trainer Section Position'
-                        onChange={e => editEvent(e, props, 'trainerSectionOrientation')}
-                        selectedValue={props.style.trainerSectionOrientation}>
                         <Radio label='Horizontal' value='horizontal' />
                         <Radio label='Vertical' value='vertical' />
                     </RadioGroup>
@@ -581,7 +638,6 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         className='custom-css-input pt-fill'
                         value={props.style.customCSS}
                     />
-                    <style>{props.style.customCSS}</style>
                 </div>
             </BaseEditor>
         );

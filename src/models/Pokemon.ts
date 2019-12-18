@@ -19,6 +19,7 @@ export interface Pokemon {
     types?: [Types, Types];
     customImage?: string;
     customIcon?: string;
+    customItemImage?: string;
     shiny?: boolean;
     champion?: boolean;
     badges?: string[];
@@ -30,6 +31,7 @@ export interface Pokemon {
     egg?: boolean;
     hidden?: boolean;
     extraData?: object;
+    pokeball?: string;
 }
 
 // We export a non-type version when we need all the keys easily
@@ -51,6 +53,7 @@ export const PokemonKeys: Pokemon = {
     types: [Types.Normal, Types.Normal],
     customImage: '',
     customIcon: '',
+    customItemImage: '',
     shiny: false,
     champion: false,
     badges: [],
@@ -62,4 +65,5 @@ export const PokemonKeys: Pokemon = {
     egg: false,
     hidden: false,
     extraData: {},
+    pokeball: 'poke',
 };

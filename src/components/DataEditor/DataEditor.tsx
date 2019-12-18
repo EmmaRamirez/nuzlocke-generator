@@ -77,6 +77,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
 
     private confirmImport = e => {
         this.props.replaceState(JSON.parse(this.state.data));
+        this.writeAllData();
     };
 
     private importState = () => {

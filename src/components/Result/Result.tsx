@@ -150,7 +150,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         const accentColor = style ? style.accentColor : '#111111';
         const trainerSectionOrientation = this.props.style.trainerSectionOrientation;
         const paddingForVerticalTrainerSection = trainerSectionOrientation === 'vertical' ? {
-            paddingLeft: '20%',
+            paddingLeft: style.trainerWidth,
         } : {};
         const teamContainer = <div style={paddingForVerticalTrainerSection} className='team-container'>{this.renderTeamPokemon()}</div>;
         const boxedContainer = numberOfBoxed > 0 ? (
@@ -166,7 +166,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     style={{
                         display: 'flex',
                         flexWrap: 'wrap',
-                        justifyContent: 'flex-start',
+                        justifyContent: 'center',
                         margin: this.props.style.template === 'Compact' ? 0 : '.5rem',
                     }}>
                     {this.renderDeadPokemon()}
@@ -222,12 +222,16 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     }}>
                     <div className='trainer-container' style={ trainerSectionOrientation === 'vertical' ?
                         { backgroundColor: topHeaderColor,
-                            width: '20%',
+                            width: style.trainerWidth,
                             position: 'absolute',
-                            height: '102%',
+                            height: `calc(${style.trainerHeight} + 2%)`,
                             display: 'flex',
                         }
-                    : { backgroundColor: topHeaderColor }}>
+                    : {
+                        backgroundColor: topHeaderColor,
+                        width: style.trainerAuto ? '100%' : style.trainerWidth,
+                        height: style.trainerAuto ? 'auto' : style.trainerHeight,
+                    }}>
                         <TrainerResult orientation={trainerSectionOrientation} />
                     </div>
                     {trainer && trainer.notes ? (

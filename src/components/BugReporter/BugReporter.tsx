@@ -65,7 +65,7 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
             },
             mode: 'cors',
             body: JSON.stringify({
-                title: userReport,
+                title: userReport.slice(0, 20),
                 body: `${userReport}
 
 \`\`\`json
@@ -95,6 +95,13 @@ ${JSON.stringify(state)}
                         intent: Intent.DANGER,
                     });
                 }
+            })
+            .catch(err => {
+                const toaster = Toaster.create();
+                toaster.show({
+                    message: `Bug report failed. Please try again. ${err}`,
+                    intent: Intent.DANGER,
+                });
             });
     }
 }

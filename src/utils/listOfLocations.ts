@@ -515,4 +515,5 @@ export const listOfLocations = [
     'Lake of Outrage',
     'Galar Mine',
     'Galar Mine No. 2',
+    'Glimwood Tangle',
 ];

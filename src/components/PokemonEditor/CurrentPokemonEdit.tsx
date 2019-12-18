@@ -13,6 +13,9 @@ import {
     listOfNatures,
     Game,
     Forme,
+    EvolutionTree,
+    getDeepObject,
+    listOfPokeballs,
 } from 'utils';
 import { Pokemon } from 'models';
 import { Boxes } from 'types';
@@ -26,7 +29,7 @@ import { PokemonIconBase } from 'components/PokemonIcon';
 import { cx } from 'emotion';
 import * as Styles from './styles';
 import * as uuid from 'uuid/v4';
-import { Classes, Icon, Popover, Position, PopoverInteractionKind, TextArea } from '@blueprintjs/core';
+import { Classes, Icon, Popover, Position, PopoverInteractionKind, TextArea, Button, Intent } from '@blueprintjs/core';
 import { addPokemon } from 'actions';
 import { State } from 'state';
 import { CurrentPokemonLayoutItem } from './CurrentPokemonLayoutItem';
@@ -54,6 +57,8 @@ export const CopyPokemonButton: React.SFC<CopyPokemonButtonProps> = ({
         </Popover>
     );
 };
+
+
 
 export interface CurrentPokemonEditProps {
     selectedId: Pokemon['id'];
@@ -159,12 +164,6 @@ export class CurrentPokemonEditBase extends React.Component<
                         type='checkbox'
                     />
                     <CurrentPokemonInput
-                        labelName='Champion'
-                        inputName='champion'
-                        value={currentPokemon.champion}
-                        type='checkbox'
-                    />
-                    <CurrentPokemonInput
                         labelName='Egg'
                         inputName='egg'
                         value={currentPokemon.egg}
@@ -211,6 +210,20 @@ export class CurrentPokemonEditBase extends React.Component<
                         this.props.selectPokemon(this.state.selectedId);
                     }}
                 />
+                <CurrentPokemonInput
+                    labelName='Custom Item Image'
+                    inputName='customItemImage'
+                    placeholder='http://..'
+                    value={currentPokemon.customItemImage}
+                    type='text'
+                />
+                <CurrentPokemonInput
+                    labelName='Pokeball'
+                    inputName='pokeball'
+                    value={currentPokemon.pokeball}
+                    type='select'
+                    options={listOfPokeballs.map(ball => `${ball.charAt(0).toUpperCase() + ball.slice(1, ball.length)} Ball`)}
+                />
                 <CurrentPokemonLayoutItem>
                     <CurrentPokemonInput
                         labelName='Wonder Traded'
@@ -256,6 +269,47 @@ export class CurrentPokemonEditBase extends React.Component<
         return this.props.pokemon.find((v: Pokemon) => v.id === this.state.selectedId);
     }
 
+    private evolvePokemon = (currentPokemon) => e => {
+        console.log(this.doesPokemonHaveEvolution(currentPokemon));
+
+        if (this.doesPokemonHaveEvolution(currentPokemon)) {
+
+            const evoTree = getDeepObject(EvolutionTree, currentPokemon.species);
+            const evolutionSpecies = evoTree && Object.keys(evoTree);
+
+            console.log(
+                evoTree,
+                evolutionSpecies,
+            );
+
+
+            if (!evolutionSpecies) {
+                return false;
+            }
+
+            if (evolutionSpecies && evolutionSpecies.length > 1) {
+
+            } else {
+                const edit = {
+                    species: evolutionSpecies[0],
+                };
+
+                this.props.editPokemon(edit, this.state.selectedId);
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private doesPokemonHaveEvolution = (currentPokemon) => {
+        if (getDeepObject(EvolutionTree, currentPokemon.species)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public render() {
         const currentPokemon = this.getCurrentPokemon();
 
@@ -288,6 +342,12 @@ export class CurrentPokemonEditBase extends React.Component<
                         type='select'
                         options={this.state.box.map(n => n.name)}
                     />
+                    {this.doesPokemonHaveEvolution(currentPokemon) ? <Button
+                        style={{marginTop: '12px'}}
+                        onClick={this.evolvePokemon(currentPokemon)}
+                        className={'pt-minimal'}
+                        intent={Intent.PRIMARY}
+                    >Evolve</Button> : null}
                     <div className={cx(Styles.iconBar)}>
                         <CopyPokemonButton onClick={this.copyPokemon} />
                         <DeletePokemonButton id={this.state.selectedId} />

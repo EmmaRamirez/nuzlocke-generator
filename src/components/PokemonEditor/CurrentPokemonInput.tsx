@@ -25,6 +25,8 @@ interface CurrentPokemonInputProps {
     pokemon?: Pokemon;
 }
 
+const formatBallText = (b: string) => b && b.replace(/\sBall/g, '').toLowerCase();
+
 export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInputProps> {
     constructor(props: CurrentPokemonInputProps) {
         super(props);
@@ -131,9 +133,11 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         if (type === 'select') {
             return (
                 <div className='pt-select'>
+                    {inputName === 'pokeball' ? <img style={{position: 'absolute'}} alt={value} src={`icons/pokeball/${formatBallText(value)}.png`} /> : null}
                     <select
                         onChange={event => this.onChange(event, inputName, undefined, undefined, pokemon)}
                         value={value}
+                        style={inputName === 'pokeball' ? {paddingLeft: '2rem'} : {}}
                         name={inputName}>
                         {options
                             ? options.map((item, index) => <option key={index}>{item}</option>)

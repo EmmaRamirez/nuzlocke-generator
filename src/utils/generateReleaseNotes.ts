@@ -363,9 +363,11 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
     `,
     '0.0.19-beta': `# Changelog
 ## Features
+- Poké
 - You can now modify Trainer section dimensions
 
 ## Fixes
+- Fixed issues with saves not working after importing a nuzlocke
 - Fixed font size when using Pokémon GBA Font
 - Added incense items and sprites
 - Collapsing the Style editor no longer disables custom CSS
@@ -374,6 +376,8 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Fixed an issue where reports would not go through due to size limitations
   - Made it clearer in UI when report sending fails
 - Added width/height labels to dimension inputs
+- Fixed Corviknight's sprite
+- Removed legacy "Champion" checkmark
 
 
 ## Known Issues
