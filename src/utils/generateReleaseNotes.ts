@@ -361,7 +361,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
     `,
-    '0.0.19-beta': `# Changelog
+    '0.1.0-beta': `# Changelog
 ## Features
 - **Moves Editor**: Edit move types and create custom types
 - Updated Checkpoints editor to allow for custom images
@@ -380,7 +380,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Added width/height labels to dimension inputs
 - Fixed Corviknight's sprite
 - Removed legacy "Champion" checkmark
-
+- Badge sprite sizes are now uniform throughout
 
 ## Known Issues
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
