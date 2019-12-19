@@ -11,6 +11,15 @@ export interface MovesProps {
     style: Styles;
 }
 
+export const Move = ({index, style, type, move}) => (<div
+    key={index}
+    style={style.usePokemonGBAFont ? {fontSize: '1rem'} : {}}
+    className={`move ${type}-type ${
+        move.length >= 10 ? 'long-text-move' : ''
+    }`}>
+    {move}
+</div>);
+
 export class MovesBase extends React.Component<MovesProps> {
     private generateMoves(moves: MovesProps['moves']) {
         const {style} = this.props;
@@ -25,14 +34,12 @@ export class MovesBase extends React.Component<MovesProps> {
                     originalType: getMoveType(move),
                 });
                 return (
-                    <div
-                        key={index}
-                        style={style.usePokemonGBAFont ? {fontSize: '1rem'} : {}}
-                        className={`move ${type}-type ${
-                            move.length >= 10 ? 'long-text-move' : ''
-                        }`}>
-                        {move}
-                    </div>
+                    <Move
+                        index={index}
+                        style={style}
+                        type={type}
+                        move={move}
+                    />
                 );
             })
         );

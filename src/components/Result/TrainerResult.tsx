@@ -55,10 +55,10 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                 <>
                     <img
                         className={trainerBadges.some(b => b.name === badge.name) ? 'obtained' : 'not-obtained'}
-                        style={this.isSWSH() && !trainer.hasEditedCheckpoints ? {position: 'absolute', ...swshPositions[index]} : {}}
+                        style={this.isSWSH() && !trainer.hasEditedCheckpoints ? {position: 'absolute', ...swshPositions[index]} : {height: '1rem'}}
                         key={badge.name}
                         alt={badge.name}
-                        src={`./img/checkpoints/${badge.image}.png`}
+                        src={badge.image.startsWith('http') ? badge.image :  `./img/checkpoints/${badge.image}.png`}
                     />
                     {badge.name === 'Rising Badge' ? <br/> : null}
                 </>
@@ -73,7 +73,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
             style = {height: '3rem', width: '3rem', position: 'relative', padding: '.25rem'};
         }
         if (orientation === 'vertical') {
-            style = {...style, margin: '0', padding: '.25rem'};
+            style = {...style, margin: '0', padding: '.25rem', width: '100%'};
         }
         return style;
     }

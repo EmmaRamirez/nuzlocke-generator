@@ -363,7 +363,9 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
     `,
     '0.0.19-beta': `# Changelog
 ## Features
-- Poké
+- **Moves Editor**: Edit move types and create custom types
+- Updated Checkpoints editor to allow for custom images
+- Pokéball option dropdown
 - You can now modify Trainer section dimensions
 
 ## Fixes

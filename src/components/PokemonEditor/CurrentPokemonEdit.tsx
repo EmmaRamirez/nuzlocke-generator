@@ -33,6 +33,7 @@ import { Classes, Icon, Popover, Position, PopoverInteractionKind, TextArea, But
 import { addPokemon } from 'actions';
 import { State } from 'state';
 import { CurrentPokemonLayoutItem } from './CurrentPokemonLayoutItem';
+import { MoveEditor } from 'components/MoveEditor';
 
 const pokeball = require('assets/pokeball.png');
 
@@ -73,6 +74,7 @@ export interface CurrentPokemonEditProps {
 export interface CurrentPokemonEditState {
     selectedId: string;
     expandedView: boolean;
+    isMoveEditorOpen: boolean;
     box: Boxes;
 }
 
@@ -85,6 +87,7 @@ export class CurrentPokemonEditBase extends React.Component<
         this.state = {
             selectedId: '5',
             box: [],
+            isMoveEditorOpen: false,
             expandedView: false,
         };
     }
@@ -313,6 +316,8 @@ export class CurrentPokemonEditBase extends React.Component<
         }
     }
 
+    private toggleDialog = () => this.setState({isMoveEditorOpen: !this.state.isMoveEditorOpen});
+
     public render() {
         const currentPokemon = this.getCurrentPokemon();
 
@@ -460,6 +465,16 @@ export class CurrentPokemonEditBase extends React.Component<
                     placeholder=''
                     value={currentPokemon.moves}
                     type='moves'
+                />
+                <Button
+                    className='pt-minimal'
+                    intent={Intent.PRIMARY}
+                    style={{transform: 'translate(0.5rem, 1.5rem)'}}
+                    onClick={this.toggleDialog}
+                >Edit Moves</Button>
+                <MoveEditor
+                    isOpen={this.state.isMoveEditorOpen}
+                    toggleDialog={this.toggleDialog}
                 />
                 {this.state.expandedView ? this.moreInputs(currentPokemon) : null}
                 <br />

@@ -136,7 +136,7 @@ export class CheckpointsEditorBase extends React.Component<
                             <img
                                 className={cx(styles.checkpointImage())}
                                 alt={checkpoint.name}
-                                src={`./img/checkpoints/${checkpoint.image}.png`}
+                                src={checkpoint.image.startsWith('http') ? checkpoint.image : `./img/checkpoints/${checkpoint.image}.png`}
                             />
                             <input onChange={e => this.props.editCheckpoint({ name: e.target.value }, checkpoint.name)} className={Classes.INPUT} type='text' value={checkpoint.name} />
                         </div>
@@ -145,6 +145,10 @@ export class CheckpointsEditorBase extends React.Component<
                             <Button icon='upload'>Upload Image</Button>
                             <input style={{ cursor: 'pointer', opacity: 0, position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} onChange={this.onUpload} type='file' />
                         </div> */}
+                        <div className='pt-input-group'>
+                            <span className='pt-label pt-inline pt-text-muted'>image URL</span>
+                            <input className='pt-input' placeholder='https://...' value={checkpoint.image} type='text' onChange={e => this.props.editCheckpoint({ image: e.target.value }, checkpoint.name)} />
+                        </div>
                         <Icon style={{ cursor: 'pointer' }} onClick={e => this.props.deleteCheckpoint(checkpoint.name)} className={cx(styles.checkpointDelete)} icon='trash' />
                     </li>
                 );
