@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { matchSpeciesToTypes, getMoveType } from 'utils';
+import { matchSpeciesToTypes, getMoveType, formatBallText } from 'utils';
 import { editPokemon, selectPokemon } from 'actions';
 
 import { ErrorBoundary } from 'components/Shared';
@@ -24,8 +24,6 @@ interface CurrentPokemonInputProps {
     selectPokemon: selectPokemon;
     pokemon?: Pokemon;
 }
-
-const formatBallText = (b: string) => b && b.replace(/\sBall/g, '').toLowerCase();
 
 export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInputProps> {
     constructor(props: CurrentPokemonInputProps) {
@@ -133,7 +131,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         if (type === 'select') {
             return (
                 <div className='pt-select'>
-                    {inputName === 'pokeball' ? <img style={{position: 'absolute'}} alt={value} src={`icons/pokeball/${formatBallText(value)}.png`} /> : null}
+                    {inputName === 'pokeball' && value && value !== 'None' ? <img style={{position: 'absolute'}} alt={value} src={`icons/pokeball/${formatBallText(value)}.png`} /> : null}
                     <select
                         onChange={event => this.onChange(event, inputName, undefined, undefined, pokemon)}
                         value={value}

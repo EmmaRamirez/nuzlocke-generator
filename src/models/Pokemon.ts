@@ -65,5 +65,5 @@ export const PokemonKeys: Pokemon = {
     egg: false,
     hidden: false,
     extraData: {},
-    pokeball: 'poke',
+    pokeball: 'None',
 };

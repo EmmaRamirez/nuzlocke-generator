@@ -11,6 +11,7 @@ import {
     getGameGeneration,
     getContrastColor,
     gameOfOriginToColor,
+    formatBallText,
 } from 'utils';
 import { GenderElement } from 'components/Shared';
 import { selectPokemon } from 'actions';
@@ -296,7 +297,22 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                         }`}
                     />
                 </div>
-                {poke.item && !style.displayItemAsText ? (
+                {poke.pokeball && poke.pokeball !== 'None' && <div
+                    className={`pokemon-pokeball`}
+                        style={{
+                            position: 'absolute',
+                            bottom: '1rem',
+                            left: '6.5rem',
+                            zIndex: 100,
+                            filter: 'drop-shadow(0 0 2px white)'
+                        }}>
+                        <img
+                            alt={poke.pokeball}
+                            src={`icons/pokeball/${formatBallText(poke.pokeball)}.png`}
+                        />
+                    </div>
+                }
+                {(poke.item || poke.customItemImage) && !style.displayItemAsText ? (
                     <div
                         className={`pokemon-item ${this.props.style.itemStyle}`}
                         style={{
@@ -311,7 +327,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                         }}>
                         <img
                             alt={poke.item}
-                            src={`icons/hold-item/${(poke.item || '')
+                            src={poke.customItemImage ? poke.customItemImage : `icons/hold-item/${(poke.item || '')
                                 .toLowerCase()
                                 .replace(/\'/g, '')
                                 .replace(/\s/g, '-')}.png`}

@@ -222,7 +222,10 @@ export class CurrentPokemonEditBase extends React.Component<
                     inputName='pokeball'
                     value={currentPokemon.pokeball}
                     type='select'
-                    options={listOfPokeballs.map(ball => `${ball.charAt(0).toUpperCase() + ball.slice(1, ball.length)} Ball`)}
+                    options={[
+                        'None',
+                        ...listOfPokeballs.map(ball => `${ball.charAt(0).toUpperCase() + ball.slice(1, ball.length)} Ball`)
+                    ]}
                 />
                 <CurrentPokemonLayoutItem>
                     <CurrentPokemonInput
