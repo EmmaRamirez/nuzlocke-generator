@@ -1,2 +1,2 @@
 build: npm run build
-web: npx http-server ./dist
+web: npx http-server --cors ./dist
