@@ -40,6 +40,8 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
 
     private toggleDialog = _ => this.setState({ isOpen: !this.state.isOpen });
 
+    private editCustomGameName = () => {};
+
     public render() {
         const { game } = this.props;
         // Awful hack to get rid of `isOpen` conflict warning
@@ -63,6 +65,12 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                         <Button onClick={this.toggleDialog} icon='list' intent={Intent.PRIMARY}>
                             Modify Rules
                         </Button>
+                    </div>
+                    <div style={gameSubEditorStyle}>
+                        <div style={{fontSize: '80%'}}>
+                            <label className='pt-inline' style={{marginRight: '.5rem'}}>Name</label>
+                            <input autoComplete={'false'} size={20} onClick={this.editCustomGameName} className='pt-input' type='text' placeholder={game.name} />
+                        </div>
                     </div>
                 </div>
             </>
