@@ -17,26 +17,52 @@ export interface MoveEditorProps {
 export interface MoveEditorState {
 }
 
+const types = [
+    'Bug',
+    'Dark',
+    'Dragon',
+    'Electric',
+    'Fairy',
+    'Fighting',
+    'Fire',
+    'Flying',
+    'Ghost',
+    'Grass',
+    'Ground',
+    'Ice',
+    'Normal',
+    'Poison',
+    'Psychic',
+    'Rock',
+    'Steel',
+    'Water',
+];
+
 export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorState> {
 
     private renderMoves() {
         const {style} = this.props;
 
         return Object.keys(movesByType).map(type => {
-            return movesByType[type].map((move, index) => {
+            return movesByType[type].sort().map((move, index) => {
                 return <div style={{
                     display: 'flex',
-                    justifyContent: 'space-between',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: '.25rem',
+                    background: 'rgba(0, 0, 0, 0.3)'
                 }}>
-                    <Move
-                        index={index}
-                        move={move}
-                        type={type}
-                        style={style}
-                    />
-                    <div className='pt-select'>
-                        <select>
-                            <option value={type}>{type}</option>
+                    <div style={{width: '12rem', marginRight: '.5rem'}}>
+                        <Move
+                            index={index}
+                            move={move}
+                            type={type}
+                            style={style}
+                        />
+                    </div>
+                    <div className='pt-select' style={{width: '8rem'}}>
+                        <select value={type}>
+                            {types.map(opt => <option value={opt}>{opt}</option>)}
                         </select>
                     </div>
                 </div>;
@@ -53,15 +79,37 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                 icon='edit'
                 isOpen={isOpen}
                 onClose={toggleDialog}
-                className={`wide-dialog ${
+                className={`${
                     style.editorDarkMode ? 'pt-dark' : 'pt-light'
                 }`}
+                style={{
+                    width: '44rem'
+                }}
                 title='Mass Editor'>
-                <div className='pt-dialog-body move-editor'>
-                    <div className='add-move-wrapper'>
-                        <input className='pt-input' type='text' />
-                        <input className='pt-input' type='text' />
+                <div className='pt-dialog-body move-editor' style={{
+                    height: '800px',
+                    overflowY: 'auto',
+                }}>
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'bottom',
+                        justifyContent: 'space-between',
+                        padding: '1rem',
+                    }} className='add-move-wrapper'>
+                        <div style={{margin: '0.25rem'}}>
+                            <label className='pt-label' style={{fontSize: '80%', marginBottom: '2px'}}>
+                                Move Name
+                            </label>
+                            <input className='pt-input' type='text' />
+                        </div>
+                        <div style={{margin: '0.25rem'}}>
+                            <label className='pt-label' style={{fontSize: '80%', marginBottom: '2px'}}>
+                                Move Type
+                            </label>
+                            <input className='pt-input' type='text' />
+                        </div>
                         <Button
+                            style={{height: '1.5rem', marginTop: '1.5rem'}}
                             intent={Intent.PRIMARY}
                         >
                             Add Move

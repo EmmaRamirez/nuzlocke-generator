@@ -376,11 +376,12 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Mega stones now appear in Autocomplete for items
 - Fixed location grammar for "Starter"
 - Fixed an issue where reports would not go through due to size limitations
-  - Made it clearer in UI when report sending fails
+- Made it clearer in UI when report sending fails
 - Added width/height labels to dimension inputs
 - Fixed Corviknight's sprite
 - Removed legacy "Champion" checkmark
 - Badge sprite sizes are now uniform throughout
+- Fixed spacing with "Game of Origin" info for Dead Pokémon
 
 ## Known Issues
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
