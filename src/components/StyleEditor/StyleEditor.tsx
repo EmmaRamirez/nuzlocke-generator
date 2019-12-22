@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { editStyle } from 'actions';
-import { gameOfOriginToColor, listOfThemes, FEATURES, Game, OrientationType, Styles as StylesType } from 'utils';
+import { capitalize, gameOfOriginToColor, listOfThemes, FEATURES, Game, OrientationType, Styles as StylesType } from 'utils';
 import {
     RadioGroup,
     Radio,
@@ -101,11 +101,17 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
     public state = { isThemeEditorOpen: false };
     private toggleThemeEditor = e =>
         this.setState({ isThemeEditorOpen: !this.state.isThemeEditorOpen });
+
     public render() {
         const props = this.props;
         const styleEdit = cx(Styles.styleEdit, {
             [Styles.styleEdit_dark]: props.style.editorDarkMode,
         });
+        const calloutStyle = {
+            marginLeft: '2px',
+            fontSize: '80%',
+            padding: '7px',
+        };
         return (
             <BaseEditor name='Style'>
                 <Dialog
@@ -360,14 +366,33 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <RadioGroup
-                        className={cx(Styles.radioGroup)}
-                        label='Team Images'
-                        onChange={e => editEvent(e, props, 'teamImages')}
-                        selectedValue={props.style.teamImages}>
-                        <Radio label='Standard' value='standard' />
-                        <Radio label='Sugimori' value='sugimori' />
-                    </RadioGroup>
+                    <label className='pt-label pt-inline'>Team Images</label>
+                    <div className='pt-select'>
+                        <select
+                            name='teamImages'
+                            onChange={e => editEvent(e, props, undefined, props.game.name)}
+                            value={props.style.teamImages}>
+                            {['standard', 'sugimori', 'dream world', 'shuffle'].map(o => <option value={o} key={o}>{capitalize(o)}</option>)}
+                        </select>
+                    </div>
+                    {(props.game.name === 'Sword' || props.game.name === 'Shield') && props.style.teamImages === 'shuffle' ?
+                        <div className='pt-callout pt-intent-danger' style={calloutStyle}>
+                            Shuffle images are not supported for this game
+                        </div>
+                        : null
+                    }
+                    {(props.game.name === 'Sword' || props.game.name === 'Shield') && props.style.teamImages === 'sugimori' ?
+                        <div className='pt-callout pt-intent-danger' style={calloutStyle}>
+                            Sugimori images are not supported for this game
+                        </div>
+                        : null
+                    }
+                    {(['Sword', 'Shield', 'X', 'Y', 'Sun', 'Moon', 'Ultra Sun', 'Ultra Moon'].includes(props.game.name)) && props.style.teamImages === 'dream world' ?
+                        <div className='pt-callout pt-intent-danger' style={calloutStyle}>
+                            Dream world images are not supported for this game
+                        </div>
+                        : null
+                    }
                 </div>
 
                 <div className={styleEdit}>
