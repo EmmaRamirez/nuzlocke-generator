@@ -38,9 +38,11 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
         this.props.resetCheckpoints(e.target.value);
     };
 
-    private toggleDialog = _ => this.setState({ isOpen: !this.state.isOpen });
+    private onInputName = e => {
+        this.props.editGame({ customName: e.target.value });
+    };
 
-    private editCustomGameName = () => {};
+    private toggleDialog = _ => this.setState({ isOpen: !this.state.isOpen });
 
     public render() {
         const { game } = this.props;
@@ -52,10 +54,13 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                 <div className='game-editor'>
                     <h4 style={{ display: 'flex', alignContent: 'flex-end' }}>Game</h4>
                     <div style={gameSubEditorStyle}>
-                        <div className='pt-select'>
-                            <select onChange={this.onInput} value={game.name}>
-                                {listOfGames.map(game => <option key={game}>{game}</option>)}
-                            </select>
+                        <div>
+                            <label className='pt-inline' style={{fontSize: '80%', marginRight: '.5rem'}}>Version</label>
+                            <div className='pt-select'>
+                                <select onChange={this.onInput} value={game.name}>
+                                    {listOfGames.map(game => <option key={game}>{game}</option>)}
+                                </select>
+                            </div>
                         </div>
                         {FEATURES.multipleNuzlockes ? (
                             <Popover minimal={true} content={<Menu />} position={Position.BOTTOM}>
@@ -68,8 +73,8 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                     </div>
                     <div style={gameSubEditorStyle}>
                         <div style={{fontSize: '80%'}}>
-                            <label className='pt-inline' style={{marginRight: '.5rem'}}>Name</label>
-                            <input autoComplete={'false'} size={20} onClick={this.editCustomGameName} className='pt-input' type='text' placeholder={game.name} />
+                            <label className='pt-inline' style={{marginRight: 'calc(.75rem + 2px)'}}>Name</label>
+                            <input onChange={this.onInputName} value={game.customName} autoComplete={'false'} size={20} className='pt-input' type='text' placeholder={game.name} />
                         </div>
                     </div>
                 </div>
