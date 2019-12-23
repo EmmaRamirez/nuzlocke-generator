@@ -113,6 +113,7 @@ export function getPokemonImage({
     style,
     shiny,
 }: GetPokemonImage) {
+    const regularNumber = speciesToNumber(species);
     const leadingZerosNumber = (speciesToNumber(species) || 0).toString().padStart(3, '0');
 
     if (customImage) {
@@ -171,6 +172,15 @@ export function getPokemonImage({
             Forme[forme ? forme : 'Normal'],
         )}.png)`;
     }
+
+    if (style.teamImages === 'dream world') {
+        return `url(img/dw/${regularNumber}.svg)`;
+    }
+
+    if (style.teamImages === 'shuffle') {
+        return `url(img/shuffle/${species.toLocaleLowerCase()}.png)`;
+    }
+
     return `url(img/${(
         addForme((species || '').replace(/\s/g, '').replace(/'/g, ''), forme) || 'missingno'
     ).toLowerCase()}.jpg)`;

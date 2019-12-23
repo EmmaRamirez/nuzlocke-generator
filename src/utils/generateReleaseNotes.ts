@@ -361,9 +361,10 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
     `,
-    '0.1.0-beta': `# Changelog
+    '1.0.0': `# Changelog
 ## Features
 - **Moves Editor**: Edit move types and create custom types
+- Shuffle and Dream World images are now available
 - Updated Checkpoints editor to allow for custom images
 - Pokéball option dropdown
 - You can now modify Trainer section dimensions
@@ -378,10 +379,11 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Fixed an issue where reports would not go through due to size limitations
 - Made it clearer in UI when report sending fails
 - Added width/height labels to dimension inputs
-- Fixed Corviknight's sprite
+- Added missing gen 8 images and sprites
 - Removed legacy "Champion" checkmark
 - Badge sprite sizes are now uniform throughout
 - Fixed spacing with "Game of Origin" info for Dead Pokémon
+- Made images with Sword & Shield sprites downloadable
 
 ## Known Issues
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading

@@ -1,6 +1,6 @@
 export type RadiusType = 'round' | 'square';
 export type OrientationType = 'vertical' | 'horizonal';
-export type TeamImagesType = 'standard' | 'sugimori' | 'dream world';
+export type TeamImagesType = 'standard' | 'sugimori' | 'dream world' | 'shuffle';
 export type RulesLocation = 'inside trainer section' | 'bottom' | 'top';
 
 export interface Styles {

@@ -516,4 +516,5 @@ export const listOfLocations = [
     'Galar Mine',
     'Galar Mine No. 2',
     'Glimwood Tangle',
+    'Slumbering Weald',
 ];
