@@ -4,6 +4,7 @@ import { Game } from 'models';
 export function game(
     state: Game = {
         name: 'Red',
+        customName: '',
     },
     action: Action<EDIT_GAME | REPLACE_STATE>,
 ) {

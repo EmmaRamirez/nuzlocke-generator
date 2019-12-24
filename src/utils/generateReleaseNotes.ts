@@ -384,6 +384,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Badge sprite sizes are now uniform throughout
 - Fixed spacing with "Game of Origin" info for Dead Pokémon
 - Made images with Sword & Shield sprites downloadable
+- Updated color inputs to allow for easier alpha channels
 
 ## Known Issues
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading

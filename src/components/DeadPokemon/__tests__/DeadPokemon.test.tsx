@@ -17,7 +17,7 @@ describe('<DeadPokemon />', () => {
     it('renders its content', () => {
         const wrapper = mount(
             <DeadPokemonBase
-                game={{ name: 'Red' }}
+                game={{ name: 'Red', customName: '' }}
                 style={styleDefaults}
                 selectPokemon={jest.fn()}
                 {...Pokemon}

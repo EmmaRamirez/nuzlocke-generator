@@ -18,10 +18,27 @@ export interface TrainerResultProps {
 
     checkpoints: Checkpoints;
     trainer: Trainer;
-    game: { name: Game };
+    game: { name: Game, customName: string };
     style: Styles;
     rules: string[];
 }
+
+export interface TrainerColumnItemProps {
+    trainer: Trainer;
+    prop: string;
+    orientation: OrientationType;
+}
+
+export const TrainerColumnItem = ({trainer, prop, orientation}: TrainerColumnItemProps) => {
+    const isVertical = orientation === 'vertical';
+    const bottomTextStyle: React.CSSProperties = { fontSize: '1.1rem', fontWeight: 'bold', padding: '2px', };
+    const baseDivStyle = isVertical ? {padding: '2px'} : {padding: '.25rem'};
+
+    return !isEmpty(trainer[prop]) ? <div style={baseDivStyle} className={`${prop} column`}>
+        <div style={baseDivStyle}>{prop}</div>
+        <div style={bottomTextStyle}>{trainer[prop]}</div>
+    </div> : null;
+};
 
 export class TrainerResultBase extends React.Component<TrainerResultProps> {
 
@@ -73,7 +90,10 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
             style = {height: '3rem', width: '3rem', position: 'relative', padding: '.25rem'};
         }
         if (orientation === 'vertical') {
-            style = {...style, margin: '0', padding: '.25rem', width: '100%'};
+            style = {...style, margin: '0', padding: '.25rem'};
+        }
+        if (!this.isSWSH() && orientation === 'vertical') {
+            style = {...style, width: '100%'};
         }
         return style;
     }
@@ -81,8 +101,9 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
     public render() {
         const { trainer, game, style, orientation } = this.props;
         const isVertical = orientation === 'vertical';
-        const bottomTextStyle: React.CSSProperties = { fontSize: '1.1rem', fontWeight: 'bold', padding: '2px', };
         const baseDivStyle = isVertical ? {padding: '2px'} : {padding: '.25rem'};
+        const tciProps = {trainer, orientation};
+
         return (
             <div className='trainer-wrapper' style={orientation === 'vertical' ? {
                 display: 'flex',
@@ -99,12 +120,12 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                         margin: isVertical ? '4px' : '0',
                         marginRight: isVertical ? '0' : '.5rem',
                         marginLeft: isVertical ? '0' : '.5rem',
-                        width: '100px',
+                        minWidth: '100px',
                         borderRadius: '.25rem',
                         textAlign: 'center',
                         padding: '2px',
                     }}>
-                    {game.name}
+                    {game.customName || game.name}
                 </div>
                 {trainer.image ? (
                     <img
@@ -118,36 +139,11 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                 ) : (
                     <div style={baseDivStyle} className='nuzlocke-title'>{this.props.game.name} Nuzlocke</div>
                 )}
-                {isEmpty(trainer.name) ? null : (
-                    <div style={baseDivStyle} className='name column'>
-                        <div style={baseDivStyle}>name</div>
-                        <div style={bottomTextStyle}>{trainer.name}</div>
-                    </div>
-                )}
-                {isEmpty(trainer.money) ? null : (
-                    <div style={baseDivStyle} className='money column'>
-                        <div style={baseDivStyle}>money</div>
-                        <div style={bottomTextStyle}>{trainer.money}</div>
-                    </div>
-                )}
-                {isEmpty(trainer.time) ? null : (
-                    <div style={baseDivStyle} className='time column'>
-                        <div style={baseDivStyle}>time</div>
-                        <div style={bottomTextStyle}>{trainer.time}</div>
-                    </div>
-                )}
-                {isEmpty(trainer.id) ? null : (
-                    <div style={baseDivStyle} className='id column'>
-                        <div style={baseDivStyle}>ID</div>
-                        <div style={bottomTextStyle}>{trainer.id}</div>
-                    </div>
-                )}
-                {isEmpty(trainer.totalTime) ? null : (
-                    <div style={baseDivStyle} className='time column'>
-                        <div style={baseDivStyle}>time</div>
-                        <div style={bottomTextStyle}>{trainer.totalTime}</div>
-                    </div>
-                )}
+                <TrainerColumnItem prop={'name'} {...tciProps} />
+                <TrainerColumnItem prop={'money'} {...tciProps} />
+                <TrainerColumnItem prop={'time'} {...tciProps} />
+                <TrainerColumnItem prop={'id'} {...tciProps} />
+                <TrainerColumnItem prop={'totalTime'} {...tciProps} />
                 <div className='badge-wrapper' style={this.getBadgeWrapperStyles(orientation)}>{this.renderBadgesOrTrials()}</div>
                 {style.displayRules && style.displayRulesLocation === 'inside trainer section' ? (
                     <div style={{marginTop: '1rem'}} className='rules-container'>

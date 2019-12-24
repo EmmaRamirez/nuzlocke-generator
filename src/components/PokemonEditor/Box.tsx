@@ -114,6 +114,7 @@ export class BoxBase extends React.Component<BoxProps> {
                             textAlign: 'center',
                             width: '5rem',
                             cursor: 'pointer',
+                            userSelect: 'none',
                         }}>
                         <Icon style={{transform: 'rotate(90deg)'}} icon='more' />
                         {name}

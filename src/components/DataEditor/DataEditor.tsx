@@ -130,8 +130,8 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
     }
 
     private static determineGame (isYellow: boolean): Game {
-        if (isYellow) return {name: 'Yellow'};
-        return {name: 'Red'};
+        if (isYellow) return {name: 'Yellow', customName: ''};
+        return {name: 'Red', customName: ''};
     }
 
     private uploadFile = (replaceState, state) => e => {

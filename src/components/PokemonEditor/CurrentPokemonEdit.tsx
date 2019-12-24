@@ -68,7 +68,7 @@ export interface CurrentPokemonEditProps {
     selectPokemon: selectPokemon;
     editPokemon: editPokemon;
     addPokemon: addPokemon;
-    game: { name: Game };
+    game: { name: Game, customName: string };
 }
 
 export interface CurrentPokemonEditState {
@@ -119,6 +119,66 @@ export class CurrentPokemonEditBase extends React.Component<
             this.props.addPokemon(newPokemon);
         }
     };
+
+    public expandView = (e: React.SyntheticEvent<HTMLButtonElement>) => {
+        this.setState({
+            expandedView: !this.state.expandedView,
+        });
+    };
+
+    private getCurrentPokemon() {
+        return this.props.pokemon.find((v: Pokemon) => v.id === this.state.selectedId);
+    }
+
+    private parseTree(tree) {
+    }
+
+    private evolvePokemon = (currentPokemon) => e => {
+        console.log(this.doesPokemonHaveEvolution(currentPokemon));
+
+        if (this.doesPokemonHaveEvolution(currentPokemon)) {
+
+            const evoTree = getDeepObject(EvolutionTree, currentPokemon.species);
+            const evolutionSpecies = evoTree && Object.keys(evoTree);
+
+            console.log(
+                getDeepObject(EvolutionTree, 'Charmeleon'),
+                EvolutionTree[currentPokemon.species],
+                this.parseTree(evoTree),
+                this.parseTree(EvolutionTree[currentPokemon.species]),
+            );
+
+
+            if (!evolutionSpecies) {
+                return false;
+            }
+
+
+            if (evolutionSpecies && evolutionSpecies.length > 1) {
+
+
+            } else {
+                const edit = {
+                    species: evolutionSpecies[0],
+                };
+
+                this.props.editPokemon(edit, this.state.selectedId);
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private doesPokemonHaveEvolution = (currentPokemon) => {
+        if (getDeepObject(EvolutionTree, currentPokemon.species)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private toggleDialog = () => this.setState({isMoveEditorOpen: !this.state.isMoveEditorOpen});
 
     public moreInputs(currentPokemon: Pokemon) {
         return (
@@ -176,6 +236,12 @@ export class CurrentPokemonEditBase extends React.Component<
                         labelName='Hidden'
                         inputName='hidden'
                         value={currentPokemon.hidden}
+                        type='checkbox'
+                    />
+                    <CurrentPokemonInput
+                        labelName='MVP'
+                        inputName='mvp'
+                        value={currentPokemon.mvp}
                         type='checkbox'
                     />
                 </CurrentPokemonLayoutItem>
@@ -265,59 +331,6 @@ export class CurrentPokemonEditBase extends React.Component<
         );
     }
 
-    public expandView = (e: React.SyntheticEvent<HTMLButtonElement>) => {
-        this.setState({
-            expandedView: !this.state.expandedView,
-        });
-    };
-
-    private getCurrentPokemon() {
-        return this.props.pokemon.find((v: Pokemon) => v.id === this.state.selectedId);
-    }
-
-    private evolvePokemon = (currentPokemon) => e => {
-        console.log(this.doesPokemonHaveEvolution(currentPokemon));
-
-        if (this.doesPokemonHaveEvolution(currentPokemon)) {
-
-            const evoTree = getDeepObject(EvolutionTree, currentPokemon.species);
-            const evolutionSpecies = evoTree && Object.keys(evoTree);
-
-            console.log(
-                evoTree,
-                evolutionSpecies,
-            );
-
-
-            if (!evolutionSpecies) {
-                return false;
-            }
-
-            if (evolutionSpecies && evolutionSpecies.length > 1) {
-
-            } else {
-                const edit = {
-                    species: evolutionSpecies[0],
-                };
-
-                this.props.editPokemon(edit, this.state.selectedId);
-            }
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private doesPokemonHaveEvolution = (currentPokemon) => {
-        if (getDeepObject(EvolutionTree, currentPokemon.species)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private toggleDialog = () => this.setState({isMoveEditorOpen: !this.state.isMoveEditorOpen});
-
     public render() {
         const currentPokemon = this.getCurrentPokemon();
 
@@ -350,12 +363,12 @@ export class CurrentPokemonEditBase extends React.Component<
                         type='select'
                         options={this.state.box.map(n => n.name)}
                     />
-                    {this.doesPokemonHaveEvolution(currentPokemon) ? <Button
+                    {/*this.doesPokemonHaveEvolution(currentPokemon) ? <Button
                         style={{marginTop: '12px'}}
                         onClick={this.evolvePokemon(currentPokemon)}
                         className={'pt-minimal'}
                         intent={Intent.PRIMARY}
-                    >Evolve</Button> : null}
+                    >Evolve</Button> : null*/}
                     <div className={cx(Styles.iconBar)}>
                         <CopyPokemonButton onClick={this.copyPokemon} />
                         <DeletePokemonButton id={this.state.selectedId} />
@@ -459,19 +472,20 @@ export class CurrentPokemonEditBase extends React.Component<
                         }}
                     />
                 </CurrentPokemonLayoutItem>
-                <CurrentPokemonInput
-                    labelName='Moves'
-                    inputName='moves'
-                    placeholder=''
-                    value={currentPokemon.moves}
-                    type='moves'
-                />
-                <Button
-                    className='pt-minimal'
-                    intent={Intent.PRIMARY}
-                    style={{transform: 'translate(0.5rem, 1.5rem)'}}
-                    onClick={this.toggleDialog}
-                >Edit Moves</Button>
+                <CurrentPokemonLayoutItem>
+                    <CurrentPokemonInput
+                        labelName='Moves'
+                        inputName='moves'
+                        placeholder=''
+                        value={currentPokemon.moves}
+                        type='moves'
+                    />
+                    <Button
+                        className='pt-minimal'
+                        intent={Intent.PRIMARY}
+                        onClick={this.toggleDialog}
+                    >Edit Moves</Button>
+                </CurrentPokemonLayoutItem>
                 <MoveEditor
                     isOpen={this.state.isMoveEditorOpen}
                     toggleDialog={this.toggleDialog}
