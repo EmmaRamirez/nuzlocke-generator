@@ -83,7 +83,7 @@ describe('styleDefaults', () => {
         expect(styleDefaults.editorDarkMode).toBe(false);
         expect(typeof styleDefaults).toBe('object');
         expect(styleDefaults.imageStyle).toBe('round');
-        expect(objectPropertiesWhere(styleDefaults, p => p === 'round')).toBe(2);
+        expect(objectPropertiesWhere(styleDefaults, p => p === 'round')).toBe(1);
         expect(objectPropertiesWhere(styleDefaults, p => p)).toBe(21);
     });
 });
