@@ -363,10 +363,10 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
     `,
     '1.0.0': `# Changelog
 ## Features
+- **New Pokémon Options**: Pokéball, MVP, and Notes
 - **Moves Editor**: Edit move types and create custom types
 - Shuffle and Dream World images are now available
 - Updated Checkpoints editor to allow for custom images
-- Pokéball option dropdown
 - You can now modify Trainer section dimensions
 
 ## Fixes
@@ -385,6 +385,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Fixed spacing with "Game of Origin" info for Dead Pokémon
 - Made images with Sword & Shield sprites downloadable
 - Updated color inputs to allow for easier alpha channels
+- Moves that are now Fairy-type (but were Normal prior to Gen 6) now display as such
 
 ## Known Issues
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading

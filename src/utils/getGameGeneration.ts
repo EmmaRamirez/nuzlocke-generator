@@ -47,5 +47,5 @@ export const getGameGeneration = (game: Game): Generation => {
     if (Gen7.includes(game)) return Generation.Gen7;
     if (Gen8.includes(game)) return Generation.Gen8;
 
-    return Generation.Gen7;
+    return Generation.Gen8;
 };

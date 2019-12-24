@@ -98,6 +98,8 @@ export const IconsNextToTeamPokemon = props => (
     </div>
 );
 
+export const smallItemOptions = ['outer glow', 'round', 'square', 'text'];
+
 export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEditorState> {
     public state = { isThemeEditorOpen: false, showChromePicker: false };
     private toggleThemeEditor = e =>
@@ -164,7 +166,8 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <RadioGroup
+                    <label className='pt-label pt-inline'>Item Style</label>
+                    {/*<RadioGroup
                         className={cx(Styles.radioGroup)}
                         label='Item Style'
                         onChange={e => editEvent(e, props, 'itemStyle')}
@@ -186,7 +189,31 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                                 'displayItemAsText',
                             )
                         }
-                    />
+                    />*/}
+                    <div className='pt-select'>
+                        <select
+                            name='itemStyle'
+                            onChange={e => editEvent(e, props, undefined)}
+                            value={props.style.itemStyle}>
+                            {smallItemOptions.map(v => {
+                                return <option value={v}>{capitalize(v)}</option>;
+                            })}
+                        </select>
+                    </div>
+                </div>
+
+                <div className={styleEdit}>
+                    <label className='pt-label pt-inline'>Pokéball Style</label>
+                    <div className='pt-select'>
+                        <select
+                            name='pokeballStyle'
+                            onChange={e => editEvent(e, props, undefined)}
+                            value={props.style.pokeballStyle}>
+                            {smallItemOptions.map(v => {
+                                return <option value={v}>{capitalize(v)}</option>;
+                            })}
+                        </select>
+                    </div>
                 </div>
 
                 <div className={styleEdit}>

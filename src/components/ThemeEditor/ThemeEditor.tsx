@@ -12,6 +12,7 @@ import { ColorEdit, ThemeSelect } from 'components/Shared';
 import { ChampsPokemon } from 'components';
 import {} from 'themes';
 import { DeadPokemon } from 'components/DeadPokemon';
+import { State } from 'state';
 
 const modelPokemon: Pokemon = {
     ...generateEmptyPokemon(),
@@ -328,7 +329,7 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
 }
 
 export const ThemeEditor = connect(
-    (state: Partial<typeof reducers>) => ({
+    (state: State) => ({
         style: state.style,
     }),
     null,

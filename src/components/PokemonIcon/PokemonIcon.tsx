@@ -164,4 +164,6 @@ export const PokemonIcon: React.ComponentClass<
 > = connect(
     (state: Pick<State, keyof State>) => ({ selectedId: state.selectedId }),
     mapDispatchToProps,
+    null,
+    {pure: false},
 )(PokemonIconBase as any);
