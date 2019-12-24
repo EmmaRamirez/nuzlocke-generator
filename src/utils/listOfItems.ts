@@ -275,7 +275,7 @@ export const listOfItems = [
     'Pungent Root',
     'Quiet Mint',
     'Rash Mint',
-    'Relaxed Minth',
+    'Relaxed Mint',
     'Ribbon Sweet',
     'Room Service',
     'Rotom Bike',

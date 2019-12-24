@@ -102,11 +102,6 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                                 ` @ ${pokemon.item}`
                             : null
                         }</span>
-                        <span>{
-                            pokemon.item && style.pokeballStyle === 'text' ?
-                                ` @ ${pokemon.item}`
-                            : null
-                        }</span>
                         {GenderElement(pokemon.gender)}
                         {pokemon.level ? (
                             <span className='pokemon-level'>lv. {pokemon.level}</span>
@@ -129,6 +124,11 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                             poke: pokemon,
                             oldMetLocationFormat: style.oldMetLocationFormat,
                         })}
+                        {
+                            pokemon.pokeball && style.pokeballStyle === 'text' ?
+                                ` (in ${pokemon.pokeball})`
+                            : null
+                        }
                     </div>
                     {pokemon.nature && pokemon.nature !== 'None' ? (
                         <div className='pokemon-nature'>
@@ -363,6 +363,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                                 name: this.props.game.name,
                             }),
                             ...(spriteStyle as React.CSSProperties),
+                            backgroundSize: this.props.style.teamImages === 'dream world' ? 'contain' : undefined,
                         }}
                         className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()} ${
                             this.props.style.imageStyle === 'round' ? 'round' : 'square'
