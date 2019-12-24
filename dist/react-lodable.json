@@ -151,7 +151,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./../webpack/buildin/global.js": [
+  "./../../webpack/buildin/global.js": [
     {
       "id": "./node_modules/webpack/buildin/global.js",
       "name": "./node_modules/webpack/buildin/global.js",
@@ -1015,7 +1015,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "history/PathUtils": [
+  "./PathUtils": [
     {
       "id": "./node_modules/history/PathUtils.js",
       "name": "./node_modules/history/PathUtils.js",
@@ -1023,8 +1023,20 @@
       "publicPath": "bundle.js"
     },
     {
+      "id": "./node_modules/history/es/PathUtils.js",
+      "name": "./node_modules/history/es/PathUtils.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
       "id": "./node_modules/history/PathUtils.js",
       "name": "./node_modules/history/PathUtils.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./node_modules/history/es/PathUtils.js",
+      "name": "./node_modules/history/es/PathUtils.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -1189,20 +1201,6 @@
     {
       "id": "./node_modules/history/es/createBrowserHistory.js",
       "name": "./node_modules/history/es/createBrowserHistory.js",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "./PathUtils": [
-    {
-      "id": "./node_modules/history/es/PathUtils.js",
-      "name": "./node_modules/history/es/PathUtils.js",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./node_modules/history/es/PathUtils.js",
-      "name": "./node_modules/history/es/PathUtils.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -4079,20 +4077,8 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./node_modules/lodash/noop.js",
-      "name": "./node_modules/lodash/noop.js",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
       "id": "./src/utils/noop.ts",
       "name": "./src/utils/noop.ts",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    },
-    {
-      "id": "./node_modules/lodash/noop.js",
-      "name": "./node_modules/lodash/noop.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -5027,7 +5013,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./isFunction": [
+  "lodash/isFunction": [
     {
       "id": "./node_modules/lodash/isFunction.js",
       "name": "./node_modules/lodash/isFunction.js",
@@ -6077,7 +6063,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./get": [
+  "lodash/get": [
     {
       "id": "./node_modules/lodash/get.js",
       "name": "./node_modules/lodash/get.js",
@@ -10079,7 +10065,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./utils/matchesType": [
+  "../utils/matchesType": [
     {
       "id": "./node_modules/dnd-core/lib/utils/matchesType.js",
       "name": "./node_modules/dnd-core/lib/utils/matchesType.js",
@@ -10411,6 +10397,20 @@
     {
       "id": "./node_modules/lodash/_createSet.js",
       "name": "./node_modules/lodash/_createSet.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "lodash/noop": [
+    {
+      "id": "./node_modules/lodash/noop.js",
+      "name": "./node_modules/lodash/noop.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/noop.js",
+      "name": "./node_modules/lodash/noop.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -12347,16 +12347,10 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./ThemeEditor": [
+  "components/ThemeEditor": [
     {
       "id": "./src/components/ThemeEditor/index.ts",
       "name": "./src/components/ThemeEditor/index.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./src/components/ThemeEditor/ThemeEditor.tsx",
-      "name": "./src/components/ThemeEditor/ThemeEditor.tsx",
       "file": "bundle.js",
       "publicPath": "bundle.js"
     },
@@ -12365,6 +12359,14 @@
       "name": "./src/components/ThemeEditor/index.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
+    }
+  ],
+  "./ThemeEditor": [
+    {
+      "id": "./src/components/ThemeEditor/ThemeEditor.tsx",
+      "name": "./src/components/ThemeEditor/ThemeEditor.tsx",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
     },
     {
       "id": "./src/components/ThemeEditor/ThemeEditor.tsx",
