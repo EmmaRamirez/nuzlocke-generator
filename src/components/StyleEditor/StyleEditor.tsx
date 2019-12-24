@@ -15,8 +15,9 @@ import {
 } from '@blueprintjs/core';
 import { State } from 'state';
 import { BaseEditor } from 'components/BaseEditor';
-import { ColorEdit } from 'components/Shared';
+import { ColorEdit, rgbaOrHex } from 'components/Shared';
 import { cx } from 'emotion';
+import { ChromePicker } from 'react-color';
 
 import * as Styles from './styles';
 import { ThemeEditor } from 'components/ThemeEditor';
@@ -38,7 +39,7 @@ const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'],
     }
     if (propName === 'template' && e.target.value === 'Hexagons') {
         props.editStyle({ resultWidth: 1320 });
-        props.editStyle({ accentColor: 'transparent' });
+        props.editStyle({ accentColor: '#000000' });
         props.editStyle({ movesPosition: 'horizontal' as OrientationType });
     }
     if (propName === 'template' && e.target.value === 'Generations') {
@@ -98,7 +99,7 @@ export const IconsNextToTeamPokemon = props => (
 );
 
 export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEditorState> {
-    public state = { isThemeEditorOpen: false };
+    public state = { isThemeEditorOpen: false, showChromePicker: false };
     private toggleThemeEditor = e =>
         this.setState({ isThemeEditorOpen: !this.state.isThemeEditorOpen });
 
@@ -291,7 +292,8 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     <ColorEdit
                         onChange={e => editEvent(e, props)}
                         name={'bgColor'}
-                        value={props.style.bgColor}
+                        value={rgbaOrHex(props.style.bgColor)}
+                        onColorChange={color => editEvent({target:{value: rgbaOrHex(color)}}, props, 'bgColor')}
                     />
                 </div>
 
@@ -301,6 +303,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         onChange={e => editEvent(e, props)}
                         name={'accentColor'}
                         value={props.style.accentColor}
+                        onColorChange={color => editEvent({target:{value: rgbaOrHex(color)}}, props, 'accentColor')}
                     />
                 </div>
 
@@ -310,6 +313,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         name='topHeaderColor'
                         onChange={e => editEvent(e, props)}
                         value={props.style.topHeaderColor}
+                        onColorChange={color => editEvent({target:{value: rgbaOrHex(color)}}, props, 'topHeaderColor')}
                     />
                 </div>
 
