@@ -130,7 +130,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         }
         if (type === 'select') {
             return (
-                <div className='pt-select'>
+                <div className='pt-select' style={inputName === 'status' ? {width: '120px'} : {}}>
                     {inputName === 'pokeball' && value && value !== 'None' ? <img style={{position: 'absolute'}} alt={value} src={`icons/pokeball/${formatBallText(value)}.png`} /> : null}
                     <select
                         onChange={event => this.onChange(event, inputName, undefined, undefined, pokemon)}

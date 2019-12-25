@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { Button, Intent } from '@blueprintjs/core';
 import { State } from 'state';
+import { connect } from 'react-redux';
+import { addBox, AddBoxArgs } from 'actions';
+import { Autocomplete } from 'components';
+import { wallpapers } from './Box';
 
 
 export interface NewBox {
@@ -12,6 +16,7 @@ export interface NewBox {
 // tslint:disable-next-line:no-empty-interfaces
 export interface BoxFormProps {
     boxes: State['box'];
+    addBox: addBox;
 }
 
 export interface BoxFormState {
@@ -19,14 +24,16 @@ export interface BoxFormState {
     newBox: NewBox;
 }
 
-export class BoxForm extends React.Component<BoxFormProps, BoxFormState> {
+const baseBox = {
+    name: '',
+    background: '',
+    inheritFrom: 'Team',
+};
+
+export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
     public state = {
             isBoxFormOpen: false,
-            newBox: {
-                name: '',
-                background: '',
-                inheritFrom: 'Team',
-            },
+            newBox: baseBox,
     };
 
     private toggleBoxForm = e => {
@@ -34,7 +41,8 @@ export class BoxForm extends React.Component<BoxFormProps, BoxFormState> {
     }
 
     private confirmNewBox = e => {
-
+        this.props.addBox(this.state.newBox as AddBoxArgs);
+        this.setState({newBox: baseBox});
     }
 
     private editFormInput = e => {
@@ -103,6 +111,7 @@ export class BoxForm extends React.Component<BoxFormProps, BoxFormState> {
                         <label style={labelStyle} className='pt-label'>Background</label>
                         <input className='pt-input' onInput={this.editFormInput} value={this.state.newBox.background} name='background' placeholder='Box Background' />
                     </div>
+
                     <div style={inputStyle}>
                         <label style={labelStyle} className='pt-label'>Inherit From...</label>
                         <div className='pt-select'>
@@ -126,6 +135,7 @@ export class BoxForm extends React.Component<BoxFormProps, BoxFormState> {
                             style={{margin: '0 .5rem'}}
                             onClick={this.confirmNewBox}
                             intent={Intent.SUCCESS}
+                            disabled={!this.state.newBox.name}
                         >
                             Confirm
                         </Button>
@@ -136,3 +146,10 @@ export class BoxForm extends React.Component<BoxFormProps, BoxFormState> {
         );
     }
 }
+
+export const BoxForm = connect(
+    null,
+    {
+        addBox,
+    }
+)(BoxFormBase);

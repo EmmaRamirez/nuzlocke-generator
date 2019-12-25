@@ -105,6 +105,7 @@ export const DeadPokemonBase = (
                             name: poke.game.name,
                         }),
                         ...spriteStyle(style),
+                        backgroundSize: style.teamImages === 'dream world' ? 'contain' : undefined,
                         filter: style.grayScaleDeadPokemon ? 'grayscale(100%)' : 'none',
                     }}
                 />

@@ -12,6 +12,7 @@ import {
     getContrastColor,
     gameOfOriginToColor,
     formatBallText,
+    speciesToNumber,
 } from 'utils';
 import { GenderElement } from 'components/Shared';
 import { selectPokemon } from 'actions';

@@ -44,8 +44,8 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
     };
 
     private renderBoxes(boxes, team) {
-        return boxes.map(({ key, name }) => {
-            return <Box key={key} pokemon={team} name={name} boxId={key} filterString={name} />;
+        return boxes.map(({ key, name, background }) => {
+            return <Box key={key} pokemon={team} name={name} boxId={key} filterString={name} background={background} />;
         });
     }
 

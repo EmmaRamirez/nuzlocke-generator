@@ -31,9 +31,14 @@ export interface BoxProps {
     connectDropTarget?: any;
     canDrop?: boolean;
     clearBox: clearBox;
+    background?: string;
 }
 
-const wallpapers = [
+export const wallpapers = [
+    {
+        name: 'Route 1',
+        background: 'route-1',
+    },
     {
         name: 'Grass Meadow',
         background: 'grass-meadow',
@@ -47,28 +52,28 @@ const wallpapers = [
         background: 'sky',
     },
     {
-        name: 'Zig Zag',
-        background: '',
-    },
-    {
-        name: 'Flames',
-        background: '',
-    },
-    {
-        name: 'Underwater',
-        background: '',
+        name: 'Bubbles',
+        background: 'bubbles',
     },
     {
         name: 'Beach',
-        background: '',
+        background: 'beach',
     },
     {
-        name: 'Cave',
-        background: '',
+        name: 'Seafloor',
+        background: 'seafloor',
     },
     {
-        name: 'Machine',
-        background: '',
+        name: 'Croagunk',
+        background: 'croagunk',
+    },
+    {
+        name: 'Simple',
+        background: 'simple',
+    },
+    {
+        name: 'Snow',
+        background: 'snow',
     }
 ];
 
@@ -81,12 +86,30 @@ export class BoxBase extends React.Component<BoxProps> {
         this.props.clearBox(name);
     };
 
+    private getDefault(name) {
+        if (name === 'Team') return 'route-1';
+        if (name === 'Boxed') return 'grass-meadow';
+        if (name === 'Dead') return 'stars';
+        if (name === 'Champs') return 'sky';
+        return undefined;
+    }
+
+    private getBoxBackground(background, name) {
+        const bg = background || this.getDefault(name);
+        return (bg && bg.startsWith('http')) ? `url(${bg})` : `url(./assets/img/box/${bg}.png)`;
+    }
+
     public render() {
-        const { pokemon, name, boxId, filterString, connectDropTarget, canDrop } = this.props;
+        const { pokemon, name, boxId, filterString, connectDropTarget, canDrop, background } = this.props;
         const filter = filterString === 'All' ? undefined : filterString;
         console.log(name);
         return connectDropTarget!(
-            <div className={`box ${name}-box`}>
+            <div
+                style={{
+                    backgroundImage: this.getBoxBackground(background, name)
+                }}
+                className={`box ${name.replace(/\s/g, '-')}-box`}
+            >
                 <Popover
                     position={Position.BOTTOM_LEFT}
                     minimal
@@ -112,7 +135,7 @@ export class BoxBase extends React.Component<BoxProps> {
                             margin: '.25rem',
                             padding: '.25rem',
                             textAlign: 'center',
-                            width: '5rem',
+                            minWidth: '5rem',
                             cursor: 'pointer',
                             userSelect: 'none',
                         }}>
@@ -121,7 +144,7 @@ export class BoxBase extends React.Component<BoxProps> {
                     </span>
                 </Popover>
                 <PokemonByFilter team={pokemon} filter={filter} />
-            </div>,
+            </div>
         );
     }
 }

@@ -235,7 +235,7 @@ export const handleSpeciesTypeEdgeCases = ({
     if (
         match({
             ...data,
-            species: ['Clefairy', 'Clefable', 'Cleffa', 'Togepi'],
+            species: ['Clefairy', 'Clefable', 'Cleffa', 'Togepi', 'Jigglypuff', 'Wigglytuff'],
             generation: [
                 Generation.Gen1,
                 Generation.Gen2,

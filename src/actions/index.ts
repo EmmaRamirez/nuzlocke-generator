@@ -25,3 +25,4 @@ export * from './resetCheckpoints';
 export * from './reoderCheckpoints';
 export * from './removeHistoryEntry';
 export * from './editCustomMoveMap';
+export * from './addBox';

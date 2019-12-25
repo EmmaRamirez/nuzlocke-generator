@@ -1,10 +1,10 @@
-import { EDIT_CUSTOM_MOVE_MAP, Action } from 'actions';
+import { EDIT_CUSTOM_MOVE_MAP, Action, REPLACE_STATE } from 'actions';
 
 const initialState = {
 
 };
 
-export function customMoveMap(state = initialState, action: Action<EDIT_CUSTOM_MOVE_MAP>) {
+export function customMoveMap(state = initialState, action: Action<EDIT_CUSTOM_MOVE_MAP | REPLACE_STATE>) {
     switch (action.type) {
         case EDIT_CUSTOM_MOVE_MAP:
             const nState = state;
@@ -15,6 +15,8 @@ export function customMoveMap(state = initialState, action: Action<EDIT_CUSTOM_M
             nState[type] = arr;
 
             return nState;
+        case REPLACE_STATE:
+                return action.replaceWith.box;
         default:
             return state;
     }

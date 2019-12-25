@@ -135,7 +135,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                             Add Move
                         </Button>
                     </div>
-                    <div className='moves-wrapper' style={{
+                    <div className='moves-wrapper has-nice-scrollbars' style={{
                         background: 'rgba(255, 255, 255, 0.5)',
                         borderRadius: '.25rem',
                         height: '88%',
