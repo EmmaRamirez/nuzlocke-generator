@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Intent } from '@blueprintjs/core';
+import { Button, Intent, Popover, Icon, PopoverInteractionKind } from '@blueprintjs/core';
 import { State } from 'state';
 import { connect } from 'react-redux';
 import { addBox, AddBoxArgs } from 'actions';
@@ -17,6 +17,7 @@ export interface NewBox {
 export interface BoxFormProps {
     boxes: State['box'];
     addBox: addBox;
+    style: State['style'];
 }
 
 export interface BoxFormState {
@@ -71,6 +72,7 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
             marginLeft: '1rem',
             marginRight: '.5rem',
             width: '8rem',
+            display: 'flex',
         };
 
 
@@ -96,7 +98,7 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
             <div style={{clear: 'both'}}></div>
             {isBoxFormOpen &&
                 <div style={{
-                    border: '1px solid #ddd',
+                    border: this.props.style.editorDarkMode ? '1px solid #222' : '1px solid #ddd',
                     borderRadius: '.25rem',
                     boxShadow: 'rgba(0, 0, 0, 0.33)',
                     margin: '.25rem',
@@ -108,7 +110,7 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                         <input className='pt-input' autoComplete='false' onInput={this.editFormInput} value={this.state.newBox.name} name='name' placeholder='Box Name' />
                     </div>
                     <div style={inputStyle}>
-                        <label style={labelStyle} className='pt-label'>Background</label>
+                        <label style={labelStyle} className='pt-label'>Background <Popover minimal interactionKind={PopoverInteractionKind.HOVER} content={<div style={{width: '160px', padding: '0.25rem'}}>Can be a URL or {wallpapers.map(w => w.background).join(', ')}</div>}><Icon style={{marginLeft: '.25rem'}} height={'14px'} icon='info-sign' /></Popover></label>
                         <input className='pt-input' onInput={this.editFormInput} value={this.state.newBox.background} name='background' placeholder='Box Background' />
                     </div>
 
@@ -148,7 +150,9 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
 }
 
 export const BoxForm = connect(
-    null,
+    (state: State) => ({
+        style: state.style,
+    }),
     {
         addBox,
     }

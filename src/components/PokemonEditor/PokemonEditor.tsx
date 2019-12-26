@@ -11,8 +11,7 @@ import { CurrentPokemonEdit, MassEditor } from '.';
 
 import { AddPokemonButton } from 'components/AddPokemonButton';
 import { BaseEditor } from 'components/BaseEditor';
-import { Box } from './Box';
-import { BoxForm } from './BoxForm';
+import { Box, BoxForm } from 'components/Box';
 
 require('../../assets/img/team-box.png');
 require('../../assets/img/dead-box.png');
@@ -45,6 +44,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
 
     private renderBoxes(boxes, team) {
         return boxes.map(({ key, name, background }) => {
+            console.log(name, key);
             return <Box key={key} pokemon={team} name={name} boxId={key} filterString={name} background={background} />;
         });
     }
@@ -93,4 +93,6 @@ export const PokemonEditor = connect(
         game: state.game,
     }),
     null,
+    null,
+    {pure: false}
 )(PokemonEditorBase as any);

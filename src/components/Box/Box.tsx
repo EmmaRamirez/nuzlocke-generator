@@ -3,7 +3,7 @@ import { Pokemon } from 'models';
 import { Boxes } from 'types';
 
 import { generateEmptyPokemon, dragAndDrop, accentedE } from 'utils';
-import { editPokemon, clearBox } from 'actions';
+import { editPokemon, clearBox, editBox, deleteBox } from 'actions';
 
 import { PokemonByFilter } from 'components/Shared';
 import { DropTarget } from 'react-dnd';
@@ -31,7 +31,9 @@ export interface BoxProps {
     connectDropTarget?: any;
     canDrop?: boolean;
     clearBox: clearBox;
+    editBox: editBox;
     background?: string;
+    deleteBox: deleteBox;
 }
 
 export const wallpapers = [
@@ -86,6 +88,14 @@ export class BoxBase extends React.Component<BoxProps> {
         this.props.clearBox(name);
     };
 
+    private deleteBox = (key: number) => () => {
+        this.props.deleteBox(key);
+    };
+
+    private editBox = (background: string, name: string, id: number) => () => {
+        this.props.editBox(name, background, id);
+    }
+
     private getDefault(name) {
         if (name === 'Team') return 'route-1';
         if (name === 'Boxed') return 'grass-meadow';
@@ -102,7 +112,7 @@ export class BoxBase extends React.Component<BoxProps> {
     public render() {
         const { pokemon, name, boxId, filterString, connectDropTarget, canDrop, background } = this.props;
         const filter = filterString === 'All' ? undefined : filterString;
-        console.log(name);
+
         return connectDropTarget!(
             <div
                 style={{
@@ -118,9 +128,10 @@ export class BoxBase extends React.Component<BoxProps> {
                     content={<>
                         <MenuItem className='pt-fill' text='Edit' />
                         <MenuItem text='Change Wallpaper'>
-                            {wallpapers.map(wall => <MenuItem text={wall.name} />)}
+                            {wallpapers.map(wall => <MenuItem onClick={this.editBox(wall.background, name, boxId)} text={wall.name} />)}
                         </MenuItem>
                         <MenuItem onClick={this.clearBox(name)} className='pt-fill' text={`Clear Box`} />
+                        <MenuItem onClick={this.deleteBox(boxId)} className='pt-fill' text={'Delete Box'} />
                     </>}
                 >
                     <span
@@ -153,5 +164,9 @@ export const Box = connect(
     null,
     {
         clearBox,
-    }
+        editBox,
+        deleteBox,
+    },
+    null,
+    {pure: false}
 )(BoxBase);

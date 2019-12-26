@@ -1,4 +1,4 @@
-import { EDIT_BOX, REPLACE_STATE, VERSION_0_0_6_BETA, Action, ADD_BOX } from 'actions';
+import { EDIT_BOX, REPLACE_STATE, VERSION_0_0_6_BETA, Action, ADD_BOX, DELETE_BOX } from 'actions';
 import { Boxes } from 'types';
 
 const defaultBoxes: Boxes = [
@@ -22,12 +22,13 @@ const defaultBoxes: Boxes = [
 
 export function box(
     state = defaultBoxes,
-    action: Action<EDIT_BOX | REPLACE_STATE | VERSION_0_0_6_BETA | ADD_BOX>,
+    action: Action<EDIT_BOX | REPLACE_STATE | VERSION_0_0_6_BETA | ADD_BOX | DELETE_BOX>,
 ) {
     switch (action.type) {
         case EDIT_BOX:
             const newState = state;
-            newState[action.target] = { key: action.key, name: action.name };
+            const prevBox = newState[action.target];
+            newState[action.target] = { key: action.target, name: action.name, background: action.background };
             return newState;
         case REPLACE_STATE:
             return action.replaceWith.box;
@@ -35,6 +36,8 @@ export function box(
             const {name, background, inheritFrom} = action;
             const key = state.length;
             return [...state, { key, name, background, inheritFrom }];
+        case DELETE_BOX:
+            return state.filter(box => box.key !== action.key);
         case VERSION_0_0_6_BETA:
             return defaultBoxes;
         default:

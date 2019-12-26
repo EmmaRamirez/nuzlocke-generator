@@ -6,14 +6,14 @@ import { editPokemon, selectPokemon } from 'actions';
 
 import { ErrorBoundary } from 'components/Shared';
 
-import { TagInput, Classes } from '@blueprintjs/core';
+import { TagInput, Classes, TextArea } from '@blueprintjs/core';
 import { State } from 'state';
 import { Pokemon } from 'models';
 
 interface CurrentPokemonInputProps {
     labelName: string;
     inputName: string;
-    type: 'number' | 'text' | 'select' | 'checkbox' | 'double-select' | 'moves';
+    type: 'number' | 'text' | 'select' | 'checkbox' | 'double-select' | 'moves' | 'textArea';
     value: any;
     placeholder?: string;
     transform?: (v: any) => string;
@@ -113,6 +113,19 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                     placeholder={placeholder}
                     disabled={disabled}
                     className={disabled && `${Classes.DISABLED} ${Classes.TEXT_MUTED}`}
+                />
+            );
+        }
+        if (type === 'textArea') {
+            return (
+                <TextArea
+                    onChange={event => this.onChange(event, inputName)}
+                    name={inputName}
+                    value={value}
+                    placeholder={placeholder}
+                    disabled={disabled}
+                    style={{width: '100%'}}
+                    className={disabled && `${Classes.DISABLED} ${Classes.TEXT_MUTED} pt-fill`}
                 />
             );
         }

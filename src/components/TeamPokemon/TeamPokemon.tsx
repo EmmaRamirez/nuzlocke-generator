@@ -139,6 +139,7 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                     {pokemon.ability ? (
                         <div className='pokemon-ability'>{pokemon.ability}</div>
                     ) : null}
+                    {pokemon.notes && <div className='pokemon-notes'>{pokemon.notes}</div>}
                     {style.displayExtraData && pokemon.extraData ? (
                         <div style={{display: 'flex', justifyContent: 'space-evenly', fontSize: '12px', width: '255px'}}>
                             {stat(pokemon.extraData['currentHp'], 'HP')}
@@ -212,21 +213,40 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
         super(props);
     }
 
+    private getSpriteStyle() {
+        if (this.props.style.spritesMode) {
+            if (this.props.style.scaleSprites) {
+                return {
+                      backgroundSize: 'auto',
+                      backgroundRepeat: 'no-repeat',
+                  };
+                } else {
+                return {
+                      backgroundSize: 'cover',
+                      backgroundRepeat: 'no-repeat',
+                  };
+                }
+            }
+        if (this.props.style.teamImages === 'dream world') {
+            return {
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+            };
+        } else {
+            return {
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+            };
+        }
+    }
+
     public render() {
         const { pokemon, style, game, selectPokemon } = this.props;
         const poke = pokemon;
 
         const getFirstType = poke.types ? poke.types[0] : 'Normal';
-        const spriteStyle =
-            this.props.style.spritesMode && !this.props.style.scaleSprites
-                ? {
-                      backgroundSize: 'auto',
-                      backgroundRepeat: 'no-repeat',
-                  }
-                : {
-                      backgroundSize: 'cover',
-                      backgroundRepeat: 'no-repeat',
-                  };
+        const getSecondType = poke.types ? poke.types[1] : 'Normal';
+        const spriteStyle = this.getSpriteStyle();
 
         const addProp = (item: any) => {
             const propName = `data-${item.toLowerCase()}`;
@@ -277,7 +297,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
         const mvpLabelStyle = {
             base: css`
                 position: absolute;
-                top: 0.25rem;
+                top: 0;
                 left: calc(50% - 3rem);
                 width: 6rem;
                 background: #e2d5a9;
@@ -364,7 +384,6 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                                 name: this.props.game.name,
                             }),
                             ...(spriteStyle as React.CSSProperties),
-                            backgroundSize: this.props.style.teamImages === 'dream world' ? 'contain' : undefined,
                         }}
                         className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()} ${
                             this.props.style.imageStyle === 'round' ? 'round' : 'square'
@@ -401,7 +420,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                 {(poke.item || poke.customItemImage) && !style.displayItemAsText ? (
                     <div
                         style={{
-                            borderColor: typeToColor(getFirstType) || 'transparent',
+                            borderColor: typeToColor(getSecondType) || 'transparent',
                             backgroundImage:
                                 style.template === 'Hexagons' || style.itemStyle === 'outer glow'
                                     ? getBackgroundGradient(

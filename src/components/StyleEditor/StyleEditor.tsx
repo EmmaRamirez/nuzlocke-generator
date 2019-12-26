@@ -117,14 +117,15 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
         };
         return (
             <BaseEditor name='Style'>
-                <Dialog
+                {FEATURES.themeEditing ? (<Dialog
                     isOpen={this.state.isThemeEditorOpen}
                     onClose={this.toggleThemeEditor}
                     title='Theme Editor'
                     icon='style'
                     className={cx(Styles.dialog, { [Classes.DARK]: props.style.editorDarkMode })}>
+
                     <ThemeEditor />
-                </Dialog>
+                </Dialog>) : null}
                 <div className={styleEdit}>
                     <label className='pt-label pt-inline'>Template</label>
                     <div className='pt-select'>
@@ -135,7 +136,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                             {listOfThemes.map(o => <option key={o}>{o}</option>)}
                         </select>
                     </div>
-                    {!FEATURES.themeEditing ? (
+                    {FEATURES.themeEditing ? (
                         <Button
                             onClick={this.toggleThemeEditor}
                             style={{ marginLeft: '.25rem' }}

@@ -14,10 +14,33 @@ import { selectPokemon } from 'actions';
 import { PokemonIconBase } from 'components/PokemonIcon';
 import { State } from 'state';
 
-const spriteStyle = (style: Styles) =>
-    style.spritesMode && !style.scaleSprites
-        ? { backgroundSize: 'auto', backgroundRepeat: 'no-repeat' }
-        : { backgroundSize: 'cover', backgroundRepeat: 'no-repeat' };
+const spriteStyle = (style: Styles) => {
+    if (style.spritesMode) {
+        if (style.scaleSprites) {
+            return {
+                    backgroundSize: 'auto',
+                    backgroundRepeat: 'no-repeat',
+                };
+            } else {
+            return {
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat',
+                };
+            }
+        }
+    if (style.teamImages === 'dream world') {
+        return {
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+        };
+    } else {
+        return {
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+        };
+    }
+};
+
 
 // TODO: Convert to Class
 export const DeadPokemonBase = (
@@ -35,15 +58,13 @@ export const DeadPokemonBase = (
             return species;
         }
     };
-    const getClassname = () =>
-        poke.champion ? 'dead-pokemon-container champion' : 'dead-pokemon-container';
     const getAccentColor = (prop: any) => (prop.style ? prop.style.accentColor : '#111111');
     const useGameOfOriginColor = poke.gameOfOrigin && poke.style.displayGameOriginForBoxedAndDead && poke.style.displayBackgroundInsteadOfBadge;
 
     if (style.minimalDeadLayout) {
         return (
             <div
-                className={getClassname()}
+                className={'dead-pokemon-container'}
                 data-league={poke.champion}
                 style={{
                     background: useGameOfOriginColor ? gameOfOriginToColor(poke.gameOfOrigin!) : getAccentColor(poke),
@@ -82,7 +103,7 @@ export const DeadPokemonBase = (
 
     return (
         <div
-            className={getClassname()}
+            className={'dead-pokemon-container'}
             data-league={poke.champion}
             style={{
                 background: useGameOfOriginColor ? gameOfOriginToColor(poke.gameOfOrigin!) : getAccentColor(poke),
@@ -105,7 +126,6 @@ export const DeadPokemonBase = (
                             name: poke.game.name,
                         }),
                         ...spriteStyle(style),
-                        backgroundSize: style.teamImages === 'dream world' ? 'contain' : undefined,
                         filter: style.grayScaleDeadPokemon ? 'grayscale(100%)' : 'none',
                     }}
                 />

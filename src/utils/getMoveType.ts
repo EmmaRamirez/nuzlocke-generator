@@ -6,7 +6,7 @@ export const getMoveType = (move: string): Types => {
         if (movesByType.hasOwnProperty(type)) {
             if (
                 movesByType[type as Types].some(value => {
-                    return move === value;
+                    return move.toLowerCase() === value.toLowerCase();
                 })
             ) {
                 return Types[type as Types];

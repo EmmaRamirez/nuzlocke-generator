@@ -364,13 +364,14 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
     '1.0.0': `# Changelog
 ## Features
 - **New Pokémon Options**: Pokéball, MVP, and Notes
-- **Moves Editor**: Edit move types and create custom types
+- **Box Management**: add, delete, or modify statuses for your Pokémon!
+  - There will be much more polish added to this feature in the coming weeks
 - Shuffle and Dream World images are now available
 - Updated Checkpoints editor to allow for custom images
+- You can now add a custom game name
 - You can now modify Trainer section dimensions
 
 ## Fixes
-- Fixed issues with saves not working after importing a nuzlocke
 - Fixed font size when using Pokémon GBA Font
 - Added incense items and sprites
 - Collapsing the Style editor no longer disables custom CSS
@@ -383,10 +384,12 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Removed legacy "Champion" checkmark
 - Badge sprite sizes are now uniform throughout
 - Fixed spacing with "Game of Origin" info for Dead Pokémon
-- Made images with Sword & Shield sprites downloadable
+- Made images with Sword & Shield icons downloadable
 - Updated color inputs to allow for easier alpha channels
 - Moves that are now Fairy-type (but were Normal prior to Gen 6) now display as such
 - Using sprites for Champs no longer awkwardly repeats
+- Move types work regardless of capitalization now
+- Fixed issues with saves not working after importing a nuzlocke
 
 ## Known Issues
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Dialog, Menu, MenuItem } from '@blueprintjs/core';
-import { Table, Column, EditableCell, ITableProps } from '@blueprintjs/table';
+import { Table, Column, EditableCell, ITableProps, IColumnProps } from '@blueprintjs/table';
 import { AddPokemonButton } from 'components/AddPokemonButton';
 import { editPokemon } from 'actions';
 import { Pokemon, PokemonKeys } from 'models';
@@ -85,7 +85,7 @@ export class MassEditorBase extends React.Component<
                                 }}
                                 value={pokemon[r][key]}
                             />
-                        )}
+                        ) as any}
                     />
                 );
             });
@@ -108,7 +108,7 @@ export class MassEditorBase extends React.Component<
                         defaultColumnWidth={100}
                         numRows={this.props.pokemon.length}
                         numFrozenColumns={1}>
-                        {this.renderColumns(this.props.pokemon.sort(sortPokes))}
+                        {this.renderColumns(this.props.pokemon.sort(sortPokes)) as React.ReactElement<IColumnProps>[]}
                     </Table>
                 </div>
             </Dialog>
