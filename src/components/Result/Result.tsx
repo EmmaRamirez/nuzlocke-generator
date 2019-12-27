@@ -21,12 +21,14 @@ import * as Styles from './styles';
 
 import './Result.styl';
 import './themes.styl';
+import { pokemon } from 'reducers/pokemon';
+import { State } from 'state';
 
 interface ResultProps {
     pokemon: Pokemon[];
     game: any;
     trainer: Trainer;
-    box: { key: number; name: string }[];
+    box: State['box'];
     selectPokemon: selectPokemon;
     style: StyleState;
     rules: string[];
@@ -36,6 +38,10 @@ interface ResultState {
     isDownloading: boolean;
     downloadError: string | null;
 }
+
+const getNumberOf = (status: string, pokemon: Pokemon[]) =>
+            pokemon.filter(v => v.hasOwnProperty('id')).filter(poke => poke.status === status && !poke.hidden)
+                .length;
 
 export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     public resultRef: React.RefObject<HTMLDivElement>;
@@ -47,8 +53,6 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             downloadError: null,
         };
     }
-
-    public componentWillMount() {}
 
     private renderTeamPokemon() {
         return this.props.pokemon
@@ -81,21 +85,15 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         return <>{renderItems}</>;
     }
 
-    private renderBoxedPokemon() {
+    private getPokemonByStatus(status) {
         return this.props.pokemon
             .filter(v => v.hasOwnProperty('id'))
-            .filter(poke => poke.status === 'Boxed')
-            .filter(poke => !poke.hidden)
-            .map((poke, index) => {
-                return <BoxedPokemon key={index} {...poke} />;
-            });
+            .filter(poke => poke.status === status)
+            .filter(poke => !poke.hidden);
     }
 
-    private renderChampsPokemon() {
-        return this.props.pokemon
-            .filter(v => v.hasOwnProperty('id'))
-            .filter(poke => poke.status === 'Champs')
-            .filter(poke => !poke.hidden)
+    private renderChampsPokemon(pokemon) {
+        return pokemon
             .map((poke, index) => {
                 return (
                     <ChampsPokemon
@@ -114,6 +112,21 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             .filter(poke => !poke.hidden)
             .map((poke, index) => {
                 return <DeadPokemon key={index} {...poke} />;
+            });
+    }
+
+    private getCorrectStatusWrapper(pokes: Pokemon[], box, paddingForVerticalTrainerSection) {
+        return this.renderContainer(pokes, paddingForVerticalTrainerSection, box);
+   }
+
+    private renderOtherPokemonStatuses(paddingForVerticalTrainerSection) {
+        return this.props.box
+            .filter(box => !['Team', 'Boxed', 'Dead', 'Champs'].includes(box.name))
+            .map(box => {
+                const pokes = this.props.pokemon.filter(v => v.hasOwnProperty('id'))
+                                                .filter(poke => poke.status === box.name)
+                                                .filter(poke => !poke.hidden);
+                return this.getCorrectStatusWrapper(pokes, box, paddingForVerticalTrainerSection);
             });
     }
 
@@ -136,11 +149,47 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         }
     }
 
+    private getBoxClass = (s) => {
+        if (s === 'Dead') return 'dead';
+        if (s === 'Boxed') return 'boxed';
+        if (s === 'Champs') return 'champs';
+        if (s === 'Team') return 'team';
+        return 'boxed';
+    }
+
+    private getBoxStyle = (s) => {
+        if (s === 'Champs') return {
+            margin: this.props.style.template === 'Compact' ? 0 : '.5rem',
+        };
+        if (s === 'Dead') return {
+            display: 'flex',
+            flexWrap: 'wrap' as React.CSSProperties['flexWrap'],
+            justifyContent: 'center',
+            margin: this.props.style.template === 'Compact' ? 0 : '.5rem',
+        };
+
+        return {};
+    }
+
+    private renderContainer = (pokemon, paddingForVerticalTrainerSection, box) => getNumberOf(box.name, pokemon) > 0 ? (
+        <div style={paddingForVerticalTrainerSection} className={`${this.getBoxClass(box.inheritFrom || box.name)}-container`}>
+            {box.name !== 'Team' && <h3 style={{ color: getContrastColor(this.props.style.bgColor || '#383840') }}>{box.name}</h3>}
+            <div className='boxed-container-inner' style={this.getBoxStyle(box.name || box.inheritFrom)}>
+                {pokemon
+                    .map((poke, index) => {
+                        if (box.name === 'Boxed' || box.inheritFrom === 'Boxed') return <BoxedPokemon key={index} {...poke} />;
+                        if (box.name === 'Dead' || box.inheritFrom === 'Dead') return <DeadPokemon key={index} {...poke} />;
+                        if (box.name === 'Champs' || box.inheritFrom === 'Champs') return <ChampsPokemon key={index} {...poke} useSprites={this.props.style.useSpritesForChampsPokemon} />;
+                        if (box.name === 'Team' || box.inheritFrom === 'Team') return <TeamPokemon key={index} {...poke} />;
+                        return null;
+                    })
+                }
+            </div>
+        </div>
+    ) : null;
+
     public render() {
         const { style, box, trainer, pokemon } = this.props;
-        const getNumberOf = (status: string, pokemon: Pokemon[]) =>
-            pokemon.filter(v => v.hasOwnProperty('id')).filter(poke => poke.status === status && !poke.hidden)
-                .length;
         const numberOfTeam = getNumberOf('Team', pokemon);
         const numberOfDead = getNumberOf('Dead', pokemon);
         const numberOfBoxed = getNumberOf('Boxed', pokemon);
@@ -153,37 +202,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             paddingLeft: style.trainerWidth,
         } : {};
         const teamContainer = <div style={paddingForVerticalTrainerSection} className='team-container'>{this.renderTeamPokemon()}</div>;
-        const boxedContainer = numberOfBoxed > 0 ? (
-            <div style={paddingForVerticalTrainerSection} className='boxed-container'>
-                <h3 style={{ color: getContrastColor(bgColor) }}>{box[1].name}</h3>
-                <div className='boxed-container-inner'>{this.renderBoxedPokemon()}</div>
-            </div>
-        ) : null;
-        const deadContainer = numberOfDead > 0 ? (
-            <div style={paddingForVerticalTrainerSection} className='dead-container'>
-                <h3 style={{ color: getContrastColor(bgColor) }}>{box[2].name}</h3>
-                <div
-                    style={{
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        justifyContent: 'center',
-                        margin: this.props.style.template === 'Compact' ? 0 : '.5rem',
-                    }}>
-                    {this.renderDeadPokemon()}
-                </div>
-            </div>
-        ) : null;
-        const champsContainer = numberOfChamps > 0 ? (
-            <div style={paddingForVerticalTrainerSection} className='champs-container'>
-                <h3 style={{ color: getContrastColor(bgColor) }}>{box[3].name}</h3>
-                <div
-                    style={{
-                        margin: this.props.style.template === 'Compact' ? 0 : '.5rem',
-                    }}>
-                    {this.renderChampsPokemon()}
-                </div>
-            </div>
-        ) : null;
+        console.log(this.renderOtherPokemonStatuses(paddingForVerticalTrainerSection));
+
         const rulesContainer =  (
             <div style={paddingForVerticalTrainerSection} className='rules-container'>
                 <h3 style={{ color: getContrastColor(bgColor) }}>Rules</h3>
@@ -194,6 +214,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                 </ol>
             </div>
         );
+        const others = pokemon.filter(poke => !['Team', 'Boxed', 'Dead', 'Champs'].includes(poke.status!));
+
 
         return (
             <Scrollbars autoHide autoHideTimeout={1000} autoHideDuration={200}>
@@ -243,14 +265,16 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     {teamContainer}
                     {style.template === 'Generations' && trainerSectionOrientation === 'vertical' ?
                         <div className='statuses-wrapper'>
-                            {boxedContainer}
-                            {deadContainer}
-                            {champsContainer}
+                            {this.renderContainer(this.getPokemonByStatus('Boxed'), paddingForVerticalTrainerSection, box[1])}
+                            {this.renderContainer(this.getPokemonByStatus('Dead'), paddingForVerticalTrainerSection, box[2])}
+                            {this.renderContainer(this.getPokemonByStatus('Champs'), paddingForVerticalTrainerSection, box[3])}
+                            {this.renderOtherPokemonStatuses(paddingForVerticalTrainerSection)}
                         </div>
                     : <>
-                        {boxedContainer}
-                        {deadContainer}
-                        {champsContainer}
+                        {this.renderContainer(this.getPokemonByStatus('Boxed'), paddingForVerticalTrainerSection, box[1])}
+                        {this.renderContainer(this.getPokemonByStatus('Dead'), paddingForVerticalTrainerSection, box[2])}
+                        {this.renderContainer(this.getPokemonByStatus('Champs'), paddingForVerticalTrainerSection, box[3])}
+                        {this.renderOtherPokemonStatuses(paddingForVerticalTrainerSection)}
                     </>
                     }
                     {style.displayRules && style.displayRulesLocation === 'bottom' ? rulesContainer : null}

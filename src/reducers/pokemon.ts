@@ -20,10 +20,11 @@ export function pokemon(
             });
         case EDIT_POKEMON:
             const pokemonToEdit = state.find(poke => poke.id === action.id);
-            const newPoke = { ...pokemonToEdit, ...action.edits };
+            const deathTimestamp = action.edits && action.edits.status === 'Dead' ? {deathTimestamp: Date.now() } : {};
+            const newPoke = { ...pokemonToEdit, ...action.edits, ...deathTimestamp };
             if (state.length === 1) {
                 // TODO: Switch to pure ... notation?
-                return [Object.assign({}, ...state, action.edits)];
+                return [Object.assign({}, ...state, action.edits, deathTimestamp)];
             }
             return [...state.filter(poke => poke.id !== action.id), newPoke];
         case REPLACE_STATE:

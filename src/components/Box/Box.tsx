@@ -126,7 +126,7 @@ export class BoxBase extends React.Component<BoxProps> {
                     interactionKind={PopoverInteractionKind.CLICK_TARGET_ONLY}
                     popoverClassName={'no-list-item-types'}
                     content={<>
-                        <MenuItem className='pt-fill' text='Edit' />
+                        {/*<MenuItem className='pt-fill' text='Edit' />*/}
                         <MenuItem text='Change Wallpaper'>
                             {wallpapers.map(wall => <MenuItem onClick={this.editBox(wall.background, name, boxId)} text={wall.name} />)}
                         </MenuItem>

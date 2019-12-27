@@ -374,6 +374,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 ## Fixes
 - Fixed font size when using Pokémon GBA Font
 - Added incense items and sprites
+- Dead Pokémon are now sorted by time of death rather than position
 - Collapsing the Style editor no longer disables custom CSS
 - Mega stones now appear in Autocomplete for items
 - Fixed location grammar for "Starter"

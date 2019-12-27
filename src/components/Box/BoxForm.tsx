@@ -73,6 +73,7 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
             marginRight: '.5rem',
             width: '8rem',
             display: 'flex',
+            alignItems: 'center',
         };
 
 
@@ -107,10 +108,10 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                 }}>
                     <div style={inputStyle}>
                         <label style={labelStyle} className='pt-label'>Name</label>
-                        <input className='pt-input' autoComplete='false' onInput={this.editFormInput} value={this.state.newBox.name} name='name' placeholder='Box Name' />
+                        <input required className='pt-input' autoComplete='false' onInput={this.editFormInput} value={this.state.newBox.name} name='name' placeholder='Box Name' />
                     </div>
                     <div style={inputStyle}>
-                        <label style={labelStyle} className='pt-label'>Background <Popover minimal interactionKind={PopoverInteractionKind.HOVER} content={<div style={{width: '160px', padding: '0.25rem'}}>Can be a URL or {wallpapers.map(w => w.background).join(', ')}</div>}><Icon style={{marginLeft: '.25rem'}} height={'14px'} icon='info-sign' /></Popover></label>
+                        <label style={labelStyle} className='pt-label'>Background <Popover minimal interactionKind={PopoverInteractionKind.HOVER} content={<div style={{width: '160px', padding: '0.25rem'}}>Can be a URL or {wallpapers.map(w => w.background).join(', ')}</div>}><Icon style={{marginLeft: '.25rem'}} height={'12px'} icon='info-sign' /></Popover></label>
                         <input className='pt-input' onInput={this.editFormInput} value={this.state.newBox.background} name='background' placeholder='Box Background' />
                     </div>
 
