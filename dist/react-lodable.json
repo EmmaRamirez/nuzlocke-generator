@@ -229,6 +229,12 @@
       "publicPath": "bundle.js"
     },
     {
+      "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
+      "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
       "id": "./node_modules/redux-saga/es/utils.js",
       "name": "./node_modules/redux-saga/es/utils.js",
       "file": "bundle.js",
@@ -237,6 +243,12 @@
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/utils.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/utils.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
+      "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     },
@@ -849,7 +861,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./overlay/overlay": [
+  "../overlay/overlay": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
@@ -877,7 +889,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./popover/popover": [
+  "../popover/popover": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/popover/popover.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/popover/popover.js",
@@ -1003,7 +1015,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../spinner/spinner": [
+  "./spinner/spinner": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/spinner/spinner.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/spinner/spinner.js",
@@ -1031,7 +1043,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./tabs/tab": [
+  "./tab": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/tabs/tab.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/tabs/tab.js",
@@ -1101,7 +1113,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./text/text": [
+  "../text/text": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
@@ -1143,7 +1155,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../tooltip/tooltip": [
+  "./tooltip/tooltip": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/tooltip/tooltip.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/tooltip/tooltip.js",
@@ -1521,7 +1533,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../errors": [
+  "./common/errors": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/errors.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/errors.js",
@@ -1685,20 +1697,6 @@
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/requestIdleCallback.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/requestIdleCallback.js",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "../common/utils": [
-    {
-      "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
-      "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
-      "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -10439,7 +10437,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./../webpack/buildin/module.js": [
+  "./../../webpack/buildin/module.js": [
     {
       "id": "./node_modules/webpack/buildin/module.js",
       "name": "./node_modules/webpack/buildin/module.js",

@@ -174,11 +174,11 @@ export function getPokemonImage({
     }
 
     if (style.teamImages === 'dream world') {
-        return `url(img/dw/${regularNumber}.svg)`;
+        return `url(img/dw/${regularNumber || 1}.svg)`;
     }
 
     if (style.teamImages === 'shuffle') {
-        return `url(img/shuffle/${species.toLocaleLowerCase()}.png)`;
+        return `url(img/shuffle/${(species || '').toLocaleLowerCase()}.png)`;
     }
 
     return `url(img/${(

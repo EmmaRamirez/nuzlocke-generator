@@ -1,6 +1,6 @@
-import { Game } from 'utils';
+import { Game as GameFromUtils } from 'utils';
 
 export interface Game {
-    name: Game;
+    name: GameFromUtils;
     customName: string;
 }
