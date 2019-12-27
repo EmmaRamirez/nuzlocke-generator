@@ -1,4 +1,4 @@
-import { Button } from '@blueprintjs/core';
+import { Button, Intent } from '@blueprintjs/core';
 import * as React from 'react';
 import { connect } from 'react-redux';
 
@@ -11,7 +11,7 @@ import { CurrentPokemonEdit, MassEditor } from '.';
 
 import { AddPokemonButton } from 'components/AddPokemonButton';
 import { BaseEditor } from 'components/BaseEditor';
-import { Box } from './Box';
+import { Box, BoxForm } from 'components/Box';
 
 require('../../assets/img/team-box.png');
 require('../../assets/img/dead-box.png');
@@ -24,7 +24,6 @@ export interface PokemonEditorProps {
 
 export interface PokemonEditorState {
     isMassEditorOpen: boolean;
-    isOpen: boolean;
 }
 
 export class PokemonEditorBase extends React.Component<PokemonEditorProps, PokemonEditorState> {
@@ -32,7 +31,6 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
         super(props);
         this.state = {
             isMassEditorOpen: false,
-            isOpen: true,
         };
     }
 
@@ -44,17 +42,15 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
         });
     };
 
-    private toggleEditor = e => this.setState({ isOpen: !this.state.isOpen });
-
     private renderBoxes(boxes, team) {
-        return boxes.map(({ key, name }) => {
-            return <Box key={key} pokemon={team} name={name} boxId={key} filterString={name} />;
+        return boxes.map(({ key, name, background }) => {
+            console.log(name, key);
+            return <Box key={key} pokemon={team} name={name} boxId={key} filterString={name} background={background} />;
         });
     }
 
     public render() {
         const { team, boxes } = this.props;
-        const { isOpen } = this.state;
 
         return (
             <>
@@ -76,7 +72,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                     </div>
                     <br />
                     {this.renderBoxes(boxes, team)}
-                    <br />
+                    <BoxForm boxes={boxes} />
                     <CurrentPokemonEdit />
                 </BaseEditor>
                 <MassEditor
@@ -97,4 +93,6 @@ export const PokemonEditor = connect(
         game: state.game,
     }),
     null,
-)(PokemonEditorBase);
+    null,
+    {pure: false}
+)(PokemonEditorBase as any);

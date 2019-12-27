@@ -18,12 +18,11 @@ export const handleMovesGenerationsExceptions = ({
     }
 
     if (
-        generation ===
-        (Generation.Gen1 ||
-            Generation.Gen2 ||
-            Generation.Gen3 ||
-            Generation.Gen4 ||
-            Generation.Gen5)
+        generation === Generation.Gen1 ||
+        generation === Generation.Gen2 ||
+        generation === Generation.Gen3 ||
+        generation === Generation.Gen4 ||
+        generation === Generation.Gen5
     ) {
         if (move === 'Charm') return Types.Normal;
         if (move === 'Moonlight') return Types.Normal;

@@ -1,6 +1,8 @@
 export type RadiusType = 'round' | 'square';
 export type OrientationType = 'vertical' | 'horizonal';
-export type TeamImagesType = 'standard' | 'sugimori' | 'dream world';
+export type TeamImagesType = 'standard' | 'sugimori' | 'dream world' | 'shuffle';
+export type RulesLocation = 'inside trainer section' | 'bottom' | 'top';
+export type ItemStyle = 'outer glow' | 'round' | 'square' | 'text';
 
 export interface Styles {
     accentColor: string;
@@ -14,7 +16,8 @@ export interface Styles {
     usePokemonGBAFont: boolean;
     iconsNextToTeamPokemon: boolean;
     imageStyle: RadiusType;
-    itemStyle: RadiusType;
+    itemStyle: ItemStyle;
+    pokeballStyle: ItemStyle;
     grayScaleDeadPokemon: boolean;
     minimalBoxedLayout: boolean;
     minimalTeamLayout: boolean;
@@ -23,6 +26,9 @@ export interface Styles {
     oldMetLocationFormat: boolean;
     resultHeight: string | number;
     resultWidth: string | number;
+    trainerHeight: string | number;
+    trainerWidth: string | number;
+    trainerAuto: boolean;
     scaleSprites: boolean;
     showPokemonMoves: boolean;
     spritesMode: boolean;
@@ -39,6 +45,7 @@ export interface Styles {
     displayExtraData: boolean;
     useAutoHeight: boolean;
     displayItemAsText: boolean;
+    displayRulesLocation: RulesLocation;
 }
 
 export const styleDefaults: Styles = {
@@ -52,7 +59,8 @@ export const styleDefaults: Styles = {
     font: 'Open Sans',
     iconsNextToTeamPokemon: false,
     imageStyle: 'round',
-    itemStyle: 'round',
+    itemStyle: 'outer glow',
+    pokeballStyle: 'outer glow',
     grayScaleDeadPokemon: false,
     minimalBoxedLayout: false,
     minimalTeamLayout: false,
@@ -78,4 +86,8 @@ export const styleDefaults: Styles = {
     useAutoHeight: false,
     usePokemonGBAFont: false,
     displayItemAsText: false,
+    displayRulesLocation: 'bottom' as RulesLocation,
+    trainerWidth: '20%',
+    trainerHeight: '100%',
+    trainerAuto: true,
 };

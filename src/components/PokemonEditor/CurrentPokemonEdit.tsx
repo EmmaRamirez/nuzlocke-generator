@@ -13,6 +13,9 @@ import {
     listOfNatures,
     Game,
     Forme,
+    EvolutionTree,
+    getDeepObject,
+    listOfPokeballs,
 } from 'utils';
 import { Pokemon } from 'models';
 import { Boxes } from 'types';
@@ -26,10 +29,11 @@ import { PokemonIconBase } from 'components/PokemonIcon';
 import { cx } from 'emotion';
 import * as Styles from './styles';
 import * as uuid from 'uuid/v4';
-import { Classes, Icon, Popover, Position, PopoverInteractionKind, TextArea } from '@blueprintjs/core';
+import { Classes, Icon, Popover, Position, PopoverInteractionKind, TextArea, Button, Intent } from '@blueprintjs/core';
 import { addPokemon } from 'actions';
 import { State } from 'state';
 import { CurrentPokemonLayoutItem } from './CurrentPokemonLayoutItem';
+import { MoveEditor } from 'components/MoveEditor';
 
 const pokeball = require('assets/pokeball.png');
 
@@ -55,6 +59,8 @@ export const CopyPokemonButton: React.SFC<CopyPokemonButtonProps> = ({
     );
 };
 
+
+
 export interface CurrentPokemonEditProps {
     selectedId: Pokemon['id'];
     box: any;
@@ -62,12 +68,13 @@ export interface CurrentPokemonEditProps {
     selectPokemon: selectPokemon;
     editPokemon: editPokemon;
     addPokemon: addPokemon;
-    game: { name: Game };
+    game: { name: Game, customName: string };
 }
 
 export interface CurrentPokemonEditState {
     selectedId: string;
     expandedView: boolean;
+    isMoveEditorOpen: boolean;
     box: Boxes;
 }
 
@@ -80,6 +87,7 @@ export class CurrentPokemonEditBase extends React.Component<
         this.state = {
             selectedId: '5',
             box: [],
+            isMoveEditorOpen: false,
             expandedView: false,
         };
     }
@@ -111,6 +119,66 @@ export class CurrentPokemonEditBase extends React.Component<
             this.props.addPokemon(newPokemon);
         }
     };
+
+    public expandView = (e: React.SyntheticEvent<HTMLButtonElement>) => {
+        this.setState({
+            expandedView: !this.state.expandedView,
+        });
+    };
+
+    private getCurrentPokemon() {
+        return this.props.pokemon.find((v: Pokemon) => v.id === this.state.selectedId);
+    }
+
+    private parseTree(tree) {
+    }
+
+    private evolvePokemon = (currentPokemon) => e => {
+        console.log(this.doesPokemonHaveEvolution(currentPokemon));
+
+        if (this.doesPokemonHaveEvolution(currentPokemon)) {
+
+            const evoTree = getDeepObject(EvolutionTree, currentPokemon.species);
+            const evolutionSpecies = evoTree && Object.keys(evoTree);
+
+            console.log(
+                getDeepObject(EvolutionTree, 'Charmeleon'),
+                EvolutionTree[currentPokemon.species],
+                this.parseTree(evoTree),
+                this.parseTree(EvolutionTree[currentPokemon.species]),
+            );
+
+
+            if (!evolutionSpecies) {
+                return false;
+            }
+
+
+            if (evolutionSpecies && evolutionSpecies.length > 1) {
+
+
+            } else {
+                const edit = {
+                    species: evolutionSpecies[0],
+                };
+
+                this.props.editPokemon(edit, this.state.selectedId);
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private doesPokemonHaveEvolution = (currentPokemon) => {
+        if (getDeepObject(EvolutionTree, currentPokemon.species)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private toggleDialog = () => this.setState({isMoveEditorOpen: !this.state.isMoveEditorOpen});
 
     public moreInputs(currentPokemon: Pokemon) {
         return (
@@ -159,12 +227,6 @@ export class CurrentPokemonEditBase extends React.Component<
                         type='checkbox'
                     />
                     <CurrentPokemonInput
-                        labelName='Champion'
-                        inputName='champion'
-                        value={currentPokemon.champion}
-                        type='checkbox'
-                    />
-                    <CurrentPokemonInput
                         labelName='Egg'
                         inputName='egg'
                         value={currentPokemon.egg}
@@ -174,6 +236,12 @@ export class CurrentPokemonEditBase extends React.Component<
                         labelName='Hidden'
                         inputName='hidden'
                         value={currentPokemon.hidden}
+                        type='checkbox'
+                    />
+                    <CurrentPokemonInput
+                        labelName='MVP'
+                        inputName='mvp'
+                        value={currentPokemon.mvp}
                         type='checkbox'
                     />
                 </CurrentPokemonLayoutItem>
@@ -211,6 +279,23 @@ export class CurrentPokemonEditBase extends React.Component<
                         this.props.selectPokemon(this.state.selectedId);
                     }}
                 />
+                <CurrentPokemonInput
+                    labelName='Custom Item Image'
+                    inputName='customItemImage'
+                    placeholder='http://..'
+                    value={currentPokemon.customItemImage}
+                    type='text'
+                />
+                <CurrentPokemonInput
+                    labelName='Pokeball'
+                    inputName='pokeball'
+                    value={currentPokemon.pokeball}
+                    type='select'
+                    options={[
+                        'None',
+                        ...listOfPokeballs.map(ball => `${ball.charAt(0).toUpperCase() + ball.slice(1, ball.length)} Ball`)
+                    ]}
+                />
                 <CurrentPokemonLayoutItem>
                     <CurrentPokemonInput
                         labelName='Wonder Traded'
@@ -233,6 +318,14 @@ export class CurrentPokemonEditBase extends React.Component<
                         options={listOfGames}
                     />
                 </CurrentPokemonLayoutItem>
+                <CurrentPokemonLayoutItem>
+                    <CurrentPokemonInput
+                        labelName='Notes'
+                        inputName='notes'
+                        value={currentPokemon.notes}
+                        type='textArea'
+                    />
+                </CurrentPokemonLayoutItem>
                 <CurrentPokemonLayoutItem disabled>
                     {currentPokemon.extraData && <CurrentPokemonInput
                         labelName='Extra Data'
@@ -244,16 +337,6 @@ export class CurrentPokemonEditBase extends React.Component<
                 </CurrentPokemonLayoutItem>
             </div>
         );
-    }
-
-    public expandView = (e: React.SyntheticEvent<HTMLButtonElement>) => {
-        this.setState({
-            expandedView: !this.state.expandedView,
-        });
-    };
-
-    private getCurrentPokemon() {
-        return this.props.pokemon.find((v: Pokemon) => v.id === this.state.selectedId);
     }
 
     public render() {
@@ -288,6 +371,12 @@ export class CurrentPokemonEditBase extends React.Component<
                         type='select'
                         options={this.state.box.map(n => n.name)}
                     />
+                    {/*this.doesPokemonHaveEvolution(currentPokemon) ? <Button
+                        style={{marginTop: '12px'}}
+                        onClick={this.evolvePokemon(currentPokemon)}
+                        className={'pt-minimal'}
+                        intent={Intent.PRIMARY}
+                    >Evolve</Button> : null*/}
                     <div className={cx(Styles.iconBar)}>
                         <CopyPokemonButton onClick={this.copyPokemon} />
                         <DeletePokemonButton id={this.state.selectedId} />
@@ -391,13 +480,24 @@ export class CurrentPokemonEditBase extends React.Component<
                         }}
                     />
                 </CurrentPokemonLayoutItem>
-                <CurrentPokemonInput
-                    labelName='Moves'
-                    inputName='moves'
-                    placeholder=''
-                    value={currentPokemon.moves}
-                    type='moves'
-                />
+                <CurrentPokemonLayoutItem>
+                    <CurrentPokemonInput
+                        labelName='Moves'
+                        inputName='moves'
+                        placeholder=''
+                        value={currentPokemon.moves}
+                        type='moves'
+                    />
+                    {/*<Button
+                        className='pt-minimal'
+                        intent={Intent.PRIMARY}
+                        onClick={this.toggleDialog}
+                    >Edit Moves</Button>*/}
+                </CurrentPokemonLayoutItem>
+                {/*<MoveEditor
+                    isOpen={this.state.isMoveEditorOpen}
+                    toggleDialog={this.toggleDialog}
+                />*/}
                 {this.state.expandedView ? this.moreInputs(currentPokemon) : null}
                 <br />
                 <button

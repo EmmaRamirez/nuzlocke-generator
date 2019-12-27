@@ -43,3 +43,7 @@ export * from './isEmpty';
 export * from './capitalize';
 export * from './listOfNatures';
 export * from './Forme';
+export * from './listOfEvolutions';
+export * from './getDeepObject';
+export * from './listOfPokeballs';
+export * from './formatBallText';

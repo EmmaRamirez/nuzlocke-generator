@@ -301,11 +301,6 @@
   margin-left: 0;
 }
 
-.dead-pokemon-info,
-.pokemon-d-nickname strong,
-.pokemon-causeofdeath {
-  // color: white;
-}
 
 .dead-pokemon-info {
   margin: .5rem;
@@ -379,18 +374,18 @@
 
 .round {
   border-radius: 50%;
-  display: inline-block;
-  height: 8rem;
-  width: 8rem;
+  display: inline-flex;
+  height: 100%;
+  width: auto;
   padding: .25rem;
   position: relative;
   z-index: 10;
 }
 
 .square {
-  display: inline-block;
-  height: 8rem;
-  width: 8rem;
+  display: inline-flex;
+  height: 100%;
+  width: auto;
   padding: .25rem;
   position: relative;
   z-index: 10;
@@ -413,27 +408,6 @@
 .is-sprite {
   background-size: auto;
   background-repeat: no-repeat;
-}
-
-.pokemon-item {
-  background: #111;
-  border: 5px solid white;
-  bottom: 0;
-  height: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  left: 12px;
-  padding: .5rem;
-  position: absolute;
-  width: 3rem;
-  z-index: 10;
-  &.round {
-    border-radius: 50%;
-  }
-  &.square {
-    border-radius: 0;
-  }
 }
 
 
@@ -582,6 +556,7 @@
   /*position: absolute;*/
   padding: .5rem;
   top: 0;
+  height: 37px;
 }
 
 .pt-tag-input .pt-tag.pt-tag-removable,

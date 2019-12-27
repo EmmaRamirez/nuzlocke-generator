@@ -361,4 +361,39 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
     `,
+    '1.0.0': `# Changelog
+## Features
+- **New Pokémon Options**: Pokéball, MVP, and Notes
+- **Box Management**: add, delete, or modify statuses for your Pokémon!
+  - There will be much more polish added to this feature in the coming weeks
+- Shuffle and Dream World images are now available
+- Updated Checkpoints editor to allow for custom images
+- You can now add a custom game name
+- You can now modify Trainer section dimensions
+
+## Fixes
+- Fixed font size when using Pokémon GBA Font
+- Added incense items and sprites
+- Dead Pokémon are now sorted by time of death rather than position
+- Collapsing the Style editor no longer disables custom CSS
+- Mega stones now appear in Autocomplete for items
+- Fixed location grammar for "Starter"
+- Fixed an issue where reports would not go through due to size limitations
+- Made it clearer in UI when report sending fails
+- Added width/height labels to dimension inputs
+- Added missing gen 8 images and sprites
+- Removed legacy "Champion" checkmark
+- Badge sprite sizes are now uniform throughout
+- Fixed spacing with "Game of Origin" info for Dead Pokémon
+- Made images with Sword & Shield icons downloadable
+- Updated color inputs to allow for easier alpha channels
+- Moves that are now Fairy-type (but were Normal prior to Gen 6) now display as such
+- Using sprites for Champs no longer awkwardly repeats
+- Move types work regardless of capitalization now
+- Fixed issues with saves not working after importing a nuzlocke
+
+## Known Issues
+- Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+    `,
 };

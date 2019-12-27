@@ -235,7 +235,7 @@ export const handleSpeciesTypeEdgeCases = ({
     if (
         match({
             ...data,
-            species: ['Clefairy', 'Clefable', 'Cleffa', 'Togepi'],
+            species: ['Clefairy', 'Clefable', 'Cleffa', 'Togepi', 'Jigglypuff', 'Wigglytuff'],
             generation: [
                 Generation.Gen1,
                 Generation.Gen2,
@@ -1352,9 +1352,6 @@ export const matchSpeciesToTypes = (
         // 'Snivy',
         // 'Pansage',
         // 'Simisage',
-        // 'Roggenrola',
-        // 'Boldore',
-        // 'Gigalith',
         // 'Woobat',
         // 'Swoobat',
         // 'Excadrill',
@@ -1416,14 +1413,19 @@ export const matchSpeciesToTypes = (
         // 'Toxapex',
         // 'Fomantis',
         // 'Lurantis',
-        // 'Salandit',
-        // 'Salazzle',
-        // 'Bounsweet',
-        // 'Steenee',
-        // 'Tsareena',
-        // 'Minior',
-        // 'Turtonator',
-        // 'Bruxish',
+        case 'Salandit':
+        case 'Salazzle':
+            return [Types.Poison, Types.Fire];
+        case 'Bounsweet':
+        case 'Steenee':
+        case 'Tsareena':
+            return [Types.Grass, Types.Grass];
+        case 'Minior':
+            return [Types.Rock, Types.Flying];
+        case 'Turtonator':
+            return [Types.Dragon, Types.Fire];
+        case 'Bruxish':
+            return [Types.Psychic, Types.Water];
         // 'Jangmo-o',
         // 'Solgaleo',
         // 'Nihilego',

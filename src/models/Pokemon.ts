@@ -14,13 +14,14 @@ export interface Pokemon {
     ability?: string;
     moves?: string[];
     causeOfDeath?: string;
+    deathTimestamp?: string;
     forme?: Forme;
     item?: string;
     types?: [Types, Types];
     customImage?: string;
     customIcon?: string;
+    customItemImage?: string;
     shiny?: boolean;
-    champion?: boolean;
     badges?: string[];
     num?: string;
     position?: number;
@@ -30,6 +31,10 @@ export interface Pokemon {
     egg?: boolean;
     hidden?: boolean;
     extraData?: object;
+    pokeball?: string;
+    notes?: string;
+    /* @deprecated */
+    champion?: boolean;
 }
 
 // We export a non-type version when we need all the keys easily
@@ -46,11 +51,13 @@ export const PokemonKeys: Pokemon = {
     ability: '',
     moves: [],
     causeOfDeath: '',
+    deathTimestamp: undefined,
     forme: 'Normal' as Forme,
     item: '',
     types: [Types.Normal, Types.Normal],
     customImage: '',
     customIcon: '',
+    customItemImage: '',
     shiny: false,
     champion: false,
     badges: [],
@@ -62,4 +69,6 @@ export const PokemonKeys: Pokemon = {
     egg: false,
     hidden: false,
     extraData: {},
+    pokeball: 'None',
+    notes: '',
 };

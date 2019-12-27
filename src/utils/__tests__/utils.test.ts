@@ -14,6 +14,8 @@ import {
 import * as Color from 'color';
 import { DeepSet } from '../DeepSet';
 import { Types } from '../Types';
+import { handleMovesGenerationsExceptions } from 'utils/handleMovesGenerationExceptions';
+import { getGameGeneration } from 'utils/getGameGeneration';
 
 const objectPropertiesWhere = (obj: object, filter: any) => Array.from(
     Object.values(obj)
@@ -81,8 +83,8 @@ describe('styleDefaults', () => {
         expect(styleDefaults.editorDarkMode).toBe(false);
         expect(typeof styleDefaults).toBe('object');
         expect(styleDefaults.imageStyle).toBe('round');
-        expect(objectPropertiesWhere(styleDefaults, p => p === 'round')).toBe(2);
-        expect(objectPropertiesWhere(styleDefaults, p => p)).toBe(17);
+        expect(objectPropertiesWhere(styleDefaults, p => p === 'round')).toBe(1);
+        expect(objectPropertiesWhere(styleDefaults, p => p)).toBe(22);
     });
 });
 
@@ -94,6 +96,7 @@ describe('matchSpeciesToType', () => {
         expect(matchSpeciesToTypes('Rattata', Forme.Alolan, Generation.Gen7)).toEqual(['Dark', 'Normal']);
         expect(matchSpeciesToTypes('Clefairy', undefined, Generation.Gen1)).toEqual(['Normal', 'Normal']);
         expect(matchSpeciesToTypes('Togetic', undefined, Generation.Gen1)).toEqual(['Normal', 'Flying']);
+        expect(matchSpeciesToTypes('Shaymin', 'Sky' as Forme)).toEqual(['Grass', 'Flying']);
         listOfPokemon.map((pokemon, index) => {
             expect(matchSpeciesToTypes(pokemon).length).toBeGreaterThan(0);
         });
@@ -175,5 +178,39 @@ describe('TypeToColor', () => {
     it('returns a color', () => {
         expect(typeToColor(Types.Bug)).toBe('#AEE359');
         expect(typeToColor('None')).toBe(null);
+    });
+});
+
+describe('handleMoveGenerationExceptions', () => {
+    it('works for Sand Attack - Gen 1', () => {
+        const move = 'Sand Attack';
+        const generation = Generation.Gen1;
+        const originalType = Types.Ground;
+        expect(handleMovesGenerationsExceptions({ move, generation, originalType })).toBe(Types.Normal);
+    });
+    it('works for Charm - Gen 3', () => {
+        const move = 'Charm';
+        const generation = Generation.Gen3;
+        const originalType = Types.Fairy;
+        expect(handleMovesGenerationsExceptions({ move, generation, originalType })).toBe(Types.Normal);
+    });
+    it('works for Ember - Gen 7', () => {
+        const move = 'Ember';
+        const generation = Generation.Gen7;
+        const originalType = Types.Fire;
+        expect(handleMovesGenerationsExceptions({ move, generation, originalType })).toBe(originalType);
+    });
+});
+
+describe('getGameGeneration', () => {
+    it('do what it do', () => {
+        expect(getGameGeneration('Red')).toBe(Generation.Gen1);
+        expect(getGameGeneration('Emerald')).toBe(Generation.Gen3);
+        // Yes it's Gen 7 now shut up
+        expect(getGameGeneration('Let\'s Go Eevee')).toBe(Generation.Gen7);
+        expect(getGameGeneration('Sword')).toBe(Generation.Gen8);
+        expect(getGameGeneration('Platinum')).toBe(Generation.Gen4);
+        // Assumes latest gen
+        expect(getGameGeneration('Fake Game' as any)).toBe(Generation.Gen8);
     });
 });

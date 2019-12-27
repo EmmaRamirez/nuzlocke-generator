@@ -59,6 +59,7 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
                     }),
                     backgroundPosition: 'center center',
                     backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat',
                     height: this.getWidth(),
                     width: this.getWidth(),
                 }}

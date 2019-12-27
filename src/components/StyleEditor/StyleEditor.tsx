@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { editStyle } from 'actions';
-import { gameOfOriginToColor, listOfThemes, FEATURES, Game, OrientationType, Styles as StylesType } from 'utils';
+import { capitalize, gameOfOriginToColor, listOfThemes, FEATURES, Game, OrientationType, Styles as StylesType } from 'utils';
 import {
     RadioGroup,
     Radio,
@@ -15,8 +15,9 @@ import {
 } from '@blueprintjs/core';
 import { State } from 'state';
 import { BaseEditor } from 'components/BaseEditor';
-import { ColorEdit } from 'components/Shared';
+import { ColorEdit, rgbaOrHex } from 'components/Shared';
 import { cx } from 'emotion';
+import { ChromePicker } from 'react-color';
 
 import * as Styles from './styles';
 import { ThemeEditor } from 'components/ThemeEditor';
@@ -38,7 +39,7 @@ const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'],
     }
     if (propName === 'template' && e.target.value === 'Hexagons') {
         props.editStyle({ resultWidth: 1320 });
-        props.editStyle({ accentColor: 'transparent' });
+        props.editStyle({ accentColor: '#000000' });
         props.editStyle({ movesPosition: 'horizontal' as OrientationType });
     }
     if (propName === 'template' && e.target.value === 'Generations') {
@@ -56,6 +57,18 @@ const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'],
         });
         props.editStyle({ movesPosition: 'vertical' });
     }
+    // if (propName === 'trainerSectionOrientation' && e.target.value === 'vertical') {
+    //     props.editStyle({
+    //         trainerWidth: props.style.trainerHeight,
+    //         trainerHeight: props.style.trainerWidth,
+    //     });
+    // }
+    // if (propName === 'trainerSectionOrientation' && e.target.value === 'horizontal') {
+    //     props.editStyle({
+    //         trainerWidth: props.style.trainerHeight,
+    //         trainerHeight: props.style.trainerWidth,
+    //     });
+    // }
 };
 
 export interface StyleEditorProps {
@@ -85,25 +98,34 @@ export const IconsNextToTeamPokemon = props => (
     </div>
 );
 
+export const smallItemOptions = ['outer glow', 'round', 'square', 'text'];
+
 export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEditorState> {
-    public state = { isThemeEditorOpen: false };
+    public state = { isThemeEditorOpen: false, showChromePicker: false };
     private toggleThemeEditor = e =>
         this.setState({ isThemeEditorOpen: !this.state.isThemeEditorOpen });
+
     public render() {
         const props = this.props;
         const styleEdit = cx(Styles.styleEdit, {
             [Styles.styleEdit_dark]: props.style.editorDarkMode,
         });
+        const calloutStyle = {
+            marginLeft: '2px',
+            fontSize: '80%',
+            padding: '7px',
+        };
         return (
             <BaseEditor name='Style'>
-                <Dialog
+                {FEATURES.themeEditing ? (<Dialog
                     isOpen={this.state.isThemeEditorOpen}
                     onClose={this.toggleThemeEditor}
                     title='Theme Editor'
                     icon='style'
                     className={cx(Styles.dialog, { [Classes.DARK]: props.style.editorDarkMode })}>
+
                     <ThemeEditor />
-                </Dialog>
+                </Dialog>) : null}
                 <div className={styleEdit}>
                     <label className='pt-label pt-inline'>Template</label>
                     <div className='pt-select'>
@@ -145,7 +167,8 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <RadioGroup
+                    <label className='pt-label pt-inline'>Item Style</label>
+                    {/*<RadioGroup
                         className={cx(Styles.radioGroup)}
                         label='Item Style'
                         onChange={e => editEvent(e, props, 'itemStyle')}
@@ -167,11 +190,36 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                                 'displayItemAsText',
                             )
                         }
-                    />
+                    />*/}
+                    <div className='pt-select'>
+                        <select
+                            name='itemStyle'
+                            onChange={e => editEvent(e, props, undefined)}
+                            value={props.style.itemStyle}>
+                            {smallItemOptions.map(v => {
+                                return <option value={v}>{capitalize(v)}</option>;
+                            })}
+                        </select>
+                    </div>
+                </div>
+
+                <div className={styleEdit}>
+                    <label className='pt-label pt-inline'>Pokéball Style</label>
+                    <div className='pt-select'>
+                        <select
+                            name='pokeballStyle'
+                            onChange={e => editEvent(e, props, undefined)}
+                            value={props.style.pokeballStyle}>
+                            {smallItemOptions.map(v => {
+                                return <option value={v}>{capitalize(v)}</option>;
+                            })}
+                        </select>
+                    </div>
                 </div>
 
                 <div className={styleEdit}>
                     <label className='pt-label pt-inline'>Result Dimensions</label>
+                    <span style={{ fontSize: '80%', marginRight: '2px' }}>w</span>
                     <input
                         name='resultWidth'
                         className='pt-input small-input'
@@ -182,6 +230,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         step='10'
                     />
                     <span style={{ marginRight: '0' }} className='pt-icon pt-icon-cross' />
+                    <span style={{ fontSize: '80%', marginRight: '2px' }}>h</span>
                     <input
                         name='resultHeight'
                         className='pt-input small-input'
@@ -212,12 +261,67 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         }
                     />
                 </div>
+
+                <div className={styleEdit}>
+                    <label className='pt-label pt-inline'>Trainer Dimensions</label>
+                    <span style={{ fontSize: '80%', marginRight: '2px' }}>w</span>
+                    <input
+                        name='trainerWidth'
+                        className='pt-input small-input'
+                        onChange={e => editEvent(e, props)}
+                        style={{
+                            opacity: props.style.trainerAuto ? 0.3 : 1,
+                        }}
+                        value={props.style.trainerWidth}
+                    />
+                    <span style={{ marginRight: '0' }} className='pt-icon pt-icon-cross' />
+                    <span style={{ fontSize: '80%', marginRight: '2px' }}>h</span>
+                    <input
+                        name='trainerHeight'
+                        className='pt-input small-input'
+                        style={{
+                            opacity: props.style.trainerAuto ? 0.3 : 1,
+                        }}
+                        onChange={e => editEvent(e, props)}
+                        value={props.style.trainerHeight}
+                    />
+                    <span> </span>
+                    <Checkbox
+                        style={{
+                            marginBottom: '0',
+                            marginLeft: '10px',
+                        }}
+                        checked={props.style.trainerAuto}
+                        name='trainerAuto'
+                        label='Auto Dimensions'
+                        onChange={(e: any) =>
+                            editEvent(
+                                { ...e, target: { value: e.target.checked } },
+                                props,
+                                'trainerAuto',
+                            )
+                        }
+                    />
+                </div>
+
+                <div className={styleEdit}>
+                    <RadioGroup
+                        className={cx(Styles.radioGroup)}
+                        label='Trainer Section Position'
+                        onChange={e => editEvent(e, props, 'trainerSectionOrientation')}
+                        selectedValue={props.style.trainerSectionOrientation}>
+                        <Radio label='Horizontal' value='horizontal' />
+                        <Radio label='Vertical' value='vertical' />
+                    </RadioGroup>
+                </div>
+
                 <div className={styleEdit}>
                     <label className='pt-label pt-inline'>Background color</label>
                     <ColorEdit
                         onChange={e => editEvent(e, props)}
                         name={'bgColor'}
-                        value={props.style.bgColor}
+                        value={rgbaOrHex(props.style.bgColor)}
+                        onColorChange={color => editEvent({target:{value: rgbaOrHex(color)}}, props, 'bgColor')}
                     />
                 </div>
 
@@ -227,6 +331,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         onChange={e => editEvent(e, props)}
                         name={'accentColor'}
                         value={props.style.accentColor}
+                        onColorChange={color => editEvent({target:{value: rgbaOrHex(color)}}, props, 'accentColor')}
                     />
                 </div>
 
@@ -236,6 +341,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         name='topHeaderColor'
                         onChange={e => editEvent(e, props)}
                         value={props.style.topHeaderColor}
+                        onColorChange={color => editEvent({target:{value: rgbaOrHex(color)}}, props, 'topHeaderColor')}
                     />
                 </div>
 
@@ -267,6 +373,20 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
+                    <label className='pt-label pt-inline'>Rules Location</label>
+                    <div className='pt-select'>
+                        <select
+                            name='displayRulesLocation'
+                            onChange={e => editEvent(e, props, undefined)}
+                            value={props.style.displayRulesLocation}>
+                            <option key={'inside trainer section'}>{'inside trainer section'}</option>
+                            <option key={'bottom'}>bottom</option>
+                            <option key={'top'}>top</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div className={styleEdit}>
                     <RadioGroup
                         className={cx(Styles.radioGroup)}
                         label='Moves Position'
@@ -278,25 +398,33 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <RadioGroup
-                        className={cx(Styles.radioGroup)}
-                        label='Trainer Section Position'
-                        onChange={e => editEvent(e, props, 'trainerSectionOrientation')}
-                        selectedValue={props.style.trainerSectionOrientation}>
-                        <Radio label='Horizontal' value='horizontal' />
-                        <Radio label='Vertical' value='vertical' />
-                    </RadioGroup>
-                </div>
-
-                <div className={styleEdit}>
-                    <RadioGroup
-                        className={cx(Styles.radioGroup)}
-                        label='Team Images'
-                        onChange={e => editEvent(e, props, 'teamImages')}
-                        selectedValue={props.style.teamImages}>
-                        <Radio label='Standard' value='standard' />
-                        <Radio label='Sugimori' value='sugimori' />
-                    </RadioGroup>
+                    <label className='pt-label pt-inline'>Team Images</label>
+                    <div className='pt-select'>
+                        <select
+                            name='teamImages'
+                            onChange={e => editEvent(e, props, undefined, props.game.name)}
+                            value={props.style.teamImages}>
+                            {['standard', 'sugimori', 'dream world', 'shuffle'].map(o => <option value={o} key={o}>{capitalize(o)}</option>)}
+                        </select>
+                    </div>
+                    {(props.game.name === 'Sword' || props.game.name === 'Shield') && props.style.teamImages === 'shuffle' ?
+                        <div className='pt-callout pt-intent-danger' style={calloutStyle}>
+                            Shuffle images are not supported for this game
+                        </div>
+                        : null
+                    }
+                    {(props.game.name === 'Sword' || props.game.name === 'Shield') && props.style.teamImages === 'sugimori' ?
+                        <div className='pt-callout pt-intent-danger' style={calloutStyle}>
+                            Sugimori images are not supported for this game
+                        </div>
+                        : null
+                    }
+                    {(['Sword', 'Shield', 'X', 'Y', 'Sun', 'Moon', 'Ultra Sun', 'Ultra Moon'].includes(props.game.name)) && props.style.teamImages === 'dream world' ?
+                        <div className='pt-callout pt-intent-danger' style={calloutStyle}>
+                            Dream world images are not supported for this game
+                        </div>
+                        : null
+                    }
                 </div>
 
                 <div className={styleEdit}>
@@ -567,7 +695,6 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         className='custom-css-input pt-fill'
                         value={props.style.customCSS}
                     />
-                    <style>{props.style.customCSS}</style>
                 </div>
             </BaseEditor>
         );

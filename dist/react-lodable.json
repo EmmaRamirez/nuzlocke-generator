@@ -175,8 +175,20 @@
       "publicPath": "bundle.js"
     },
     {
+      "id": "./node_modules/lodash/keys.js",
+      "name": "./node_modules/lodash/keys.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/keys.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/keys.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./node_modules/lodash/keys.js",
+      "name": "./node_modules/lodash/keys.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -217,12 +229,6 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
-      "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
       "id": "./node_modules/redux-saga/es/utils.js",
       "name": "./node_modules/redux-saga/es/utils.js",
       "file": "bundle.js",
@@ -231,12 +237,6 @@
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/utils.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/utils.js",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    },
-    {
-      "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
-      "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     },
@@ -1003,7 +1003,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./spinner/spinner": [
+  "../spinner/spinner": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/spinner/spinner.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/spinner/spinner.js",
@@ -1143,7 +1143,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./tooltip/tooltip": [
+  "../tooltip/tooltip": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/tooltip/tooltip.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/tooltip/tooltip.js",
@@ -1479,7 +1479,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/context": [
+  "../common/context": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/context.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/context.js",
@@ -1521,7 +1521,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/errors": [
+  "../errors": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/errors.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/errors.js",
@@ -1685,6 +1685,20 @@
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/requestIdleCallback.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/requestIdleCallback.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "../common/utils": [
+    {
+      "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
+      "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
+      "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -2105,6 +2119,34 @@
     {
       "id": "./node_modules/@emotion/memoize/dist/memoize.esm.js",
       "name": "./node_modules/@emotion/memoize/dist/memoize.esm.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "@icons/material/CheckIcon": [
+    {
+      "id": "./node_modules/@icons/material/CheckIcon.js",
+      "name": "./node_modules/@icons/material/CheckIcon.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/@icons/material/CheckIcon.js",
+      "name": "./node_modules/@icons/material/CheckIcon.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "@icons/material/UnfoldMoreHorizontalIcon": [
+    {
+      "id": "./node_modules/@icons/material/UnfoldMoreHorizontalIcon.js",
+      "name": "./node_modules/@icons/material/UnfoldMoreHorizontalIcon.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/@icons/material/UnfoldMoreHorizontalIcon.js",
+      "name": "./node_modules/@icons/material/UnfoldMoreHorizontalIcon.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -3459,6 +3501,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./_DataView": [
+    {
+      "id": "./node_modules/lodash/_DataView.js",
+      "name": "./node_modules/lodash/_DataView.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_DataView.js",
+      "name": "./node_modules/lodash/_DataView.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./_Hash": [
     {
       "id": "./node_modules/lodash/_Hash.js",
@@ -3515,6 +3571,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./_Promise": [
+    {
+      "id": "./node_modules/lodash/_Promise.js",
+      "name": "./node_modules/lodash/_Promise.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_Promise.js",
+      "name": "./node_modules/lodash/_Promise.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./_Set": [
     {
       "id": "./node_modules/lodash/_Set.js",
@@ -3543,6 +3613,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./_Stack": [
+    {
+      "id": "./node_modules/lodash/_Stack.js",
+      "name": "./node_modules/lodash/_Stack.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_Stack.js",
+      "name": "./node_modules/lodash/_Stack.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./_Symbol": [
     {
       "id": "./node_modules/lodash/_Symbol.js",
@@ -3557,6 +3641,34 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./_Uint8Array": [
+    {
+      "id": "./node_modules/lodash/_Uint8Array.js",
+      "name": "./node_modules/lodash/_Uint8Array.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_Uint8Array.js",
+      "name": "./node_modules/lodash/_Uint8Array.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_WeakMap": [
+    {
+      "id": "./node_modules/lodash/_WeakMap.js",
+      "name": "./node_modules/lodash/_WeakMap.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_WeakMap.js",
+      "name": "./node_modules/lodash/_WeakMap.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./_apply": [
     {
       "id": "./node_modules/lodash/_apply.js",
@@ -3567,6 +3679,20 @@
     {
       "id": "./node_modules/lodash/_apply.js",
       "name": "./node_modules/lodash/_apply.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_arrayEach": [
+    {
+      "id": "./node_modules/lodash/_arrayEach.js",
+      "name": "./node_modules/lodash/_arrayEach.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_arrayEach.js",
+      "name": "./node_modules/lodash/_arrayEach.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -3655,6 +3781,48 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./_arraySome": [
+    {
+      "id": "./node_modules/lodash/_arraySome.js",
+      "name": "./node_modules/lodash/_arraySome.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_arraySome.js",
+      "name": "./node_modules/lodash/_arraySome.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_assignMergeValue": [
+    {
+      "id": "./node_modules/lodash/_assignMergeValue.js",
+      "name": "./node_modules/lodash/_assignMergeValue.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_assignMergeValue.js",
+      "name": "./node_modules/lodash/_assignMergeValue.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_assignValue": [
+    {
+      "id": "./node_modules/lodash/_assignValue.js",
+      "name": "./node_modules/lodash/_assignValue.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_assignValue.js",
+      "name": "./node_modules/lodash/_assignValue.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./_assocIndexOf": [
     {
       "id": "./node_modules/lodash/_assocIndexOf.js",
@@ -3669,6 +3837,76 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./_baseAssign": [
+    {
+      "id": "./node_modules/lodash/_baseAssign.js",
+      "name": "./node_modules/lodash/_baseAssign.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseAssign.js",
+      "name": "./node_modules/lodash/_baseAssign.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_baseAssignIn": [
+    {
+      "id": "./node_modules/lodash/_baseAssignIn.js",
+      "name": "./node_modules/lodash/_baseAssignIn.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseAssignIn.js",
+      "name": "./node_modules/lodash/_baseAssignIn.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_baseAssignValue": [
+    {
+      "id": "./node_modules/lodash/_baseAssignValue.js",
+      "name": "./node_modules/lodash/_baseAssignValue.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseAssignValue.js",
+      "name": "./node_modules/lodash/_baseAssignValue.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_baseClone": [
+    {
+      "id": "./node_modules/lodash/_baseClone.js",
+      "name": "./node_modules/lodash/_baseClone.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseClone.js",
+      "name": "./node_modules/lodash/_baseClone.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_baseCreate": [
+    {
+      "id": "./node_modules/lodash/_baseCreate.js",
+      "name": "./node_modules/lodash/_baseCreate.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseCreate.js",
+      "name": "./node_modules/lodash/_baseCreate.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./_baseDifference": [
     {
       "id": "./node_modules/lodash/_baseDifference.js",
@@ -3679,6 +3917,20 @@
     {
       "id": "./node_modules/lodash/_baseDifference.js",
       "name": "./node_modules/lodash/_baseDifference.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_baseEach": [
+    {
+      "id": "./node_modules/lodash/_baseEach.js",
+      "name": "./node_modules/lodash/_baseEach.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseEach.js",
+      "name": "./node_modules/lodash/_baseEach.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -3711,6 +3963,34 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./_baseFor": [
+    {
+      "id": "./node_modules/lodash/_baseFor.js",
+      "name": "./node_modules/lodash/_baseFor.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseFor.js",
+      "name": "./node_modules/lodash/_baseFor.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_baseForOwn": [
+    {
+      "id": "./node_modules/lodash/_baseForOwn.js",
+      "name": "./node_modules/lodash/_baseForOwn.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseForOwn.js",
+      "name": "./node_modules/lodash/_baseForOwn.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./_baseGet": [
     {
       "id": "./node_modules/lodash/_baseGet.js",
@@ -3725,6 +4005,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./_baseGetAllKeys": [
+    {
+      "id": "./node_modules/lodash/_baseGetAllKeys.js",
+      "name": "./node_modules/lodash/_baseGetAllKeys.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseGetAllKeys.js",
+      "name": "./node_modules/lodash/_baseGetAllKeys.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./_baseGetTag": [
     {
       "id": "./node_modules/lodash/_baseGetTag.js",
@@ -3735,6 +4029,20 @@
     {
       "id": "./node_modules/lodash/_baseGetTag.js",
       "name": "./node_modules/lodash/_baseGetTag.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_baseHasIn": [
+    {
+      "id": "./node_modules/lodash/_baseHasIn.js",
+      "name": "./node_modules/lodash/_baseHasIn.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseHasIn.js",
+      "name": "./node_modules/lodash/_baseHasIn.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -3781,6 +4089,62 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./_baseIsEqual": [
+    {
+      "id": "./node_modules/lodash/_baseIsEqual.js",
+      "name": "./node_modules/lodash/_baseIsEqual.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseIsEqual.js",
+      "name": "./node_modules/lodash/_baseIsEqual.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_baseIsEqualDeep": [
+    {
+      "id": "./node_modules/lodash/_baseIsEqualDeep.js",
+      "name": "./node_modules/lodash/_baseIsEqualDeep.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseIsEqualDeep.js",
+      "name": "./node_modules/lodash/_baseIsEqualDeep.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_baseIsMap": [
+    {
+      "id": "./node_modules/lodash/_baseIsMap.js",
+      "name": "./node_modules/lodash/_baseIsMap.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseIsMap.js",
+      "name": "./node_modules/lodash/_baseIsMap.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_baseIsMatch": [
+    {
+      "id": "./node_modules/lodash/_baseIsMatch.js",
+      "name": "./node_modules/lodash/_baseIsMatch.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseIsMatch.js",
+      "name": "./node_modules/lodash/_baseIsMatch.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./_baseIsNaN": [
     {
       "id": "./node_modules/lodash/_baseIsNaN.js",
@@ -3809,6 +4173,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./_baseIsSet": [
+    {
+      "id": "./node_modules/lodash/_baseIsSet.js",
+      "name": "./node_modules/lodash/_baseIsSet.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseIsSet.js",
+      "name": "./node_modules/lodash/_baseIsSet.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./_baseIsTypedArray": [
     {
       "id": "./node_modules/lodash/_baseIsTypedArray.js",
@@ -3823,6 +4201,34 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./_baseIteratee": [
+    {
+      "id": "./node_modules/lodash/_baseIteratee.js",
+      "name": "./node_modules/lodash/_baseIteratee.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseIteratee.js",
+      "name": "./node_modules/lodash/_baseIteratee.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_baseKeys": [
+    {
+      "id": "./node_modules/lodash/_baseKeys.js",
+      "name": "./node_modules/lodash/_baseKeys.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseKeys.js",
+      "name": "./node_modules/lodash/_baseKeys.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./_baseKeysIn": [
     {
       "id": "./node_modules/lodash/_baseKeysIn.js",
@@ -3833,6 +4239,104 @@
     {
       "id": "./node_modules/lodash/_baseKeysIn.js",
       "name": "./node_modules/lodash/_baseKeysIn.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_baseMap": [
+    {
+      "id": "./node_modules/lodash/_baseMap.js",
+      "name": "./node_modules/lodash/_baseMap.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseMap.js",
+      "name": "./node_modules/lodash/_baseMap.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_baseMatches": [
+    {
+      "id": "./node_modules/lodash/_baseMatches.js",
+      "name": "./node_modules/lodash/_baseMatches.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseMatches.js",
+      "name": "./node_modules/lodash/_baseMatches.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_baseMatchesProperty": [
+    {
+      "id": "./node_modules/lodash/_baseMatchesProperty.js",
+      "name": "./node_modules/lodash/_baseMatchesProperty.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseMatchesProperty.js",
+      "name": "./node_modules/lodash/_baseMatchesProperty.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_baseMerge": [
+    {
+      "id": "./node_modules/lodash/_baseMerge.js",
+      "name": "./node_modules/lodash/_baseMerge.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseMerge.js",
+      "name": "./node_modules/lodash/_baseMerge.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_baseMergeDeep": [
+    {
+      "id": "./node_modules/lodash/_baseMergeDeep.js",
+      "name": "./node_modules/lodash/_baseMergeDeep.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseMergeDeep.js",
+      "name": "./node_modules/lodash/_baseMergeDeep.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_baseProperty": [
+    {
+      "id": "./node_modules/lodash/_baseProperty.js",
+      "name": "./node_modules/lodash/_baseProperty.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_baseProperty.js",
+      "name": "./node_modules/lodash/_baseProperty.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_basePropertyDeep": [
+    {
+      "id": "./node_modules/lodash/_basePropertyDeep.js",
+      "name": "./node_modules/lodash/_basePropertyDeep.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_basePropertyDeep.js",
+      "name": "./node_modules/lodash/_basePropertyDeep.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -3963,6 +4467,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./_castFunction": [
+    {
+      "id": "./node_modules/lodash/_castFunction.js",
+      "name": "./node_modules/lodash/_castFunction.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_castFunction.js",
+      "name": "./node_modules/lodash/_castFunction.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./_castPath": [
     {
       "id": "./node_modules/lodash/_castPath.js",
@@ -3977,6 +4495,146 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./_cloneArrayBuffer": [
+    {
+      "id": "./node_modules/lodash/_cloneArrayBuffer.js",
+      "name": "./node_modules/lodash/_cloneArrayBuffer.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_cloneArrayBuffer.js",
+      "name": "./node_modules/lodash/_cloneArrayBuffer.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_cloneBuffer": [
+    {
+      "id": "./node_modules/lodash/_cloneBuffer.js",
+      "name": "./node_modules/lodash/_cloneBuffer.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_cloneBuffer.js",
+      "name": "./node_modules/lodash/_cloneBuffer.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_cloneDataView": [
+    {
+      "id": "./node_modules/lodash/_cloneDataView.js",
+      "name": "./node_modules/lodash/_cloneDataView.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_cloneDataView.js",
+      "name": "./node_modules/lodash/_cloneDataView.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_cloneRegExp": [
+    {
+      "id": "./node_modules/lodash/_cloneRegExp.js",
+      "name": "./node_modules/lodash/_cloneRegExp.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_cloneRegExp.js",
+      "name": "./node_modules/lodash/_cloneRegExp.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_cloneSymbol": [
+    {
+      "id": "./node_modules/lodash/_cloneSymbol.js",
+      "name": "./node_modules/lodash/_cloneSymbol.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_cloneSymbol.js",
+      "name": "./node_modules/lodash/_cloneSymbol.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_cloneTypedArray": [
+    {
+      "id": "./node_modules/lodash/_cloneTypedArray.js",
+      "name": "./node_modules/lodash/_cloneTypedArray.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_cloneTypedArray.js",
+      "name": "./node_modules/lodash/_cloneTypedArray.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_copyArray": [
+    {
+      "id": "./node_modules/lodash/_copyArray.js",
+      "name": "./node_modules/lodash/_copyArray.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_copyArray.js",
+      "name": "./node_modules/lodash/_copyArray.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_copyObject": [
+    {
+      "id": "./node_modules/lodash/_copyObject.js",
+      "name": "./node_modules/lodash/_copyObject.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_copyObject.js",
+      "name": "./node_modules/lodash/_copyObject.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_copySymbols": [
+    {
+      "id": "./node_modules/lodash/_copySymbols.js",
+      "name": "./node_modules/lodash/_copySymbols.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_copySymbols.js",
+      "name": "./node_modules/lodash/_copySymbols.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_copySymbolsIn": [
+    {
+      "id": "./node_modules/lodash/_copySymbolsIn.js",
+      "name": "./node_modules/lodash/_copySymbolsIn.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_copySymbolsIn.js",
+      "name": "./node_modules/lodash/_copySymbolsIn.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./_coreJsData": [
     {
       "id": "./node_modules/lodash/_coreJsData.js",
@@ -3987,6 +4645,48 @@
     {
       "id": "./node_modules/lodash/_coreJsData.js",
       "name": "./node_modules/lodash/_coreJsData.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_createAssigner": [
+    {
+      "id": "./node_modules/lodash/_createAssigner.js",
+      "name": "./node_modules/lodash/_createAssigner.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_createAssigner.js",
+      "name": "./node_modules/lodash/_createAssigner.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_createBaseEach": [
+    {
+      "id": "./node_modules/lodash/_createBaseEach.js",
+      "name": "./node_modules/lodash/_createBaseEach.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_createBaseEach.js",
+      "name": "./node_modules/lodash/_createBaseEach.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_createBaseFor": [
+    {
+      "id": "./node_modules/lodash/_createBaseFor.js",
+      "name": "./node_modules/lodash/_createBaseFor.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_createBaseFor.js",
+      "name": "./node_modules/lodash/_createBaseFor.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -4019,6 +4719,48 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./_equalArrays": [
+    {
+      "id": "./node_modules/lodash/_equalArrays.js",
+      "name": "./node_modules/lodash/_equalArrays.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_equalArrays.js",
+      "name": "./node_modules/lodash/_equalArrays.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_equalByTag": [
+    {
+      "id": "./node_modules/lodash/_equalByTag.js",
+      "name": "./node_modules/lodash/_equalByTag.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_equalByTag.js",
+      "name": "./node_modules/lodash/_equalByTag.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_equalObjects": [
+    {
+      "id": "./node_modules/lodash/_equalObjects.js",
+      "name": "./node_modules/lodash/_equalObjects.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_equalObjects.js",
+      "name": "./node_modules/lodash/_equalObjects.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./_freeGlobal": [
     {
       "id": "./node_modules/lodash/_freeGlobal.js",
@@ -4033,6 +4775,34 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./_getAllKeys": [
+    {
+      "id": "./node_modules/lodash/_getAllKeys.js",
+      "name": "./node_modules/lodash/_getAllKeys.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_getAllKeys.js",
+      "name": "./node_modules/lodash/_getAllKeys.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_getAllKeysIn": [
+    {
+      "id": "./node_modules/lodash/_getAllKeysIn.js",
+      "name": "./node_modules/lodash/_getAllKeysIn.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_getAllKeysIn.js",
+      "name": "./node_modules/lodash/_getAllKeysIn.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./_getMapData": [
     {
       "id": "./node_modules/lodash/_getMapData.js",
@@ -4043,6 +4813,20 @@
     {
       "id": "./node_modules/lodash/_getMapData.js",
       "name": "./node_modules/lodash/_getMapData.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_getMatchData": [
+    {
+      "id": "./node_modules/lodash/_getMatchData.js",
+      "name": "./node_modules/lodash/_getMatchData.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_getMatchData.js",
+      "name": "./node_modules/lodash/_getMatchData.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -4089,6 +4873,48 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./_getSymbols": [
+    {
+      "id": "./node_modules/lodash/_getSymbols.js",
+      "name": "./node_modules/lodash/_getSymbols.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_getSymbols.js",
+      "name": "./node_modules/lodash/_getSymbols.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_getSymbolsIn": [
+    {
+      "id": "./node_modules/lodash/_getSymbolsIn.js",
+      "name": "./node_modules/lodash/_getSymbolsIn.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_getSymbolsIn.js",
+      "name": "./node_modules/lodash/_getSymbolsIn.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_getTag": [
+    {
+      "id": "./node_modules/lodash/_getTag.js",
+      "name": "./node_modules/lodash/_getTag.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_getTag.js",
+      "name": "./node_modules/lodash/_getTag.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./_getValue": [
     {
       "id": "./node_modules/lodash/_getValue.js",
@@ -4099,6 +4925,20 @@
     {
       "id": "./node_modules/lodash/_getValue.js",
       "name": "./node_modules/lodash/_getValue.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_hasPath": [
+    {
+      "id": "./node_modules/lodash/_hasPath.js",
+      "name": "./node_modules/lodash/_hasPath.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_hasPath.js",
+      "name": "./node_modules/lodash/_hasPath.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -4169,6 +5009,48 @@
     {
       "id": "./node_modules/lodash/_hashSet.js",
       "name": "./node_modules/lodash/_hashSet.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_initCloneArray": [
+    {
+      "id": "./node_modules/lodash/_initCloneArray.js",
+      "name": "./node_modules/lodash/_initCloneArray.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_initCloneArray.js",
+      "name": "./node_modules/lodash/_initCloneArray.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_initCloneByTag": [
+    {
+      "id": "./node_modules/lodash/_initCloneByTag.js",
+      "name": "./node_modules/lodash/_initCloneByTag.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_initCloneByTag.js",
+      "name": "./node_modules/lodash/_initCloneByTag.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_initCloneObject": [
+    {
+      "id": "./node_modules/lodash/_initCloneObject.js",
+      "name": "./node_modules/lodash/_initCloneObject.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_initCloneObject.js",
+      "name": "./node_modules/lodash/_initCloneObject.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -4267,6 +5149,20 @@
     {
       "id": "./node_modules/lodash/_isPrototype.js",
       "name": "./node_modules/lodash/_isPrototype.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_isStrictComparable": [
+    {
+      "id": "./node_modules/lodash/_isStrictComparable.js",
+      "name": "./node_modules/lodash/_isStrictComparable.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_isStrictComparable.js",
+      "name": "./node_modules/lodash/_isStrictComparable.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -4411,6 +5307,34 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./_mapToArray": [
+    {
+      "id": "./node_modules/lodash/_mapToArray.js",
+      "name": "./node_modules/lodash/_mapToArray.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_mapToArray.js",
+      "name": "./node_modules/lodash/_mapToArray.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_matchesStrictComparable": [
+    {
+      "id": "./node_modules/lodash/_matchesStrictComparable.js",
+      "name": "./node_modules/lodash/_matchesStrictComparable.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_matchesStrictComparable.js",
+      "name": "./node_modules/lodash/_matchesStrictComparable.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./_memoizeCapped": [
     {
       "id": "./node_modules/lodash/_memoizeCapped.js",
@@ -4435,6 +5359,20 @@
     {
       "id": "./node_modules/lodash/_nativeCreate.js",
       "name": "./node_modules/lodash/_nativeCreate.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_nativeKeys": [
+    {
+      "id": "./node_modules/lodash/_nativeKeys.js",
+      "name": "./node_modules/lodash/_nativeKeys.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_nativeKeys.js",
+      "name": "./node_modules/lodash/_nativeKeys.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -4523,6 +5461,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./_safeGet": [
+    {
+      "id": "./node_modules/lodash/_safeGet.js",
+      "name": "./node_modules/lodash/_safeGet.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_safeGet.js",
+      "name": "./node_modules/lodash/_safeGet.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./_setCacheAdd": [
     {
       "id": "./node_modules/lodash/_setCacheAdd.js",
@@ -4593,6 +5545,76 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./_stackClear": [
+    {
+      "id": "./node_modules/lodash/_stackClear.js",
+      "name": "./node_modules/lodash/_stackClear.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_stackClear.js",
+      "name": "./node_modules/lodash/_stackClear.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_stackDelete": [
+    {
+      "id": "./node_modules/lodash/_stackDelete.js",
+      "name": "./node_modules/lodash/_stackDelete.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_stackDelete.js",
+      "name": "./node_modules/lodash/_stackDelete.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_stackGet": [
+    {
+      "id": "./node_modules/lodash/_stackGet.js",
+      "name": "./node_modules/lodash/_stackGet.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_stackGet.js",
+      "name": "./node_modules/lodash/_stackGet.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_stackHas": [
+    {
+      "id": "./node_modules/lodash/_stackHas.js",
+      "name": "./node_modules/lodash/_stackHas.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_stackHas.js",
+      "name": "./node_modules/lodash/_stackHas.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_stackSet": [
+    {
+      "id": "./node_modules/lodash/_stackSet.js",
+      "name": "./node_modules/lodash/_stackSet.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/_stackSet.js",
+      "name": "./node_modules/lodash/_stackSet.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./_strictIndexOf": [
     {
       "id": "./node_modules/lodash/_strictIndexOf.js",
@@ -4649,6 +5671,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "lodash/cloneDeep": [
+    {
+      "id": "./node_modules/lodash/cloneDeep.js",
+      "name": "./node_modules/lodash/cloneDeep.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/cloneDeep.js",
+      "name": "./node_modules/lodash/cloneDeep.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./constant": [
     {
       "id": "./node_modules/lodash/constant.js",
@@ -4659,6 +5695,20 @@
     {
       "id": "./node_modules/lodash/constant.js",
       "name": "./node_modules/lodash/constant.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "lodash/debounce": [
+    {
+      "id": "./node_modules/lodash/debounce.js",
+      "name": "./node_modules/lodash/debounce.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/debounce.js",
+      "name": "./node_modules/lodash/debounce.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -4677,6 +5727,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "lodash/each": [
+    {
+      "id": "./node_modules/lodash/each.js",
+      "name": "./node_modules/lodash/each.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/each.js",
+      "name": "./node_modules/lodash/each.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./eq": [
     {
       "id": "./node_modules/lodash/eq.js",
@@ -4691,6 +5755,34 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./forEach": [
+    {
+      "id": "./node_modules/lodash/forEach.js",
+      "name": "./node_modules/lodash/forEach.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/forEach.js",
+      "name": "./node_modules/lodash/forEach.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "lodash/forOwn": [
+    {
+      "id": "./node_modules/lodash/forOwn.js",
+      "name": "./node_modules/lodash/forOwn.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/forOwn.js",
+      "name": "./node_modules/lodash/forOwn.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "lodash/get": [
     {
       "id": "./node_modules/lodash/get.js",
@@ -4701,6 +5793,20 @@
     {
       "id": "./node_modules/lodash/get.js",
       "name": "./node_modules/lodash/get.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./hasIn": [
+    {
+      "id": "./node_modules/lodash/hasIn.js",
+      "name": "./node_modules/lodash/hasIn.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/hasIn.js",
+      "name": "./node_modules/lodash/hasIn.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -4831,6 +5937,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./isMap": [
+    {
+      "id": "./node_modules/lodash/isMap.js",
+      "name": "./node_modules/lodash/isMap.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/isMap.js",
+      "name": "./node_modules/lodash/isMap.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./isObject": [
     {
       "id": "./node_modules/lodash/isObject.js",
@@ -4869,6 +5989,34 @@
     {
       "id": "./node_modules/lodash/isPlainObject.js",
       "name": "./node_modules/lodash/isPlainObject.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./isSet": [
+    {
+      "id": "./node_modules/lodash/isSet.js",
+      "name": "./node_modules/lodash/isSet.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/isSet.js",
+      "name": "./node_modules/lodash/isSet.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "lodash/isString": [
+    {
+      "id": "./node_modules/lodash/isString.js",
+      "name": "./node_modules/lodash/isString.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/isString.js",
+      "name": "./node_modules/lodash/isString.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -4915,6 +6063,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "lodash/map": [
+    {
+      "id": "./node_modules/lodash/map.js",
+      "name": "./node_modules/lodash/map.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/map.js",
+      "name": "./node_modules/lodash/map.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "lodash/memoize": [
     {
       "id": "./node_modules/lodash/memoize.js",
@@ -4925,6 +6087,20 @@
     {
       "id": "./node_modules/lodash/memoize.js",
       "name": "./node_modules/lodash/memoize.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "lodash/merge": [
+    {
+      "id": "./node_modules/lodash/merge.js",
+      "name": "./node_modules/lodash/merge.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/merge.js",
+      "name": "./node_modules/lodash/merge.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -4943,6 +6119,48 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./now": [
+    {
+      "id": "./node_modules/lodash/now.js",
+      "name": "./node_modules/lodash/now.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/now.js",
+      "name": "./node_modules/lodash/now.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./property": [
+    {
+      "id": "./node_modules/lodash/property.js",
+      "name": "./node_modules/lodash/property.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/property.js",
+      "name": "./node_modules/lodash/property.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./stubArray": [
+    {
+      "id": "./node_modules/lodash/stubArray.js",
+      "name": "./node_modules/lodash/stubArray.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/stubArray.js",
+      "name": "./node_modules/lodash/stubArray.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./stubFalse": [
     {
       "id": "./node_modules/lodash/stubFalse.js",
@@ -4953,6 +6171,48 @@
     {
       "id": "./node_modules/lodash/stubFalse.js",
       "name": "./node_modules/lodash/stubFalse.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "lodash/throttle": [
+    {
+      "id": "./node_modules/lodash/throttle.js",
+      "name": "./node_modules/lodash/throttle.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/throttle.js",
+      "name": "./node_modules/lodash/throttle.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./toNumber": [
+    {
+      "id": "./node_modules/lodash/toNumber.js",
+      "name": "./node_modules/lodash/toNumber.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/toNumber.js",
+      "name": "./node_modules/lodash/toNumber.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./toPlainObject": [
+    {
+      "id": "./node_modules/lodash/toPlainObject.js",
+      "name": "./node_modules/lodash/toPlainObject.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/lodash/toPlainObject.js",
+      "name": "./node_modules/lodash/toPlainObject.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -5023,6 +6283,20 @@
     {
       "id": "./node_modules/markdown-escapes/index.js",
       "name": "./node_modules/markdown-escapes/index.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "material-colors": [
+    {
+      "id": "./node_modules/material-colors/dist/colors.es2015.js",
+      "name": "./node_modules/material-colors/dist/colors.es2015.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/material-colors/dist/colors.es2015.js",
+      "name": "./node_modules/material-colors/dist/colors.es2015.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -5191,6 +6465,720 @@
     {
       "id": "./node_modules/raf/index.js",
       "name": "./node_modules/raf/index.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./components/alpha/Alpha": [
+    {
+      "id": "./node_modules/react-color/lib/components/alpha/Alpha.js",
+      "name": "./node_modules/react-color/lib/components/alpha/Alpha.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/alpha/Alpha.js",
+      "name": "./node_modules/react-color/lib/components/alpha/Alpha.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./AlphaPointer": [
+    {
+      "id": "./node_modules/react-color/lib/components/alpha/AlphaPointer.js",
+      "name": "./node_modules/react-color/lib/components/alpha/AlphaPointer.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/alpha/AlphaPointer.js",
+      "name": "./node_modules/react-color/lib/components/alpha/AlphaPointer.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./components/block/Block": [
+    {
+      "id": "./node_modules/react-color/lib/components/block/Block.js",
+      "name": "./node_modules/react-color/lib/components/block/Block.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/block/Block.js",
+      "name": "./node_modules/react-color/lib/components/block/Block.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./BlockSwatches": [
+    {
+      "id": "./node_modules/react-color/lib/components/block/BlockSwatches.js",
+      "name": "./node_modules/react-color/lib/components/block/BlockSwatches.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/block/BlockSwatches.js",
+      "name": "./node_modules/react-color/lib/components/block/BlockSwatches.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./components/chrome/Chrome": [
+    {
+      "id": "./node_modules/react-color/lib/components/chrome/Chrome.js",
+      "name": "./node_modules/react-color/lib/components/chrome/Chrome.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/chrome/Chrome.js",
+      "name": "./node_modules/react-color/lib/components/chrome/Chrome.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./ChromeFields": [
+    {
+      "id": "./node_modules/react-color/lib/components/chrome/ChromeFields.js",
+      "name": "./node_modules/react-color/lib/components/chrome/ChromeFields.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/chrome/ChromeFields.js",
+      "name": "./node_modules/react-color/lib/components/chrome/ChromeFields.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./ChromePointer": [
+    {
+      "id": "./node_modules/react-color/lib/components/chrome/ChromePointer.js",
+      "name": "./node_modules/react-color/lib/components/chrome/ChromePointer.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/chrome/ChromePointer.js",
+      "name": "./node_modules/react-color/lib/components/chrome/ChromePointer.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./ChromePointerCircle": [
+    {
+      "id": "./node_modules/react-color/lib/components/chrome/ChromePointerCircle.js",
+      "name": "./node_modules/react-color/lib/components/chrome/ChromePointerCircle.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/chrome/ChromePointerCircle.js",
+      "name": "./node_modules/react-color/lib/components/chrome/ChromePointerCircle.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./components/circle/Circle": [
+    {
+      "id": "./node_modules/react-color/lib/components/circle/Circle.js",
+      "name": "./node_modules/react-color/lib/components/circle/Circle.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/circle/Circle.js",
+      "name": "./node_modules/react-color/lib/components/circle/Circle.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./CircleSwatch": [
+    {
+      "id": "./node_modules/react-color/lib/components/circle/CircleSwatch.js",
+      "name": "./node_modules/react-color/lib/components/circle/CircleSwatch.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/circle/CircleSwatch.js",
+      "name": "./node_modules/react-color/lib/components/circle/CircleSwatch.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./Alpha": [
+    {
+      "id": "./node_modules/react-color/lib/components/common/Alpha.js",
+      "name": "./node_modules/react-color/lib/components/common/Alpha.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/common/Alpha.js",
+      "name": "./node_modules/react-color/lib/components/common/Alpha.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./Checkboard": [
+    {
+      "id": "./node_modules/react-color/lib/components/common/Checkboard.js",
+      "name": "./node_modules/react-color/lib/components/common/Checkboard.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/common/Checkboard.js",
+      "name": "./node_modules/react-color/lib/components/common/Checkboard.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./components/common/ColorWrap": [
+    {
+      "id": "./node_modules/react-color/lib/components/common/ColorWrap.js",
+      "name": "./node_modules/react-color/lib/components/common/ColorWrap.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/common/ColorWrap.js",
+      "name": "./node_modules/react-color/lib/components/common/ColorWrap.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./EditableInput": [
+    {
+      "id": "./node_modules/react-color/lib/components/common/EditableInput.js",
+      "name": "./node_modules/react-color/lib/components/common/EditableInput.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/common/EditableInput.js",
+      "name": "./node_modules/react-color/lib/components/common/EditableInput.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./Hue": [
+    {
+      "id": "./node_modules/react-color/lib/components/common/Hue.js",
+      "name": "./node_modules/react-color/lib/components/common/Hue.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/common/Hue.js",
+      "name": "./node_modules/react-color/lib/components/common/Hue.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./Raised": [
+    {
+      "id": "./node_modules/react-color/lib/components/common/Raised.js",
+      "name": "./node_modules/react-color/lib/components/common/Raised.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/common/Raised.js",
+      "name": "./node_modules/react-color/lib/components/common/Raised.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./Saturation": [
+    {
+      "id": "./node_modules/react-color/lib/components/common/Saturation.js",
+      "name": "./node_modules/react-color/lib/components/common/Saturation.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/common/Saturation.js",
+      "name": "./node_modules/react-color/lib/components/common/Saturation.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./Swatch": [
+    {
+      "id": "./node_modules/react-color/lib/components/common/Swatch.js",
+      "name": "./node_modules/react-color/lib/components/common/Swatch.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/common/Swatch.js",
+      "name": "./node_modules/react-color/lib/components/common/Swatch.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "../common": [
+    {
+      "id": "./node_modules/react-color/lib/components/common/index.js",
+      "name": "./node_modules/react-color/lib/components/common/index.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/common/index.js",
+      "name": "./node_modules/react-color/lib/components/common/index.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./components/compact/Compact": [
+    {
+      "id": "./node_modules/react-color/lib/components/compact/Compact.js",
+      "name": "./node_modules/react-color/lib/components/compact/Compact.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/compact/Compact.js",
+      "name": "./node_modules/react-color/lib/components/compact/Compact.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./CompactColor": [
+    {
+      "id": "./node_modules/react-color/lib/components/compact/CompactColor.js",
+      "name": "./node_modules/react-color/lib/components/compact/CompactColor.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/compact/CompactColor.js",
+      "name": "./node_modules/react-color/lib/components/compact/CompactColor.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./CompactFields": [
+    {
+      "id": "./node_modules/react-color/lib/components/compact/CompactFields.js",
+      "name": "./node_modules/react-color/lib/components/compact/CompactFields.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/compact/CompactFields.js",
+      "name": "./node_modules/react-color/lib/components/compact/CompactFields.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./components/github/Github": [
+    {
+      "id": "./node_modules/react-color/lib/components/github/Github.js",
+      "name": "./node_modules/react-color/lib/components/github/Github.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/github/Github.js",
+      "name": "./node_modules/react-color/lib/components/github/Github.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./GithubSwatch": [
+    {
+      "id": "./node_modules/react-color/lib/components/github/GithubSwatch.js",
+      "name": "./node_modules/react-color/lib/components/github/GithubSwatch.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/github/GithubSwatch.js",
+      "name": "./node_modules/react-color/lib/components/github/GithubSwatch.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./components/hue/Hue": [
+    {
+      "id": "./node_modules/react-color/lib/components/hue/Hue.js",
+      "name": "./node_modules/react-color/lib/components/hue/Hue.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/hue/Hue.js",
+      "name": "./node_modules/react-color/lib/components/hue/Hue.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./HuePointer": [
+    {
+      "id": "./node_modules/react-color/lib/components/hue/HuePointer.js",
+      "name": "./node_modules/react-color/lib/components/hue/HuePointer.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/hue/HuePointer.js",
+      "name": "./node_modules/react-color/lib/components/hue/HuePointer.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./components/material/Material": [
+    {
+      "id": "./node_modules/react-color/lib/components/material/Material.js",
+      "name": "./node_modules/react-color/lib/components/material/Material.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/material/Material.js",
+      "name": "./node_modules/react-color/lib/components/material/Material.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./components/photoshop/Photoshop": [
+    {
+      "id": "./node_modules/react-color/lib/components/photoshop/Photoshop.js",
+      "name": "./node_modules/react-color/lib/components/photoshop/Photoshop.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/photoshop/Photoshop.js",
+      "name": "./node_modules/react-color/lib/components/photoshop/Photoshop.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./PhotoshopButton": [
+    {
+      "id": "./node_modules/react-color/lib/components/photoshop/PhotoshopButton.js",
+      "name": "./node_modules/react-color/lib/components/photoshop/PhotoshopButton.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/photoshop/PhotoshopButton.js",
+      "name": "./node_modules/react-color/lib/components/photoshop/PhotoshopButton.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./PhotoshopFields": [
+    {
+      "id": "./node_modules/react-color/lib/components/photoshop/PhotoshopFields.js",
+      "name": "./node_modules/react-color/lib/components/photoshop/PhotoshopFields.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/photoshop/PhotoshopFields.js",
+      "name": "./node_modules/react-color/lib/components/photoshop/PhotoshopFields.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./PhotoshopPointer": [
+    {
+      "id": "./node_modules/react-color/lib/components/photoshop/PhotoshopPointer.js",
+      "name": "./node_modules/react-color/lib/components/photoshop/PhotoshopPointer.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/photoshop/PhotoshopPointer.js",
+      "name": "./node_modules/react-color/lib/components/photoshop/PhotoshopPointer.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./PhotoshopPointerCircle": [
+    {
+      "id": "./node_modules/react-color/lib/components/photoshop/PhotoshopPointerCircle.js",
+      "name": "./node_modules/react-color/lib/components/photoshop/PhotoshopPointerCircle.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/photoshop/PhotoshopPointerCircle.js",
+      "name": "./node_modules/react-color/lib/components/photoshop/PhotoshopPointerCircle.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./PhotoshopPreviews": [
+    {
+      "id": "./node_modules/react-color/lib/components/photoshop/PhotoshopPreviews.js",
+      "name": "./node_modules/react-color/lib/components/photoshop/PhotoshopPreviews.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/photoshop/PhotoshopPreviews.js",
+      "name": "./node_modules/react-color/lib/components/photoshop/PhotoshopPreviews.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./components/sketch/Sketch": [
+    {
+      "id": "./node_modules/react-color/lib/components/sketch/Sketch.js",
+      "name": "./node_modules/react-color/lib/components/sketch/Sketch.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/sketch/Sketch.js",
+      "name": "./node_modules/react-color/lib/components/sketch/Sketch.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./SketchFields": [
+    {
+      "id": "./node_modules/react-color/lib/components/sketch/SketchFields.js",
+      "name": "./node_modules/react-color/lib/components/sketch/SketchFields.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/sketch/SketchFields.js",
+      "name": "./node_modules/react-color/lib/components/sketch/SketchFields.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./SketchPresetColors": [
+    {
+      "id": "./node_modules/react-color/lib/components/sketch/SketchPresetColors.js",
+      "name": "./node_modules/react-color/lib/components/sketch/SketchPresetColors.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/sketch/SketchPresetColors.js",
+      "name": "./node_modules/react-color/lib/components/sketch/SketchPresetColors.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./components/slider/Slider": [
+    {
+      "id": "./node_modules/react-color/lib/components/slider/Slider.js",
+      "name": "./node_modules/react-color/lib/components/slider/Slider.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/slider/Slider.js",
+      "name": "./node_modules/react-color/lib/components/slider/Slider.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./SliderPointer": [
+    {
+      "id": "./node_modules/react-color/lib/components/slider/SliderPointer.js",
+      "name": "./node_modules/react-color/lib/components/slider/SliderPointer.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/slider/SliderPointer.js",
+      "name": "./node_modules/react-color/lib/components/slider/SliderPointer.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./SliderSwatch": [
+    {
+      "id": "./node_modules/react-color/lib/components/slider/SliderSwatch.js",
+      "name": "./node_modules/react-color/lib/components/slider/SliderSwatch.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/slider/SliderSwatch.js",
+      "name": "./node_modules/react-color/lib/components/slider/SliderSwatch.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./SliderSwatches": [
+    {
+      "id": "./node_modules/react-color/lib/components/slider/SliderSwatches.js",
+      "name": "./node_modules/react-color/lib/components/slider/SliderSwatches.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/slider/SliderSwatches.js",
+      "name": "./node_modules/react-color/lib/components/slider/SliderSwatches.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./components/swatches/Swatches": [
+    {
+      "id": "./node_modules/react-color/lib/components/swatches/Swatches.js",
+      "name": "./node_modules/react-color/lib/components/swatches/Swatches.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/swatches/Swatches.js",
+      "name": "./node_modules/react-color/lib/components/swatches/Swatches.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./SwatchesColor": [
+    {
+      "id": "./node_modules/react-color/lib/components/swatches/SwatchesColor.js",
+      "name": "./node_modules/react-color/lib/components/swatches/SwatchesColor.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/swatches/SwatchesColor.js",
+      "name": "./node_modules/react-color/lib/components/swatches/SwatchesColor.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./SwatchesGroup": [
+    {
+      "id": "./node_modules/react-color/lib/components/swatches/SwatchesGroup.js",
+      "name": "./node_modules/react-color/lib/components/swatches/SwatchesGroup.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/swatches/SwatchesGroup.js",
+      "name": "./node_modules/react-color/lib/components/swatches/SwatchesGroup.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./components/twitter/Twitter": [
+    {
+      "id": "./node_modules/react-color/lib/components/twitter/Twitter.js",
+      "name": "./node_modules/react-color/lib/components/twitter/Twitter.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/components/twitter/Twitter.js",
+      "name": "./node_modules/react-color/lib/components/twitter/Twitter.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "../../helpers/alpha": [
+    {
+      "id": "./node_modules/react-color/lib/helpers/alpha.js",
+      "name": "./node_modules/react-color/lib/helpers/alpha.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/helpers/alpha.js",
+      "name": "./node_modules/react-color/lib/helpers/alpha.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "../../helpers/checkboard": [
+    {
+      "id": "./node_modules/react-color/lib/helpers/checkboard.js",
+      "name": "./node_modules/react-color/lib/helpers/checkboard.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/helpers/checkboard.js",
+      "name": "./node_modules/react-color/lib/helpers/checkboard.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "../../helpers/color": [
+    {
+      "id": "./node_modules/react-color/lib/helpers/color.js",
+      "name": "./node_modules/react-color/lib/helpers/color.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/helpers/color.js",
+      "name": "./node_modules/react-color/lib/helpers/color.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "../../helpers/hue": [
+    {
+      "id": "./node_modules/react-color/lib/helpers/hue.js",
+      "name": "./node_modules/react-color/lib/helpers/hue.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/helpers/hue.js",
+      "name": "./node_modules/react-color/lib/helpers/hue.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "../../helpers/interaction": [
+    {
+      "id": "./node_modules/react-color/lib/helpers/interaction.js",
+      "name": "./node_modules/react-color/lib/helpers/interaction.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/helpers/interaction.js",
+      "name": "./node_modules/react-color/lib/helpers/interaction.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "../../helpers/saturation": [
+    {
+      "id": "./node_modules/react-color/lib/helpers/saturation.js",
+      "name": "./node_modules/react-color/lib/helpers/saturation.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/helpers/saturation.js",
+      "name": "./node_modules/react-color/lib/helpers/saturation.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "react-color": [
+    {
+      "id": "./node_modules/react-color/lib/index.js",
+      "name": "./node_modules/react-color/lib/index.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/react-color/lib/index.js",
+      "name": "./node_modules/react-color/lib/index.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -6571,6 +8559,104 @@
     {
       "id": "./node_modules/react/index.js",
       "name": "./node_modules/react/index.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./autoprefix": [
+    {
+      "id": "./node_modules/reactcss/lib/autoprefix.js",
+      "name": "./node_modules/reactcss/lib/autoprefix.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/reactcss/lib/autoprefix.js",
+      "name": "./node_modules/reactcss/lib/autoprefix.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./components/active": [
+    {
+      "id": "./node_modules/reactcss/lib/components/active.js",
+      "name": "./node_modules/reactcss/lib/components/active.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/reactcss/lib/components/active.js",
+      "name": "./node_modules/reactcss/lib/components/active.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./components/hover": [
+    {
+      "id": "./node_modules/reactcss/lib/components/hover.js",
+      "name": "./node_modules/reactcss/lib/components/hover.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/reactcss/lib/components/hover.js",
+      "name": "./node_modules/reactcss/lib/components/hover.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./flattenNames": [
+    {
+      "id": "./node_modules/reactcss/lib/flattenNames.js",
+      "name": "./node_modules/reactcss/lib/flattenNames.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/reactcss/lib/flattenNames.js",
+      "name": "./node_modules/reactcss/lib/flattenNames.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "reactcss": [
+    {
+      "id": "./node_modules/reactcss/lib/index.js",
+      "name": "./node_modules/reactcss/lib/index.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/reactcss/lib/index.js",
+      "name": "./node_modules/reactcss/lib/index.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./loop": [
+    {
+      "id": "./node_modules/reactcss/lib/loop.js",
+      "name": "./node_modules/reactcss/lib/loop.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/reactcss/lib/loop.js",
+      "name": "./node_modules/reactcss/lib/loop.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./mergeClasses": [
+    {
+      "id": "./node_modules/reactcss/lib/mergeClasses.js",
+      "name": "./node_modules/reactcss/lib/mergeClasses.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/reactcss/lib/mergeClasses.js",
+      "name": "./node_modules/reactcss/lib/mergeClasses.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -8017,6 +10103,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "tinycolor2": [
+    {
+      "id": "./node_modules/tinycolor2/tinycolor.js",
+      "name": "./node_modules/tinycolor2/tinycolor.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/tinycolor2/tinycolor.js",
+      "name": "./node_modules/tinycolor2/tinycolor.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "to-camel-case": [
     {
       "id": "./node_modules/to-camel-case/index.js",
@@ -8409,6 +10509,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./addBox": [
+    {
+      "id": "./src/actions/addBox.ts",
+      "name": "./src/actions/addBox.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/actions/addBox.ts",
+      "name": "./src/actions/addBox.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./addCustomCheckpoint": [
     {
       "id": "./src/actions/addCustomCheckpoint.ts",
@@ -8479,6 +10593,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./deleteBox": [
+    {
+      "id": "./src/actions/deleteBox.ts",
+      "name": "./src/actions/deleteBox.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/actions/deleteBox.ts",
+      "name": "./src/actions/deleteBox.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./deleteCheckpoint": [
     {
       "id": "./src/actions/deleteCheckpoint.ts",
@@ -8531,6 +10659,20 @@
     {
       "id": "./src/actions/editCheckpoint.ts",
       "name": "./src/actions/editCheckpoint.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./editCustomMoveMap": [
+    {
+      "id": "./src/actions/editCustomMoveMap.ts",
+      "name": "./src/actions/editCustomMoveMap.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/actions/editCustomMoveMap.ts",
+      "name": "./src/actions/editCustomMoveMap.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -8869,34 +11011,6 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../assets/img/boxed-box.png": [
-    {
-      "id": "./src/assets/img/boxed-box.png",
-      "name": "./src/assets/img/boxed-box.png",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./src/assets/img/boxed-box.png",
-      "name": "./src/assets/img/boxed-box.png",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "../../assets/img/champs-box.png": [
-    {
-      "id": "./src/assets/img/champs-box.png",
-      "name": "./src/assets/img/champs-box.png",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./src/assets/img/champs-box.png",
-      "name": "./src/assets/img/champs-box.png",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
   "assets/img/croagunk.gif": [
     {
       "id": "./src/assets/img/croagunk.gif",
@@ -8921,20 +11035,6 @@
     {
       "id": "./src/assets/img/dead-box.png",
       "name": "./src/assets/img/dead-box.png",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "../../assets/img/team-box-body.png": [
-    {
-      "id": "./src/assets/img/team-box-body.png",
-      "name": "./src/assets/img/team-box-body.png",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./src/assets/img/team-box-body.png",
-      "name": "./src/assets/img/team-box-body.png",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -9045,16 +11145,18 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/AddPokemonButton/index.ts",
-      "name": "./src/components/AddPokemonButton/index.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
       "id": "./src/components/AddPokemonButton/AddPokemonButton.tsx",
       "name": "./src/components/AddPokemonButton/AddPokemonButton.tsx",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
+    }
+  ],
+  "components/AddPokemonButton": [
+    {
+      "id": "./src/components/AddPokemonButton/index.ts",
+      "name": "./src/components/AddPokemonButton/index.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
     },
     {
       "id": "./src/components/AddPokemonButton/index.ts",
@@ -9155,6 +11257,48 @@
     {
       "id": "./src/components/BaseEditor/index.ts",
       "name": "./src/components/BaseEditor/index.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./Box": [
+    {
+      "id": "./src/components/Box/Box.tsx",
+      "name": "./src/components/Box/Box.tsx",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/Box/Box.tsx",
+      "name": "./src/components/Box/Box.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./BoxForm": [
+    {
+      "id": "./src/components/Box/BoxForm.tsx",
+      "name": "./src/components/Box/BoxForm.tsx",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/Box/BoxForm.tsx",
+      "name": "./src/components/Box/BoxForm.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "components/Box": [
+    {
+      "id": "./src/components/Box/index.ts",
+      "name": "./src/components/Box/index.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/Box/index.ts",
+      "name": "./src/components/Box/index.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -9307,16 +11451,18 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/DeletePokemonButton/index.ts",
-      "name": "./src/components/DeletePokemonButton/index.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
       "id": "./src/components/DeletePokemonButton/DeletePokemonButton.tsx",
       "name": "./src/components/DeletePokemonButton/DeletePokemonButton.tsx",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
+    }
+  ],
+  "components/DeletePokemonButton": [
+    {
+      "id": "./src/components/DeletePokemonButton/index.ts",
+      "name": "./src/components/DeletePokemonButton/index.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
     },
     {
       "id": "./src/components/DeletePokemonButton/index.ts",
@@ -9451,20 +11597,6 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./Box": [
-    {
-      "id": "./src/components/PokemonEditor/Box.tsx",
-      "name": "./src/components/PokemonEditor/Box.tsx",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./src/components/PokemonEditor/Box.tsx",
-      "name": "./src/components/PokemonEditor/Box.tsx",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
   "./CurrentPokemonEdit": [
     {
       "id": "./src/components/PokemonEditor/CurrentPokemonEdit.tsx",
@@ -9557,16 +11689,18 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/PokemonIcon/index.ts",
-      "name": "./src/components/PokemonIcon/index.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
       "id": "./src/components/PokemonIcon/PokemonIcon.tsx",
       "name": "./src/components/PokemonIcon/PokemonIcon.tsx",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
+    }
+  ],
+  "components/PokemonIcon": [
+    {
+      "id": "./src/components/PokemonIcon/index.ts",
+      "name": "./src/components/PokemonIcon/index.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
     },
     {
       "id": "./src/components/PokemonIcon/index.ts",
@@ -9681,16 +11815,18 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/RulesEditor/index.ts",
-      "name": "./src/components/RulesEditor/index.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
       "id": "./src/components/RulesEditor/RulesEditor.tsx",
       "name": "./src/components/RulesEditor/RulesEditor.tsx",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
+    }
+  ],
+  "components/RulesEditor": [
+    {
+      "id": "./src/components/RulesEditor/index.ts",
+      "name": "./src/components/RulesEditor/index.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
     },
     {
       "id": "./src/components/RulesEditor/index.ts",
@@ -9811,7 +11947,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./Shared": [
+  "components/Shared": [
     {
       "id": "./src/components/Shared/index.ts",
       "name": "./src/components/Shared/index.ts",
@@ -9917,16 +12053,18 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/ThemeEditor/index.ts",
-      "name": "./src/components/ThemeEditor/index.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
       "id": "./src/components/ThemeEditor/ThemeEditor.tsx",
       "name": "./src/components/ThemeEditor/ThemeEditor.tsx",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
+    }
+  ],
+  "components/ThemeEditor": [
+    {
+      "id": "./src/components/ThemeEditor/index.ts",
+      "name": "./src/components/ThemeEditor/index.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
     },
     {
       "id": "./src/components/ThemeEditor/index.ts",
@@ -10209,6 +12347,20 @@
     {
       "id": "./src/reducers/confirmation.ts",
       "name": "./src/reducers/confirmation.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./customMoveMap": [
+    {
+      "id": "./src/reducers/customMoveMap.ts",
+      "name": "./src/reducers/customMoveMap.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/reducers/customMoveMap.ts",
+      "name": "./src/reducers/customMoveMap.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -10521,6 +12673,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./formatBallText": [
+    {
+      "id": "./src/utils/formatBallText.ts",
+      "name": "./src/utils/formatBallText.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/utils/formatBallText.ts",
+      "name": "./src/utils/formatBallText.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./gameOfOriginToColor": [
     {
       "id": "./src/utils/gameOfOriginToColor.ts",
@@ -10615,6 +12781,20 @@
     {
       "id": "./src/utils/getContrastColor.ts",
       "name": "./src/utils/getContrastColor.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./getDeepObject": [
+    {
+      "id": "./src/utils/getDeepObject.ts",
+      "name": "./src/utils/getDeepObject.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/utils/getDeepObject.ts",
+      "name": "./src/utils/getDeepObject.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -10801,6 +12981,20 @@
       "publicPath": "bundle.js.map"
     }
   ],
+  "./listOfEvolutions": [
+    {
+      "id": "./src/utils/listOfEvolutions.ts",
+      "name": "./src/utils/listOfEvolutions.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/utils/listOfEvolutions.ts",
+      "name": "./src/utils/listOfEvolutions.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
   "./listOfGames": [
     {
       "id": "./src/utils/listOfGames.ts",
@@ -10853,6 +13047,20 @@
     {
       "id": "./src/utils/listOfNatures.ts",
       "name": "./src/utils/listOfNatures.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./listOfPokeballs": [
+    {
+      "id": "./src/utils/listOfPokeballs.ts",
+      "name": "./src/utils/listOfPokeballs.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/utils/listOfPokeballs.ts",
+      "name": "./src/utils/listOfPokeballs.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }

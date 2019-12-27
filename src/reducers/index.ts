@@ -14,11 +14,13 @@ import { sawRelease } from './sawRelease';
 import { editor } from './editor';
 import { rules } from './rules';
 import { checkpoints } from './checkpoints';
+import { customMoveMap } from './customMoveMap';
 
 export const reducers = {
     box,
     checkpoints,
     confirmation,
+    customMoveMap,
     game,
     nuzlocke,
     pokemon,

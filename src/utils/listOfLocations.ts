@@ -505,6 +505,7 @@ export const listOfLocations = [
     'Giant\'s Seat',
     'North Lake Miloch',
     'Motostoke Riverbank',
+    'Motostoke Outskirts',
     'Bridge Field',
     'Stony Wilderness',
     'Dusty Bowl',
@@ -512,4 +513,8 @@ export const listOfLocations = [
     'Hammerlocke Hills',
     'Giant\'s Cap',
     'Lake of Outrage',
+    'Galar Mine',
+    'Galar Mine No. 2',
+    'Glimwood Tangle',
+    'Slumbering Weald',
 ];

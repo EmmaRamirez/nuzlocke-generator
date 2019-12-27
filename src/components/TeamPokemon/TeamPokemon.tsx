@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Pokemon } from 'models';
+import { Pokemon, Game } from 'models';
 import {
     getBackgroundGradient,
     typeToColor,
@@ -11,12 +11,16 @@ import {
     getGameGeneration,
     getContrastColor,
     gameOfOriginToColor,
+    formatBallText,
+    speciesToNumber,
 } from 'utils';
 import { GenderElement } from 'components/Shared';
 import { selectPokemon } from 'actions';
 import { reducers } from 'reducers';
 import { Moves } from './Moves';
 import * as Color from 'color';
+import { State } from 'state';
+import { css, cx } from 'emotion';
 
 const getMetLocationString = ({
     poke,
@@ -30,6 +34,9 @@ const getMetLocationString = ({
     const met = poke.met || '';
     const metLevel = poke.metLevel || '';
     if (poke.met) {
+        if (poke.met.toLocaleLowerCase() === 'starter') {
+            return `Met as ${met} at lv.${metLevel}`;
+        }
         if (oldMetLocationFormat) {
             return `Met ${determinePreposition()} ${met}, from lv.${metLevel}`;
         } else {
@@ -47,11 +54,12 @@ export interface TeamPokemonInfoProps {
 }
 
 export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
+
     public render() {
         const { pokemon, style } = this.props;
         const accentColor = style ? style.accentColor : '#111111';
-        const isCardsTheme = this.props.style.template === 'Cards';
-        const isCompactTheme = this.props.style.template === 'Compact';
+        const isCardsTheme = style.template === 'Cards';
+        const isCompactTheme = style.template === 'Compact';
         const getTypeOrNone = () => {
             if (pokemon) {
                 if (pokemon.types) {
@@ -91,7 +99,7 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                             {pokemon.nickname}
                         </span>
                         <span className='pokemon-name'>{pokemon.species}{
-                            pokemon.item && style.displayItemAsText ?
+                            pokemon.item && style.itemStyle === 'text' ?
                                 ` @ ${pokemon.item}`
                             : null
                         }</span>
@@ -117,6 +125,11 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                             poke: pokemon,
                             oldMetLocationFormat: style.oldMetLocationFormat,
                         })}
+                        {
+                            pokemon.pokeball && style.pokeballStyle === 'text' ?
+                                ` (in ${pokemon.pokeball})`
+                            : null
+                        }
                     </div>
                     {pokemon.nature && pokemon.nature !== 'None' ? (
                         <div className='pokemon-nature'>
@@ -126,6 +139,7 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                     {pokemon.ability ? (
                         <div className='pokemon-ability'>{pokemon.ability}</div>
                     ) : null}
+                    {pokemon.notes && <div className='pokemon-notes'>{pokemon.notes}</div>}
                     {style.displayExtraData && pokemon.extraData ? (
                         <div style={{display: 'flex', justifyContent: 'space-evenly', fontSize: '12px', width: '255px'}}>
                             {stat(pokemon.extraData['currentHp'], 'HP')}
@@ -150,8 +164,8 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
 
 export interface TeamPokemonBaseProps {
     pokemon: Pokemon;
-    game: any;
-    style: any;
+    game: Game;
+    style: Styles;
     selectPokemon: selectPokemon;
 }
 
@@ -199,21 +213,40 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
         super(props);
     }
 
+    private getSpriteStyle() {
+        if (this.props.style.spritesMode) {
+            if (this.props.style.scaleSprites) {
+                return {
+                      backgroundSize: 'auto',
+                      backgroundRepeat: 'no-repeat',
+                  };
+                } else {
+                return {
+                      backgroundSize: 'cover',
+                      backgroundRepeat: 'no-repeat',
+                  };
+                }
+            }
+        if (this.props.style.teamImages === 'dream world') {
+            return {
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+            };
+        } else {
+            return {
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+            };
+        }
+    }
+
     public render() {
         const { pokemon, style, game, selectPokemon } = this.props;
         const poke = pokemon;
 
         const getFirstType = poke.types ? poke.types[0] : 'Normal';
-        const spriteStyle =
-            this.props.style.spritesMode && !this.props.style.scaleSprites
-                ? {
-                      backgroundSize: 'auto',
-                      backgroundRepeat: 'no-repeat',
-                  }
-                : {
-                      backgroundSize: 'cover',
-                      backgroundRepeat: 'no-repeat',
-                  };
+        const getSecondType = poke.types ? poke.types[1] : 'Normal';
+        const spriteStyle = this.getSpriteStyle();
 
         const addProp = (item: any) => {
             const propName = `data-${item.toLowerCase()}`;
@@ -261,6 +294,70 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
             );
         }
 
+        const mvpLabelStyle = {
+            base: css`
+                position: absolute;
+                top: 0;
+                left: calc(50% - 3rem);
+                width: 6rem;
+                background: #e2d5a9;
+                border: 1px solid #eee;
+                padding: 2px .5rem;
+                text-align: center;
+                border-radius: 1rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #111;
+                font-size: 90%;
+                z-index: 10;
+            `,
+            Cards: css`
+                top: 2.25rem;
+            `,
+            Hexagons: css`
+                top: 18px;
+                transform: scale(0.8);
+            `,
+            Generations: css`
+                top: -4px;
+            `
+        };
+
+        const itemLabelStyle = {
+            base: css`
+                background: #111;
+                border: 5px solid white;
+                bottom: 0;
+                height: 3rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                left: 12px;
+                padding: .5rem;
+                position: absolute;
+                width: 3rem;
+                z-index: 10;
+            `,
+            ['round']: css`
+              border-radius: 50%;
+            `,
+            ['square']: css`
+              border-radius: 0;
+            `,
+            ['outer glow']: css`
+                background: transparent !important;
+                border: none !important;
+                filter: drop-shadow(0 0 2px white);
+                padding: 0;
+                margin: 0;
+                bottom: 0.5rem;
+            `,
+            ['text']: css`
+                display: none !important;
+            `
+        };
+
         return (
             <div className='pokemon-container' {...data}>
                 <div
@@ -293,22 +390,50 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                         }`}
                     />
                 </div>
-                {poke.item && !style.displayItemAsText ? (
+                {poke.mvp && <div
+                    className={cx(mvpLabelStyle.base, mvpLabelStyle[style.template])}
+                >
+                    <span style={{marginRight: '0.5rem', fontWeight: 'bold'}}>MVP</span><img style={{height: '1rem'}} alt='' role='presentation' src='./assets/mvp-crown.png' />
+                </div>}
+                {poke.pokeball && poke.pokeball !== 'None' && <div
+                            style={{
+                                top: style.template === 'Cards' ? '1rem' : undefined,
+                                left: '6rem',
+                                zIndex: 10,
+                                borderColor: typeToColor(getFirstType) || 'transparent',
+                                backgroundImage:
+                                    style.template === 'Hexagons' || style.pokeballStyle === 'outer glow'
+                                        ? getBackgroundGradient(
+                                            poke.types != null ? poke.types[0] : 'Normal',
+                                            poke.types != null ? poke.types[1] : 'Normal',
+                                        )
+                                        : '',
+                            }}
+                            className={cx(itemLabelStyle.base, itemLabelStyle[style.pokeballStyle])}
+                        >
+                        <img
+                            alt={poke.pokeball}
+                            src={`icons/pokeball/${formatBallText(poke.pokeball)}.png`}
+                        />
+                    </div>
+                }
+                {(poke.item || poke.customItemImage) && !style.displayItemAsText ? (
                     <div
-                        className={`pokemon-item ${this.props.style.itemStyle}`}
                         style={{
-                            borderColor: typeToColor(getFirstType) || 'transparent',
+                            borderColor: typeToColor(getSecondType) || 'transparent',
                             backgroundImage:
-                                style.template === 'Hexagons'
+                                style.template === 'Hexagons' || style.itemStyle === 'outer glow'
                                     ? getBackgroundGradient(
                                           poke.types != null ? poke.types[0] : 'Normal',
                                           poke.types != null ? poke.types[1] : 'Normal',
                                       )
                                     : '',
-                        }}>
+                        }}
+                        className={cx(itemLabelStyle.base, itemLabelStyle[style.itemStyle])}
+                    >
                         <img
                             alt={poke.item}
-                            src={`icons/hold-item/${(poke.item || '')
+                            src={poke.customItemImage ? poke.customItemImage : `icons/hold-item/${(poke.item || '')
                                 .toLowerCase()
                                 .replace(/\'/g, '')
                                 .replace(/\s/g, '-')}.png`}
@@ -326,7 +451,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
 }
 
 export const TeamPokemon = connect(
-    (state: Partial<typeof reducers>) => ({
+    (state: State) => ({
         style: state.style,
         game: state.game,
     }),

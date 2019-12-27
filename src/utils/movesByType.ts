@@ -562,6 +562,7 @@ export const movesByType: MovesByType = {
         'Shell Smash',
         'ViceGrip',
         'Vice Grip',
+        'Vise Grip',
         'Crush Grip',
         'Barrage',
         'Camouflage',

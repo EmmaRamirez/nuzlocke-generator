@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { matchSpeciesToTypes, getMoveType } from 'utils';
+import { matchSpeciesToTypes, getMoveType, formatBallText } from 'utils';
 import { editPokemon, selectPokemon } from 'actions';
 
 import { ErrorBoundary } from 'components/Shared';
 
-import { TagInput, Classes } from '@blueprintjs/core';
+import { TagInput, Classes, TextArea } from '@blueprintjs/core';
 import { State } from 'state';
 import { Pokemon } from 'models';
 
 interface CurrentPokemonInputProps {
     labelName: string;
     inputName: string;
-    type: 'number' | 'text' | 'select' | 'checkbox' | 'double-select' | 'moves';
+    type: 'number' | 'text' | 'select' | 'checkbox' | 'double-select' | 'moves' | 'textArea';
     value: any;
     placeholder?: string;
     transform?: (v: any) => string;
@@ -56,7 +56,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
             edit = {
                 [inputName]: e.target.value,
             };
-        } else if (inputName === 'champion' || inputName === 'shiny' || inputName === 'hidden') {
+        } else if (inputName === 'champion' || inputName === 'shiny' || inputName === 'hidden' || inputName === 'mvp') {
             edit = {
                 [inputName]: e.target.checked,
             };
@@ -116,6 +116,19 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                 />
             );
         }
+        if (type === 'textArea') {
+            return (
+                <TextArea
+                    onChange={event => this.onChange(event, inputName)}
+                    name={inputName}
+                    value={value}
+                    placeholder={placeholder}
+                    disabled={disabled}
+                    style={{width: '100%'}}
+                    className={disabled && `${Classes.DISABLED} ${Classes.TEXT_MUTED} pt-fill`}
+                />
+            );
+        }
         if (type === 'number') {
             return (
                 <input
@@ -130,10 +143,12 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         }
         if (type === 'select') {
             return (
-                <div className='pt-select'>
+                <div className='pt-select' style={inputName === 'status' ? {width: '120px'} : {}}>
+                    {inputName === 'pokeball' && value && value !== 'None' ? <img style={{position: 'absolute'}} alt={value} src={`icons/pokeball/${formatBallText(value)}.png`} /> : null}
                     <select
                         onChange={event => this.onChange(event, inputName, undefined, undefined, pokemon)}
                         value={value}
+                        style={inputName === 'pokeball' ? {paddingLeft: '2rem'} : {}}
                         name={inputName}>
                         {options
                             ? options.map((item, index) => <option key={index}>{item}</option>)

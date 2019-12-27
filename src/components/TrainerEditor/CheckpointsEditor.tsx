@@ -31,12 +31,16 @@ export class CheckpointsSelect extends React.Component<
     CheckpointsSelectProps,
     CheckpointsSelectState
 > {
-    private renderOptions(checkpointTargetName) {
+    private renderOptions(checkpoint) {
+        const {name, image} = checkpoint;
+
+        const isImageUnique = getAllBadges().map(badge => badge.image).includes(image);
+
         return (
             <div style={{ padding: '1rem', height: '400px', overflowY: 'auto' }}>
                 {getAllBadges().map((badge, key) => {
                     return (
-                        <Button onClick={e => this.props.onEdit({ image: badge.image }, checkpointTargetName)} key={key} name={badge.name} style={{ display: 'block' }} className={Classes.MINIMAL}>
+                        <Button onClick={e => this.props.onEdit({ image: badge.image }, name)} key={key} name={badge.name} style={{ display: 'block' }} className={Classes.MINIMAL}>
                             <img
                                 className={cx(styles.checkpointImage(1))}
                                 alt={badge.name}
@@ -56,7 +60,7 @@ export class CheckpointsSelect extends React.Component<
             <Popover
                 minimal
                 interactionKind={PopoverInteractionKind.CLICK}
-                content={this.renderOptions(checkpoint.name)}>
+                content={this.renderOptions(checkpoint)}>
                 <div
                     role='select'
                     className={cx(styles.checkpointSelect, Classes.SELECT, Classes.BUTTON)}>
@@ -64,7 +68,7 @@ export class CheckpointsSelect extends React.Component<
                         <img
                             className={cx(styles.checkpointImage(1))}
                             alt={checkpoint.name}
-                            src={`./img/checkpoints/${checkpoint.image}.png`}
+                            src={checkpoint.image.startsWith('http') ? checkpoint.image : `./img/checkpoints/${checkpoint.image}.png`}
                         />{' '}
                         {checkpoint.name}
                     </div>
@@ -136,7 +140,7 @@ export class CheckpointsEditorBase extends React.Component<
                             <img
                                 className={cx(styles.checkpointImage())}
                                 alt={checkpoint.name}
-                                src={`./img/checkpoints/${checkpoint.image}.png`}
+                                src={checkpoint.image.startsWith('http') ? checkpoint.image : `./img/checkpoints/${checkpoint.image}.png`}
                             />
                             <input onChange={e => this.props.editCheckpoint({ name: e.target.value }, checkpoint.name)} className={Classes.INPUT} type='text' value={checkpoint.name} />
                         </div>
@@ -145,6 +149,10 @@ export class CheckpointsEditorBase extends React.Component<
                             <Button icon='upload'>Upload Image</Button>
                             <input style={{ cursor: 'pointer', opacity: 0, position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} onChange={this.onUpload} type='file' />
                         </div> */}
+                        <div className='pt-input-group'>
+                            <Icon icon={'link'} />
+                            <input className='pt-input' placeholder='https://...' value={checkpoint.image} type='text' onChange={e => this.props.editCheckpoint({ image: e.target.value }, checkpoint.name)} />
+                        </div>
                         <Icon style={{ cursor: 'pointer' }} onClick={e => this.props.deleteCheckpoint(checkpoint.name)} className={cx(styles.checkpointDelete)} icon='trash' />
                     </li>
                 );

@@ -14,6 +14,8 @@ export const colorInput = css`
     padding: 0;
     width: 1rem;
     -webkit-apperance: none;
+    user-select: none;
+    -moz-user-select: none;
     &::-webkit-color-swatch {
         border: none;
         border-radius: 50%;

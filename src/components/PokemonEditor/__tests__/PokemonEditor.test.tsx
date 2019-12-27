@@ -16,7 +16,7 @@ describe('<PokemonEditor />', () => {
         } as State);
         const wrapper = mount(
             <Provider store={store}>
-                <PokemonEditorBase team={[]} boxes={[]} game={{ name: 'Red' }} />
+                <PokemonEditorBase team={[]} boxes={[]} game={{ name: 'Red', customName: '' }} />
             </Provider>,
         );
         expect(wrapper).toBeDefined();

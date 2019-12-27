@@ -40,12 +40,14 @@ interface PokemonIconProps {
     isDragging?: boolean;
 }
 
-const formatSpeciesName = (species: string | null) => {
+export const formatSpeciesName = (species: string | null) => {
     if (species == null) return 'unknown';
     if (species === 'Nidoran♀') return 'nidoran-f';
     if (species === 'Nidoran♂') return 'nidoran-m';
     if (species === 'Mr. Mime') return 'mr-mime';
+    if (species === 'Mr. Rime') return 'mr-rime';
     if (species.startsWith('Farfetch')) return 'farfetchd';
+    if (species.startsWith('Sirfetch')) return 'sirfetchd';
     if (species === 'Mime Jr.') return 'mime-jr';
     if (species === 'Flabébé') return 'flabebe';
     if (species.startsWith('Tapu')) return species.toLowerCase().replace(/\s/, '-');
@@ -74,17 +76,6 @@ const iconSource = {
 
 type IconURLArgs = Pick<Pokemon, 'id' | 'species' | 'forme' | 'shiny' | 'gender' | 'customIcon' | 'egg'>;
 
-export const isGalarianForme = (forme: Forme, num: number) => {
-    const ids = [
-        // Gigantamax
-        6, 12, 25, 68, 94, 99, 131, 133, 143, 569, 809,
-        // Galarian
-        52, 77, 78, 83, 110, 122, 222, 263, 264, 554, 555, 562, 618
-    ];
-    const isGalarianOrGigantamax = (forme as string) === 'Galarian' || (forme as string) === 'Gigantamax';
-    if (ids.includes(num) && isGalarianOrGigantamax) return true;
-    return false;
-};
 
 export const getIconURL = ({ id, species, forme, shiny, gender, customIcon, egg }: IconURLArgs) => {
     const baseURL = `icons/pokemon/`;
@@ -93,15 +84,9 @@ export const getIconURL = ({ id, species, forme, shiny, gender, customIcon, egg 
         significantGenderDifferenceList.includes(species) && Gender.isFemale(gender)
             ? `female/`
             : '';
-    const num = speciesToNumber(species);
-    const leadingZerosNumber = num && num.toString().padStart(3, '0');
 
     if (species === 'Egg' || egg) return `${baseURL}egg.png`;
     if (customIcon) return customIcon;
-
-    if (forme && num && isGalarianForme(forme, num) || num && num >= 810) {
-        return `https://www.serebii.net/pokedex-swsh/icon/${leadingZerosNumber}${getFormeSWSH(forme as Forme)}.png`;
-    }
 
     return `${baseURL}${isShiny}/${isFemaleSpecific}${formatSpeciesName(species)}${getIconFormeSuffix(
         forme as keyof typeof Forme
@@ -179,4 +164,6 @@ export const PokemonIcon: React.ComponentClass<
 > = connect(
     (state: Pick<State, keyof State>) => ({ selectedId: state.selectedId }),
     mapDispatchToProps,
+    null,
+    {pure: false},
 )(PokemonIconBase as any);
