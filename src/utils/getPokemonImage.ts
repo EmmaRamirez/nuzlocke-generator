@@ -3,6 +3,7 @@ import { Styles } from './styleDefaults';
 import { capitalize } from './capitalize';
 import { Game } from 'utils';
 import { Forme } from './Forme';
+import { getIconFormeSuffix } from './getIconFormeSuffix';
 
 const sugiFormeNotation = (forme: Forme) => {
     if (typeof forme === 'undefined') return '';
@@ -99,7 +100,7 @@ const getGameNameSerebii = (name: Game) => {
 export interface GetPokemonImage {
     customImage?: string;
     forme?: keyof typeof Forme;
-    species: string;
+    species?: string;
     name?: Game;
     style: Styles;
     shiny?: boolean;
@@ -113,8 +114,8 @@ export function getPokemonImage({
     style,
     shiny,
 }: GetPokemonImage) {
-    const regularNumber = speciesToNumber(species);
-    const leadingZerosNumber = (speciesToNumber(species) || 0).toString().padStart(3, '0');
+    const regularNumber = speciesToNumber(species || 'Ditto');
+    const leadingZerosNumber = (speciesToNumber(species || 'Ditto') || 0).toString().padStart(3, '0');
 
     if (customImage) {
         return `url(${customImage})`;
@@ -178,7 +179,9 @@ export function getPokemonImage({
     }
 
     if (style.teamImages === 'shuffle') {
-        return `url(img/shuffle/${(species || '').toLocaleLowerCase()}.png)`;
+        return `url(img/shuffle/${(species || 'Ditto').trim().toLocaleLowerCase()}${getIconFormeSuffix(
+            forme as keyof typeof Forme
+        )}.png)`;
     }
 
     return `url(img/${(

@@ -41,8 +41,8 @@ export class EditorBase extends React.Component<{ editor: any; style: any }, {}>
                 <TrainerEditor />
                 <PokemonEditor />
                 <StyleEditor />
-                <HotkeysEditor />
                 <DataEditor />
+                <HotkeysEditor />
                 <BugReporter />
             </Scrollbars>
         );

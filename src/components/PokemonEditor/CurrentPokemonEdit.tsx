@@ -219,7 +219,7 @@ export class CurrentPokemonEditBase extends React.Component<
                         'None',
                     ]}
                 />
-                <CurrentPokemonLayoutItem>
+                <CurrentPokemonLayoutItem checkboxes>
                     <CurrentPokemonInput
                         labelName='Shiny'
                         inputName='shiny'

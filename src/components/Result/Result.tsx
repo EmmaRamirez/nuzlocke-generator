@@ -278,6 +278,19 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     </>
                     }
                     {style.displayRules && style.displayRulesLocation === 'bottom' ? rulesContainer : null}
+
+                    {/*<div className='backsprite-montage' style={{
+                        width: '100%',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'bottom',
+                        margin: '0 auto',
+                        height: '92px',
+                    }}>
+                        {this.getPokemonByStatus('Team').map((poke, idx) => {
+                            return <img style={{height: '128px', marginLeft: '-32px', zIndex: 6 - idx, imageRendering: 'pixelated' }} alt='' role='presentation' src={`https://img.pokemondb.net/sprites/firered-leafgreen/back-normal/${(poke.species || '').toLowerCase()}.png`} />;
+                        })}
+                    </div>*/}
                 </div>
             </Scrollbars>
         );

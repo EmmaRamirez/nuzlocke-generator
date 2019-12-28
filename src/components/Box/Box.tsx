@@ -113,6 +113,8 @@ export class BoxBase extends React.Component<BoxProps> {
         const { pokemon, name, boxId, filterString, connectDropTarget, canDrop, background } = this.props;
         const filter = filterString === 'All' ? undefined : filterString;
 
+        console.log('deleteButton', name, !['Team', 'Boxed', 'Dead', 'Champs'].includes(name));
+
         return connectDropTarget!(
             <div
                 style={{
@@ -131,7 +133,7 @@ export class BoxBase extends React.Component<BoxProps> {
                             {wallpapers.map(wall => <MenuItem onClick={this.editBox(wall.background, name, boxId)} text={wall.name} />)}
                         </MenuItem>
                         <MenuItem onClick={this.clearBox(name)} className='pt-fill' text={`Clear Box`} />
-                        <MenuItem onClick={this.deleteBox(boxId)} className='pt-fill' text={'Delete Box'} />
+                        {!['Team', 'Boxed', 'Dead', 'Champs'].includes(name) && <MenuItem onClick={this.deleteBox(boxId)} className='pt-fill' text={'Delete Box'} />}
                     </>}
                 >
                     <span

@@ -12,5 +12,5 @@ export const iconBar = css`
 export const copyButton = css`
     color: lightblue;
     margin-left: auto;
-    pointer: cursor;
+    cursor: pointer;
 `;

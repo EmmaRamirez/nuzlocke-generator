@@ -301,6 +301,86 @@ export const handleSpeciesTypeEdgeCases = ({
         return [Types.Grass, Types.Flying];
     }
 
+    if (match({
+        ...data,
+        species: ['Rotom'],
+        forme: ['Mow'],
+    })) {
+        return [Types.Electric, Types.Grass];
+    }
+
+    if (match({
+        ...data,
+        species: ['Rotom'],
+        forme: ['Wash'],
+    })) {
+        return [Types.Electric, Types.Water];
+    }
+
+    if (match({
+        ...data,
+        species: ['Rotom'],
+        forme: ['Frost'],
+    })) {
+        return [Types.Electric, Types.Ice];
+    }
+
+    if (match({
+        ...data,
+        species: ['Rotom'],
+        forme: ['Fan'],
+    })) {
+        return [Types.Electric, Types.Flying];
+    }
+
+    if (match({
+        ...data,
+        species: ['Rotom'],
+        forme: ['Heat'],
+    })) {
+        return [Types.Electric, Types.Fire];
+    }
+
+    if (match({
+        ...data,
+        species: ['Castform'],
+        forme: ['Sunny'],
+    })) {
+        return [Types.Fire, Types.Fire];
+    }
+
+    if (match({
+        ...data,
+        species: ['Castform'],
+        forme: ['Hail'],
+    })) {
+        return [Types.Ice, Types.Ice];
+    }
+
+    if (match({
+        ...data,
+        species: ['Castform'],
+        forme: ['Rainy'],
+    })) {
+        return [Types.Water, Types.Water];
+    }
+
+    if (match({
+        ...data,
+        species: ['Wormadam'],
+        forme: ['Sandy'],
+    })) {
+        return [Types.Bug, Types.Ground];
+    }
+
+    if (match({
+        ...data,
+        species: ['Wormadam'],
+        forme: ['Trash'],
+    })) {
+        return [Types.Bug, Types.Steel];
+    }
+
     return null;
 };
 

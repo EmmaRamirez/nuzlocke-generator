@@ -20,7 +20,7 @@ export function pokemon(
             });
         case EDIT_POKEMON:
             const pokemonToEdit = state.find(poke => poke.id === action.id);
-            const deathTimestamp = action.edits && action.edits.status === 'Dead' ? {deathTimestamp: Date.now() } : {};
+            const deathTimestamp = action.edits && (pokemonToEdit && pokemonToEdit.status !== 'Dead') && action.edits.status === 'Dead' ? {deathTimestamp: Date.now() } : {};
             const newPoke = { ...pokemonToEdit, ...action.edits, ...deathTimestamp };
             if (state.length === 1) {
                 // TODO: Switch to pure ... notation?

@@ -62,6 +62,10 @@ export enum Forme {
     'Dusk Mane' = 'dusk-mane',
     Ultra = 'ultra',
 
+    Plant = 'plant',
+    Sandy = 'sandy',
+    Trash = 'trash',
+
     Sky = 'sky',
 
     Origin = 'origin',
@@ -69,4 +73,9 @@ export enum Forme {
     Attack = 'attack',
     Defense = 'defense',
     Speed = 'speed',
+
+    'East Sea' = 'east',
+    'West Sea' = 'west',
+
+
 }

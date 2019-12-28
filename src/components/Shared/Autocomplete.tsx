@@ -91,8 +91,9 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
         }, 250);
     };
 
-    private handleKeyDown = e => {
+    private handleKeyDown = (e: React.KeyboardEvent) => {
         if (e.which === 13) {
+            e.preventDefault();
             if (this.state.visibleItems.includes(this.state.currentValue)) {
                 this.closeList(e);
             } else {

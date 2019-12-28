@@ -36,6 +36,12 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
         isOpen: !this.props.sawRelease[pkg.version],
     };
 
+    public componentWillMount() {
+        if (pkg.version.split('.')[2] !== 0) {
+            this.props.seeRelease(pkg.version);
+        }
+    }
+
     private closeDialog = e => {
         this.props.seeRelease(pkg.version);
         this.toggleDialog(null);
