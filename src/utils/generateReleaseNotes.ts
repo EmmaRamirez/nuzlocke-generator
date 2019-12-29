@@ -408,4 +408,13 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 
 `,
+    '1.0.3': `
+## Fixes
+- Fix BugReporter issue
+
+## Known Issues
+- Rules are not being properly imported
+- Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`
 };

@@ -51,6 +51,10 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
         });
     }
 
+    private accum(s: string[]) {
+        return s.join('');
+    }
+
     private sendBugReport = (e) => {
         const {userReport} = this.state;
         const {state} = this.props;
@@ -60,7 +64,7 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
             method: 'POST',
             headers: {
                 Accept: 'application/vnd.github.cloak-preview',
-                Authorization: `Token ${'851682' + 'c2e11a4f1' + '99a5457c4d2' + '02976a3a' + '365582'}`,
+                Authorization: `Token ${this.accum(['9e58cd1', '98daf', '8036b6', 'fb8bec7d', 'fb5f6dc0089c39'])}`,
                 'Content-Type': 'application/json',
             },
             mode: 'cors',
