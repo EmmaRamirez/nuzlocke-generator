@@ -51,10 +51,10 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
 
     private isDownloadDisabled() {
         return (
-            this.props.style.teamImages === 'Sugimori' as TeamImagesType ||
+            this.props.style.teamImages === 'sugimori' ||
             this.props.style.spritesMode ||
             this.props.style.useSpritesForChampsPokemon ||
-            this.props.pokemon.some(p => p.status === 'Team' && !isEmpty(p.customImage))
+            this.props.pokemon.some(p => (p.status === 'Team' && !isEmpty(p.customImage)) || !isEmpty(p.customIcon) || p.status === 'Team' && !isEmpty(p.customItemImage))
         );
     }
 

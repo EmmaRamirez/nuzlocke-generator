@@ -1,17 +1,20 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Dialog, Menu, MenuItem } from '@blueprintjs/core';
-import { Table, Column, EditableCell, ITableProps, IColumnProps } from '@blueprintjs/table';
+import { Table, Column, EditableCell, ITableProps, IColumnProps, ColumnHeaderCell } from '@blueprintjs/table';
 import { AddPokemonButton } from 'components/AddPokemonButton';
 import { editPokemon } from 'actions';
 import { Pokemon, PokemonKeys } from 'models';
 import { generateEmptyPokemon, sortPokes } from 'utils';
+import { State } from 'state';
+import { ErrorBoundary } from 'components';
+import { omit } from 'ramda';
 
 export interface MassEditorProps {
     isOpen: boolean;
     toggleDialog?: any;
-    pokemon: Pokemon[];
-    style: any;
+    pokemon: State['pokemon'];
+    style: State['style'];
     editPokemon: (edits: object, id: string) => any;
 }
 
@@ -49,32 +52,42 @@ export class MassEditorBase extends React.Component<
     //     return columnWidths;
     // }
 
-    private renderMenu() {
+    private renderMenu = () => {
         return (
             <Menu>
-                <MenuItem icon='sort-asc' onClick={_ => null} text='Sort Asc' />
-                <MenuItem icon='sort-desc' onClick={_ => null} text='Sort Desc' />
+                <MenuItem icon='sort-asc' onClick={this.sortAsc} text='Sort Asc' />
+                <MenuItem icon='sort-desc' onClick={this.sortDesc} text='Sort Desc' />
             </Menu>
         );
     }
 
+    private sortAsc = () => {
+
+    }
+
+    private sortDesc = () => {
+
+    }
+
     private renderColumns(pokemon: MassEditorProps['pokemon']) {
-        return Object.keys(PokemonKeys)
+        return Object.keys(omit(['extraData'], PokemonKeys))
             .filter(k => k !== 'id')
             .map(key => {
                 return (
                     <Column
+                        columnHeaderCellRenderer={() => <ColumnHeaderCell name={key} menuRenderer={this.renderMenu} />}
                         key={key}
                         name={key}
                         cellRenderer={r => (
                             <EditableCell
                                 onConfirm={(v, _, c) => {
                                     let value: any = v;
+                                    console.log('from editing a cell', v);
                                     if (key === 'types') {
-                                        value = v && v.split(',').map(s => s.trim());
+                                        value = v && typeof v === 'string' &&  v.split(',').map(s => s.trim());
                                     }
                                     if (key === 'moves') {
-                                        value = v && v.split(',').map(s => s.trim());
+                                        value = v && typeof v === 'string' &&  v.split(',').map(s => s.trim());
                                     }
                                     this.props.editPokemon(
                                         {
@@ -102,14 +115,17 @@ export class MassEditorBase extends React.Component<
                 }`}
                 title='Mass Editor'>
                 <div className='pt-dialog-body'>
-                    <AddPokemonButton defaultPokemon={generateEmptyPokemon(this.props.pokemon)} />
-                    <div style={{ padding: '.25rem' }} />
-                    <Table
-                        defaultColumnWidth={100}
-                        numRows={this.props.pokemon.length}
-                        numFrozenColumns={1}>
-                        {this.renderColumns(this.props.pokemon.sort(sortPokes)) as React.ReactElement<IColumnProps>[]}
-                    </Table>
+                    <ErrorBoundary>
+                        <AddPokemonButton defaultPokemon={generateEmptyPokemon(this.props.pokemon)} />
+                        <div style={{ padding: '.25rem' }} />
+                        <Table
+                            columnWidths={[150, 0, 150]}
+                            defaultColumnWidth={100}
+                            numRows={this.props.pokemon.length}
+                            numFrozenColumns={1}>
+                            {this.renderColumns(this.props.pokemon.sort(sortPokes)) as React.ReactElement<IColumnProps>[]}
+                        </Table>
+                    </ErrorBoundary>
                 </div>
             </Dialog>
         );
@@ -117,7 +133,7 @@ export class MassEditorBase extends React.Component<
 }
 
 export const MassEditor = connect(
-    (state: any, props) => ({
+    (state: State) => ({
         pokemon: state.pokemon,
         style: state.style,
     }),

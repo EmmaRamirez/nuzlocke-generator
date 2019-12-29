@@ -408,4 +408,15 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 
 `,
+    '1.0.3': `
+## Fixes
+- Disabled the download button on Sugimori images (it never worked, sorry)
+- Added shiny Alolan Dugtrio for anon
+
+## Known Issues
+- Rules are not being properly imported from json files
+- Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+
+`,
 };

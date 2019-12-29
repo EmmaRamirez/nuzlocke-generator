@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Button, ButtonGroup, Dialog, Callout, TextArea, Intent, Alert, Toaster } from '@blueprintjs/core';
+import { Button, ButtonGroup, Dialog, Callout, TextArea, Intent, Alert, Toaster, Switch } from '@blueprintjs/core';
 import { PokemonIconBase } from 'components/PokemonIcon';
 import { ErrorBoundary } from 'components/Shared';
 import * as uuid from 'uuid/v4';
@@ -8,7 +8,7 @@ import { persistor } from 'store';
 import { replaceState } from 'actions';
 import { style } from 'reducers/style';
 import { reducers } from 'reducers';
-// import { parseFile } from 'pokemon-savefile-parser/gen1.ts';
+import { parseGen1Save, parseGen2Save } from 'parsers';
 import converter from 'hex2dec';
 import { Game } from 'models';
 
@@ -25,6 +25,8 @@ export interface DataEditorState {
     mode: 'import' | 'export';
     data: string;
     href: string;
+    selectedGame: string;
+    mergeDataMode: boolean;
 }
 
 const hexEncode = function(str: string) {
@@ -60,6 +62,8 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
             mode: 'export',
             data: '',
             href: '',
+            selectedGame: 'RBY',
+            mergeDataMode: false,
         };
     }
 
@@ -137,6 +141,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
     private uploadFile = (replaceState, state) => e => {
         const file = this.fileInput.files[0];
         const reader = new FileReader();
+        const componentState = this.state;
 
 
         reader.readAsArrayBuffer(file);
@@ -145,20 +150,23 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
             const u = new Uint8Array(this.result as ArrayBuffer);
 
             console.log(u);
-            // parseFile(u, 'nuzlocke')
-            //     .then(res => {
-            //         res.pokemon = res.pokemon.filter(poke => poke.species);
-            //         const data = {game: DataEditorBase.determineGame(res.isYellow), pokemon: res.pokemon, trainer: res.trainer};
-            //         const newState = { ...state, ...data };
 
-            //         replaceState(newState);
-            //         console.log(
-            //             newState
-            //         );
-            //     })
-            //     .catch(err => {
-            //         console.error(err);
-            //     });
+            const functionToUse = componentState.selectedGame === 'RBY' ? parseGen1Save(u, 'nuzlocke') : parseGen2Save(u, 'nuzlocke');
+
+            functionToUse
+                .then(res => {
+                    res.pokemon = res.pokemon.filter(poke => poke.species);
+                    const data = {game: DataEditorBase.determineGame(res.isYellow), pokemon: res.pokemon, trainer: res.trainer};
+                    const newState = { ...state, ...data };
+
+                    replaceState(newState);
+                    console.log(
+                        newState
+                    );
+                })
+                .catch(err => {
+                    console.error(err);
+                });
         });
     };
 
@@ -249,12 +257,28 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         </>
                     )}
                 </Dialog>
-                {/*
-                <div className='pt-label pt-inline' style={{ padding: '.25rem 0', paddingBottom: '.5rem' }}>
-                    <label className='pt-label pt-text-muted'>Upload Save file</label>
-                    <input style={{ padding: '.25rem' }} className='pt-button' ref={ref => this.fileInput = ref } onChange={this.uploadFile(this.props.replaceState, this.props.state)} type='file' id='file' name='file' accept='.sav' />
+
+                <div style={{display: 'flex', alignItems: 'center'}}>
+                    <div className='pt-label pt-inline' style={{ padding: '.25rem 0', paddingBottom: '.5rem' }}>
+                        <label className='pt-label pt-text-muted'>Game</label>
+                        <div className='pt-select'>
+                            <select value={this.state.selectedGame} onChange={e => this.setState({selectedGame: e.target.value})}>
+                                {['RBY', 'GSC'].map(game => <option value={game}>{game}</option>)}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div className='pt-label pt-inline' style={{ padding: '.25rem 0', paddingBottom: '.5rem', marginLeft: '.25rem' }}>
+                        <label className='pt-label pt-text-muted'>Upload Save file</label>
+                        <input style={{ padding: '.25rem' }} className='pt-button' ref={ref => this.fileInput = ref } onChange={this.uploadFile(this.props.replaceState, this.props.state)} type='file' id='file' name='file' accept='.sav' />
+                    </div>
+
+                    <div className='pt-label pt-inline' style={{ padding: '.25rem 0', paddingBottom: '.5rem', marginLeft: '.25rem' }}>
+                        <label className='pt-label pt-text-muted'>Merge Data</label>
+                        <Switch checked={this.state.mergeDataMode} onChange={e => this.setState({mergeDataMode: !this.state.mergeDataMode})} />
+                    </div>
                 </div>
-                */}
+
                 <ButtonGroup>
                     <Button
                         onClick={e => this.importState()}
