@@ -121,6 +121,10 @@ export function getPokemonImage({
         return `url(${customImage})`;
     }
 
+    if (species === 'Dugtrio' && forme === 'Alolan' && shiny) {
+        return `url(img/alolan-dugtrio-shiny.jpg)`;
+    }
+
     if (
         style.spritesMode &&
         (name === 'Black' ||

@@ -11,6 +11,7 @@ import { reducers } from 'reducers';
 // import { parseFile } from 'pokemon-savefile-parser/gen1.ts';
 import converter from 'hex2dec';
 import { Game } from 'models';
+import { omit } from 'ramda';
 
 const trash = require('assets/img/trash.png');
 
@@ -89,11 +90,9 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         this.setState({
             mode: 'export',
         });
-        delete state.router;
-        delete state._persist;
         this.setState({ isOpen: true });
         this.setState({
-            href: `data:text/plain;charset=utf-8,${encodeURIComponent(JSON.stringify(state))}`,
+            href: `data:text/plain;charset=utf-8,${encodeURIComponent(JSON.stringify(omit(['router', '._persist'], state)))}`,
         });
     };
 

@@ -416,5 +416,11 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Rules are not being properly imported
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`,
+
+    '1.0.4': `
+## Fixes
+- Added Shiny Alolan Dugtrio
+- Fixed the saves being lost issue--this was due to how the downloading file feature was originally configured. Please file another bug report if it is still present.
 `
 };

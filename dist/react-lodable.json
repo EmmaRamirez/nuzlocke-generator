@@ -181,6 +181,12 @@
       "publicPath": "bundle.js"
     },
     {
+      "id": "./node_modules/ramda/es/keys.js",
+      "name": "./node_modules/ramda/es/keys.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/keys.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/keys.js",
       "file": "bundle.js.map",
@@ -189,6 +195,12 @@
     {
       "id": "./node_modules/lodash/keys.js",
       "name": "./node_modules/lodash/keys.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./node_modules/ramda/es/keys.js",
+      "name": "./node_modules/ramda/es/keys.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -215,8 +227,20 @@
       "publicPath": "bundle.js"
     },
     {
+      "id": "./node_modules/ramda/es/props.js",
+      "name": "./node_modules/ramda/es/props.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/props.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/props.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./node_modules/ramda/es/props.js",
+      "name": "./node_modules/ramda/es/props.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -793,7 +817,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./navbarDivider": [
+  "./navbar/navbarDivider": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarDivider.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarDivider.js",
@@ -807,7 +831,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./navbarGroup": [
+  "./navbar/navbarGroup": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarGroup.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarGroup.js",
@@ -821,7 +845,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./navbarHeading": [
+  "./navbar/navbarHeading": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarHeading.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarHeading.js",
@@ -849,7 +873,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../overlay/overlay": [
+  "./overlay/overlay": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
@@ -877,7 +901,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../popover/popover": [
+  "./popover/popover": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/popover/popover.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/popover/popover.js",
@@ -1003,7 +1027,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./spinner/spinner": [
+  "../spinner/spinner": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/spinner/spinner.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/spinner/spinner.js",
@@ -1101,7 +1125,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../text/text": [
+  "./text/text": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
@@ -1143,7 +1167,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./tooltip/tooltip": [
+  "../tooltip/tooltip": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/tooltip/tooltip.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/tooltip/tooltip.js",
@@ -1395,7 +1419,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./cell/formats/jsonFormat": [
+  "./formats/jsonFormat": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/jsonFormat.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/jsonFormat.js",
@@ -1409,7 +1433,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./cell/formats/truncatedFormat": [
+  "./formats/truncatedFormat": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/truncatedFormat.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/truncatedFormat.js",
@@ -1451,7 +1475,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/classes": [
+  "../common/classes": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
@@ -1465,7 +1489,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./clipboard": [
+  "./common/clipboard": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/clipboard.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/clipboard.js",
@@ -1479,7 +1503,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/context": [
+  "./common/context": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/context.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/context.js",
@@ -1521,7 +1545,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/errors": [
+  "./common/errors": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/errors.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/errors.js",
@@ -1535,7 +1559,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./grid": [
+  "./common/grid": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/grid.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/grid.js",
@@ -1577,7 +1601,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/internal/focusedCellUtils": [
+  "./common/internal/focusedCellUtils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/internal/focusedCellUtils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/internal/focusedCellUtils.js",
@@ -1605,7 +1629,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/internal/scrollUtils": [
+  "./common/internal/scrollUtils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/internal/scrollUtils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/internal/scrollUtils.js",
@@ -1689,7 +1713,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/utils": [
+  "../../common/utils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
@@ -1997,7 +2021,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./tableQuadrant": [
+  "./quadrants/tableQuadrant": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/quadrants/tableQuadrant.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/quadrants/tableQuadrant.js",
@@ -5763,8 +5787,20 @@
       "publicPath": "bundle.js"
     },
     {
+      "id": "./node_modules/ramda/es/forEach.js",
+      "name": "./node_modules/ramda/es/forEach.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
       "id": "./node_modules/lodash/forEach.js",
       "name": "./node_modules/lodash/forEach.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./node_modules/ramda/es/forEach.js",
+      "name": "./node_modules/ramda/es/forEach.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -5805,8 +5841,20 @@
       "publicPath": "bundle.js"
     },
     {
+      "id": "./node_modules/ramda/es/hasIn.js",
+      "name": "./node_modules/ramda/es/hasIn.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
       "id": "./node_modules/lodash/hasIn.js",
       "name": "./node_modules/lodash/hasIn.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./node_modules/ramda/es/hasIn.js",
+      "name": "./node_modules/ramda/es/hasIn.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -5819,8 +5867,20 @@
       "publicPath": "bundle.js"
     },
     {
+      "id": "./node_modules/ramda/es/identity.js",
+      "name": "./node_modules/ramda/es/identity.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
       "id": "./node_modules/lodash/identity.js",
       "name": "./node_modules/lodash/identity.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./node_modules/ramda/es/identity.js",
+      "name": "./node_modules/ramda/es/identity.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -6057,8 +6117,20 @@
       "publicPath": "bundle.js"
     },
     {
+      "id": "./node_modules/ramda/es/keysIn.js",
+      "name": "./node_modules/ramda/es/keysIn.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
       "id": "./node_modules/lodash/keysIn.js",
       "name": "./node_modules/lodash/keysIn.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./node_modules/ramda/es/keysIn.js",
+      "name": "./node_modules/ramda/es/keysIn.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -6225,8 +6297,20 @@
       "publicPath": "bundle.js"
     },
     {
+      "id": "./node_modules/ramda/es/toString.js",
+      "name": "./node_modules/ramda/es/toString.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
       "id": "./node_modules/lodash/toString.js",
       "name": "./node_modules/lodash/toString.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./node_modules/ramda/es/toString.js",
+      "name": "./node_modules/ramda/es/toString.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -6465,6 +6549,4398 @@
     {
       "id": "./node_modules/raf/index.js",
       "name": "./node_modules/raf/index.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./F": [
+    {
+      "id": "./node_modules/ramda/es/F.js",
+      "name": "./node_modules/ramda/es/F.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/F.js",
+      "name": "./node_modules/ramda/es/F.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./T": [
+    {
+      "id": "./node_modules/ramda/es/T.js",
+      "name": "./node_modules/ramda/es/T.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/T.js",
+      "name": "./node_modules/ramda/es/T.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./__": [
+    {
+      "id": "./node_modules/ramda/es/__.js",
+      "name": "./node_modules/ramda/es/__.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/__.js",
+      "name": "./node_modules/ramda/es/__.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./add": [
+    {
+      "id": "./node_modules/ramda/es/add.js",
+      "name": "./node_modules/ramda/es/add.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/add.js",
+      "name": "./node_modules/ramda/es/add.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./addIndex": [
+    {
+      "id": "./node_modules/ramda/es/addIndex.js",
+      "name": "./node_modules/ramda/es/addIndex.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/addIndex.js",
+      "name": "./node_modules/ramda/es/addIndex.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./adjust": [
+    {
+      "id": "./node_modules/ramda/es/adjust.js",
+      "name": "./node_modules/ramda/es/adjust.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/adjust.js",
+      "name": "./node_modules/ramda/es/adjust.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./all": [
+    {
+      "id": "./node_modules/ramda/es/all.js",
+      "name": "./node_modules/ramda/es/all.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/all.js",
+      "name": "./node_modules/ramda/es/all.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./allPass": [
+    {
+      "id": "./node_modules/ramda/es/allPass.js",
+      "name": "./node_modules/ramda/es/allPass.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/allPass.js",
+      "name": "./node_modules/ramda/es/allPass.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./always": [
+    {
+      "id": "./node_modules/ramda/es/always.js",
+      "name": "./node_modules/ramda/es/always.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/always.js",
+      "name": "./node_modules/ramda/es/always.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./and": [
+    {
+      "id": "./node_modules/ramda/es/and.js",
+      "name": "./node_modules/ramda/es/and.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/and.js",
+      "name": "./node_modules/ramda/es/and.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./any": [
+    {
+      "id": "./node_modules/ramda/es/any.js",
+      "name": "./node_modules/ramda/es/any.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/any.js",
+      "name": "./node_modules/ramda/es/any.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./anyPass": [
+    {
+      "id": "./node_modules/ramda/es/anyPass.js",
+      "name": "./node_modules/ramda/es/anyPass.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/anyPass.js",
+      "name": "./node_modules/ramda/es/anyPass.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./ap": [
+    {
+      "id": "./node_modules/ramda/es/ap.js",
+      "name": "./node_modules/ramda/es/ap.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/ap.js",
+      "name": "./node_modules/ramda/es/ap.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./aperture": [
+    {
+      "id": "./node_modules/ramda/es/aperture.js",
+      "name": "./node_modules/ramda/es/aperture.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/aperture.js",
+      "name": "./node_modules/ramda/es/aperture.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./append": [
+    {
+      "id": "./node_modules/ramda/es/append.js",
+      "name": "./node_modules/ramda/es/append.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/append.js",
+      "name": "./node_modules/ramda/es/append.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./apply": [
+    {
+      "id": "./node_modules/ramda/es/apply.js",
+      "name": "./node_modules/ramda/es/apply.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/apply.js",
+      "name": "./node_modules/ramda/es/apply.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./applySpec": [
+    {
+      "id": "./node_modules/ramda/es/applySpec.js",
+      "name": "./node_modules/ramda/es/applySpec.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/applySpec.js",
+      "name": "./node_modules/ramda/es/applySpec.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./applyTo": [
+    {
+      "id": "./node_modules/ramda/es/applyTo.js",
+      "name": "./node_modules/ramda/es/applyTo.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/applyTo.js",
+      "name": "./node_modules/ramda/es/applyTo.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./ascend": [
+    {
+      "id": "./node_modules/ramda/es/ascend.js",
+      "name": "./node_modules/ramda/es/ascend.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/ascend.js",
+      "name": "./node_modules/ramda/es/ascend.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./assoc": [
+    {
+      "id": "./node_modules/ramda/es/assoc.js",
+      "name": "./node_modules/ramda/es/assoc.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/assoc.js",
+      "name": "./node_modules/ramda/es/assoc.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./assocPath": [
+    {
+      "id": "./node_modules/ramda/es/assocPath.js",
+      "name": "./node_modules/ramda/es/assocPath.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/assocPath.js",
+      "name": "./node_modules/ramda/es/assocPath.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./binary": [
+    {
+      "id": "./node_modules/ramda/es/binary.js",
+      "name": "./node_modules/ramda/es/binary.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/binary.js",
+      "name": "./node_modules/ramda/es/binary.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "../bind": [
+    {
+      "id": "./node_modules/ramda/es/bind.js",
+      "name": "./node_modules/ramda/es/bind.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/bind.js",
+      "name": "./node_modules/ramda/es/bind.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./both": [
+    {
+      "id": "./node_modules/ramda/es/both.js",
+      "name": "./node_modules/ramda/es/both.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/both.js",
+      "name": "./node_modules/ramda/es/both.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./call": [
+    {
+      "id": "./node_modules/ramda/es/call.js",
+      "name": "./node_modules/ramda/es/call.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/call.js",
+      "name": "./node_modules/ramda/es/call.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./chain": [
+    {
+      "id": "./node_modules/ramda/es/chain.js",
+      "name": "./node_modules/ramda/es/chain.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/chain.js",
+      "name": "./node_modules/ramda/es/chain.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./clamp": [
+    {
+      "id": "./node_modules/ramda/es/clamp.js",
+      "name": "./node_modules/ramda/es/clamp.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/clamp.js",
+      "name": "./node_modules/ramda/es/clamp.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./clone": [
+    {
+      "id": "./node_modules/ramda/es/clone.js",
+      "name": "./node_modules/ramda/es/clone.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/clone.js",
+      "name": "./node_modules/ramda/es/clone.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./comparator": [
+    {
+      "id": "./node_modules/ramda/es/comparator.js",
+      "name": "./node_modules/ramda/es/comparator.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/comparator.js",
+      "name": "./node_modules/ramda/es/comparator.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./complement": [
+    {
+      "id": "./node_modules/ramda/es/complement.js",
+      "name": "./node_modules/ramda/es/complement.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/complement.js",
+      "name": "./node_modules/ramda/es/complement.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./compose": [
+    {
+      "id": "./node_modules/ramda/es/compose.js",
+      "name": "./node_modules/ramda/es/compose.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/redux/es/compose.js",
+      "name": "./node_modules/redux/es/compose.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/compose.js",
+      "name": "./node_modules/ramda/es/compose.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./node_modules/redux/es/compose.js",
+      "name": "./node_modules/redux/es/compose.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./composeK": [
+    {
+      "id": "./node_modules/ramda/es/composeK.js",
+      "name": "./node_modules/ramda/es/composeK.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/composeK.js",
+      "name": "./node_modules/ramda/es/composeK.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./composeP": [
+    {
+      "id": "./node_modules/ramda/es/composeP.js",
+      "name": "./node_modules/ramda/es/composeP.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/composeP.js",
+      "name": "./node_modules/ramda/es/composeP.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./concat": [
+    {
+      "id": "./node_modules/ramda/es/concat.js",
+      "name": "./node_modules/ramda/es/concat.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/concat.js",
+      "name": "./node_modules/ramda/es/concat.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./cond": [
+    {
+      "id": "./node_modules/ramda/es/cond.js",
+      "name": "./node_modules/ramda/es/cond.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/cond.js",
+      "name": "./node_modules/ramda/es/cond.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./construct": [
+    {
+      "id": "./node_modules/ramda/es/construct.js",
+      "name": "./node_modules/ramda/es/construct.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/construct.js",
+      "name": "./node_modules/ramda/es/construct.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./constructN": [
+    {
+      "id": "./node_modules/ramda/es/constructN.js",
+      "name": "./node_modules/ramda/es/constructN.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/constructN.js",
+      "name": "./node_modules/ramda/es/constructN.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./contains": [
+    {
+      "id": "./node_modules/ramda/es/contains.js",
+      "name": "./node_modules/ramda/es/contains.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/contains.js",
+      "name": "./node_modules/ramda/es/contains.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./converge": [
+    {
+      "id": "./node_modules/ramda/es/converge.js",
+      "name": "./node_modules/ramda/es/converge.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/converge.js",
+      "name": "./node_modules/ramda/es/converge.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./countBy": [
+    {
+      "id": "./node_modules/ramda/es/countBy.js",
+      "name": "./node_modules/ramda/es/countBy.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/countBy.js",
+      "name": "./node_modules/ramda/es/countBy.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./curry": [
+    {
+      "id": "./node_modules/ramda/es/curry.js",
+      "name": "./node_modules/ramda/es/curry.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/curry.js",
+      "name": "./node_modules/ramda/es/curry.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./curryN": [
+    {
+      "id": "./node_modules/ramda/es/curryN.js",
+      "name": "./node_modules/ramda/es/curryN.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/curryN.js",
+      "name": "./node_modules/ramda/es/curryN.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./dec": [
+    {
+      "id": "./node_modules/ramda/es/dec.js",
+      "name": "./node_modules/ramda/es/dec.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/dec.js",
+      "name": "./node_modules/ramda/es/dec.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./defaultTo": [
+    {
+      "id": "./node_modules/ramda/es/defaultTo.js",
+      "name": "./node_modules/ramda/es/defaultTo.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/defaultTo.js",
+      "name": "./node_modules/ramda/es/defaultTo.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./descend": [
+    {
+      "id": "./node_modules/ramda/es/descend.js",
+      "name": "./node_modules/ramda/es/descend.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/descend.js",
+      "name": "./node_modules/ramda/es/descend.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./difference": [
+    {
+      "id": "./node_modules/ramda/es/difference.js",
+      "name": "./node_modules/ramda/es/difference.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/difference.js",
+      "name": "./node_modules/ramda/es/difference.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./differenceWith": [
+    {
+      "id": "./node_modules/ramda/es/differenceWith.js",
+      "name": "./node_modules/ramda/es/differenceWith.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/differenceWith.js",
+      "name": "./node_modules/ramda/es/differenceWith.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./dissoc": [
+    {
+      "id": "./node_modules/ramda/es/dissoc.js",
+      "name": "./node_modules/ramda/es/dissoc.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/dissoc.js",
+      "name": "./node_modules/ramda/es/dissoc.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./dissocPath": [
+    {
+      "id": "./node_modules/ramda/es/dissocPath.js",
+      "name": "./node_modules/ramda/es/dissocPath.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/dissocPath.js",
+      "name": "./node_modules/ramda/es/dissocPath.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./divide": [
+    {
+      "id": "./node_modules/ramda/es/divide.js",
+      "name": "./node_modules/ramda/es/divide.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/divide.js",
+      "name": "./node_modules/ramda/es/divide.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./drop": [
+    {
+      "id": "./node_modules/ramda/es/drop.js",
+      "name": "./node_modules/ramda/es/drop.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/drop.js",
+      "name": "./node_modules/ramda/es/drop.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./dropLast": [
+    {
+      "id": "./node_modules/ramda/es/dropLast.js",
+      "name": "./node_modules/ramda/es/dropLast.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/dropLast.js",
+      "name": "./node_modules/ramda/es/dropLast.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./dropLastWhile": [
+    {
+      "id": "./node_modules/ramda/es/dropLastWhile.js",
+      "name": "./node_modules/ramda/es/dropLastWhile.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/dropLastWhile.js",
+      "name": "./node_modules/ramda/es/dropLastWhile.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./dropRepeats": [
+    {
+      "id": "./node_modules/ramda/es/dropRepeats.js",
+      "name": "./node_modules/ramda/es/dropRepeats.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/dropRepeats.js",
+      "name": "./node_modules/ramda/es/dropRepeats.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./dropRepeatsWith": [
+    {
+      "id": "./node_modules/ramda/es/dropRepeatsWith.js",
+      "name": "./node_modules/ramda/es/dropRepeatsWith.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/dropRepeatsWith.js",
+      "name": "./node_modules/ramda/es/dropRepeatsWith.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./dropWhile": [
+    {
+      "id": "./node_modules/ramda/es/dropWhile.js",
+      "name": "./node_modules/ramda/es/dropWhile.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/dropWhile.js",
+      "name": "./node_modules/ramda/es/dropWhile.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./either": [
+    {
+      "id": "./node_modules/ramda/es/either.js",
+      "name": "./node_modules/ramda/es/either.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/either.js",
+      "name": "./node_modules/ramda/es/either.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./empty": [
+    {
+      "id": "./node_modules/ramda/es/empty.js",
+      "name": "./node_modules/ramda/es/empty.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/empty.js",
+      "name": "./node_modules/ramda/es/empty.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./endsWith": [
+    {
+      "id": "./node_modules/ramda/es/endsWith.js",
+      "name": "./node_modules/ramda/es/endsWith.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/endsWith.js",
+      "name": "./node_modules/ramda/es/endsWith.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./eqBy": [
+    {
+      "id": "./node_modules/ramda/es/eqBy.js",
+      "name": "./node_modules/ramda/es/eqBy.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/eqBy.js",
+      "name": "./node_modules/ramda/es/eqBy.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./eqProps": [
+    {
+      "id": "./node_modules/ramda/es/eqProps.js",
+      "name": "./node_modules/ramda/es/eqProps.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/eqProps.js",
+      "name": "./node_modules/ramda/es/eqProps.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./equals": [
+    {
+      "id": "./node_modules/ramda/es/equals.js",
+      "name": "./node_modules/ramda/es/equals.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/equals.js",
+      "name": "./node_modules/ramda/es/equals.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./evolve": [
+    {
+      "id": "./node_modules/ramda/es/evolve.js",
+      "name": "./node_modules/ramda/es/evolve.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/evolve.js",
+      "name": "./node_modules/ramda/es/evolve.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./filter": [
+    {
+      "id": "./node_modules/ramda/es/filter.js",
+      "name": "./node_modules/ramda/es/filter.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/filter.js",
+      "name": "./node_modules/ramda/es/filter.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./find": [
+    {
+      "id": "./node_modules/ramda/es/find.js",
+      "name": "./node_modules/ramda/es/find.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/find.js",
+      "name": "./node_modules/ramda/es/find.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./findIndex": [
+    {
+      "id": "./node_modules/ramda/es/findIndex.js",
+      "name": "./node_modules/ramda/es/findIndex.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/findIndex.js",
+      "name": "./node_modules/ramda/es/findIndex.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./findLast": [
+    {
+      "id": "./node_modules/ramda/es/findLast.js",
+      "name": "./node_modules/ramda/es/findLast.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/findLast.js",
+      "name": "./node_modules/ramda/es/findLast.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./findLastIndex": [
+    {
+      "id": "./node_modules/ramda/es/findLastIndex.js",
+      "name": "./node_modules/ramda/es/findLastIndex.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/findLastIndex.js",
+      "name": "./node_modules/ramda/es/findLastIndex.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./flatten": [
+    {
+      "id": "./node_modules/ramda/es/flatten.js",
+      "name": "./node_modules/ramda/es/flatten.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/flatten.js",
+      "name": "./node_modules/ramda/es/flatten.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./flip": [
+    {
+      "id": "./node_modules/ramda/es/flip.js",
+      "name": "./node_modules/ramda/es/flip.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/flip.js",
+      "name": "./node_modules/ramda/es/flip.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./forEachObjIndexed": [
+    {
+      "id": "./node_modules/ramda/es/forEachObjIndexed.js",
+      "name": "./node_modules/ramda/es/forEachObjIndexed.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/forEachObjIndexed.js",
+      "name": "./node_modules/ramda/es/forEachObjIndexed.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./fromPairs": [
+    {
+      "id": "./node_modules/ramda/es/fromPairs.js",
+      "name": "./node_modules/ramda/es/fromPairs.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/fromPairs.js",
+      "name": "./node_modules/ramda/es/fromPairs.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./groupBy": [
+    {
+      "id": "./node_modules/ramda/es/groupBy.js",
+      "name": "./node_modules/ramda/es/groupBy.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/groupBy.js",
+      "name": "./node_modules/ramda/es/groupBy.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./groupWith": [
+    {
+      "id": "./node_modules/ramda/es/groupWith.js",
+      "name": "./node_modules/ramda/es/groupWith.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/groupWith.js",
+      "name": "./node_modules/ramda/es/groupWith.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./gt": [
+    {
+      "id": "./node_modules/ramda/es/gt.js",
+      "name": "./node_modules/ramda/es/gt.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/gt.js",
+      "name": "./node_modules/ramda/es/gt.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./gte": [
+    {
+      "id": "./node_modules/ramda/es/gte.js",
+      "name": "./node_modules/ramda/es/gte.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/gte.js",
+      "name": "./node_modules/ramda/es/gte.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./has": [
+    {
+      "id": "./node_modules/ramda/es/has.js",
+      "name": "./node_modules/ramda/es/has.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/has.js",
+      "name": "./node_modules/ramda/es/has.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./head": [
+    {
+      "id": "./node_modules/ramda/es/head.js",
+      "name": "./node_modules/ramda/es/head.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/head.js",
+      "name": "./node_modules/ramda/es/head.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "../identical": [
+    {
+      "id": "./node_modules/ramda/es/identical.js",
+      "name": "./node_modules/ramda/es/identical.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/identical.js",
+      "name": "./node_modules/ramda/es/identical.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./ifElse": [
+    {
+      "id": "./node_modules/ramda/es/ifElse.js",
+      "name": "./node_modules/ramda/es/ifElse.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/ifElse.js",
+      "name": "./node_modules/ramda/es/ifElse.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./inc": [
+    {
+      "id": "./node_modules/ramda/es/inc.js",
+      "name": "./node_modules/ramda/es/inc.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/inc.js",
+      "name": "./node_modules/ramda/es/inc.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "ramda": [
+    {
+      "id": "./node_modules/ramda/es/index.js",
+      "name": "./node_modules/ramda/es/index.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/index.js",
+      "name": "./node_modules/ramda/es/index.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./indexBy": [
+    {
+      "id": "./node_modules/ramda/es/indexBy.js",
+      "name": "./node_modules/ramda/es/indexBy.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/indexBy.js",
+      "name": "./node_modules/ramda/es/indexBy.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./indexOf": [
+    {
+      "id": "./node_modules/ramda/es/indexOf.js",
+      "name": "./node_modules/ramda/es/indexOf.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/indexOf.js",
+      "name": "./node_modules/ramda/es/indexOf.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./init": [
+    {
+      "id": "./node_modules/ramda/es/init.js",
+      "name": "./node_modules/ramda/es/init.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/init.js",
+      "name": "./node_modules/ramda/es/init.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./innerJoin": [
+    {
+      "id": "./node_modules/ramda/es/innerJoin.js",
+      "name": "./node_modules/ramda/es/innerJoin.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/innerJoin.js",
+      "name": "./node_modules/ramda/es/innerJoin.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./insert": [
+    {
+      "id": "./node_modules/ramda/es/insert.js",
+      "name": "./node_modules/ramda/es/insert.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/insert.js",
+      "name": "./node_modules/ramda/es/insert.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./insertAll": [
+    {
+      "id": "./node_modules/ramda/es/insertAll.js",
+      "name": "./node_modules/ramda/es/insertAll.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/insertAll.js",
+      "name": "./node_modules/ramda/es/insertAll.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_Set": [
+    {
+      "id": "./node_modules/ramda/es/internal/_Set.js",
+      "name": "./node_modules/ramda/es/internal/_Set.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_Set.js",
+      "name": "./node_modules/ramda/es/internal/_Set.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_aperture": [
+    {
+      "id": "./node_modules/ramda/es/internal/_aperture.js",
+      "name": "./node_modules/ramda/es/internal/_aperture.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_aperture.js",
+      "name": "./node_modules/ramda/es/internal/_aperture.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_arity": [
+    {
+      "id": "./node_modules/ramda/es/internal/_arity.js",
+      "name": "./node_modules/ramda/es/internal/_arity.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_arity.js",
+      "name": "./node_modules/ramda/es/internal/_arity.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_arrayFromIterator": [
+    {
+      "id": "./node_modules/ramda/es/internal/_arrayFromIterator.js",
+      "name": "./node_modules/ramda/es/internal/_arrayFromIterator.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_arrayFromIterator.js",
+      "name": "./node_modules/ramda/es/internal/_arrayFromIterator.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_assign": [
+    {
+      "id": "./node_modules/ramda/es/internal/_assign.js",
+      "name": "./node_modules/ramda/es/internal/_assign.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_assign.js",
+      "name": "./node_modules/ramda/es/internal/_assign.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_checkForMethod": [
+    {
+      "id": "./node_modules/ramda/es/internal/_checkForMethod.js",
+      "name": "./node_modules/ramda/es/internal/_checkForMethod.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_checkForMethod.js",
+      "name": "./node_modules/ramda/es/internal/_checkForMethod.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_clone": [
+    {
+      "id": "./node_modules/ramda/es/internal/_clone.js",
+      "name": "./node_modules/ramda/es/internal/_clone.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_clone.js",
+      "name": "./node_modules/ramda/es/internal/_clone.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_cloneRegExp": [
+    {
+      "id": "./node_modules/ramda/es/internal/_cloneRegExp.js",
+      "name": "./node_modules/ramda/es/internal/_cloneRegExp.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_cloneRegExp.js",
+      "name": "./node_modules/ramda/es/internal/_cloneRegExp.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_complement": [
+    {
+      "id": "./node_modules/ramda/es/internal/_complement.js",
+      "name": "./node_modules/ramda/es/internal/_complement.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_complement.js",
+      "name": "./node_modules/ramda/es/internal/_complement.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_concat": [
+    {
+      "id": "./node_modules/ramda/es/internal/_concat.js",
+      "name": "./node_modules/ramda/es/internal/_concat.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_concat.js",
+      "name": "./node_modules/ramda/es/internal/_concat.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_contains": [
+    {
+      "id": "./node_modules/ramda/es/internal/_contains.js",
+      "name": "./node_modules/ramda/es/internal/_contains.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_contains.js",
+      "name": "./node_modules/ramda/es/internal/_contains.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_containsWith": [
+    {
+      "id": "./node_modules/ramda/es/internal/_containsWith.js",
+      "name": "./node_modules/ramda/es/internal/_containsWith.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_containsWith.js",
+      "name": "./node_modules/ramda/es/internal/_containsWith.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_createPartialApplicator": [
+    {
+      "id": "./node_modules/ramda/es/internal/_createPartialApplicator.js",
+      "name": "./node_modules/ramda/es/internal/_createPartialApplicator.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_createPartialApplicator.js",
+      "name": "./node_modules/ramda/es/internal/_createPartialApplicator.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_curry1": [
+    {
+      "id": "./node_modules/ramda/es/internal/_curry1.js",
+      "name": "./node_modules/ramda/es/internal/_curry1.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_curry1.js",
+      "name": "./node_modules/ramda/es/internal/_curry1.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_curry2": [
+    {
+      "id": "./node_modules/ramda/es/internal/_curry2.js",
+      "name": "./node_modules/ramda/es/internal/_curry2.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_curry2.js",
+      "name": "./node_modules/ramda/es/internal/_curry2.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_curry3": [
+    {
+      "id": "./node_modules/ramda/es/internal/_curry3.js",
+      "name": "./node_modules/ramda/es/internal/_curry3.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_curry3.js",
+      "name": "./node_modules/ramda/es/internal/_curry3.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_curryN": [
+    {
+      "id": "./node_modules/ramda/es/internal/_curryN.js",
+      "name": "./node_modules/ramda/es/internal/_curryN.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_curryN.js",
+      "name": "./node_modules/ramda/es/internal/_curryN.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_dispatchable": [
+    {
+      "id": "./node_modules/ramda/es/internal/_dispatchable.js",
+      "name": "./node_modules/ramda/es/internal/_dispatchable.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_dispatchable.js",
+      "name": "./node_modules/ramda/es/internal/_dispatchable.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_dropLast": [
+    {
+      "id": "./node_modules/ramda/es/internal/_dropLast.js",
+      "name": "./node_modules/ramda/es/internal/_dropLast.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_dropLast.js",
+      "name": "./node_modules/ramda/es/internal/_dropLast.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_dropLastWhile": [
+    {
+      "id": "./node_modules/ramda/es/internal/_dropLastWhile.js",
+      "name": "./node_modules/ramda/es/internal/_dropLastWhile.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_dropLastWhile.js",
+      "name": "./node_modules/ramda/es/internal/_dropLastWhile.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_equals": [
+    {
+      "id": "./node_modules/ramda/es/internal/_equals.js",
+      "name": "./node_modules/ramda/es/internal/_equals.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_equals.js",
+      "name": "./node_modules/ramda/es/internal/_equals.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_filter": [
+    {
+      "id": "./node_modules/ramda/es/internal/_filter.js",
+      "name": "./node_modules/ramda/es/internal/_filter.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_filter.js",
+      "name": "./node_modules/ramda/es/internal/_filter.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_flatCat": [
+    {
+      "id": "./node_modules/ramda/es/internal/_flatCat.js",
+      "name": "./node_modules/ramda/es/internal/_flatCat.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_flatCat.js",
+      "name": "./node_modules/ramda/es/internal/_flatCat.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_forceReduced": [
+    {
+      "id": "./node_modules/ramda/es/internal/_forceReduced.js",
+      "name": "./node_modules/ramda/es/internal/_forceReduced.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_forceReduced.js",
+      "name": "./node_modules/ramda/es/internal/_forceReduced.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_functionName": [
+    {
+      "id": "./node_modules/ramda/es/internal/_functionName.js",
+      "name": "./node_modules/ramda/es/internal/_functionName.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_functionName.js",
+      "name": "./node_modules/ramda/es/internal/_functionName.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_has": [
+    {
+      "id": "./node_modules/ramda/es/internal/_has.js",
+      "name": "./node_modules/ramda/es/internal/_has.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_has.js",
+      "name": "./node_modules/ramda/es/internal/_has.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_identity": [
+    {
+      "id": "./node_modules/ramda/es/internal/_identity.js",
+      "name": "./node_modules/ramda/es/internal/_identity.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_identity.js",
+      "name": "./node_modules/ramda/es/internal/_identity.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_indexOf": [
+    {
+      "id": "./node_modules/ramda/es/internal/_indexOf.js",
+      "name": "./node_modules/ramda/es/internal/_indexOf.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_indexOf.js",
+      "name": "./node_modules/ramda/es/internal/_indexOf.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_isArguments": [
+    {
+      "id": "./node_modules/ramda/es/internal/_isArguments.js",
+      "name": "./node_modules/ramda/es/internal/_isArguments.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_isArguments.js",
+      "name": "./node_modules/ramda/es/internal/_isArguments.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_isArray": [
+    {
+      "id": "./node_modules/ramda/es/internal/_isArray.js",
+      "name": "./node_modules/ramda/es/internal/_isArray.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_isArray.js",
+      "name": "./node_modules/ramda/es/internal/_isArray.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_isArrayLike": [
+    {
+      "id": "./node_modules/ramda/es/internal/_isArrayLike.js",
+      "name": "./node_modules/ramda/es/internal/_isArrayLike.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_isArrayLike.js",
+      "name": "./node_modules/ramda/es/internal/_isArrayLike.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_isFunction": [
+    {
+      "id": "./node_modules/ramda/es/internal/_isFunction.js",
+      "name": "./node_modules/ramda/es/internal/_isFunction.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_isFunction.js",
+      "name": "./node_modules/ramda/es/internal/_isFunction.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_isInteger": [
+    {
+      "id": "./node_modules/ramda/es/internal/_isInteger.js",
+      "name": "./node_modules/ramda/es/internal/_isInteger.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_isInteger.js",
+      "name": "./node_modules/ramda/es/internal/_isInteger.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_isNumber": [
+    {
+      "id": "./node_modules/ramda/es/internal/_isNumber.js",
+      "name": "./node_modules/ramda/es/internal/_isNumber.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_isNumber.js",
+      "name": "./node_modules/ramda/es/internal/_isNumber.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_isObject": [
+    {
+      "id": "./node_modules/ramda/es/internal/_isObject.js",
+      "name": "./node_modules/ramda/es/internal/_isObject.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_isObject.js",
+      "name": "./node_modules/ramda/es/internal/_isObject.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_isPlaceholder": [
+    {
+      "id": "./node_modules/ramda/es/internal/_isPlaceholder.js",
+      "name": "./node_modules/ramda/es/internal/_isPlaceholder.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_isPlaceholder.js",
+      "name": "./node_modules/ramda/es/internal/_isPlaceholder.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_isRegExp": [
+    {
+      "id": "./node_modules/ramda/es/internal/_isRegExp.js",
+      "name": "./node_modules/ramda/es/internal/_isRegExp.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_isRegExp.js",
+      "name": "./node_modules/ramda/es/internal/_isRegExp.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_isString": [
+    {
+      "id": "./node_modules/ramda/es/internal/_isString.js",
+      "name": "./node_modules/ramda/es/internal/_isString.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_isString.js",
+      "name": "./node_modules/ramda/es/internal/_isString.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_isTransformer": [
+    {
+      "id": "./node_modules/ramda/es/internal/_isTransformer.js",
+      "name": "./node_modules/ramda/es/internal/_isTransformer.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_isTransformer.js",
+      "name": "./node_modules/ramda/es/internal/_isTransformer.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_makeFlat": [
+    {
+      "id": "./node_modules/ramda/es/internal/_makeFlat.js",
+      "name": "./node_modules/ramda/es/internal/_makeFlat.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_makeFlat.js",
+      "name": "./node_modules/ramda/es/internal/_makeFlat.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_map": [
+    {
+      "id": "./node_modules/ramda/es/internal/_map.js",
+      "name": "./node_modules/ramda/es/internal/_map.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_map.js",
+      "name": "./node_modules/ramda/es/internal/_map.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_objectAssign": [
+    {
+      "id": "./node_modules/ramda/es/internal/_objectAssign.js",
+      "name": "./node_modules/ramda/es/internal/_objectAssign.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_objectAssign.js",
+      "name": "./node_modules/ramda/es/internal/_objectAssign.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_of": [
+    {
+      "id": "./node_modules/ramda/es/internal/_of.js",
+      "name": "./node_modules/ramda/es/internal/_of.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_of.js",
+      "name": "./node_modules/ramda/es/internal/_of.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_pipe": [
+    {
+      "id": "./node_modules/ramda/es/internal/_pipe.js",
+      "name": "./node_modules/ramda/es/internal/_pipe.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_pipe.js",
+      "name": "./node_modules/ramda/es/internal/_pipe.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_pipeP": [
+    {
+      "id": "./node_modules/ramda/es/internal/_pipeP.js",
+      "name": "./node_modules/ramda/es/internal/_pipeP.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_pipeP.js",
+      "name": "./node_modules/ramda/es/internal/_pipeP.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_quote": [
+    {
+      "id": "./node_modules/ramda/es/internal/_quote.js",
+      "name": "./node_modules/ramda/es/internal/_quote.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_quote.js",
+      "name": "./node_modules/ramda/es/internal/_quote.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_reduce": [
+    {
+      "id": "./node_modules/ramda/es/internal/_reduce.js",
+      "name": "./node_modules/ramda/es/internal/_reduce.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_reduce.js",
+      "name": "./node_modules/ramda/es/internal/_reduce.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_reduced": [
+    {
+      "id": "./node_modules/ramda/es/internal/_reduced.js",
+      "name": "./node_modules/ramda/es/internal/_reduced.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_reduced.js",
+      "name": "./node_modules/ramda/es/internal/_reduced.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_stepCat": [
+    {
+      "id": "./node_modules/ramda/es/internal/_stepCat.js",
+      "name": "./node_modules/ramda/es/internal/_stepCat.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_stepCat.js",
+      "name": "./node_modules/ramda/es/internal/_stepCat.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_toISOString": [
+    {
+      "id": "./node_modules/ramda/es/internal/_toISOString.js",
+      "name": "./node_modules/ramda/es/internal/_toISOString.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_toISOString.js",
+      "name": "./node_modules/ramda/es/internal/_toISOString.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_toString": [
+    {
+      "id": "./node_modules/ramda/es/internal/_toString.js",
+      "name": "./node_modules/ramda/es/internal/_toString.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_toString.js",
+      "name": "./node_modules/ramda/es/internal/_toString.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_xall": [
+    {
+      "id": "./node_modules/ramda/es/internal/_xall.js",
+      "name": "./node_modules/ramda/es/internal/_xall.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_xall.js",
+      "name": "./node_modules/ramda/es/internal/_xall.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_xany": [
+    {
+      "id": "./node_modules/ramda/es/internal/_xany.js",
+      "name": "./node_modules/ramda/es/internal/_xany.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_xany.js",
+      "name": "./node_modules/ramda/es/internal/_xany.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_xaperture": [
+    {
+      "id": "./node_modules/ramda/es/internal/_xaperture.js",
+      "name": "./node_modules/ramda/es/internal/_xaperture.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_xaperture.js",
+      "name": "./node_modules/ramda/es/internal/_xaperture.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_xchain": [
+    {
+      "id": "./node_modules/ramda/es/internal/_xchain.js",
+      "name": "./node_modules/ramda/es/internal/_xchain.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_xchain.js",
+      "name": "./node_modules/ramda/es/internal/_xchain.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_xdrop": [
+    {
+      "id": "./node_modules/ramda/es/internal/_xdrop.js",
+      "name": "./node_modules/ramda/es/internal/_xdrop.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_xdrop.js",
+      "name": "./node_modules/ramda/es/internal/_xdrop.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_xdropLast": [
+    {
+      "id": "./node_modules/ramda/es/internal/_xdropLast.js",
+      "name": "./node_modules/ramda/es/internal/_xdropLast.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_xdropLast.js",
+      "name": "./node_modules/ramda/es/internal/_xdropLast.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_xdropLastWhile": [
+    {
+      "id": "./node_modules/ramda/es/internal/_xdropLastWhile.js",
+      "name": "./node_modules/ramda/es/internal/_xdropLastWhile.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_xdropLastWhile.js",
+      "name": "./node_modules/ramda/es/internal/_xdropLastWhile.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_xdropRepeatsWith": [
+    {
+      "id": "./node_modules/ramda/es/internal/_xdropRepeatsWith.js",
+      "name": "./node_modules/ramda/es/internal/_xdropRepeatsWith.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_xdropRepeatsWith.js",
+      "name": "./node_modules/ramda/es/internal/_xdropRepeatsWith.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_xdropWhile": [
+    {
+      "id": "./node_modules/ramda/es/internal/_xdropWhile.js",
+      "name": "./node_modules/ramda/es/internal/_xdropWhile.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_xdropWhile.js",
+      "name": "./node_modules/ramda/es/internal/_xdropWhile.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_xfBase": [
+    {
+      "id": "./node_modules/ramda/es/internal/_xfBase.js",
+      "name": "./node_modules/ramda/es/internal/_xfBase.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_xfBase.js",
+      "name": "./node_modules/ramda/es/internal/_xfBase.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_xfilter": [
+    {
+      "id": "./node_modules/ramda/es/internal/_xfilter.js",
+      "name": "./node_modules/ramda/es/internal/_xfilter.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_xfilter.js",
+      "name": "./node_modules/ramda/es/internal/_xfilter.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_xfind": [
+    {
+      "id": "./node_modules/ramda/es/internal/_xfind.js",
+      "name": "./node_modules/ramda/es/internal/_xfind.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_xfind.js",
+      "name": "./node_modules/ramda/es/internal/_xfind.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_xfindIndex": [
+    {
+      "id": "./node_modules/ramda/es/internal/_xfindIndex.js",
+      "name": "./node_modules/ramda/es/internal/_xfindIndex.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_xfindIndex.js",
+      "name": "./node_modules/ramda/es/internal/_xfindIndex.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_xfindLast": [
+    {
+      "id": "./node_modules/ramda/es/internal/_xfindLast.js",
+      "name": "./node_modules/ramda/es/internal/_xfindLast.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_xfindLast.js",
+      "name": "./node_modules/ramda/es/internal/_xfindLast.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_xfindLastIndex": [
+    {
+      "id": "./node_modules/ramda/es/internal/_xfindLastIndex.js",
+      "name": "./node_modules/ramda/es/internal/_xfindLastIndex.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_xfindLastIndex.js",
+      "name": "./node_modules/ramda/es/internal/_xfindLastIndex.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_xmap": [
+    {
+      "id": "./node_modules/ramda/es/internal/_xmap.js",
+      "name": "./node_modules/ramda/es/internal/_xmap.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_xmap.js",
+      "name": "./node_modules/ramda/es/internal/_xmap.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_xreduceBy": [
+    {
+      "id": "./node_modules/ramda/es/internal/_xreduceBy.js",
+      "name": "./node_modules/ramda/es/internal/_xreduceBy.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_xreduceBy.js",
+      "name": "./node_modules/ramda/es/internal/_xreduceBy.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_xtake": [
+    {
+      "id": "./node_modules/ramda/es/internal/_xtake.js",
+      "name": "./node_modules/ramda/es/internal/_xtake.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_xtake.js",
+      "name": "./node_modules/ramda/es/internal/_xtake.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_xtakeWhile": [
+    {
+      "id": "./node_modules/ramda/es/internal/_xtakeWhile.js",
+      "name": "./node_modules/ramda/es/internal/_xtakeWhile.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_xtakeWhile.js",
+      "name": "./node_modules/ramda/es/internal/_xtakeWhile.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./internal/_xtap": [
+    {
+      "id": "./node_modules/ramda/es/internal/_xtap.js",
+      "name": "./node_modules/ramda/es/internal/_xtap.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_xtap.js",
+      "name": "./node_modules/ramda/es/internal/_xtap.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./_xwrap": [
+    {
+      "id": "./node_modules/ramda/es/internal/_xwrap.js",
+      "name": "./node_modules/ramda/es/internal/_xwrap.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/internal/_xwrap.js",
+      "name": "./node_modules/ramda/es/internal/_xwrap.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./intersection": [
+    {
+      "id": "./node_modules/ramda/es/intersection.js",
+      "name": "./node_modules/ramda/es/intersection.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/intersection.js",
+      "name": "./node_modules/ramda/es/intersection.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./intersperse": [
+    {
+      "id": "./node_modules/ramda/es/intersperse.js",
+      "name": "./node_modules/ramda/es/intersperse.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/intersperse.js",
+      "name": "./node_modules/ramda/es/intersperse.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./into": [
+    {
+      "id": "./node_modules/ramda/es/into.js",
+      "name": "./node_modules/ramda/es/into.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/into.js",
+      "name": "./node_modules/ramda/es/into.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./invert": [
+    {
+      "id": "./node_modules/ramda/es/invert.js",
+      "name": "./node_modules/ramda/es/invert.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/invert.js",
+      "name": "./node_modules/ramda/es/invert.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./invertObj": [
+    {
+      "id": "./node_modules/ramda/es/invertObj.js",
+      "name": "./node_modules/ramda/es/invertObj.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/invertObj.js",
+      "name": "./node_modules/ramda/es/invertObj.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./invoker": [
+    {
+      "id": "./node_modules/ramda/es/invoker.js",
+      "name": "./node_modules/ramda/es/invoker.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/invoker.js",
+      "name": "./node_modules/ramda/es/invoker.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./is": [
+    {
+      "id": "./node_modules/ramda/es/is.js",
+      "name": "./node_modules/ramda/es/is.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/is.js",
+      "name": "./node_modules/ramda/es/is.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./isEmpty": [
+    {
+      "id": "./node_modules/ramda/es/isEmpty.js",
+      "name": "./node_modules/ramda/es/isEmpty.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/utils/isEmpty.ts",
+      "name": "./src/utils/isEmpty.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/isEmpty.js",
+      "name": "./node_modules/ramda/es/isEmpty.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./src/utils/isEmpty.ts",
+      "name": "./src/utils/isEmpty.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./isNil": [
+    {
+      "id": "./node_modules/ramda/es/isNil.js",
+      "name": "./node_modules/ramda/es/isNil.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/isNil.js",
+      "name": "./node_modules/ramda/es/isNil.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./join": [
+    {
+      "id": "./node_modules/ramda/es/join.js",
+      "name": "./node_modules/ramda/es/join.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/join.js",
+      "name": "./node_modules/ramda/es/join.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./juxt": [
+    {
+      "id": "./node_modules/ramda/es/juxt.js",
+      "name": "./node_modules/ramda/es/juxt.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/juxt.js",
+      "name": "./node_modules/ramda/es/juxt.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./last": [
+    {
+      "id": "./node_modules/ramda/es/last.js",
+      "name": "./node_modules/ramda/es/last.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/last.js",
+      "name": "./node_modules/ramda/es/last.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./lastIndexOf": [
+    {
+      "id": "./node_modules/ramda/es/lastIndexOf.js",
+      "name": "./node_modules/ramda/es/lastIndexOf.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/lastIndexOf.js",
+      "name": "./node_modules/ramda/es/lastIndexOf.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./length": [
+    {
+      "id": "./node_modules/ramda/es/length.js",
+      "name": "./node_modules/ramda/es/length.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/length.js",
+      "name": "./node_modules/ramda/es/length.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./lens": [
+    {
+      "id": "./node_modules/ramda/es/lens.js",
+      "name": "./node_modules/ramda/es/lens.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/lens.js",
+      "name": "./node_modules/ramda/es/lens.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./lensIndex": [
+    {
+      "id": "./node_modules/ramda/es/lensIndex.js",
+      "name": "./node_modules/ramda/es/lensIndex.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/lensIndex.js",
+      "name": "./node_modules/ramda/es/lensIndex.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./lensPath": [
+    {
+      "id": "./node_modules/ramda/es/lensPath.js",
+      "name": "./node_modules/ramda/es/lensPath.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/lensPath.js",
+      "name": "./node_modules/ramda/es/lensPath.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./lensProp": [
+    {
+      "id": "./node_modules/ramda/es/lensProp.js",
+      "name": "./node_modules/ramda/es/lensProp.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/lensProp.js",
+      "name": "./node_modules/ramda/es/lensProp.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./lift": [
+    {
+      "id": "./node_modules/ramda/es/lift.js",
+      "name": "./node_modules/ramda/es/lift.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/lift.js",
+      "name": "./node_modules/ramda/es/lift.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./liftN": [
+    {
+      "id": "./node_modules/ramda/es/liftN.js",
+      "name": "./node_modules/ramda/es/liftN.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/liftN.js",
+      "name": "./node_modules/ramda/es/liftN.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./lt": [
+    {
+      "id": "./node_modules/ramda/es/lt.js",
+      "name": "./node_modules/ramda/es/lt.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/lt.js",
+      "name": "./node_modules/ramda/es/lt.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./lte": [
+    {
+      "id": "./node_modules/ramda/es/lte.js",
+      "name": "./node_modules/ramda/es/lte.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/lte.js",
+      "name": "./node_modules/ramda/es/lte.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./map": [
+    {
+      "id": "./node_modules/ramda/es/map.js",
+      "name": "./node_modules/ramda/es/map.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/map.js",
+      "name": "./node_modules/ramda/es/map.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./mapAccum": [
+    {
+      "id": "./node_modules/ramda/es/mapAccum.js",
+      "name": "./node_modules/ramda/es/mapAccum.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/mapAccum.js",
+      "name": "./node_modules/ramda/es/mapAccum.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./mapAccumRight": [
+    {
+      "id": "./node_modules/ramda/es/mapAccumRight.js",
+      "name": "./node_modules/ramda/es/mapAccumRight.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/mapAccumRight.js",
+      "name": "./node_modules/ramda/es/mapAccumRight.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./mapObjIndexed": [
+    {
+      "id": "./node_modules/ramda/es/mapObjIndexed.js",
+      "name": "./node_modules/ramda/es/mapObjIndexed.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/mapObjIndexed.js",
+      "name": "./node_modules/ramda/es/mapObjIndexed.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./match": [
+    {
+      "id": "./node_modules/ramda/es/match.js",
+      "name": "./node_modules/ramda/es/match.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/match.js",
+      "name": "./node_modules/ramda/es/match.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./mathMod": [
+    {
+      "id": "./node_modules/ramda/es/mathMod.js",
+      "name": "./node_modules/ramda/es/mathMod.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/mathMod.js",
+      "name": "./node_modules/ramda/es/mathMod.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./max": [
+    {
+      "id": "./node_modules/ramda/es/max.js",
+      "name": "./node_modules/ramda/es/max.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/max.js",
+      "name": "./node_modules/ramda/es/max.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./maxBy": [
+    {
+      "id": "./node_modules/ramda/es/maxBy.js",
+      "name": "./node_modules/ramda/es/maxBy.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/maxBy.js",
+      "name": "./node_modules/ramda/es/maxBy.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./mean": [
+    {
+      "id": "./node_modules/ramda/es/mean.js",
+      "name": "./node_modules/ramda/es/mean.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/mean.js",
+      "name": "./node_modules/ramda/es/mean.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./median": [
+    {
+      "id": "./node_modules/ramda/es/median.js",
+      "name": "./node_modules/ramda/es/median.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/median.js",
+      "name": "./node_modules/ramda/es/median.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./memoize": [
+    {
+      "id": "./node_modules/ramda/es/memoize.js",
+      "name": "./node_modules/ramda/es/memoize.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/memoize.js",
+      "name": "./node_modules/ramda/es/memoize.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./memoizeWith": [
+    {
+      "id": "./node_modules/ramda/es/memoizeWith.js",
+      "name": "./node_modules/ramda/es/memoizeWith.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/memoizeWith.js",
+      "name": "./node_modules/ramda/es/memoizeWith.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./merge": [
+    {
+      "id": "./node_modules/ramda/es/merge.js",
+      "name": "./node_modules/ramda/es/merge.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/merge.js",
+      "name": "./node_modules/ramda/es/merge.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./mergeAll": [
+    {
+      "id": "./node_modules/ramda/es/mergeAll.js",
+      "name": "./node_modules/ramda/es/mergeAll.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/mergeAll.js",
+      "name": "./node_modules/ramda/es/mergeAll.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./mergeDeepLeft": [
+    {
+      "id": "./node_modules/ramda/es/mergeDeepLeft.js",
+      "name": "./node_modules/ramda/es/mergeDeepLeft.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/mergeDeepLeft.js",
+      "name": "./node_modules/ramda/es/mergeDeepLeft.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./mergeDeepRight": [
+    {
+      "id": "./node_modules/ramda/es/mergeDeepRight.js",
+      "name": "./node_modules/ramda/es/mergeDeepRight.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/mergeDeepRight.js",
+      "name": "./node_modules/ramda/es/mergeDeepRight.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./mergeDeepWith": [
+    {
+      "id": "./node_modules/ramda/es/mergeDeepWith.js",
+      "name": "./node_modules/ramda/es/mergeDeepWith.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/mergeDeepWith.js",
+      "name": "./node_modules/ramda/es/mergeDeepWith.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./mergeDeepWithKey": [
+    {
+      "id": "./node_modules/ramda/es/mergeDeepWithKey.js",
+      "name": "./node_modules/ramda/es/mergeDeepWithKey.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/mergeDeepWithKey.js",
+      "name": "./node_modules/ramda/es/mergeDeepWithKey.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./mergeWith": [
+    {
+      "id": "./node_modules/ramda/es/mergeWith.js",
+      "name": "./node_modules/ramda/es/mergeWith.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/mergeWith.js",
+      "name": "./node_modules/ramda/es/mergeWith.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./mergeWithKey": [
+    {
+      "id": "./node_modules/ramda/es/mergeWithKey.js",
+      "name": "./node_modules/ramda/es/mergeWithKey.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/mergeWithKey.js",
+      "name": "./node_modules/ramda/es/mergeWithKey.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./min": [
+    {
+      "id": "./node_modules/ramda/es/min.js",
+      "name": "./node_modules/ramda/es/min.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/min.js",
+      "name": "./node_modules/ramda/es/min.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./minBy": [
+    {
+      "id": "./node_modules/ramda/es/minBy.js",
+      "name": "./node_modules/ramda/es/minBy.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/minBy.js",
+      "name": "./node_modules/ramda/es/minBy.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./modulo": [
+    {
+      "id": "./node_modules/ramda/es/modulo.js",
+      "name": "./node_modules/ramda/es/modulo.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/modulo.js",
+      "name": "./node_modules/ramda/es/modulo.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./multiply": [
+    {
+      "id": "./node_modules/ramda/es/multiply.js",
+      "name": "./node_modules/ramda/es/multiply.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/multiply.js",
+      "name": "./node_modules/ramda/es/multiply.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./nAry": [
+    {
+      "id": "./node_modules/ramda/es/nAry.js",
+      "name": "./node_modules/ramda/es/nAry.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/nAry.js",
+      "name": "./node_modules/ramda/es/nAry.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./negate": [
+    {
+      "id": "./node_modules/ramda/es/negate.js",
+      "name": "./node_modules/ramda/es/negate.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/negate.js",
+      "name": "./node_modules/ramda/es/negate.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./none": [
+    {
+      "id": "./node_modules/ramda/es/none.js",
+      "name": "./node_modules/ramda/es/none.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/none.js",
+      "name": "./node_modules/ramda/es/none.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./not": [
+    {
+      "id": "./node_modules/ramda/es/not.js",
+      "name": "./node_modules/ramda/es/not.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/not.js",
+      "name": "./node_modules/ramda/es/not.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./nth": [
+    {
+      "id": "./node_modules/ramda/es/nth.js",
+      "name": "./node_modules/ramda/es/nth.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/nth.js",
+      "name": "./node_modules/ramda/es/nth.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./nthArg": [
+    {
+      "id": "./node_modules/ramda/es/nthArg.js",
+      "name": "./node_modules/ramda/es/nthArg.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/nthArg.js",
+      "name": "./node_modules/ramda/es/nthArg.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./o": [
+    {
+      "id": "./node_modules/ramda/es/o.js",
+      "name": "./node_modules/ramda/es/o.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/o.js",
+      "name": "./node_modules/ramda/es/o.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./objOf": [
+    {
+      "id": "./node_modules/ramda/es/objOf.js",
+      "name": "./node_modules/ramda/es/objOf.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/objOf.js",
+      "name": "./node_modules/ramda/es/objOf.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./of": [
+    {
+      "id": "./node_modules/ramda/es/of.js",
+      "name": "./node_modules/ramda/es/of.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/of.js",
+      "name": "./node_modules/ramda/es/of.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./omit": [
+    {
+      "id": "./node_modules/ramda/es/omit.js",
+      "name": "./node_modules/ramda/es/omit.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/omit.js",
+      "name": "./node_modules/ramda/es/omit.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./once": [
+    {
+      "id": "./node_modules/ramda/es/once.js",
+      "name": "./node_modules/ramda/es/once.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/once.js",
+      "name": "./node_modules/ramda/es/once.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./or": [
+    {
+      "id": "./node_modules/ramda/es/or.js",
+      "name": "./node_modules/ramda/es/or.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/or.js",
+      "name": "./node_modules/ramda/es/or.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./over": [
+    {
+      "id": "./node_modules/ramda/es/over.js",
+      "name": "./node_modules/ramda/es/over.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/over.js",
+      "name": "./node_modules/ramda/es/over.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./pair": [
+    {
+      "id": "./node_modules/ramda/es/pair.js",
+      "name": "./node_modules/ramda/es/pair.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/pair.js",
+      "name": "./node_modules/ramda/es/pair.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./partial": [
+    {
+      "id": "./node_modules/ramda/es/partial.js",
+      "name": "./node_modules/ramda/es/partial.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/partial.js",
+      "name": "./node_modules/ramda/es/partial.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./partialRight": [
+    {
+      "id": "./node_modules/ramda/es/partialRight.js",
+      "name": "./node_modules/ramda/es/partialRight.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/partialRight.js",
+      "name": "./node_modules/ramda/es/partialRight.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./partition": [
+    {
+      "id": "./node_modules/ramda/es/partition.js",
+      "name": "./node_modules/ramda/es/partition.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/partition.js",
+      "name": "./node_modules/ramda/es/partition.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./path": [
+    {
+      "id": "./node_modules/ramda/es/path.js",
+      "name": "./node_modules/ramda/es/path.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/path.js",
+      "name": "./node_modules/ramda/es/path.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./pathEq": [
+    {
+      "id": "./node_modules/ramda/es/pathEq.js",
+      "name": "./node_modules/ramda/es/pathEq.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/pathEq.js",
+      "name": "./node_modules/ramda/es/pathEq.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./pathOr": [
+    {
+      "id": "./node_modules/ramda/es/pathOr.js",
+      "name": "./node_modules/ramda/es/pathOr.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/pathOr.js",
+      "name": "./node_modules/ramda/es/pathOr.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./pathSatisfies": [
+    {
+      "id": "./node_modules/ramda/es/pathSatisfies.js",
+      "name": "./node_modules/ramda/es/pathSatisfies.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/pathSatisfies.js",
+      "name": "./node_modules/ramda/es/pathSatisfies.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./pick": [
+    {
+      "id": "./node_modules/ramda/es/pick.js",
+      "name": "./node_modules/ramda/es/pick.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/pick.js",
+      "name": "./node_modules/ramda/es/pick.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./pickAll": [
+    {
+      "id": "./node_modules/ramda/es/pickAll.js",
+      "name": "./node_modules/ramda/es/pickAll.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/pickAll.js",
+      "name": "./node_modules/ramda/es/pickAll.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./pickBy": [
+    {
+      "id": "./node_modules/ramda/es/pickBy.js",
+      "name": "./node_modules/ramda/es/pickBy.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/pickBy.js",
+      "name": "./node_modules/ramda/es/pickBy.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./pipe": [
+    {
+      "id": "./node_modules/ramda/es/pipe.js",
+      "name": "./node_modules/ramda/es/pipe.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/pipe.js",
+      "name": "./node_modules/ramda/es/pipe.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./pipeK": [
+    {
+      "id": "./node_modules/ramda/es/pipeK.js",
+      "name": "./node_modules/ramda/es/pipeK.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/pipeK.js",
+      "name": "./node_modules/ramda/es/pipeK.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./pipeP": [
+    {
+      "id": "./node_modules/ramda/es/pipeP.js",
+      "name": "./node_modules/ramda/es/pipeP.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/pipeP.js",
+      "name": "./node_modules/ramda/es/pipeP.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./pluck": [
+    {
+      "id": "./node_modules/ramda/es/pluck.js",
+      "name": "./node_modules/ramda/es/pluck.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/pluck.js",
+      "name": "./node_modules/ramda/es/pluck.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./prepend": [
+    {
+      "id": "./node_modules/ramda/es/prepend.js",
+      "name": "./node_modules/ramda/es/prepend.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/prepend.js",
+      "name": "./node_modules/ramda/es/prepend.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./product": [
+    {
+      "id": "./node_modules/ramda/es/product.js",
+      "name": "./node_modules/ramda/es/product.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/product.js",
+      "name": "./node_modules/ramda/es/product.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./project": [
+    {
+      "id": "./node_modules/ramda/es/project.js",
+      "name": "./node_modules/ramda/es/project.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/project.js",
+      "name": "./node_modules/ramda/es/project.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./prop": [
+    {
+      "id": "./node_modules/ramda/es/prop.js",
+      "name": "./node_modules/ramda/es/prop.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/prop.js",
+      "name": "./node_modules/ramda/es/prop.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./propEq": [
+    {
+      "id": "./node_modules/ramda/es/propEq.js",
+      "name": "./node_modules/ramda/es/propEq.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/propEq.js",
+      "name": "./node_modules/ramda/es/propEq.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./propIs": [
+    {
+      "id": "./node_modules/ramda/es/propIs.js",
+      "name": "./node_modules/ramda/es/propIs.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/propIs.js",
+      "name": "./node_modules/ramda/es/propIs.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./propOr": [
+    {
+      "id": "./node_modules/ramda/es/propOr.js",
+      "name": "./node_modules/ramda/es/propOr.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/propOr.js",
+      "name": "./node_modules/ramda/es/propOr.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./propSatisfies": [
+    {
+      "id": "./node_modules/ramda/es/propSatisfies.js",
+      "name": "./node_modules/ramda/es/propSatisfies.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/propSatisfies.js",
+      "name": "./node_modules/ramda/es/propSatisfies.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./range": [
+    {
+      "id": "./node_modules/ramda/es/range.js",
+      "name": "./node_modules/ramda/es/range.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/range.js",
+      "name": "./node_modules/ramda/es/range.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./reduce": [
+    {
+      "id": "./node_modules/ramda/es/reduce.js",
+      "name": "./node_modules/ramda/es/reduce.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/reduce.js",
+      "name": "./node_modules/ramda/es/reduce.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./reduceBy": [
+    {
+      "id": "./node_modules/ramda/es/reduceBy.js",
+      "name": "./node_modules/ramda/es/reduceBy.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/reduceBy.js",
+      "name": "./node_modules/ramda/es/reduceBy.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./reduceRight": [
+    {
+      "id": "./node_modules/ramda/es/reduceRight.js",
+      "name": "./node_modules/ramda/es/reduceRight.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/reduceRight.js",
+      "name": "./node_modules/ramda/es/reduceRight.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./reduceWhile": [
+    {
+      "id": "./node_modules/ramda/es/reduceWhile.js",
+      "name": "./node_modules/ramda/es/reduceWhile.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/reduceWhile.js",
+      "name": "./node_modules/ramda/es/reduceWhile.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./reduced": [
+    {
+      "id": "./node_modules/ramda/es/reduced.js",
+      "name": "./node_modules/ramda/es/reduced.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/reduced.js",
+      "name": "./node_modules/ramda/es/reduced.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./reject": [
+    {
+      "id": "./node_modules/ramda/es/reject.js",
+      "name": "./node_modules/ramda/es/reject.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/reject.js",
+      "name": "./node_modules/ramda/es/reject.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./remove": [
+    {
+      "id": "./node_modules/ramda/es/remove.js",
+      "name": "./node_modules/ramda/es/remove.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/remove.js",
+      "name": "./node_modules/ramda/es/remove.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./repeat": [
+    {
+      "id": "./node_modules/ramda/es/repeat.js",
+      "name": "./node_modules/ramda/es/repeat.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/repeat.js",
+      "name": "./node_modules/ramda/es/repeat.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./replace": [
+    {
+      "id": "./node_modules/ramda/es/replace.js",
+      "name": "./node_modules/ramda/es/replace.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/replace.js",
+      "name": "./node_modules/ramda/es/replace.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./reverse": [
+    {
+      "id": "./node_modules/ramda/es/reverse.js",
+      "name": "./node_modules/ramda/es/reverse.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/reverse.js",
+      "name": "./node_modules/ramda/es/reverse.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./scan": [
+    {
+      "id": "./node_modules/ramda/es/scan.js",
+      "name": "./node_modules/ramda/es/scan.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/scan.js",
+      "name": "./node_modules/ramda/es/scan.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./sequence": [
+    {
+      "id": "./node_modules/ramda/es/sequence.js",
+      "name": "./node_modules/ramda/es/sequence.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/sequence.js",
+      "name": "./node_modules/ramda/es/sequence.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./set": [
+    {
+      "id": "./node_modules/ramda/es/set.js",
+      "name": "./node_modules/ramda/es/set.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/set.js",
+      "name": "./node_modules/ramda/es/set.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./slice": [
+    {
+      "id": "./node_modules/ramda/es/slice.js",
+      "name": "./node_modules/ramda/es/slice.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/slice.js",
+      "name": "./node_modules/ramda/es/slice.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./sort": [
+    {
+      "id": "./node_modules/ramda/es/sort.js",
+      "name": "./node_modules/ramda/es/sort.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/sort.js",
+      "name": "./node_modules/ramda/es/sort.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./sortBy": [
+    {
+      "id": "./node_modules/ramda/es/sortBy.js",
+      "name": "./node_modules/ramda/es/sortBy.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/sortBy.js",
+      "name": "./node_modules/ramda/es/sortBy.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./sortWith": [
+    {
+      "id": "./node_modules/ramda/es/sortWith.js",
+      "name": "./node_modules/ramda/es/sortWith.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/sortWith.js",
+      "name": "./node_modules/ramda/es/sortWith.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./split": [
+    {
+      "id": "./node_modules/ramda/es/split.js",
+      "name": "./node_modules/ramda/es/split.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/split.js",
+      "name": "./node_modules/ramda/es/split.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./splitAt": [
+    {
+      "id": "./node_modules/ramda/es/splitAt.js",
+      "name": "./node_modules/ramda/es/splitAt.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/splitAt.js",
+      "name": "./node_modules/ramda/es/splitAt.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./splitEvery": [
+    {
+      "id": "./node_modules/ramda/es/splitEvery.js",
+      "name": "./node_modules/ramda/es/splitEvery.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/splitEvery.js",
+      "name": "./node_modules/ramda/es/splitEvery.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./splitWhen": [
+    {
+      "id": "./node_modules/ramda/es/splitWhen.js",
+      "name": "./node_modules/ramda/es/splitWhen.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/splitWhen.js",
+      "name": "./node_modules/ramda/es/splitWhen.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./startsWith": [
+    {
+      "id": "./node_modules/ramda/es/startsWith.js",
+      "name": "./node_modules/ramda/es/startsWith.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/startsWith.js",
+      "name": "./node_modules/ramda/es/startsWith.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./subtract": [
+    {
+      "id": "./node_modules/ramda/es/subtract.js",
+      "name": "./node_modules/ramda/es/subtract.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/subtract.js",
+      "name": "./node_modules/ramda/es/subtract.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./sum": [
+    {
+      "id": "./node_modules/ramda/es/sum.js",
+      "name": "./node_modules/ramda/es/sum.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/sum.js",
+      "name": "./node_modules/ramda/es/sum.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./symmetricDifference": [
+    {
+      "id": "./node_modules/ramda/es/symmetricDifference.js",
+      "name": "./node_modules/ramda/es/symmetricDifference.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/symmetricDifference.js",
+      "name": "./node_modules/ramda/es/symmetricDifference.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./symmetricDifferenceWith": [
+    {
+      "id": "./node_modules/ramda/es/symmetricDifferenceWith.js",
+      "name": "./node_modules/ramda/es/symmetricDifferenceWith.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/symmetricDifferenceWith.js",
+      "name": "./node_modules/ramda/es/symmetricDifferenceWith.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./tail": [
+    {
+      "id": "./node_modules/ramda/es/tail.js",
+      "name": "./node_modules/ramda/es/tail.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/tail.js",
+      "name": "./node_modules/ramda/es/tail.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./take": [
+    {
+      "id": "./node_modules/ramda/es/take.js",
+      "name": "./node_modules/ramda/es/take.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/take.js",
+      "name": "./node_modules/ramda/es/take.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./takeLast": [
+    {
+      "id": "./node_modules/ramda/es/takeLast.js",
+      "name": "./node_modules/ramda/es/takeLast.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/takeLast.js",
+      "name": "./node_modules/ramda/es/takeLast.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./takeLastWhile": [
+    {
+      "id": "./node_modules/ramda/es/takeLastWhile.js",
+      "name": "./node_modules/ramda/es/takeLastWhile.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/takeLastWhile.js",
+      "name": "./node_modules/ramda/es/takeLastWhile.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./takeWhile": [
+    {
+      "id": "./node_modules/ramda/es/takeWhile.js",
+      "name": "./node_modules/ramda/es/takeWhile.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/takeWhile.js",
+      "name": "./node_modules/ramda/es/takeWhile.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./tap": [
+    {
+      "id": "./node_modules/ramda/es/tap.js",
+      "name": "./node_modules/ramda/es/tap.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/tap.js",
+      "name": "./node_modules/ramda/es/tap.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./test": [
+    {
+      "id": "./node_modules/ramda/es/test.js",
+      "name": "./node_modules/ramda/es/test.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/test.js",
+      "name": "./node_modules/ramda/es/test.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./times": [
+    {
+      "id": "./node_modules/ramda/es/times.js",
+      "name": "./node_modules/ramda/es/times.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/times.js",
+      "name": "./node_modules/ramda/es/times.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./toLower": [
+    {
+      "id": "./node_modules/ramda/es/toLower.js",
+      "name": "./node_modules/ramda/es/toLower.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/toLower.js",
+      "name": "./node_modules/ramda/es/toLower.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./toPairs": [
+    {
+      "id": "./node_modules/ramda/es/toPairs.js",
+      "name": "./node_modules/ramda/es/toPairs.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/toPairs.js",
+      "name": "./node_modules/ramda/es/toPairs.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./toPairsIn": [
+    {
+      "id": "./node_modules/ramda/es/toPairsIn.js",
+      "name": "./node_modules/ramda/es/toPairsIn.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/toPairsIn.js",
+      "name": "./node_modules/ramda/es/toPairsIn.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./toUpper": [
+    {
+      "id": "./node_modules/ramda/es/toUpper.js",
+      "name": "./node_modules/ramda/es/toUpper.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/toUpper.js",
+      "name": "./node_modules/ramda/es/toUpper.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./transduce": [
+    {
+      "id": "./node_modules/ramda/es/transduce.js",
+      "name": "./node_modules/ramda/es/transduce.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/transduce.js",
+      "name": "./node_modules/ramda/es/transduce.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./transpose": [
+    {
+      "id": "./node_modules/ramda/es/transpose.js",
+      "name": "./node_modules/ramda/es/transpose.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/transpose.js",
+      "name": "./node_modules/ramda/es/transpose.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./traverse": [
+    {
+      "id": "./node_modules/ramda/es/traverse.js",
+      "name": "./node_modules/ramda/es/traverse.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/traverse.js",
+      "name": "./node_modules/ramda/es/traverse.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./trim": [
+    {
+      "id": "./node_modules/ramda/es/trim.js",
+      "name": "./node_modules/ramda/es/trim.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/trim.js",
+      "name": "./node_modules/ramda/es/trim.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./tryCatch": [
+    {
+      "id": "./node_modules/ramda/es/tryCatch.js",
+      "name": "./node_modules/ramda/es/tryCatch.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/tryCatch.js",
+      "name": "./node_modules/ramda/es/tryCatch.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./type": [
+    {
+      "id": "./node_modules/ramda/es/type.js",
+      "name": "./node_modules/ramda/es/type.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/type.js",
+      "name": "./node_modules/ramda/es/type.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./unapply": [
+    {
+      "id": "./node_modules/ramda/es/unapply.js",
+      "name": "./node_modules/ramda/es/unapply.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/unapply.js",
+      "name": "./node_modules/ramda/es/unapply.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./unary": [
+    {
+      "id": "./node_modules/ramda/es/unary.js",
+      "name": "./node_modules/ramda/es/unary.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/unary.js",
+      "name": "./node_modules/ramda/es/unary.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./uncurryN": [
+    {
+      "id": "./node_modules/ramda/es/uncurryN.js",
+      "name": "./node_modules/ramda/es/uncurryN.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/uncurryN.js",
+      "name": "./node_modules/ramda/es/uncurryN.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./unfold": [
+    {
+      "id": "./node_modules/ramda/es/unfold.js",
+      "name": "./node_modules/ramda/es/unfold.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/unfold.js",
+      "name": "./node_modules/ramda/es/unfold.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./union": [
+    {
+      "id": "./node_modules/ramda/es/union.js",
+      "name": "./node_modules/ramda/es/union.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/union.js",
+      "name": "./node_modules/ramda/es/union.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./unionWith": [
+    {
+      "id": "./node_modules/ramda/es/unionWith.js",
+      "name": "./node_modules/ramda/es/unionWith.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/unionWith.js",
+      "name": "./node_modules/ramda/es/unionWith.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./uniq": [
+    {
+      "id": "./node_modules/ramda/es/uniq.js",
+      "name": "./node_modules/ramda/es/uniq.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/uniq.js",
+      "name": "./node_modules/ramda/es/uniq.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./uniqBy": [
+    {
+      "id": "./node_modules/ramda/es/uniqBy.js",
+      "name": "./node_modules/ramda/es/uniqBy.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/uniqBy.js",
+      "name": "./node_modules/ramda/es/uniqBy.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./uniqWith": [
+    {
+      "id": "./node_modules/ramda/es/uniqWith.js",
+      "name": "./node_modules/ramda/es/uniqWith.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/uniqWith.js",
+      "name": "./node_modules/ramda/es/uniqWith.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./unless": [
+    {
+      "id": "./node_modules/ramda/es/unless.js",
+      "name": "./node_modules/ramda/es/unless.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/unless.js",
+      "name": "./node_modules/ramda/es/unless.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./unnest": [
+    {
+      "id": "./node_modules/ramda/es/unnest.js",
+      "name": "./node_modules/ramda/es/unnest.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/unnest.js",
+      "name": "./node_modules/ramda/es/unnest.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./until": [
+    {
+      "id": "./node_modules/ramda/es/until.js",
+      "name": "./node_modules/ramda/es/until.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/until.js",
+      "name": "./node_modules/ramda/es/until.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./update": [
+    {
+      "id": "./node_modules/ramda/es/update.js",
+      "name": "./node_modules/ramda/es/update.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/update.js",
+      "name": "./node_modules/ramda/es/update.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./useWith": [
+    {
+      "id": "./node_modules/ramda/es/useWith.js",
+      "name": "./node_modules/ramda/es/useWith.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/useWith.js",
+      "name": "./node_modules/ramda/es/useWith.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./values": [
+    {
+      "id": "./node_modules/ramda/es/values.js",
+      "name": "./node_modules/ramda/es/values.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/values.js",
+      "name": "./node_modules/ramda/es/values.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./valuesIn": [
+    {
+      "id": "./node_modules/ramda/es/valuesIn.js",
+      "name": "./node_modules/ramda/es/valuesIn.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/valuesIn.js",
+      "name": "./node_modules/ramda/es/valuesIn.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./view": [
+    {
+      "id": "./node_modules/ramda/es/view.js",
+      "name": "./node_modules/ramda/es/view.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/view.js",
+      "name": "./node_modules/ramda/es/view.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./when": [
+    {
+      "id": "./node_modules/ramda/es/when.js",
+      "name": "./node_modules/ramda/es/when.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/when.js",
+      "name": "./node_modules/ramda/es/when.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./where": [
+    {
+      "id": "./node_modules/ramda/es/where.js",
+      "name": "./node_modules/ramda/es/where.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/where.js",
+      "name": "./node_modules/ramda/es/where.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./whereEq": [
+    {
+      "id": "./node_modules/ramda/es/whereEq.js",
+      "name": "./node_modules/ramda/es/whereEq.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/whereEq.js",
+      "name": "./node_modules/ramda/es/whereEq.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./without": [
+    {
+      "id": "./node_modules/ramda/es/without.js",
+      "name": "./node_modules/ramda/es/without.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/without.js",
+      "name": "./node_modules/ramda/es/without.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./xprod": [
+    {
+      "id": "./node_modules/ramda/es/xprod.js",
+      "name": "./node_modules/ramda/es/xprod.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/xprod.js",
+      "name": "./node_modules/ramda/es/xprod.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./zip": [
+    {
+      "id": "./node_modules/ramda/es/zip.js",
+      "name": "./node_modules/ramda/es/zip.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/zip.js",
+      "name": "./node_modules/ramda/es/zip.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./zipObj": [
+    {
+      "id": "./node_modules/ramda/es/zipObj.js",
+      "name": "./node_modules/ramda/es/zipObj.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/zipObj.js",
+      "name": "./node_modules/ramda/es/zipObj.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./zipWith": [
+    {
+      "id": "./node_modules/ramda/es/zipWith.js",
+      "name": "./node_modules/ramda/es/zipWith.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/ramda/es/zipWith.js",
+      "name": "./node_modules/ramda/es/zipWith.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -9165,20 +13641,6 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./compose": [
-    {
-      "id": "./node_modules/redux/es/compose.js",
-      "name": "./node_modules/redux/es/compose.js",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./node_modules/redux/es/compose.js",
-      "name": "./node_modules/redux/es/compose.js",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
   "./createStore": [
     {
       "id": "./node_modules/redux/es/createStore.js",
@@ -10439,7 +14901,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./../../webpack/buildin/module.js": [
+  "./../webpack/buildin/module.js": [
     {
       "id": "./node_modules/webpack/buildin/module.js",
       "name": "./node_modules/webpack/buildin/module.js",
@@ -12047,16 +16509,18 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/ThemeEditor/index.ts",
-      "name": "./src/components/ThemeEditor/index.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
       "id": "./src/components/ThemeEditor/ThemeEditor.tsx",
       "name": "./src/components/ThemeEditor/ThemeEditor.tsx",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
+    }
+  ],
+  "components/ThemeEditor": [
+    {
+      "id": "./src/components/ThemeEditor/index.ts",
+      "name": "./src/components/ThemeEditor/index.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
     },
     {
       "id": "./src/components/ThemeEditor/index.ts",
@@ -12941,20 +17405,6 @@
     {
       "id": "./src/utils/index.ts",
       "name": "./src/utils/index.ts",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "./isEmpty": [
-    {
-      "id": "./src/utils/isEmpty.ts",
-      "name": "./src/utils/isEmpty.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./src/utils/isEmpty.ts",
-      "name": "./src/utils/isEmpty.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
