@@ -1,5 +1,5 @@
 import { EDIT_BOX, REPLACE_STATE, VERSION_0_0_6_BETA, Action, ADD_BOX, DELETE_BOX } from 'actions';
-import { Boxes } from 'types';
+import { Boxes } from 'models';
 
 const defaultBoxes: Boxes = [
     {

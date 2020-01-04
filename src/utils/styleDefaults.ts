@@ -1,6 +1,7 @@
 export type RadiusType = 'round' | 'square';
 export type OrientationType = 'vertical' | 'horizonal';
-export type TeamImagesType = 'standard' | 'sugimori' | 'dream world' | 'shuffle';
+export type TeamImagesType = 'standard' | 'sugimori' | 'dream world' | 'shuffle' | 'tcg';
+export type IconRenderingType = 'pixelated' | 'automatic';
 export type RulesLocation = 'inside trainer section' | 'bottom' | 'top';
 export type ItemStyle = 'outer glow' | 'round' | 'square' | 'text';
 
@@ -15,6 +16,7 @@ export interface Styles {
     font: string;
     usePokemonGBAFont: boolean;
     iconsNextToTeamPokemon: boolean;
+    iconRendering: IconRenderingType;
     imageStyle: RadiusType;
     itemStyle: ItemStyle;
     pokeballStyle: ItemStyle;
@@ -61,6 +63,7 @@ export const styleDefaults: Styles = {
     imageStyle: 'round',
     itemStyle: 'outer glow',
     pokeballStyle: 'outer glow',
+    iconRendering: 'automatic',
     grayScaleDeadPokemon: false,
     minimalBoxedLayout: false,
     minimalTeamLayout: false,

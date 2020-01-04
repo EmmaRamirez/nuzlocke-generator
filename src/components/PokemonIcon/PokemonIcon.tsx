@@ -102,6 +102,10 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
         super(props);
     }
 
+    public shouldComponentUpdate() {
+        return true;
+    }
+
     public render() {
         const {
             connectDragSource,
