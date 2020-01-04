@@ -21,6 +21,7 @@ import { Moves } from './Moves';
 import * as Color from 'color';
 import { State } from 'state';
 import { css, cx } from 'emotion';
+import { PokemonIcon } from 'components/PokemonIcon';
 
 const getMetLocationString = ({
     poke,
@@ -360,6 +361,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
 
         return (
             <div className='pokemon-container' {...data}>
+                <PokemonIcon {...poke} />
                 <div
                     role='presentation'
                     onClick={e => this.props.selectPokemon(poke.id)}
