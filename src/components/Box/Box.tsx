@@ -154,7 +154,7 @@ export class BoxBase extends React.Component<BoxProps> {
                             {wallpapers.map(wall => <MenuItem onClick={this.editBox(id, {background: wall.background})} text={wall.name} />)}
                         </MenuItem>
                         <MenuItem text='Change Type'>
-                            {['Team', 'Boxed', 'Dead', 'Champs'].map(b => <MenuItem onClick={this.editBox(id, {inheritFrom: b})} text={b === inheritFrom ? <><Icon icon='small-tick' /> b</> : b} />)}
+                            {['Team', 'Boxed', 'Dead', 'Champs'].map(b => <MenuItem onClick={this.editBox(id, {inheritFrom: b})} text={b === inheritFrom ? <><Icon icon='small-tick' /> {b}</> : b} />)}
                         </MenuItem>
                         <MenuItem onClick={this.toggleCollapse(isCollapsed, id)} text={isCollapsed ? `Expand Box` : `Collapse Box`} />
                         <MenuItem onClick={this.clearBox(name)} className='pt-fill' text={`Clear Box`} />
