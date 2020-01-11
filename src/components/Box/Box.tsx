@@ -98,8 +98,8 @@ export class BoxBase extends React.Component<BoxProps> {
         this.props.clearBox(name);
     };
 
-    private deleteBox = (key: number) => () => {
-        this.props.deleteBox(key);
+    private deleteBox = (id: number) => () => {
+        this.props.deleteBox(id);
     };
 
     private editBox = (id: number, edits: Partial<BoxType>) => () => {
