@@ -3,19 +3,23 @@ import { Boxes } from 'models';
 
 const defaultBoxes: Boxes = [
     {
-        key: 0,
+        id: 0,
+        position: 0,
         name: 'Team',
     },
     {
-        key: 1,
+        id: 1,
+        position: 1,
         name: 'Boxed',
     },
     {
-        key: 2,
+        id: 2,
+        position: 2,
         name: 'Dead',
     },
     {
-        key: 3,
+        id: 3,
+        position: 2,
         name: 'Champs',
     },
 ];
@@ -26,18 +30,18 @@ export function box(
 ) {
     switch (action.type) {
         case EDIT_BOX:
-            const newState = state;
-            const prevBox = newState[action.target];
-            newState[action.target] = { key: action.target, name: action.name, background: action.background };
-            return newState;
+            const box = state.find(box => box.id === action.id);
+            const newBox = {...box, ...action.edits};
+            return [...state.filter(box => box.id !== action.id), newBox];
         case REPLACE_STATE:
             return action.replaceWith.box;
         case ADD_BOX:
-            const {name, background, inheritFrom} = action;
-            const key = state.length;
-            return [...state, { key, name, background, inheritFrom }];
+            const {name, background = 'grass-meadow', inheritFrom} = action;
+            const id = state.length;
+            const position = state.length + 1;
+            return [...state, { id, name, position, background, inheritFrom }];
         case DELETE_BOX:
-            return state.filter(box => box.key !== action.key);
+            return state.filter(box => box.id !== action.id);
         case VERSION_0_0_6_BETA:
             return defaultBoxes;
         default:

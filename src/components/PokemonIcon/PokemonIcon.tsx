@@ -35,6 +35,7 @@ interface PokemonIconProps {
     shiny?: Pokemon['shiny'];
     className?: string;
     style?: React.CSSProperties;
+    styles?: State['style'];
 
     connectDragSource?: ConnectDragSource;
     isDragging?: boolean;
@@ -61,7 +62,6 @@ const getForme = (forme: Forme) => {
 
 const iconSource = {
     beginDrag(props: PokemonIconProps) {
-        console.log('drag has begun', props);
         store.dispatch(selectPokemon(props.id!));
         return {
             id: props.id,
@@ -119,10 +119,11 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
             className,
             shiny,
             style,
+            styles,
             hidden,
             customIcon,
         } = this.props;
-        const imageStyle = { maxHeight: '100%', opacity: hidden ? 0.5 : 1, height: '32px', };
+        const imageStyle = { maxHeight: '100%', opacity: hidden ? 0.5 : 1, height: '32px', imageRendering: styles?.iconRendering };
         return connectDragSource!(
             <div
                 role='icon'
@@ -166,7 +167,7 @@ const mapDispatchToProps = (
 export const PokemonIcon: React.ComponentClass<
     Omit<PokemonIconProps, 'onClick' | 'selectedId'>
 > = connect(
-    (state: Pick<State, keyof State>) => ({ selectedId: state.selectedId }),
+    (state: Pick<State, keyof State>) => ({ selectedId: state.selectedId, styles: state.style, }),
     mapDispatchToProps,
     null,
     {pure: false},

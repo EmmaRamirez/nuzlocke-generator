@@ -18,7 +18,7 @@ import {
     listOfPokeballs,
 } from 'utils';
 import { Pokemon } from 'models';
-import { Boxes } from 'types';
+import { Boxes } from 'models';
 import { CurrentPokemonInput } from 'components/PokemonEditor';
 import { DeletePokemonButton } from 'components/DeletePokemonButton';
 import { Autocomplete, ErrorBoundary } from 'components/Shared';

@@ -399,7 +399,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
     '1.0.2': `
 ## Fixes
 - You can no longer delete main boxes (for now)
-- Styling fixes in Pokemon editor
+- Styling fixes in Pokémon editor
 - Typing fixes for forms of Rotom, Burmy line, and Castform
 
 ## Known Issues
@@ -419,4 +419,20 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 
 `,
+    '1.1.0': `
+## Features
+- **TCG images**: featuing art from all of your favorite cards!
+- Added a downloading indicator when downloading images
+
+## Fixes
+- Added ".pokemon-mvp-label" class for access to custom CSS with mvp labels
+- Reworked the minimal Dead Pokémon layout to work better for downloads
+- Clicking to select a Pokémon in the editor now works for Dead Pokémon icons
+- Color for Compact theme now contrasts against secondary type's color
+
+## Known Issues
+- Rules are not being properly imported from json files
+- Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`
 };

@@ -23,7 +23,6 @@ import * as Styles from './styles';
 
 import './Result.styl';
 import './themes.styl';
-import { pokemon } from 'reducers/pokemon';
 import { State } from 'state';
 
 interface ResultProps {
@@ -173,9 +172,18 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         return {};
     }
 
+    private getH3 = (box, n) => {
+        if (box.name === 'Dead' || box.name === 'Champs') {
+            if (n) {
+                return ` (${n})`;
+            }
+        }
+        return null;
+    }
+
     private renderContainer = (pokemon, paddingForVerticalTrainerSection, box) => getNumberOf(box.name, pokemon) > 0 ? (
         <div style={paddingForVerticalTrainerSection} className={`${this.getBoxClass(box.inheritFrom || box.name)}-container`}>
-            {box.name !== 'Team' && <h3 style={{ color: getContrastColor(this.props.style.bgColor || '#383840') }}>{box.name}</h3>}
+            {box.name !== 'Team' && <h3 style={{ color: getContrastColor(this.props.style.bgColor || '#383840') }}>{box.name}{this.getH3(box, getNumberOf(box.name, pokemon))}</h3>}
             <div className='boxed-container-inner' style={this.getBoxStyle(box.name || box.inheritFrom)}>
                 {pokemon
                     .map((poke, index) => {
@@ -222,7 +230,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         return (
             <Scrollbars autoHide autoHideTimeout={1000} autoHideDuration={200}>
                 <ErrorBoundary>
-                    <TopBar onClickDownload={() => this.toImage()}>{this.renderErrors()}</TopBar>
+                    <TopBar isDownloading={this.state.isDownloading} onClickDownload={() => this.toImage()}>{this.renderErrors()}</TopBar>
                     <style>{style.customCSS}</style>
                     <div
                         ref={this.resultRef}
@@ -287,7 +295,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             {enableStats && <Stats />}
                         </div>
 
-                        <div className='backsprite-montage' style={{
+                        {/*<div className='backsprite-montage' style={{
                             width: '100%',
                             display: 'flex',
                             justifyContent: 'center',
@@ -298,7 +306,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             {this.getPokemonByStatus('Team').map((poke, idx) => {
                                 return <img style={{height: '128px', marginLeft: '-32px', zIndex: 6 - idx, imageRendering: 'pixelated' }} alt='' role='presentation' src={`https://img.pokemondb.net/sprites/firered-leafgreen/back-normal/${(poke.species || '').toLowerCase()}.png`} />;
                             })}
-                        </div>
+                        </div>*/}
                     </div>
                 </ErrorBoundary>
             </Scrollbars>

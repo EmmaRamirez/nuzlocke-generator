@@ -69,20 +69,31 @@ export const DeadPokemonBase = (
                 style={{
                     background: useGameOfOriginColor ? gameOfOriginToColor(poke.gameOfOrigin!) : getAccentColor(poke),
                     color: useGameOfOriginColor ? getContrastColor(gameOfOriginToColor(poke.gameOfOrigin!)) : getContrastColor(getAccentColor(poke)),
-                    height: 'auto',
+                    height: '50px',
                     fontSize: '90%',
+                    outline: '1px solid #222',
                 }}>
+                <div className='goc-circle' style={{
+                    background: `linear-gradient(to right, ${gameOfOriginToColor(poke.gameOfOrigin!)}, transparent)`,
+                    height: '100%',
+                    width: '6rem',
+                    position: 'absolute',
+                    left: '0',
+                    top: '0',
+                    opacity: 0.7,
+                }}>
+                </div>
                 <span style={{ filter: 'grayscale(100%)' }}>
-                    <PokemonIconBase {...poke as any} />
+                    <PokemonIconBase onClick={e => poke.selectPokemon(poke.id)} {...poke as any} />
                 </span>
-                <div className='dead-pokemon-info' style={{margin: 0, padding: 0}}>
-                    <div className='pokemon-d-nickname'>
-                        {poke.nickname} {GenderElement(poke.gender)}
+                <div style={{margin: 0, padding: 0, lineHeight: '14px', height: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                flexDirection: 'column'}}>
+                    <div>
+                        {poke.nickname} {GenderElement(poke.gender)} Levels {poke.metLevel}&mdash;{poke.level}
                     </div>
-                    <div className='pokemon-levels'>
-                        Levels {poke.metLevel}&mdash;{poke.level}
-                    </div>
-                    <div className='pokemon-causeofdeath'>{poke.causeOfDeath}</div>
+                    <div>{poke.causeOfDeath}</div>
                     {style.displayGameOriginForBoxedAndDead && !poke.style.displayBackgroundInsteadOfBadge && poke.gameOfOrigin &&
                         <span className='pokemon-gameoforigin' style={{
                             fontSize: '80%',
@@ -131,7 +142,7 @@ export const DeadPokemonBase = (
                 />
             ) : (
                 <span style={{ filter: 'grayscale(100%)' }}>
-                    <PokemonIconBase {...poke as any} />
+                    <PokemonIconBase onClick={e => poke.selectPokemon(poke.id)} {...poke as any} />
                 </span>
             )}
             <div className='dead-pokemon-info'>

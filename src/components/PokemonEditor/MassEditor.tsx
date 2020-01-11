@@ -75,7 +75,7 @@ export class MassEditorBase extends React.Component<
             .map(key => {
                 return (
                     <Column
-                        columnHeaderCellRenderer={() => <ColumnHeaderCell name={key} menuRenderer={this.renderMenu} />}
+                        columnHeaderCellRenderer={() => <ColumnHeaderCell name={key} menuRenderer={this.renderMenu} /> as any}
                         key={key}
                         name={key}
                         cellRenderer={r => (

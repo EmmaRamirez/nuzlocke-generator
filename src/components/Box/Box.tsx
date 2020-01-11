@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Pokemon } from 'models';
-import { Boxes } from 'types';
+import { Boxes } from 'models';
 
-import { generateEmptyPokemon, dragAndDrop, accentedE } from 'utils';
 import { editPokemon, clearBox, editBox, deleteBox } from 'actions';
+import { Box as BoxType } from 'models';
 
 import { PokemonByFilter } from 'components/Shared';
-import { DropTarget } from 'react-dnd';
+import { DropTarget, DragSource, ConnectDragSource, ConnectDropTarget } from 'react-dnd';
 import { store } from 'store';
 import { Icon, Popover, PopoverInteractionKind, Menu, MenuItem, Position, Button } from '@blueprintjs/core';
 import { connect } from 'react-redux';
@@ -21,20 +21,30 @@ const boxSource = {
     hover(props, monitor) {
         return { isHovering: monitor.isOver({ shallow: true }) };
     },
+
 };
 
-export interface BoxProps {
+const boxSourceDrag = {
+    beginDrag(props) {
+        console.log('draging box', props);
+        return props;
+    },
+    isDragging(props, monitor) {
+        console.log('is dragging', props, monitor);
+        return props;
+    }
+};
+
+export type BoxProps = {
     pokemon: Pokemon[];
-    name: string;
-    boxId: number;
-    filterString: string;
-    connectDropTarget?: any;
+    connectDropTarget?: ConnectDropTarget;
+    connectDragSource?: ConnectDragSource;
     canDrop?: boolean;
     clearBox: clearBox;
     editBox: editBox;
     background?: string;
     deleteBox: deleteBox;
-}
+} & BoxType;
 
 export const wallpapers = [
     {
@@ -92,8 +102,12 @@ export class BoxBase extends React.Component<BoxProps> {
         this.props.deleteBox(key);
     };
 
-    private editBox = (background: string, name: string, id: number) => () => {
-        this.props.editBox(name, background, id);
+    private editBox = (id: number, edits: Partial<BoxType>) => () => {
+        this.props.editBox(id, edits);
+    }
+
+    private toggleCollapse = (isCollapsed, id) => () => {
+        this.props.editBox(id, {collapsed: !isCollapsed});
     }
 
     private getDefault(name) {
@@ -110,15 +124,22 @@ export class BoxBase extends React.Component<BoxProps> {
     }
 
     public render() {
-        const { pokemon, name, boxId, filterString, connectDropTarget, canDrop, background } = this.props;
-        const filter = filterString === 'All' ? undefined : filterString;
+        const { pokemon, inheritFrom, name, id, connectDropTarget, canDrop, background } = this.props;
+        const filter = name === 'All' ? undefined : name;
+        const isCollapsed = this.props.collapsed;
 
-        console.log('deleteButton', name, !['Team', 'Boxed', 'Dead', 'Champs'].includes(name));
+        const collapsedStyle = isCollapsed ? {
+            height: '54px',
+            overflow: 'hidden',
+            webkitMaskImage: `linear-gradient(to top, rgba(0, 0, 0, 0.33) 25%, black 75%)`,
+            marginBottom: '-18px',
+        } : {};
 
         return connectDropTarget!(
             <div
                 style={{
-                    backgroundImage: this.getBoxBackground(background, name)
+                    backgroundImage: this.getBoxBackground(background, name),
+                    ...collapsedStyle
                 }}
                 className={`box ${name.replace(/\s/g, '-')}-box`}
             >
@@ -130,10 +151,16 @@ export class BoxBase extends React.Component<BoxProps> {
                     content={<>
                         {/*<MenuItem className='pt-fill' text='Edit' />*/}
                         <MenuItem text='Change Wallpaper'>
-                            {wallpapers.map(wall => <MenuItem onClick={this.editBox(wall.background, name, boxId)} text={wall.name} />)}
+                            {wallpapers.map(wall => <MenuItem onClick={this.editBox(id, {background: wall.background})} text={wall.name} />)}
                         </MenuItem>
+                        <MenuItem text='Change Type'>
+                            {['Team', 'Boxed', 'Dead', 'Champs'].map(b => <MenuItem onClick={this.editBox(id, {inheritFrom: b})} text={b}>
+                                {b === inheritFrom ? <Icon icon='small-tick' /> : null} b
+                            </MenuItem>)}
+                        </MenuItem>
+                        <MenuItem onClick={this.toggleCollapse(isCollapsed, id)} text={isCollapsed ? `Expand Box` : `Collapse Box`} />
                         <MenuItem onClick={this.clearBox(name)} className='pt-fill' text={`Clear Box`} />
-                        {!['Team', 'Boxed', 'Dead', 'Champs'].includes(name) && <MenuItem onClick={this.deleteBox(boxId)} className='pt-fill' text={'Delete Box'} />}
+                        {!['Team', 'Boxed', 'Dead', 'Champs'].includes(name) && <MenuItem onClick={this.deleteBox(id)} className='pt-fill' text={'Delete Box'} />}
                     </>}
                 >
                     <span
@@ -151,7 +178,7 @@ export class BoxBase extends React.Component<BoxProps> {
                             minWidth: '5rem',
                             cursor: 'pointer',
                             userSelect: 'none',
-                        }}>
+                    }}>
                         <Icon style={{transform: 'rotate(90deg)'}} icon='more' />
                         {name}
                     </span>

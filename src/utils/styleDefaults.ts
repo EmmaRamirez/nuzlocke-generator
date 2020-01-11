@@ -1,7 +1,7 @@
 export type RadiusType = 'round' | 'square';
 export type OrientationType = 'vertical' | 'horizonal';
 export type TeamImagesType = 'standard' | 'sugimori' | 'dream world' | 'shuffle' | 'tcg';
-export type IconRenderingType = 'pixelated' | 'automatic';
+export type IconRenderingType = 'pixelated' | 'auto';
 export type RulesLocation = 'inside trainer section' | 'bottom' | 'top';
 export type ItemStyle = 'outer glow' | 'round' | 'square' | 'text';
 
@@ -63,7 +63,7 @@ export const styleDefaults: Styles = {
     imageStyle: 'round',
     itemStyle: 'outer glow',
     pokeballStyle: 'outer glow',
-    iconRendering: 'automatic',
+    iconRendering: 'auto',
     grayScaleDeadPokemon: false,
     minimalBoxedLayout: false,
     minimalTeamLayout: false,

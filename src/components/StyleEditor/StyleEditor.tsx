@@ -389,6 +389,18 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 <div className={styleEdit}>
                     <RadioGroup
                         className={cx(Styles.radioGroup)}
+                        label='Icon Rendering'
+                        onChange={e => editEvent(e, props, 'iconRendering')}
+                        selectedValue={props.style.iconRendering}>
+                        <Radio label='Pixelated' value='pixelated' />
+                        <Radio label='Automatic' value='auto' />
+                    </RadioGroup>
+                </div>
+
+
+                <div className={styleEdit}>
+                    <RadioGroup
+                        className={cx(Styles.radioGroup)}
                         label='Moves Position'
                         onChange={e => editEvent(e, props, 'movesPosition')}
                         selectedValue={props.style.movesPosition}>
@@ -404,7 +416,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                             name='teamImages'
                             onChange={e => editEvent(e, props, undefined, props.game.name)}
                             value={props.style.teamImages}>
-                            {['standard', 'sugimori', 'dream world', 'shuffle'].map(o => <option value={o} key={o}>{capitalize(o)}</option>)}
+                            {['standard', 'sugimori', 'dream world', 'shuffle', 'tcg'].map(o => <option value={o} key={o}>{capitalize(o)}</option>)}
                         </select>
                     </div>
                     {(props.game.name === 'Sword' || props.game.name === 'Shield') && props.style.teamImages === 'shuffle' ?
@@ -422,6 +434,12 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     {(['Sword', 'Shield', 'X', 'Y', 'Sun', 'Moon', 'Ultra Sun', 'Ultra Moon'].includes(props.game.name)) && props.style.teamImages === 'dream world' ?
                         <div className='pt-callout pt-intent-danger' style={calloutStyle}>
                             Dream world images are not supported for this game
+                        </div>
+                        : null
+                    }
+                    {(['Sword', 'Shield'].includes(props.game.name)) && props.style.teamImages === 'tcg' ?
+                        <div className='pt-callout pt-intent-danger' style={calloutStyle}>
+                            TCG images are not fully supported for this game
                         </div>
                         : null
                     }

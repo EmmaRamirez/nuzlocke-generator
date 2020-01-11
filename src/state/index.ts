@@ -1,6 +1,5 @@
 import { Styles } from 'utils';
-import { Boxes } from 'types';
-import { Pokemon, Trainer, Game, Editor } from 'models';
+import { Pokemon, Trainer, Game, Editor, Boxes } from 'models';
 import { Theme } from 'themes';
 import { Checkpoints } from 'reducers/checkpoints';
 

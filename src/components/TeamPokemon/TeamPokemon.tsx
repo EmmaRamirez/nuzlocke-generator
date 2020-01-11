@@ -14,7 +14,7 @@ import {
     formatBallText,
     speciesToNumber,
 } from 'utils';
-import { GenderElement } from 'components/Shared';
+import { GenderElement, ErrorBoundary } from 'components/Shared';
 import { selectPokemon } from 'actions';
 import { reducers } from 'reducers';
 import { Moves } from './Moves';
@@ -58,6 +58,9 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
 
     public render() {
         const { pokemon, style } = this.props;
+
+        console.log(pokemon);
+
         const accentColor = style ? style.accentColor : '#111111';
         const isCardsTheme = style.template === 'Cards';
         const isCompactTheme = style.template === 'Compact';
@@ -65,7 +68,7 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
             if (pokemon) {
                 if (pokemon.types) {
                     if (pokemon.types.length) {
-                        return pokemon.types[0];
+                        return pokemon?.types[1];
                     }
                 }
             }
@@ -78,87 +81,90 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
             </div>
         );
 
+
         return (
-            <div
-                className='pokemon-info'
-                style={{
-                    backgroundColor: isCardsTheme ? undefined : accentColor,
-                    // backgroundImage: isCardsTheme ? undefined : `linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px)`,
-                    backgroundImage: isCompactTheme
-                        ? getBackgroundGradient(
-                              pokemon.types != null ? pokemon.types[1] : 'Normal',
-                              pokemon.types != null ? pokemon.types[0] : 'Normal',
-                          )
-                        : undefined,
-                    color: isCompactTheme
-                        ? getContrastColor(typeToColor(getTypeOrNone()))
-                        : getContrastColor(accentColor),
-                }}>
-                <div className='pokemon-info-inner'>
-                    <div className='pokemon-main-info'>
-                        <span style={{ margin: '0.25rem 0 0' }} className='pokemon-nickname'>
-                            {pokemon.nickname}
-                        </span>
-                        <span className='pokemon-name'>{pokemon.species}{
-                            pokemon.item && style.itemStyle === 'text' ?
-                                ` @ ${pokemon.item}`
-                            : null
-                        }</span>
-                        {GenderElement(pokemon.gender)}
-                        {pokemon.level ? (
-                            <span className='pokemon-level'>lv. {pokemon.level}</span>
+            <ErrorBoundary>
+                <div
+                    className='pokemon-info'
+                    style={{
+                        backgroundColor: isCardsTheme ? undefined : accentColor,
+                        // backgroundImage: isCardsTheme ? undefined : `linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px)`,
+                        backgroundImage: isCompactTheme
+                            ? getBackgroundGradient(
+                                pokemon.types != null ? pokemon?.types[1] : 'Normal',
+                                pokemon.types != null ? pokemon?.types[0] : 'Normal',
+                            )
+                            : undefined,
+                        color: isCompactTheme
+                            ? getContrastColor(typeToColor(getTypeOrNone()))
+                            : getContrastColor(accentColor),
+                    }}>
+                    <div className='pokemon-info-inner'>
+                        <div className='pokemon-main-info'>
+                            <span style={{ margin: '0.25rem 0 0' }} className='pokemon-nickname'>
+                                {pokemon.nickname}
+                            </span>
+                            <span className='pokemon-name'>{pokemon.species}{
+                                pokemon.item && style.itemStyle === 'text' ?
+                                    ` @ ${pokemon.item}`
+                                : null
+                            }</span>
+                            {GenderElement(pokemon.gender)}
+                            {pokemon.level ? (
+                                <span className='pokemon-level'>lv. {pokemon.level}</span>
+                            ) : null}
+                        </div>
+                        {/* <span style={{
+                                background: gameOfOriginToColor(pokemon.gameOfOrigin!),
+                                color: getContrastColor(gameOfOriginToColor(pokemon.gameOfOrigin!)),
+                                borderRadius: '.25rem',
+                                display: 'inline-block',
+                                fontSize: '90%',
+                                margin: 0,
+                                padding: '.25rem',
+                                textAlign: 'center',
+                                width: '200px',
+                            }}>{ pokemon.gameOfOrigin }
+                        </span> */}
+                        <div className='pokemon-met'>
+                            {getMetLocationString({
+                                poke: pokemon,
+                                oldMetLocationFormat: style.oldMetLocationFormat,
+                            })}
+                            {
+                                pokemon.pokeball && style.pokeballStyle === 'text' ?
+                                    ` (in ${pokemon.pokeball})`
+                                : null
+                            }
+                        </div>
+                        {pokemon.nature && pokemon.nature !== 'None' ? (
+                            <div className='pokemon-nature'>
+                                <strong>{pokemon.nature}</strong> nature
+                            </div>
+                        ) : null}
+                        {pokemon.ability ? (
+                            <div className='pokemon-ability'>{pokemon.ability}</div>
+                        ) : null}
+                        {pokemon.notes && <div className='pokemon-notes'>{pokemon.notes}</div>}
+                        {style.displayExtraData && pokemon.extraData ? (
+                            <div style={{display: 'flex', justifyContent: 'space-evenly', fontSize: '12px', width: '255px'}}>
+                                {stat(pokemon.extraData['currentHp'], 'HP')}
+                                {stat(pokemon.extraData['attack'], 'ATK')}
+                                {stat(pokemon.extraData['defense'], 'DEF')}
+                                {stat(pokemon.extraData['special'], 'SPC')}
+                                {stat(pokemon.extraData['speed'], 'SPE')}
+                            </div>
                         ) : null}
                     </div>
-                    {/* <span style={{
-                            background: gameOfOriginToColor(pokemon.gameOfOrigin!),
-                            color: getContrastColor(gameOfOriginToColor(pokemon.gameOfOrigin!)),
-                            borderRadius: '.25rem',
-                            display: 'inline-block',
-                            fontSize: '90%',
-                            margin: 0,
-                            padding: '.25rem',
-                            textAlign: 'center',
-                            width: '200px',
-                        }}>{ pokemon.gameOfOrigin }
-                    </span> */}
-                    <div className='pokemon-met'>
-                        {getMetLocationString({
-                            poke: pokemon,
-                            oldMetLocationFormat: style.oldMetLocationFormat,
-                        })}
-                        {
-                            pokemon.pokeball && style.pokeballStyle === 'text' ?
-                                ` (in ${pokemon.pokeball})`
-                            : null
-                        }
-                    </div>
-                    {pokemon.nature && pokemon.nature !== 'None' ? (
-                        <div className='pokemon-nature'>
-                            <strong>{pokemon.nature}</strong> nature
-                        </div>
+                    {style.showPokemonMoves ? (
+                        <Moves
+                            generation={this.props.generation}
+                            moves={pokemon.moves}
+                            movesPosition={style.movesPosition}
+                        />
                     ) : null}
-                    {pokemon.ability ? (
-                        <div className='pokemon-ability'>{pokemon.ability}</div>
-                    ) : null}
-                    {pokemon.notes && <div className='pokemon-notes'>{pokemon.notes}</div>}
-                    {style.displayExtraData && pokemon.extraData ? (
-                        <div style={{display: 'flex', justifyContent: 'space-evenly', fontSize: '12px', width: '255px'}}>
-                            {stat(pokemon.extraData['currentHp'], 'HP')}
-                            {stat(pokemon.extraData['attack'], 'ATK')}
-                            {stat(pokemon.extraData['defense'], 'DEF')}
-                            {stat(pokemon.extraData['special'], 'SPC')}
-                            {stat(pokemon.extraData['speed'], 'SPE')}
-                        </div>
-                     ) : null}
                 </div>
-                {style.showPokemonMoves ? (
-                    <Moves
-                        generation={this.props.generation}
-                        moves={pokemon.moves}
-                        movesPosition={style.movesPosition}
-                    />
-                ) : null}
-            </div>
+            </ErrorBoundary>
         );
     }
 }
@@ -247,6 +253,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
 
         const getFirstType = poke.types ? poke.types[0] : 'Normal';
         const getSecondType = poke.types ? poke.types[1] : 'Normal';
+        console.log(`getFirstType, ${getFirstType}, getSecondType ${getSecondType}`);
         const spriteStyle = this.getSpriteStyle();
 
         const addProp = (item: any) => {
@@ -393,7 +400,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                     />
                 </div>
                 {poke.mvp && <div
-                    className={cx(mvpLabelStyle.base, mvpLabelStyle[style.template])}
+                    className={cx(mvpLabelStyle.base, mvpLabelStyle[style.template], 'pokemon-mvp-label')}
                 >
                     <span style={{marginRight: '0.5rem', fontWeight: 'bold'}}>MVP</span><img style={{height: '1rem'}} alt='' role='presentation' src='./assets/mvp-crown.png' />
                 </div>}

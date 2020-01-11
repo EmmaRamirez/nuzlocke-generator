@@ -2,8 +2,7 @@ import { Button, Intent } from '@blueprintjs/core';
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Pokemon, Game } from 'models';
-import { Boxes } from 'types';
+import { Pokemon, Game, Boxes } from 'models';
 import { State } from 'state';
 
 import { generateEmptyPokemon } from 'utils';
@@ -12,9 +11,8 @@ import { CurrentPokemonEdit, MassEditor } from '.';
 import { AddPokemonButton } from 'components/AddPokemonButton';
 import { BaseEditor } from 'components/BaseEditor';
 import { Box, BoxForm } from 'components/Box';
+import { DropTarget, ConnectDropTarget } from 'react-dnd';
 
-require('../../assets/img/team-box.png');
-require('../../assets/img/dead-box.png');
 
 export interface PokemonEditorProps {
     team: Pokemon[];
@@ -24,6 +22,25 @@ export interface PokemonEditorProps {
 
 export interface PokemonEditorState {
     isMassEditorOpen: boolean;
+}
+
+export interface BoxesComponentProps {
+    boxes: Boxes;
+    team: Pokemon[];
+}
+
+export class BoxesComponent extends React.Component<BoxesComponentProps> {
+    private renderBoxes(boxes, team) {
+        return boxes.sort((a, b) => a.position - b.position).map(box => {
+            return <Box {...box} key={box.id} pokemon={team} />;
+        });
+    }
+
+    public render() {
+        const {boxes, team} = this.props;
+
+        return this.renderBoxes(boxes, team);
+    }
 }
 
 export class PokemonEditorBase extends React.Component<PokemonEditorProps, PokemonEditorState> {
@@ -41,13 +58,6 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
             isMassEditorOpen: true,
         });
     };
-
-    private renderBoxes(boxes, team) {
-        return boxes.map(({ key, name, background }) => {
-            console.log(name, key);
-            return <Box key={key} pokemon={team} name={name} boxId={key} filterString={name} background={background} />;
-        });
-    }
 
     public render() {
         const { team, boxes } = this.props;
@@ -71,7 +81,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                         </Button>
                     </div>
                     <br />
-                    {this.renderBoxes(boxes, team)}
+                    <BoxesComponent boxes={boxes} team={team} />
                     <BoxForm boxes={boxes} />
                     <CurrentPokemonEdit />
                 </BaseEditor>

@@ -184,6 +184,12 @@ export function getPokemonImage({
         )}.png)`;
     }
 
+    if (style.teamImages === 'tcg') {
+        return `url(img/tcg/${(
+            addForme((species || '').replace(/\s/g, '').replace(/'/g, ''), forme) || 'missingno'
+        ).toLowerCase()}.jpg)`;
+    }
+
     return `url(img/${(
         addForme((species || '').replace(/\s/g, '').replace(/'/g, ''), forme) || 'missingno'
     ).toLowerCase()}.jpg)`;

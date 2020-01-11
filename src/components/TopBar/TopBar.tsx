@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Classes } from '@blueprintjs/core';
+import { Button, Classes, Spinner } from '@blueprintjs/core';
 import { connect } from 'react-redux';
 import { reducers } from 'reducers';
 
@@ -23,6 +23,8 @@ export interface TopBarProps {
     editStyle: editStyle;
     seeRelease: seeRelease;
     pokemon: Pokemon[];
+
+    isDownloading?: boolean;
 }
 
 export interface TopBarState {
@@ -59,11 +61,7 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
     }
 
     public render() {
-        console.log('isDownloadDisabled', this.isDownloadDisabled());
-        console.log(
-            'hasTeamCustom',
-            this.props.pokemon.some(p => p.status === 'Team' && !isEmpty(p.customImage)),
-        );
+        const {isDownloading} = this.props;
         return (
             <div
                 className={cx(
@@ -76,7 +74,7 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                     icon={this.props.editor.minimized ? 'minimize' : 'maximize'}>
                     {this.props.editor.minimized ? 'Maximize' : 'Minimize'} Editor
                 </Button>
-                <Button
+                {isDownloading ? <Button className={Classes.MINIMAL} style={{ ...darkModeStyle(this.props.style.editorDarkMode), height: '30px' }}><Spinner /> Downloading</Button> : <Button
                     style={darkModeStyle(this.props.style.editorDarkMode)}
                     onClick={this.props.onClickDownload}
                     className={Classes.MINIMAL}
@@ -86,7 +84,7 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                     }
                     icon='download'>
                     Download Image
-                </Button>
+                </Button>}
                 <Button
                     style={darkModeStyle(this.props.style.editorDarkMode)}
                     onClick={_ => {

@@ -63,5 +63,6 @@ export const App = connect(
         style: state.style,
         rules: state.rules,
     }),
-    {},
+    {
+    },
 )(AppBase);
