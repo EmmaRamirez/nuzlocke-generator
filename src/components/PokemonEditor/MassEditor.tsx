@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Dialog, Menu, MenuItem } from '@blueprintjs/core';
+import { Dialog, Menu, MenuItem, Button } from '@blueprintjs/core';
 import { Table, Column, EditableCell, ITableProps, IColumnProps, ColumnHeaderCell } from '@blueprintjs/table';
 import { AddPokemonButton } from 'components/AddPokemonButton';
 import { editPokemon } from 'actions';
@@ -117,6 +117,14 @@ export class MassEditorBase extends React.Component<
                 <div className='pt-dialog-body'>
                     <ErrorBoundary>
                         <AddPokemonButton defaultPokemon={generateEmptyPokemon(this.props.pokemon)} />
+                        <Button
+                            icon='export'
+                        >
+                            Export to Google Sheets
+                        </Button>
+                        <Button
+                            icon='import'
+                        >Import from CSV</Button>
                         <div style={{ padding: '.25rem' }} />
                         <Table
                             columnWidths={[150, 0, 150]}

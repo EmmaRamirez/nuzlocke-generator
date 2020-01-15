@@ -189,7 +189,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     .map((poke, index) => {
                         if (box.name === 'Boxed' || box.inheritFrom === 'Boxed') return <BoxedPokemon key={index} {...poke} />;
                         if (box.name === 'Dead' || box.inheritFrom === 'Dead') return <DeadPokemon key={index} {...poke} />;
-                        if (box.name === 'Champs' || box.inheritFrom === 'Champs') return <ChampsPokemon key={index} {...poke} useSprites={this.props.style.useSpritesForChampsPokemon} />;
+                        if (box.name === 'Champs' || box.inheritFrom === 'Champs') return <ChampsPokemon useSprites={this.props.style.useSpritesForChampsPokemon} key={index} {...poke} />;
                         if (box.name === 'Team' || box.inheritFrom === 'Team') return <TeamPokemon key={index} {...poke} />;
                         return null;
                     })
@@ -225,7 +225,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             </div>
         );
         const others = pokemon.filter(poke => !['Team', 'Boxed', 'Dead', 'Champs'].includes(poke.status!));
-        const enableStats = false;
+        const enableStats = true;
 
         return (
             <Scrollbars autoHide autoHideTimeout={1000} autoHideDuration={200}>

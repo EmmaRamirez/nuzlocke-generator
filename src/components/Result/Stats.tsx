@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { State } from 'state';
+import { PokemonIcon } from 'components/PokemonIcon';
+import { Layout, LayoutDisplay } from 'components/Layout';
 
 export interface StatsProps {
     pokemon: State['pokemon'];
@@ -50,8 +52,8 @@ export class StatsBase extends React.Component<StatsProps, {pokemon: State['poke
     private getMostCommonType() {
         const t = this.typeMap();
         const sorted = Object.keys(t).map(key => ({name: key, total: t[key]})).sort((a, b) => b.total - a.total);
-        console.log(t, sorted);
-        return `${sorted[0]?.name} (${sorted[0]?.total} Pokémon), ${sorted[1]?.name} (${sorted[1]?.total} Pokémon), ${sorted[2]?.name} (${sorted[2]?.total} Pokémon)`;
+        const typeText = (i) => `${sorted[i]?.name} (${sorted[i]?.total} Pokémon)`;
+        return `${typeText(0)}, ${typeText(1)}, ${typeText(2)}, ${typeText(3)}, ${typeText(4)}, ${typeText(5)}`;
     }
 
     private wordMap(arr) {
@@ -64,9 +66,7 @@ export class StatsBase extends React.Component<StatsProps, {pokemon: State['poke
                 key === 'on' ||
                 key === 'up' ||
                 key === 'with' ||
-                key === 'to' ||
-                key === 'Arm' ||
-                key === 'Thrust'
+                key === 'to'
             ) {
                 return;
             }
@@ -76,23 +76,20 @@ export class StatsBase extends React.Component<StatsProps, {pokemon: State['poke
                 wm[key] = 1;
             }
         });
-        console.log(wm);
         const sorted = Object.keys(wm).map(key => ({name: key, total: wm[key]})).sort((a, b) => b.total - a.total);
-        console.log(sorted);
         return sorted;
     }
 
     private getMostCommonDeath() {
-        const words = this.props.pokemon.filter(s => s.status === 'Dead').map(p => p.causeOfDeath || '').join(' ');
-        console.log('words', words);
-        const res = this.wordMap(words.split(/\s/));
-        return `${res[0]?.name} (${res[0]?.total} deaths), ${res[1]?.name} (${res[1]?.total}), ${res[2]?.name} (${res[2]?.total})`;
+        const words = this.props.pokemon.filter(s => s.status === 'Dead').map(p => p.causeOfDeath || '').join('\n');
+        const res = this.wordMap(words.split(/\n/));
+        const getRes = (i) => `${res[i]?.name} (${res[i]?.total} deaths)`;
+        return `${getRes(0)}, ${getRes(1)}, ${getRes(2)}, ${getRes(3)}`;
     }
 
     private getAverageLevel() {
         const champs = this.props.pokemon.filter(s => s.status === 'Champs');
-        // @ts-ignore
-        const levels = champs.map(p => parseInt(p.level || '0'));
+        const levels = champs.map(p => parseInt(p?.level as any) || 0);
         console.log(levels);
         return levels.reduce((p, c) => p + c, 0) / champs.length;
     }
@@ -101,9 +98,13 @@ export class StatsBase extends React.Component<StatsProps, {pokemon: State['poke
         return <div className='stats' style={{width: '50%'}}>
             <h3>Stats</h3>
 
-            <p>Average Level: {this.getAverageLevel().toFixed(0)}</p>
-            <p>Most Common Deaths: {this.getMostCommonDeath()}</p>
-            <p>Most Common Types: {this.getMostCommonType()}</p>
+            <div style={{marginTop: '10px', margin: '0 10px'}}>
+                <p>Average Level: {this.getAverageLevel().toFixed(0)}</p>
+                <p>Most Common Killers: {this.getMostCommonDeath()}</p>
+                <p>Most Common Types: {this.getMostCommonType()}</p>
+                <p>Shinies: <Layout display={LayoutDisplay.Inline}><PokemonIcon species={'Gyarados'} shiny /><PokemonIcon species='Gastly' shiny /></Layout></p>
+                <p>Wipeouts: 1</p>
+            </div>
         </div>;
     }
 }

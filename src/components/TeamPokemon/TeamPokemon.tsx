@@ -13,6 +13,7 @@ import {
     gameOfOriginToColor,
     formatBallText,
     speciesToNumber,
+    isLocal,
 } from 'utils';
 import { GenderElement, ErrorBoundary } from 'components/Shared';
 import { selectPokemon } from 'actions';
@@ -253,7 +254,6 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
 
         const getFirstType = poke.types ? poke.types[0] : 'Normal';
         const getSecondType = poke.types ? poke.types[1] : 'Normal';
-        console.log(`getFirstType, ${getFirstType}, getSecondType ${getSecondType}`);
         const spriteStyle = this.getSpriteStyle();
 
         const addProp = (item: any) => {
@@ -368,7 +368,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
 
         return (
             <div className='pokemon-container' {...data}>
-                <PokemonIcon {...poke} />
+                {isLocal() && <PokemonIcon {...poke} />}
                 <div
                     role='presentation'
                     onClick={e => this.props.selectPokemon(poke.id)}
@@ -418,7 +418,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                                         )
                                         : '',
                             }}
-                            className={cx(itemLabelStyle.base, itemLabelStyle[style.pokeballStyle])}
+                            className={cx(itemLabelStyle.base, itemLabelStyle[style.pokeballStyle], 'pokemon-pokeball')}
                         >
                         <img
                             alt={poke.pokeball}
@@ -438,7 +438,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                                       )
                                     : '',
                         }}
-                        className={cx(itemLabelStyle.base, itemLabelStyle[style.itemStyle])}
+                        className={cx(itemLabelStyle.base, itemLabelStyle[style.itemStyle], 'pokemon-item')}
                     >
                         <img
                             alt={poke.item}

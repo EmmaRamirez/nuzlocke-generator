@@ -94,8 +94,6 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         this.setState({
             mode: 'export',
         });
-        delete state.router;
-        delete state._persist;
         this.setState({ isOpen: true });
         this.setState({
             href: `data:text/plain;charset=utf-8,${encodeURIComponent(JSON.stringify(omit(['router', '._persist'], state)))}`,

@@ -197,7 +197,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                             onChange={e => editEvent(e, props, undefined)}
                             value={props.style.itemStyle}>
                             {smallItemOptions.map(v => {
-                                return <option value={v}>{capitalize(v)}</option>;
+                                return <option key={v} value={v}>{capitalize(v)}</option>;
                             })}
                         </select>
                     </div>
@@ -211,7 +211,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                             onChange={e => editEvent(e, props, undefined)}
                             value={props.style.pokeballStyle}>
                             {smallItemOptions.map(v => {
-                                return <option value={v}>{capitalize(v)}</option>;
+                                return <option key={v} value={v}>{capitalize(v)}</option>;
                             })}
                         </select>
                     </div>
@@ -559,6 +559,21 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                                 { ...e, target: { value: e.target.checked } },
                                 props,
                                 'displayRules',
+                            )
+                        }
+                    />
+                </div>
+
+                <div className={styleEdit}>
+                    <Checkbox
+                        checked={props.style.displayStats}
+                        name='displayStats'
+                        label='Display Stats'
+                        onChange={(e: any) =>
+                            editEvent(
+                                { ...e, target: { value: e.target.checked } },
+                                props,
+                                'displayStats',
                             )
                         }
                     />

@@ -27,7 +27,7 @@ export interface BoxFormState {
 
 const baseBox = {
     name: '',
-    background: '',
+    background: 'grass-meadow',
     inheritFrom: 'Team',
 };
 

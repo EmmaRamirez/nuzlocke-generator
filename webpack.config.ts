@@ -16,7 +16,7 @@ module.exports = {
         chunkFilename: '[name].chunk.js'
     },
     mode: 'development',
-    devtool: 'source-map',
+    devtool: 'eval-source-map',
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
         modules: [path.resolve('./src'), path.resolve('./node_modules')],
@@ -30,6 +30,7 @@ module.exports = {
         hot: false,
         stats: 'errors-only',
         historyApiFallback: true,
+        writeToDisk: true,
     },
     stats: {
         warnings: false,

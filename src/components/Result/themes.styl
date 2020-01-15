@@ -211,17 +211,6 @@
       font-size: 0.7rem;
   }
 
-  .pokemon-item {
-    position: absolute;
-    z-index: 11;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 10rem;
-    left: 12rem;
-    background: transparent;
-  }
 
 
 }
@@ -448,17 +437,7 @@
     @extends .hexagon;
   }
 
-  .pokemon-item {
-    @extends .hexagon;
-    position: absolute;
-    bottom: 0;
-    left: calc(50% - 1.5rem);
-    border-radius: 0;
-    border: none;
-    // background: transparent;
-    background-size: 15rem;
-    background-position: center bottom;
-  }
+
 
   .champs-pokemon {
     @extends .hexagon;
@@ -635,11 +614,6 @@
     background: rgba(0, 0, 0, 0.1);
   }
 
-  .pokemon-item {
-    left: 90px;
-    background: transparent;
-    border-width: 0;
-  }
 
   .pokemon-info-inner {
     margin: unset;

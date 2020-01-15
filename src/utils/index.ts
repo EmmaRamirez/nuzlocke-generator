@@ -47,3 +47,4 @@ export * from './listOfEvolutions';
 export * from './getDeepObject';
 export * from './listOfPokeballs';
 export * from './formatBallText';
+export * from './isLocal';

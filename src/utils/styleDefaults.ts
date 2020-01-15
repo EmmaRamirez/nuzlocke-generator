@@ -48,6 +48,7 @@ export interface Styles {
     useAutoHeight: boolean;
     displayItemAsText: boolean;
     displayRulesLocation: RulesLocation;
+    displayStats: boolean;
 }
 
 export const styleDefaults: Styles = {
@@ -93,4 +94,5 @@ export const styleDefaults: Styles = {
     trainerWidth: '20%',
     trainerHeight: '100%',
     trainerAuto: true,
+    displayStats: false,
 };
