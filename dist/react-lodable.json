@@ -55,7 +55,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../common/abstractPureComponent": [
+  "./abstractPureComponent": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/abstractPureComponent.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/abstractPureComponent.js",
@@ -111,7 +111,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./errors": [
+  "../../common/errors": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
@@ -901,7 +901,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./popover/popover": [
+  "../popover/popover": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/popover/popover.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/popover/popover.js",
@@ -943,7 +943,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./portal/portal": [
+  "../portal/portal": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/portal/portal.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/portal/portal.js",
@@ -1027,7 +1027,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../spinner/spinner": [
+  "./spinner": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/spinner/spinner.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/spinner/spinner.js",
@@ -1125,7 +1125,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./text/text": [
+  "../text/text": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
@@ -1167,7 +1167,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../tooltip/tooltip": [
+  "./tooltip/tooltip": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/tooltip/tooltip.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/tooltip/tooltip.js",
@@ -1503,7 +1503,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/context": [
+  "../common/context": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/context.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/context.js",
@@ -1545,7 +1545,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/errors": [
+  "./common/errors": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/errors.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/errors.js",
@@ -1573,7 +1573,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/index": [
+  "./common/index": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/index.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/index.js",
@@ -1601,7 +1601,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/internal/focusedCellUtils": [
+  "../common/internal/focusedCellUtils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/internal/focusedCellUtils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/internal/focusedCellUtils.js",
@@ -1811,7 +1811,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./rowHeaderCell": [
+  "./headers/rowHeaderCell": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/headers/rowHeaderCell.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/headers/rowHeaderCell.js",
@@ -1853,7 +1853,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./draggable": [
+  "./interactions/draggable": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/interactions/draggable.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/interactions/draggable.js",
@@ -1937,7 +1937,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../interactions/resizeHandle": [
+  "./interactions/resizeHandle": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/interactions/resizeHandle.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/interactions/resizeHandle.js",
@@ -5969,7 +5969,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./isFunction": [
+  "lodash/isFunction": [
     {
       "id": "./node_modules/lodash/isFunction.js",
       "name": "./node_modules/lodash/isFunction.js",
@@ -7951,7 +7951,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./_containsWith": [
+  "./internal/_containsWith": [
     {
       "id": "./node_modules/ramda/es/internal/_containsWith.js",
       "name": "./node_modules/ramda/es/internal/_containsWith.js",
@@ -8315,7 +8315,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./_isString": [
+  "./internal/_isString": [
     {
       "id": "./node_modules/ramda/es/internal/_isString.js",
       "name": "./node_modules/ramda/es/internal/_isString.js",
@@ -8455,7 +8455,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./internal/_reduced": [
+  "./_reduced": [
     {
       "id": "./node_modules/ramda/es/internal/_reduced.js",
       "name": "./node_modules/ramda/es/internal/_reduced.js",
@@ -8791,7 +8791,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./_xwrap": [
+  "./internal/_xwrap": [
     {
       "id": "./node_modules/ramda/es/internal/_xwrap.js",
       "name": "./node_modules/ramda/es/internal/_xwrap.js",
@@ -14901,7 +14901,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./../../webpack/buildin/module.js": [
+  "./../webpack/buildin/module.js": [
     {
       "id": "./node_modules/webpack/buildin/module.js",
       "name": "./node_modules/webpack/buildin/module.js",
@@ -15607,18 +15607,16 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/AddPokemonButton/AddPokemonButton.tsx",
-      "name": "./src/components/AddPokemonButton/AddPokemonButton.tsx",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "components/AddPokemonButton": [
-    {
       "id": "./src/components/AddPokemonButton/index.ts",
       "name": "./src/components/AddPokemonButton/index.ts",
       "file": "bundle.js",
       "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/AddPokemonButton/AddPokemonButton.tsx",
+      "name": "./src/components/AddPokemonButton/AddPokemonButton.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
     },
     {
       "id": "./src/components/AddPokemonButton/index.ts",
@@ -15913,18 +15911,16 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/DeletePokemonButton/DeletePokemonButton.tsx",
-      "name": "./src/components/DeletePokemonButton/DeletePokemonButton.tsx",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "components/DeletePokemonButton": [
-    {
       "id": "./src/components/DeletePokemonButton/index.ts",
       "name": "./src/components/DeletePokemonButton/index.ts",
       "file": "bundle.js",
       "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/DeletePokemonButton/DeletePokemonButton.tsx",
+      "name": "./src/components/DeletePokemonButton/DeletePokemonButton.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
     },
     {
       "id": "./src/components/DeletePokemonButton/index.ts",
@@ -16277,18 +16273,16 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/RulesEditor/RulesEditor.tsx",
-      "name": "./src/components/RulesEditor/RulesEditor.tsx",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "components/RulesEditor": [
-    {
       "id": "./src/components/RulesEditor/index.ts",
       "name": "./src/components/RulesEditor/index.ts",
       "file": "bundle.js",
       "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/RulesEditor/RulesEditor.tsx",
+      "name": "./src/components/RulesEditor/RulesEditor.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
     },
     {
       "id": "./src/components/RulesEditor/index.ts",
@@ -16515,18 +16509,16 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/ThemeEditor/ThemeEditor.tsx",
-      "name": "./src/components/ThemeEditor/ThemeEditor.tsx",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "components/ThemeEditor": [
-    {
       "id": "./src/components/ThemeEditor/index.ts",
       "name": "./src/components/ThemeEditor/index.ts",
       "file": "bundle.js",
       "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/ThemeEditor/ThemeEditor.tsx",
+      "name": "./src/components/ThemeEditor/ThemeEditor.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
     },
     {
       "id": "./src/components/ThemeEditor/index.ts",

@@ -422,5 +422,11 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 ## Fixes
 - Added Shiny Alolan Dugtrio
 - Fixed the saves being lost issue--this was due to how the downloading file feature was originally configured. Please file another bug report if it is still present.
+`,
+    '1.0.5': `
+## Fixes
+- Reverted a box ordering change that broke things
+- Added Mega Blastoise image
+- Added some cities as possible locations to catch Pokémon
 `
 };
