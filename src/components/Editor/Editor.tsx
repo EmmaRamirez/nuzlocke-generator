@@ -11,6 +11,7 @@ import { HotkeysEditor } from 'components/HotkeysEditor';
 
 import './editor.styl';
 import { BugReporter } from 'components/BugReporter';
+import { StatsEditor } from 'components/StatsEditor';
 
 /**
  * The main editor interface.
@@ -41,6 +42,7 @@ export class EditorBase extends React.Component<{ editor: any; style: any }, {}>
                 <TrainerEditor />
                 <PokemonEditor />
                 <StyleEditor />
+                <StatsEditor />
                 <DataEditor />
                 <HotkeysEditor />
                 <BugReporter />

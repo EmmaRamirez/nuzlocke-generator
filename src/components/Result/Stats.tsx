@@ -104,6 +104,7 @@ export class StatsBase extends React.Component<StatsProps, {pokemon: State['poke
                 <p>Most Common Types: {this.getMostCommonType()}</p>
                 <p>Shinies: <Layout display={LayoutDisplay.Inline}><PokemonIcon species={'Gyarados'} shiny /><PokemonIcon species='Gastly' shiny /></Layout></p>
                 <p>Wipeouts: 1</p>
+                <p>Total Time (Completed Games): 348:29</p>
             </div>
         </div>;
     }
