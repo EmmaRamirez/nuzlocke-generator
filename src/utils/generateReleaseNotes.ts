@@ -422,6 +422,8 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
     '1.1.0': `
 ## Features
 - **TCG images**: featuing art from all of your favorite cards!
+- **Stats Tracker**: add stats to a template!
+- **Location Checklist**: track what Pokémon you've caught and where!
 - Added a downloading indicator when downloading images
 
 ## Fixes
@@ -429,6 +431,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Reworked the minimal Dead Pokémon layout to work better for downloads
 - Clicking to select a Pokémon in the editor now works for Dead Pokémon icons
 - Color for Compact theme now contrasts against secondary type's color
+- Added an image for Gigantamax Eevee
 
 ## Known Issues
 - Rules are not being properly imported from json files

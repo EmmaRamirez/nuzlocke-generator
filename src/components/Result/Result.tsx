@@ -255,6 +255,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         }}>
                         <div className='trainer-container' style={ trainerSectionOrientation === 'vertical' ?
                             { backgroundColor: topHeaderColor,
+                                color: getContrastColor(topHeaderColor),
                                 width: style.trainerWidth,
                                 position: 'absolute',
                                 height: `calc(${style.trainerHeight} + 2%)`,
@@ -262,6 +263,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             }
                         : {
                             backgroundColor: topHeaderColor,
+                            color: getContrastColor(topHeaderColor),
                             width: style.trainerAuto ? '100%' : style.trainerWidth,
                             height: style.trainerAuto ? 'auto' : style.trainerHeight,
                         }}>

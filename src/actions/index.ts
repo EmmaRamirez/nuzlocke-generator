@@ -27,3 +27,4 @@ export * from './removeHistoryEntry';
 export * from './editCustomMoveMap';
 export * from './addBox';
 export * from './deleteBox';
+export * from './toggleTemtemMode';

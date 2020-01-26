@@ -890,3 +890,4 @@ export const listOfPokemon = [
     'Zamazenta',
     'Eternatus',
 ];
+

@@ -36,6 +36,7 @@ interface PokemonIconProps {
     className?: string;
     style?: React.CSSProperties;
     styles?: State['style'];
+    includeTitle?: boolean;
 
     connectDragSource?: ConnectDragSource;
     isDragging?: boolean;
@@ -122,6 +123,7 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
             styles,
             hidden,
             customIcon,
+            includeTitle,
         } = this.props;
         const imageStyle = { maxHeight: '100%', opacity: hidden ? 0.5 : 1, height: '32px', imageRendering: styles?.iconRendering };
         return connectDragSource!(
@@ -132,6 +134,7 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
                     onClick && onClick();
                 }}
                 id={id}
+                title={includeTitle ? species : undefined}
                 style={style}
                 className={`${
                     id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'
