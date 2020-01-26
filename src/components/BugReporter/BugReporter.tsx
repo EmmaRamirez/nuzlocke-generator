@@ -23,7 +23,7 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
         const {userReport, includeNuzlocke} = this.state;
 
         return (
-            <BaseEditor name='Bug Reporter' defaultOpen={false}>
+            <BaseEditor name='Bug Reports and Feature Requests' defaultOpen={false}>
                 <div style={{margin: '.5rem'}}>
                     <TextArea style={{width: '100%'}} value={userReport} onChange={this.updateReport} />
                     <div style={{
@@ -37,7 +37,7 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
                             checked={includeNuzlocke}
                             label={'include nuzlocke.json file'}
                         />
-                        <Button disabled={!userReport} onClick={this.sendBugReport} className='pt-minimal' intent={Intent.DANGER}>Report Bug <img style={{height: '20px', verticalAlign: 'bottom'}} alt='' role='presentation' src='./icons/pokemon/regular/caterpie.png' /></Button>
+                        <Button disabled={!userReport} onClick={this.sendBugReport} className='pt-minimal' intent={Intent.DANGER}>Submit <img style={{height: '20px', verticalAlign: 'bottom'}} alt='' role='presentation' src='./icons/pokemon/regular/caterpie.png' /></Button>
                     </div>
                 </div>
             </BaseEditor>

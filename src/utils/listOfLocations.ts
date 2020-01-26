@@ -289,6 +289,7 @@ export const locations = {
         'Fuego Ironworks',
         'Great Marsh',
         'Hall of Origin',
+        'Hearthome City',
         'Iron Island',
         'Lake Acuity',
         'Lake Valor',
