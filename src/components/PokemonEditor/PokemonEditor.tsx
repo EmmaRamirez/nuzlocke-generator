@@ -51,10 +51,10 @@ const PokemonLocationChecklist = ({pokemon, game}: {pokemon: Pokemon[], game: Ga
     const getLocIcon = (name) => {
         const poke = pokemon.find(p => p.met === name && p.gameOfOrigin === game.name);
         if (poke && !poke.hidden) {
-            return <><Icon icon='tick' /><PokemonIcon species={poke.species} /></>;
+            return <><Icon icon='tick' /><PokemonIcon style={{pointerEvents: 'none'}} species={poke.species} /></>;
         }
         if (poke && poke.hidden) {
-            return <><Icon icon='cross' /><PokemonIcon species={poke.species} /></>;
+            return <><Icon icon='cross' /><PokemonIcon style={{pointerEvents: 'none'}} species={poke.species} /></>;
         }
         return <Icon icon='circle' />;
     };
@@ -130,7 +130,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                     <BoxesComponent boxes={boxes} team={team} />
                     <BoxForm boxes={boxes} />
                     <CurrentPokemonEdit />
-                    <BaseEditor name='Location Checklist'>
+                    <BaseEditor name='Location Checklist' defaultOpen={false}>
                         <PokemonLocationChecklist pokemon={team} game={game} />
                     </BaseEditor>
                 </BaseEditor>
