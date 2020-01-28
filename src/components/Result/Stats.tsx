@@ -6,15 +6,21 @@ import { Layout, LayoutDisplay } from 'components/Layout';
 
 export interface StatsProps {
     pokemon: State['pokemon'];
+    status?: string;
 }
 
 export class StatsBase extends React.Component<StatsProps, {pokemon: State['pokemon']}> {
+    public static defaultProps = {
+        status: 'Champs',
+    };
+
     public state = {
         pokemon: [] as State['pokemon'],
     };
 
     public componentDidMount() {
-        const pokemon = this.props.pokemon.filter(p => p.status === 'Champs');
+        const {status} = this.props;
+        const pokemon = this.props.pokemon.filter(p => p.status === status);
         this.setState({pokemon});
     }
 
@@ -27,7 +33,6 @@ export class StatsBase extends React.Component<StatsProps, {pokemon: State['poke
                 const type1 = poke.types[0];
                 const type2 = poke.types[1];
 
-                console.log(type1, type2);
 
                 if (typesFreq.hasOwnProperty(type1)) {
                     typesFreq[type1]++;
@@ -90,8 +95,12 @@ export class StatsBase extends React.Component<StatsProps, {pokemon: State['poke
     private getAverageLevel() {
         const champs = this.props.pokemon.filter(s => s.status === 'Champs');
         const levels = champs.map(p => parseInt(p?.level as any) || 0);
-        console.log(levels);
         return levels.reduce((p, c) => p + c, 0) / champs.length;
+    }
+
+    private getShinies() {
+        return this.props.pokemon.filter(s => s.shiny)
+            .map(p => <PokemonIcon species={p.species} id={p.id} />);
     }
 
     public render() {
@@ -102,9 +111,9 @@ export class StatsBase extends React.Component<StatsProps, {pokemon: State['poke
                 <p>Average Level: {this.getAverageLevel().toFixed(0)}</p>
                 <p>Most Common Killers: {this.getMostCommonDeath()}</p>
                 <p>Most Common Types: {this.getMostCommonType()}</p>
-                <p>Shinies: <Layout display={LayoutDisplay.Inline}><PokemonIcon species={'Gyarados'} shiny /><PokemonIcon species='Gastly' shiny /></Layout></p>
+                <p>Shinies: <Layout display={LayoutDisplay.Inline}>{this.getShinies()}</Layout></p>
                 <p>Wipeouts: 1 (Emerald)</p>
-                <p>Total Time (Completed Games): 430:50</p>
+                <p>Total Time (Completed Games): 462:49</p>
             </div>
         </div>;
     }

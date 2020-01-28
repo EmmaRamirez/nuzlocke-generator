@@ -9,6 +9,7 @@ import {
     Styles,
     Forme,
     gameOfOriginToColor,
+    TemplateName,
 } from 'utils';
 import { selectPokemon } from 'actions';
 import { PokemonIconBase } from 'components/PokemonIcon';
@@ -47,6 +48,7 @@ export const DeadPokemonBase = (
     poke: Pokemon & { selectPokemon: selectPokemon } & { style: Styles } & { game: Game },
 ) => {
     const style = poke.style;
+    const isCompactWithIcons = style.template === TemplateName.CompactWithIcons;
     const addForme = (species: string | undefined) => {
         if (poke.forme) {
             if (poke.forme === Forme.Alolan) {
@@ -61,7 +63,7 @@ export const DeadPokemonBase = (
     const getAccentColor = (prop: any) => (prop.style ? prop.style.accentColor : '#111111');
     const useGameOfOriginColor = poke.gameOfOrigin && poke.style.displayGameOriginForBoxedAndDead && poke.style.displayBackgroundInsteadOfBadge;
 
-    if (style.minimalDeadLayout) {
+    if (style.minimalDeadLayout && isCompactWithIcons) {
         return (
             <div
                 className={'dead-pokemon-container'}
@@ -83,6 +85,47 @@ export const DeadPokemonBase = (
                     opacity: 0.7,
                 }}>
                 </div>
+                <span style={{ filter: 'grayscale(100%)' }}>
+                    <PokemonIconBase onClick={e => poke.selectPokemon(poke.id)} {...poke as any} />
+                </span>
+                <div style={{margin: 0, padding: 0, lineHeight: '14px', height: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                flexDirection: 'column'}}>
+                    <div>
+                        {poke.nickname} {GenderElement(poke.gender)} Levels {poke.metLevel}&mdash;{poke.level}
+                    </div>
+                    <div>{poke.causeOfDeath}</div>
+                    {style.displayGameOriginForBoxedAndDead && !poke.style.displayBackgroundInsteadOfBadge && poke.gameOfOrigin &&
+                        <span className='pokemon-gameoforigin' style={{
+                            fontSize: '80%',
+                            borderRadius: '.25rem',
+                            margin: '0',
+                            marginTop: '.25rem',
+                            marginLeft: '.25rem',
+                            padding: '2px',
+                            display: 'inline-block',
+                            background: gameOfOriginToColor(poke.gameOfOrigin),
+                            color: getContrastColor(gameOfOriginToColor(poke.gameOfOrigin)),
+                        }}>{poke.gameOfOrigin}</span>
+                    }
+                </div>
+            </div>
+        );
+    }
+
+    if (style.minimalDeadLayout) {
+        return (
+            <div
+                className={'dead-pokemon-container'}
+                data-league={poke.champion}
+                style={{
+                    background: useGameOfOriginColor ? gameOfOriginToColor(poke.gameOfOrigin!) : getAccentColor(poke),
+                    color: useGameOfOriginColor ? getContrastColor(gameOfOriginToColor(poke.gameOfOrigin!)) : getContrastColor(getAccentColor(poke)),
+                    height: '50px',
+                    fontSize: '90%',
+                    outline: '1px solid #222',
+                }}>
                 <span style={{ filter: 'grayscale(100%)' }}>
                     <PokemonIconBase onClick={e => poke.selectPokemon(poke.id)} {...poke as any} />
                 </span>

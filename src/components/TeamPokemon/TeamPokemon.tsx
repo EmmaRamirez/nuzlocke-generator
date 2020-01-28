@@ -14,6 +14,7 @@ import {
     formatBallText,
     speciesToNumber,
     isLocal,
+    TemplateName,
 } from 'utils';
 import { GenderElement, ErrorBoundary } from 'components/Shared';
 import { selectPokemon } from 'actions';
@@ -63,8 +64,8 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
         console.log(pokemon);
 
         const accentColor = style ? style.accentColor : '#111111';
-        const isCardsTheme = style.template === 'Cards';
-        const isCompactTheme = style.template === 'Compact';
+        const isCardsTheme = style.template === TemplateName.Cards;
+        const isCompactTheme = style.template === TemplateName.Compact || style.template === TemplateName.CompactWithIcons;
         const getTypeOrNone = () => {
             if (pokemon) {
                 if (pokemon.types) {
@@ -368,7 +369,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
 
         return (
             <div className='pokemon-container' {...data}>
-                {isLocal() && <PokemonIcon {...poke} />}
+                {style.template === 'Compact with Icons' && <PokemonIcon {...poke} />}
                 <div
                     role='presentation'
                     onClick={e => this.props.selectPokemon(poke.id)}

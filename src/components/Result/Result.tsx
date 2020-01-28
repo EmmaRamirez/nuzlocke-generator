@@ -17,7 +17,7 @@ import { ErrorBoundary } from 'components/Shared';
 import { Stats } from './Stats';
 import { Pokemon, Trainer } from 'models';
 import { reducers } from 'reducers';
-import { Styles as StyleState, getGameRegion, sortPokes, getContrastColor, OrientationType } from 'utils';
+import { Styles as StyleState, getGameRegion, sortPokes, getContrastColor, OrientationType, isLocal } from 'utils';
 
 import * as Styles from './styles';
 
@@ -225,7 +225,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             </div>
         );
         const others = pokemon.filter(poke => !['Team', 'Boxed', 'Dead', 'Champs'].includes(poke.status!));
-        const enableStats = true;
+        const enableStats = true && isLocal();
+        const enableChampImage = false && isLocal();
 
         return (
             <Scrollbars autoHide autoHideTimeout={1000} autoHideDuration={200}>
@@ -274,6 +275,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                                 {trainer.notes}
                             </div>
                         ) : null}
+                        {enableChampImage && <img src='./img/dev/champs3.jpg' alt='fads' style={{width: '500px', display: 'block', margin: '0 auto'}} />}
                         {style.displayRules && style.displayRulesLocation === 'top' ? rulesContainer : null}
                         {teamContainer}
                         {style.template === 'Generations' && trainerSectionOrientation === 'vertical' ?

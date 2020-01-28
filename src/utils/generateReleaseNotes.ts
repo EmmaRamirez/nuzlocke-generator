@@ -432,6 +432,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Clicking to select a Pokémon in the editor now works for Dead Pokémon icons
 - Color for Compact theme now contrasts against secondary type's color
 - Added an image for Gigantamax Eevee
+- Made the BugReporter inclusive of Feature Requests
 
 ## Known Issues
 - Rules are not being properly imported from json files

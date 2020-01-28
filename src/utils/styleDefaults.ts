@@ -5,6 +5,10 @@ export type IconRenderingType = 'pixelated' | 'auto';
 export type RulesLocation = 'inside trainer section' | 'bottom' | 'top';
 export type ItemStyle = 'outer glow' | 'round' | 'square' | 'text';
 
+export interface StatsOptions {
+    [x: string]: boolean;
+}
+
 export interface Styles {
     accentColor: string;
     backgroundImage: string;
@@ -49,6 +53,7 @@ export interface Styles {
     displayItemAsText: boolean;
     displayRulesLocation: RulesLocation;
     displayStats: boolean;
+    statsOptions: StatsOptions;
 }
 
 export const styleDefaults: Styles = {
@@ -95,4 +100,5 @@ export const styleDefaults: Styles = {
     trainerHeight: '100%',
     trainerAuto: true,
     displayStats: false,
+    statsOptions: {},
 };
