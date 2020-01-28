@@ -39,7 +39,7 @@ const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'],
     }
     if (propName === 'template' && e.target.value === 'Hexagons') {
         props.editStyle({ resultWidth: 1320 });
-        props.editStyle({ accentColor: '#000000' });
+        props.editStyle({ accentColor: 'rgba(0, 0, 0, 0)' });
         props.editStyle({ movesPosition: 'horizontal' as OrientationType });
     }
     if (propName === 'template' && e.target.value === 'Generations') {

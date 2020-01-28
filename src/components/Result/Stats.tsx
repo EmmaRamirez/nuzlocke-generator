@@ -100,7 +100,7 @@ export class StatsBase extends React.Component<StatsProps, {pokemon: State['poke
 
     private getShinies() {
         return this.props.pokemon.filter(s => s.shiny)
-            .map(p => <PokemonIcon species={p.species} id={p.id} />);
+            .map(p => <PokemonIcon shiny={p.shiny} species={p.species} id={p.id} />);
     }
 
     public render() {
