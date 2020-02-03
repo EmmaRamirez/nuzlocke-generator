@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Pokemon, Game } from 'models';
+import { Pokemon, Game, Editor } from 'models';
 import {
     getBackgroundGradient,
     typeToColor,
@@ -176,6 +176,7 @@ export interface TeamPokemonBaseProps {
     game: Game;
     style: Styles;
     selectPokemon: selectPokemon;
+    editor: Editor;
 }
 
 export class TeamPokemonBaseMinimal extends React.PureComponent<
@@ -196,6 +197,7 @@ export class TeamPokemonBaseMinimal extends React.PureComponent<
                             style: this.props.style,
                             name: this.props.game.name,
                             shiny: pokemon.shiny,
+                            editor: this.props.editor,
                         }),
                         ...this.props.spriteStyle,
                     }}
@@ -392,6 +394,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                                 shiny: poke.shiny,
                                 style: this.props.style,
                                 name: this.props.game.name,
+                                editor: this.props.editor,
                             }),
                             ...(spriteStyle as React.CSSProperties),
                         }}
@@ -464,6 +467,7 @@ export const TeamPokemon = connect(
     (state: State) => ({
         style: state.style,
         game: state.game,
+        editor: state.editor,
     }),
     {
         selectPokemon,

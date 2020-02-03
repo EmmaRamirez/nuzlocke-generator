@@ -10,7 +10,7 @@ export function editor(state: Editor = { minimized: false, temtemMode: false, },
         case TOGGLE_TEMTEM_MODE:
             return {
                 ...state,
-                temTemMode: !state.temtemMode,
+                temtemMode: !state.temtemMode,
             };
         default:
             return state;

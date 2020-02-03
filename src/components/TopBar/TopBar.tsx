@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Button, Classes, Spinner } from '@blueprintjs/core';
+import { Button, Classes, Spinner, Switch } from '@blueprintjs/core';
 import { connect } from 'react-redux';
 import { reducers } from 'reducers';
 
 import { classWithDarkTheme, isEmpty, Styles, TeamImagesType } from 'utils';
-import { changeEditorSize, editStyle, seeRelease } from 'actions';
+import { changeEditorSize, editStyle, seeRelease, toggleTemtemMode } from 'actions';
 import * as styles from 'components/Result/styles';
 import { pkg } from 'package';
 import { cx } from 'emotion';
@@ -22,6 +22,8 @@ export interface TopBarProps {
     changeEditorSize: changeEditorSize;
     editStyle: editStyle;
     seeRelease: seeRelease;
+    toggleTemtemMode: toggleTemtemMode;
+
     pokemon: Pokemon[];
 
     isDownloading?: boolean;
@@ -101,6 +103,14 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                     icon='star'>
                     {pkg.version}
                 </Button>
+                <Button className={Classes.MINIMAL}>
+                    <Switch
+                        style={{...darkModeStyle(this.props.style.editorDarkMode), marginBottom: 0}}
+                        label='Temtem Mode'
+                        checked={this.props.editor.temtemMode}
+                        onChange={e => this.props.toggleTemtemMode()}
+                    />
+                </Button>
                 {this.props.children}
                 <ReleaseDialog
                     style={this.props.style}
@@ -123,5 +133,6 @@ export const TopBar = connect(
         changeEditorSize,
         editStyle,
         seeRelease,
+        toggleTemtemMode,
     },
 )(TopBarBase);

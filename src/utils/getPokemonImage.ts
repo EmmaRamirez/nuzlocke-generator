@@ -4,6 +4,8 @@ import { capitalize } from './capitalize';
 import { Game } from 'utils';
 import { Forme } from './Forme';
 import { getIconFormeSuffix } from './getIconFormeSuffix';
+import { Editor } from 'models';
+import { editor } from 'reducers/editor';
 
 const sugiFormeNotation = (forme: Forme) => {
     if (typeof forme === 'undefined') return '';
@@ -104,6 +106,7 @@ export interface GetPokemonImage {
     name?: Game;
     style: Styles;
     shiny?: boolean;
+    editor?: Editor;
 }
 
 export function getPokemonImage({
@@ -113,12 +116,17 @@ export function getPokemonImage({
     name,
     style,
     shiny,
+    editor,
 }: GetPokemonImage) {
     const regularNumber = speciesToNumber(species || 'Ditto');
     const leadingZerosNumber = (speciesToNumber(species || 'Ditto') || 0).toString().padStart(3, '0');
 
     if (customImage) {
         return `url(${customImage})`;
+    }
+
+    if (editor?.temtemMode) {
+        return `url(img/temtem/${species?.trim()}.png)`;
     }
 
     if (

@@ -17,7 +17,7 @@ import {
     getDeepObject,
     listOfPokeballs,
 } from 'utils';
-import { Pokemon } from 'models';
+import { Pokemon, Editor } from 'models';
 import { Boxes } from 'models';
 import { CurrentPokemonInput } from 'components/PokemonEditor';
 import { DeletePokemonButton } from 'components/DeletePokemonButton';
@@ -69,6 +69,7 @@ export interface CurrentPokemonEditProps {
     editPokemon: editPokemon;
     addPokemon: addPokemon;
     game: { name: Game, customName: string };
+    editor: Editor;
 }
 
 export interface CurrentPokemonEditState {
@@ -180,6 +181,52 @@ export class CurrentPokemonEditBase extends React.Component<
 
     private toggleDialog = () => this.setState({isMoveEditorOpen: !this.state.isMoveEditorOpen});
 
+    private getTypes() {
+        const customTypes = [];
+
+        if (this.props.editor?.temtemMode) {
+            return [
+                'None',
+                'Crystal',
+                'Digital',
+                'Earth',
+                'Electric',
+                'Fire',
+                'Melee',
+                'Mental',
+                'Nature',
+                'Neutral',
+                'Toxic',
+                'Water',
+                'Wind',
+            ];
+        }
+
+        return [
+            'Bug',
+            'Dark',
+            'Dragon',
+            'Electric',
+            'Fairy',
+            'Fighting',
+            'Fire',
+            'Flying',
+            'Ghost',
+            'Grass',
+            'Ground',
+            'Ice',
+            'Normal',
+            'Poison',
+            'Psychic',
+            'Rock',
+            'Shadow',
+            'Steel',
+            'Water',
+            'None',
+            ...customTypes,
+        ];
+    }
+
     public moreInputs(currentPokemon: Pokemon) {
         return (
             <div className='expanded-edit'>
@@ -197,27 +244,7 @@ export class CurrentPokemonEditBase extends React.Component<
                     inputName='types'
                     value={currentPokemon.types}
                     type='double-select'
-                    options={[
-                        'Bug',
-                        'Dark',
-                        'Dragon',
-                        'Electric',
-                        'Fairy',
-                        'Fighting',
-                        'Fire',
-                        'Flying',
-                        'Ghost',
-                        'Grass',
-                        'Ground',
-                        'Ice',
-                        'Normal',
-                        'Poison',
-                        'Psychic',
-                        'Rock',
-                        'Steel',
-                        'Water',
-                        'None',
-                    ]}
+                    options={this.getTypes()}
                 />
                 <CurrentPokemonLayoutItem checkboxes>
                     <CurrentPokemonInput
@@ -525,6 +552,7 @@ export const CurrentPokemonEdit = connect(
         selectedId: state.selectedId,
         pokemon: state.pokemon,
         game: state.game,
+        editor: state.editor,
     }),
     {
         selectPokemon,

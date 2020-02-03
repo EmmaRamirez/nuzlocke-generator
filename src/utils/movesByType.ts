@@ -1,6 +1,7 @@
 import { Types } from 'utils';
+import { TemtemTypes } from './Types';
 
-export type MovesByType = { [T in Types]: string[] };
+export type MovesByType = { [T in Exclude<Types, TemtemTypes>]: string[] };
 
 export const movesByType: MovesByType = {
     Bug: [
@@ -822,4 +823,24 @@ export const movesByType: MovesByType = {
         'Fishious Rend',
         'Life Dew',
     ],
+
+    Shadow: [
+        'Shadow Rush',
+        'Shadow Blast',
+        'Shadow Bolt',
+        'Shadow Break',
+        'Shadow Chill',
+        'Shadow Down',
+        'Shadow End',
+        'Shadow Fire',
+        'Shadow Half',
+        'Shadow Hold',
+        'Shadow Mist',
+        'Shadow Panic',
+        'Shadow Rave',
+        'Shadow Shed',
+        'Shadow Sky',
+        'Shadow Storm',
+        'Shadow Wave',
+    ]
 };

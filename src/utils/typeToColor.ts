@@ -21,6 +21,30 @@ export const typeToColor = (type: keyof typeof Types | 'None'): string | null =>
         Rock: '#8F795D',
         Steel: '#888',
         Water: '#5B64DE',
+        Shadow: '#3d2469',
+        Neutral: '#e7f7f7',
+        Crystal: '#eb4968',
+        Digital: '#a5c1c2',
+        Earth: '#bb7a5c',
+        Melee: '#fa9360',
+        Mental: '#c469a4',
+        Toxic: '#5a535a',
+        Wind: '##01fab4',
+        Nature: '#aedf78',
     };
     return types[type];
 };
+
+
+// 'Crystal',
+//                 'Digital',
+//                 'Earth',
+//                 'Electric',
+//                 'Fire',
+//                 'Melee',
+//                 'Mental',
+//                 'Nature',
+//                 'Neutral',
+//                 'Toxic',
+//                 'Water',
+//                 'Wind',
