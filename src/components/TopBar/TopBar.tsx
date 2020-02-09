@@ -106,7 +106,7 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                 <Button className={Classes.MINIMAL}>
                     <Switch
                         style={{...darkModeStyle(this.props.style.editorDarkMode), marginBottom: 0}}
-                        label='Temtem Mode'
+                        label='TemTem Mode'
                         checked={this.props.editor.temtemMode}
                         onChange={e => this.props.toggleTemtemMode()}
                     />
