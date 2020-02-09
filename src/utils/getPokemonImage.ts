@@ -4,6 +4,7 @@ import { capitalize } from './capitalize';
 import { Game } from 'utils';
 import { Forme } from './Forme';
 import { getIconFormeSuffix } from './getIconFormeSuffix';
+import { GenderElementProps, Gender } from 'components';
 
 const sugiFormeNotation = (forme: Forme) => {
     if (typeof forme === 'undefined') return '';
@@ -104,6 +105,7 @@ export interface GetPokemonImage {
     name?: Game;
     style: Styles;
     shiny?: boolean;
+    gender?: GenderElementProps;
 }
 
 export function getPokemonImage({
@@ -113,16 +115,13 @@ export function getPokemonImage({
     name,
     style,
     shiny,
+    gender,
 }: GetPokemonImage) {
     const regularNumber = speciesToNumber(species || 'Ditto');
     const leadingZerosNumber = (speciesToNumber(species || 'Ditto') || 0).toString().padStart(3, '0');
 
     if (customImage) {
         return `url(${customImage})`;
-    }
-
-    if (species === 'Dugtrio' && forme === 'Alolan' && shiny) {
-        return `url(img/alolan-dugtrio-shiny.jpg)`;
     }
 
     if (
@@ -186,6 +185,14 @@ export function getPokemonImage({
         return `url(img/shuffle/${(species || 'Ditto').trim().toLocaleLowerCase()}${getIconFormeSuffix(
             forme as keyof typeof Forme
         )}.png)`;
+    }
+
+    // TEMPORARY STOPGAPS
+    if (species === 'Dugtrio' && forme === 'Alolan' && shiny) {
+        return `url(img/alolan-dugtrio-shiny.jpg)`;
+    }
+    if (species === 'Indeedee' && gender === 'Male') {
+        return `url(img/indeedee-m.jpg)`;
     }
 
     return `url(img/${(

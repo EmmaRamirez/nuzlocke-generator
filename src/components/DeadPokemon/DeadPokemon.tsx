@@ -124,6 +124,7 @@ export const DeadPokemonBase = (
                             species: poke.species,
                             style: poke.style,
                             name: poke.game.name,
+                            gender: poke.gender,
                         }),
                         ...spriteStyle(style),
                         filter: style.grayScaleDeadPokemon ? 'grayscale(100%)' : 'none',

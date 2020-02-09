@@ -428,5 +428,11 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Reverted a box ordering change that broke things
 - Added Mega Blastoise image
 - Added some cities as possible locations to catch Pokémon
+`,
+    '1.0.6': `
+## Fixes
+- Add female Indeedee sprite, Male Indeedee image
+- Added Z-Crystals to item autocompletion
+- Fix margins for Dead Pokemon in Cards template
 `
 };

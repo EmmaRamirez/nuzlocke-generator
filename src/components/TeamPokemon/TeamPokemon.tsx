@@ -187,6 +187,7 @@ export class TeamPokemonBaseMinimal extends React.PureComponent<
                             style: this.props.style,
                             name: this.props.game.name,
                             shiny: pokemon.shiny,
+                            gender: pokemon.gender,
                         }),
                         ...this.props.spriteStyle,
                     }}
@@ -382,6 +383,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                                 shiny: poke.shiny,
                                 style: this.props.style,
                                 name: this.props.game.name,
+                                gender: poke.gender,
                             }),
                             ...(spriteStyle as React.CSSProperties),
                         }}
