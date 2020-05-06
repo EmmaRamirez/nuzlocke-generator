@@ -42,13 +42,13 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
-                include: [path.resolve(__dirname, 'src')],
+                include: [path.resolve(__dirname, './src')],
             },
             {
                 test: /\.tsx?$/,
                 loader: 'tslint-loader',
                 enforce: 'pre',
-                include: [path.resolve(__dirname, 'src')],
+                include: [path.resolve(__dirname, './src')],
             },
             {
                 test: /\.styl$/,

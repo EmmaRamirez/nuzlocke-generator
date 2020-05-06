@@ -17,7 +17,13 @@ npm run serve
 
 You can also click the `Clone or Download` button and select to download it as a zip file. You'll then want to use the `cd` command to navigate to the nuzlocke-generator folder. I'm available on Discord (emma#4085) or through Github issues if you have any questions.
 
-You should find it at `localhost:8080`.
+You should find it at `localhost:8080`. In order to check for updates, run the following
+
+```bash
+git pull origin master
+```
+
+And then re-run the server!
 
 ## Why is the Generator down?
 
