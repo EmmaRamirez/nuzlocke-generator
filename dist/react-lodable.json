@@ -111,7 +111,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../common/errors": [
+  "./errors": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
@@ -1027,7 +1027,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./spinner/spinner": [
+  "../spinner/spinner": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/spinner/spinner.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/spinner/spinner.js",
@@ -1055,7 +1055,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./tabs/tab": [
+  "./tab": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/tabs/tab.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/tabs/tab.js",
@@ -1419,7 +1419,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./cell/formats/jsonFormat": [
+  "./formats/jsonFormat": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/jsonFormat.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/jsonFormat.js",
@@ -1433,7 +1433,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./cell/formats/truncatedFormat": [
+  "./formats/truncatedFormat": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/truncatedFormat.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/truncatedFormat.js",
@@ -1475,7 +1475,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/classes": [
+  "../common/classes": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
@@ -1489,7 +1489,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./clipboard": [
+  "./common/clipboard": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/clipboard.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/clipboard.js",
@@ -1503,7 +1503,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/context": [
+  "./common/context": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/context.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/context.js",
@@ -1559,7 +1559,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./grid": [
+  "./common/grid": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/grid.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/grid.js",
@@ -1601,7 +1601,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/internal/focusedCellUtils": [
+  "./common/internal/focusedCellUtils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/internal/focusedCellUtils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/internal/focusedCellUtils.js",
@@ -1685,7 +1685,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./renderMode": [
+  "./common/renderMode": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/renderMode.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/renderMode.js",
@@ -1713,7 +1713,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/utils": [
+  "../../common/utils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
@@ -6177,7 +6177,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./noop": [
+  "lodash/noop": [
     {
       "id": "./node_modules/lodash/noop.js",
       "name": "./node_modules/lodash/noop.js",
@@ -6185,20 +6185,8 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/utils/noop.ts",
-      "name": "./src/utils/noop.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
       "id": "./node_modules/lodash/noop.js",
       "name": "./node_modules/lodash/noop.js",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    },
-    {
-      "id": "./src/utils/noop.ts",
-      "name": "./src/utils/noop.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -8453,7 +8441,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./_reduced": [
+  "./internal/_reduced": [
     {
       "id": "./node_modules/ramda/es/internal/_reduced.js",
       "name": "./node_modules/ramda/es/internal/_reduced.js",
@@ -8789,7 +8777,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./internal/_xwrap": [
+  "./_xwrap": [
     {
       "id": "./node_modules/ramda/es/internal/_xwrap.js",
       "name": "./node_modules/ramda/es/internal/_xwrap.js",
@@ -16415,7 +16403,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../Shared": [
+  "components/Shared": [
     {
       "id": "./src/components/Shared/index.ts",
       "name": "./src/components/Shared/index.ts",
@@ -16623,7 +16611,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./TrainerInfoEditField": [
+  "components/TrainerEditor/TrainerInfoEditField": [
     {
       "id": "./src/components/TrainerEditor/TrainerInfoEditField.tsx",
       "name": "./src/components/TrainerEditor/TrainerInfoEditField.tsx",
@@ -17597,6 +17585,20 @@
     {
       "id": "./src/utils/movesByType.ts",
       "name": "./src/utils/movesByType.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./noop": [
+    {
+      "id": "./src/utils/noop.ts",
+      "name": "./src/utils/noop.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/utils/noop.ts",
+      "name": "./src/utils/noop.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
