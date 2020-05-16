@@ -1027,7 +1027,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../spinner/spinner": [
+  "./spinner/spinner": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/spinner/spinner.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/spinner/spinner.js",
@@ -1055,7 +1055,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./tab": [
+  "./tabs/tab": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/tabs/tab.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/tabs/tab.js",
@@ -1433,7 +1433,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./formats/truncatedFormat": [
+  "./cell/formats/truncatedFormat": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/truncatedFormat.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/truncatedFormat.js",
@@ -1475,7 +1475,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/classes": [
+  "./common/classes": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
@@ -1489,7 +1489,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/clipboard": [
+  "./clipboard": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/clipboard.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/clipboard.js",
@@ -1559,7 +1559,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/grid": [
+  "./grid": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/grid.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/grid.js",
@@ -1671,7 +1671,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/rect": [
+  "./rect": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/rect.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/rect.js",
@@ -1685,7 +1685,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/renderMode": [
+  "./renderMode": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/renderMode.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/renderMode.js",
@@ -1713,7 +1713,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../common/utils": [
+  "./common/utils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
@@ -8441,7 +8441,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./internal/_reduced": [
+  "./_reduced": [
     {
       "id": "./node_modules/ramda/es/internal/_reduced.js",
       "name": "./node_modules/ramda/es/internal/_reduced.js",
@@ -8777,7 +8777,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./_xwrap": [
+  "./internal/_xwrap": [
     {
       "id": "./node_modules/ramda/es/internal/_xwrap.js",
       "name": "./node_modules/ramda/es/internal/_xwrap.js",
