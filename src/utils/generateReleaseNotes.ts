@@ -452,6 +452,8 @@ Thank you!
 `,
     '1.0.8': `
 ## Fixes
+- Added more images for Mega Pokemon
+- Add game colors for LGPE
 
 `
 };

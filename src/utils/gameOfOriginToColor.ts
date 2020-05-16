@@ -34,6 +34,8 @@ export const gameOfOriginToColor = (game: Game) => {
         'Ultra Moon': '#ac17ed',
         Colosseum: '#dfe0d2',
         'XD Gale of Darkness': '#39104f',
+        'Let\'s Go Eevee': '#d1b28c',
+        'Let\'s Go Pikachu': '#ede087',
         Sword: '#48A9A6',
         Shield: '#C1474D',
     };
