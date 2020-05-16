@@ -7,6 +7,7 @@
     "cosmos": "cosmos",
     "cosmos:export": "cosmos-export",
     "test": "jest --coverage --config jest-config.json",
+    "prebuild": "rm -rf ./dist",
     "build": "webpack",
     "build:production": "webpack",
     "build:watch": "webpack --watch",
@@ -19,9 +20,7 @@
     "deploy": "npm run build && git push heroku master",
     "precommit": "npm run lint",
     "docz": "docz dev",
-    "prepush": "npm run build:production && git add . && git commit --no-verify -m 'chore: update build'",
-    "node-sass-fix": "npm install --unsafe-perm node-sass@4.14.1",
-    "preinstall": "npm run node-sass-fix"
+    "prepush": "npm run build:production && git add . && git commit --no-verify -m 'chore: update build'"
   },
   "engines": {
     "node": "13.11.0",
