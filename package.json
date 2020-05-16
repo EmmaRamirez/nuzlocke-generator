@@ -1,11 +1,9 @@
 {
   "name": "nuzlocke-generator",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A tool for generating nuzlocke team pics from data",
   "main": "index.js",
   "scripts": {
-    "cosmos": "cosmos",
-    "cosmos:export": "cosmos-export",
     "test": "jest --coverage --config jest-config.json",
     "prebuild": "rm -rf ./dist",
     "build": "webpack --verbose",
@@ -19,7 +17,7 @@
     "serve:heroku": "npm run build:production && heroku local web",
     "deploy": "npm run build && git push heroku master",
     "precommit": "npm run lint",
-    "docz": "docz dev",
+    "serve:http": "npx http-server@0.12.0 --cors ./dist",
     "prepush": "npm run build:production && git add . && git commit --no-verify -m 'chore: update build'"
   },
   "engines": {

@@ -449,5 +449,9 @@ So what does this mean for you?
 
 Thank you!
 
+`,
+    '1.0.8': `
+## Fixes
+
 `
 };
