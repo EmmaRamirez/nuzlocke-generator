@@ -93,13 +93,13 @@ module.exports = {
     },
     plugins: [
         new CopyWebpackPlugin([
-            { from: './src/img', to: './img' },
-            { from: './src/assets/', to: './assets' },
-            { from: './src/assets/icons', to: './icons' }
+            { from: path.resolve(__dirname, 'src/img'), to: './img' },
+            { from: path.resolve(__dirname, 'src/assets'), to: './assets' },
+            { from: path.resolve(__dirname, 'src/assets/icons'), to: './icons' }
         ]),
 
         new HTMLWebpackPlugin({
-            template: './src/index.html',
+            template: path.resolve(__dirname, 'src/index.html'),
         }),
 
         new webpack.DefinePlugin({
