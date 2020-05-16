@@ -831,7 +831,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./navbarGroup": [
+  "./navbar/navbarGroup": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarGroup.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarGroup.js",
@@ -845,7 +845,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./navbarHeading": [
+  "./navbar/navbarHeading": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarHeading.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarHeading.js",
@@ -873,7 +873,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../overlay/overlay": [
+  "./overlay/overlay": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
@@ -901,7 +901,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../popover/popover": [
+  "./popover/popover": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/popover/popover.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/popover/popover.js",
@@ -1027,7 +1027,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../spinner/spinner": [
+  "./spinner/spinner": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/spinner/spinner.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/spinner/spinner.js",
@@ -1055,7 +1055,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./tab": [
+  "./tabs/tab": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/tabs/tab.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/tabs/tab.js",
@@ -1125,7 +1125,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../text/text": [
+  "./text/text": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
@@ -1419,7 +1419,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./formats/jsonFormat": [
+  "./cell/formats/jsonFormat": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/jsonFormat.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/jsonFormat.js",
@@ -1433,7 +1433,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./formats/truncatedFormat": [
+  "./cell/formats/truncatedFormat": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/truncatedFormat.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/cell/formats/truncatedFormat.js",
@@ -1545,7 +1545,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../errors": [
+  "./common/errors": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/errors.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/errors.js",
@@ -1671,7 +1671,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./rect": [
+  "./common/rect": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/rect.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/rect.js",
@@ -1685,7 +1685,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./renderMode": [
+  "./common/renderMode": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/renderMode.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/renderMode.js",
@@ -2805,7 +2805,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../utils/dirtiness": [
+  "./utils/dirtiness": [
     {
       "id": "./node_modules/dnd-core/lib/utils/dirtiness.js",
       "name": "./node_modules/dnd-core/lib/utils/dirtiness.js",
@@ -5819,7 +5819,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "lodash/get": [
+  "./get": [
     {
       "id": "./node_modules/lodash/get.js",
       "name": "./node_modules/lodash/get.js",
@@ -6177,7 +6177,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./noop": [
+  "lodash/noop": [
     {
       "id": "./node_modules/lodash/noop.js",
       "name": "./node_modules/lodash/noop.js",
@@ -6185,20 +6185,8 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/utils/noop.ts",
-      "name": "./src/utils/noop.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
       "id": "./node_modules/lodash/noop.js",
       "name": "./node_modules/lodash/noop.js",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    },
-    {
-      "id": "./src/utils/noop.ts",
-      "name": "./src/utils/noop.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -7949,7 +7937,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./_containsWith": [
+  "./internal/_containsWith": [
     {
       "id": "./node_modules/ramda/es/internal/_containsWith.js",
       "name": "./node_modules/ramda/es/internal/_containsWith.js",
@@ -8313,7 +8301,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./_isString": [
+  "./internal/_isString": [
     {
       "id": "./node_modules/ramda/es/internal/_isString.js",
       "name": "./node_modules/ramda/es/internal/_isString.js",
@@ -16159,18 +16147,16 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/PokemonIcon/PokemonIcon.tsx",
-      "name": "./src/components/PokemonIcon/PokemonIcon.tsx",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "components/PokemonIcon": [
-    {
       "id": "./src/components/PokemonIcon/index.ts",
       "name": "./src/components/PokemonIcon/index.ts",
       "file": "bundle.js",
       "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/PokemonIcon/PokemonIcon.tsx",
+      "name": "./src/components/PokemonIcon/PokemonIcon.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
     },
     {
       "id": "./src/components/PokemonIcon/index.ts",
@@ -16521,18 +16507,16 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/ThemeEditor/ThemeEditor.tsx",
-      "name": "./src/components/ThemeEditor/ThemeEditor.tsx",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "components/ThemeEditor": [
-    {
       "id": "./src/components/ThemeEditor/index.ts",
       "name": "./src/components/ThemeEditor/index.ts",
       "file": "bundle.js",
       "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/ThemeEditor/ThemeEditor.tsx",
+      "name": "./src/components/ThemeEditor/ThemeEditor.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
     },
     {
       "id": "./src/components/ThemeEditor/index.ts",
@@ -16625,7 +16609,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./TrainerInfoEditField": [
+  "components/TrainerEditor/TrainerInfoEditField": [
     {
       "id": "./src/components/TrainerEditor/TrainerInfoEditField.tsx",
       "name": "./src/components/TrainerEditor/TrainerInfoEditField.tsx",
@@ -17599,6 +17583,20 @@
     {
       "id": "./src/utils/movesByType.ts",
       "name": "./src/utils/movesByType.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./noop": [
+    {
+      "id": "./src/utils/noop.ts",
+      "name": "./src/utils/noop.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/utils/noop.ts",
+      "name": "./src/utils/noop.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }

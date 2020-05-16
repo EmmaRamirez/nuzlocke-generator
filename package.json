@@ -89,7 +89,6 @@
     "localforage": "^1.5.5",
     "lodash": "^4.17.10",
     "mocha": "^5.2.0",
-    "node-sass": "^4.14.1",
     "offline-plugin": "^5.0.5",
     "pokemon-savefile-parser": "^0.6.1",
     "prettier": "^1.10.2",
