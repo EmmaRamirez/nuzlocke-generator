@@ -434,5 +434,20 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Add female Indeedee sprite, Male Indeedee image
 - Added Z-Crystals to item autocompletion
 - Fix margins for Dead Pokemon in Cards template
+`,
+    '1.0.7': `
+## Nuzlocke Generator Post-Mortem
+If you've been using this app, you may have noticed that it went down for a sustained period time. I apologize for any inconvenience that may have caused. The root issue of this problem had to do with Heroku (the service provider for this application) changing how builds work&dash;the source code was built locally and then deployed statically to Heroku beforehand. After investigatin and solving this issue, I also dealt with a slug size error by compressing all Pokémon images.
+
+So what does this mean for you?
+- You should not expect anymore downtime like this in the future. This was a one-off ocurrence that is now fixed.
+- I've set up more proactive alerts for the application if this ever happens again
+- Many users have been running the app locally (check https://github.com/EmmaRamirez/nuzlocke-generator for instructions)
+    - Please note that this will require you to update manually whenever I push updates
+- I am also investigating both switching providers and creating a stand-alone Desktop version of the app
+- Please feel free to use the bug reporter to send any feature requests you may have
+
+Thank you!
+
 `
 };
