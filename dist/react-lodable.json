@@ -111,7 +111,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./errors": [
+  "../../common/errors": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
@@ -1027,7 +1027,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../spinner/spinner": [
+  "./spinner/spinner": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/spinner/spinner.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/spinner/spinner.js",
@@ -1167,7 +1167,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../tooltip/tooltip": [
+  "./tooltip/tooltip": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/tooltip/tooltip.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/tooltip/tooltip.js",
@@ -1671,7 +1671,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./rect": [
+  "./common/rect": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/rect.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/rect.js",
@@ -1713,7 +1713,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../common/utils": [
+  "./common/utils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
@@ -6177,7 +6177,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "lodash/noop": [
+  "./noop": [
     {
       "id": "./node_modules/lodash/noop.js",
       "name": "./node_modules/lodash/noop.js",
@@ -6185,8 +6185,20 @@
       "publicPath": "bundle.js"
     },
     {
+      "id": "./src/utils/noop.ts",
+      "name": "./src/utils/noop.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
       "id": "./node_modules/lodash/noop.js",
       "name": "./node_modules/lodash/noop.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./src/utils/noop.ts",
+      "name": "./src/utils/noop.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -8777,7 +8789,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./_xwrap": [
+  "./internal/_xwrap": [
     {
       "id": "./node_modules/ramda/es/internal/_xwrap.js",
       "name": "./node_modules/ramda/es/internal/_xwrap.js",
@@ -16403,7 +16415,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "components/Shared": [
+  "../Shared": [
     {
       "id": "./src/components/Shared/index.ts",
       "name": "./src/components/Shared/index.ts",
@@ -16509,18 +16521,16 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/ThemeEditor/ThemeEditor.tsx",
-      "name": "./src/components/ThemeEditor/ThemeEditor.tsx",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "components/ThemeEditor": [
-    {
       "id": "./src/components/ThemeEditor/index.ts",
       "name": "./src/components/ThemeEditor/index.ts",
       "file": "bundle.js",
       "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/ThemeEditor/ThemeEditor.tsx",
+      "name": "./src/components/ThemeEditor/ThemeEditor.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
     },
     {
       "id": "./src/components/ThemeEditor/index.ts",
@@ -17587,20 +17597,6 @@
     {
       "id": "./src/utils/movesByType.ts",
       "name": "./src/utils/movesByType.ts",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "./noop": [
-    {
-      "id": "./src/utils/noop.ts",
-      "name": "./src/utils/noop.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./src/utils/noop.ts",
-      "name": "./src/utils/noop.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
