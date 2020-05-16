@@ -20,7 +20,7 @@
     "precommit": "npm run lint",
     "docz": "docz dev",
     "prepush": "npm run build:production && git add . && git commit --no-verify -m 'chore: update build'",
-    "node-sass-fix": "sudo npm install --unsafe-perm -g node-sass",
+    "node-sass-fix": "npm install --unsafe-perm node-sass",
     "preinstall": "npm run node-sass-fix"
   },
   "engines": {
