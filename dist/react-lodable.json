@@ -111,7 +111,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../common/errors": [
+  "./errors": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/errors.js",
@@ -253,12 +253,6 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
-      "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
       "id": "./node_modules/redux-saga/es/utils.js",
       "name": "./node_modules/redux-saga/es/utils.js",
       "file": "bundle.js",
@@ -267,12 +261,6 @@
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/common/utils.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/common/utils.js",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    },
-    {
-      "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
-      "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     },
@@ -843,7 +831,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./navbar/navbarGroup": [
+  "./navbarGroup": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarGroup.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarGroup.js",
@@ -857,7 +845,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./navbar/navbarHeading": [
+  "./navbarHeading": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarHeading.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/navbar/navbarHeading.js",
@@ -885,7 +873,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./overlay/overlay": [
+  "../overlay/overlay": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/overlay/overlay.js",
@@ -913,7 +901,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./popover/popover": [
+  "../popover/popover": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/popover/popover.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/popover/popover.js",
@@ -955,7 +943,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./portal/portal": [
+  "../portal/portal": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/portal/portal.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/portal/portal.js",
@@ -1067,7 +1055,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./tabs/tab": [
+  "./tab": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/tabs/tab.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/tabs/tab.js",
@@ -1137,7 +1125,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./text/text": [
+  "../text/text": [
     {
       "id": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
       "name": "./node_modules/@blueprintjs/core/lib/esm/components/text/text.js",
@@ -1487,7 +1475,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../common/classes": [
+  "./common/classes": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/classes.js",
@@ -1557,7 +1545,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/errors": [
+  "../errors": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/errors.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/errors.js",
@@ -1613,7 +1601,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./common/internal/focusedCellUtils": [
+  "../common/internal/focusedCellUtils": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/internal/focusedCellUtils.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/internal/focusedCellUtils.js",
@@ -1721,6 +1709,20 @@
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/common/requestIdleCallback.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/common/requestIdleCallback.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "../common/utils": [
+    {
+      "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
+      "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
+      "name": "./node_modules/@blueprintjs/table/lib/esm/common/utils.js",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -2005,7 +2007,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../../locator": [
+  "./locator": [
     {
       "id": "./node_modules/@blueprintjs/table/lib/esm/locator.js",
       "name": "./node_modules/@blueprintjs/table/lib/esm/locator.js",
@@ -2803,7 +2805,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./utils/dirtiness": [
+  "../utils/dirtiness": [
     {
       "id": "./node_modules/dnd-core/lib/utils/dirtiness.js",
       "name": "./node_modules/dnd-core/lib/utils/dirtiness.js",
@@ -6175,7 +6177,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "lodash/noop": [
+  "./noop": [
     {
       "id": "./node_modules/lodash/noop.js",
       "name": "./node_modules/lodash/noop.js",
@@ -6183,8 +6185,20 @@
       "publicPath": "bundle.js"
     },
     {
+      "id": "./src/utils/noop.ts",
+      "name": "./src/utils/noop.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
       "id": "./node_modules/lodash/noop.js",
       "name": "./node_modules/lodash/noop.js",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./src/utils/noop.ts",
+      "name": "./src/utils/noop.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -7403,7 +7417,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "../equals": [
+  "./equals": [
     {
       "id": "./node_modules/ramda/es/equals.js",
       "name": "./node_modules/ramda/es/equals.js",
@@ -7935,7 +7949,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./internal/_containsWith": [
+  "./_containsWith": [
     {
       "id": "./node_modules/ramda/es/internal/_containsWith.js",
       "name": "./node_modules/ramda/es/internal/_containsWith.js",
@@ -8299,7 +8313,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./internal/_isString": [
+  "./_isString": [
     {
       "id": "./node_modules/ramda/es/internal/_isString.js",
       "name": "./node_modules/ramda/es/internal/_isString.js",
@@ -8775,7 +8789,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./internal/_xwrap": [
+  "./_xwrap": [
     {
       "id": "./node_modules/ramda/es/internal/_xwrap.js",
       "name": "./node_modules/ramda/es/internal/_xwrap.js",
@@ -15605,18 +15619,16 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/AddPokemonButton/AddPokemonButton.tsx",
-      "name": "./src/components/AddPokemonButton/AddPokemonButton.tsx",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "components/AddPokemonButton": [
-    {
       "id": "./src/components/AddPokemonButton/index.ts",
       "name": "./src/components/AddPokemonButton/index.ts",
       "file": "bundle.js",
       "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/AddPokemonButton/AddPokemonButton.tsx",
+      "name": "./src/components/AddPokemonButton/AddPokemonButton.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
     },
     {
       "id": "./src/components/AddPokemonButton/index.ts",
@@ -15911,18 +15923,16 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/DeletePokemonButton/DeletePokemonButton.tsx",
-      "name": "./src/components/DeletePokemonButton/DeletePokemonButton.tsx",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "components/DeletePokemonButton": [
-    {
       "id": "./src/components/DeletePokemonButton/index.ts",
       "name": "./src/components/DeletePokemonButton/index.ts",
       "file": "bundle.js",
       "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/DeletePokemonButton/DeletePokemonButton.tsx",
+      "name": "./src/components/DeletePokemonButton/DeletePokemonButton.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
     },
     {
       "id": "./src/components/DeletePokemonButton/index.ts",
@@ -16275,18 +16285,16 @@
       "publicPath": "bundle.js"
     },
     {
-      "id": "./src/components/RulesEditor/RulesEditor.tsx",
-      "name": "./src/components/RulesEditor/RulesEditor.tsx",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "components/RulesEditor": [
-    {
       "id": "./src/components/RulesEditor/index.ts",
       "name": "./src/components/RulesEditor/index.ts",
       "file": "bundle.js",
       "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/components/RulesEditor/RulesEditor.tsx",
+      "name": "./src/components/RulesEditor/RulesEditor.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
     },
     {
       "id": "./src/components/RulesEditor/index.ts",
@@ -16617,7 +16625,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "components/TrainerEditor/TrainerInfoEditField": [
+  "./TrainerInfoEditField": [
     {
       "id": "./src/components/TrainerEditor/TrainerInfoEditField.tsx",
       "name": "./src/components/TrainerEditor/TrainerInfoEditField.tsx",
@@ -17591,20 +17599,6 @@
     {
       "id": "./src/utils/movesByType.ts",
       "name": "./src/utils/movesByType.ts",
-      "file": "bundle.js.map",
-      "publicPath": "bundle.js.map"
-    }
-  ],
-  "./noop": [
-    {
-      "id": "./src/utils/noop.ts",
-      "name": "./src/utils/noop.ts",
-      "file": "bundle.js",
-      "publicPath": "bundle.js"
-    },
-    {
-      "id": "./src/utils/noop.ts",
-      "name": "./src/utils/noop.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
