@@ -437,7 +437,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 `,
     '1.0.7': `
 ## Nuzlocke Generator Post-Mortem
-If you've been using this app, you may have noticed that it went down for a sustained period time. I apologize for any inconvenience that may have caused. The root issue of this problem had to do with Heroku (the service provider for this application) changing how builds work&dash;the source code was built locally and then deployed statically to Heroku beforehand. After investigatin and solving this issue, I also dealt with a slug size error by compressing all Pokémon images.
+If you've been using this app, you may have noticed that it went down for a sustained period time. I apologize for any inconvenience that may have caused. The root issue of this problem had to do with Heroku (the service provider for this application) changing how builds work&dash;the source code was built locally and then deployed statically to Heroku beforehand. After investigation and solving this issue, I also dealt with a slug size error by compressing all Pokémon images.
 
 So what does this mean for you?
 - You should not expect anymore downtime like this in the future. This was a one-off ocurrence that is now fixed.
