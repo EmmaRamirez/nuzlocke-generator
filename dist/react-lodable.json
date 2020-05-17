@@ -6469,7 +6469,7 @@
       "publicPath": "bundle.js.map"
     }
   ],
-  "./../../process/browser.js": [
+  "./../../../../../process/browser.js": [
     {
       "id": "./node_modules/process/browser.js",
       "name": "./node_modules/process/browser.js",
@@ -15941,8 +15941,20 @@
       "publicPath": "bundle.js"
     },
     {
+      "id": "./src/models/Editor.ts",
+      "name": "./src/models/Editor.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
       "id": "./src/components/Editor/Editor.tsx",
       "name": "./src/components/Editor/Editor.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    },
+    {
+      "id": "./src/models/Editor.ts",
+      "name": "./src/models/Editor.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
@@ -16711,6 +16723,34 @@
     {
       "id": "./src/index.tsx",
       "name": "./src/index.tsx",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./Badge": [
+    {
+      "id": "./src/models/Badge.ts",
+      "name": "./src/models/Badge.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/models/Badge.ts",
+      "name": "./src/models/Badge.ts",
+      "file": "bundle.js.map",
+      "publicPath": "bundle.js.map"
+    }
+  ],
+  "./Game": [
+    {
+      "id": "./src/models/Game.ts",
+      "name": "./src/models/Game.ts",
+      "file": "bundle.js",
+      "publicPath": "bundle.js"
+    },
+    {
+      "id": "./src/models/Game.ts",
+      "name": "./src/models/Game.ts",
       "file": "bundle.js.map",
       "publicPath": "bundle.js.map"
     }
