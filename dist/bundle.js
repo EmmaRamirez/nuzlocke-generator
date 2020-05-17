@@ -5371,7 +5371,7 @@ var r=function(e,t){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
 /*!*************************************!*\
   !*** ./src/reducers/checkpoints.ts ***!
   \*************************************/
-/*! exports provided: checkpoints */function(e,t,n){"use strict";n.r(t),n.d(t,"checkpoints",(function(){return a}));var r=n(/*! actions */"./src/actions/index.ts"),o=n(/*! utils */"./src/utils/index.ts");function a(e=Object(o.getBadges)("Gold"),t){switch(t.type){case r.RESET_CHECKPOINTS:return Object(o.getBadges)(t.game);case r.REORDER_CHECKPOINTS:return e;case r.ADD_CUSTOM_CHECKPOINT:return[...e,t.checkpoint];case r.EDIT_CHECKPOINT:const n=e.slice();return n.splice(e.map(e=>e.name).indexOf(t.name),1,Object.assign(Object.assign({},e.find(e=>e.name===t.name)),t.edits)),n;case r.DELETE_CHECKPOINT:return e.filter(e=>e.name!==t.name);default:return e}}},"./src/reducers/confirmation.ts":
+/*! exports provided: checkpoints */function(e,t,n){"use strict";n.r(t),n.d(t,"checkpoints",(function(){return a}));var r=n(/*! actions */"./src/actions/index.ts"),o=n(/*! utils */"./src/utils/index.ts");function a(e=Object(o.getBadges)("Gold"),t){switch(t.type){case r.RESET_CHECKPOINTS:return Object(o.getBadges)(t.game);case r.REORDER_CHECKPOINTS:return e;case r.ADD_CUSTOM_CHECKPOINT:return[...e,t.checkpoint];case r.REPLACE_STATE:return t.replaceWith.checkpoints;case r.EDIT_CHECKPOINT:const n=e.slice();return n.splice(e.map(e=>e.name).indexOf(t.name),1,Object.assign(Object.assign({},e.find(e=>e.name===t.name)),t.edits)),n;case r.DELETE_CHECKPOINT:return e.filter(e=>e.name!==t.name);default:return e}}},"./src/reducers/confirmation.ts":
 /*!**************************************!*\
   !*** ./src/reducers/confirmation.ts ***!
   \**************************************/
@@ -5407,7 +5407,7 @@ var r=function(e,t){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
 /*!*******************************!*\
   !*** ./src/reducers/rules.ts ***!
   \*******************************/
-/*! exports provided: rules */function(e,t,n){"use strict";n.r(t),n.d(t,"rules",(function(){return a}));var r=n(/*! actions */"./src/actions/index.ts");const o=["Each Pokémon that faints is considered dead and must be released or permaboxed","You can only catch the first Pokemon you encounter in an area","All Pokémon must be nicknamed"];function a(e=o,t){switch(t.type){case r.ADD_RULE:return[...e,""];case r.EDIT_RULE:return e.map((e,n)=>n!==t.target?e:t.rule);case r.DELETE_RULE:return e.filter((e,n)=>n+1!==t.target);case r.RESET_RULES:return o;default:return e}}},"./src/reducers/sawRelease.ts":
+/*! exports provided: rules */function(e,t,n){"use strict";n.r(t),n.d(t,"rules",(function(){return a}));var r=n(/*! actions */"./src/actions/index.ts");const o=["Each Pokémon that faints is considered dead and must be released or permaboxed","You can only catch the first Pokemon you encounter in an area","All Pokémon must be nicknamed"];function a(e=o,t){switch(t.type){case r.ADD_RULE:return[...e,""];case r.EDIT_RULE:return e.map((e,n)=>n!==t.target?e:t.rule);case r.DELETE_RULE:return e.filter((e,n)=>n+1!==t.target);case r.RESET_RULES:return o;case r.REPLACE_STATE:return t.replaceWith.rules;default:return e}}},"./src/reducers/sawRelease.ts":
 /*!************************************!*\
   !*** ./src/reducers/sawRelease.ts ***!
   \************************************/
@@ -5455,7 +5455,7 @@ var r=function(e,t){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
 /*!*******************************!*\
   !*** ./src/utils/addForme.ts ***!
   \*******************************/
-/*! exports provided: addForme */function(e,t,n){"use strict";n.r(t),n.d(t,"addForme",(function(){return r}));const r=(e,t)=>t?"Normal"===t?"Oricorio"===e?e+"-baile":e:"Alolan"===t?"alolan-"+e:"Galarian"===t?"galarian-"+e:"Mega"===t?e+"-mega":"Mega-X"===t?e+"-mega-x":"Mega-Y"===t?e+"-mega-y":"D"===t?e+"-d":"10%"===t?e+"-10":"Complete"===t?e+"-complete":["Heat","Frost","Fan","Heat","Mow","Summer","Spring","Autumn","Winter","Sensu","Baile","Pom-Pom","Pa'u","Dawn Wings","Dusk Mane","Ultra","Origin","Sky","Attack","Defense","Speed"].includes(t)?`${e}-${t.replace(/\s/g,"-").replace(/\'/g,"-").toLowerCase()}`:e:e},"./src/utils/capitalize.ts":
+/*! exports provided: addForme */function(e,t,n){"use strict";n.r(t),n.d(t,"addForme",(function(){return r}));const r=(e,t)=>t?"Normal"===t?"Oricorio"===e?e+"-baile":e:"Alolan"===t?"alolan-"+e:"Galarian"===t?"galarian-"+e:"Mega"===t?e+"-mega":"Mega-X"===t?e+"-mega-x":"Mega-Y"===t?e+"-mega-y":"D"===t?e+"-d":"10%"===t?e+"-10":"Complete"===t?e+"-complete":["Heat","Frost","Fan","Heat","Mow","Summer","Spring","Autumn","Winter","Sensu","Baile","Pom-Pom","Pa'u","Dawn Wings","Dusk Mane","Ultra","Origin","Sky","Attack","Defense","Speed","Midday","Dusk","Midnight"].includes(t)?`${e}-${t.replace(/\s/g,"-").replace(/\'/g,"-").toLowerCase()}`:e:e},"./src/utils/capitalize.ts":
 /*!*********************************!*\
   !*** ./src/utils/capitalize.ts ***!
   \*********************************/
@@ -5483,7 +5483,7 @@ var r=function(e,t){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Arr
 /*!******************************************!*\
   !*** ./src/utils/gameOfOriginToColor.ts ***!
   \******************************************/
-/*! exports provided: gameOfOriginToColor */function(e,t,n){"use strict";n.r(t),n.d(t,"gameOfOriginToColor",(function(){return r}));const r=e=>{console.log(e);return{Red:"rgb(243, 86, 58)",Blue:"#3675f8",Yellow:"#fdd33c",Green:"#03c242",Gold:"#E6BE8A",Silver:"#d8d8d8",Crystal:"#98bbcd",Ruby:"#bc1a1a",Sapphire:"#1a3abc",Emerald:"#1abc58",FireRed:"#ef4e21",LeafGreen:"#46f279",Diamond:"#7ebffc",Pearl:"#ffa8bb",Platinum:"#c6b1b1",HeartGold:"#c9c782",SoulSilver:"#c5d3db",Black:"#090d0f","Black 2":"#061b26",White:"#f9f9f9","White 2":"#f2e8e8",Y:"#963934",X:"#5bb7b3",OmegaRuby:"#a53131",AlphaSapphire:"#3161a5",Sun:"#ed8d17",Moon:"#ac17ed","Ultra Sun":"#e29b1f","Ultra Moon":"#ac17ed",Colosseum:"#dfe0d2","XD Gale of Darkness":"#39104f","Let's Go Eevee":"#d1b28c","Let's Go Pikachu":"#ede087",Sword:"#48A9A6",Shield:"#C1474D"}[e]||""}},"./src/utils/generateEmptyPokemon.ts":
+/*! exports provided: gameOfOriginToColor */function(e,t,n){"use strict";n.r(t),n.d(t,"gameOfOriginToColor",(function(){return r}));const r=e=>({Red:"rgb(243, 86, 58)",Blue:"#3675f8",Yellow:"#fdd33c",Green:"#03c242",Gold:"#E6BE8A",Silver:"#d8d8d8",Crystal:"#98bbcd",Ruby:"#bc1a1a",Sapphire:"#1a3abc",Emerald:"#1abc58",FireRed:"#ef4e21",LeafGreen:"#46f279",Diamond:"#7ebffc",Pearl:"#ffa8bb",Platinum:"#c6b1b1",HeartGold:"#c9c782",SoulSilver:"#c5d3db",Black:"#090d0f","Black 2":"#061b26",White:"#f9f9f9","White 2":"#f2e8e8",Y:"#963934",X:"#5bb7b3",OmegaRuby:"#a53131",AlphaSapphire:"#3161a5",Sun:"#ed8d17",Moon:"#ac17ed","Ultra Sun":"#e29b1f","Ultra Moon":"#ac17ed",Colosseum:"#dfe0d2","XD Gale of Darkness":"#39104f","Let's Go Eevee":"#d1b28c","Let's Go Pikachu":"#ede087",Sword:"#48A9A6",Shield:"#C1474D"}[e]||"")},"./src/utils/generateEmptyPokemon.ts":
 /*!*******************************************!*\
   !*** ./src/utils/generateEmptyPokemon.ts ***!
   \*******************************************/

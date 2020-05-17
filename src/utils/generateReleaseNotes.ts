@@ -453,7 +453,11 @@ Thank you!
     '1.0.8': `
 ## Fixes
 - Added more images for Mega Pokemon
-- Add game colors for LGPE
+- Added game colors for LGPE
+- Fix bug that prevented rules and checkpoints from showing up when importing
+- Added Lycanroc forme images
+
+
 
 `
 };

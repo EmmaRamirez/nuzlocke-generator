@@ -9,7 +9,9 @@ import {
     editCheckpoint,
     deleteCheckpoint,
     reorderCheckpoints,
-    resetCheckpoints
+    resetCheckpoints,
+    REPLACE_STATE,
+    replaceState
 } from 'actions';
 import { Badge } from 'models';
 import { getBadges, Game } from 'utils';
@@ -18,7 +20,7 @@ export type Checkpoints = Badge[];
 
 export function checkpoints(
     state: Checkpoints = getBadges('Gold'),
-    action: ReturnType<addCustomCheckpoint | editCheckpoint | deleteCheckpoint | resetCheckpoints | reorderCheckpoints>,
+    action: ReturnType<addCustomCheckpoint | editCheckpoint | deleteCheckpoint | resetCheckpoints | reorderCheckpoints | replaceState>,
 ) {
     switch (action.type) {
         case RESET_CHECKPOINTS:
@@ -28,6 +30,8 @@ export function checkpoints(
             return state;
         case ADD_CUSTOM_CHECKPOINT:
             return [ ...state, action.checkpoint ];
+        case REPLACE_STATE:
+            return action.replaceWith.checkpoints;
         case EDIT_CHECKPOINT:
             const newState = state.slice();
             newState.splice(
