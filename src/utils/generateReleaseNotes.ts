@@ -454,8 +454,9 @@ Thank you!
 ## Fixes
 - Added more images for Mega Pokemon
 - Added game colors for LGPE
-- Fix bug that prevented rules and checkpoints from showing up when importing
+- Fixed bug that prevented rules and checkpoints from showing up when importing
 - Added Lycanroc forme images
+- Fixed images for Gastrodon and Shellos formes
 
 
 
