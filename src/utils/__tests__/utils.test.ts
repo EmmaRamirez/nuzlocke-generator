@@ -17,6 +17,7 @@ import { Types } from '../Types';
 import { handleMovesGenerationsExceptions } from 'utils/handleMovesGenerationExceptions';
 import { getGameGeneration } from 'utils/getGameGeneration';
 import { gameOfOriginToColor } from 'utils/gameOfOriginToColor';
+import { getDeepObject } from 'utils/getDeepObject';
 
 const objectPropertiesWhere = (obj: object, filter: any) => Array.from(
     Object.values(obj)
@@ -230,5 +231,27 @@ describe(gameOfOriginToColor.name, () => {
     it('returns an empty string for non-games', () => {
         // @ts-ignore
         expect(gameOfOriginToColor('Garbage')).toBe('');
-    })
+    });
+});
+
+describe(getDeepObject.name, () => {
+    it('returns an object deeply nested by key', () => {
+        const subject = {
+            pokemon: {
+                abra: {
+                    kadabra: {
+                        alakazam: true,
+                    }
+                }
+            }
+        };
+        expect(getDeepObject(subject, 'alakazam')).toEqual({alakazam: true});
+    });
+
+    it('returns null if the key does not exist', () => {
+        const subject = {
+            pokemon: {}
+        };
+        expect(getDeepObject(subject, 'arcanine')).toEqual(null);
+    });
 })
