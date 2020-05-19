@@ -15,4 +15,11 @@ describe('ThemeManager', () => {
         manager.selectTheme(DefaultDarkTheme);
         expect(manager.currentTheme.name).toBe(DefaultDarkTheme.name);
     });
+
+    describe('HexagonsTheme', () => {
+        it('#createStyles', () => {
+            const theme = new HexagonsTheme();
+            expect(theme.createStyles({})).toEqual({ChampsPokemon: {}});
+        });
+    });
 });
