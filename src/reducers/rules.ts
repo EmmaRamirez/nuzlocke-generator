@@ -1,4 +1,4 @@
-import { EDIT_RULE, ADD_RULE, DELETE_RULE, RESET_RULES, Action } from 'actions';
+import { EDIT_RULE, ADD_RULE, DELETE_RULE, RESET_RULES, Action, REPLACE_STATE } from 'actions';
 
 const initialState = [
     'Each Pokémon that faints is considered dead and must be released or permaboxed',
@@ -8,7 +8,7 @@ const initialState = [
 
 export function rules(
     state: string[] = initialState,
-    action: Action<EDIT_RULE | ADD_RULE | DELETE_RULE | RESET_RULES>,
+    action: Action<EDIT_RULE | ADD_RULE | DELETE_RULE | RESET_RULES | REPLACE_STATE>,
 ) {
     switch (action.type) {
         case ADD_RULE:
@@ -24,6 +24,8 @@ export function rules(
             return state.filter((_, index) => index + 1 !== action.target);
         case RESET_RULES:
             return initialState;
+        case REPLACE_STATE:
+            return action.replaceWith.rules;
         default:
             return state;
     }

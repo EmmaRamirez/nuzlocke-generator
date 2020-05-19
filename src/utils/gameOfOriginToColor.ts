@@ -2,6 +2,7 @@ import { Game } from 'utils';
 
 export const gameOfOriginToColor = (game: Game) => {
     type GameToColor = { [G in Game]?: string };
+
     const gameToColor: GameToColor = {
         Red: 'rgb(243, 86, 58)',
         Blue: '#3675f8',
@@ -34,6 +35,10 @@ export const gameOfOriginToColor = (game: Game) => {
         'Ultra Moon': '#ac17ed',
         Colosseum: '#dfe0d2',
         'XD Gale of Darkness': '#39104f',
+        // tslint:disable-next-line:quotemark
+        "Let\'s Go Eevee": '#d1b28c',
+        // tslint:disable-next-line:quotemark
+        "Let's Go Pikachu": '#ede087',
         Sword: '#48A9A6',
         Shield: '#C1474D',
     };

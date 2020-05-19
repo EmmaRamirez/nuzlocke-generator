@@ -449,5 +449,16 @@ So what does this mean for you?
 
 Thank you!
 
+`,
+    '1.0.8': `
+## Fixes
+- Added more images for Mega Pokemon
+- Added game colors for LGPE
+- Fixed bug that prevented rules and checkpoints from showing up when importing
+- Added Lycanroc forme images
+- Fixed images for Gastrodon and Shellos formes
+
+
+
 `
 };
