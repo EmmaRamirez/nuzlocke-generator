@@ -6,4 +6,4 @@ cache:
   directories:
   - node_modules
 after_success:
-  - node node_modules/.bin/jest --coverage --config jest-config.json && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+  - node node_modules/.bin/jest --coverage --collectCoverageFrom=!src/parsers/*.ts --config jest-config.json && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage

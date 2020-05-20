@@ -335,11 +335,7 @@ export const parseGen1Save = async (file, format) => {
 
         };
 
-    console.log(save2);
-
     return save2;
-
-
 };
 
 export const loadGen1SaveFile = async (filename: string, format: 'plain' | 'nuzlocke' = 'nuzlocke') => {
@@ -347,6 +343,7 @@ export const loadGen1SaveFile = async (filename: string, format: 'plain' | 'nuzl
 
     try {
         const file = Buffer.from(save);
+        console.log(file);
         const result = await parseGen1Save(file, format);
         return await result;
     } catch {
