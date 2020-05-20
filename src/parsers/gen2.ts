@@ -1,6 +1,6 @@
 import * as fs from 'fs';
-import { splitUp, GEN_1_POKEMON_MAP, GEN_1_CHARACTER_MAP, MOVES_ARRAY } from '../../../pokemon-savefile-parser/utils';
-import { HELD_ITEM } from '../../../pokemon-savefile-parser/utils/gen2';
+import { splitUp, GEN_1_POKEMON_MAP, GEN_1_CHARACTER_MAP, MOVES_ARRAY } from './utils';
+import { HELD_ITEM } from './utils/gen2';
 
 const OFFSETS = {
     PLAYER_ID: [0x2009, 0x2009 + 2],

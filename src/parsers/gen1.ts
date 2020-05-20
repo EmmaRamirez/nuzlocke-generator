@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import { splitUp, GEN_1_POKEMON_MAP, GEN_1_CHARACTER_MAP, MOVES_ARRAY } from '../../../pokemon-savefile-parser/utils';
+import { splitUp, GEN_1_POKEMON_MAP, GEN_1_CHARACTER_MAP, MOVES_ARRAY } from './utils';
 
 // tslint:disable-next-line:class-name
 interface GEN_1_SAVE {
