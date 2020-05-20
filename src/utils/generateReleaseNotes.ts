@@ -419,6 +419,46 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 
 `,
+    '1.0.4': `
+## Fixes
+- Added Shiny Alolan Dugtrio
+- Fixed the saves being lost issue--this was due to how the downloading file feature was originally configured. Please file another bug report if it is still present.
+`,
+    '1.0.5': `
+## Fixes
+- Reverted a box ordering change that broke things
+- Added Mega Blastoise image
+- Added some cities as possible locations to catch Pokémon
+`,
+    '1.0.6': `
+## Fixes
+- Add female Indeedee sprite, Male Indeedee image
+- Added Z-Crystals to item autocompletion
+- Fix margins for Dead Pokemon in Cards template
+`,
+    '1.0.7': `
+## Nuzlocke Generator Post-Mortem
+If you've been using this app, you may have noticed that it went down for a sustained period time. I apologize for any inconvenience that may have caused. The root issue of this problem had to do with Heroku (the service provider for this application) changing how builds work&dash;the source code was built locally and then deployed statically to Heroku beforehand. After investigation and solving this issue, I also dealt with a slug size error by compressing all Pokémon images.
+
+So what does this mean for you?
+- You should not expect anymore downtime like this in the future. This was a one-off ocurrence that is now fixed.
+- I've set up more proactive alerts for the application if this ever happens again
+- Many users have been running the app locally (check https://github.com/EmmaRamirez/nuzlocke-generator for instructions)
+    - Please note that this will require you to update manually whenever I push updates
+- I am also investigating both switching providers and creating a stand-alone Desktop version of the app
+- Please feel free to use the bug reporter to send any feature requests you may have
+
+Thank you!
+
+`,
+    '1.0.8': `
+## Fixes
+- Added more images for Mega Pokemon
+- Added game colors for LGPE
+- Fixed bug that prevented rules and checkpoints from showing up when importing
+- Added Lycanroc forme images
+- Fixed images for Gastrodon and Shellos formes
+`,
     '1.1.0': `
 ## Features
 - **TCG images**: featuing art from all of your favorite cards!
@@ -435,8 +475,8 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Made the BugReporter inclusive of Feature Requests
 
 ## Known Issues
-- Rules are not being properly imported from json files
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
-`
+`,
+
 };

@@ -32,6 +32,12 @@ export const addForme = (species: string | undefined, forme?: keyof typeof Forme
         if (forme === 'Complete') {
             return species + '-complete';
         }
+        if (forme === 'West Sea') {
+            return `${species}-west`;
+        }
+        if (forme === 'East Sea') {
+            return `${species}-east`;
+        }
         // Forms that don't require special formatting
         if ([
             'Heat',
@@ -61,6 +67,9 @@ export const addForme = (species: string | undefined, forme?: keyof typeof Forme
             'Defense',
             'Speed',
 
+            'Midday',
+            'Dusk',
+            'Midnight',
 
         ].includes(forme)) {
             return `${species}-${forme.replace(/\s/g, '-').replace(/\'/g, '-').toLowerCase()}`;

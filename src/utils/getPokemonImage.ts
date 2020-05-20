@@ -6,6 +6,7 @@ import { Forme } from './Forme';
 import { getIconFormeSuffix } from './getIconFormeSuffix';
 import { Editor } from 'models';
 import { editor } from 'reducers/editor';
+import { GenderElementProps, Gender } from 'components';
 
 const sugiFormeNotation = (forme: Forme) => {
     if (typeof forme === 'undefined') return '';
@@ -107,6 +108,7 @@ export interface GetPokemonImage {
     style: Styles;
     shiny?: boolean;
     editor?: Editor;
+    gender?: GenderElementProps;
 }
 
 export function getPokemonImage({
@@ -117,6 +119,7 @@ export function getPokemonImage({
     style,
     shiny,
     editor,
+    gender,
 }: GetPokemonImage) {
     const regularNumber = speciesToNumber(species || 'Ditto');
     const leadingZerosNumber = (speciesToNumber(species || 'Ditto') || 0).toString().padStart(3, '0');
@@ -196,6 +199,13 @@ export function getPokemonImage({
         return `url(img/tcg/${(
             addForme((species || '').replace(/\s/g, '').replace(/'/g, ''), forme) || 'missingno'
         ).toLowerCase()}.jpg)`;
+    }
+    // TEMPORARY STOPGAPS
+    if (species === 'Dugtrio' && forme === 'Alolan' && shiny) {
+        return `url(img/alolan-dugtrio-shiny.jpg)`;
+    }
+    if (species === 'Indeedee' && gender === 'Male') {
+        return `url(img/indeedee-m.jpg)`;
     }
 
     return `url(img/${(

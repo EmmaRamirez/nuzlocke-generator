@@ -16,6 +16,8 @@ import { DeepSet } from '../DeepSet';
 import { Types } from '../Types';
 import { handleMovesGenerationsExceptions } from 'utils/handleMovesGenerationExceptions';
 import { getGameGeneration } from 'utils/getGameGeneration';
+import { gameOfOriginToColor } from 'utils/gameOfOriginToColor';
+import { getDeepObject } from 'utils/getDeepObject';
 
 const objectPropertiesWhere = (obj: object, filter: any) => Array.from(
     Object.values(obj)
@@ -214,3 +216,42 @@ describe('getGameGeneration', () => {
         expect(getGameGeneration('Fake Game' as any)).toBe(Generation.Gen8);
     });
 });
+
+describe(gameOfOriginToColor.name, () => {
+    it('returns a color for games', () => {
+        const colors = {
+            Red: 'rgb(243, 86, 58)',
+            Blue: '#3675f8',
+            Yellow: '#fdd33c',
+        }
+        expect(gameOfOriginToColor('Red')).toBe(colors.Red);
+        expect(gameOfOriginToColor('Blue')).toBe(colors.Blue);
+        expect(gameOfOriginToColor('Yellow')).toBe(colors.Yellow);
+    });
+    it('returns an empty string for non-games', () => {
+        // @ts-ignore
+        expect(gameOfOriginToColor('Garbage')).toBe('');
+    });
+});
+
+describe(getDeepObject.name, () => {
+    it('returns an object deeply nested by key', () => {
+        const subject = {
+            pokemon: {
+                abra: {
+                    kadabra: {
+                        alakazam: true,
+                    }
+                }
+            }
+        };
+        expect(getDeepObject(subject, 'alakazam')).toEqual({alakazam: true});
+    });
+
+    it('returns null if the key does not exist', () => {
+        const subject = {
+            pokemon: {}
+        };
+        expect(getDeepObject(subject, 'arcanine')).toEqual(null);
+    });
+})

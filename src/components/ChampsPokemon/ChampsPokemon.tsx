@@ -52,6 +52,7 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
                         species: this.props.species,
                         name: this.props.gameOfOrigin,
                         shiny: this.props.shiny,
+                        gender: this.props.gender,
                         style: {
                             spritesMode: true,
                             teamImages: null,

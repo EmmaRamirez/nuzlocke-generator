@@ -153,6 +153,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
             const functionToUse = componentState.selectedGame === 'RBY' ? parseGen1Save(u, 'nuzlocke') : parseGen2Save(u, 'nuzlocke');
 
             functionToUse
+                // @ts-ignore
                 .then(res => {
                     res.pokemon = res.pokemon.filter(poke => poke.species);
                     const data = {game: DataEditorBase.determineGame(res.isYellow), pokemon: res.pokemon, trainer: res.trainer};

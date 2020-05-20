@@ -198,6 +198,7 @@ export class TeamPokemonBaseMinimal extends React.PureComponent<
                             name: this.props.game.name,
                             shiny: pokemon.shiny,
                             editor: this.props.editor,
+                            gender: pokemon.gender,
                         }),
                         ...this.props.spriteStyle,
                     }}
@@ -252,7 +253,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
     }
 
     public render() {
-        const { pokemon, style, game, selectPokemon } = this.props;
+        const { pokemon, style, game, selectPokemon, editor } = this.props;
         const poke = pokemon;
 
         const getFirstType = poke.types ? poke.types[0] : 'Normal';
@@ -301,6 +302,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                     game={game}
                     spriteStyle={spriteStyle}
                     pokemon={poke}
+                    editor={editor}
                 />
             );
         }
@@ -395,6 +397,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                                 style: this.props.style,
                                 name: this.props.game.name,
                                 editor: this.props.editor,
+                                gender: poke.gender,
                             }),
                             ...(spriteStyle as React.CSSProperties),
                         }}

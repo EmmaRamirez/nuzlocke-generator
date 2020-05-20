@@ -9,7 +9,7 @@ const isProduction = process.env.NODE_ENV === 'production' ? true : false;
 
 // tslint:disable-next-line:no-default-export
 module.exports = {
-    entry: './src/index.tsx',
+    entry: path.resolve(__dirname, 'src') + '/index.tsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
@@ -19,7 +19,7 @@ module.exports = {
     devtool: 'eval-source-map',
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
-        modules: [path.resolve('./src'), path.resolve('./node_modules')],
+        modules: [path.resolve('src'), path.resolve('node_modules')],
     },
     devServer: {
         contentBase: './dist',
@@ -43,13 +43,13 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
-                include: [path.resolve(__dirname, 'src')],
+                include: [path.resolve(__dirname, './src')],
             },
             {
                 test: /\.tsx?$/,
                 loader: 'tslint-loader',
                 enforce: 'pre',
-                include: [path.resolve(__dirname, 'src')],
+                include: [path.resolve(__dirname, './src')],
             },
             {
                 test: /\.styl$/,
@@ -94,13 +94,13 @@ module.exports = {
     },
     plugins: [
         new CopyWebpackPlugin([
-            { from: './src/img', to: './img' },
-            { from: './src/assets/', to: './assets' },
-            { from: './src/assets/icons', to: './icons' }
+            { from: path.resolve(__dirname, 'src/img'), to: './img' },
+            { from: path.resolve(__dirname, 'src/assets'), to: './assets' },
+            { from: path.resolve(__dirname, 'src/assets/icons'), to: './icons' }
         ]),
 
         new HTMLWebpackPlugin({
-            template: './src/index.html',
+            template: path.resolve(__dirname, 'src/index.html'),
         }),
 
         new webpack.DefinePlugin({
