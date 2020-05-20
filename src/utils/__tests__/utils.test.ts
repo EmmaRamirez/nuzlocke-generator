@@ -18,6 +18,8 @@ import { handleMovesGenerationsExceptions } from 'utils/handleMovesGenerationExc
 import { getGameGeneration } from 'utils/getGameGeneration';
 import { gameOfOriginToColor } from 'utils/gameOfOriginToColor';
 import { getDeepObject } from 'utils/getDeepObject';
+import { getEncounterMap } from 'utils/getEncounterMap';
+import { getMoveType } from 'utils/getMoveType';
 
 const objectPropertiesWhere = (obj: object, filter: any) => Array.from(
     Object.values(obj)
@@ -254,4 +256,23 @@ describe(getDeepObject.name, () => {
         };
         expect(getDeepObject(subject, 'arcanine')).toEqual(null);
     });
-})
+});
+
+describe(getEncounterMap.name, () => {
+    it('returns a proper list of routes given a game', () => {
+        const KantoGen1 = getEncounterMap('Red');
+        const KantoGen3 = getEncounterMap('FireRed');
+        const JohtoGen4 = getEncounterMap('HeartGold');
+        expect(KantoGen3.length).toBeGreaterThan(KantoGen1.length);
+        expect(JohtoGen4).toContain('Route 29');
+    });
+});
+
+describe(getMoveType.name, () => {
+    it('works for moves that exist & do not', () => {
+        const moveA = getMoveType('Fire Blast');
+        const moveB = getMoveType('Move That Does Not Exist');
+        expect(moveA).toBe(Types.Fire);
+        expect(moveB).toBe(Types.Normal);
+    });
+});

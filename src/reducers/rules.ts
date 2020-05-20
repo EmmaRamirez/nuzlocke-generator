@@ -26,8 +26,6 @@ export function rules(
             return action.replaceWith.rules;
         case RESET_RULES:
             return initialState;
-        case REPLACE_STATE:
-            return action.replaceWith.rules;
         default:
             return state;
     }

@@ -7,9 +7,11 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production' ? true : false;
 
+console.log(path.resolve(__dirname, 'src/index.tsx'))
+
 // tslint:disable-next-line:no-default-export
 module.exports = {
-    entry: path.resolve(__dirname, 'src') + '/index.tsx',
+    entry: path.resolve(__dirname, 'src/index.tsx'),
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
@@ -22,7 +24,7 @@ module.exports = {
         modules: [path.resolve('src'), path.resolve('node_modules')],
     },
     devServer: {
-        contentBase: './dist',
+        contentBase: 'dist',
         inline: true,
         host: 'localhost',
         port: 8080,
@@ -30,7 +32,7 @@ module.exports = {
         hot: false,
         stats: 'errors-only',
         historyApiFallback: true,
-        writeToDisk: true,
+        writeToDisk: false,
     },
     stats: {
         warnings: false,
@@ -43,13 +45,13 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
-                include: [path.resolve(__dirname, './src')],
+                include: [path.resolve(__dirname, 'src')],
             },
             {
                 test: /\.tsx?$/,
                 loader: 'tslint-loader',
                 enforce: 'pre',
-                include: [path.resolve(__dirname, './src')],
+                include: [path.resolve(__dirname, 'src')],
             },
             {
                 test: /\.styl$/,
