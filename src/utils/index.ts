@@ -49,3 +49,4 @@ export * from './listOfPokeballs';
 export * from './formatBallText';
 export * from './isLocal';
 export * from './getEncounterMap';
+export * from './getDisplayNameForTest';

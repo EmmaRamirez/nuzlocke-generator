@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dialog, IDialogProps } from '@blueprintjs/core';
+import { Dialog, IDialogProps, Classes } from '@blueprintjs/core';
 import { cx } from 'emotion';
 import * as styles from 'components/Result/styles';
 import { generateReleaseNotes, Styles, classWithDarkTheme } from 'utils';
@@ -24,7 +24,7 @@ export class ReleaseDialog extends React.Component<IDialogProps & ReleaseDialogP
                 className={`release-dialog ${
                     this.props.style.editorDarkMode ? 'pt-dark' : 'pt-light'
                 }`}>
-                <div className='pt-dialog-body'>
+                <div className={Classes.DIALOG_BODY}>
                     <div className='release-notes-wrapper'>
                         <h3
                             className={cx(

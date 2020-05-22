@@ -19,7 +19,7 @@ const Grid = ({
                 .filter(filterFunction)
                 .sort(sortPokes)
                 .map((poke, index) => (
-                    <Tooltip key={index} content={poke.nickname || ''} position={Position.TOP}>
+                    <Tooltip key={index} content={poke.nickname || poke.species} position={Position.TOP}>
                         <PokemonIcon
                             id={poke.id}
                             species={poke.species}

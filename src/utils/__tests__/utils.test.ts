@@ -11,6 +11,7 @@ import {
     typeToColor,
     isEmpty,
 } from 'utils';
+import * as React from 'react';
 import * as Color from 'color';
 import { DeepSet } from '../DeepSet';
 import { Types } from '../Types';
@@ -20,6 +21,7 @@ import { gameOfOriginToColor } from 'utils/gameOfOriginToColor';
 import { getDeepObject } from 'utils/getDeepObject';
 import { getEncounterMap } from 'utils/getEncounterMap';
 import { getMoveType } from 'utils/getMoveType';
+import { getDisplayNameForTest } from 'utils/getDisplayNameForTest';
 
 const objectPropertiesWhere = (obj: object, filter: any) => Array.from(
     Object.values(obj)
@@ -274,5 +276,17 @@ describe(getMoveType.name, () => {
         const moveB = getMoveType('Move That Does Not Exist');
         expect(moveA).toBe(Types.Fire);
         expect(moveB).toBe(Types.Normal);
+    });
+});
+
+describe(getDisplayNameForTest.name, () => {
+    it('returns a formatted string based on class', () => {
+        class Component extends React.Component {
+            public static displayName = 'Component';
+            public render() {
+                return 'Dave';
+            }
+        }
+        expect(getDisplayNameForTest(Component)).toEqual(`<Component />`);
     });
 });
