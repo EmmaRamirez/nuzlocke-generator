@@ -46,7 +46,7 @@ export class BoxesComponent extends React.Component<BoxesComponentProps> {
 }
 
 const PokemonLocationChecklist = ({pokemon, game}: {pokemon: Pokemon[], game: Game}) => {
-    const encounterMap = getEncounterMap('Diamond');
+    const encounterMap = getEncounterMap(game.name);
 
     const getLocIcon = (name) => {
         const poke = pokemon.find(p => p.met === name && p.gameOfOrigin === game.name);

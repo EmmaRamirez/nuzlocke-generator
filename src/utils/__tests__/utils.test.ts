@@ -22,6 +22,7 @@ import { getDeepObject } from 'utils/getDeepObject';
 import { getEncounterMap } from 'utils/getEncounterMap';
 import { getMoveType } from 'utils/getMoveType';
 import { getDisplayNameForTest } from 'utils/getDisplayNameForTest';
+import { getGameRegion, Region } from 'utils/getGameRegion';
 
 const objectPropertiesWhere = (obj: object, filter: any) => Array.from(
     Object.values(obj)
@@ -208,7 +209,7 @@ describe('handleMoveGenerationExceptions', () => {
     });
 });
 
-describe('getGameGeneration', () => {
+describe(getGameGeneration.name, () => {
     it('do what it do', () => {
         expect(getGameGeneration('Red')).toBe(Generation.Gen1);
         expect(getGameGeneration('Emerald')).toBe(Generation.Gen3);
@@ -218,6 +219,15 @@ describe('getGameGeneration', () => {
         expect(getGameGeneration('Platinum')).toBe(Generation.Gen4);
         // Assumes latest gen
         expect(getGameGeneration('Fake Game' as any)).toBe(Generation.Gen8);
+    });
+});
+
+describe(getGameRegion.name, () => {
+    it('returns a region based on game', () => {
+        expect(getGameRegion('Red')).toBe(Region.Kanto);
+        expect(getGameRegion('Diamond')).toBe(Region.Sinnoh);
+        expect(getGameRegion('Sword')).toBe(Region.Galar);
+        expect(getGameRegion('Let\'s Go Eevee')).toBe(Region.Kanto);
     });
 });
 

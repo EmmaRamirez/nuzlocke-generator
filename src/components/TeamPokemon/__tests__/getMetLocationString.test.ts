@@ -29,4 +29,4 @@ describe(getMetLocationString.name, () => {
 
         expect(getMetLocationString({ poke: starter, oldMetLocationFormat: true })).toEqual(`Met as Starter at lv.5`);
     });
-})
+});

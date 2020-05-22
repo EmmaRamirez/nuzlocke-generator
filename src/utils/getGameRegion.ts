@@ -14,7 +14,7 @@ export enum Region {
 }
 
 export const getGameRegion = (game: Game): Region => {
-    const kanto: Game[] = ['Red', 'Blue', 'Yellow', 'Green', 'FireRed', 'LeafGreen'];
+    const kanto: Game[] = ['Red', 'Blue', 'Yellow', 'Green', 'FireRed', 'LeafGreen', "Let's Go Eevee", "Let's Go Pikachu"];
     const johto: Game[] = ['Gold', 'Silver', 'Crystal', 'HeartGold', 'SoulSilver'];
     const hoenn: Game[] = ['Ruby', 'Sapphire', 'OmegaRuby', 'AlphaSapphire', 'Emerald'];
     const sinnoh: Game[] = ['Diamond', 'Pearl', 'Platinum'];
