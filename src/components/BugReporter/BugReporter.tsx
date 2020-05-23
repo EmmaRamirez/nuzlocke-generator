@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseEditor } from 'components/BaseEditor';
-import { Button, Intent, TextArea, Checkbox, Toaster } from '@blueprintjs/core';
+import { Button, Intent, TextArea, Checkbox, Toaster, Classes } from '@blueprintjs/core';
 import { connect } from 'react-redux';
 
 export interface BugReporterProps {
@@ -10,22 +10,25 @@ export interface BugReporterProps {
 
 export interface BugReporterState {
     userReport: string;
+    userReportTitle: string;
     includeNuzlocke: boolean;
 }
 
 export class BugReporterBase extends React.Component<BugReporterProps, BugReporterState> {
     public state = {
         userReport: '',
+        userReportTitle: '',
         includeNuzlocke: true,
     };
 
     public render() {
-        const {userReport, includeNuzlocke} = this.state;
+        const {userReport, userReportTitle, includeNuzlocke} = this.state;
 
         return (
             <BaseEditor name='Bug Reports and Feature Requests' defaultOpen={false}>
                 <div style={{margin: '.5rem'}}>
-                    <TextArea style={{width: '100%'}} value={userReport} onChange={this.updateReport} />
+                    <input className={Classes.INPUT} required type='text' placeholder='Issue Title' value={userReportTitle} onChange={this.updateReport('userReportTitle')} />
+                    <TextArea placeholder='Description (Optional).' style={{width: '100%'}} value={userReport} onChange={this.updateReport('userReport')} />
                     <div style={{
                         padding: '.5rem',
                         display: 'flex',
@@ -37,18 +40,17 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
                             checked={includeNuzlocke}
                             label={'include nuzlocke.json file'}
                         />
-                        <Button disabled={!userReport} onClick={this.sendBugReport} className='pt-minimal' intent={Intent.DANGER}>Submit <img style={{height: '20px', verticalAlign: 'bottom'}} alt='' role='presentation' src='./icons/pokemon/regular/caterpie.png' /></Button>
+                        <Button disabled={!userReportTitle} onClick={this.sendBugReport} className='pt-minimal' intent={Intent.DANGER}>Submit <img style={{height: '20px', verticalAlign: 'bottom'}} alt='' role='presentation' src='./icons/pokemon/regular/caterpie.png' /></Button>
                     </div>
                 </div>
             </BaseEditor>
         );
     }
 
-    private updateReport = (e) => {
+    private updateReport = (target: string) => (e) => {
         const text = e.target.value;
-        this.setState({
-            userReport: text,
-        });
+        const update: Pick<BugReporterState, 'userReport' | 'userReportTitle'> = { [target]: text } as unknown as any
+        this.setState(update);
     }
 
     private accum(s: string[]) {
@@ -56,7 +58,7 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
     }
 
     private sendBugReport = (e) => {
-        const {userReport} = this.state;
+        const {userReport, userReportTitle} = this.state;
         const {state} = this.props;
         const url = 'https://api.github.com/repos/EmmaRamirez/nuzlocke-generator/issues';
 
@@ -69,7 +71,7 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
             },
             mode: 'cors',
             body: JSON.stringify({
-                title: userReport.slice(0, 20),
+                title: userReportTitle || userReport.slice(0, 20),
                 body: `${userReport}
 
 \`\`\`json

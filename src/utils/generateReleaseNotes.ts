@@ -465,6 +465,7 @@ Thank you!
 - **Stats Tracker**: add stats to a template!
 - **Location Checklist**: track what Pokémon you've caught and where!
 - Added a downloading indicator when downloading images
+- Support for Shadow type and Shadow moves
 
 ## Fixes
 - Added ".pokemon-mvp-label" class for access to custom CSS with mvp labels
@@ -473,6 +474,7 @@ Thank you!
 - Color for Compact theme now contrasts against secondary type's color
 - Added an image for Gigantamax Eevee
 - Made the BugReporter inclusive of Feature Requests
+- Added images for Razor Claw, Razor Fang, and Oval Stone
 
 ## Known Issues
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
