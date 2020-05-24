@@ -258,12 +258,12 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     )}
                 </Dialog>
 
-                <div style={{display: 'flex', alignItems: 'center'}}>
+                <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap'}}>
                     <div className='pt-label pt-inline' style={{ padding: '.25rem 0', paddingBottom: '.5rem' }}>
                         <label className='pt-label pt-text-muted'>Game</label>
                         <div className='pt-select'>
                             <select value={this.state.selectedGame} onChange={e => this.setState({selectedGame: e.target.value})}>
-                                {['RBY', 'GSC'].map(game => <option value={game}>{game}</option>)}
+                                {['RBY'].map(game => <option value={game}>{game}</option>)}
                             </select>
                         </div>
                     </div>

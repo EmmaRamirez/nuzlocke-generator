@@ -58,7 +58,9 @@ html.pt-dark {
 .pokemon-editor,
 .style-editor,
 .hotkeys-editor,
-.reporter-editor {
+.reporter-editor,
+.requests-editor
+.stats-editor {
   padding: 0.3rem;
 }
 .base-editor {

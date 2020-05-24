@@ -515,16 +515,16 @@ export class CurrentPokemonEditBase extends React.Component<
                         value={currentPokemon.moves}
                         type='moves'
                     />
-                    {/*<Button
+                    <Button
                         className='pt-minimal'
                         intent={Intent.PRIMARY}
                         onClick={this.toggleDialog}
-                    >Edit Moves</Button>*/}
+                    >Edit Moves</Button>
                 </CurrentPokemonLayoutItem>
-                {/*<MoveEditor
+                <MoveEditor
                     isOpen={this.state.isMoveEditorOpen}
                     toggleDialog={this.toggleDialog}
-                />*/}
+                />
                 {this.state.expandedView ? this.moreInputs(currentPokemon) : null}
                 <br />
                 <button
