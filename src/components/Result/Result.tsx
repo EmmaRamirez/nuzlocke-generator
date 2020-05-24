@@ -16,7 +16,7 @@ import { ErrorBoundary } from 'components/Shared';
 import { Stats } from './Stats';
 import { Pokemon, Trainer, Editor } from 'models';
 import { reducers } from 'reducers';
-import { Styles as StyleState, getGameRegion, sortPokes, getContrastColor, OrientationType, isLocal } from 'utils';
+import { Styles as StyleState, getGameRegion, sortPokes, getContrastColor, isLocal } from 'utils';
 
 import * as Styles from './styles';
 

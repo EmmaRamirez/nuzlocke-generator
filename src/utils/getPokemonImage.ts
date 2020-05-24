@@ -180,6 +180,9 @@ export function getPokemonImage({
 
 
     if (style.teamImages === 'sugimori') {
+        if ([521, 592, 593, 668, 678].includes(regularNumber || 0) && (gender === 'f' || gender === 'Female')) {
+            return `url(img/sugimori/female/${regularNumber}${getIconFormeSuffix(forme as keyof typeof Forme)}.png)`;
+        }
         return `url(img/sugimori/${regularNumber}${getIconFormeSuffix(forme as keyof typeof Forme)}.png)`;
     }
 
