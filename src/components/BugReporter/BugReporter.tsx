@@ -52,7 +52,7 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
 
     private updateReport = (target: string) => (e) => {
         const text = e.target.value;
-        const update: Pick<BugReporterState, 'userReport' | 'userReportTitle'> = { [target]: text } as unknown as any
+        const update: Pick<BugReporterState, 'userReport' | 'userReportTitle'> = { [target]: text } as unknown as any;
         this.setState(update);
     }
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Classes, Spinner, Switch } from '@blueprintjs/core';
+import { Button, Classes, Spinner, Switch, Intent } from '@blueprintjs/core';
 import { connect } from 'react-redux';
 import { reducers } from 'reducers';
 import * as styles from 'components/Result/styles';
@@ -58,7 +58,6 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
 
     private isDownloadDisabled() {
         return (
-            this.props.style.teamImages === 'sugimori' ||
             this.props.style.spritesMode ||
             this.props.style.useSpritesForChampsPokemon ||
             this.props.pokemon.some(p => (p.status === 'Team' && !isEmpty(p.customImage)) || !isEmpty(p.customIcon) || p.status === 'Team' && !isEmpty(p.customItemImage))
@@ -107,17 +106,20 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                         icon={this.props.editor.minimized ? 'minimize' : 'maximize'}>
                         {this.props.editor.minimized ? 'Maximize' : 'Minimize'} Editor
                     </Button>
-                    {isDownloading ? <Button className={Classes.MINIMAL} style={{ ...darkModeStyle(this.props.style.editorDarkMode), height: '30px' }}><Spinner /> Downloading</Button> : <Button
+                    {isDownloading ? <Button className={Classes.MINIMAL} style={{ ...darkModeStyle(this.props.style.editorDarkMode), height: '30px' }}>
+                        <Spinner /> Downloading
+                    </Button> : <Button
                         style={darkModeStyle(this.props.style.editorDarkMode)}
                         onClick={this.props.onClickDownload}
                         className={Classes.MINIMAL}
-                        disabled={this.isDownloadDisabled()}
-                        title={
-                            this.isDownloadDisabled() ? `Disabled due to cross-origin resources.` : ''
-                        }
                         icon='download'>
                         Download Image
                     </Button>}
+                    {this.isDownloadDisabled() && <Button style={darkModeStyle(this.props.style.editorDarkMode)}
+                        className={Classes.MINIMAL}
+                        intent={Intent.DANGER}
+                        icon='error'
+                    >Cross-origin resources detected. Downloads may not work.</Button>}
                     <Button
                         style={darkModeStyle(this.props.style.editorDarkMode)}
                         onClick={_ => {

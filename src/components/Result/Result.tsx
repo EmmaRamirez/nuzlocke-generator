@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { connect } from 'react-redux';
 import * as uuid from 'uuid/v4';
-import * as domtoimage from 'dom-to-image';
+import { domToImage } from '@emmaramirez/dom-to-image';
 import { cx } from 'emotion';
 
 import { selectPokemon, toggleMobileResultView } from 'actions';
@@ -139,7 +139,9 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         const resultNode = this.resultRef.current;
         this.setState({ isDownloading: true });
         try {
-            const dataUrl = await domtoimage.toPng(resultNode);
+            setTimeout(() => { throw new Error('Timed out') }, 5000);
+            console.log(domToImage);
+            const dataUrl = await (domToImage as any).toPng(resultNode, {corsImage: true});
             const link = document.createElement('a');
             link.download = `nuzlocke-${uuid()}.png`;
             link.href = dataUrl;
