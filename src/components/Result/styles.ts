@@ -2,6 +2,7 @@ import { css } from 'emotion';
 
 export const topBar = css`
     align-items: center;
+    background: #fefefe;
     border-bottom: 1px solid rgba(0, 0, 0, 0.33);
     color: #111;
     display: flex;
@@ -10,12 +11,34 @@ export const topBar = css`
     padding: .5rem;
 `;
 
+export const topBar_mobile = css`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 48px;
+    z-index: 25;
+    justify-content: space-between;
+`;
+
+export const topBar_mobile_open = css`
+    height: auto;
+    flex-direction: column;
+    transition: 200ms all ease-in-out;
+    justify-content: flex-start;
+    align-items: flex-start;
+`;
+
 export const topBar_dark = css`
     background: #222;
     color: #fff !important;
     button {
         color: #fff !important;
     }
+`;
+
+export const close_result_button = css`
+    z-index: 23 !important;
 `;
 
 export const heading = css`
@@ -245,3 +268,21 @@ export const pokemonInfo = css`
     }
 `;
 
+export const result_mobile = css`
+    position: fixed !important;
+    top: 2vh !important;
+    left: 2vw !important;
+    transform: scale(0.3);
+    transform-origin: 0px center;
+    box-shadow: 0 0 4px rgba(0,0,0,0.33);
+    z-index: 21 !important;
+`;
+
+export const result_download = css`
+    position: fixed;
+    bottom: 1rem;
+    margin: 0 auto;
+    z-index: 22 !important;
+    width: 100px;
+    left: calc(50% - 50px);
+`;

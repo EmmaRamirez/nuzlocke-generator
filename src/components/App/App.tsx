@@ -6,6 +6,7 @@ import * as Loadable from 'react-loadable';
 import './app.styl';
 import { Hotkeys } from 'components/Hotkeys';
 import { State } from 'state';
+import { injectGlobal } from 'emotion';
 
 export interface AppProps {
     game: any;

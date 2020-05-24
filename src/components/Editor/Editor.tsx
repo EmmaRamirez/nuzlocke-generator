@@ -9,33 +9,38 @@ import { TrainerEditor } from 'components/TrainerEditor/TrainerEditor';
 import { DataEditor } from 'components/DataEditor';
 import { HotkeysEditor } from 'components/HotkeysEditor';
 
-import './editor.styl';
+import './editor.css';
 import { BugReporter } from 'components/BugReporter';
 import { StatsEditor } from 'components/StatsEditor';
+import { css, cx } from 'emotion';
+import { State } from 'state';
 
 /**
  * The main editor interface.
  */
-export class EditorBase extends React.Component<{ editor: any; style: any }, {}> {
+export class EditorBase extends React.Component<{ editor: State['editor']; style: State['style'] }, {}> {
     constructor(props) {
         super(props);
     }
 
     public render() {
+
+        const styles = {
+            base: css`
+                min-width: 30rem;
+                max-width: 40rem;
+                height: 100vh;
+                padding: .25rem;
+            `
+        }
+
         const minimized = this.props.editor.minimized;
         return (
-            <Scrollbars
-                autoHide
-                autoHideTimeout={1000}
-                autoHideDuration={200}
-                className={`editor ${this.props.style.editorDarkMode ? 'pt-dark' : ''}`}
+            <div
+                className={cx(`editor`, styles.base, this.props.style.editorDarkMode ? 'pt-dark' : '')}
                 style={{
                     width: minimized ? '0%' : '33%',
                     marginLeft: minimized ? '-30rem' : '0',
-                    minWidth: '30rem',
-                    maxWidth: '40rem',
-                    height: '100vh',
-                    padding: '.25rem',
                     background: this.props.style.editorDarkMode ? '#222' : '#fff',
                 }}>
                 <GameEditor />
@@ -46,13 +51,13 @@ export class EditorBase extends React.Component<{ editor: any; style: any }, {}>
                 <DataEditor />
                 <HotkeysEditor />
                 <BugReporter />
-            </Scrollbars>
+            </div>
         );
     }
 }
 
 export const Editor = connect(
-    (state: any) => ({
+    (state: State) => ({
         editor: state.editor,
         style: state.style,
     }),

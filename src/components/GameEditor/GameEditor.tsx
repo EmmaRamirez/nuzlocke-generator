@@ -51,7 +51,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
         return (
             <>
                 <RED isOpen={this.state.isOpen} onClose={this.toggleDialog} />
-                <div className='game-editor'>
+                <div className='game-editor base-editor'>
                     <h4 style={{ display: 'flex', alignContent: 'flex-end' }}>Game</h4>
                     <div style={gameSubEditorStyle}>
                         <div>

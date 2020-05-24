@@ -461,9 +461,11 @@ Thank you!
 `,
     '1.1.0': `
 ## Features
+- **Improved mobile experience**
 - **TCG images**: featuing art from all of your favorite cards!
 - **Stats Tracker**: add stats to a template!
 - **Location Checklist**: track what Pokémon you've caught and where!
+- **Save File Importing**: currently available for Gen 1 games
 - Added a downloading indicator when downloading images
 - Support for Shadow type and Shadow moves
 

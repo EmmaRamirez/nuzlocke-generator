@@ -16,7 +16,7 @@ export interface AutocompleteState {
     isOpen: boolean;
 }
 
-import './Autocomplete.styl';
+import './Autocomplete.css';
 
 export class Autocomplete extends React.Component<AutocompleteProps, AutocompleteState> {
     constructor(props) {

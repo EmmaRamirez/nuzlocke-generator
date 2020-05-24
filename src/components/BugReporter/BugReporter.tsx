@@ -27,7 +27,10 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
         return (
             <BaseEditor name='Bug Reports and Feature Requests' defaultOpen={false}>
                 <div style={{margin: '.5rem'}}>
-                    <input className={Classes.INPUT} required type='text' placeholder='Issue Title' value={userReportTitle} onChange={this.updateReport('userReportTitle')} />
+                    <input style={{
+                        width: '100%',
+                        marginBottom: '0.25rem',
+                    }} className={Classes.INPUT} required type='text' placeholder='Issue Title' value={userReportTitle} onChange={this.updateReport('userReportTitle')} />
                     <TextArea placeholder='Description (Optional).' style={{width: '100%'}} value={userReport} onChange={this.updateReport('userReport')} />
                     <div style={{
                         padding: '.5rem',

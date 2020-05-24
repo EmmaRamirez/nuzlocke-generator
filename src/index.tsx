@@ -20,6 +20,7 @@ import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/table/lib/css/table.css';
 import { DragDropContextProvider } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
+import { isLocal } from 'utils';
 
 injectGlobal`
     *,
@@ -60,7 +61,7 @@ const rollbarConfig = new Rollbar({
     },
     maxItems: 20,
     captureIp: false,
-    enabled: window.location.hostname.includes('localhost') ? false : true,
+    enabled: isLocal() ? false : true,
 });
 
 Rollbar.init(rollbarConfig as any);
