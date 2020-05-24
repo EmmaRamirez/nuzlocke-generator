@@ -16,5 +16,5 @@ export interface State {
     style: Styles;
     theme: Theme;
     trainer: Trainer;
-    customMoveMap: Map<string, string[]>;
+    customMoveMap: {move: string, type: string, id: string}[];
 }

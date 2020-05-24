@@ -6,7 +6,6 @@ import { Dialog, Intent, Button, Icon, Classes } from '@blueprintjs/core';
 import { Move } from 'components/TeamPokemon/Moves';
 import { editCustomMoveMap } from 'actions';
 import InfiniteScroll from 'react-infinite-scroller';
-import { customMoveMap } from 'reducers/customMoveMap';
 import { Autocomplete, ErrorBoundary } from 'components';
 
 export interface MoveEditorProps {
@@ -15,14 +14,13 @@ export interface MoveEditorProps {
     isOpen: boolean;
     toggleDialog(e): void;
     editCustomMoveMap: editCustomMoveMap;
-    customMoveMap: any;
+    customMoveMap: State['customMoveMap'];
 }
 
 export interface MoveEditorState {
     searchTerm: string;
     moveType: string;
     moveName: string;
-    newType: string;
 }
 
 const types = [
@@ -44,26 +42,32 @@ const types = [
     'Rock',
     'Steel',
     'Water',
+    'Shadow',
 ];
+
 
 export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorState> {
     public state = {
         searchTerm: '',
         moveType: '',
         moveName: '',
-        newType: '',
     };
 
-    private renderMoves(moves) {
-        const {searchTerm, newType} = this.state;
-        const {style} = this.props;
+    private renderMoves(moves, isCustom = false) {
+        const {searchTerm} = this.state;
+        const {style, customMoveMap} = this.props;
 
-        return Object.keys(moves).map(type => {
-            return moves[type].sort().filter(
-                move => move.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    type.toLowerCase().includes(searchTerm.toLowerCase())
-            ).map((move, index) => {
-                return <div key={index} style={{
+        const onChange = move => e => {
+            console.log(e, e.target);
+            this.props.editCustomMoveMap(e.target.value, move);
+        }
+
+        if (isCustom) {
+            if (!Array.isArray(customMoveMap)) {
+                return null;
+            }
+            return customMoveMap.map(({move, type}, index) => {
+                return <div style={{
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
@@ -78,19 +82,39 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                         />
                     </div>
                     <div className='pt-select' style={{width: '8rem'}}>
-                        <select onChange={e => {
-                            this.setState({
-                                newType: e.target.value,
-                            }, () => {
-                                this.props.editCustomMoveMap(e.target.value, move);
-                            });
-                        }} value={type}>
+                        <select onChange={onChange(move)} value={type}>
                             {types.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                         </select>
                     </div>
+                    <Icon style={{color: 'red'}} icon='trash' />
                 </div>;
             });
+        }
+
+        const prepared = Object.keys(moves).map(type => {
+            return moves[type].sort().map((move, index) => <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: '.25rem',
+            }}>
+                <div style={{width: '12rem', marginRight: '.5rem'}}>
+                    <Move
+                        index={index}
+                        move={move}
+                        type={type}
+                        style={style}
+                    />
+                </div>
+                <div className='pt-select' style={{width: '8rem'}}>
+                    <select onChange={onChange(move)} value={type}>
+                        {types.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+                    </select>
+                </div>
+            </div>);
         });
+
+        return prepared;
     }
 
     private onSearch = (e) => {
@@ -126,9 +150,10 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                         borderRadius: '.25rem',
                         padding: '0.5rem',
                         margin: '.5rem',
+                        background: 'rgba(255, 255, 255, 0.2)',
                     }} className='add-move-wrapper'>
-                        <input placeholder='Move Name' style={{width: '10rem'}} onChange={e => this.setState({moveName: e.target.value})} value={moveName} className='pt-input' type='text' />
-                        <Autocomplete placeholder='Move Type' items={types} onChange={e => this.setState({moveType: e.target.value})} value={moveType} />
+                        <input placeholder='Move Name' style={{width: '10rem'}} onChange={e => this.setState({moveName: e.target.value})} value={moveName} className={Classes.INPUT} type='text' />
+                        <Autocomplete className={Classes.INPUT} placeholder='Move Type' items={types} onChange={e => this.setState({moveType: e.target.value})} value={moveType} />
                         <Button
                             onClick={e => {
                                 this.props.editCustomMoveMap(moveType, moveName);
@@ -155,7 +180,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                                 type='search'
                             />
                         </div>
-                        {this.renderMoves(customMoveMap)}
+                        {this.renderMoves(customMoveMap, true)}
                         {this.renderMoves(movesByType)}
                     </div>
                     <Button

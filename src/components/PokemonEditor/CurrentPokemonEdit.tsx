@@ -34,6 +34,7 @@ import { addPokemon } from 'actions';
 import { State } from 'state';
 import { CurrentPokemonLayoutItem } from './CurrentPokemonLayoutItem';
 import { MoveEditor } from 'components/MoveEditor';
+import { PokemonNotes } from './PokemonNotes';
 
 const pokeball = require('assets/pokeball.png');
 
@@ -346,12 +347,13 @@ export class CurrentPokemonEditBase extends React.Component<
                     />
                 </CurrentPokemonLayoutItem>
                 <CurrentPokemonLayoutItem>
-                    <CurrentPokemonInput
+                    {/* <CurrentPokemonInput
                         labelName='Notes'
                         inputName='notes'
                         value={currentPokemon.notes}
                         type='textArea'
-                    />
+                    /> */}
+                    <PokemonNotes />
                 </CurrentPokemonLayoutItem>
                 <CurrentPokemonLayoutItem disabled>
                     {currentPokemon.extraData && <CurrentPokemonInput

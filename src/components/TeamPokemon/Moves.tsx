@@ -11,7 +11,7 @@ export interface MovesProps {
     style: Styles;
 }
 
-export const Move = ({index, style, type, move}) => (<div
+export const Move = ({index, style, type, move}) => (move && <div
     key={index}
     style={style.usePokemonGBAFont ? {fontSize: '1rem'} : {}}
     className={`move ${type}-type ${

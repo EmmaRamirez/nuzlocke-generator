@@ -8,6 +8,7 @@ export interface AutocompleteProps {
     disabled?: boolean;
     value: string;
     onChange: any;
+    className?: string;
 }
 
 export interface AutocompleteState {
@@ -17,6 +18,7 @@ export interface AutocompleteState {
 }
 
 import './Autocomplete.css';
+import { cx } from 'emotion';
 
 export class Autocomplete extends React.Component<AutocompleteProps, AutocompleteState> {
     constructor(props) {
@@ -119,10 +121,12 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
     };
 
     public render() {
+        const {className} = this.props;
         return (
-            <div className='current-pokemon-input-wrapper autocomplete'>
+            <div className={cx('current-pokemon-input-wrapper', 'autocomplete')}>
                 <label>{this.props.label}</label>
                 <input
+                    className={cx(className)}
                     onKeyDown={this.handleKeyDown}
                     onFocus={this.openList}
                     onBlur={this.closeList}

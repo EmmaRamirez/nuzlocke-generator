@@ -1,6 +1,6 @@
 html {
-  --scrollbarBG: rgba(0,0,0,0.33);
-  --thumbBG: #90A4AE;
+  --scrollbarBG: rgba(0,0,0,0.10);
+  --thumbBG: rgba(126, 136, 146, 0.33);
 }
 
 html.pt-dark {
@@ -19,7 +19,8 @@ html.pt-dark {
 
 
 .editor::-webkit-scrollbar {
-  width: 11px;
+  width: 8px;
+  padding: 2px;
 }
 .editor {
   scrollbar-width: thin;
@@ -30,8 +31,7 @@ html.pt-dark {
 }
 .editor::-webkit-scrollbar-thumb {
   background-color: var(--thumbBG) ;
-  border-radius: 6px;
-  border: 3px solid var(--scrollbarBG);
+  border-radius: 4px;
 }
 
 @media screen and (max-width: 720px) {
