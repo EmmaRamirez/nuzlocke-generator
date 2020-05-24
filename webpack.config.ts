@@ -110,10 +110,9 @@ module.exports = {
             'process.env.GH_ACCESS_TOKEN': JSON.stringify(process.env.GH_ACCESS_TOKEN),
             'process.env.ROLLBAR_ACCESS_TOKEN': JSON.stringify(process.env.ROLLBAR_ACCESS_TOKEN),
             'PRODUCTION': JSON.stringify(true),
-            'features.themeEditing': JSON.stringify(false),
-            'features.fileUploads': JSON.stringify(false),
-            'features.multipleNuzlockes': JSON.stringify(false),
-            'features.copyingPokemon': JSON.stringify(true),
+            'features.themeEditing': JSON.stringify(process.env.THEME_EDITING),
+            'features.fileUploads': JSON.stringify(process.env.FILE_UPLOADS),
+            'features.multipleNuzlockes': JSON.stringify(process.env.MULTIPLE_NUZLOCKES),
         }),
 
         new ReactLoadablePlugin({
