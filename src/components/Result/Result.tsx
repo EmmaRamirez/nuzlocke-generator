@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { connect } from 'react-redux';
 import * as uuid from 'uuid/v4';
-import { domToImage } from '@emmaramirez/dom-to-image';
+//import { domToImage } from '@emmaramirez/dom-to-image';
 import { cx } from 'emotion';
 
 import { selectPokemon, toggleMobileResultView } from 'actions';
@@ -26,6 +26,11 @@ import { State } from 'state';
 import isMobile from 'is-mobile';
 import { Button, Classes } from '@blueprintjs/core';
 import { editor } from 'reducers/editor';
+
+async function load() {
+    const resource = await import('@emmaramirez/dom-to-image');
+    return resource.domToImage;
+}
 
 interface ResultProps {
     pokemon: Pokemon[];
@@ -138,8 +143,12 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     private async toImage() {
         const resultNode = this.resultRef.current;
         this.setState({ isDownloading: true });
+        if (process.env.NODE_ENV === 'test') {
+            return;
+        }
         try {
             setTimeout(() => { throw new Error('Timed out') }, 5000);
+            const domToImage = await load();
             console.log(domToImage);
             const dataUrl = await (domToImage as any).toPng(resultNode, {corsImage: true});
             const link = document.createElement('a');

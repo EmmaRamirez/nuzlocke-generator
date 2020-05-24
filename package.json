@@ -28,7 +28,7 @@
   "author": "Emma Ramirez <ramirez.emma.g@gmail.com> (http://emmaramirez.me)",
   "license": "MIT",
   "dependencies": {
-    "@emmaramirez/dom-to-image": "^3.0.0",
+    "@emmaramirez/dom-to-image": "^3.0.2",
     "@types/chalk": "^2.2.0",
     "@types/color": "^3.0.0",
     "@types/draft-js": "^0.10.40",
@@ -76,7 +76,6 @@
     "copy-webpack-plugin": "^4.5.2",
     "coveralls": "^3.0.2",
     "css-loader": "^0.28.7",
-    "dom-to-image": "git+https://github.com/EmmaRamirez/dom-to-image.git",
     "emotion": "^8.0.12",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",

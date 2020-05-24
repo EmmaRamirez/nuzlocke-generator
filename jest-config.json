@@ -8,6 +8,9 @@
   "transform": {
     "\\.(js|ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
   },
+  "transformIgnorePatterns": [
+    "<rootDir>/node_modules"
+  ],
   "modulePaths": [
     "/src"
   ],
