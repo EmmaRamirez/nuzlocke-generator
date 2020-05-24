@@ -38,7 +38,10 @@ module.exports = {
         warnings: false,
     },
     optimization: {
-        minimize: true
+        minimize: true,
+        splitChunks: {
+            chunks: 'all',
+        }
     },
     module: {
         rules: [
@@ -113,6 +116,8 @@ module.exports = {
             'features.themeEditing': JSON.stringify(process.env.THEME_EDITING),
             'features.fileUploads': JSON.stringify(process.env.FILE_UPLOADS),
             'features.multipleNuzlockes': JSON.stringify(process.env.MULTIPLE_NUZLOCKES),
+            'features.temTemSupport': JSON.stringify(process.env.TEM_TEM_SUPPORT),
+            
         }),
 
         new ReactLoadablePlugin({

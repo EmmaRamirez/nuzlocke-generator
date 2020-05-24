@@ -22,6 +22,7 @@ import * as Styles from './styles';
 
 import './Result.styl';
 import './themes.styl';
+import 'assets/pokemon-font.css';
 import { State } from 'state';
 import isMobile from 'is-mobile';
 import { Button, Classes } from '@blueprintjs/core';
