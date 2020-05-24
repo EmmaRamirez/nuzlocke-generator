@@ -467,6 +467,8 @@ Thank you!
 - **Stats Tracker**: add stats to a template!
 - **Location Checklist**: track what Pokémon you've caught and where!
 - **Save File Importing**: currently available for Gen 1 games
+- Support for Sugimori images in downloads
+- Reworked downloads to be compatible with _some_ outside image resources (i.e. imgur)
 - Added a downloading indicator when downloading images
 - Support for Shadow type and Shadow moves
 

@@ -180,9 +180,7 @@ export function getPokemonImage({
 
 
     if (style.teamImages === 'sugimori') {
-        return `url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/${leadingZerosNumber}${sugiFormeNotation(
-            Forme[forme ? forme : 'Normal'],
-        )}.png)`;
+        return `url(img/sugimori/${regularNumber}${getIconFormeSuffix(forme as keyof typeof Forme)}.png)`;
     }
 
     if (style.teamImages === 'dream world') {
