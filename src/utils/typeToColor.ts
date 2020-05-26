@@ -1,7 +1,9 @@
 import { Types } from './Types';
+import { State } from 'state';
 
-export const typeToColor = (type: keyof typeof Types | 'None'): string | null => {
+export const typeToColor = (type: keyof typeof Types | 'None', customTypes?: State['customTypes']): string | null => {
     if (type === 'None') return null;
+    const overrides = customTypes?.length ? customTypes?.map(t => ({[t.type]: t.color})) : {};
     const types: Record<keyof typeof Types, string> = {
         Bug: '#AEE359',
         Dark: '#29291F',
@@ -31,6 +33,7 @@ export const typeToColor = (type: keyof typeof Types | 'None'): string | null =>
         Toxic: '#5a535a',
         Wind: '##01fab4',
         Nature: '#aedf78',
+        ...overrides,
     };
     return types[type];
 };

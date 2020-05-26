@@ -10,17 +10,18 @@ export interface MovesProps {
     movesPosition?: Styles['movesPosition'];
     style: Styles;
     customMoveMap: State['customMoveMap'];
+    customTypes: State['customTypes'];
 }
 
-export const Move = ({index, style, type, move}) => (move && <div
+export const Move = ({index, style, type, move, customTypes}) => (move && <div
     key={index}
     style={style.usePokemonGBAFont ? {
         fontSize: '1rem',
-        background: typeToColor(type) || 'transparent',
-        color: getContrastColor(typeToColor(type))
+        background: typeToColor(type, customTypes) || 'transparent',
+        color: getContrastColor(typeToColor(type, customTypes))
     } : {
-        background: typeToColor(type) || 'transparent',
-        color: getContrastColor(typeToColor(type))
+        background: typeToColor(type, customTypes) || 'transparent',
+        color: getContrastColor(typeToColor(type, customTypes))
     }}
     className={`move move-${move.replace(/\s/g, '-')?.toLowerCase()} ${
         move.length >= 10 ? 'long-text-move' : ''
@@ -32,7 +33,7 @@ export const getMapMove = (moveMap, move) => moveMap.find(m => m.move === move);
 
 export class MovesBase extends React.Component<MovesProps> {
     private generateMoves(moves: MovesProps['moves']) {
-        const {style, customMoveMap} = this.props;
+        const {style, customMoveMap, customTypes} = this.props;
 
         return (
             moves &&
@@ -53,6 +54,7 @@ export class MovesBase extends React.Component<MovesProps> {
                         style={style}
                         type={type}
                         move={move}
+                        customTypes={customTypes}
                     />
                 );
             })
@@ -73,5 +75,6 @@ export const Moves = connect(
     (state: State) => ({
         style: state.style,
         customMoveMap: state.customMoveMap,
+        customTypes: state.customTypes,
     }),
 )(MovesBase);

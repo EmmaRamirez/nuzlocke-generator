@@ -16,6 +16,7 @@ import {
     EvolutionTree,
     getDeepObject,
     listOfPokeballs,
+    getListOfTypes,
 } from 'utils';
 import { Pokemon, Editor } from 'models';
 import { Boxes } from 'models';
@@ -71,6 +72,7 @@ export interface CurrentPokemonEditProps {
     addPokemon: addPokemon;
     game: { name: Game, customName: string };
     editor: Editor;
+    customTypes: State['customTypes'];
 }
 
 export interface CurrentPokemonEditState {
@@ -183,49 +185,8 @@ export class CurrentPokemonEditBase extends React.Component<
     private toggleDialog = () => this.setState({isMoveEditorOpen: !this.state.isMoveEditorOpen});
 
     private getTypes() {
-        const customTypes = [];
-
-        if (this.props.editor?.temtemMode) {
-            return [
-                'None',
-                'Crystal',
-                'Digital',
-                'Earth',
-                'Electric',
-                'Fire',
-                'Melee',
-                'Mental',
-                'Nature',
-                'Neutral',
-                'Toxic',
-                'Water',
-                'Wind',
-            ];
-        }
-
-        return [
-            'Bug',
-            'Dark',
-            'Dragon',
-            'Electric',
-            'Fairy',
-            'Fighting',
-            'Fire',
-            'Flying',
-            'Ghost',
-            'Grass',
-            'Ground',
-            'Ice',
-            'Normal',
-            'Poison',
-            'Psychic',
-            'Rock',
-            'Shadow',
-            'Steel',
-            'Water',
-            'None',
-            ...customTypes,
-        ];
+        const {customTypes, editor} = this.props;
+        return getListOfTypes(customTypes, editor.temtemMode);
     }
 
     public moreInputs(currentPokemon: Pokemon) {
@@ -555,6 +516,7 @@ export const CurrentPokemonEdit = connect(
         pokemon: state.pokemon,
         game: state.game,
         editor: state.editor,
+        customTypes: state.customTypes,
     }),
     {
         selectPokemon,

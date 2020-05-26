@@ -18,3 +18,9 @@ export const editCustomMoveMap = (
         moveName,
     };
 };
+
+export type DELETE_CUSTOM_MOVE = 'DELETE_CUSTOM_MOVE';
+export const DELETE_CUSTOM_MOVE: DELETE_CUSTOM_MOVE = 'DELETE_CUSTOM_MOVE';
+
+export type deleteCustomMove = (id: string) => Action<DELETE_CUSTOM_MOVE>;
+export const deleteCustomMove = (id) => ({ type: DELETE_CUSTOM_MOVE, id });

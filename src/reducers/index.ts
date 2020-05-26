@@ -16,12 +16,14 @@ import { rules } from './rules';
 import { checkpoints } from './checkpoints';
 import { customMoveMap } from './customMoveMap';
 import { stats } from './stats';
+import { customTypes } from './customTypes';
 
 export const reducers = {
     box,
     checkpoints,
     confirmation,
     customMoveMap,
+    customTypes,
     game,
     nuzlocke,
     pokemon,
