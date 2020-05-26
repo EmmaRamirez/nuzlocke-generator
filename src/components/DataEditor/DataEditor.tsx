@@ -209,7 +209,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     onCancel={this.toggleClearingData}
                     cancelButtonText='Nevermind'
                     confirmButtonText='Delete Anyway'
-                    className={this.props.state.style.spritesMode ? 'pt-dark' : 'pt-light'}
+                    className={this.props.state.style.editorDarkMode ? 'pt-dark' : 'pt-light'}
                     style={{ maxWidth: '600px' }}
                     intent={Intent.DANGER}>
                     <div style={{ display: 'flex' }}>
@@ -319,8 +319,6 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         New Nuzlocke
                     </Button> */}
                 </ButtonGroup>
-                <br />
-                <br />
                 <Button
                     icon='trash'
                     onClick={this.toggleClearingData}

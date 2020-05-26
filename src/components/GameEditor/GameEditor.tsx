@@ -47,6 +47,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
 
     public render() {
         const { game } = this.props;
+        const canEnableTemTem = false;
         // Awful hack to get rid of `isOpen` conflict warning
         const RED: any = RulesEditorDialog;
         return (
@@ -77,14 +78,14 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                             <label className='pt-inline' style={{marginRight: 'calc(.75rem + 2px)'}}>Name</label>
                             <input onChange={this.onInputName} value={game.customName} autoComplete={'false'} size={20} className='pt-input' type='text' placeholder={game.name} />
                         </div>
-                        <Button style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}} className={Classes.MINIMAL}>
+                        {canEnableTemTem && <Button style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}} className={Classes.MINIMAL}>
                             <Switch
                                 // style={{...darkModeStyle(this.props.style.editorDarkMode), marginBottom: 0}}
                                 label='TemTem Mode'
                                 checked={this.props.editor.temtemMode}
                                 onChange={e => this.props.toggleTemtemMode()}
                             />
-                        </Button>
+                        </Button>}
                     </div>
                 </div>
             </>

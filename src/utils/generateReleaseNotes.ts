@@ -462,11 +462,11 @@ Thank you!
     '1.1.0': `
 ## Features
 - **Improved mobile experience**
-- **TCG images**: featuing art from all of your favorite cards!
 - **Moves Editor**: add custom moves and types!
 - **Stats Tracker**: add stats to a template!
 - **Location Checklist**: track what Pokémon you've caught and where!
 - **Save File Importing**: currently available for Gen 1 games
+- Added a file input for nuzlocke.json importing
 - Support for Sugimori images in downloads
 - Reworked downloads to be compatible with _some_ outside image resources (i.e. imgur)
 - Added a downloading indicator when downloading images
@@ -482,8 +482,16 @@ Thank you!
 - Added images for Razor Claw, Razor Fang, and Oval Stone
 
 ## Known Issues
-- Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
+- External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
+    '1.2.0': `
+## Features
+- **TCG images**: featuing art from all of your favorite cards!
+
+## Fixes
+
+## Known Issues
+`
 
 };

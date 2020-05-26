@@ -148,7 +148,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             return;
         }
         try {
-            setTimeout(() => { throw new Error('Timed out') }, 5000);
+            const timeout = setTimeout(() => { throw new Error('Timed out') }, 10000);
             const domToImage = await load();
             console.log(domToImage);
             const dataUrl = await (domToImage as any).toPng(resultNode, {corsImage: true});
@@ -157,6 +157,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             link.href = dataUrl;
             link.click();
             this.setState({ downloadError: null, isDownloading: false });
+            clearTimeout(timeout);
         } catch (e) {
             this.setState({
                 downloadError:
