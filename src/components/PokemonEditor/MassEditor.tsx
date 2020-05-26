@@ -117,14 +117,14 @@ export class MassEditorBase extends React.Component<
                 <div className='pt-dialog-body'>
                     <ErrorBoundary>
                         <AddPokemonButton defaultPokemon={generateEmptyPokemon(this.props.pokemon)} />
-                        <Button
+                        {/* <Button
                             icon='export'
                         >
                             Export to Google Sheets
                         </Button>
                         <Button
                             icon='import'
-                        >Import from CSV</Button>
+                        >Import from CSV</Button> */}
                         <div style={{ padding: '.25rem' }} />
                         <Table
                             columnWidths={[150, 0, 150]}
