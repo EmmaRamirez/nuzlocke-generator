@@ -7,6 +7,7 @@ import { Layout, LayoutDisplay } from 'components/Layout';
 export interface StatsProps {
     pokemon: State['pokemon'];
     status?: string;
+    stats?: State['stats'];
 }
 
 export class StatsBase extends React.Component<StatsProps, {pokemon: State['pokemon']}> {
@@ -57,8 +58,11 @@ export class StatsBase extends React.Component<StatsProps, {pokemon: State['poke
     private getMostCommonType() {
         const t = this.typeMap();
         const sorted = Object.keys(t).map(key => ({name: key, total: t[key]})).sort((a, b) => b.total - a.total);
-        const typeText = (i) => `${sorted[i]?.name} (${sorted[i]?.total} Pokémon)`;
-        return `${typeText(0)}, ${typeText(1)}, ${typeText(2)}, ${typeText(3)}, ${typeText(4)}, ${typeText(5)}`;
+        return [0, 1, 2, 3, 4, 5].map(n => ({ name: sorted[n]?.name, total: sorted[n]?.total }));
+    }
+
+    private displayMostCommonType(data: {name?: string, total?: string}[]) {
+        return data.filter(d => d.name != null).map(d => `${d.name} (${d.total} Pokémon)`).join(',');
     }
 
     private wordMap(arr) {
@@ -88,13 +92,16 @@ export class StatsBase extends React.Component<StatsProps, {pokemon: State['poke
     private getMostCommonDeath() {
         const words = this.props.pokemon.filter(s => s.status === 'Dead').map(p => p.causeOfDeath || '').join('\n');
         const res = this.wordMap(words.split(/\n/));
-        const getRes = (i) => `${res[i]?.name} (${res[i]?.total} deaths)`;
-        return `${getRes(0)}, ${getRes(1)}, ${getRes(2)}, ${getRes(3)}`;
+        return [0, 1, 2, 3].map(i => ({name: res[i]?.name, total: res[i]?.total}));
+    }
+
+    private displayMostCommonDeath(data: {name?: string, total?: string}[]) {
+        return data.filter(d => d.name != null).map(d => `${d.name} (${d.total} deaths)`).join(',');
     }
 
     private getAverageLevel() {
-        const champs = this.props.pokemon.filter(s => s.status === 'Champs');
-        const levels = champs.map(p => parseInt(p?.level as any) || 0);
+        const champs = this.state.pokemon;
+        const levels = champs.map(p => Number.isNaN(parseInt(p?.level as any)) ? 0 : parseInt(p?.level as any));
         return levels.reduce((p, c) => p + c, 0) / champs.length;
     }
 
@@ -103,17 +110,27 @@ export class StatsBase extends React.Component<StatsProps, {pokemon: State['poke
             .map(p => <PokemonIcon shiny={p.shiny} species={p.species} id={p.id} />);
     }
 
+    private numberOfShinies = this.props.pokemon.filter(s => s.shiny).length;
+
+    private __personalStats() {
+        return <>
+            <p>Wipeouts: 1 (Emerald)</p>
+            <p>Total Time (Completed Games): 462:49</p>
+        </>
+    }
+
     public render() {
+        const {stats} = this.props;
+
         return <div className='stats' style={{width: '50%'}}>
             <h3>Stats</h3>
 
             <div style={{marginTop: '10px', margin: '0 10px'}}>
-                <p>Average Level: {this.getAverageLevel().toFixed(0)}</p>
-                <p>Most Common Killers: {this.getMostCommonDeath()}</p>
-                <p>Most Common Types: {this.getMostCommonType()}</p>
-                <p>Shinies: <Layout display={LayoutDisplay.Inline}>{this.getShinies()}</Layout></p>
-                <p>Wipeouts: 1 (Emerald)</p>
-                <p>Total Time (Completed Games): 462:49</p>
+                {this.state.pokemon.length ? <p>Average Level: {this.getAverageLevel().toFixed(0)}</p> : null}
+                <p>Most Common Killers: {this.displayMostCommonType(this.getMostCommonDeath())}</p>
+                <p>Most Common Types: {this.displayMostCommonType(this.getMostCommonType())}</p>
+                {Boolean(this.numberOfShinies) && <p>Shinies: <Layout display={LayoutDisplay.Inline}>{this.getShinies()}</Layout></p>}
+                {stats?.length ? stats?.map((stat, idx) => (stat.key?.length && stat.value?.length) ? <p key={stat.id}>{stat.key}: {stat.value}</p> : null) : null}
             </div>
         </div>;
     }
@@ -122,5 +139,6 @@ export class StatsBase extends React.Component<StatsProps, {pokemon: State['poke
 export const Stats = connect(
     (state: State) => ({
         pokemon: state.pokemon,
+        stats: state.stats,
     })
-)(StatsBase);
+)(StatsBase as any);

@@ -241,7 +241,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             </div>
         );
         const others = pokemon.filter(poke => !['Team', 'Boxed', 'Dead', 'Champs'].includes(poke.status!));
-        const enableStats = true && isLocal();
+        const enableStats = style.displayStats;
         const enableChampImage = false && isLocal();
 
         return (
