@@ -25,17 +25,19 @@ import { State } from 'state';
 import { css, cx } from 'emotion';
 import { PokemonIcon } from 'components/PokemonIcon';
 import { getMetLocationString } from './getMetLocationString';
+import { customTypes } from 'reducers/customTypes';
 
 export interface TeamPokemonInfoProps {
     generation: Generation;
     style: Styles;
     pokemon: Pokemon;
+    customTypes: State['customTypes'];
 }
 
 export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
 
     public render() {
-        const { pokemon, style } = this.props;
+        const { pokemon, style, customTypes } = this.props;
 
         console.log(pokemon);
 
@@ -71,10 +73,11 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                             ? getBackgroundGradient(
                                 pokemon.types != null ? pokemon?.types[1] : 'Normal',
                                 pokemon.types != null ? pokemon?.types[0] : 'Normal',
+                                customTypes,
                             )
                             : undefined,
                         color: isCompactTheme
-                            ? getContrastColor(typeToColor(getTypeOrNone()))
+                            ? getContrastColor(typeToColor(getTypeOrNone(), customTypes))
                             : getContrastColor(accentColor),
                     }}>
                     <div className='pokemon-info-inner'>
@@ -153,6 +156,7 @@ export interface TeamPokemonBaseProps {
     style: Styles;
     selectPokemon: selectPokemon;
     editor: Editor;
+    customTypes: State['customTypes'];
 }
 
 export class TeamPokemonBaseMinimal extends React.PureComponent<
@@ -229,7 +233,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
     }
 
     public render() {
-        const { pokemon, style, game, selectPokemon, editor } = this.props;
+        const { pokemon, style, game, selectPokemon, editor, customTypes } = this.props;
         const poke = pokemon;
 
         const getFirstType = poke.types ? poke.types[0] : 'Normal';
@@ -279,6 +283,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                     spriteStyle={spriteStyle}
                     pokemon={poke}
                     editor={editor}
+                    customTypes={customTypes}
                 />
             );
         }
@@ -360,6 +365,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                             ? getBackgroundGradient(
                                   poke.types != null ? poke.types[0] : 'Normal',
                                   poke.types != null ? poke.types[1] : 'Normal',
+                                  customTypes,
                               )
                             : 'transparent',
                     }}>
@@ -392,12 +398,13 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                                 top: style.template === 'Cards' ? '1rem' : undefined,
                                 left: '6rem',
                                 zIndex: 10,
-                                borderColor: typeToColor(getFirstType) || 'transparent',
+                                borderColor: typeToColor(getFirstType, customTypes) || 'transparent',
                                 backgroundImage:
                                     style.template === 'Hexagons' || style.pokeballStyle === 'outer glow'
                                         ? getBackgroundGradient(
                                             poke.types != null ? poke.types[0] : 'Normal',
                                             poke.types != null ? poke.types[1] : 'Normal',
+                                            customTypes,
                                         )
                                         : '',
                             }}
@@ -412,12 +419,13 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                 {(poke.item || poke.customItemImage) && !style.displayItemAsText ? (
                     <div
                         style={{
-                            borderColor: typeToColor(getSecondType) || 'transparent',
+                            borderColor: typeToColor(getSecondType, customTypes) || 'transparent',
                             backgroundImage:
                                 style.template === 'Hexagons' || style.itemStyle === 'outer glow'
                                     ? getBackgroundGradient(
                                           poke.types != null ? poke.types[0] : 'Normal',
                                           poke.types != null ? poke.types[1] : 'Normal',
+                                          customTypes,
                                       )
                                     : '',
                         }}
@@ -436,6 +444,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                     generation={getGameGeneration(this.props.game.name)}
                     style={style}
                     pokemon={pokemon}
+                    customTypes={customTypes}
                 />
             </div>
         );
@@ -447,6 +456,7 @@ export const TeamPokemon = connect(
         style: state.style,
         game: state.game,
         editor: state.editor,
+        customTypes: state.customTypes,
     }),
     {
         selectPokemon,

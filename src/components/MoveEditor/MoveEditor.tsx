@@ -42,6 +42,10 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
         return getListOfTypes(customTypes);
     }
 
+    private moveFilter = (move, type, searchTerm) => {
+        return move.toLowerCase().includes(searchTerm.toLowerCase()) || type.toLowerCase().includes(searchTerm.toLowerCase());
+    }
+
     private renderMoves(moves, isCustom = false) {
         const {searchTerm} = this.state;
         const {style, customMoveMap, customTypes} = this.props;
@@ -56,12 +60,13 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
             if (!Array.isArray(customMoveMap)) {
                 return null;
             }
-            return customMoveMap.map(({move, type, id}, index) => {
+            return customMoveMap.filter(m => this.moveFilter(m.move, m.type, searchTerm)).map(({move, type, id}, index) => {
                 return <div style={{
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
                     padding: '.25rem',
+                    position: 'relative',
                 }}>
                     <div style={{width: '12rem', marginRight: '.5rem'}}>
                         <Move
@@ -77,13 +82,13 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                             {types.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                         </select>
                     </div>
-                    <Icon onClick={e => this.props.deleteCustomMove(id)} style={{color: 'red', float: 'right'}} icon='trash' />
+                    <Icon onClick={e => this.props.deleteCustomMove(id)} style={{color: 'red', position: 'absolute', cursor: 'pointer'}} icon='trash' />
                 </div>;
             });
         }
 
         const prepared = Object.keys(moves).map(type => {
-            return moves[type].sort().map((move, index) => <div style={{
+            return moves[type].sort().filter(m => this.moveFilter(m, type, searchTerm)).map((move, index) => <div style={{
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -122,6 +127,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
             <ErrorBoundary>
             <Dialog
                 icon='edit'
+                canOutsideClickClose={false}
                 isOpen={isOpen}
                 onClose={toggleDialog}
                 className={`wide-dialog ${
@@ -142,7 +148,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                         padding: '0.5rem',
                         margin: '.5rem',
                     }} className='add-move-wrapper'>
-                        <label style={{padding: '0.5rem'}} className={cx(Classes.LABEL, Classes.INLINE)}>Add A Move</label>
+                        <label style={{marginTop: '8px', padding: '0.5rem'}} className={cx(Classes.LABEL, Classes.INLINE)}>Add A Move</label>
                         <input placeholder='Move Name' style={{width: '10rem'}} onChange={e => this.setState({moveName: e.target.value})} value={moveName} className={Classes.INPUT} type='text' />
                         <Autocomplete className={Classes.INPUT} placeholder='Move Type' items={types} onChange={e => this.setState({moveType: e.target.value})} value={moveType} />
                         <Button
@@ -162,8 +168,9 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                         overflowY: 'scroll',
                         display: 'flex',
                         flexWrap: 'wrap',
+                        justifyContent: 'center',
                     }}>
-                        <div style={{width: '49%', borderRadius: '.25rem', margin: '4px'}}>
+                        <div style={{width: '60%', borderRadius: '.25rem', margin: '4px'}}>
                             <div className='pt-input-group' style={{width: '50%', margin: '0 auto', position: 'sticky'}}>
                                 <Icon icon='search' />
                                 <input
@@ -171,12 +178,13 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                                     onInput={this.onSearch}
                                     className='pt-input'
                                     type='search'
+                                    dir='auto'
                                 />
                             </div>
                             {this.renderMoves(customMoveMap, true)}
                             {this.renderMoves(movesByType)}
                         </div>
-                        <div style={{width: '49%', borderRadius: '.25rem', margin: '4px'}}>
+                        <div style={{width: '39%', padding: '1rem', borderRadius: '.25rem', margin: '4px'}}>
                             <TypesEditor editCustomType={editCustomType} customTypes={customTypes} createCustomType={createCustomType} deleteCustomType={deleteCustomType} />
                         </div>
                     </div>

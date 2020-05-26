@@ -496,11 +496,11 @@ export class CurrentPokemonEditBase extends React.Component<
                     className='pt-button pt-intent-primary pt-fill current-pokemon-more'>
                     {this.state.expandedView ? (
                         <span>
-                            Less <span className='pt-icon-symbol-triangle-up' />
+                            Less <Icon icon='symbol-triangle-up' />
                         </span>
                     ) : (
                         <span>
-                            More <span className='pt-icon-symbol-triangle-down' />
+                            More <Icon icon='symbol-triangle-down' />
                         </span>
                     )}{' '}
                 </button>

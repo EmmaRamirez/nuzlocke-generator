@@ -471,6 +471,7 @@ Thank you!
 - Reworked downloads to be compatible with _some_ outside image resources (i.e. imgur)
 - Added a downloading indicator when downloading images
 - Support for Shadow type and Shadow moves
+- New theme: Compact with Icons
 
 ## Fixes
 - Added ".pokemon-mvp-label" class for access to custom CSS with mvp labels

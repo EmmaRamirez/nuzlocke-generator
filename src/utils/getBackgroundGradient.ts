@@ -1,17 +1,19 @@
 import { typeToColor } from './typeToColor';
 import { Types } from './Types';
+import { State } from 'state';
 
 export const getBackgroundGradient = (
     typeA: keyof typeof Types,
     typeB: keyof typeof Types,
+    customTypes: State['customTypes']
 ): string => {
     if (typeB == null) {
         if (typeA == null) {
             return 'transparent';
         } else {
-            return `linear-gradient(to right, ${typeToColor(typeA)}, ${typeToColor(typeA)}`;
+            return `linear-gradient(to right, ${typeToColor(typeA, customTypes)}, ${typeToColor(typeA, customTypes)}`;
         }
     } else {
-        return `linear-gradient(to right, ${typeToColor(typeA)}, ${typeToColor(typeB)}`;
+        return `linear-gradient(to right, ${typeToColor(typeA, customTypes)}, ${typeToColor(typeB, customTypes)}`;
     }
 };

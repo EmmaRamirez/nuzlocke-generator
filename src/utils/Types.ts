@@ -68,7 +68,6 @@ export const getListOfTypes = (customTypes: State['customTypes'], includeTemTemT
     Types.Mental,
     Types.Nature,
     Types.Neutral,
-    Types.Neutral,
     Types.Normal,
     Types.Poison,
     Types.Psychic,
