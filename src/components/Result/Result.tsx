@@ -245,7 +245,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         const enableChampImage = false && isLocal();
 
         return (
-            <div style={{width: '100%'}}>
+            <div className='hide-scrollbars' style={{width: '100%', overflowY: 'scroll'}}>
             {isMobile() && editor.showResultInMobile && <div className={Classes.OVERLAY_BACKDROP}></div>}
             <ErrorBoundary>
                 <TopBar isDownloading={this.state.isDownloading} onClickDownload={() => this.toImage()}>{this.renderErrors()}</TopBar>

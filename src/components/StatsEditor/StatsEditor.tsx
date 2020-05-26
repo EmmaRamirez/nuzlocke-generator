@@ -52,6 +52,12 @@ export class StatsEditorBase extends React.Component<StatsEditorProps> {
                         checked={stats.averageLevel}
                         name='averageLevel'
                         label='Average Level'
+                        onChange={(e: any) =>
+                            editStyle({statsOptions: {
+                                ...stats,
+                                [e.target.name]: e.target.checked
+                            }})
+                        }
                     />
                 </li>
 
@@ -60,6 +66,12 @@ export class StatsEditorBase extends React.Component<StatsEditorProps> {
                         checked={stats.mostCommonKillers}
                         name='mostCommonKillers'
                         label='Most Common Killers'
+                        onChange={(e: any) =>
+                            editStyle({statsOptions: {
+                                ...stats,
+                                [e.target.name]: e.target.checked
+                            }})
+                        }
                     />
                 </li>
 
@@ -68,6 +80,12 @@ export class StatsEditorBase extends React.Component<StatsEditorProps> {
                         checked={stats.mostCommonTypes}
                         name='mostCommonTypes'
                         label='Most Common Types'
+                        onChange={(e: any) =>
+                            editStyle({statsOptions: {
+                                ...stats,
+                                [e.target.name]: e.target.checked
+                            }})
+                        }
                     />
                 </li>
 
@@ -76,6 +94,12 @@ export class StatsEditorBase extends React.Component<StatsEditorProps> {
                         checked={stats.shiniesCaught}
                         name='shiniesCaught'
                         label='Shinies Caught'
+                        onChange={(e: any) =>
+                            editStyle({statsOptions: {
+                                ...stats,
+                                [e.target.name]: e.target.checked
+                            }})
+                        }
                     />
                 </li>
 
@@ -85,7 +109,7 @@ export class StatsEditorBase extends React.Component<StatsEditorProps> {
                     <Button
                         icon='trash'
                         intent={Intent.DANGER}
-                        style={{margin: '4px', fontSize: '80%'}}
+                        style={{margin: '6px', fontSize: '80%'}}
                         className={cx(Classes.MINIMAL, Classes.BUTTON)}
                         onClick={e => stat?.id && deleteStat(stat?.id)}
                     />
@@ -94,8 +118,9 @@ export class StatsEditorBase extends React.Component<StatsEditorProps> {
                 <li>
                     <Button
                         icon='plus'
+                        style={{margin: '4px', fontSize: '80%'}}
                         onClick={e => addStat({key: '', value: ''})}
-                        intent={Intent.PRIMARY}
+                        intent={Intent.SUCCESS}
                     >Add Custom Stat</Button>
                 </li>
 

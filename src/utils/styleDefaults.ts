@@ -6,7 +6,10 @@ export type RulesLocation = 'inside trainer section' | 'bottom' | 'top';
 export type ItemStyle = 'outer glow' | 'round' | 'square' | 'text';
 
 export interface StatsOptions {
-    [x: string]: boolean;
+    averageLevel: boolean,
+    mostCommonKillers: boolean,
+    mostCommonTypes: boolean,
+    shiniesCaught: boolean,
 }
 
 export interface Styles {
@@ -100,5 +103,10 @@ export const styleDefaults: Styles = {
     trainerHeight: '100%',
     trainerAuto: true,
     displayStats: false,
-    statsOptions: {},
+    statsOptions: {
+        averageLevel: false,
+        mostCommonKillers: false,
+        mostCommonTypes: false,
+        shiniesCaught: false,
+    },
 };
