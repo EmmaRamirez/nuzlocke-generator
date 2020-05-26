@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import { splitUp, GEN_1_POKEMON_MAP, GEN_1_CHARACTER_MAP, MOVES_ARRAY } from './utils';
+import * as uuid from 'uuid';
 
 // tslint:disable-next-line:class-name
 interface GEN_1_SAVE {
@@ -139,8 +140,12 @@ const parsePartyPokemon = (buf: Buffer, boxed = false) => {
     };
     if (extraData) console.log(extraData);
     // const evs = pokemon.slice(0x11, 0x11 + 10);
+    let ivString = '';
     const ivs = pokemon.slice(0x1B, 0x1B + 2);
-    const id = ivs.toString('binary');
+    for (const iv of ivs) {
+        ivString += iv.toString();
+    }
+    const id = ivString;
 
     return {
         species,

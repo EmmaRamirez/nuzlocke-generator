@@ -10,7 +10,7 @@ import { style } from 'reducers/style';
 import { reducers } from 'reducers';
 import { parseGen1Save, parseGen2Save } from 'parsers';
 import converter from 'hex2dec';
-import { Game } from 'models';
+import { Game, Pokemon } from 'models';
 import { omit } from 'ramda';
 import { BaseEditor } from 'components/BaseEditor';
 import { State } from 'state';
@@ -67,7 +67,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
             data: '',
             href: '',
             selectedGame: 'RBY',
-            mergeDataMode: false,
+            mergeDataMode: true,
         };
     }
 
@@ -155,6 +155,25 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         return {name: 'Red', customName: ''};
     }
 
+    static pokeMerge = (pokemonListA: Pokemon[], pokemonListB: Pokemon[]) => {
+        return pokemonListB.map(poke => {
+            const id = poke.id;
+            const aListPoke = pokemonListA.find(p => p.id === id);
+            console.log(`
+                $$
+                ${id} ${JSON.stringify(aListPoke)}
+            `)
+            if (aListPoke) {
+                return {
+                    ...aListPoke,
+                    ...poke,
+                }
+            } else {
+                return poke;
+            }
+        })
+    }
+
     private uploadFile = (replaceState, state) => e => {
         const file = this.fileInput.files[0];
         const reader = new FileReader();
@@ -174,7 +193,12 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                 // @ts-ignore
                 .then(res => {
                     res.pokemon = res.pokemon.filter(poke => poke.species);
-                    const data = {game: DataEditorBase.determineGame(res.isYellow), pokemon: res.pokemon, trainer: res.trainer};
+                    console.log(
+                        'MERGEDD DATA MODE',
+                        componentState.mergeDataMode
+                    )
+                    const mergedPokemon = componentState.mergeDataMode ? DataEditorBase.pokeMerge(state.pokemon, res.pokemon) : res.pokemon;
+                    const data = {game: DataEditorBase.determineGame(res.isYellow), pokemon: mergedPokemon, trainer: res.trainer};
                     const newState = { ...state, ...data };
 
                     replaceState(newState);
