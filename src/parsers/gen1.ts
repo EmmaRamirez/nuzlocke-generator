@@ -348,7 +348,6 @@ export const loadGen1SaveFile = async (filename: string, format: 'plain' | 'nuzl
 
     try {
         const file = Buffer.from(save);
-        console.log(file);
         const result = await parseGen1Save(file, format);
         return await result;
     } catch {

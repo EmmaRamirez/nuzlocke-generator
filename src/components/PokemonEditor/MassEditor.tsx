@@ -82,7 +82,6 @@ export class MassEditorBase extends React.Component<
                             <EditableCell
                                 onConfirm={(v, _, c) => {
                                     let value: any = v;
-                                    console.log('from editing a cell', v);
                                     if (key === 'types') {
                                         value = v && typeof v === 'string' &&  v.split(',').map(s => s.trim());
                                     }

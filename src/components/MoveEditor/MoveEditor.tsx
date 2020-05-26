@@ -52,7 +52,6 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
         const types = this.getTypes();
 
         const onChange = move => e => {
-            console.log(e, e.target);
             this.props.editCustomMoveMap(e.target.value, move);
         }
 

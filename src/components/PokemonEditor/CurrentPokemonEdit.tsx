@@ -138,19 +138,12 @@ export class CurrentPokemonEditBase extends React.Component<
     }
 
     private evolvePokemon = (currentPokemon) => e => {
-        console.log(this.doesPokemonHaveEvolution(currentPokemon));
 
         if (this.doesPokemonHaveEvolution(currentPokemon)) {
 
             const evoTree = getDeepObject(EvolutionTree, currentPokemon.species);
             const evolutionSpecies = evoTree && Object.keys(evoTree);
 
-            console.log(
-                getDeepObject(EvolutionTree, 'Charmeleon'),
-                EvolutionTree[currentPokemon.species],
-                this.parseTree(evoTree),
-                this.parseTree(EvolutionTree[currentPokemon.species]),
-            );
 
 
             if (!evolutionSpecies) {

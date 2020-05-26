@@ -150,7 +150,6 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         try {
             const timeout = setTimeout(() => { throw new Error('Timed out') }, 10000);
             const domToImage = await load();
-            console.log(domToImage);
             const dataUrl = await (domToImage as any).toPng(resultNode, {corsImage: true});
             const link = document.createElement('a');
             link.download = `nuzlocke-${uuid()}.png`;
@@ -229,7 +228,6 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             paddingLeft: style.trainerWidth,
         } : {};
         const teamContainer = <div style={paddingForVerticalTrainerSection} className='team-container'>{this.renderTeamPokemon()}</div>;
-        console.log(this.renderOtherPokemonStatuses(paddingForVerticalTrainerSection));
 
         const rulesContainer =  (
             <div className='rules-container'>

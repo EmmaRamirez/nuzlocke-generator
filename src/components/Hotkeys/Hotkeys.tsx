@@ -110,7 +110,6 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
         const prevPoke = this.props.pokemon.find(p => p.position === position! - 1);
         const id = prevPoke ? prevPoke.id : this.getLastPokemonId();
         this.props.selectPokemon(id);
-        console.log('j', poke, position, prevPoke, id);
     }
 
     private nextPokemon() {
@@ -119,7 +118,6 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
         const nextPoke = this.props.pokemon.find(p => p.position === position! + 1);
         const id = nextPoke ? nextPoke.id : this.getFirstPokemonId();
         this.props.selectPokemon(id);
-        console.log('k', poke, position, nextPoke, id);
     }
 
     private addPokemon() {

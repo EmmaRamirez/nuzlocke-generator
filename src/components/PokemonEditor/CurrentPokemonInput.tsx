@@ -101,7 +101,6 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                             }
                         }}
                         onChange={values => {
-                            console.log(values);
                             const edit = {
                                 moves: values,
                             };

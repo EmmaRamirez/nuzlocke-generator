@@ -39,14 +39,12 @@ export class MovesBase extends React.Component<MovesProps> {
             moves &&
             moves.map((move, index) => {
                 const customMove = getMapMove(customMoveMap, move);
-                console.log('customMove', customMove);
                 move = move.trim();
                 const type = handleMovesGenerationsExceptions({
                     move: move,
                     generation: this.props.generation,
                     originalType: Types[customMove?.type as Types] || getMoveType(move),
                 });
-                console.log(move, type);
                 return (
                     <Move
                         key={index}

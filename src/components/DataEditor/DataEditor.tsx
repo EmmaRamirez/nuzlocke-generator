@@ -126,7 +126,6 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
             d = { pokemon: false };
         }
 
-        console.log(d);
 
         if (d.pokemon) {
             return (
@@ -159,10 +158,6 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         return pokemonListB.map(poke => {
             const id = poke.id;
             const aListPoke = pokemonListA.find(p => p.id === id);
-            console.log(`
-                $$
-                ${id} ${JSON.stringify(aListPoke)}
-            `)
             if (aListPoke) {
                 return {
                     ...aListPoke,
@@ -185,7 +180,6 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         reader.addEventListener('load', function() {
             const u = new Uint8Array(this.result as ArrayBuffer);
 
-            console.log(u);
 
             const functionToUse = componentState.selectedGame === 'RBY' ? parseGen1Save(u, 'nuzlocke') : parseGen2Save(u, 'nuzlocke');
 
@@ -193,18 +187,11 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                 // @ts-ignore
                 .then(res => {
                     res.pokemon = res.pokemon.filter(poke => poke.species);
-                    console.log(
-                        'MERGEDD DATA MODE',
-                        componentState.mergeDataMode
-                    )
                     const mergedPokemon = componentState.mergeDataMode ? DataEditorBase.pokeMerge(state.pokemon, res.pokemon) : res.pokemon;
                     const data = {game: DataEditorBase.determineGame(res.isYellow), pokemon: mergedPokemon, trainer: res.trainer};
                     const newState = { ...state, ...data };
 
                     replaceState(newState);
-                    console.log(
-                        newState
-                    );
                 })
                 .catch(err => {
                     console.error(err);

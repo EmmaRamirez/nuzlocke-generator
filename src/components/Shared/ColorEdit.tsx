@@ -39,7 +39,6 @@ export class ColorEditBase extends React.Component<ColorEditProps, {showChromePi
                     interactionKind={PopoverInteractionKind.CLICK}
                     content={<ChromePicker color={value} onChangeComplete={color => {
                         onColorChange(color);
-                        console.log(color);
                     }} />}
                 >
                     <div style={{display: 'flex', alignItems: 'center'}}>

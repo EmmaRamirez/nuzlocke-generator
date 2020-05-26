@@ -26,11 +26,9 @@ const boxSource = {
 
 const boxSourceDrag = {
     beginDrag(props) {
-        console.log('draging box', props);
         return props;
     },
     isDragging(props, monitor) {
-        console.log('is dragging', props, monitor);
         return props;
     }
 };

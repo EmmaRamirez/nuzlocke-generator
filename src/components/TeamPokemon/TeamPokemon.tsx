@@ -39,8 +39,6 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
     public render() {
         const { pokemon, style, customTypes } = this.props;
 
-        console.log(pokemon);
-
         const accentColor = style ? style.accentColor : '#111111';
         const isCardsTheme = style.template === TemplateName.Cards;
         const isCompactTheme = style.template === TemplateName.Compact || style.template === TemplateName.CompactWithIcons;

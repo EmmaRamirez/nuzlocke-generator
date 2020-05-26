@@ -68,7 +68,6 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
         const {isDownloading, editor: {showResultInMobile}} = this.props;
         const {isMenuOpen} = this.state;
 
-        console.log('isMobile', isMobile());
         const shouldShow = isMobile() ? isMenuOpen : true;
 
         return (
