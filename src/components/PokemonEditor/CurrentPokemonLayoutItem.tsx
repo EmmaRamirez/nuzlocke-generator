@@ -6,6 +6,7 @@ const style = {
         align-items: center;
         display: flex;
         width: 100%;
+        flex-wrap: wrap;
     `,
     disabled: css`
         pointer-events: none;

@@ -132,12 +132,10 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                 icon='edit'
                 isOpen={isOpen}
                 onClose={toggleDialog}
-                className={`${
+                className={`wide-dialog ${
                     style.editorDarkMode ? 'pt-dark' : 'pt-light'
                 }`}
-                style={{
-                    width: '44rem'
-                }}
+                
                 title='Move Editor'>
                 <div className='pt-dialog-body move-editor' style={{
                     height: '800px',
@@ -145,6 +143,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                     <div style={{
                         display: 'flex',
                         alignItems: 'center',
+                        flexWrap: 'wrap',
                         justifyContent: 'center',
                         border: '1px solid #ccc',
                         borderRadius: '.25rem',
@@ -171,7 +170,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                         padding: '0.5rem',
                         overflowY: 'scroll',
                     }}>
-                        <div className='pt-input-group' style={{width: '40%', margin: '0 auto', position: 'sticky'}}>
+                        <div className='pt-input-group' style={{width: '50%', margin: '0 auto', position: 'sticky'}}>
                             <Icon icon='search' />
                             <input
                                 value={this.state.searchTerm}

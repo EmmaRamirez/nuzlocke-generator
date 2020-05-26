@@ -10,7 +10,7 @@ html.pt-dark {
 
 .editor {
   border: 1px solid #eee;
-  height: 100vh;
+  /* height: 100vh; */
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 0.25rem;

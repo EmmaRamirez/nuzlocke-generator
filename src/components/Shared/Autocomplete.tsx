@@ -31,7 +31,6 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
     }
 
     private selectItem(v) {
-        console.log(v);
         this.setState({ currentValue: v, isOpen: false });
         this.props.onChange({
             target: {
@@ -126,6 +125,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
             <div className={cx('current-pokemon-input-wrapper', 'autocomplete')}>
                 <label>{this.props.label}</label>
                 <input
+                    autoComplete='off'
                     className={cx(className)}
                     onKeyDown={this.handleKeyDown}
                     onFocus={this.openList}

@@ -14,6 +14,7 @@ import { BugReporter } from 'components/BugReporter';
 import { StatsEditor } from 'components/StatsEditor';
 import { css, cx } from 'emotion';
 import { State } from 'state';
+import { Classes } from '@blueprintjs/core';
 
 /**
  * The main editor interface.
@@ -29,7 +30,7 @@ export class EditorBase extends React.Component<{ editor: State['editor']; style
             base: css`
                 min-width: 30rem;
                 max-width: 40rem;
-                height: 100vh;
+                min-height: 100vh;
                 padding: .25rem;
             `
         }
@@ -37,7 +38,7 @@ export class EditorBase extends React.Component<{ editor: State['editor']; style
         const minimized = this.props.editor.minimized;
         return (
             <div
-                className={cx(`editor`, styles.base, this.props.style.editorDarkMode ? 'pt-dark' : '')}
+                className={cx(`editor`, styles.base, this.props.style.editorDarkMode ? Classes.DARK : '')}
                 style={{
                     width: minimized ? '0%' : '33%',
                     marginLeft: minimized ? '-30rem' : '0',
