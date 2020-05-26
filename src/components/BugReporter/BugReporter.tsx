@@ -12,6 +12,7 @@ export interface BugReporterState {
     userReport: string;
     userReportTitle: string;
     includeNuzlocke: boolean;
+    stage: number;
 }
 
 export class BugReporterBase extends React.Component<BugReporterProps, BugReporterState> {
@@ -19,10 +20,11 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
         userReport: '',
         userReportTitle: '',
         includeNuzlocke: true,
+        stage: 1,
     };
 
     public render() {
-        const {userReport, userReportTitle, includeNuzlocke} = this.state;
+        const {userReport, userReportTitle, includeNuzlocke, stage} = this.state;
 
         return (
             <BaseEditor name='Bug Reports and Feature Requests' defaultOpen={false}>
@@ -43,12 +45,14 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
                             checked={includeNuzlocke}
                             label={'include nuzlocke.json file'}
                         />
-                        <Button disabled={!userReportTitle} onClick={this.sendBugReport} className='pt-minimal' intent={Intent.DANGER}>Submit <img style={{height: '20px', verticalAlign: 'bottom'}} alt='' role='presentation' src='./icons/pokemon/regular/caterpie.png' /></Button>
+                        <Button disabled={!userReportTitle} onClick={this.sendBugReport} className='pt-minimal' intent={Intent.DANGER}>Submit <img style={{height: '20px', verticalAlign: 'bottom'}} alt='' role='presentation' src={`./icons/pokemon/regular/${this.getButtonPokemon(stage)}.png`} /></Button>
                     </div>
                 </div>
             </BaseEditor>
         );
     }
+
+    private getButtonPokemon = (stage: number) => stage === 1 ? 'caterpie' : stage === 2 ? 'metapod' : 'butterfree';
 
     private updateReport = (target: string) => (e) => {
         const text = e.target.value;
@@ -96,7 +100,10 @@ ${JSON.stringify(state)}
                         message: `Bug report sent!`,
                         intent: Intent.SUCCESS,
                     });
-                    this.setState({userReport: ''});
+                    this.setState({
+                        userReport: '',
+                        stage: this.state.stage + 1,
+                    });
                 } else {
                     const toaster = Toaster.create();
                     toaster.show({
