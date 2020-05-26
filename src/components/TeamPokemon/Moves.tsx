@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Generation, Styles, handleMovesGenerationsExceptions, getMoveType } from 'utils';
+import { Generation, Styles, handleMovesGenerationsExceptions, getMoveType, typeToColor, getContrastColor, Types } from 'utils';
 import { Pokemon } from 'models';
 import { connect } from 'react-redux';
 import { State } from 'state';
@@ -9,32 +9,46 @@ export interface MovesProps {
     moves: Pokemon['moves'];
     movesPosition?: Styles['movesPosition'];
     style: Styles;
+    customMoveMap: State['customMoveMap'];
 }
 
 export const Move = ({index, style, type, move}) => (move && <div
     key={index}
-    style={style.usePokemonGBAFont ? {fontSize: '1rem'} : {}}
-    className={`move ${type}-type ${
+    style={style.usePokemonGBAFont ? {
+        fontSize: '1rem',
+        background: typeToColor(type) || 'transparent',
+        color: getContrastColor(typeToColor(type))
+    } : {
+        background: typeToColor(type) || 'transparent',
+        color: getContrastColor(typeToColor(type))
+    }}
+    className={`move move-${move.replace(/\s/g, '-')?.toLowerCase()} ${
         move.length >= 10 ? 'long-text-move' : ''
     }`}>
     {move}
 </div>);
 
+export const getMapMove = (moveMap, move) => moveMap.find(m => m.move === move);
+
 export class MovesBase extends React.Component<MovesProps> {
     private generateMoves(moves: MovesProps['moves']) {
-        const {style} = this.props;
+        const {style, customMoveMap} = this.props;
 
         return (
             moves &&
             moves.map((move, index) => {
+                const customMove = getMapMove(customMoveMap, move);
+                console.log('customMove', customMove);
                 move = move.trim();
                 const type = handleMovesGenerationsExceptions({
                     move: move,
                     generation: this.props.generation,
-                    originalType: getMoveType(move),
+                    originalType: Types[customMove?.type as Types] || getMoveType(move),
                 });
+                console.log(move, type);
                 return (
                     <Move
+                        key={index}
                         index={index}
                         style={style}
                         type={type}
@@ -56,5 +70,8 @@ export class MovesBase extends React.Component<MovesProps> {
 }
 
 export const Moves = connect(
-    (state: State) => ({style: state.style}),
+    (state: State) => ({
+        style: state.style,
+        customMoveMap: state.customMoveMap,
+    }),
 )(MovesBase);

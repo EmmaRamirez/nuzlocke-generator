@@ -416,7 +416,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                             name='teamImages'
                             onChange={e => editEvent(e, props, undefined, props.game.name)}
                             value={props.style.teamImages}>
-                            {['standard', 'sugimori', 'dream world', 'shuffle', 'tcg'].map(o => <option value={o} key={o}>{capitalize(o)}</option>)}
+                            {['standard', 'sugimori', 'dream world', 'shuffle'].map(o => <option value={o} key={o}>{capitalize(o)}</option>)}
                         </select>
                     </div>
                     {(props.game.name === 'Sword' || props.game.name === 'Shield') && props.style.teamImages === 'shuffle' ?
