@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import { PokemonEditorBase } from '..';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { generateEmptyPokemon } from 'utils';
+import { generateEmptyPokemon, styleDefaults } from 'utils';
 import { State } from 'state';
 
 describe('<PokemonEditor />', () => {
@@ -16,7 +16,7 @@ describe('<PokemonEditor />', () => {
         } as State);
         const wrapper = mount(
             <Provider store={store}>
-                <PokemonEditorBase team={[]} boxes={[]} game={{ name: 'Red', customName: '' }} />
+                <PokemonEditorBase style={styleDefaults} team={[]} boxes={[]} game={{ name: 'Red', customName: '' }} />
             </Provider>,
         );
         expect(wrapper).toBeDefined();

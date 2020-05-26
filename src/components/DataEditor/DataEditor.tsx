@@ -12,11 +12,13 @@ import { parseGen1Save, parseGen2Save } from 'parsers';
 import converter from 'hex2dec';
 import { Game } from 'models';
 import { omit } from 'ramda';
+import { BaseEditor } from 'components/BaseEditor';
+import { State } from 'state';
 
 const trash = require('assets/img/trash.png');
 
 export interface DataEditorProps {
-    state: any;
+    state: State;
     replaceState: replaceState;
 }
 
@@ -54,6 +56,7 @@ const isValidJSON = (data: string): boolean => {
 export class DataEditorBase extends React.Component<DataEditorProps, DataEditorState> {
     public textarea: any;
     public fileInput: any;
+    public nuzlockeJsonFileInput: any;
 
     constructor(props) {
         super(props);
@@ -78,6 +81,21 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                 intent: Intent.DANGER,
             });
         }
+    }
+
+    private uploadNuzlockeJsonFile = e => {
+        const file = this.nuzlockeJsonFileInput.files[0];
+        const reader = new FileReader();
+
+        reader.readAsText(file, 'utf-8');
+        reader.addEventListener('load', event => {
+            const file = event?.target?.result;
+            const data = file;
+            // @ts-ignore
+            this.setState({ data });
+        });
+        
+
     }
 
     private confirmImport = e => {
@@ -184,7 +202,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
 
     public render() {
         return (
-            <div style={{ padding: '1rem' }}>
+            <BaseEditor name='Data'>
                 <Alert
                     onConfirm={this.clearAllData}
                     isOpen={this.state.isClearAllDataOpen}
@@ -210,6 +228,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                             ? 'Exported Nuzlocke Save'
                             : 'Import Nuzlocke Save'
                     }
+                    className={this.props.state.style.editorDarkMode ? 'pt-dark' : ''}
                     icon='floppy-disk'>
                     {this.state.mode === 'export' ? (
                         <>
@@ -235,14 +254,15 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                                 <TextArea
                                     className='custom-css-input pt-fill'
                                     onChange={this.uploadJSON}
-                                    placeholder='Paste nuzlocke.json contents here'
+                                    placeholder='Paste nuzlocke.json contents here, or use the file uploader'
                                     value={this.state.data}
                                     large={true}
                                 />
                                 <ErrorBoundary>{this.renderTeam(this.state.data)}</ErrorBoundary>
                             </div>
                             <div className='pt-dialog-footer'>
-                                <ButtonGroup>
+                                <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                                    <input style={{ padding: '.25rem' }} className='pt-button' ref={ref => this.nuzlockeJsonFileInput = ref } onChange={this.uploadNuzlockeJsonFile} type='file' id='jsonFile' name='jsonFile' accept='.json' />
                                     <Button
                                         icon='tick'
                                         intent={
@@ -251,8 +271,11 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                                         onClick={this.confirmImport}
                                         disabled={this.state.data === '' ? true : false}
                                         text='Confirm'
+                                        style={{
+                                            marginLeft: 'auto'
+                                        }}
                                     />
-                                </ButtonGroup>
+                                </div>
                             </div>
                         </>
                     )}
@@ -306,11 +329,11 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     Clear All Data
                 </Button>
                 <br />
-            </div>
+            </BaseEditor>
         );
     }
 }
 
-export const DataEditor = connect((state: typeof reducers) => ({ state: state }), {
+export const DataEditor = connect((state: State) => ({ state: state }), {
     replaceState,
 })(DataEditorBase as any);

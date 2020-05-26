@@ -50,6 +50,9 @@ html.pt-dark {
 .editor:hover {
   box-shadow: 0 0 4px #eee;
 }
+.pt-dark .editor:hover {
+  box-shadow: 0 0 4px #222;
+}
 .pt-select select {
   width: 100%;
 }
@@ -59,16 +62,21 @@ html.pt-dark {
 .style-editor,
 .hotkeys-editor,
 .reporter-editor,
-.requests-editor
+.requests-editor,
+.checklist-editor,
+.data-editor,
 .stats-editor {
   padding: 0.3rem;
 }
 .base-editor {
   border: 1px solid #fafafa;
   border-top: 0 solid transparent !important;
+  margin: 4px 0;
+  border-radius: .25rem;
+
 }
 .pt-dark .base-editor {
-  border: 1px solid #111;
+  border: 1px solid #333;
 }
 .trainer-info-field {
   align-items: center;
@@ -197,6 +205,10 @@ input[name='metLevel'] {
 }
 .pt-dialog.wide-dialog {
   width: 90% !important;
+}
+.hide-scrollbars::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 .has-nice-scrollbars::-webkit-scrollbar {
   width: 5px;

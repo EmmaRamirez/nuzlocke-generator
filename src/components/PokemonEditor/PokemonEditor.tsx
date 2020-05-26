@@ -2,7 +2,7 @@ import { Button, Intent, Icon, Popover, PopoverInteractionKind, Position } from 
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Pokemon, Game, Boxes } from 'models';
+import { Pokemon, Game, Boxes, Editor } from 'models';
 import { Game as GameName } from 'utils';
 import { State } from 'state';
 
@@ -20,6 +20,7 @@ export interface PokemonEditorProps {
     team: Pokemon[];
     boxes: Boxes;
     game: Game;
+    style: State['style'];
 }
 
 export interface PokemonEditorState {
@@ -45,7 +46,7 @@ export class BoxesComponent extends React.Component<BoxesComponentProps> {
     }
 }
 
-const PokemonLocationChecklist = ({pokemon, game}: {pokemon: Pokemon[], game: Game}) => {
+const PokemonLocationChecklist = ({pokemon, game, style}: {pokemon: Pokemon[], game: Game, style: State['style']}) => {
     const encounterMap = getEncounterMap(game.name);
 
     const getLocIcon = (name) => {
@@ -61,7 +62,8 @@ const PokemonLocationChecklist = ({pokemon, game}: {pokemon: Pokemon[], game: Ga
 
     return <div>
         {encounterMap.map(area => {
-            return <div style={{padding: '4px', margin: '2px', display: 'flex', justifyContent: 'space-apart', alignItems: 'center', borderBottom: '1px solid #efefef'}}>
+            return <div style={{padding: '4px', margin: '2px', display: 'flex', justifyContent: 'space-apart', alignItems: 'center', borderBottom: `1px solid ${
+                style?.editorDarkMode ? '#222' : '#efefef'}`}}>
             {getLocIcon(area)}
             <div style={{marginLeft: '4px'}}>{area}</div>
         </div>;
@@ -106,7 +108,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
     };
 
     public render() {
-        const { team, boxes, game } = this.props;
+        const { team, boxes, game, style } = this.props;
 
         return (
             <>
@@ -131,7 +133,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                     <BoxForm boxes={boxes} />
                     <CurrentPokemonEdit />
                     <BaseEditor name='Location Checklist' defaultOpen={false}>
-                        <PokemonLocationChecklist pokemon={team} game={game} />
+                        <PokemonLocationChecklist style={style} pokemon={team} game={game} />
                     </BaseEditor>
                 </BaseEditor>
                 <MassEditor
@@ -150,6 +152,7 @@ export const PokemonEditor = connect(
         team: state.pokemon,
         boxes: state.box,
         game: state.game,
+        style: state.style,
     }),
     null,
     null,
