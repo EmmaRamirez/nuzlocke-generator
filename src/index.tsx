@@ -75,16 +75,12 @@ render(
         {process.env.NODE_ENV !== 'test' ? (
             <PersistGate loading={<div>Loading...</div>} onBeforeLift={null} persistor={persistor}>
                 <DragDropContextProvider backend={HTML5Backend}>
-                    <ConnectedRouter history={history}>
-                        <Route exact path='/' component={App} />
-                    </ConnectedRouter>
+                    <App />
                 </DragDropContextProvider>
             </PersistGate>
         ) : (
             <DragDropContextProvider backend={HTML5Backend}>
-                <ConnectedRouter history={history}>
-                    <Route exact path='/' component={App} />
-                </ConnectedRouter>
+                <App />
             </DragDropContextProvider>
         )}
     </Provider>,
