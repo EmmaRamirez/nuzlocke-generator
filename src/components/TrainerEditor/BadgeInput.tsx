@@ -100,7 +100,7 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
                             <Button
                                 style={{
                                     borderRadius: 0,
-                                    width: '170px',
+                                    width: '164px',
                                 }}>
                                 Select Checkpoints
                             </Button>

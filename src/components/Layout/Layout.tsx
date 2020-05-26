@@ -1,8 +1,9 @@
 import * as React from 'react';
+import { style } from 'reducers/style';
 
 export enum LayoutDisplay {
     Block = 'flex',
-    Inline = 'flex-inline',
+    Inline = 'inline-flex',
 }
 
 export enum LayoutDirection {
@@ -36,6 +37,7 @@ export interface LayoutProps {
     alignment: LayoutAlignment;
     spacing: LayoutSpacing;
     wrap: boolean;
+    style: React.CSSProperties;
 }
 
 export class Layout extends React.PureComponent<Partial<LayoutProps>> {
@@ -45,6 +47,7 @@ export class Layout extends React.PureComponent<Partial<LayoutProps>> {
         alignment: LayoutAlignment.Start,
         spacing: LayoutSpacing.Start,
         wrap: true,
+        style: {},
     };
 
     public render() {
@@ -58,6 +61,7 @@ export class Layout extends React.PureComponent<Partial<LayoutProps>> {
                         justifyContent: spacing,
                         alignItems: alignment,
                         flexWrap: wrap,
+                        ...style,
                     } as React.CSSProperties
                 }>
                 {this.props.children}

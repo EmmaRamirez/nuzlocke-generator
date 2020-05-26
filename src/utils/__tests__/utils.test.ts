@@ -11,6 +11,7 @@ import {
     typeToColor,
     isEmpty,
 } from 'utils';
+import * as React from 'react';
 import * as Color from 'color';
 import { DeepSet } from '../DeepSet';
 import { Types } from '../Types';
@@ -18,6 +19,10 @@ import { handleMovesGenerationsExceptions } from 'utils/handleMovesGenerationExc
 import { getGameGeneration } from 'utils/getGameGeneration';
 import { gameOfOriginToColor } from 'utils/gameOfOriginToColor';
 import { getDeepObject } from 'utils/getDeepObject';
+import { getEncounterMap } from 'utils/getEncounterMap';
+import { getMoveType } from 'utils/getMoveType';
+import { getDisplayNameForTest } from 'utils/getDisplayNameForTest';
+import { getGameRegion, Region } from 'utils/getGameRegion';
 
 const objectPropertiesWhere = (obj: object, filter: any) => Array.from(
     Object.values(obj)
@@ -86,7 +91,7 @@ describe('styleDefaults', () => {
         expect(typeof styleDefaults).toBe('object');
         expect(styleDefaults.imageStyle).toBe('round');
         expect(objectPropertiesWhere(styleDefaults, p => p === 'round')).toBe(1);
-        expect(objectPropertiesWhere(styleDefaults, p => p)).toBe(22);
+        expect(objectPropertiesWhere(styleDefaults, p => p)).toBe(24);
     });
 });
 
@@ -204,7 +209,7 @@ describe('handleMoveGenerationExceptions', () => {
     });
 });
 
-describe('getGameGeneration', () => {
+describe(getGameGeneration.name, () => {
     it('do what it do', () => {
         expect(getGameGeneration('Red')).toBe(Generation.Gen1);
         expect(getGameGeneration('Emerald')).toBe(Generation.Gen3);
@@ -214,6 +219,15 @@ describe('getGameGeneration', () => {
         expect(getGameGeneration('Platinum')).toBe(Generation.Gen4);
         // Assumes latest gen
         expect(getGameGeneration('Fake Game' as any)).toBe(Generation.Gen8);
+    });
+});
+
+describe(getGameRegion.name, () => {
+    it('returns a region based on game', () => {
+        expect(getGameRegion('Red')).toBe(Region.Kanto);
+        expect(getGameRegion('Diamond')).toBe(Region.Sinnoh);
+        expect(getGameRegion('Sword')).toBe(Region.Galar);
+        expect(getGameRegion('Let\'s Go Eevee')).toBe(Region.Kanto);
     });
 });
 
@@ -254,4 +268,35 @@ describe(getDeepObject.name, () => {
         };
         expect(getDeepObject(subject, 'arcanine')).toEqual(null);
     });
-})
+});
+
+describe(getEncounterMap.name, () => {
+    it('returns a proper list of routes given a game', () => {
+        const KantoGen1 = getEncounterMap('Red');
+        const KantoGen3 = getEncounterMap('FireRed');
+        const JohtoGen4 = getEncounterMap('HeartGold');
+        expect(KantoGen3.length).toBeGreaterThan(KantoGen1.length);
+        expect(JohtoGen4).toContain('Route 29');
+    });
+});
+
+describe(getMoveType.name, () => {
+    it('works for moves that exist & do not', () => {
+        const moveA = getMoveType('Fire Blast');
+        const moveB = getMoveType('Move That Does Not Exist');
+        expect(moveA).toBe(Types.Fire);
+        expect(moveB).toBe(Types.Normal);
+    });
+});
+
+describe(getDisplayNameForTest.name, () => {
+    it('returns a formatted string based on class', () => {
+        class Component extends React.Component {
+            public static displayName = 'Component';
+            public render() {
+                return 'Dave';
+            }
+        }
+        expect(getDisplayNameForTest(Component)).toEqual(`<Component />`);
+    });
+});

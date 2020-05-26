@@ -7,7 +7,6 @@ import { persistCombineReducers, persistStore, createMigrate } from 'redux-persi
 import storage from 'redux-persist/lib/storage';
 
 import { reducers } from '../reducers';
-import { rootSaga } from '../sagas';
 import { State } from 'state';
 import { Store } from 'react-redux';
 
@@ -51,13 +50,10 @@ if (process.env.NODE_ENV === 'test') {
     middlewares.push(loggerMiddleware);
 }
 
-const sagaMiddleware = createSagaMiddleware();
 const routerMiddleware = createRouterMiddleware(history);
 
-middlewares.push(sagaMiddleware, routerMiddleware);
+middlewares.push(routerMiddleware);
 
 export const store: Store<State> = createStore(persistReducers, applyMiddleware(...middlewares));
 
 export const persistor = persistStore(store, null);
-
-sagaMiddleware.run(rootSaga);

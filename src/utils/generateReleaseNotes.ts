@@ -399,7 +399,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
     '1.0.2': `
 ## Fixes
 - You can no longer delete main boxes (for now)
-- Styling fixes in Pokemon editor
+- Styling fixes in Pokémon editor
 - Typing fixes for forms of Rotom, Burmy line, and Castform
 
 ## Known Issues
@@ -410,14 +410,15 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 `,
     '1.0.3': `
 ## Fixes
-- Fix BugReporter issue
+- Disabled the download button on Sugimori images (it never worked, sorry)
+- Added shiny Alolan Dugtrio for anon
 
 ## Known Issues
-- Rules are not being properly imported
+- Rules are not being properly imported from json files
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
-`,
 
+`,
     '1.0.4': `
 ## Fixes
 - Added Shiny Alolan Dugtrio
@@ -457,8 +458,41 @@ Thank you!
 - Fixed bug that prevented rules and checkpoints from showing up when importing
 - Added Lycanroc forme images
 - Fixed images for Gastrodon and Shellos formes
+`,
+    '1.1.0': `
+## Features
+- **Improved mobile experience**
+- **Moves Editor**: add custom moves and types!
+- **Stats Tracker**: add stats to a template!
+- **Location Checklist**: track what Pokémon you've caught and where!
+- **Save File Importing**: currently available for Gen 1 games
+- Added a file input for nuzlocke.json importing
+- Support for Sugimori images in downloads
+- Reworked downloads to be compatible with _some_ outside image resources (i.e. imgur)
+- Added a downloading indicator when downloading images
+- Support for Shadow type and Shadow moves
+- New theme: Compact with Icons
 
+## Fixes
+- Added ".pokemon-mvp-label" class for access to custom CSS with mvp labels
+- Reworked the minimal Dead Pokémon layout to work better for downloads
+- Clicking to select a Pokémon in the editor now works for Dead Pokémon icons
+- Color for Compact theme now contrasts against secondary type's color
+- Added an image for Gigantamax Eevee
+- Made the BugReporter inclusive of Feature Requests
+- Added images for Razor Claw, Razor Fang, and Oval Stone
 
+## Known Issues
+- External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`,
+    '1.2.0': `
+## Features
+- **TCG images**: featuing art from all of your favorite cards!
 
+## Fixes
+
+## Known Issues
 `
+
 };

@@ -1,4 +1,4 @@
-import { applyMiddleware, combineReducers } from 'redux';
+import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
 import { nuzlocke } from './nuzlocke';
@@ -15,12 +15,15 @@ import { editor } from './editor';
 import { rules } from './rules';
 import { checkpoints } from './checkpoints';
 import { customMoveMap } from './customMoveMap';
+import { stats } from './stats';
+import { customTypes } from './customTypes';
 
 export const reducers = {
     box,
     checkpoints,
     confirmation,
     customMoveMap,
+    customTypes,
     game,
     nuzlocke,
     pokemon,
@@ -30,6 +33,7 @@ export const reducers = {
     trainer,
     history,
     rules,
+    stats,
     style,
     router: routerReducer,
 };

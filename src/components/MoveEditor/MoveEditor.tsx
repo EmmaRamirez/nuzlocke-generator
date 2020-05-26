@@ -1,50 +1,34 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { State } from 'state';
-import { Game, movesByType } from 'utils';
-import { Dialog, Intent, Button, Icon } from '@blueprintjs/core';
+import { Game, movesByType, isEmpty, getListOfTypes } from 'utils';
+import { Dialog, Intent, Button, Icon, Classes } from '@blueprintjs/core';
 import { Move } from 'components/TeamPokemon/Moves';
-import { editCustomMoveMap } from 'actions';
+import { editCustomMoveMap, deleteCustomMove, deleteCustomType, createCustomType, editCustomType } from 'actions';
 import InfiniteScroll from 'react-infinite-scroller';
-import { customMoveMap } from 'reducers/customMoveMap';
+import { Autocomplete, ErrorBoundary } from 'components';
+import { TypesEditor } from './TypesEditor';
+import { cx } from 'emotion';
 
-// tslint:disable-next-line:no-empty-interfaces
 export interface MoveEditorProps {
     game: State['game'];
     style: State['style'];
     isOpen: boolean;
     toggleDialog(e): void;
     editCustomMoveMap: editCustomMoveMap;
-    customMoveMap: any;
+    deleteCustomMove: deleteCustomMove;
+    deleteCustomType: deleteCustomType;
+    createCustomType: createCustomType;
+    editCustomType: editCustomType;
+    customTypes: State['customTypes'];
+    customMoveMap: State['customMoveMap'];
 }
 
-// tslint:disable-next-line:no-empty-interfaces
 export interface MoveEditorState {
     searchTerm: string;
     moveType: string;
     moveName: string;
 }
-
-const types = [
-    'Bug',
-    'Dark',
-    'Dragon',
-    'Electric',
-    'Fairy',
-    'Fighting',
-    'Fire',
-    'Flying',
-    'Ghost',
-    'Grass',
-    'Ground',
-    'Ice',
-    'Normal',
-    'Poison',
-    'Psychic',
-    'Rock',
-    'Steel',
-    'Water',
-];
 
 export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorState> {
     public state = {
@@ -53,19 +37,35 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
         moveName: '',
     };
 
-    private renderMoves() {
+    private getTypes() {
+        const {customTypes} = this.props;
+        return getListOfTypes(customTypes);
+    }
+
+    private moveFilter = (move, type, searchTerm) => {
+        return move.toLowerCase().includes(searchTerm.toLowerCase()) || type.toLowerCase().includes(searchTerm.toLowerCase());
+    }
+
+    private renderMoves(moves, isCustom = false) {
         const {searchTerm} = this.state;
-        const {style, customMoveMap} = this.props;
+        const {style, customMoveMap, customTypes} = this.props;
+        const types = this.getTypes();
 
-        return Object.keys(movesByType).map(type => {
-            console.log(customMoveMap[type]);
+        const onChange = move => e => {
+            this.props.editCustomMoveMap(e.target.value, move);
+        }
 
-            return movesByType[type].sort().filter(move => move.toLowerCase().includes(searchTerm.toLowerCase())).map((move, index) => {
-                return type === 'Dragon' ? <div style={{
+        if (isCustom) {
+            if (!Array.isArray(customMoveMap)) {
+                return null;
+            }
+            return customMoveMap.filter(m => this.moveFilter(m.move, m.type, searchTerm)).map(({move, type, id}, index) => {
+                return <div style={{
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
                     padding: '.25rem',
+                    position: 'relative',
                 }}>
                     <div style={{width: '12rem', marginRight: '.5rem'}}>
                         <Move
@@ -73,16 +73,44 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                             move={move}
                             type={type}
                             style={style}
+                            customTypes={customTypes}
                         />
                     </div>
                     <div className='pt-select' style={{width: '8rem'}}>
-                        <select value={type}>
-                            {types.map(opt => <option value={opt}>{opt}</option>)}
+                        <select onChange={onChange(move)} value={type}>
+                            {types.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                         </select>
                     </div>
-                </div> : null;
+                    <Icon onClick={e => this.props.deleteCustomMove(id)} style={{color: 'red', position: 'absolute', cursor: 'pointer'}} icon='trash' />
+                </div>;
             });
+        }
+
+        const prepared = Object.keys(moves).map(type => {
+            return moves[type].sort().filter(m => this.moveFilter(m, type, searchTerm)).map((move, index) => <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: '.25rem',
+            }}>
+                <div style={{width: '12rem', marginRight: '.5rem'}}>
+                    <Move
+                        index={index}
+                        move={move}
+                        type={type}
+                        style={style}
+                        customTypes={customTypes}
+                    />
+                </div>
+                <div className='pt-select' style={{width: '8rem'}}>
+                    <select onChange={onChange(move)} value={type}>
+                        {types.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+                    </select>
+                </div>
+            </div>);
         });
+
+        return prepared;
     }
 
     private onSearch = (e) => {
@@ -90,82 +118,97 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
     }
 
     public render() {
-        const {isOpen, toggleDialog, style} = this.props;
+        const {isOpen, toggleDialog, style, customMoveMap, customTypes, createCustomType, deleteCustomType} = this.props;
         const {moveType, moveName} = this.state;
+        const types = this.getTypes();
 
         return (
+            <ErrorBoundary>
             <Dialog
                 icon='edit'
+                canOutsideClickClose={false}
                 isOpen={isOpen}
                 onClose={toggleDialog}
-                className={`${
+                className={`wide-dialog ${
                     style.editorDarkMode ? 'pt-dark' : 'pt-light'
                 }`}
-                style={{
-                    width: '44rem'
-                }}
+                
                 title='Move Editor'>
                 <div className='pt-dialog-body move-editor' style={{
                     height: '800px',
-                    overflowY: 'auto',
                 }}>
                     <div style={{
                         display: 'flex',
-                        alignItems: 'bottom',
-                        justifyContent: 'space-between',
-                        padding: '1rem',
+                        alignItems: 'center',
+                        flexWrap: 'wrap',
+                        justifyContent: 'center',
+                        border: '1px solid #ccc',
+                        borderRadius: '.25rem',
+                        padding: '0.5rem',
+                        margin: '.5rem',
                     }} className='add-move-wrapper'>
-                        <div style={{margin: '0.25rem'}}>
-                            <label className='pt-label' style={{fontSize: '80%', marginBottom: '2px'}}>
-                                Move Name
-                            </label>
-                            <input onChange={e => this.setState({moveName: e.target.value})} value={moveName} className='pt-input' type='text' />
-                        </div>
-                        <div style={{margin: '0.25rem'}}>
-                            <label className='pt-label' style={{fontSize: '80%', marginBottom: '2px'}}>
-                                Move Type
-                            </label>
-                            <input onChange={e => this.setState({moveType: e.target.value})} value={moveType} className='pt-input' type='text' />
-                        </div>
+                        <label style={{marginTop: '8px', padding: '0.5rem'}} className={cx(Classes.LABEL, Classes.INLINE)}>Add A Move</label>
+                        <input placeholder='Move Name' style={{width: '10rem'}} onChange={e => this.setState({moveName: e.target.value})} value={moveName} className={Classes.INPUT} type='text' />
+                        <Autocomplete className={Classes.INPUT} placeholder='Move Type' items={types} onChange={e => this.setState({moveType: e.target.value})} value={moveType} />
                         <Button
-                            onClick={e => this.props.editCustomMoveMap(moveType, moveName)}
-                            style={{height: '1.5rem', marginTop: '1.5rem'}}
+                            onClick={e => {
+                                this.props.editCustomMoveMap(moveType, moveName);
+                            }}
                             intent={Intent.PRIMARY}
+                            disabled={!(moveType && moveName)}
                         >
                             Add Move
                         </Button>
                     </div>
                     <div className='moves-wrapper has-nice-scrollbars' style={{
-                        background: 'rgba(255, 255, 255, 0.5)',
                         borderRadius: '.25rem',
                         height: '88%',
                         padding: '0.5rem',
                         overflowY: 'scroll',
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        justifyContent: 'center',
                     }}>
-                        <div className='pt-input-group' style={{width: '40%', margin: '0 auto', position: 'sticky'}}>
-                            <Icon icon='search' />
-                            <input
-                                value={this.state.searchTerm}
-                                onInput={this.onSearch}
-                                className='pt-input'
-                                type='search'
-                            />
+                        <div style={{width: '60%', borderRadius: '.25rem', margin: '4px'}}>
+                            <div className='pt-input-group' style={{width: '50%', margin: '0 auto', position: 'sticky'}}>
+                                <Icon icon='search' />
+                                <input
+                                    value={this.state.searchTerm}
+                                    onInput={this.onSearch}
+                                    className='pt-input'
+                                    type='search'
+                                    dir='auto'
+                                />
+                            </div>
+                            {this.renderMoves(customMoveMap, true)}
+                            {this.renderMoves(movesByType)}
                         </div>
-                        {this.renderMoves()}
+                        <div style={{width: '39%', padding: '1rem', borderRadius: '.25rem', margin: '4px'}}>
+                            <TypesEditor editCustomType={editCustomType} customTypes={customTypes} createCustomType={createCustomType} deleteCustomType={deleteCustomType} />
+                        </div>
                     </div>
                 </div>
             </Dialog>
+            </ErrorBoundary>
         );
     }
 }
 
-export const MoveEditor = connect(
+// @TODO: use more responsible typing
+export const MoveEditor: any = connect(
     (state: State) => ({
         game: state.game,
         style: state.style,
         customMoveMap: state.customMoveMap,
+        customTypes: state.customTypes,
     }),
     {
-        editCustomMoveMap
-    }
-)(MoveEditorBase);
+        editCustomMoveMap,
+        deleteCustomMove,
+        deleteCustomType,
+        createCustomType,
+        editCustomType,
+    },
+    null,
+    {pure: false}
+)(MoveEditorBase as any);

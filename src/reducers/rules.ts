@@ -22,10 +22,10 @@ export function rules(
             });
         case DELETE_RULE:
             return state.filter((_, index) => index + 1 !== action.target);
-        case RESET_RULES:
-            return initialState;
         case REPLACE_STATE:
             return action.replaceWith.rules;
+        case RESET_RULES:
+            return initialState;
         default:
             return state;
     }

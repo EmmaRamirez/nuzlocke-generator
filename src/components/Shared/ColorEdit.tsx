@@ -12,8 +12,8 @@ export const rgbaOrHex = (o) => (o.rgb && (o.rgb.a && o.rgb.a !== 1) ? `rgba(${o
 export interface ColorEditProps {
     value?: any;
     onChange: (e?: React.ChangeEvent<HTMLInputElement>) => void;
-    name: keyof StyleType;
-    style: StyleType;
+    name: string;
+    style: State['style'];
     width?: string;
     onColorChange: (color) => void;
 }
@@ -39,7 +39,6 @@ export class ColorEditBase extends React.Component<ColorEditProps, {showChromePi
                     interactionKind={PopoverInteractionKind.CLICK}
                     content={<ChromePicker color={value} onChangeComplete={color => {
                         onColorChange(color);
-                        console.log(color);
                     }} />}
                 >
                     <div style={{display: 'flex', alignItems: 'center'}}>
@@ -68,6 +67,6 @@ export class ColorEditBase extends React.Component<ColorEditProps, {showChromePi
     }
 }
 
-export const ColorEdit: any = connect((state: State) => ({ style: state.style }), null)(
+export const ColorEdit: React.ComponentClass<Omit<ColorEditProps, 'style'>> = connect((state: State) => ({ style: state.style }), null)(
     ColorEditBase as any,
-);
+) as any;

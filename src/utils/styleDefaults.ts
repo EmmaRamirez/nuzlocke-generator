@@ -1,8 +1,16 @@
 export type RadiusType = 'round' | 'square';
 export type OrientationType = 'vertical' | 'horizonal';
-export type TeamImagesType = 'standard' | 'sugimori' | 'dream world' | 'shuffle';
+export type TeamImagesType = 'standard' | 'sugimori' | 'dream world' | 'shuffle' | 'tcg';
+export type IconRenderingType = 'pixelated' | 'auto';
 export type RulesLocation = 'inside trainer section' | 'bottom' | 'top';
 export type ItemStyle = 'outer glow' | 'round' | 'square' | 'text';
+
+export interface StatsOptions {
+    averageLevel: boolean,
+    mostCommonKillers: boolean,
+    mostCommonTypes: boolean,
+    shiniesCaught: boolean,
+}
 
 export interface Styles {
     accentColor: string;
@@ -15,6 +23,7 @@ export interface Styles {
     font: string;
     usePokemonGBAFont: boolean;
     iconsNextToTeamPokemon: boolean;
+    iconRendering: IconRenderingType;
     imageStyle: RadiusType;
     itemStyle: ItemStyle;
     pokeballStyle: ItemStyle;
@@ -46,6 +55,8 @@ export interface Styles {
     useAutoHeight: boolean;
     displayItemAsText: boolean;
     displayRulesLocation: RulesLocation;
+    displayStats: boolean;
+    statsOptions: StatsOptions;
 }
 
 export const styleDefaults: Styles = {
@@ -61,6 +72,7 @@ export const styleDefaults: Styles = {
     imageStyle: 'round',
     itemStyle: 'outer glow',
     pokeballStyle: 'outer glow',
+    iconRendering: 'auto',
     grayScaleDeadPokemon: false,
     minimalBoxedLayout: false,
     minimalTeamLayout: false,
@@ -90,4 +102,11 @@ export const styleDefaults: Styles = {
     trainerWidth: '20%',
     trainerHeight: '100%',
     trainerAuto: true,
+    displayStats: false,
+    statsOptions: {
+        averageLevel: false,
+        mostCommonKillers: false,
+        mostCommonTypes: false,
+        shiniesCaught: false,
+    },
 };

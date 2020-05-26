@@ -39,7 +39,7 @@ const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'],
     }
     if (propName === 'template' && e.target.value === 'Hexagons') {
         props.editStyle({ resultWidth: 1320 });
-        props.editStyle({ accentColor: '#000000' });
+        props.editStyle({ accentColor: 'rgba(0, 0, 0, 0)' });
         props.editStyle({ movesPosition: 'horizontal' as OrientationType });
     }
     if (propName === 'template' && e.target.value === 'Generations') {
@@ -197,7 +197,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                             onChange={e => editEvent(e, props, undefined)}
                             value={props.style.itemStyle}>
                             {smallItemOptions.map(v => {
-                                return <option value={v}>{capitalize(v)}</option>;
+                                return <option key={v} value={v}>{capitalize(v)}</option>;
                             })}
                         </select>
                     </div>
@@ -211,7 +211,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                             onChange={e => editEvent(e, props, undefined)}
                             value={props.style.pokeballStyle}>
                             {smallItemOptions.map(v => {
-                                return <option value={v}>{capitalize(v)}</option>;
+                                return <option key={v} value={v}>{capitalize(v)}</option>;
                             })}
                         </select>
                     </div>
@@ -389,6 +389,18 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 <div className={styleEdit}>
                     <RadioGroup
                         className={cx(Styles.radioGroup)}
+                        label='Icon Rendering'
+                        onChange={e => editEvent(e, props, 'iconRendering')}
+                        selectedValue={props.style.iconRendering}>
+                        <Radio label='Pixelated' value='pixelated' />
+                        <Radio label='Automatic' value='auto' />
+                    </RadioGroup>
+                </div>
+
+
+                <div className={styleEdit}>
+                    <RadioGroup
+                        className={cx(Styles.radioGroup)}
                         label='Moves Position'
                         onChange={e => editEvent(e, props, 'movesPosition')}
                         selectedValue={props.style.movesPosition}>
@@ -422,6 +434,12 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     {(['Sword', 'Shield', 'X', 'Y', 'Sun', 'Moon', 'Ultra Sun', 'Ultra Moon'].includes(props.game.name)) && props.style.teamImages === 'dream world' ?
                         <div className='pt-callout pt-intent-danger' style={calloutStyle}>
                             Dream world images are not supported for this game
+                        </div>
+                        : null
+                    }
+                    {(['Sword', 'Shield'].includes(props.game.name)) && props.style.teamImages === 'tcg' ?
+                        <div className='pt-callout pt-intent-danger' style={calloutStyle}>
+                            TCG images are not fully supported for this game
                         </div>
                         : null
                     }
@@ -541,6 +559,21 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                                 { ...e, target: { value: e.target.checked } },
                                 props,
                                 'displayRules',
+                            )
+                        }
+                    />
+                </div>
+
+                <div className={styleEdit}>
+                    <Checkbox
+                        checked={props.style.displayStats}
+                        name='displayStats'
+                        label='Display Stats'
+                        onChange={(e: any) =>
+                            editEvent(
+                                { ...e, target: { value: e.target.checked } },
+                                props,
+                                'displayStats',
                             )
                         }
                     />

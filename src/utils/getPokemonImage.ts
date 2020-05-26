@@ -4,6 +4,8 @@ import { capitalize } from './capitalize';
 import { Game } from 'utils';
 import { Forme } from './Forme';
 import { getIconFormeSuffix } from './getIconFormeSuffix';
+import { Editor } from 'models';
+import { editor } from 'reducers/editor';
 import { GenderElementProps, Gender } from 'components';
 
 const sugiFormeNotation = (forme: Forme) => {
@@ -105,6 +107,7 @@ export interface GetPokemonImage {
     name?: Game;
     style: Styles;
     shiny?: boolean;
+    editor?: Editor;
     gender?: GenderElementProps;
 }
 
@@ -115,6 +118,7 @@ export function getPokemonImage({
     name,
     style,
     shiny,
+    editor,
     gender,
 }: GetPokemonImage) {
     const regularNumber = speciesToNumber(species || 'Ditto');
@@ -122,6 +126,10 @@ export function getPokemonImage({
 
     if (customImage) {
         return `url(${customImage})`;
+    }
+
+    if (editor?.temtemMode) {
+        return `url(img/temtem/${species?.trim()}.png)`;
     }
 
     if (
@@ -172,9 +180,10 @@ export function getPokemonImage({
 
 
     if (style.teamImages === 'sugimori') {
-        return `url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/${leadingZerosNumber}${sugiFormeNotation(
-            Forme[forme ? forme : 'Normal'],
-        )}.png)`;
+        if ([521, 592, 593, 668, 678].includes(regularNumber || 0) && (gender === 'f' || gender === 'Female')) {
+            return `url(img/sugimori/female/${regularNumber}${getIconFormeSuffix(forme as keyof typeof Forme)}.png)`;
+        }
+        return `url(img/sugimori/${regularNumber}${getIconFormeSuffix(forme as keyof typeof Forme)}.png)`;
     }
 
     if (style.teamImages === 'dream world') {
@@ -187,6 +196,11 @@ export function getPokemonImage({
         )}.png)`;
     }
 
+    if (style.teamImages === 'tcg') {
+        return `url(img/tcg/${(
+            addForme((species || '').replace(/\s/g, '').replace(/'/g, ''), forme) || 'missingno'
+        ).toLowerCase()}.jpg)`;
+    }
     // TEMPORARY STOPGAPS
     if (species === 'Dugtrio' && forme === 'Alolan' && shiny) {
         return `url(img/alolan-dugtrio-shiny.jpg)`;

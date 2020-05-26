@@ -219,7 +219,6 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
             const { label } = currentNode;
         }
 
-        console.log(currentNode);
         return (
             <>
                 <div

@@ -427,6 +427,7 @@ export const matchSpeciesToTypes = (
         case 'Cherrim':
         case 'Petilil':
         case 'Lilligant':
+        case 'Maractus':
         case 'Leafeon':
         case 'Turtwig':
         case 'Grotle':

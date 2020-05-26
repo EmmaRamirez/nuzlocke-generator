@@ -35,6 +35,8 @@ interface PokemonIconProps {
     shiny?: Pokemon['shiny'];
     className?: string;
     style?: React.CSSProperties;
+    styles?: State['style'];
+    includeTitle?: boolean;
 
     connectDragSource?: ConnectDragSource;
     isDragging?: boolean;
@@ -61,7 +63,6 @@ const getForme = (forme: Forme) => {
 
 const iconSource = {
     beginDrag(props: PokemonIconProps) {
-        console.log('drag has begun', props);
         store.dispatch(selectPokemon(props.id!));
         return {
             id: props.id,
@@ -102,6 +103,10 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
         super(props);
     }
 
+    public shouldComponentUpdate() {
+        return true;
+    }
+
     public render() {
         const {
             connectDragSource,
@@ -115,10 +120,12 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
             className,
             shiny,
             style,
+            styles,
             hidden,
             customIcon,
+            includeTitle,
         } = this.props;
-        const imageStyle = { maxHeight: '100%', opacity: hidden ? 0.5 : 1, height: '32px', };
+        const imageStyle = { maxHeight: '100%', opacity: hidden ? 0.5 : 1, height: '32px', imageRendering: styles?.iconRendering };
         return connectDragSource!(
             <div
                 role='icon'
@@ -127,6 +134,7 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
                     onClick && onClick();
                 }}
                 id={id}
+                title={includeTitle ? species : undefined}
                 style={style}
                 className={`${
                     id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'
@@ -162,7 +170,7 @@ const mapDispatchToProps = (
 export const PokemonIcon: React.ComponentClass<
     Omit<PokemonIconProps, 'onClick' | 'selectedId'>
 > = connect(
-    (state: Pick<State, keyof State>) => ({ selectedId: state.selectedId }),
+    (state: Pick<State, keyof State>) => ({ selectedId: state.selectedId, styles: state.style, }),
     mapDispatchToProps,
     null,
     {pure: false},

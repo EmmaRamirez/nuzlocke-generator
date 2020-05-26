@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { editGame, changeEditorSize, editStyle, resetCheckpoints } from 'actions';
+import { editGame, changeEditorSize, editStyle, resetCheckpoints, toggleTemtemMode } from 'actions';
 import { gameOfOriginToColor, listOfGames, FEATURES } from 'utils';
 
-import { Button, Intent, Popover, Position, Menu } from '@blueprintjs/core';
+import { Button, Intent, Popover, Position, Menu, Switch, Classes } from '@blueprintjs/core';
 import { RulesEditorDialog } from 'components/RulesEditor';
 import { State } from 'state';
 
@@ -14,6 +14,7 @@ export interface GameEditorProps {
     editStyle: editStyle;
     changeEditorSize: changeEditorSize;
     resetCheckpoints: resetCheckpoints;
+    toggleTemtemMode: toggleTemtemMode;
 }
 
 const gameSubEditorStyle: any = {
@@ -46,12 +47,13 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
 
     public render() {
         const { game } = this.props;
+        const canEnableTemTem = false;
         // Awful hack to get rid of `isOpen` conflict warning
         const RED: any = RulesEditorDialog;
         return (
             <>
                 <RED isOpen={this.state.isOpen} onClose={this.toggleDialog} />
-                <div className='game-editor'>
+                <div className='game-editor base-editor'>
                     <h4 style={{ display: 'flex', alignContent: 'flex-end' }}>Game</h4>
                     <div style={gameSubEditorStyle}>
                         <div>
@@ -76,6 +78,14 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                             <label className='pt-inline' style={{marginRight: 'calc(.75rem + 2px)'}}>Name</label>
                             <input onChange={this.onInputName} value={game.customName} autoComplete={'false'} size={20} className='pt-input' type='text' placeholder={game.name} />
                         </div>
+                        {canEnableTemTem && <Button style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}} className={Classes.MINIMAL}>
+                            <Switch
+                                // style={{...darkModeStyle(this.props.style.editorDarkMode), marginBottom: 0}}
+                                label='TemTem Mode'
+                                checked={this.props.editor.temtemMode}
+                                onChange={e => this.props.toggleTemtemMode()}
+                            />
+                        </Button>}
                     </div>
                 </div>
             </>
@@ -88,4 +98,5 @@ export const GameEditor = connect((state: Pick<State, keyof State>) => ({ game: 
     editStyle,
     changeEditorSize,
     resetCheckpoints,
+    toggleTemtemMode,
 })(GameEditorBase as any);

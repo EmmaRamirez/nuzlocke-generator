@@ -3,6 +3,7 @@
     src: url('pokemon_gb-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -10,4 +11,5 @@
     src: url('pokemon-dp-font.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }

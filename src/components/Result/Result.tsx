@@ -2,34 +2,45 @@ import * as React from 'react';
 
 import { connect } from 'react-redux';
 import * as uuid from 'uuid/v4';
-import { Scrollbars } from 'react-custom-scrollbars';
-import * as domtoimage from 'dom-to-image';
+//import { domToImage } from '@emmaramirez/dom-to-image';
 import { cx } from 'emotion';
 
-import { selectPokemon } from 'actions';
+import { selectPokemon, toggleMobileResultView } from 'actions';
 import { TeamPokemon, TeamPokemonBaseProps } from 'components/TeamPokemon';
 import { DeadPokemon } from 'components/DeadPokemon';
 import { BoxedPokemon } from 'components/BoxedPokemon';
 import { ChampsPokemon } from 'components/ChampsPokemon';
 import { TrainerResult } from 'components/Result';
 import { TopBar } from 'components/TopBar';
-import { Pokemon, Trainer } from 'models';
+import { ErrorBoundary } from 'components/Shared';
+import { Stats } from './Stats';
+import { Pokemon, Trainer, Editor } from 'models';
 import { reducers } from 'reducers';
-import { Styles as StyleState, getGameRegion, sortPokes, getContrastColor, OrientationType } from 'utils';
+import { Styles as StyleState, getGameRegion, sortPokes, getContrastColor, isLocal } from 'utils';
 
 import * as Styles from './styles';
 
 import './Result.styl';
 import './themes.styl';
-import { pokemon } from 'reducers/pokemon';
+import 'assets/pokemon-font.css';
 import { State } from 'state';
+import isMobile from 'is-mobile';
+import { Button, Classes } from '@blueprintjs/core';
+import { editor } from 'reducers/editor';
+
+async function load() {
+    const resource = await import('@emmaramirez/dom-to-image');
+    return resource.domToImage;
+}
 
 interface ResultProps {
     pokemon: Pokemon[];
     game: any;
     trainer: Trainer;
     box: State['box'];
+    editor: Editor;
     selectPokemon: selectPokemon;
+    toggleMobileResultView: typeof toggleMobileResultView;
     style: StyleState;
     rules: string[];
 }
@@ -133,13 +144,19 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     private async toImage() {
         const resultNode = this.resultRef.current;
         this.setState({ isDownloading: true });
+        if (process.env.NODE_ENV === 'test') {
+            return;
+        }
         try {
-            const dataUrl = await domtoimage.toPng(resultNode);
+            const timeout = setTimeout(() => { throw new Error('Timed out') }, 10000);
+            const domToImage = await load();
+            const dataUrl = await (domToImage as any).toPng(resultNode, {corsImage: true});
             const link = document.createElement('a');
             link.download = `nuzlocke-${uuid()}.png`;
             link.href = dataUrl;
             link.click();
             this.setState({ downloadError: null, isDownloading: false });
+            clearTimeout(timeout);
         } catch (e) {
             this.setState({
                 downloadError:
@@ -171,15 +188,24 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         return {};
     }
 
+    private getH3 = (box, n) => {
+        if (box.name === 'Dead' || box.name === 'Champs') {
+            if (n) {
+                return ` (${n})`;
+            }
+        }
+        return null;
+    }
+
     private renderContainer = (pokemon, paddingForVerticalTrainerSection, box) => getNumberOf(box.name, pokemon) > 0 ? (
         <div style={paddingForVerticalTrainerSection} className={`${this.getBoxClass(box.inheritFrom || box.name)}-container`}>
-            {box.name !== 'Team' && <h3 style={{ color: getContrastColor(this.props.style.bgColor || '#383840') }}>{box.name}</h3>}
+            {box.name !== 'Team' && <h3 style={{ color: getContrastColor(this.props.style.bgColor || '#383840') }}>{box.name}{this.getH3(box, getNumberOf(box.name, pokemon))}</h3>}
             <div className='boxed-container-inner' style={this.getBoxStyle(box.name || box.inheritFrom)}>
                 {pokemon
                     .map((poke, index) => {
                         if (box.name === 'Boxed' || box.inheritFrom === 'Boxed') return <BoxedPokemon key={index} {...poke} />;
                         if (box.name === 'Dead' || box.inheritFrom === 'Dead') return <DeadPokemon key={index} {...poke} />;
-                        if (box.name === 'Champs' || box.inheritFrom === 'Champs') return <ChampsPokemon key={index} {...poke} useSprites={this.props.style.useSpritesForChampsPokemon} />;
+                        if (box.name === 'Champs' || box.inheritFrom === 'Champs') return <ChampsPokemon useSprites={this.props.style.useSpritesForChampsPokemon} key={index} {...poke} />;
                         if (box.name === 'Team' || box.inheritFrom === 'Team') return <TeamPokemon key={index} {...poke} />;
                         return null;
                     })
@@ -189,7 +215,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     ) : null;
 
     public render() {
-        const { style, box, trainer, pokemon } = this.props;
+        const { style, box, trainer, pokemon, editor } = this.props;
         const numberOfTeam = getNumberOf('Team', pokemon);
         const numberOfDead = getNumberOf('Dead', pokemon);
         const numberOfBoxed = getNumberOf('Boxed', pokemon);
@@ -202,10 +228,9 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             paddingLeft: style.trainerWidth,
         } : {};
         const teamContainer = <div style={paddingForVerticalTrainerSection} className='team-container'>{this.renderTeamPokemon()}</div>;
-        console.log(this.renderOtherPokemonStatuses(paddingForVerticalTrainerSection));
 
         const rulesContainer =  (
-            <div style={paddingForVerticalTrainerSection} className='rules-container'>
+            <div className='rules-container'>
                 <h3 style={{ color: getContrastColor(bgColor) }}>Rules</h3>
                 <ol style={{ color: getContrastColor(bgColor) }}>
                     {this.props.rules.map((rule, index) => {
@@ -215,19 +240,30 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             </div>
         );
         const others = pokemon.filter(poke => !['Team', 'Boxed', 'Dead', 'Champs'].includes(poke.status!));
-
+        const enableStats = style.displayStats;
+        const enableChampImage = false && isLocal();
 
         return (
-            <Scrollbars autoHide autoHideTimeout={1000} autoHideDuration={200}>
-                <TopBar onClickDownload={() => this.toImage()}>{this.renderErrors()}</TopBar>
+            <div className='hide-scrollbars' style={{width: '100%', overflowY: 'scroll'}}>
+            {isMobile() && editor.showResultInMobile && <div className={Classes.OVERLAY_BACKDROP}></div>}
+            <ErrorBoundary>
+                <TopBar isDownloading={this.state.isDownloading} onClickDownload={() => this.toImage()}>{this.renderErrors()}</TopBar>
                 <style>{style.customCSS}</style>
+                {isMobile() && editor.showResultInMobile && <Button className={Styles.result_download} icon='download' onClick={() => {
+                    this.props.toggleMobileResultView();
+                    this.toImage();
+                }}>
+                    Download
+                </Button>}
                 <div
                     ref={this.resultRef}
                     className={`result container ${(style.template &&
                         style.template.toLowerCase().replace(/\s/g, '-')) ||
                         ''} region-${getGameRegion(
                         this.props.game.name,
-                    )} team-size-${numberOfTeam} ${trainerSectionOrientation}-trainer`}
+                    )} team-size-${numberOfTeam} ${trainerSectionOrientation}-trainer
+                       ${editor.showResultInMobile ? Styles.result_mobile : ''}
+                    `}
                     style={{
                         fontFamily: style.usePokemonGBAFont ? 'pokemon_font' : 'inherit',
                         fontSize: style.usePokemonGBAFont ? '125%' : '100%',
@@ -244,6 +280,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     }}>
                     <div className='trainer-container' style={ trainerSectionOrientation === 'vertical' ?
                         { backgroundColor: topHeaderColor,
+                            color: getContrastColor(topHeaderColor),
                             width: style.trainerWidth,
                             position: 'absolute',
                             height: `calc(${style.trainerHeight} + 2%)`,
@@ -251,6 +288,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         }
                     : {
                         backgroundColor: topHeaderColor,
+                        color: getContrastColor(topHeaderColor),
                         width: style.trainerAuto ? '100%' : style.trainerWidth,
                         height: style.trainerAuto ? 'auto' : style.trainerHeight,
                     }}>
@@ -261,6 +299,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             {trainer.notes}
                         </div>
                     ) : null}
+                    {enableChampImage && <img src='./img/dev/champs3.jpg' alt='fads' style={{width: '500px', display: 'block', margin: '0 auto'}} />}
                     {style.displayRules && style.displayRulesLocation === 'top' ? rulesContainer : null}
                     {teamContainer}
                     {style.template === 'Generations' && trainerSectionOrientation === 'vertical' ?
@@ -277,7 +316,12 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         {this.renderOtherPokemonStatuses(paddingForVerticalTrainerSection)}
                     </>
                     }
-                    {style.displayRules && style.displayRulesLocation === 'bottom' ? rulesContainer : null}
+
+                    <div style={{ ...paddingForVerticalTrainerSection, display: 'flex' }}>
+                        {style.displayRules && style.displayRulesLocation === 'bottom' ? rulesContainer : null}
+
+                        {enableStats && <Stats />}
+                    </div>
 
                     {/*<div className='backsprite-montage' style={{
                         width: '100%',
@@ -292,7 +336,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         })}
                     </div>*/}
                 </div>
-            </Scrollbars>
+            </ErrorBoundary>
+            </div>
         );
     }
 }
@@ -305,8 +350,10 @@ export const Result = connect<Partial<typeof reducers>, any, any>(
         style: state.style,
         box: state.box,
         rules: state.rules,
+        editor: state.editor,
     }),
     {
         selectPokemon,
+        toggleMobileResultView,
     },
 )(ResultBase);

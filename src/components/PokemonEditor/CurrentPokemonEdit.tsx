@@ -16,9 +16,10 @@ import {
     EvolutionTree,
     getDeepObject,
     listOfPokeballs,
+    getListOfTypes,
 } from 'utils';
-import { Pokemon } from 'models';
-import { Boxes } from 'types';
+import { Pokemon, Editor } from 'models';
+import { Boxes } from 'models';
 import { CurrentPokemonInput } from 'components/PokemonEditor';
 import { DeletePokemonButton } from 'components/DeletePokemonButton';
 import { Autocomplete, ErrorBoundary } from 'components/Shared';
@@ -34,6 +35,7 @@ import { addPokemon } from 'actions';
 import { State } from 'state';
 import { CurrentPokemonLayoutItem } from './CurrentPokemonLayoutItem';
 import { MoveEditor } from 'components/MoveEditor';
+import { PokemonNotes } from './PokemonNotes';
 
 const pokeball = require('assets/pokeball.png');
 
@@ -69,6 +71,8 @@ export interface CurrentPokemonEditProps {
     editPokemon: editPokemon;
     addPokemon: addPokemon;
     game: { name: Game, customName: string };
+    editor: Editor;
+    customTypes: State['customTypes'];
 }
 
 export interface CurrentPokemonEditState {
@@ -134,19 +138,12 @@ export class CurrentPokemonEditBase extends React.Component<
     }
 
     private evolvePokemon = (currentPokemon) => e => {
-        console.log(this.doesPokemonHaveEvolution(currentPokemon));
 
         if (this.doesPokemonHaveEvolution(currentPokemon)) {
 
             const evoTree = getDeepObject(EvolutionTree, currentPokemon.species);
             const evolutionSpecies = evoTree && Object.keys(evoTree);
 
-            console.log(
-                getDeepObject(EvolutionTree, 'Charmeleon'),
-                EvolutionTree[currentPokemon.species],
-                this.parseTree(evoTree),
-                this.parseTree(EvolutionTree[currentPokemon.species]),
-            );
 
 
             if (!evolutionSpecies) {
@@ -180,6 +177,11 @@ export class CurrentPokemonEditBase extends React.Component<
 
     private toggleDialog = () => this.setState({isMoveEditorOpen: !this.state.isMoveEditorOpen});
 
+    private getTypes() {
+        const {customTypes, editor} = this.props;
+        return getListOfTypes(customTypes, editor.temtemMode);
+    }
+
     public moreInputs(currentPokemon: Pokemon) {
         return (
             <div className='expanded-edit'>
@@ -197,27 +199,7 @@ export class CurrentPokemonEditBase extends React.Component<
                     inputName='types'
                     value={currentPokemon.types}
                     type='double-select'
-                    options={[
-                        'Bug',
-                        'Dark',
-                        'Dragon',
-                        'Electric',
-                        'Fairy',
-                        'Fighting',
-                        'Fire',
-                        'Flying',
-                        'Ghost',
-                        'Grass',
-                        'Ground',
-                        'Ice',
-                        'Normal',
-                        'Poison',
-                        'Psychic',
-                        'Rock',
-                        'Steel',
-                        'Water',
-                        'None',
-                    ]}
+                    options={this.getTypes()}
                 />
                 <CurrentPokemonLayoutItem checkboxes>
                     <CurrentPokemonInput
@@ -319,12 +301,13 @@ export class CurrentPokemonEditBase extends React.Component<
                     />
                 </CurrentPokemonLayoutItem>
                 <CurrentPokemonLayoutItem>
-                    <CurrentPokemonInput
+                    {/* <CurrentPokemonInput
                         labelName='Notes'
                         inputName='notes'
                         value={currentPokemon.notes}
                         type='textArea'
-                    />
+                    /> */}
+                    <PokemonNotes />
                 </CurrentPokemonLayoutItem>
                 <CurrentPokemonLayoutItem disabled>
                     {currentPokemon.extraData && <CurrentPokemonInput
@@ -488,16 +471,16 @@ export class CurrentPokemonEditBase extends React.Component<
                         value={currentPokemon.moves}
                         type='moves'
                     />
-                    {/*<Button
+                    <Button
                         className='pt-minimal'
                         intent={Intent.PRIMARY}
                         onClick={this.toggleDialog}
-                    >Edit Moves</Button>*/}
+                    >Edit Moves</Button>
                 </CurrentPokemonLayoutItem>
-                {/*<MoveEditor
+                <MoveEditor
                     isOpen={this.state.isMoveEditorOpen}
                     toggleDialog={this.toggleDialog}
-                />*/}
+                />
                 {this.state.expandedView ? this.moreInputs(currentPokemon) : null}
                 <br />
                 <button
@@ -506,11 +489,11 @@ export class CurrentPokemonEditBase extends React.Component<
                     className='pt-button pt-intent-primary pt-fill current-pokemon-more'>
                     {this.state.expandedView ? (
                         <span>
-                            Less <span className='pt-icon-symbol-triangle-up' />
+                            Less <Icon icon='symbol-triangle-up' />
                         </span>
                     ) : (
                         <span>
-                            More <span className='pt-icon-symbol-triangle-down' />
+                            More <Icon icon='symbol-triangle-down' />
                         </span>
                     )}{' '}
                 </button>
@@ -525,6 +508,8 @@ export const CurrentPokemonEdit = connect(
         selectedId: state.selectedId,
         pokemon: state.pokemon,
         game: state.game,
+        editor: state.editor,
+        customTypes: state.customTypes,
     }),
     {
         selectPokemon,

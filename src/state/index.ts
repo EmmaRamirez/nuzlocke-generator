@@ -1,6 +1,5 @@
 import { Styles } from 'utils';
-import { Boxes } from 'types';
-import { Pokemon, Trainer, Game, Editor } from 'models';
+import { Pokemon, Trainer, Game, Editor, Boxes } from 'models';
 import { Theme } from 'themes';
 import { Checkpoints } from 'reducers/checkpoints';
 
@@ -17,5 +16,7 @@ export interface State {
     style: Styles;
     theme: Theme;
     trainer: Trainer;
-    customMoveMap: Map<string, string[]>;
+    customMoveMap: {move: string, type: string, id: string}[];
+    customTypes: {type: string, color: string, id: string}[];
+    stats: {id?: string; key?: string, value?: string}[];
 }

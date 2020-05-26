@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { matchSpeciesToTypes, getMoveType, formatBallText } from 'utils';
+import { matchSpeciesToTypes, getMoveType, formatBallText, typeToColor, getContrastColor } from 'utils';
 import { editPokemon, selectPokemon } from 'actions';
 
 import { ErrorBoundary } from 'components/Shared';
@@ -23,6 +23,7 @@ interface CurrentPokemonInputProps {
     selectedId: string;
     selectPokemon: selectPokemon;
     pokemon?: Pokemon;
+    customMoveMap: State['customMoveMap'];
 }
 
 export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInputProps> {
@@ -80,16 +81,26 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
     };
 
     public getInput({ labelName, transform, disabled, inputName, type, value, placeholder, options, pokemon }: any) {
+        const {customMoveMap} = this.props;
+
         value = value == null ? '' : value;
         if (type === 'moves') {
             return (
                 <ErrorBoundary>
                     <TagInput
-                        tagProps={(v, i) => ({
-                            className: `${getMoveType((v || '').toString().trim())}-type`,
-                        })}
+                        tagProps={(v, i) => {
+                            // @TODO: Fix inconsitencies with bad parameter types
+                            // @ts-ignore
+                            const background = typeToColor(customMoveMap.find(m => m?.move === v)?.type || getMoveType(v?.toString()?.trim() || '')) || 'transparent';
+                            const color = getContrastColor(background);
+                            return {
+                                style: {
+                                    background,
+                                    color,
+                                }
+                            }
+                        }}
                         onChange={values => {
-                            console.log(values);
                             const edit = {
                                 moves: values,
                             };
@@ -223,6 +234,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
 export const CurrentPokemonInput = connect(
     (state: Pick<State, keyof State>) => ({
         selectedId: state.selectedId,
+        customMoveMap: state.customMoveMap,
     }),
     { editPokemon, selectPokemon },
 )(CurrentPokemonInputBase);
