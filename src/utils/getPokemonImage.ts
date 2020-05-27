@@ -5,26 +5,7 @@ import { Game } from 'utils';
 import { Forme } from './Forme';
 import { getIconFormeSuffix } from './getIconFormeSuffix';
 import { Editor } from 'models';
-import { editor } from 'reducers/editor';
 import { GenderElementProps, Gender } from 'components';
-
-const sugiFormeNotation = (forme: Forme) => {
-    if (typeof forme === 'undefined') return '';
-    if (forme === 'Normal') return '';
-    // If the forme exists, we default to '_f2'
-    if (
-        forme != null ||
-        forme !== 'Normal' ||
-        forme === 'Alolan' ||
-        forme === 'Mega' ||
-        forme === 'Mega-X'
-    )
-        return '_f2';
-    // Pokemon with more than 1 extra forme have different notations
-    if (forme === 'Sandy' || forme === 'Pau\'u' || forme === 'Mega-Y') return '_f3';
-    if (forme === 'Sensu') return '_f4';
-    return '';
-};
 
 const getGameName = (name: Game) => {
     if (name === 'Red' || name === 'Blue') return 'rb';
@@ -213,3 +194,5 @@ export function getPokemonImage({
         addForme((species || '').replace(/\s/g, '').replace(/'/g, ''), forme) || 'missingno'
     ).toLowerCase()}.jpg)`;
 }
+
+export const stripURLCSS = str => str.replace(/url\(/g, '').replace(/\)/g, '');

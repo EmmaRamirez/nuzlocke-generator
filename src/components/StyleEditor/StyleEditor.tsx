@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { editStyle } from 'actions';
-import { capitalize, gameOfOriginToColor, listOfThemes, FEATURES, Game, OrientationType, Styles as StylesType } from 'utils';
+import { capitalize, gameOfOriginToColor, listOfThemes, FEATURES, Game, OrientationType, Styles as StylesType, isLocal } from 'utils';
 import {
     RadioGroup,
     Radio,
@@ -110,6 +110,10 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
         const styleEdit = cx(Styles.styleEdit, {
             [Styles.styleEdit_dark]: props.style.editorDarkMode,
         });
+        const teamImages = ['standard', 'sugimori', 'dream world', 'shuffle'];
+        if (isLocal()) {
+            teamImages.push('tcg');
+        }
         const calloutStyle = {
             marginLeft: '2px',
             fontSize: '80%',
@@ -416,18 +420,12 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                             name='teamImages'
                             onChange={e => editEvent(e, props, undefined, props.game.name)}
                             value={props.style.teamImages}>
-                            {['standard', 'sugimori', 'dream world', 'shuffle'].map(o => <option value={o} key={o}>{capitalize(o)}</option>)}
+                            {teamImages.map(o => <option value={o} key={o}>{capitalize(o)}</option>)}
                         </select>
                     </div>
                     {(props.game.name === 'Sword' || props.game.name === 'Shield') && props.style.teamImages === 'shuffle' ?
                         <div className='pt-callout pt-intent-danger' style={calloutStyle}>
                             Shuffle images are not supported for this game
-                        </div>
-                        : null
-                    }
-                    {(props.game.name === 'Sword' || props.game.name === 'Shield') && props.style.teamImages === 'sugimori' ?
-                        <div className='pt-callout pt-intent-danger' style={calloutStyle}>
-                            Sugimori images are not supported for this game
                         </div>
                         : null
                     }

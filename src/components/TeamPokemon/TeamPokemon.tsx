@@ -26,6 +26,7 @@ import { css, cx } from 'emotion';
 import { PokemonIcon } from 'components/PokemonIcon';
 import { getMetLocationString } from './getMetLocationString';
 import { customTypes } from 'reducers/customTypes';
+import { Showdown } from './Showdown';
 
 export interface TeamPokemonInfoProps {
     generation: Generation;
@@ -233,6 +234,11 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
     public render() {
         const { pokemon, style, game, selectPokemon, editor, customTypes } = this.props;
         const poke = pokemon;
+        const showdown = false;
+
+        if (showdown) {
+            return <Showdown editor={editor} game={game} style={style} pokemon={pokemon} />
+        }
 
         const getFirstType = poke.types ? poke.types[0] : 'Normal';
         const getSecondType = poke.types ? poke.types[1] : 'Normal';
