@@ -41,7 +41,7 @@ interface ResultProps {
     editor: Editor;
     selectPokemon: selectPokemon;
     toggleMobileResultView: typeof toggleMobileResultView;
-    style: StyleState;
+    style: State['style'];
     rules: string[];
 }
 
@@ -214,6 +214,20 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         </div>
     ) : null;
 
+    private getScale(style, editor) {
+        const rw = parseInt(style.resultWidth.toString());
+        const ww = window.innerWidth;
+        const scale = (ww / rw) / 1.1;
+        if (!editor.showResultInMobile) {
+            return {};
+        }
+        if (!Number.isNaN(rw)) {
+            return { transform: `scale(${scale.toFixed(2)})`};
+        } else {
+            return { transform: `scale(0.3)` };
+        }
+    }
+
     public render() {
         const { style, box, trainer, pokemon, editor } = this.props;
         const numberOfTeam = getNumberOf('Team', pokemon);
@@ -277,6 +291,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         // transform: `scale(${style.zoomLevel})`,
                         // transformOrigin: '0 0',
                         width: style.resultWidth + 'px',
+                        ...this.getScale(style, editor),
                     }}>
                     <div className='trainer-container' style={ trainerSectionOrientation === 'vertical' ?
                         { backgroundColor: topHeaderColor,
@@ -317,7 +332,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     </>
                     }
 
-                    <div style={{ ...paddingForVerticalTrainerSection, display: 'flex' }}>
+                    <div style={{ ...paddingForVerticalTrainerSection, display: 'flex', color: getContrastColor(bgColor) }}>
                         {style.displayRules && style.displayRulesLocation === 'bottom' ? rulesContainer : null}
 
                         {enableStats && <Stats />}
