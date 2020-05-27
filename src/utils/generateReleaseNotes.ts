@@ -486,13 +486,13 @@ Thank you!
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
-    '1.2.0': `
-## Features
-- **TCG images**: featuing art from all of your favorite cards!
-
+    '1.1.1': `
 ## Fixes
+- Hotfixes for nuzlocke.json saves breaking upon import
+- Restored missing Notes component in Pokémon Editor
 
 ## Known Issues
-`
-
+- External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`,
 };

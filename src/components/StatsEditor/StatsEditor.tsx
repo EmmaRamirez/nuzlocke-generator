@@ -6,6 +6,7 @@ import { State } from 'state';
 import { Checkbox, Switch, Button, Intent, Classes, Icon, InputGroup } from '@blueprintjs/core';
 import { editStyle, addStat, deleteStat, editStat } from 'actions';
 import { cx } from 'emotion';
+import { ErrorBoundary } from 'components';
 
 export interface StatsEditorProps {
     pokemon: State['pokemon'];
@@ -30,7 +31,7 @@ export class StatsEditorBase extends React.Component<StatsEditorProps> {
         const stats = style?.statsOptions;
 
         return <BaseEditor name='Stats'>
-
+            <ErrorBoundary>
             <div>
                 <Checkbox
                     checked={style.displayStats}
@@ -49,7 +50,7 @@ export class StatsEditorBase extends React.Component<StatsEditorProps> {
             }}>
                 <li>
                     <Switch
-                        checked={stats.averageLevel}
+                        checked={stats?.averageLevel}
                         name='averageLevel'
                         label='Average Level'
                         onChange={(e: any) =>
@@ -63,7 +64,7 @@ export class StatsEditorBase extends React.Component<StatsEditorProps> {
 
                 <li>
                     <Switch
-                        checked={stats.mostCommonKillers}
+                        checked={stats?.mostCommonKillers}
                         name='mostCommonKillers'
                         label='Most Common Killers'
                         onChange={(e: any) =>
@@ -77,7 +78,7 @@ export class StatsEditorBase extends React.Component<StatsEditorProps> {
 
                 <li>
                     <Switch
-                        checked={stats.mostCommonTypes}
+                        checked={stats?.mostCommonTypes}
                         name='mostCommonTypes'
                         label='Most Common Types'
                         onChange={(e: any) =>
@@ -91,7 +92,7 @@ export class StatsEditorBase extends React.Component<StatsEditorProps> {
 
                 <li>
                     <Switch
-                        checked={stats.shiniesCaught}
+                        checked={stats?.shiniesCaught}
                         name='shiniesCaught'
                         label='Shinies Caught'
                         onChange={(e: any) =>
@@ -126,6 +127,7 @@ export class StatsEditorBase extends React.Component<StatsEditorProps> {
 
                 
             </ul>
+            </ErrorBoundary>
         </BaseEditor>;
     }
 }

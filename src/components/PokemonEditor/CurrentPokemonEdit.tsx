@@ -301,13 +301,13 @@ export class CurrentPokemonEditBase extends React.Component<
                     />
                 </CurrentPokemonLayoutItem>
                 <CurrentPokemonLayoutItem>
-                    {/* <CurrentPokemonInput
+                    <CurrentPokemonInput
                         labelName='Notes'
                         inputName='notes'
                         value={currentPokemon.notes}
                         type='textArea'
-                    /> */}
-                    <PokemonNotes />
+                    />
+                    {/* <PokemonNotes /> */}
                 </CurrentPokemonLayoutItem>
                 <CurrentPokemonLayoutItem disabled>
                     {currentPokemon.extraData && <CurrentPokemonInput
