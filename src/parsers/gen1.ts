@@ -44,9 +44,22 @@ const OFFSETS = {
     CHECKSUM                : 0x3523,
     POKEMON_PC_FIRST_HALF   : 0x4000,
     POKEMON_PC_SECOND_HALF  : 0x6000,
-    BOX_ONE                 : 0x4000,
-    BOX_TWO                 : 0x4462
 };
+
+const BOX_OFFSETS = {
+    ONE:    0x4000,
+    TWO:    0x4462,
+    THREE:  0x48C4,
+    FOUR:   0x4D26,
+    FIVE:   0x5188,
+    SIX:    0x55EA,
+    SEVEN:  0x6000,
+    EIGHT:  0x6462,
+    NINE:   0x68C4,
+    TEN:    0x6D26,
+    ELEVEN: 0x7188,
+    TWELVE: 0x75EA,
+}
 
 const checksum = (data: Uint8Array) => {
     let checksum_n = 255;
@@ -296,7 +309,7 @@ export const parseGen1Save = async (file, format) => {
     const casinoCoins = parseInt(file.slice(OFFSETS.CASINO_COINS, OFFSETS.CASINO_COINS + 2).map(d => d.toString(16)).join(''));
 
     const boxedPokemon = parseBoxedPokemon(file.slice(OFFSETS.CURRENT_BOX, OFFSETS.CURRENT_BOX + 0x462));
-    const deadPokemon = parseBoxedPokemon(file.slice(OFFSETS.BOX_TWO, OFFSETS.BOX_TWO + 0x462));
+    const deadPokemon = parseBoxedPokemon(file.slice(BOX_OFFSETS.TWO, BOX_OFFSETS.TWO + 0x462));
 
     // const ellow = file[0];
 
