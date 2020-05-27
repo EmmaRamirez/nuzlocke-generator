@@ -272,10 +272,10 @@ export const result_mobile = css`
     position: fixed !important;
     top: 2vh !important;
     left: 2vw !important;
-    transform: scale(0.3);
     transform-origin: 0px center;
     box-shadow: 0 0 4px rgba(0,0,0,0.33);
     z-index: 21 !important;
+    margin-top: -14vh !important;
 `;
 
 export const result_download = css`

@@ -497,8 +497,9 @@ Thank you!
 `,
     '1.1.2': `
 ## Fixes
-- Hotfixes for nuzlocke.json saves breaking upon import
-- Restored missing Notes component in Pokémon Editor
+- Polished Result display in mobile
+- Fixed stats colors not contrasting properly against background
+
 
 ## Known Issues
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
