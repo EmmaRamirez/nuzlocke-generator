@@ -2,7 +2,7 @@ import { Button, Intent, Icon, Popover, PopoverInteractionKind, Position } from 
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Pokemon, Game, Boxes, Editor } from 'models';
+import { Pokemon, Game, Box as BoxModel, Boxes, Editor } from 'models';
 import { Game as GameName } from 'utils';
 import { State } from 'state';
 
@@ -34,7 +34,7 @@ export interface BoxesComponentProps {
 
 export class BoxesComponent extends React.Component<BoxesComponentProps> {
     private renderBoxes(boxes, team) {
-        return boxes.sort((a, b) => a.position - b.position).map(box => {
+        return boxes.sort((a: BoxModel, b: BoxModel) => a.id - b.id).map(box => {
             return <Box {...box} key={box.id} pokemon={team} />;
         });
     }
@@ -101,8 +101,6 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
             isMassEditorOpen: false,
         };
     }
-
-    public componentDidMount() {}
 
     private openMassEditor = e => {
         this.setState({
