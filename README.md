@@ -1,10 +1,14 @@
-# [Nuzlocke Generator](https://nuzlocke-generator.herokuapp.com/) · ![Travis](https://img.shields.io/travis/EmmaRamirez/nuzlocke-generator.svg?style=flat-square)  ![Coveralls github](https://img.shields.io/coveralls/github/EmmaRamirez/nuzlocke-generator.svg?style=flat-square) ![Codacy grade](https://img.shields.io/codacy/grade/a41d81bbd4ad4479a0c71a1739707bf4.svg?style=flat-square) ![GitHub release](https://img.shields.io/github/release/EmmaRamirez/nuzlocke-generator.svg?style=flat-square)
+# [Nuzlocke Generator](https://nuzlocke-generator.com/) · ![Travis](https://img.shields.io/travis/EmmaRamirez/nuzlocke-generator.svg?style=flat-square)  ![Coveralls github](https://img.shields.io/coveralls/github/EmmaRamirez/nuzlocke-generator.svg?style=flat-square) ![Codacy grade](https://img.shields.io/codacy/grade/a41d81bbd4ad4479a0c71a1739707bf4.svg?style=flat-square) ![GitHub release](https://img.shields.io/github/release/EmmaRamirez/nuzlocke-generator.svg?style=flat-square)
 
-> https://nuzlocke-generator.herokuapp.com/
+> https://nuzlocke-generator.com/
 
 This is a beta. Expect everything to break. Save backups if you value them.
 
-# Running Locally
+## A Preview
+
+![alt](./src/assets/media-four.png) ![alt](./src/assets/media-three.png)
+
+## Running Locally
 
 In order to run this application locally, you'll need [NodeJS](https://nodejs.org/en/) and [Git](https://git-scm.com/). After installing those, start by opening the command prompt and running the following commands:
 
@@ -27,33 +31,15 @@ git pull origin master
 
 And then re-run the server!
 
-## Why is the Generator down?
-
-Not sure. Still investigating. Blame Heroku, I hadn't deployed a single thing and yet somehow the app blew up.
-
-## A Preview
-
-![alt](./src/assets/media-one.png)
-
-![alt](./src/assets/media-two.png)
 
 ## Features
 - Record your nuzlocke with a flashy image
 - Save data on each of your Pokémon as a `json` file
 - Flexible style editing for multiple scenarios
+- Custom moves, rulesets, badges, types, and more!
+- Import from your actual save files!
 
 If you have ideas for features of fixes, please tell me! I want to make this app as useful as possible.
-
-## Roadmap
-- Supporting custom games, badges, types, moves, etc
-- Space for sharing your custom ruleset
-- Importing from this format and potentially save files
-- Supporting better theming & customization of styles
-- Fixing one million bugs
-
-## Hall of Fame
-
-None yet.
 
 ## Legal
 
