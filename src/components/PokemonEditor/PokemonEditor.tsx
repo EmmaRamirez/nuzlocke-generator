@@ -62,8 +62,11 @@ const PokemonLocationChecklist = ({pokemon, game, style}: {pokemon: Pokemon[], g
 
     return <div>
         {encounterMap.map(area => {
-            return <div style={{padding: '4px', margin: '2px', display: 'flex', justifyContent: 'space-apart', alignItems: 'center', borderBottom: `1px solid ${
-                style?.editorDarkMode ? '#222' : '#efefef'}`}}>
+            return <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                margin: '2px',
+                borderBottom: `1px solid ${ style?.editorDarkMode ? '#222' : '#efefef'}`}}>
             {getLocIcon(area)}
             <div style={{marginLeft: '4px'}}>{area}</div>
         </div>;

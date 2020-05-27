@@ -126,8 +126,8 @@ export class StatsBase extends React.Component<StatsProps, {pokemon: State['poke
     public render() {
         const {stats, style} = this.props;
 
-        return <div className='stats' style={{width: '50%'}}>
-            <h3>Stats</h3>
+        return <div className='stats stats-container'>
+            <h3 style={{color: 'inherit'}}>Stats</h3>
 
             <div style={{marginTop: '10px', margin: '0 10px'}}>
                 {style.statsOptions.averageLevel ? (this.state.pokemon.length ? <p>Average Level: {this.getAverageLevel().toFixed(0)}</p> : null) : null}

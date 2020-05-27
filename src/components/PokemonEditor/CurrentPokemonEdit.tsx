@@ -124,7 +124,7 @@ export class CurrentPokemonEditBase extends React.Component<
         }
     };
 
-    public expandView = (e: React.SyntheticEvent<HTMLButtonElement>) => {
+    public expandView = (_) => {
         this.setState({
             expandedView: !this.state.expandedView,
         });
@@ -483,20 +483,15 @@ export class CurrentPokemonEditBase extends React.Component<
                 />
                 {this.state.expandedView ? this.moreInputs(currentPokemon) : null}
                 <br />
-                <button
+                <Button
                     onClick={this.expandView}
                     data-expandedview={this.state.expandedView.toString()}
-                    className='pt-button pt-intent-primary pt-fill current-pokemon-more'>
-                    {this.state.expandedView ? (
-                        <span>
-                            Less <Icon icon='symbol-triangle-up' />
-                        </span>
-                    ) : (
-                        <span>
-                            More <Icon icon='symbol-triangle-down' />
-                        </span>
-                    )}{' '}
-                </button>
+                    intent={Intent.PRIMARY}
+                    className='pt-button pt-fill current-pokemon-more'
+                    icon={this.state.expandedView ? 'symbol-triangle-up' : 'symbol-triangle-down'}
+                >
+                    {this.state.expandedView ? 'Less' : 'More'}
+                </Button>
             </div>
         );
     }

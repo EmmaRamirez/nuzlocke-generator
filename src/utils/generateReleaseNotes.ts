@@ -10,7 +10,7 @@ export function generateReleaseNotes(version: string) {
     return releaseNotes[version] || '';
 }
 
-const releaseNotes = {
+export const releaseNotes = {
     '0.0.1-beta': `
 # Limited Beta
 This is a limited beta of the application. As such, it has a shitload of bugs everywhere. Some key things to note are:
@@ -362,6 +362,7 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
     `,
     '1.0.0': `# Changelog
+
 ## Features
 - **New Pokémon Options**: Pokéball, MVP, and Notes
 - **Box Management**: add, delete, or modify statuses for your Pokémon!
@@ -396,7 +397,8 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - Downloading images will fail if they contain ["cross-origin" resources](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image), which taint the process for downloading
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
     `,
-    '1.0.2': `
+    '1.0.2': `# Changelog
+
 ## Fixes
 - You can no longer delete main boxes (for now)
 - Styling fixes in Pokémon editor
@@ -408,7 +410,8 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 
 `,
-    '1.0.3': `
+    '1.0.3': `# Changelog
+
 ## Fixes
 - Disabled the download button on Sugimori images (it never worked, sorry)
 - Added shiny Alolan Dugtrio for anon
@@ -419,24 +422,28 @@ You can submit bugs or feature requests [here](https://github.com/EmmaRamirez/nu
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 
 `,
-    '1.0.4': `
+    '1.0.4': `# Changelog
+
 ## Fixes
 - Added Shiny Alolan Dugtrio
 - Fixed the saves being lost issue--this was due to how the downloading file feature was originally configured. Please file another bug report if it is still present.
 `,
-    '1.0.5': `
+    '1.0.5': `# Changelog
+
 ## Fixes
 - Reverted a box ordering change that broke things
 - Added Mega Blastoise image
 - Added some cities as possible locations to catch Pokémon
 `,
-    '1.0.6': `
+    '1.0.6': `# Changelog
+
 ## Fixes
 - Add female Indeedee sprite, Male Indeedee image
 - Added Z-Crystals to item autocompletion
 - Fix margins for Dead Pokemon in Cards template
 `,
-    '1.0.7': `
+    '1.0.7': `# Changelog
+
 ## Nuzlocke Generator Post-Mortem
 If you've been using this app, you may have noticed that it went down for a sustained period time. I apologize for any inconvenience that may have caused. The root issue of this problem had to do with Heroku (the service provider for this application) changing how builds work&dash;the source code was built locally and then deployed statically to Heroku beforehand. After investigation and solving this issue, I also dealt with a slug size error by compressing all Pokémon images.
 
@@ -451,7 +458,8 @@ So what does this mean for you?
 Thank you!
 
 `,
-    '1.0.8': `
+    '1.0.8': `# Changelog
+
 ## Fixes
 - Added more images for Mega Pokemon
 - Added game colors for LGPE
@@ -459,7 +467,8 @@ Thank you!
 - Added Lycanroc forme images
 - Fixed images for Gastrodon and Shellos formes
 `,
-    '1.1.0': `
+    '1.1.0': `# Changelog
+
 ## Features
 - **Improved mobile experience**
 - **Moves Editor**: add custom moves and types!
@@ -486,7 +495,8 @@ Thank you!
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
-    '1.1.1': `
+    '1.1.1': `# Changelog
+
 ## Fixes
 - Hotfixes for nuzlocke.json saves breaking upon import
 - Restored missing Notes component in Pokémon Editor
@@ -495,11 +505,16 @@ Thank you!
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
-    '1.1.2': `
+    '1.1.2': `# Changelog
+
 ## Fixes
+- **Try exporting the nuzlocke.json & then re-importing it, that should fix most move-editing related bugs.** File an issue otherwise!
 - Polished Result display in mobile
 - Fixed stats colors not contrasting properly against background
-
+- Fixed rules container not being full-width in some themes
+- Made stats in Generations theme less garish
+- Added icon for Soothe Bell
+- Fixed dropdown arrow looking weird in Pokémon Editor
 
 ## Known Issues
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
