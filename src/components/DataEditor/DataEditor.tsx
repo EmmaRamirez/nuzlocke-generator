@@ -14,6 +14,7 @@ import { Game, Pokemon } from 'models';
 import { omit } from 'ramda';
 import { BaseEditor } from 'components/BaseEditor';
 import { State } from 'state';
+import { noop } from 'redux-saga/utils';
 
 const trash = require('assets/img/trash.png');
 
@@ -99,7 +100,15 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
     }
 
     private confirmImport = e => {
-        this.props.replaceState(JSON.parse(this.state.data));
+        let cmm = { customMoveMap: [] };
+        const data = JSON.parse(this.state.data);
+        const safeguards = { customTypes: [], customMoveMap: [], stats: []};
+        if (!Array.isArray(data.customMoveMap)) {
+            noop();
+        } else {
+            cmm = { customMoveMap: data.customMoveMap };
+        }
+        this.props.replaceState({ ...safeguards, ...data, ...cmm });
         this.writeAllData();
     };
 

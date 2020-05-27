@@ -1,9 +1,9 @@
-import { Action, ADD_STAT, EDIT_STAT, DELETE_STAT } from 'actions';
+import { Action, ADD_STAT, EDIT_STAT, DELETE_STAT, REPLACE_STATE } from 'actions';
 import * as uuid from 'uuid';
 
 export function stats(initState = [
     {id: 'a-1', key: '', value: ''}
-], action: Action<ADD_STAT | EDIT_STAT | DELETE_STAT>) {
+], action: Action<ADD_STAT | EDIT_STAT | DELETE_STAT | REPLACE_STATE>) {
     switch (action.type) {
         case ADD_STAT:
             return [
@@ -24,6 +24,8 @@ export function stats(initState = [
                     value: action.value,
                 }
             ];
+        case REPLACE_STATE:
+            return action.replaceWith.stats || [];
         default:
             return initState;
     }

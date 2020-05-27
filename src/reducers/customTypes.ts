@@ -26,7 +26,7 @@ export function customTypes(state: State['customTypes'] = [], action: Action<CRE
                 }
             });
         case REPLACE_STATE:
-            return action.replaceWith.customTypes;
+            return action.replaceWith.customTypes || [];
         default:
             return state;
     }

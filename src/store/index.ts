@@ -28,6 +28,14 @@ const migrations = {
             },
         };
     },
+    '1.1.0': state => ({
+        ...state,
+        customMoveMap: [],
+    }),
+    '1.1.1': state => ({
+        ...state,
+        customMoveMap: []
+    })
 };
 
 const config = {

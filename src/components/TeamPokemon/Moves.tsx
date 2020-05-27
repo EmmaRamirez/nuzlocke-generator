@@ -3,6 +3,7 @@ import { Generation, Styles, handleMovesGenerationsExceptions, getMoveType, type
 import { Pokemon } from 'models';
 import { connect } from 'react-redux';
 import { State } from 'state';
+import { noop } from 'redux-saga/utils';
 
 export interface MovesProps {
     generation: Generation;
@@ -29,7 +30,7 @@ export const Move = ({index, style, type, move, customTypes}) => (move && <div
     {move}
 </div>);
 
-export const getMapMove = (moveMap, move) => moveMap.find(m => m.move === move);
+export const getMapMove = (moveMap, move) => moveMap?.find(m => m.move === move);
 
 export class MovesBase extends React.Component<MovesProps> {
     private generateMoves(moves: MovesProps['moves']) {
@@ -38,12 +39,17 @@ export class MovesBase extends React.Component<MovesProps> {
         return (
             moves &&
             moves.map((move, index) => {
-                const customMove = getMapMove(customMoveMap, move);
+                let customMove;
+                try {
+                    customMove = getMapMove(customMoveMap, move);
+                } catch {
+                    noop();
+                }
                 move = move.trim();
                 const type = handleMovesGenerationsExceptions({
                     move: move,
                     generation: this.props.generation,
-                    originalType: Types[customMove?.type as Types] || getMoveType(move),
+                    originalType: customMove?.type ? (Types[customMove?.type as Types] || getMoveType(move)) : getMoveType(move),
                 });
                 return (
                     <Move
