@@ -6,7 +6,7 @@ import { hotkeyList } from 'utils';
 export interface HotkeysEditorState {}
 
 export class HotkeysEditor extends React.Component<{}> {
-    constructor(props) {
+    public constructor(props) {
         super(props);
     }
 

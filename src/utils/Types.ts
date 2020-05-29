@@ -1,4 +1,4 @@
-import { State } from "state";
+import { State } from 'state';
 
 export enum Types {
     Grass = 'Grass',
@@ -45,7 +45,7 @@ export const isTemTemType = (type: Types) => {
         type === Types.Wind ||
         type === Types.Nature
     ;
-}
+};
 
 export const getListOfTypes = (customTypes: State['customTypes'], includeTemTemTypes: boolean = true) => [
     'None',

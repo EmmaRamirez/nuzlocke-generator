@@ -84,10 +84,10 @@ export interface CurrentPokemonEditState {
 }
 
 export class CurrentPokemonEditBase extends React.Component<
-    CurrentPokemonEditProps,
-    CurrentPokemonEditState
+CurrentPokemonEditProps,
+CurrentPokemonEditState
 > {
-    constructor(props: CurrentPokemonEditProps) {
+    public constructor(props: CurrentPokemonEditProps) {
         super(props);
         this.state = {
             selectedId: '5',
@@ -166,7 +166,7 @@ export class CurrentPokemonEditBase extends React.Component<
         } else {
             return false;
         }
-    }
+    };
 
     private doesPokemonHaveEvolution = (currentPokemon) => {
         if (getDeepObject(EvolutionTree, currentPokemon.species)) {
@@ -174,7 +174,7 @@ export class CurrentPokemonEditBase extends React.Component<
         } else {
             return false;
         }
-    }
+    };
 
     private toggleDialog = () => this.setState({isMoveEditorOpen: !this.state.isMoveEditorOpen});
 
@@ -316,7 +316,7 @@ export class CurrentPokemonEditBase extends React.Component<
                         labelName='Notes'
                         inputName='notes'
                         value={currentPokemon.notes}
-                        type='textArea'
+                        type='rich-text'
                     />
                     {/* <PokemonNotes /> */}
                 </CurrentPokemonLayoutItem>

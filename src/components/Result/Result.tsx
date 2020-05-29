@@ -21,7 +21,7 @@ import * as Styles from './styles';
 
 import './Result.css';
 import './themes.css';
-// import 'assets/pokemon-font.css';
+import 'assets/pokemon-font.css';
 import { State } from 'state';
 import isMobile from 'is-mobile';
 import { Button, Classes } from '@blueprintjs/core';
@@ -49,13 +49,13 @@ interface ResultState {
     downloadError: string | null;
 }
 
-const getNumberOf = (status: string, pokemon: Pokemon[]) =>
-            pokemon.filter(v => v.hasOwnProperty('id')).filter(poke => poke.status === status && !poke.hidden)
-                .length;
+const getNumberOf = (status?: string, pokemon?: Pokemon[]) => status ?
+    pokemon?.filter(v => v.hasOwnProperty('id')).filter(poke => poke.status === status && !poke.hidden)
+        .length : 0;
 
 export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     public resultRef: React.RefObject<HTMLDivElement>;
-    constructor(props: ResultProps) {
+    public constructor(props: ResultProps) {
         super(props);
         this.resultRef = React.createRef();
         this.state = {
@@ -127,15 +127,15 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
 
     private getCorrectStatusWrapper(pokes: Pokemon[], box, paddingForVerticalTrainerSection) {
         return this.renderContainer(pokes, paddingForVerticalTrainerSection, box);
-   }
+    }
 
     private renderOtherPokemonStatuses(paddingForVerticalTrainerSection) {
         return this.props.box
             .filter(box => !['Team', 'Boxed', 'Dead', 'Champs'].includes(box.name))
             .map(box => {
                 const pokes = this.props.pokemon.filter(v => v.hasOwnProperty('id'))
-                                                .filter(poke => poke.status === box.name)
-                                                .filter(poke => !poke.hidden);
+                    .filter(poke => poke.status === box.name)
+                    .filter(poke => !poke.hidden);
                 return this.getCorrectStatusWrapper(pokes, box, paddingForVerticalTrainerSection);
             });
     }
@@ -147,7 +147,9 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             return;
         }
         try {
-            const timeout = setTimeout(() => { throw new Error('Timed out') }, 10000);
+            const timeout = setTimeout(() => {
+                throw new Error('Timed out');
+            }, 10000);
             const domToImage = await load();
             const dataUrl = await (domToImage as any).toPng(resultNode, {corsImage: true});
             const link = document.createElement('a');
@@ -171,7 +173,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         if (s === 'Champs') return 'champs';
         if (s === 'Team') return 'team';
         return 'boxed';
-    }
+    };
 
     private getBoxStyle = (s) => {
         if (s === 'Champs') return {
@@ -185,7 +187,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         };
 
         return {};
-    }
+    };
 
     private getH3 = (box, n) => {
         if (box.name === 'Dead' || box.name === 'Champs') {
@@ -194,9 +196,9 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             }
         }
         return null;
-    }
+    };
 
-    private renderContainer = (pokemon, paddingForVerticalTrainerSection, box) => getNumberOf(box.name, pokemon) > 0 ? (
+    private renderContainer = (pokemon: Pokemon[], paddingForVerticalTrainerSection: any, box?: Box) => getNumberOf(box?.name, pokemon) > 0 ? (
         <div style={paddingForVerticalTrainerSection} className={`${this.getBoxClass(box.inheritFrom || box.name)}-container`}>
             {box.name !== 'Team' && <h3 style={{ color: getContrastColor(this.props.style.bgColor || '#383840') }}>{box.name}{this.getH3(box, getNumberOf(box.name, pokemon))}</h3>}
             <div className='boxed-container-inner' style={this.getBoxStyle(box.name || box.inheritFrom)}>
@@ -223,7 +225,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         if (!Number.isNaN(rw)) {
             return { transform: `scale(${scale.toFixed(2)})`};
         } else {
-            return { transform: `scale(0.3)` };
+            return { transform: 'scale(0.3)' };
         }
     }
 
@@ -256,88 +258,90 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         const enableStats = style.displayStats;
         const enableChampImage = false && isLocal();
 
+        console.log('box', box);
+
         return (
             <div className='hide-scrollbars' style={{width: '100%', overflowY: 'scroll'}}>
-            {isMobile() && editor.showResultInMobile && <div className={Classes.OVERLAY_BACKDROP}></div>}
-            <ErrorBoundary>
-                <TopBar isDownloading={this.state.isDownloading} onClickDownload={() => this.toImage()}>{this.renderErrors()}</TopBar>
-                <style>{style.customCSS}</style>
-                {isMobile() && editor.showResultInMobile && <Button className={Styles.result_download} icon='download' onClick={() => {
-                    this.props.toggleMobileResultView();
-                    this.toImage();
-                }}>
+                {isMobile() && editor.showResultInMobile && <div className={Classes.OVERLAY_BACKDROP}></div>}
+                <ErrorBoundary>
+                    <TopBar isDownloading={this.state.isDownloading} onClickDownload={() => this.toImage()}>{this.renderErrors()}</TopBar>
+                    <style>{style.customCSS}</style>
+                    {isMobile() && editor.showResultInMobile && <Button className={Styles.result_download} icon='download' onClick={() => {
+                        this.props.toggleMobileResultView();
+                        this.toImage();
+                    }}>
                     Download
-                </Button>}
-                <div
-                    ref={this.resultRef}
-                    className={`result container ${(style.template &&
+                    </Button>}
+                    <div
+                        ref={this.resultRef}
+                        className={`result container ${(style.template &&
                         style.template.toLowerCase().replace(/\s/g, '-')) ||
                         ''} region-${getGameRegion(
-                        this.props.game.name,
-                    )} team-size-${numberOfTeam} ${trainerSectionOrientation}-trainer
+                            this.props.game.name,
+                        )} team-size-${numberOfTeam} ${trainerSectionOrientation}-trainer
                        ${editor.showResultInMobile ? Styles.result_mobile : ''}
                     `}
-                    style={{
-                        fontFamily: style.usePokemonGBAFont ? 'pokemon_font' : 'inherit',
-                        fontSize: style.usePokemonGBAFont ? '125%' : '100%',
-                        margin: this.state.isDownloading ? '0' : '3rem auto',
-                        backgroundColor: bgColor,
-                        backgroundImage: `url(${style.backgroundImage})`,
-                        backgroundRepeat: style.tileBackground ? 'repeat' : 'no-repeat',
-                        border: 'none',
-                        height: style.useAutoHeight ? 'auto' : style.resultHeight + 'px',
-                        marginBottom: '.5rem',
-                        // transform: `scale(${style.zoomLevel})`,
-                        // transformOrigin: '0 0',
-                        width: style.resultWidth + 'px',
-                        ...this.getScale(style, editor),
-                    }}>
-                    <div className='trainer-container' style={ trainerSectionOrientation === 'vertical' ?
-                        { backgroundColor: topHeaderColor,
-                            color: getContrastColor(topHeaderColor),
-                            width: style.trainerWidth,
-                            position: 'absolute',
-                            height: `calc(${style.trainerHeight} + 2%)`,
-                            display: 'flex',
+                        style={{
+                            fontFamily: style.usePokemonGBAFont ? 'pokemon_font' : 'inherit',
+                            fontSize: style.usePokemonGBAFont ? '125%' : '100%',
+                            margin: this.state.isDownloading ? '0' : '3rem auto',
+                            backgroundColor: bgColor,
+                            backgroundImage: `url(${style.backgroundImage})`,
+                            backgroundRepeat: style.tileBackground ? 'repeat' : 'no-repeat',
+                            border: 'none',
+                            height: style.useAutoHeight ? 'auto' : `${style.resultHeight  }px`,
+                            marginBottom: '.5rem',
+                            // transform: `scale(${style.zoomLevel})`,
+                            // transformOrigin: '0 0',
+                            width: `${style.resultWidth  }px`,
+                            ...this.getScale(style, editor),
+                        }}>
+                        <div className='trainer-container' style={ trainerSectionOrientation === 'vertical' ?
+                            { backgroundColor: topHeaderColor,
+                                color: getContrastColor(topHeaderColor),
+                                width: style.trainerWidth,
+                                position: 'absolute',
+                                height: `calc(${style.trainerHeight} + 2%)`,
+                                display: 'flex',
+                            }
+                            : {
+                                backgroundColor: topHeaderColor,
+                                color: getContrastColor(topHeaderColor),
+                                width: style.trainerAuto ? '100%' : style.trainerWidth,
+                                height: style.trainerAuto ? 'auto' : style.trainerHeight,
+                            }}>
+                            <TrainerResult orientation={trainerSectionOrientation} />
+                        </div>
+                        {trainer && trainer.notes ? (
+                            <div style={{ color: getContrastColor(bgColor) }} className='result-notes'>
+                                {trainer.notes}
+                            </div>
+                        ) : null}
+                        {enableChampImage && <img src='./img/dev/champs3.jpg' alt='fads' style={{width: '500px', display: 'block', margin: '0 auto'}} />}
+                        {style.displayRules && style.displayRulesLocation === 'top' ? rulesContainer : null}
+                        {teamContainer}
+                        {style.template === 'Generations' && trainerSectionOrientation === 'vertical' ?
+                            <div className='statuses-wrapper'>
+                                {this.renderContainer(this.getPokemonByStatus('Boxed'), paddingForVerticalTrainerSection, box?.[1])}
+                                {this.renderContainer(this.getPokemonByStatus('Dead'), paddingForVerticalTrainerSection, box?.[2])}
+                                {this.renderContainer(this.getPokemonByStatus('Champs'), paddingForVerticalTrainerSection, box?.[3])}
+                                {this.renderOtherPokemonStatuses(paddingForVerticalTrainerSection)}
+                            </div>
+                            : <>
+                                {this.renderContainer(this.getPokemonByStatus('Boxed'), paddingForVerticalTrainerSection, box?.[1])}
+                                {this.renderContainer(this.getPokemonByStatus('Dead'), paddingForVerticalTrainerSection, box?.[2])}
+                                {this.renderContainer(this.getPokemonByStatus('Champs'), paddingForVerticalTrainerSection, box?.[3])}
+                                {this.renderOtherPokemonStatuses(paddingForVerticalTrainerSection)}
+                            </>
                         }
-                    : {
-                        backgroundColor: topHeaderColor,
-                        color: getContrastColor(topHeaderColor),
-                        width: style.trainerAuto ? '100%' : style.trainerWidth,
-                        height: style.trainerAuto ? 'auto' : style.trainerHeight,
-                    }}>
-                        <TrainerResult orientation={trainerSectionOrientation} />
-                    </div>
-                    {trainer && trainer.notes ? (
-                        <div style={{ color: getContrastColor(bgColor) }} className='result-notes'>
-                            {trainer.notes}
+
+                        <div style={{ ...paddingForVerticalTrainerSection, display: 'flex', color: getContrastColor(bgColor) }}>
+                            {style.displayRules && style.displayRulesLocation === 'bottom' ? rulesContainer : null}
+
+                            {enableStats && <Stats />}
                         </div>
-                    ) : null}
-                    {enableChampImage && <img src='./img/dev/champs3.jpg' alt='fads' style={{width: '500px', display: 'block', margin: '0 auto'}} />}
-                    {style.displayRules && style.displayRulesLocation === 'top' ? rulesContainer : null}
-                    {teamContainer}
-                    {style.template === 'Generations' && trainerSectionOrientation === 'vertical' ?
-                        <div className='statuses-wrapper'>
-                            {this.renderContainer(this.getPokemonByStatus('Boxed'), paddingForVerticalTrainerSection, box[1])}
-                            {this.renderContainer(this.getPokemonByStatus('Dead'), paddingForVerticalTrainerSection, box[2])}
-                            {this.renderContainer(this.getPokemonByStatus('Champs'), paddingForVerticalTrainerSection, box[3])}
-                            {this.renderOtherPokemonStatuses(paddingForVerticalTrainerSection)}
-                        </div>
-                    : <>
-                        {this.renderContainer(this.getPokemonByStatus('Boxed'), paddingForVerticalTrainerSection, box[1])}
-                        {this.renderContainer(this.getPokemonByStatus('Dead'), paddingForVerticalTrainerSection, box[2])}
-                        {this.renderContainer(this.getPokemonByStatus('Champs'), paddingForVerticalTrainerSection, box[3])}
-                        {this.renderOtherPokemonStatuses(paddingForVerticalTrainerSection)}
-                    </>
-                    }
 
-                    <div style={{ ...paddingForVerticalTrainerSection, display: 'flex', color: getContrastColor(bgColor) }}>
-                        {style.displayRules && style.displayRulesLocation === 'bottom' ? rulesContainer : null}
-
-                        {enableStats && <Stats />}
-                    </div>
-
-                    {/*<div className='backsprite-montage' style={{
+                        {/*<div className='backsprite-montage' style={{
                         width: '100%',
                         display: 'flex',
                         justifyContent: 'center',
@@ -349,8 +353,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             return <img style={{height: '128px', marginLeft: '-32px', zIndex: 6 - idx, imageRendering: 'pixelated' }} alt='' role='presentation' src={`https://img.pokemondb.net/sprites/firered-leafgreen/back-normal/${(poke.species || '').toLowerCase()}.png`} />;
                         })}
                     </div>*/}
-                </div>
-            </ErrorBoundary>
+                    </div>
+                </ErrorBoundary>
             </div>
         );
     }

@@ -102,11 +102,11 @@ export class BoxBase extends React.Component<BoxProps> {
 
     private editBox = (id: number, edits: Partial<BoxType>) => () => {
         this.props.editBox(id, edits);
-    }
+    };
 
     private toggleCollapse = (isCollapsed, id) => () => {
         this.props.editBox(id, {collapsed: !isCollapsed});
-    }
+    };
 
     private getDefault(name) {
         if (name === 'Team') return 'route-1';
@@ -129,7 +129,7 @@ export class BoxBase extends React.Component<BoxProps> {
         const collapsedStyle = isCollapsed ? {
             height: '54px',
             overflow: 'hidden',
-            webkitMaskImage: `linear-gradient(to top, rgba(0, 0, 0, 0.33) 25%, black 75%)`,
+            webkitMaskImage: 'linear-gradient(to top, rgba(0, 0, 0, 0.33) 25%, black 75%)',
             marginBottom: '-18px',
         } : {};
 
@@ -154,8 +154,8 @@ export class BoxBase extends React.Component<BoxProps> {
                         <MenuItem text='Change Type'>
                             {['Team', 'Boxed', 'Dead', 'Champs'].map(b => <MenuItem onClick={this.editBox(id, {inheritFrom: b})} text={b === inheritFrom ? <><Icon icon='small-tick' /> {b}</> : b} />)}
                         </MenuItem>
-                        <MenuItem onClick={this.toggleCollapse(isCollapsed, id)} text={isCollapsed ? `Expand Box` : `Collapse Box`} />
-                        <MenuItem onClick={this.clearBox(name)} className='pt-fill' text={`Clear Box`} />
+                        <MenuItem onClick={this.toggleCollapse(isCollapsed, id)} text={isCollapsed ? 'Expand Box' : 'Collapse Box'} />
+                        <MenuItem onClick={this.clearBox(name)} className='pt-fill' text={'Clear Box'} />
                         {!['Team', 'Boxed', 'Dead', 'Champs'].includes(name) && <MenuItem onClick={this.deleteBox(id)} className='pt-fill' text={'Delete Box'} />}
                     </>}
                 >
@@ -174,7 +174,7 @@ export class BoxBase extends React.Component<BoxProps> {
                             minWidth: '5rem',
                             cursor: 'pointer',
                             userSelect: 'none',
-                    }}>
+                        }}>
                         <Icon style={{transform: 'rotate(90deg)'}} icon='more' />
                         {name}
                     </span>

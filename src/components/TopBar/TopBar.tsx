@@ -10,7 +10,7 @@ import { cx, css } from 'emotion';
 import { Pokemon, Editor } from 'models';
 import { ReleaseDialog } from 'components/Shared';
 import { State } from 'state';
-import {isMobile} from 'is-mobile';
+import { isMobile } from 'is-mobile';
 
 export interface TopBarProps {
     onClickDownload: (e?: React.MouseEvent<HTMLElement>) => void;

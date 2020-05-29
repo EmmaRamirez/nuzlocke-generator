@@ -19,7 +19,7 @@ export interface HotkeysProps {
 export class HotkeysBase extends React.PureComponent<HotkeysProps> {
     public globalHotkeysEvents: any;
 
-    constructor(props) {
+    public constructor(props) {
         super(props);
         this.globalHotkeysEvents = {
             handleKeyDown: this.handleKeyDown,
@@ -91,17 +91,17 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
             .then(res => {
                 const toaster = Toaster.create();
                 toaster.show({
-                    message: `Save successful!`,
+                    message: 'Save successful!',
                     intent: Intent.SUCCESS,
                 });
             })
             .catch(err => {
-            const toaster = Toaster.create();
-            toaster.show({
-                message: `Saved failed. Please try again.`,
-                intent: Intent.DANGER,
+                const toaster = Toaster.create();
+                toaster.show({
+                    message: 'Saved failed. Please try again.',
+                    intent: Intent.DANGER,
+                });
             });
-        });
     }
 
     private previousPokemon() {

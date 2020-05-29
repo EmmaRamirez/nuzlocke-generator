@@ -52,8 +52,8 @@ export class ReleaseDialog extends React.Component<IDialogProps & ReleaseDialogP
                         {seePrevious && tail(Object.keys(releaseNotes).reverse()).map(key => {
                             return <ReactMarkdown
                                 className='release-notes'
-                                source={`#### ${key}\n` + generateReleaseNotes(key)}
-                            />
+                                source={`#### ${key}\n${  generateReleaseNotes(key)}`}
+                            />;
                         })}
                     </div>
                 </div>

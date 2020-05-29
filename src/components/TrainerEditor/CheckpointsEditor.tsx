@@ -28,8 +28,8 @@ export interface CheckpointsSelectState {
 }
 
 export class CheckpointsSelect extends React.Component<
-    CheckpointsSelectProps,
-    CheckpointsSelectState
+CheckpointsSelectProps,
+CheckpointsSelectState
 > {
     private renderOptions(checkpoint) {
         const {name, image} = checkpoint;
@@ -92,8 +92,8 @@ export interface CheckpointsEditorState {
 }
 
 export class CheckpointsEditorBase extends React.Component<
-    CheckpointsEditorProps,
-    CheckpointsEditorState
+CheckpointsEditorProps,
+CheckpointsEditorState
 > {
     public state = { badgeNumber: 0 };
 
@@ -115,7 +115,7 @@ export class CheckpointsEditorBase extends React.Component<
             });
         } else {
             toaster.show({
-                message: `Upload successful!`,
+                message: 'Upload successful!',
                 intent: Intent.SUCCESS,
             });
         }

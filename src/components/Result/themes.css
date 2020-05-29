@@ -603,7 +603,7 @@
 .compact-with-icons .dead-pokemon-container {
   border: 0;
 }
-.compact-with-icons .pokemon-container .pokemon-icon {
+.compact-with-icons .pokemon-container .pokemon-icon-main {
   position: absolute;
   z-index: 11;
   left: 3rem;

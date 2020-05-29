@@ -20,10 +20,10 @@ export const DeletePokemonButtonContainer = styled('div')`
 `;
 
 export class DeletePokemonButtonBase extends React.Component<
-    DeletePokemonButtonProps,
-    { dialogOn: boolean }
+DeletePokemonButtonProps,
+{ dialogOn: boolean }
 > {
-    constructor(props: DeletePokemonButtonProps) {
+    public constructor(props: DeletePokemonButtonProps) {
         super(props);
         this.state = {
             dialogOn: false,

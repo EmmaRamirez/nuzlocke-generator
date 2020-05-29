@@ -67,9 +67,9 @@ const PokemonLocationChecklist = ({pokemon, game, style}: {pokemon: Pokemon[], g
                 alignItems: 'center',
                 margin: '2px',
                 borderBottom: `1px solid ${ style?.editorDarkMode ? '#222' : '#efefef'}`}}>
-            {getLocIcon(area)}
-            <div style={{marginLeft: '4px'}}>{area}</div>
-        </div>;
+                {getLocIcon(area)}
+                <div style={{marginLeft: '4px'}}>{area}</div>
+            </div>;
         })}
         <div>Tip: Pokémon with the "hidden" attribute are a great option for including Pokemon that got away on a certain route!</div>
     </div>;
@@ -95,7 +95,7 @@ const PokemonLocationChecklist = ({pokemon, game, style}: {pokemon: Pokemon[], g
 };
 
 export class PokemonEditorBase extends React.Component<PokemonEditorProps, PokemonEditorState> {
-    constructor(props: PokemonEditorProps) {
+    public constructor(props: PokemonEditorProps) {
         super(props);
         this.state = {
             isMassEditorOpen: false,

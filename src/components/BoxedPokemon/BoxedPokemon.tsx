@@ -45,7 +45,7 @@ export const BoxedPokemonBase = (poke: BoxedPokemonProps) => {
                 className={'boxed-pokemon-icon'}
             />
             { isMinimal ?
-                    null :
+                null :
                 <div className='boxed-pokemon-info' style={{ borderLeftColor: useGameOfOriginColor ? getContrastColor(gameOfOriginToColor(poke.gameOfOrigin!)) : getAccentColor(poke) }}>
                     <span className='boxed-pokemon-name'>
                         {poke.nickname} {GenderElement(poke.gender)}{' '}

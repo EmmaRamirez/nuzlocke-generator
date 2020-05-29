@@ -58,7 +58,7 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
         const text = e.target.value;
         const update: Pick<BugReporterState, 'userReport' | 'userReportTitle'> = { [target]: text } as unknown as any;
         this.setState(update);
-    }
+    };
 
     private accum(s: string[]) {
         return s.join('');
@@ -97,7 +97,7 @@ ${JSON.stringify(state)}
                 if (data && data.url) {
                     const toaster = Toaster.create();
                     toaster.show({
-                        message: `Bug report sent!`,
+                        message: 'Bug report sent!',
                         intent: Intent.SUCCESS,
                     });
                     this.setState({
@@ -107,7 +107,7 @@ ${JSON.stringify(state)}
                 } else {
                     const toaster = Toaster.create();
                     toaster.show({
-                        message: `Bug report failed. Please try again.`,
+                        message: 'Bug report failed. Please try again.',
                         intent: Intent.DANGER,
                     });
                 }
@@ -119,7 +119,7 @@ ${JSON.stringify(state)}
                     intent: Intent.DANGER,
                 });
             });
-    }
+    };
 }
 
 export const BugReporter = connect(

@@ -79,11 +79,11 @@ type IconURLArgs = Pick<Pokemon, 'id' | 'species' | 'forme' | 'shiny' | 'gender'
 
 
 export const getIconURL = ({ id, species, forme, shiny, gender, customIcon, egg }: IconURLArgs) => {
-    const baseURL = `icons/pokemon/`;
+    const baseURL = 'icons/pokemon/';
     const isShiny = shiny ? 'shiny' : 'regular';
     const isFemaleSpecific =
         significantGenderDifferenceList.includes(species) && Gender.isFemale(gender)
-            ? `female/`
+            ? 'female/'
             : '';
 
     if (species === 'Egg' || egg) return `${baseURL}egg.png`;
@@ -99,7 +99,7 @@ export const getIconURL = ({ id, species, forme, shiny, gender, customIcon, egg 
     isDragging: monitor.isDragging(),
 }))
 export class PokemonIconBase extends React.Component<PokemonIconProps> {
-    constructor(props: any) {
+    public constructor(props: any) {
         super(props);
     }
 
@@ -168,7 +168,7 @@ const mapDispatchToProps = (
 };
 
 export const PokemonIcon: React.ComponentClass<
-    Omit<PokemonIconProps, 'onClick' | 'selectedId'>
+Omit<PokemonIconProps, 'onClick' | 'selectedId'>
 > = connect(
     (state: Pick<State, keyof State>) => ({ selectedId: state.selectedId, styles: state.style, }),
     mapDispatchToProps,

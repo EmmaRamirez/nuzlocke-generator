@@ -20,7 +20,7 @@ import { Classes } from '@blueprintjs/core';
  * The main editor interface.
  */
 export class EditorBase extends React.Component<{ editor: State['editor']; style: State['style'] }, {}> {
-    constructor(props) {
+    public constructor(props) {
         super(props);
     }
 
@@ -33,12 +33,12 @@ export class EditorBase extends React.Component<{ editor: State['editor']; style
                 min-height: 100vh;
                 padding: .25rem;
             `
-        }
+        };
 
         const minimized = this.props.editor.minimized;
         return (
             <div
-                className={cx(`editor`, styles.base, this.props.style.editorDarkMode ? Classes.DARK : '')}
+                className={cx('editor', styles.base, this.props.style.editorDarkMode ? Classes.DARK : '')}
                 style={{
                     width: minimized ? '0%' : '33%',
                     marginLeft: minimized ? '-30rem' : '0',

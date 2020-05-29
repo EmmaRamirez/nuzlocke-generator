@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Button, IDialogProps, Dialog, Intent, TextArea, Icon } from '@blueprintjs/core';
+import { Button, Dialog, Intent, TextArea, Icon } from '@blueprintjs/core';
 import { connect } from 'react-redux';
 import { editRule, addRule, deleteRule, resetRules } from 'actions';
 
-import './RulesEditor.styl';
+import './RulesEditor.css';
 
 export interface RulesEditorProps {
     rules: string[];
@@ -14,9 +14,6 @@ export interface RulesEditorProps {
 }
 
 export class RulesEditor extends React.Component<RulesEditorProps> {
-    constructor(props) {
-        super(props);
-    }
 
     public renderRules() {
         return this.props.rules.map((rule, index) => (

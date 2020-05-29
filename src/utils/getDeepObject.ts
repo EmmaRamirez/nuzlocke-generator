@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-for-of */
 // https://stackoverflow.com/questions/15523514/find-by-key-deep-in-a-nested-object
 export function getDeepObject(theObject, n) {
     let result = null;
@@ -9,8 +10,7 @@ export function getDeepObject(theObject, n) {
                 break;
             }
         }
-    }
-    else {
+    } else {
         for (const prop in theObject) {
             if (prop === n) {
                 return theObject;

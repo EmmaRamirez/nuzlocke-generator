@@ -21,7 +21,7 @@ import './Autocomplete.css';
 import { cx } from 'emotion';
 
 export class Autocomplete extends React.Component<AutocompleteProps, AutocompleteState> {
-    constructor(props) {
+    public constructor(props) {
         super(props);
         this.state = {
             visibleItems: [],

@@ -29,8 +29,6 @@ import {
     SEE_RELEASE,
     selectPokemon,
     SELECT_POKEMON,
-    version0_0_6_BETA,
-    VERSION_0_0_6_BETA,
 } from '..';
 import { Pokemon } from 'models';
 

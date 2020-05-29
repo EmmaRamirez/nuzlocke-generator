@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-for-of */
 import * as fs from 'fs';
 import { HELD_ITEM, GEN_2_POKEMON_MAP, GEN_2_CHARACTER_MAP, MOVES_ARRAY, splitUp } from './utils';
 import { parse } from 'querystring';
@@ -24,7 +25,7 @@ const CRYSTAL_OFFSETS = {
     PLAYER_GENDER: [0x3E3D, 0x3E3D + 1],
     POKEMON_NAMES: [0x53384, 0x53384 + (256 * 10)],
 
-}
+};
 
 const readCaughtData = (data) => {
     const binary = (data >>> 0).toString(2);
@@ -100,7 +101,7 @@ const convertWithCharMap = (buf: Buffer, nickname = false) => {
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < buf.length; i++) {
         // tslint:disable-next-line:triple-equals
-        if (buf[i] == 0xFF || (nickname && buf[i] == 0x50)) break;
+        if (buf[i] === 0xFF || (nickname && buf[i] === 0x50)) break;
         str.push(GEN_2_CHARACTER_MAP[buf[i]] || '');
     }
     return str.join('');
@@ -108,8 +109,8 @@ const convertWithCharMap = (buf: Buffer, nickname = false) => {
 
 
 const makeFileSlicer = (file) => (offset: number[]) => {
-    return file.slice(offset[0], offset[1])
-}
+    return file.slice(offset[0], offset[1]);
+};
 
 export const parsePokemon = (buf: Buffer) => {
     const data = Buffer.from(buf);
@@ -124,8 +125,8 @@ export const parsePokemon = (buf: Buffer) => {
         entriesUsed,
         speciesList,
         pokemonList,
-    }
-}
+    };
+};
 
 export const parseGen2Save = async (file, format, isCrystal = true) => {
     const fileSlice = makeFileSlicer(file);
@@ -151,7 +152,7 @@ export const parseGen2Save = async (file, format, isCrystal = true) => {
         pokemon: [
             ...partyPokemon,
         ]
-    }
+    };
 
 
 

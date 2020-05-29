@@ -120,13 +120,13 @@ export class StatsBase extends React.Component<StatsProps, {pokemon: State['poke
         return <>
             <p>Wipeouts: 1 (Emerald)</p>
             <p>Total Time (Completed Games): 462:49</p>
-        </>
+        </>;
     }
 
     public render() {
         const {stats, style} = this.props;
 
-        return <div className='stats stats-container'>
+        return <div className='stats sstats-container'>
             <h3 style={{color: 'inherit'}}>Stats</h3>
 
             <div style={{marginTop: '10px', margin: '0 10px'}}>

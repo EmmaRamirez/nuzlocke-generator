@@ -19,16 +19,16 @@ const spriteStyle = (style: Styles) => {
     if (style.spritesMode) {
         if (style.scaleSprites) {
             return {
-                    backgroundSize: 'auto',
-                    backgroundRepeat: 'no-repeat',
-                };
-            } else {
+                backgroundSize: 'auto',
+                backgroundRepeat: 'no-repeat',
+            };
+        } else {
             return {
-                    backgroundSize: 'cover',
-                    backgroundRepeat: 'no-repeat',
-                };
-            }
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+            };
         }
+    }
     if (style.teamImages === 'dream world') {
         return {
             backgroundSize: 'contain',
@@ -89,9 +89,9 @@ export const DeadPokemonBase = (
                     <PokemonIconBase onClick={e => poke.selectPokemon(poke.id)} {...poke as any} />
                 </span>
                 <div style={{margin: 0, padding: 0, lineHeight: '14px', height: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                flexDirection: 'column'}}>
+                    display: 'flex',
+                    justifyContent: 'center',
+                    flexDirection: 'column'}}>
                     <div>
                         {poke.nickname} {GenderElement(poke.gender)} Levels {poke.metLevel}&mdash;{poke.level}
                     </div>
@@ -130,9 +130,9 @@ export const DeadPokemonBase = (
                     <PokemonIconBase onClick={e => poke.selectPokemon(poke.id)} {...poke as any} />
                 </span>
                 <div style={{margin: 0, padding: 0, lineHeight: '14px', height: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                flexDirection: 'column'}}>
+                    display: 'flex',
+                    justifyContent: 'center',
+                    flexDirection: 'column'}}>
                     <div>
                         {poke.nickname} {GenderElement(poke.gender)} Levels {poke.metLevel}&mdash;{poke.level}
                     </div>

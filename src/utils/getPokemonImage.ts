@@ -184,10 +184,10 @@ export function getPokemonImage({
     }
     // TEMPORARY STOPGAPS
     if (species === 'Dugtrio' && forme === 'Alolan' && shiny) {
-        return `url(img/alolan-dugtrio-shiny.jpg)`;
+        return 'url(img/alolan-dugtrio-shiny.jpg)';
     }
     if (species === 'Indeedee' && gender === 'Male') {
-        return `url(img/indeedee-m.jpg)`;
+        return 'url(img/indeedee-m.jpg)';
     }
 
     return `url(img/${(

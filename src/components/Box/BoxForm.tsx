@@ -32,18 +32,18 @@ const baseBox = {
 
 export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
     public state = {
-            isBoxFormOpen: false,
-            newBox: baseBox,
+        isBoxFormOpen: false,
+        newBox: baseBox,
     };
 
     private toggleBoxForm = e => {
         this.setState({isBoxFormOpen: !this.state.isBoxFormOpen});
-    }
+    };
 
     private confirmNewBox = e => {
         this.props.addBox(this.state.newBox as AddBoxArgs);
         this.setState({newBox: baseBox});
-    }
+    };
 
     private editFormInput = e => {
         const name = e.target.name;
@@ -54,7 +54,7 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                 [name]: value,
             }
         });
-    }
+    };
 
     public render() {
         const { boxes } = this.props;
@@ -78,25 +78,25 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
 
         return (
             <>
-            <Button
-                onClick={this.toggleBoxForm}
-                icon={'plus'}
-                className='pt-small'
-                style={{
-                    margin: '.25rem',
-                    height: '2rem',
-                    width: '2rem',
-                    float: 'right',
-                    marginTop: '-.75rem',
-                    borderRadius: '50%',
-                    transition: '200ms',
-                    transform: isBoxFormOpen ? 'rotate(135deg)' : undefined,
-                }}
-                intent={Intent.SUCCESS}
-            >
-            </Button>
-            <div style={{clear: 'both'}}></div>
-            {isBoxFormOpen &&
+                <Button
+                    onClick={this.toggleBoxForm}
+                    icon={'plus'}
+                    className='pt-small'
+                    style={{
+                        margin: '.25rem',
+                        height: '2rem',
+                        width: '2rem',
+                        float: 'right',
+                        marginTop: '-.75rem',
+                        borderRadius: '50%',
+                        transition: '200ms',
+                        transform: isBoxFormOpen ? 'rotate(135deg)' : undefined,
+                    }}
+                    intent={Intent.SUCCESS}
+                >
+                </Button>
+                <div style={{clear: 'both'}}></div>
+                {isBoxFormOpen &&
                 <div style={{
                     border: this.props.style.editorDarkMode ? '1px solid #222' : '1px solid #ddd',
                     borderRadius: '.25rem',

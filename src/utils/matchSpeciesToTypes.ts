@@ -194,7 +194,7 @@ export const handleSpeciesTypeEdgeCases = ({
             forme: [Forme.Galarian],
         })
     )
-         return [Types.Dark, Types.Normal];
+        return [Types.Dark, Types.Normal];
 
     if (
         match({

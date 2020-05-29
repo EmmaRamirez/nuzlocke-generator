@@ -64,7 +64,7 @@ export const styleDefaults: Styles = {
     accentColor: '#111111',
     backgroundImage: '',
     bgColor: '#383840',
-    customCSS: ``,
+    customCSS: '',
     displayBadges: true,
     displayRules: false,
     editorDarkMode: false,

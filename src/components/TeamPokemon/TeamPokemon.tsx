@@ -93,7 +93,7 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                             <span className='pokemon-name'>{pokemon.species}{
                                 pokemon.item && style.itemStyle === 'text' ?
                                     ` @ ${pokemon.item}`
-                                : null
+                                    : null
                             }</span>
                             {GenderElement(pokemon.gender)}
                             {pokemon.level ? (
@@ -120,7 +120,7 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                             {
                                 pokemon.pokeball && style.pokeballStyle === 'text' ?
                                     ` (in ${pokemon.pokeball})`
-                                : null
+                                    : null
                             }
                         </div>
                         {pokemon.nature && pokemon.nature !== 'None' ? (
@@ -170,13 +170,13 @@ export interface TeamPokemonBaseProps {
 }
 
 export class TeamPokemonBaseMinimal extends React.PureComponent<
-    TeamPokemonBaseProps & { spriteStyle: object }
+TeamPokemonBaseProps & { spriteStyle: object }
 > {
     public render() {
         const { pokemon } = this.props;
 
         if (!pokemon) {
-            return <div>A Pokémon could not be rendered.</div>
+            return <div>A Pokémon could not be rendered.</div>;
         }
 
         return (
@@ -216,24 +216,21 @@ export class TeamPokemonBaseMinimal extends React.PureComponent<
 }
 
 export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
-    constructor(props: TeamPokemonBaseProps) {
-        super(props);
-    }
 
     private getSpriteStyle() {
         if (this.props.style.spritesMode) {
             if (this.props.style.scaleSprites) {
                 return {
-                      backgroundSize: 'auto',
-                      backgroundRepeat: 'no-repeat',
-                  };
-                } else {
+                    backgroundSize: 'auto',
+                    backgroundRepeat: 'no-repeat',
+                };
+            } else {
                 return {
-                      backgroundSize: 'cover',
-                      backgroundRepeat: 'no-repeat',
-                  };
-                }
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat',
+                };
             }
+        }
         if (this.props.style.teamImages === 'dream world') {
             return {
                 backgroundSize: 'contain',
@@ -253,7 +250,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
         const showdown = false;
 
         if (!poke) {
-            return <div>A Pokémon could not be rendered.</div>
+            return <div>A Pokémon could not be rendered.</div>;
         }
 
         const getFirstType = poke.types ? poke.types[0] : 'Normal';
@@ -375,7 +372,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
 
         return (
             <div className='pokemon-container' {...data}>
-                {style.template === 'Compact with Icons' && <PokemonIcon {...poke} />}
+                {style.template === 'Compact with Icons' && <PokemonIcon className='pokemon-icon-main' {...poke} />}
                 <div
                     role='presentation'
                     onClick={e => this.props.selectPokemon(poke.id)}
@@ -384,10 +381,10 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                         cursor: 'pointer',
                         background: this.props.style.teamPokemonBorder
                             ? getBackgroundGradient(
-                                  poke.types != null ? poke.types[0] : 'Normal',
-                                  poke.types != null ? poke.types[1] : 'Normal',
-                                  customTypes,
-                              )
+                                poke.types != null ? poke.types[0] : 'Normal',
+                                poke.types != null ? poke.types[1] : 'Normal',
+                                customTypes,
+                            )
                             : 'transparent',
                     }}>
                     <div
@@ -415,12 +412,12 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                     <span style={{marginRight: '0.5rem', fontWeight: 'bold'}}>MVP</span><img style={{height: '1rem'}} alt='' role='presentation' src='./assets/mvp-crown.png' />
                 </div>}
                 {poke.pokeball && poke.pokeball !== 'None' && <div
-                            style={{
-                                top: style.template === 'Cards' ? '1rem' : undefined,
-                                left: '6rem',
-                                zIndex: 10,
-                                borderColor: typeToColor(getFirstType, customTypes) || 'transparent',
-                                backgroundImage:
+                    style={{
+                        top: style.template === 'Cards' ? '1rem' : undefined,
+                        left: '6rem',
+                        zIndex: 10,
+                        borderColor: typeToColor(getFirstType, customTypes) || 'transparent',
+                        backgroundImage:
                                     style.template === 'Hexagons' || style.pokeballStyle === 'outer glow'
                                         ? getBackgroundGradient(
                                             poke.types != null ? poke.types[0] : 'Normal',
@@ -428,14 +425,14 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                                             customTypes,
                                         )
                                         : '',
-                            }}
-                            className={cx(itemLabelStyle.base, itemLabelStyle[style.pokeballStyle], 'pokemon-pokeball')}
-                        >
-                        <img
-                            alt={poke.pokeball}
-                            src={`icons/pokeball/${formatBallText(poke.pokeball)}.png`}
-                        />
-                    </div>
+                    }}
+                    className={cx(itemLabelStyle.base, itemLabelStyle[style.pokeballStyle], 'pokemon-pokeball')}
+                >
+                    <img
+                        alt={poke.pokeball}
+                        src={`icons/pokeball/${formatBallText(poke.pokeball)}.png`}
+                    />
+                </div>
                 }
                 {(poke.item || poke.customItemImage) && !style.displayItemAsText ? (
                     <div
@@ -444,10 +441,10 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                             backgroundImage:
                                 style.template === 'Hexagons' || style.itemStyle === 'outer glow'
                                     ? getBackgroundGradient(
-                                          poke.types != null ? poke.types[0] : 'Normal',
-                                          poke.types != null ? poke.types[1] : 'Normal',
-                                          customTypes,
-                                      )
+                                        poke.types != null ? poke.types[0] : 'Normal',
+                                        poke.types != null ? poke.types[1] : 'Normal',
+                                        customTypes,
+                                    )
                                     : '',
                         }}
                         className={cx(itemLabelStyle.base, itemLabelStyle[style.itemStyle], 'pokemon-item')}

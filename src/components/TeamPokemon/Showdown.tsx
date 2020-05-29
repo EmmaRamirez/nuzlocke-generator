@@ -14,7 +14,7 @@ const styles = {
         height: 6rem;
         border-radius: .5rem;
     `
-}
+};
 
 export const Showdown = ({pokemon, style, editor, game}: {pokemon: Pokemon, style: State['style'], editor: State['editor'], game: State['game']}) => {
     const {customImage, shiny, species, gender, forme} = pokemon;

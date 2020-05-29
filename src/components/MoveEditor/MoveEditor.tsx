@@ -44,7 +44,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
 
     private moveFilter = (move, type, searchTerm) => {
         return move.toLowerCase().includes(searchTerm.toLowerCase()) || type.toLowerCase().includes(searchTerm.toLowerCase());
-    }
+    };
 
     private renderMoves(moves, isCustom = false) {
         const {searchTerm} = this.state;
@@ -53,7 +53,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
 
         const onChange = move => e => {
             this.props.editCustomMoveMap(e.target.value, move);
-        }
+        };
 
         if (isCustom) {
             if (!Array.isArray(customMoveMap)) {
@@ -115,7 +115,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
 
     private onSearch = (e) => {
         this.setState({searchTerm: e.target.value});
-    }
+    };
 
     public render() {
         const {isOpen, toggleDialog, style, customMoveMap, customTypes, createCustomType, deleteCustomType} = this.props;
@@ -124,75 +124,75 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
 
         return (
             <ErrorBoundary>
-            <Dialog
-                icon='edit'
-                canOutsideClickClose={false}
-                isOpen={isOpen}
-                onClose={toggleDialog}
-                className={`wide-dialog ${
-                    style.editorDarkMode ? 'pt-dark' : 'pt-light'
-                }`}
-                
-                title='Move Editor'>
-                <div className='pt-dialog-body move-editor' style={{
-                    height: '800px',
-                }}>
-                    <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        flexWrap: 'wrap',
-                        justifyContent: 'center',
-                        border: '1px solid #ccc',
-                        borderRadius: '.25rem',
-                        padding: '0.5rem',
-                        margin: '.5rem',
-                    }} className='add-move-wrapper'>
-                        <label style={{marginTop: '8px', padding: '0.5rem'}} className={cx(Classes.LABEL, Classes.INLINE)}>Add A Move</label>
-                        <input placeholder='Move Name' style={{width: '10rem'}} onChange={e => this.setState({moveName: e.target.value})} value={moveName} className={Classes.INPUT} type='text' />
-                        <div className={Classes.SELECT} style={{width: '8rem'}}>
-                            <select onChange={e => this.setState({ moveType: e.target.value })} value={moveType}>
-                                {types.map(opt => <option key={opt} value={opt}>{opt}</option>)}
-                            </select>
-                        </div>
-                        <Button
-                            onClick={e => {
-                                this.props.editCustomMoveMap(moveType, moveName);
-                            }}
-                            intent={Intent.PRIMARY}
-                            disabled={!(moveType && moveName)}
-                        >
-                            Add Move
-                        </Button>
-                    </div>
-                    <div className='moves-wrapper has-nice-scrollbars' style={{
-                        borderRadius: '.25rem',
-                        height: '88%',
-                        padding: '0.5rem',
-                        overflowY: 'scroll',
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        justifyContent: 'center',
+                <Dialog
+                    icon='edit'
+                    canOutsideClickClose={false}
+                    isOpen={isOpen}
+                    onClose={toggleDialog}
+                    className={`wide-dialog ${
+                        style.editorDarkMode ? 'pt-dark' : 'pt-light'
+                    }`}
+
+                    title='Move Editor'>
+                    <div className='pt-dialog-body move-editor' style={{
+                        height: '800px',
                     }}>
-                        <div style={{width: '60%', borderRadius: '.25rem', margin: '4px'}}>
-                            <div className='pt-input-group' style={{width: '50%', margin: '0 auto', position: 'sticky'}}>
-                                <Icon icon='search' />
-                                <input
-                                    value={this.state.searchTerm}
-                                    onInput={this.onSearch}
-                                    className='pt-input'
-                                    type='search'
-                                    dir='auto'
-                                />
+                        <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            flexWrap: 'wrap',
+                            justifyContent: 'center',
+                            border: '1px solid #ccc',
+                            borderRadius: '.25rem',
+                            padding: '0.5rem',
+                            margin: '.5rem',
+                        }} className='add-move-wrapper'>
+                            <label style={{marginTop: '8px', padding: '0.5rem'}} className={cx(Classes.LABEL, Classes.INLINE)}>Add A Move</label>
+                            <input placeholder='Move Name' style={{width: '10rem'}} onChange={e => this.setState({moveName: e.target.value})} value={moveName} className={Classes.INPUT} type='text' />
+                            <div className={Classes.SELECT} style={{width: '8rem'}}>
+                                <select onChange={e => this.setState({ moveType: e.target.value })} value={moveType}>
+                                    {types.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+                                </select>
                             </div>
-                            {this.renderMoves(customMoveMap, true)}
-                            {this.renderMoves(movesByType)}
+                            <Button
+                                onClick={e => {
+                                    this.props.editCustomMoveMap(moveType, moveName);
+                                }}
+                                intent={Intent.PRIMARY}
+                                disabled={!(moveType && moveName)}
+                            >
+                            Add Move
+                            </Button>
                         </div>
-                        <div style={{width: '39%', padding: '1rem', borderRadius: '.25rem', margin: '4px'}}>
-                            <TypesEditor editCustomType={editCustomType} customTypes={customTypes} createCustomType={createCustomType} deleteCustomType={deleteCustomType} />
+                        <div className='moves-wrapper has-nice-scrollbars' style={{
+                            borderRadius: '.25rem',
+                            height: '88%',
+                            padding: '0.5rem',
+                            overflowY: 'scroll',
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            justifyContent: 'center',
+                        }}>
+                            <div style={{width: '60%', borderRadius: '.25rem', margin: '4px'}}>
+                                <div className='pt-input-group' style={{width: '50%', margin: '0 auto', position: 'sticky'}}>
+                                    <Icon icon='search' />
+                                    <input
+                                        value={this.state.searchTerm}
+                                        onInput={this.onSearch}
+                                        className='pt-input'
+                                        type='search'
+                                        dir='auto'
+                                    />
+                                </div>
+                                {this.renderMoves(customMoveMap, true)}
+                                {this.renderMoves(movesByType)}
+                            </div>
+                            <div style={{width: '39%', padding: '1rem', borderRadius: '.25rem', margin: '4px'}}>
+                                <TypesEditor editCustomType={editCustomType} customTypes={customTypes} createCustomType={createCustomType} deleteCustomType={deleteCustomType} />
+                            </div>
                         </div>
                     </div>
-                </div>
-            </Dialog>
+                </Dialog>
             </ErrorBoundary>
         );
     }

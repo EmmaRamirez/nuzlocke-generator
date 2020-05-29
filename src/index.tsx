@@ -19,10 +19,10 @@ import { isLocal } from 'utils';
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js').then(registration => {
-        console.log('SW registered: ', registration);
-    }).catch(registrationError => {
-        console.log('SW registration failed: ', registrationError);
+        navigator.serviceWorker.register('/service-worker.js').then(registration => {
+            console.log('SW registered: ', registration);
+        }).catch(registrationError => {
+            console.log('SW registration failed: ', registrationError);
         });
     });
 }
@@ -77,7 +77,6 @@ const rollbarConfig = new Rollbar({
 Rollbar.init(rollbarConfig as any);
 
 const mountNode = document.getElementById('app');
-const history = createHistory();
 
 render(
     <Provider store={store}>

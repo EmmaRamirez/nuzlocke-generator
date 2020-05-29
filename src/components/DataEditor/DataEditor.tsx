@@ -39,7 +39,7 @@ const hexEncode = function(str: string) {
     let result = '';
     for (i = 0; i < str.length; i++) {
         hex = str.charCodeAt(i).toString(16);
-        result += ('000' + hex).slice(-4);
+        result += (`000${  hex}`).slice(-4);
     }
 
     return result;
@@ -59,7 +59,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
     public fileInput: any;
     public nuzlockeJsonFileInput: any;
 
-    constructor(props) {
+    public constructor(props) {
         super(props);
         this.state = {
             isOpen: false,
@@ -78,11 +78,11 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         } else {
             const toaster = Toaster.create();
             toaster.show({
-                message: `Failed to parse invalid JSON`,
+                message: 'Failed to parse invalid JSON',
                 intent: Intent.DANGER,
             });
         }
-    }
+    };
 
     private uploadNuzlockeJsonFile = e => {
         const file = this.nuzlockeJsonFileInput.files[0];
@@ -95,9 +95,9 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
             // @ts-ignore
             this.setState({ data });
         });
-        
 
-    }
+
+    };
 
     private confirmImport = e => {
         let cmm = { customMoveMap: [] };
@@ -163,7 +163,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         return {name: 'Red', customName: ''};
     }
 
-    static pokeMerge = (pokemonListA: Pokemon[], pokemonListB: Pokemon[]) => {
+    private static pokeMerge = (pokemonListA: Pokemon[], pokemonListB: Pokemon[]) => {
         return pokemonListB.map(poke => {
             const id = poke.id;
             const aListPoke = pokemonListA.find(p => p.id === id);
@@ -171,12 +171,12 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                 return {
                     ...aListPoke,
                     ...poke,
-                }
+                };
             } else {
                 return poke;
             }
-        })
-    }
+        });
+    };
 
     private uploadFile = (replaceState, state) => e => {
         const file = this.fileInput.files[0];

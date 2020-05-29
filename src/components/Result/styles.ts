@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { css } from 'emotion';
 
 export const topBar = css`

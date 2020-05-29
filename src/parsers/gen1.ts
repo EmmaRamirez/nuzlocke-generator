@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-for-of */
 import * as fs from 'fs';
 import { splitUp, GEN_1_POKEMON_MAP, GEN_1_CHARACTER_MAP, MOVES_ARRAY } from './utils';
 import * as uuid from 'uuid';
@@ -59,14 +60,14 @@ const BOX_OFFSETS = {
     TEN:    0x6D26,
     ELEVEN: 0x7188,
     TWELVE: 0x75EA,
-}
+};
 
 const checksum = (data: Uint8Array) => {
-    let checksum_n = 255;
+    let checksumN = 255;
     for (let i = 0x2598; i < OFFSETS.CHECKSUM; ++i) {
-        checksum_n -= data[i];
+        checksumN -= data[i];
     }
-    return checksum_n;
+    return checksumN;
 };
 
 const TYPE = {
@@ -87,17 +88,6 @@ const TYPE = {
     0x1A: 'Dragon'
 };
 
-interface Pokemon {
-    species: number;
-    current_hp: number;
-    level: number;
-    condition: number;
-    types: number[];
-    catch_rate: number;
-    moves: number[];
-    ot_id: number;
-}
-
 interface PartyPokemon {
     count: number;
     species: number[];
@@ -109,7 +99,7 @@ const convertWithCharMap = (buf: Buffer, nickname = false) => {
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < buf.length; i++) {
         // tslint:disable-next-line:triple-equals
-        if (buf[i] == 0xFF || (nickname && buf[i] == 0x50)) break;
+        if (buf[i] === 0xFF || (nickname && buf[i] === 0x50)) break;
         str.push(GEN_1_CHARACTER_MAP[buf[i]] || '');
     }
     return str.join('');
@@ -210,11 +200,11 @@ export interface Gen1PokemonObject {
 
 const removeLastEntries = (entries, arr) => {
     // tslint:disable
-    let a = arr
-    let l = arr.length
+    const a = arr;
+    const l = arr.length;
     while (entries) {
-        delete a[entries]
-        entries++
+        delete a[entries];
+        entries++;
     }
 };
 
@@ -277,7 +267,7 @@ const transformPokemon = (pokemonObject:Gen1PokemonObject, status: string) => {
             types: [poke.type1, poke.type2],
             moves: poke.moves,
             nickname: pokemonObject.pokemonNames[index],
-            id: poke.id + '-sav',
+            id: `${poke.id  }-sav`,
             extraData: poke.extraData,
         };
     }).filter(poke => poke.species);
@@ -327,7 +317,7 @@ export const parseGen1Save = async (file, format) => {
         rivalName,
         boxedPokemon,
         deadPokemon
-    }
+    };
 
     const badgesPossible = [ { 'name': 'Boulder Badge', 'image': 'boulder-badge' }, { 'name': 'Cascade Badge', 'image': 'cascade-badge' }, { 'name': 'Thunder Badge', 'image': 'thunder-badge' }, { 'name': 'Rainbow Badge', 'image': 'rainbow-badge' }, { 'name': 'Soul Badge', 'image': 'soul-badge' }, { 'name': 'Marsh Badge', 'image': 'marsh-badge' }, { 'name': 'Volcano Badge', 'image': 'volcano-badge' }, { 'name': 'Earth Badge', 'image': 'earth-badge' } ];
     const badgesBinary = (badgesByte >>> 0).toString(2);
@@ -336,22 +326,22 @@ export const parseGen1Save = async (file, format) => {
     }).filter(badge => badge);
 
     const save2 = {
-            isYellow: yellow,
-            trainer: {
-                name: trainerName,
-                id: trainerID,
-                time: timePlayed,
-                money: money,
-                badges: badges
-            },
-            pokemon: [
-                // @ts-ignore
-                ...transformPokemon(pokemonParty, 'Team'),
-                ...transformPokemon(boxedPokemon, 'Boxed'),
-                ...transformPokemon(deadPokemon, 'Dead')
-            ],
+        isYellow: yellow,
+        trainer: {
+            name: trainerName,
+            id: trainerID,
+            time: timePlayed,
+            money: money,
+            badges: badges
+        },
+        pokemon: [
+            // @ts-ignore
+            ...transformPokemon(pokemonParty, 'Team'),
+            ...transformPokemon(boxedPokemon, 'Boxed'),
+            ...transformPokemon(deadPokemon, 'Dead')
+        ],
 
-        };
+    };
 
     return save2;
 };

@@ -192,16 +192,16 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
 
         if (id === 12) {
             return <ChampsPokemon
-                    showGender={currentNode.options.props.showGender}
-                    showNickname={currentNode.options.props.showNickname}
-                    showLevel={currentNode.options.props.showLevel}
-                    useSprites={currentNode.options.props.useSprites}
-                    {...modelPokemon}
-                />;
+                showGender={currentNode.options.props.showGender}
+                showNickname={currentNode.options.props.showNickname}
+                showLevel={currentNode.options.props.showLevel}
+                useSprites={currentNode.options.props.useSprites}
+                {...modelPokemon}
+            />;
         }
 
         return <Icon icon='square' />;
-    }
+    };
 
     private forEachNode(nodes: ITreeNode[], callback: (node: ITreeNode) => void) {
         if (nodes == null) {

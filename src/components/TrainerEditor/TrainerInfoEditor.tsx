@@ -23,10 +23,6 @@ const SpanBlock = ({ text }) => (
 );
 
 export class TrainerInfoEditor extends React.Component<{}, {}> {
-    constructor(props) {
-        super(props);
-    }
-
     private onInput = e => {};
 
     public render() {

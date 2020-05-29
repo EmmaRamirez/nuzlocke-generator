@@ -27,10 +27,10 @@ export const addForme = (species: string | undefined, forme?: keyof typeof Forme
             return `${species}-d`;
         }
         if (forme === '10%') {
-            return species + '-10';
+            return `${species  }-10`;
         }
         if (forme === 'Complete') {
-            return species + '-complete';
+            return `${species  }-complete`;
         }
         if (forme === 'West Sea') {
             return `${species}-west`;

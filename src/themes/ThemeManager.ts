@@ -4,7 +4,7 @@ export class ThemeManager {
     public currentTheme: Theme;
     public themes: Theme[];
 
-    constructor(themes) {
+    public constructor(themes) {
         this.themes = themes;
         this.currentTheme = this.themes[0];
     }

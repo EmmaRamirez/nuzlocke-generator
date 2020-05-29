@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { cx, css } from 'emotion';
 
 export const colorTextInput_dark = css`

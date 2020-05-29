@@ -30,8 +30,8 @@ export class SortableColumnMenu extends React.PureComponent {
 }
 
 export class MassEditorBase extends React.Component<
-    MassEditorProps,
-    { columnWidths: ITableProps['columnWidths'][] }
+MassEditorProps,
+{ columnWidths: ITableProps['columnWidths'][] }
 > {
     // public getColumnWidths() {
     //     // Convert each poke in Pokemon Array into flat Array []
@@ -59,15 +59,15 @@ export class MassEditorBase extends React.Component<
                 <MenuItem icon='sort-desc' onClick={this.sortDesc} text='Sort Desc' />
             </Menu>
         );
-    }
+    };
 
     private sortAsc = () => {
 
-    }
+    };
 
     private sortDesc = () => {
 
-    }
+    };
 
     private renderColumns(pokemon: MassEditorProps['pokemon']) {
         return Object.keys(omit(['extraData'], PokemonKeys))

@@ -4,7 +4,7 @@ export class DeepSet<T> {
     private set: T[];
     public key: keyof T;
 
-    constructor(arr: T[] = [], key?: keyof T) {
+    public constructor(arr: T[] = [], key?: keyof T) {
         this.set = arr;
         // @ts-ignore
         this.key = key || 'name';

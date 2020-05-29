@@ -24,7 +24,7 @@ const gameSubEditorStyle: any = {
 };
 
 export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: boolean }> {
-    constructor(props) {
+    public constructor(props) {
         super(props);
         this.state = {
             isOpen: false,

@@ -49,7 +49,7 @@ export class TypesEditor extends React.Component<TypesEditorProps, TypesEditorSt
             {
                 getListOfTypes(customTypes).map((t, i) => <TypeBlock key={i} customTypes={customTypes} type={t} />)
             }
-        </div>
+        </div>;
     }
 }
 
@@ -61,5 +61,5 @@ export function TypeBlock({type, customTypes, color}: {type: string, customTypes
         margin: '0.25rem',
         borderRadius: '0.25rem',
         width: '10rem',
-    }}>{type}</div>
+    }}>{type}</div>;
 }

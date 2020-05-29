@@ -25,7 +25,7 @@ export function customMoveMap(state: State['customMoveMap'] = initialState, acti
         case DELETE_CUSTOM_MOVE:
             return state.filter(move => move.id !== action.id);
         case REPLACE_STATE:
-                return action.replaceWith.customMoveMap || [];
+            return action.replaceWith.customMoveMap || [];
         default:
             return state;
     }

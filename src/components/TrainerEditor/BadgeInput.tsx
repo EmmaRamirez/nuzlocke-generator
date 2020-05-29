@@ -26,7 +26,7 @@ export interface BadgeInputState {
 }
 
 export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputState> {
-    constructor(props: BadgeInputProps) {
+    public constructor(props: BadgeInputProps) {
         super(props);
         this.state = {
             isOpen: false,

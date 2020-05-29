@@ -35,7 +35,7 @@ expect.extend({
         if (pass) {
             return {
                 message: () => (
-                `expected ${received} not to be one of [${validValues.join(', ')}]`
+                    `expected ${received} not to be one of [${validValues.join(', ')}]`
                 ),
                 pass: true,
             };
@@ -91,7 +91,7 @@ describe('styleDefaults', () => {
         expect(typeof styleDefaults).toBe('object');
         expect(styleDefaults.imageStyle).toBe('round');
         expect(objectPropertiesWhere(styleDefaults, p => p === 'round')).toBe(1);
-        expect(objectPropertiesWhere(styleDefaults, p => p)).toBe(24);
+        expect(objectPropertiesWhere(styleDefaults, p => p)).toBe(25);
     });
 });
 
@@ -237,7 +237,7 @@ describe(gameOfOriginToColor.name, () => {
             Red: 'rgb(243, 86, 58)',
             Blue: '#3675f8',
             Yellow: '#fdd33c',
-        }
+        };
         expect(gameOfOriginToColor('Red')).toBe(colors.Red);
         expect(gameOfOriginToColor('Blue')).toBe(colors.Blue);
         expect(gameOfOriginToColor('Yellow')).toBe(colors.Yellow);
@@ -297,6 +297,6 @@ describe(getDisplayNameForTest.name, () => {
                 return 'Dave';
             }
         }
-        expect(getDisplayNameForTest(Component)).toEqual(`<Component />`);
+        expect(getDisplayNameForTest(Component)).toEqual('<Component />');
     });
 });
