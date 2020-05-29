@@ -56,6 +56,21 @@ const getNumberOf = (status?: string, pokemon?: Pokemon[]) =>
               .filter((poke) => poke.status === status && !poke.hidden).length
         : 0;
 
+export function BackspriteMontage({pokemon}: {pokemon: Pokemon[]}) {
+    return <div className='backsprite-montage' style={{
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'bottom',
+        margin: '0 auto',
+        height: '92px',
+    }}>
+        {pokemon.map((poke, idx) => {
+            return <img style={{height: '128px', marginLeft: '-32px', zIndex: 6 - idx, imageRendering: 'pixelated' }} alt='' role='presentation' src={`https://img.pokemondb.net/sprites/firered-leafgreen/back-normal/${(poke.species || '').toLowerCase()}.png`} />;
+        })}
+    </div>;
+}
+
 export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     public resultRef: React.RefObject<HTMLDivElement>;
     public constructor(props: ResultProps) {
@@ -123,7 +138,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             .filter((poke) => poke.status === 'Dead')
             .filter((poke) => !poke.hidden)
             .map((poke, index) => {
-                return <DeadPokemon key={index} {...poke} />;
+                return <DeadPokemon minimal={false} key={index} {...poke} />;
             });
     }
 
@@ -225,7 +240,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         if (box?.name === 'Boxed' || box?.inheritFrom === 'Boxed')
                             return <BoxedPokemon key={index} {...poke} />;
                         if (box?.name === 'Dead' || box?.inheritFrom === 'Dead')
-                            return <DeadPokemon key={index} {...poke} />;
+                            return <DeadPokemon minimal={false} key={index} {...poke} />;
                         if (box?.name === 'Champs' || box?.inheritFrom === 'Champs')
                             return (
                                 <ChampsPokemon
@@ -437,18 +452,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             {enableStats && <Stats />}
                         </div>
 
-                        {/*<div className='backsprite-montage' style={{
-                        width: '100%',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'bottom',
-                        margin: '0 auto',
-                        height: '92px',
-                    }}>
-                        {this.getPokemonByStatus('Team').map((poke, idx) => {
-                            return <img style={{height: '128px', marginLeft: '-32px', zIndex: 6 - idx, imageRendering: 'pixelated' }} alt='' role='presentation' src={`https://img.pokemondb.net/sprites/firered-leafgreen/back-normal/${(poke.species || '').toLowerCase()}.png`} />;
-                        })}
-                    </div>*/}
+                        <BackspriteMontage pokemon={this.getPokemonByStatus('Team')} />
                     </div>
                 </ErrorBoundary>
             </div>

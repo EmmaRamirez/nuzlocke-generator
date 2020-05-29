@@ -69,7 +69,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                                 </select>
                             </div>
                         </div>
-                        {FEATURES.multipleNuzlockes ? (
+                        {feature.multipleNuzlockes ? (
                             <Popover minimal={true} content={<Menu />} position={Position.BOTTOM}>
                                 <Button icon="exchange">Switch Nuzlockes</Button>
                             </Popover>

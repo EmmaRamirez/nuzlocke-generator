@@ -23,6 +23,10 @@ export type ChampsPokemonProps = { [P in keyof Pokemon]?: any } & {
     showGender?: boolean;
     showLevel?: boolean;
     useSprites?: boolean;
+    margin?: string;
+    padding?: string;
+    background?: string;
+    customCSS?: string;
 };
 
 export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
@@ -61,34 +65,42 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
                     backgroundPosition: 'center center',
                     backgroundSize: 'contain',
                     backgroundRepeat: 'no-repeat',
-                    height: this.getWidth(),
-                    width: this.getWidth(),
+                    height: '48px',
+                    width: '48px'
                 }}
             />
         );
     }
 
     public render() {
+        const {margin, padding, customCSS} = this.props;
+        const className = champsPokemon({
+            background: gameOfOriginToColor(this.props.gameOfOrigin),
+            height: '48px',
+            width: this.getWidth(),
+            margin,
+            padding,
+        });
+
         return (
-            <div
-                className={cx(
-                    champsPokemon({
-                        background: gameOfOriginToColor(this.props.gameOfOrigin),
-                        height: '48px',
-                        width: this.getWidth(),
-                        margin: 0,
-                        padding: 0,
-                    }),
-                )}>
-                {this.props.useSprites ? (
-                    this.getPokemonImage()
-                ) : (
-                    <PokemonIcon {...(this.props as any)} />
-                )}
-                {this.props.showNickname && this.props.nickname}
-                {this.props.showGender && GenderElement(this.props.gender)}
-                {this.props.showLevel && ` Lv ${this.props.level}`}
-            </div>
+            <>
+                <div
+                    className={cx(className)}>
+                    {this.props.useSprites ? (
+                        this.getPokemonImage()
+                    ) : (
+                        <PokemonIcon {...(this.props as any)} />
+                    )}
+                    {this.props.showNickname && this.props.nickname}
+                    {this.props.showGender && GenderElement(this.props.gender)}
+                    {this.props.showLevel && ` Lv ${this.props.level}`}
+                </div>
+                <style>
+                    {`.${className} {
+                        ${customCSS}
+                    }`}
+                </style>
+            </>
         );
     }
 }

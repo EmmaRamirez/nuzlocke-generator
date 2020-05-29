@@ -6,13 +6,15 @@ import { reducers } from 'reducers';
 import * as css from './styles';
 import { Pokemon } from 'models';
 import { Styles, generateEmptyPokemon, listOfThemes, classWithDarkTheme } from 'utils';
-import { Button, ITreeNode, Tree, Classes, Menu, MenuItem, Icon, Switch } from '@blueprintjs/core';
+import { Button, ITreeNode, Tree, Classes, Menu, MenuItem, Icon, Switch, TextArea, Intent } from '@blueprintjs/core';
 import { BoxedPokemon } from '../BoxedPokemon';
 import { ColorEdit, ThemeSelect } from 'components/Shared';
-import { ChampsPokemon } from 'components';
+import { ChampsPokemon, PokemonIcon } from 'components';
 import {} from 'themes';
 import { DeadPokemon } from 'components/DeadPokemon';
 import { State } from 'state';
+import { CSSUnitInput } from './CSSUnitInput';
+import { ChampsPokemonCollection } from 'components/ChampsPokemon/ChampsPokemonCollection';
 
 const modelPokemon: Pokemon = {
     ...generateEmptyPokemon(),
@@ -26,9 +28,26 @@ const modelPokemon: Pokemon = {
     causeOfDeath: 'Earthquake from Giovanni\'s Rhyhorn',
 };
 
-type ComponentNode = ITreeNode & { options?: { props: any } };
+const modelPokemonB: Pokemon = {
+    ...generateEmptyPokemon(),
+    species: 'Dragonite',
+    nickname: 'Dragini',
+    gender: 'f',
+    level: 78,
+    metLevel: 30,
+    met: 'Safari Zone',
+    gameOfOrigin: 'LeafGreen',
+};
 
-const componentTree: (ITreeNode & { options?: { props: any } })[] = [
+const team: Pokemon[] = [
+    modelPokemon,
+    modelPokemonB,
+];
+
+
+type ComponentNode = ITreeNode & { component: string, options?: { props: any }, childNodes?: ComponentNode[] };
+
+const componentTree: ComponentNode[] = [
     // {
     //     id: 0,
     //     hasCaret: false,
@@ -94,36 +113,58 @@ const componentTree: (ITreeNode & { options?: { props: any } })[] = [
         icon: 'style',
         isExpanded: true,
         label: 'Dead Pokemon',
+        component: 'src/components/DeadPokemon',
         options: {
-            props: {},
+            props: {
+                minimal: false,
+            },
         },
         childNodes: [
-            {
-                id: 11,
-                label: 'Info',
-            },
         ],
     },
     {
-        id: 12,
+        id: 9,
         icon: 'style',
         isExpanded: true,
-        label: 'Champs Pokemon',
+        label: 'Champs Pokemon Collection',
+        component: 'src/components/ChampsPokemonCollection',
         options: {
             props: {
-                showGender: false,
-                showLevel: false,
-                showNickname: false,
-                useSprites: true,
-                level: 10,
+
             },
         },
         childNodes: [
             {
-                id: 11,
-                label: 'PokemonIcon',
+                id: 12,
+                icon: 'style',
+                isExpanded: true,
+                label: 'Champs Pokemon',
+                component: 'src/components/ChampsPokemon',
+                options: {
+                    props: {
+                        showGender: false,
+                        showLevel: false,
+                        showNickname: false,
+                        useSprites: true,
+                        padding: '4px',
+                        margin: '0px',
+                        customCSS: '',
+                    },
+                },
+                childNodes: [
+                    {
+                        id: 11,
+                        label: 'PokemonIcon',
+                        component: 'src/components/PokemonIcon',
+                        options: {
+                            props: {
+                                filter: '',
+                            }
+                        }
+                    },
+                ],
             },
-        ],
+        ]
     },
 ];
 
@@ -135,12 +176,33 @@ export interface ThemEditorState {
     componentTree: ITreeNode[];
 }
 
-export const NumericValue = ({ name, value, onInput }) => (
+export const NumericValue = ({ name, value, onChange }) => (
     <div className={cx(css.componentOption)}>
         <label className={Classes.LABEL}>{name}</label>
-        <input name={name} onInput={onInput} type="text" value={value} />
+        <input className={Classes.INPUT} name={name} onChange={onChange} type='number' value={value} />
     </div>
 );
+
+export const TextInput = ({ name, value, onChange }) => (
+    <div className={cx(css.componentOption)}>
+        <label className={Classes.LABEL}>{name}</label>
+        <input
+            className={Classes.INPUT}
+            type='text'
+            value={value}
+            name={name}
+            onChange={onChange}
+        />
+    </div>
+);
+
+export const WrapWithLabel = ({name, children}) => (
+    <div className={cx(css.componentOption)}>
+        <label className={Classes.LABEL}>{name}</label>
+        {children}
+    </div>
+);
+
 
 export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEditorState> {
     public state = { componentTree: [] };
@@ -183,19 +245,24 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
 
     private getComponent = (id, currentNode) => {
         if (id === 10) {
-            return <DeadPokemon {...modelPokemon} />;
+            return <DeadPokemon minimal={currentNode.options.props.minimal} {...modelPokemon} />;
+        }
+
+        if (id === 9) {
+            return <ChampsPokemonCollection pokemon={team} />;
         }
 
         if (id === 12) {
             return (
                 <ChampsPokemon
-                    showGender={currentNode.options.props.showGender}
-                    showNickname={currentNode.options.props.showNickname}
-                    showLevel={currentNode.options.props.showLevel}
-                    useSprites={currentNode.options.props.useSprites}
+                    {...currentNode.options.props}
                     {...modelPokemon}
                 />
             );
+        }
+
+        if (id === 11) {
+            return <PokemonIcon {...currentNode.options.props} {...modelPokemon} />;
         }
 
         return <Icon icon="square" />;
@@ -218,6 +285,8 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
             const { label } = currentNode;
         }
 
+        const modify = (key, value) => currentNode!.options!.props[key] = value;
+
         return (
             <>
                 <div
@@ -226,6 +295,15 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
                     )}>
                     <strong>Current Theme:</strong>{' '}
                     <ThemeSelect theme={this.props.style.template} />
+                    <Button
+                        style={{margin: '4px'}}
+                        icon='download'
+                        intent={Intent.SUCCESS}
+                    >Export To theme.json</Button>
+                    <Button
+                        style={{margin: '4px'}}
+                        icon='upload'
+                    >Import from theme.json</Button>
                 </div>
                 <div className={cx(css.main)}>
                     <div className={cx(css.sidebar)}>
@@ -279,50 +357,61 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
                                         }
                                         const type = typeof currentNode.options.props[propKey];
                                         const value = currentNode.options.props[propKey];
+
+                                        if (propKey === 'customCSS') {
+                                            return <WrapWithLabel name={propKey}>
+                                                <TextArea
+                                                    value={value}
+                                                    name={propKey}
+                                                    onChange={e => {
+                                                        modify(propKey, e.target.value);
+                                                        this.setState(this.state);
+                                                    }}
+                                                />
+                                            </WrapWithLabel>;
+                                        }
+
+                                        if (propKey === 'padding' || propKey === 'margin') {
+                                            return <CSSUnitInput
+                                                name={propKey}
+                                                value={value}
+                                                onChange={e => {
+                                                    modify(propKey, e.target.value);
+                                                    this.setState(this.state);
+                                                }}
+                                            />;
+                                        }
+
                                         if (type === 'boolean') {
                                             return (
-                                                <Switch key={idx} label={propKey} value={value} />
+                                                <Switch onChange={(e: any) => {
+                                                    modify(propKey, e.target.checked);
+                                                    this.setState(this.state);
+                                                }} key={idx} label={propKey} checked={value} />
                                             );
                                         }
                                         if (type === 'number') {
-                                            <NumericValue
+                                            return <NumericValue
                                                 name={propKey}
                                                 value={value}
-                                                onInput={null}
+                                                onChange={e => {
+                                                    modify(propKey, e.target.value);
+                                                    this.setState(this.state);
+                                                }}
                                             />;
                                         }
-                                        return null;
+                                        if (type === 'string') {
+                                            return <TextInput
+                                                value={value}
+                                                name={propKey}
+                                                onChange={e => {
+                                                    modify(propKey, e.target.value);
+                                                    this.setState(this.state);
+                                                }}
+                                            />;
+                                        }
+                                        return JSON.stringify({type, value});
                                     })}
-
-                                {/* <>
-                                //     <div className={cx(css.componentOption)}>
-                                //         <label className={Classes.LABEL}>Background Color</label>
-                                //         <ColorEdit
-                                //             value='#222222'
-                                //             name='BoxedPokemon'
-                                //             onChange={null}
-                                //         />
-                                //     </div>
-
-                                //     <div className={cx(css.componentOption)}>
-                                //         <label className={Classes.LABEL}>Text Color</label>
-                                //         <ColorEdit
-                                //             value='#EEEEEE'
-                                //             name='BoxedPokemon'
-                                //             onChange={null}
-                                //         />
-                                //     </div>
-
-                                //     <NumericValue
-                                //         name={'Border Radius'}
-                                //         value={'4px'}
-                                //         onInput={null}
-                                //     />
-
-                                //     <NumericValue name={'Padding'} value={'0px'} onInput={null} />
-
-                                //     <NumericValue name={'Margin'} value={'0px'} onInput={null} />
-                                // </> */}
                             </Menu>
                         </div>
                     </div>

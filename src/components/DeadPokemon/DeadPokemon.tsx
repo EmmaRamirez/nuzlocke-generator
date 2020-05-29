@@ -42,11 +42,17 @@ const spriteStyle = (style: Styles) => {
     }
 };
 
+export type DeadPokemonProps = {
+    selectPokemon: selectPokemon;
+    style: Styles;
+    game: Game;
+    minimal: boolean;
+} & Pokemon;
+
 // TODO: Convert to Class
-export const DeadPokemonBase = (
-    poke: Pokemon & { selectPokemon: selectPokemon } & { style: Styles } & { game: Game },
-) => {
+export const DeadPokemonBase = (poke: DeadPokemonProps) => {
     const style = poke.style;
+    const isMinimal = poke.minimal || poke.style.minimalDeadLayout;
     const isCompactWithIcons = style.template === TemplateName.CompactWithIcons;
     const addForme = (species: string | undefined) => {
         if (poke.forme) {
@@ -65,7 +71,7 @@ export const DeadPokemonBase = (
         poke.style.displayGameOriginForBoxedAndDead &&
         poke.style.displayBackgroundInsteadOfBadge;
 
-    if (style.minimalDeadLayout && isCompactWithIcons) {
+    if (isMinimal && isCompactWithIcons) {
         return (
             <div
                 className={'dead-pokemon-container'}
@@ -140,7 +146,7 @@ export const DeadPokemonBase = (
         );
     }
 
-    if (style.minimalDeadLayout) {
+    if (isMinimal) {
         return (
             <div
                 className={'dead-pokemon-container'}

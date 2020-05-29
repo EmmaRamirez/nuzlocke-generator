@@ -6,11 +6,11 @@ import {
     capitalize,
     gameOfOriginToColor,
     listOfThemes,
-    FEATURES,
     Game,
     OrientationType,
     Styles as StylesType,
     isLocal,
+    feature,
 } from 'utils';
 import {
     RadioGroup,
@@ -130,7 +130,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
         };
         return (
             <BaseEditor name="Style">
-                {FEATURES.themeEditing ? (
+                {feature.themeEditing ? (
                     <Dialog
                         isOpen={this.state.isThemeEditorOpen}
                         onClose={this.toggleThemeEditor}
@@ -154,7 +154,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                             ))}
                         </select>
                     </div>
-                    {FEATURES.themeEditing ? (
+                    {feature.themeEditing ? (
                         <Button
                             onClick={this.toggleThemeEditor}
                             style={{ marginLeft: '.25rem' }}
@@ -164,14 +164,6 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         </Button>
                     ) : null}
                 </div>
-
-                {/* {
-                    props.style.template === 'Hexagons' ?
-                    <div className={styleEdit}>
-                        <h6>Hexagons Template Options</h6>
-                    </div>
-                    : null
-                } */}
 
                 <div className={styleEdit}>
                     <RadioGroup
@@ -186,29 +178,6 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
 
                 <div className={styleEdit}>
                     <label className="pt-label pt-inline">Item Style</label>
-                    {/*<RadioGroup
-                        className={cx(Styles.radioGroup)}
-                        label='Item Style'
-                        onChange={e => editEvent(e, props, 'itemStyle')}
-                        selectedValue={props.style.itemStyle}>
-                        <Radio label='Round' value='round' />
-                        <Radio label='Square' value='square' />
-                    </RadioGroup>
-                    <Checkbox
-                        style={{
-                            margin: '4px'
-                        }}
-                        checked={props.style.displayItemAsText}
-                        name='displayItemAsText'
-                        label='Display Items as Text'
-                        onChange={(e: any) =>
-                            editEvent(
-                                { ...e, target: { value: e.target.checked } },
-                                props,
-                                'displayItemAsText',
-                            )
-                        }
-                    />*/}
                     <div className="pt-select">
                         <select
                             name="itemStyle"

@@ -3,6 +3,7 @@ import { css } from 'emotion';
 
 export const main = css`
     display: flex;
+    min-height: 70vh;
 `;
 
 export const header = css`
@@ -68,4 +69,17 @@ export const componentOption = css`
         margin: 0 !important;
         width: 60%;
     }
+`;
+
+export const cssUnit = css`
+
+`;
+
+export const unitInput = css`
+    width: 6rem;
+`;
+
+export const unitSelect = css`
+    margin-right: .25rem;
+    width: 4rem;
 `;

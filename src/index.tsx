@@ -31,9 +31,6 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// @ts-ignore
-console.log('FEATURES', process.env, process.env.THEME_EDITING);
-
 injectGlobal`
     *,
     *::before,
