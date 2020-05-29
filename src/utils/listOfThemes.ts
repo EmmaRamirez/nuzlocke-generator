@@ -7,6 +7,7 @@ export enum TemplateName {
     Hexagons = 'Hexagons',
     Compact = 'Compact',
     CompactWithIcons = 'Compact with Icons',
+    Blank = 'Blank',
 }
 
 export const listOfThemes = [
@@ -17,4 +18,5 @@ export const listOfThemes = [
     TemplateName.Hexagons,
     TemplateName.Compact,
     TemplateName.CompactWithIcons,
+    TemplateName.Blank,
 ].sort();

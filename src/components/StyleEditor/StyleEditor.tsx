@@ -458,6 +458,16 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
+                    <label className='pt-label pt-inline'>Linked Pokemon Text</label>
+                    <input
+                        name='linkedPokemonText'
+                        className='pt-input small-input'
+                        onChange={e => editEvent(e, props)}
+                        value={props?.style?.linkedPokemonText}
+                    />
+                </div>
+
+                <div className={styleEdit}>
                     <Checkbox
                         checked={props.style.teamPokemonBorder}
                         name='teamPokemonBorder'

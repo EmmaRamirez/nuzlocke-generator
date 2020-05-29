@@ -11,7 +11,7 @@ describe('<App />', () => {
         const store = configureStore()({});
         const wrapper = mount(
             <Provider store={store}>
-                <App game={{ name: 'Red' }} disableHotkeys={true} style={styleDefaults} rules={['1', '2']} />
+                <App style={styleDefaults} />
             </Provider>,
         );
         expect(wrapper).toBeDefined();

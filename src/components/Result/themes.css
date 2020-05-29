@@ -697,3 +697,12 @@
   border-radius: 0;
   height: auto;
 }
+.blank * {
+  all: unset;
+}
+/* .blank .pokemon-image-wrapper, */
+.blank .pokemon-image {
+  display: block;
+  height: 5rem;
+  width: 5rem;
+}

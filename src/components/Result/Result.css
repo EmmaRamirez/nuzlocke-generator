@@ -432,6 +432,12 @@
   top: 0;
   height: 37px;
 }
+.pokemon-linked {
+  display: flex;
+  height: 32px;
+  align-items: center;
+  border-radius: .25rem;
+}
 .pt-tag-input .pt-tag.pt-tag-removable,
 .move {
   color: #000;

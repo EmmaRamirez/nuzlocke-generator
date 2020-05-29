@@ -3,16 +3,12 @@ import { connect } from 'react-redux';
 
 import * as Loadable from 'react-loadable';
 
-import './app.styl';
+import './app.css';
 import { Hotkeys } from 'components/Hotkeys';
 import { State } from 'state';
-import { injectGlobal } from 'emotion';
 
 export interface AppProps {
-    game: any;
     style: any;
-    rules: any;
-    disableHotkeys?: boolean;
 }
 
 function Loading() {
@@ -35,35 +31,20 @@ const Result = Loadable({
     },
 });
 
-export class AppBase extends React.PureComponent<AppProps> {
-    constructor(props: any) {
-        super(props);
-    }
-
-    public static defaultProps = {
-        disableHotkeys: false,
-    };
-
-    public render() {
-        const {style} = this.props;
-        return (
-            <div className='app' role='main' style={{
-                background: style.editorDarkMode ? '#111' : '#fff',
-            }}>
-                {this.props.disableHotkeys ? null : <Hotkeys />}
-                <Editor />
-                <Result />
-            </div>
-        );
-    }
+export function AppBase ({style}: AppProps) {
+    return (
+        <div className='app' role='main' style={{
+            background: style.editorDarkMode ? '#111' : '#fff',
+        }}>
+            <Hotkeys />
+            <Editor />
+            <Result />
+        </div>
+    );
 }
 
 export const App = connect(
     (state: Pick<State, keyof State>) => ({
-        game: state.game,
         style: state.style,
-        rules: state.rules,
     }),
-    {
-    },
 )(AppBase);

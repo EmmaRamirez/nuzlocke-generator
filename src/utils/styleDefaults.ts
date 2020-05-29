@@ -57,6 +57,7 @@ export interface Styles {
     displayRulesLocation: RulesLocation;
     displayStats: boolean;
     statsOptions: StatsOptions;
+    linkedPokemonText: string;
 }
 
 export const styleDefaults: Styles = {
@@ -103,6 +104,7 @@ export const styleDefaults: Styles = {
     trainerHeight: '100%',
     trainerAuto: true,
     displayStats: false,
+    linkedPokemonText: 'Linked To',
     statsOptions: {
         averageLevel: false,
         mostCommonKillers: false,

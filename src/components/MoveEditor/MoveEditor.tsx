@@ -149,7 +149,11 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                     }} className='add-move-wrapper'>
                         <label style={{marginTop: '8px', padding: '0.5rem'}} className={cx(Classes.LABEL, Classes.INLINE)}>Add A Move</label>
                         <input placeholder='Move Name' style={{width: '10rem'}} onChange={e => this.setState({moveName: e.target.value})} value={moveName} className={Classes.INPUT} type='text' />
-                        <Autocomplete className={Classes.INPUT} placeholder='Move Type' items={types} onChange={e => this.setState({moveType: e.target.value})} value={moveType} />
+                        <div className={Classes.SELECT} style={{width: '8rem'}}>
+                            <select onChange={e => this.setState({ moveType: e.target.value })} value={moveType}>
+                                {types.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+                            </select>
+                        </div>
                         <Button
                             onClick={e => {
                                 this.props.editCustomMoveMap(moveType, moveName);

@@ -523,7 +523,10 @@ Thank you!
     '1.1.3': `# Changelog
 
 ## Fixes
-- 
+- Fixed a bug where editing a box would de-order them
+- Fixed a bug where collapsing a box would hide it in Results
+- Made type option in Move Editor a drop-down
+
 
 ## Known Issues
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this

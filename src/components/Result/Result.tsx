@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import { connect } from 'react-redux';
 import * as uuid from 'uuid/v4';
-//import { domToImage } from '@emmaramirez/dom-to-image';
 import { cx } from 'emotion';
 
 import { selectPokemon, toggleMobileResultView } from 'actions';
@@ -20,9 +19,9 @@ import { Styles as StyleState, getGameRegion, sortPokes, getContrastColor, isLoc
 
 import * as Styles from './styles';
 
-import './Result.styl';
-import './themes.styl';
-import 'assets/pokemon-font.css';
+import './Result.css';
+import './themes.css';
+// import 'assets/pokemon-font.css';
 import { State } from 'state';
 import isMobile from 'is-mobile';
 import { Button, Classes } from '@blueprintjs/core';

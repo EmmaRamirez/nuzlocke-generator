@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { connect, ComponentClass } from 'react-redux';
 
 import { Pokemon, Game, Editor } from 'models';
 import {
@@ -27,18 +27,24 @@ import { PokemonIcon } from 'components/PokemonIcon';
 import { getMetLocationString } from './getMetLocationString';
 import { customTypes } from 'reducers/customTypes';
 import { Showdown } from './Showdown';
+import { link } from 'fs';
 
 export interface TeamPokemonInfoProps {
     generation: Generation;
     style: Styles;
     pokemon: Pokemon;
     customTypes: State['customTypes'];
+    linkedPokemon?: Pokemon;
 }
 
 export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
 
     public render() {
-        const { pokemon, style, customTypes } = this.props;
+        const { pokemon, style, customTypes, linkedPokemon } = this.props;
+
+        if (!pokemon) {
+            return null;
+        }
 
         const accentColor = style ? style.accentColor : '#111111';
         const isCardsTheme = style.template === TemplateName.Cards;
@@ -135,6 +141,10 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                                 {stat(pokemon.extraData['speed'], 'SPE')}
                             </div>
                         ) : null}
+                        {linkedPokemon && <div className='pokemon-linked'>
+                            {style.linkedPokemonText} {linkedPokemon.nickname || linkedPokemon.species}
+                            <PokemonIcon {...linkedPokemon} />
+                        </div>}
                     </div>
                     {style.showPokemonMoves ? (
                         <Moves
@@ -150,12 +160,13 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
 }
 
 export interface TeamPokemonBaseProps {
-    pokemon: Pokemon;
+    pokemon?: Pokemon;
     game: Game;
     style: Styles;
     selectPokemon: selectPokemon;
     editor: Editor;
     customTypes: State['customTypes'];
+    linkedPokemon?: Pokemon;
 }
 
 export class TeamPokemonBaseMinimal extends React.PureComponent<
@@ -163,10 +174,15 @@ export class TeamPokemonBaseMinimal extends React.PureComponent<
 > {
     public render() {
         const { pokemon } = this.props;
+
+        if (!pokemon) {
+            return <div>A Pokémon could not be rendered.</div>
+        }
+
         return (
             <div
                 className='pokemon-container minimal'
-                style={{ color: getContrastColor(this.props.style.bgColor) }}>
+                style={{ color: getContrastColor(this.props?.style?.bgColor) }}>
                 <div
                     style={{
                         backgroundImage: getPokemonImage({
@@ -232,12 +248,12 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
     }
 
     public render() {
-        const { pokemon, style, game, selectPokemon, editor, customTypes } = this.props;
+        const { pokemon, style, game, selectPokemon, editor, customTypes, linkedPokemon } = this.props;
         const poke = pokemon;
         const showdown = false;
 
-        if (showdown) {
-            return <Showdown editor={editor} game={game} style={style} pokemon={pokemon} />
+        if (!poke) {
+            return <div>A Pokémon could not be rendered.</div>
         }
 
         const getFirstType = poke.types ? poke.types[0] : 'Normal';
@@ -288,6 +304,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                     pokemon={poke}
                     editor={editor}
                     customTypes={customTypes}
+                    linkedPokemon={linkedPokemon}
                 />
             );
         }
@@ -444,23 +461,25 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                         />
                     </div>
                 ) : null}
-                <TeamPokemonInfo
+                {pokemon && <TeamPokemonInfo
                     generation={getGameGeneration(this.props.game.name)}
                     style={style}
                     pokemon={pokemon}
                     customTypes={customTypes}
-                />
+                    linkedPokemon={linkedPokemon}
+                />}
             </div>
         );
     }
 }
 
 export const TeamPokemon = connect(
-    (state: State) => ({
+    (state: State, ownProps: {pokemon: {linkedTo?: string}}) => ({
         style: state.style,
         game: state.game,
         editor: state.editor,
         customTypes: state.customTypes,
+        linkedPokemon: state.pokemon.find(p => p.id === ownProps?.pokemon?.linkedTo),
     }),
     {
         selectPokemon,
@@ -469,4 +488,4 @@ export const TeamPokemon = connect(
     {
         pure: false
     }
-)(TeamPokemonBase);
+)(TeamPokemonBase as any);

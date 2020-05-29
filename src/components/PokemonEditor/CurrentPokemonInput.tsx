@@ -18,12 +18,13 @@ interface CurrentPokemonInputProps {
     placeholder?: string;
     transform?: (v: any) => string;
     disabled?: boolean;
-    options?: string[];
+    options?: string[] | {key: string, value: string}[];
     editPokemon: editPokemon;
     selectedId: string;
     selectPokemon: selectPokemon;
     pokemon?: Pokemon;
     customMoveMap: State['customMoveMap'];
+    usesKeyValue?: boolean;
 }
 
 export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInputProps> {
@@ -80,7 +81,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         this.props.selectPokemon && this.props.selectPokemon(this.props.selectedId);
     };
 
-    public getInput({ labelName, transform, disabled, inputName, type, value, placeholder, options, pokemon }: any) {
+    public getInput({ labelName, transform, usesKeyValue, disabled, inputName, type, value, placeholder, options, pokemon }: any) {
         const {customMoveMap} = this.props;
 
         value = value == null ? '' : value;
@@ -161,9 +162,12 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                         value={value}
                         style={inputName === 'pokeball' ? {paddingLeft: '2rem'} : {}}
                         name={inputName}>
-                        {options
+                        {!usesKeyValue ? options
                             ? options.map((item, index) => <option key={index}>{item}</option>)
-                            : null}
+                            : null :
+                            options.map((item, index) => <option value={item.value} key={index}>{item.key}</option>)
+                        }
+                        
                     </select>
                 </div>
             );
@@ -220,12 +224,12 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
     }
 
     public render() {
-        const { labelName, inputName, type, value, placeholder, options, pokemon } = this.props;
+        const { labelName, inputName, usesKeyValue, type, value, placeholder, options, pokemon } = this.props;
         return (
             <span
                 className={`current-pokemon-input-wrapper current-pokemon-${type} current-pokemon-${inputName}`}>
                 <label>{labelName}</label>
-                {this.getInput({ labelName, inputName, type, value, placeholder, options, pokemon })}
+                {this.getInput({ labelName, usesKeyValue, inputName, type, value, placeholder, options, pokemon })}
             </span>
         );
     }

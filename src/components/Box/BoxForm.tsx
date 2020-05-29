@@ -13,7 +13,6 @@ export interface NewBox {
     inheritFrom?: string;
 }
 
-// tslint:disable-next-line:no-empty-interfaces
 export interface BoxFormProps {
     boxes: State['box'];
     addBox: addBox;

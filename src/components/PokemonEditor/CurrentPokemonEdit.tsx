@@ -36,6 +36,7 @@ import { State } from 'state';
 import { CurrentPokemonLayoutItem } from './CurrentPokemonLayoutItem';
 import { MoveEditor } from 'components/MoveEditor';
 import { PokemonNotes } from './PokemonNotes';
+import { pokemon } from 'reducers/pokemon';
 
 const pokeball = require('assets/pokeball.png');
 
@@ -302,6 +303,16 @@ export class CurrentPokemonEditBase extends React.Component<
                 </CurrentPokemonLayoutItem>
                 <CurrentPokemonLayoutItem>
                     <CurrentPokemonInput
+                        labelName='Link To...'
+                        inputName='linkedTo'
+                        value={currentPokemon?.linkedTo}
+                        type='select'
+                        options={this.props.pokemon.map(p => ({ key: p.nickname || p.species, value: p.id }))}
+                        usesKeyValue={true}
+                    />
+                </CurrentPokemonLayoutItem>
+                <CurrentPokemonLayoutItem>
+                    <CurrentPokemonInput
                         labelName='Notes'
                         inputName='notes'
                         value={currentPokemon.notes}
@@ -487,7 +498,7 @@ export class CurrentPokemonEditBase extends React.Component<
                     onClick={this.expandView}
                     data-expandedview={this.state.expandedView.toString()}
                     intent={Intent.PRIMARY}
-                    className='pt-button pt-fill current-pokemon-more'
+                    className={cx(Classes.FILL, 'current-pokemon-more')}
                     icon={this.state.expandedView ? 'symbol-triangle-up' : 'symbol-triangle-down'}
                 >
                     {this.state.expandedView ? 'Less' : 'More'}

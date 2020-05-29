@@ -33,6 +33,7 @@ export interface Pokemon {
     extraData?: object;
     pokeball?: string;
     notes?: string;
+    linkedTo?: Pokemon['id'] | null;
     /* @deprecated */
     champion?: boolean;
 }
@@ -71,4 +72,5 @@ export const PokemonKeys: Pokemon = {
     extraData: {},
     pokeball: 'None',
     notes: '',
+    linkedTo: null,
 };
