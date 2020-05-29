@@ -61,8 +61,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
                     key={i}
                     role="item"
                     onClick={(e) => this.selectItem(v)}
-                    style={v === this.state.currentValue ? { color: 'lightblue' } : {}}
-                >
+                    style={v === this.state.currentValue ? { color: 'lightblue' } : {}}>
                     {v}
                 </li>
             );

@@ -38,8 +38,7 @@ export function AppBase({ style }: AppProps) {
             role="main"
             style={{
                 background: style.editorDarkMode ? '#111' : '#fff',
-            }}
-        >
+            }}>
             <Hotkeys />
             <Editor />
             <Result />

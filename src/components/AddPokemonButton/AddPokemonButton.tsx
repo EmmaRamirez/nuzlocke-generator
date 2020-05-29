@@ -9,8 +9,7 @@ export const AddPokemonButtonBase = ({ onClick }: { onClick: onClick }) => (
         onClick={(e) => {
             e.preventDefault();
             onClick && onClick();
-        }}
-    >
+        }}>
         <span className="pt-icon-add" /> &nbsp;Add New Pokemon
     </button>
 );

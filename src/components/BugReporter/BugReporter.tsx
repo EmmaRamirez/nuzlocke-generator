@@ -53,8 +53,7 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
                             display: 'flex',
                             alignItems: 'baseline',
                             justifyContent: 'space-between',
-                        }}
-                    >
+                        }}>
                         <Checkbox
                             onChange={(e) =>
                                 this.setState((state) => ({
@@ -68,8 +67,7 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
                             disabled={!userReportTitle}
                             onClick={this.sendBugReport}
                             className="pt-minimal"
-                            intent={Intent.DANGER}
-                        >
+                            intent={Intent.DANGER}>
                             Submit{' '}
                             <img
                                 style={{ height: '20px', verticalAlign: 'bottom' }}

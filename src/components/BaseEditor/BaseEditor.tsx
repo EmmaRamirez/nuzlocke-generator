@@ -38,8 +38,7 @@ export class BaseEditor extends React.Component<BaseEditorProps, BaseEditorState
                 <h4
                     title={`${this.state.isOpen ? 'Collapse' : 'Open'} this editor.`}
                     style={baseEditorStyle}
-                    onClick={this.toggleEditor}
-                >
+                    onClick={this.toggleEditor}>
                     {this.props.name}
                     <span
                         className={`pt-icon pt-icon-caret-${this.state.isOpen ? 'up' : 'down'}`}

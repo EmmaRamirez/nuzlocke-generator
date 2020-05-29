@@ -231,8 +231,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                         }
                         value={value}
                         style={inputName === 'pokeball' ? { paddingLeft: '2rem' } : {}}
-                        name={inputName}
-                    >
+                        name={inputName}>
                         {!usesKeyValue
                             ? options
                                 ? options.map((item, index) => <option key={index}>{item}</option>)
@@ -266,8 +265,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                         <select
                             onChange={(e) => this.onChange(e, inputName, 0, value)}
                             value={value[0] == null ? 'None' : value[0]}
-                            name={inputName}
-                        >
+                            name={inputName}>
                             {options
                                 ? options.map((item: string, index: number) => (
                                     <option value={item} key={index}>
@@ -282,8 +280,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                         <select
                             onChange={(e) => this.onChange(e, inputName, 1, value)}
                             value={value[1] == null ? 'None' : value[1]}
-                            name={inputName}
-                        >
+                            name={inputName}>
                             {options
                                 ? options.map((item, index) => (
                                     <option value={item} key={index}>
@@ -316,8 +313,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         } = this.props;
         return (
             <span
-                className={`current-pokemon-input-wrapper current-pokemon-${type} current-pokemon-${inputName}`}
-            >
+                className={`current-pokemon-input-wrapper current-pokemon-${type} current-pokemon-${inputName}`}>
                 <label>{labelName}</label>
                 {this.getInput({
                     labelName,

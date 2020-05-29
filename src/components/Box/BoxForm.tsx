@@ -104,8 +104,7 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                             margin: '.25rem',
                             marginTop: '-1rem',
                             padding: '0.5rem',
-                        }}
-                    >
+                        }}>
                         <div style={inputStyle}>
                             <label style={labelStyle} className="pt-label">
                                 Name
@@ -131,8 +130,7 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                                             Can be a URL or{' '}
                                             {wallpapers.map((w) => w.background).join(', ')}
                                         </div>
-                                    }
-                                >
+                                    }>
                                     <Icon
                                         style={{ marginLeft: '.25rem' }}
                                         height={'12px'}
@@ -157,8 +155,7 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                                 <select
                                     onChange={this.editFormInput}
                                     value={this.state.newBox.inheritFrom}
-                                    name="inheritFrom"
-                                >
+                                    name="inheritFrom">
                                     {boxes.map((box) => (
                                         <option value={box.name}>{box.name}</option>
                                     ))}
@@ -169,22 +166,19 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                             style={{
                                 display: 'flex',
                                 justifyContent: 'center',
-                            }}
-                        >
+                            }}>
                             <Button
                                 onClick={this.toggleBoxForm}
                                 intent={Intent.DANGER}
                                 className="pt-minimal"
-                                style={{ margin: '0 .5rem' }}
-                            >
+                                style={{ margin: '0 .5rem' }}>
                                 Cancel
                             </Button>
                             <Button
                                 style={{ margin: '0 .5rem' }}
                                 onClick={this.confirmNewBox}
                                 intent={Intent.SUCCESS}
-                                disabled={!this.state.newBox.name}
-                            >
+                                disabled={!this.state.newBox.name}>
                                 Confirm
                             </Button>
                         </div>

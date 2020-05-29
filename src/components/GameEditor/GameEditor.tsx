@@ -59,8 +59,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                         <div>
                             <label
                                 className="pt-inline"
-                                style={{ fontSize: '80%', marginRight: '.5rem' }}
-                            >
+                                style={{ fontSize: '80%', marginRight: '.5rem' }}>
                                 Version
                             </label>
                             <div className="pt-select">
@@ -84,8 +83,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                         <div style={{ fontSize: '80%' }}>
                             <label
                                 className="pt-inline"
-                                style={{ marginRight: 'calc(.75rem + 2px)' }}
-                            >
+                                style={{ marginRight: 'calc(.75rem + 2px)' }}>
                                 Name
                             </label>
                             <input
@@ -105,8 +103,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                 }}
-                                className={Classes.MINIMAL}
-                            >
+                                className={Classes.MINIMAL}>
                                 <Switch
                                     // style={{...darkModeStyle(this.props.style.editorDarkMode), marginBottom: 0}}
                                     label="TemTem Mode"

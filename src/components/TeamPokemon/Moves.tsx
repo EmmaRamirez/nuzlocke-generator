@@ -40,8 +40,7 @@ export const Move = ({ index, style, type, move, customTypes }) =>
             }
             className={`move move-${move.replace(/\s/g, '-')?.toLowerCase()} ${
                 move.length >= 10 ? 'long-text-move' : ''
-            }`}
-        >
+            }`}>
             {move}
         </div>
     );

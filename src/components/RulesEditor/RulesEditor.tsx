@@ -28,8 +28,7 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
                     role="action"
                     onClick={(e) => this.props.deleteRule(index)}
                     className="rule-delete"
-                    title="Delete Rule"
-                >
+                    title="Delete Rule">
                     <Icon
                         intent={Intent.DANGER}
                         role="action"
@@ -53,8 +52,7 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
                         this.props.resetRules();
                         this.forceUpdate();
                     }}
-                    intent={Intent.WARNING}
-                >
+                    intent={Intent.WARNING}>
                     Reset Rules
                 </Button>
             </>
@@ -69,8 +67,7 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
                         listStyleType: 'none',
                         margin: '.5rem',
                         padding: '0',
-                    }}
-                >
+                    }}>
                     {this.renderRules()}
                 </ul>
                 {this.renderButtons()}
@@ -88,8 +85,7 @@ export const RulesEditorDialogBase = (
             onClose={props.onClose}
             className={`rules-editor-dialog ${props.style.editorDarkMode ? 'pt-dark' : 'pt-light'}`}
             title="Rules Editor"
-            icon="edit"
-        >
+            icon="edit">
             <div className="pt-dialog-body">
                 <RulesEditor
                     rules={props.rules}

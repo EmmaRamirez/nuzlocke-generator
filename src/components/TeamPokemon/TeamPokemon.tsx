@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { connect, ComponentClass } from 'react-redux';
+import { connect } from 'react-redux';
 
 import { Pokemon, Game, Editor } from 'models';
 import {
@@ -10,24 +10,16 @@ import {
     Generation,
     getGameGeneration,
     getContrastColor,
-    gameOfOriginToColor,
     formatBallText,
-    speciesToNumber,
-    isLocal,
     TemplateName,
 } from 'utils';
 import { GenderElement, ErrorBoundary } from 'components/Shared';
 import { selectPokemon } from 'actions';
-import { reducers } from 'reducers';
 import { Moves } from './Moves';
-import * as Color from 'color';
 import { State } from 'state';
 import { css, cx } from 'emotion';
 import { PokemonIcon } from 'components/PokemonIcon';
 import { getMetLocationString } from './getMetLocationString';
-import { customTypes } from 'reducers/customTypes';
-import { Showdown } from './Showdown';
-import { link } from 'fs';
 
 export interface TeamPokemonInfoProps {
     generation: Generation;
@@ -68,8 +60,7 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                     alignItems: 'center',
                     flexDirection: 'column',
                     margin: '0 2px',
-                }}
-            >
+                }}>
                 <div>{statName}</div>
                 <div>{stat}</div>
             </div>
@@ -92,8 +83,7 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                         color: isCompactTheme
                             ? getContrastColor(typeToColor(getTypeOrNone(), customTypes))
                             : getContrastColor(accentColor),
-                    }}
-                >
+                    }}>
                     <div className="pokemon-info-inner">
                         <div className="pokemon-main-info">
                             <span style={{ margin: '0.25rem 0 0' }} className="pokemon-nickname">
@@ -147,8 +137,7 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                                     justifyContent: 'space-evenly',
                                     fontSize: '12px',
                                     width: '255px',
-                                }}
-                            >
+                                }}>
                                 {stat(pokemon.extraData['currentHp'], 'HP')}
                                 {stat(pokemon.extraData['attack'], 'ATK')}
                                 {stat(pokemon.extraData['defense'], 'DEF')}
@@ -200,8 +189,7 @@ TeamPokemonBaseProps & { spriteStyle: object }
         return (
             <div
                 className="pokemon-container minimal"
-                style={{ color: getContrastColor(this.props?.style?.bgColor) }}
-            >
+                style={{ color: getContrastColor(this.props?.style?.bgColor) }}>
                 <div
                     style={{
                         backgroundImage: getPokemonImage({
@@ -414,8 +402,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                                 customTypes,
                             )
                             : 'transparent',
-                    }}
-                >
+                    }}>
                     <div
                         style={{
                             backgroundImage: getPokemonImage({
@@ -441,8 +428,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                             mvpLabelStyle.base,
                             mvpLabelStyle[style.template],
                             'pokemon-mvp-label',
-                        )}
-                    >
+                        )}>
                         <span style={{ marginRight: '0.5rem', fontWeight: 'bold' }}>MVP</span>
                         <img
                             style={{ height: '1rem' }}
@@ -473,8 +459,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                             itemLabelStyle.base,
                             itemLabelStyle[style.pokeballStyle],
                             'pokemon-pokeball',
-                        )}
-                    >
+                        )}>
                         <img
                             alt={poke.pokeball}
                             src={`icons/pokeball/${formatBallText(poke.pokeball)}.png`}
@@ -498,8 +483,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                             itemLabelStyle.base,
                             itemLabelStyle[style.itemStyle],
                             'pokemon-item',
-                        )}
-                    >
+                        )}>
                         <img
                             alt={poke.item}
                             src={

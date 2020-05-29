@@ -80,8 +80,7 @@ export const DeadPokemonBase = (
                     height: '50px',
                     fontSize: '90%',
                     outline: '1px solid #222',
-                }}
-            >
+                }}>
                 <div
                     className="goc-circle"
                     style={{
@@ -111,8 +110,7 @@ export const DeadPokemonBase = (
                         display: 'flex',
                         justifyContent: 'center',
                         flexDirection: 'column',
-                    }}
-                >
+                    }}>
                     <div>
                         {poke.nickname} {GenderElement(poke.gender)} Levels {poke.metLevel}&mdash;
                         {poke.level}
@@ -133,8 +131,7 @@ export const DeadPokemonBase = (
                                 display: 'inline-block',
                                 background: gameOfOriginToColor(poke.gameOfOrigin),
                                 color: getContrastColor(gameOfOriginToColor(poke.gameOfOrigin)),
-                            }}
-                        >
+                            }}>
                             {poke.gameOfOrigin}
                         </span>
                     )}
@@ -158,8 +155,7 @@ export const DeadPokemonBase = (
                     height: '50px',
                     fontSize: '90%',
                     outline: '1px solid #222',
-                }}
-            >
+                }}>
                 <span style={{ filter: 'grayscale(100%)' }}>
                     <PokemonIconBase
                         onClick={(e) => poke.selectPokemon(poke.id)}
@@ -175,8 +171,7 @@ export const DeadPokemonBase = (
                         display: 'flex',
                         justifyContent: 'center',
                         flexDirection: 'column',
-                    }}
-                >
+                    }}>
                     <div>
                         {poke.nickname} {GenderElement(poke.gender)} Levels {poke.metLevel}&mdash;
                         {poke.level}
@@ -197,8 +192,7 @@ export const DeadPokemonBase = (
                                 display: 'inline-block',
                                 background: gameOfOriginToColor(poke.gameOfOrigin),
                                 color: getContrastColor(gameOfOriginToColor(poke.gameOfOrigin)),
-                            }}
-                        >
+                            }}>
                             {poke.gameOfOrigin}
                         </span>
                     )}
@@ -218,8 +212,7 @@ export const DeadPokemonBase = (
                 color: useGameOfOriginColor
                     ? getContrastColor(gameOfOriginToColor(poke.gameOfOrigin!))
                     : getContrastColor(getAccentColor(poke)),
-            }}
-        >
+            }}>
             {style.template !== 'Generations' ? (
                 <div
                     role="presentation"
@@ -272,8 +265,7 @@ export const DeadPokemonBase = (
                             padding: '2px',
                             background: gameOfOriginToColor(poke.gameOfOrigin),
                             color: getContrastColor(gameOfOriginToColor(poke.gameOfOrigin)),
-                        }}
-                    >
+                        }}>
                         {poke.gameOfOrigin}
                     </span>
                 )}

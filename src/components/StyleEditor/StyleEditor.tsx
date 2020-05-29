@@ -138,8 +138,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         icon="style"
                         className={cx(Styles.dialog, {
                             [Classes.DARK]: props.style.editorDarkMode,
-                        })}
-                    >
+                        })}>
                         <ThemeEditor />
                     </Dialog>
                 ) : null}
@@ -149,8 +148,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         <select
                             name="template"
                             onChange={(e) => editEvent(e, props, undefined, props.game.name)}
-                            value={props.style.template}
-                        >
+                            value={props.style.template}>
                             {listOfThemes.map((o) => (
                                 <option key={o}>{o}</option>
                             ))}
@@ -161,8 +159,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                             onClick={this.toggleThemeEditor}
                             style={{ marginLeft: '.25rem' }}
                             intent={Intent.PRIMARY}
-                            className="pt-minimal"
-                        >
+                            className="pt-minimal">
                             Edit Theme
                         </Button>
                     ) : null}
@@ -181,8 +178,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         className={cx(Styles.radioGroup)}
                         label="Image Style"
                         onChange={(e) => editEvent(e, props, 'imageStyle')}
-                        selectedValue={props.style.imageStyle}
-                    >
+                        selectedValue={props.style.imageStyle}>
                         <Radio label="Round" value="round" />
                         <Radio label="Square" value="square" />
                     </RadioGroup>
@@ -217,8 +213,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         <select
                             name="itemStyle"
                             onChange={(e) => editEvent(e, props, undefined)}
-                            value={props.style.itemStyle}
-                        >
+                            value={props.style.itemStyle}>
                             {smallItemOptions.map((v) => {
                                 return (
                                     <option key={v} value={v}>
@@ -236,8 +231,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         <select
                             name="pokeballStyle"
                             onChange={(e) => editEvent(e, props, undefined)}
-                            value={props.style.pokeballStyle}
-                        >
+                            value={props.style.pokeballStyle}>
                             {smallItemOptions.map((v) => {
                                 return (
                                     <option key={v} value={v}>
@@ -341,8 +335,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         className={cx(Styles.radioGroup)}
                         label="Trainer Section Position"
                         onChange={(e) => editEvent(e, props, 'trainerSectionOrientation')}
-                        selectedValue={props.style.trainerSectionOrientation}
-                    >
+                        selectedValue={props.style.trainerSectionOrientation}>
                         <Radio label="Horizontal" value="horizontal" />
                         <Radio label="Vertical" value="vertical" />
                     </RadioGroup>
@@ -421,8 +414,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         <select
                             name="displayRulesLocation"
                             onChange={(e) => editEvent(e, props, undefined)}
-                            value={props.style.displayRulesLocation}
-                        >
+                            value={props.style.displayRulesLocation}>
                             <option key={'inside trainer section'}>
                                 {'inside trainer section'}
                             </option>
@@ -437,8 +429,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         className={cx(Styles.radioGroup)}
                         label="Icon Rendering"
                         onChange={(e) => editEvent(e, props, 'iconRendering')}
-                        selectedValue={props.style.iconRendering}
-                    >
+                        selectedValue={props.style.iconRendering}>
                         <Radio label="Pixelated" value="pixelated" />
                         <Radio label="Automatic" value="auto" />
                     </RadioGroup>
@@ -449,8 +440,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         className={cx(Styles.radioGroup)}
                         label="Moves Position"
                         onChange={(e) => editEvent(e, props, 'movesPosition')}
-                        selectedValue={props.style.movesPosition}
-                    >
+                        selectedValue={props.style.movesPosition}>
                         <Radio label="Horizontal" value="horizontal" />
                         <Radio label="Vertical" value="vertical" />
                     </RadioGroup>
@@ -462,8 +452,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         <select
                             name="teamImages"
                             onChange={(e) => editEvent(e, props, undefined, props.game.name)}
-                            value={props.style.teamImages}
-                        >
+                            value={props.style.teamImages}>
                             {teamImages.map((o) => (
                                 <option value={o} key={o}>
                                     {capitalize(o)}
@@ -773,8 +762,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                                 ? undefined
                                 : 'none',
                         } as any
-                    }
-                >
+                    }>
                     <Checkbox
                         checked={props.style.displayBackgroundInsteadOfBadge}
                         name="displayBackgroundInsteadOfBadge"

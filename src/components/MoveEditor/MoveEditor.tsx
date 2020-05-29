@@ -79,8 +79,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                                 alignItems: 'center',
                                 padding: '.25rem',
                                 position: 'relative',
-                            }}
-                        >
+                            }}>
                             <div style={{ width: '12rem', marginRight: '.5rem' }}>
                                 <Move
                                     index={index}
@@ -120,8 +119,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                             justifyContent: 'center',
                             alignItems: 'center',
                             padding: '.25rem',
-                        }}
-                    >
+                        }}>
                         <div style={{ width: '12rem', marginRight: '.5rem' }}>
                             <Move
                                 index={index}
@@ -172,14 +170,12 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                     isOpen={isOpen}
                     onClose={toggleDialog}
                     className={`wide-dialog ${style.editorDarkMode ? 'pt-dark' : 'pt-light'}`}
-                    title="Move Editor"
-                >
+                    title="Move Editor">
                     <div
                         className="pt-dialog-body move-editor"
                         style={{
                             height: '800px',
-                        }}
-                    >
+                        }}>
                         <div
                             style={{
                                 display: 'flex',
@@ -191,12 +187,10 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                                 padding: '0.5rem',
                                 margin: '.5rem',
                             }}
-                            className="add-move-wrapper"
-                        >
+                            className="add-move-wrapper">
                             <label
                                 style={{ marginTop: '8px', padding: '0.5rem' }}
-                                className={cx(Classes.LABEL, Classes.INLINE)}
-                            >
+                                className={cx(Classes.LABEL, Classes.INLINE)}>
                                 Add A Move
                             </label>
                             <input
@@ -210,8 +204,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                             <div className={Classes.SELECT} style={{ width: '8rem' }}>
                                 <select
                                     onChange={(e) => this.setState({ moveType: e.target.value })}
-                                    value={moveType}
-                                >
+                                    value={moveType}>
                                     {types.map((opt) => (
                                         <option key={opt} value={opt}>
                                             {opt}
@@ -224,8 +217,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                                     this.props.editCustomMoveMap(moveType, moveName);
                                 }}
                                 intent={Intent.PRIMARY}
-                                disabled={!(moveType && moveName)}
-                            >
+                                disabled={!(moveType && moveName)}>
                                 Add Move
                             </Button>
                         </div>
@@ -239,13 +231,11 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                                 display: 'flex',
                                 flexWrap: 'wrap',
                                 justifyContent: 'center',
-                            }}
-                        >
+                            }}>
                             <div style={{ width: '60%', borderRadius: '.25rem', margin: '4px' }}>
                                 <div
                                     className="pt-input-group"
-                                    style={{ width: '50%', margin: '0 auto', position: 'sticky' }}
-                                >
+                                    style={{ width: '50%', margin: '0 auto', position: 'sticky' }}>
                                     <Icon icon="search" />
                                     <input
                                         value={this.state.searchTerm}
@@ -264,8 +254,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                                     padding: '1rem',
                                     borderRadius: '.25rem',
                                     margin: '4px',
-                                }}
-                            >
+                                }}>
                                 <TypesEditor
                                     editCustomType={editCustomType}
                                     customTypes={customTypes}

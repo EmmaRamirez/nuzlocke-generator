@@ -211,8 +211,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         getNumberOf(box?.name, pokemon) > 0 ? (
             <div
                 style={paddingForVerticalTrainerSection}
-                className={`${this.getBoxClass(box.inheritFrom || box.name)}-container`}
-            >
+                className={`${this.getBoxClass(box.inheritFrom || box.name)}-container`}>
                 {box.name !== 'Team' && (
                     <h3 style={{ color: getContrastColor(this.props.style.bgColor || '#383840') }}>
                         {box.name}
@@ -221,8 +220,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                 )}
                 <div
                     className="boxed-container-inner"
-                    style={this.getBoxStyle(box.name || box.inheritFrom)}
-                >
+                    style={this.getBoxStyle(box.name || box.inheritFrom)}>
                     {pokemon.map((poke, index) => {
                         if (box.name === 'Boxed' || box.inheritFrom === 'Boxed')
                             return <BoxedPokemon key={index} {...poke} />;
@@ -306,8 +304,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                 <ErrorBoundary>
                     <TopBar
                         isDownloading={this.state.isDownloading}
-                        onClickDownload={() => this.toImage()}
-                    >
+                        onClickDownload={() => this.toImage()}>
                         {this.renderErrors()}
                     </TopBar>
                     <style>{style.customCSS}</style>
@@ -318,8 +315,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             onClick={() => {
                                 this.props.toggleMobileResultView();
                                 this.toImage();
-                            }}
-                        >
+                            }}>
                             Download
                         </Button>
                     )}
@@ -347,8 +343,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             // transformOrigin: '0 0',
                             width: `${style.resultWidth}px`,
                             ...this.getScale(style, editor),
-                        }}
-                    >
+                        }}>
                         <div
                             className="trainer-container"
                             style={
@@ -367,15 +362,13 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                                         width: style.trainerAuto ? '100%' : style.trainerWidth,
                                         height: style.trainerAuto ? 'auto' : style.trainerHeight,
                                     }
-                            }
-                        >
+                            }>
                             <TrainerResult orientation={trainerSectionOrientation} />
                         </div>
                         {trainer && trainer.notes ? (
                             <div
                                 style={{ color: getContrastColor(bgColor) }}
-                                className="result-notes"
-                            >
+                                className="result-notes">
                                 {trainer.notes}
                             </div>
                         ) : null}
@@ -436,8 +429,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                                 ...paddingForVerticalTrainerSection,
                                 display: 'flex',
                                 color: getContrastColor(bgColor),
-                            }}
-                        >
+                            }}>
                             {style.displayRules && style.displayRulesLocation === 'bottom'
                                 ? rulesContainer
                                 : null}

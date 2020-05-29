@@ -22,8 +22,7 @@ const Grid = ({
                     <Tooltip
                         key={index}
                         content={poke.nickname || poke.species}
-                        position={Position.TOP}
-                    >
+                        position={Position.TOP}>
                         <PokemonIcon
                             id={poke.id}
                             species={poke.species}

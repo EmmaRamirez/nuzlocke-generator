@@ -89,8 +89,7 @@ const PokemonLocationChecklist = ({
                             alignItems: 'center',
                             margin: '2px',
                             borderBottom: `1px solid ${style?.editorDarkMode ? '#222' : '#efefef'}`,
-                        }}
-                    >
+                        }}>
                         {getLocIcon(area)}
                         <div style={{ marginLeft: '4px' }}>{area}</div>
                     </div>
@@ -153,8 +152,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                             icon={'heat-grid'}
                             onClick={this.openMassEditor}
                             style={{ marginLeft: 'auto' }}
-                            className="pt-intent-primary pt-minimal"
-                        >
+                            className="pt-intent-primary pt-minimal">
                             Open Mass Editor
                         </Button>
                     </div>

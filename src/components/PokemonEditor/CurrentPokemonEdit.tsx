@@ -60,8 +60,7 @@ export const CopyPokemonButton: React.SFC<CopyPokemonButtonProps> = ({
         <Popover
             interactionKind={PopoverInteractionKind.HOVER}
             position={Position.TOP}
-            content={<div style={{ padding: '1rem' }}>{`Copy Pok${accentedE}mon`}</div>}
-        >
+            content={<div style={{ padding: '1rem' }}>{`Copy Pok${accentedE}mon`}</div>}>
             <Icon
                 title="Copy Pokemon"
                 icon="duplicate"
@@ -493,8 +492,7 @@ CurrentPokemonEditState
                     <Button
                         className="pt-minimal"
                         intent={Intent.PRIMARY}
-                        onClick={this.toggleDialog}
-                    >
+                        onClick={this.toggleDialog}>
                         Edit Moves
                     </Button>
                 </CurrentPokemonLayoutItem>
@@ -506,8 +504,7 @@ CurrentPokemonEditState
                     data-expandedview={this.state.expandedView.toString()}
                     intent={Intent.PRIMARY}
                     className={cx(Classes.FILL, 'current-pokemon-more')}
-                    icon={this.state.expandedView ? 'symbol-triangle-up' : 'symbol-triangle-down'}
-                >
+                    icon={this.state.expandedView ? 'symbol-triangle-up' : 'symbol-triangle-down'}>
                     {this.state.expandedView ? 'Less' : 'More'}
                 </Button>
             </div>

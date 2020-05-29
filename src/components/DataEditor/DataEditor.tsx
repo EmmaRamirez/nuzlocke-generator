@@ -156,8 +156,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         marginTop: '.5rem',
                         display: 'flex',
                         justifyContent: 'center',
-                    }}
-                >
+                    }}>
                     {d.pokemon
                         .filter((p) => p.status === 'Team')
                         .map((p) => {
@@ -250,8 +249,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     confirmButtonText="Delete Anyway"
                     className={this.props.state.style.editorDarkMode ? 'pt-dark' : 'pt-light'}
                     style={{ maxWidth: '600px' }}
-                    intent={Intent.DANGER}
-                >
+                    intent={Intent.DANGER}>
                     <div style={{ display: 'flex' }}>
                         <img style={{ height: '10rem' }} src={trash} alt="Sad Trubbish" />
                         <p style={{ fontSize: '1.2rem', padding: '1rem' }}>
@@ -269,15 +267,13 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                             : 'Import Nuzlocke Save'
                     }
                     className={this.props.state.style.editorDarkMode ? 'pt-dark' : ''}
-                    icon="floppy-disk"
-                >
+                    icon="floppy-disk">
                     {this.state.mode === 'export' ? (
                         <>
                             <Callout>Copy this and paste it somewhere safe!</Callout>
                             <div
                                 style={{ height: '40vh', overflow: 'auto' }}
-                                className="pt-dialog-body has-nice-scrollbars"
-                            >
+                                className="pt-dialog-body has-nice-scrollbars">
                                 <span suppressContentEditableWarning={true} contentEditable={true}>
                                     {JSON.stringify(this.props.state, null, 2)}
                                 </span>
@@ -308,8 +304,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'space-between',
-                                    }}
-                                >
+                                    }}>
                                     <input
                                         style={{ padding: '.25rem' }}
                                         className="pt-button"
@@ -341,14 +336,12 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                 <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
                     <div
                         className="pt-label pt-inline"
-                        style={{ padding: '.25rem 0', paddingBottom: '.5rem' }}
-                    >
+                        style={{ padding: '.25rem 0', paddingBottom: '.5rem' }}>
                         <label className="pt-label pt-text-muted">Game</label>
                         <div className="pt-select">
                             <select
                                 value={this.state.selectedGame}
-                                onChange={(e) => this.setState({ selectedGame: e.target.value })}
-                            >
+                                onChange={(e) => this.setState({ selectedGame: e.target.value })}>
                                 {['RBY'].map((game) => (
                                     <option value={game}>{game}</option>
                                 ))}
@@ -362,8 +355,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                             padding: '.25rem 0',
                             paddingBottom: '.5rem',
                             marginLeft: '.25rem',
-                        }}
-                    >
+                        }}>
                         <label className="pt-label pt-text-muted">Upload Save file</label>
                         <input
                             style={{ padding: '.25rem' }}
@@ -383,8 +375,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                             padding: '.25rem 0',
                             paddingBottom: '.5rem',
                             marginLeft: '.25rem',
-                        }}
-                    >
+                        }}>
                         <label className="pt-label pt-text-muted">Merge Data</label>
                         <Switch
                             checked={this.state.mergeDataMode}
@@ -399,8 +390,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     <Button
                         onClick={(e) => this.importState()}
                         icon="import"
-                        className="pt-intent-primary"
-                    >
+                        className="pt-intent-primary">
                         Import Data
                     </Button>
                     <Button onClick={(e) => this.exportState(this.props.state)} icon="export">
@@ -410,8 +400,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         className="pt-minimal"
                         intent={Intent.SUCCESS}
                         onClick={this.writeAllData}
-                        icon="floppy-disk"
-                    >
+                        icon="floppy-disk">
                         Force Save
                     </Button>
                     {/* <Button icon='add' intent={Intent.SUCCESS}>
@@ -422,8 +411,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     icon="trash"
                     onClick={this.toggleClearingData}
                     intent={Intent.DANGER}
-                    className="pt-minimal"
-                >
+                    className="pt-minimal">
                     Clear All Data
                 </Button>
                 <br />

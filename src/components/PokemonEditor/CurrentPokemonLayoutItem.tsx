@@ -29,8 +29,7 @@ export class CurrentPokemonLayoutItem extends React.PureComponent<{
                     style.Layout,
                     this.props.disabled && style.disabled,
                     this.props.checkboxes && style.checkboxes,
-                )}
-            >
+                )}>
                 {this.props.children}
             </div>
         );

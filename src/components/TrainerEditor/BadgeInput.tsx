@@ -50,8 +50,7 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
                         canOutsideClickClose={false}
                         title="Checkpoints Editor"
                         icon="badge"
-                        style={{ width: '46rem' }}
-                    >
+                        style={{ width: '46rem' }}>
                         <div className={Classes.DIALOG_BODY}>
                             <CheckpointsEditor checkpoints={this.props.checkpoints} />
                         </div>
@@ -96,21 +95,18 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
                                     {this.props.enableCheckpointsEditor ? (
                                         <Button
                                             onClick={this.toggleCheckpointsEditor}
-                                            className="pt-minimal"
-                                        >
+                                            className="pt-minimal">
                                             Customize Checkpoints
                                         </Button>
                                     ) : null}
                                 </Menu>
                             }
-                            position={Position.BOTTOM}
-                        >
+                            position={Position.BOTTOM}>
                             <Button
                                 style={{
                                     borderRadius: 0,
                                     width: '164px',
-                                }}
-                            >
+                                }}>
                                 Select Checkpoints
                             </Button>
                         </Popover>

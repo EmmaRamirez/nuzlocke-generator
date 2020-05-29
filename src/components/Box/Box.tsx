@@ -156,8 +156,7 @@ export class BoxBase extends React.Component<BoxProps> {
                     backgroundImage: this.getBoxBackground(background, name),
                     ...collapsedStyle,
                 }}
-                className={`box ${name.replace(/\s/g, '-')}-box`}
-            >
+                className={`box ${name.replace(/\s/g, '-')}-box`}>
                 <Popover
                     position={Position.BOTTOM_LEFT}
                     minimal
@@ -207,8 +206,7 @@ export class BoxBase extends React.Component<BoxProps> {
                                 />
                             )}
                         </>
-                    }
-                >
+                    }>
                     <span
                         style={{
                             alignItems: 'center',
@@ -224,8 +222,7 @@ export class BoxBase extends React.Component<BoxProps> {
                             minWidth: '5rem',
                             cursor: 'pointer',
                             userSelect: 'none',
-                        }}
-                    >
+                        }}>
                         <Icon style={{ transform: 'rotate(90deg)' }} icon="more" />
                         {name}
                     </span>

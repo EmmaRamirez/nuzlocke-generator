@@ -125,8 +125,7 @@ MassEditorProps,
                 className={`wide-dialog ${
                     this.props.style.editorDarkMode ? 'pt-dark' : 'pt-light'
                 }`}
-                title="Mass Editor"
-            >
+                title="Mass Editor">
                 <div className="pt-dialog-body">
                     <ErrorBoundary>
                         <AddPokemonButton
@@ -145,8 +144,7 @@ MassEditorProps,
                             columnWidths={[150, 0, 150]}
                             defaultColumnWidth={100}
                             numRows={this.props.pokemon.length}
-                            numFrozenColumns={1}
-                        >
+                            numFrozenColumns={1}>
                             {
                                 this.renderColumns(
                                     this.props.pokemon.sort(sortPokes),

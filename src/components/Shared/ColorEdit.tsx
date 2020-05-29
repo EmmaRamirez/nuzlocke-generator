@@ -46,8 +46,7 @@ export class ColorEditBase extends React.Component<ColorEditProps, { showChromeP
                                 onColorChange(color);
                             }}
                         />
-                    }
-                >
+                    }>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         <input
                             style={{ border: 'none' }}

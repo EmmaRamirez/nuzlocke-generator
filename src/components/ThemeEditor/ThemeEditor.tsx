@@ -223,8 +223,7 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
                 <div
                     className={cx(
                         classWithDarkTheme(css, 'header', this.props.style.editorDarkMode),
-                    )}
-                >
+                    )}>
                     <strong>Current Theme:</strong>{' '}
                     <ThemeSelect theme={this.props.style.template} />
                 </div>
@@ -259,8 +258,7 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
                                     'componentResult',
                                     this.props.style.editorDarkMode,
                                 ),
-                            )}
-                        >
+                            )}>
                             {currentNode &&
                                 currentNode.options &&
                                 this.getComponent(currentNode.id, currentNode)}

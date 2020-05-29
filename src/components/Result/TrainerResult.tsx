@@ -134,8 +134,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                             width: '100%',
                         }
                         : {}
-                }
-            >
+                }>
                 <div
                     className="trainer-game-badge"
                     style={{
@@ -148,8 +147,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                         borderRadius: '.25rem',
                         textAlign: 'center',
                         padding: '2px',
-                    }}
-                >
+                    }}>
                     {game.customName || game.name}
                 </div>
                 {trainer.image ? (

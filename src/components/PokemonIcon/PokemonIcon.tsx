@@ -145,8 +145,7 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
                 style={style}
                 className={`${id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'} ${
                     className || ''
-                } ${isDragging ? 'opacity-medium' : ''}`}
-            >
+                } ${isDragging ? 'opacity-medium' : ''}`}>
                 <img
                     style={imageStyle}
                     alt={species}

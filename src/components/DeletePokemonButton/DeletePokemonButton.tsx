@@ -51,8 +51,7 @@ DeletePokemonButtonProps,
                     }
                     confirmButtonText="Delete Pokemon"
                     cancelButtonText="Cancel"
-                    intent={Intent.DANGER}
-                >
+                    intent={Intent.DANGER}>
                     <p>
                         This will delete the currently selected Pokemon. Are you sure you want to do
                         that?
@@ -73,8 +72,7 @@ DeletePokemonButtonProps,
                 <Popover
                     interactionKind={PopoverInteractionKind.HOVER}
                     position={Position.TOP}
-                    content={<div style={{ padding: '1rem' }}>{`Delete Pok${accentedE}mon`}</div>}
-                >
+                    content={<div style={{ padding: '1rem' }}>{`Delete Pok${accentedE}mon`}</div>}>
                     <Icon
                         role="button"
                         onClick={(e) => {

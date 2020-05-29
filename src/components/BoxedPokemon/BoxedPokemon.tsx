@@ -36,8 +36,7 @@ export const BoxedPokemonBase = (poke: BoxedPokemonProps) => {
                     ? getContrastColor(gameOfOriginToColor(poke.gameOfOrigin!))
                     : getContrastColor(getAccentColor(poke)),
                 width: determineWidth(isMinimal, poke.style.boxedPokemonPerLine),
-            }}
-        >
+            }}>
             <PokemonIcon
                 species={poke.species}
                 id={poke.id}
@@ -55,8 +54,7 @@ export const BoxedPokemonBase = (poke: BoxedPokemonProps) => {
                         borderLeftColor: useGameOfOriginColor
                             ? getContrastColor(gameOfOriginToColor(poke.gameOfOrigin!))
                             : getAccentColor(poke),
-                    }}
-                >
+                    }}>
                     <span className="boxed-pokemon-name">
                         {poke.nickname} {GenderElement(poke.gender)}{' '}
                         {poke.level ? <span>lv. {poke.level}</span> : null}
@@ -74,8 +72,7 @@ export const BoxedPokemonBase = (poke: BoxedPokemonProps) => {
                                     borderRadius: '.25rem',
                                     margin: '.25rem',
                                     padding: '.25rem',
-                                }}
-                            >
+                                }}>
                                 {poke.gameOfOrigin}
                             </span>
                         )}

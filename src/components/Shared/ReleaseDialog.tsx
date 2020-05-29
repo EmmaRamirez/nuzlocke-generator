@@ -33,8 +33,7 @@ IDialogProps & ReleaseDialogProps,
                 title={`Release Notes ${pkg.version}`}
                 className={`release-dialog ${
                     this.props.style.editorDarkMode ? 'pt-dark' : 'pt-light'
-                }`}
-            >
+                }`}>
                 <div className={Classes.DIALOG_BODY}>
                     <div className="release-notes-wrapper">
                         <h3
@@ -44,8 +43,7 @@ IDialogProps & ReleaseDialogProps,
                                     'heading',
                                     this.props.style.editorDarkMode,
                                 ),
-                            )}
-                        >
+                            )}>
                             {pkg.version}{' '}
                             <img style={{ display: 'inline' }} alt="Croagunk" src={croagunk} />
                         </h3>
@@ -55,8 +53,7 @@ IDialogProps & ReleaseDialogProps,
                         />
                         <Button
                             onClick={(e) => this.setState({ seePrevious: !this.state.seePrevious })}
-                            icon={seePrevious ? 'symbol-triangle-up' : 'symbol-triangle-down'}
-                        >
+                            icon={seePrevious ? 'symbol-triangle-up' : 'symbol-triangle-down'}>
                             Previous Relase Notes
                         </Button>
                         {seePrevious &&

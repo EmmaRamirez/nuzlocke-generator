@@ -17,8 +17,7 @@ const SpanBlock = ({ text }) => (
             padding: '0 3px',
             margin: '2px',
             borderRadius: '.25rem',
-        }}
-    >
+        }}>
         {text}
     </span>
 );
@@ -74,8 +73,7 @@ export class TrainerInfoEditor extends React.Component<{}, {}> {
                                         <SpanBlock key={t} text={capitalize(t)} />
                                     ))}
                                 </Menu>
-                            }
-                        >
+                            }>
                             <span>
                                 Trainer Image <span className="pt-icon pt-icon-info-sign" />
                             </span>

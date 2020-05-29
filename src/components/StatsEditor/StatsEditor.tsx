@@ -48,8 +48,7 @@ export class StatsEditorBase extends React.Component<StatsEditorProps> {
                             padding: 0,
                             marginLeft: '1rem',
                             opacity: style.displayStats ? 1 : 0.3,
-                        }}
-                    >
+                        }}>
                         <li>
                             <Switch
                                 checked={stats?.averageLevel}
@@ -118,8 +117,7 @@ export class StatsEditorBase extends React.Component<StatsEditorProps> {
                             <li
                                 style={{ display: 'flex', alignItems: 'center' }}
                                 className={Classes.INPUT_GROUP}
-                                key={stat.id}
-                            >
+                                key={stat.id}>
                                 <input
                                     onChange={this.onChange(stat, 'key')}
                                     style={{ margin: '4px' }}
@@ -151,8 +149,7 @@ export class StatsEditorBase extends React.Component<StatsEditorProps> {
                                 icon="plus"
                                 style={{ margin: '4px', fontSize: '80%' }}
                                 onClick={(e) => addStat({ key: '', value: '' })}
-                                intent={Intent.SUCCESS}
-                            >
+                                intent={Intent.SUCCESS}>
                                 Add Custom Stat
                             </Button>
                         </li>

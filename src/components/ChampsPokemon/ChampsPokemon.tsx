@@ -79,8 +79,7 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
                         margin: 0,
                         padding: 0,
                     }),
-                )}
-            >
+                )}>
                 {this.props.useSprites ? (
                     this.getPokemonImage()
                 ) : (

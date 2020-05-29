@@ -86,8 +86,7 @@ export function TypeBlock({
                 margin: '0.25rem',
                 borderRadius: '0.25rem',
                 width: '10rem',
-            }}
-        >
+            }}>
             {type}
         </div>
     );

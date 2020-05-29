@@ -63,8 +63,7 @@ export class Layout extends React.PureComponent<Partial<LayoutProps>> {
                         flexWrap: wrap,
                         ...style,
                     } as React.CSSProperties
-                }
-            >
+                }>
                 {this.props.children}
             </div>
         );

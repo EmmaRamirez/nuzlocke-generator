@@ -47,8 +47,7 @@ CheckpointsSelectState
                             key={key}
                             name={badge.name}
                             style={{ display: 'block' }}
-                            className={Classes.MINIMAL}
-                        >
+                            className={Classes.MINIMAL}>
                             <img
                                 className={cx(styles.checkpointImage(1))}
                                 alt={badge.name}
@@ -68,12 +67,10 @@ CheckpointsSelectState
             <Popover
                 minimal
                 interactionKind={PopoverInteractionKind.CLICK}
-                content={this.renderOptions(checkpoint)}
-            >
+                content={this.renderOptions(checkpoint)}>
                 <div
                     role="select"
-                    className={cx(styles.checkpointSelect, Classes.SELECT, Classes.BUTTON)}
-                >
+                    className={cx(styles.checkpointSelect, Classes.SELECT, Classes.BUTTON)}>
                     <div>
                         <img
                             className={cx(styles.checkpointImage(1))}
@@ -154,8 +151,7 @@ CheckpointsEditorState
                                 'checkpointsItem',
                                 this.props.style.editorDarkMode,
                             ),
-                        )}
-                    >
+                        )}>
                         {/* <Icon icon='drag-handle-vertical' /> */}
                         <div className={cx(styles.checkpointName)}>
                             <img

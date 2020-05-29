@@ -49,8 +49,7 @@ export class EditorBase extends React.Component<
                     width: minimized ? '0%' : '33%',
                     marginLeft: minimized ? '-30rem' : '0',
                     background: this.props.style.editorDarkMode ? '#222' : '#fff',
-                }}
-            >
+                }}>
                 <GameEditor />
                 <TrainerEditor />
                 <PokemonEditor />
