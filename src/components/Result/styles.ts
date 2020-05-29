@@ -9,7 +9,7 @@ export const topBar = css`
     display: flex;
     font-size: 1.15rem;
     justify-content: center;
-    padding: .5rem;
+    padding: 0.5rem;
 `;
 
 export const topBar_mobile = css`
@@ -63,7 +63,7 @@ export const container = css`
     height: 100%;
     margin: 0 auto;
     overflow: hidden;
-    padding-bottom: .5rem;
+    padding-bottom: 0.5rem;
     position: relative;
     width: 100%;
 `;
@@ -71,7 +71,7 @@ export const container = css`
 export const h3 = css`
     color: #eee;
     letter-spacing: 4px;
-    margin: .5rem;
+    margin: 0.5rem;
     text-align: center;
     text-transform: uppercase;
 `;
@@ -83,7 +83,7 @@ export const callout_dark = css`
 export const resultNotes = css`
     font-size: 1.25rem;
     font-weight: bold;
-    margin: .5rem;
+    margin: 0.5rem;
     text-align: center;
 `;
 
@@ -107,7 +107,7 @@ export const trainerContainer = css`
     background: #333;
     border-bottom: 1px solid #000;
     color: #eee;
-    padding: .25rem;
+    padding: 0.25rem;
     width: 100%;
 `;
 
@@ -147,13 +147,13 @@ export const move = css`
     border: 4px solid rgba(255, 255, 255, 0.3);
     border-radius: 4px;
     color: #222;
-    font-size: .9rem;
+    font-size: 0.9rem;
     height: 1.7rem;
-    margin: .25rem;
+    margin: 0.25rem;
     padding: 0;
     text-align: center;
     &.long-text-move {
-        font-size: .7rem;
+        font-size: 0.7rem;
     }
 `;
 
@@ -167,8 +167,8 @@ export const pokemonShiny = css`
     border: 2px solid white;
     height: 2rem;
     width: 2rem;
-    padding-top: .2rem;
-    padding-left: .5rem;
+    padding-top: 0.2rem;
+    padding-left: 0.5rem;
     position: absolute;
     left: 7rem;
     top: 1rem;
@@ -179,7 +179,7 @@ export const square = css`
     display: inline-block;
     height: 8rem;
     width: 8rem;
-    padding: .25rem;
+    padding: 0.25rem;
     position: relative;
     z-index: 10;
 `;
@@ -188,7 +188,7 @@ export const round = css`
     display: inline-block;
     height: 8rem;
     width: 8rem;
-    padding: .25rem;
+    padding: 0.25rem;
     position: relative;
     z-index: 10;
 `;
@@ -200,7 +200,6 @@ export const pokemonImage = css`
     height: 7.5rem;
     width: 7.5rem;
     &.square {
-
     }
     &.round {
         border-radius: 50%;
@@ -221,7 +220,7 @@ export const pokemonItem = css`
     justify-content: center;
     align-items: center;
     left: 12px;
-    padding: .5rem;
+    padding: 0.5rem;
     position: absolute;
     width: 3rem;
     z-index: 10;
@@ -262,10 +261,10 @@ export const pokemonInfo = css`
     vertical-align: top;
     filter: drop-shadow(0 0 1px #111);
     padding-left: 4rem;
-    border-radius: .25rem;
+    border-radius: 0.25rem;
     overflow: hidden;
     span {
-        margin: 0 .25rem;
+        margin: 0 0.25rem;
     }
 `;
 
@@ -274,7 +273,7 @@ export const result_mobile = css`
     top: 2vh !important;
     left: 2vw !important;
     transform-origin: 0px center;
-    box-shadow: 0 0 4px rgba(0,0,0,0.33);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.33);
     z-index: 21 !important;
     margin-top: -14vh !important;
 `;

@@ -287,97 +287,118 @@ export const handleSpeciesTypeEdgeCases = ({
                 Generation.Gen3,
                 Generation.Gen4,
                 Generation.Gen5,
-            ]
+            ],
         })
     )
         return [Types.Steel, Types.Steel];
 
-
-    if (match({
-        ...data,
-        species: ['Shaymin'],
-        forme: ['Sky'],
-    })) {
+    if (
+        match({
+            ...data,
+            species: ['Shaymin'],
+            forme: ['Sky'],
+        })
+    ) {
         return [Types.Grass, Types.Flying];
     }
 
-    if (match({
-        ...data,
-        species: ['Rotom'],
-        forme: ['Mow'],
-    })) {
+    if (
+        match({
+            ...data,
+            species: ['Rotom'],
+            forme: ['Mow'],
+        })
+    ) {
         return [Types.Electric, Types.Grass];
     }
 
-    if (match({
-        ...data,
-        species: ['Rotom'],
-        forme: ['Wash'],
-    })) {
+    if (
+        match({
+            ...data,
+            species: ['Rotom'],
+            forme: ['Wash'],
+        })
+    ) {
         return [Types.Electric, Types.Water];
     }
 
-    if (match({
-        ...data,
-        species: ['Rotom'],
-        forme: ['Frost'],
-    })) {
+    if (
+        match({
+            ...data,
+            species: ['Rotom'],
+            forme: ['Frost'],
+        })
+    ) {
         return [Types.Electric, Types.Ice];
     }
 
-    if (match({
-        ...data,
-        species: ['Rotom'],
-        forme: ['Fan'],
-    })) {
+    if (
+        match({
+            ...data,
+            species: ['Rotom'],
+            forme: ['Fan'],
+        })
+    ) {
         return [Types.Electric, Types.Flying];
     }
 
-    if (match({
-        ...data,
-        species: ['Rotom'],
-        forme: ['Heat'],
-    })) {
+    if (
+        match({
+            ...data,
+            species: ['Rotom'],
+            forme: ['Heat'],
+        })
+    ) {
         return [Types.Electric, Types.Fire];
     }
 
-    if (match({
-        ...data,
-        species: ['Castform'],
-        forme: ['Sunny'],
-    })) {
+    if (
+        match({
+            ...data,
+            species: ['Castform'],
+            forme: ['Sunny'],
+        })
+    ) {
         return [Types.Fire, Types.Fire];
     }
 
-    if (match({
-        ...data,
-        species: ['Castform'],
-        forme: ['Hail'],
-    })) {
+    if (
+        match({
+            ...data,
+            species: ['Castform'],
+            forme: ['Hail'],
+        })
+    ) {
         return [Types.Ice, Types.Ice];
     }
 
-    if (match({
-        ...data,
-        species: ['Castform'],
-        forme: ['Rainy'],
-    })) {
+    if (
+        match({
+            ...data,
+            species: ['Castform'],
+            forme: ['Rainy'],
+        })
+    ) {
         return [Types.Water, Types.Water];
     }
 
-    if (match({
-        ...data,
-        species: ['Wormadam'],
-        forme: ['Sandy'],
-    })) {
+    if (
+        match({
+            ...data,
+            species: ['Wormadam'],
+            forme: ['Sandy'],
+        })
+    ) {
         return [Types.Bug, Types.Ground];
     }
 
-    if (match({
-        ...data,
-        species: ['Wormadam'],
-        forme: ['Trash'],
-    })) {
+    if (
+        match({
+            ...data,
+            species: ['Wormadam'],
+            forme: ['Trash'],
+        })
+    ) {
         return [Types.Bug, Types.Steel];
     }
 

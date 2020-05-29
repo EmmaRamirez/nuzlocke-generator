@@ -20,13 +20,13 @@ export const TrainerInfoEditField = ({
     value,
     element,
 }: TrainerInfoEditField) => (
-    <div className='trainer-info-field'>
+    <div className="trainer-info-field">
         <label>{label}</label>
         {element ? (
             element({ label, name, placeholder, onChange, onInput, value })
         ) : (
             <input
-                type='text'
+                type="text"
                 value={value}
                 onChange={onChange}
                 onInput={onInput}

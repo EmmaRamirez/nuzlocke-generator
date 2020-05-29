@@ -4,7 +4,6 @@
     "singleQuote": true,
     "trailingComma": "all",
     "semi": true,
-    "jsx-bracket-same-line": true,
     "requirePragma": false,
     "tabWidth": 4
   }

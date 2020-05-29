@@ -17,7 +17,7 @@ describe(GenderElement.name, () => {
         expect(m.find('.gender-color-female').length).toBe(1);
     });
 
-    it ('renders its content [neutral]', () => {
+    it('renders its content [neutral]', () => {
         const subject = GenderElement(null);
         expect(subject).toBeNull();
     });

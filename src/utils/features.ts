@@ -1,11 +1,11 @@
 declare const features: Features;
 
-export type FeatureList = 'fileUploads'
-| 'themeEditing'
-| 'multipleNuzlockes'
-| 'copyingPokemon'
-| 'temTemSupport'
-;
+export type FeatureList =
+    | 'fileUploads'
+    | 'themeEditing'
+    | 'multipleNuzlockes'
+    | 'copyingPokemon'
+    | 'temTemSupport';
 
 export type Features = { [F in FeatureList]?: boolean | undefined };
 

@@ -75,8 +75,10 @@ const iconSource = {
     },
 };
 
-type IconURLArgs = Pick<Pokemon, 'id' | 'species' | 'forme' | 'shiny' | 'gender' | 'customIcon' | 'egg'>;
-
+type IconURLArgs = Pick<
+Pokemon,
+'id' | 'species' | 'forme' | 'shiny' | 'gender' | 'customIcon' | 'egg'
+>;
 
 export const getIconURL = ({ id, species, forme, shiny, gender, customIcon, egg }: IconURLArgs) => {
     const baseURL = 'icons/pokemon/';
@@ -89,9 +91,9 @@ export const getIconURL = ({ id, species, forme, shiny, gender, customIcon, egg 
     if (species === 'Egg' || egg) return `${baseURL}egg.png`;
     if (customIcon) return customIcon;
 
-    return `${baseURL}${isShiny}/${isFemaleSpecific}${formatSpeciesName(species)}${getIconFormeSuffix(
-        forme as keyof typeof Forme
-    )}.png`;
+    return `${baseURL}${isShiny}/${isFemaleSpecific}${formatSpeciesName(
+        species,
+    )}${getIconFormeSuffix(forme as keyof typeof Forme)}.png`;
 };
 
 @DragSource('ICON', iconSource as any, (connect, monitor) => ({
@@ -125,20 +127,26 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
             customIcon,
             includeTitle,
         } = this.props;
-        const imageStyle = { maxHeight: '100%', opacity: hidden ? 0.5 : 1, height: '32px', imageRendering: styles?.iconRendering };
+        const imageStyle = {
+            maxHeight: '100%',
+            opacity: hidden ? 0.5 : 1,
+            height: '32px',
+            imageRendering: styles?.iconRendering,
+        };
         return connectDragSource!(
             <div
-                role='icon'
-                onClick={e => {
+                role="icon"
+                onClick={(e) => {
                     e.preventDefault();
                     onClick && onClick();
                 }}
                 id={id}
                 title={includeTitle ? species : undefined}
                 style={style}
-                className={`${
-                    id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'
-                } ${className || ''} ${isDragging ? 'opacity-medium' : ''}`}>
+                className={`${id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'} ${
+                    className || ''
+                } ${isDragging ? 'opacity-medium' : ''}`}
+            >
                 <img
                     style={imageStyle}
                     alt={species}
@@ -167,11 +175,12 @@ const mapDispatchToProps = (
     };
 };
 
-export const PokemonIcon: React.ComponentClass<
-Omit<PokemonIconProps, 'onClick' | 'selectedId'>
-> = connect(
-    (state: Pick<State, keyof State>) => ({ selectedId: state.selectedId, styles: state.style, }),
+export const PokemonIcon: React.ComponentClass<Omit<
+PokemonIconProps,
+'onClick' | 'selectedId'
+>> = connect(
+    (state: Pick<State, keyof State>) => ({ selectedId: state.selectedId, styles: state.style }),
     mapDispatchToProps,
     null,
-    {pure: false},
+    { pure: false },
 )(PokemonIconBase as any);

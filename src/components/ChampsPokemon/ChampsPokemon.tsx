@@ -79,11 +79,12 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
                         margin: 0,
                         padding: 0,
                     }),
-                )}>
+                )}
+            >
                 {this.props.useSprites ? (
                     this.getPokemonImage()
                 ) : (
-                    <PokemonIcon {...this.props as any} />
+                    <PokemonIcon {...(this.props as any)} />
                 )}
                 {this.props.showNickname && this.props.nickname}
                 {this.props.showGender && GenderElement(this.props.gender)}

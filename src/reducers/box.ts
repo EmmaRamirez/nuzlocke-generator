@@ -30,18 +30,18 @@ export function box(
 ) {
     switch (action.type) {
         case EDIT_BOX:
-            const box = state.find(box => box.id === action.id);
-            const newBox = {...box, ...action.edits};
-            return [...state.filter(box => box.id !== action.id), newBox];
+            const box = state.find((box) => box.id === action.id);
+            const newBox = { ...box, ...action.edits };
+            return [...state.filter((box) => box.id !== action.id), newBox];
         case REPLACE_STATE:
             return action.replaceWith.box;
         case ADD_BOX:
-            const {name, background = 'grass-meadow', inheritFrom} = action;
+            const { name, background = 'grass-meadow', inheritFrom } = action;
             const id = state.length;
             const position = state.length + 1;
             return [...state, { id, name, position, background, inheritFrom }];
         case DELETE_BOX:
-            return state.filter(box => box.id !== action.id);
+            return state.filter((box) => box.id !== action.id);
         case VERSION_0_0_6_BETA:
             return defaultBoxes;
         default:

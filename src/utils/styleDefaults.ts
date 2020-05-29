@@ -6,10 +6,10 @@ export type RulesLocation = 'inside trainer section' | 'bottom' | 'top';
 export type ItemStyle = 'outer glow' | 'round' | 'square' | 'text';
 
 export interface StatsOptions {
-    averageLevel: boolean,
-    mostCommonKillers: boolean,
-    mostCommonTypes: boolean,
-    shiniesCaught: boolean,
+    averageLevel: boolean;
+    mostCommonKillers: boolean;
+    mostCommonTypes: boolean;
+    shiniesCaught: boolean;
 }
 
 export interface Styles {

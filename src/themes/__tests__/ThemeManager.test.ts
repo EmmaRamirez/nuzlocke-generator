@@ -19,7 +19,7 @@ describe('ThemeManager', () => {
     describe('HexagonsTheme', () => {
         it('#createStyles', () => {
             const theme = new HexagonsTheme();
-            expect(theme.createStyles({})).toEqual({ChampsPokemon: {}});
+            expect(theme.createStyles({})).toEqual({ ChampsPokemon: {} });
         });
     });
 });

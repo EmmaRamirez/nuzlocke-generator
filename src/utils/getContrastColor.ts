@@ -1,6 +1,6 @@
 import * as Color from 'color';
 
-export const getContrastColor = color => {
+export const getContrastColor = (color) => {
     let c;
     try {
         c = Color(color);

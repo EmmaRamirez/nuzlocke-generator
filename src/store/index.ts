@@ -11,13 +11,13 @@ import { Store } from 'react-redux';
 const pkg = require('../../package.json');
 
 const migrations = {
-    '0.0.6-beta': state => {
+    '0.0.6-beta': (state) => {
         return {
             ...state,
             box: undefined,
         };
     },
-    '0.0.11-beta': state => {
+    '0.0.11-beta': (state) => {
         return {
             ...state,
             trainer: {
@@ -26,14 +26,14 @@ const migrations = {
             },
         };
     },
-    '1.1.0': state => ({
+    '1.1.0': (state) => ({
         ...state,
         customMoveMap: [],
     }),
-    '1.1.1': state => ({
+    '1.1.1': (state) => ({
         ...state,
-        customMoveMap: []
-    })
+        customMoveMap: [],
+    }),
 };
 
 const config = {

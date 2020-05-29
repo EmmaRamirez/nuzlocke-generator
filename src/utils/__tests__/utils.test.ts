@@ -24,9 +24,8 @@ import { getMoveType } from 'utils/getMoveType';
 import { getDisplayNameForTest } from 'utils/getDisplayNameForTest';
 import { getGameRegion, Region } from 'utils/getGameRegion';
 
-const objectPropertiesWhere = (obj: object, filter: any) => Array.from(
-    Object.values(obj)
-).filter(filter).length;
+const objectPropertiesWhere = (obj: object, filter: any) =>
+    Array.from(Object.values(obj)).filter(filter).length;
 
 expect.extend({
     toBeOneOf(received, argument) {
@@ -34,14 +33,12 @@ expect.extend({
         const pass = validValues.includes(received);
         if (pass) {
             return {
-                message: () => (
-                    `expected ${received} not to be one of [${validValues.join(', ')}]`
-                ),
+                message: () => `expected ${received} not to be one of [${validValues.join(', ')}]`,
                 pass: true,
             };
         }
         return {
-            message: () => (`expected ${received} to be one of [${validValues.join(', ')}]`),
+            message: () => `expected ${received} to be one of [${validValues.join(', ')}]`,
             pass: false,
         };
     },
@@ -90,8 +87,8 @@ describe('styleDefaults', () => {
         expect(styleDefaults.editorDarkMode).toBe(false);
         expect(typeof styleDefaults).toBe('object');
         expect(styleDefaults.imageStyle).toBe('round');
-        expect(objectPropertiesWhere(styleDefaults, p => p === 'round')).toBe(1);
-        expect(objectPropertiesWhere(styleDefaults, p => p)).toBe(25);
+        expect(objectPropertiesWhere(styleDefaults, (p) => p === 'round')).toBe(1);
+        expect(objectPropertiesWhere(styleDefaults, (p) => p)).toBe(25);
     });
 });
 
@@ -100,9 +97,18 @@ describe('matchSpeciesToType', () => {
         expect(matchSpeciesToTypes('Bulbasaur')).toEqual(['Grass', 'Poison']);
         expect(matchSpeciesToTypes('Charizard')).toEqual(['Fire', 'Flying']);
         expect(matchSpeciesToTypes('Raichu', Forme.Alolan)).toEqual(['Electric', 'Psychic']);
-        expect(matchSpeciesToTypes('Rattata', Forme.Alolan, Generation.Gen7)).toEqual(['Dark', 'Normal']);
-        expect(matchSpeciesToTypes('Clefairy', undefined, Generation.Gen1)).toEqual(['Normal', 'Normal']);
-        expect(matchSpeciesToTypes('Togetic', undefined, Generation.Gen1)).toEqual(['Normal', 'Flying']);
+        expect(matchSpeciesToTypes('Rattata', Forme.Alolan, Generation.Gen7)).toEqual([
+            'Dark',
+            'Normal',
+        ]);
+        expect(matchSpeciesToTypes('Clefairy', undefined, Generation.Gen1)).toEqual([
+            'Normal',
+            'Normal',
+        ]);
+        expect(matchSpeciesToTypes('Togetic', undefined, Generation.Gen1)).toEqual([
+            'Normal',
+            'Flying',
+        ]);
         expect(matchSpeciesToTypes('Shaymin', 'Sky' as Forme)).toEqual(['Grass', 'Flying']);
         listOfPokemon.map((pokemon, index) => {
             expect(matchSpeciesToTypes(pokemon).length).toBeGreaterThan(0);
@@ -110,7 +116,7 @@ describe('matchSpeciesToType', () => {
     });
 
     xit('works for every pokemon', () => {
-        const noMatches = listOfPokemon.filter(pokemon => matchSpeciesToTypes(pokemon) == null);
+        const noMatches = listOfPokemon.filter((pokemon) => matchSpeciesToTypes(pokemon) == null);
         console.log(noMatches.length);
         console.log(noMatches);
         expect(false).toBe(true);
@@ -193,19 +199,25 @@ describe('handleMoveGenerationExceptions', () => {
         const move = 'Sand Attack';
         const generation = Generation.Gen1;
         const originalType = Types.Ground;
-        expect(handleMovesGenerationsExceptions({ move, generation, originalType })).toBe(Types.Normal);
+        expect(handleMovesGenerationsExceptions({ move, generation, originalType })).toBe(
+            Types.Normal,
+        );
     });
     it('works for Charm - Gen 3', () => {
         const move = 'Charm';
         const generation = Generation.Gen3;
         const originalType = Types.Fairy;
-        expect(handleMovesGenerationsExceptions({ move, generation, originalType })).toBe(Types.Normal);
+        expect(handleMovesGenerationsExceptions({ move, generation, originalType })).toBe(
+            Types.Normal,
+        );
     });
     it('works for Ember - Gen 7', () => {
         const move = 'Ember';
         const generation = Generation.Gen7;
         const originalType = Types.Fire;
-        expect(handleMovesGenerationsExceptions({ move, generation, originalType })).toBe(originalType);
+        expect(handleMovesGenerationsExceptions({ move, generation, originalType })).toBe(
+            originalType,
+        );
     });
 });
 
@@ -255,16 +267,16 @@ describe(getDeepObject.name, () => {
                 abra: {
                     kadabra: {
                         alakazam: true,
-                    }
-                }
-            }
+                    },
+                },
+            },
         };
-        expect(getDeepObject(subject, 'alakazam')).toEqual({alakazam: true});
+        expect(getDeepObject(subject, 'alakazam')).toEqual({ alakazam: true });
     });
 
     it('returns null if the key does not exist', () => {
         const subject = {
-            pokemon: {}
+            pokemon: {},
         };
         expect(getDeepObject(subject, 'arcanine')).toEqual(null);
     });

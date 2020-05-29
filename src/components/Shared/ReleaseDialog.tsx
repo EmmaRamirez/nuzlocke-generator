@@ -14,25 +14,29 @@ export interface ReleaseDialogProps {
     style: Styles;
 }
 
-export class ReleaseDialog extends React.Component<IDialogProps & ReleaseDialogProps, {seePrevious?: boolean}> {
+export class ReleaseDialog extends React.Component<
+IDialogProps & ReleaseDialogProps,
+{ seePrevious?: boolean }
+> {
     public state = {
         seePrevious: false,
     };
 
     public render() {
-        const {seePrevious} = this.state;
+        const { seePrevious } = this.state;
 
         return (
             <Dialog
                 isOpen={this.props.isOpen}
                 onClose={this.props.onClose}
-                icon='document'
+                icon="document"
                 title={`Release Notes ${pkg.version}`}
                 className={`release-dialog ${
                     this.props.style.editorDarkMode ? 'pt-dark' : 'pt-light'
-                }`}>
+                }`}
+            >
                 <div className={Classes.DIALOG_BODY}>
-                    <div className='release-notes-wrapper'>
+                    <div className="release-notes-wrapper">
                         <h3
                             className={cx(
                                 classWithDarkTheme(
@@ -40,21 +44,30 @@ export class ReleaseDialog extends React.Component<IDialogProps & ReleaseDialogP
                                     'heading',
                                     this.props.style.editorDarkMode,
                                 ),
-                            )}>
+                            )}
+                        >
                             {pkg.version}{' '}
-                            <img style={{ display: 'inline' }} alt='Croagunk' src={croagunk} />
+                            <img style={{ display: 'inline' }} alt="Croagunk" src={croagunk} />
                         </h3>
                         <ReactMarkdown
-                            className='release-notes'
+                            className="release-notes"
                             source={generateReleaseNotes(pkg.version)}
                         />
-                        <Button onClick={e => this.setState({seePrevious: !this.state.seePrevious})} icon={seePrevious ? 'symbol-triangle-up' : 'symbol-triangle-down'}>Previous Relase Notes</Button>
-                        {seePrevious && tail(Object.keys(releaseNotes).reverse()).map(key => {
-                            return <ReactMarkdown
-                                className='release-notes'
-                                source={`#### ${key}\n${  generateReleaseNotes(key)}`}
-                            />;
-                        })}
+                        <Button
+                            onClick={(e) => this.setState({ seePrevious: !this.state.seePrevious })}
+                            icon={seePrevious ? 'symbol-triangle-up' : 'symbol-triangle-down'}
+                        >
+                            Previous Relase Notes
+                        </Button>
+                        {seePrevious &&
+                            tail(Object.keys(releaseNotes).reverse()).map((key) => {
+                                return (
+                                    <ReactMarkdown
+                                        className="release-notes"
+                                        source={`#### ${key}\n${generateReleaseNotes(key)}`}
+                                    />
+                                );
+                            })}
                     </div>
                 </div>
             </Dialog>

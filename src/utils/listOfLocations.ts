@@ -1,6 +1,3 @@
-
-
-
 export const locations = {
     Kanto: [
         'Route 1',
@@ -563,16 +560,8 @@ export const locations = {
         'Galar Mine No. 2',
         'Glimwood Tangle',
         'Slumbering Weald',
-    ]
-
+    ],
 };
-
-
-
-
-
-
-
 
 export const listOfLocations = [
     ...locations.Kanto,

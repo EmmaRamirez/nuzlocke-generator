@@ -16,7 +16,7 @@ export interface State {
     style: Styles;
     theme: Theme;
     trainer: Trainer;
-    customMoveMap: {move: string, type: string, id: string}[];
-    customTypes: {type: string, color: string, id: string}[];
-    stats: {id?: string; key?: string, value?: string}[];
+    customMoveMap: { move: string; type: string; id: string }[];
+    customTypes: { type: string; color: string; id: string }[];
+    stats: { id?: string; key?: string; value?: string }[];
 }

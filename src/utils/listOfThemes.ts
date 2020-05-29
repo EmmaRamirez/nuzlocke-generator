@@ -1,4 +1,3 @@
-
 export enum TemplateName {
     DefaultLight = 'Default Light',
     DefaultDark = 'Default Dark',

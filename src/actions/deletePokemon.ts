@@ -21,4 +21,3 @@ export const clearBox = (name: string): Action<CLEAR_BOX> => {
         name,
     };
 };
-

@@ -21,7 +21,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, { hasErro
     public render(): React.ReactNode {
         if (this.state.hasError) {
             return (
-                <div className='error-boundary'>
+                <div className="error-boundary">
                     {this.props.errorMessage || 'Something went wrong.'}
                 </div>
             );

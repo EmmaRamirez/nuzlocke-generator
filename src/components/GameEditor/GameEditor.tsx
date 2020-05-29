@@ -31,7 +31,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
         };
     }
 
-    private onInput = e => {
+    private onInput = (e) => {
         this.props.editGame({ name: e.target.value });
         this.props.editStyle({
             bgColor: gameOfOriginToColor(e.target.value),
@@ -39,11 +39,11 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
         this.props.resetCheckpoints(e.target.value);
     };
 
-    private onInputName = e => {
+    private onInputName = (e) => {
         this.props.editGame({ customName: e.target.value });
     };
 
-    private toggleDialog = _ => this.setState({ isOpen: !this.state.isOpen });
+    private toggleDialog = (_) => this.setState({ isOpen: !this.state.isOpen });
 
     public render() {
         const { game } = this.props;
@@ -53,39 +53,68 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
         return (
             <>
                 <RED isOpen={this.state.isOpen} onClose={this.toggleDialog} />
-                <div className='game-editor base-editor'>
+                <div className="game-editor base-editor">
                     <h4 style={{ display: 'flex', alignContent: 'flex-end' }}>Game</h4>
                     <div style={gameSubEditorStyle}>
                         <div>
-                            <label className='pt-inline' style={{fontSize: '80%', marginRight: '.5rem'}}>Version</label>
-                            <div className='pt-select'>
+                            <label
+                                className="pt-inline"
+                                style={{ fontSize: '80%', marginRight: '.5rem' }}
+                            >
+                                Version
+                            </label>
+                            <div className="pt-select">
                                 <select onChange={this.onInput} value={game.name}>
-                                    {listOfGames.map(game => <option key={game}>{game}</option>)}
+                                    {listOfGames.map((game) => (
+                                        <option key={game}>{game}</option>
+                                    ))}
                                 </select>
                             </div>
                         </div>
                         {FEATURES.multipleNuzlockes ? (
                             <Popover minimal={true} content={<Menu />} position={Position.BOTTOM}>
-                                <Button icon='exchange'>Switch Nuzlockes</Button>
+                                <Button icon="exchange">Switch Nuzlockes</Button>
                             </Popover>
                         ) : null}
-                        <Button onClick={this.toggleDialog} icon='list' intent={Intent.PRIMARY}>
+                        <Button onClick={this.toggleDialog} icon="list" intent={Intent.PRIMARY}>
                             Modify Rules
                         </Button>
                     </div>
                     <div style={gameSubEditorStyle}>
-                        <div style={{fontSize: '80%'}}>
-                            <label className='pt-inline' style={{marginRight: 'calc(.75rem + 2px)'}}>Name</label>
-                            <input onChange={this.onInputName} value={game.customName} autoComplete={'false'} size={20} className='pt-input' type='text' placeholder={game.name} />
-                        </div>
-                        {canEnableTemTem && <Button style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}} className={Classes.MINIMAL}>
-                            <Switch
-                                // style={{...darkModeStyle(this.props.style.editorDarkMode), marginBottom: 0}}
-                                label='TemTem Mode'
-                                checked={this.props.editor.temtemMode}
-                                onChange={e => this.props.toggleTemtemMode()}
+                        <div style={{ fontSize: '80%' }}>
+                            <label
+                                className="pt-inline"
+                                style={{ marginRight: 'calc(.75rem + 2px)' }}
+                            >
+                                Name
+                            </label>
+                            <input
+                                onChange={this.onInputName}
+                                value={game.customName}
+                                autoComplete={'false'}
+                                size={20}
+                                className="pt-input"
+                                type="text"
+                                placeholder={game.name}
                             />
-                        </Button>}
+                        </div>
+                        {canEnableTemTem && (
+                            <Button
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                }}
+                                className={Classes.MINIMAL}
+                            >
+                                <Switch
+                                    // style={{...darkModeStyle(this.props.style.editorDarkMode), marginBottom: 0}}
+                                    label="TemTem Mode"
+                                    checked={this.props.editor.temtemMode}
+                                    onChange={(e) => this.props.toggleTemtemMode()}
+                                />
+                            </Button>
+                        )}
                     </div>
                 </div>
             </>
@@ -93,10 +122,13 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
     }
 }
 
-export const GameEditor = connect((state: Pick<State, keyof State>) => ({ game: state.game, editor: state.editor }), {
-    editGame,
-    editStyle,
-    changeEditorSize,
-    resetCheckpoints,
-    toggleTemtemMode,
-})(GameEditorBase as any);
+export const GameEditor = connect(
+    (state: Pick<State, keyof State>) => ({ game: state.game, editor: state.editor }),
+    {
+        editGame,
+        editStyle,
+        changeEditorSize,
+        resetCheckpoints,
+        toggleTemtemMode,
+    },
+)(GameEditorBase as any);

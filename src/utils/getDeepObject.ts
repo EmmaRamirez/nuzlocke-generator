@@ -2,7 +2,7 @@
 // https://stackoverflow.com/questions/15523514/find-by-key-deep-in-a-nested-object
 export function getDeepObject(theObject, n) {
     let result = null;
-    if ( theObject instanceof Array) {
+    if (theObject instanceof Array) {
         // tslint:disable-next-line:prefer-for-of
         for (let i = 0; i < theObject.length; i++) {
             result = getDeepObject(theObject[i], n);

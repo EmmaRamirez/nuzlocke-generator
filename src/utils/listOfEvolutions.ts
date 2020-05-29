@@ -15,5 +15,5 @@ export const EvolutionTree: EvolutionTree = {
     Metapod: ['Butterfree'],
     Weedle: ['Kakuna'],
     Kakuna: ['Beedrill'],
-    Eevee: ['Jolteon', 'Flareon', 'Vaporeon', 'Sylveon', 'Umbreon', 'Espeon', 'Leafeon', 'Glaceon']
+    Eevee: ['Jolteon', 'Flareon', 'Vaporeon', 'Sylveon', 'Umbreon', 'Espeon', 'Leafeon', 'Glaceon'],
 };

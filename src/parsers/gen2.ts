@@ -5,32 +5,32 @@ import { parse } from 'querystring';
 
 const OFFSETS = {
     PLAYER_ID: [0x2009, 0x2009 + 2],
-    PLAYER_NAME: [0x200B, 0x200B + 11],
+    PLAYER_NAME: [0x200b, 0x200b + 11],
     RIVAL_NAME: [0x2013, 0x2013 + 11],
     TIME_PLAYED: [0x2053, 0x2053 + 4],
-    JOHTO_BADGES: [0x23E4, 0x23E4 + 1],
+    JOHTO_BADGES: [0x23e4, 0x23e4 + 1],
     CURRENT_PC_BOX_NUMBER: [0x2724, 0x2724 + 1],
-    TEAM_POKEMON_LIST: [0x288A, 0x288A + 428],
-    CURRENT_BOX_POKEMON_LIST: [0x2D6C, 0x2D6C + 1102],
-    PC_BOXES_POKEMON_LIST: [0x4000, 0x4000 + (1102 * 14)],
-    POKEMON_NAMES: [0x1B0B74, 0x1B0B74 + (256 * 10)],
-
+    TEAM_POKEMON_LIST: [0x288a, 0x288a + 428],
+    CURRENT_BOX_POKEMON_LIST: [0x2d6c, 0x2d6c + 1102],
+    PC_BOXES_POKEMON_LIST: [0x4000, 0x4000 + 1102 * 14],
+    POKEMON_NAMES: [0x1b0b74, 0x1b0b74 + 256 * 10],
 };
 
 const CRYSTAL_OFFSETS = {
-    JOHTO_BADGES: [0x23E5, 0x23E5 + 1],
+    JOHTO_BADGES: [0x23e5, 0x23e5 + 1],
     CURRENT_PC_BOX_NUMBER: [0x2700, 0x2700 + 1],
     TEAM_POKEMON_LIST: [0x2865, 0x2865 + 428],
-    CURRENT_BOX_POKEMON_LIST: [0x2D10, 0x2D10 + 1102],
-    PLAYER_GENDER: [0x3E3D, 0x3E3D + 1],
-    POKEMON_NAMES: [0x53384, 0x53384 + (256 * 10)],
-
+    CURRENT_BOX_POKEMON_LIST: [0x2d10, 0x2d10 + 1102],
+    PLAYER_GENDER: [0x3e3d, 0x3e3d + 1],
+    POKEMON_NAMES: [0x53384, 0x53384 + 256 * 10],
 };
 
 const readCaughtData = (data) => {
     const binary = (data >>> 0).toString(2);
     const timeSlice = binary.slice(0, 1);
-    const timeHex = parseInt(timeSlice[0] + timeSlice[1], 2).toString(16).toUpperCase();
+    const timeHex = parseInt(timeSlice[0] + timeSlice[1], 2)
+        .toString(16)
+        .toUpperCase();
     const timeMap = {
         0x01: 'morning',
         0x02: 'day',
@@ -40,13 +40,9 @@ const readCaughtData = (data) => {
 
     const OtGender = binary.slice(9, 10);
     const location = binary.slice(11, 16);
-
 };
 
-
-const MOVES = {
-
-};
+const MOVES = {};
 
 const parsePartyPokemon = (buf: Buffer, boxed = false) => {
     const pokemon = Buffer.from(buf);
@@ -56,11 +52,11 @@ const parsePartyPokemon = (buf: Buffer, boxed = false) => {
         MOVES_ARRAY[pokemon[0x02]],
         MOVES_ARRAY[pokemon[0x03]],
         MOVES_ARRAY[pokemon[0x04]],
-        MOVES_ARRAY[pokemon[0x05]]
+        MOVES_ARRAY[pokemon[0x05]],
     ];
-    const friendship = pokemon[0x1B];
-    const caughtData = pokemon.slice(0x1D, 0x1D + 2);
-    const level = pokemon[0x1F];
+    const friendship = pokemon[0x1b];
+    const caughtData = pokemon.slice(0x1d, 0x1d + 2);
+    const level = pokemon[0x1f];
     const ivs = pokemon.slice(0x15, 0x15 + 2);
     const id = ivs.toString('binary');
 
@@ -72,12 +68,11 @@ const parsePartyPokemon = (buf: Buffer, boxed = false) => {
     };
 };
 
-
 const getSpeciesList = (buf: Buffer) => {
     const str: any[] = [];
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < buf.length; i++) {
-        if (buf[i] === 0xFF) {
+        if (buf[i] === 0xff) {
             break;
         } else {
             str.push(GEN_2_POKEMON_MAP[buf[i]] || 'MISSINGNO');
@@ -88,7 +83,7 @@ const getSpeciesList = (buf: Buffer) => {
 
 const getPokemonListForParty = (buf: Buffer, entries: number = 6) => {
     const party = splitUp(Buffer.from(buf), entries);
-    const pokes = party.map(box => parsePartyPokemon(box));
+    const pokes = party.map((box) => parsePartyPokemon(box));
     return pokes;
 };
 
@@ -101,12 +96,11 @@ const convertWithCharMap = (buf: Buffer, nickname = false) => {
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < buf.length; i++) {
         // tslint:disable-next-line:triple-equals
-        if (buf[i] === 0xFF || (nickname && buf[i] === 0x50)) break;
+        if (buf[i] === 0xff || (nickname && buf[i] === 0x50)) break;
         str.push(GEN_2_CHARACTER_MAP[buf[i]] || '');
     }
     return str.join('');
 };
-
 
 const makeFileSlicer = (file) => (offset: number[]) => {
     return file.slice(offset[0], offset[1]);
@@ -119,7 +113,10 @@ export const parsePokemon = (buf: Buffer) => {
     console.log(rawSpeciesList);
     const speciesList = getSpeciesList(rawSpeciesList);
     const pokemonListAddress = 0x0002;
-    const pokemonList = getPokemonListForParty(data.slice(pokemonListAddress, pokemonListAddress + 428), 6);
+    const pokemonList = getPokemonListForParty(
+        data.slice(pokemonListAddress, pokemonListAddress + 428),
+        6,
+    );
 
     return {
         entriesUsed,
@@ -133,13 +130,12 @@ export const parseGen2Save = async (file, format, isCrystal = true) => {
 
     const trainerName = convertWithCharMap(fileSlice(OFFSETS.PLAYER_NAME));
     const johtoBadges = fileSlice(OFFSETS.JOHTO_BADGES);
-    const currentPCId = isCrystal ?
-        fileSlice(CRYSTAL_OFFSETS.CURRENT_PC_BOX_NUMBER) :
-        fileSlice(OFFSETS.CURRENT_PC_BOX_NUMBER);
-    const partyPokemon = isCrystal ?
-        fileSlice(CRYSTAL_OFFSETS.TEAM_POKEMON_LIST) :
-        fileSlice(OFFSETS.TEAM_POKEMON_LIST);
-
+    const currentPCId = isCrystal
+        ? fileSlice(CRYSTAL_OFFSETS.CURRENT_PC_BOX_NUMBER)
+        : fileSlice(OFFSETS.CURRENT_PC_BOX_NUMBER);
+    const partyPokemon = isCrystal
+        ? fileSlice(CRYSTAL_OFFSETS.TEAM_POKEMON_LIST)
+        : fileSlice(OFFSETS.TEAM_POKEMON_LIST);
 
     return {
         trainer: {
@@ -149,16 +145,14 @@ export const parseGen2Save = async (file, format, isCrystal = true) => {
             money: 1000,
             badges: [],
         },
-        pokemon: [
-            ...partyPokemon,
-        ]
+        pokemon: [...partyPokemon],
     };
-
-
-
 };
 
-export const loadGen2SaveFile = async (filename: string, format: 'plain' | 'nuzlocke' = 'nuzlocke') => {
+export const loadGen2SaveFile = async (
+    filename: string,
+    format: 'plain' | 'nuzlocke' = 'nuzlocke',
+) => {
     const save = await fs.readFileSync(filename);
 
     try {

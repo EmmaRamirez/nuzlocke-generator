@@ -8,7 +8,15 @@ import { Box as BoxType } from 'models';
 import { PokemonByFilter } from 'components/Shared';
 import { DropTarget, DragSource, ConnectDragSource, ConnectDropTarget } from 'react-dnd';
 import { store } from 'store';
-import { Icon, Popover, PopoverInteractionKind, Menu, MenuItem, Position, Button } from '@blueprintjs/core';
+import {
+    Icon,
+    Popover,
+    PopoverInteractionKind,
+    Menu,
+    MenuItem,
+    Position,
+    Button,
+} from '@blueprintjs/core';
 import { connect } from 'react-redux';
 
 const boxSource = {
@@ -21,7 +29,6 @@ const boxSource = {
     hover(props, monitor) {
         return { isHovering: monitor.isOver({ shallow: true }) };
     },
-
 };
 
 const boxSourceDrag = {
@@ -30,7 +37,7 @@ const boxSourceDrag = {
     },
     isDragging(props, monitor) {
         return props;
-    }
+    },
 };
 
 export type BoxProps = {
@@ -84,7 +91,7 @@ export const wallpapers = [
     {
         name: 'Snow',
         background: 'snow',
-    }
+    },
 ];
 
 @DropTarget('ICON', boxSource, (connect, monitor) => ({
@@ -105,7 +112,7 @@ export class BoxBase extends React.Component<BoxProps> {
     };
 
     private toggleCollapse = (isCollapsed, id) => () => {
-        this.props.editBox(id, {collapsed: !isCollapsed});
+        this.props.editBox(id, { collapsed: !isCollapsed });
     };
 
     private getDefault(name) {
@@ -118,26 +125,36 @@ export class BoxBase extends React.Component<BoxProps> {
 
     private getBoxBackground(background, name) {
         const bg = background || this.getDefault(name);
-        return (bg && bg.startsWith('http')) ? `url(${bg})` : `url(./assets/img/box/${bg}.png)`;
+        return bg && bg.startsWith('http') ? `url(${bg})` : `url(./assets/img/box/${bg}.png)`;
     }
 
     public render() {
-        const { pokemon, inheritFrom, name, id, connectDropTarget, canDrop, background } = this.props;
+        const {
+            pokemon,
+            inheritFrom,
+            name,
+            id,
+            connectDropTarget,
+            canDrop,
+            background,
+        } = this.props;
         const filter = name === 'All' ? undefined : name;
         const isCollapsed = this.props.collapsed;
 
-        const collapsedStyle = isCollapsed ? {
-            height: '54px',
-            overflow: 'hidden',
-            webkitMaskImage: 'linear-gradient(to top, rgba(0, 0, 0, 0.33) 25%, black 75%)',
-            marginBottom: '-18px',
-        } : {};
+        const collapsedStyle = isCollapsed
+            ? {
+                height: '54px',
+                overflow: 'hidden',
+                webkitMaskImage: 'linear-gradient(to top, rgba(0, 0, 0, 0.33) 25%, black 75%)',
+                marginBottom: '-18px',
+            }
+            : {};
 
         return connectDropTarget!(
             <div
                 style={{
                     backgroundImage: this.getBoxBackground(background, name),
-                    ...collapsedStyle
+                    ...collapsedStyle,
                 }}
                 className={`box ${name.replace(/\s/g, '-')}-box`}
             >
@@ -146,18 +163,51 @@ export class BoxBase extends React.Component<BoxProps> {
                     minimal
                     interactionKind={PopoverInteractionKind.CLICK_TARGET_ONLY}
                     popoverClassName={'no-list-item-types'}
-                    content={<>
-                        {/*<MenuItem className='pt-fill' text='Edit' />*/}
-                        <MenuItem text='Change Wallpaper'>
-                            {wallpapers.map(wall => <MenuItem onClick={this.editBox(id, {background: wall.background})} text={wall.name} />)}
-                        </MenuItem>
-                        <MenuItem text='Change Type'>
-                            {['Team', 'Boxed', 'Dead', 'Champs'].map(b => <MenuItem onClick={this.editBox(id, {inheritFrom: b})} text={b === inheritFrom ? <><Icon icon='small-tick' /> {b}</> : b} />)}
-                        </MenuItem>
-                        <MenuItem onClick={this.toggleCollapse(isCollapsed, id)} text={isCollapsed ? 'Expand Box' : 'Collapse Box'} />
-                        <MenuItem onClick={this.clearBox(name)} className='pt-fill' text={'Clear Box'} />
-                        {!['Team', 'Boxed', 'Dead', 'Champs'].includes(name) && <MenuItem onClick={this.deleteBox(id)} className='pt-fill' text={'Delete Box'} />}
-                    </>}
+                    content={
+                        <>
+                            {/*<MenuItem className='pt-fill' text='Edit' />*/}
+                            <MenuItem text="Change Wallpaper">
+                                {wallpapers.map((wall) => (
+                                    <MenuItem
+                                        onClick={this.editBox(id, { background: wall.background })}
+                                        text={wall.name}
+                                    />
+                                ))}
+                            </MenuItem>
+                            <MenuItem text="Change Type">
+                                {['Team', 'Boxed', 'Dead', 'Champs'].map((b) => (
+                                    <MenuItem
+                                        onClick={this.editBox(id, { inheritFrom: b })}
+                                        text={
+                                            b === inheritFrom ? (
+                                                <>
+                                                    <Icon icon="small-tick" /> {b}
+                                                </>
+                                            ) : (
+                                                b
+                                            )
+                                        }
+                                    />
+                                ))}
+                            </MenuItem>
+                            <MenuItem
+                                onClick={this.toggleCollapse(isCollapsed, id)}
+                                text={isCollapsed ? 'Expand Box' : 'Collapse Box'}
+                            />
+                            <MenuItem
+                                onClick={this.clearBox(name)}
+                                className="pt-fill"
+                                text={'Clear Box'}
+                            />
+                            {!['Team', 'Boxed', 'Dead', 'Champs'].includes(name) && (
+                                <MenuItem
+                                    onClick={this.deleteBox(id)}
+                                    className="pt-fill"
+                                    text={'Delete Box'}
+                                />
+                            )}
+                        </>
+                    }
                 >
                     <span
                         style={{
@@ -174,13 +224,14 @@ export class BoxBase extends React.Component<BoxProps> {
                             minWidth: '5rem',
                             cursor: 'pointer',
                             userSelect: 'none',
-                        }}>
-                        <Icon style={{transform: 'rotate(90deg)'}} icon='more' />
+                        }}
+                    >
+                        <Icon style={{ transform: 'rotate(90deg)' }} icon="more" />
                         {name}
                     </span>
                 </Popover>
                 <PokemonByFilter team={pokemon} filter={filter} />
-            </div>
+            </div>,
         );
     }
 }
@@ -193,5 +244,5 @@ export const Box = connect(
         deleteBox,
     },
     null,
-    {pure: false}
+    { pure: false },
 )(BoxBase);

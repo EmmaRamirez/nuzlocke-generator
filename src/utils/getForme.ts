@@ -1,4 +1,4 @@
-export const getForme = forme => {
+export const getForme = (forme) => {
     if (forme === 'Alolan') {
         return '-a';
     }

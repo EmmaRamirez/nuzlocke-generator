@@ -31,11 +31,15 @@ const Result = Loadable({
     },
 });
 
-export function AppBase ({style}: AppProps) {
+export function AppBase({ style }: AppProps) {
     return (
-        <div className='app' role='main' style={{
-            background: style.editorDarkMode ? '#111' : '#fff',
-        }}>
+        <div
+            className="app"
+            role="main"
+            style={{
+                background: style.editorDarkMode ? '#111' : '#fff',
+            }}
+        >
             <Hotkeys />
             <Editor />
             <Result />
@@ -43,8 +47,6 @@ export function AppBase ({style}: AppProps) {
     );
 }
 
-export const App = connect(
-    (state: Pick<State, keyof State>) => ({
-        style: state.style,
-    }),
-)(AppBase);
+export const App = connect((state: Pick<State, keyof State>) => ({
+    style: state.style,
+}))(AppBase);

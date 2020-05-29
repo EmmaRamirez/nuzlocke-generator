@@ -16,7 +16,7 @@ export const PokemonFixtures = {
         species: 'Dragonite',
         nickname: 'Buff the Dragon',
         types: [Types.Dragon, Types.Flying],
-        moves: ['Outrage', 'Wing Attack', 'Flamethrower', 'Blizzard']
+        moves: ['Outrage', 'Wing Attack', 'Flamethrower', 'Blizzard'],
     },
     MegaMewtwoX: {
         ...generateEmptyPokemon(),
@@ -44,11 +44,16 @@ export const PokemonFixtures = {
     },
 };
 
-export const TeamFixture = [PokemonFixtures.Pikachu, PokemonFixtures.Dragonite, PokemonFixtures.MegaMewtwoX, PokemonFixtures.ShinyCorsola];
+export const TeamFixture = [
+    PokemonFixtures.Pikachu,
+    PokemonFixtures.Dragonite,
+    PokemonFixtures.MegaMewtwoX,
+    PokemonFixtures.ShinyCorsola,
+];
 
 export const BoxedFixtures = {
     Pikachu: {
         ...PokemonFixtures.Pikachu,
         status: 'Dead',
-    }
+    },
 };

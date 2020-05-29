@@ -22,6 +22,7 @@ const mapDispatchToProps = (dispatch: Dispatch<State>, ownProps: TrainerInfoEdit
     };
 };
 
-export const LinkedTrainerInfoEditField = connect(mapStateToProps, mapDispatchToProps)(
-    TrainerInfoEditField as any,
-);
+export const LinkedTrainerInfoEditField = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(TrainerInfoEditField as any);

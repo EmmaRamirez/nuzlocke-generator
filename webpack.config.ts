@@ -9,7 +9,7 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production' ? true : false;
 
-console.log(path.resolve(__dirname, 'src/index.tsx'))
+console.log(path.resolve(__dirname, 'src/index.tsx'));
 
 // tslint:disable-next-line:no-default-export
 module.exports = {
@@ -17,7 +17,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
-        chunkFilename: '[name].chunk.js'
+        chunkFilename: '[name].chunk.js',
     },
     mode: 'development',
     devtool: 'inline-source-map',
@@ -43,7 +43,7 @@ module.exports = {
         minimize: true,
         splitChunks: {
             chunks: 'all',
-        }
+        },
     },
     module: {
         rules: [
@@ -103,7 +103,7 @@ module.exports = {
         new CopyWebpackPlugin([
             { from: path.resolve(__dirname, 'src/img'), to: './img' },
             { from: path.resolve(__dirname, 'src/assets'), to: './assets' },
-            { from: path.resolve(__dirname, 'src/assets/icons'), to: './icons' }
+            { from: path.resolve(__dirname, 'src/assets/icons'), to: './icons' },
         ]),
 
         new HTMLWebpackPlugin({
@@ -114,16 +114,15 @@ module.exports = {
             'process.env.NODE_ENV': JSON.stringify('production'),
             'process.env.GH_ACCESS_TOKEN': JSON.stringify(process.env.GH_ACCESS_TOKEN),
             'process.env.ROLLBAR_ACCESS_TOKEN': JSON.stringify(process.env.ROLLBAR_ACCESS_TOKEN),
-            'PRODUCTION': JSON.stringify(true),
+            PRODUCTION: JSON.stringify(true),
             'features.themeEditing': JSON.stringify(process.env.THEME_EDITING),
             'features.fileUploads': JSON.stringify(process.env.FILE_UPLOADS),
             'features.multipleNuzlockes': JSON.stringify(process.env.MULTIPLE_NUZLOCKES),
             'features.temTemSupport': JSON.stringify(process.env.TEM_TEM_SUPPORT),
-            
         }),
 
         new ReactLoadablePlugin({
-            filename: './dist/react-lodable.json'
+            filename: './dist/react-lodable.json',
         }),
 
         new WorkboxPlugin.GenerateSW({

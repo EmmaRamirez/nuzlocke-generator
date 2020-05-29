@@ -48,41 +48,47 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
                             [Classes.DARK]: this.props.style.editorDarkMode,
                         })}
                         canOutsideClickClose={false}
-                        title='Checkpoints Editor'
-                        icon='badge'
-                        style={{ width: '46rem' }}>
+                        title="Checkpoints Editor"
+                        icon="badge"
+                        style={{ width: '46rem' }}
+                    >
                         <div className={Classes.DIALOG_BODY}>
-                            <CheckpointsEditor
-                                checkpoints={this.props.checkpoints}
-                            />
+                            <CheckpointsEditor checkpoints={this.props.checkpoints} />
                         </div>
                     </Dialog>
                 ) : null}
                 <TrainerInfoEditField
-                    label='Checkpoints'
-                    name='badges'
-                    placeholder='...'
+                    label="Checkpoints"
+                    name="badges"
+                    placeholder="..."
                     value={''}
                     onChange={null}
-                    element={inputProps => (
+                    element={(inputProps) => (
                         <Popover
                             minimal={true}
                             content={
                                 <Menu>
-                                    {this.props.checkpoints.map(badge => (
+                                    {this.props.checkpoints.map((badge) => (
                                         <Checkbox
                                             onChange={(e: any) => {
-                                                if (!e.target.checked || trainerBadges.some(b => b.name === badge.name)) {
+                                                if (
+                                                    !e.target.checked ||
+                                                    trainerBadges.some((b) => b.name === badge.name)
+                                                ) {
                                                     this.props.editTrainer({
-                                                        badges: trainerBadges.filter(b => b.name !== badge.name)
+                                                        badges: trainerBadges.filter(
+                                                            (b) => b.name !== badge.name,
+                                                        ),
                                                     });
                                                 } else {
                                                     this.props.editTrainer({
-                                                        badges: [...trainerBadges, badge ]
+                                                        badges: [...trainerBadges, badge],
                                                     });
                                                 }
                                             }}
-                                            checked={trainerBadges.some(b => b.name === badge.name)}
+                                            checked={trainerBadges.some(
+                                                (b) => b.name === badge.name,
+                                            )}
                                             key={badge.name}
                                             label={badge.name}
                                         />
@@ -90,18 +96,21 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
                                     {this.props.enableCheckpointsEditor ? (
                                         <Button
                                             onClick={this.toggleCheckpointsEditor}
-                                            className='pt-minimal'>
+                                            className="pt-minimal"
+                                        >
                                             Customize Checkpoints
                                         </Button>
                                     ) : null}
                                 </Menu>
                             }
-                            position={Position.BOTTOM}>
+                            position={Position.BOTTOM}
+                        >
                             <Button
                                 style={{
                                     borderRadius: 0,
                                     width: '164px',
-                                }}>
+                                }}
+                            >
                                 Select Checkpoints
                             </Button>
                         </Popover>

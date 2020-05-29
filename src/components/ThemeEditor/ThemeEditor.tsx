@@ -26,9 +26,9 @@ const modelPokemon: Pokemon = {
     causeOfDeath: 'Earthquake from Giovanni\'s Rhyhorn',
 };
 
-type ComponentNode = ITreeNode & { options?: {props: any} };
+type ComponentNode = ITreeNode & { options?: { props: any } };
 
-const componentTree: (ITreeNode & { options?: {props: any} })[] = [
+const componentTree: (ITreeNode & { options?: { props: any } })[] = [
     // {
     //     id: 0,
     //     hasCaret: false,
@@ -95,9 +95,7 @@ const componentTree: (ITreeNode & { options?: {props: any} })[] = [
         isExpanded: true,
         label: 'Dead Pokemon',
         options: {
-            props: {
-
-            }
+            props: {},
         },
         childNodes: [
             {
@@ -118,7 +116,7 @@ const componentTree: (ITreeNode & { options?: {props: any} })[] = [
                 showNickname: false,
                 useSprites: true,
                 level: 10,
-            }
+            },
         },
         childNodes: [
             {
@@ -140,7 +138,7 @@ export interface ThemEditorState {
 export const NumericValue = ({ name, value, onInput }) => (
     <div className={cx(css.componentOption)}>
         <label className={Classes.LABEL}>{name}</label>
-        <input name={name} onInput={onInput} type='text' value={value} />
+        <input name={name} onInput={onInput} type="text" value={value} />
     </div>
 );
 
@@ -154,7 +152,7 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
 
     private getCurrentNode() {
         let currentNode;
-        const selectedNodes = this.forEachNode(this.state.componentTree, node => {
+        const selectedNodes = this.forEachNode(this.state.componentTree, (node) => {
             if (node.isSelected) currentNode = node;
         });
         return currentNode;
@@ -167,7 +165,7 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
     ) => {
         const originallySelected = node.isSelected;
         if (!e.shiftKey) {
-            this.forEachNode(this.state.componentTree, n => (n.isSelected = false));
+            this.forEachNode(this.state.componentTree, (n) => (n.isSelected = false));
         }
         node.isSelected = originallySelected == null ? true : !originallySelected;
         this.setState(this.state);
@@ -185,22 +183,22 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
 
     private getComponent = (id, currentNode) => {
         if (id === 10) {
-            return <DeadPokemon
-                {...modelPokemon}
-            />;
+            return <DeadPokemon {...modelPokemon} />;
         }
 
         if (id === 12) {
-            return <ChampsPokemon
-                showGender={currentNode.options.props.showGender}
-                showNickname={currentNode.options.props.showNickname}
-                showLevel={currentNode.options.props.showLevel}
-                useSprites={currentNode.options.props.useSprites}
-                {...modelPokemon}
-            />;
+            return (
+                <ChampsPokemon
+                    showGender={currentNode.options.props.showGender}
+                    showNickname={currentNode.options.props.showNickname}
+                    showLevel={currentNode.options.props.showLevel}
+                    useSprites={currentNode.options.props.useSprites}
+                    {...modelPokemon}
+                />
+            );
         }
 
-        return <Icon icon='square' />;
+        return <Icon icon="square" />;
     };
 
     private forEachNode(nodes: ITreeNode[], callback: (node: ITreeNode) => void) {
@@ -214,7 +212,8 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
     }
 
     public render() {
-        const currentNode: ComponentNode = this.getCurrentNode() == null ? null : this.getCurrentNode();
+        const currentNode: ComponentNode =
+            this.getCurrentNode() == null ? null : this.getCurrentNode();
         if (currentNode) {
             const { label } = currentNode;
         }
@@ -224,7 +223,8 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
                 <div
                     className={cx(
                         classWithDarkTheme(css, 'header', this.props.style.editorDarkMode),
-                    )}>
+                    )}
+                >
                     <strong>Current Theme:</strong>{' '}
                     <ThemeSelect theme={this.props.style.template} />
                 </div>
@@ -234,12 +234,12 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
                             <input
                                 style={{ margin: '4px', width: 'calc(80% - 8px)' }}
                                 className={Classes.INPUT}
-                                type='text'
-                                placeholder='Filter...'
+                                type="text"
+                                placeholder="Filter..."
                             />
                             <Button
                                 style={{ width: '20%' }}
-                                icon='search'
+                                icon="search"
                                 className={Classes.MINIMAL}
                             />
                         </label>
@@ -259,12 +259,12 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
                                     'componentResult',
                                     this.props.style.editorDarkMode,
                                 ),
-                            )}>
+                            )}
+                        >
                             {currentNode &&
                                 currentNode.options &&
-                                this.getComponent(currentNode.id, currentNode)
-                            }
-                            {!currentNode && <Icon icon='grid' />}
+                                this.getComponent(currentNode.id, currentNode)}
+                            {!currentNode && <Icon icon="grid" />}
                         </div>
                         <div className={cx(css.componentOptions)}>
                             <strong>
@@ -273,21 +273,28 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
                             </strong>
 
                             <Menu>
-                                {currentNode && currentNode.options && Object.keys(currentNode.options.props).map((propKey, idx) => {
-                                    if (!currentNode.options) {
+                                {currentNode &&
+                                    currentNode.options &&
+                                    Object.keys(currentNode.options.props).map((propKey, idx) => {
+                                        if (!currentNode.options) {
+                                            return null;
+                                        }
+                                        const type = typeof currentNode.options.props[propKey];
+                                        const value = currentNode.options.props[propKey];
+                                        if (type === 'boolean') {
+                                            return (
+                                                <Switch key={idx} label={propKey} value={value} />
+                                            );
+                                        }
+                                        if (type === 'number') {
+                                            <NumericValue
+                                                name={propKey}
+                                                value={value}
+                                                onInput={null}
+                                            />;
+                                        }
                                         return null;
-                                    }
-                                    const type = typeof currentNode.options.props[propKey];
-                                    const value = currentNode.options.props[propKey];
-                                    if (type === 'boolean') {
-                                        return <Switch key={idx} label={propKey} value={value} />;
-                                    }
-                                    if (type === 'number') {
-                                        <NumericValue name={propKey} value={value} onInput={null} />;
-                                    }
-                                    return null;
-                                })}
-
+                                    })}
 
                                 {/* <>
                                 //     <div className={cx(css.componentOption)}>

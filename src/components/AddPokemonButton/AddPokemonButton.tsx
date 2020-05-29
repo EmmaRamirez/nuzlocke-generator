@@ -5,12 +5,13 @@ import { addPokemon, selectPokemon } from 'actions';
 
 export const AddPokemonButtonBase = ({ onClick }: { onClick: onClick }) => (
     <button
-        className='pt-intent-success pt-button add-new-pokemon'
-        onClick={e => {
+        className="pt-intent-success pt-button add-new-pokemon"
+        onClick={(e) => {
             e.preventDefault();
             onClick && onClick();
-        }}>
-        <span className='pt-icon-add' /> &nbsp;Add New Pokemon
+        }}
+    >
+        <span className="pt-icon-add" /> &nbsp;Add New Pokemon
     </button>
 );
 

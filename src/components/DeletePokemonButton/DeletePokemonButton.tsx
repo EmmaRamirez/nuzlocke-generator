@@ -41,47 +41,53 @@ DeletePokemonButtonProps,
         return (
             <DeletePokemonButtonContainer>
                 <Alert
-                    icon='trash'
+                    icon="trash"
                     isOpen={this.state.dialogOn && this.props.confirmation}
                     onCancel={this.toggleDialog}
-                    onConfirm={e =>
-                        this.props.deletePokemon && this.props.id && this.props.deletePokemon(this.props.id)
+                    onConfirm={(e) =>
+                        this.props.deletePokemon &&
+                        this.props.id &&
+                        this.props.deletePokemon(this.props.id)
                     }
-                    confirmButtonText='Delete Pokemon'
-                    cancelButtonText='Cancel'
-                    intent={Intent.DANGER}>
+                    confirmButtonText="Delete Pokemon"
+                    cancelButtonText="Cancel"
+                    intent={Intent.DANGER}
+                >
                     <p>
                         This will delete the currently selected Pokemon. Are you sure you want to do
                         that?
                     </p>
 
-                    <label className='pt-control pt-checkbox .modifier'>
+                    <label className="pt-control pt-checkbox .modifier">
                         <input
-                            onChange={event =>
+                            onChange={(event) =>
                                 this.props.modifyDeletionConfirmation &&
                                 this.props.modifyDeletionConfirmation(!event.target.checked)
                             }
-                            type='checkbox'
+                            type="checkbox"
                         />
-                        <span className='pt-control-indicator' />
+                        <span className="pt-control-indicator" />
                         Don't Ask Me For Confirmation Again
                     </label>
                 </Alert>
                 <Popover
                     interactionKind={PopoverInteractionKind.HOVER}
                     position={Position.TOP}
-                    content={<div style={{ padding: '1rem' }}>{`Delete Pok${accentedE}mon`}</div>}>
+                    content={<div style={{ padding: '1rem' }}>{`Delete Pok${accentedE}mon`}</div>}
+                >
                     <Icon
-                        role='button'
-                        onClick={e => {
+                        role="button"
+                        onClick={(e) => {
                             if (this.props.confirmation) {
                                 this.toggleDialog();
                             } else {
-                                this.props.deletePokemon && this.props.id && this.props.deletePokemon(this.props.id);
+                                this.props.deletePokemon &&
+                                    this.props.id &&
+                                    this.props.deletePokemon(this.props.id);
                             }
                         }}
-                        icon='trash'
-                        title='Delete Pokemon'
+                        icon="trash"
+                        title="Delete Pokemon"
                     />
                 </Popover>
             </DeletePokemonButtonContainer>

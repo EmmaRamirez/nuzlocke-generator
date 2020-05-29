@@ -32,15 +32,23 @@ CheckpointsSelectProps,
 CheckpointsSelectState
 > {
     private renderOptions(checkpoint) {
-        const {name, image} = checkpoint;
+        const { name, image } = checkpoint;
 
-        const isImageUnique = getAllBadges().map(badge => badge.image).includes(image);
+        const isImageUnique = getAllBadges()
+            .map((badge) => badge.image)
+            .includes(image);
 
         return (
             <div style={{ padding: '1rem', height: '400px', overflowY: 'auto' }}>
                 {getAllBadges().map((badge, key) => {
                     return (
-                        <Button onClick={e => this.props.onEdit({ image: badge.image }, name)} key={key} name={badge.name} style={{ display: 'block' }} className={Classes.MINIMAL}>
+                        <Button
+                            onClick={(e) => this.props.onEdit({ image: badge.image }, name)}
+                            key={key}
+                            name={badge.name}
+                            style={{ display: 'block' }}
+                            className={Classes.MINIMAL}
+                        >
                             <img
                                 className={cx(styles.checkpointImage(1))}
                                 alt={badge.name}
@@ -60,15 +68,21 @@ CheckpointsSelectState
             <Popover
                 minimal
                 interactionKind={PopoverInteractionKind.CLICK}
-                content={this.renderOptions(checkpoint)}>
+                content={this.renderOptions(checkpoint)}
+            >
                 <div
-                    role='select'
-                    className={cx(styles.checkpointSelect, Classes.SELECT, Classes.BUTTON)}>
+                    role="select"
+                    className={cx(styles.checkpointSelect, Classes.SELECT, Classes.BUTTON)}
+                >
                     <div>
                         <img
                             className={cx(styles.checkpointImage(1))}
                             alt={checkpoint.name}
-                            src={checkpoint.image.startsWith('http') ? checkpoint.image : `./img/checkpoints/${checkpoint.image}.png`}
+                            src={
+                                checkpoint.image.startsWith('http')
+                                    ? checkpoint.image
+                                    : `./img/checkpoints/${checkpoint.image}.png`
+                            }
                         />{' '}
                         {checkpoint.name}
                     </div>
@@ -98,11 +112,17 @@ CheckpointsEditorState
     public state = { badgeNumber: 0 };
 
     private addCheckpoint = (e: any) => {
-        this.setState({
-            badgeNumber: this.state.badgeNumber + 1,
-        }, () => {
-            this.props.addCheckpoint({ name: `Custom Badge ${this.state.badgeNumber}`, image: 'unknown' });
-        });
+        this.setState(
+            {
+                badgeNumber: this.state.badgeNumber + 1,
+            },
+            () => {
+                this.props.addCheckpoint({
+                    name: `Custom Badge ${this.state.badgeNumber}`,
+                    image: 'unknown',
+                });
+            },
+        );
     };
 
     private onUpload = (e: any) => {
@@ -134,26 +154,60 @@ CheckpointsEditorState
                                 'checkpointsItem',
                                 this.props.style.editorDarkMode,
                             ),
-                        )}>
+                        )}
+                    >
                         {/* <Icon icon='drag-handle-vertical' /> */}
                         <div className={cx(styles.checkpointName)}>
                             <img
                                 className={cx(styles.checkpointImage())}
                                 alt={checkpoint.name}
-                                src={checkpoint.image.startsWith('http') ? checkpoint.image : `./img/checkpoints/${checkpoint.image}.png`}
+                                src={
+                                    checkpoint.image.startsWith('http')
+                                        ? checkpoint.image
+                                        : `./img/checkpoints/${checkpoint.image}.png`
+                                }
                             />
-                            <input onChange={e => this.props.editCheckpoint({ name: e.target.value }, checkpoint.name)} className={Classes.INPUT} type='text' value={checkpoint.name} />
+                            <input
+                                onChange={(e) =>
+                                    this.props.editCheckpoint(
+                                        { name: e.target.value },
+                                        checkpoint.name,
+                                    )
+                                }
+                                className={Classes.INPUT}
+                                type="text"
+                                value={checkpoint.name}
+                            />
                         </div>
-                        <CheckpointsSelect onEdit={(i, n) => this.props.editCheckpoint(i, n)} checkpoint={checkpoint} />
+                        <CheckpointsSelect
+                            onEdit={(i, n) => this.props.editCheckpoint(i, n)}
+                            checkpoint={checkpoint}
+                        />
                         {/* <div className={cx(styles.checkpointImageUploadWrapper)}>
                             <Button icon='upload'>Upload Image</Button>
                             <input style={{ cursor: 'pointer', opacity: 0, position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} onChange={this.onUpload} type='file' />
                         </div> */}
-                        <div className='pt-input-group'>
+                        <div className="pt-input-group">
                             <Icon icon={'link'} />
-                            <input className='pt-input' placeholder='https://...' value={checkpoint.image} type='text' onChange={e => this.props.editCheckpoint({ image: e.target.value }, checkpoint.name)} />
+                            <input
+                                className="pt-input"
+                                placeholder="https://..."
+                                value={checkpoint.image}
+                                type="text"
+                                onChange={(e) =>
+                                    this.props.editCheckpoint(
+                                        { image: e.target.value },
+                                        checkpoint.name,
+                                    )
+                                }
+                            />
                         </div>
-                        <Icon style={{ cursor: 'pointer' }} onClick={e => this.props.deleteCheckpoint(checkpoint.name)} className={cx(styles.checkpointDelete)} icon='trash' />
+                        <Icon
+                            style={{ cursor: 'pointer' }}
+                            onClick={(e) => this.props.deleteCheckpoint(checkpoint.name)}
+                            className={cx(styles.checkpointDelete)}
+                            icon="trash"
+                        />
                     </li>
                 );
             })
@@ -167,7 +221,7 @@ CheckpointsEditorState
                     {this.renderCheckpoints(this.props.checkpoints)}
                 </ul>
                 <div className={cx(styles.checkpointButtons)}>
-                    <Button onClick={this.addCheckpoint} icon='plus' intent={Intent.SUCCESS}>
+                    <Button onClick={this.addCheckpoint} icon="plus" intent={Intent.SUCCESS}>
                         {' '}
                         Add Checkpoint
                     </Button>
@@ -186,5 +240,5 @@ export const CheckpointsEditor = connect(
         editCheckpoint,
         deleteCheckpoint,
         reorderCheckpoints,
-    }
+    },
 )(CheckpointsEditorBase);

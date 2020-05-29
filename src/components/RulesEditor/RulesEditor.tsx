@@ -14,25 +14,25 @@ export interface RulesEditorProps {
 }
 
 export class RulesEditor extends React.Component<RulesEditorProps> {
-
     public renderRules() {
         return this.props.rules.map((rule, index) => (
-            <li className='rules-list-item' key={index}>
-                <div className='rule-no'>{index + 1}</div>
+            <li className="rules-list-item" key={index}>
+                <div className="rule-no">{index + 1}</div>
                 <TextArea
                     defaultValue={rule}
-                    className='pt-fill'
+                    className="pt-fill"
                     onChange={(e: any) => this.props.editRule(index, e.target.value)}
-                    dir='auto'
+                    dir="auto"
                 />
                 <div
-                    role='action'
-                    onClick={e => this.props.deleteRule(index)}
-                    className='rule-delete'
-                    title='Delete Rule'>
+                    role="action"
+                    onClick={(e) => this.props.deleteRule(index)}
+                    className="rule-delete"
+                    title="Delete Rule"
+                >
                     <Icon
                         intent={Intent.DANGER}
-                        role='action'
+                        role="action"
                         style={{ cursor: 'pointer' }}
                         icon={'trash'}
                     />
@@ -44,16 +44,17 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
     public renderButtons() {
         return (
             <>
-                <Button onClick={_ => this.props.addRule()} intent={Intent.PRIMARY}>
+                <Button onClick={(_) => this.props.addRule()} intent={Intent.PRIMARY}>
                     Add Rule
                 </Button>
                 <Button
                     style={{ marginLeft: '1rem' }}
-                    onClick={_ => {
+                    onClick={(_) => {
                         this.props.resetRules();
                         this.forceUpdate();
                     }}
-                    intent={Intent.WARNING}>
+                    intent={Intent.WARNING}
+                >
                     Reset Rules
                 </Button>
             </>
@@ -68,7 +69,8 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
                         listStyleType: 'none',
                         margin: '.5rem',
                         padding: '0',
-                    }}>
+                    }}
+                >
                     {this.renderRules()}
                 </ul>
                 {this.renderButtons()}
@@ -85,9 +87,10 @@ export const RulesEditorDialogBase = (
             isOpen={props.isOpen}
             onClose={props.onClose}
             className={`rules-editor-dialog ${props.style.editorDarkMode ? 'pt-dark' : 'pt-light'}`}
-            title='Rules Editor'
-            icon='edit'>
-            <div className='pt-dialog-body'>
+            title="Rules Editor"
+            icon="edit"
+        >
+            <div className="pt-dialog-body">
                 <RulesEditor
                     rules={props.rules}
                     editRule={props.editRule}

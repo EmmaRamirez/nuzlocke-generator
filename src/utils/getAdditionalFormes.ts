@@ -50,7 +50,7 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
             'Y',
             'Z',
             '!',
-            '?'
+            '?',
         ];
     }
     if (s === 'castform') {
@@ -151,9 +151,7 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
     ) {
         return ['Alolan'];
     }
-    if (
-        s === 'meowth'
-    ) {
+    if (s === 'meowth') {
         return ['Alolan', 'Galarian'];
     }
     if (
@@ -232,7 +230,17 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
         return ['Primal'];
     }
     if (s === 'alcremie') {
-        return ['Vanilla Cream', 'Matcha Cream', 'Ruby Cream', 'Mint Cream', 'Lemon Cream', 'Salted Cream', 'Ruby Swirl', 'Caramel Swirl', 'Rainbow Swirl'];
+        return [
+            'Vanilla Cream',
+            'Matcha Cream',
+            'Ruby Cream',
+            'Mint Cream',
+            'Lemon Cream',
+            'Salted Cream',
+            'Ruby Swirl',
+            'Caramel Swirl',
+            'Rainbow Swirl',
+        ];
     }
     if (
         s === 'snorlax' ||

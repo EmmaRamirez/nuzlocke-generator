@@ -1,6 +1,16 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Button, ButtonGroup, Dialog, Callout, TextArea, Intent, Alert, Toaster, Switch } from '@blueprintjs/core';
+import {
+    Button,
+    ButtonGroup,
+    Dialog,
+    Callout,
+    TextArea,
+    Intent,
+    Alert,
+    Toaster,
+    Switch,
+} from '@blueprintjs/core';
 import { PokemonIconBase } from 'components/PokemonIcon';
 import { ErrorBoundary } from 'components/Shared';
 import * as uuid from 'uuid/v4';
@@ -33,13 +43,13 @@ export interface DataEditorState {
     mergeDataMode: boolean;
 }
 
-const hexEncode = function(str: string) {
+const hexEncode = function (str: string) {
     let hex, i;
 
     let result = '';
     for (i = 0; i < str.length; i++) {
         hex = str.charCodeAt(i).toString(16);
-        result += (`000${  hex}`).slice(-4);
+        result += `000${hex}`.slice(-4);
     }
 
     return result;
@@ -72,7 +82,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         };
     }
 
-    private uploadJSON = e => {
+    private uploadJSON = (e) => {
         if (isValidJSON(e.target.value)) {
             this.setState({ data: e.target.value });
         } else {
@@ -84,25 +94,23 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         }
     };
 
-    private uploadNuzlockeJsonFile = e => {
+    private uploadNuzlockeJsonFile = (e) => {
         const file = this.nuzlockeJsonFileInput.files[0];
         const reader = new FileReader();
 
         reader.readAsText(file, 'utf-8');
-        reader.addEventListener('load', event => {
+        reader.addEventListener('load', (event) => {
             const file = event?.target?.result;
             const data = file;
             // @ts-ignore
             this.setState({ data });
         });
-
-
     };
 
-    private confirmImport = e => {
+    private confirmImport = (e) => {
         let cmm = { customMoveMap: [] };
         const data = JSON.parse(this.state.data);
-        const safeguards = { customTypes: [], customMoveMap: [], stats: []};
+        const safeguards = { customTypes: [], customMoveMap: [], stats: [] };
         if (!Array.isArray(data.customMoveMap)) {
             noop();
         } else {
@@ -117,13 +125,15 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         this.setState({ isOpen: true });
     };
 
-    private exportState = state => {
+    private exportState = (state) => {
         this.setState({
             mode: 'export',
         });
         this.setState({ isOpen: true });
         this.setState({
-            href: `data:text/plain;charset=utf-8,${encodeURIComponent(JSON.stringify(omit(['router', '._persist'], state)))}`,
+            href: `data:text/plain;charset=utf-8,${encodeURIComponent(
+                JSON.stringify(omit(['router', '._persist'], state)),
+            )}`,
         });
     };
 
@@ -135,11 +145,10 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
             d = { pokemon: false };
         }
 
-
         if (d.pokemon) {
             return (
                 <div
-                    className='team-icons'
+                    className="team-icons"
                     style={{
                         background: 'rgba(0, 0, 0, 0.1)',
                         borderRadius: '.25rem',
@@ -147,10 +156,13 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         marginTop: '.5rem',
                         display: 'flex',
                         justifyContent: 'center',
-                    }}>
-                    {d.pokemon.filter(p => p.status === 'Team').map(p => {
-                        return <PokemonIconBase key={p.id} {...p} />;
-                    })}
+                    }}
+                >
+                    {d.pokemon
+                        .filter((p) => p.status === 'Team')
+                        .map((p) => {
+                            return <PokemonIconBase key={p.id} {...p} />;
+                        })}
                 </div>
             );
         } else {
@@ -158,15 +170,15 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         }
     }
 
-    private static determineGame (isYellow: boolean): Game {
-        if (isYellow) return {name: 'Yellow', customName: ''};
-        return {name: 'Red', customName: ''};
+    private static determineGame(isYellow: boolean): Game {
+        if (isYellow) return { name: 'Yellow', customName: '' };
+        return { name: 'Red', customName: '' };
     }
 
     private static pokeMerge = (pokemonListA: Pokemon[], pokemonListB: Pokemon[]) => {
-        return pokemonListB.map(poke => {
+        return pokemonListB.map((poke) => {
             const id = poke.id;
-            const aListPoke = pokemonListA.find(p => p.id === id);
+            const aListPoke = pokemonListA.find((p) => p.id === id);
             if (aListPoke) {
                 return {
                     ...aListPoke,
@@ -178,37 +190,44 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         });
     };
 
-    private uploadFile = (replaceState, state) => e => {
+    private uploadFile = (replaceState, state) => (e) => {
         const file = this.fileInput.files[0];
         const reader = new FileReader();
         const componentState = this.state;
 
-
         reader.readAsArrayBuffer(file);
 
-        reader.addEventListener('load', function() {
+        reader.addEventListener('load', function () {
             const u = new Uint8Array(this.result as ArrayBuffer);
 
-
-            const functionToUse = componentState.selectedGame === 'RBY' ? parseGen1Save(u, 'nuzlocke') : parseGen2Save(u, 'nuzlocke');
+            const functionToUse =
+                componentState.selectedGame === 'RBY'
+                    ? parseGen1Save(u, 'nuzlocke')
+                    : parseGen2Save(u, 'nuzlocke');
 
             functionToUse
                 // @ts-ignore
-                .then(res => {
-                    res.pokemon = res.pokemon.filter(poke => poke.species);
-                    const mergedPokemon = componentState.mergeDataMode ? DataEditorBase.pokeMerge(state.pokemon, res.pokemon) : res.pokemon;
-                    const data = {game: DataEditorBase.determineGame(res.isYellow), pokemon: mergedPokemon, trainer: res.trainer};
+                .then((res) => {
+                    res.pokemon = res.pokemon.filter((poke) => poke.species);
+                    const mergedPokemon = componentState.mergeDataMode
+                        ? DataEditorBase.pokeMerge(state.pokemon, res.pokemon)
+                        : res.pokemon;
+                    const data = {
+                        game: DataEditorBase.determineGame(res.isYellow),
+                        pokemon: mergedPokemon,
+                        trainer: res.trainer,
+                    };
                     const newState = { ...state, ...data };
 
                     replaceState(newState);
                 })
-                .catch(err => {
+                .catch((err) => {
                     console.error(err);
                 });
         });
     };
 
-    private clearAllData = e => {
+    private clearAllData = (e) => {
         persistor.purge();
         window.location.reload();
     };
@@ -217,23 +236,24 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         persistor.flush();
     };
 
-    private toggleClearingData = e =>
+    private toggleClearingData = (e) =>
         this.setState({ isClearAllDataOpen: !this.state.isClearAllDataOpen });
 
     public render() {
         return (
-            <BaseEditor name='Data'>
+            <BaseEditor name="Data">
                 <Alert
                     onConfirm={this.clearAllData}
                     isOpen={this.state.isClearAllDataOpen}
                     onCancel={this.toggleClearingData}
-                    cancelButtonText='Nevermind'
-                    confirmButtonText='Delete Anyway'
+                    cancelButtonText="Nevermind"
+                    confirmButtonText="Delete Anyway"
                     className={this.props.state.style.editorDarkMode ? 'pt-dark' : 'pt-light'}
                     style={{ maxWidth: '600px' }}
-                    intent={Intent.DANGER}>
+                    intent={Intent.DANGER}
+                >
                     <div style={{ display: 'flex' }}>
-                        <img style={{ height: '10rem' }} src={trash} alt='Sad Trubbish' />
+                        <img style={{ height: '10rem' }} src={trash} alt="Sad Trubbish" />
                         <p style={{ fontSize: '1.2rem', padding: '1rem' }}>
                             This will permanently delete all your local storage data, with no way to
                             retrieve it. Are you sure you want to do this?
@@ -242,25 +262,27 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                 </Alert>
                 <Dialog
                     isOpen={this.state.isOpen}
-                    onClose={e => this.setState({ isOpen: false })}
+                    onClose={(e) => this.setState({ isOpen: false })}
                     title={
                         this.state.mode === 'export'
                             ? 'Exported Nuzlocke Save'
                             : 'Import Nuzlocke Save'
                     }
                     className={this.props.state.style.editorDarkMode ? 'pt-dark' : ''}
-                    icon='floppy-disk'>
+                    icon="floppy-disk"
+                >
                     {this.state.mode === 'export' ? (
                         <>
                             <Callout>Copy this and paste it somewhere safe!</Callout>
                             <div
                                 style={{ height: '40vh', overflow: 'auto' }}
-                                className='pt-dialog-body has-nice-scrollbars'>
+                                className="pt-dialog-body has-nice-scrollbars"
+                            >
                                 <span suppressContentEditableWarning={true} contentEditable={true}>
                                     {JSON.stringify(this.props.state, null, 2)}
                                 </span>
                             </div>
-                            <div className='pt-dialog-footer'>
+                            <div className="pt-dialog-footer">
                                 <a href={this.state.href} download={`nuzlocke_${uuid()}.json`}>
                                     <Button icon={'download'} intent={Intent.PRIMARY}>
                                         Download
@@ -270,29 +292,44 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         </>
                     ) : (
                         <>
-                            <div className='pt-dialog-body has-nice-scrollbars'>
+                            <div className="pt-dialog-body has-nice-scrollbars">
                                 <TextArea
-                                    className='custom-css-input pt-fill'
+                                    className="custom-css-input pt-fill"
                                     onChange={this.uploadJSON}
-                                    placeholder='Paste nuzlocke.json contents here, or use the file uploader'
+                                    placeholder="Paste nuzlocke.json contents here, or use the file uploader"
                                     value={this.state.data}
                                     large={true}
                                 />
                                 <ErrorBoundary>{this.renderTeam(this.state.data)}</ErrorBoundary>
                             </div>
-                            <div className='pt-dialog-footer'>
-                                <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                                    <input style={{ padding: '.25rem' }} className='pt-button' ref={ref => this.nuzlockeJsonFileInput = ref } onChange={this.uploadNuzlockeJsonFile} type='file' id='jsonFile' name='jsonFile' accept='.json' />
+                            <div className="pt-dialog-footer">
+                                <div
+                                    style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'space-between',
+                                    }}
+                                >
+                                    <input
+                                        style={{ padding: '.25rem' }}
+                                        className="pt-button"
+                                        ref={(ref) => (this.nuzlockeJsonFileInput = ref)}
+                                        onChange={this.uploadNuzlockeJsonFile}
+                                        type="file"
+                                        id="jsonFile"
+                                        name="jsonFile"
+                                        accept=".json"
+                                    />
                                     <Button
-                                        icon='tick'
+                                        icon="tick"
                                         intent={
                                             this.state.data === '' ? Intent.NONE : Intent.SUCCESS
                                         }
                                         onClick={this.confirmImport}
                                         disabled={this.state.data === '' ? true : false}
-                                        text='Confirm'
+                                        text="Confirm"
                                         style={{
-                                            marginLeft: 'auto'
+                                            marginLeft: 'auto',
                                         }}
                                     />
                                 </div>
@@ -301,38 +338,80 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     )}
                 </Dialog>
 
-                <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap'}}>
-                    <div className='pt-label pt-inline' style={{ padding: '.25rem 0', paddingBottom: '.5rem' }}>
-                        <label className='pt-label pt-text-muted'>Game</label>
-                        <div className='pt-select'>
-                            <select value={this.state.selectedGame} onChange={e => this.setState({selectedGame: e.target.value})}>
-                                {['RBY'].map(game => <option value={game}>{game}</option>)}
+                <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
+                    <div
+                        className="pt-label pt-inline"
+                        style={{ padding: '.25rem 0', paddingBottom: '.5rem' }}
+                    >
+                        <label className="pt-label pt-text-muted">Game</label>
+                        <div className="pt-select">
+                            <select
+                                value={this.state.selectedGame}
+                                onChange={(e) => this.setState({ selectedGame: e.target.value })}
+                            >
+                                {['RBY'].map((game) => (
+                                    <option value={game}>{game}</option>
+                                ))}
                             </select>
                         </div>
                     </div>
 
-                    <div className='pt-label pt-inline' style={{ padding: '.25rem 0', paddingBottom: '.5rem', marginLeft: '.25rem' }}>
-                        <label className='pt-label pt-text-muted'>Upload Save file</label>
-                        <input style={{ padding: '.25rem' }} className='pt-button' ref={ref => this.fileInput = ref } onChange={this.uploadFile(this.props.replaceState, this.props.state)} type='file' id='file' name='file' accept='.sav' />
+                    <div
+                        className="pt-label pt-inline"
+                        style={{
+                            padding: '.25rem 0',
+                            paddingBottom: '.5rem',
+                            marginLeft: '.25rem',
+                        }}
+                    >
+                        <label className="pt-label pt-text-muted">Upload Save file</label>
+                        <input
+                            style={{ padding: '.25rem' }}
+                            className="pt-button"
+                            ref={(ref) => (this.fileInput = ref)}
+                            onChange={this.uploadFile(this.props.replaceState, this.props.state)}
+                            type="file"
+                            id="file"
+                            name="file"
+                            accept=".sav"
+                        />
                     </div>
 
-                    <div className='pt-label pt-inline' style={{ padding: '.25rem 0', paddingBottom: '.5rem', marginLeft: '.25rem' }}>
-                        <label className='pt-label pt-text-muted'>Merge Data</label>
-                        <Switch checked={this.state.mergeDataMode} onChange={e => this.setState({mergeDataMode: !this.state.mergeDataMode})} />
+                    <div
+                        className="pt-label pt-inline"
+                        style={{
+                            padding: '.25rem 0',
+                            paddingBottom: '.5rem',
+                            marginLeft: '.25rem',
+                        }}
+                    >
+                        <label className="pt-label pt-text-muted">Merge Data</label>
+                        <Switch
+                            checked={this.state.mergeDataMode}
+                            onChange={(e) =>
+                                this.setState({ mergeDataMode: !this.state.mergeDataMode })
+                            }
+                        />
                     </div>
                 </div>
 
                 <ButtonGroup>
                     <Button
-                        onClick={e => this.importState()}
-                        icon='import'
-                        className='pt-intent-primary'>
+                        onClick={(e) => this.importState()}
+                        icon="import"
+                        className="pt-intent-primary"
+                    >
                         Import Data
                     </Button>
-                    <Button onClick={e => this.exportState(this.props.state)} icon='export'>
+                    <Button onClick={(e) => this.exportState(this.props.state)} icon="export">
                         Export Data
                     </Button>
-                    <Button className='pt-minimal' intent={Intent.SUCCESS} onClick={this.writeAllData} icon='floppy-disk'>
+                    <Button
+                        className="pt-minimal"
+                        intent={Intent.SUCCESS}
+                        onClick={this.writeAllData}
+                        icon="floppy-disk"
+                    >
                         Force Save
                     </Button>
                     {/* <Button icon='add' intent={Intent.SUCCESS}>
@@ -340,10 +419,11 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     </Button> */}
                 </ButtonGroup>
                 <Button
-                    icon='trash'
+                    icon="trash"
                     onClick={this.toggleClearingData}
                     intent={Intent.DANGER}
-                    className='pt-minimal'>
+                    className="pt-minimal"
+                >
                     Clear All Data
                 </Button>
                 <br />

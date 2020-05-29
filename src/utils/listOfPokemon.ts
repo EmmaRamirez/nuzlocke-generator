@@ -980,4 +980,5 @@ const listOfTemtem = [
     'Anahir',
 ];
 
-export const getListOfCreatures = (isTemtemMode?: boolean) => isTemtemMode ? listOfTemtem : listOfPokemon;
+export const getListOfCreatures = (isTemtemMode?: boolean) =>
+    isTemtemMode ? listOfTemtem : listOfPokemon;
