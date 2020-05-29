@@ -3,6 +3,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
+
 //const OfflinePlugin = require('offline-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production' ? true : false;
@@ -18,7 +20,7 @@ module.exports = {
         chunkFilename: '[name].chunk.js'
     },
     mode: 'development',
-    devtool: 'eval-source-map',
+    devtool: 'inline-source-map',
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
         modules: [path.resolve('src'), path.resolve('node_modules')],
@@ -122,6 +124,13 @@ module.exports = {
 
         new ReactLoadablePlugin({
             filename: './dist/react-lodable.json'
+        }),
+
+        new WorkboxPlugin.GenerateSW({
+            // these options encourage the ServiceWorkers to get in there fast
+            // and not allow any straggling "old" SWs to hang around
+            clientsClaim: true,
+            skipWaiting: true,
         }),
 
         // new OfflinePlugin({

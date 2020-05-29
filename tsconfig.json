@@ -11,6 +11,7 @@
       "strictFunctionTypes": true,
       "noLib": false,
       "jsx": "react",
+      "sourceMap": true,
       "experimentalDecorators": true,
       "allowSyntheticDefaultImports": false,
       "allowJs": true,
