@@ -53,6 +53,7 @@
     "redux-mock-store": "^1.5.3"
   },
   "devDependencies": {
+    "@babel/core": "^7.10.1",
     "@blueprintjs/core": "^2.0.0",
     "@blueprintjs/icons": "^2.0.0",
     "@blueprintjs/table": "^2.0.0",

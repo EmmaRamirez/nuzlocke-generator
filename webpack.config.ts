@@ -6,11 +6,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
-//const OfflinePlugin = require('offline-plugin');
-
 const isProduction = process.env.NODE_ENV === 'production' ? true : false;
-
-console.log(path.resolve(__dirname, 'src/index.tsx'));
 
 // tslint:disable-next-line:no-default-export
 module.exports = {
@@ -99,17 +95,6 @@ module.exports = {
 
         new HTMLWebpackPlugin({
             template: path.resolve(__dirname, 'src/index.html'),
-        }),
-
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production'),
-            'process.env.GH_ACCESS_TOKEN': JSON.stringify(process.env.GH_ACCESS_TOKEN),
-            'process.env.ROLLBAR_ACCESS_TOKEN': JSON.stringify(process.env.ROLLBAR_ACCESS_TOKEN),
-            PRODUCTION: JSON.stringify(true),
-            'themeEditing': JSON.stringify(process.env.THEME_EDITING),
-            'features.fileUploads': JSON.stringify(process.env.FILE_UPLOADS),
-            'features.multipleNuzlockes': JSON.stringify(process.env.MULTIPLE_NUZLOCKES),
-            'features.temTemSupport': JSON.stringify(process.env.TEM_TEM_SUPPORT),
         }),
 
         new Dotenv(),

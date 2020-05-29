@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { editGame, changeEditorSize, editStyle, resetCheckpoints, toggleTemtemMode } from 'actions';
-import { gameOfOriginToColor, listOfGames, FEATURES } from 'utils';
+import { gameOfOriginToColor, listOfGames, FEATURES, feature } from 'utils';
 
 import { Button, Intent, Popover, Position, Menu, Switch, Classes } from '@blueprintjs/core';
 import { RulesEditorDialog } from 'components/RulesEditor';
@@ -47,7 +47,6 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
 
     public render() {
         const { game } = this.props;
-        const canEnableTemTem = false;
         // Awful hack to get rid of `isOpen` conflict warning
         const RED: any = RulesEditorDialog;
         return (
@@ -96,7 +95,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                                 placeholder={game.name}
                             />
                         </div>
-                        {canEnableTemTem && (
+                        {feature.temTemMode && (
                             <Button
                                 style={{
                                     display: 'flex',
