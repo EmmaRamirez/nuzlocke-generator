@@ -17,6 +17,7 @@ import { DragDropContextProvider } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { isLocal } from 'utils';
 
+
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker
@@ -29,6 +30,9 @@ if ('serviceWorker' in navigator) {
             });
     });
 }
+
+// @ts-ignore
+console.log('FEATURES', process.env, process.env.THEME_EDITING);
 
 injectGlobal`
     *,

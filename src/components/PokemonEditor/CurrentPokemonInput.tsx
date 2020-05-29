@@ -7,6 +7,7 @@ import {
     formatBallText,
     typeToColor,
     getContrastColor,
+    Types,
 } from 'utils';
 import { editPokemon, selectPokemon } from 'actions';
 
@@ -16,7 +17,6 @@ import { TagInput, Classes, TextArea } from '@blueprintjs/core';
 import { State } from 'state';
 import { Pokemon } from 'models';
 
-import { Editor, EditorState, RichUtils } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 
 interface CurrentPokemonInputProps {
@@ -44,30 +44,6 @@ interface CurrentPokemonInputProps {
     usesKeyValue?: boolean;
 }
 
-export class NotesEditor extends React.Component {
-    public constructor(props) {
-        super(props);
-        this.state = { editorState: EditorState.createEmpty() };
-        this.onChange = (editorState) => this.setState({ editorState });
-    }
-
-    private onBoldClick() {
-        this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'));
-    }
-
-    private onItalicsClick() {
-        this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'ITALIC'));
-    }
-
-    public render() {
-        return (
-            <div>
-                <button onClick={this.onBoldClick.bind(this)}>Bold</button>
-                <Editor editorState={this.state.editorState} onChange={this.onChange} />
-            </div>
-        );
-    }
-}
 
 export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInputProps> {
     public constructor(props: CurrentPokemonInputProps) {
@@ -149,9 +125,9 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                     <TagInput
                         tagProps={(v, i) => {
                             // @TODO: Fix inconsitencies with bad parameter types
-                            // @ts-ignore
                             const background =
                                 typeToColor(
+                                    // @ts-ignore
                                     customMoveMap.find((m) => m?.move === v)?.type ||
                                         getMoveType(v?.toString()?.trim() || ''),
                                 ) || 'transparent';
@@ -294,9 +270,8 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
             );
         }
         if (type === 'rich-text') {
-            return <NotesEditor />;
+            return null;
         }
-        console.log(type);
         return <div>No input type provided.</div>;
     }
 

@@ -13,7 +13,7 @@ import { TrainerResult } from 'components/Result';
 import { TopBar } from 'components/TopBar';
 import { ErrorBoundary } from 'components/Shared';
 import { Stats } from './Stats';
-import { Pokemon, Trainer, Editor } from 'models';
+import { Pokemon, Trainer, Editor, Box } from 'models';
 import { reducers } from 'reducers';
 import { Styles as StyleState, getGameRegion, sortPokes, getContrastColor, isLocal } from 'utils';
 
@@ -208,25 +208,25 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         paddingForVerticalTrainerSection: any,
         box?: Box,
     ) =>
-        getNumberOf(box?.name, pokemon) > 0 ? (
+        box && pokemon && getNumberOf(box?.name, pokemon)! > 0 ? (
             <div
                 style={paddingForVerticalTrainerSection}
-                className={`${this.getBoxClass(box.inheritFrom || box.name)}-container`}>
-                {box.name !== 'Team' && (
+                className={`${this.getBoxClass(box?.inheritFrom || box.name)}-container`}>
+                {box?.name !== 'Team' && (
                     <h3 style={{ color: getContrastColor(this.props.style.bgColor || '#383840') }}>
-                        {box.name}
-                        {this.getH3(box, getNumberOf(box.name, pokemon))}
+                        {box?.name}
+                        {this.getH3(box, getNumberOf(box?.name, pokemon))}
                     </h3>
                 )}
                 <div
                     className="boxed-container-inner"
-                    style={this.getBoxStyle(box.name || box.inheritFrom)}>
+                    style={this.getBoxStyle(box?.name || box?.inheritFrom)}>
                     {pokemon.map((poke, index) => {
-                        if (box.name === 'Boxed' || box.inheritFrom === 'Boxed')
+                        if (box?.name === 'Boxed' || box?.inheritFrom === 'Boxed')
                             return <BoxedPokemon key={index} {...poke} />;
-                        if (box.name === 'Dead' || box.inheritFrom === 'Dead')
+                        if (box?.name === 'Dead' || box?.inheritFrom === 'Dead')
                             return <DeadPokemon key={index} {...poke} />;
-                        if (box.name === 'Champs' || box.inheritFrom === 'Champs')
+                        if (box?.name === 'Champs' || box?.inheritFrom === 'Champs')
                             return (
                                 <ChampsPokemon
                                     useSprites={this.props.style.useSpritesForChampsPokemon}
@@ -234,8 +234,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                                     {...poke}
                                 />
                             );
-                        if (box.name === 'Team' || box.inheritFrom === 'Team')
-                            return <TeamPokemon key={index} {...poke} />;
+                        if (box?.name === 'Team' || box?.inheritFrom === 'Team')
+                            return <TeamPokemon key={index} pokemon={poke} />;
                         return null;
                     })}
                 </div>

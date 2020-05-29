@@ -4,6 +4,7 @@ const path = require('path');
 const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 //const OfflinePlugin = require('offline-plugin');
 
@@ -51,16 +52,6 @@ module.exports = {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
                 include: [path.resolve(__dirname, 'src')],
-            },
-            {
-                test: /\.tsx?$/,
-                loader: 'tslint-loader',
-                enforce: 'pre',
-                include: [path.resolve(__dirname, 'src')],
-            },
-            {
-                test: /\.styl$/,
-                loader: ['style-loader', 'css-loader', 'resolve-url-loader', 'stylus-loader'],
             },
             {
                 test: /\.css$/,
@@ -115,11 +106,13 @@ module.exports = {
             'process.env.GH_ACCESS_TOKEN': JSON.stringify(process.env.GH_ACCESS_TOKEN),
             'process.env.ROLLBAR_ACCESS_TOKEN': JSON.stringify(process.env.ROLLBAR_ACCESS_TOKEN),
             PRODUCTION: JSON.stringify(true),
-            'features.themeEditing': JSON.stringify(process.env.THEME_EDITING),
+            'themeEditing': JSON.stringify(process.env.THEME_EDITING),
             'features.fileUploads': JSON.stringify(process.env.FILE_UPLOADS),
             'features.multipleNuzlockes': JSON.stringify(process.env.MULTIPLE_NUZLOCKES),
             'features.temTemSupport': JSON.stringify(process.env.TEM_TEM_SUPPORT),
         }),
+
+        new Dotenv(),
 
         new ReactLoadablePlugin({
             filename: './dist/react-lodable.json',

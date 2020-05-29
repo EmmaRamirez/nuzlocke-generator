@@ -512,7 +512,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
 }
 
 export const TeamPokemon = connect(
-    (state: State, ownProps: { pokemon: { linkedTo?: string } }) => ({
+    (state: State, ownProps: { pokemon: { linkedTo?: string | null } }) => ({
         style: state.style,
         game: state.game,
         editor: state.editor,
