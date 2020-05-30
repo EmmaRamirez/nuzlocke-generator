@@ -70,6 +70,7 @@ export class CSSUnitInput extends React.Component<CSSUnitInputProps, CSSUnitInpu
 
     public render() {
         const { name, value, allowedUnits } = this.props;
+        const { chosenUnit, chosenNumber } = this.state;
         const { unit, num } = splitValue(value);
 
         const units = [
@@ -95,10 +96,10 @@ export class CSSUnitInput extends React.Component<CSSUnitInputProps, CSSUnitInpu
                 name={name}
                 onChange={this.setNumber}
                 type='number'
-                value={num}
+                value={chosenNumber}
             />
             <div className={cx(Classes.SELECT, css.unitSelect)}>
-                <select onChange={this.setUnit} value={unit}>
+                <select onChange={this.setUnit} value={chosenUnit}>
                     {
                         units?.map(u => <option key={u} value={u}>{u}</option>)
                     }

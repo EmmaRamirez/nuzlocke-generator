@@ -16,6 +16,8 @@ import { State } from 'state';
 import { CSSUnitInput } from './CSSUnitInput';
 import { ChampsPokemonCollection } from 'components/ChampsPokemon/ChampsPokemonCollection';
 import * as Loadable from 'react-loadable';
+import { LayoutDisplay, LayoutDirection, LayoutAlignment, LayoutSpacing } from 'components/Layout';
+import { TeamPokemon } from 'components/TeamPokemon';
 
 
 const modelPokemon: Pokemon = {
@@ -93,7 +95,7 @@ const team: Pokemon[] = [
 
 type ComponentNode = ITreeNode & {
     component: any,
-    import: string,
+    import?: string,
     options?: { props: any, baseProps?: any },
     childNodes?: ComponentNode[]
 };
@@ -101,12 +103,43 @@ type ComponentNode = ITreeNode & {
 const componentTree: ComponentNode[] = [
 
     {
+        id: 8,
+        icon: 'style',
+        isExpanded: true,
+        label: 'Team Pokemon',
+        component: TeamPokemon,
+        options: {
+            props: {
+
+            },
+            baseProps: {
+                pokemon: modelPokemon,
+            }
+        },
+        childNodes: [
+        ]
+    },
+    {
+        id: 91,
+        icon: 'style',
+        isExpanded: true,
+        label: 'Boxed Pokemon',
+        component: BoxedPokemon,
+        options: {
+            props: {
+
+            },
+            baseProps: {
+                pokemon: modelPokemon,
+            }
+        }
+    },
+    {
         id: 10,
         icon: 'style',
         isExpanded: true,
         label: 'Dead Pokemon',
         component: DeadPokemon,
-        import: 'DeadPokemon',
         options: {
             props: {
                 minimal: false,
@@ -124,10 +157,12 @@ const componentTree: ComponentNode[] = [
         isExpanded: true,
         label: 'Champs Pokemon Collection',
         component: ChampsPokemonCollection,
-        import: 'ChampsPokemonCollection',
         options: {
             props: {
-
+                display: LayoutDisplay.Block,
+                direction: LayoutDirection.Row,
+                alignment: LayoutAlignment.Start,
+                spacing: LayoutSpacing.Start,
             },
             baseProps: {
                 pokemon: team,
@@ -139,7 +174,6 @@ const componentTree: ComponentNode[] = [
                 isExpanded: true,
                 label: 'Champs Pokemon',
                 component: ChampsPokemon,
-                import: 'ChampsPokemon',
                 options: {
                     props: {
                         showGender: false,
@@ -159,7 +193,6 @@ const componentTree: ComponentNode[] = [
                         id: 11,
                         label: 'PokemonIcon',
                         component: PokemonIcon,
-                        import: 'PokemonIcon',
                         options: {
                             props: {
                                 filter: '',
@@ -251,6 +284,7 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
     };
 
     private getComponent = (id, currentNode) => {
+        console.log(currentNode);
         return <currentNode.component {...currentNode.options.baseProps} {...currentNode.options.props} />;
         // }
 
@@ -303,15 +337,17 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
                         <strong>Current Theme:</strong>{' '}
                         <ThemeSelect theme={this.props.style.template} />
                     </div>
-                    <Button
-                        style={{margin: '4px'}}
-                        icon='download'
-                        intent={Intent.SUCCESS}
-                    >Export To theme.json</Button>
-                    <Button
-                        style={{margin: '4px'}}
-                        icon='upload'
-                    >Import from theme.json</Button>
+                    <div>
+                        <Button
+                            style={{margin: '4px'}}
+                            icon='download'
+                            intent={Intent.SUCCESS}
+                        >Export To theme.json</Button>
+                        <Button
+                            style={{margin: '4px'}}
+                            icon='upload'
+                        >Import from theme.json</Button>
+                    </div>
                 </div>
                 <div className={cx(css.main)}>
                     <div className={cx(css.sidebar)}>
@@ -341,7 +377,7 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
                         }>
                             <div
                                 className={cx(
-                                    this.props.style.template.toLowerCase(),
+                                    this.props.style.template.toLowerCase().replace(/\s/g, '-'),
                                     classWithDarkTheme(
                                         css,
                                         'componentResult',
