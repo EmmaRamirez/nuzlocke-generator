@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { editGame, changeEditorSize, editStyle, resetCheckpoints, toggleTemtemMode } from 'actions';
-import { gameOfOriginToColor, listOfGames, FEATURES, feature } from 'utils';
+import { gameOfOriginToColor, listOfGames, feature } from 'utils';
 
 import { Button, Intent, Popover, Position, Menu, Switch, Classes } from '@blueprintjs/core';
 import { RulesEditorDialog } from 'components/RulesEditor';

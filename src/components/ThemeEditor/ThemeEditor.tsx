@@ -5,7 +5,7 @@ import { reducers } from 'reducers';
 
 import * as css from './styles';
 import { Pokemon } from 'models';
-import { Styles, generateEmptyPokemon, listOfThemes, classWithDarkTheme } from 'utils';
+import { Styles, generateEmptyPokemon, listOfThemes, classWithDarkTheme, Forme } from 'utils';
 import { Button, ITreeNode, Tree, Classes, Menu, MenuItem, Icon, Switch, TextArea, Intent } from '@blueprintjs/core';
 import { BoxedPokemon } from '../BoxedPokemon';
 import { ColorEdit, ThemeSelect } from 'components/Shared';
@@ -39,13 +39,62 @@ const modelPokemonB: Pokemon = {
     gameOfOrigin: 'LeafGreen',
 };
 
+const modelPokemonC: Pokemon = {
+    ...generateEmptyPokemon(),
+    species: 'Darmanitan',
+    // forme: 'Galarian' as any,
+    nickname: 'Frosty',
+    gender: 'm',
+    level: 100,
+    met: 'Hatched on Route 8',
+    metLevel: 1,
+    gameOfOrigin: 'Sword',
+    moves: ['Icicle Crash', 'Flare Blitz', 'U-turn', 'Earthquake']
+};
+
+const modelPokemonD: Pokemon = {
+    ...generateEmptyPokemon(),
+    species: 'Scizor',
+    nickname: 'Stainless',
+    level: 45,
+    gender: 'm',
+    gameOfOrigin: 'HeartGold',
+};
+
+const modelPokemonE: Pokemon = {
+    ...generateEmptyPokemon(),
+    species: 'Jellicent',
+    nickname: 'Pringles',
+    level: 50,
+    gender: 'm',
+    gameOfOrigin: 'X',
+};
+
+const modelPokemonF: Pokemon = {
+    ...generateEmptyPokemon(),
+    species: 'Rayquaza',
+    shiny: true,
+    level: 90,
+    gameOfOrigin: 'Emerald',
+    moves: ['Dragon Ascent', 'Fire Blast', 'Dragon Dance', 'Outrage']
+};
+
 const team: Pokemon[] = [
     modelPokemon,
     modelPokemonB,
+    modelPokemonC,
+    modelPokemonD,
+    modelPokemonE,
+    modelPokemonF,
 ];
 
 
-type ComponentNode = ITreeNode & { component: string, options?: { props: any }, childNodes?: ComponentNode[] };
+type ComponentNode = ITreeNode & {
+    component: string,
+    import: string,
+    options?: { props: any },
+    childNodes?: ComponentNode[]
+};
 
 const componentTree: ComponentNode[] = [
     // {
@@ -113,7 +162,8 @@ const componentTree: ComponentNode[] = [
         icon: 'style',
         isExpanded: true,
         label: 'Dead Pokemon',
-        component: 'src/components/DeadPokemon',
+        component: 'components/DeadPokemon',
+        import: 'DeadPokemon',
         options: {
             props: {
                 minimal: false,
@@ -128,6 +178,7 @@ const componentTree: ComponentNode[] = [
         isExpanded: true,
         label: 'Champs Pokemon Collection',
         component: 'src/components/ChampsPokemonCollection',
+        import: 'ChampsPokemonCollection',
         options: {
             props: {
 
@@ -136,10 +187,10 @@ const componentTree: ComponentNode[] = [
         childNodes: [
             {
                 id: 12,
-                icon: 'style',
                 isExpanded: true,
                 label: 'Champs Pokemon',
                 component: 'src/components/ChampsPokemon',
+                import: 'ChampsPokemon',
                 options: {
                     props: {
                         showGender: false,
@@ -156,6 +207,7 @@ const componentTree: ComponentNode[] = [
                         id: 11,
                         label: 'PokemonIcon',
                         component: 'src/components/PokemonIcon',
+                        import: 'PokemonIcon',
                         options: {
                             props: {
                                 filter: '',
@@ -243,7 +295,15 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
         this.setState(this.state);
     };
 
-    private getComponent = (id, currentNode) => {
+    private getComponent = async (id, currentNode) => {
+
+        const imp = await import(currentNode.component);
+        console.log(imp);
+        const component = imp[currentNode.import];
+        console.log(component);
+
+        return React.createElement(component, {...currentNode.options.props});
+
         if (id === 10) {
             return <DeadPokemon minimal={currentNode.options.props.minimal} {...modelPokemon} />;
         }
@@ -384,10 +444,12 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
 
                                         if (type === 'boolean') {
                                             return (
-                                                <Switch onChange={(e: any) => {
-                                                    modify(propKey, e.target.checked);
-                                                    this.setState(this.state);
-                                                }} key={idx} label={propKey} checked={value} />
+                                                <WrapWithLabel name={propKey}>
+                                                    <Switch onChange={(e: any) => {
+                                                        modify(propKey, e.target.checked);
+                                                        this.setState(this.state);
+                                                    }} key={idx} checked={value} />
+                                                </WrapWithLabel>
                                             );
                                         }
                                         if (type === 'number') {

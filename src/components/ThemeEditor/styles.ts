@@ -11,6 +11,9 @@ export const header = css`
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
     padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 `;
 
 export const header_dark = css`
