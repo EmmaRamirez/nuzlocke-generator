@@ -48,8 +48,11 @@ export const componentView = css`
 export const componentResult = css`
     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
     padding: 1rem;
+    display: flex;
+    justify-content: center;
+    min-width: 33%;
     & *:hover {
-        outline: 1px dotted red;
+        outline: 1px solid lightblue;
     }
 `;
 
@@ -57,6 +60,8 @@ export const componentResult_dark = css`
     background-image: linear-gradient(to top, rgb(32, 40, 45) 0%, rgb(37, 50, 57) 100%);
     min-width: 33%;
     padding: 1rem;
+    display: flex;
+    justify-content: center;
 `;
 
 export const componentOptions = css`
@@ -72,6 +77,13 @@ export const componentOption = css`
         margin: 0 !important;
         width: 60%;
     }
+`;
+
+export const componentOptionsLabel = css`
+    margin: .5rem 0.25rem;
+    font-weight: light;
+    font-size: 120%;
+    display: block;
 `;
 
 export const cssUnit = css`

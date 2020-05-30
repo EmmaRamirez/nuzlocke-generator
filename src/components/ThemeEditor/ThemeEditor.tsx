@@ -9,12 +9,14 @@ import { Styles, generateEmptyPokemon, listOfThemes, classWithDarkTheme, Forme }
 import { Button, ITreeNode, Tree, Classes, Menu, MenuItem, Icon, Switch, TextArea, Intent } from '@blueprintjs/core';
 import { BoxedPokemon } from '../BoxedPokemon';
 import { ColorEdit, ThemeSelect } from 'components/Shared';
-import { ChampsPokemon, PokemonIcon } from 'components';
+import { ChampsPokemon, PokemonIcon, ErrorBoundary } from 'components';
 import {} from 'themes';
-import { DeadPokemon } from 'components/DeadPokemon';
+import { DeadPokemon, DeadPokemonBase } from 'components/DeadPokemon';
 import { State } from 'state';
 import { CSSUnitInput } from './CSSUnitInput';
 import { ChampsPokemonCollection } from 'components/ChampsPokemon/ChampsPokemonCollection';
+import * as Loadable from 'react-loadable';
+
 
 const modelPokemon: Pokemon = {
     ...generateEmptyPokemon(),
@@ -90,84 +92,28 @@ const team: Pokemon[] = [
 
 
 type ComponentNode = ITreeNode & {
-    component: string,
+    component: any,
     import: string,
-    options?: { props: any },
+    options?: { props: any, baseProps?: any },
     childNodes?: ComponentNode[]
 };
 
 const componentTree: ComponentNode[] = [
-    // {
-    //     id: 0,
-    //     hasCaret: false,
-    //     label: 'Body',
-    // },
-    // {
-    //     id: 1,
-    //     icon: 'style',
-    //     isExpanded: true,
-    //     label: 'Header',
-    //     childNodes: [
-    //         {
-    //             id: 2,
-    //             label: 'Title',
-    //         },
-    //         {
-    //             id: 3,
-    //             label: 'Trainer Picture',
-    //         },
-    //     ],
-    // },
-    // {
-    //     id: 4,
-    //     icon: 'style',
-    //     isExpanded: true,
-    //     label: 'Team Pokemon',
-    //     childNodes: [
-    //         {
-    //             id: 5,
-    //             label: 'Info',
-    //             childNodes: [
-    //                 {
-    //                     id: 6,
-    //                     label: 'Moves',
-    //                 },
-    //                 {
-    //                     id: 7,
-    //                     label: 'Nickname Text',
-    //                 },
-    //             ],
-    //         },
-    //     ],
-    // },
-    // {
-    //     id: 8,
-    //     icon: 'style',
-    //     isExpanded: true,
-    //     label: 'Boxed Pokemon',
-    //     options: {
-    //         props: {
 
-    //         }
-    //     },
-    //     childNodes: [
-    //         {
-    //             id: 9,
-    //             label: 'Info',
-    //         },
-    //     ],
-    // },
     {
         id: 10,
         icon: 'style',
         isExpanded: true,
         label: 'Dead Pokemon',
-        component: 'components/DeadPokemon',
+        component: DeadPokemon,
         import: 'DeadPokemon',
         options: {
             props: {
                 minimal: false,
             },
+            baseProps: {
+                ...modelPokemon,
+            }
         },
         childNodes: [
         ],
@@ -177,19 +123,22 @@ const componentTree: ComponentNode[] = [
         icon: 'style',
         isExpanded: true,
         label: 'Champs Pokemon Collection',
-        component: 'src/components/ChampsPokemonCollection',
+        component: ChampsPokemonCollection,
         import: 'ChampsPokemonCollection',
         options: {
             props: {
 
             },
+            baseProps: {
+                pokemon: team,
+            }
         },
         childNodes: [
             {
                 id: 12,
                 isExpanded: true,
                 label: 'Champs Pokemon',
-                component: 'src/components/ChampsPokemon',
+                component: ChampsPokemon,
                 import: 'ChampsPokemon',
                 options: {
                     props: {
@@ -201,16 +150,22 @@ const componentTree: ComponentNode[] = [
                         margin: '0px',
                         customCSS: '',
                     },
+                    baseProps: {
+                        ...modelPokemon,
+                    }
                 },
                 childNodes: [
                     {
                         id: 11,
                         label: 'PokemonIcon',
-                        component: 'src/components/PokemonIcon',
+                        component: PokemonIcon,
                         import: 'PokemonIcon',
                         options: {
                             props: {
                                 filter: '',
+                            },
+                            baseProps: {
+                                ...modelPokemon
                             }
                         }
                     },
@@ -295,37 +250,28 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
         this.setState(this.state);
     };
 
-    private getComponent = async (id, currentNode) => {
+    private getComponent = (id, currentNode) => {
+        return <currentNode.component {...currentNode.options.baseProps} {...currentNode.options.props} />;
+        // }
 
-        const imp = await import(currentNode.component);
-        console.log(imp);
-        const component = imp[currentNode.import];
-        console.log(component);
+        // if (id === 9) {
+        //     return <ChampsPokemonCollection pokemon={team} />;
+        // }
 
-        return React.createElement(component, {...currentNode.options.props});
+        // if (id === 12) {
+        //     return (
+        //         <ChampsPokemon
+        //             {...currentNode.options.props}
+        //             {...modelPokemon}
+        //         />
+        //     );
+        // }
 
-        if (id === 10) {
-            return <DeadPokemon minimal={currentNode.options.props.minimal} {...modelPokemon} />;
-        }
+        // if (id === 11) {
+        //     return <PokemonIcon {...currentNode.options.props} {...modelPokemon} />;
+        // }
 
-        if (id === 9) {
-            return <ChampsPokemonCollection pokemon={team} />;
-        }
-
-        if (id === 12) {
-            return (
-                <ChampsPokemon
-                    {...currentNode.options.props}
-                    {...modelPokemon}
-                />
-            );
-        }
-
-        if (id === 11) {
-            return <PokemonIcon {...currentNode.options.props} {...modelPokemon} />;
-        }
-
-        return <Icon icon="square" />;
+        // return <Icon icon="square" />;
     };
 
     private forEachNode(nodes: ITreeNode[], callback: (node: ITreeNode) => void) {
@@ -353,8 +299,10 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
                     className={cx(
                         classWithDarkTheme(css, 'header', this.props.style.editorDarkMode),
                     )}>
-                    <strong>Current Theme:</strong>{' '}
-                    <ThemeSelect theme={this.props.style.template} />
+                    <div>
+                        <strong>Current Theme:</strong>{' '}
+                        <ThemeSelect theme={this.props.style.template} />
+                    </div>
                     <Button
                         style={{margin: '4px'}}
                         icon='download'
@@ -388,22 +336,26 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
                         />
                     </div>
                     <div className={cx(css.componentView)}>
-                        <div
-                            className={cx(
-                                this.props.style.template.toLowerCase(),
-                                classWithDarkTheme(
-                                    css,
-                                    'componentResult',
-                                    this.props.style.editorDarkMode,
-                                ),
-                            )}>
-                            {currentNode &&
-                                currentNode.options &&
-                                this.getComponent(currentNode.id, currentNode)}
-                            {!currentNode && <Icon icon="grid" />}
-                        </div>
+                        <ErrorBoundary errorMessage={
+                            JSON.stringify(currentNode)
+                        }>
+                            <div
+                                className={cx(
+                                    this.props.style.template.toLowerCase(),
+                                    classWithDarkTheme(
+                                        css,
+                                        'componentResult',
+                                        this.props.style.editorDarkMode,
+                                    ),
+                                )}>
+                                {currentNode &&
+                                    currentNode.options &&
+                                    this.getComponent(currentNode.id, currentNode)}
+                                {!currentNode && <Icon icon="grid" />}
+                            </div>
+                        </ErrorBoundary>
                         <div className={cx(css.componentOptions)}>
-                            <strong>
+                            <strong className={css.componentOptionsLabel}>
                                 {this.getCurrentNode() == null ? '' : this.getCurrentNode().label}{' '}
                                 Options
                             </strong>
