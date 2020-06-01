@@ -307,7 +307,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             (poke) => !['Team', 'Boxed', 'Dead', 'Champs'].includes(poke.status!),
         );
         const enableStats = style.displayStats;
-        const enableChampImage = isLocal();
+        const enableChampImage = false && isLocal();
         const enableBackSpriteMontage = isLocal();
 
         return (
