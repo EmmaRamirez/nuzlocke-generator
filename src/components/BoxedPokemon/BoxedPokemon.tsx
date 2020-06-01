@@ -18,7 +18,6 @@ const determineWidth = (isMinimal, numerator): any => {
     return isMinimal ? 'auto' : `calc(100% / ${numerator})`;
 };
 
-// TODO: Convert to class
 export const BoxedPokemonBase = (poke: BoxedPokemonProps) => {
     const isMinimal = poke.style.minimalBoxedLayout;
     const useGameOfOriginColor =

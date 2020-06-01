@@ -534,6 +534,7 @@ Thank you!
 - Moved DataEditor upwards
 - Boxes now require confirmation to delete _and_ will actually delete the Pokémon inside the box
 - Fixed bugs related to custom move types not appearing
+- Average level in stats now ignores hidden Pokémon
 
 ## Known Issues
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this

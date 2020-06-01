@@ -111,7 +111,8 @@ CurrentPokemonEditState
         });
     }
 
-    public componentWillReceiveProps(
+    // eslint-disable-next-line camelcase
+    public UNSAFE_componentWillReceiveProps(
         nextProps: CurrentPokemonEditProps,
         prevProps: CurrentPokemonEditProps,
     ) {

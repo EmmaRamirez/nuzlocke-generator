@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { State } from 'state';
 import { PokemonIcon } from 'components/PokemonIcon';
 import { Layout, LayoutDisplay } from 'components/Layout';
+import { isLocal } from 'utils';
 
 export interface StatsProps {
     pokemon: State['pokemon'];
@@ -111,11 +112,19 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
     }
 
     private getAverageLevel() {
-        const pokes = this.props.pokemon;
+        const pokes = this.props.pokemon.filter(p => !p.hidden);
         const levels = pokes.map((p) =>
             Number.isNaN(parseInt(p?.level as any)) ? 0 : parseInt(p?.level as any),
         );
-        return levels.reduce((p, c) => p + c, 0) / pokes.length;
+        return (levels.reduce((p, c) => p + c, 0) / pokes.length).toFixed(0);
+    }
+
+    private getAverageLevelByStatus(status: string) {
+        const pokes = this.props.pokemon.filter(p => !p.hidden && p.status === status);
+        const levels = pokes.map((p) =>
+            Number.isNaN(parseInt(p?.level as any)) ? 0 : parseInt(p?.level as any),
+        );
+        return (levels.reduce((p, c) => p + c, 0) / pokes.length).toFixed(0);
     }
 
     private getShinies() {
@@ -129,15 +138,6 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
 
     private numberOfShinies = this.props.pokemon.filter((s) => s.shiny).length;
 
-    private __personalStats() {
-        return (
-            <>
-                <p>Wipeouts: 1 (Emerald)</p>
-                <p>Total Time (Completed Games): 462:49</p>
-            </>
-        );
-    }
-
     public render() {
         const { stats, style } = this.props;
 
@@ -148,7 +148,9 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
                 <div style={{ marginTop: '10px', margin: '0 10px' }}>
                     {style.statsOptions.averageLevel ? (
                         this.state.pokemon.length ? (
-                            <p>Average Level: {this.getAverageLevel().toFixed(0)}</p>
+                            isLocal() ? <p>Average Level: Team ({this.getAverageLevelByStatus('Team')}), Boxed ({this.getAverageLevelByStatus('Boxed')}), Dead ({this.getAverageLevelByStatus('Dead')}), Champs ({this.getAverageLevelByStatus('Champs')})</p>
+                                :
+                                <p>Average Level: {this.getAverageLevel()}</p>
                         ) : null
                     ) : null}
                     {style.statsOptions.mostCommonKillers ? (

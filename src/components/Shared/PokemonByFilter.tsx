@@ -53,7 +53,8 @@ export class PokemonByFilterBase extends React.Component<PokemonByFilterProps> {
         this.setState({ team: this.props.team });
     }
 
-    public componentWillReceiveProps(
+    // eslint-disable-next-line camelcase
+    public UNSAFE_componentWillReceiveProps (
         nextProps: PokemonByFilterProps,
         prevProps: PokemonByFilterProps,
     ) {
