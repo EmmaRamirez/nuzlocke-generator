@@ -16,7 +16,7 @@ module.exports = {
         filename: 'bundle.js',
         chunkFilename: '[name].chunk.js',
     },
-    mode: 'development',
+    mode: isProduction ? 'production' : 'development',
     devtool: 'inline-source-map',
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],

@@ -60,6 +60,7 @@ IDialogProps & ReleaseDialogProps,
                             tail(Object.keys(releaseNotes).reverse()).map((key) => {
                                 return (
                                     <ReactMarkdown
+                                        key={key}
                                         className="release-notes"
                                         source={`#### ${key}\n${generateReleaseNotes(key)}`}
                                     />
