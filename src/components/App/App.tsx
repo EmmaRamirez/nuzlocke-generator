@@ -8,7 +8,7 @@ import { Hotkeys } from 'components/Hotkeys';
 import { State } from 'state';
 
 export interface AppProps {
-    style: any;
+    style: State['style'];
 }
 
 function Loading() {

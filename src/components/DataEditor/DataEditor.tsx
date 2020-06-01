@@ -41,6 +41,7 @@ export interface DataEditorState {
     href: string;
     selectedGame: string;
     mergeDataMode: boolean;
+    showSaveFileUI: boolean;
 }
 
 const hexEncode = function (str: string) {
@@ -79,6 +80,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
             href: '',
             selectedGame: 'RBY',
             mergeDataMode: true,
+            showSaveFileUI: false,
         };
     }
 
@@ -239,56 +241,72 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         this.setState({ isClearAllDataOpen: !this.state.isClearAllDataOpen });
 
     private renderSaveFileUI() {
-        return <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
-            <div
-                className="pt-label pt-inline"
-                style={{ padding: '.25rem 0', paddingBottom: '.5rem' }}>
-                <div className="pt-select">
-                    <select
-                        value={this.state.selectedGame}
-                        onChange={(e) => this.setState({ selectedGame: e.target.value })}>
-                        {['RBY'].map((game) => (
-                            <option value={game}>{game}</option>
-                        ))}
-                    </select>
+        return <>
+            <Button onClick={e => {
+                this.setState({ showSaveFileUI: !this.state.showSaveFileUI });
+            }} style={{
+                // @TODO: find a more sensible hack
+                transform: 'translateY(-3px)'
+            }}>Import From Save File</Button>
+            <div style={{
+                alignItems: 'center',
+                flexWrap: 'wrap',
+                margin: '0.25rem',
+                display: this.state.showSaveFileUI ? 'flex' : 'none',
+                border: '1px solid #333',
+                borderRadius: '0.25rem',
+                padding: '0.25rem',
+            }}>
+                <div
+                    className="pt-label pt-inline"
+                    style={{ padding: '.25rem 0', paddingBottom: '.5rem' }}>
+                    <div className="pt-select">
+                        <select
+                            value={this.state.selectedGame}
+                            onChange={(e) => this.setState({ selectedGame: e.target.value })}>
+                            {['RBY'].map((game) => (
+                                <option value={game}>{game}</option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
+
+                <div
+                    className="pt-label pt-inline"
+                    style={{
+                        padding: '.25rem 0',
+                        paddingBottom: '.5rem',
+                        marginLeft: '.25rem',
+                    }}>
+                    <input
+                        style={{ padding: '.25rem' }}
+                        className="pt-button"
+                        ref={(ref) => (this.fileInput = ref)}
+                        onChange={this.uploadFile(this.props.replaceState, this.props.state)}
+                        type="file"
+                        id="file"
+                        name="file"
+                        accept=".sav"
+                    />
+                </div>
+
+                <div
+                    className="pt-label pt-inline"
+                    style={{
+                        padding: '.25rem 0',
+                        paddingBottom: '.5rem',
+                        marginLeft: '.25rem',
+                    }}>
+                    <Switch
+                        label='Merge Data?'
+                        checked={this.state.mergeDataMode}
+                        onChange={(e) =>
+                            this.setState({ mergeDataMode: !this.state.mergeDataMode })
+                        }
+                    />
                 </div>
             </div>
-
-            <div
-                className="pt-label pt-inline"
-                style={{
-                    padding: '.25rem 0',
-                    paddingBottom: '.5rem',
-                    marginLeft: '.25rem',
-                }}>
-                <input
-                    style={{ padding: '.25rem' }}
-                    className="pt-button"
-                    ref={(ref) => (this.fileInput = ref)}
-                    onChange={this.uploadFile(this.props.replaceState, this.props.state)}
-                    type="file"
-                    id="file"
-                    name="file"
-                    accept=".sav"
-                />
-            </div>
-
-            <div
-                className="pt-label pt-inline"
-                style={{
-                    padding: '.25rem 0',
-                    paddingBottom: '.5rem',
-                    marginLeft: '.25rem',
-                }}>
-                <Switch
-                    label='Merge Data?'
-                    checked={this.state.mergeDataMode}
-                    onChange={(e) =>
-                        this.setState({ mergeDataMode: !this.state.mergeDataMode })
-                    }
-                />
-            </div>
-        </div>;
+        </>;
     }
 
     public render() {
@@ -386,7 +404,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     )}
                 </Dialog>
 
-                <ButtonGroup>
+                <ButtonGroup style={{margin: '.25rem'}}>
                     <Button
                         onClick={(e) => this.importState()}
                         icon="import"
@@ -396,6 +414,12 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     <Button onClick={(e) => this.exportState(this.props.state)} icon="export">
                         Export Data
                     </Button>
+                    {/* <Button icon='add' intent={Intent.SUCCESS}>
+                        New Nuzlocke
+                    </Button> */}
+                </ButtonGroup>
+                {this.renderSaveFileUI()}
+                <ButtonGroup style={{margin: '.25rem'}}>
                     <Button
                         className="pt-minimal"
                         intent={Intent.SUCCESS}
@@ -403,18 +427,14 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         icon="floppy-disk">
                         Force Save
                     </Button>
-                    {/* <Button icon='add' intent={Intent.SUCCESS}>
-                        New Nuzlocke
-                    </Button> */}
+                    <Button
+                        icon="trash"
+                        onClick={this.toggleClearingData}
+                        intent={Intent.DANGER}
+                        className="pt-minimal">
+                        Clear All Data
+                    </Button>
                 </ButtonGroup>
-                <Button
-                    icon="trash"
-                    onClick={this.toggleClearingData}
-                    intent={Intent.DANGER}
-                    className="pt-minimal">
-                    Clear All Data
-                </Button>
-                {this.renderSaveFileUI()}
             </BaseEditor>
         );
     }
