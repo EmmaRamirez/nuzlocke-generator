@@ -409,7 +409,6 @@ export const movesByType: MovesByType = {
         'Thousand Arrows',
         'Stomping Tantrum',
         'HP Ground',
-
     ],
     Ice: [
         'Hail',
@@ -842,5 +841,5 @@ export const movesByType: MovesByType = {
         'Shadow Sky',
         'Shadow Storm',
         'Shadow Wave',
-    ]
+    ],
 };

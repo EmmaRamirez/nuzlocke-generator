@@ -19,7 +19,7 @@ export interface HotkeysProps {
 export class HotkeysBase extends React.PureComponent<HotkeysProps> {
     public globalHotkeysEvents: any;
 
-    constructor(props) {
+    public constructor(props) {
         super(props);
         this.globalHotkeysEvents = {
             handleKeyDown: this.handleKeyDown,
@@ -42,7 +42,7 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
     };
 
     private handleKeyUp = (e: KeyboardEvent) => {
-        hotkeyList.map(hotkey => {
+        hotkeyList.map((hotkey) => {
             if (e.key === hotkey.key) {
                 if (this.isTextInput(e)) {
                     noop();
@@ -87,35 +87,36 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
     }
 
     private manualSave() {
-        persistor.flush()
-            .then(res => {
+        persistor
+            .flush()
+            .then((res) => {
                 const toaster = Toaster.create();
                 toaster.show({
-                    message: `Save successful!`,
+                    message: 'Save successful!',
                     intent: Intent.SUCCESS,
                 });
             })
-            .catch(err => {
-            const toaster = Toaster.create();
-            toaster.show({
-                message: `Saved failed. Please try again.`,
-                intent: Intent.DANGER,
+            .catch((err) => {
+                const toaster = Toaster.create();
+                toaster.show({
+                    message: 'Saved failed. Please try again.',
+                    intent: Intent.DANGER,
+                });
             });
-        });
     }
 
     private previousPokemon() {
-        const poke = this.props.pokemon.find(p => p.id === this.props.selectedId);
+        const poke = this.props.pokemon.find((p) => p.id === this.props.selectedId);
         const position = poke!.position;
-        const prevPoke = this.props.pokemon.find(p => p.position === position! - 1);
+        const prevPoke = this.props.pokemon.find((p) => p.position === position! - 1);
         const id = prevPoke ? prevPoke.id : this.getLastPokemonId();
         this.props.selectPokemon(id);
     }
 
     private nextPokemon() {
-        const poke = this.props.pokemon.find(p => p.id === this.props.selectedId);
+        const poke = this.props.pokemon.find((p) => p.id === this.props.selectedId);
         const position = poke!.position;
-        const nextPoke = this.props.pokemon.find(p => p.position === position! + 1);
+        const nextPoke = this.props.pokemon.find((p) => p.position === position! + 1);
         const id = nextPoke ? nextPoke.id : this.getFirstPokemonId();
         this.props.selectPokemon(id);
     }

@@ -23,44 +23,40 @@ const SpanBlock = ({ text }) => (
 );
 
 export class TrainerInfoEditor extends React.Component<{}, {}> {
-    constructor(props) {
-        super(props);
-    }
-
-    private onInput = e => {};
+    private onInput = (e) => {};
 
     public render() {
         return (
-            <div className='trainer-info-editor'>
+            <div className="trainer-info-editor">
                 <LinkedTrainerInfoEditField
                     onInput={this.onInput}
-                    label='Trainer Name'
-                    name='name'
-                    placeholder='Trainer Name'
+                    label="Trainer Name"
+                    name="name"
+                    placeholder="Trainer Name"
                 />
                 <LinkedTrainerInfoEditField
                     onInput={this.onInput}
-                    label='ID'
-                    name='id'
-                    placeholder='Trainer ID'
+                    label="ID"
+                    name="id"
+                    placeholder="Trainer ID"
                 />
                 <LinkedTrainerInfoEditField
                     onInput={this.onInput}
-                    label='Time'
-                    name='time'
-                    placeholder='0:00'
+                    label="Time"
+                    name="time"
+                    placeholder="0:00"
                 />
                 <LinkedTrainerInfoEditField
                     onInput={this.onInput}
-                    label='Money'
-                    name='money'
-                    placeholder='$0'
+                    label="Money"
+                    name="money"
+                    placeholder="$0"
                 />
                 <LinkedTrainerInfoEditField
                     onInput={this.onInput}
-                    label='Title'
-                    name='title'
-                    placeholder=''
+                    label="Title"
+                    name="title"
+                    placeholder=""
                 />
                 <BadgeInput enableCheckpointsEditor />
                 <LinkedTrainerInfoEditField
@@ -73,24 +69,24 @@ export class TrainerInfoEditor extends React.Component<{}, {}> {
                             content={
                                 <Menu>
                                     Type: image url. You can also specify a plain string of{' '}
-                                    {listOfTrainers.map(t => (
+                                    {listOfTrainers.map((t) => (
                                         <SpanBlock key={t} text={capitalize(t)} />
                                     ))}
                                 </Menu>
                             }>
                             <span>
-                                Trainer Image <span className='pt-icon pt-icon-info-sign' />
+                                Trainer Image <span className="pt-icon pt-icon-info-sign" />
                             </span>
                         </Popover>
                     }
-                    name='image'
-                    placeholder='http://...'
+                    name="image"
+                    placeholder="http://..."
                 />
                 <LinkedTrainerInfoEditField
                     onInput={this.onInput}
-                    label='Notes'
-                    name='notes'
-                    placeholder=''
+                    label="Notes"
+                    name="notes"
+                    placeholder=""
                 />
                 {/* <Button
                     style={{ borderRadius: '0' }}

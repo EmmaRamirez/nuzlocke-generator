@@ -5,7 +5,7 @@ export const iconBar = css`
     display: flex;
     margin-left: auto;
     * {
-        margin: .25rem;
+        margin: 0.25rem;
     }
 `;
 

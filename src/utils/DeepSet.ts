@@ -4,14 +4,14 @@ export class DeepSet<T> {
     private set: T[];
     public key: keyof T;
 
-    constructor(arr: T[] = [], key?: keyof T) {
+    public constructor(arr: T[] = [], key?: keyof T) {
         this.set = arr;
         // @ts-ignore
         this.key = key || 'name';
     }
 
     public add(item: T, key = this.key) {
-        if (this.set.some(i => i[key] === item[key])) {
+        if (this.set.some((i) => i[key] === item[key])) {
             noop();
         } else {
             this.set.push(item);
@@ -20,7 +20,7 @@ export class DeepSet<T> {
     }
 
     public overwrite(item: T, edits: Partial<T>, key = this.key) {
-        const foundItem = this.set.find(i => i[key] === item[key]);
+        const foundItem = this.set.find((i) => i[key] === item[key]);
         if (foundItem) {
             // @ts-ignore
             const newItem = { ...foundItem, ...edits };
@@ -31,15 +31,15 @@ export class DeepSet<T> {
     }
 
     public delete(item: T, key = this.key) {
-        this.set = this.set.filter(i => i[key] !== item[key]);
+        this.set = this.set.filter((i) => i[key] !== item[key]);
     }
 
     public get(key: unknown) {
-        return this.set.find(i => i[this.key] === key);
+        return this.set.find((i) => i[this.key] === key);
     }
 
     public has(item: T, key = this.key) {
-        return this.set.some(i => i[key] === item[key]);
+        return this.set.some((i) => i[key] === item[key]);
     }
 
     public toArray(): T[] {

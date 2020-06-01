@@ -1,4 +1,4 @@
-import { Action } from "actions";
+import { Action } from 'actions';
 
 export type TOGGLE_MOBILE_RESULT_VIEW = 'TOGGLE_MOBILE_RESULT_VIEW';
 export const TOGGLE_MOBILE_RESULT_VIEW: TOGGLE_MOBILE_RESULT_VIEW = 'TOGGLE_MOBILE_RESULT_VIEW';

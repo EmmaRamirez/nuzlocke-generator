@@ -19,37 +19,43 @@ import { Classes } from '@blueprintjs/core';
 /**
  * The main editor interface.
  */
-export class EditorBase extends React.Component<{ editor: State['editor']; style: State['style'] }, {}> {
-    constructor(props) {
+export class EditorBase extends React.Component<
+{ editor: State['editor']; style: State['style'] },
+{}
+> {
+    public constructor(props) {
         super(props);
     }
 
     public render() {
-
         const styles = {
             base: css`
                 min-width: 30rem;
                 max-width: 40rem;
                 min-height: 100vh;
-                padding: .25rem;
-            `
-        }
+                padding: 0.25rem;
+            `,
+        };
 
         const minimized = this.props.editor.minimized;
         return (
             <div
-                className={cx(`editor`, styles.base, this.props.style.editorDarkMode ? Classes.DARK : '')}
+                className={cx(
+                    'editor',
+                    styles.base,
+                    this.props.style.editorDarkMode ? Classes.DARK : '',
+                )}
                 style={{
                     width: minimized ? '0%' : '33%',
                     marginLeft: minimized ? '-30rem' : '0',
                     background: this.props.style.editorDarkMode ? '#222' : '#fff',
                 }}>
                 <GameEditor />
+                <DataEditor />
                 <TrainerEditor />
                 <PokemonEditor />
                 <StyleEditor />
                 <StatsEditor />
-                <DataEditor />
                 <HotkeysEditor />
                 <BugReporter />
             </div>

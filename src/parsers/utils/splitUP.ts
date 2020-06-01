@@ -1,4 +1,3 @@
-
 export function splitUp(arr, n) {
     const rest = arr.length % n; // how much to divide
     let restUsed = rest; // to keep track of the division over the elements
@@ -9,7 +8,8 @@ export function splitUp(arr, n) {
         let end = partLength + i,
             add = false;
 
-        if (rest !== 0 && restUsed) { // should add one element for the division
+        if (rest !== 0 && restUsed) {
+            // should add one element for the division
             end++;
             restUsed--; // we've used one division element now
             add = true;

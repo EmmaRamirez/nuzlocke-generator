@@ -1,7 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Dialog, Menu, MenuItem, Button } from '@blueprintjs/core';
-import { Table, Column, EditableCell, ITableProps, IColumnProps, ColumnHeaderCell } from '@blueprintjs/table';
+import {
+    Table,
+    Column,
+    EditableCell,
+    ITableProps,
+    IColumnProps,
+    ColumnHeaderCell,
+} from '@blueprintjs/table';
 import { AddPokemonButton } from 'components/AddPokemonButton';
 import { editPokemon } from 'actions';
 import { Pokemon, PokemonKeys } from 'models';
@@ -22,16 +29,16 @@ export class SortableColumnMenu extends React.PureComponent {
     public render() {
         return (
             <Menu>
-                <MenuItem icon='sort-asc' onClick={_ => null} text='Sort Asc' />
-                <MenuItem icon='sort-desc' onClick={_ => null} text='Sort Desc' />
+                <MenuItem icon="sort-asc" onClick={(_) => null} text="Sort Asc" />
+                <MenuItem icon="sort-desc" onClick={(_) => null} text="Sort Desc" />
             </Menu>
         );
     }
 }
 
 export class MassEditorBase extends React.Component<
-    MassEditorProps,
-    { columnWidths: ITableProps['columnWidths'][] }
+MassEditorProps,
+{ columnWidths: ITableProps['columnWidths'][] }
 > {
     // public getColumnWidths() {
     //     // Convert each poke in Pokemon Array into flat Array []
@@ -55,49 +62,55 @@ export class MassEditorBase extends React.Component<
     private renderMenu = () => {
         return (
             <Menu>
-                <MenuItem icon='sort-asc' onClick={this.sortAsc} text='Sort Asc' />
-                <MenuItem icon='sort-desc' onClick={this.sortDesc} text='Sort Desc' />
+                <MenuItem icon="sort-asc" onClick={this.sortAsc} text="Sort Asc" />
+                <MenuItem icon="sort-desc" onClick={this.sortDesc} text="Sort Desc" />
             </Menu>
         );
-    }
+    };
 
-    private sortAsc = () => {
+    private sortAsc = () => {};
 
-    }
-
-    private sortDesc = () => {
-
-    }
+    private sortDesc = () => {};
 
     private renderColumns(pokemon: MassEditorProps['pokemon']) {
         return Object.keys(omit(['extraData'], PokemonKeys))
-            .filter(k => k !== 'id')
-            .map(key => {
+            .filter((k) => k !== 'id')
+            .map((key) => {
                 return (
                     <Column
-                        columnHeaderCellRenderer={() => <ColumnHeaderCell name={key} menuRenderer={this.renderMenu} /> as any}
+                        columnHeaderCellRenderer={() =>
+                            (<ColumnHeaderCell name={key} menuRenderer={this.renderMenu} />) as any
+                        }
                         key={key}
                         name={key}
-                        cellRenderer={r => (
-                            <EditableCell
-                                onConfirm={(v, _, c) => {
-                                    let value: any = v;
-                                    if (key === 'types') {
-                                        value = v && typeof v === 'string' &&  v.split(',').map(s => s.trim());
-                                    }
-                                    if (key === 'moves') {
-                                        value = v && typeof v === 'string' &&  v.split(',').map(s => s.trim());
-                                    }
-                                    this.props.editPokemon(
-                                        {
-                                            [key]: value,
-                                        },
-                                        pokemon[r].id,
-                                    );
-                                }}
-                                value={pokemon[r][key]}
-                            />
-                        ) as any}
+                        cellRenderer={(r) =>
+                            (
+                                <EditableCell
+                                    onConfirm={(v, _, c) => {
+                                        let value: any = v;
+                                        if (key === 'types') {
+                                            value =
+                                                v &&
+                                                typeof v === 'string' &&
+                                                v.split(',').map((s) => s.trim());
+                                        }
+                                        if (key === 'moves') {
+                                            value =
+                                                v &&
+                                                typeof v === 'string' &&
+                                                v.split(',').map((s) => s.trim());
+                                        }
+                                        this.props.editPokemon(
+                                            {
+                                                [key]: value,
+                                            },
+                                            pokemon[r].id,
+                                        );
+                                    }}
+                                    value={pokemon[r][key]}
+                                />
+                            ) as any
+                        }
                     />
                 );
             });
@@ -106,16 +119,18 @@ export class MassEditorBase extends React.Component<
     public render() {
         return (
             <Dialog
-                icon='edit'
+                icon="edit"
                 isOpen={this.props.isOpen}
                 onClose={this.props.toggleDialog}
                 className={`wide-dialog ${
                     this.props.style.editorDarkMode ? 'pt-dark' : 'pt-light'
                 }`}
-                title='Mass Editor'>
-                <div className='pt-dialog-body'>
+                title="Mass Editor">
+                <div className="pt-dialog-body">
                     <ErrorBoundary>
-                        <AddPokemonButton defaultPokemon={generateEmptyPokemon(this.props.pokemon)} />
+                        <AddPokemonButton
+                            defaultPokemon={generateEmptyPokemon(this.props.pokemon)}
+                        />
                         {/* <Button
                             icon='export'
                         >
@@ -130,7 +145,11 @@ export class MassEditorBase extends React.Component<
                             defaultColumnWidth={100}
                             numRows={this.props.pokemon.length}
                             numFrozenColumns={1}>
-                            {this.renderColumns(this.props.pokemon.sort(sortPokes)) as React.ReactElement<IColumnProps>[]}
+                            {
+                                this.renderColumns(
+                                    this.props.pokemon.sort(sortPokes),
+                                ) as React.ReactElement<IColumnProps>[]
+                            }
                         </Table>
                     </ErrorBoundary>
                 </div>

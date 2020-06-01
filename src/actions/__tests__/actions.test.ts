@@ -29,8 +29,6 @@ import {
     SEE_RELEASE,
     selectPokemon,
     SELECT_POKEMON,
-    version0_0_6_BETA,
-    VERSION_0_0_6_BETA,
 } from '..';
 import { Pokemon } from 'models';
 
@@ -59,7 +57,7 @@ describe('actions', () => {
         const id = '001';
         expect(deletePokemon(id)).toEqual({
             type: DELETE_POKEMON,
-            id
+            id,
         });
     });
 
@@ -67,14 +65,14 @@ describe('actions', () => {
         const tid = '001';
         expect(deleteNuzlocke(tid)).toEqual({
             type: DELETE_NUZLOCKE,
-            tid
+            tid,
         });
     });
 
     describe('rules', () => {
         test('#addRule', () => {
             expect(addRule()).toEqual({
-                type: ADD_RULE
+                type: ADD_RULE,
             });
         });
 
@@ -82,7 +80,7 @@ describe('actions', () => {
             const target = 1;
             expect(deleteRule(target)).toEqual({
                 type: DELETE_RULE,
-                target
+                target,
             });
         });
 
@@ -90,5 +88,4 @@ describe('actions', () => {
             expect(resetRules()).toEqual({ type: RESET_RULES });
         });
     });
-
 });

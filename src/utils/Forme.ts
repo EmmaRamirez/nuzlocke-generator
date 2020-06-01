@@ -76,6 +76,4 @@ export enum Forme {
 
     'East Sea' = 'east',
     'West Sea' = 'west',
-
-
 }

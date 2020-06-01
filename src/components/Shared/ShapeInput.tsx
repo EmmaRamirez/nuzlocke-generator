@@ -28,9 +28,9 @@ export class ShapeInput extends React.Component<ShapeInputProps> {
     public render() {
         return (
             <div className={Classes.INPUT}>
-                <div className='shape'>
+                <div className="shape">
                     {this.renderShape}
-                    <input type='text' />
+                    <input type="text" />
                 </div>
             </div>
         );

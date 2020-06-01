@@ -6,10 +6,10 @@ export type RulesLocation = 'inside trainer section' | 'bottom' | 'top';
 export type ItemStyle = 'outer glow' | 'round' | 'square' | 'text';
 
 export interface StatsOptions {
-    averageLevel: boolean,
-    mostCommonKillers: boolean,
-    mostCommonTypes: boolean,
-    shiniesCaught: boolean,
+    averageLevel: boolean;
+    mostCommonKillers: boolean;
+    mostCommonTypes: boolean;
+    shiniesCaught: boolean;
 }
 
 export interface Styles {
@@ -57,13 +57,14 @@ export interface Styles {
     displayRulesLocation: RulesLocation;
     displayStats: boolean;
     statsOptions: StatsOptions;
+    linkedPokemonText: string;
 }
 
 export const styleDefaults: Styles = {
     accentColor: '#111111',
     backgroundImage: '',
     bgColor: '#383840',
-    customCSS: ``,
+    customCSS: '',
     displayBadges: true,
     displayRules: false,
     editorDarkMode: false,
@@ -103,6 +104,7 @@ export const styleDefaults: Styles = {
     trainerHeight: '100%',
     trainerAuto: true,
     displayStats: false,
+    linkedPokemonText: 'Linked To',
     statsOptions: {
         averageLevel: false,
         mostCommonKillers: false,

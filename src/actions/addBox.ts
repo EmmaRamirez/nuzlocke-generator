@@ -9,12 +9,12 @@ export interface AddBoxArgs {
     inheritFrom: 'Team' | 'Boxed' | 'Dead' | 'Champs';
 }
 
-export type addBox = ({name, background, inheritFrom}: AddBoxArgs) => Action<ADD_BOX>;
-export function addBox({name, background, inheritFrom}: AddBoxArgs): Action<ADD_BOX> {
+export type addBox = ({ name, background, inheritFrom }: AddBoxArgs) => Action<ADD_BOX>;
+export function addBox({ name, background, inheritFrom }: AddBoxArgs): Action<ADD_BOX> {
     return {
         type: ADD_BOX,
         name,
         background,
-        inheritFrom
+        inheritFrom,
     };
 }

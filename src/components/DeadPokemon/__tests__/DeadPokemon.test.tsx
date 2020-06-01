@@ -4,13 +4,13 @@ import { DeadPokemonBase } from '../DeadPokemon';
 import { generateEmptyPokemon, styleDefaults } from 'utils';
 import { Pokemon } from 'models';
 
-const Pokemon: Pokemon = {
+const poke = {
     ...generateEmptyPokemon(),
     species: 'Pikachu',
     nickname: 'Pikazzy',
     level: 50,
     metLevel: 3,
-    causeOfDeath: `Died doing what he loved.`,
+    causeOfDeath: 'Died doing what he loved.',
 };
 
 describe('<DeadPokemon />', () => {
@@ -20,10 +20,11 @@ describe('<DeadPokemon />', () => {
                 game={{ name: 'Red', customName: '' }}
                 style={styleDefaults}
                 selectPokemon={jest.fn()}
-                {...Pokemon}
+                minimal={false}
+                {...poke}
             />,
         );
-        expect(wrapper.text()).toContain(Pokemon.causeOfDeath);
-        expect(wrapper.text()).toContain(Pokemon.nickname);
+        expect(wrapper.text()).toContain(poke.causeOfDeath);
+        expect(wrapper.text()).toContain(poke.nickname);
     });
 });

@@ -15,7 +15,16 @@ export enum Region {
 
 export const getGameRegion = (game: Game): Region => {
     // tslint-disable:next-line
-    const kanto: Game[] = ['Red', 'Blue', 'Yellow', 'Green', 'FireRed', 'LeafGreen', "Let's Go Eevee", "Let's Go Pikachu"];
+    const kanto: Game[] = [
+        'Red',
+        'Blue',
+        'Yellow',
+        'Green',
+        'FireRed',
+        'LeafGreen',
+        'Let\'s Go Eevee',
+        'Let\'s Go Pikachu',
+    ];
     const johto: Game[] = ['Gold', 'Silver', 'Crystal', 'HeartGold', 'SoulSilver'];
     const hoenn: Game[] = ['Ruby', 'Sapphire', 'OmegaRuby', 'AlphaSapphire', 'Emerald'];
     const sinnoh: Game[] = ['Diamond', 'Pearl', 'Platinum'];
@@ -23,7 +32,7 @@ export const getGameRegion = (game: Game): Region => {
     const kalos: Game[] = ['X', 'Y'];
     const alola: Game[] = ['Sun', 'Ultra Sun', 'Ultra Moon', 'Moon'];
     const orre: Game[] = ['XD Gale of Darkness', 'Colosseum'];
-    const galar:Game[] = ['Sword', 'Shield'];
+    const galar: Game[] = ['Sword', 'Shield'];
 
     if (kanto.includes(game)) return Region.Kanto;
     if (johto.includes(game)) return Region.Johto;

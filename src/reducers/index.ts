@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
 
 import { nuzlocke } from './nuzlocke';
 import { pokemon } from './pokemon';
@@ -35,7 +34,6 @@ export const reducers = {
     rules,
     stats,
     style,
-    router: routerReducer,
 };
 
 export const appReducers = combineReducers(reducers);

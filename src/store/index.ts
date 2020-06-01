@@ -1,8 +1,6 @@
 import { applyMiddleware, createStore, Middleware } from 'redux';
 import { createLogger } from 'redux-logger';
-import createSagaMiddleware from 'redux-saga';
 import createHistory from 'history/createBrowserHistory';
-import { routerMiddleware as createRouterMiddleware } from 'react-router-redux';
 import { persistCombineReducers, persistStore, createMigrate } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -13,13 +11,13 @@ import { Store } from 'react-redux';
 const pkg = require('../../package.json');
 
 const migrations = {
-    '0.0.6-beta': state => {
+    '0.0.6-beta': (state) => {
         return {
             ...state,
             box: undefined,
         };
     },
-    '0.0.11-beta': state => {
+    '0.0.11-beta': (state) => {
         return {
             ...state,
             trainer: {
@@ -28,14 +26,22 @@ const migrations = {
             },
         };
     },
-    '1.1.0': state => ({
+    '1.1.0': (state) => ({
         ...state,
         customMoveMap: [],
     }),
-    '1.1.1': state => ({
+    '1.1.1': (state) => ({
         ...state,
-        customMoveMap: []
-    })
+        customMoveMap: [],
+    }),
+    '1.1.2': (state) => ({
+        ...state,
+        customMoveMap: [],
+    }),
+    '1.1.3': (state) => ({
+        ...state,
+        customMoveMap: [],
+    }),
 };
 
 const config = {
@@ -57,10 +63,6 @@ if (process.env.NODE_ENV === 'test') {
     const loggerMiddleware = createLogger();
     middlewares.push(loggerMiddleware);
 }
-
-const routerMiddleware = createRouterMiddleware(history);
-
-middlewares.push(routerMiddleware);
 
 export const store: Store<State> = createStore(persistReducers, applyMiddleware(...middlewares));
 

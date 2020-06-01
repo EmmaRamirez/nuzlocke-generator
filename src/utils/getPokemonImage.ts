@@ -5,26 +5,7 @@ import { Game } from 'utils';
 import { Forme } from './Forme';
 import { getIconFormeSuffix } from './getIconFormeSuffix';
 import { Editor } from 'models';
-import { editor } from 'reducers/editor';
 import { GenderElementProps, Gender } from 'components';
-
-const sugiFormeNotation = (forme: Forme) => {
-    if (typeof forme === 'undefined') return '';
-    if (forme === 'Normal') return '';
-    // If the forme exists, we default to '_f2'
-    if (
-        forme != null ||
-        forme !== 'Normal' ||
-        forme === 'Alolan' ||
-        forme === 'Mega' ||
-        forme === 'Mega-X'
-    )
-        return '_f2';
-    // Pokemon with more than 1 extra forme have different notations
-    if (forme === 'Sandy' || forme === 'Pau\'u' || forme === 'Mega-Y') return '_f3';
-    if (forme === 'Sensu') return '_f4';
-    return '';
-};
 
 const getGameName = (name: Game) => {
     if (name === 'Red' || name === 'Blue') return 'rb';
@@ -43,8 +24,14 @@ const getGameName = (name: Game) => {
         return 'blackwhite';
     if (name === 'X' || name === 'Y' || name === 'OmegaRuby' || name === 'AlphaSapphire')
         return 'xy';
-    if (name === 'Sun' || name === 'Moon' || name === 'Ultra Sun' || name === 'Ultra Moon'
-        || name === 'Colosseum' || name === 'XD Gale of Darkness')
+    if (
+        name === 'Sun' ||
+        name === 'Moon' ||
+        name === 'Ultra Sun' ||
+        name === 'Ultra Moon' ||
+        name === 'Colosseum' ||
+        name === 'XD Gale of Darkness'
+    )
         return 'sunmoon';
     if (
         name === 'Green' ||
@@ -122,7 +109,9 @@ export function getPokemonImage({
     gender,
 }: GetPokemonImage) {
     const regularNumber = speciesToNumber(species || 'Ditto');
-    const leadingZerosNumber = (speciesToNumber(species || 'Ditto') || 0).toString().padStart(3, '0');
+    const leadingZerosNumber = (speciesToNumber(species || 'Ditto') || 0)
+        .toString()
+        .padStart(3, '0');
 
     if (customImage) {
         return `url(${customImage})`;
@@ -172,18 +161,24 @@ export function getPokemonImage({
                 name as Game,
             )}/${leadingZerosNumber}.png)`;
         } else {
-            return `url(https://www.serebii.net/Shiny/${
-                getGameNameSerebii(name as Game)
-            }/${leadingZerosNumber}.png)`;
+            return `url(https://www.serebii.net/Shiny/${getGameNameSerebii(
+                name as Game,
+            )}/${leadingZerosNumber}.png)`;
         }
     }
 
-
     if (style.teamImages === 'sugimori') {
-        if ([521, 592, 593, 668, 678].includes(regularNumber || 0) && (gender === 'f' || gender === 'Female')) {
-            return `url(img/sugimori/female/${regularNumber}${getIconFormeSuffix(forme as keyof typeof Forme)}.png)`;
+        if (
+            [521, 592, 593, 668, 678].includes(regularNumber || 0) &&
+            (gender === 'f' || gender === 'Female')
+        ) {
+            return `url(img/sugimori/female/${regularNumber}${getIconFormeSuffix(
+                forme as keyof typeof Forme,
+            )}.png)`;
         }
-        return `url(img/sugimori/${regularNumber}${getIconFormeSuffix(forme as keyof typeof Forme)}.png)`;
+        return `url(img/sugimori/${regularNumber}${getIconFormeSuffix(
+            forme as keyof typeof Forme,
+        )}.png)`;
     }
 
     if (style.teamImages === 'dream world') {
@@ -191,9 +186,9 @@ export function getPokemonImage({
     }
 
     if (style.teamImages === 'shuffle') {
-        return `url(img/shuffle/${(species || 'Ditto').trim().toLocaleLowerCase()}${getIconFormeSuffix(
-            forme as keyof typeof Forme
-        )}.png)`;
+        return `url(img/shuffle/${(species || 'Ditto')
+            .trim()
+            .toLocaleLowerCase()}${getIconFormeSuffix(forme as keyof typeof Forme)}.png)`;
     }
 
     if (style.teamImages === 'tcg') {
@@ -203,13 +198,15 @@ export function getPokemonImage({
     }
     // TEMPORARY STOPGAPS
     if (species === 'Dugtrio' && forme === 'Alolan' && shiny) {
-        return `url(img/alolan-dugtrio-shiny.jpg)`;
+        return 'url(img/alolan-dugtrio-shiny.jpg)';
     }
     if (species === 'Indeedee' && gender === 'Male') {
-        return `url(img/indeedee-m.jpg)`;
+        return 'url(img/indeedee-m.jpg)';
     }
 
     return `url(img/${(
         addForme((species || '').replace(/\s/g, '').replace(/'/g, ''), forme) || 'missingno'
     ).toLowerCase()}.jpg)`;
 }
+
+export const stripURLCSS = (str) => str.replace(/url\(/g, '').replace(/\)/g, '');

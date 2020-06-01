@@ -1,9 +1,17 @@
-import { CREATE_CUSTOM_TYPE, Action, REPLACE_STATE, DELETE_CUSTOM_TYPE, EDIT_CUSTOM_TYPE } from "actions";
-import { State } from "state";
-import * as uuid from "uuid";
+import {
+    CREATE_CUSTOM_TYPE,
+    Action,
+    REPLACE_STATE,
+    DELETE_CUSTOM_TYPE,
+    EDIT_CUSTOM_TYPE,
+} from 'actions';
+import { State } from 'state';
+import * as uuid from 'uuid';
 
-
-export function customTypes(state: State['customTypes'] = [], action: Action<CREATE_CUSTOM_TYPE | DELETE_CUSTOM_TYPE | REPLACE_STATE | EDIT_CUSTOM_TYPE>) {
+export function customTypes(
+    state: State['customTypes'] = [],
+    action: Action<CREATE_CUSTOM_TYPE | DELETE_CUSTOM_TYPE | REPLACE_STATE | EDIT_CUSTOM_TYPE>,
+) {
     switch (action.type) {
         case CREATE_CUSTOM_TYPE:
             return [
@@ -11,10 +19,10 @@ export function customTypes(state: State['customTypes'] = [], action: Action<CRE
                 {
                     id: uuid(),
                     ...action.typeInfo,
-                }
+                },
             ];
         case DELETE_CUSTOM_TYPE:
-            return state.filter(type => type.id !== action.id);
+            return state.filter((type) => type.id !== action.id);
         case EDIT_CUSTOM_TYPE:
             return state.map((type) => {
                 if (type.id !== action.id) {
@@ -23,7 +31,7 @@ export function customTypes(state: State['customTypes'] = [], action: Action<CRE
                 return {
                     ...type,
                     ...action.typeInfo,
-                }
+                };
             });
         case REPLACE_STATE:
             return action.replaceWith.customTypes || [];

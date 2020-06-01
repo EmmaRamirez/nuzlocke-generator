@@ -15,11 +15,23 @@ const style = {
     checkboxes: css`
         margin-top: -1rem;
         padding: 0.5rem;
-    `
+    `,
 };
 
-export class CurrentPokemonLayoutItem extends React.PureComponent<{disabled?: boolean, checkboxes?: boolean}> {
+export class CurrentPokemonLayoutItem extends React.PureComponent<{
+    disabled?: boolean;
+    checkboxes?: boolean;
+}> {
     public render() {
-        return <div className={cx(style.Layout, this.props.disabled && style.disabled, this.props.checkboxes && style.checkboxes)}>{this.props.children}</div>;
+        return (
+            <div
+                className={cx(
+                    style.Layout,
+                    this.props.disabled && style.disabled,
+                    this.props.checkboxes && style.checkboxes,
+                )}>
+                {this.props.children}
+            </div>
+        );
     }
 }

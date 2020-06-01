@@ -1,1 +1,2 @@
-export const getDisplayNameForTest = (component: React.ComponentClass) => `<${component.displayName} />`;
+export const getDisplayNameForTest = (component: React.ComponentClass) =>
+    `<${component.displayName} />`;

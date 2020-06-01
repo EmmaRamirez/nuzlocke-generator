@@ -2,8 +2,6 @@ import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
-import { Route } from 'react-router';
-import { ConnectedRouter } from 'react-router-redux';
 import { PersistGate } from 'redux-persist/es/integration/react';
 import * as Rollbar from 'rollbar';
 import { injectGlobal } from 'emotion';
@@ -11,17 +9,27 @@ import { injectGlobal } from 'emotion';
 import { App } from './components/App';
 import { store, persistor } from './store';
 
-import 'assets/pokemon-font.css';
-
-import 'components/Shared/styles/base.styl';
-
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/table/lib/css/table.css';
+import 'normalize.css/normalize.css';
 import { DragDropContextProvider } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { isLocal } from 'utils';
 
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker
+            .register('/service-worker.js')
+            .then((registration) => {
+                console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+                console.log('SW registration failed: ', registrationError);
+            });
+    });
+}
 
 injectGlobal`
     *,
@@ -30,15 +38,20 @@ injectGlobal`
         box-sizing: border-box;
     }
 
+    a {
+        text-decoration: none;
+    }
+
     body {
         background: #fff;
-        font-family: 'Helvetica';
+        font-family: 'Arial';
     }
 
     .app {
         display: flex;
-        height: 100%;
-        width: 100%;
+        height: 100vh;
+        min-width: 100%;
+        overflow-y: hidden;
     }
 
     .opacity-medium {
@@ -68,7 +81,6 @@ const rollbarConfig = new Rollbar({
 Rollbar.init(rollbarConfig as any);
 
 const mountNode = document.getElementById('app');
-const history = createHistory();
 
 render(
     <Provider store={store}>

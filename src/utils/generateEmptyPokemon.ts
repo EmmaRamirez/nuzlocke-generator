@@ -13,7 +13,7 @@ export function generateEmptyPokemon(pokemon?: Pokemon[]): Pokemon {
         }
     }
     const genStatus = () => {
-        if (pokemon && pokemon.filter(poke => poke.status === 'Team').length >= 6) return 'Boxed';
+        if (pokemon && pokemon.filter((poke) => poke.status === 'Team').length >= 6) return 'Boxed';
         return 'Team';
     };
     return {

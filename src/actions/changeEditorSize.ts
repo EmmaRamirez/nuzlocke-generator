@@ -10,5 +10,3 @@ export const changeEditorSize = (mode: boolean): Action<CHANGE_EDITOR_SIZE, bool
         mode,
     };
 };
-
-

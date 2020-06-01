@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { cx, css } from 'emotion';
 
 export const colorTextInput_dark = css`
@@ -10,7 +11,7 @@ export const colorInput = css`
     border-radius: 50%;
     border: none;
     height: 1rem;
-    margin-left: .25rem;
+    margin-left: 0.25rem;
     padding: 0;
     width: 1rem;
     -webkit-apperance: none;
@@ -28,12 +29,11 @@ export const colorInput = css`
     }
 `;
 
-
 export const colorEditWrapper = css`
     align-items: center;
     display: flex;
     input[type='text'] {
-        padding-left: .5rem;
+        padding-left: 0.5rem;
     }
 `;
 
@@ -42,7 +42,7 @@ export const styleEdit = css`
     align-content: center;
     border-bottom: 1px solid #ddd;
     display: flex;
-    padding: .5rem;
+    padding: 0.5rem;
     width: 100%;
     .pt-label {
         margin: 0;
@@ -50,7 +50,7 @@ export const styleEdit = css`
     }
     .span {
         display: inline-block;
-        margin-right: .25rem;
+        margin-right: 0.25rem;
     }
 `;
 
@@ -58,12 +58,9 @@ export const styleEdit_dark = css`
     border-bottom: 1px solid #111;
 `;
 
-export const styleEditLabel = css`
-`;
+export const styleEditLabel = css``;
 
-export const styleEditSpan = css`
-
-`;
+export const styleEditSpan = css``;
 
 export const styleEditPtControl = css`
     margin-bottom: 0;
@@ -74,8 +71,8 @@ export const radioGroup = css`
     align-items: center;
     display: flex;
     .pt-control {
-        border-radius: .25rem;
-        margin: .25rem;
+        border-radius: 0.25rem;
+        margin: 0.25rem;
     }
     label.pt-label {
         margin: 0;

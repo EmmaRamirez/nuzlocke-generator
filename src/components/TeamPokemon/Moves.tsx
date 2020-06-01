@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { Generation, Styles, handleMovesGenerationsExceptions, getMoveType, typeToColor, getContrastColor, Types } from 'utils';
+import {
+    Generation,
+    Styles,
+    handleMovesGenerationsExceptions,
+    getMoveType,
+    typeToColor,
+    getContrastColor,
+    Types,
+} from 'utils';
 import { Pokemon } from 'models';
 import { connect } from 'react-redux';
 import { State } from 'state';
@@ -14,27 +22,34 @@ export interface MovesProps {
     customTypes: State['customTypes'];
 }
 
-export const Move = ({index, style, type, move, customTypes}) => (move && <div
-    key={index}
-    style={style.usePokemonGBAFont ? {
-        fontSize: '1rem',
-        background: typeToColor(type, customTypes) || 'transparent',
-        color: getContrastColor(typeToColor(type, customTypes))
-    } : {
-        background: typeToColor(type, customTypes) || 'transparent',
-        color: getContrastColor(typeToColor(type, customTypes))
-    }}
-    className={`move move-${move.replace(/\s/g, '-')?.toLowerCase()} ${
-        move.length >= 10 ? 'long-text-move' : ''
-    }`}>
-    {move}
-</div>);
+export const Move = ({ index, style, type, move, customTypes }) =>
+    move && (
+        <div
+            key={index}
+            style={
+                style.usePokemonGBAFont
+                    ? {
+                        fontSize: '1rem',
+                        background: typeToColor(type, customTypes) || 'transparent',
+                        color: getContrastColor(typeToColor(type, customTypes)),
+                    }
+                    : {
+                        background: typeToColor(type, customTypes) || 'transparent',
+                        color: getContrastColor(typeToColor(type, customTypes)),
+                    }
+            }
+            className={`move move-${move.replace(/\s/g, '-')?.toLowerCase()} ${
+                move.length >= 10 ? 'long-text-move' : ''
+            }`}>
+            {move}
+        </div>
+    );
 
-export const getMapMove = (moveMap, move) => moveMap?.find(m => m.move === move);
+export const getMapMove = (moveMap, move) => moveMap?.find((m) => m.move === move);
 
 export class MovesBase extends React.Component<MovesProps> {
     private generateMoves(moves: MovesProps['moves']) {
-        const {style, customMoveMap, customTypes} = this.props;
+        const { style, customMoveMap, customTypes } = this.props;
 
         return (
             moves &&
@@ -49,7 +64,7 @@ export class MovesBase extends React.Component<MovesProps> {
                 const type = handleMovesGenerationsExceptions({
                     move: move,
                     generation: this.props.generation,
-                    originalType: customMove?.type ? (Types[customMove?.type as Types] || getMoveType(move)) : getMoveType(move),
+                    originalType: customMove?.type || getMoveType(move),
                 });
                 return (
                     <Move
@@ -75,10 +90,8 @@ export class MovesBase extends React.Component<MovesProps> {
     }
 }
 
-export const Moves = connect(
-    (state: State) => ({
-        style: state.style,
-        customMoveMap: state.customMoveMap,
-        customTypes: state.customTypes,
-    }),
-)(MovesBase);
+export const Moves = connect((state: State) => ({
+    style: state.style,
+    customMoveMap: state.customMoveMap,
+    customTypes: state.customTypes,
+}))(MovesBase);

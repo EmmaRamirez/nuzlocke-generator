@@ -3,11 +3,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-//const OfflinePlugin = require('offline-plugin');
+// const WorkboxPlugin = require('workbox-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const isProduction = process.env.NODE_ENV === 'production' ? true : false;
-
-console.log(path.resolve(__dirname, 'src/index.tsx'))
 
 // tslint:disable-next-line:no-default-export
 module.exports = {
@@ -15,10 +14,10 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
-        chunkFilename: '[name].chunk.js'
+        chunkFilename: '[name].chunk.js',
     },
     mode: 'development',
-    devtool: 'eval-source-map',
+    devtool: 'inline-source-map',
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
         modules: [path.resolve('src'), path.resolve('node_modules')],
@@ -41,7 +40,7 @@ module.exports = {
         minimize: true,
         splitChunks: {
             chunks: 'all',
-        }
+        },
     },
     module: {
         rules: [
@@ -49,16 +48,6 @@ module.exports = {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
                 include: [path.resolve(__dirname, 'src')],
-            },
-            {
-                test: /\.tsx?$/,
-                loader: 'tslint-loader',
-                enforce: 'pre',
-                include: [path.resolve(__dirname, 'src')],
-            },
-            {
-                test: /\.styl$/,
-                loader: ['style-loader', 'css-loader', 'resolve-url-loader', 'stylus-loader'],
             },
             {
                 test: /\.css$/,
@@ -101,28 +90,23 @@ module.exports = {
         new CopyWebpackPlugin([
             { from: path.resolve(__dirname, 'src/img'), to: './img' },
             { from: path.resolve(__dirname, 'src/assets'), to: './assets' },
-            { from: path.resolve(__dirname, 'src/assets/icons'), to: './icons' }
+            { from: path.resolve(__dirname, 'src/assets/icons'), to: './icons' },
         ]),
 
         new HTMLWebpackPlugin({
             template: path.resolve(__dirname, 'src/index.html'),
         }),
 
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production'),
-            'process.env.GH_ACCESS_TOKEN': JSON.stringify(process.env.GH_ACCESS_TOKEN),
-            'process.env.ROLLBAR_ACCESS_TOKEN': JSON.stringify(process.env.ROLLBAR_ACCESS_TOKEN),
-            'PRODUCTION': JSON.stringify(true),
-            'features.themeEditing': JSON.stringify(process.env.THEME_EDITING),
-            'features.fileUploads': JSON.stringify(process.env.FILE_UPLOADS),
-            'features.multipleNuzlockes': JSON.stringify(process.env.MULTIPLE_NUZLOCKES),
-            'features.temTemSupport': JSON.stringify(process.env.TEM_TEM_SUPPORT),
-            
-        }),
+        new Dotenv(),
 
         new ReactLoadablePlugin({
-            filename: './dist/react-lodable.json'
+            filename: './dist/react-lodable.json',
         }),
+
+        // new WorkboxPlugin.GenerateSW({
+        //     clientsClaim: true,
+        //     skipWaiting: true,
+        // }),
 
         // new OfflinePlugin({
         //     excludes: ['**/*.js', '*.js']

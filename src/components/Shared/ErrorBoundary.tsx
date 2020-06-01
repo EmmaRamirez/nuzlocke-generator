@@ -5,7 +5,7 @@ interface ErrorBoundaryProps {
 }
 
 export class ErrorBoundary extends React.Component<ErrorBoundaryProps, { hasError: boolean }> {
-    constructor(props: any) {
+    public constructor(props: any) {
         super(props);
         this.state = {
             hasError: false,
@@ -21,7 +21,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, { hasErro
     public render(): React.ReactNode {
         if (this.state.hasError) {
             return (
-                <div className='error-boundary'>
+                <div className="error-boundary">
                     {this.props.errorMessage || 'Something went wrong.'}
                 </div>
             );

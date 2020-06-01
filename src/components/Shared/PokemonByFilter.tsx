@@ -19,7 +19,10 @@ const Grid = ({
                 .filter(filterFunction)
                 .sort(sortPokes)
                 .map((poke, index) => (
-                    <Tooltip key={index} content={poke.nickname || poke.species} position={Position.TOP}>
+                    <Tooltip
+                        key={index}
+                        content={poke.nickname || poke.species}
+                        position={Position.TOP}>
                         <PokemonIcon
                             id={poke.id}
                             species={poke.species}
@@ -50,7 +53,8 @@ export class PokemonByFilterBase extends React.Component<PokemonByFilterProps> {
         this.setState({ team: this.props.team });
     }
 
-    public componentWillReceiveProps(
+    // eslint-disable-next-line camelcase
+    public UNSAFE_componentWillReceiveProps (
         nextProps: PokemonByFilterProps,
         prevProps: PokemonByFilterProps,
     ) {

@@ -3,7 +3,7 @@ import { Action } from 'actions';
 export type ADD_STAT = 'ADD_STAT';
 export const ADD_STAT: ADD_STAT = 'ADD_STAT';
 
-export type addStat = (stat: {key: string, value: string}) => Action<ADD_STAT>;
+export type addStat = (stat: { key: string; value: string }) => Action<ADD_STAT>;
 export function addStat(stat) {
     return {
         type: ADD_STAT,

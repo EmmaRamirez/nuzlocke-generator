@@ -10,13 +10,13 @@ export class ZoomLevel extends React.Component<ZoomLevelProps> {
     public render() {
         const { style, editEvent } = this.props;
         return (
-            <div className='style-edit'>
-                <label className='pt-label pt-inline'>Zoom Level</label>
+            <div className="style-edit">
+                <label className="pt-label pt-inline">Zoom Level</label>
                 <div>
                     <ButtonGroup>
                         <Button
-                            icon='zoom-out'
-                            onClick={e => {
+                            icon="zoom-out"
+                            onClick={(e) => {
                                 const newZoomLevel =
                                     style.zoomLevel - 0.1 <= 0 ? 0 : style.zoomLevel - 0.1;
                                 editEvent({ target: { value: newZoomLevel } }, null, 'zoomLevel');
@@ -25,7 +25,7 @@ export class ZoomLevel extends React.Component<ZoomLevelProps> {
                         ={' '}
                         <Button style={{ padding: '0 1.25rem' }}>
                             <Slider
-                                onChange={value =>
+                                onChange={(value) =>
                                     editEvent({ target: { value } }, null, 'zoomLevel')
                                 }
                                 value={style.zoomLevel}
@@ -35,8 +35,8 @@ export class ZoomLevel extends React.Component<ZoomLevelProps> {
                             />
                         </Button>
                         <Button
-                            icon='zoom-in'
-                            onClick={e => {
+                            icon="zoom-in"
+                            onClick={(e) => {
                                 const newZoomLevel =
                                     style.zoomLevel + 0.1 >= 2 ? 2 : style.zoomLevel + 0.1;
                                 editEvent({ target: { value: newZoomLevel } }, null, 'zoomLevel');

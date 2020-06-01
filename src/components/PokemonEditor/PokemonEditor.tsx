@@ -2,7 +2,7 @@ import { Button, Intent, Icon, Popover, PopoverInteractionKind, Position } from 
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Pokemon, Game, Boxes, Editor } from 'models';
+import { Pokemon, Game, Box as BoxModel, Boxes, Editor } from 'models';
 import { Game as GameName } from 'utils';
 import { State } from 'state';
 
@@ -14,7 +14,6 @@ import { BaseEditor } from 'components/BaseEditor';
 import { Box, BoxForm } from 'components/Box';
 import { DropTarget, ConnectDropTarget } from 'react-dnd';
 import { PokemonIcon } from 'components/PokemonIcon';
-
 
 export interface PokemonEditorProps {
     team: Pokemon[];
@@ -34,46 +33,74 @@ export interface BoxesComponentProps {
 
 export class BoxesComponent extends React.Component<BoxesComponentProps> {
     private renderBoxes(boxes, team) {
-        return boxes.sort((a, b) => a.position - b.position).map(box => {
-            return <Box {...box} key={box.id} pokemon={team} />;
-        });
+        return boxes
+            .sort((a: BoxModel, b: BoxModel) => a.id - b.id)
+            .map((box) => {
+                return <Box {...box} key={box.id} pokemon={team} />;
+            });
     }
 
     public render() {
-        const {boxes, team} = this.props;
+        const { boxes, team } = this.props;
 
         return this.renderBoxes(boxes, team);
     }
 }
 
-const PokemonLocationChecklist = ({pokemon, game, style}: {pokemon: Pokemon[], game: Game, style: State['style']}) => {
+const PokemonLocationChecklist = ({
+    pokemon,
+    game,
+    style,
+}: {
+    pokemon: Pokemon[];
+    game: Game;
+    style: State['style'];
+}) => {
     const encounterMap = getEncounterMap(game.name);
 
     const getLocIcon = (name) => {
-        const poke = pokemon.find(p => p.met === name && p.gameOfOrigin === game.name);
+        const poke = pokemon.find((p) => p.met === name && p.gameOfOrigin === game.name);
         if (poke && !poke.hidden) {
-            return <><Icon icon='tick' /><PokemonIcon style={{pointerEvents: 'none'}} species={poke.species} /></>;
+            return (
+                <>
+                    <Icon icon="tick" />
+                    <PokemonIcon style={{ pointerEvents: 'none' }} species={poke.species} />
+                </>
+            );
         }
         if (poke && poke.hidden) {
-            return <><Icon icon='cross' /><PokemonIcon style={{pointerEvents: 'none'}} species={poke.species} /></>;
+            return (
+                <>
+                    <Icon icon="cross" />
+                    <PokemonIcon style={{ pointerEvents: 'none' }} species={poke.species} />
+                </>
+            );
         }
-        return <Icon icon='circle' />;
+        return <Icon icon="circle" />;
     };
 
-    return <div>
-        {encounterMap.map(area => {
-            return <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                margin: '2px',
-                borderBottom: `1px solid ${ style?.editorDarkMode ? '#222' : '#efefef'}`}}>
-            {getLocIcon(area)}
-            <div style={{marginLeft: '4px'}}>{area}</div>
-        </div>;
-        })}
-        <div>Tip: Pokémon with the "hidden" attribute are a great option for including Pokemon that got away on a certain route!</div>
-    </div>;
-
+    return (
+        <div>
+            {encounterMap.map((area) => {
+                return (
+                    <div
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            margin: '2px',
+                            borderBottom: `1px solid ${style?.editorDarkMode ? '#222' : '#efefef'}`,
+                        }}>
+                        {getLocIcon(area)}
+                        <div style={{ marginLeft: '4px' }}>{area}</div>
+                    </div>
+                );
+            })}
+            <div>
+                Tip: Pokémon with the "hidden" attribute are a great option for including Pokemon
+                that got away on a certain route!
+            </div>
+        </div>
+    );
 
     // return <div>
     //     {encounterMap.areas.map(area => {
@@ -95,16 +122,14 @@ const PokemonLocationChecklist = ({pokemon, game, style}: {pokemon: Pokemon[], g
 };
 
 export class PokemonEditorBase extends React.Component<PokemonEditorProps, PokemonEditorState> {
-    constructor(props: PokemonEditorProps) {
+    public constructor(props: PokemonEditorProps) {
         super(props);
         this.state = {
             isMassEditorOpen: false,
         };
     }
 
-    public componentDidMount() {}
-
-    private openMassEditor = e => {
+    private openMassEditor = (e) => {
         this.setState({
             isMassEditorOpen: true,
         });
@@ -115,8 +140,8 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
 
         return (
             <>
-                <BaseEditor name='Pokemon'>
-                    <div className='button-row' style={{ display: 'flex' }}>
+                <BaseEditor name="Pokemon">
+                    <div className="button-row" style={{ display: 'flex' }}>
                         <AddPokemonButton
                             defaultPokemon={{
                                 ...generateEmptyPokemon(team),
@@ -127,7 +152,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                             icon={'heat-grid'}
                             onClick={this.openMassEditor}
                             style={{ marginLeft: 'auto' }}
-                            className='pt-intent-primary pt-minimal'>
+                            className="pt-intent-primary pt-minimal">
                             Open Mass Editor
                         </Button>
                     </div>
@@ -135,13 +160,13 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                     <BoxesComponent boxes={boxes} team={team} />
                     <BoxForm boxes={boxes} />
                     <CurrentPokemonEdit />
-                    <BaseEditor name='Location Checklist' defaultOpen={false}>
+                    <BaseEditor name="Location Checklist" defaultOpen={false}>
                         <PokemonLocationChecklist style={style} pokemon={team} game={game} />
                     </BaseEditor>
                 </BaseEditor>
                 <MassEditor
                     isOpen={this.state.isMassEditorOpen}
-                    toggleDialog={e =>
+                    toggleDialog={(e) =>
                         this.setState({ isMassEditorOpen: !this.state.isMassEditorOpen })
                     }
                 />
@@ -159,5 +184,5 @@ export const PokemonEditor = connect(
     }),
     null,
     null,
-    {pure: false}
+    { pure: false },
 )(PokemonEditorBase as any);

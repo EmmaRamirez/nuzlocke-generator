@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export class Admin extends React.Component<any, any> {
-    constructor(props) {
+    public constructor(props) {
         super(props);
     }
 

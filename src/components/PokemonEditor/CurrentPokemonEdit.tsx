@@ -30,12 +30,22 @@ import { PokemonIconBase } from 'components/PokemonIcon';
 import { cx } from 'emotion';
 import * as Styles from './styles';
 import * as uuid from 'uuid/v4';
-import { Classes, Icon, Popover, Position, PopoverInteractionKind, TextArea, Button, Intent } from '@blueprintjs/core';
+import {
+    Classes,
+    Icon,
+    Popover,
+    Position,
+    PopoverInteractionKind,
+    TextArea,
+    Button,
+    Intent,
+} from '@blueprintjs/core';
 import { addPokemon } from 'actions';
 import { State } from 'state';
 import { CurrentPokemonLayoutItem } from './CurrentPokemonLayoutItem';
 import { MoveEditor } from 'components/MoveEditor';
 import { PokemonNotes } from './PokemonNotes';
+import { pokemon } from 'reducers/pokemon';
 
 const pokeball = require('assets/pokeball.png');
 
@@ -52,16 +62,14 @@ export const CopyPokemonButton: React.SFC<CopyPokemonButtonProps> = ({
             position={Position.TOP}
             content={<div style={{ padding: '1rem' }}>{`Copy Pok${accentedE}mon`}</div>}>
             <Icon
-                title='Copy Pokemon'
-                icon='duplicate'
+                title="Copy Pokemon"
+                icon="duplicate"
                 className={cx(Styles.copyButton)}
                 onClick={onClick}
             />
         </Popover>
     );
 };
-
-
 
 export interface CurrentPokemonEditProps {
     selectedId: Pokemon['id'];
@@ -70,7 +78,7 @@ export interface CurrentPokemonEditProps {
     selectPokemon: selectPokemon;
     editPokemon: editPokemon;
     addPokemon: addPokemon;
-    game: { name: Game, customName: string };
+    game: { name: Game; customName: string };
     editor: Editor;
     customTypes: State['customTypes'];
 }
@@ -83,10 +91,10 @@ export interface CurrentPokemonEditState {
 }
 
 export class CurrentPokemonEditBase extends React.Component<
-    CurrentPokemonEditProps,
-    CurrentPokemonEditState
+CurrentPokemonEditProps,
+CurrentPokemonEditState
 > {
-    constructor(props: CurrentPokemonEditProps) {
+    public constructor(props: CurrentPokemonEditProps) {
         super(props);
         this.state = {
             selectedId: '5',
@@ -103,7 +111,8 @@ export class CurrentPokemonEditBase extends React.Component<
         });
     }
 
-    public componentWillReceiveProps(
+    // eslint-disable-next-line camelcase
+    public UNSAFE_componentWillReceiveProps(
         nextProps: CurrentPokemonEditProps,
         prevProps: CurrentPokemonEditProps,
     ) {
@@ -112,7 +121,7 @@ export class CurrentPokemonEditBase extends React.Component<
         }
     }
 
-    private copyPokemon = e => {
+    private copyPokemon = (e) => {
         const currentPokemon = this.getCurrentPokemon();
         if (currentPokemon) {
             const newPokemon = {
@@ -134,26 +143,18 @@ export class CurrentPokemonEditBase extends React.Component<
         return this.props.pokemon.find((v: Pokemon) => v.id === this.state.selectedId);
     }
 
-    private parseTree(tree) {
-    }
+    private parseTree(tree) {}
 
-    private evolvePokemon = (currentPokemon) => e => {
-
+    private evolvePokemon = (currentPokemon) => (e) => {
         if (this.doesPokemonHaveEvolution(currentPokemon)) {
-
             const evoTree = getDeepObject(EvolutionTree, currentPokemon.species);
             const evolutionSpecies = evoTree && Object.keys(evoTree);
-
-
 
             if (!evolutionSpecies) {
                 return false;
             }
 
-
             if (evolutionSpecies && evolutionSpecies.length > 1) {
-
-
             } else {
                 const edit = {
                     species: evolutionSpecies[0],
@@ -165,7 +166,7 @@ export class CurrentPokemonEditBase extends React.Component<
         } else {
             return false;
         }
-    }
+    };
 
     private doesPokemonHaveEvolution = (currentPokemon) => {
         if (getDeepObject(EvolutionTree, currentPokemon.species)) {
@@ -173,87 +174,92 @@ export class CurrentPokemonEditBase extends React.Component<
         } else {
             return false;
         }
-    }
+    };
 
-    private toggleDialog = () => this.setState({isMoveEditorOpen: !this.state.isMoveEditorOpen});
+    private toggleDialog = () => this.setState({ isMoveEditorOpen: !this.state.isMoveEditorOpen });
 
     private getTypes() {
-        const {customTypes, editor} = this.props;
+        const { customTypes, editor } = this.props;
         return getListOfTypes(customTypes, editor.temtemMode);
     }
 
     public moreInputs(currentPokemon: Pokemon) {
+        const pokemonForLink = this.props.pokemon.map((p) => ({
+            key: `${p.nickname} (${p.species})`,
+            value: p.id,
+        }));
+
         return (
-            <div className='expanded-edit'>
+            <div className="expanded-edit">
                 <CurrentPokemonInput
-                    labelName='Forme'
-                    inputName='forme'
-                    placeholder=''
+                    labelName="Forme"
+                    inputName="forme"
+                    placeholder=""
                     value={currentPokemon.forme}
-                    type='select'
+                    type="select"
                     options={['Normal', ...getAdditionalFormes(currentPokemon.species)]}
                     pokemon={currentPokemon}
                 />
                 <CurrentPokemonInput
-                    labelName='Types'
-                    inputName='types'
+                    labelName="Types"
+                    inputName="types"
                     value={currentPokemon.types}
-                    type='double-select'
+                    type="double-select"
                     options={this.getTypes()}
                 />
                 <CurrentPokemonLayoutItem checkboxes>
                     <CurrentPokemonInput
-                        labelName='Shiny'
-                        inputName='shiny'
+                        labelName="Shiny"
+                        inputName="shiny"
                         value={currentPokemon.shiny}
-                        type='checkbox'
+                        type="checkbox"
                     />
                     <CurrentPokemonInput
-                        labelName='Egg'
-                        inputName='egg'
+                        labelName="Egg"
+                        inputName="egg"
                         value={currentPokemon.egg}
-                        type='checkbox'
+                        type="checkbox"
                     />
                     <CurrentPokemonInput
-                        labelName='Hidden'
-                        inputName='hidden'
+                        labelName="Hidden"
+                        inputName="hidden"
                         value={currentPokemon.hidden}
-                        type='checkbox'
+                        type="checkbox"
                     />
                     <CurrentPokemonInput
-                        labelName='MVP'
-                        inputName='mvp'
+                        labelName="MVP"
+                        inputName="mvp"
                         value={currentPokemon.mvp}
-                        type='checkbox'
+                        type="checkbox"
                     />
                 </CurrentPokemonLayoutItem>
                 <CurrentPokemonInput
-                    labelName='Custom Image'
-                    inputName='customImage'
-                    placeholder='http://..'
+                    labelName="Custom Image"
+                    inputName="customImage"
+                    placeholder="http://.."
                     value={currentPokemon.customImage}
-                    type='text'
+                    type="text"
                 />
                 <CurrentPokemonInput
-                    labelName='Custom Icon'
-                    inputName='customIcon'
-                    placeholder='http://..'
+                    labelName="Custom Icon"
+                    inputName="customIcon"
+                    placeholder="http://.."
                     value={currentPokemon.customIcon}
-                    type='text'
+                    type="text"
                 />
                 <CurrentPokemonInput
-                    labelName='Cause of Death'
-                    inputName='causeOfDeath'
+                    labelName="Cause of Death"
+                    inputName="causeOfDeath"
                     value={currentPokemon.causeOfDeath}
-                    type='text'
+                    type="text"
                 />
                 <Autocomplete
                     items={listOfItems}
-                    name='item'
-                    label='Item'
-                    placeholder='Item'
+                    name="item"
+                    label="Item"
+                    placeholder="Item"
                     value={currentPokemon.item || ''}
-                    onChange={e => {
+                    onChange={(e) => {
                         const edit = {
                             item: e.target.value,
                         };
@@ -262,61 +268,82 @@ export class CurrentPokemonEditBase extends React.Component<
                     }}
                 />
                 <CurrentPokemonInput
-                    labelName='Custom Item Image'
-                    inputName='customItemImage'
-                    placeholder='http://..'
+                    labelName="Custom Item Image"
+                    inputName="customItemImage"
+                    placeholder="http://.."
                     value={currentPokemon.customItemImage}
-                    type='text'
+                    type="text"
                 />
                 <CurrentPokemonInput
-                    labelName='Pokeball'
-                    inputName='pokeball'
+                    labelName="Pokeball"
+                    inputName="pokeball"
                     value={currentPokemon.pokeball}
-                    type='select'
+                    type="select"
                     options={[
                         'None',
-                        ...listOfPokeballs.map(ball => `${ball.charAt(0).toUpperCase() + ball.slice(1, ball.length)} Ball`)
+                        ...listOfPokeballs.map(
+                            (ball) =>
+                                `${ball.charAt(0).toUpperCase() + ball.slice(1, ball.length)} Ball`,
+                        ),
                     ]}
                 />
                 <CurrentPokemonLayoutItem>
                     <CurrentPokemonInput
-                        labelName='Wonder Traded'
-                        inputName='wonderTradedFor'
+                        labelName="Wonder Traded"
+                        inputName="wonderTradedFor"
                         value={currentPokemon.wonderTradedFor}
-                        type='text'
+                        type="text"
                     />
                     <CurrentPokemonInput
-                        labelName='Position'
-                        inputName='position'
+                        labelName="Position"
+                        inputName="position"
                         disabled={true}
                         value={currentPokemon.position}
-                        type='number'
+                        type="number"
                     />
                     <CurrentPokemonInput
-                        labelName='Game of Origin'
-                        inputName='gameOfOrigin'
+                        labelName="Game of Origin"
+                        inputName="gameOfOrigin"
                         value={currentPokemon.gameOfOrigin}
-                        type='select'
+                        type="select"
                         options={listOfGames}
                     />
                 </CurrentPokemonLayoutItem>
                 <CurrentPokemonLayoutItem>
                     <CurrentPokemonInput
-                        labelName='Notes'
-                        inputName='notes'
+                        labelName="Link To..."
+                        inputName="linkedTo"
+                        value={currentPokemon?.linkedTo}
+                        type="select"
+                        options={[
+                            {
+                                key: 'None',
+                                value: null,
+                            },
+                            ...pokemonForLink,
+                        ]}
+                        usesKeyValue={true}
+                    />
+                </CurrentPokemonLayoutItem>
+                <CurrentPokemonLayoutItem>
+                    <CurrentPokemonInput
+                        labelName="Notes"
+                        inputName="notes"
                         value={currentPokemon.notes}
-                        type='textArea'
+                        type="textArea"
                     />
                     {/* <PokemonNotes /> */}
                 </CurrentPokemonLayoutItem>
                 <CurrentPokemonLayoutItem disabled>
-                    {currentPokemon.extraData && <CurrentPokemonInput
-                        labelName='Extra Data'
-                        inputName='extraData'
-                        type='text'
-                        disabled
-                        value={JSON.stringify(currentPokemon.extraData)}
-                    />}
+                    {currentPokemon.extraData && (
+                        <CurrentPokemonInput
+                            labelName="Extra Data"
+                            inputName="extraData"
+                            type="text"
+                            disabled
+                            value={JSON.stringify(currentPokemon.extraData)}
+                        />
+                    )}
                 </CurrentPokemonLayoutItem>
             </div>
         );
@@ -327,17 +354,17 @@ export class CurrentPokemonEditBase extends React.Component<
 
         if (currentPokemon == null) {
             return (
-                <div className='current-pokemon no-pokemon-selected'>
-                    <img alt='pokeball' src={pokeball} /> <p>Select a Pok&eacute;mon to edit</p>
+                <div className="current-pokemon no-pokemon-selected">
+                    <img alt="pokeball" src={pokeball} /> <p>Select a Pok&eacute;mon to edit</p>
                 </div>
             );
         }
 
         return (
-            <div className='current-pokemon'>
-                <span className='current-pokemon-header'>
+            <div className="current-pokemon">
+                <span className="current-pokemon-header">
                     <PokemonIconBase
-                        className='current-pokemon-image'
+                        className="current-pokemon-image"
                         id={currentPokemon.id}
                         species={currentPokemon.species}
                         forme={currentPokemon.forme}
@@ -348,11 +375,11 @@ export class CurrentPokemonEditBase extends React.Component<
                         onClick={() => {}}
                     />
                     <CurrentPokemonInput
-                        labelName='Status'
-                        inputName='status'
+                        labelName="Status"
+                        inputName="status"
                         value={currentPokemon.status}
-                        type='select'
-                        options={this.state.box.map(n => n.name)}
+                        type="select"
+                        options={this.state.box.map((n) => n.name)}
                     />
                     {/*this.doesPokemonHaveEvolution(currentPokemon) ? <Button
                         style={{marginTop: '12px'}}
@@ -369,12 +396,12 @@ export class CurrentPokemonEditBase extends React.Component<
                     <ErrorBoundary>
                         <Autocomplete
                             items={listOfPokemon}
-                            name='species'
-                            label='Species'
+                            name="species"
+                            label="Species"
                             disabled={currentPokemon.egg}
-                            placeholder='Missing No.'
+                            placeholder="Missing No."
                             value={currentPokemon.species}
-                            onChange={e => {
+                            onChange={(e) => {
                                 const edit = {
                                     species: e.target.value,
                                 };
@@ -394,28 +421,28 @@ export class CurrentPokemonEditBase extends React.Component<
                         />
                     </ErrorBoundary>
                     <CurrentPokemonInput
-                        labelName='Nickname'
-                        inputName='nickname'
+                        labelName="Nickname"
+                        inputName="nickname"
                         value={currentPokemon.nickname}
-                        placeholder='Fluffy'
-                        type='text'
+                        placeholder="Fluffy"
+                        type="text"
                     />
                 </CurrentPokemonLayoutItem>
                 <CurrentPokemonLayoutItem>
                     <CurrentPokemonInput
-                        labelName='Level'
-                        inputName='level'
-                        placeholder='5'
+                        labelName="Level"
+                        inputName="level"
+                        placeholder="5"
                         value={currentPokemon.level}
-                        type='number'
+                        type="number"
                     />
                     <Autocomplete
                         items={listOfLocations}
-                        name='met'
-                        label='Met Location'
-                        placeholder='Pallet Town'
+                        name="met"
+                        label="Met Location"
+                        placeholder="Pallet Town"
                         value={currentPokemon.met || ''}
-                        onChange={e => {
+                        onChange={(e) => {
                             const edit = {
                                 met: e.target.value,
                             };
@@ -424,37 +451,37 @@ export class CurrentPokemonEditBase extends React.Component<
                         }}
                     />
                     <CurrentPokemonInput
-                        labelName='Met Level'
-                        inputName='metLevel'
-                        placeholder='5'
+                        labelName="Met Level"
+                        inputName="metLevel"
+                        placeholder="5"
                         value={currentPokemon.metLevel}
-                        type='number'
+                        type="number"
                     />
                 </CurrentPokemonLayoutItem>
                 <CurrentPokemonLayoutItem>
                     <CurrentPokemonInput
-                        labelName='Gender'
-                        inputName='gender'
-                        placeholder=''
+                        labelName="Gender"
+                        inputName="gender"
+                        placeholder=""
                         value={currentPokemon.gender}
-                        type='select'
+                        type="select"
                         options={['Neutral', 'Male', 'Female']}
                     />
                     <CurrentPokemonInput
-                        labelName='Nature'
-                        inputName='nature'
-                        placeholder='Sassy'
+                        labelName="Nature"
+                        inputName="nature"
+                        placeholder="Sassy"
                         value={currentPokemon.nature}
-                        type='select'
+                        type="select"
                         options={listOfNatures}
                     />
                     <Autocomplete
                         items={listOfAbilities}
-                        name='ability'
-                        label='Ability'
-                        placeholder=''
+                        name="ability"
+                        label="Ability"
+                        placeholder=""
                         value={currentPokemon.ability || ''}
-                        onChange={e => {
+                        onChange={(e) => {
                             const edit = {
                                 ability: e.target.value,
                             };
@@ -465,31 +492,28 @@ export class CurrentPokemonEditBase extends React.Component<
                 </CurrentPokemonLayoutItem>
                 <CurrentPokemonLayoutItem>
                     <CurrentPokemonInput
-                        labelName='Moves'
-                        inputName='moves'
-                        placeholder=''
+                        labelName="Moves"
+                        inputName="moves"
+                        placeholder=""
                         value={currentPokemon.moves}
-                        type='moves'
+                        type="moves"
                     />
                     <Button
-                        className='pt-minimal'
+                        className="pt-minimal"
                         intent={Intent.PRIMARY}
-                        onClick={this.toggleDialog}
-                    >Edit Moves</Button>
+                        onClick={this.toggleDialog}>
+                        Edit Moves
+                    </Button>
                 </CurrentPokemonLayoutItem>
-                <MoveEditor
-                    isOpen={this.state.isMoveEditorOpen}
-                    toggleDialog={this.toggleDialog}
-                />
+                <MoveEditor isOpen={this.state.isMoveEditorOpen} toggleDialog={this.toggleDialog} />
                 {this.state.expandedView ? this.moreInputs(currentPokemon) : null}
                 <br />
                 <Button
                     onClick={this.expandView}
                     data-expandedview={this.state.expandedView.toString()}
                     intent={Intent.PRIMARY}
-                    className='pt-button pt-fill current-pokemon-more'
-                    icon={this.state.expandedView ? 'symbol-triangle-up' : 'symbol-triangle-down'}
-                >
+                    className={cx(Classes.FILL, 'current-pokemon-more')}
+                    icon={this.state.expandedView ? 'symbol-triangle-up' : 'symbol-triangle-down'}>
                     {this.state.expandedView ? 'Less' : 'More'}
                 </Button>
             </div>

@@ -1,4 +1,4 @@
-import {Pokemon} from 'models';
+import { Pokemon } from 'models';
 
 export const getMetLocationString = ({
     poke,

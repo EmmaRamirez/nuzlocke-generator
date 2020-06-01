@@ -6,17 +6,17 @@ import { hotkeyList } from 'utils';
 export interface HotkeysEditorState {}
 
 export class HotkeysEditor extends React.Component<{}> {
-    constructor(props) {
+    public constructor(props) {
         super(props);
     }
 
     public render() {
         return (
-            <BaseEditor name='Hotkeys'>
-                <ul style={{ listStyleType: 'none', paddingLeft: '1rem' }} className='hotkey-list'>
-                    {hotkeyList.map(item => (
+            <BaseEditor name="Hotkeys">
+                <ul style={{ listStyleType: 'none', paddingLeft: '1rem' }} className="hotkey-list">
+                    {hotkeyList.map((item) => (
                         <li style={{ display: 'flex' }}>
-                            <kbd style={{ margin: '4px' }} className='pt-code'>
+                            <kbd style={{ margin: '4px' }} className="pt-code">
                                 {item.key}
                             </kbd>
                             <div style={{ margin: '4px' }}>{item.comment}</div>

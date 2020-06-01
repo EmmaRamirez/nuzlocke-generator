@@ -6,7 +6,7 @@ This is a beta. Expect everything to break. Save backups if you value them.
 
 ## A Preview
 
-![alt](./src/assets/media-four.png) ![alt](./src/assets/media-three.png)
+![alt](./src/assets/media-five.png)
 
 ## Running Locally
 

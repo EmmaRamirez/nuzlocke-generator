@@ -36,9 +36,9 @@ export const gameOfOriginToColor = (game: Game) => {
         Colosseum: '#dfe0d2',
         'XD Gale of Darkness': '#39104f',
         // tslint:disable-next-line:quotemark
-        "Let\'s Go Eevee": '#d1b28c',
+        'Let\'s Go Eevee': '#d1b28c',
         // tslint:disable-next-line:quotemark
-        "Let's Go Pikachu": '#ede087',
+        'Let\'s Go Pikachu': '#ede087',
         Sword: '#48A9A6',
         Shield: '#C1474D',
     };

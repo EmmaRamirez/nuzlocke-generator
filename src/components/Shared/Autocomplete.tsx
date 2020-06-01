@@ -21,7 +21,7 @@ import './Autocomplete.css';
 import { cx } from 'emotion';
 
 export class Autocomplete extends React.Component<AutocompleteProps, AutocompleteState> {
-    constructor(props) {
+    public constructor(props) {
         super(props);
         this.state = {
             visibleItems: [],
@@ -37,6 +37,9 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
                 value: v,
             },
         });
+        this.setState({
+            visibleItems: this.props.items,
+        });
     }
 
     public componentWillMount() {
@@ -50,7 +53,8 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
         });
     }
 
-    public componentWillReceiveProps(nextProps) {
+    // eslint-disable-next-line camelcase
+    public UNSAFE_componentWillReceiveProps(nextProps) {
         this.setState({ currentValue: nextProps.value });
     }
 
@@ -59,8 +63,8 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
             return (
                 <li
                     key={i}
-                    role='item'
-                    onClick={e => this.selectItem(v)}
+                    role="item"
+                    onClick={(e) => this.selectItem(v)}
                     style={v === this.state.currentValue ? { color: 'lightblue' } : {}}>
                     {v}
                 </li>
@@ -77,15 +81,15 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
         } else {
             this.setState({
                 currentValue: e.target.value,
-                visibleItems: this.props.items.filter(i => i.startsWith(e.target.value)),
+                visibleItems: this.props.items.filter((i) => i.startsWith(e.target.value)),
             });
         }
         this.props.onChange(e);
     };
 
-    private openList = e => this.setState({ isOpen: true });
+    private openList = (e) => this.setState({ isOpen: true });
 
-    private closeList = e => {
+    private closeList = (e) => {
         setTimeout(() => {
             this.setState({ isOpen: false });
             this.setState({ visibleItems: [] });
@@ -110,7 +114,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
         }
     };
 
-    private handleMovement = e => {
+    private handleMovement = (e) => {
         const currentIndex = this.state.visibleItems.indexOf(this.state.currentValue);
         if (e.which === 38) {
             this.selectItem(this.state.visibleItems[currentIndex - 1]);
@@ -120,25 +124,25 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
     };
 
     public render() {
-        const {className} = this.props;
+        const { className } = this.props;
         return (
             <div className={cx('current-pokemon-input-wrapper', 'autocomplete')}>
                 <label>{this.props.label}</label>
                 <input
-                    autoComplete='off'
+                    autoComplete="off"
                     className={cx(className)}
                     onKeyDown={this.handleKeyDown}
                     onFocus={this.openList}
                     onBlur={this.closeList}
                     placeholder={this.props.placeholder}
                     name={this.props.name}
-                    type='text'
+                    type="text"
                     onChange={this.updateItems}
                     value={this.state.currentValue}
                     disabled={this.props.disabled}
                 />
                 {this.state.isOpen ? (
-                    <ul className='autocomplete-items has-nice-scrollbars'>{this.renderItems()}</ul>
+                    <ul className="autocomplete-items has-nice-scrollbars">{this.renderItems()}</ul>
                 ) : null}
             </div>
         );

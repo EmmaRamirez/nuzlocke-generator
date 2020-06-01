@@ -2,13 +2,14 @@ import { checkpoints } from '../checkpoints';
 import { addCustomCheckpoint, deleteCheckpoint, editCheckpoint } from 'actions';
 
 describe('checkpoints', () => {
-    const genState = () => [
-        { name: 'TestBadge', image: 'badge' }
-    ];
+    const genState = () => [{ name: 'TestBadge', image: 'badge' }];
 
     it('works with add', () => {
         const state1 = genState();
-        const subject = checkpoints(state1, addCustomCheckpoint({ name: 'TestBadge2', image: 'neat' }));
+        const subject = checkpoints(
+            state1,
+            addCustomCheckpoint({ name: 'TestBadge2', image: 'neat' }),
+        );
         expect(subject.length).toBe(2);
     });
 
