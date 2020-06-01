@@ -64,9 +64,7 @@ export class MovesBase extends React.Component<MovesProps> {
                 const type = handleMovesGenerationsExceptions({
                     move: move,
                     generation: this.props.generation,
-                    originalType: customMove?.type
-                        ? Types[customMove?.type as Types] || getMoveType(move)
-                        : getMoveType(move),
+                    originalType: customMove?.type || getMoveType(move),
                 });
                 return (
                     <Move

@@ -17,7 +17,6 @@ import { TagInput, Classes, TextArea } from '@blueprintjs/core';
 import { State } from 'state';
 import { Pokemon } from 'models';
 
-import 'draft-js/dist/Draft.css';
 
 interface CurrentPokemonInputProps {
     labelName: string;
@@ -42,6 +41,7 @@ interface CurrentPokemonInputProps {
     pokemon?: Pokemon;
     customMoveMap: State['customMoveMap'];
     usesKeyValue?: boolean;
+    customTypes: State['customTypes'];
 }
 
 
@@ -116,7 +116,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         options,
         pokemon,
     }: any) {
-        const { customMoveMap } = this.props;
+        const { customMoveMap, customTypes } = this.props;
 
         value = value == null ? '' : value;
         if (type === 'moves') {
@@ -129,7 +129,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                                 typeToColor(
                                     // @ts-ignore
                                     customMoveMap.find((m) => m?.move === v)?.type ||
-                                        getMoveType(v?.toString()?.trim() || ''),
+                                        getMoveType(v?.toString()?.trim() || ''), customTypes,
                                 ) || 'transparent';
                             const color = getContrastColor(background);
                             return {
@@ -309,6 +309,7 @@ export const CurrentPokemonInput = connect(
     (state: Pick<State, keyof State>) => ({
         selectedId: state.selectedId,
         customMoveMap: state.customMoveMap,
+        customTypes: state.customTypes,
     }),
     { editPokemon, selectPokemon },
 )(CurrentPokemonInputBase);
