@@ -165,9 +165,6 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             return;
         }
         try {
-            const timeout = setTimeout(() => {
-                throw new Error('Timed out');
-            }, 60000);
             const domToImage = await load();
             const dataUrl = await (domToImage as any).toPng(resultNode, { corsImage: true });
             const link = document.createElement('a');
@@ -175,7 +172,6 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             link.href = dataUrl;
             link.click();
             this.setState({ downloadError: null, isDownloading: false });
-            clearTimeout(timeout);
         } catch (e) {
             this.setState({
                 downloadError:
@@ -308,7 +304,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         );
         const enableStats = style.displayStats;
         const enableChampImage = false && isLocal();
-        const enableBackSpriteMontage = isLocal();
+        const enableBackSpriteMontage = false && isLocal();
 
         return (
             <div className="hide-scrollbars" style={{ width: '100%', overflowY: 'scroll' }}>
