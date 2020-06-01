@@ -97,7 +97,7 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                     <div
                         style={{
                             border: this.props.style.editorDarkMode
-                                ? '1px solid #222'
+                                ? '1px solid #333'
                                 : '1px solid #ddd',
                             borderRadius: '.25rem',
                             boxShadow: 'rgba(0, 0, 0, 0.33)',
@@ -156,8 +156,8 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                                     onChange={this.editFormInput}
                                     value={this.state.newBox.inheritFrom}
                                     name="inheritFrom">
-                                    {boxes.map((box) => (
-                                        <option value={box.name}>{box.name}</option>
+                                    {['Team', 'Boxed', 'Dead', 'Champs'].map((box, idx) => (
+                                        <option key={idx} value={box}>{box}</option>
                                     ))}
                                 </select>
                             </div>

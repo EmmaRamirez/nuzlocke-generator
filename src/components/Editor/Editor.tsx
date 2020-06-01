@@ -51,11 +51,11 @@ export class EditorBase extends React.Component<
                     background: this.props.style.editorDarkMode ? '#222' : '#fff',
                 }}>
                 <GameEditor />
+                <DataEditor />
                 <TrainerEditor />
                 <PokemonEditor />
                 <StyleEditor />
                 <StatsEditor />
-                <DataEditor />
                 <HotkeysEditor />
                 <BugReporter />
             </div>

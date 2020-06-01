@@ -34,6 +34,14 @@ const migrations = {
         ...state,
         customMoveMap: [],
     }),
+    '1.1.2': (state) => ({
+        ...state,
+        customMoveMap: [],
+    }),
+    '1.1.3': (state) => ({
+        ...state,
+        customMoveMap: [],
+    }),
 };
 
 const config = {

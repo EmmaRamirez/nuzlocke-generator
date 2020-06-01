@@ -184,6 +184,11 @@
 .cards .move {
   font-size: 0.7rem;
 }
+.generations.result {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
 .generations.vertical-trainer .pokemon-image-wrapper {
   position: absolute;
   left: -160px;
@@ -225,7 +230,7 @@
   display: inline-block;
 }
 .generations .team-container {
-  width: 36%;
+  width: 550px;
   justify-content: flex-start;
   display: inline-block;
   margin-left: 4px;
@@ -250,8 +255,6 @@
   width: 9.5rem;
 }
 .generations .boxed-container {
-  width: 200px;
-  height: 420px;
   display: inline-block;
   background: #333;
   border-radius: 0.25rem;
@@ -270,16 +273,16 @@
   border: none;
   margin: 0;
 }
+.generations .boxed-pokemon-info {
+  border: none;
+}
 .generations .dead-container {
-  width: 710px;
   display: inline-block;
   vertical-align: top;
   background-color: #333;
   background-size: 10px 10px;
   background-image: linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);
-  margin-left: 7px;
   border-radius: 0.25rem;
-  height: 420px;
 }
 .generations .dead-pokemon-container {
   width: 14rem;
@@ -290,15 +293,10 @@
 }
 .generations .champs-container {
   border-radius: 0.25rem;
-  width: 916px;
-  height: 212px;
-  position: absolute;
-  bottom: 148px;
-  right: 14px;
   background-color: #333;
   background-size: 10px 10px;
   background-image: linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);
-  padding: 0.25rem;
+  display: inline-block;
 }
 .generations .rules-container {
   position: absolute;
@@ -312,6 +310,11 @@
   width: 500px;
   bottom: 0px;
   left: 0;
+}
+.generations .boxed-container,
+.generations .team-container,
+.generations .champs-container {
+    margin: 0.5rem !important;
 }
 .hexagon,
 .hexagons .trainer-wrapper img:nth-of-type(1),

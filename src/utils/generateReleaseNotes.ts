@@ -525,8 +525,11 @@ Thank you!
 ## Fixes
 - Fixed a bug where editing a box would de-order them
 - Fixed a bug where collapsing a box would hide it in Results
+- Prevented inheriting from a non-main box
 - Made type option in Move Editor a drop-down
-
+- Fixed styling issues in the Generations theme and made it more flexible
+- Moved DataEditor upwards
+- Boxes now require confirmation to delete _and_ will actually delete the Pokémon inside the box
 
 ## Known Issues
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this

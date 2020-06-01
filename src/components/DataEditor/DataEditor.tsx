@@ -238,6 +238,59 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
     private toggleClearingData = (e) =>
         this.setState({ isClearAllDataOpen: !this.state.isClearAllDataOpen });
 
+    private renderSaveFileUI() {
+        return <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
+            <div
+                className="pt-label pt-inline"
+                style={{ padding: '.25rem 0', paddingBottom: '.5rem' }}>
+                <div className="pt-select">
+                    <select
+                        value={this.state.selectedGame}
+                        onChange={(e) => this.setState({ selectedGame: e.target.value })}>
+                        {['RBY'].map((game) => (
+                            <option value={game}>{game}</option>
+                        ))}
+                    </select>
+                </div>
+            </div>
+
+            <div
+                className="pt-label pt-inline"
+                style={{
+                    padding: '.25rem 0',
+                    paddingBottom: '.5rem',
+                    marginLeft: '.25rem',
+                }}>
+                <input
+                    style={{ padding: '.25rem' }}
+                    className="pt-button"
+                    ref={(ref) => (this.fileInput = ref)}
+                    onChange={this.uploadFile(this.props.replaceState, this.props.state)}
+                    type="file"
+                    id="file"
+                    name="file"
+                    accept=".sav"
+                />
+            </div>
+
+            <div
+                className="pt-label pt-inline"
+                style={{
+                    padding: '.25rem 0',
+                    paddingBottom: '.5rem',
+                    marginLeft: '.25rem',
+                }}>
+                <Switch
+                    label='Merge Data?'
+                    checked={this.state.mergeDataMode}
+                    onChange={(e) =>
+                        this.setState({ mergeDataMode: !this.state.mergeDataMode })
+                    }
+                />
+            </div>
+        </div>;
+    }
+
     public render() {
         return (
             <BaseEditor name="Data">
@@ -333,59 +386,6 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     )}
                 </Dialog>
 
-                <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
-                    <div
-                        className="pt-label pt-inline"
-                        style={{ padding: '.25rem 0', paddingBottom: '.5rem' }}>
-                        <label className="pt-label pt-text-muted">Game</label>
-                        <div className="pt-select">
-                            <select
-                                value={this.state.selectedGame}
-                                onChange={(e) => this.setState({ selectedGame: e.target.value })}>
-                                {['RBY'].map((game) => (
-                                    <option value={game}>{game}</option>
-                                ))}
-                            </select>
-                        </div>
-                    </div>
-
-                    <div
-                        className="pt-label pt-inline"
-                        style={{
-                            padding: '.25rem 0',
-                            paddingBottom: '.5rem',
-                            marginLeft: '.25rem',
-                        }}>
-                        <label className="pt-label pt-text-muted">Upload Save file</label>
-                        <input
-                            style={{ padding: '.25rem' }}
-                            className="pt-button"
-                            ref={(ref) => (this.fileInput = ref)}
-                            onChange={this.uploadFile(this.props.replaceState, this.props.state)}
-                            type="file"
-                            id="file"
-                            name="file"
-                            accept=".sav"
-                        />
-                    </div>
-
-                    <div
-                        className="pt-label pt-inline"
-                        style={{
-                            padding: '.25rem 0',
-                            paddingBottom: '.5rem',
-                            marginLeft: '.25rem',
-                        }}>
-                        <label className="pt-label pt-text-muted">Merge Data</label>
-                        <Switch
-                            checked={this.state.mergeDataMode}
-                            onChange={(e) =>
-                                this.setState({ mergeDataMode: !this.state.mergeDataMode })
-                            }
-                        />
-                    </div>
-                </div>
-
                 <ButtonGroup>
                     <Button
                         onClick={(e) => this.importState()}
@@ -414,7 +414,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     className="pt-minimal">
                     Clear All Data
                 </Button>
-                <br />
+                {this.renderSaveFileUI()}
             </BaseEditor>
         );
     }

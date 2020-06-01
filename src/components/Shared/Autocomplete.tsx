@@ -37,6 +37,9 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
                 value: v,
             },
         });
+        this.setState({
+            visibleItems: this.props.items,
+        });
     }
 
     public componentWillMount() {

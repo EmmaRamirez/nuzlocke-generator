@@ -117,7 +117,7 @@ html.pt-dark {
   padding: 0.25rem;
 }
 .pt-dark .current-pokemon {
-  border: 1px solid #000;
+  border: 1px solid #333;
 }
 .current-pokemon-header {
   align-items: center;

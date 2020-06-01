@@ -307,9 +307,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             (poke) => !['Team', 'Boxed', 'Dead', 'Champs'].includes(poke.status!),
         );
         const enableStats = style.displayStats;
-        const enableChampImage = false && isLocal();
-
-        console.log('box', box);
+        const enableChampImage = isLocal();
+        const enableBackSpriteMontage = isLocal();
 
         return (
             <div className="hide-scrollbars" style={{ width: '100%', overflowY: 'scroll' }}>
@@ -452,7 +451,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             {enableStats && <Stats />}
                         </div>
 
-                        <BackspriteMontage pokemon={this.getPokemonByStatus('Team')} />
+                        {enableBackSpriteMontage && <BackspriteMontage pokemon={this.getPokemonByStatus('Team')} />}
                     </div>
                 </ErrorBoundary>
             </div>

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Pokemon } from 'models';
 import { Boxes } from 'models';
 
-import { editPokemon, clearBox, editBox, deleteBox } from 'actions';
+import { editPokemon, clearBox, editBox, deleteBox, deletePokemon } from 'actions';
 import { Box as BoxType } from 'models';
 
 import { PokemonByFilter } from 'components/Shared';
@@ -16,6 +16,8 @@ import {
     MenuItem,
     Position,
     Button,
+    Intent,
+    Alert,
 } from '@blueprintjs/core';
 import { connect } from 'react-redux';
 
@@ -47,6 +49,7 @@ export type BoxProps = {
     canDrop?: boolean;
     clearBox: clearBox;
     editBox: editBox;
+    deletePokemon: deletePokemon;
     background?: string;
     deleteBox: deleteBox;
 } & BoxType;
@@ -94,17 +97,25 @@ export const wallpapers = [
     },
 ];
 
+export interface BoxState {
+    deleteConfirmationOpen: boolean;
+}
+
 @DropTarget('ICON', boxSource, (connect, monitor) => ({
     connectDropTarget: connect.dropTarget(),
     canDrop: monitor.canDrop(),
 }))
-export class BoxBase extends React.Component<BoxProps> {
+export class BoxBase extends React.Component<BoxProps, BoxState> {
+    public state = {
+        deleteConfirmationOpen: false,
+    };
+
     private clearBox = (name: string) => () => {
         this.props.clearBox(name);
     };
 
     private deleteBox = (id: number) => () => {
-        this.props.deleteBox(id);
+        this.setState({ deleteConfirmationOpen: true });
     };
 
     private editBox = (id: number, edits: Partial<BoxType>) => () => {
@@ -127,6 +138,8 @@ export class BoxBase extends React.Component<BoxProps> {
         const bg = background || this.getDefault(name);
         return bg && bg.startsWith('http') ? `url(${bg})` : `url(./assets/img/box/${bg}.png)`;
     }
+
+    private toggleDialog = () => this.setState({ deleteConfirmationOpen: !this.state.deleteConfirmationOpen })
 
     public render() {
         const {
@@ -157,6 +170,27 @@ export class BoxBase extends React.Component<BoxProps> {
                     ...collapsedStyle,
                 }}
                 className={`box ${name.replace(/\s/g, '-')}-box`}>
+                <Alert
+                    icon="trash"
+                    isOpen={this.state.deleteConfirmationOpen}
+                    onCancel={this.toggleDialog}
+                    onConfirm={(e) => {
+                        this.props.deleteBox(id);
+
+                        pokemon.filter(pokemon => pokemon.status === name).forEach(element => {
+                            this.props.deletePokemon(element.id);
+                        });
+
+                        this.setState({ deleteConfirmationOpen: true });
+                    }}
+                    confirmButtonText="Delete Box"
+                    cancelButtonText="Cancel"
+                    intent={Intent.DANGER}>
+                    <p>
+                        This will delete the currently selected Box and all Pokémon stored inside the box. Are you sure you want to do
+                        that?
+                    </p>
+                </Alert>
                 <Popover
                     position={Position.BOTTOM_LEFT}
                     minimal
@@ -239,6 +273,7 @@ export const Box = connect(
         clearBox,
         editBox,
         deleteBox,
+        deletePokemon,
     },
     null,
     { pure: false },
