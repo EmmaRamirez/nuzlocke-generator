@@ -12,6 +12,9 @@ env
 src/img/dev
 nuzlockes
 .docz
+./dist
+*/dist
+dist/
 
 # Runtime data
 pids
