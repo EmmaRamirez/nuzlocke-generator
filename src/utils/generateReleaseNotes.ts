@@ -522,6 +522,9 @@ Thank you!
 `,
     '1.1.3': `# Changelog
 
+## Minor Features
+- Added a \`LinkedTo\` option for Pokémon, should be useful for Wedlockes & the like!
+
 ## Fixes
 - Fixed a bug where editing a box would de-order them
 - Fixed a bug where collapsing a box would hide it in Results

@@ -2,16 +2,19 @@ import * as React from 'react';
 import { onClick } from 'types';
 import { connect } from 'react-redux';
 import { addPokemon, selectPokemon } from 'actions';
+import { Button, Intent } from '@blueprintjs/core';
 
 export const AddPokemonButtonBase = ({ onClick }: { onClick: onClick }) => (
-    <button
-        className="pt-intent-success pt-button add-new-pokemon"
+    <Button
+        icon='add'
+        intent={Intent.SUCCESS}
+        className="pt-button add-new-pokemon"
         onClick={(e) => {
             e.preventDefault();
             onClick && onClick();
         }}>
-        <span className="pt-icon-add" /> &nbsp;Add New Pokemon
-    </button>
+        Add New Pokemon
+    </Button>
 );
 
 export const AddPokemonButton = connect(null, (dispatch, ownProps: any) => ({

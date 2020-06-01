@@ -35,7 +35,7 @@ interface CurrentPokemonInputProps {
     placeholder?: string;
     transform?: (v: any) => string;
     disabled?: boolean;
-    options?: string[] | { key: string; value: string }[];
+    options?: string[] | { key: string; value: string | null }[];
     editPokemon: editPokemon;
     selectedId: string;
     selectPokemon: selectPokemon;

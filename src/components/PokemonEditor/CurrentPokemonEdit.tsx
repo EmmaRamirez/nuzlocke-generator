@@ -183,6 +183,11 @@ CurrentPokemonEditState
     }
 
     public moreInputs(currentPokemon: Pokemon) {
+        const pokemonForLink = this.props.pokemon.map((p) => ({
+            key: `${p.nickname} (${p.species})`,
+            value: p.id,
+        }));
+
         return (
             <div className="expanded-edit">
                 <CurrentPokemonInput
@@ -309,10 +314,13 @@ CurrentPokemonEditState
                         inputName="linkedTo"
                         value={currentPokemon?.linkedTo}
                         type="select"
-                        options={this.props.pokemon.map((p) => ({
-                            key: p.nickname || p.species,
-                            value: p.id,
-                        }))}
+                        options={[
+                            {
+                                key: 'None',
+                                value: null,
+                            },
+                            ...pokemonForLink,
+                        ]}
                         usesKeyValue={true}
                     />
                 </CurrentPokemonLayoutItem>
@@ -321,7 +329,7 @@ CurrentPokemonEditState
                         labelName="Notes"
                         inputName="notes"
                         value={currentPokemon.notes}
-                        type="rich-text"
+                        type="textArea"
                     />
                     {/* <PokemonNotes /> */}
                 </CurrentPokemonLayoutItem>

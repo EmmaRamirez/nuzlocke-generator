@@ -139,7 +139,7 @@ export class BoxBase extends React.Component<BoxProps, BoxState> {
         return bg && bg.startsWith('http') ? `url(${bg})` : `url(./assets/img/box/${bg}.png)`;
     }
 
-    private toggleDialog = () => this.setState({ deleteConfirmationOpen: !this.state.deleteConfirmationOpen })
+    private toggleDialog = () => this.setState({ deleteConfirmationOpen: !this.state.deleteConfirmationOpen });
 
     public render() {
         const {
