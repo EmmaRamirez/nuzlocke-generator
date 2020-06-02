@@ -15,7 +15,7 @@ const getAccentColor = (prop: BoxedPokemonProps) =>
     prop.style ? prop.style.accentColor : '#111111';
 
 const determineWidth = (isMinimal, numerator): any => {
-    return isMinimal ? 'auto' : `calc(100% / ${numerator})`;
+    return isMinimal ? 'auto' : `calc(94% / ${numerator})`;
 };
 
 export const BoxedPokemonBase = (poke: BoxedPokemonProps) => {
