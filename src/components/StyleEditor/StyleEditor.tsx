@@ -26,8 +26,6 @@ import { State } from 'state';
 import { BaseEditor } from 'components/BaseEditor';
 import { ColorEdit, rgbaOrHex } from 'components/Shared';
 import { cx } from 'emotion';
-import { ChromePicker } from 'react-color';
-
 import * as Styles from './styles';
 import { ThemeEditor } from 'components/ThemeEditor';
 
@@ -143,8 +141,8 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     </Dialog>
                 ) : null}
                 <div className={styleEdit}>
-                    <label className="pt-label pt-inline">Template</label>
-                    <div className="pt-select">
+                    <label className={cx(Classes.LABEL, Classes.INLINE)}>Template</label>
+                    <div className={Classes.SELECT}>
                         <select
                             name="template"
                             onChange={(e) => editEvent(e, props, undefined, props.game.name)}
@@ -159,7 +157,8 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                             onClick={this.toggleThemeEditor}
                             style={{ marginLeft: '.25rem' }}
                             intent={Intent.PRIMARY}
-                            className="pt-minimal">
+                            minimal
+                        >
                             Edit Theme
                         </Button>
                     ) : null}
@@ -177,8 +176,8 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <label className="pt-label pt-inline">Item Style</label>
-                    <div className="pt-select">
+                    <label className={cx(Classes.LABEL, Classes.INLINE)}>Item Style</label>
+                    <div className={Classes.SELECT}>
                         <select
                             name="itemStyle"
                             onChange={(e) => editEvent(e, props, undefined)}
@@ -195,8 +194,8 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <label className="pt-label pt-inline">Pokéball Style</label>
-                    <div className="pt-select">
+                    <label className={cx(Classes.LABEL, Classes.INLINE)}>Pokéball Style</label>
+                    <div className={Classes.SELECT}>
                         <select
                             name="pokeballStyle"
                             onChange={(e) => editEvent(e, props, undefined)}
@@ -213,22 +212,22 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <label className="pt-label pt-inline">Result Dimensions</label>
+                    <label className={cx(Classes.LABEL, Classes.INLINE)}>Result Dimensions</label>
                     <span style={{ fontSize: '80%', marginRight: '2px' }}>w</span>
                     <input
                         name="resultWidth"
-                        className="pt-input small-input"
+                        className={cx(Classes.INPUT, 'small-input')}
                         onChange={(e) => editEvent(e, props)}
                         value={props.style.resultWidth}
                         type="number"
                         min="0"
                         step="10"
                     />
-                    <span style={{ marginRight: '0' }} className="pt-icon pt-icon-cross" />
+                    <span style={{ marginRight: '0' }} className="bp3-icon bp3-icon-cross" />
                     <span style={{ fontSize: '80%', marginRight: '2px' }}>h</span>
                     <input
                         name="resultHeight"
-                        className="pt-input small-input"
+                        className={cx(Classes.INPUT, 'small-input')}
                         style={{
                             opacity: props.style.useAutoHeight ? 0.3 : 1,
                         }}
@@ -258,22 +257,22 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <label className="pt-label pt-inline">Trainer Dimensions</label>
+                    <label className={cx(Classes.LABEL, Classes.INLINE)}>Trainer Dimensions</label>
                     <span style={{ fontSize: '80%', marginRight: '2px' }}>w</span>
                     <input
                         name="trainerWidth"
-                        className="pt-input small-input"
+                        className={cx(Classes.INPUT, 'small-input')}
                         onChange={(e) => editEvent(e, props)}
                         style={{
                             opacity: props.style.trainerAuto ? 0.3 : 1,
                         }}
                         value={props.style.trainerWidth}
                     />
-                    <span style={{ marginRight: '0' }} className="pt-icon pt-icon-cross" />
+                    <span style={{ marginRight: '0' }} className="bp3-icon bp3-icon-cross" />
                     <span style={{ fontSize: '80%', marginRight: '2px' }}>h</span>
                     <input
                         name="trainerHeight"
-                        className="pt-input small-input"
+                        className={cx(Classes.INPUT, 'small-input')}
                         style={{
                             opacity: props.style.trainerAuto ? 0.3 : 1,
                         }}
@@ -311,7 +310,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <label className="pt-label pt-inline">Background color</label>
+                    <label className={cx(Classes.LABEL, Classes.INLINE)}>Background color</label>
                     <ColorEdit
                         onChange={(e) => editEvent(e, props)}
                         name={'bgColor'}
@@ -323,7 +322,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <label className="pt-label pt-inline">Accent color</label>
+                    <label className={cx(Classes.LABEL, Classes.INLINE)}>Accent color</label>
                     <ColorEdit
                         onChange={(e) => editEvent(e, props)}
                         name={'accentColor'}
@@ -335,7 +334,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <label className="pt-label pt-inline">Header color</label>
+                    <label className={cx(Classes.LABEL, Classes.INLINE)}>Header color</label>
                     <ColorEdit
                         name="topHeaderColor"
                         onChange={(e) => editEvent(e, props)}
@@ -351,12 +350,12 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <label className="pt-label pt-inline">Background Image</label>
+                    <label className={cx(Classes.LABEL, Classes.INLINE)}>Background Image</label>
                     <input
                         value={props.style.backgroundImage}
                         name="backgroundImage"
                         onChange={(e) => editEvent(e, props)}
-                        className="pt-input"
+                        className={Classes.INPUT}
                     />
                     <span> </span>
                     <Checkbox
@@ -378,8 +377,8 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <label className="pt-label pt-inline">Rules Location</label>
-                    <div className="pt-select">
+                    <label className={cx(Classes.LABEL, Classes.INLINE)}>Rules Location</label>
+                    <div className={Classes.SELECT}>
                         <select
                             name="displayRulesLocation"
                             onChange={(e) => editEvent(e, props, undefined)}
@@ -416,8 +415,8 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <label className="pt-label pt-inline">Team Images</label>
-                    <div className="pt-select">
+                    <label className={cx(Classes.LABEL, Classes.INLINE)}>Team Images</label>
+                    <div className={Classes.SELECT}>
                         <select
                             name="teamImages"
                             onChange={(e) => editEvent(e, props, undefined, props.game.name)}
@@ -431,7 +430,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     </div>
                     {(props.game.name === 'Sword' || props.game.name === 'Shield') &&
                     props.style.teamImages === 'shuffle' ? (
-                            <div className="pt-callout pt-intent-danger" style={calloutStyle}>
+                            <div className="bp3-callout bp3-intent-danger" style={calloutStyle}>
                             Shuffle images are not supported for this game
                             </div>
                         ) : null}
@@ -445,23 +444,23 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         'Ultra Sun',
                         'Ultra Moon',
                     ].includes(props.game.name) && props.style.teamImages === 'dream world' ? (
-                            <div className="pt-callout pt-intent-danger" style={calloutStyle}>
+                            <div className="bp3-callout bp3-intent-danger" style={calloutStyle}>
                             Dream world images are not supported for this game
                             </div>
                         ) : null}
                     {['Sword', 'Shield'].includes(props.game.name) &&
                     props.style.teamImages === 'tcg' ? (
-                            <div className="pt-callout pt-intent-danger" style={calloutStyle}>
+                            <div className="bp3-callout bp3-intent-danger" style={calloutStyle}>
                             TCG images are not fully supported for this game
                             </div>
                         ) : null}
                 </div>
 
                 <div className={styleEdit}>
-                    <label className="pt-label pt-inline">Pokemon Per Line (Boxed)</label>
+                    <label className={cx(Classes.LABEL, Classes.INLINE)}>Pokemon Per Line (Boxed)</label>
                     <input
                         name="boxedPokemonPerLine"
-                        className="pt-input small-input"
+                        className={cx(Classes.INPUT, 'small-input')}
                         onChange={(e) => editEvent(e, props)}
                         value={props.style.boxedPokemonPerLine}
                         type="number"
@@ -472,10 +471,10 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <label className="pt-label pt-inline">Linked Pokemon Text</label>
+                    <label className={cx(Classes.LABEL, Classes.INLINE)}>Linked Pokemon Text</label>
                     <input
                         name="linkedPokemonText"
-                        className="pt-input small-input"
+                        className={cx(Classes.INPUT)}
                         onChange={(e) => editEvent(e, props)}
                         value={props?.style?.linkedPokemonText}
                     />
@@ -747,13 +746,13 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className="custom-css-input-wrapper">
-                    <label style={{ padding: '.5rem' }} className="pt-label">
+                    <label style={{ padding: '.5rem' }} className="bp3-label">
                         Custom CSS {/*<a href=''>Check out Layout Guide</a>*/}
                     </label>
                     <TextArea
                         large={true}
                         onChange={(e) => editEvent(e, props, 'customCSS')}
-                        className="custom-css-input pt-fill"
+                        className="custom-css-input bp3-fill"
                         value={props.style.customCSS}
                     />
                 </div>

@@ -1,4 +1,4 @@
-.pt-light .release-notes {
+.bp3-light .release-notes {
   background: #fafafa;
 }
 .release-notes-wrapper .release-notes {
@@ -38,10 +38,10 @@
 .release-notes-wrapper li ul {
   margin: 0;
 }
-.pt-dark .release-dialog h1,
-.pt-dark .release-dialog h2,
-.pt-dark .release-dialog h3,
-.pt-dark .release-dialog h4 {
+.bp3-dark .release-dialog h1,
+.bp3-dark .release-dialog h2,
+.bp3-dark .release-dialog h3,
+.bp3-dark .release-dialog h4 {
   color: #fff !important;
 }
 .release-dialog {
@@ -57,9 +57,16 @@
     margin: 0.25rem !important;
   }
 }
-.pt-tag-input .pt-tag.pt-tag-removable {
-  color: unset;
-}
 .no-list-item-types {
   list-style-type: none;
+}
+.bp3-tag-input {
+    align-items: center !important;
+}
+.bp3-tag-input-icon {
+    margin: 0 !important;
+    margin-right: 4px !important;
+}
+.bp3-switch {
+    margin-bottom: 0 !important;
 }

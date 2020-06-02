@@ -123,6 +123,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
             return (
                 <ErrorBoundary>
                     <TagInput
+                        leftIcon='ninja'
                         tagProps={(v, i) => {
                             // @TODO: Fix inconsitencies with bad parameter types
                             const background =
@@ -143,10 +144,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                             const edit = {
                                 moves: values,
                             };
-                            this.props.editPokemon &&
-                                this.props.editPokemon(edit, this.props.selectedId);
-                            this.props.selectPokemon &&
-                                this.props.selectPokemon(this.props.selectedId);
+                            this.props.editPokemon(edit, this.props.selectedId);
                         }}
                         values={value || []}
                     />
@@ -175,7 +173,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                     placeholder={placeholder}
                     disabled={disabled}
                     style={{ width: '100%' }}
-                    className={disabled && `${Classes.DISABLED} ${Classes.TEXT_MUTED} pt-fill`}
+                    className={disabled && `${Classes.DISABLED} ${Classes.TEXT_MUTED} bp3-fill`}
                 />
             );
         }
@@ -193,7 +191,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         }
         if (type === 'select') {
             return (
-                <div className="pt-select" style={inputName === 'status' ? { width: '120px' } : {}}>
+                <div className={Classes.SELECT} style={inputName === 'status' ? { width: '120px' } : {}}>
                     {inputName === 'pokeball' && value && value !== 'None' ? (
                         <img
                             style={{ position: 'absolute' }}
@@ -223,21 +221,21 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         }
         if (type === 'checkbox') {
             return (
-                <label className="pt-control pt-checkbox">
+                <label className="bp3-control bp3-checkbox">
                     <input
                         onChange={(e) => this.onChange(e, inputName)}
                         checked={value}
                         type={type}
                         name={inputName}
                     />
-                    <span className="pt-control-indicator" />
+                    <span className="bp3-control-indicator" />
                 </label>
             );
         }
         if (type === 'double-select') {
             return (
                 <span className="double-select-wrapper">
-                    <div className="pt-select">
+                    <div className={Classes.SELECT}>
                         <select
                             onChange={(e) => this.onChange(e, inputName, 0, value)}
                             value={value[0] == null ? 'None' : value[0]}
@@ -252,7 +250,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                         </select>
                     </div>
                     <span>&nbsp;</span>
-                    <div className="pt-select">
+                    <div className={Classes.SELECT}>
                         <select
                             onChange={(e) => this.onChange(e, inputName, 1, value)}
                             value={value[1] == null ? 'None' : value[1]}

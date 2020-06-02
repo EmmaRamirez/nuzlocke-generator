@@ -89,7 +89,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                                     customTypes={customTypes}
                                 />
                             </div>
-                            <div className="pt-select" style={{ width: '8rem' }}>
+                            <div className={Classes.SELECT} style={{ width: '8rem' }}>
                                 <select onChange={onChange(move)} value={type}>
                                     {types.map((opt) => (
                                         <option key={opt} value={opt}>
@@ -129,7 +129,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                                 customTypes={customTypes}
                             />
                         </div>
-                        <div className="pt-select" style={{ width: '8rem' }}>
+                        <div className={Classes.SELECT} style={{ width: '8rem' }}>
                             <select onChange={onChange(move)} value={type}>
                                 {types.map((opt) => (
                                     <option key={opt} value={opt}>
@@ -169,10 +169,10 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                     canOutsideClickClose={false}
                     isOpen={isOpen}
                     onClose={toggleDialog}
-                    className={`wide-dialog ${style.editorDarkMode ? 'pt-dark' : 'pt-light'}`}
+                    className={`wide-dialog ${style.editorDarkMode ? Classes.DARK : ''}`}
                     title="Move Editor">
                     <div
-                        className="pt-dialog-body move-editor"
+                        className={cx(Classes.DIALOG_BODY, 'move-editor')}
                         style={{
                             height: '800px',
                         }}>
@@ -189,19 +189,19 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                             }}
                             className="add-move-wrapper">
                             <label
-                                style={{ marginTop: '8px', padding: '0.5rem' }}
-                                className={cx(Classes.LABEL, Classes.INLINE)}>
+                                style={{ padding: '0.5rem' }}
+                                className={cx(Classes.INLINE)}>
                                 Add A Move
                             </label>
                             <input
                                 placeholder="Move Name"
-                                style={{ width: '10rem' }}
+                                style={{ width: '10rem', margin: '0 .25rem' }}
                                 onChange={(e) => this.setState({ moveName: e.target.value })}
                                 value={moveName}
                                 className={Classes.INPUT}
                                 type="text"
                             />
-                            <div className={Classes.SELECT} style={{ width: '8rem' }}>
+                            <div className={Classes.SELECT} style={{ width: '8rem', margin: '0 .25rem' }}>
                                 <select
                                     onChange={(e) => this.setState({ moveType: e.target.value })}
                                     value={moveType}>
@@ -213,6 +213,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                                 </select>
                             </div>
                             <Button
+                                style={{margin: '0 .25rem'}}
                                 onClick={(e) => {
                                     this.props.editCustomMoveMap(moveType, moveName);
                                 }}
@@ -234,13 +235,13 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                             }}>
                             <div style={{ width: '60%', borderRadius: '.25rem', margin: '4px' }}>
                                 <div
-                                    className="pt-input-group"
+                                    className={Classes.INPUT_GROUP}
                                     style={{ width: '50%', margin: '0 auto', position: 'sticky' }}>
                                     <Icon icon="search" />
                                     <input
                                         value={this.state.searchTerm}
                                         onInput={this.onSearch}
-                                        className="pt-input"
+                                        className={Classes.INPUT}
                                         type="search"
                                         dir="auto"
                                     />

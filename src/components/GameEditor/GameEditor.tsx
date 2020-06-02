@@ -57,11 +57,11 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                     <div style={gameSubEditorStyle}>
                         <div>
                             <label
-                                className="pt-inline"
+                                className={Classes.INLINE}
                                 style={{ fontSize: '80%', marginRight: '.5rem' }}>
                                 Version
                             </label>
-                            <div className="pt-select">
+                            <div className={Classes.SELECT}>
                                 <select onChange={this.onInput} value={game.name}>
                                     {listOfGames.map((game) => (
                                         <option key={game}>{game}</option>
@@ -81,7 +81,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                     <div style={gameSubEditorStyle}>
                         <div style={{ fontSize: '80%' }}>
                             <label
-                                className="pt-inline"
+                                className={Classes.INLINE}
                                 style={{ marginRight: 'calc(.75rem + 2px)' }}>
                                 Name
                             </label>
@@ -90,7 +90,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                                 value={game.customName}
                                 autoComplete={'false'}
                                 size={20}
-                                className="pt-input"
+                                className={Classes.INPUT}
                                 type="text"
                                 placeholder={game.name}
                             />

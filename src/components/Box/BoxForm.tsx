@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Intent, Popover, Icon, PopoverInteractionKind } from '@blueprintjs/core';
+import { Button, Intent, Popover, Icon, PopoverInteractionKind, Classes } from '@blueprintjs/core';
 import { State } from 'state';
 import { connect } from 'react-redux';
 import { addBox, AddBoxArgs } from 'actions';
@@ -79,7 +79,7 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                 <Button
                     onClick={this.toggleBoxForm}
                     icon={'plus'}
-                    className="pt-small"
+                    className={Classes.SMALL}
                     style={{
                         margin: '.25rem',
                         height: '2rem',
@@ -106,12 +106,12 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                             padding: '0.5rem',
                         }}>
                         <div style={inputStyle}>
-                            <label style={labelStyle} className="pt-label">
+                            <label style={labelStyle} className={Classes.LABEL}>
                                 Name
                             </label>
                             <input
                                 required
-                                className="pt-input"
+                                className={Classes.INPUT}
                                 autoComplete="false"
                                 onInput={this.editFormInput}
                                 value={this.state.newBox.name}
@@ -120,7 +120,7 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                             />
                         </div>
                         <div style={inputStyle}>
-                            <label style={labelStyle} className="pt-label">
+                            <label style={labelStyle} className={Classes.LABEL}>
                                 Background{' '}
                                 <Popover
                                     minimal
@@ -132,14 +132,13 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                                         </div>
                                     }>
                                     <Icon
-                                        style={{ marginLeft: '.25rem' }}
-                                        height={'12px'}
+                                        style={{ marginLeft: '.25rem', height: '8px' }}
                                         icon="info-sign"
                                     />
                                 </Popover>
                             </label>
                             <input
-                                className="pt-input"
+                                className={Classes.INPUT}
                                 onInput={this.editFormInput}
                                 value={this.state.newBox.background}
                                 name="background"
@@ -148,10 +147,10 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                         </div>
 
                         <div style={inputStyle}>
-                            <label style={labelStyle} className="pt-label">
+                            <label style={labelStyle} className="bp3-label">
                                 Inherit From...
                             </label>
-                            <div className="pt-select">
+                            <div className={Classes.SELECT}>
                                 <select
                                     onChange={this.editFormInput}
                                     value={this.state.newBox.inheritFrom}
@@ -170,8 +169,9 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                             <Button
                                 onClick={this.toggleBoxForm}
                                 intent={Intent.DANGER}
-                                className="pt-minimal"
-                                style={{ margin: '0 .5rem' }}>
+                                style={{ margin: '0 .5rem' }}
+                                minimal
+                            >
                                 Cancel
                             </Button>
                             <Button

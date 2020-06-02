@@ -10,6 +10,7 @@ import {
     Alert,
     Toaster,
     Switch,
+    Classes,
 } from '@blueprintjs/core';
 import { PokemonIconBase } from 'components/PokemonIcon';
 import { ErrorBoundary } from 'components/Shared';
@@ -246,21 +247,20 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                 this.setState({ showSaveFileUI: !this.state.showSaveFileUI });
             }} style={{
                 // @TODO: find a more sensible hack
-                transform: 'translateY(-3px)'
+                transform: 'translateY(-5px)'
             }}>Import From Save File</Button>
-            <div style={{
+            <div className='data-editor-save-file-form' style={{
                 alignItems: 'center',
                 flexWrap: 'wrap',
                 margin: '0.25rem',
                 display: this.state.showSaveFileUI ? 'flex' : 'none',
-                border: '1px solid #333',
                 borderRadius: '0.25rem',
                 padding: '0.25rem',
             }}>
                 <div
-                    className="pt-label pt-inline"
+                    className="bp3-label bp3-inline"
                     style={{ padding: '.25rem 0', paddingBottom: '.5rem' }}>
-                    <div className="pt-select">
+                    <div className={Classes.SELECT}>
                         <select
                             value={this.state.selectedGame}
                             onChange={(e) => this.setState({ selectedGame: e.target.value })}>
@@ -272,7 +272,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                 </div>
 
                 <div
-                    className="pt-label pt-inline"
+                    className="bp3-label bp3-inline"
                     style={{
                         padding: '.25rem 0',
                         paddingBottom: '.5rem',
@@ -280,7 +280,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     }}>
                     <input
                         style={{ padding: '.25rem' }}
-                        className="pt-button"
+                        className={Classes.FILE_INPUT}
                         ref={(ref) => (this.fileInput = ref)}
                         onChange={this.uploadFile(this.props.replaceState, this.props.state)}
                         type="file"
@@ -291,7 +291,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                 </div>
 
                 <div
-                    className="pt-label pt-inline"
+                    className="bp3-label bp3-inline"
                     style={{
                         padding: '.25rem 0',
                         paddingBottom: '.5rem',
@@ -318,7 +318,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     onCancel={this.toggleClearingData}
                     cancelButtonText="Nevermind"
                     confirmButtonText="Delete Anyway"
-                    className={this.props.state.style.editorDarkMode ? 'pt-dark' : 'pt-light'}
+                    className={this.props.state.style.editorDarkMode ? 'bp3-dark' : 'bp3-light'}
                     style={{ maxWidth: '600px' }}
                     intent={Intent.DANGER}>
                     <div style={{ display: 'flex' }}>
@@ -337,19 +337,19 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                             ? 'Exported Nuzlocke Save'
                             : 'Import Nuzlocke Save'
                     }
-                    className={this.props.state.style.editorDarkMode ? 'pt-dark' : ''}
+                    className={this.props.state.style.editorDarkMode ? 'bp3-dark' : ''}
                     icon="floppy-disk">
                     {this.state.mode === 'export' ? (
                         <>
                             <Callout>Copy this and paste it somewhere safe!</Callout>
                             <div
                                 style={{ height: '40vh', overflow: 'auto' }}
-                                className="pt-dialog-body has-nice-scrollbars">
+                                className="bp3-dialog-body has-nice-scrollbars">
                                 <span suppressContentEditableWarning={true} contentEditable={true}>
                                     {JSON.stringify(this.props.state, null, 2)}
                                 </span>
                             </div>
-                            <div className="pt-dialog-footer">
+                            <div className="bp3-dialog-footer">
                                 <a href={this.state.href} download={`nuzlocke_${uuid()}.json`}>
                                     <Button icon={'download'} intent={Intent.PRIMARY}>
                                         Download
@@ -359,9 +359,9 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         </>
                     ) : (
                         <>
-                            <div className="pt-dialog-body has-nice-scrollbars">
+                            <div className="bp3-dialog-body has-nice-scrollbars">
                                 <TextArea
-                                    className="custom-css-input pt-fill"
+                                    className="custom-css-input bp3-fill"
                                     onChange={this.uploadJSON}
                                     placeholder="Paste nuzlocke.json contents here, or use the file uploader"
                                     value={this.state.data}
@@ -369,7 +369,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                                 />
                                 <ErrorBoundary>{this.renderTeam(this.state.data)}</ErrorBoundary>
                             </div>
-                            <div className="pt-dialog-footer">
+                            <div className={Classes.DIALOG_FOOTER}>
                                 <div
                                     style={{
                                         display: 'flex',
@@ -378,7 +378,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                                     }}>
                                     <input
                                         style={{ padding: '.25rem' }}
-                                        className="pt-button"
+                                        className={Classes.FILE_INPUT}
                                         ref={(ref) => (this.nuzlockeJsonFileInput = ref)}
                                         onChange={this.uploadNuzlockeJsonFile}
                                         type="file"
@@ -408,7 +408,8 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     <Button
                         onClick={(e) => this.importState()}
                         icon="import"
-                        className="pt-intent-primary">
+                        intent={Intent.PRIMARY}
+                    >
                         Import Data
                     </Button>
                     <Button onClick={(e) => this.exportState(this.props.state)} icon="export">
@@ -421,7 +422,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                 {this.renderSaveFileUI()}
                 <ButtonGroup style={{margin: '.25rem'}}>
                     <Button
-                        className="pt-minimal"
+                        minimal
                         intent={Intent.SUCCESS}
                         onClick={this.writeAllData}
                         icon="floppy-disk">
@@ -431,7 +432,8 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         icon="trash"
                         onClick={this.toggleClearingData}
                         intent={Intent.DANGER}
-                        className="pt-minimal">
+                        minimal
+                    >
                         Clear All Data
                     </Button>
                 </ButtonGroup>

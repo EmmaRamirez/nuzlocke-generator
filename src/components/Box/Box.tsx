@@ -18,6 +18,7 @@ import {
     Button,
     Intent,
     Alert,
+    Classes,
 } from '@blueprintjs/core';
 import { connect } from 'react-redux';
 
@@ -158,7 +159,7 @@ export class BoxBase extends React.Component<BoxProps, BoxState> {
             ? {
                 height: '54px',
                 overflow: 'hidden',
-                webkitMaskImage: 'linear-gradient(to top, rgba(0, 0, 0, 0.33) 25%, black 75%)',
+                WebkitMaskImage: 'linear-gradient(to top, rgba(0, 0, 0, 0.33) 25%, black 75%)',
                 marginBottom: '-18px',
             }
             : {};
@@ -198,7 +199,7 @@ export class BoxBase extends React.Component<BoxProps, BoxState> {
                     popoverClassName={'no-list-item-types'}
                     content={
                         <>
-                            {/*<MenuItem className='pt-fill' text='Edit' />*/}
+                            {/*<MenuItem className='bp3-fill' text='Edit' />*/}
                             <MenuItem text="Change Wallpaper">
                                 {wallpapers.map((wall) => (
                                     <MenuItem
@@ -207,35 +208,37 @@ export class BoxBase extends React.Component<BoxProps, BoxState> {
                                     />
                                 ))}
                             </MenuItem>
-                            <MenuItem text="Change Type">
-                                {['Team', 'Boxed', 'Dead', 'Champs'].map((b) => (
-                                    <MenuItem
-                                        onClick={this.editBox(id, { inheritFrom: b })}
-                                        text={
-                                            b === inheritFrom ? (
-                                                <>
-                                                    <Icon icon="small-tick" /> {b}
-                                                </>
-                                            ) : (
-                                                b
-                                            )
-                                        }
-                                    />
-                                ))}
-                            </MenuItem>
+                            {!['Team', 'Boxed', 'Dead', 'Champs'].includes(name) && (
+                                <MenuItem text="Change Type">
+                                    {['Team', 'Boxed', 'Dead', 'Champs'].map((b) => (
+                                        <MenuItem
+                                            onClick={this.editBox(id, { inheritFrom: b })}
+                                            text={
+                                                b === inheritFrom ? (
+                                                    <>
+                                                        <Icon icon="small-tick" /> {b}
+                                                    </>
+                                                ) : (
+                                                    b
+                                                )
+                                            }
+                                        />
+                                    ))}
+                                </MenuItem>
+                            )}
                             <MenuItem
                                 onClick={this.toggleCollapse(isCollapsed, id)}
                                 text={isCollapsed ? 'Expand Box' : 'Collapse Box'}
                             />
                             <MenuItem
                                 onClick={this.clearBox(name)}
-                                className="pt-fill"
+                                className={Classes.FILL}
                                 text={'Clear Box'}
                             />
                             {!['Team', 'Boxed', 'Dead', 'Champs'].includes(name) && (
                                 <MenuItem
                                     onClick={this.deleteBox(id)}
-                                    className="pt-fill"
+                                    className={Classes.FILL}
                                     text={'Delete Box'}
                                 />
                             )}

@@ -3,7 +3,7 @@ html {
   --thumbBG: rgba(126, 136, 146, 0.33);
 }
 
-html.pt-dark {
+html.bp3-dark {
   --scrollbarBG: #222;
   --thumbBG: #111;
 }
@@ -44,16 +44,16 @@ html.pt-dark {
     width: 98vw;
   }
 }
-.editor.pt-dark {
+.editor.bp3-dark {
   border: 1px solid #000;
 }
 .editor:hover {
   box-shadow: 0 0 4px #eee;
 }
-.pt-dark .editor:hover {
+.bp3-dark .editor:hover {
   box-shadow: 0 0 4px #222;
 }
-.pt-select select {
+.bp3-select select {
   width: 100%;
 }
 .game-editor,
@@ -75,7 +75,13 @@ html.pt-dark {
   border-radius: .25rem;
 
 }
-.pt-dark .base-editor {
+.data-editor-save-file-form {
+  border: 1px solid #ddd;
+}
+.bp3-dark .data-editor-save-file-form {
+  border: 1px solid #333;
+}
+.bp3-dark .base-editor {
   border: 1px solid #333;
 }
 .trainer-info-field {
@@ -92,10 +98,10 @@ html.pt-dark {
   color: inherit;
   padding: 0.25rem;
 }
-.pt-dark .trainer-info-field {
+.bp3-dark .trainer-info-field {
   border-bottom: 1px solid #394b59;
 }
-.pt-dark .trainer-info-field input {
+.bp3-dark .trainer-info-field input {
   border-left: 1px solid #394b59;
 }
 .box-wrapper {
@@ -116,7 +122,7 @@ html.pt-dark {
   margin: 0.25rem;
   padding: 0.25rem;
 }
-.pt-dark .current-pokemon {
+.bp3-dark .current-pokemon {
   border: 1px solid #333;
 }
 .current-pokemon-header {
@@ -131,7 +137,7 @@ html.pt-dark {
   margin-left: 4px;
   height: 2.5rem;
 }
-.pt-dark .current-pokemon-image {
+.bp3-dark .current-pokemon-image {
   border: none;
   background: #394b59;
 }
@@ -160,13 +166,13 @@ html.pt-dark {
 .current-pokemon-checkbox label {
   font-size: 14px;
 }
-.pt-dark .current-pokemon-input-wrapper input {
+.bp3-dark .current-pokemon-input-wrapper input {
   box-shadow: 0 0 0 0 rgba(19,124,189,0), 0 0 0 0 rgba(19,124,189,0), 0 0 0 0 rgba(19,124,189,0), inset 0 0 0 1px rgba(16,22,26,0.3), inset 0 1px 1px rgba(16,22,26,0.4);
   background: rgba(16,22,26,0.3);
   border: none;
   color: #f5f8fa;
 }
-.pt-input-ghost {
+.bp3-input-ghost {
   border: 0 !important;
   width: 0 !important;
   flex: auto;
@@ -203,7 +209,7 @@ html.pt-dark {
 input[name='metLevel'] {
   color: #ccc;
 }
-.pt-dialog.wide-dialog {
+.bp3-dialog.wide-dialog {
   width: 90% !important;
 }
 .hide-scrollbars::-webkit-scrollbar {
@@ -256,7 +262,7 @@ input[name='metLevel'] {
   background: rgba(0,0,0,0.33);
   transition: 500ms all;
 }
-.pt-dark .box {
+.bp3-dark .box {
   box-shadow: 0 0 0.25rem #000;
 }
 .current-pokemon-notes {

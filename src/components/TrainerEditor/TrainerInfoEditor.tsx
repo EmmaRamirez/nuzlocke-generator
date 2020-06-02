@@ -3,7 +3,7 @@ import * as React from 'react';
 import { BadgeInput } from 'components/TrainerEditor/BadgeInput';
 import { LinkedTrainerInfoEditField } from 'components/TrainerEditor/LinkedTrainerInfoEditField';
 
-import { Popover, PopoverInteractionKind, Position, Menu } from '@blueprintjs/core';
+import { Popover, PopoverInteractionKind, Position, Menu, Icon } from '@blueprintjs/core';
 
 import { listOfTrainers } from 'utils';
 
@@ -75,7 +75,7 @@ export class TrainerInfoEditor extends React.Component<{}, {}> {
                                 </Menu>
                             }>
                             <span>
-                                Trainer Image <span className="pt-icon pt-icon-info-sign" />
+                                Trainer Image <Icon icon='info-sign' />
                             </span>
                         </Popover>
                     }
@@ -90,7 +90,6 @@ export class TrainerInfoEditor extends React.Component<{}, {}> {
                 />
                 {/* <Button
                     style={{ borderRadius: '0' }}
-                    className='pt-minimal'
                     intent={Intent.PRIMARY}
                     icon='plus'>
                     Add New Field

@@ -23,6 +23,8 @@ import { getEncounterMap } from 'utils/getEncounterMap';
 import { getMoveType } from 'utils/getMoveType';
 import { getDisplayNameForTest } from 'utils/getDisplayNameForTest';
 import { getGameRegion, Region } from 'utils/getGameRegion';
+import { numberToSpecies } from 'utils/numberToSpecies';
+import { capitalize } from 'utils/capitalize';
 
 const objectPropertiesWhere = (obj: object, filter: any) =>
     Array.from(Object.values(obj)).filter(filter).length;
@@ -310,5 +312,23 @@ describe(getDisplayNameForTest.name, () => {
             }
         }
         expect(getDisplayNameForTest(Component)).toEqual('<Component />');
+    });
+});
+
+describe(numberToSpecies.name, () => {
+    it('returns a number', () => {
+        const subject = numberToSpecies(-1);
+        const subject2 = numberToSpecies('-1');
+        expect(subject).toBe('Bulbasaur');
+        expect(subject2).toBe('Bulbasaur');
+    });
+});
+
+describe(capitalize.name, () => {
+    it('returns a capitalized string', () => {
+        const subject = capitalize('dog');
+        expect(subject).toBe('Dog');
+        const subject2 = capitalize('dOG');
+        expect(subject2).toBe('DOG');
     });
 });

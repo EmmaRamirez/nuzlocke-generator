@@ -1,19 +1,18 @@
-import { Button, Intent, Icon, Popover, PopoverInteractionKind, Position } from '@blueprintjs/core';
+import { Button, Icon } from '@blueprintjs/core';
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Pokemon, Game, Box as BoxModel, Boxes, Editor } from 'models';
-import { Game as GameName } from 'utils';
+import { Pokemon, Game, Box as BoxModel, Boxes } from 'models';
 import { State } from 'state';
 
-import { generateEmptyPokemon, getEncounterMap, capitalize } from 'utils';
+import { generateEmptyPokemon, getEncounterMap } from 'utils';
 import { CurrentPokemonEdit, MassEditor } from '.';
 
 import { AddPokemonButton } from 'components/AddPokemonButton';
 import { BaseEditor } from 'components/BaseEditor';
 import { Box, BoxForm } from 'components/Box';
-import { DropTarget, ConnectDropTarget } from 'react-dnd';
 import { PokemonIcon } from 'components/PokemonIcon';
+import { ErrorBoundary } from 'components/Shared';
 
 export interface PokemonEditorProps {
     team: Pokemon[];
@@ -152,7 +151,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                             icon={'heat-grid'}
                             onClick={this.openMassEditor}
                             style={{ marginLeft: 'auto' }}
-                            className="pt-intent-primary pt-minimal">
+                            className="bp3-intent-primary bp3-minimal">
                             Open Mass Editor
                         </Button>
                     </div>
@@ -164,12 +163,14 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                         <PokemonLocationChecklist style={style} pokemon={team} game={game} />
                     </BaseEditor>
                 </BaseEditor>
-                <MassEditor
-                    isOpen={this.state.isMassEditorOpen}
-                    toggleDialog={(e) =>
-                        this.setState({ isMassEditorOpen: !this.state.isMassEditorOpen })
-                    }
-                />
+                <ErrorBoundary>
+                    <MassEditor
+                        isOpen={this.state.isMassEditorOpen}
+                        toggleDialog={(e) =>
+                            this.setState({ isMassEditorOpen: !this.state.isMassEditorOpen })
+                        }
+                    />
+                </ErrorBoundary>
             </>
         );
     }

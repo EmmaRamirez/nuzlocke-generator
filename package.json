@@ -1,6 +1,6 @@
 {
   "name": "nuzlocke-generator",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "A tool for generating nuzlocke team pics from data",
   "main": "dist/bundle.js",
   "scripts": {
@@ -50,13 +50,14 @@
     "react-dnd": "^5.0.0",
     "react-dnd-html5-backend": "^5.0.1",
     "react-infinite-scroller": "^1.2.4",
-    "redux-mock-store": "^1.5.3"
+    "redux-mock-store": "^1.5.3",
+    "tslib": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.1",
-    "@blueprintjs/core": "^2.0.0",
-    "@blueprintjs/icons": "^2.0.0",
-    "@blueprintjs/table": "^2.0.0",
+    "@blueprintjs/core": "^3.28.1",
+    "@blueprintjs/icons": "^3.18.0",
+    "@blueprintjs/table": "^3.8.8",
     "@testing-library/react": "^10.0.4",
     "@types/chai": "^4.0.10",
     "@types/enzyme": "^2.8.12",
@@ -136,7 +137,7 @@
     "sinon": "^6.1.3",
     "style-loader": "^0.18.2",
     "stylus": "^0.54.5",
-    "ts-jest": "^23.0.0",
+    "ts-jest": "^26.1.0",
     "ts-loader": "^4.4.2",
     "tslint": "^6.1.2",
     "typescript": "^3.9.2",

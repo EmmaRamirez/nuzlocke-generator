@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import createHistory from 'history/createBrowserHistory';
 import { PersistGate } from 'redux-persist/es/integration/react';
 import * as Rollbar from 'rollbar';
 import { injectGlobal } from 'emotion';
@@ -16,20 +15,6 @@ import 'normalize.css/normalize.css';
 import { DragDropContextProvider } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { isLocal } from 'utils';
-
-
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker
-            .register('/service-worker.js')
-            .then((registration) => {
-                console.log('SW registered: ', registration);
-            })
-            .catch((registrationError) => {
-                console.log('SW registration failed: ', registrationError);
-            });
-    });
-}
 
 injectGlobal`
     *,
@@ -81,6 +66,7 @@ const rollbarConfig = new Rollbar({
 Rollbar.init(rollbarConfig as any);
 
 const mountNode = document.getElementById('app');
+
 
 render(
     <Provider store={store}>

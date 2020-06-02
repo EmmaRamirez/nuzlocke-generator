@@ -57,7 +57,7 @@ DeletePokemonButtonProps,
                         that?
                     </p>
 
-                    <label className="pt-control pt-checkbox .modifier">
+                    <label className="bp3-control bp3-checkbox .modifier">
                         <input
                             onChange={(event) =>
                                 this.props.modifyDeletionConfirmation &&
@@ -65,7 +65,7 @@ DeletePokemonButtonProps,
                             }
                             type="checkbox"
                         />
-                        <span className="pt-control-indicator" />
+                        <span className="bp3-control-indicator" />
                         Don't Ask Me For Confirmation Again
                     </label>
                 </Alert>
@@ -74,7 +74,6 @@ DeletePokemonButtonProps,
                     position={Position.TOP}
                     content={<div style={{ padding: '1rem' }}>{`Delete Pok${accentedE}mon`}</div>}>
                     <Icon
-                        role="button"
                         onClick={(e) => {
                             if (this.props.confirmation) {
                                 this.toggleDialog();

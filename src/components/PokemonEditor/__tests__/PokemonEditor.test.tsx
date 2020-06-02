@@ -26,7 +26,7 @@ describe('<PokemonEditor />', () => {
         );
         expect(wrapper).toBeDefined();
         expect(wrapper.debug()).toContain('BaseEditor');
-        expect(wrapper.find('.pt-intent-primary').first().text()).toContain('Open Mass Editor');
+        expect(wrapper.find('.bp3-intent-primary').first().text()).toContain('Open Mass Editor');
     });
 });
 
@@ -37,7 +37,7 @@ describe('<PokemonEditor />', () => {
 //         icon={'heat-grid'}
 //         onClick={this.openMassEditor}
 //         style={{ marginLeft: 'auto' }}
-//         className='pt-intent-primary pt-minimal'>
+//         className='bp3-intent-primary bp3-minimal'>
 //         Open Mass Editor
 //     </Button>
 // </div>

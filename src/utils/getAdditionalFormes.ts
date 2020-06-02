@@ -182,7 +182,7 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
         s === 'scizor' ||
         s === 'heracross' ||
         s === 'houndoom' ||
-        s === 'tyrantiar' ||
+        s === 'tyranitar' ||
         s === 'blaziken' ||
         s === 'gardevoir' ||
         s === 'mawile' ||

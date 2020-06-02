@@ -50,7 +50,7 @@ import { pokemon } from 'reducers/pokemon';
 const pokeball = require('assets/pokeball.png');
 
 export interface CopyPokemonButtonProps {
-    onClick: (event: React.MouseEvent<SVGElement>) => void;
+    onClick: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 export const CopyPokemonButton: React.SFC<CopyPokemonButtonProps> = ({
@@ -384,7 +384,7 @@ CurrentPokemonEditState
                     {/*this.doesPokemonHaveEvolution(currentPokemon) ? <Button
                         style={{marginTop: '12px'}}
                         onClick={this.evolvePokemon(currentPokemon)}
-                        className={'pt-minimal'}
+                        className={Classes.MINIMAL}
                         intent={Intent.PRIMARY}
                     >Evolve</Button> : null*/}
                     <div className={cx(Styles.iconBar)}>
@@ -499,9 +499,10 @@ CurrentPokemonEditState
                         type="moves"
                     />
                     <Button
-                        className="pt-minimal"
                         intent={Intent.PRIMARY}
-                        onClick={this.toggleDialog}>
+                        onClick={this.toggleDialog}
+                        minimal
+                    >
                         Edit Moves
                     </Button>
                 </CurrentPokemonLayoutItem>
