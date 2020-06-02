@@ -8,7 +8,7 @@ export const AddPokemonButtonBase = ({ onClick }: { onClick: onClick }) => (
     <Button
         icon='add'
         intent={Intent.SUCCESS}
-        className="pt-button add-new-pokemon"
+        className="add-new-pokemon"
         onClick={(e) => {
             e.preventDefault();
             onClick && onClick();

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { classWithDarkTheme, Styles as StyleType } from 'utils';
 import { State } from 'state';
 import { ChromePicker } from 'react-color';
-import { Popover, PopoverInteractionKind } from '@blueprintjs/core';
+import { Popover, PopoverInteractionKind, Classes } from '@blueprintjs/core';
 
 export const rgbaOrHex = (o) =>
     (o.rgb && o.rgb.a && o.rgb.a !== 1
@@ -53,7 +53,7 @@ export class ColorEditBase extends React.Component<ColorEditProps, { showChromeP
                             onChange={onChange}
                             type="text"
                             className={cx(
-                                'pt-input',
+                                Classes.INPUT,
                                 classWithDarkTheme(Styles, 'colorTextInput', style.editorDarkMode),
                             )}
                             name={name}

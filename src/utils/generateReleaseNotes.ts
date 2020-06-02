@@ -545,6 +545,7 @@ Thank you!
 ## Fixes
 - Fixed Tyranitar not having a mega due to a typo
 - The main 4 boxes can no longer have their inheritance changed
+- Fixed some style descrepancies between light & dark mode
 
 ## Known Issues
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this

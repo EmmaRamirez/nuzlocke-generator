@@ -193,7 +193,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         }
         if (type === 'select') {
             return (
-                <div className="pt-select" style={inputName === 'status' ? { width: '120px' } : {}}>
+                <div className={Classes.SELECT} style={inputName === 'status' ? { width: '120px' } : {}}>
                     {inputName === 'pokeball' && value && value !== 'None' ? (
                         <img
                             style={{ position: 'absolute' }}
@@ -237,7 +237,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         if (type === 'double-select') {
             return (
                 <span className="double-select-wrapper">
-                    <div className="pt-select">
+                    <div className={Classes.SELECT}>
                         <select
                             onChange={(e) => this.onChange(e, inputName, 0, value)}
                             value={value[0] == null ? 'None' : value[0]}
@@ -252,7 +252,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                         </select>
                     </div>
                     <span>&nbsp;</span>
-                    <div className="pt-select">
+                    <div className={Classes.SELECT}>
                         <select
                             onChange={(e) => this.onChange(e, inputName, 1, value)}
                             value={value[1] == null ? 'None' : value[1]}

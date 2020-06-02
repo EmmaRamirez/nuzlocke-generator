@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Button, ButtonGroup, Slider } from '@blueprintjs/core';
+import { Button, ButtonGroup, Slider, Classes } from '@blueprintjs/core';
+import { cx } from 'emotion';
 
 export interface ZoomLevelProps {
     style: any;
@@ -11,7 +12,7 @@ export class ZoomLevel extends React.Component<ZoomLevelProps> {
         const { style, editEvent } = this.props;
         return (
             <div className="style-edit">
-                <label className="pt-label pt-inline">Zoom Level</label>
+                <label className={cx(Classes.LABEL, Classes.INLINE)}>Zoom Level</label>
                 <div>
                     <ButtonGroup>
                         <Button

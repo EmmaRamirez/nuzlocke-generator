@@ -31,7 +31,6 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
                     title="Delete Rule">
                     <Icon
                         intent={Intent.DANGER}
-                        role="action"
                         style={{ cursor: 'pointer' }}
                         icon={'trash'}
                     />

@@ -18,6 +18,7 @@ import {
     Button,
     Intent,
     Alert,
+    Classes,
 } from '@blueprintjs/core';
 import { connect } from 'react-redux';
 
@@ -231,13 +232,13 @@ export class BoxBase extends React.Component<BoxProps, BoxState> {
                             />
                             <MenuItem
                                 onClick={this.clearBox(name)}
-                                className="pt-fill"
+                                className={Classes.FILL}
                                 text={'Clear Box'}
                             />
                             {!['Team', 'Boxed', 'Dead', 'Champs'].includes(name) && (
                                 <MenuItem
                                     onClick={this.deleteBox(id)}
-                                    className="pt-fill"
+                                    className={Classes.FILL}
                                     text={'Delete Box'}
                                 />
                             )}

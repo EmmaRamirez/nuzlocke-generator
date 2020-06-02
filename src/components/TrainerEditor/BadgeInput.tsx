@@ -33,7 +33,7 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
         };
     }
 
-    private toggleCheckpointsEditor = (e: React.SyntheticEvent<HTMLElement>) =>
+    private toggleCheckpointsEditor = (e?: React.SyntheticEvent<HTMLElement>) =>
         this.setState({ isOpen: !this.state.isOpen });
 
     public render() {
@@ -95,7 +95,8 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
                                     {this.props.enableCheckpointsEditor ? (
                                         <Button
                                             onClick={this.toggleCheckpointsEditor}
-                                            className="pt-minimal">
+                                            minimal
+                                        >
                                             Customize Checkpoints
                                         </Button>
                                     ) : null}

@@ -183,10 +183,10 @@ CheckpointsEditorState
                             <Button icon='upload'>Upload Image</Button>
                             <input style={{ cursor: 'pointer', opacity: 0, position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} onChange={this.onUpload} type='file' />
                         </div> */}
-                        <div className="pt-input-group">
+                        <div className={Classes.INPUT_GROUP}>
                             <Icon icon={'link'} />
                             <input
-                                className="pt-input"
+                                className={Classes.INPUT}
                                 placeholder="https://..."
                                 value={checkpoint.image}
                                 type="text"

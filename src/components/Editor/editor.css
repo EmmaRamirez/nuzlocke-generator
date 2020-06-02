@@ -75,6 +75,12 @@ html.pt-dark {
   border-radius: .25rem;
 
 }
+.data-editor-save-file-form {
+  border: 1px solid #ddd;
+}
+.pt-dark .data-editor-save-file-form {
+  border: 1px solid #333;
+}
 .pt-dark .base-editor {
   border: 1px solid #333;
 }

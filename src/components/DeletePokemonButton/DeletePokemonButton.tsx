@@ -74,7 +74,6 @@ DeletePokemonButtonProps,
                     position={Position.TOP}
                     content={<div style={{ padding: '1rem' }}>{`Delete Pok${accentedE}mon`}</div>}>
                     <Icon
-                        role="button"
                         onClick={(e) => {
                             if (this.props.confirmation) {
                                 this.toggleDialog();
