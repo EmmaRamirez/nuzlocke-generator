@@ -280,7 +280,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     }}>
                     <input
                         style={{ padding: '.25rem' }}
-                        className="bp3-button"
+                        className={Classes.FILE_INPUT}
                         ref={(ref) => (this.fileInput = ref)}
                         onChange={this.uploadFile(this.props.replaceState, this.props.state)}
                         type="file"
@@ -378,7 +378,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                                     }}>
                                     <input
                                         style={{ padding: '.25rem' }}
-                                        className={Classes.BUTTON}
+                                        className={Classes.FILE_INPUT}
                                         ref={(ref) => (this.nuzlockeJsonFileInput = ref)}
                                         onChange={this.uploadNuzlockeJsonFile}
                                         type="file"
