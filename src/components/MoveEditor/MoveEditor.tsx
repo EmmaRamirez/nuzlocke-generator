@@ -189,19 +189,19 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                             }}
                             className="add-move-wrapper">
                             <label
-                                style={{ marginTop: '8px', padding: '0.5rem' }}
-                                className={cx(Classes.LABEL, Classes.INLINE)}>
+                                style={{ padding: '0.5rem' }}
+                                className={cx(Classes.INLINE)}>
                                 Add A Move
                             </label>
                             <input
                                 placeholder="Move Name"
-                                style={{ width: '10rem' }}
+                                style={{ width: '10rem', margin: '0 .25rem' }}
                                 onChange={(e) => this.setState({ moveName: e.target.value })}
                                 value={moveName}
                                 className={Classes.INPUT}
                                 type="text"
                             />
-                            <div className={Classes.SELECT} style={{ width: '8rem' }}>
+                            <div className={Classes.SELECT} style={{ width: '8rem', margin: '0 .25rem' }}>
                                 <select
                                     onChange={(e) => this.setState({ moveType: e.target.value })}
                                     value={moveType}>
@@ -213,6 +213,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                                 </select>
                             </div>
                             <Button
+                                style={{margin: '0 .25rem'}}
                                 onClick={(e) => {
                                     this.props.editCustomMoveMap(moveType, moveName);
                                 }}

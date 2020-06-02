@@ -97,14 +97,14 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         const renderItems: React.ReactNode[] = [];
         if (this.props.pokemon.filter((poke) => poke.status === 'Team').length > 6) {
             renderItems.push(
-                <div key={uuid()} className="pt-callout pt-intent-danger">
+                <div key={uuid()} className="bp3-callout bp3-intent-danger">
                     You have more than 6 Pokémon in your party.
                 </div>,
             );
         }
         if (this.state.downloadError) {
             renderItems.push(
-                <div key={uuid()} className="pt-callout pt-intent-danger">
+                <div key={uuid()} className="bp3-callout bp3-intent-danger">
                     Image failed to download. Check that you are not using images that link to
                     external sites.
                 </div>,

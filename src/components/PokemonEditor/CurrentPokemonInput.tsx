@@ -123,6 +123,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
             return (
                 <ErrorBoundary>
                     <TagInput
+                        leftIcon='ninja'
                         tagProps={(v, i) => {
                             // @TODO: Fix inconsitencies with bad parameter types
                             const background =
@@ -143,10 +144,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                             const edit = {
                                 moves: values,
                             };
-                            this.props.editPokemon &&
-                                this.props.editPokemon(edit, this.props.selectedId);
-                            this.props.selectPokemon &&
-                                this.props.selectPokemon(this.props.selectedId);
+                            this.props.editPokemon(edit, this.props.selectedId);
                         }}
                         values={value || []}
                     />
@@ -175,7 +173,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                     placeholder={placeholder}
                     disabled={disabled}
                     style={{ width: '100%' }}
-                    className={disabled && `${Classes.DISABLED} ${Classes.TEXT_MUTED} pt-fill`}
+                    className={disabled && `${Classes.DISABLED} ${Classes.TEXT_MUTED} bp3-fill`}
                 />
             );
         }
@@ -223,14 +221,14 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         }
         if (type === 'checkbox') {
             return (
-                <label className="pt-control pt-checkbox">
+                <label className="bp3-control bp3-checkbox">
                     <input
                         onChange={(e) => this.onChange(e, inputName)}
                         checked={value}
                         type={type}
                         name={inputName}
                     />
-                    <span className="pt-control-indicator" />
+                    <span className="bp3-control-indicator" />
                 </label>
             );
         }

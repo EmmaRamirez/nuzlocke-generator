@@ -151,7 +151,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                             icon={'heat-grid'}
                             onClick={this.openMassEditor}
                             style={{ marginLeft: 'auto' }}
-                            className="pt-intent-primary pt-minimal">
+                            className="bp3-intent-primary bp3-minimal">
                             Open Mass Editor
                         </Button>
                     </div>

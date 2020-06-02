@@ -9,11 +9,14 @@ export interface BaseEditorProps {
     defaultOpen?: boolean;
 }
 
-const baseEditorStyle: any = {
+const baseEditorStyle = {
     cursor: 'pointer',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    margin: '2px',
+    marginBottom: '6px',
+    fontSize: '1rem',
 };
 
 export class BaseEditor extends React.Component<BaseEditorProps, BaseEditorState> {
@@ -41,7 +44,7 @@ export class BaseEditor extends React.Component<BaseEditorProps, BaseEditorState
                     onClick={this.toggleEditor}>
                     {this.props.name}
                     <span
-                        className={`pt-icon pt-icon-caret-${this.state.isOpen ? 'up' : 'down'}`}
+                        className={`bp3-icon bp3-icon-caret-${this.state.isOpen ? 'up' : 'down'}`}
                     />
                 </h4>
                 {this.state.isOpen ? this.props.children : null}

@@ -66,7 +66,7 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
                         <Button
                             disabled={!userReportTitle}
                             onClick={this.sendBugReport}
-                            className="pt-minimal"
+                            className="bp3-minimal"
                             intent={Intent.DANGER}>
                             Submit{' '}
                             <img

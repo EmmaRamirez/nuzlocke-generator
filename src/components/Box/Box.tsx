@@ -199,7 +199,7 @@ export class BoxBase extends React.Component<BoxProps, BoxState> {
                     popoverClassName={'no-list-item-types'}
                     content={
                         <>
-                            {/*<MenuItem className='pt-fill' text='Edit' />*/}
+                            {/*<MenuItem className='bp3-fill' text='Edit' />*/}
                             <MenuItem text="Change Wallpaper">
                                 {wallpapers.map((wall) => (
                                     <MenuItem

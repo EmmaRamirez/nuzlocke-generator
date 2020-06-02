@@ -6,7 +6,7 @@
   align-items: center;
   border-bottom: 1px solid rgba(0,0,0,0.33);
 }
-.pt-dark .top-bar {
+.bp3-dark .top-bar {
   background: #222;
 }
 .boxed-pokemon-icon {
@@ -26,7 +26,7 @@
   text-align: center;
   color: #eee;
 }
-.pt-dark .pt-callout {
+.bp3-dark .bp3-callout {
   color: #fff;
 }
 .result-notes {
@@ -279,7 +279,6 @@
 .round {
   border-radius: 50%;
   display: inline-flex;
-  height: 100%;
   width: auto;
   padding: 0.25rem;
   position: relative;
@@ -287,7 +286,6 @@
 }
 .square {
   display: inline-flex;
-  height: 100%;
   width: auto;
   padding: 0.25rem;
   position: relative;
@@ -437,101 +435,4 @@
   height: 32px;
   align-items: center;
   border-radius: .25rem;
-}
-.pt-tag-input .pt-tag.pt-tag-removable,
-.move {
-  color: #000;
-}
-.pt-tag-input .pt-tag.pt-tag-removable.Fighting-type,
-.move.Fighting-type {
-  background: #a52a2a;
-  color: #eee;
-}
-.pt-tag-input .pt-tag.pt-tag-removable.Ice-type,
-.move.Ice-type {
-  background: #c2f1f2;
-  color: #000;
-}
-.pt-tag-input .pt-tag.pt-tag-removable.Fire-type,
-.move.Fire-type {
-  background: #eb3434;
-}
-.pt-tag-input .pt-tag.pt-tag-removable.Grass-type,
-.move.Grass-type {
-  background: #39bf3c;
-  color: #000;
-}
-.pt-tag-input .pt-tag.pt-tag-removable.Bug-type,
-.move.Bug-type {
-  background: #aee359;
-  color: #000;
-}
-.pt-tag-input .pt-tag.pt-tag-removable.Normal-type,
-.move.Normal-type {
-  background: #e1e3d3;
-  color: #000;
-}
-.pt-tag-input .pt-tag.pt-tag-removable.Steel-type,
-.move.Steel-type {
-  background: #b0b0b0;
-  color: #000;
-}
-.pt-tag-input .pt-tag.pt-tag-removable.Rock-type,
-.move.Rock-type {
-  background: #8f795d;
-  color: #000;
-}
-.pt-tag-input .pt-tag.pt-tag-removable.Ground-type,
-.move.Ground-type {
-  background: #9c6e21;
-  color: #000;
-}
-.pt-tag-input .pt-tag.pt-tag-removable.Poison-type,
-.move.Poison-type {
-  background: #75226b;
-  color: #eee;
-}
-.pt-tag-input .pt-tag.pt-tag-removable.Ghost-type,
-.move.Ghost-type {
-  background: #3b2238 !important;
-  color: #eee;
-}
-.pt-tag-input .pt-tag.pt-tag-removable.Water-type,
-.move.Water-type {
-  background: #5b64de;
-  color: #eee;
-}
-.pt-tag-input .pt-tag.pt-tag-removable.Electric-type,
-.move.Electric-type {
-  background: #e3e039;
-  color: #000;
-}
-.pt-tag-input .pt-tag.pt-tag-removable.Dark-type,
-.move.Dark-type {
-  background: #29291f;
-  color: #eee;
-}
-.pt-tag-input .pt-tag.pt-tag-removable.Fairy-type,
-.move.Fairy-type {
-  background: #ffc0cb;
-  color: #000;
-}
-.pt-tag-input .pt-tag.pt-tag-removable.Flying-type,
-.move.Flying-type {
-  background: #96d3e0;
-  color: #000;
-}
-.pt-tag-input .pt-tag.pt-tag-removable.Psychic-type,
-.move.Psychic-type {
-  background: #eb75dd;
-  color: #000;
-}
-.pt-tag-input .pt-tag.pt-tag-removable.Dragon-type,
-.move.Dragon-type {
-  background: #153f4d;
-  color: #fff;
-}
-.pt-tag-input .pt-tag.pt-tag-removable.-type,
-.move.-type {
-  display: none;
 }

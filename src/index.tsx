@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import createHistory from 'history/createBrowserHistory';
 import { PersistGate } from 'redux-persist/es/integration/react';
 import * as Rollbar from 'rollbar';
 import { injectGlobal } from 'emotion';
@@ -67,6 +66,7 @@ const rollbarConfig = new Rollbar({
 Rollbar.init(rollbarConfig as any);
 
 const mountNode = document.getElementById('app');
+
 
 render(
     <Provider store={store}>

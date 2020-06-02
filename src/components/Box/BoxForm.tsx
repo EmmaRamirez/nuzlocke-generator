@@ -111,7 +111,7 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                             </label>
                             <input
                                 required
-                                className="pt-input"
+                                className={Classes.INPUT}
                                 autoComplete="false"
                                 onInput={this.editFormInput}
                                 value={this.state.newBox.name}
@@ -138,7 +138,7 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                                 </Popover>
                             </label>
                             <input
-                                className="pt-input"
+                                className={Classes.INPUT}
                                 onInput={this.editFormInput}
                                 value={this.state.newBox.background}
                                 name="background"
@@ -147,7 +147,7 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                         </div>
 
                         <div style={inputStyle}>
-                            <label style={labelStyle} className="pt-label">
+                            <label style={labelStyle} className="bp3-label">
                                 Inherit From...
                             </label>
                             <div className={Classes.SELECT}>

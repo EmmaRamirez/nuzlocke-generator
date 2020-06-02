@@ -258,7 +258,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                 padding: '0.25rem',
             }}>
                 <div
-                    className="pt-label pt-inline"
+                    className="bp3-label bp3-inline"
                     style={{ padding: '.25rem 0', paddingBottom: '.5rem' }}>
                     <div className={Classes.SELECT}>
                         <select
@@ -272,7 +272,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                 </div>
 
                 <div
-                    className="pt-label pt-inline"
+                    className="bp3-label bp3-inline"
                     style={{
                         padding: '.25rem 0',
                         paddingBottom: '.5rem',
@@ -280,7 +280,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     }}>
                     <input
                         style={{ padding: '.25rem' }}
-                        className="pt-button"
+                        className="bp3-button"
                         ref={(ref) => (this.fileInput = ref)}
                         onChange={this.uploadFile(this.props.replaceState, this.props.state)}
                         type="file"
@@ -291,7 +291,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                 </div>
 
                 <div
-                    className="pt-label pt-inline"
+                    className="bp3-label bp3-inline"
                     style={{
                         padding: '.25rem 0',
                         paddingBottom: '.5rem',
@@ -318,7 +318,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     onCancel={this.toggleClearingData}
                     cancelButtonText="Nevermind"
                     confirmButtonText="Delete Anyway"
-                    className={this.props.state.style.editorDarkMode ? 'pt-dark' : 'pt-light'}
+                    className={this.props.state.style.editorDarkMode ? 'bp3-dark' : 'bp3-light'}
                     style={{ maxWidth: '600px' }}
                     intent={Intent.DANGER}>
                     <div style={{ display: 'flex' }}>
@@ -337,19 +337,19 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                             ? 'Exported Nuzlocke Save'
                             : 'Import Nuzlocke Save'
                     }
-                    className={this.props.state.style.editorDarkMode ? 'pt-dark' : ''}
+                    className={this.props.state.style.editorDarkMode ? 'bp3-dark' : ''}
                     icon="floppy-disk">
                     {this.state.mode === 'export' ? (
                         <>
                             <Callout>Copy this and paste it somewhere safe!</Callout>
                             <div
                                 style={{ height: '40vh', overflow: 'auto' }}
-                                className="pt-dialog-body has-nice-scrollbars">
+                                className="bp3-dialog-body has-nice-scrollbars">
                                 <span suppressContentEditableWarning={true} contentEditable={true}>
                                     {JSON.stringify(this.props.state, null, 2)}
                                 </span>
                             </div>
-                            <div className="pt-dialog-footer">
+                            <div className="bp3-dialog-footer">
                                 <a href={this.state.href} download={`nuzlocke_${uuid()}.json`}>
                                     <Button icon={'download'} intent={Intent.PRIMARY}>
                                         Download
@@ -359,9 +359,9 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         </>
                     ) : (
                         <>
-                            <div className="pt-dialog-body has-nice-scrollbars">
+                            <div className="bp3-dialog-body has-nice-scrollbars">
                                 <TextArea
-                                    className="custom-css-input pt-fill"
+                                    className="custom-css-input bp3-fill"
                                     onChange={this.uploadJSON}
                                     placeholder="Paste nuzlocke.json contents here, or use the file uploader"
                                     value={this.state.data}

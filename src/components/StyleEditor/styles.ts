@@ -44,7 +44,7 @@ export const styleEdit = css`
     display: flex;
     padding: 0.5rem;
     width: 100%;
-    .pt-label {
+    .bp3-label {
         margin: 0;
         min-width: 10rem;
     }
@@ -70,11 +70,11 @@ export const radioGroup = css`
     align-content: center;
     align-items: center;
     display: flex;
-    .pt-control {
+    .bp3-control {
         border-radius: 0.25rem;
         margin: 0.25rem;
     }
-    label.pt-label {
+    label.bp3-label {
         margin: 0;
     }
 `;

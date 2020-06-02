@@ -20,7 +20,7 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
                 <div className="rule-no">{index + 1}</div>
                 <TextArea
                     defaultValue={rule}
-                    className="pt-fill"
+                    className="bp3-fill"
                     onChange={(e: any) => this.props.editRule(index, e.target.value)}
                     dir="auto"
                 />
@@ -82,10 +82,10 @@ export const RulesEditorDialogBase = (
         <Dialog
             isOpen={props.isOpen}
             onClose={props.onClose}
-            className={`rules-editor-dialog ${props.style.editorDarkMode ? 'pt-dark' : 'pt-light'}`}
+            className={`rules-editor-dialog ${props.style.editorDarkMode ? 'bp3-dark' : 'bp3-light'}`}
             title="Rules Editor"
             icon="edit">
-            <div className="pt-dialog-body">
+            <div className="bp3-dialog-body">
                 <RulesEditor
                     rules={props.rules}
                     editRule={props.editRule}
