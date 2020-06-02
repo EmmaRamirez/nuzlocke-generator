@@ -188,21 +188,6 @@ const componentTree: ComponentNode[] = [
                         ...modelPokemon,
                     }
                 },
-                childNodes: [
-                    {
-                        id: 11,
-                        label: 'PokemonIcon',
-                        component: PokemonIcon,
-                        options: {
-                            props: {
-                                filter: '',
-                            },
-                            baseProps: {
-                                ...modelPokemon
-                            }
-                        }
-                    },
-                ],
             },
         ]
     },
