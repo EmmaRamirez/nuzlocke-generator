@@ -7,6 +7,7 @@ import { Button, Intent, Popover, Position, Menu, Switch, Classes } from '@bluep
 import { RulesEditorDialog } from 'components/RulesEditor';
 import { State } from 'state';
 import { BaseEditor } from 'components/BaseEditor';
+import { NuzlockeSaveControls } from './NuzlockeSaveControls';
 
 export interface GameEditorProps {
     game: any;
@@ -54,7 +55,9 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
             <>
                 <RED isOpen={this.state.isOpen} onClose={this.toggleDialog} />
                 <BaseEditor name='Game'>
-                    <h4 style={{ display: 'flex', alignContent: 'flex-end' }}>Game</h4>
+                    {feature.multipleNuzlockes ? (
+                        <NuzlockeSaveControls />
+                    ) : null}
                     <div style={gameSubEditorStyle}>
                         <div>
                             <label
@@ -70,11 +73,6 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                                 </select>
                             </div>
                         </div>
-                        {feature.multipleNuzlockes ? (
-                            <Popover minimal={true} content={<Menu />} position={Position.BOTTOM}>
-                                <Button icon="exchange">Switch Nuzlockes</Button>
-                            </Popover>
-                        ) : null}
                         <Button onClick={this.toggleDialog} icon="list" intent={Intent.PRIMARY}>
                             Modify Rules
                         </Button>

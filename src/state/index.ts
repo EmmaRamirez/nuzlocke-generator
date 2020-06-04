@@ -2,6 +2,7 @@ import { Styles } from 'utils';
 import { Pokemon, Trainer, Game, Editor, Boxes } from 'models';
 import { Theme } from 'themes';
 import { Checkpoints } from 'reducers/checkpoints';
+import { Nuzlockes } from 'reducers/nuzlocke';
 
 export interface State {
     box: Boxes;
@@ -19,4 +20,5 @@ export interface State {
     customMoveMap: { move: string; type: string; id: string }[];
     customTypes: { type: string; color: string; id: string }[];
     stats: { id?: string; key?: string; value?: string }[];
+    nuzlockes: Nuzlockes;
 }

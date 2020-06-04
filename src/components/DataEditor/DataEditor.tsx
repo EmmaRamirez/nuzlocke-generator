@@ -17,10 +17,6 @@ import { ErrorBoundary } from 'components/Shared';
 import * as uuid from 'uuid/v4';
 import { persistor } from 'store';
 import { replaceState } from 'actions';
-import { style } from 'reducers/style';
-import { reducers } from 'reducers';
-import { parseGen1Save, parseGen2Save } from 'parsers';
-import converter from 'hex2dec';
 import { Game, Pokemon } from 'models';
 import { omit } from 'ramda';
 import { BaseEditor } from 'components/BaseEditor';
@@ -199,13 +195,15 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
 
         reader.readAsArrayBuffer(file);
 
-        reader.addEventListener('load', function () {
+        reader.addEventListener('load', async function () {
             const u = new Uint8Array(this.result as ArrayBuffer);
+
+            const parsers = await import('parsers');
 
             const functionToUse =
                 componentState.selectedGame === 'RBY'
-                    ? parseGen1Save(u, 'nuzlocke')
-                    : parseGen2Save(u, 'nuzlocke');
+                    ? parsers.parseGen1Save(u, 'nuzlocke')
+                    : parsers.parseGen2Save(u, 'nuzlocke');
 
             functionToUse
                 // @ts-ignore
