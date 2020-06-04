@@ -1,4 +1,4 @@
-import { Button, Icon } from '@blueprintjs/core';
+import { Button, Icon, Spinner } from '@blueprintjs/core';
 import * as React from 'react';
 import { connect } from 'react-redux';
 
@@ -6,7 +6,7 @@ import { Pokemon, Game, Box as BoxModel, Boxes } from 'models';
 import { State } from 'state';
 
 import { generateEmptyPokemon, getEncounterMap } from 'utils';
-import { CurrentPokemonEdit, MassEditor } from '.';
+import { CurrentPokemonEdit } from '.';
 
 import { AddPokemonButton } from 'components/AddPokemonButton';
 import { BaseEditor } from 'components/BaseEditor';
@@ -100,25 +100,9 @@ const PokemonLocationChecklist = ({
             </div>
         </div>
     );
-
-    // return <div>
-    //     {encounterMap.areas.map(area => {
-    //         return <div style={{padding: '4px', margin: '2px', display: 'flex', justifyContent: 'space-apart', alignItems: 'center', borderRadius: '0.25rem', border: '1px solid #efefef'}}>
-    //             {getLocIcon(area.name)}
-    //             <div style={{width: '20%', marginLeft: '4px'}}>{area.name}</div>
-    //             <div style={{display: 'flex'}}>
-    //                 {area.pokemon.map(p => {
-    //                     return <div style={{display: 'flex', alignItems: 'center', padding: '2px 4px', background: '#eee', margin: '0 .25rem', borderRadius: '.25rem' }}>
-    //                         <Popover position={Position.TOP} interactionKind={PopoverInteractionKind.HOVER} content={<div style={{padding: '4px'}}>{capitalize(p.type)}</div>}><img style={{maxHeight: '24px'}} alt={p.type} src={`img/${p.type}.png`} /></Popover>
-    //                         {p.list.map(species => <PokemonIcon includeTitle species={species} />)}
-    //                     </div>;
-    //                 })}
-    //             </div>
-    //         </div>;
-    //     })}
-    //     <div>Tip: Pokémon with the "hidden" attribute are a great option for Pokemon that got away on a certain route!</div>
-    // </div>;
 };
+
+const MassEditor = React.lazy(() => import('components/PokemonEditor/MassEditor'));
 
 export class PokemonEditorBase extends React.Component<PokemonEditorProps, PokemonEditorState> {
     public constructor(props: PokemonEditorProps) {
@@ -163,14 +147,16 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                         <PokemonLocationChecklist style={style} pokemon={team} game={game} />
                     </BaseEditor>
                 </BaseEditor>
-                <ErrorBoundary>
-                    <MassEditor
-                        isOpen={this.state.isMassEditorOpen}
-                        toggleDialog={(e) =>
-                            this.setState({ isMassEditorOpen: !this.state.isMassEditorOpen })
-                        }
-                    />
-                </ErrorBoundary>
+                <React.Suspense fallback={<Spinner />}>
+                    {this.state.isMassEditorOpen &&
+                        <ErrorBoundary><MassEditor
+                            isOpen={this.state.isMassEditorOpen}
+                            toggleDialog={(e) =>
+                                this.setState({ isMassEditorOpen: !this.state.isMassEditorOpen })
+                            }
+                        /></ErrorBoundary>
+                    }
+                </React.Suspense>
             </>
         );
     }

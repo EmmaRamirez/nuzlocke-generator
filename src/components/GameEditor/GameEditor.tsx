@@ -6,6 +6,7 @@ import { gameOfOriginToColor, listOfGames, feature } from 'utils';
 import { Button, Intent, Popover, Position, Menu, Switch, Classes } from '@blueprintjs/core';
 import { RulesEditorDialog } from 'components/RulesEditor';
 import { State } from 'state';
+import { BaseEditor } from 'components/BaseEditor';
 
 export interface GameEditorProps {
     game: any;
@@ -52,7 +53,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
         return (
             <>
                 <RED isOpen={this.state.isOpen} onClose={this.toggleDialog} />
-                <div className="game-editor base-editor">
+                <BaseEditor name='Game'>
                     <h4 style={{ display: 'flex', alignContent: 'flex-end' }}>Game</h4>
                     <div style={gameSubEditorStyle}>
                         <div>
@@ -112,7 +113,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                             </Button>
                         )}
                     </div>
-                </div>
+                </BaseEditor>
             </>
         );
     }

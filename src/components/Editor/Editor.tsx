@@ -1,9 +1,7 @@
 import * as React from 'react';
-import { Scrollbars } from 'react-custom-scrollbars';
 import { connect } from 'react-redux';
 
 import { GameEditor } from 'components/GameEditor';
-import { PokemonEditor } from 'components/PokemonEditor';
 import { StyleEditor } from 'components/StyleEditor';
 import { TrainerEditor } from 'components/TrainerEditor/TrainerEditor';
 import { DataEditor } from 'components/DataEditor';
@@ -14,7 +12,9 @@ import { BugReporter } from 'components/BugReporter';
 import { StatsEditor } from 'components/StatsEditor';
 import { css, cx } from 'emotion';
 import { State } from 'state';
-import { Classes } from '@blueprintjs/core';
+import { Classes, Spinner } from '@blueprintjs/core';
+
+const PokemonEditor = React.lazy(() => import('components/PokemonEditor').then(res => ({ default: res.PokemonEditor })));
 
 /**
  * The main editor interface.
@@ -53,7 +53,9 @@ export class EditorBase extends React.Component<
                 <GameEditor />
                 <DataEditor />
                 <TrainerEditor />
-                <PokemonEditor />
+                <React.Suspense fallback={<Spinner />}>
+                    <PokemonEditor />
+                </React.Suspense>
                 <StyleEditor />
                 <StatsEditor />
                 <HotkeysEditor />
