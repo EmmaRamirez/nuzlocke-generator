@@ -21,6 +21,7 @@ import {
     Classes,
 } from '@blueprintjs/core';
 import { connect } from 'react-redux';
+import { equals } from 'ramda';
 
 const boxSource = {
     drop(props, monitor, component) {
@@ -106,7 +107,7 @@ export interface BoxState {
     connectDropTarget: connect.dropTarget(),
     canDrop: monitor.canDrop(),
 }))
-export class BoxBase extends React.Component<BoxProps, BoxState> {
+export class BoxBase extends React.PureComponent<BoxProps, BoxState> {
     public state = {
         deleteConfirmationOpen: false,
     };
@@ -127,7 +128,7 @@ export class BoxBase extends React.Component<BoxProps, BoxState> {
         this.props.editBox(id, { collapsed: !isCollapsed });
     };
 
-    private getDefault(name) {
+    private static getDefault(name) {
         if (name === 'Team') return 'route-1';
         if (name === 'Boxed') return 'grass-meadow';
         if (name === 'Dead') return 'stars';
@@ -135,8 +136,8 @@ export class BoxBase extends React.Component<BoxProps, BoxState> {
         return undefined;
     }
 
-    private getBoxBackground(background, name) {
-        const bg = background || this.getDefault(name);
+    private static getBoxBackground(background, name) {
+        const bg = background || BoxBase.getDefault(name);
         return bg && bg.startsWith('http') ? `url(${bg})` : `url(./assets/img/box/${bg}.png)`;
     }
 
@@ -151,9 +152,8 @@ export class BoxBase extends React.Component<BoxProps, BoxState> {
             connectDropTarget,
             canDrop,
             background,
+            collapsed: isCollapsed,
         } = this.props;
-        const filter = name === 'All' ? undefined : name;
-        const isCollapsed = this.props.collapsed;
 
         const collapsedStyle = isCollapsed
             ? {
@@ -167,7 +167,7 @@ export class BoxBase extends React.Component<BoxProps, BoxState> {
         return connectDropTarget!(
             <div
                 style={{
-                    backgroundImage: this.getBoxBackground(background, name),
+                    backgroundImage: BoxBase.getBoxBackground(background, name),
                     ...collapsedStyle,
                 }}
                 className={`box ${name.replace(/\s/g, '-')}-box`}>
@@ -264,7 +264,7 @@ export class BoxBase extends React.Component<BoxProps, BoxState> {
                         {name}
                     </span>
                 </Popover>
-                <PokemonByFilter team={pokemon} filter={filter} />
+                <PokemonByFilter team={pokemon} status={name} />
             </div>,
         );
     }
@@ -278,6 +278,4 @@ export const Box = connect(
         deleteBox,
         deletePokemon,
     },
-    null,
-    { pure: false },
 )(BoxBase);

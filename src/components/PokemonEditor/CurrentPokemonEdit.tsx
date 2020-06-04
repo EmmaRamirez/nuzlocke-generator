@@ -36,7 +36,6 @@ import {
     Popover,
     Position,
     PopoverInteractionKind,
-    TextArea,
     Button,
     Intent,
 } from '@blueprintjs/core';
@@ -44,8 +43,6 @@ import { addPokemon } from 'actions';
 import { State } from 'state';
 import { CurrentPokemonLayoutItem } from './CurrentPokemonLayoutItem';
 import { MoveEditor } from 'components/MoveEditor';
-import { PokemonNotes } from './PokemonNotes';
-import { pokemon } from 'reducers/pokemon';
 
 const pokeball = require('assets/pokeball.png');
 

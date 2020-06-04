@@ -105,10 +105,6 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
         super(props);
     }
 
-    public shouldComponentUpdate() {
-        return true;
-    }
-
     public render() {
         const {
             connectDragSource,
@@ -180,6 +176,4 @@ PokemonIconProps,
 >> = connect(
     (state: Pick<State, keyof State>) => ({ selectedId: state.selectedId, styles: state.style }),
     mapDispatchToProps,
-    null,
-    { pure: false },
 )(PokemonIconBase as any);

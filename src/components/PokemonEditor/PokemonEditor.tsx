@@ -185,5 +185,5 @@ export const PokemonEditor = connect(
     }),
     null,
     null,
-    { pure: false },
+    { pure: true },
 )(PokemonEditorBase as any);

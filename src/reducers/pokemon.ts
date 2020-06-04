@@ -39,8 +39,7 @@ export function pokemon(
                     : {};
             const newPoke = { ...pokemonToEdit, ...action.edits, ...deathTimestamp };
             if (state.length === 1) {
-                // TODO: Switch to pure ... notation?
-                return [Object.assign({}, ...state, action.edits, deathTimestamp)];
+                return [newPoke];
             }
             return [...state.filter((poke) => poke.id !== action.id), newPoke];
         case REPLACE_STATE:

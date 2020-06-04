@@ -6,7 +6,8 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 // const WorkboxPlugin = require('workbox-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
-const isProduction = process.env.NODE_ENV === 'production' ? true : false;
+// @TODO: do not this lol
+const isProduction = true;
 
 // tslint:disable-next-line:no-default-export
 module.exports = {
@@ -40,6 +41,7 @@ module.exports = {
         minimize: true,
         splitChunks: {
             chunks: 'all',
+            minChunks: 20,
         },
     },
     module: {

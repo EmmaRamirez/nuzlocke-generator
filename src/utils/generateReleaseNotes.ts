@@ -556,7 +556,9 @@ Thank you!
 
 ## Fixes
 - Fixed issue with Boxed per Line being inaccurate in some themes
-
+- Performance improvements for text inputs (will keep searching ways to improve this)
+- Prevent some tags from displaying in Blank template
+- Created an updater which fixes any errors in your json that prevent you from accessing custom moves
 
 ## Known Issues
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this

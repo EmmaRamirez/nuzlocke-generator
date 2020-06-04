@@ -16,6 +16,7 @@ import { ErrorBoundary } from 'components/Shared';
 import { TagInput, Classes, TextArea } from '@blueprintjs/core';
 import { State } from 'state';
 import { Pokemon } from 'models';
+import { debounce } from 'lodash';
 
 
 interface CurrentPokemonInputProps {
@@ -44,8 +45,49 @@ interface CurrentPokemonInputProps {
     customTypes: State['customTypes'];
 }
 
+export class CurrentPokemonTextInputBase extends React.PureComponent<Omit<CurrentPokemonInputProps, 'customMoveMap' | 'customTypes'>> {
+    public onChange = (inputName) => (e) => {
+        this.props.editPokemon({
+            [inputName]: e.target.value,
+        }, this.props.selectedId);
+    };
 
-export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInputProps> {
+    public render() {
+        const {
+            inputName,
+            type,
+            value,
+            placeholder,
+            disabled,
+        } = this.props;
+
+        return <input
+            onChange={this.onChange(inputName)}
+            type={type}
+            name={inputName}
+            value={value}
+            placeholder={placeholder}
+            disabled={disabled}
+            className={disabled ? `${Classes.DISABLED} ${Classes.TEXT_MUTED}` : ''}
+        />;
+    }
+
+}
+
+export const CurrentPokemonTextInput = connect(
+    (state: Pick<State, keyof State>) => ({
+        selectedId: state.selectedId,
+    }),
+    { editPokemon },
+)(CurrentPokemonTextInputBase);
+
+
+
+export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonInputProps> {
+    public state = {
+        value: null,
+    };
+    public debouncedFn: ReturnType<typeof debounce>;
     public constructor(props: CurrentPokemonInputProps) {
         super(props);
     }
@@ -54,14 +96,11 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         disabled: false,
     };
 
-    public onChange = (
-        e: React.SyntheticEvent<any> & any,
-        inputName: string,
-        position?: number,
-        value?: any,
-        pokemon?: Pokemon,
+    public onChange = (inputName, {position, value, pokemon}: {position?: number, value?: any, pokemon?: any} = {}) => (
+        e: React.ChangeEvent & {target: {value: any, checked?: boolean}},
     ) => {
         let edit;
+
         if (inputName === 'types' && position != null) {
             edit = {
                 [inputName]: value,
@@ -88,7 +127,6 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         } else if (inputName === 'egg') {
             edit = {
                 [inputName]: e.target.checked,
-                nickname: 'Egg',
             };
         } else if (inputName === 'forme') {
             edit = {
@@ -100,8 +138,9 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                 [inputName]: e.target.value,
             };
         }
-        this.props.editPokemon && this.props.editPokemon(edit, this.props.selectedId);
-        this.props.selectPokemon && this.props.selectPokemon(this.props.selectedId);
+
+        //this.setState({value: e.target.value});
+        this.props.editPokemon(edit, this.props.selectedId);
     };
 
     public getInput({
@@ -154,7 +193,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         if (type === 'text') {
             return (
                 <input
-                    onChange={(event) => this.onChange(event, inputName)}
+                    onChange={this.onChange(inputName)}
                     type={type}
                     name={inputName}
                     value={value}
@@ -167,7 +206,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         if (type === 'textArea') {
             return (
                 <TextArea
-                    onChange={(event) => this.onChange(event, inputName)}
+                    onChange={this.onChange(inputName)}
                     name={inputName}
                     value={value}
                     placeholder={placeholder}
@@ -180,7 +219,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         if (type === 'number') {
             return (
                 <input
-                    onChange={(event) => this.onChange(event, inputName)}
+                    onChange={this.onChange(inputName)}
                     type={type}
                     name={inputName}
                     value={value}
@@ -200,9 +239,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                         />
                     ) : null}
                     <select
-                        onChange={(event) =>
-                            this.onChange(event, inputName, undefined, undefined, pokemon)
-                        }
+                        onChange={this.onChange(inputName, {pokemon})}
                         value={value}
                         style={inputName === 'pokeball' ? { paddingLeft: '2rem' } : {}}
                         name={inputName}>
@@ -237,7 +274,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                 <span className="double-select-wrapper">
                     <div className={Classes.SELECT}>
                         <select
-                            onChange={(e) => this.onChange(e, inputName, 0, value)}
+                            onChange={this.onChange(inputName, {position: 0, value})}
                             value={value[0] == null ? 'None' : value[0]}
                             name={inputName}>
                             {options
@@ -252,7 +289,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                     <span>&nbsp;</span>
                     <div className={Classes.SELECT}>
                         <select
-                            onChange={(e) => this.onChange(e, inputName, 1, value)}
+                            onChange={this.onChange(inputName, {position: 1, value})}
                             value={value[1] == null ? 'None' : value[1]}
                             name={inputName}>
                             {options
@@ -279,8 +316,8 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
             inputName,
             usesKeyValue,
             type,
-            value,
             placeholder,
+            value,
             options,
             pokemon,
         } = this.props;
