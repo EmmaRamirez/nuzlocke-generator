@@ -709,3 +709,7 @@
   height: 5rem;
   width: 5rem;
 }
+
+.blank style {
+  display: none;
+}
