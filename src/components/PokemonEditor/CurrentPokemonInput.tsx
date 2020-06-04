@@ -84,10 +84,6 @@ export const CurrentPokemonTextInput = connect(
 
 
 export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonInputProps> {
-    public state = {
-        value: null,
-    };
-    public debouncedFn: ReturnType<typeof debounce>;
     public constructor(props: CurrentPokemonInputProps) {
         super(props);
     }
