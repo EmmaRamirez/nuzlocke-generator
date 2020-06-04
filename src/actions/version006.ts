@@ -9,3 +9,12 @@ export function version0_0_6_BETA(): Action<VERSION_0_0_6_BETA> {
         type: VERSION_0_0_6_BETA,
     };
 }
+
+export type VERSION_1116 = 'VERSION_1116';
+export const VERSION_1116: VERSION_1116 = 'VERSION_1116';
+
+export function version1116(): Action<VERSION_1116> {
+    return {
+        type: VERSION_1116,
+    };
+}

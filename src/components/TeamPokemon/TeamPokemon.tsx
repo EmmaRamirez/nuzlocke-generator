@@ -524,6 +524,6 @@ export const TeamPokemon = connect(
     },
     null,
     {
-        pure: false,
+        pure: true,
     },
 )(TeamPokemonBase as any);

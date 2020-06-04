@@ -1,4 +1,4 @@
-import { EDIT_CUSTOM_MOVE_MAP, DELETE_CUSTOM_MOVE, Action, REPLACE_STATE } from 'actions';
+import { EDIT_CUSTOM_MOVE_MAP, DELETE_CUSTOM_MOVE, Action, REPLACE_STATE, VERSION_1116 } from 'actions';
 import * as uuid from 'uuid';
 import { State } from 'state';
 
@@ -6,7 +6,7 @@ const initialState = [];
 
 export function customMoveMap(
     state: State['customMoveMap'] = initialState,
-    action: Action<EDIT_CUSTOM_MOVE_MAP | DELETE_CUSTOM_MOVE | REPLACE_STATE>,
+    action: Action<EDIT_CUSTOM_MOVE_MAP | DELETE_CUSTOM_MOVE | REPLACE_STATE | VERSION_1116>,
 ) {
     switch (action.type) {
         case EDIT_CUSTOM_MOVE_MAP:
@@ -29,6 +29,8 @@ export function customMoveMap(
             return state.filter((move) => move.id !== action.id);
         case REPLACE_STATE:
             return action.replaceWith.customMoveMap || [];
+        case VERSION_1116:
+            return [];
         default:
             return state;
     }

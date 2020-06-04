@@ -150,33 +150,33 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
                         this.state.pokemon.length ? (
                             isLocal() ? <p>Average Level: Team ({this.getAverageLevelByStatus('Team')}), Boxed ({this.getAverageLevelByStatus('Boxed')}), Dead ({this.getAverageLevelByStatus('Dead')}), Champs ({this.getAverageLevelByStatus('Champs')})</p>
                                 :
-                                <p>Average Level: {this.getAverageLevel()}</p>
+                                <div>Average Level: {this.getAverageLevel()}</div>
                         ) : null
                     ) : null}
                     {style.statsOptions.mostCommonKillers ? (
-                        <p>
+                        <div>
                             Most Common Killers:{' '}
                             {this.displayMostCommonDeath(this.getMostCommonDeath())}
-                        </p>
+                        </div>
                     ) : null}
                     {style.statsOptions.mostCommonTypes ? (
-                        <p>
+                        <div>
                             Most Common Types:{' '}
                             {this.displayMostCommonType(this.getMostCommonType())}
-                        </p>
+                        </div>
                     ) : null}
                     {style.statsOptions.shiniesCaught ? (
-                        <p>
+                        <div>
                             Shinies:{' '}
                             <Layout display={LayoutDisplay.Inline}>{this.getShinies()}</Layout>
-                        </p>
+                        </div>
                     ) : null}
                     {stats?.length
                         ? stats?.map((stat, idx) =>
                               stat.key?.length && stat.value?.length ? (
-                                  <p key={stat.id}>
+                                  <div key={stat.id}>
                                       {stat.key}: {stat.value}
-                                  </p>
+                                  </div>
                               ) : null,
                           )
                         : null}
