@@ -40,6 +40,9 @@ const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'],
         props.editStyle({ bgColor: '#383840' });
         props.editStyle({ topHeaderColor: '#333333' });
     }
+    if (propName === 'template' && e.target.value === 'Compact with Icons') {
+        props.editStyle({ imageStyle: 'square' });
+    }
     if (propName === 'template' && e.target.value === 'Cards') {
         props.editStyle({ imageStyle: 'square' });
         props.editStyle({ movesPosition: 'horizontal' as OrientationType });
@@ -49,7 +52,7 @@ const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'],
         props.editStyle({ accentColor: 'rgba(0, 0, 0, 0)' });
         props.editStyle({ movesPosition: 'horizontal' as OrientationType });
     }
-    if (propName === 'template' && e.target.value === 'Generations') {
+    if (propName === 'template' && e.target.value === 'Generations' || e.target.value === 'Generations Classic') {
         props.editStyle({
             bgColor: game ? gameOfOriginToColor(game) : '',
         });

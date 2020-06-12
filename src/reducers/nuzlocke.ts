@@ -15,15 +15,18 @@ export function nuzlockes(
 ) {
     switch (action.type) {
         case NEW_NUZLOCKE:
+            const id = uuid();
             return {
-                    ...state,
-                    saves: [
-                        ...state.saves,
-                        {
-                            id: uuid(),
-                            data: action?.data || null,
-                        }
-                    ]
+                ...state,
+                currentId: id,
+                saves: [
+                    ...state.saves,
+                    {
+                        id,
+                        data: action?.data || null,
+                        isCopy: action?.isCopy || false,
+                    }
+                ]
             };
 
         case DELETE_NUZLOCKE:
@@ -33,23 +36,32 @@ export function nuzlockes(
             };
         case SWITCH_NUZLOCKE:
             return {
-                    ...state,
-                    currentId: action.id,
+                ...state,
+                currentId: action.id,
             };
         case UPDATE_NUZLOCKE:
             const updateItem = state.saves.find(s => s.id === action.id);
             if (!updateItem) {
-                return state;
-            }
-            return {
+                return {
                     ...state,
                     saves: [
                         ...state.saves.filter(s => s.id !== action.id),
                         {
-                            id: updateItem.id,
+                            id: uuid(),
                             data: action.data,
                         }
                     ]
+                };
+            }
+            return {
+                ...state,
+                saves: [
+                    ...state.saves.filter(s => s.id !== action.id),
+                    {
+                        id: updateItem.id,
+                        data: action.data,
+                    }
+                ]
             };
         default:
             return state;

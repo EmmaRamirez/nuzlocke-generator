@@ -8,11 +8,13 @@ import { RulesEditorDialog } from 'components/RulesEditor';
 import { State } from 'state';
 import { BaseEditor } from 'components/BaseEditor';
 import { NuzlockeSaveControls } from './NuzlockeSaveControls';
+import { ErrorBoundary } from 'components';
 
 export interface GameEditorProps {
     game: any;
     editGame: any;
     editor: any;
+    style: State['style'];
     editStyle: editStyle;
     changeEditorSize: changeEditorSize;
     resetCheckpoints: resetCheckpoints;
@@ -55,9 +57,6 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
             <>
                 <RED isOpen={this.state.isOpen} onClose={this.toggleDialog} />
                 <BaseEditor name='Game'>
-                    {feature.multipleNuzlockes ? (
-                        <NuzlockeSaveControls />
-                    ) : null}
                     <div style={gameSubEditorStyle}>
                         <div>
                             <label
@@ -118,7 +117,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
 }
 
 export const GameEditor = connect(
-    (state: Pick<State, keyof State>) => ({ game: state.game, editor: state.editor }),
+    (state: Pick<State, keyof State>) => ({ game: state.game, editor: state.editor, style: state.style, }),
     {
         editGame,
         editStyle,

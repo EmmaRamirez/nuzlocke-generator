@@ -3,11 +3,12 @@ import { Action } from 'actions';
 export type NEW_NUZLOCKE = 'NEW_NUZLOCKE';
 export const NEW_NUZLOCKE: NEW_NUZLOCKE = 'NEW_NUZLOCKE';
 
-export type newNuzlocke = (data) => Action<NEW_NUZLOCKE>;
-export function newNuzlocke(data): Action<NEW_NUZLOCKE> {
+export type newNuzlocke = (data, {isCopy}) => Action<NEW_NUZLOCKE>;
+export function newNuzlocke(data, {isCopy}): Action<NEW_NUZLOCKE> {
     return {
         type: NEW_NUZLOCKE,
         data,
+        isCopy,
     };
 }
 
