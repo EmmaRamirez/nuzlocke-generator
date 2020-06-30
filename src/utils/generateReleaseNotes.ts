@@ -567,6 +567,7 @@ Thank you!
     '1.2.0': `# Changelog
 ## Features
 - **Isle of Armor**: added new Pokémon, moves, areas, and items 
+- **Generations Classic theme**: yes, it's back!
 
 ## Fixes
 - Fixed the issue with checkbox selection
