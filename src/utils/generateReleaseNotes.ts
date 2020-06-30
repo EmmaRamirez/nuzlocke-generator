@@ -564,4 +564,11 @@ Thank you!
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
+    '1.2.0': `# Changelog
+## Features
+- Updated the generator for Isle of Armor DLC
+
+## Fixes
+- Fixed the issue with checkbox selection
+`
 };

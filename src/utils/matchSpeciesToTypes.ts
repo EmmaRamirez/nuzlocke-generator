@@ -235,6 +235,15 @@ export const handleSpeciesTypeEdgeCases = ({
     if (
         match({
             ...data,
+            species: ['Slowbro'],
+            forme: [Forme.Galarian],
+        })
+    )
+        return [Types.Psychic, Types.Poison];
+
+    if (
+        match({
+            ...data,
             species: ['Clefairy', 'Clefable', 'Cleffa', 'Togepi', 'Jigglypuff', 'Wigglytuff'],
             generation: [
                 Generation.Gen1,
@@ -1448,6 +1457,12 @@ export const matchSpeciesToTypes = (
             return [Types.Fighting, Types.Fighting];
         case 'Eternatus':
             return [Types.Poison, Types.Dragon];
+        case 'Zarude':
+            return [Types.Grass, Types.Dark];
+        case 'Kubfu':
+            return [Types.Fighting, Types.Fighting];
+        case 'Urshifu':
+            return [Types.Fighting, Types.Water];
         // 'Heatran',
         // 'Shaymin',
         // 'Victini',

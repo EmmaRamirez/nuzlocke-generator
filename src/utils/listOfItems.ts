@@ -396,4 +396,16 @@ export const listOfItems = [
     'Solganium Z',
     'Tapunium Z',
     'Ultranecrozium Z',
+
+    'Max Honey',
+    'Max Mushrooms',
+    'Galarica Twig',
+    'Galarica Cuff',
+    'Style Card',
+    'Armor Pass',
+    'Rotom Bike White',
+    'Rotobm Bike Black',
+    'Exp. Charm',
+    'Armorite Ore',
+    'Mark Charm',
 ];
