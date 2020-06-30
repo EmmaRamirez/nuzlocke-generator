@@ -6,6 +6,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 // const WorkboxPlugin = require('workbox-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
+
 // @TODO: do not this lol
 const isProduction = true;
 
@@ -18,7 +19,7 @@ module.exports = {
         chunkFilename: '[name].chunk.js',
     },
     mode: isProduction ? 'production' : 'development',
-    devtool: 'inline-source-map',
+    devtool: 'source-map',
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
         modules: [path.resolve('src'), path.resolve('node_modules')],
@@ -39,10 +40,6 @@ module.exports = {
     },
     optimization: {
         minimize: true,
-        splitChunks: {
-            chunks: 'all',
-            minChunks: 20,
-        },
     },
     module: {
         rules: [
@@ -103,9 +100,9 @@ module.exports = {
             systemvars: true,
         }),
 
-        new ReactLoadablePlugin({
-            filename: './dist/react-lodable.json',
-        }),
+        // new ReactLoadablePlugin({
+        //     filename: './dist/react-lodable.json',
+        // }),
 
         // new WorkboxPlugin.GenerateSW({
         //     clientsClaim: true,

@@ -3,22 +3,23 @@ import { Action } from 'actions';
 export type NEW_NUZLOCKE = 'NEW_NUZLOCKE';
 export const NEW_NUZLOCKE: NEW_NUZLOCKE = 'NEW_NUZLOCKE';
 
-export type newNuzlocke = (initialData: any) => Action<NEW_NUZLOCKE>;
-export function newNuzlocke(initialData: any) {
+export type newNuzlocke = (data, {isCopy}) => Action<NEW_NUZLOCKE>;
+export function newNuzlocke(data, {isCopy}): Action<NEW_NUZLOCKE> {
     return {
         type: NEW_NUZLOCKE,
-        initialData,
+        data,
+        isCopy,
     };
 }
 
 export type DELETE_NUZLOCKE = 'DELETE_NUZLOCKE';
 export const DELETE_NUZLOCKE: DELETE_NUZLOCKE = 'DELETE_NUZLOCKE';
 
-export type deleteNuzlocke = (tid: string) => Action<DELETE_NUZLOCKE>;
-export function deleteNuzlocke(tid: string): Action<DELETE_NUZLOCKE> {
+export type deleteNuzlocke = (id: string) => Action<DELETE_NUZLOCKE>;
+export function deleteNuzlocke(id: string): Action<DELETE_NUZLOCKE> {
     return {
         type: DELETE_NUZLOCKE,
-        tid,
+        id,
     };
 }
 
@@ -26,16 +27,25 @@ export type SWITCH_NUZLOCKE = 'SWITCH_NUZLOCKE';
 export const SWITCH_NUZLOCKE: SWITCH_NUZLOCKE = 'SWITCH_NUZLOCKE';
 
 export type switchNuzlocke = (
-    currentNuzlockeId: string,
-    newNuzlockeId: string,
+    id: string,
 ) => Action<SWITCH_NUZLOCKE>;
 export function switchNuzlocke(
-    currentNuzlockeId: string,
-    newNuzlockeId: string,
+    id: string,
 ): Action<SWITCH_NUZLOCKE> {
     return {
         type: SWITCH_NUZLOCKE,
-        currentNuzlockeId,
-        newNuzlockeId,
+        id,
+    };
+}
+
+export type UPDATE_NUZLOCKE = 'UPDATE_NUZLOCKE';
+export const UPDATE_NUZLOCKE: UPDATE_NUZLOCKE = 'UPDATE_NUZLOCKE';
+
+export type updateNuzlocke = (id: string, data) => Action<UPDATE_NUZLOCKE>;
+export function updateNuzlocke(id: string, data): Action<UPDATE_NUZLOCKE> {
+    return {
+        type: UPDATE_NUZLOCKE,
+        id,
+        data,
     };
 }

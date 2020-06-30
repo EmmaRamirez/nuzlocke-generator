@@ -19,7 +19,7 @@ import { getBadges, Game } from 'utils';
 export type Checkpoints = Badge[];
 
 export function checkpoints(
-    state: Checkpoints = getBadges('Gold'),
+    state: Checkpoints = getBadges('None'),
     action: ReturnType<
     | addCustomCheckpoint
     | editCheckpoint

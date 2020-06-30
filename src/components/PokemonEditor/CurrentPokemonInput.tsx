@@ -97,6 +97,8 @@ export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonI
     ) => {
         let edit;
 
+        console.log(e);
+
         if (inputName === 'types' && position != null) {
             edit = {
                 [inputName]: value,
@@ -256,7 +258,7 @@ export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonI
             return (
                 <label className="bp3-control bp3-checkbox">
                     <input
-                        onChange={(e) => this.onChange(e, inputName)}
+                        onChange={this.onChange(inputName)}
                         checked={value}
                         type={type}
                         name={inputName}

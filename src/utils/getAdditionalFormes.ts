@@ -166,9 +166,23 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
         s === 'darumaka' ||
         s === 'darmanitan' ||
         s === 'yamask' ||
-        s === 'stunfisk'
+        s === 'stunfisk' ||
+        s === 'slowpoke' ||
+        s === 'slowbro' ||
+        s === 'slowking' ||
+        s === 'zapdos' ||
+        s === 'articuno' ||
+        s === 'moltres'
     ) {
         return ['Galarian'];
+    }
+    if (s === 'urshifu') {
+        return [
+            'Single Strike',
+            'Rapid Strike',
+            'Single Strike Gigantamax',
+            'Rapid Strike Gigantamax',
+        ];
     }
     if (
         s === 'venusaur' ||

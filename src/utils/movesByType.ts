@@ -35,6 +35,7 @@ export const movesByType: MovesByType = {
         'Fury Cutter',
         'First Impression',
         'HP Bug',
+        'Skitter Smack',
     ],
     Dark: [
         'Night Slash',
@@ -80,6 +81,8 @@ export const movesByType: MovesByType = {
         'Jaw Lock',
         'Obstruct',
         'False Surrender',
+        'Lash Out',
+        'Wicked Blow',
     ],
     Dragon: [
         'Dragon Claw',
@@ -107,6 +110,7 @@ export const movesByType: MovesByType = {
         'Eternabeam',
         'Breaking Swipe',
         'Clangorous Soul',
+        'Scale Shot',
     ],
     Electric: [
         '10,000,000 Volt Thunderbolt',
@@ -148,6 +152,7 @@ export const movesByType: MovesByType = {
         'Bolt Beak',
         'Aura Wheel',
         'Overdrive',
+        'Rising Voltage',
     ],
     Fairy: [
         'Dazzling Gleam',
@@ -176,6 +181,7 @@ export const movesByType: MovesByType = {
         'Decorate',
         'Spirit Break',
         'Strange Steam',
+        'Misty Explosion',
     ],
     Fighting: [
         'Seismic Toss',
@@ -229,6 +235,7 @@ export const movesByType: MovesByType = {
         'Meteor Assault',
         'No Retreat',
         'Octolock',
+        'Coaching',
     ],
     Fire: [
         'Fire Blast',
@@ -268,6 +275,7 @@ export const movesByType: MovesByType = {
         'Mind Blown',
         'HP Fire',
         'Pyro Ball',
+        'Burning Jealousy',
     ],
     Flying: [
         'FeatherDance',
@@ -298,6 +306,7 @@ export const movesByType: MovesByType = {
         'Hurricane',
         'Pluck',
         'HP Flying',
+        'Dual Wingbeat',
     ],
     Ghost: [
         'Nightmare',
@@ -327,6 +336,7 @@ export const movesByType: MovesByType = {
         'Grudge',
         'Menacing Moonraze Maelstrom',
         'HP Ghost',
+        'Poltergeist',
     ],
     Grass: [
         'Frenzy Plant',
@@ -379,6 +389,8 @@ export const movesByType: MovesByType = {
         'Branch Poke',
         'Drum Beating',
         'Snap Trap',
+        'Grassy Glide',
+        'Jungle Healing',
     ],
     Ground: [
         'Sand-Attack',
@@ -409,6 +421,7 @@ export const movesByType: MovesByType = {
         'Thousand Arrows',
         'Stomping Tantrum',
         'HP Ground',
+        'Scorching Sands',
     ],
     Ice: [
         'Hail',
@@ -436,6 +449,7 @@ export const movesByType: MovesByType = {
         'Freeze Shock',
         'Powder Snow',
         'HP Ice',
+        'Triple Axel',
     ],
     Normal: [
         'Bide',
@@ -630,6 +644,7 @@ export const movesByType: MovesByType = {
         'Stuff Cheeks',
         'Teatime',
         'Court Change',
+        'Terrain Pulse',
     ],
     Poison: [
         'Acid',
@@ -661,6 +676,8 @@ export const movesByType: MovesByType = {
         'Acid Downpour',
         'Poison Tail',
         'HP Poison',
+        'Corrosive Gas',
+        'Shell Side Arm',
     ],
     Psychic: [
         'Barrier',
@@ -728,6 +745,7 @@ export const movesByType: MovesByType = {
         'Light That Burns The Sky',
         'HP Psychic',
         'Magic Powder',
+        'Expanding Force',
     ],
     Rock: [
         'Rock Throw',
@@ -750,6 +768,7 @@ export const movesByType: MovesByType = {
         'Accelerock',
         'HP Rock',
         'Tar Shot',
+        'Meteor Beam',
     ],
     Steel: [
         'Anchor Shot',
@@ -781,6 +800,7 @@ export const movesByType: MovesByType = {
         'HP Steel',
         'Behemoth Blade',
         'Behemoth Bash',
+        'Steel Roller',
     ],
     Water: [
         'Brine',
@@ -821,6 +841,8 @@ export const movesByType: MovesByType = {
         'Snipe Shot',
         'Fishious Rend',
         'Life Dew',
+        'Surging Strikes',
+        'Flip Turn',
     ],
 
     Shadow: [

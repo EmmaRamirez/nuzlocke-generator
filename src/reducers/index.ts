@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { nuzlocke } from './nuzlocke';
+import { nuzlockes } from './nuzlocke';
 import { pokemon } from './pokemon';
 import { box } from './box';
 import { confirmation } from './confirmation';
@@ -24,7 +24,7 @@ export const reducers = {
     customMoveMap,
     customTypes,
     game,
-    nuzlocke,
+    nuzlockes,
     pokemon,
     editor,
     selectedId,

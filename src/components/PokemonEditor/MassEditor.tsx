@@ -37,3 +37,5 @@ export const MassEditor = connect(
         style: state.style,
     }),
 )(MassEditorBase);
+
+export { MassEditor as default };

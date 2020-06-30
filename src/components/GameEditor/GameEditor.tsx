@@ -6,11 +6,15 @@ import { gameOfOriginToColor, listOfGames, feature } from 'utils';
 import { Button, Intent, Popover, Position, Menu, Switch, Classes } from '@blueprintjs/core';
 import { RulesEditorDialog } from 'components/RulesEditor';
 import { State } from 'state';
+import { BaseEditor } from 'components/BaseEditor';
+import { NuzlockeSaveControls } from './NuzlockeSaveControls';
+import { ErrorBoundary } from 'components';
 
 export interface GameEditorProps {
     game: any;
     editGame: any;
     editor: any;
+    style: State['style'];
     editStyle: editStyle;
     changeEditorSize: changeEditorSize;
     resetCheckpoints: resetCheckpoints;
@@ -52,8 +56,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
         return (
             <>
                 <RED isOpen={this.state.isOpen} onClose={this.toggleDialog} />
-                <div className="game-editor base-editor">
-                    <h4 style={{ display: 'flex', alignContent: 'flex-end' }}>Game</h4>
+                <BaseEditor name='Game'>
                     <div style={gameSubEditorStyle}>
                         <div>
                             <label
@@ -69,11 +72,6 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                                 </select>
                             </div>
                         </div>
-                        {feature.multipleNuzlockes ? (
-                            <Popover minimal={true} content={<Menu />} position={Position.BOTTOM}>
-                                <Button icon="exchange">Switch Nuzlockes</Button>
-                            </Popover>
-                        ) : null}
                         <Button onClick={this.toggleDialog} icon="list" intent={Intent.PRIMARY}>
                             Modify Rules
                         </Button>
@@ -112,14 +110,14 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                             </Button>
                         )}
                     </div>
-                </div>
+                </BaseEditor>
             </>
         );
     }
 }
 
 export const GameEditor = connect(
-    (state: Pick<State, keyof State>) => ({ game: state.game, editor: state.editor }),
+    (state: Pick<State, keyof State>) => ({ game: state.game, editor: state.editor, style: state.style, }),
     {
         editGame,
         editStyle,

@@ -889,6 +889,9 @@ export const listOfPokemon = [
     'Zacian',
     'Zamazenta',
     'Eternatus',
+    'Kubfu',
+    'Urshifu',
+    'Zarude',
 ];
 
 const listOfTemtem = [
