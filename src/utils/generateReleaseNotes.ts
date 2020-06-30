@@ -566,7 +566,7 @@ Thank you!
 `,
     '1.2.0': `# Changelog
 ## Features
-- Updated the generator for Isle of Armor DLC
+- **Isle of Armor**: added new Pokémon, moves, areas, and items 
 
 ## Fixes
 - Fixed the issue with checkbox selection

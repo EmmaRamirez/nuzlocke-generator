@@ -176,6 +176,14 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
     ) {
         return ['Galarian'];
     }
+    if (s === 'urshifu') {
+        return [
+            'Single Strike',
+            'Rapid Strike',
+            'Single Strike Gigantamax',
+            'Rapid Strike Gigantamax',
+        ];
+    }
     if (
         s === 'venusaur' ||
         s === 'blastoise' ||

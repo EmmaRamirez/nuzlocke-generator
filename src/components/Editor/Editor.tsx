@@ -52,11 +52,11 @@ export class EditorBase extends React.Component<
                     marginLeft: minimized ? '-30rem' : '0',
                     background: this.props.style.editorDarkMode ? '#222' : '#fff',
                 }}>
-                <ErrorBoundary>
+                {/* <ErrorBoundary>
                     <React.Suspense fallback={Skeleteon}>
                         <NuzlockeSaveControls />
                     </React.Suspense>
-                </ErrorBoundary>
+                </ErrorBoundary> */}
                 <ErrorBoundary>
                     <React.Suspense fallback={Skeleteon}>
                         <GameEditor />

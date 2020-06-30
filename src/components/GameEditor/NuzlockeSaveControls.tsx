@@ -11,6 +11,7 @@ import {
     Classes,
     Icon,
     Navbar,
+    Toaster,
     NavbarGroup,
 } from '@blueprintjs/core';
 import { connect } from 'react-redux';
@@ -102,9 +103,17 @@ export class SaveBase extends React.Component<NuzlockeSaveControlsProps> {
                         {parsedData?.pokemon?.filter(p => p.status === 'Team').map(poke => <PokemonIcon key={poke.id} {...poke} />)}
                     </div>
                     <Popover content={<Menu><MenuItem shouldDismissPopover={false} disabled={isCurrent} icon='swap-horizontal' onClick={() => {
-                        updateNuzlocke(currentId, state);
-                        switchNuzlocke(id);
-                        replaceState(parsedData);
+                        try {
+                            updateNuzlocke(currentId, state);
+                            switchNuzlocke(id);
+                            replaceState(data);
+                        } catch (e) {
+                            const toaster = Toaster.create();
+                            toaster.show({
+                                message: `Failed to switch nuzlockes. ${e}`,
+                                intent: Intent.DANGER,
+                            });
+                        }
                     }} text='Switch to this Nuzlocke' />
                     <MenuItem shouldDismissPopover={false} icon='trash' intent={Intent.DANGER} onClick={() => {
                         this.props.deleteNuzlocke(id);
