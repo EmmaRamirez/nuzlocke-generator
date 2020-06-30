@@ -65,7 +65,7 @@ describe('actions', () => {
         const tid = '001';
         expect(deleteNuzlocke(tid)).toEqual({
             type: DELETE_NUZLOCKE,
-            tid,
+            id: tid,
         });
     });
 
