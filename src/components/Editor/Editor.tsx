@@ -84,11 +84,6 @@ export class EditorBase extends React.Component<
                 </ErrorBoundary>
                 <ErrorBoundary>
                     <React.Suspense fallback={Skeleteon}>
-                        <StyleEditor />
-                    </React.Suspense>
-                </ErrorBoundary>
-                <ErrorBoundary>
-                    <React.Suspense fallback={Skeleteon}>
                         <StatsEditor />
                     </React.Suspense>
                 </ErrorBoundary>
