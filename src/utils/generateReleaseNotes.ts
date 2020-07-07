@@ -566,7 +566,7 @@ Thank you!
 `,
     '1.2.0': `# Changelog
 ## Features
-- **Isle of Armor**: added new Pokémon, moves, areas, and items 
+- **Isle of Armor**: added new Pokémon, moves, areas, and items
 - **Generations Classic theme**: yes, it's back!
 
 ## Fixes
@@ -577,11 +577,20 @@ Thank you!
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
     '1.2.1': `
-# Fixes
+## Fixes
 - Fixed an issue with StyleEditor appearing twice
 
 ## Known Issues
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
-- **Drag and drop will not reorder positions, you will still have to do that in the editor**    
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`,
+    '1.3.0': `
+## Features
+- **Multiple nuzlockes**: manage multiple nuzlockes
+
+## Fixes
+
+## Known Issues
+
 `
 };
