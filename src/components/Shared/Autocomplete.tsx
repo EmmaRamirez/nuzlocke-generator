@@ -81,7 +81,9 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
         } else {
             this.setState({
                 currentValue: e.target.value,
-                visibleItems: this.props.items.filter((i) => i.startsWith(e.target.value)),
+                visibleItems: this.props.items.filter((i) =>
+                    i.toLowerCase().startsWith(e.target.value.toLowerCase()),
+                ),
             });
         }
         this.props.onChange(e);
