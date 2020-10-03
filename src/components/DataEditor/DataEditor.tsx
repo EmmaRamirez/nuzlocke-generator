@@ -263,7 +263,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                             value={this.state.selectedGame}
                             onChange={(e) => this.setState({ selectedGame: e.target.value })}>
                             {['RBY'].map((game) => (
-                                <option value={game}>{game}</option>
+                                <option key={game} value={game}>{game}</option>
                             ))}
                         </select>
                     </div>

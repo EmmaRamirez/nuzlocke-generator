@@ -21,7 +21,7 @@ import { PokemonIcon } from 'components';
 import { gameOfOriginToColor, getContrastColor } from 'utils';
 import { omit } from 'ramda';
 import { createStore } from 'redux';
-import { reducers, appReducers } from 'reducers';
+import { appReducers } from 'reducers';
 
 export interface NuzlockeSaveControlsProps {
     nuzlockes: State['nuzlockes'];
@@ -40,7 +40,7 @@ export class SaveBase extends React.Component<NuzlockeSaveControlsProps> {
     public componentDidMount() {
         const {nuzlockes} = this.props;
         if (!nuzlockes.currentId) {
-            this.props.newNuzlocke(this.context.store.getState(), {isCopy: false});
+            this.props.newNuzlocke(this.context.store?.getState(), {isCopy: false});
         }
     }
 
@@ -128,7 +128,7 @@ export class SaveBase extends React.Component<NuzlockeSaveControlsProps> {
             })}
             <Button intent={Intent.SUCCESS} icon='add' onClick={() => {
                 this.props.updateNuzlocke(this.props.nuzlockes.currentId, state);
-                const data = createStore(appReducers).getState();
+                const data = createStore(appReducers)?.getState();
                 this.props.newNuzlocke(JSON.stringify(data), {isCopy: false});
                 this.props.replaceState(data);
             }}>

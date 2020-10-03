@@ -203,6 +203,7 @@ export class BoxBase extends React.PureComponent<BoxProps, BoxState> {
                             <MenuItem text="Change Wallpaper">
                                 {wallpapers.map((wall) => (
                                     <MenuItem
+                                        key={wall.name}
                                         onClick={this.editBox(id, { background: wall.background })}
                                         text={wall.name}
                                     />
