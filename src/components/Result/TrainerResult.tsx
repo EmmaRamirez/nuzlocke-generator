@@ -74,7 +74,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
 
         return checkpoints.map((badge, index) => {
             return (
-                <>
+                <React.Fragment key={badge.name}>
                     <img
                         className={
                             trainerBadges.some((b) => b.name === badge.name)
@@ -95,7 +95,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                         }
                     />
                     {badge.name === 'Rising Badge' ? <br /> : null}
-                </>
+                </React.Fragment>
             );
         });
     }
