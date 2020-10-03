@@ -101,7 +101,8 @@ CurrentPokemonEditState
         };
     }
 
-    public componentWillMount() {
+    // eslint-disable-next-line camelcase
+    public UNSAFE_componentWillMount() {
         this.setState({
             selectedId: this.props.selectedId,
             box: this.props.box,
