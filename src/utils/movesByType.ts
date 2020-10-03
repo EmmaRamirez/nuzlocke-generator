@@ -83,6 +83,7 @@ export const movesByType: MovesByType = {
         'False Surrender',
         'Lash Out',
         'Wicked Blow',
+        'Baddy Bad',
     ],
     Dragon: [
         'Dragon Claw',
@@ -114,6 +115,7 @@ export const movesByType: MovesByType = {
     ],
     Electric: [
         '10,000,000 Volt Thunderbolt',
+        'Buzzy Buzz',
         'Thunder',
         'Zap Cannon',
         'Zing Zap',
@@ -153,6 +155,8 @@ export const movesByType: MovesByType = {
         'Aura Wheel',
         'Overdrive',
         'Rising Voltage',
+        'Zippy Zap',
+        'Pika Papow',
     ],
     Fairy: [
         'Dazzling Gleam',
@@ -182,6 +186,7 @@ export const movesByType: MovesByType = {
         'Spirit Break',
         'Strange Steam',
         'Misty Explosion',
+        'Sparkly Swirl',
     ],
     Fighting: [
         'Seismic Toss',
@@ -256,6 +261,7 @@ export const movesByType: MovesByType = {
         'Fire Lash',
         'Fire Fang',
         'Blue Flare',
+        'Sizzly Slide',
         'Fiery Dance',
         'Blast Burn',
         'Eruption',
@@ -280,6 +286,7 @@ export const movesByType: MovesByType = {
     Flying: [
         'FeatherDance',
         'Feather Dance',
+        'Floaty Tail',
         'Air Slash',
         'Roost',
         'Supersonic Skystrike',
@@ -342,6 +349,7 @@ export const movesByType: MovesByType = {
         'Frenzy Plant',
         'Strength Sap',
         'Bullet Seed',
+        'Sappy Seed',
         'Spore',
         'Spiky Shield',
         'Solar Blade',
@@ -435,6 +443,7 @@ export const movesByType: MovesByType = {
         'Icicle Spear',
         'Icicle Crash',
         'Ice Shard',
+        'Freezy Frost',
         'Ice Punch',
         'Ice Hammer',
         'Avalanche',
@@ -645,6 +654,7 @@ export const movesByType: MovesByType = {
         'Teatime',
         'Court Change',
         'Terrain Pulse',
+        'Veevee Volley',
     ],
     Poison: [
         'Acid',
@@ -735,6 +745,7 @@ export const movesByType: MovesByType = {
         'Psychic Fangs',
         'Psychic Terrain',
         'Synchronoise',
+        'Glitzy Glow',
         'Psycho Boost',
         'Amnesia',
         'Psycho Cut',
@@ -809,6 +820,7 @@ export const movesByType: MovesByType = {
         'Origin Pulse',
         'Oceanic Operetta',
         'Hydro Vortex',
+        'Bouncy Bubble',
         'Water Gun',
         'Water Pledge',
         'Water Pulse',
@@ -843,6 +855,7 @@ export const movesByType: MovesByType = {
         'Life Dew',
         'Surging Strikes',
         'Flip Turn',
+        'Splishy Splash',
     ],
 
     Shadow: [
