@@ -348,7 +348,10 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                                 </span>
                             </div>
                             <div className="bp3-dialog-footer">
-                                <a href={this.state.href} download={`nuzlocke_${uuid()}.json`}>
+                                <a href={this.state.href} download={`nuzlocke_${
+                                    this.props?.state?.trainer?.title?.toLowerCase().replace(/\s/g, '-') ||
+                                    this.props?.state?.game?.name?.toLowerCase().replace(/\s/g, '-') ||
+                                ''}_${uuid().slice(0, 4)}.json`}>
                                     <Button icon={'download'} intent={Intent.PRIMARY}>
                                         Download
                                     </Button>
