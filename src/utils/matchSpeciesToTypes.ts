@@ -244,6 +244,16 @@ export const handleSpeciesTypeEdgeCases = ({
     if (
         match({
             ...data,
+            species: ['Toxtricity'],
+            forme: [Forme.Lowkey, Forme.AmpedUp]
+        })
+
+    )
+        return [Types.Electric, Types.Poison];
+
+    if (
+        match({
+            ...data,
             species: ['Clefairy', 'Clefable', 'Cleffa', 'Togepi', 'Jigglypuff', 'Wigglytuff'],
             generation: [
                 Generation.Gen1,
@@ -1463,9 +1473,13 @@ export const matchSpeciesToTypes = (
             return [Types.Fighting, Types.Fighting];
         case 'Urshifu':
             return [Types.Fighting, Types.Water];
-        // 'Heatran',
+        case 'Kyurem':
+            return [Types.Dragon, Types.Ice];
+        case 'Heatran':
+            return [Types.Steel, Types.Fire];
         // 'Shaymin',
-        // 'Victini',
+        case 'Victini':
+            return [Types.Fire, Types.Psychic];
         // 'Snivy',
         // 'Pansage',
         // 'Simisage',
@@ -1522,7 +1536,8 @@ export const matchSpeciesToTypes = (
         // 'Goodra',
         case 'Zygarde':
             return [Types.Dragon, Types.Ground];
-        // 'Volcanion',
+        case 'Volcanion':
+            return [Types.Fire, Types.Water];
         // 'Oricorio',
         // 'Rockruff',
         // 'Lycanroc',

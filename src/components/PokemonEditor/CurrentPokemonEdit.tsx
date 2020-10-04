@@ -472,6 +472,7 @@ CurrentPokemonEditState
                         value={currentPokemon.nature}
                         type="select"
                         options={listOfNatures}
+                        pokemon={currentPokemon}
                     />
                     <Autocomplete
                         items={listOfAbilities}

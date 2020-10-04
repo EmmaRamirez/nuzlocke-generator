@@ -50,3 +50,4 @@ export * from './isLocal';
 export * from './getEncounterMap';
 export * from './getDisplayNameForTest';
 export * from './feature';
+export * from './matchNatureToToxtricityForme';

@@ -8,6 +8,8 @@ import {
     typeToColor,
     getContrastColor,
     Types,
+    Forme,
+    matchNatureToToxtricityForme,
 } from 'utils';
 import { editPokemon, selectPokemon } from 'actions';
 
@@ -92,12 +94,12 @@ export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonI
         disabled: false,
     };
 
-    public onChange = (inputName, {position, value, pokemon}: {position?: number, value?: any, pokemon?: any} = {}) => (
+    public onChange = (inputName, {position, value, pokemon}: {position?: number, value?: any, pokemon?: Pokemon} = {}) => (
         e: React.ChangeEvent & {target: {value: any, checked?: boolean}},
     ) => {
         let edit;
 
-        console.log(e);
+        console.log('inside of onChange', pokemon, e.target.value);
 
         if (inputName === 'types' && position != null) {
             edit = {
@@ -108,6 +110,11 @@ export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonI
             edit = {
                 [inputName]: e.target.value,
                 types: matchSpeciesToTypes(e.target.value),
+            };
+        } else if (inputName === 'nature' && pokemon?.species === 'Toxtricity') {
+            edit = {
+                [inputName]: e.target.value,
+                forme: matchNatureToToxtricityForme(e.target.value),
             };
         } else if (inputName === 'moves') {
             edit = {
@@ -129,8 +136,9 @@ export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonI
         } else if (inputName === 'forme') {
             edit = {
                 forme: e.target.value,
-                types: pokemon && matchSpeciesToTypes(pokemon.species, e.target.value),
+                types: pokemon && matchSpeciesToTypes(pokemon?.species, e.target.value),
             };
+            pokemon && console.log('new type: ', matchSpeciesToTypes(pokemon?.species, e.target.value));
         } else {
             edit = {
                 [inputName]: e.target.value,
@@ -143,7 +151,6 @@ export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonI
 
     public getInput({
         labelName,
-        transform,
         usesKeyValue,
         disabled,
         inputName,
@@ -152,7 +159,17 @@ export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonI
         placeholder,
         options,
         pokemon,
-    }: any) {
+    }: {
+        labelName?: CurrentPokemonInputProps['labelName'],
+        usesKeyValue?: boolean,
+        disabled?: boolean,
+        inputName?: CurrentPokemonInputProps['inputName'],
+        type: string,
+        value: any,
+        placeholder?: string,
+        options?: any[],
+        pokemon?: Pokemon,
+    }) {
         const { customMoveMap, customTypes } = this.props;
 
         value = value == null ? '' : value;
@@ -197,7 +214,7 @@ export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonI
                     value={value}
                     placeholder={placeholder}
                     disabled={disabled}
-                    className={disabled && `${Classes.DISABLED} ${Classes.TEXT_MUTED}`}
+                    className={disabled ? `${Classes.DISABLED} ${Classes.TEXT_MUTED}` : ''}
                 />
             );
         }
@@ -210,7 +227,7 @@ export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonI
                     placeholder={placeholder}
                     disabled={disabled}
                     style={{ width: '100%' }}
-                    className={disabled && `${Classes.DISABLED} ${Classes.TEXT_MUTED} bp3-fill`}
+                    className={disabled ? `${Classes.DISABLED} ${Classes.TEXT_MUTED} bp3-fill` : ''}
                 />
             );
         }
@@ -227,6 +244,8 @@ export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonI
             );
         }
         if (type === 'select') {
+            console.log('fromSelect', pokemon);
+
             return (
                 <div className={Classes.SELECT} style={inputName === 'status' ? { width: '120px' } : {}}>
                     {inputName === 'pokeball' && value && value !== 'None' ? (
@@ -245,7 +264,7 @@ export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonI
                             ? options
                                 ? options.map((item, index) => <option key={index}>{item}</option>)
                                 : null
-                            : options.map((item, index) => (
+                            : options?.map((item, index) => (
                                 <option value={item.value} key={index}>
                                     {item.key}
                                 </option>
@@ -319,6 +338,7 @@ export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonI
             options,
             pokemon,
         } = this.props;
+
         return (
             <span
                 className={`current-pokemon-input-wrapper current-pokemon-${type} current-pokemon-${inputName}`}>
