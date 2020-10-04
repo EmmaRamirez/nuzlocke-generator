@@ -21,6 +21,7 @@
     "deploy": "npm run build && git push heroku master",
     "precommit": "npm run lint",
     "serve:http": "npx http-server@0.12.0 --cors ./dist",
+    "start:ci": "npm start",
     "prepush": "npm run build:production && git add . && git commit --no-verify -m 'chore: update build'"
   },
   "engines": {
