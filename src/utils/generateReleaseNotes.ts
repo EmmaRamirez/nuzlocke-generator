@@ -593,6 +593,8 @@ Thank you!
 - Add missing image for Perrserker
 - Add missing LGPE tutor moves
 - Made download format for files more reasonable
+- Add missing Mega forme option for Banette
+- Added trainer image for Brendan
 
 ## Known Issues
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
