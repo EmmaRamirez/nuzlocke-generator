@@ -203,7 +203,7 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
         s === 'aggron' ||
         s === 'medicham' ||
         s === 'manectric' ||
-        s === 'aanette' ||
+        s === 'banette' ||
         s === 'absol' ||
         s === 'garchomp' ||
         s === 'lucario' ||
