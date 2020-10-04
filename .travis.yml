@@ -1,22 +1,61 @@
 language: node_js
+
 node_js:
-- '12'
-cache:
-  directories:
-  - node_modules
+  # Node 10.3+ includes npm@6 which has good "npm ci" command
+  - "lts"
+
+# if using Ubuntu 16 need this library
+# https://github.com/cypress-io/cypress-documentation/pull/1647
 addons:
   apt:
     packages:
-      # Ubuntu 16+ does not install this dependency by default, so we need to install it ourselves
-      - libgconf-2-4
+    - libgconf-2-4
+
 cache:
-  # Caches $HOME/.npm when npm ci is default script command
-  # Caches node_modules in all other cases
-  npm: true
+  # cache both npm modules and Cypress binary
   directories:
-    # we also need to cache folder with Cypress binary
+    - ~/.npm
     - ~/.cache
-script:
-  - $(npm bin)/cypress run --record
+  override:
+    - npm ci
+    - npm run cy:verify
+    - npm run cy:info
+
+defaults: &defaults
+  script:
+    #   ## print all Travis environment variables for debugging
+    - $(npm bin)/print-env TRAVIS
+    - npm run start:ci &
+    - npm run cy:run -- --record --parallel --group $STAGE_NAME
+    # after all tests finish running we need
+    # to kill all background jobs (like "npm start &")
+    - kill $(jobs -p) || true
+
+jobs:
+  include:
+    # we have multiple jobs to execute using just a single stage
+    # but we can pass group name via environment variable to Cypress test runner
+    - stage: test
+      env:
+        - STAGE_NAME="1x-electron on Travis CI"
+      <<: *defaults
+    # run tests in parallel by including several test jobs with same name variable
+    - stage: test
+      env:
+        - STAGE_NAME="4x-electron on Travis CI"
+      <<: *defaults
+    - stage: test
+      env:
+        - STAGE_NAME="4x-electron on Travis CI"
+      <<: *defaults
+    - stage: test
+      env:
+        - STAGE_NAME="4x-electron on Travis CI"
+      <<: *defaults
+    - stage: test
+      env:
+        - STAGE_NAME="4x-electron on Travis CI"
+      <<: *defaults
+
 after_success:
   - node node_modules/.bin/jest --coverage --collectCoverageFrom=!src/parsers/*.ts --config jest-config.json && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
