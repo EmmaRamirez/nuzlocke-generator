@@ -145,10 +145,10 @@ export class SaveBase extends React.Component<NuzlockeSaveControlsProps> {
                 </div>;
             })}
             <Button intent={Intent.SUCCESS} icon='add' onClick={() => {
-                this.props.updateNuzlocke(this.props.nuzlockes.currentId, state);
+                updateNuzlocke(this.props.nuzlockes.currentId, state);
                 const data = createStore(appReducers)?.getState();
-                this.props.newNuzlocke(JSON.stringify(data), {isCopy: false});
-                this.props.replaceState(data);
+                newNuzlocke(JSON.stringify(data), {isCopy: false});
+                replaceState(data);
             }}>
                 New Nuzlocke
             </Button>
