@@ -99,8 +99,6 @@ export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonI
     ) => {
         let edit;
 
-        console.log('inside of onChange', pokemon, e.target.value);
-
         if (inputName === 'types' && position != null) {
             edit = {
                 [inputName]: value,
