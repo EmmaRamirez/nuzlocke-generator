@@ -24,6 +24,7 @@ script:
     # after all tests finish running we need
     # to kill all background jobs (like "npm start &")
     - kill $(jobs -p) || true
+    - npm test
 
 after_success:
   - node node_modules/.bin/jest --coverage --collectCoverageFrom=!src/parsers/*.ts --config jest-config.json && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
