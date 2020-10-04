@@ -1,5 +1,5 @@
 import { Action, NEW_NUZLOCKE, DELETE_NUZLOCKE, SWITCH_NUZLOCKE, UPDATE_NUZLOCKE } from 'actions';
-import * as uuid from 'uuid';
+const uuid = require('uuid');
 
 export interface Nuzlockes {
     currentId: string;

@@ -14,7 +14,7 @@ import {
 } from '@blueprintjs/core';
 import { PokemonIconBase } from 'components/PokemonIcon';
 import { ErrorBoundary } from 'components/Shared';
-import * as uuid from 'uuid/v4';
+const uuid = require('uuid');
 import { persistor } from 'store';
 import { replaceState } from 'actions';
 import { Game, Pokemon } from 'models';

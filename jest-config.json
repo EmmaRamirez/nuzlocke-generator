@@ -1,5 +1,7 @@
 {
-  "setupTestFrameworkScriptFile": "<rootDir>/setupTests.ts",
+  "setupFilesAfterEnv": [
+      "<rootDir>/setupTests.ts"
+  ],
   "moduleFileExtensions": [
     "ts",
     "tsx",

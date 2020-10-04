@@ -13,7 +13,7 @@
       "jsx": "react",
       "experimentalDecorators": true,
       "allowSyntheticDefaultImports": false,
-      "esModuleInterop": false,
+      "esModuleInterop": true,
       "allowJs": true,
       "lib": [
         "dom",

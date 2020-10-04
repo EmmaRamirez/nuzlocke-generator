@@ -29,7 +29,7 @@ import { listOfGames, accentedE } from 'utils';
 import { PokemonIconBase } from 'components/PokemonIcon';
 import { cx } from 'emotion';
 import * as Styles from './styles';
-import * as uuid from 'uuid/v4';
+const uuid = require('uuid');
 import {
     Classes,
     Icon,
