@@ -100,8 +100,8 @@ describe('matchSpeciesToType', () => {
     it('returns a type for a Pokemon', () => {
         expect(matchSpeciesToTypes('Bulbasaur')).toEqual(['Grass', 'Poison']);
         expect(matchSpeciesToTypes('Charizard')).toEqual(['Fire', 'Flying']);
-        expect(matchSpeciesToTypes('Raichu', Forme.Alolan)).toEqual(['Electric', 'Psychic']);
-        expect(matchSpeciesToTypes('Rattata', Forme.Alolan, Generation.Gen7)).toEqual([
+        expect(matchSpeciesToTypes('Raichu', 'Alolan')).toEqual(['Electric', 'Psychic']);
+        expect(matchSpeciesToTypes('Rattata', 'Alolan', Generation.Gen7)).toEqual([
             'Dark',
             'Normal',
         ]);
@@ -113,7 +113,8 @@ describe('matchSpeciesToType', () => {
             'Normal',
             'Flying',
         ]);
-        expect(matchSpeciesToTypes('Shaymin', 'Sky' as Forme)).toEqual(['Grass', 'Flying']);
+        expect(matchSpeciesToTypes('Meowth', 'Galarian')).toEqual(['Steel', 'Steel']);
+        expect(matchSpeciesToTypes('Shaymin', 'Sky')).toEqual(['Grass', 'Flying']);
         listOfPokemon.map((pokemon, index) => {
             expect(matchSpeciesToTypes(pokemon).length).toBeGreaterThan(0);
         });

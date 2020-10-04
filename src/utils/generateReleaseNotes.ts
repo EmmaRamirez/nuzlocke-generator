@@ -589,6 +589,7 @@ Thank you!
 - **Multiple nuzlockes**: manage multiple nuzlockes
 
 ## Fixes
+- Fixed issue where selecting a Forme wouldn't update the type
 - Add missing image for Perrserker
 - Add missing LGPE tutor moves
 - Made download format for files more reasonable

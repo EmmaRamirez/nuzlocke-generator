@@ -83,4 +83,11 @@ export enum Forme {
 
     White = 'white',
     Black = 'black',
+
+    Mow = 'mow',
+    Wash = 'wash',
+    Frost = 'frost',
+    Fan = 'fan',
+    Heat = 'heat',
+    Hail = 'hail',
 }

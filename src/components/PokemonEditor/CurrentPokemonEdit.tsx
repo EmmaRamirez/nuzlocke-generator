@@ -187,6 +187,8 @@ CurrentPokemonEditState
             value: p.id,
         }));
 
+        console.log('inMoreInputs', currentPokemon);
+
         return (
             <div className="expanded-edit">
                 <CurrentPokemonInput

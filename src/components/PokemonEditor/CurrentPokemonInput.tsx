@@ -132,6 +132,7 @@ export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonI
                 [inputName]: e.target.checked,
             };
         } else if (inputName === 'forme') {
+            console.log('We reached this', e.target.value);
             edit = {
                 forme: e.target.value,
                 types: pokemon && matchSpeciesToTypes(pokemon?.species, e.target.value),
@@ -242,7 +243,7 @@ export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonI
             );
         }
         if (type === 'select') {
-            console.log('fromSelect', pokemon);
+            console.log('fromSelect', pokemon, inputName);
 
             return (
                 <div className={Classes.SELECT} style={inputName === 'status' ? { width: '120px' } : {}}>
