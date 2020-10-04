@@ -38,10 +38,15 @@ const sort = (a, b) => a.id - b.id;
 
 export class SaveBase extends React.Component<NuzlockeSaveControlsProps> {
     public componentDidMount() {
-        const {nuzlockes} = this.props;
+        const {nuzlockes, newNuzlocke} = this.props;
         if (!nuzlockes.currentId) {
-            this.props.newNuzlocke(this.context.store?.getState(), {isCopy: false});
+            newNuzlocke(this.context.store?.getState(), {isCopy: false});
         }
+
+        console.log(
+            nuzlockes.saves.length,
+            nuzlockes.currentId,
+        );
     }
 
     public renderMenu() {
@@ -87,12 +92,20 @@ export class SaveBase extends React.Component<NuzlockeSaveControlsProps> {
                     borderRadius: '0.25rem',
                     boxShadow: '0 0 4px rgba(0,0,0,0.1)',
                     marginBottom: '2px',
-                }} key={nuzlocke.id}>
-                    <div style={{display: 'flex', flexDirection: 'column', width: '6rem', marginRight: '2rem'}}>
+                }} key={id}>
+                    <div style={{display: 'flex', flexDirection: 'column', width: '6rem', marginRight: '2rem', justifyContent: 'space-between', alignItems: 'space-between'}}>
                         <Tag round style={{
                             background: gameOfOriginToColor(game),
                             color: this.props.darkMode ? color : game === 'None' ? '#000' : color,
                         }}>{game}</Tag>
+                        {isCurrent && <Tag round style={{
+                            background: 'rgba(0,0,0,0.1)',
+                            color: this.props.darkMode ? '#fff' : '#000',
+                            marginTop: '2px',
+                        }}>
+                            Current
+                        </Tag>}
+                        {id}
                     </div>
                     <div style={{
                         display: 'flex',
@@ -104,9 +117,14 @@ export class SaveBase extends React.Component<NuzlockeSaveControlsProps> {
                     </div>
                     <Popover content={<Menu><MenuItem shouldDismissPopover={false} disabled={isCurrent} icon='swap-horizontal' onClick={() => {
                         try {
+                            console.log(
+                                currentId,
+                                id,
+                                state
+                            );
                             updateNuzlocke(currentId, state);
                             switchNuzlocke(id);
-                            replaceState(data);
+                            //replaceState(parsedData);
                         } catch (e) {
                             const toaster = Toaster.create();
                             toaster.show({

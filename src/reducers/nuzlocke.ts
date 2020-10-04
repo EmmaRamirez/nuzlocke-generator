@@ -41,6 +41,8 @@ export function nuzlockes(
             };
         case UPDATE_NUZLOCKE:
             const updateItem = state.saves.find(s => s.id === action.id);
+            console.log('updateItem', updateItem);
+
             if (!updateItem) {
                 return {
                     ...state,
@@ -58,7 +60,7 @@ export function nuzlockes(
                 saves: [
                     ...state.saves.filter(s => s.id !== action.id),
                     {
-                        id: updateItem.id,
+                        id: action.id,
                         data: action.data,
                     }
                 ]
