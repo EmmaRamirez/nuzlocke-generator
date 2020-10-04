@@ -18,7 +18,6 @@ cache:
 
 script:
     #   ## print all Travis environment variables for debugging
-    - $(npm bin)/print-env TRAVIS
     - npm run start:ci &
     - npm run cy:run
     # after all tests finish running we need
