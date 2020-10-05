@@ -86,7 +86,7 @@ export class SaveBase extends React.Component<NuzlockeSaveControlsProps> {
                 return <div style={{
                     display: 'flex',
                     alignItems: 'center',
-                    border: '1px solid #ccc',
+                    border: darkMode ? '1px solid #444' : '1px solid #ccc',
                     padding: '0.5rem',
                     borderRadius: '0.25rem',
                     boxShadow: '0 0 4px rgba(0,0,0,0.1)',
@@ -174,14 +174,11 @@ export class NuzlockeSaveControlsBase extends React.Component<NuzlockeSaveContro
     public state = {isOpen: false};
     public render() {
 
-        return <><Navbar>
-            <NavbarGroup>
-                <Button minimal icon='control' onClick={e => this.setState({isOpen: !this.state.isOpen})}>
-                    Manage Nuzlockes <Tag className={Classes.SMALL} intent={Intent.WARNING}>BETA</Tag>
-                </Button>
-            </NavbarGroup>
-        </Navbar>
-        {this.state.isOpen && <Save />}
+        return <>
+            <Button minimal icon='control' onClick={e => this.setState({isOpen: !this.state.isOpen})}>
+                Manage Nuzlockes <Tag className={Classes.SMALL} intent={Intent.WARNING}>BETA</Tag>
+            </Button>
+            {this.state.isOpen && <Save />}
         </>;
     }
 }
