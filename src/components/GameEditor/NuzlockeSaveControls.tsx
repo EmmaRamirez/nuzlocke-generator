@@ -16,7 +16,7 @@ import {
 } from '@blueprintjs/core';
 import { connect } from 'react-redux';
 import { State } from 'state';
-import { updateNuzlocke, deleteNuzlocke, newNuzlocke, switchNuzlocke, replaceState } from 'actions';
+import { updateNuzlocke, deleteNuzlocke, newNuzlocke, switchNuzlocke, replaceState, updateSwitchNuzlocke } from 'actions';
 import { PokemonIcon } from 'components';
 import { gameOfOriginToColor, getContrastColor } from 'utils';
 import { omit } from 'ramda';
@@ -32,6 +32,7 @@ export interface NuzlockeSaveControlsProps {
     newNuzlocke: newNuzlocke;
     switchNuzlocke: switchNuzlocke;
     replaceState: replaceState;
+    updateSwitchNuzlocke: updateSwitchNuzlocke;
 }
 
 const sort = (a, b) => a.id - b.id;
@@ -42,16 +43,11 @@ export class SaveBase extends React.Component<NuzlockeSaveControlsProps> {
         if (!nuzlockes.currentId) {
             newNuzlocke(this.context.store?.getState(), {isCopy: false});
         }
-
-        console.log(
-            nuzlockes.saves.length,
-            nuzlockes.currentId,
-        );
     }
 
     public renderMenu() {
 
-        const {state, newNuzlocke, updateNuzlocke, deleteNuzlocke, switchNuzlocke} = this.props;
+        const {state, replaceState, updateSwitchNuzlocke, newNuzlocke, updateNuzlocke, deleteNuzlocke, switchNuzlocke, darkMode} = this.props;
         const {nuzlockes} = this.props;
         const {currentId} = this.props.nuzlockes;
         const saves = nuzlockes.saves.sort(sort);
@@ -73,6 +69,7 @@ export class SaveBase extends React.Component<NuzlockeSaveControlsProps> {
 
                 try {
                     parsedData = isCurrent ? JSON.parse(state) : JSON.parse(data);
+                    //parsedData = JSON.parse(data);
                 } catch (e) {
 
                 }
@@ -96,22 +93,24 @@ export class SaveBase extends React.Component<NuzlockeSaveControlsProps> {
                     <div style={{display: 'flex', flexDirection: 'column', width: '6rem', marginRight: '2rem', justifyContent: 'space-between', alignItems: 'space-between'}}>
                         <Tag round style={{
                             background: gameOfOriginToColor(game),
-                            color: this.props.darkMode ? color : game === 'None' ? '#000' : color,
+                            color: darkMode ? color : game === 'None' ? '#000' : color,
                         }}>{game}</Tag>
                         {isCurrent && <Tag round style={{
                             background: 'rgba(0,0,0,0.1)',
-                            color: this.props.darkMode ? '#fff' : '#000',
+                            color: darkMode ? '#fff' : '#000',
                             marginTop: '2px',
                         }}>
                             Current
                         </Tag>}
                         {id}
+                        {typeof data}
                     </div>
                     <div style={{
                         display: 'flex',
                         width: '20rem',
                         justifyContent: 'center',
                         alignItems: 'center',
+                        pointerEvents: 'none',
                     }}>
                         {parsedData?.pokemon?.filter(p => p.status === 'Team').map(poke => <PokemonIcon key={poke.id} {...poke} />)}
                     </div>
@@ -120,11 +119,12 @@ export class SaveBase extends React.Component<NuzlockeSaveControlsProps> {
                             console.log(
                                 currentId,
                                 id,
-                                state
+                                parsedData.pokemon.map(p => p.species),
+                                JSON.parse(state).pokemon.map(p => p.species),
                             );
-                            updateNuzlocke(currentId, state);
-                            switchNuzlocke(id);
-                            //replaceState(parsedData);
+                            updateSwitchNuzlocke(currentId, id, state);
+                            // switchNuzlocke(id);
+                            replaceState(parsedData);
                         } catch (e) {
                             const toaster = Toaster.create();
                             toaster.show({
@@ -133,11 +133,19 @@ export class SaveBase extends React.Component<NuzlockeSaveControlsProps> {
                             });
                         }
                     }} text='Switch to this Nuzlocke' />
-                    <MenuItem shouldDismissPopover={false} icon='trash' intent={Intent.DANGER} onClick={() => {
-                        this.props.deleteNuzlocke(id);
-                        if (saves.length > 0 && isCurrent) {
-                            switchNuzlocke(saves[0].id);
-                            replaceState(JSON.parse(saves[0].data));
+                    <MenuItem disabled={saves.length === 1} shouldDismissPopover={false} icon='trash' intent={Intent.DANGER} onClick={() => {
+                        try {
+                            deleteNuzlocke(id);
+                            if (isCurrent) {
+                                switchNuzlocke(saves[0].id);
+                                replaceState(JSON.parse(saves[0].data));
+                            }
+                        } catch (e) {
+                            const toaster = Toaster.create();
+                            toaster.show({
+                                message: `Failed to delete nuzlocke. ${e}`,
+                                intent: Intent.DANGER,
+                            });
                         }
                     }} text='Delete Nuzlocke' /></Menu>}>
                         <Icon style={{ transform: 'rotate(90deg)' }} icon="more" />
@@ -145,7 +153,7 @@ export class SaveBase extends React.Component<NuzlockeSaveControlsProps> {
                 </div>;
             })}
             <Button intent={Intent.SUCCESS} icon='add' onClick={() => {
-                updateNuzlocke(this.props.nuzlockes.currentId, state);
+                updateNuzlocke(currentId, state);
                 const data = createStore(appReducers)?.getState();
                 newNuzlocke(JSON.stringify(data), {isCopy: false});
                 replaceState(data);
@@ -190,6 +198,7 @@ export const NuzlockeSaveControls = connect(
         deleteNuzlocke,
         switchNuzlocke,
         replaceState,
+        updateSwitchNuzlocke,
     }
 )(NuzlockeSaveControlsBase as any);
 
@@ -205,5 +214,6 @@ export const Save = connect(
         deleteNuzlocke,
         switchNuzlocke,
         replaceState,
+        updateSwitchNuzlocke,
     }
 )(SaveBase as any);

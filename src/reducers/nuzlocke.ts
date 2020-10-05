@@ -1,4 +1,4 @@
-import { Action, NEW_NUZLOCKE, DELETE_NUZLOCKE, SWITCH_NUZLOCKE, UPDATE_NUZLOCKE } from 'actions';
+import { Action, NEW_NUZLOCKE, DELETE_NUZLOCKE, SWITCH_NUZLOCKE, UPDATE_NUZLOCKE, UPDATE_SWITCH_NUZLOCKE } from 'actions';
 const uuid = require('uuid');
 
 export interface Nuzlockes {
@@ -11,7 +11,7 @@ export function nuzlockes(
         currentId: '',
         saves: []
     },
-    action: Action<NEW_NUZLOCKE | DELETE_NUZLOCKE | SWITCH_NUZLOCKE | UPDATE_NUZLOCKE>,
+    action: Action<NEW_NUZLOCKE | DELETE_NUZLOCKE | SWITCH_NUZLOCKE | UPDATE_NUZLOCKE | UPDATE_SWITCH_NUZLOCKE>,
 ) {
     switch (action.type) {
         case NEW_NUZLOCKE:
@@ -39,22 +39,34 @@ export function nuzlockes(
                 ...state,
                 currentId: action.id,
             };
+        case UPDATE_SWITCH_NUZLOCKE:
+            return {
+                ...state,
+                currentId: action.newId,
+                saves: [
+                    ...state.saves.filter(s => s.id !== action.id),
+                    {
+                        id: action.id,
+                        data: action.data,
+                    }
+                ]
+            };
         case UPDATE_NUZLOCKE:
-            const updateItem = state.saves.find(s => s.id === action.id);
-            console.log('updateItem', updateItem);
+            // const updateItem = state.saves.find(s => s.id === action.id);
+            // console.log('updateItem', updateItem);
 
-            if (!updateItem) {
-                return {
-                    ...state,
-                    saves: [
-                        ...state.saves.filter(s => s.id !== action.id),
-                        {
-                            id: uuid(),
-                            data: action.data,
-                        }
-                    ]
-                };
-            }
+            // if (!updateItem) {
+            //     return {
+            //         ...state,
+            //         saves: [
+            //             ...state.saves.filter(s => s.id !== action.id),
+            //             {
+            //                 id: uuid(),
+            //                 data: action.data,
+            //             }
+            //         ]
+            //     };
+            // }
             return {
                 ...state,
                 saves: [
