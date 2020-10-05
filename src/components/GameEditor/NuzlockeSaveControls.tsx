@@ -14,14 +14,15 @@ import {
     Toaster,
     NavbarGroup,
 } from '@blueprintjs/core';
-import { connect } from 'react-redux';
+import { connect, Store } from 'react-redux';
 import { State } from 'state';
 import { updateNuzlocke, deleteNuzlocke, newNuzlocke, switchNuzlocke, replaceState, updateSwitchNuzlocke } from 'actions';
 import { PokemonIcon } from 'components';
-import { gameOfOriginToColor, getContrastColor } from 'utils';
+import { gameOfOriginToColor, getContrastColor, StoreContext } from 'utils';
 import { omit } from 'ramda';
 import { createStore } from 'redux';
 import { appReducers } from 'reducers';
+import { object } from 'prop-types';
 
 export interface NuzlockeSaveControlsProps {
     nuzlockes: State['nuzlockes'];
@@ -38,10 +39,11 @@ export interface NuzlockeSaveControlsProps {
 const sort = (a, b) => a.id - b.id;
 
 export class SaveBase extends React.Component<NuzlockeSaveControlsProps> {
-    public componentDidMount() {
-        const {nuzlockes, newNuzlocke} = this.props;
-        if (!nuzlockes.currentId) {
-            newNuzlocke(this.context.store?.getState(), {isCopy: false});
+    // eslint-disable-next-line camelcase
+    public UNSAFE_componentWillMount() {
+        const {nuzlockes, newNuzlocke, state} = this.props;
+        if (!nuzlockes.currentId || nuzlockes.currentId === '') {
+            newNuzlocke(JSON.parse(state), {isCopy: false});
         }
     }
 
@@ -102,8 +104,6 @@ export class SaveBase extends React.Component<NuzlockeSaveControlsProps> {
                         }}>
                             Current
                         </Tag>}
-                        {id}
-                        {typeof data}
                     </div>
                     <div style={{
                         display: 'flex',
@@ -168,7 +168,6 @@ export class SaveBase extends React.Component<NuzlockeSaveControlsProps> {
         return this.renderMenu();
     }
 }
-
 
 
 export class NuzlockeSaveControlsBase extends React.Component<NuzlockeSaveControlsProps, {isOpen: boolean}> {

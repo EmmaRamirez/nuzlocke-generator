@@ -595,6 +595,7 @@ Thank you!
 - Made download format for files more reasonable
 - Add missing Mega forme option for Banette
 - Added trainer image for Brendan
+- Fixed missing shuffle sprites for Farfetch'd, Mime Jr., and Mr.Mime
 
 ## Known Issues
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
