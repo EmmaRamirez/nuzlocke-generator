@@ -83,6 +83,7 @@ const PokemonLocationChecklist = ({
             {encounterMap.map((area) => {
                 return (
                     <div
+                        key={area.toString()}
                         style={{
                             display: 'flex',
                             alignItems: 'center',
