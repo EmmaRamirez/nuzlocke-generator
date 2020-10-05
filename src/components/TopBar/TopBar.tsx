@@ -49,7 +49,8 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
         isMenuOpen: false,
     };
 
-    public componentWillMount() {
+    // eslint-disable-next-line camelcase
+    public UNSAFE_componentWillMount() {
         if (pkg.version.split('.')[2] !== 0) {
             this.props.seeRelease(pkg.version);
         }

@@ -42,7 +42,8 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
         });
     }
 
-    public componentWillMount() {
+    // eslint-disable-next-line camelcase
+    public UNSAFE_componentWillMount() {
         this.setState({ currentValue: this.props.value });
     }
 

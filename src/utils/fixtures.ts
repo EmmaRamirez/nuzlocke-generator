@@ -23,7 +23,7 @@ export const PokemonFixtures = {
         species: 'Mewtwo',
         nickname: 'Clone',
         forme: Forme['Mega-X'],
-        types: matchSpeciesToTypes('Mewtwo', Forme['Mega-X']),
+        types: matchSpeciesToTypes('Mewtwo', 'Mega-X'),
         moves: ['Psystrike', 'Ice Punch', 'Fire Punch', 'Earthquake', 'Bulk Up'],
         item: 'Mewtonite-X',
     },

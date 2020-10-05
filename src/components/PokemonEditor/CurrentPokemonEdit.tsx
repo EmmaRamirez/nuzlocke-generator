@@ -29,7 +29,7 @@ import { listOfGames, accentedE } from 'utils';
 import { PokemonIconBase } from 'components/PokemonIcon';
 import { cx } from 'emotion';
 import * as Styles from './styles';
-import * as uuid from 'uuid/v4';
+const uuid = require('uuid');
 import {
     Classes,
     Icon,
@@ -101,7 +101,8 @@ CurrentPokemonEditState
         };
     }
 
-    public componentWillMount() {
+    // eslint-disable-next-line camelcase
+    public UNSAFE_componentWillMount() {
         this.setState({
             selectedId: this.props.selectedId,
             box: this.props.box,
@@ -185,6 +186,8 @@ CurrentPokemonEditState
             key: `${p.nickname} (${p.species})`,
             value: p.id,
         }));
+
+        console.log('inMoreInputs', currentPokemon);
 
         return (
             <div className="expanded-edit">
@@ -407,7 +410,8 @@ CurrentPokemonEditState
                                     {
                                         types: matchSpeciesToTypes(
                                             e.target.value,
-                                            currentPokemon.forme as Forme,
+                                            // @TODO: tighten type
+                                            currentPokemon.forme as any,
                                             getGameGeneration(this.props.game.name as Game),
                                         ),
                                     },
@@ -471,6 +475,7 @@ CurrentPokemonEditState
                         value={currentPokemon.nature}
                         type="select"
                         options={listOfNatures}
+                        pokemon={currentPokemon}
                     />
                     <Autocomplete
                         items={listOfAbilities}

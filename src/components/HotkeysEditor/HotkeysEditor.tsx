@@ -15,7 +15,7 @@ export class HotkeysEditor extends React.Component<{}> {
             <BaseEditor name="Hotkeys">
                 <ul style={{ listStyleType: 'none', paddingLeft: '1rem' }} className="hotkey-list">
                     {hotkeyList.map((item) => (
-                        <li style={{ display: 'flex' }}>
+                        <li key={item.key} style={{ display: 'flex' }}>
                             <kbd style={{ margin: '4px' }} className="bp3-code">
                                 {item.key}
                             </kbd>

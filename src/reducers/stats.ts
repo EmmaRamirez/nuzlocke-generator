@@ -1,5 +1,5 @@
 import { Action, ADD_STAT, EDIT_STAT, DELETE_STAT, REPLACE_STATE } from 'actions';
-import * as uuid from 'uuid';
+const uuid = require('uuid');
 
 export function stats(
     initState = [{ id: 'a-1', key: '', value: '' }],

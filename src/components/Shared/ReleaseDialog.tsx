@@ -4,7 +4,7 @@ import { cx } from 'emotion';
 import * as styles from 'components/Result/styles';
 import { generateReleaseNotes, releaseNotes, Styles, classWithDarkTheme } from 'utils';
 import { pkg } from 'package';
-import * as ReactMarkdown from 'react-markdown';
+const ReactMarkdown = require('react-markdown');
 import { tail } from 'ramda';
 
 const croagunk = require('assets/img/croagunk.gif');

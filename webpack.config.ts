@@ -26,7 +26,7 @@ module.exports = {
     },
     devServer: {
         contentBase: 'dist',
-        inline: true,
+        // inline: true,
         host: 'localhost',
         port: 8080,
         noInfo: true,

@@ -25,6 +25,8 @@ import { getDisplayNameForTest } from 'utils/getDisplayNameForTest';
 import { getGameRegion, Region } from 'utils/getGameRegion';
 import { numberToSpecies } from 'utils/numberToSpecies';
 import { capitalize } from 'utils/capitalize';
+import { matchNatureToToxtricityForme } from 'utils/matchNatureToToxtricityForme';
+import { Nature } from 'utils/Nature';
 
 const objectPropertiesWhere = (obj: object, filter: any) =>
     Array.from(Object.values(obj)).filter(filter).length;
@@ -98,8 +100,8 @@ describe('matchSpeciesToType', () => {
     it('returns a type for a Pokemon', () => {
         expect(matchSpeciesToTypes('Bulbasaur')).toEqual(['Grass', 'Poison']);
         expect(matchSpeciesToTypes('Charizard')).toEqual(['Fire', 'Flying']);
-        expect(matchSpeciesToTypes('Raichu', Forme.Alolan)).toEqual(['Electric', 'Psychic']);
-        expect(matchSpeciesToTypes('Rattata', Forme.Alolan, Generation.Gen7)).toEqual([
+        expect(matchSpeciesToTypes('Raichu', 'Alolan')).toEqual(['Electric', 'Psychic']);
+        expect(matchSpeciesToTypes('Rattata', 'Alolan', Generation.Gen7)).toEqual([
             'Dark',
             'Normal',
         ]);
@@ -111,7 +113,8 @@ describe('matchSpeciesToType', () => {
             'Normal',
             'Flying',
         ]);
-        expect(matchSpeciesToTypes('Shaymin', 'Sky' as Forme)).toEqual(['Grass', 'Flying']);
+        expect(matchSpeciesToTypes('Meowth', 'Galarian')).toEqual(['Steel', 'Steel']);
+        expect(matchSpeciesToTypes('Shaymin', 'Sky')).toEqual(['Grass', 'Flying']);
         listOfPokemon.map((pokemon, index) => {
             expect(matchSpeciesToTypes(pokemon).length).toBeGreaterThan(0);
         });
@@ -330,5 +333,23 @@ describe(capitalize.name, () => {
         expect(subject).toBe('Dog');
         const subject2 = capitalize('dOG');
         expect(subject2).toBe('DOG');
+    });
+});
+
+describe(matchNatureToToxtricityForme.name, () => {
+    it('returns amped correctly', () => {
+        const subject = matchNatureToToxtricityForme(Nature.Adamant);
+        expect(subject).toBe('Amped');
+    });
+
+    it('returns lowkey correctly', () => {
+        const subject = matchNatureToToxtricityForme(Nature.Docile);
+        expect(subject).toBe('Amped');
+    });
+
+    it('returns lowkey in null case', () => {
+        // @ts-expect-error
+        const subject = matchNatureToToxtricityForme(undefined);
+        expect(subject).toBe('Lowkey');
     });
 });

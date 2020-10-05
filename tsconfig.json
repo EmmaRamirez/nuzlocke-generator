@@ -11,10 +11,9 @@
       "strictFunctionTypes": true,
       "noLib": false,
       "jsx": "react",
-      "sourceMap": true,
       "experimentalDecorators": true,
       "allowSyntheticDefaultImports": false,
-      "esModuleInterop": false,
+      "esModuleInterop": true,
       "allowJs": true,
       "lib": [
         "dom",
@@ -29,6 +28,9 @@
       ],
       "baseUrl": "./src"
     },
+    "include": [
+        "./src"
+    ],
     "exclude": [
       "node_modules",
       "./node_modules/@types",

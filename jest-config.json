@@ -1,12 +1,14 @@
 {
-  "setupTestFrameworkScriptFile": "<rootDir>/setupTests.ts",
+  "setupFilesAfterEnv": [
+      "<rootDir>/setupTests.ts"
+  ],
   "moduleFileExtensions": [
     "ts",
     "tsx",
     "js"
   ],
   "transform": {
-    "\\.(js|ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    "\\.(js|ts|tsx)$": "ts-jest"
   },
   "transformIgnorePatterns": [
     "<rootDir>/node_modules"

@@ -84,7 +84,7 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
         return ['Incarnate', 'Therian'];
     }
     if (s === 'kyurem') {
-        return ['White Kyurem', 'Black Kyurem'];
+        return ['White', 'Black'];
     }
     if (s === 'keldeo') {
         return ['Resolute'];
@@ -203,7 +203,7 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
         s === 'aggron' ||
         s === 'medicham' ||
         s === 'manectric' ||
-        s === 'aanette' ||
+        s === 'banette' ||
         s === 'absol' ||
         s === 'garchomp' ||
         s === 'lucario' ||
@@ -264,7 +264,6 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
         s === 'alcremie' ||
         s === 'drednaw' ||
         s === 'machamp' ||
-        s === 'toxtricity' ||
         s === 'melmetal' ||
         s === 'coalossal' ||
         s === 'sandaconda' ||
@@ -282,5 +281,9 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
     ) {
         return ['Gigantamax'];
     }
+    if (s === 'toxtricity') {
+        return ['Amped-Up', 'Lowkey', 'Gigantamax'];
+    }
+
     return [];
 };

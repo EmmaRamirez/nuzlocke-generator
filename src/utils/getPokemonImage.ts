@@ -185,9 +185,14 @@ export function getPokemonImage({
         return `url(img/dw/${regularNumber || 1}.svg)`;
     }
 
+    const handleMimeJr = (s?: string) => s === 'Mime Jr.' ? 'mime-jr' : s;
+
     if (style.teamImages === 'shuffle') {
-        return `url(img/shuffle/${(species || 'Ditto')
+        return `url(img/shuffle/${(handleMimeJr(species) || 'Ditto')
             .trim()
+            .replace(/\'/g, '')
+            .replace(/\s/g, '-')
+            .replace(/\./g, '-')
             .toLocaleLowerCase()}${getIconFormeSuffix(forme as keyof typeof Forme)}.png)`;
     }
 
