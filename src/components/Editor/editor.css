@@ -36,7 +36,8 @@ html.bp3-dark {
 
 @media screen and (max-width: 720px) {
   .editor {
-    width: 100%;
+    width: 100% !important;
+    min-width: 100vw !important;
     margin-top: 3rem;
     border-width: 0 !important;
   }

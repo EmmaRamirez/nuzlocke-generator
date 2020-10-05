@@ -1,10 +1,14 @@
 import * as React from 'react';
-import { shallow } from 'enzyme';
 import { AddPokemonButtonBase as AddPokemonButton } from '..';
+import { render, fireEvent, screen } from '@testing-library/react';
 
 describe('<AddPokemonButton />', () => {
-    it('renders its contents', () => {
-        const wrapper = shallow(<AddPokemonButton onClick={() => {}} />);
-        expect(wrapper.is('.add-new-pokemon')).toBe(true);
+    it('renders its contents can be fired', () => {
+        const mockOnClick = jest.fn();
+        render(<AddPokemonButton onClick={mockOnClick} />);
+
+        expect(screen.getByRole('button')).toBeTruthy();
+        fireEvent.click(screen.getByRole('button'));
+        expect(mockOnClick).toHaveBeenCalledTimes(1);
     });
 });

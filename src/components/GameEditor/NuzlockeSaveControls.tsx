@@ -22,7 +22,8 @@ import { gameOfOriginToColor, getContrastColor, StoreContext } from 'utils';
 import { omit } from 'ramda';
 import { createStore } from 'redux';
 import { appReducers } from 'reducers';
-import { object } from 'prop-types';
+import { NuzlockeGameTags } from './NuzlockeGameTags';
+import isMobile from 'is-mobile';
 
 export interface NuzlockeSaveControlsProps {
     nuzlockes: State['nuzlockes'];
@@ -43,7 +44,7 @@ export class SaveBase extends React.Component<NuzlockeSaveControlsProps> {
     public UNSAFE_componentWillMount() {
         const {nuzlockes, newNuzlocke, state} = this.props;
         if (!nuzlockes.currentId || nuzlockes.currentId === '') {
-            newNuzlocke(JSON.parse(state), {isCopy: false});
+            newNuzlocke(state, {isCopy: false});
         }
     }
 
@@ -91,30 +92,16 @@ export class SaveBase extends React.Component<NuzlockeSaveControlsProps> {
                     borderRadius: '0.25rem',
                     boxShadow: '0 0 4px rgba(0,0,0,0.1)',
                     marginBottom: '2px',
+                    // width: isMobile() ? '80%' : '100%',
                 }} key={id}>
-                    <div style={{display: 'flex', flexDirection: 'column', width: '6rem', marginRight: '2rem', justifyContent: 'space-between', alignItems: 'space-between'}}>
-                        <Tag round style={{
-                            background: gameOfOriginToColor(game),
-                            color: darkMode ? color : game === 'None' ? '#000' : color,
-                        }}>{game}</Tag>
-                        {isCurrent && <Tag round style={{
-                            background: 'rgba(0,0,0,0.1)',
-                            color: darkMode ? '#fff' : '#000',
-                            marginTop: '2px',
-                        }}>
-                            Current
-                        </Tag>}
-                    </div>
-                    <div style={{
-                        display: 'flex',
-                        width: '20rem',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        pointerEvents: 'none',
-                    }}>
-                        {parsedData?.pokemon?.filter(p => p.status === 'Team').map(poke => <PokemonIcon key={poke.id} {...poke} />)}
-                    </div>
-                    <Popover content={<Menu><MenuItem shouldDismissPopover={false} disabled={isCurrent} icon='swap-horizontal' onClick={() => {
+                    <NuzlockeGameTags
+                        darkMode={darkMode}
+                        game={game}
+                        color={color}
+                        data={parsedData}
+                        isCurrent={isCurrent}
+                    />
+                    <Popover position={Position.BOTTOM_RIGHT} content={<Menu><MenuItem shouldDismissPopover={false} disabled={isCurrent} icon='swap-horizontal' onClick={() => {
                         try {
                             console.log(
                                 currentId,
@@ -133,6 +120,24 @@ export class SaveBase extends React.Component<NuzlockeSaveControlsProps> {
                             });
                         }
                     }} text='Switch to this Nuzlocke' />
+                    <MenuItem shouldDismissPopover={false} icon='clipboard'
+                        onClick={_ => {
+                            try {
+                                if (typeof data !== 'string') {
+                                    throw new Error('Data is not in correct format.');
+                                }
+                                newNuzlocke(data, {isCopy: true});
+                            } catch (e) {
+                                const toaster = Toaster.create();
+                                toaster.show({
+                                    message: `Failed to copy nuzlocke. ${e}`,
+                                    intent: Intent.DANGER,
+                                });
+                            }
+                        }}
+                        text='Copy this Nuzlocke'
+                    >
+                    </MenuItem>
                     <MenuItem disabled={saves.length === 1} shouldDismissPopover={false} icon='trash' intent={Intent.DANGER} onClick={() => {
                         try {
                             deleteNuzlocke(id);
