@@ -32,7 +32,8 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
         document && document.addEventListener('keyup', this.globalHotkeysEvents.handleKeyUp);
     }
 
-    public componentWillMount() {
+    // eslint-disable-next-line camelcase
+    public UNSAFE_componentWillMount() {
         document && document.removeEventListener('keydown', this.globalHotkeysEvents.handleKeyDown);
         document && document.removeEventListener('keyup', this.globalHotkeysEvents.handleKeyUp);
     }

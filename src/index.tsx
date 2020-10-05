@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/es/integration/react';
-import * as Rollbar from 'rollbar';
+const Rollbar = require('rollbar');
 import { injectGlobal } from 'emotion';
 
 import { App } from './components/App';

@@ -10,4 +10,5 @@ export const listOfTrainers = [
     'ethan',
     'red',
     'leaf',
+    'brendan',
 ];

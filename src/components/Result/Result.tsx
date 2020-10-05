@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { connect } from 'react-redux';
-import * as uuid from 'uuid/v4';
+const uuid = require('uuid');
 import { cx } from 'emotion';
 
 import { selectPokemon, toggleMobileResultView } from 'actions';

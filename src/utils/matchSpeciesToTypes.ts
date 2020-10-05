@@ -10,7 +10,7 @@ const match = ({
     generation,
 }: {
     species: string[];
-    forme?: string[];
+    forme?: (keyof typeof Forme)[];
     generation?: Generation[];
     s: string;
     f?: string;
@@ -19,7 +19,8 @@ const match = ({
     if (species.includes(s)) {
         if (generation) {
             if (g && generation.includes(g)) {
-                if (forme && f && forme.includes(f)) {
+                // We know f is always a string based off of Forme's type
+                if (forme && f && forme.includes(f as any)) {
                     return true;
                 } else {
                     if (forme == null) return true;
@@ -29,7 +30,8 @@ const match = ({
                 return false;
             }
         } else {
-            if (f && forme && forme.includes(f)) {
+            // Ibid: We know f is always a string based off of Forme's type
+            if (f && forme && forme.includes(f as any)) {
                 return true;
             } else {
                 return false;
@@ -45,7 +47,7 @@ export const handleSpeciesTypeEdgeCases = ({
     generation,
 }: {
     species: string;
-    forme?: Forme;
+    forme?: keyof typeof Forme;
     generation?: Generation;
 }): [Types, Types] | null => {
     const s = species;
@@ -56,7 +58,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Rattata', 'Raticate'],
-            forme: [Forme.Alolan],
+            forme: ['Alolan'],
         })
     )
         return [Types.Dark, Types.Normal];
@@ -65,7 +67,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Raichu'],
-            forme: [Forme.Alolan],
+            forme: ['Alolan'],
         })
     )
         return [Types.Electric, Types.Psychic];
@@ -74,7 +76,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Sandslash', 'Sandshrew'],
-            forme: [Forme.Alolan],
+            forme: ['Alolan'],
         })
     )
         return [Types.Ice, Types.Steel];
@@ -83,7 +85,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Vulpix'],
-            forme: [Forme.Alolan],
+            forme: ['Alolan'],
         })
     )
         return [Types.Ice, Types.Ice];
@@ -92,7 +94,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Ninetales'],
-            forme: [Forme.Alolan],
+            forme: ['Alolan'],
         })
     )
         return [Types.Ice, Types.Fairy];
@@ -101,7 +103,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Diglett', 'Dugtrio'],
-            forme: [Forme.Alolan],
+            forme: ['Alolan'],
         })
     )
         return [Types.Ground, Types.Steel];
@@ -110,7 +112,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Meowth', 'Persian'],
-            forme: [Forme.Alolan],
+            forme: ['Alolan'],
         })
     )
         return [Types.Dark, Types.Dark];
@@ -119,7 +121,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Geodude', 'Graveler', 'Golem'],
-            forme: [Forme.Alolan],
+            forme: ['Alolan'],
         })
     )
         return [Types.Rock, Types.Electric];
@@ -128,7 +130,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Meowth'],
-            forme: [Forme.Galarian],
+            forme: ['Galarian'],
         })
     )
         return [Types.Steel, Types.Steel];
@@ -137,7 +139,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Ponyta'],
-            forme: [Forme.Galarian],
+            forme: ['Galarian'],
         })
     )
         return [Types.Psychic, Types.Psychic];
@@ -146,7 +148,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Rapidash'],
-            forme: [Forme.Galarian],
+            forme: ['Galarian'],
         })
     )
         return [Types.Fairy, Types.Psychic];
@@ -155,7 +157,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Farfetch\'d'],
-            forme: [Forme.Galarian],
+            forme: ['Galarian'],
         })
     )
         return [Types.Fighting, Types.Fighting];
@@ -164,7 +166,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Weezing'],
-            forme: [Forme.Galarian],
+            forme: ['Galarian'],
         })
     )
         return [Types.Poison, Types.Fairy];
@@ -173,7 +175,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Mr. Mime'],
-            forme: [Forme.Galarian],
+            forme: ['Galarian'],
         })
     )
         return [Types.Ice, Types.Psychic];
@@ -182,7 +184,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Corsola'],
-            forme: [Forme.Galarian],
+            forme: ['Galarian'],
         })
     )
         return [Types.Ghost, Types.Ghost];
@@ -191,7 +193,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Zigzagoon', 'Linoone'],
-            forme: [Forme.Galarian],
+            forme: ['Galarian'],
         })
     )
         return [Types.Dark, Types.Normal];
@@ -200,7 +202,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Darumaka', 'Darmanitan'],
-            forme: [Forme.Galarian],
+            forme: ['Galarian'],
         })
     )
         return [Types.Ice, Types.Ice];
@@ -209,7 +211,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Yamask'],
-            forme: [Forme.Galarian],
+            forme: ['Galarian'],
         })
     )
         return [Types.Ground, Types.Ghost];
@@ -218,7 +220,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Stunfisk'],
-            forme: [Forme.Galarian],
+            forme: ['Galarian'],
         })
     )
         return [Types.Ground, Types.Steel];
@@ -227,7 +229,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Marowak'],
-            forme: [Forme.Alolan],
+            forme: ['Alolan'],
         })
     )
         return [Types.Ghost, Types.Fire];
@@ -236,7 +238,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Slowbro'],
-            forme: [Forme.Galarian],
+            forme: ['Galarian'],
         })
     )
         return [Types.Psychic, Types.Poison];
@@ -416,7 +418,7 @@ export const handleSpeciesTypeEdgeCases = ({
 
 export const matchSpeciesToTypes = (
     species: string,
-    forme?: Forme,
+    forme?: keyof typeof Forme,
     generation?: Generation,
 ): [Types, Types] => {
     const result = handleSpeciesTypeEdgeCases({ species, forme, generation });
@@ -1463,9 +1465,13 @@ export const matchSpeciesToTypes = (
             return [Types.Fighting, Types.Fighting];
         case 'Urshifu':
             return [Types.Fighting, Types.Water];
-        // 'Heatran',
+        case 'Kyurem':
+            return [Types.Dragon, Types.Ice];
+        case 'Heatran':
+            return [Types.Steel, Types.Fire];
         // 'Shaymin',
-        // 'Victini',
+        case 'Victini':
+            return [Types.Fire, Types.Psychic];
         // 'Snivy',
         // 'Pansage',
         // 'Simisage',
@@ -1522,7 +1528,8 @@ export const matchSpeciesToTypes = (
         // 'Goodra',
         case 'Zygarde':
             return [Types.Dragon, Types.Ground];
-        // 'Volcanion',
+        case 'Volcanion':
+            return [Types.Fire, Types.Water];
         // 'Oricorio',
         // 'Rockruff',
         // 'Lycanroc',

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import * as Loadable from 'react-loadable';
+import Loadable from 'react-loadable';
 
 import './app.css';
 import { Hotkeys } from 'components/Hotkeys';

@@ -76,4 +76,18 @@ export enum Forme {
 
     'East Sea' = 'east',
     'West Sea' = 'west',
+
+    Lowkey = 'lowkey',
+    AmpedUp = 'amped',
+    Amped = 'amped',
+
+    White = 'white',
+    Black = 'black',
+
+    Mow = 'mow',
+    Wash = 'wash',
+    Frost = 'frost',
+    Fan = 'fan',
+    Heat = 'heat',
+    Hail = 'hail',
 }

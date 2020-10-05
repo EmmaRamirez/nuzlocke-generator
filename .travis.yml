@@ -1,9 +1,29 @@
 language: node_js
+
 node_js:
-- '10'
-- '12'
+  - 12
+
+# if using Ubuntu 16 need this library
+# https://github.com/cypress-io/cypress-documentation/pull/1647
+addons:
+  apt:
+    packages:
+    - libgconf-2-4
+
 cache:
+  # cache both npm modules and Cypress binary
   directories:
-  - node_modules
+    - ~/.npm
+    - ~/.cache
+
+script:
+    #   ## print all Travis environment variables for debugging
+    - npm run start:ci &
+    - npm run cy:run
+    # after all tests finish running we need
+    # to kill all background jobs (like "npm start &")
+    - kill $(jobs -p) || true
+    - npm test
+
 after_success:
-  - node node_modules/.bin/jest --coverage --collectCoverageFrom=!src/parsers/*.ts --config jest-config.json && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+  - node node_modules/.bin/jest --coverage --config jest-config.json && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage

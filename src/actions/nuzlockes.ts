@@ -49,3 +49,16 @@ export function updateNuzlocke(id: string, data): Action<UPDATE_NUZLOCKE> {
         data,
     };
 }
+
+export type UPDATE_SWITCH_NUZLOCKE = 'UPDATE_SWITCH_NUZLOCKE';
+export const UPDATE_SWITCH_NUZLOCKE: UPDATE_SWITCH_NUZLOCKE = 'UPDATE_SWITCH_NUZLOCKE';
+
+export type updateSwitchNuzlocke = (id: string, newId: string, data) => Action<UPDATE_SWITCH_NUZLOCKE>;
+export function updateSwitchNuzlocke(id: string, newId: string, data): Action<UPDATE_SWITCH_NUZLOCKE> {
+    return {
+        type: UPDATE_SWITCH_NUZLOCKE,
+        id,
+        newId,
+        data,
+    };
+}
