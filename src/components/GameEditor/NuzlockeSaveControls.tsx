@@ -22,7 +22,6 @@ import { gameOfOriginToColor, getContrastColor, StoreContext } from 'utils';
 import { omit } from 'ramda';
 import { createStore } from 'redux';
 import { appReducers } from 'reducers';
-import { object } from 'prop-types';
 
 export interface NuzlockeSaveControlsProps {
     nuzlockes: State['nuzlockes'];
