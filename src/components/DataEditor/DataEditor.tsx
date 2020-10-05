@@ -11,12 +11,13 @@ import {
     Toaster,
     Switch,
     Classes,
+    Checkbox,
 } from '@blueprintjs/core';
 import { PokemonIconBase } from 'components/PokemonIcon';
 import { ErrorBoundary } from 'components/Shared';
 const uuid = require('uuid');
 import { persistor } from 'store';
-import { replaceState } from 'actions';
+import { newNuzlocke, replaceState } from 'actions';
 import { Game, Pokemon } from 'models';
 import { omit } from 'ramda';
 import { BaseEditor } from 'components/BaseEditor';
@@ -28,6 +29,7 @@ const trash = require('assets/img/trash.png');
 export interface DataEditorProps {
     state: State;
     replaceState: replaceState;
+    newNuzlocke: newNuzlocke;
 }
 
 export interface DataEditorState {
@@ -39,6 +41,7 @@ export interface DataEditorState {
     selectedGame: string;
     mergeDataMode: boolean;
     showSaveFileUI: boolean;
+    overrideImport: boolean;
 }
 
 const hexEncode = function (str: string) {
@@ -78,6 +81,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
             selectedGame: 'RBY',
             mergeDataMode: true,
             showSaveFileUI: false,
+            overrideImport: true,
         };
     }
 
@@ -108,15 +112,19 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
 
     private confirmImport = (e) => {
         let cmm = { customMoveMap: [] };
+        const override = this.state.overrideImport;
         const data = JSON.parse(this.state.data);
+        const nuz = this.props.state;
         const safeguards = { customTypes: [], customMoveMap: [], stats: [] };
         if (!Array.isArray(data.customMoveMap)) {
             noop();
         } else {
             cmm = { customMoveMap: data.customMoveMap };
         }
-        this.props.replaceState({ ...safeguards, ...data, ...cmm });
+        this.props.replaceState({ ...safeguards, ...(override ? data : nuz), ...cmm });
+        this.props.newNuzlocke(this.state.data, {isCopy: false});
         this.writeAllData();
+        this.setState({ isOpen: false });
     };
 
     private importState = () => {
@@ -371,6 +379,11 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                                 <ErrorBoundary>{this.renderTeam(this.state.data)}</ErrorBoundary>
                             </div>
                             <div className={Classes.DIALOG_FOOTER}>
+                                {/*<Checkbox
+                                    checked={this.state.overrideImport}
+                                    label='Overwrite current save data (will otherwise merge into nuzlocke saves)'
+                                    onChange={e => this.setState({ overrideImport: e.currentTarget.checked })}
+                                />*/}
                                 <div
                                     style={{
                                         display: 'flex',
@@ -445,4 +458,5 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
 
 export const DataEditor = connect((state: State) => ({ state: state }), {
     replaceState,
+    newNuzlocke,
 })(DataEditorBase as any);
