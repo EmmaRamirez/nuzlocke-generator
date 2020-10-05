@@ -117,9 +117,11 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
 
     public render() {
         const props = this.props;
-        const styleEdit = cx(Styles.styleEdit, {
+        const createStyleEdit = (isWidthHeight?: boolean) => cx(Styles.styleEdit, {
             [Styles.styleEdit_dark]: props.style.editorDarkMode,
+            [Styles.widthHeightInputs]: isWidthHeight,
         });
+        const styleEdit = createStyleEdit(false);
         const teamImages = ['standard', 'sugimori', 'dream world', 'shuffle'];
         if (isLocal()) {
             teamImages.push('tcg');
@@ -214,91 +216,99 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     </div>
                 </div>
 
-                <div className={styleEdit}>
-                    <label className={cx(Classes.LABEL, Classes.INLINE)}>Result Dimensions</label>
-                    <span style={{ fontSize: '80%', marginRight: '2px' }}>w</span>
-                    <input
-                        name="resultWidth"
-                        className={cx(Classes.INPUT, 'small-input')}
-                        onChange={(e) => editEvent(e, props)}
-                        value={props.style.resultWidth}
-                        type="number"
-                        min="0"
-                        step="10"
-                    />
-                    <span style={{ marginRight: '0' }} className="bp3-icon bp3-icon-cross" />
-                    <span style={{ fontSize: '80%', marginRight: '2px' }}>h</span>
-                    <input
-                        name="resultHeight"
-                        className={cx(Classes.INPUT, 'small-input')}
-                        style={{
-                            opacity: props.style.useAutoHeight ? 0.3 : 1,
-                        }}
-                        onChange={(e) => editEvent(e, props)}
-                        value={props.style.resultHeight}
-                        type="number"
-                        min="0"
-                        step="10"
-                    />
-                    <span> </span>
-                    <Checkbox
-                        style={{
-                            marginBottom: '0',
-                            marginLeft: '10px',
-                        }}
-                        checked={props.style.useAutoHeight}
-                        name="useAutoHeight"
-                        label="Auto Height"
-                        onChange={(e: any) =>
-                            editEvent(
-                                { ...e, target: { value: e.target.checked } },
-                                props,
-                                'useAutoHeight',
-                            )
-                        }
-                    />
+                <div className={createStyleEdit(true)}>
+                    <div>
+                        <label className={cx(Classes.LABEL, Classes.INLINE)}>Result Dimensions</label>
+                        <span style={{ fontSize: '80%', marginRight: '2px' }}>w</span>
+                        <input
+                            name="resultWidth"
+                            className={cx(Classes.INPUT, 'small-input')}
+                            onChange={(e) => editEvent(e, props)}
+                            value={props.style.resultWidth}
+                            type="number"
+                            min="0"
+                            step="10"
+                        />
+                        <span style={{ marginRight: '0' }} className="bp3-icon bp3-icon-cross" />
+                        <span style={{ fontSize: '80%', marginRight: '2px' }}>h</span>
+                        <input
+                            name="resultHeight"
+                            className={cx(Classes.INPUT, 'small-input')}
+                            style={{
+                                opacity: props.style.useAutoHeight ? 0.3 : 1,
+                            }}
+                            onChange={(e) => editEvent(e, props)}
+                            value={props.style.resultHeight}
+                            type="number"
+                            min="0"
+                            step="10"
+                        />
+                    </div>
+                    <div className={Styles.autoHeightCheckbox}>
+                        <span> </span>
+                        <Checkbox
+                            style={{
+                                marginBottom: '0',
+                                marginLeft: '10px',
+                            }}
+                            checked={props.style.useAutoHeight}
+                            name="useAutoHeight"
+                            label="Auto Height"
+                            onChange={(e: any) =>
+                                editEvent(
+                                    { ...e, target: { value: e.target.checked } },
+                                    props,
+                                    'useAutoHeight',
+                                )
+                            }
+                        />
+                    </div>
                 </div>
 
-                <div className={styleEdit}>
-                    <label className={cx(Classes.LABEL, Classes.INLINE)}>Trainer Dimensions</label>
-                    <span style={{ fontSize: '80%', marginRight: '2px' }}>w</span>
-                    <input
-                        name="trainerWidth"
-                        className={cx(Classes.INPUT, 'small-input')}
-                        onChange={(e) => editEvent(e, props)}
-                        style={{
-                            opacity: props.style.trainerAuto ? 0.3 : 1,
-                        }}
-                        value={props.style.trainerWidth}
-                    />
-                    <span style={{ marginRight: '0' }} className="bp3-icon bp3-icon-cross" />
-                    <span style={{ fontSize: '80%', marginRight: '2px' }}>h</span>
-                    <input
-                        name="trainerHeight"
-                        className={cx(Classes.INPUT, 'small-input')}
-                        style={{
-                            opacity: props.style.trainerAuto ? 0.3 : 1,
-                        }}
-                        onChange={(e) => editEvent(e, props)}
-                        value={props.style.trainerHeight}
-                    />
-                    <span> </span>
-                    <Checkbox
-                        style={{
-                            marginBottom: '0',
-                            marginLeft: '10px',
-                        }}
-                        checked={props.style.trainerAuto}
-                        name="trainerAuto"
-                        label="Auto Dimensions"
-                        onChange={(e: any) =>
-                            editEvent(
-                                { ...e, target: { value: e.target.checked } },
-                                props,
-                                'trainerAuto',
-                            )
-                        }
-                    />
+                <div className={createStyleEdit(true)}>
+                    <div>
+                        <label className={cx(Classes.LABEL, Classes.INLINE)}>Trainer Dimensions</label>
+                        <span style={{ fontSize: '80%', marginRight: '2px' }}>w</span>
+                        <input
+                            name="trainerWidth"
+                            className={cx(Classes.INPUT, 'small-input')}
+                            onChange={(e) => editEvent(e, props)}
+                            style={{
+                                opacity: props.style.trainerAuto ? 0.3 : 1,
+                            }}
+                            value={props.style.trainerWidth}
+                        />
+                        <span style={{ marginRight: '0' }} className="bp3-icon bp3-icon-cross" />
+                        <span style={{ fontSize: '80%', marginRight: '2px' }}>h</span>
+                        <input
+                            name="trainerHeight"
+                            className={cx(Classes.INPUT, 'small-input')}
+                            style={{
+                                opacity: props.style.trainerAuto ? 0.3 : 1,
+                            }}
+                            onChange={(e) => editEvent(e, props)}
+                            value={props.style.trainerHeight}
+                        />
+                    </div>
+                    <div className={Styles.autoHeightCheckbox}>
+                        <span> </span>
+                        <Checkbox
+                            style={{
+                                marginBottom: '0',
+                                marginLeft: '10px',
+                            }}
+                            checked={props.style.trainerAuto}
+                            name="trainerAuto"
+                            label="Auto Dimensions"
+                            onChange={(e: any) =>
+                                editEvent(
+                                    { ...e, target: { value: e.target.checked } },
+                                    props,
+                                    'trainerAuto',
+                                )
+                            }
+                        />
+                    </div>
                 </div>
 
                 <div className={styleEdit}>

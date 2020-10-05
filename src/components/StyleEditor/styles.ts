@@ -52,6 +52,34 @@ export const styleEdit = css`
         display: inline-block;
         margin-right: 0.25rem;
     }
+    @media (max-width: 760px) {
+
+        .bp3-label {
+            margin: 2px;
+            font-size: 80%;
+            min-width: 6rem;
+        }
+        .bp3-input {
+            max-width: 9rem;
+        }
+    }
+`;
+
+export const widthHeightInputs = css`
+    align-items: flex-end;
+    @media (max-width: 760px) {
+        flex-direction: column;
+
+        .bp3-label {
+            display: inline-block;
+        }
+    }
+`;
+
+export const autoHeightCheckbox = css`
+    @media (max-width: 760px) {
+        margin-top: 0.25rem;
+    }
 `;
 
 export const styleEdit_dark = css`
