@@ -608,6 +608,8 @@ Thank you!
 ## Fixes
 - Styles fixes for mobile
 - Fixed a saves bug that would occurr after deleting all data
+- Added Flyinium Z, Soothe Bell, Shell Bell
+- Fix issues with using hotkeys after deleting all Pokémon
 
 ## Known Issues
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this

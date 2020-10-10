@@ -7,8 +7,6 @@ import {
     formatBallText,
     typeToColor,
     getContrastColor,
-    Types,
-    Forme,
     matchNatureToToxtricityForme,
 } from 'utils';
 import { editPokemon, selectPokemon } from 'actions';
@@ -18,8 +16,6 @@ import { ErrorBoundary } from 'components/Shared';
 import { TagInput, Classes, TextArea } from '@blueprintjs/core';
 import { State } from 'state';
 import { Pokemon } from 'models';
-import { debounce } from 'lodash';
-
 
 interface CurrentPokemonInputProps {
     labelName: string;
@@ -243,8 +239,6 @@ export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonI
             );
         }
         if (type === 'select') {
-            console.log('fromSelect', pokemon, inputName);
-
             return (
                 <div className={Classes.SELECT} style={inputName === 'status' ? { width: '120px' } : {}}>
                     {inputName === 'pokeball' && value && value !== 'None' ? (

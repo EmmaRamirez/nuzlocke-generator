@@ -7,7 +7,7 @@ import './app.css';
 import { Hotkeys } from 'components/Hotkeys';
 import { State } from 'state';
 import { version1116 } from 'actions';
-import { version } from 'process';
+import { feature } from 'utils';
 
 export interface AppProps {
     style: State['style'];
@@ -26,7 +26,7 @@ const Editor = Loadable({
 });
 
 const Result = Loadable({
-    loader: () => import('components/Result'),
+    loader: () => feature.resultv2 ? import('components/Result/Result2') : import('components/Result/Result'),
     loading: Loading,
     render(loaded) {
         return <loaded.Result />;

@@ -286,3 +286,5 @@ export const result_download = css`
     width: 100px;
     left: calc(50% - 50px);
 `;
+
+/// v2 styles
