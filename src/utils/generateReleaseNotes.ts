@@ -590,10 +590,10 @@ Thank you!
 
 ## Fixes
 - Fixed issue where selecting a Forme wouldn't update the type
-- Add missing image for Perrserker
-- Add missing LGPE tutor moves
+- Added missing image for Perrserker
+- Added missing LGPE tutor moves
 - Made download format for files more reasonable
-- Add missing Mega forme option for Banette
+- Added missing Mega forme option for Banette
 - Added trainer image for Brendan
 - Fixed missing shuffle sprites for Farfetch'd, Mime Jr., and Mr.Mime
 
@@ -602,12 +602,16 @@ Thank you!
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
     '1.3.1': `
-## Features
-- You can now copy nuzlockes in saves manager
-
 ## Fixes
-- Styles fixes for mobile
-- Fixed a saves bug that would occurr after deleting all data
+- You can now copy Nuzlockes in the Saves Manager!
+- A warning now pops up when attempting to delete a Nuzlocke
+- Display fixes for mobile
+- Fixed an issue that made ChampsPokemon icon widths unpredictable
+- Fixed a saves bug that would occur after deleting all data
+- Added Flyinium Z, Soothe Bell, Shell Bell
+- Fixed issues with using hotkeys after deleting all Pokémon
+- Various performance improvements
+- Added a sprite and image for Zarude
 
 ## Known Issues
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this

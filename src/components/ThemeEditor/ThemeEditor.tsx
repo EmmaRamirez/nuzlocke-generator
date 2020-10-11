@@ -14,10 +14,10 @@ import {} from 'themes';
 import { DeadPokemon, DeadPokemonBase } from 'components/DeadPokemon';
 import { State } from 'state';
 import { CSSUnitInput } from './CSSUnitInput';
-import { ChampsPokemonCollection } from 'components/ChampsPokemon/ChampsPokemonCollection';
+import { ChampsPokemonView } from 'components/ChampsPokemon/ChampsPokemonCollection';
 import * as Loadable from 'react-loadable';
 import { LayoutDisplay, LayoutDirection, LayoutAlignment, LayoutSpacing } from 'components/Layout';
-import { TeamPokemon } from 'components/TeamPokemon';
+import { TeamPokemon } from 'components/TeamPokemon/TeamPokemon2';
 
 
 const modelPokemon: Pokemon = {
@@ -110,7 +110,11 @@ const componentTree: ComponentNode[] = [
         component: TeamPokemon,
         options: {
             props: {
-
+                options: {
+                    height: '4rem',
+                    width: '4rem',
+                },
+                customCSS: '',
             },
             baseProps: {
                 pokemon: modelPokemon,
@@ -156,7 +160,7 @@ const componentTree: ComponentNode[] = [
         icon: 'style',
         isExpanded: true,
         label: 'Champs Pokemon Collection',
-        component: ChampsPokemonCollection,
+        component: ChampsPokemonView,
         options: {
             props: {
                 display: LayoutDisplay.Block,

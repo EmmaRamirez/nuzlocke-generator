@@ -17,9 +17,6 @@ describe(BoxedPokemonBase.name, () => {
         render(<BoxedPokemonBase {...props} />);
 
         await waitFor(() => screen.getByTestId('boxed-pokemon-name'));
-
-        console.log(screen.debug());
-
         expect(screen.getByTestId('boxed-pokemon-name').textContent).toContain(PokemonFixtures.Pikachu.nickname);
     });
 });

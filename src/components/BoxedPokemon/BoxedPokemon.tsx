@@ -20,8 +20,6 @@ const determineWidth = (isMinimal, numerator): string => {
 
 // @TODO: fix this messy prop soup
 export const BoxedPokemonBase = (poke: BoxedPokemonProps) => {
-    console.log(poke);
-
     const isMinimal = poke?.style?.minimalBoxedLayout;
     const useGameOfOriginColor =
         poke?.gameOfOrigin &&

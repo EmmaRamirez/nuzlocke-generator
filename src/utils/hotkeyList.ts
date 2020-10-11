@@ -1,9 +1,20 @@
+import { feature } from 'utils/feature';
+
 export interface HotkeyList {
     key: string;
+    label?: string;
     comment: string;
     onKeyUp?: string;
     onKeyDown?: string;
 }
+
+export const betaHotkeys: HotkeyList[] = [
+    {
+        key: 'm',
+        comment: 'Toggle editor',
+        onKeyDown: 'toggleEditor',
+    },
+];
 
 export const hotkeyList: HotkeyList[] = [
     {
@@ -31,4 +42,11 @@ export const hotkeyList: HotkeyList[] = [
         comment: 'Delete Pok\xE9mon',
         onKeyUp: 'deletePokemon',
     },
+    {
+        key: 'N',
+        label: 'shift+n',
+        comment: 'Create New Nuzlocke',
+        onKeyUp: 'newNuzlocke',
+    },
+    ...(feature.newHotkeys ? betaHotkeys : []),
 ];

@@ -1,4 +1,4 @@
-import { Button, Icon, Spinner } from '@blueprintjs/core';
+import { Button, Callout, Icon, Intent, Spinner } from '@blueprintjs/core';
 import * as React from 'react';
 import { connect } from 'react-redux';
 
@@ -95,10 +95,10 @@ const PokemonLocationChecklist = ({
                     </div>
                 );
             })}
-            <div>
+            <Callout intent={Intent.WARNING} style={{fontSize: '80%', marginTop: '0.5rem'}}>
                 Tip: Pokémon with the "hidden" attribute are a great option for including Pokemon
                 that got away on a certain route!
-            </div>
+            </Callout>
         </div>
     );
 };

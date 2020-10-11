@@ -213,6 +213,7 @@ export class BoxBase extends React.PureComponent<BoxProps, BoxState> {
                                 <MenuItem text="Change Type">
                                     {['Team', 'Boxed', 'Dead', 'Champs'].map((b) => (
                                         <MenuItem
+                                            key={b}
                                             onClick={this.editBox(id, { inheritFrom: b })}
                                             text={
                                                 b === inheritFrom ? (

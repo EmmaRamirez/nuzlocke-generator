@@ -1,19 +1,25 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Toaster, Intent } from '@blueprintjs/core';
-import { selectPokemon, deletePokemon, addPokemon } from 'actions';
+import { selectPokemon, deletePokemon, addPokemon, newNuzlocke, changeEditorSize } from 'actions';
 import { Pokemon } from 'models';
 import { sortPokes, sortPokesReverse, noop, generateEmptyPokemon } from 'utils';
 import { hotkeyList } from 'utils';
 import { persistor } from 'store';
 import { State } from 'state';
+import { createStore } from 'redux';
+import { appReducers } from 'reducers';
+import { Editor } from 'models';
 
 export interface HotkeysProps {
     selectPokemon: selectPokemon;
     deletePokemon: deletePokemon;
     addPokemon: addPokemon;
+    newNuzlocke: newNuzlocke;
+    changeEditorSize: changeEditorSize;
     pokemon: Pokemon[];
     selectedId: string;
+    editor: Editor;
 }
 
 export class HotkeysBase extends React.PureComponent<HotkeysProps> {
@@ -107,6 +113,7 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
     }
 
     private previousPokemon() {
+        if (!this.props?.pokemon?.length) return;
         const poke = this.props.pokemon.find((p) => p.id === this.props.selectedId);
         const position = poke!.position;
         const prevPoke = this.props.pokemon.find((p) => p.position === position! - 1);
@@ -115,6 +122,7 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
     }
 
     private nextPokemon() {
+        if (!this.props?.pokemon?.length) return;
         const poke = this.props.pokemon.find((p) => p.id === this.props.selectedId);
         const position = poke!.position;
         const nextPoke = this.props.pokemon.find((p) => p.position === position! + 1);
@@ -127,7 +135,17 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
     }
 
     private deletePokemon() {
+        if (!this.props.selectedId) return;
         this.props.deletePokemon(this.props.selectedId);
+    }
+
+    private newNuzlocke() {
+        const data = createStore(appReducers)?.getState();
+        this.props.newNuzlocke(JSON.stringify(data), {isCopy: false});
+    }
+
+    private toggleEditor() {
+        this.props.changeEditorSize(!this.props.editor.minimized);
     }
 
     public render() {
@@ -139,10 +157,13 @@ export const Hotkeys = connect(
     (state: Pick<State, keyof State>) => ({
         pokemon: state.pokemon,
         selectedId: state.selectedId,
+        editor: state.editor,
     }),
     {
         selectPokemon,
         deletePokemon,
         addPokemon,
+        newNuzlocke,
+        changeEditorSize,
     },
 )(HotkeysBase);

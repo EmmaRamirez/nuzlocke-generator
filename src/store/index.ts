@@ -5,8 +5,6 @@ import { persistCombineReducers, persistStore, createMigrate } from 'redux-persi
 import storage from 'redux-persist/lib/storage';
 
 import { reducers } from '../reducers';
-import { State } from 'state';
-import { Store } from 'react-redux';
 
 const pkg = require('../../package.json');
 
@@ -68,6 +66,6 @@ if (process.env.NODE_ENV === 'test') {
     middlewares.push(loggerMiddleware);
 }
 
-export const store: Store<State> = createStore(persistReducers, applyMiddleware(...middlewares));
+export const store = createStore(persistReducers, applyMiddleware(...middlewares));
 
 export const persistor = persistStore(store, null);

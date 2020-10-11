@@ -1,5 +1,5 @@
-import { connect, Dispatch } from 'react-redux';
-import { editTrainer } from '../../actions';
+import { connect } from 'react-redux';
+import { editTrainer } from 'actions';
 import { TrainerInfoEditField } from './TrainerInfoEditField';
 import { State } from 'state';
 
@@ -10,7 +10,7 @@ const mapStateToProps = (state: Pick<State, keyof State>, ownProps: TrainerInfoE
     };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<State>, ownProps: TrainerInfoEditField) => {
+const mapDispatchToProps = (dispatch, ownProps: TrainerInfoEditField) => {
     return {
         onChange: (e: any) => {
             dispatch(

@@ -77,7 +77,7 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
         const className = champsPokemon({
             background: gameOfOriginToColor(this.props.gameOfOrigin),
             height: '48px',
-            width: this.getWidth(),
+            width: `${this.getWidth()}px`,
             margin,
             padding,
         });

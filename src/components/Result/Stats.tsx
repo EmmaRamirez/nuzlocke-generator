@@ -133,7 +133,7 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
         }
         return this.props.pokemon
             .filter((s) => s.shiny)
-            .map((p) => <PokemonIcon shiny={p.shiny} species={p.species} id={p.id} />);
+            .map((p) => <PokemonIcon key={p.id} shiny={p.shiny} species={p.species} id={p.id} />);
     }
 
     private numberOfShinies = this.props.pokemon.filter((s) => s.shiny).length;

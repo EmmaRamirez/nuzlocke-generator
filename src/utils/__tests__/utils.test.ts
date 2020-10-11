@@ -27,6 +27,8 @@ import { numberToSpecies } from 'utils/numberToSpecies';
 import { capitalize } from 'utils/capitalize';
 import { matchNatureToToxtricityForme } from 'utils/matchNatureToToxtricityForme';
 import { Nature } from 'utils/Nature';
+import { GenderTransformType, handleSignificantGenderDifference } from 'utils/handleSignificantGenderDifferences';
+import { getAdditionalFormes } from 'utils/getAdditionalFormes';
 
 const objectPropertiesWhere = (obj: object, filter: any) =>
     Array.from(Object.values(obj)).filter(filter).length;
@@ -352,4 +354,29 @@ describe(matchNatureToToxtricityForme.name, () => {
         const subject = matchNatureToToxtricityForme(undefined);
         expect(subject).toBe('Lowkey');
     });
+});
+
+describe(handleSignificantGenderDifference.name, () => {
+    it('returns undefined for a species without a sgd', () => {
+        const subject = handleSignificantGenderDifference(
+            'Ditto',
+            'Male',
+            GenderTransformType.Dreamworld,
+        );
+        expect(subject).toBe(undefined);
+    });
+
+    it.skip('works for species with sdg\'s', () => {
+        const subject = handleSignificantGenderDifference(
+            'Unfezant',
+            'Female',
+            GenderTransformType.Sugimori,
+        );
+        expect(subject).toBe(undefined);
+    });
+});
+
+describe(getAdditionalFormes.name, () => {
+    const subject = listOfPokemon.map(species => ({[species]: getAdditionalFormes(species)}));
+    expect(subject).toMatchSnapshot();
 });

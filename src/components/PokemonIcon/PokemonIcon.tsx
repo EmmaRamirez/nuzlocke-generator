@@ -9,13 +9,14 @@ import {
     speciesToNumber,
 } from 'utils';
 import { Gender, GenderElementProps } from 'components/Shared';
-import { selectPokemon } from 'actions';
+import { selectPokemon, SELECT_POKEMON } from 'actions';
 import { store } from 'store';
 import { DragSource, ConnectDragSource } from 'react-dnd';
 import { Pokemon } from 'models';
 import { Dispatch } from 'redux';
 import { State } from 'state';
 import { Omit } from 'ramda';
+import { Action } from 'actions';
 
 interface PokemonIconProps {
     /** The id of the Pokemon, used for selection **/
@@ -160,7 +161,7 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
 }
 
 const mapDispatchToProps = (
-    dispatch: Dispatch<State>,
+    dispatch: Dispatch<Action<SELECT_POKEMON>>,
     ownProps: Omit<PokemonIconProps, 'onClick' | 'selectedId'>,
 ) => {
     return {

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/prefer-for-of */
 import * as fs from 'fs';
 import { HELD_ITEM, GEN_2_POKEMON_MAP, GEN_2_CHARACTER_MAP, MOVES_ARRAY, splitUp } from './utils';
-import { parse } from 'querystring';
 
 const OFFSETS = {
     PLAYER_ID: [0x2009, 0x2009 + 2],

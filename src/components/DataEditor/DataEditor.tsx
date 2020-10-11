@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import {
     Button,
     ButtonGroup,
@@ -12,6 +12,7 @@ import {
     Switch,
     Classes,
     Checkbox,
+    IAlertProps,
 } from '@blueprintjs/core';
 import { PokemonIconBase } from 'components/PokemonIcon';
 import { ErrorBoundary } from 'components/Shared';
@@ -64,6 +65,30 @@ const isValidJSON = (data: string): boolean => {
         return false;
     }
 };
+
+export type WarningText = {warningText?: string};
+export function DeleteAlert({
+    warningText = 'This will permanently delete all your local storage data, with no way to retrieve it. Are you sure you want to do this?',
+    ...props
+}: IAlertProps & WarningText) {
+    const style = useSelector<State, State['style']>(state => state.style);
+
+    return <Alert
+        cancelButtonText="Nevermind"
+        confirmButtonText="Delete Anyway"
+        className={style.editorDarkMode ? 'bp3-dark' : 'bp3-light'}
+        style={{ maxWidth: '600px' }}
+        intent={Intent.DANGER}
+        {...props}
+    >
+        <div style={{ display: 'flex' }}>
+            <img style={{ height: '10rem' }} src={trash} alt="Sad Trubbish" />
+            <p style={{ fontSize: '1.2rem', padding: '1rem' }}>
+                {warningText}
+            </p>
+        </div>
+    </Alert>;
+}
 
 export class DataEditorBase extends React.Component<DataEditorProps, DataEditorState> {
     public textarea: any;
@@ -318,23 +343,11 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
     public render() {
         return (
             <BaseEditor name="Data">
-                <Alert
+                <DeleteAlert
                     onConfirm={this.clearAllData}
                     isOpen={this.state.isClearAllDataOpen}
                     onCancel={this.toggleClearingData}
-                    cancelButtonText="Nevermind"
-                    confirmButtonText="Delete Anyway"
-                    className={this.props.state.style.editorDarkMode ? 'bp3-dark' : 'bp3-light'}
-                    style={{ maxWidth: '600px' }}
-                    intent={Intent.DANGER}>
-                    <div style={{ display: 'flex' }}>
-                        <img style={{ height: '10rem' }} src={trash} alt="Sad Trubbish" />
-                        <p style={{ fontSize: '1.2rem', padding: '1rem' }}>
-                            This will permanently delete all your local storage data, with no way to
-                            retrieve it. Are you sure you want to do this?
-                        </p>
-                    </div>
-                </Alert>
+                />
                 <Dialog
                     isOpen={this.state.isOpen}
                     onClose={(e) => this.setState({ isOpen: false })}

@@ -31,12 +31,17 @@ export enum LayoutAlignment {
     SpaceEvenly = 'space-evenly',
 }
 
+export enum LayoutWrap {
+    Wrap = 'wrap',
+    NoWrap = 'no-wrap',
+}
+
 export interface LayoutProps {
     display: LayoutDisplay;
     direction: LayoutDirection;
     alignment: LayoutAlignment;
     spacing: LayoutSpacing;
-    wrap: boolean;
+    wrap: LayoutWrap;
     style: React.CSSProperties;
 }
 
@@ -46,7 +51,7 @@ export class Layout extends React.PureComponent<Partial<LayoutProps>> {
         direction: LayoutDirection.Row,
         alignment: LayoutAlignment.Start,
         spacing: LayoutSpacing.Start,
-        wrap: true,
+        wrap: 'wrap',
         style: {},
     };
 
@@ -54,6 +59,7 @@ export class Layout extends React.PureComponent<Partial<LayoutProps>> {
         const { display, direction, alignment, spacing, wrap } = this.props;
         return (
             <div
+                data-testid='layout'
                 style={
                     {
                         display: display,
