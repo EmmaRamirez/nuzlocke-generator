@@ -13,11 +13,12 @@ import {
 import { connect } from 'react-redux';
 import { State } from 'state';
 import { updateNuzlocke, deleteNuzlocke, newNuzlocke, switchNuzlocke, replaceState, updateSwitchNuzlocke } from 'actions';
-import { gameOfOriginToColor, getContrastColor } from 'utils';
+import { feature, gameOfOriginToColor, getContrastColor } from 'utils';
 import { omit } from 'ramda';
 import { createStore } from 'redux';
 import { appReducers } from 'reducers';
 import { NuzlockeGameTags } from './NuzlockeGameTags';
+import { DeleteAlert } from 'components/DataEditor';
 
 export interface NuzlockeSaveControlsProps {
     nuzlockes: State['nuzlockes'];
@@ -31,9 +32,19 @@ export interface NuzlockeSaveControlsProps {
     updateSwitchNuzlocke: updateSwitchNuzlocke;
 }
 
+export interface NuzlockeSaveControlsState {
+    isDeletingNuzlocke: boolean;
+    deletionFunction?: () => void;
+}
+
 const sort = (a, b) => a.id - b.id;
 
-export class NuzlockeSaveBase extends React.Component<NuzlockeSaveControlsProps> {
+export class NuzlockeSaveBase extends React.Component<NuzlockeSaveControlsProps, NuzlockeSaveControlsState> {
+    public state = {
+        isDeletingNuzlocke: false,
+        deletionFunction: undefined,
+    };
+
     // eslint-disable-next-line camelcase
     public UNSAFE_componentWillMount() {
         const {nuzlockes, newNuzlocke, state} = this.props;
@@ -41,6 +52,10 @@ export class NuzlockeSaveBase extends React.Component<NuzlockeSaveControlsProps>
             newNuzlocke(state, {isCopy: false});
         }
     }
+
+    private toggleIsDeletingNuzlocke = () => {
+        this.setState(state => ({isDeletingNuzlocke: !state.isDeletingNuzlocke}));
+    };
 
     public renderMenu() {
 
@@ -97,6 +112,12 @@ export class NuzlockeSaveBase extends React.Component<NuzlockeSaveControlsProps>
                         isCurrent={isCurrent}
                         isCopy={isCopy}
                     />
+                    <DeleteAlert
+                        onConfirm={this.state.deletionFunction}
+                        isOpen={this.state.isDeletingNuzlocke}
+                        onCancel={this.toggleIsDeletingNuzlocke}
+                        warningText='This will delete your Nuzlocke save without any to retrieve it. Are you sure you want to do this?'
+                    />
                     <Popover position={Position.BOTTOM_RIGHT} content={<Menu><MenuItem shouldDismissPopover={false} disabled={isCurrent} icon='swap-horizontal' onClick={() => {
                         try {
                             console.log(
@@ -134,20 +155,31 @@ export class NuzlockeSaveBase extends React.Component<NuzlockeSaveControlsProps>
                         text='Copy this Nuzlocke'
                     >
                     </MenuItem>
+                    {feature.hallOfFame && <MenuItem shouldDismissPopover={false}
+                        onClick={() => {
+
+                        }}
+                        icon={'crown'}
+                        text='Submit to Hall of Fame'
+                    />}
                     <MenuItem disabled={saves.length === 1} shouldDismissPopover={false} icon='trash' intent={Intent.DANGER} onClick={() => {
-                        try {
-                            deleteNuzlocke(id);
-                            if (isCurrent) {
-                                switchNuzlocke(saves[0].id);
-                                replaceState(JSON.parse(saves[0].data));
+                        const deletionFunction = () => {
+                            try {
+                                deleteNuzlocke(id);
+                                if (isCurrent) {
+                                    switchNuzlocke(saves[0].id);
+                                    replaceState(JSON.parse(saves[0].data));
+                                }
+                                this.toggleIsDeletingNuzlocke();
+                            } catch (e) {
+                                const toaster = Toaster.create();
+                                toaster.show({
+                                    message: `Failed to delete nuzlocke. ${e}`,
+                                    intent: Intent.DANGER,
+                                });
                             }
-                        } catch (e) {
-                            const toaster = Toaster.create();
-                            toaster.show({
-                                message: `Failed to delete nuzlocke. ${e}`,
-                                intent: Intent.DANGER,
-                            });
-                        }
+                        };
+                        this.setState({deletionFunction, isDeletingNuzlocke: true});
                     }} text='Delete Nuzlocke' /></Menu>}>
                         <Icon style={{ transform: 'rotate(90deg)', marginLeft: 'auto' }} icon="more" />
                     </Popover>

@@ -25,7 +25,6 @@ export function NuzlockeGameTags({
         <div style={{
             display: 'flex',
             width: '20rem',
-            justifyContent: 'center',
             alignItems: 'center',
             pointerEvents: 'none',
             flexDirection: 'column',
@@ -34,7 +33,7 @@ export function NuzlockeGameTags({
             <div style={{
                 display: 'flex',
             }}>{data?.pokemon?.filter(p => p.status === 'Team').map(poke => <PokemonIcon key={poke.id} {...poke} />)}</div>
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'space-between', minWidth: '50%'}}>
+            <div style={{display: 'flex', minWidth: '50%'}}>
                 <Tag round style={{
                     margin: '0 2px',
                     background: gameOfOriginToColor(game),
