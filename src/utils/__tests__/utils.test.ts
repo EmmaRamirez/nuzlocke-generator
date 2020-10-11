@@ -28,6 +28,7 @@ import { capitalize } from 'utils/capitalize';
 import { matchNatureToToxtricityForme } from 'utils/matchNatureToToxtricityForme';
 import { Nature } from 'utils/Nature';
 import { GenderTransformType, handleSignificantGenderDifference } from 'utils/handleSignificantGenderDifferences';
+import { getAdditionalFormes } from 'utils/getAdditionalFormes';
 
 const objectPropertiesWhere = (obj: object, filter: any) =>
     Array.from(Object.values(obj)).filter(filter).length;
@@ -373,4 +374,9 @@ describe(handleSignificantGenderDifference.name, () => {
         );
         expect(subject).toBe(undefined);
     });
+});
+
+describe(getAdditionalFormes.name, () => {
+    const subject = listOfPokemon.map(species => ({[species]: getAdditionalFormes(species)}));
+    expect(subject).toMatchSnapshot();
 });

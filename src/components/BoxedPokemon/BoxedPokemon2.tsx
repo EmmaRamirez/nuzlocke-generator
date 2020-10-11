@@ -3,7 +3,7 @@ import { Pokemon } from 'models';
 import * as React from 'react';
 
 export function BoxedPokemon({pokemon}: {pokemon: Pokemon}) {
-    return <PokemonIcon
+    return <div data-testid='boxed-pokemon'><PokemonIcon
         species={pokemon?.species}
         id={pokemon?.id}
         style={{cursor: 'pointer'}}
@@ -11,5 +11,5 @@ export function BoxedPokemon({pokemon}: {pokemon: Pokemon}) {
         shiny={pokemon?.shiny}
         gender={pokemon?.gender}
         customIcon={pokemon?.customIcon}
-    />;
+    /></div>;
 }

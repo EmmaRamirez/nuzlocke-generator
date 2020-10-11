@@ -606,10 +606,12 @@ Thank you!
 - You can now copy Nuzlockes in the Saves Manager!
 - A warning now pops up when attempting to delete a Nuzlocke
 - Display fixes for mobile
+- Fixed an issue that made ChampsPokemon icon widths unpredictable
 - Fixed a saves bug that would occur after deleting all data
 - Added Flyinium Z, Soothe Bell, Shell Bell
 - Fixed issues with using hotkeys after deleting all Pokémon
 - Various performance improvements
+- Added a sprite and image for Zarude
 
 ## Known Issues
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
