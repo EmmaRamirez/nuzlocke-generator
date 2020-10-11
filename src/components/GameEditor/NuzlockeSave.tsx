@@ -120,14 +120,7 @@ export class NuzlockeSaveBase extends React.Component<NuzlockeSaveControlsProps,
                     />
                     <Popover position={Position.BOTTOM_RIGHT} content={<Menu><MenuItem shouldDismissPopover={false} disabled={isCurrent} icon='swap-horizontal' onClick={() => {
                         try {
-                            console.log(
-                                currentId,
-                                id,
-                                parsedData.pokemon.map(p => p.species),
-                                JSON.parse(state).pokemon.map(p => p.species),
-                            );
                             updateSwitchNuzlocke(currentId, id, state);
-                            // switchNuzlocke(id);
                             replaceState(parsedData);
                         } catch (e) {
                             const toaster = Toaster.create();

@@ -14,7 +14,7 @@ import { State } from 'state';
 export function DeadPokemon({pokemon}: {pokemon: Pokemon}) {
     const dispatch = useDispatch();
 
-    return <span style={{ filter: 'grayscale(100%)' }}>
+    return <span data-testid='dead-pokemon' style={{ filter: 'grayscale(100%)' }}>
         <PokemonIconBase
             onClick={(e) => dispatch(selectPokemon(pokemon.id))}
             {...(pokemon as any)}

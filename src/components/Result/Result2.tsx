@@ -12,13 +12,13 @@ import { ChampsPokemonView } from 'components/ChampsPokemon';
 import { DeadPokemon } from 'components/DeadPokemon/DeadPokemon2';
 
 
-const getAllByStatus = (boxes: Box[], pokemon: Pokemon[], status: string) => {
-    const boxesByStatus = boxes.filter(box => {
-        return box.name.toLowerCase() === status.toLowerCase() ||
-            box?.inheritFrom?.toLowerCase() === status.toLowerCase();
+const getAllByStatus = (boxes?: Box[], pokemon?: Pokemon[], status?: string) => {
+    const boxesByStatus = boxes?.filter(box => {
+        return box.name.toLowerCase() === status?.toLowerCase() ||
+            box?.inheritFrom?.toLowerCase() === status?.toLowerCase();
     }).map(box => box.name);
     const pokemonByStatus = pokemon
-        .filter(poke => !poke.hidden && boxesByStatus.includes(poke.status ?? ''));
+        ?.filter(poke => !poke.hidden && boxesByStatus?.includes(poke.status ?? ''));
 
     return pokemonByStatus;
 };
@@ -89,15 +89,17 @@ export function TeamPokemonMemberView({pokemon}:{pokemon: Pokemon}) {
     </div>;
 }
 
+export type ViewProps = Partial<Pick<State, 'pokemon'>> & DisplayProps;
+
 export function TeamPokemonView({
     pokemon,
     display,
     direction,
     alignment,
     spacing,
-}: Pick<State, 'pokemon'> & DisplayProps) {
+}: ViewProps) {
     return <Layout display={display} direction={direction} alignment={alignment} spacing={spacing} wrap={LayoutWrap.NoWrap}>
-        {pokemon.map(poke => <TeamPokemonMemberView key={poke.id} pokemon={poke} />)}
+        {pokemon?.map(poke => <TeamPokemonMemberView key={poke.id} pokemon={poke} />)}
     </Layout>;
 }
 
@@ -107,9 +109,9 @@ export function BoxedPokemonView({
     direction,
     alignment,
     spacing,
-}: Pick<State, 'pokemon'> & DisplayProps) {
+}: ViewProps) {
     return <Layout display={display} direction={direction} alignment={alignment} spacing={spacing}>
-        {pokemon.map(poke => <BoxedPokemon key={poke.id} pokemon={poke} />)}
+        {pokemon?.map(poke => <BoxedPokemon key={poke.id} pokemon={poke} />)}
     </Layout>;
 }
 
@@ -119,9 +121,9 @@ export function DeadPokemonView({
     direction,
     alignment,
     spacing,
-}: Pick<State, 'pokemon'> & DisplayProps) {
+}: ViewProps) {
     return <Layout display={display} direction={direction} alignment={alignment} spacing={spacing}>
-        {pokemon.map(poke => <DeadPokemon key={poke.id} pokemon={poke} />)}
+        {pokemon?.map(poke => <DeadPokemon key={poke.id} pokemon={poke} />)}
     </Layout>;
 }
 
@@ -147,7 +149,7 @@ export function Result() {
         return () => window.removeEventListener('scroll', scrollToScale);
     });
 
-    return <div style={{
+    return <div data-testid='result' style={{
         margin: '2rem',
         background: bgColor,
         color: '#222',

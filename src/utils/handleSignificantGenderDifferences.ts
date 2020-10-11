@@ -9,7 +9,7 @@ export enum GenderTransformType {
 
 export const significantGenderDifferenceList = [
     'Hippowdon',
-    'Unfeazant',
+    'Unfezant',
     'Frillish',
     'Jellicent',
     'Pyroar',

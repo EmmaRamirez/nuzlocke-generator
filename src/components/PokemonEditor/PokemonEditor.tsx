@@ -59,7 +59,6 @@ const PokemonLocationChecklist = ({
 
     const getLocIcon = (name) => {
         const poke = pokemon.find((p) => p.met === name && p.gameOfOrigin === game.name);
-        console.log(name, poke?.met, poke?.gameOfOrigin, game.name);
         if (poke && !poke.hidden) {
             return (
                 <>

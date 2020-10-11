@@ -146,7 +146,6 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
 
     private toggleEditor() {
         this.props.changeEditorSize(!this.props.editor.minimized);
-        console.log('i am being called');
     }
 
     public render() {

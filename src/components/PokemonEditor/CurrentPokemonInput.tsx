@@ -128,12 +128,10 @@ export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonI
                 [inputName]: e.target.checked,
             };
         } else if (inputName === 'forme') {
-            console.log('We reached this', e.target.value);
             edit = {
                 forme: e.target.value,
                 types: pokemon && matchSpeciesToTypes(pokemon?.species, e.target.value),
             };
-            pokemon && console.log('new type: ', matchSpeciesToTypes(pokemon?.species, e.target.value));
         } else {
             edit = {
                 [inputName]: e.target.value,
