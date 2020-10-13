@@ -30,3 +30,4 @@ export * from './deleteBox';
 export * from './toggleTemtemMode';
 export * from './toggleMobileResultView';
 export * from './stats';
+export * from './updateEditorHistory';
