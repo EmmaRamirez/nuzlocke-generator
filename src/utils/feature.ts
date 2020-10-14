@@ -6,4 +6,5 @@ export const feature = Object.freeze({
     newHotkeys: process.env.NEW_HOTKEYS,
     resultv2: process.env.RESULT_V2,
     hallOfFame: process.env.HALL_OF_FAME,
+    locks: process.env.LOCKS,
 });

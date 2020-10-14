@@ -21,6 +21,7 @@ import {
     Intent,
     Dialog,
     Classes,
+    Drawer,
 } from '@blueprintjs/core';
 import { State } from 'state';
 import { BaseEditor } from 'components/BaseEditor';
@@ -28,6 +29,8 @@ import { ColorEdit, rgbaOrHex } from 'components/Shared';
 import { cx } from 'emotion';
 import * as Styles from './styles';
 import { ThemeEditor } from 'components/ThemeEditor';
+import { omit } from 'ramda';
+const debounce = require('lodash.debounce');
 
 const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'], game?: Game) => {
     const propName = name || e.target.name;
@@ -110,13 +113,39 @@ export const IconsNextToTeamPokemon = (props) => (
 
 export const smallItemOptions = ['outer glow', 'round', 'square', 'text'];
 
+export const TextAreaDebounced = ({edit, props}: {edit: typeof editEvent, props: StyleEditorProps}) => {
+    const [value, setValue] = React.useState('');
+
+    const delayedValue = React.useCallback(debounce(e => edit(e, props, 'customTeamHTML'), 300), [
+        value,
+        props.style.customTeamHTML
+    ]);
+
+    const onChange = e => {
+        e.persist();
+        setValue(e.target.value);
+        delayedValue(e);
+    };
+
+    React.useEffect(() => {
+        setValue(props.style.customTeamHTML);
+    }, [props.style.customTeamHTML]);
+
+    return <TextArea
+        large={true}
+        onChange={onChange}
+        className="custom-css-input bp3-fill"
+        value={value}
+    />;
+};
+
 export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEditorState> {
     public state = { isThemeEditorOpen: false, showChromePicker: false };
     private toggleThemeEditor = (e) =>
         this.setState({ isThemeEditorOpen: !this.state.isThemeEditorOpen });
 
     public render() {
-        const props = this.props;
+        const props: StyleEditorProps = this.props;
         const createStyleEdit = (isWidthHeight?: boolean) => cx(Styles.styleEdit, {
             [Styles.styleEdit_dark]: props.style.editorDarkMode,
             [Styles.widthHeightInputs]: isWidthHeight,
@@ -134,16 +163,17 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
         return (
             <BaseEditor name="Style">
                 {feature.themeEditing ? (
-                    <Dialog
+                    <Drawer
                         isOpen={this.state.isThemeEditorOpen}
                         onClose={this.toggleThemeEditor}
+                        size={Drawer.SIZE_LARGE}
                         title="Theme Editor"
                         icon="style"
                         className={cx(Styles.dialog, {
                             [Classes.DARK]: props.style.editorDarkMode,
                         })}>
                         <ThemeEditor />
-                    </Dialog>
+                    </Drawer>
                 ) : null}
                 <div className={styleEdit}>
                     <label className={cx(Classes.LABEL, Classes.INLINE)}>Template</label>
@@ -167,6 +197,16 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                             Edit Theme
                         </Button>
                     ) : null}
+                </div>
+
+                <div className="custom-css-input-wrapper">
+                    <label style={{ padding: '.5rem' }} className="bp3-label">
+                        Custom Team HTML {/*<a href=''>Check out Layout Guide</a>*/}
+                    </label>
+                    <TextAreaDebounced
+                        props={props}
+                        edit={editEvent}
+                    />
                 </div>
 
                 <div className={styleEdit}>
@@ -759,7 +799,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className="custom-css-input-wrapper">
-                    <label style={{ padding: '.5rem' }} className="bp3-label">
+                    <label style={{ padding: '.25rem' }} className="bp3-label">
                         Custom CSS {/*<a href=''>Check out Layout Guide</a>*/}
                     </label>
                     <TextArea

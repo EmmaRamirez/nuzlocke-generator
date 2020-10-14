@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TeamPokemon } from 'components/TeamPokemon/TeamPokemon2';
-import { css } from 'emotion';
+import { css, cx } from 'emotion';
 import { Box, Pokemon } from 'models';
 import { useSelector } from 'react-redux';
 import { State } from 'state';
@@ -10,7 +10,17 @@ import { Layout, LayoutDisplay, LayoutDirection, LayoutAlignment, LayoutSpacing,
 import { BoxedPokemon } from 'components/BoxedPokemon/BoxedPokemon2';
 import { ChampsPokemonView } from 'components/ChampsPokemon';
 import { DeadPokemon } from 'components/DeadPokemon/DeadPokemon2';
+import { ErrorBoundary } from 'components';
+import { TopBar } from 'components/TopBar';
+import * as Styles from './styles';
 
+const uuid = require('uuid');
+
+
+async function load() {
+    const resource = await import('@emmaramirez/dom-to-image');
+    return resource.domToImage;
+}
 
 const getAllByStatus = (boxes?: Box[], pokemon?: Pokemon[], status?: string) => {
     const boxesByStatus = boxes?.filter(box => {
@@ -28,6 +38,7 @@ export interface DisplayProps {
     direction?: LayoutDirection;
     alignment?: LayoutAlignment;
     spacing?: LayoutSpacing;
+    wrap?: LayoutWrap;
 }
 
 export enum DownloadStatus {
@@ -37,8 +48,35 @@ export enum DownloadStatus {
     done = 'done',
 }
 
-export function DownloadableWrapper() {
+const toImage = (ref, setDS) => async () => {
+    const resultNode = ref?.current;
+    try {
+        setDS(DownloadStatus.active);
+        const domToImage = await load();
+        const dataUrl = await (domToImage as any).toPng(resultNode, { corsImage: true });
+        const link = document.createElement('a');
+        link.download = `nuzlocke-${uuid()}.png`;
+        link.href = dataUrl;
+        link.click();
+        setDS(DownloadStatus.done);
+    } catch (e) {
+        setDS(DownloadStatus.error);
+        console.log(e);
+    }
+};
 
+export function TopBarWithDownload({
+    forwardedRef,
+}) {
+    const [downloadStatus, setDownloadStatus] = React.useState(DownloadStatus.dormant);
+
+    return <ErrorBoundary>
+        <TopBar
+            isDownloading={downloadStatus === DownloadStatus.active}
+            onClickDownload={toImage(forwardedRef, setDownloadStatus)}
+        >
+        </TopBar>
+    </ErrorBoundary>;
 }
 
 export function TeamPokemonMemberView({pokemon}:{pokemon: Pokemon}) {
@@ -97,8 +135,9 @@ export function TeamPokemonView({
     direction,
     alignment,
     spacing,
+    wrap,
 }: ViewProps) {
-    return <Layout display={display} direction={direction} alignment={alignment} spacing={spacing} wrap={LayoutWrap.NoWrap}>
+    return <Layout wrap={wrap} display={display} direction={direction} alignment={alignment} spacing={spacing}>
         {pokemon?.map(poke => <TeamPokemonMemberView key={poke.id} pokemon={poke} />)}
     </Layout>;
 }
@@ -129,6 +168,8 @@ export function DeadPokemonView({
 
 
 export function Result() {
+    const resultRef = React.useRef(null);
+
     const [downloadStatus, setDownloadStatus] = React.useState(DownloadStatus.dormant);
     const [scale, setScale] = React.useState(1);
     const [srollY, setScrollY] = React.useState(0);
@@ -145,20 +186,38 @@ export function Result() {
     };
 
     React.useEffect(() => {
+        console.log(resultRef);
         window.addEventListener('scroll', scrollToScale);
         return () => window.removeEventListener('scroll', scrollToScale);
     });
 
-    return <div data-testid='result' style={{
-        margin: '2rem',
-        background: bgColor,
-        color: '#222',
-        width: '48rem',
-        overflowY: 'auto',
-    }}>
-        <TeamPokemonView pokemon={getAllByStatus(boxes, pokemon, 'team')} />
-        <BoxedPokemonView spacing={LayoutSpacing.Center} pokemon={getAllByStatus(boxes, pokemon, 'boxed')} />
-        <DeadPokemonView spacing={LayoutSpacing.Center} pokemon={getAllByStatus(boxes, pokemon, 'dead')} />
-        <ChampsPokemonView spacing={LayoutSpacing.Center} pokemon={getAllByStatus(boxes, pokemon, 'champs')} />
+    const TopBarWithRef = React.forwardRef((props, ref) => <TopBarWithDownload
+        forwardedRef={ref}
+    />);
+
+    return <div className={cx(Styles.result_wrapper, 'hide-scrollbars')}>
+        <TopBarWithRef />
+        <div data-testid='result'
+            ref={resultRef}
+            style={{
+                margin: '2rem',
+                background: bgColor,
+                color: '#222',
+                height: `${style.resultHeight}px`,
+                width: `${style.resultWidth}px`,
+                overflowY: 'auto',
+            }}
+        >
+            <style>{style.customCSS}</style>
+            <ErrorBoundary>
+                <TeamPokemonView
+                    wrap={LayoutWrap.Wrap}
+                    pokemon={getAllByStatus(boxes, pokemon, 'team')}
+                />
+            </ErrorBoundary>
+            <BoxedPokemonView spacing={LayoutSpacing.Center} pokemon={getAllByStatus(boxes, pokemon, 'boxed')} />
+            <DeadPokemonView spacing={LayoutSpacing.Center} pokemon={getAllByStatus(boxes, pokemon, 'dead')} />
+            <ChampsPokemonView spacing={LayoutSpacing.Center} pokemon={getAllByStatus(boxes, pokemon, 'champs')} />
+        </div>
     </div>;
 }

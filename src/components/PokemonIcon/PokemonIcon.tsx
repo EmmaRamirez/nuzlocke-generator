@@ -97,6 +97,48 @@ export const getIconURL = ({ id, species, forme, shiny, gender, customIcon, egg 
     )}${getIconFormeSuffix(forme as keyof typeof Forme)}.png`;
 };
 
+export function PokemonIconPlain ({
+    isDragging,
+    id,
+    gender,
+    species,
+    forme,
+    onClick,
+    selectedId,
+    className,
+    shiny,
+    style,
+    customIcon,
+    includeTitle,
+    imageStyle,
+}: PokemonIconProps & {imageStyle: any}) {
+    return <div
+        role="icon"
+        onClick={(e) => {
+            e.preventDefault();
+            onClick && onClick();
+        }}
+        id={id}
+        title={includeTitle ? species : undefined}
+        style={style}
+        className={`${id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'} ${
+            className || ''
+        } ${isDragging ? 'opacity-medium' : ''}`}>
+        <img
+            style={imageStyle}
+            alt={species}
+            src={getIconURL({
+                id,
+                species,
+                forme,
+                shiny,
+                gender,
+                customIcon,
+            } as IconURLArgs)}
+        />
+    </div>;
+}
+
 @DragSource('ICON', iconSource as any, (connect, monitor) => ({
     connectDragSource: connect.dragSource(),
     isDragging: monitor.isDragging(),
@@ -109,20 +151,8 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
     public render() {
         const {
             connectDragSource,
-            isDragging,
-            id,
-            gender,
-            species,
-            forme,
-            onClick,
-            selectedId,
-            className,
-            shiny,
-            style,
             styles,
             hidden,
-            customIcon,
-            includeTitle,
         } = this.props;
         const imageStyle = {
             maxHeight: '100%',
@@ -131,31 +161,9 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
             imageRendering: styles?.iconRendering,
         };
         return connectDragSource!(
-            <div
-                role="icon"
-                onClick={(e) => {
-                    e.preventDefault();
-                    onClick && onClick();
-                }}
-                id={id}
-                title={includeTitle ? species : undefined}
-                style={style}
-                className={`${id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'} ${
-                    className || ''
-                } ${isDragging ? 'opacity-medium' : ''}`}>
-                <img
-                    style={imageStyle}
-                    alt={species}
-                    src={getIconURL({
-                        id,
-                        species,
-                        forme,
-                        shiny,
-                        gender,
-                        customIcon,
-                    } as IconURLArgs)}
-                />
-            </div>,
+            <div>
+                <PokemonIconPlain imageStyle={imageStyle} {...this.props} />
+            </div>
         );
     }
 }

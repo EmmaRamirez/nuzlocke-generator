@@ -6,8 +6,13 @@ import Loadable from 'react-loadable';
 import './app.css';
 import { Hotkeys } from 'components/Hotkeys';
 import { State } from 'state';
-import { version1116 } from 'actions';
+import { updateEditorHistory, version1116 } from 'actions';
 import { feature } from 'utils';
+import { deepEqual } from 'assert';
+import { deepCompareKeys } from '@blueprintjs/core/lib/esm/common/utils';
+import { isEqual } from 'lodash';
+import { omit } from 'ramda';
+import { History } from 'reducers/editorHistory';
 
 export interface AppProps {
     style: State['style'];
@@ -25,26 +30,42 @@ const Editor = Loadable({
     },
 });
 
-const Result = Loadable({
-    loader: () => feature.resultv2 ? import('components/Result/Result2') : import('components/Result/Result'),
-    loading: Loading,
-    render(loaded) {
-        return <loaded.Result />;
-    },
-});
 
-export class UpdaterBase extends React.PureComponent<{customMoveMap: State['customMoveMap'], version1116: typeof version1116 }> {
+
+export class UpdaterBase extends React.Component<{
+    present: Omit<State, 'editorHistory'>,
+    updateEditorHistory: updateEditorHistory,
+    lrt: History<any>['lastRevisionType']
+}> {
     public componentDidMount() {
-        if (!Array.isArray(this.props.customMoveMap)) {
-            this.props.version1116();
+        console.log('Called component did mount');
+        // initial history record
+        this.props.updateEditorHistory(this.props.present);
+    }
+
+    // eslint-disable-next-line camelcase
+    public UNSAFE_componentWillReceiveProps(prev) {
+        if (prev.lrt === 'update' && this.props.present != null && this.props.present != null && !isEqual(this.props.present, prev.present)) {
+            console.log(this.props.lrt, prev.lrt);
+            this.props.updateEditorHistory(prev.present);
         }
     }
+
     public render() {
         return <div />;
     };
 }
 
-export const Updater = connect((state: State) => ({ customMoveMap: state.customMoveMap }), { version1116 })(UpdaterBase);
+export const Updater = connect(
+    (state: State) => ({
+        present: omit(['editorHistory'], state),
+        lrt: state.editorHistory.lastRevisionType,
+    }),
+    { updateEditorHistory },
+    null,
+    {pure: false}
+)
+(UpdaterBase);
 
 export class AppBase extends React.PureComponent<AppProps> {
     public constructor(props: AppProps) {
@@ -52,6 +73,16 @@ export class AppBase extends React.PureComponent<AppProps> {
     }
 
     public render() {
+        console.log('features', feature);
+
+        const Result = Loadable({
+            loader: () => this.props.style.editorDarkMode ? import('components/Result/Result2') : import('components/Result/Result'),
+            loading: Loading,
+            render(loaded) {
+                return <loaded.Result />;
+            },
+        });
+
         return (
             <div
                 className="app"

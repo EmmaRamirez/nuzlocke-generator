@@ -34,7 +34,7 @@
 .default-light .result-notes {
   color: #111;
 }
-.default-light .container {
+.default-light .ng-container {
   background-color: #eee;
 }
 .default-light .pokemon-container {
@@ -218,7 +218,7 @@
   vertical-align: top;
   flex-direction: column;
 }
-.generations .container {
+.generations .ng-container {
   position: relative;
 }
 .generations li {
@@ -459,7 +459,7 @@
   left: 0;
   top: -23px;
 }
-.compact .container {
+.compact .ng-container {
   border-width: 0 !important;
 }
 .compact .team-container {
@@ -523,7 +523,7 @@
   margin: unset;
   margin-left: -0.25rem;
 }
-.compact-with-icons .container {
+.compact-with-icons .ng-container {
   border-width: 0 !important;
 }
 .compact-with-icons .team-container {
@@ -597,7 +597,7 @@
 }
 .compact-with-icons .rules-container ol {
   display: inline-block;
-  padding-right: 8rem;
+  /* padding-right: 8rem; */
 }
 .compact-with-icons .stats {
   font-size: 120%;
@@ -679,7 +679,7 @@
   padding: 0.25rem;
 }
 .compact-with-icons .pokemon-item {
-  left: 7px;
+  left: 8px;
 }
 .compact-with-icons .badge-wrapper {
   width: 400px;
@@ -714,7 +714,7 @@
   display: none;
 }
 
-.generations-classic .container {
+.generations-classic .ng-container {
     position: relative;
   }
   .generations-classic li {

@@ -18,6 +18,7 @@ import { ChampsPokemonView } from 'components/ChampsPokemon/ChampsPokemonCollect
 import * as Loadable from 'react-loadable';
 import { LayoutDisplay, LayoutDirection, LayoutAlignment, LayoutSpacing } from 'components/Layout';
 import { TeamPokemon } from 'components/TeamPokemon/TeamPokemon2';
+import { render } from 'react-dom';
 
 
 const modelPokemon: Pokemon = {
@@ -115,6 +116,7 @@ const componentTree: ComponentNode[] = [
                     width: '4rem',
                 },
                 customCSS: '',
+                customHTML: undefined,
             },
             baseProps: {
                 pokemon: modelPokemon,
@@ -207,14 +209,16 @@ export interface ThemEditorState {
 
 export const NumericValue = ({ name, value, onChange }) => (
     <div className={cx(css.componentOption)}>
-        <label className={Classes.LABEL}>{name}</label>
+        <label style={{marginBottom: 0}} className={Classes.LABEL}>{name}</label>
         <input className={Classes.INPUT} name={name} onChange={onChange} type='number' value={value} />
     </div>
 );
 
+
+
 export const TextInput = ({ name, value, onChange }) => (
     <div className={cx(css.componentOption)}>
-        <label className={Classes.LABEL}>{name}</label>
+        <label style={{marginBottom: 0}} className={Classes.LABEL}>{name}</label>
         <input
             className={Classes.INPUT}
             type='text'
@@ -227,7 +231,7 @@ export const TextInput = ({ name, value, onChange }) => (
 
 export const WrapWithLabel = ({name, children}) => (
     <div className={cx(css.componentOption)}>
-        <label className={Classes.LABEL}>{name}</label>
+        <label style={{marginBottom: 0}} className={Classes.LABEL}>{name}</label>
         {children}
     </div>
 );
@@ -306,6 +310,83 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
             callback(node);
             this.forEachNode(node.childNodes!, callback);
         }
+    }
+
+    private renderOptions(props) {
+
+        const currentNode: ComponentNode =
+            this.getCurrentNode() == null ? null : this.getCurrentNode();
+
+        const modify = (key, value) => props[key] = value;
+
+        return Object.keys(props).map((propKey, idx) => {
+            if (!currentNode.options) {
+                return null;
+            }
+
+            if (typeof props[propKey] === 'object') {
+                return this.renderOptions(props[propKey]);
+            }
+
+            const type = typeof props[propKey];
+            const value = props[propKey];
+
+            if (propKey === 'customCSS' || propKey === 'customHTML') {
+                return <WrapWithLabel name={propKey}>
+                    <TextArea
+                        value={value}
+                        name={propKey}
+                        onChange={e => {
+                            modify(propKey, e.target.value);
+                            this.setState(this.state);
+                        }}
+                    />
+                </WrapWithLabel>;
+            }
+
+            if (propKey === 'padding' || propKey === 'margin') {
+                return <CSSUnitInput
+                    name={propKey}
+                    value={value}
+                    onChange={e => {
+                        modify(propKey, e.target.value);
+                        this.setState(this.state);
+                    }}
+                />;
+            }
+
+            if (type === 'boolean') {
+                return (
+                    <WrapWithLabel name={propKey}>
+                        <Switch onChange={(e: any) => {
+                            modify(propKey, e.target.checked);
+                            this.setState(this.state);
+                        }} key={idx} checked={value} />
+                    </WrapWithLabel>
+                );
+            }
+            if (type === 'number') {
+                return <NumericValue
+                    name={propKey}
+                    value={value}
+                    onChange={e => {
+                        modify(propKey, e.target.value);
+                        this.setState(this.state);
+                    }}
+                />;
+            }
+            if (type === 'string') {
+                return <TextInput
+                    value={value}
+                    name={propKey}
+                    onChange={e => {
+                        modify(propKey, e.target.value);
+                        this.setState(this.state);
+                    }}
+                />;
+            }
+            return JSON.stringify({type, value});
+        });
     }
 
     public render() {
@@ -388,69 +469,8 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
                         <Menu>
                             {currentNode &&
                                 currentNode.options &&
-                                Object.keys(currentNode.options.props).map((propKey, idx) => {
-                                    if (!currentNode.options) {
-                                        return null;
-                                    }
-                                    const type = typeof currentNode.options.props[propKey];
-                                    const value = currentNode.options.props[propKey];
-
-                                    if (propKey === 'customCSS') {
-                                        return <WrapWithLabel name={propKey}>
-                                            <TextArea
-                                                value={value}
-                                                name={propKey}
-                                                onChange={e => {
-                                                    modify(propKey, e.target.value);
-                                                    this.setState(this.state);
-                                                }}
-                                            />
-                                        </WrapWithLabel>;
-                                    }
-
-                                    if (propKey === 'padding' || propKey === 'margin') {
-                                        return <CSSUnitInput
-                                            name={propKey}
-                                            value={value}
-                                            onChange={e => {
-                                                modify(propKey, e.target.value);
-                                                this.setState(this.state);
-                                            }}
-                                        />;
-                                    }
-
-                                    if (type === 'boolean') {
-                                        return (
-                                            <WrapWithLabel name={propKey}>
-                                                <Switch onChange={(e: any) => {
-                                                    modify(propKey, e.target.checked);
-                                                    this.setState(this.state);
-                                                }} key={idx} checked={value} />
-                                            </WrapWithLabel>
-                                        );
-                                    }
-                                    if (type === 'number') {
-                                        return <NumericValue
-                                            name={propKey}
-                                            value={value}
-                                            onChange={e => {
-                                                modify(propKey, e.target.value);
-                                                this.setState(this.state);
-                                            }}
-                                        />;
-                                    }
-                                    if (type === 'string') {
-                                        return <TextInput
-                                            value={value}
-                                            name={propKey}
-                                            onChange={e => {
-                                                modify(propKey, e.target.value);
-                                                this.setState(this.state);
-                                            }}
-                                        />;
-                                    }
-                                    return JSON.stringify({type, value});
-                                })}
+                                this.renderOptions(currentNode?.options?.props)
+                            }
                         </Menu>
                     </div>
                 </div>

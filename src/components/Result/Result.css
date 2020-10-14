@@ -12,14 +12,14 @@
 .boxed-pokemon-icon {
   max-height: 3rem;
 }
-.container {
+.ng-container {
   padding-bottom: 0.5rem;
   position: relative;
   overflow: hidden;
   width: 100%;
   height: 100%;
 }
-.container h3 {
+.ng-container h3 {
   text-transform: uppercase;
   margin: 0.5rem;
   letter-spacing: 4px;
@@ -35,7 +35,7 @@
   font-size: 1.25rem;
   font-weight: bold;
 }
-.container {
+.ng-container {
   padding-bottom: 1rem;
   background-color: #383840;
   color: #eee;
@@ -55,10 +55,6 @@
 .logo {
   height: 2.5rem;
 }
-.trainer-container div span {
-  font-size: 0.8rem;
-  letter-spacing: 2px;
-}
 .trainer-image {
   border-radius: 50%;
   height: 3rem;
@@ -77,7 +73,6 @@
   font-weight: light;
 }
 .badge-wrapper {
-  display: inline-flex;
   width: 216px;
   flex-wrap: wrap;
   justify-content: center;
@@ -257,7 +252,6 @@
   background-position: top left, bottom left;
 }
 .trainer-container div {
-  display: inline-block;
   text-align: center;
 }
 .logo {

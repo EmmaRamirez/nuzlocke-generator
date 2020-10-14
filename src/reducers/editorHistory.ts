@@ -1,59 +1,87 @@
-import { Action, UNDO_EDITOR_HISTORY, UPDATE_EDITOR_HISTORY } from 'actions';
+import { Action, REDO_EDITOR_HISTORY, UNDO_EDITOR_HISTORY, UPDATE_EDITOR_HISTORY } from 'actions';
 import { init, last, lift } from 'ramda';
 import { diff, applyChange, Diff, applyDiff, revertChange } from 'deep-diff';
 
 export interface History<T> {
-    past: any[][];
+    past: any[];
     present?: T;
-    future: any[][];
+    future: any[];
+    lastRevisionType: 'undo' | 'redo' | 'update' | 'load';
 }
 
 export function editorHistory(state: History<any> = {
     past: [],
     present: undefined,
     future: [],
-}, action: Action<UNDO_EDITOR_HISTORY | UPDATE_EDITOR_HISTORY>): History<any> {
+    lastRevisionType: 'update',
+}, action: Action<UNDO_EDITOR_HISTORY | UPDATE_EDITOR_HISTORY | REDO_EDITOR_HISTORY>): History<any> {
     switch (action.type) {
         case UPDATE_EDITOR_HISTORY:
-            const {past, present, future} = state;
+            const {present, future, past} = state;
 
-            const latest = last(past);
-            const newPast = diff(present, action.present);
-            const pastState = newPast ? [
-                ...past,
-                newPast,
-            ] : past;
+            if (action.present == null) {
+                return state;
+            }
 
             return {
-                past: pastState,
+                past: present == null ? past : [
+                    ...past,
+                    present,
+                ],
                 present: action.present,
-                future,
+                // reset the future so we can't create a forked path
+                future: [],
+                lastRevisionType: 'update',
             };
 
         case UNDO_EDITOR_HISTORY:
-            const undo = () => {
+            const undo = (): History<any> => {
                 const {past, present, future} = state;
 
                 const latest = past ? last(past) : [];
-                const newFuture = diff(present, action.present);
-                // @ts-expect-error
-                const newPresent = revertChange(action.present, present, latest);
 
-                console.log(action.present, latest);
-                console.log(newFuture, newPresent);
+                console.log({
+                    present: action.present,
+                    latest,
+                    pastL: init(past).length,
+                });
 
                 return {
                     past: init(past),
-                    present: newPresent,
+                    present: action.present,
                     future: [
                         ...future,
-                        newFuture,
+                        present,
                     ],
+                    lastRevisionType: 'undo',
                 };
             };
 
-            // @ts-expect-error
             return undo();
+
+        case REDO_EDITOR_HISTORY:
+            const redo = (): History<any> => {
+                const {past, present, future} = state;
+
+                const latest = future ? last(future) : [];
+
+                console.log({
+                    present: action.present,
+                    latest,
+                });
+
+                return {
+                    past: [
+                        ...past,
+                        present,
+                    ],
+                    present: action.present,
+                    future: init(future),
+                    lastRevisionType: 'redo',
+                };
+            };
+
+            return redo();
 
         default:
             return state;

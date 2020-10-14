@@ -64,27 +64,30 @@ CheckpointsSelectState
     public render() {
         const { checkpoint } = this.props;
         return (
-            <Popover
-                minimal
-                interactionKind={PopoverInteractionKind.CLICK}
-                content={this.renderOptions(checkpoint)}>
-                <div
-                    role="select"
-                    className={cx(styles.checkpointSelect, Classes.SELECT, Classes.BUTTON)}>
-                    <div>
-                        <img
-                            className={cx(styles.checkpointImage(1))}
-                            alt={checkpoint.name}
-                            src={
-                                checkpoint.image.startsWith('http')
-                                    ? checkpoint.image
-                                    : `./img/checkpoints/${checkpoint.image}.png`
-                            }
-                        />{' '}
-                        {checkpoint.name}
+            <>
+                <Popover
+                    minimal
+                    interactionKind={PopoverInteractionKind.CLICK}
+                    content={this.renderOptions(checkpoint)}>
+                    <div
+                        role="select"
+                        className={cx(styles.checkpointSelect, Classes.SELECT, Classes.BUTTON)}>
+                        <div>
+                            <img
+                                className={cx(styles.checkpointImage(1))}
+                                alt={checkpoint.name}
+                                src={
+                                    checkpoint.image.startsWith('http')
+                                        ? checkpoint.image
+                                        : `./img/checkpoints/${checkpoint.image}.png`
+                                }
+                            />{' '}
+                            {checkpoint.name}
+                        </div>
                     </div>
-                </div>
-            </Popover>
+                </Popover>
+                <Button onClick={() => {}} icon={'lock'} />
+            </>
         );
     }
 }

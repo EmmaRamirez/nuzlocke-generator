@@ -7,11 +7,13 @@ import {
     getContrastColor,
     getBadges,
     isEmpty,
+    feature,
 } from 'utils';
 import { connect } from 'react-redux';
 import { Trainer, Badge } from 'models';
 import { State } from 'state';
 import { Checkpoints } from 'reducers/checkpoints';
+import { Stats } from './Stats';
 
 export interface TrainerResultProps {
     orientation: OrientationType;
@@ -120,6 +122,8 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
         const isVertical = orientation === 'vertical';
         const baseDivStyle = isVertical ? { padding: '2px' } : { padding: '.25rem' };
         const tciProps = { trainer, orientation };
+        const enableStats = style.displayStats;
+        const renderStatsInTrainer = feature.resultv2;
 
         return (
             <div
@@ -167,7 +171,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                     </div>
                 )}
                 {['name', 'money', 'time', 'id', 'totalTime'].map(item => (<TrainerColumnItem key={item} prop={item} {...tciProps} />))}
-                <div className="badge-wrapper" style={this.getBadgeWrapperStyles(orientation)}>
+                <div className="badge-wrapper flex" style={this.getBadgeWrapperStyles(orientation)}>
                     {this.renderBadgesOrTrials()}
                 </div>
                 {style.displayRules && style.displayRulesLocation === 'inside trainer section' ? (
@@ -180,6 +184,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                         </ol>
                     </div>
                 ) : null}
+                {enableStats && renderStatsInTrainer && <Stats />}
             </div>
         );
     }

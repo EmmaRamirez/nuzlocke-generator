@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { editRule, addRule, deleteRule, resetRules } from 'actions';
 
 import './RulesEditor.css';
+import { State } from 'state';
 
 export interface RulesEditorProps {
     rules: string[];
@@ -99,7 +100,7 @@ export const RulesEditorDialogBase = (
 };
 
 export const RulesEditorDialog = connect(
-    (state: any) => ({
+    (state: State) => ({
         rules: state.rules,
         style: state.style,
     }),

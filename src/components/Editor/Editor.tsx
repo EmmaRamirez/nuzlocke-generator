@@ -3,8 +3,12 @@ import { connect } from 'react-redux';
 import './editor.css';
 import { css, cx } from 'emotion';
 import { State } from 'state';
-import { Classes, Spinner } from '@blueprintjs/core';
+import { Button, ButtonGroup, Classes, Icon, Spinner } from '@blueprintjs/core';
 import { ErrorBoundary } from 'components/Shared';
+import { undoEditorHistory, updateEditorHistory, replaceState, redoEditorHistory } from 'actions';
+import { last, omit } from 'ramda';
+import { editorHistory } from 'reducers/editorHistory';
+import { editor } from 'reducers/editor';
 
 const PokemonEditor = React.lazy(() => import('components/PokemonEditor').then(res => ({ default: res.PokemonEditor })));
 const NuzlockeSaveControls = React.lazy(() => import('components/GameEditor/NuzlockeSaveControls').then(res => ({ default: res.NuzlockeSaveControls })));
@@ -22,36 +26,111 @@ const Skeleteon = <div style={{width: '100%', height: '100px'}} className='bp3-s
  * The main editor interface.
  */
 export class EditorBase extends React.Component<
-{ editor: State['editor']; style: State['style'] },
+{ editor: State['editor']; style: State['style'], updateEditorHistory: updateEditorHistory, present: Omit<State, 'editorHistory'>, undoEditorHistory: undoEditorHistory, editorHistory: State['editorHistory'], replaceState: replaceState, redoEditorHistory: redoEditorHistory },
 {}
 > {
+    public editorRef: React.RefObject<HTMLDivElement>;
+
     public constructor(props) {
         super(props);
+        this.editorRef = React.createRef();
+    }
+
+    public kindToColor(kind) {
+        if (kind === 'A') return '#6dc0ed';
+        if (kind === 'E') return '#57eb7e';
+        if (kind === 'D') return '#f25f5c';
+        if (kind === 'N') return '#c871de';
+        return '#f25f5c';
     }
 
     public render() {
+        const {present,
+            editorHistory,
+            editor: {
+                minimized,
+            },
+            style: { editorDarkMode }} = this.props;
         const styles = {
             base: css`
                 min-width: 30rem;
                 max-width: 40rem;
                 min-height: 100vh;
                 padding: 0.25rem;
+                padding-top: 2.5rem;
+                position: relative;
+            `,
+            buttons: css`
+                height: 1.5rem;
+                left: 0;
+                position: fixed;
+                top: 0;
+                z-index: 2;
+            `,
+            buttonGroup: css`
+                width: 100%;
+            `,
+            kind: (kind) => css`
+                background: ${this.kindToColor(kind)};
+                width: 1.5rem;
+                height: 1.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                color: rgba(0, 0, 0, 0.6);
+            `,
+            edit: css`
+                display: flex;
+                padding: 0.25rem;
+                border-radius: .25rem;
+                border: 1px solid #eee;
+                margin: 2px;
+                align-items: center;
+            `,
+            path: css`
+                color: #666;
+                margin: 0 0.5rem;
+            `,
+            change: css`
+
             `,
         };
 
-        const minimized = this.props.editor.minimized;
+        console.log(this.editorRef?.current);
+
         return (
             <div
+                ref={this.editorRef}
                 className={cx(
                     'editor',
                     styles.base,
-                    this.props.style.editorDarkMode ? Classes.DARK : '',
+                    editorDarkMode ? Classes.DARK : '',
                 )}
                 style={{
                     width: minimized ? '0%' : '33%',
                     marginLeft: minimized ? '-30rem' : '0',
-                    background: this.props.style.editorDarkMode ? '#222' : '#fff',
+                    background: editorDarkMode ? '#222' : '#fff',
                 }}>
+                <div className={styles.buttons} style={{
+                    width: this.editorRef?.current?.offsetWidth,
+                    background: editorDarkMode ? '#222' : '#fff',
+                }}>
+                    <ButtonGroup fill className={styles.buttonGroup}>
+                        <Button disabled={editorHistory?.past?.length <= 0} onClick={() => {
+                            this.props.undoEditorHistory(present);
+                            this.props.replaceState(last(editorHistory?.past));
+                        }} minimal fill icon='undo' />
+                        <Button disabled={editorHistory?.future?.length === 0} onClick={() => {
+                            this.props.redoEditorHistory(present);
+                            this.props.replaceState(last(editorHistory?.future));
+                        }} minimal fill icon='redo' />
+                    </ButtonGroup>
+                </div>
+                <div>
+                    past: {editorHistory?.past?.length}
+                    future: {editorHistory?.future?.length}
+                </div>
                 <ErrorBoundary>
                     <React.Suspense fallback={Skeleteon}>
                         <NuzlockeSaveControls />
@@ -106,5 +185,13 @@ export const Editor = connect(
     (state: State) => ({
         editor: state.editor,
         style: state.style,
+        editorHistory: state.editorHistory,
+        present: omit(['editorHistory'], state),
     }),
+    {
+        updateEditorHistory,
+        undoEditorHistory,
+        redoEditorHistory,
+        replaceState,
+    }
 )(EditorBase);

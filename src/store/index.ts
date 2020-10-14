@@ -48,7 +48,7 @@ const migrations = {
 
 const config = {
     key: 'root',
-    blacklist: ['router'],
+    blacklist: ['router', 'editorHistory'],
     storage,
     version: pkg.version,
     migrations: createMigrate(migrations, { debug: false }),
