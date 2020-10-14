@@ -117,7 +117,6 @@ export const TextAreaDebounced = ({edit, props}: {edit: typeof editEvent, props:
     const [value, setValue] = React.useState('');
 
     const delayedValue = React.useCallback(debounce(e => edit(e, props, 'customTeamHTML'), 300), [
-        value,
         props.style.customTeamHTML
     ]);
 

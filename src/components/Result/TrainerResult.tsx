@@ -41,7 +41,7 @@ export const TrainerColumnItem = ({ trainer, prop, orientation }: TrainerColumnI
     const baseDivStyle = isVertical ? { padding: '2px' } : { padding: '.25rem' };
 
     return !isEmpty(trainer[prop]) ? (
-        <div style={baseDivStyle} className={`${prop} column`}>
+        <div style={baseDivStyle} className={`trainer-${prop} column`}>
             <div style={baseDivStyle}>{prop}</div>
             <div style={bottomTextStyle}>{trainer[prop]}</div>
         </div>

@@ -60,12 +60,13 @@ export class EditorBase extends React.Component<
                 padding-top: 2.5rem;
                 position: relative;
             `,
-            buttons: css`
-                height: 1.5rem;
+            historyControls: css`
+                height: 2rem;
                 left: 0;
                 position: fixed;
                 top: 0;
                 z-index: 2;
+                border-bottom: 1px solid;
             `,
             buttonGroup: css`
                 width: 100%;
@@ -97,8 +98,6 @@ export class EditorBase extends React.Component<
             `,
         };
 
-        console.log(this.editorRef?.current);
-
         return (
             <div
                 ref={this.editorRef}
@@ -112,9 +111,10 @@ export class EditorBase extends React.Component<
                     marginLeft: minimized ? '-30rem' : '0',
                     background: editorDarkMode ? '#222' : '#fff',
                 }}>
-                <div className={styles.buttons} style={{
+                <div className={styles.historyControls} style={{
                     width: this.editorRef?.current?.offsetWidth,
                     background: editorDarkMode ? '#222' : '#fff',
+                    borderBottomColor: editorDarkMode ? '#000' : '#ccc',
                 }}>
                     <ButtonGroup fill className={styles.buttonGroup}>
                         <Button disabled={editorHistory?.past?.length <= 0} onClick={() => {

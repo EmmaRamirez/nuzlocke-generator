@@ -49,6 +49,8 @@ export const heading = css`
     justify-content: center;
     letter-spacing: 4px;
     margin: 0.5rem;
+    font-weight: bold;
+    font-size: 2rem;
     text-align: center;
     text-transform: uppercase;
     width: 100%;

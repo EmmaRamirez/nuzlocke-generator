@@ -616,5 +616,22 @@ Thank you!
 ## Known Issues
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`,
+    '1.4.0': `
+## Vote!
+- Vote on nuzlocke-generator features [here](https://www.strawpoll.me/21091547)
+- And if you're American, in the upcoming elections [here](https://www.vote.org/)
+
+## Features
+- **Undo/Redo**: accidentally deleted your Magikarp? You can now take it back
+    - Note: edit history is only through local storage and is not downloaded as part of json downloads
+- **Checkpoints for Pokémon**: you can now reward your Pokémon individually with badges
+![imageRender](${imageRender})
+
+
+## Fixes
+
+## Known Issues
+
 `
 };

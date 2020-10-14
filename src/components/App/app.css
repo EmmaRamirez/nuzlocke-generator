@@ -7,10 +7,12 @@
 }
 .release-notes-wrapper h1 {
   font-size: 1.5rem !important;
+  font-weight: bold;
 }
 .release-notes-wrapper h2 {
   margin-top: 0.5rem;
   font-size: 1.2rem !important;
+  font-weight: bold;
 }
 .release-notes-wrapper h4 {
   background: rgba(244,244,244,0.1);
@@ -32,8 +34,9 @@
   margin: 0 auto;
   max-width: 100%;
 }
-.release-notes-wrapper a {
-  margin-left: 4px;
+.release-notes-wrapper ul {
+    list-style-type: disc;
+    margin-left: 40px;
 }
 .release-notes-wrapper li ul {
   margin: 0;
