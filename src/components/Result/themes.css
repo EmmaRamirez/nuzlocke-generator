@@ -614,6 +614,7 @@
   background: #383840;
   image-rendering: pixelated;
   border-radius: 0 0 0.25rem 0.25rem;
+  width: auto;
 }
 .compact-with-icons .pokemon-container {
   margin: 0.25rem;

@@ -113,11 +113,15 @@ export const IconsNextToTeamPokemon = (props) => (
 
 export const smallItemOptions = ['outer glow', 'round', 'square', 'text'];
 
-export const TextAreaDebounced = ({edit, props}: {edit: typeof editEvent, props: StyleEditorProps}) => {
+export const TextAreaDebounced = ({edit, props, name}: {
+    edit: typeof editEvent,
+    props: StyleEditorProps,
+    name: keyof State['style']
+}) => {
     const [value, setValue] = React.useState('');
 
-    const delayedValue = React.useCallback(debounce(e => edit(e, props, 'customTeamHTML'), 300), [
-        props.style.customTeamHTML
+    const delayedValue = React.useCallback(debounce(e => edit(e, props, name), 300), [
+        props.style[name]
     ]);
 
     const onChange = e => {
@@ -127,14 +131,15 @@ export const TextAreaDebounced = ({edit, props}: {edit: typeof editEvent, props:
     };
 
     React.useEffect(() => {
-        setValue(props.style.customTeamHTML);
-    }, [props.style.customTeamHTML]);
+        setValue(props.style[name] as string);
+    }, [props.style[name]]);
 
     return <TextArea
         large={true}
         onChange={onChange}
         className="custom-css-input bp3-fill"
         value={value}
+        name={name}
     />;
 };
 
@@ -203,6 +208,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         Custom Team HTML {/*<a href=''>Check out Layout Guide</a>*/}
                     </label>
                     <TextAreaDebounced
+                        name='customTeamHTML'
                         props={props}
                         edit={editEvent}
                     />
@@ -801,11 +807,10 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     <label style={{ padding: '.25rem' }} className="bp3-label">
                         Custom CSS {/*<a href=''>Check out Layout Guide</a>*/}
                     </label>
-                    <TextArea
-                        large={true}
-                        onChange={(e) => editEvent(e, props, 'customCSS')}
-                        className="custom-css-input bp3-fill"
-                        value={props.style.customCSS}
+                    <TextAreaDebounced
+                        name='customCSS'
+                        props={props}
+                        edit={editEvent}
                     />
                 </div>
             </BaseEditor>

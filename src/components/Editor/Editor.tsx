@@ -65,7 +65,7 @@ export class EditorBase extends React.Component<
                 left: 0;
                 position: fixed;
                 top: 0;
-                z-index: 2;
+                z-index: 12;
                 border-bottom: 1px solid;
             `,
             buttonGroup: css`

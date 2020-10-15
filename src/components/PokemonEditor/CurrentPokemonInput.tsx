@@ -16,6 +16,7 @@ import { ErrorBoundary } from 'components/Shared';
 import { TagInput, Classes, TextArea } from '@blueprintjs/core';
 import { State } from 'state';
 import { Pokemon } from 'models';
+import { debounce } from 'lodash';
 
 interface CurrentPokemonInputProps {
     labelName: string;
@@ -43,56 +44,28 @@ interface CurrentPokemonInputProps {
     customTypes: State['customTypes'];
 }
 
-export class CurrentPokemonTextInputBase extends React.PureComponent<Omit<CurrentPokemonInputProps, 'customMoveMap' | 'customTypes'>> {
-    public onChange = (inputName) => (e) => {
-        this.props.editPokemon({
-            [inputName]: e.target.value,
-        }, this.props.selectedId);
-    };
 
-    public render() {
-        const {
-            inputName,
-            type,
-            value,
-            placeholder,
-            disabled,
-        } = this.props;
-
-        return <input
-            onChange={this.onChange(inputName)}
-            type={type}
-            name={inputName}
-            value={value}
-            placeholder={placeholder}
-            disabled={disabled}
-            className={disabled ? `${Classes.DISABLED} ${Classes.TEXT_MUTED}` : ''}
-        />;
-    }
-
-}
-
-export const CurrentPokemonTextInput = connect(
-    (state: Pick<State, keyof State>) => ({
-        selectedId: state.selectedId,
-    }),
-    { editPokemon },
-)(CurrentPokemonTextInputBase);
-
-
-
-export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonInputProps> {
+export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInputProps,
+{ value?: any }> {
     public constructor(props: CurrentPokemonInputProps) {
         super(props);
+        this.state = {
+            value: this.props.value,
+        };
     }
 
     public static defaultProps = {
         disabled: false,
     };
 
+    public componentWillUnmount() {
+        this.setState({ value: undefined });
+    }
+
     public onChange = (inputName, {position, value, pokemon}: {position?: number, value?: any, pokemon?: Pokemon} = {}) => (
         e: React.ChangeEvent & {target: {value: any, checked?: boolean}},
     ) => {
+        e.persist();
         let edit;
 
         if (inputName === 'types' && position != null) {
@@ -138,9 +111,13 @@ export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonI
             };
         }
 
-        //this.setState({value: e.target.value});
-        this.props.editPokemon(edit, this.props.selectedId);
+        this.setState({value: e.target.value});
+        this.delayedEdit()(edit);
     };
+
+    private delayedEdit() {
+        return debounce(edit => this.props.editPokemon(edit, this.props.selectedId), 300);
+    }
 
     public getInput({
         labelName,
@@ -165,7 +142,7 @@ export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonI
     }) {
         const { customMoveMap, customTypes } = this.props;
 
-        value = value == null ? '' : value;
+        value = value ?? '';
         if (type === 'moves') {
             return (
                 <ErrorBoundary>
@@ -283,7 +260,7 @@ export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonI
                     <div className={Classes.SELECT}>
                         <select
                             onChange={this.onChange(inputName, {position: 0, value})}
-                            value={value[0] == null ? 'None' : value[0]}
+                            value={value?.[0] == null ? 'None' : value?.[0]}
                             name={inputName}>
                             {options
                                 ? options.map((item: string, index: number) => (
@@ -298,7 +275,7 @@ export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonI
                     <div className={Classes.SELECT}>
                         <select
                             onChange={this.onChange(inputName, {position: 1, value})}
-                            value={value[1] == null ? 'None' : value[1]}
+                            value={value?.[1] == null ? 'None' : value?.[1]}
                             name={inputName}>
                             {options
                                 ? options.map((item, index) => (
@@ -339,7 +316,7 @@ export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonI
                     usesKeyValue,
                     inputName,
                     type,
-                    value,
+                    value: this.state.value,
                     placeholder,
                     options,
                     pokemon,
@@ -356,4 +333,6 @@ export const CurrentPokemonInput = connect(
         customTypes: state.customTypes,
     }),
     { editPokemon, selectPokemon },
+    null,
+    {pure: false}
 )(CurrentPokemonInputBase);

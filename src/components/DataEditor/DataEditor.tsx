@@ -24,6 +24,7 @@ import { omit } from 'ramda';
 import { BaseEditor } from 'components/BaseEditor';
 import { State } from 'state';
 import { noop } from 'redux-saga/utils';
+import { feature } from 'utils';
 
 const trash = require('assets/img/trash.png');
 
@@ -273,6 +274,15 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         this.setState({ isClearAllDataOpen: !this.state.isClearAllDataOpen });
 
     private renderSaveFileUI() {
+        const allowedGames: string[] = [
+            'RBY'
+        ];
+
+        if (feature.gen2saves) {
+            allowedGames.push('GS');
+            allowedGames.push('Crystal');
+        }
+
         return <>
             <Button onClick={e => {
                 this.setState({ showSaveFileUI: !this.state.showSaveFileUI });
@@ -295,7 +305,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         <select
                             value={this.state.selectedGame}
                             onChange={(e) => this.setState({ selectedGame: e.target.value })}>
-                            {['RBY'].map((game) => (
+                            {allowedGames.map((game) => (
                                 <option key={game} value={game}>{game}</option>
                             ))}
                         </select>

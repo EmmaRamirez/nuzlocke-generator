@@ -292,6 +292,7 @@ export const locations = {
         'Lake Valor',
         'Lake Verity',
         'Lost Tower',
+        'Mining Museum',
         'Mt. Coronet',
         'Newmoon Island',
         'Old Chateau',

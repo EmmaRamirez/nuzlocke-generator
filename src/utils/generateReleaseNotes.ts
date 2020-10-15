@@ -630,6 +630,7 @@ Thank you!
 
 
 ## Fixes
+- Improved performance of custom CSS inputs
 
 ## Known Issues
 

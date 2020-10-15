@@ -442,6 +442,9 @@ CurrentPokemonEditState
                         placeholder="Pallet Town"
                         value={currentPokemon.met || ''}
                         onChange={(e) => {
+                            if (!e?.target?.value) {
+                                return;
+                            }
                             const edit = {
                                 met: e.target.value,
                             };

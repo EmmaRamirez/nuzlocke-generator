@@ -4,6 +4,7 @@ import { State } from 'state';
 import { PokemonIcon } from 'components/PokemonIcon';
 import { Layout, LayoutDisplay } from 'components/Layout';
 import { isLocal } from 'utils';
+import { range } from 'ramda';
 
 export interface StatsProps {
     pokemon: State['pokemon'];
@@ -101,7 +102,7 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
             .map((p) => p.causeOfDeath || '')
             .join('\n');
         const res = this.wordMap(words.split(/\n/));
-        return [0, 1, 2, 3].map((i) => ({ name: res[i]?.name, total: res[i]?.total }));
+        return range(0, 5).map((i) => ({ name: res[i]?.name, total: res[i]?.total }));
     }
 
     private displayMostCommonDeath(data: { name?: string; total?: string }[]) {

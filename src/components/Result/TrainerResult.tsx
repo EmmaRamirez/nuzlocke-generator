@@ -170,7 +170,14 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                         {this.props.game.name} Nuzlocke
                     </div>
                 )}
-                {['name', 'money', 'time', 'id', 'totalTime'].map(item => (<TrainerColumnItem key={item} prop={item} {...tciProps} />))}
+                {feature.resultv2 ? (
+                    <div className='flex'>
+                        {['name', 'money', 'time', 'id', 'totalTime'].map(item => (<TrainerColumnItem key={item} prop={item} {...tciProps} />))}
+                    </div>
+                ) : <>
+                    {['name', 'money', 'time', 'id', 'totalTime'].map(item => (<TrainerColumnItem key={item} prop={item} {...tciProps} />))}
+                </>
+                }
                 <div className="badge-wrapper flex" style={this.getBadgeWrapperStyles(orientation)}>
                     {this.renderBadgesOrTrials()}
                 </div>
