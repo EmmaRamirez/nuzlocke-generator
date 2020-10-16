@@ -38,11 +38,14 @@ import {
     PopoverInteractionKind,
     Button,
     Intent,
+    Menu,
+    MenuItem,
 } from '@blueprintjs/core';
 import { addPokemon } from 'actions';
 import { State } from 'state';
 import { CurrentPokemonLayoutItem } from './CurrentPokemonLayoutItem';
 import { MoveEditor } from 'components/MoveEditor';
+import { POSITION_BOTTOM } from '@blueprintjs/core/lib/esm/common/classes';
 
 const pokeball = require('assets/pokeball.png');
 
@@ -85,6 +88,35 @@ export interface CurrentPokemonEditState {
     expandedView: boolean;
     isMoveEditorOpen: boolean;
     box: Boxes;
+}
+
+const getEvos = (species): string[] | undefined => {
+    return EvolutionTree?.[species];
+};
+
+export function EvolutionSelection({currentPokemon, onEvolve}) {
+    const evos = getEvos(currentPokemon?.species);
+
+    if (!evos?.length) {
+        return null;
+    }
+
+    if (evos?.length === 1) {
+        const species = evos?.[0];
+        return <Button
+            onClick={onEvolve(species)}
+            className={Classes.MINIMAL}
+            intent={Intent.PRIMARY}
+        >Evolve</Button>;
+    } else {
+        return <Popover popoverClassName={'no-list-item-types'} minimal position={Position.BOTTOM_LEFT} interactionKind={PopoverInteractionKind.CLICK_TARGET_ONLY} content={<>
+            {evos.map(evo => <div className={Styles.evoMenuItem} key={evo} onClick={onEvolve(evo)}>{evo}</div>)}
+        </>}>
+            <Button className={Classes.MINIMAL} intent={Intent.PRIMARY}>
+                Evolve
+            </Button>
+        </Popover>;
+    }
 }
 
 export class CurrentPokemonEditBase extends React.Component<
@@ -143,35 +175,13 @@ CurrentPokemonEditState
 
     private parseTree(tree) {}
 
-    private evolvePokemon = (currentPokemon) => (e) => {
-        if (this.doesPokemonHaveEvolution(currentPokemon)) {
-            const evoTree = getDeepObject(EvolutionTree, currentPokemon.species);
-            const evolutionSpecies = evoTree && Object.keys(evoTree);
 
-            if (!evolutionSpecies) {
-                return false;
-            }
+    private evolvePokemon = (species) => (e) => {
+        const edit = {
+            species,
+        };
 
-            if (evolutionSpecies && evolutionSpecies.length > 1) {
-            } else {
-                const edit = {
-                    species: evolutionSpecies[0],
-                };
-
-                this.props.editPokemon(edit, this.state.selectedId);
-            }
-            return true;
-        } else {
-            return false;
-        }
-    };
-
-    private doesPokemonHaveEvolution = (currentPokemon) => {
-        if (getDeepObject(EvolutionTree, currentPokemon.species)) {
-            return true;
-        } else {
-            return false;
-        }
+        this.props.editPokemon(edit, this.state.selectedId);
     };
 
     private toggleDialog = () => this.setState({ isMoveEditorOpen: !this.state.isMoveEditorOpen });
@@ -379,13 +389,11 @@ CurrentPokemonEditState
                         type="select"
                         options={this.state.box.map((n) => n.name)}
                     />
-                    {/*this.doesPokemonHaveEvolution(currentPokemon) ? <Button
-                        style={{marginTop: '12px'}}
-                        onClick={this.evolvePokemon(currentPokemon)}
-                        className={Classes.MINIMAL}
-                        intent={Intent.PRIMARY}
-                    >Evolve</Button> : null*/}
                     <div className={cx(Styles.iconBar)}>
+                        <EvolutionSelection
+                            currentPokemon={currentPokemon}
+                            onEvolve={this.evolvePokemon}
+                        />
                         <CopyPokemonButton onClick={this.copyPokemon} />
                         <DeletePokemonButton id={this.state.selectedId} />
                     </div>
@@ -393,7 +401,7 @@ CurrentPokemonEditState
                 <CurrentPokemonLayoutItem>
                     <ErrorBoundary>
                         <Autocomplete
-                            items={listOfPokemon}
+                            items={listOfPokemon as unknown as string[]}
                             name="species"
                             label="Species"
                             disabled={currentPokemon.egg}

@@ -134,7 +134,6 @@ describe('speciesToNumber', () => {
     it('returns a number', () => {
         expect(speciesToNumber('Bulbasaur')).toBe(1);
         expect(speciesToNumber('Zeraora')).toBe(807);
-        expect(typeof speciesToNumber(choose(listOfPokemon))).toBe('number');
     });
 });
 

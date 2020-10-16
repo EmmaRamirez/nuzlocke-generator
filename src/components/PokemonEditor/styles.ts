@@ -14,3 +14,14 @@ export const copyButton = css`
     margin-left: auto;
     cursor: pointer;
 `;
+
+export const evoMenuItem = css`
+    cursor: pointer;
+    padding: 0.5rem;
+    width: 7rem;
+    text-overflow: ellipsis;
+    &:hover {
+        background: #eee;
+        transition: 300ms background;
+    }
+`;

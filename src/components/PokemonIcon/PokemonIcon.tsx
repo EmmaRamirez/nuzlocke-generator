@@ -7,6 +7,7 @@ import {
     significantGenderDifferenceList,
     Forme,
     speciesToNumber,
+    Species,
 } from 'utils';
 import { Gender, GenderElementProps } from 'components/Shared';
 import { selectPokemon, SELECT_POKEMON } from 'actions';
@@ -43,7 +44,7 @@ interface PokemonIconProps {
     isDragging?: boolean;
 }
 
-export const formatSpeciesName = (species: string | null) => {
+export const formatSpeciesName = (species: Species) => {
     if (species == null) return 'unknown';
     if (species === 'Nidoran♀') return 'nidoran-f';
     if (species === 'Nidoran♂') return 'nidoran-m';
@@ -93,7 +94,7 @@ export const getIconURL = ({ id, species, forme, shiny, gender, customIcon, egg 
     if (customIcon) return customIcon;
 
     return `${baseURL}${isShiny}/${isFemaleSpecific}${formatSpeciesName(
-        species,
+        species as Species,
     )}${getIconFormeSuffix(forme as keyof typeof Forme)}.png`;
 };
 
@@ -158,6 +159,7 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
             maxHeight: '100%',
             opacity: hidden ? 0.5 : 1,
             height: '32px',
+            maxWidth: 'auto',
             imageRendering: styles?.iconRendering,
         };
         return connectDragSource!(

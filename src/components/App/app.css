@@ -25,6 +25,9 @@
   width: 4rem;
   text-align: center;
 }
+.release-notes-wrapper a {
+    color: #24acf0;
+}
 .release-notes-wrapper p {
   line-height: 1.4;
   margin-top: 0.5rem;
@@ -38,6 +41,9 @@
 .release-notes-wrapper ul {
     list-style-type: disc;
     margin-left: 40px;
+}
+.release-notes-wrapper ul > ul {
+    margin-left: 80px;
 }
 .release-notes-wrapper li ul {
   margin: 0;

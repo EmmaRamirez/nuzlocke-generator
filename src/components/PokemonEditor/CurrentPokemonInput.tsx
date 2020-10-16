@@ -54,6 +54,12 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         };
     }
 
+    public static getDerivedStateFromProps(props, state) {
+        return {
+            value: props.value,
+        };
+    }
+
     public static defaultProps = {
         disabled: false,
     };
