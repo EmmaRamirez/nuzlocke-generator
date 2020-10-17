@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/es/integration/react';
 const Rollbar = require('rollbar');
 import { injectGlobal } from 'emotion';
 
@@ -17,7 +18,6 @@ import 'normalize.css/normalize.css';
 import { DragDropContextProvider } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { isLocal } from 'utils';
-import { Providers } from 'utils/Providers';
 
 injectGlobal`
     *,
@@ -70,7 +70,20 @@ Rollbar.init(rollbarConfig as any);
 
 const mountNode = document.getElementById('app');
 
+
 render(
-    <Providers><App /></Providers>,
+    <Provider store={store}>
+        {process.env.NODE_ENV !== 'test' ? (
+            <PersistGate loading={<div>Loading...</div>} onBeforeLift={null} persistor={persistor}>
+                <DragDropContextProvider backend={HTML5Backend}>
+                    <App />
+                </DragDropContextProvider>
+            </PersistGate>
+        ) : (
+            <DragDropContextProvider backend={HTML5Backend}>
+                <App />
+            </DragDropContextProvider>
+        )}
+    </Provider>,
     mountNode,
 );
