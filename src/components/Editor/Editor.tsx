@@ -7,8 +7,6 @@ import { Button, ButtonGroup, Classes, Icon, Spinner } from '@blueprintjs/core';
 import { ErrorBoundary } from 'components/Shared';
 import { undoEditorHistory, updateEditorHistory, replaceState, redoEditorHistory } from 'actions';
 import { last, omit } from 'ramda';
-import { editorHistory } from 'reducers/editorHistory';
-import { editor } from 'reducers/editor';
 
 const PokemonEditor = React.lazy(() =>
     import('components/PokemonEditor').then((res) => ({ default: res.PokemonEditor })),
@@ -65,14 +63,6 @@ export class EditorBase extends React.Component<
         this.editorRef = React.createRef();
     }
 
-    public kindToColor(kind) {
-        if (kind === 'A') return '#6dc0ed';
-        if (kind === 'E') return '#57eb7e';
-        if (kind === 'D') return '#f25f5c';
-        if (kind === 'N') return '#c871de';
-        return '#f25f5c';
-    }
-
     public render() {
         const {
             present,
@@ -90,7 +80,6 @@ export class EditorBase extends React.Component<
                 position: relative;
             `,
             historyControls: css`
-                height: 2rem;
                 left: 0;
                 position: fixed;
                 top: 0;
@@ -99,16 +88,7 @@ export class EditorBase extends React.Component<
             `,
             buttonGroup: css`
                 width: 100%;
-            `,
-            kind: (kind) => css`
-                background: ${this.kindToColor(kind)};
-                width: 1.5rem;
-                height: 1.5rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-weight: bold;
-                color: rgba(0, 0, 0, 0.6);
+                padding: 0.25rem;
             `,
             edit: css`
                 display: flex;
@@ -140,6 +120,7 @@ export class EditorBase extends React.Component<
                         width: this.editorRef?.current?.offsetWidth,
                         background: editorDarkMode ? '#222' : '#fff',
                         borderBottomColor: editorDarkMode ? '#000' : '#ccc',
+                        display: minimized ? 'none' : 'block',
                     }}>
                     <ButtonGroup fill className={styles.buttonGroup}>
                         <Button

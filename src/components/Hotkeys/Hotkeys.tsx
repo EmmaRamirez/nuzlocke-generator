@@ -145,6 +145,7 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
     }
 
     private toggleEditor() {
+        console.log('pressed m');
         this.props.changeEditorSize(!this.props.editor.minimized);
     }
 

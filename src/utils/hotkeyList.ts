@@ -12,7 +12,7 @@ export const betaHotkeys: HotkeyList[] = [
     {
         key: 'm',
         comment: 'Toggle editor',
-        onKeyDown: 'toggleEditor',
+        onKeyUp: 'toggleEditor',
     },
 ];
 

@@ -1,4 +1,7 @@
 import * as React from 'react';
+import { cx } from 'emotion';
+import { debounce } from 'lodash';
+import './Autocomplete.css';
 
 export interface AutocompleteProps {
     items: string[];
@@ -16,10 +19,6 @@ export interface AutocompleteState {
     currentValue: string;
     isOpen: boolean;
 }
-
-import './Autocomplete.css';
-import { cx } from 'emotion';
-import { debounce } from 'lodash';
 
 export class Autocomplete extends React.Component<AutocompleteProps, AutocompleteState> {
     public constructor(props) {
@@ -48,6 +47,23 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
             isOpen: false,
             visibleItems: [],
         });
+    }
+
+    public componentDidUpdate(prevProps) {
+        // if (this.isDebouncing) {
+        //   return;
+        // }
+        const {value} = this.props;
+
+        const {value: oldValue} = prevProps;
+        const {currentValue} = this.state;
+
+        if (typeof value !== 'undefined' && oldValue !== value && currentValue !== value) {
+            // Update state.value if new value passed via props, yep re-render should happen
+            this.setState({
+                currentValue: value
+            });
+        }
     }
 
     private renderItems() {

@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOMServer from 'react-dom/server';
 import { useSelector } from 'react-redux';
 import { State } from 'state';
-import { getGameGeneration, getPokemonImage, stripURLCSS } from 'utils';
+import { getGameGeneration, getPokemonImage, stripURLCSS, typeToColor } from 'utils';
 import { css, cx } from 'emotion';
 import * as Mustache from 'mustache';
 import { ErrorBoundary, PokemonIcon, PokemonIconPlain } from 'components';
@@ -81,6 +81,8 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
         image: pokemonImage,
         type1: pokemon?.types?.[0],
         type2: pokemon?.types?.[1],
+        type1Color: typeToColor(pokemon?.types?.[0] ?? 'Normal'),
+        type2Color: typeToColor(pokemon?.types?.[0] ?? 'Normal'),
         icon: ReactDOMServer.renderToString(pokemonIcon),
         notes: pokemon.notes ?? '',
         movesColored: ReactDOMServer.renderToString(

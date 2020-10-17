@@ -214,7 +214,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className="custom-css-input-wrapper">
-                    <label style={{ padding: '.5rem' }} className="bp3-label">
+                    <label style={{ padding: '.5rem', marginBottom: 0 }} className="bp3-label">
                         Custom Team HTML {/*<a href=''>Check out Layout Guide</a>*/}
                     </label>
                     <TextAreaDebounced name="customTeamHTML" props={props} edit={editEvent} />
