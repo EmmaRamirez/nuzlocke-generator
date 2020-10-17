@@ -59,7 +59,7 @@ export class UpdaterBase extends React.Component<{
 export const Updater = connect(
     (state: State) => ({
         present: omit(['editorHistory'], state),
-        lrt: state.editorHistory.lastRevisionType,
+        lrt: state?.editorHistory?.lastRevisionType,
     }),
     { updateEditorHistory },
     null,

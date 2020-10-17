@@ -107,14 +107,14 @@ export function TeamPokemon ({pokemon, options, customCSS, customHTML}: TeamPoke
         .replace(/\{{movesColored}}/g, view.movesColored)
     ;
 
-    if (teamHTML && teamHTML !== '') {
+    if (teamViewHTML) {
         return <ErrorBoundary>
             {CSS}
             <div dangerouslySetInnerHTML={{__html: Mustache.render(html, view)}} />
         </ErrorBoundary>;
     }
 
-    return <>{CSS}<div className={classes.teamPokemon}>
+    return <>{CSS}<div data-testid='team-pokemon' className={classes.teamPokemon}>
         <div className={classes.teamPokemonImage} style={{
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
