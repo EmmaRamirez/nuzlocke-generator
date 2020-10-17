@@ -58,7 +58,7 @@ export class TrainerInfoEditor extends React.Component<{}, {}> {
                     name="title"
                     placeholder=""
                 />
-                <BadgeInput enableCheckpointsEditor />
+                <BadgeInput />
                 <LinkedTrainerInfoEditField
                     onInput={this.onInput}
                     label={

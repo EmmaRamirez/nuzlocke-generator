@@ -21,6 +21,7 @@ import { State } from 'state';
 import { css, cx } from 'emotion';
 import { PokemonIcon } from 'components/PokemonIcon';
 import { getMetLocationString } from './getMetLocationString';
+import { CheckpointsDisplay } from 'components/Result';
 
 export interface TeamPokemonInfoProps {
     generation: Generation;
@@ -28,11 +29,12 @@ export interface TeamPokemonInfoProps {
     pokemon: Pokemon;
     customTypes: State['customTypes'];
     linkedPokemon?: Pokemon;
+    game: State['game'];
 }
 
 export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
     public render() {
-        const { pokemon, style, customTypes, linkedPokemon } = this.props;
+        const { pokemon, style, customTypes, linkedPokemon, game } = this.props;
 
         if (!pokemon) {
             return null;
@@ -134,6 +136,13 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                             <div
                                 className="pokemon-notes"
                                 dangerouslySetInnerHTML={{ __html: pokemon.notes }}
+                            />
+                        )}
+                        {pokemon.checkpoints && (
+                            <CheckpointsDisplay
+                                game={game}
+                                clearedCheckpoints={pokemon.checkpoints}
+                                style={style}
                             />
                         )}
                         {style.displayExtraData && pokemon.extraData ? (
@@ -554,6 +563,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                         pokemon={pokemon}
                         customTypes={customTypes}
                         linkedPokemon={linkedPokemon}
+                        game={game}
                     />
                 )}
             </div>

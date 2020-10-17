@@ -1,23 +1,12 @@
 import * as React from 'react';
-import { shallow, mount } from 'enzyme';
-import { BadgeInputBase as BadgeInput, TrainerInfoEditField } from '..';
-import { TrainerKeys } from 'models';
-import { editTrainer } from 'actions';
-import { styleDefaults } from 'utils';
+import { BadgeInput } from '..';
+import { render, screen } from 'utils/testUtils';
 
 describe('<BadgeInput />', () => {
     it('renders its contents', () => {
-        const wrapper = mount(
-            <BadgeInput
-                checkpoints={[]}
-                style={styleDefaults}
-                trainer={TrainerKeys}
-                game={{ name: 'Emerald' }}
-                editTrainer={editTrainer}
-                enableCheckpointsEditor={false}
-            />,
+        render(
+            <BadgeInput />,
         );
-        // TODO: Write proper test -- this component needs to be refactored
-        expect(wrapper).toBeDefined();
+        expect(screen.getByTestId('badge-input')).toBeDefined();
     });
 });

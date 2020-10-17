@@ -46,6 +46,8 @@ import { State } from 'state';
 import { CurrentPokemonLayoutItem } from './CurrentPokemonLayoutItem';
 import { MoveEditor } from 'components/MoveEditor';
 import { POSITION_BOTTOM } from '@blueprintjs/core/lib/esm/common/classes';
+import { BadgeInput } from 'components/TrainerEditor';
+import { pokemon } from 'reducers/pokemon';
 
 const pokeball = require('assets/pokeball.png');
 
@@ -204,6 +206,7 @@ CurrentPokemonEditState
     }
 
     public moreInputs(currentPokemon: Pokemon) {
+        const {editPokemon, selectPokemon} = this.props;
         const pokemonForLink = this.props.pokemon.map((p) => ({
             key: `${p.nickname} (${p.species})`,
             value: p.id,
@@ -226,6 +229,10 @@ CurrentPokemonEditState
                     value={currentPokemon.types}
                     type="double-select"
                     options={this.getTypes()}
+                />
+                <BadgeInput
+                    checkpointsCleared={currentPokemon.checkpoints}
+                    onChange={checkpoints => editPokemon({checkpoints}, currentPokemon.id)}
                 />
                 <CurrentPokemonLayoutItem checkboxes>
                     <CurrentPokemonInput
@@ -283,8 +290,8 @@ CurrentPokemonEditState
                         const edit = {
                             item: e.target.value,
                         };
-                        this.props.editPokemon(edit, this.state.selectedId);
-                        this.props.selectPokemon(this.state.selectedId);
+                        editPokemon(edit, this.state.selectedId);
+                        selectPokemon(this.state.selectedId);
                     }}
                 />
                 <CurrentPokemonInput

@@ -86,7 +86,6 @@ CheckpointsSelectState
                         </div>
                     </div>
                 </Popover>
-                <Button onClick={() => {}} icon={'lock'} />
             </>
         );
     }

@@ -9,7 +9,7 @@ import {
     isEmpty,
     feature,
 } from 'utils';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { Trainer, Badge } from 'models';
 import { State } from 'state';
 import { Checkpoints } from 'reducers/checkpoints';
@@ -48,77 +48,88 @@ export const TrainerColumnItem = ({ trainer, prop, orientation }: TrainerColumnI
     ) : null;
 };
 
+export interface CheckpointsDisplayProps {
+    style: State['style'];
+    trainer?: State['trainer'];
+    game: State['game'];
+    clearedCheckpoints?: Checkpoints;
+}
+
+export function CheckpointsDisplay({
+    style,
+    trainer,
+    game,
+    clearedCheckpoints,
+}: CheckpointsDisplayProps) {
+    const {name} = game;
+    const checkpoints = useSelector<State, State['checkpoints']>(state => state.checkpoints);
+    const cleared = clearedCheckpoints ?? [];
+
+    if (!style.displayBadges) {
+        return null;
+    }
+
+    const swshPositions = [
+        { bottom: 0, right: 0 },
+        { right: '-9px', top: '2px', height: '24px' },
+        { bottom: '11px', left: '20px' },
+        { bottom: '2px', left: '9px' },
+        { bottom: '3px', left: '28.5px', height: '33px' },
+        { top: '-3px', left: '23px' },
+        { left: '14px', top: '5px', height: '25px' },
+        { left: '3px', top: '2px', height: '32px' },
+    ];
+
+    return <>{checkpoints.map((badge, index) => {
+        return (
+            <React.Fragment key={badge.name}>
+                <img
+                    className={
+                        cleared.some((b) => b.name === badge.name)
+                            ? 'obtained'
+                            : 'not-obtained'
+                    }
+                    style={
+                        isSWSH(name) && !trainer?.hasEditedCheckpoints
+                            ? { position: 'absolute', ...swshPositions[index] }
+                            : { height: '1rem' }
+                    }
+                    key={badge.name}
+                    alt={badge.name}
+                    src={
+                        (badge.image.startsWith('http') || badge.image.startsWith('data'))
+                            ? badge.image
+                            : `./img/checkpoints/${badge.image}.png`
+                    }
+                />
+                {badge.name === 'Rising Badge' ? <br /> : null}
+            </React.Fragment>
+        );
+    })}</>;
+}
+
+export const isSWSH = (name) => name === 'Sword' || name === 'Shield';
+
 export class TrainerResultBase extends React.Component<TrainerResultProps> {
-    private isSWSH() {
-        const { name } = this.props.game;
-        return name === 'Sword' || name === 'Shield';
-    }
-
-    private renderBadgesOrTrials() {
-        const { checkpoints, style, trainer } = this.props;
-        const { name } = this.props.game;
-        const trainerBadges = trainer.badges ? trainer.badges : [];
-
-        if (!style.displayBadges) {
-            return null;
-        }
-
-        const swshPositions = [
-            { bottom: 0, right: 0 },
-            { right: '-9px', top: '2px', height: '24px' },
-            { bottom: '11px', left: '20px' },
-            { bottom: '2px', left: '9px' },
-            { bottom: '3px', left: '28.5px', height: '33px' },
-            { top: '-3px', left: '23px' },
-            { left: '14px', top: '5px', height: '25px' },
-            { left: '3px', top: '2px', height: '32px' },
-        ];
-
-        return checkpoints.map((badge, index) => {
-            return (
-                <React.Fragment key={badge.name}>
-                    <img
-                        className={
-                            trainerBadges.some((b) => b.name === badge.name)
-                                ? 'obtained'
-                                : 'not-obtained'
-                        }
-                        style={
-                            this.isSWSH() && !trainer.hasEditedCheckpoints
-                                ? { position: 'absolute', ...swshPositions[index] }
-                                : { height: '1rem' }
-                        }
-                        key={badge.name}
-                        alt={badge.name}
-                        src={
-                            badge.image.startsWith('http')
-                                ? badge.image
-                                : `./img/checkpoints/${badge.image}.png`
-                        }
-                    />
-                    {badge.name === 'Rising Badge' ? <br /> : null}
-                </React.Fragment>
-            );
-        });
-    }
 
     private getBadgeWrapperStyles(orientation) {
-        const { trainer } = this.props;
+        const { trainer, game: {name} } = this.props;
+
         let style = {};
-        if (this.isSWSH() && !trainer.hasEditedCheckpoints) {
+        if (isSWSH(name) && !trainer.hasEditedCheckpoints) {
             style = { height: '3rem', width: '3rem', position: 'relative', padding: '.25rem' };
         }
         if (orientation === 'vertical') {
             style = { ...style, margin: '0', padding: '.25rem' };
         }
-        if (!this.isSWSH() && orientation === 'vertical') {
+        if (!isSWSH(name) && orientation === 'vertical') {
             style = { ...style, width: '100%' };
         }
         return style;
     }
 
     public render() {
-        const { trainer, game, style, orientation } = this.props;
+        const { trainer, game, style, orientation, checkpoints } = this.props;
         const isVertical = orientation === 'vertical';
         const baseDivStyle = isVertical ? { padding: '2px' } : { padding: '.25rem' };
         const tciProps = { trainer, orientation };
@@ -184,7 +195,11 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                     </>
                 )}
                 <div className="badge-wrapper flex" style={this.getBadgeWrapperStyles(orientation)}>
-                    {this.renderBadgesOrTrials()}
+                    <CheckpointsDisplay
+                        trainer={trainer}
+                        style={style}
+                        game={game}
+                    />
                 </div>
                 {style.displayRules && style.displayRulesLocation === 'inside trainer section' ? (
                     <div style={{ marginTop: '1rem' }} className="rules-container">

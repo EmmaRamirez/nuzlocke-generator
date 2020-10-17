@@ -631,6 +631,7 @@ Thank you!
 
 ## Fixes
 - Improved performance of custom CSS inputs
+- Fixed an issue with base64 images as custom checkpoints
 
 ## Known Issues
 
