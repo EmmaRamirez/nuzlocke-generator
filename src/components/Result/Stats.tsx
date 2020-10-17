@@ -113,7 +113,7 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
     }
 
     private getAverageLevel() {
-        const pokes = this.props.pokemon.filter(p => !p.hidden);
+        const pokes = this.props.pokemon.filter((p) => !p.hidden);
         const levels = pokes.map((p) =>
             Number.isNaN(parseInt(p?.level as any)) ? 0 : parseInt(p?.level as any),
         );
@@ -121,7 +121,7 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
     }
 
     private getAverageLevelByStatus(status: string) {
-        const pokes = this.props.pokemon.filter(p => !p.hidden && p.status === status);
+        const pokes = this.props.pokemon.filter((p) => !p.hidden && p.status === status);
         if (!pokes.length) return 0;
         const levels = pokes.map((p) =>
             Number.isNaN(parseInt(p?.level as any)) ? 0 : parseInt(p?.level as any),
@@ -150,9 +150,16 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
                 <div style={{ marginTop: '10px', margin: '0 10px' }}>
                     {style.statsOptions.averageLevel ? (
                         this.state.pokemon.length ? (
-                            isLocal() ? <div>Average Level: Team ({this.getAverageLevelByStatus('Team')}), Boxed ({this.getAverageLevelByStatus('Boxed')}), Dead ({this.getAverageLevelByStatus('Dead')}), Champs ({this.getAverageLevelByStatus('Champs')})</div>
-                                :
+                            isLocal() ? (
+                                <div>
+                                    Average Level: Team ({this.getAverageLevelByStatus('Team')}),
+                                    Boxed ({this.getAverageLevelByStatus('Boxed')}), Dead (
+                                    {this.getAverageLevelByStatus('Dead')}), Champs (
+                                    {this.getAverageLevelByStatus('Champs')})
+                                </div>
+                            ) : (
                                 <div>Average Level: {this.getAverageLevel()}</div>
+                            )
                         ) : null
                     ) : null}
                     {style.statsOptions.mostCommonKillers ? (

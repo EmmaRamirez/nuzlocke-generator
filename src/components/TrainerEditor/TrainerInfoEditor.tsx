@@ -75,7 +75,7 @@ export class TrainerInfoEditor extends React.Component<{}, {}> {
                                 </Menu>
                             }>
                             <span>
-                                Trainer Image <Icon icon='info-sign' />
+                                Trainer Image <Icon icon="info-sign" />
                             </span>
                         </Popover>
                     }

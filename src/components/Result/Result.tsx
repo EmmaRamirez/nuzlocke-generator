@@ -56,19 +56,37 @@ const getNumberOf = (status?: string, pokemon?: Pokemon[]) =>
               .filter((poke) => poke.status === status && !poke.hidden).length
         : 0;
 
-export function BackspriteMontage({pokemon}: {pokemon: Pokemon[]}) {
-    return <div className='backsprite-montage' style={{
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'bottom',
-        margin: '0 auto',
-        height: '92px',
-    }}>
-        {pokemon.map((poke, idx) => {
-            return <img style={{height: '128px', marginLeft: '-32px', zIndex: 6 - idx, imageRendering: 'pixelated' }} alt='' role='presentation' src={`https://img.pokemondb.net/sprites/platinum/back-normal/${(poke.species || '').toLowerCase()}.png`} />;
-        })}
-    </div>;
+export function BackspriteMontage({ pokemon }: { pokemon: Pokemon[] }) {
+    return (
+        <div
+            className="backsprite-montage"
+            style={{
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'bottom',
+                margin: '0 auto',
+                height: '92px',
+            }}>
+            {pokemon.map((poke, idx) => {
+                return (
+                    <img
+                        style={{
+                            height: '128px',
+                            marginLeft: '-32px',
+                            zIndex: 6 - idx,
+                            imageRendering: 'pixelated',
+                        }}
+                        alt=""
+                        role="presentation"
+                        src={`https://img.pokemondb.net/sprites/platinum/back-normal/${(
+                            poke.species || ''
+                        ).toLowerCase()}.png`}
+                    />
+                );
+            })}
+        </div>
+    );
 }
 
 export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
@@ -449,7 +467,9 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
 
                         {enableStats && renderStatsInResult && <Stats />}
 
-                        {enableBackSpriteMontage && <BackspriteMontage pokemon={this.getPokemonByStatus('Team')} />}
+                        {enableBackSpriteMontage && (
+                            <BackspriteMontage pokemon={this.getPokemonByStatus('Team')} />
+                        )}
                     </div>
                 </ErrorBoundary>
             </div>

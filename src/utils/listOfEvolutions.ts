@@ -1,6 +1,6 @@
 import { Species } from './listOfPokemon';
 
-export type EvolutionTree = {[S in Species]?: Species[]};
+export type EvolutionTree = { [S in Species]?: Species[] };
 
 export const EvolutionTree: EvolutionTree = {
     Bulbasaur: ['Ivysaur'],
@@ -24,7 +24,4 @@ export const EvolutionTree: EvolutionTree = {
     Shieldon: ['Bastiodon'],
     Budew: ['Roselia'],
     Roselia: ['Roserade'],
-
-
-
 };

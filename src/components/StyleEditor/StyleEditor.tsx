@@ -55,7 +55,10 @@ const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'],
         props.editStyle({ accentColor: 'rgba(0, 0, 0, 0)' });
         props.editStyle({ movesPosition: 'horizontal' as OrientationType });
     }
-    if (propName === 'template' && e.target.value === 'Generations' || e.target.value === 'Generations Classic') {
+    if (
+        (propName === 'template' && e.target.value === 'Generations') ||
+        e.target.value === 'Generations Classic'
+    ) {
         props.editStyle({
             bgColor: game ? gameOfOriginToColor(game) : '',
         });
@@ -113,18 +116,23 @@ export const IconsNextToTeamPokemon = (props) => (
 
 export const smallItemOptions = ['outer glow', 'round', 'square', 'text'];
 
-export const TextAreaDebounced = ({edit, props, name}: {
-    edit: typeof editEvent,
-    props: StyleEditorProps,
-    name: keyof State['style']
+export const TextAreaDebounced = ({
+    edit,
+    props,
+    name,
+}: {
+    edit: typeof editEvent;
+    props: StyleEditorProps;
+    name: keyof State['style'];
 }) => {
     const [value, setValue] = React.useState('');
 
-    const delayedValue = React.useCallback(debounce(e => edit(e, props, name), 300), [
-        props.style[name]
-    ]);
+    const delayedValue = React.useCallback(
+        debounce((e) => edit(e, props, name), 300),
+        [props.style[name]],
+    );
 
-    const onChange = e => {
+    const onChange = (e) => {
         e.persist();
         setValue(e.target.value);
         delayedValue(e);
@@ -134,13 +142,15 @@ export const TextAreaDebounced = ({edit, props, name}: {
         setValue(props.style[name] as string);
     }, [props.style[name]]);
 
-    return <TextArea
-        large={true}
-        onChange={onChange}
-        className="custom-css-input bp3-fill"
-        value={value}
-        name={name}
-    />;
+    return (
+        <TextArea
+            large={true}
+            onChange={onChange}
+            className="custom-css-input bp3-fill"
+            value={value}
+            name={name}
+        />
+    );
 };
 
 export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEditorState> {
@@ -150,10 +160,11 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
 
     public render() {
         const props: StyleEditorProps = this.props;
-        const createStyleEdit = (isWidthHeight?: boolean) => cx(Styles.styleEdit, {
-            [Styles.styleEdit_dark]: props.style.editorDarkMode,
-            [Styles.widthHeightInputs]: isWidthHeight,
-        });
+        const createStyleEdit = (isWidthHeight?: boolean) =>
+            cx(Styles.styleEdit, {
+                [Styles.styleEdit_dark]: props.style.editorDarkMode,
+                [Styles.widthHeightInputs]: isWidthHeight,
+            });
         const styleEdit = createStyleEdit(false);
         const teamImages = ['standard', 'sugimori', 'dream world', 'shuffle'];
         if (isLocal()) {
@@ -196,8 +207,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                             onClick={this.toggleThemeEditor}
                             style={{ marginLeft: '.25rem' }}
                             intent={Intent.PRIMARY}
-                            minimal
-                        >
+                            minimal>
                             Edit Theme
                         </Button>
                     ) : null}
@@ -207,11 +217,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     <label style={{ padding: '.5rem' }} className="bp3-label">
                         Custom Team HTML {/*<a href=''>Check out Layout Guide</a>*/}
                     </label>
-                    <TextAreaDebounced
-                        name='customTeamHTML'
-                        props={props}
-                        edit={editEvent}
-                    />
+                    <TextAreaDebounced name="customTeamHTML" props={props} edit={editEvent} />
                 </div>
 
                 <div className={styleEdit}>
@@ -263,7 +269,9 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
 
                 <div className={createStyleEdit(true)}>
                     <div>
-                        <label className={cx(Classes.LABEL, Classes.INLINE)}>Result Dimensions</label>
+                        <label className={cx(Classes.LABEL, Classes.INLINE)}>
+                            Result Dimensions
+                        </label>
                         <span style={{ fontSize: '80%', marginRight: '2px' }}>w</span>
                         <input
                             name="resultWidth"
@@ -312,7 +320,9 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
 
                 <div className={createStyleEdit(true)}>
                     <div>
-                        <label className={cx(Classes.LABEL, Classes.INLINE)}>Trainer Dimensions</label>
+                        <label className={cx(Classes.LABEL, Classes.INLINE)}>
+                            Trainer Dimensions
+                        </label>
                         <span style={{ fontSize: '80%', marginRight: '2px' }}>w</span>
                         <input
                             name="trainerWidth"
@@ -515,7 +525,9 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <label className={cx(Classes.LABEL, Classes.INLINE)}>Pokemon Per Line (Boxed)</label>
+                    <label className={cx(Classes.LABEL, Classes.INLINE)}>
+                        Pokemon Per Line (Boxed)
+                    </label>
                     <input
                         name="boxedPokemonPerLine"
                         className={cx(Classes.INPUT, 'small-input')}
@@ -807,11 +819,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     <label style={{ padding: '.25rem' }} className="bp3-label">
                         Custom CSS {/*<a href=''>Check out Layout Guide</a>*/}
                     </label>
-                    <TextAreaDebounced
-                        name='customCSS'
-                        props={props}
-                        edit={editEvent}
-                    />
+                    <TextAreaDebounced name="customCSS" props={props} edit={editEvent} />
                 </div>
             </BaseEditor>
         );

@@ -144,8 +144,6 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
     }
 }
 
-
-
 // const closeList = () => {
 //     setTimeout(() => {
 //         setIsOpen(false);

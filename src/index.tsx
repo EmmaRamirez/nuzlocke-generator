@@ -70,7 +70,6 @@ Rollbar.init(rollbarConfig as any);
 
 const mountNode = document.getElementById('app');
 
-
 render(
     <Provider store={store}>
         {process.env.NODE_ENV !== 'test' ? (

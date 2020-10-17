@@ -9,25 +9,25 @@ export interface History<T> {
     lastRevisionType: 'undo' | 'redo' | 'update' | 'load';
 }
 
-export function editorHistory(state: History<any> = {
-    past: [],
-    present: undefined,
-    future: [],
-    lastRevisionType: 'update',
-}, action: Action<UNDO_EDITOR_HISTORY | UPDATE_EDITOR_HISTORY | REDO_EDITOR_HISTORY>): History<any> {
+export function editorHistory(
+    state: History<any> = {
+        past: [],
+        present: undefined,
+        future: [],
+        lastRevisionType: 'update',
+    },
+    action: Action<UNDO_EDITOR_HISTORY | UPDATE_EDITOR_HISTORY | REDO_EDITOR_HISTORY>,
+): History<any> {
     switch (action.type) {
         case UPDATE_EDITOR_HISTORY:
-            const {present, future, past} = state;
+            const { present, future, past } = state;
 
             if (action.present == null) {
                 return state;
             }
 
             return {
-                past: present == null ? past : [
-                    ...past,
-                    present,
-                ],
+                past: present == null ? past : [...past, present],
                 present: action.present,
                 // reset the future so we can't create a forked path
                 future: [],
@@ -36,7 +36,7 @@ export function editorHistory(state: History<any> = {
 
         case UNDO_EDITOR_HISTORY:
             const undo = (): History<any> => {
-                const {past, present, future} = state;
+                const { past, present, future } = state;
 
                 const latest = past ? last(past) : [];
 
@@ -49,10 +49,7 @@ export function editorHistory(state: History<any> = {
                 return {
                     past: init(past),
                     present: action.present,
-                    future: [
-                        ...future,
-                        present,
-                    ],
+                    future: [...future, present],
                     lastRevisionType: 'undo',
                 };
             };
@@ -61,7 +58,7 @@ export function editorHistory(state: History<any> = {
 
         case REDO_EDITOR_HISTORY:
             const redo = (): History<any> => {
-                const {past, present, future} = state;
+                const { past, present, future } = state;
 
                 const latest = future ? last(future) : [];
 
@@ -71,10 +68,7 @@ export function editorHistory(state: History<any> = {
                 });
 
                 return {
-                    past: [
-                        ...past,
-                        present,
-                    ],
+                    past: [...past, present],
                     present: action.present,
                     future: init(future),
                     lastRevisionType: 'redo',

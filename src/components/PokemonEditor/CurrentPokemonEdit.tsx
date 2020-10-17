@@ -94,7 +94,7 @@ const getEvos = (species): string[] | undefined => {
     return EvolutionTree?.[species];
 };
 
-export function EvolutionSelection({currentPokemon, onEvolve}) {
+export function EvolutionSelection({ currentPokemon, onEvolve }) {
     const evos = getEvos(currentPokemon?.species);
 
     if (!evos?.length) {
@@ -103,19 +103,32 @@ export function EvolutionSelection({currentPokemon, onEvolve}) {
 
     if (evos?.length === 1) {
         const species = evos?.[0];
-        return <Button
-            onClick={onEvolve(species)}
-            className={Classes.MINIMAL}
-            intent={Intent.PRIMARY}
-        >Evolve</Button>;
-    } else {
-        return <Popover popoverClassName={'no-list-item-types'} minimal position={Position.BOTTOM_LEFT} interactionKind={PopoverInteractionKind.CLICK_TARGET_ONLY} content={<>
-            {evos.map(evo => <div className={Styles.evoMenuItem} key={evo} onClick={onEvolve(evo)}>{evo}</div>)}
-        </>}>
-            <Button className={Classes.MINIMAL} intent={Intent.PRIMARY}>
+        return (
+            <Button onClick={onEvolve(species)} className={Classes.MINIMAL} intent={Intent.PRIMARY}>
                 Evolve
             </Button>
-        </Popover>;
+        );
+    } else {
+        return (
+            <Popover
+                popoverClassName={'no-list-item-types'}
+                minimal
+                position={Position.BOTTOM_LEFT}
+                interactionKind={PopoverInteractionKind.CLICK_TARGET_ONLY}
+                content={
+                    <>
+                        {evos.map((evo) => (
+                            <div className={Styles.evoMenuItem} key={evo} onClick={onEvolve(evo)}>
+                                {evo}
+                            </div>
+                        ))}
+                    </>
+                }>
+                <Button className={Classes.MINIMAL} intent={Intent.PRIMARY}>
+                    Evolve
+                </Button>
+            </Popover>
+        );
     }
 }
 
@@ -174,7 +187,6 @@ CurrentPokemonEditState
     }
 
     private parseTree(tree) {}
-
 
     private evolvePokemon = (species) => (e) => {
         const edit = {
@@ -401,7 +413,7 @@ CurrentPokemonEditState
                 <CurrentPokemonLayoutItem>
                     <ErrorBoundary>
                         <Autocomplete
-                            items={listOfPokemon as unknown as string[]}
+                            items={(listOfPokemon as unknown) as string[]}
                             name="species"
                             label="Species"
                             disabled={currentPokemon.egg}
@@ -509,11 +521,7 @@ CurrentPokemonEditState
                         value={currentPokemon.moves}
                         type="moves"
                     />
-                    <Button
-                        intent={Intent.PRIMARY}
-                        onClick={this.toggleDialog}
-                        minimal
-                    >
+                    <Button intent={Intent.PRIMARY} onClick={this.toggleDialog} minimal>
                         Edit Moves
                     </Button>
                 </CurrentPokemonLayoutItem>

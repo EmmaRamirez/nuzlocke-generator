@@ -141,7 +141,7 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
 
     private newNuzlocke() {
         const data = createStore(appReducers)?.getState();
-        this.props.newNuzlocke(JSON.stringify(data), {isCopy: false});
+        this.props.newNuzlocke(JSON.stringify(data), { isCopy: false });
     }
 
     private toggleEditor() {

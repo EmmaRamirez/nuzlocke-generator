@@ -109,8 +109,8 @@ export function getPokemonImage({
     editor,
     gender,
 }: GetPokemonImage) {
-    const regularNumber = speciesToNumber(species as Species || 'Ditto');
-    const leadingZerosNumber = (speciesToNumber(species as Species || 'Ditto') || 0)
+    const regularNumber = speciesToNumber((species as Species) || 'Ditto');
+    const leadingZerosNumber = (speciesToNumber((species as Species) || 'Ditto') || 0)
         .toString()
         .padStart(3, '0');
 
@@ -186,7 +186,7 @@ export function getPokemonImage({
         return `url(img/dw/${regularNumber || 1}.svg)`;
     }
 
-    const handleMimeJr = (s?: string) => s === 'Mime Jr.' ? 'mime-jr' : s;
+    const handleMimeJr = (s?: string) => (s === 'Mime Jr.' ? 'mime-jr' : s);
 
     if (style.teamImages === 'shuffle') {
         return `url(img/shuffle/${(handleMimeJr(species) || 'Ditto')

@@ -14,51 +14,59 @@ export interface MassEditorTableProps {
 
 const determineCell = (key: string, value: any, id, editPokemon) => {
     if (key === 'extraData') {
-        return <Cell><JSONFormat>{value}</JSONFormat></Cell>;
+        return (
+            <Cell>
+                <JSONFormat>{value}</JSONFormat>
+            </Cell>
+        );
     }
     if (key === 'id') {
         return <Cell>{id}</Cell>;
     }
-    return <EditableCell
-        onConfirm={(value) => {
-            let transformedValue: string | string[] = value;
-            if (key === 'moves' || key === 'types') {
-                transformedValue = value?.split(',').map(s => s.trim());
-            }
-            editPokemon({ [key]: transformedValue }, id);
-        }}
-        value={value}
-    />;
+    return (
+        <EditableCell
+            onConfirm={(value) => {
+                let transformedValue: string | string[] = value;
+                if (key === 'moves' || key === 'types') {
+                    transformedValue = value?.split(',').map((s) => s.trim());
+                }
+                editPokemon({ [key]: transformedValue }, id);
+            }}
+            value={value}
+        />
+    );
 };
 
-const cellRenderer: (pokemon: Pokemon[], key: string, editPokemon) => ICellRenderer = (pokemon: Pokemon[], key: string, editPokemon) => (rowIndex: number) => {
+const cellRenderer: (pokemon: Pokemon[], key: string, editPokemon) => ICellRenderer = (
+    pokemon: Pokemon[],
+    key: string,
+    editPokemon,
+) => (rowIndex: number) => {
     return determineCell(key, pokemon[rowIndex][key], pokemon[rowIndex].id, editPokemon);
 };
 
-
 export function renderColumns(pokemon, editPokemon) {
-    return Object.keys(PokemonKeys)
-        .map(key => {
-            return <Column
-                key={key}
-                name={key}
-                cellRenderer={cellRenderer(pokemon, key, editPokemon)}
-            />;
-        });
+    return Object.keys(PokemonKeys).map((key) => {
+        return (
+            <Column key={key} name={key} cellRenderer={cellRenderer(pokemon, key, editPokemon)} />
+        );
+    });
 }
 
-export function MassEditorTableBase({pokemon, editPokemon}: MassEditorTableProps) {
-    return <>
-        <Table numRows={pokemon.length} numFrozenColumns={2}>
-            {renderColumns(pokemon, editPokemon)}
-        </Table>
-        <br />
-        <AddPokemonButton defaultPokemon={generateEmptyPokemon(pokemon)} />
-    </>;
+export function MassEditorTableBase({ pokemon, editPokemon }: MassEditorTableProps) {
+    return (
+        <>
+            <Table numRows={pokemon.length} numFrozenColumns={2}>
+                {renderColumns(pokemon, editPokemon)}
+            </Table>
+            <br />
+            <AddPokemonButton defaultPokemon={generateEmptyPokemon(pokemon)} />
+        </>
+    );
 }
 
 export const MassEditorTable = connect(
-    (state: State) => ({pokemon: state.pokemon.sort(sortPokes)}),
+    (state: State) => ({ pokemon: state.pokemon.sort(sortPokes) }),
     {
         editPokemon: editPokemonType,
     },

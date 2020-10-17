@@ -16,9 +16,9 @@ const poke = {
 describe(`<${BoxedPokemon.name} />`, () => {
     it('renders its content', () => {
         render(
-            <TestProvider><BoxedPokemon
-                pokemon={poke}
-            /></TestProvider>,
+            <TestProvider>
+                <BoxedPokemon pokemon={poke} />
+            </TestProvider>,
         );
         expect(screen.getByTestId('boxed-pokemon')).toBeDefined();
     });

@@ -292,6 +292,6 @@ export const result_download = css`
 /// v2 styles
 
 export const result_wrapper = css`
-    overflowY: scroll;
+    overflowy: scroll;
     width: 100%;
 `;

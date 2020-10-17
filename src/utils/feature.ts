@@ -1,4 +1,3 @@
-
 const featuresFromEnv = {
     themeEditing: process.env.THEME_EDITING,
     temTemMode: process.env.TEM_TEM_SUPPORT,
@@ -22,6 +21,5 @@ const featuresToBooleans = (f: typeof featuresFromEnv): BooleanObject => {
     }
     return obj;
 };
-
 
 export const feature = Object.freeze(featuresToBooleans(featuresFromEnv));

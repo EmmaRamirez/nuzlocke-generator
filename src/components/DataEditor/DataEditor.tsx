@@ -67,28 +67,27 @@ const isValidJSON = (data: string): boolean => {
     }
 };
 
-export type WarningText = {warningText?: string};
+export type WarningText = { warningText?: string };
 export function DeleteAlert({
     warningText = 'This will permanently delete all your local storage data, with no way to retrieve it. Are you sure you want to do this?',
     ...props
 }: IAlertProps & WarningText) {
-    const style = useSelector<State, State['style']>(state => state.style);
+    const style = useSelector<State, State['style']>((state) => state.style);
 
-    return <Alert
-        cancelButtonText="Nevermind"
-        confirmButtonText="Delete Anyway"
-        className={style.editorDarkMode ? 'bp3-dark' : 'bp3-light'}
-        style={{ maxWidth: '600px' }}
-        intent={Intent.DANGER}
-        {...props}
-    >
-        <div style={{ display: 'flex' }}>
-            <img style={{ height: '10rem' }} src={trash} alt="Sad Trubbish" />
-            <p style={{ fontSize: '1.2rem', padding: '1rem' }}>
-                {warningText}
-            </p>
-        </div>
-    </Alert>;
+    return (
+        <Alert
+            cancelButtonText="Nevermind"
+            confirmButtonText="Delete Anyway"
+            className={style.editorDarkMode ? 'bp3-dark' : 'bp3-light'}
+            style={{ maxWidth: '600px' }}
+            intent={Intent.DANGER}
+            {...props}>
+            <div style={{ display: 'flex' }}>
+                <img style={{ height: '10rem' }} src={trash} alt="Sad Trubbish" />
+                <p style={{ fontSize: '1.2rem', padding: '1rem' }}>{warningText}</p>
+            </div>
+        </Alert>
+    );
 }
 
 export class DataEditorBase extends React.Component<DataEditorProps, DataEditorState> {
@@ -148,7 +147,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
             cmm = { customMoveMap: data.customMoveMap };
         }
         this.props.replaceState({ ...safeguards, ...(override ? data : nuz), ...cmm });
-        this.props.newNuzlocke(this.state.data, {isCopy: false});
+        this.props.newNuzlocke(this.state.data, { isCopy: false });
         this.writeAllData();
         this.setState({ isOpen: false });
     };
@@ -274,80 +273,88 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         this.setState({ isClearAllDataOpen: !this.state.isClearAllDataOpen });
 
     private renderSaveFileUI() {
-        const allowedGames: string[] = [
-            'RBY'
-        ];
+        const allowedGames: string[] = ['RBY'];
 
         if (feature.gen2saves) {
             allowedGames.push('GS');
             allowedGames.push('Crystal');
         }
 
-        return <>
-            <Button onClick={e => {
-                this.setState({ showSaveFileUI: !this.state.showSaveFileUI });
-            }} style={{
-                // @TODO: find a more sensible hack
-                transform: 'translateY(-5px)'
-            }}>Import From Save File</Button>
-            <div className='data-editor-save-file-form' style={{
-                alignItems: 'center',
-                flexWrap: 'wrap',
-                margin: '0.25rem',
-                display: this.state.showSaveFileUI ? 'flex' : 'none',
-                borderRadius: '0.25rem',
-                padding: '0.25rem',
-            }}>
+        return (
+            <>
+                <Button
+                    onClick={(e) => {
+                        this.setState({ showSaveFileUI: !this.state.showSaveFileUI });
+                    }}
+                    style={{
+                        // @TODO: find a more sensible hack
+                        transform: 'translateY(-5px)',
+                    }}>
+                    Import From Save File
+                </Button>
                 <div
-                    className="bp3-label bp3-inline"
-                    style={{ padding: '.25rem 0', paddingBottom: '.5rem' }}>
-                    <div className={Classes.SELECT}>
-                        <select
-                            value={this.state.selectedGame}
-                            onChange={(e) => this.setState({ selectedGame: e.target.value })}>
-                            {allowedGames.map((game) => (
-                                <option key={game} value={game}>{game}</option>
-                            ))}
-                        </select>
+                    className="data-editor-save-file-form"
+                    style={{
+                        alignItems: 'center',
+                        flexWrap: 'wrap',
+                        margin: '0.25rem',
+                        display: this.state.showSaveFileUI ? 'flex' : 'none',
+                        borderRadius: '0.25rem',
+                        padding: '0.25rem',
+                    }}>
+                    <div
+                        className="bp3-label bp3-inline"
+                        style={{ padding: '.25rem 0', paddingBottom: '.5rem' }}>
+                        <div className={Classes.SELECT}>
+                            <select
+                                value={this.state.selectedGame}
+                                onChange={(e) => this.setState({ selectedGame: e.target.value })}>
+                                {allowedGames.map((game) => (
+                                    <option key={game} value={game}>
+                                        {game}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div
+                        className="bp3-label bp3-inline"
+                        style={{
+                            padding: '.25rem 0',
+                            paddingBottom: '.5rem',
+                            marginLeft: '.25rem',
+                        }}>
+                        <input
+                            style={{ padding: '.25rem' }}
+                            className={Classes.FILE_INPUT}
+                            ref={(ref) => (this.fileInput = ref)}
+                            onChange={this.uploadFile(this.props.replaceState, this.props.state)}
+                            type="file"
+                            id="file"
+                            name="file"
+                            accept=".sav"
+                        />
+                    </div>
+
+                    <div
+                        className="bp3-label bp3-inline"
+                        style={{
+                            padding: '.25rem 0',
+                            paddingBottom: '.5rem',
+                            marginLeft: '.25rem',
+                        }}>
+                        <Switch
+                            label="Merge Data?"
+                            checked={this.state.mergeDataMode}
+                            onChange={(e) =>
+                                this.setState({ mergeDataMode: !this.state.mergeDataMode })
+                            }
+                        />
                     </div>
                 </div>
-
-                <div
-                    className="bp3-label bp3-inline"
-                    style={{
-                        padding: '.25rem 0',
-                        paddingBottom: '.5rem',
-                        marginLeft: '.25rem',
-                    }}>
-                    <input
-                        style={{ padding: '.25rem' }}
-                        className={Classes.FILE_INPUT}
-                        ref={(ref) => (this.fileInput = ref)}
-                        onChange={this.uploadFile(this.props.replaceState, this.props.state)}
-                        type="file"
-                        id="file"
-                        name="file"
-                        accept=".sav"
-                    />
-                </div>
-
-                <div
-                    className="bp3-label bp3-inline"
-                    style={{
-                        padding: '.25rem 0',
-                        paddingBottom: '.5rem',
-                        marginLeft: '.25rem',
-                    }}>
-                    <Switch
-                        label='Merge Data?'
-                        checked={this.state.mergeDataMode}
-                        onChange={(e) =>
-                            this.setState({ mergeDataMode: !this.state.mergeDataMode })
-                        }
-                    />
-                </div>
-            </div>
-        </>;
+            </>
+        );
     }
 
     public render() {
@@ -379,10 +386,17 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                                 </span>
                             </div>
                             <div className="bp3-dialog-footer">
-                                <a href={this.state.href} download={`nuzlocke_${
-                                    this.props?.state?.trainer?.title?.toLowerCase().replace(/\s/g, '-') ||
-                                    this.props?.state?.game?.name?.toLowerCase().replace(/\s/g, '-') ||
-                                ''}_${uuid().slice(0, 4)}.json`}>
+                                <a
+                                    href={this.state.href}
+                                    download={`nuzlocke_${
+                                        this.props?.state?.trainer?.title
+                                            ?.toLowerCase()
+                                            .replace(/\s/g, '-') ||
+                                        this.props?.state?.game?.name
+                                            ?.toLowerCase()
+                                            .replace(/\s/g, '-') ||
+                                        ''
+                                    }_${uuid().slice(0, 4)}.json`}>
                                     <Button icon={'download'} intent={Intent.PRIMARY}>
                                         Download
                                     </Button>
@@ -441,12 +455,11 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     )}
                 </Dialog>
 
-                <ButtonGroup style={{margin: '.25rem'}}>
+                <ButtonGroup style={{ margin: '.25rem' }}>
                     <Button
                         onClick={(e) => this.importState()}
                         icon="import"
-                        intent={Intent.PRIMARY}
-                    >
+                        intent={Intent.PRIMARY}>
                         Import Data
                     </Button>
                     <Button onClick={(e) => this.exportState(this.props.state)} icon="export">
@@ -457,7 +470,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     </Button> */}
                 </ButtonGroup>
                 {this.renderSaveFileUI()}
-                <ButtonGroup style={{margin: '.25rem'}}>
+                <ButtonGroup style={{ margin: '.25rem' }}>
                     <Button
                         minimal
                         intent={Intent.SUCCESS}
@@ -469,8 +482,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         icon="trash"
                         onClick={this.toggleClearingData}
                         intent={Intent.DANGER}
-                        minimal
-                    >
+                        minimal>
                         Clear All Data
                     </Button>
                 </ButtonGroup>

@@ -9,7 +9,6 @@ export interface BaseEditorProps {
     defaultOpen?: boolean;
 }
 
-
 export class BaseEditor extends React.Component<BaseEditorProps, BaseEditorState> {
     public static defaultProps = {
         defaultOpen: true,
@@ -31,7 +30,7 @@ export class BaseEditor extends React.Component<BaseEditorProps, BaseEditorState
             <div className={`${this.props.name.toLowerCase()}-editor base-editor`}>
                 <h4
                     title={`${this.state.isOpen ? 'Collapse' : 'Open'} this editor.`}
-                    className='font-bold flex content-center justify-between m-1 mb-2 cursor-pointer text-base'
+                    className="font-bold flex content-center justify-between m-1 mb-2 cursor-pointer text-base"
                     onClick={this.toggleEditor}>
                     {this.props.name}
                     <span

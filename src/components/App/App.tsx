@@ -30,12 +30,10 @@ const Editor = Loadable({
     },
 });
 
-
-
 export class UpdaterBase extends React.Component<{
-    present: Omit<State, 'editorHistory'>,
-    updateEditorHistory: updateEditorHistory,
-    lrt: History<any>['lastRevisionType']
+    present: Omit<State, 'editorHistory'>;
+    updateEditorHistory: updateEditorHistory;
+    lrt: History<any>['lastRevisionType'];
 }> {
     public componentDidMount() {
         console.log('Called component did mount');
@@ -45,7 +43,12 @@ export class UpdaterBase extends React.Component<{
 
     // eslint-disable-next-line camelcase
     public UNSAFE_componentWillReceiveProps(prev) {
-        if (prev.lrt === 'update' && this.props.present != null && this.props.present != null && !isEqual(this.props.present, prev.present)) {
+        if (
+            prev.lrt === 'update' &&
+            this.props.present != null &&
+            this.props.present != null &&
+            !isEqual(this.props.present, prev.present)
+        ) {
             console.log(this.props.lrt, prev.lrt);
             this.props.updateEditorHistory(prev.present);
         }
@@ -53,7 +56,7 @@ export class UpdaterBase extends React.Component<{
 
     public render() {
         return <div />;
-    };
+    }
 }
 
 export const Updater = connect(
@@ -63,9 +66,8 @@ export const Updater = connect(
     }),
     { updateEditorHistory },
     null,
-    {pure: false}
-)
-(UpdaterBase);
+    { pure: false },
+)(UpdaterBase);
 
 export class AppBase extends React.PureComponent<AppProps> {
     public constructor(props: AppProps) {
@@ -76,7 +78,10 @@ export class AppBase extends React.PureComponent<AppProps> {
         console.log('features', feature);
 
         const Result = Loadable({
-            loader: () => this.props.style.editorDarkMode ? import('components/Result/Result2') : import('components/Result/Result'),
+            loader: () =>
+                this.props.style.editorDarkMode
+                    ? import('components/Result/Result2')
+                    : import('components/Result/Result'),
             loading: Loading,
             render(loaded) {
                 return <loaded.Result />;
@@ -99,6 +104,4 @@ export class AppBase extends React.PureComponent<AppProps> {
     }
 }
 
-export const App = connect(
-    (state: Pick<State, keyof State>) => ({ style: state.style }),
-)(AppBase);
+export const App = connect((state: Pick<State, keyof State>) => ({ style: state.style }))(AppBase);

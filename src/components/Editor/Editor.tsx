@@ -10,23 +10,52 @@ import { last, omit } from 'ramda';
 import { editorHistory } from 'reducers/editorHistory';
 import { editor } from 'reducers/editor';
 
-const PokemonEditor = React.lazy(() => import('components/PokemonEditor').then(res => ({ default: res.PokemonEditor })));
-const NuzlockeSaveControls = React.lazy(() => import('components/GameEditor/NuzlockeSaveControls').then(res => ({ default: res.NuzlockeSaveControls })));
-const GameEditor = React.lazy(() => import('components/GameEditor').then(res => ({ default: res.GameEditor })));
-const TrainerEditor = React.lazy(() => import('components/TrainerEditor').then(res => ({ default: res.TrainerEditor })));
-const HotkeysEditor = React.lazy(() => import('components/HotkeysEditor').then(res => ({ default: res.HotkeysEditor })));
-const BugReporter = React.lazy(() => import('components/BugReporter').then(res => ({ default: res.BugReporter })));
-const StatsEditor = React.lazy(() => import('components/StatsEditor').then(res => ({ default: res.StatsEditor })));
-const StyleEditor = React.lazy(() => import('components/StyleEditor').then(res => ({ default: res.StyleEditor })));
-const DataEditor = React.lazy(() => import('components/DataEditor').then(res => ({ default: res.DataEditor })));
+const PokemonEditor = React.lazy(() =>
+    import('components/PokemonEditor').then((res) => ({ default: res.PokemonEditor })),
+);
+const NuzlockeSaveControls = React.lazy(() =>
+    import('components/GameEditor/NuzlockeSaveControls').then((res) => ({
+        default: res.NuzlockeSaveControls,
+    })),
+);
+const GameEditor = React.lazy(() =>
+    import('components/GameEditor').then((res) => ({ default: res.GameEditor })),
+);
+const TrainerEditor = React.lazy(() =>
+    import('components/TrainerEditor').then((res) => ({ default: res.TrainerEditor })),
+);
+const HotkeysEditor = React.lazy(() =>
+    import('components/HotkeysEditor').then((res) => ({ default: res.HotkeysEditor })),
+);
+const BugReporter = React.lazy(() =>
+    import('components/BugReporter').then((res) => ({ default: res.BugReporter })),
+);
+const StatsEditor = React.lazy(() =>
+    import('components/StatsEditor').then((res) => ({ default: res.StatsEditor })),
+);
+const StyleEditor = React.lazy(() =>
+    import('components/StyleEditor').then((res) => ({ default: res.StyleEditor })),
+);
+const DataEditor = React.lazy(() =>
+    import('components/DataEditor').then((res) => ({ default: res.DataEditor })),
+);
 
-const Skeleteon = <div style={{width: '100%', height: '100px'}} className='bp3-skeleton'></div>;
+const Skeleteon = <div style={{ width: '100%', height: '100px' }} className="bp3-skeleton"></div>;
 
 /**
  * The main editor interface.
  */
 export class EditorBase extends React.Component<
-{ editor: State['editor']; style: State['style'], updateEditorHistory: updateEditorHistory, present: Omit<State, 'editorHistory'>, undoEditorHistory: undoEditorHistory, editorHistory: State['editorHistory'], replaceState: replaceState, redoEditorHistory: redoEditorHistory },
+{
+    editor: State['editor'];
+    style: State['style'];
+    updateEditorHistory: updateEditorHistory;
+    present: Omit<State, 'editorHistory'>;
+    undoEditorHistory: undoEditorHistory;
+    editorHistory: State['editorHistory'];
+    replaceState: replaceState;
+    redoEditorHistory: redoEditorHistory;
+},
 {}
 > {
     public editorRef: React.RefObject<HTMLDivElement>;
@@ -45,12 +74,12 @@ export class EditorBase extends React.Component<
     }
 
     public render() {
-        const {present,
+        const {
+            present,
             editorHistory,
-            editor: {
-                minimized,
-            },
-            style: { editorDarkMode }} = this.props;
+            editor: { minimized },
+            style: { editorDarkMode },
+        } = this.props;
         const styles = {
             base: css`
                 min-width: 30rem;
@@ -84,7 +113,7 @@ export class EditorBase extends React.Component<
             edit: css`
                 display: flex;
                 padding: 0.25rem;
-                border-radius: .25rem;
+                border-radius: 0.25rem;
                 border: 1px solid #eee;
                 margin: 2px;
                 align-items: center;
@@ -93,38 +122,46 @@ export class EditorBase extends React.Component<
                 color: #666;
                 margin: 0 0.5rem;
             `,
-            change: css`
-
-            `,
+            change: css``,
         };
 
         return (
             <div
                 ref={this.editorRef}
-                className={cx(
-                    'editor',
-                    styles.base,
-                    editorDarkMode ? Classes.DARK : '',
-                )}
+                className={cx('editor', styles.base, editorDarkMode ? Classes.DARK : '')}
                 style={{
                     width: minimized ? '0%' : '33%',
                     marginLeft: minimized ? '-30rem' : '0',
                     background: editorDarkMode ? '#222' : '#fff',
                 }}>
-                <div className={styles.historyControls} style={{
-                    width: this.editorRef?.current?.offsetWidth,
-                    background: editorDarkMode ? '#222' : '#fff',
-                    borderBottomColor: editorDarkMode ? '#000' : '#ccc',
-                }}>
+                <div
+                    className={styles.historyControls}
+                    style={{
+                        width: this.editorRef?.current?.offsetWidth,
+                        background: editorDarkMode ? '#222' : '#fff',
+                        borderBottomColor: editorDarkMode ? '#000' : '#ccc',
+                    }}>
                     <ButtonGroup fill className={styles.buttonGroup}>
-                        <Button disabled={editorHistory?.past?.length <= 0} onClick={() => {
-                            this.props.undoEditorHistory(present);
-                            this.props.replaceState(last(editorHistory?.past));
-                        }} minimal fill icon='undo' />
-                        <Button disabled={editorHistory?.future?.length === 0} onClick={() => {
-                            this.props.redoEditorHistory(present);
-                            this.props.replaceState(last(editorHistory?.future));
-                        }} minimal fill icon='redo' />
+                        <Button
+                            disabled={editorHistory?.past?.length <= 0}
+                            onClick={() => {
+                                this.props.undoEditorHistory(present);
+                                this.props.replaceState(last(editorHistory?.past));
+                            }}
+                            minimal
+                            fill
+                            icon="undo"
+                        />
+                        <Button
+                            disabled={editorHistory?.future?.length === 0}
+                            onClick={() => {
+                                this.props.redoEditorHistory(present);
+                                this.props.replaceState(last(editorHistory?.future));
+                            }}
+                            minimal
+                            fill
+                            icon="redo"
+                        />
                     </ButtonGroup>
                 </div>
                 <div>
@@ -193,5 +230,5 @@ export const Editor = connect(
         undoEditorHistory,
         redoEditorHistory,
         replaceState,
-    }
+    },
 )(EditorBase);

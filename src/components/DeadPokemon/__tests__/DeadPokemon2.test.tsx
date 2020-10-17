@@ -16,9 +16,9 @@ const poke = {
 describe('<DeadPokemon />', () => {
     it('renders its content', () => {
         render(
-            <TestProvider><DeadPokemon
-                pokemon={poke}
-            /></TestProvider>,
+            <TestProvider>
+                <DeadPokemon pokemon={poke} />
+            </TestProvider>,
         );
         expect(screen.getByTestId('dead-pokemon')).toBeDefined();
     });

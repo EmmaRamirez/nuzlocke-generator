@@ -6,7 +6,7 @@ import { Button, Intent } from '@blueprintjs/core';
 
 export const AddPokemonButtonBase = ({ onClick }: { onClick: onClick }) => (
     <Button
-        icon='add'
+        icon="add"
         intent={Intent.SUCCESS}
         className="add-new-pokemon"
         onClick={(e) => {

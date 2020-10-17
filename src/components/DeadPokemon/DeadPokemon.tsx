@@ -95,9 +95,11 @@ export const DeadPokemonBase = (poke: DeadPokemonProps) => {
                 <div
                     className="goc-circle"
                     style={{
-                        background: EMMA_MODE ? gameOfOriginToColor(poke.gameOfOrigin!) : `linear-gradient(45deg, ${gameOfOriginToColor(
-                            poke.gameOfOrigin!,
-                        )}, transparent)`,
+                        background: EMMA_MODE
+                            ? gameOfOriginToColor(poke.gameOfOrigin!)
+                            : `linear-gradient(45deg, ${gameOfOriginToColor(
+                                poke.gameOfOrigin!,
+                            )}, transparent)`,
                         height: '100%',
                         width: poke.gameOfOrigin === 'Platinum' && EMMA_MODE ? '100%' : '50px',
                         position: 'absolute',
@@ -112,42 +114,47 @@ export const DeadPokemonBase = (poke: DeadPokemonProps) => {
                         {...(poke as any)}
                     />
                 </span>
-                {poke.gameOfOrigin === 'Platinum' && <div
-                    style={{
-                        margin: 0,
-                        padding: 0,
-                        lineHeight: '14px',
-                        height: '100%',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        flexDirection: 'column',
-                        zIndex: 1
-                    }}>
-                    <div>
-                        {poke.nickname} {GenderElement(poke.gender)} Levels {poke.metLevel}&mdash;
-                        {poke.level}
+                {poke.gameOfOrigin === 'Platinum' && (
+                    <div
+                        style={{
+                            margin: 0,
+                            padding: 0,
+                            lineHeight: '14px',
+                            height: '100%',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            flexDirection: 'column',
+                            zIndex: 1,
+                        }}>
+                        <div>
+                            {poke.nickname} {GenderElement(poke.gender)} Levels {poke.metLevel}
+                            &mdash;
+                            {poke.level}
+                        </div>
+                        <div>{poke.causeOfDeath}</div>
+                        {style.displayGameOriginForBoxedAndDead &&
+                            !poke.style.displayBackgroundInsteadOfBadge &&
+                            poke.gameOfOrigin && (
+                            <span
+                                className="pokemon-gameoforigin"
+                                style={{
+                                    fontSize: '80%',
+                                    borderRadius: '.25rem',
+                                    margin: '0',
+                                    marginTop: '.25rem',
+                                    marginLeft: '.25rem',
+                                    padding: '2px',
+                                    display: 'inline-block',
+                                    background: gameOfOriginToColor(poke.gameOfOrigin),
+                                    color: getContrastColor(
+                                        gameOfOriginToColor(poke.gameOfOrigin),
+                                    ),
+                                }}>
+                                {poke.gameOfOrigin}
+                            </span>
+                        )}
                     </div>
-                    <div>{poke.causeOfDeath}</div>
-                    {style.displayGameOriginForBoxedAndDead &&
-                        !poke.style.displayBackgroundInsteadOfBadge &&
-                        poke.gameOfOrigin && (
-                        <span
-                            className="pokemon-gameoforigin"
-                            style={{
-                                fontSize: '80%',
-                                borderRadius: '.25rem',
-                                margin: '0',
-                                marginTop: '.25rem',
-                                marginLeft: '.25rem',
-                                padding: '2px',
-                                display: 'inline-block',
-                                background: gameOfOriginToColor(poke.gameOfOrigin),
-                                color: getContrastColor(gameOfOriginToColor(poke.gameOfOrigin)),
-                            }}>
-                            {poke.gameOfOrigin}
-                        </span>
-                    )}
-                </div>}
+                )}
             </div>
         );
     }

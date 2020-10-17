@@ -44,9 +44,10 @@ interface CurrentPokemonInputProps {
     customTypes: State['customTypes'];
 }
 
-
-export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInputProps,
-{ value?: any }> {
+export class CurrentPokemonInputBase extends React.Component<
+CurrentPokemonInputProps,
+{ value?: any }
+> {
     public constructor(props: CurrentPokemonInputProps) {
         super(props);
         this.state = {
@@ -68,9 +69,10 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         this.setState({ value: undefined });
     }
 
-    public onChange = (inputName, {position, value, pokemon}: {position?: number, value?: any, pokemon?: Pokemon} = {}) => (
-        e: React.ChangeEvent & {target: {value: any, checked?: boolean}},
-    ) => {
+    public onChange = (
+        inputName,
+        { position, value, pokemon }: { position?: number; value?: any; pokemon?: Pokemon } = {},
+    ) => (e: React.ChangeEvent & { target: { value: any; checked?: boolean } }) => {
         e.persist();
         let edit;
 
@@ -117,12 +119,12 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
             };
         }
 
-        this.setState({value: e.target.value});
+        this.setState({ value: e.target.value });
         this.delayedEdit()(edit);
     };
 
     private delayedEdit() {
-        return debounce(edit => this.props.editPokemon(edit, this.props.selectedId), 300);
+        return debounce((edit) => this.props.editPokemon(edit, this.props.selectedId), 300);
     }
 
     public getInput({
@@ -136,15 +138,15 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         options,
         pokemon,
     }: {
-        labelName?: CurrentPokemonInputProps['labelName'],
-        usesKeyValue?: boolean,
-        disabled?: boolean,
-        inputName?: CurrentPokemonInputProps['inputName'],
-        type: string,
-        value: any,
-        placeholder?: string,
-        options?: any[],
-        pokemon?: Pokemon,
+        labelName?: CurrentPokemonInputProps['labelName'];
+        usesKeyValue?: boolean;
+        disabled?: boolean;
+        inputName?: CurrentPokemonInputProps['inputName'];
+        type: string;
+        value: any;
+        placeholder?: string;
+        options?: any[];
+        pokemon?: Pokemon;
     }) {
         const { customMoveMap, customTypes } = this.props;
 
@@ -153,14 +155,15 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
             return (
                 <ErrorBoundary>
                     <TagInput
-                        leftIcon='ninja'
+                        leftIcon="ninja"
                         tagProps={(v, i) => {
                             // @TODO: Fix inconsitencies with bad parameter types
                             const background =
                                 typeToColor(
                                     // @ts-ignore
                                     customMoveMap.find((m) => m?.move === v)?.type ||
-                                        getMoveType(v?.toString()?.trim() || ''), customTypes,
+                                        getMoveType(v?.toString()?.trim() || ''),
+                                    customTypes,
                                 ) || 'transparent';
                             const color = getContrastColor(background);
                             return {
@@ -221,7 +224,9 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
         }
         if (type === 'select') {
             return (
-                <div className={Classes.SELECT} style={inputName === 'status' ? { width: '120px' } : {}}>
+                <div
+                    className={Classes.SELECT}
+                    style={inputName === 'status' ? { width: '120px' } : {}}>
                     {inputName === 'pokeball' && value && value !== 'None' ? (
                         <img
                             style={{ position: 'absolute' }}
@@ -230,7 +235,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                         />
                     ) : null}
                     <select
-                        onChange={this.onChange(inputName, {pokemon})}
+                        onChange={this.onChange(inputName, { pokemon })}
                         value={value}
                         style={inputName === 'pokeball' ? { paddingLeft: '2rem' } : {}}
                         name={inputName}>
@@ -265,7 +270,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                 <span className="double-select-wrapper">
                     <div className={Classes.SELECT}>
                         <select
-                            onChange={this.onChange(inputName, {position: 0, value})}
+                            onChange={this.onChange(inputName, { position: 0, value })}
                             value={value?.[0] == null ? 'None' : value?.[0]}
                             name={inputName}>
                             {options
@@ -280,7 +285,7 @@ export class CurrentPokemonInputBase extends React.Component<CurrentPokemonInput
                     <span>&nbsp;</span>
                     <div className={Classes.SELECT}>
                         <select
-                            onChange={this.onChange(inputName, {position: 1, value})}
+                            onChange={this.onChange(inputName, { position: 1, value })}
                             value={value?.[1] == null ? 'None' : value?.[1]}
                             name={inputName}>
                             {options
@@ -340,5 +345,5 @@ export const CurrentPokemonInput = connect(
     }),
     { editPokemon, selectPokemon },
     null,
-    {pure: false}
+    { pure: false },
 )(CurrentPokemonInputBase);

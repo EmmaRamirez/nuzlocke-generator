@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 import { generateEmptyPokemon, styleDefaults } from 'utils';
 import { State } from 'state';
 
-export function TestProvider({children}: any) {
+export function TestProvider({ children }: any) {
     const store = configureStore()({
         pokemon: [generateEmptyPokemon(), generateEmptyPokemon()],
         style: {
@@ -13,7 +13,5 @@ export function TestProvider({children}: any) {
         },
     } as State);
 
-    return <Provider store={store}>
-        {children}
-    </Provider>;
+    return <Provider store={store}>{children}</Provider>;
 }

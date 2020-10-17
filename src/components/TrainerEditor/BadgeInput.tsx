@@ -93,10 +93,7 @@ export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputS
                                         />
                                     ))}
                                     {this.props.enableCheckpointsEditor ? (
-                                        <Button
-                                            onClick={this.toggleCheckpointsEditor}
-                                            minimal
-                                        >
+                                        <Button onClick={this.toggleCheckpointsEditor} minimal>
                                             Customize Checkpoints
                                         </Button>
                                     ) : null}

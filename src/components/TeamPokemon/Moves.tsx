@@ -40,9 +40,13 @@ export const Move = ({ index, style, type, move, customTypes, stripClasses = fal
                         color: getContrastColor(typeToColor(type, customTypes)),
                     }
             }
-            className={stripClasses ? '' : `move move-${move.replace(/\s/g, '-')?.toLowerCase()} ${
-                move.length >= 10 ? 'long-text-move' : ''
-            }`}>
+            className={
+                stripClasses
+                    ? ''
+                    : `move move-${move.replace(/\s/g, '-')?.toLowerCase()} ${
+                        move.length >= 10 ? 'long-text-move' : ''
+                    }`
+            }>
             {move}
         </div>
     );
@@ -84,17 +88,17 @@ export class MovesBase extends React.Component<MovesProps> {
     }
 
     public renderToString() {
-        const {moves} = this.props;
-        return this.generateMoves(moves)?.map(m => ReactDOMServer.renderToString(m));
+        const { moves } = this.props;
+        return this.generateMoves(moves)?.map((m) => ReactDOMServer.renderToString(m));
     }
 
     public render() {
-        const {moves, movesPosition, stripClasses = false } = this.props;
+        const { moves, movesPosition, stripClasses = false } = this.props;
         if (moves == null) return null;
-        return stripClasses ? this.generateMoves(moves) : (
-            <div className={`pokemon-moves ${movesPosition}`}>
-                {this.generateMoves(moves)}
-            </div>
+        return stripClasses ? (
+            this.generateMoves(moves)
+        ) : (
+            <div className={`pokemon-moves ${movesPosition}`}>{this.generateMoves(moves)}</div>
         );
     }
 }

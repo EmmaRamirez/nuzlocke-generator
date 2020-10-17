@@ -98,7 +98,7 @@ export const getIconURL = ({ id, species, forme, shiny, gender, customIcon, egg 
     )}${getIconFormeSuffix(forme as keyof typeof Forme)}.png`;
 };
 
-export function PokemonIconPlain ({
+export function PokemonIconPlain({
     isDragging,
     id,
     gender,
@@ -112,32 +112,34 @@ export function PokemonIconPlain ({
     customIcon,
     includeTitle,
     imageStyle,
-}: PokemonIconProps & {imageStyle: any}) {
-    return <div
-        role="icon"
-        onClick={(e) => {
-            e.preventDefault();
-            onClick && onClick();
-        }}
-        id={id}
-        title={includeTitle ? species : undefined}
-        style={style}
-        className={`${id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'} ${
-            className || ''
-        } ${isDragging ? 'opacity-medium' : ''}`}>
-        <img
-            style={imageStyle}
-            alt={species}
-            src={getIconURL({
-                id,
-                species,
-                forme,
-                shiny,
-                gender,
-                customIcon,
-            } as IconURLArgs)}
-        />
-    </div>;
+}: PokemonIconProps & { imageStyle: any }) {
+    return (
+        <div
+            role="icon"
+            onClick={(e) => {
+                e.preventDefault();
+                onClick && onClick();
+            }}
+            id={id}
+            title={includeTitle ? species : undefined}
+            style={style}
+            className={`${id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'} ${
+                className || ''
+            } ${isDragging ? 'opacity-medium' : ''}`}>
+            <img
+                style={imageStyle}
+                alt={species}
+                src={getIconURL({
+                    id,
+                    species,
+                    forme,
+                    shiny,
+                    gender,
+                    customIcon,
+                } as IconURLArgs)}
+            />
+        </div>
+    );
 }
 
 @DragSource('ICON', iconSource as any, (connect, monitor) => ({
@@ -150,11 +152,7 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
     }
 
     public render() {
-        const {
-            connectDragSource,
-            styles,
-            hidden,
-        } = this.props;
+        const { connectDragSource, styles, hidden } = this.props;
         const imageStyle = {
             maxHeight: '100%',
             opacity: hidden ? 0.5 : 1,
@@ -165,7 +163,7 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
         return connectDragSource!(
             <div>
                 <PokemonIconPlain imageStyle={imageStyle} {...this.props} />
-            </div>
+            </div>,
         );
     }
 }

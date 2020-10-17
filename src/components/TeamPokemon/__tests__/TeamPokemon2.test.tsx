@@ -15,7 +15,7 @@ describe(TeamPokemon.name, () => {
         pokemon: Pikachu,
         options: {
             height: '8rem',
-        }
+        },
     };
 
     it('renders [no customs]', () => {
