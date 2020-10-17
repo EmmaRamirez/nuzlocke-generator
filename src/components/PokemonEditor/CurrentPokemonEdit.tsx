@@ -46,7 +46,7 @@ import { State } from 'state';
 import { CurrentPokemonLayoutItem } from './CurrentPokemonLayoutItem';
 import { MoveEditor } from 'components/MoveEditor';
 import { POSITION_BOTTOM } from '@blueprintjs/core/lib/esm/common/classes';
-import { BadgeInput } from 'components/TrainerEditor';
+import { BadgeInput, CheckpointsInputList } from 'components/TrainerEditor';
 import { pokemon } from 'reducers/pokemon';
 
 const pokeball = require('assets/pokeball.png');
@@ -230,10 +230,15 @@ CurrentPokemonEditState
                     type="double-select"
                     options={this.getTypes()}
                 />
-                <BadgeInput
-                    checkpointsCleared={currentPokemon.checkpoints}
-                    onChange={checkpoints => editPokemon({checkpoints}, currentPokemon.id)}
-                />
+                <span
+                    className={'current-pokemon-input-wrapper current-pokemon-checklist current-pokemon-checkpoints'}>
+                    <label>Checkpoints</label>
+                    <CheckpointsInputList
+                        checkpointsObtained={currentPokemon.checkpoints ?? []}
+                        onChange={checkpoints => editPokemon({checkpoints}, currentPokemon.id)}
+                        buttonText='Award Checkpoints'
+                    />
+                </span>
                 <CurrentPokemonLayoutItem checkboxes>
                     <CurrentPokemonInput
                         labelName="Shiny"

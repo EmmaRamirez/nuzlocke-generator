@@ -17,6 +17,9 @@ import { getAllBadges } from 'utils';
 import { State } from 'state';
 import { Checkpoints } from 'reducers/checkpoints';
 import { addCustomCheckpoint, editCheckpoint, deleteCheckpoint, reorderCheckpoints } from 'actions';
+import { resolve } from 'cypress/types/bluebird';
+import { reject } from 'cypress/types/lodash';
+import { ImageUpload } from 'components/Shared/ImageUpload';
 
 export interface CheckpointsSelectProps {
     checkpoint: Badge;
@@ -26,6 +29,10 @@ export interface CheckpointsSelectProps {
 export interface CheckpointsSelectState {
     showOptions: boolean;
 }
+
+const checkpointImageURL = (name) => ((name.startsWith('http') || name.startsWith('data'))
+    ? name
+    : `./img/checkpoints/${name}.png`);
 
 export class CheckpointsSelect extends React.Component<
 CheckpointsSelectProps,
@@ -51,7 +58,7 @@ CheckpointsSelectState
                             <img
                                 className={cx(styles.checkpointImage(1))}
                                 alt={badge.name}
-                                src={`./img/checkpoints/${badge.image}.png`}
+                                src={checkpointImageURL(badge?.image)}
                             />{' '}
                             {badge.name}
                         </Button>
@@ -76,11 +83,7 @@ CheckpointsSelectState
                             <img
                                 className={cx(styles.checkpointImage(1))}
                                 alt={checkpoint.name}
-                                src={
-                                    checkpoint.image.startsWith('http')
-                                        ? checkpoint.image
-                                        : `./img/checkpoints/${checkpoint.image}.png`
-                                }
+                                src={checkpointImageURL(checkpoint?.image)}
                             />{' '}
                             {checkpoint.name}
                         </div>
@@ -124,22 +127,6 @@ CheckpointsEditorState
         );
     };
 
-    private onUpload = (e: any) => {
-        const size = e.target.files[0].size / 1024 / 1024;
-        const toaster = Toaster.create();
-        if (size > 0.5) {
-            toaster.show({
-                message: `File size of 500KB exceeded. File was ${size.toFixed(2)}MB`,
-                intent: Intent.DANGER,
-            });
-        } else {
-            toaster.show({
-                message: 'Upload successful!',
-                intent: Intent.SUCCESS,
-            });
-        }
-    };
-
     private renderCheckpoints(checkpoints: Checkpoints) {
         return (
             checkpoints &&
@@ -159,11 +146,7 @@ CheckpointsEditorState
                             <img
                                 className={cx(styles.checkpointImage())}
                                 alt={checkpoint.name}
-                                src={
-                                    checkpoint.image.startsWith('http')
-                                        ? checkpoint.image
-                                        : `./img/checkpoints/${checkpoint.image}.png`
-                                }
+                                src={checkpointImageURL(checkpoint?.image)}
                             />
                             <input
                                 onChange={(e) =>
@@ -181,10 +164,6 @@ CheckpointsEditorState
                             onEdit={(i, n) => this.props.editCheckpoint(i, n)}
                             checkpoint={checkpoint}
                         />
-                        {/* <div className={cx(styles.checkpointImageUploadWrapper)}>
-                            <Button icon='upload'>Upload Image</Button>
-                            <input style={{ cursor: 'pointer', opacity: 0, position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} onChange={this.onUpload} type='file' />
-                        </div> */}
                         <div className={Classes.INPUT_GROUP}>
                             <Icon icon={'link'} />
                             <input
@@ -198,6 +177,11 @@ CheckpointsEditorState
                                         checkpoint.name,
                                     )
                                 }
+                            />
+                        </div>
+                        <div className={cx(styles.checkpointImageUploadWrapper)}>
+                            <ImageUpload
+                                onSuccess={image => this.props.editCheckpoint({image}, checkpoint.name)}
                             />
                         </div>
                         <Icon
@@ -214,7 +198,7 @@ CheckpointsEditorState
 
     public render() {
         return (
-            <div className={cx(styles.checkpointsEditor)}>
+            <div className={cx(styles.checkpointsEditor, 'has-nice-scrollbars')}>
                 <ul className={cx(styles.checkpointsList)}>
                     {this.renderCheckpoints(this.props.checkpoints)}
                 </ul>

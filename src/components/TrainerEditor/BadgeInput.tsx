@@ -9,10 +9,69 @@ import { CheckpointsEditor } from './CheckpointsEditor';
 import { cx } from 'emotion';
 import { State } from 'state';
 import { Checkpoints } from 'reducers/checkpoints';
+import * as Styles from './style';
 
 export interface BadgeInputProps {
     checkpointsCleared?: Checkpoints;
     onChange?: (checkpoint: Checkpoints) => void;
+}
+
+export interface CheckpointsInputListProps {
+    onChange: (checkpoints: Checkpoints) => void;
+    checkpointsObtained: Checkpoints;
+    toggle?: () => void;
+    buttonText?: string;
+}
+
+export function CheckpointsInputList({
+    onChange,
+    checkpointsObtained,
+    toggle,
+    buttonText,
+}: CheckpointsInputListProps) {
+    const checkpoints = useSelector<State, State['checkpoints']>(state => state.checkpoints);
+
+    return <Popover
+        minimal={true}
+        content={
+            <Menu>
+                {checkpoints.map((badge) => (
+                    <Checkbox
+                        onChange={(e: any) => {
+                            if (
+                                !e.target.checked ||
+                                checkpointsObtained.some((b) => b.name === badge.name)
+                            ) {
+                                const badges = checkpointsObtained.filter(
+                                    (b) => b.name !== badge.name,
+                                );
+                                onChange(badges);
+                            } else {
+                                const badges = [...checkpointsObtained, badge];
+                                onChange(badges);
+                            }
+                        }}
+                        checked={checkpointsObtained.some(
+                            (b) => b.name === badge.name,
+                        )}
+                        key={badge.name}
+                        label={badge.name}
+                    />
+                ))}
+                {toggle && <Button onClick={toggle} minimal>
+                    Customize Checkpoints
+                </Button>}
+            </Menu>
+        }
+        position={Position.BOTTOM}>
+        <Button
+            fill
+            style={{
+                borderRadius: 0,
+            }}>
+            {buttonText ?? 'Select Checkpoints'}
+        </Button>
+    </Popover>;
 }
 
 export function BadgeInput ({
@@ -41,8 +100,8 @@ export function BadgeInput ({
                 canOutsideClickClose={false}
                 title="Checkpoints Editor"
                 icon="badge"
-                style={{ width: '46rem' }}>
-                <div className={Classes.DIALOG_BODY}>
+                style={{ width: '60rem' }}>
+                <div className={cx(Classes.DIALOG_BODY, Styles.checkpointsEditor, 'has-nice-scrollbars')}>
                     <CheckpointsEditor checkpoints={checkpoints} />
                 </div>
             </Dialog>
@@ -55,47 +114,11 @@ export function BadgeInput ({
                 onChange={null}
                 element={(inputProps) => (
                     <div>
-                        <Popover
-                            minimal={true}
-                            content={
-                                <Menu>
-                                    {checkpoints.map((badge) => (
-                                        <Checkbox
-                                            onChange={(e: any) => {
-                                                if (
-                                                    !e.target.checked ||
-                                                    checkpointsObtained.some((b) => b.name === badge.name)
-                                                ) {
-                                                    const badges = checkpointsObtained.filter(
-                                                        (b) => b.name !== badge.name,
-                                                    );
-                                                    onChangeUseable(badges);
-                                                } else {
-                                                    const badges = [...checkpointsObtained, badge];
-                                                    onChangeUseable(badges);
-                                                }
-                                            }}
-                                            checked={checkpointsObtained.some(
-                                                (b) => b.name === badge.name,
-                                            )}
-                                            key={badge.name}
-                                            label={badge.name}
-                                        />
-                                    ))}
-                                    <Button onClick={toggle} minimal>
-                                        Customize Checkpoints
-                                    </Button>
-                                </Menu>
-                            }
-                            position={Position.BOTTOM}>
-                            <Button
-                                fill
-                                style={{
-                                    borderRadius: 0,
-                                }}>
-                                Select Checkpoints
-                            </Button>
-                        </Popover>
+                        <CheckpointsInputList
+                            onChange={onChangeUseable}
+                            toggle={toggle}
+                            checkpointsObtained={checkpointsObtained}
+                        />
                         <Button onClick={() => {}} icon={'lock'} />
                     </div>
                 )}

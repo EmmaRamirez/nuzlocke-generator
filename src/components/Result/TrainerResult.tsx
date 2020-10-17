@@ -14,6 +14,7 @@ import { Trainer, Badge } from 'models';
 import { State } from 'state';
 import { Checkpoints } from 'reducers/checkpoints';
 import { Stats } from './Stats';
+import { cx } from 'emotion';
 
 export interface TrainerResultProps {
     orientation: OrientationType;
@@ -53,6 +54,7 @@ export interface CheckpointsDisplayProps {
     trainer?: State['trainer'];
     game: State['game'];
     clearedCheckpoints?: Checkpoints;
+    className?: string;
 }
 
 export function CheckpointsDisplay({
@@ -60,14 +62,20 @@ export function CheckpointsDisplay({
     trainer,
     game,
     clearedCheckpoints,
+    className,
 }: CheckpointsDisplayProps) {
     const {name} = game;
     const checkpoints = useSelector<State, State['checkpoints']>(state => state.checkpoints);
-    const cleared = clearedCheckpoints ?? [];
+    const cleared = trainer?.badges ?? clearedCheckpoints ?? [];
 
     if (!style.displayBadges) {
         return null;
     }
+
+    console.log(
+        checkpoints,
+        cleared,
+    );
 
     const swshPositions = [
         { bottom: 0, right: 0 },
@@ -81,21 +89,19 @@ export function CheckpointsDisplay({
     ];
 
     return <>{checkpoints.map((badge, index) => {
+        const obtained = cleared.some((b) => b.name === badge.name);
         return (
             <React.Fragment key={badge.name}>
                 <img
-                    className={
-                        cleared.some((b) => b.name === badge.name)
-                            ? 'obtained'
-                            : 'not-obtained'
-                    }
+                    className={cx(className ?? '', obtained ? 'obtained' : 'not-obtained')}
                     style={
                         isSWSH(name) && !trainer?.hasEditedCheckpoints
                             ? { position: 'absolute', ...swshPositions[index] }
-                            : { height: '1rem' }
+                            : { }
                     }
                     key={badge.name}
                     alt={badge.name}
+                    data-badge={badge.name}
                     src={
                         (badge.image.startsWith('http') || badge.image.startsWith('data'))
                             ? badge.image
@@ -196,6 +202,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                 )}
                 <div className="badge-wrapper flex" style={this.getBadgeWrapperStyles(orientation)}>
                     <CheckpointsDisplay
+                        className='trainer-checkpoint'
                         trainer={trainer}
                         style={style}
                         game={game}

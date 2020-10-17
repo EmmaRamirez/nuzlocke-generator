@@ -139,11 +139,14 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                             />
                         )}
                         {pokemon.checkpoints && (
-                            <CheckpointsDisplay
-                                game={game}
-                                clearedCheckpoints={pokemon.checkpoints}
-                                style={style}
-                            />
+                            <div className='flex'>
+                                <CheckpointsDisplay
+                                    className='pokemon-checkpoint'
+                                    game={game}
+                                    clearedCheckpoints={pokemon.checkpoints}
+                                    style={style}
+                                />
+                            </div>
                         )}
                         {style.displayExtraData && pokemon.extraData ? (
                             <div
