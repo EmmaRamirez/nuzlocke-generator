@@ -8,7 +8,8 @@ export const checkpointsEditor = css`
 export const checkpointsList = css`
     height: 60vh;
     margin: 0;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     padding: 0;
 `;
 

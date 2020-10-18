@@ -17,9 +17,11 @@ import { getAllBadges } from 'utils';
 import { State } from 'state';
 import { Checkpoints } from 'reducers/checkpoints';
 import { addCustomCheckpoint, editCheckpoint, deleteCheckpoint, reorderCheckpoints } from 'actions';
-import { resolve } from 'cypress/types/bluebird';
-import { reject } from 'cypress/types/lodash';
 import { ImageUpload } from 'components/Shared/ImageUpload';
+const uuid = require('uuid');
+
+
+
 
 export interface CheckpointsSelectProps {
     checkpoint: Badge;
@@ -46,7 +48,7 @@ CheckpointsSelectState
             .includes(image);
 
         return (
-            <div style={{ padding: '1rem', height: '400px', overflowY: 'auto' }}>
+            <div className='has-nice-scrollbars' style={{ padding: '1rem', height: '400px', overflowY: 'auto' }}>
                 {getAllBadges().map((badge, key) => {
                     return (
                         <Button
@@ -78,7 +80,7 @@ CheckpointsSelectState
                     content={this.renderOptions(checkpoint)}>
                     <div
                         role="select"
-                        className={cx(styles.checkpointSelect, Classes.SELECT, Classes.BUTTON)}>
+                        className={cx(styles.checkpointSelect, Classes.SELECT, Classes.BUTTON, 'has-nice-scrollbars')}>
                         <div>
                             <img
                                 className={cx(styles.checkpointImage(1))}
@@ -181,7 +183,36 @@ CheckpointsEditorState
                         </div>
                         <div className={cx(styles.checkpointImageUploadWrapper)}>
                             <ImageUpload
-                                onSuccess={image => this.props.editCheckpoint({image}, checkpoint.name)}
+                                onSuccess={image => {
+                                    const request = window.indexedDB.open('NuzlockeGenerator', 3);
+                                    request.onerror = event => console.log(event);
+                                    // request.onsuccess = event => console.log(event);
+                                    request.onupgradeneeded = event => {
+                                        // @ts-expect-error
+                                        const db = event?.target?.result;
+
+                                        const images = db.createObjectStore('images', {keyPath: 'id'});
+                                        images.createIndex('image', 'image', {unique: false});
+                                        // const id = uuid();
+                                        // console.log(id);
+
+                                        // images.transaction.oncomplete = event => {
+                                        //     const imageStore = db.transaction('images', 'readwrite').objectStore('images');
+                                        //     imageStore.add({id, image: image});
+                                        // };
+                                    };
+                                    request.onsuccess = event => {
+                                        // @ts-expect-error
+                                        const db = event?.target?.result;
+
+                                        const id = uuid();
+                                        console.log(id);
+
+                                        const imageStore = db.transaction('images', 'readwrite').objectStore('images');
+                                        imageStore.add({id, image: image});
+                                    };
+                                    this.props.editCheckpoint({image}, checkpoint.name);
+                                }}
                             />
                         </div>
                         <Icon
@@ -199,7 +230,7 @@ CheckpointsEditorState
     public render() {
         return (
             <div className={cx(styles.checkpointsEditor, 'has-nice-scrollbars')}>
-                <ul className={cx(styles.checkpointsList)}>
+                <ul className={cx(styles.checkpointsList, 'has-nice-scrollbars')}>
                     {this.renderCheckpoints(this.props.checkpoints)}
                 </ul>
                 <div className={cx(styles.checkpointButtons)}>

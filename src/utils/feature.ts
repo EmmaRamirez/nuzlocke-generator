@@ -8,6 +8,7 @@ const featuresFromEnv = {
     hallOfFame: process.env.HALL_OF_FAME,
     locks: process.env.LOCKS,
     gen2saves: process.env.GEN2_SAVES,
+    imageUploads: process.env.IMAGE_UPLOADS,
 };
 
 interface BooleanObject {

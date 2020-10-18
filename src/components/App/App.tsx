@@ -13,6 +13,8 @@ import { deepCompareKeys } from '@blueprintjs/core/lib/esm/common/utils';
 import { isEqual } from 'lodash';
 import { omit } from 'ramda';
 import { History } from 'reducers/editorHistory';
+import { Drawer } from '@blueprintjs/core';
+import { ImagesDrawer } from 'components/Shared/ImagesDrawer';
 
 export interface AppProps {
     style: State['style'];
@@ -99,6 +101,12 @@ export class AppBase extends React.PureComponent<AppProps> {
                 <Hotkeys />
                 <Editor />
                 <Result />
+                <Drawer
+                    isOpen={true}
+                    size={Drawer.SIZE_STANDARD}
+                >
+                    <ImagesDrawer />
+                </Drawer>
             </div>
         );
     }

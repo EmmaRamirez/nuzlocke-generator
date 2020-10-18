@@ -11,7 +11,7 @@ const toBase64 = file => new Promise((resolve, reject) => {
 
 
 export interface ImageUploadProps {
-    onSuccess: (data: string) => void;
+    onSuccess: (data: string, fileName?: string) => void;
     onError?: (error: any) => void;
 }
 
@@ -27,7 +27,7 @@ const onUpload = ({onSuccess, onError}: ImageUploadProps) => async (e: any) => {
     } else {
         try {
             const image = await toBase64(file);
-            onSuccess && onSuccess(image as string);
+            onSuccess && onSuccess(image as string, file?.name);
 
             console.log(image);
             toaster.show({
