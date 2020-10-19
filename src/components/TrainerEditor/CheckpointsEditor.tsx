@@ -5,11 +5,10 @@ import {
     Button,
     Icon,
     Intent,
-    Toaster,
     Popover,
     PopoverInteractionKind,
 } from '@blueprintjs/core';
-import { classWithDarkTheme, Styles } from 'utils';
+import { classWithDarkTheme, feature, Styles } from 'utils';
 import * as styles from './style';
 import { connect } from 'react-redux';
 import { Badge } from 'models';
@@ -18,10 +17,6 @@ import { State } from 'state';
 import { Checkpoints } from 'reducers/checkpoints';
 import { addCustomCheckpoint, editCheckpoint, deleteCheckpoint, reorderCheckpoints } from 'actions';
 import { ImageUpload } from 'components/Shared/ImageUpload';
-const uuid = require('uuid');
-
-
-
 
 export interface CheckpointsSelectProps {
     checkpoint: Badge;
@@ -182,38 +177,12 @@ CheckpointsEditorState
                             />
                         </div>
                         <div className={cx(styles.checkpointImageUploadWrapper)}>
-                            <ImageUpload
+                            {feature.imageUploads && <ImageUpload
                                 onSuccess={image => {
                                     const request = window.indexedDB.open('NuzlockeGenerator', 3);
-                                    request.onerror = event => console.log(event);
-                                    // request.onsuccess = event => console.log(event);
-                                    request.onupgradeneeded = event => {
-                                        // @ts-expect-error
-                                        const db = event?.target?.result;
-
-                                        const images = db.createObjectStore('images', {keyPath: 'id'});
-                                        images.createIndex('image', 'image', {unique: false});
-                                        // const id = uuid();
-                                        // console.log(id);
-
-                                        // images.transaction.oncomplete = event => {
-                                        //     const imageStore = db.transaction('images', 'readwrite').objectStore('images');
-                                        //     imageStore.add({id, image: image});
-                                        // };
-                                    };
-                                    request.onsuccess = event => {
-                                        // @ts-expect-error
-                                        const db = event?.target?.result;
-
-                                        const id = uuid();
-                                        console.log(id);
-
-                                        const imageStore = db.transaction('images', 'readwrite').objectStore('images');
-                                        imageStore.add({id, image: image});
-                                    };
                                     this.props.editCheckpoint({image}, checkpoint.name);
                                 }}
-                            />
+                            />}
                         </div>
                         <Icon
                             style={{ cursor: 'pointer' }}
