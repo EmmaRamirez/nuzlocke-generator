@@ -72,11 +72,6 @@ export function CheckpointsDisplay({
         return null;
     }
 
-    console.log(
-        checkpoints,
-        cleared,
-    );
-
     const swshPositions = [
         { bottom: 0, right: 0 },
         { right: '-9px', top: '2px', height: '24px' },

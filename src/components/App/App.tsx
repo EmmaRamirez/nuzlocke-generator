@@ -101,12 +101,12 @@ export class AppBase extends React.PureComponent<AppProps> {
                 <Hotkeys />
                 <Editor />
                 <Result />
-                <Drawer
+                {feature.imageUploads && <Drawer
                     isOpen={true}
                     size={Drawer.SIZE_STANDARD}
                 >
                     <ImagesDrawer />
-                </Drawer>
+                </Drawer>}
             </div>
         );
     }

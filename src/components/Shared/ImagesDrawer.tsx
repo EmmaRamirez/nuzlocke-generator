@@ -5,22 +5,24 @@ import { ImageUpload } from './ImageUpload';
 
 const uuid = require('uuid');
 
+const userImages = new Set<Image>();
 
-const getImages = (addImage) => {
+const getImages = () => {
     const request = window.indexedDB.open('NuzlockeGenerator', 3);
+
+    request.onerror = event => Promise.reject(event);
 
     request.onsuccess = event => {
         // @ts-expect-error
         const db = event?.target?.result;
         const imageStore = db.transaction('images', 'readwrite').objectStore('images');
-        imageStore.openCursor().onsuccess = function(event) {
+        imageStore.openCursor().onsuccess = function (event) {
             const cursor = event.target.result;
             if (cursor) {
                 const image = cursor?.value;
-                addImage(image);
                 cursor.continue();
             } else {
-                console.log('end of db');
+                return;
             }
         };
     };
@@ -32,14 +34,11 @@ export interface Image {
     image: string;
 }
 
+
 export function ImagesDrawer() {
     const [refresh, setRefresh] = React.useState('');
     const [images, setImages] = React.useState<Image[]>([]);
-    const addImage = (image: Image) => setImages([...images, image]);
 
-    React.useEffect(() => {
-        getImages(addImage);
-    }, [refresh]);
 
     const deleteImage = (id: string) => () => {
         const request = window.indexedDB.open('NuzlockeGenerator', 3);
@@ -90,19 +89,19 @@ export function ImagesDrawer() {
 
                         const imageStore = db.transaction('images', 'readwrite').objectStore('images');
                         imageStore.add({id, image: image, name: fileName});
-                        addImage({id, name: fileName, image: image});
+                        // addImage({id, name: fileName, image: image});
                         setRefresh(id);
                     };
                 }}
             />
         </div>
         <div className='flex flex-wrap'>
-            {images.map(image => <div key={image.id} className='bg-white p-1 m-1 border border-gray w-40 h-40 relative flex justify-center align-center'>
+            {images.map(image => <div key={image.id} className='bg-white p-1 m-1 border border-gray w-40 h-40 relative flex justify-center align-center overflow-y-auto '>
                 <img className='object-contain' src={image.image} alt={image.name} title={image.name} />
                 <div className='absolute bottom-0 left-0 w-full flex p-1 bg-white'>
                     <input
                         readOnly
-                        className='w-20'
+                        className='w-24'
                         value={image.name}
                     />
                     <Icon className='ml-auto cursor-pointer' onClick={deleteImage(image.id)} icon='trash' intent={Intent.DANGER} />
