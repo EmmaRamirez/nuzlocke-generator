@@ -16,6 +16,7 @@ import { ImagesDrawer } from 'components/Shared/ImagesDrawer';
 
 export interface AppProps {
     style: State['style'];
+    view: State['view'];
 }
 
 function Loading() {
@@ -69,17 +70,30 @@ export const Updater = connect(
     { pure: false },
 )(UpdaterBase);
 
-export class AppBase extends React.PureComponent<AppProps> {
+export class AppBase extends React.PureComponent<AppProps, {result2?: boolean}> {
     public constructor(props: AppProps) {
         super(props);
+        this.state = {result2: false};
+    }
+
+    public componentDidUpdate() {
+        if (feature.resultv2) {
+            // TOP SECRET
+            if (this.props.style.customCSS.includes('resultv2')) {
+                this.setState({result2: true});
+            } else {
+                this.setState({result2: false});
+            }
+        }
     }
 
     public render() {
+        const {style, view} = this.props;
         console.log('features', feature);
 
         const Result = Loadable({
             loader: () =>
-                this.props.style.editorDarkMode
+                this.state.result2
                     ? import('components/Result/Result2')
                     : import('components/Result/Result'),
             loading: Loading,
@@ -99,7 +113,7 @@ export class AppBase extends React.PureComponent<AppProps> {
                 <Hotkeys />
                 <Editor />
                 <Result />
-                {feature.imageUploads && <Drawer
+                {view?.dialogs?.imageUploader && <Drawer
                     isOpen={true}
                     size={Drawer.SIZE_STANDARD}
                 >
@@ -110,4 +124,9 @@ export class AppBase extends React.PureComponent<AppProps> {
     }
 }
 
-export const App = connect((state: Pick<State, keyof State>) => ({ style: state.style }))(AppBase);
+export const App = connect(
+    (state: Pick<State, keyof State>) => ({
+        style: state.style,
+        view: state.view,
+    })
+)(AppBase);

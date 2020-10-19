@@ -17,6 +17,7 @@ import { customMoveMap } from './customMoveMap';
 import { stats } from './stats';
 import { customTypes } from './customTypes';
 import { editorHistory } from './editorHistory';
+import { view } from './view';
 
 export const reducers = {
     box,
@@ -36,6 +37,7 @@ export const reducers = {
     rules,
     stats,
     style,
+    view,
 };
 
 export const appReducers = combineReducers(reducers);

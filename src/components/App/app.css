@@ -42,7 +42,7 @@
     list-style-type: disc;
     margin-left: 40px;
 }
-.release-notes-wrapper ul > ul {
+.release-notes-wrapper li > ul {
     margin-left: 80px;
 }
 .release-notes-wrapper li ul {

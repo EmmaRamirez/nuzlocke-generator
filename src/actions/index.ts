@@ -31,3 +31,4 @@ export * from './toggleTemtemMode';
 export * from './toggleMobileResultView';
 export * from './stats';
 export * from './updateEditorHistory';
+export * from './triggerDownload';
