@@ -25,6 +25,7 @@ import { BaseEditor } from 'components/BaseEditor';
 import { State } from 'state';
 import { noop } from 'redux-saga/utils';
 import { feature } from 'utils';
+import { result } from 'cypress/types/lodash';
 
 const trash = require('assets/img/trash.png');
 
@@ -45,6 +46,18 @@ export interface DataEditorState {
     showSaveFileUI: boolean;
     overrideImport: boolean;
 }
+
+const getGameNumberOfBoxes = (game: string) => {
+    switch (game) {
+        case 'RBY':
+            return 12;
+        case 'GS':
+        case 'Crystal':
+            return 14;
+        default:
+            return 12;
+    }
+};
 
 const hexEncode = function (str: string) {
     let hex, i;
@@ -222,9 +235,21 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
     };
 
     private uploadFile = (replaceState, state) => (e) => {
+        const t0 = performance.now();
+        // const worker = new Worker('./parseFile.js');
+
+        // worker.onmessage = (e) => {
+        //     console.log(
+        //         e.data,
+        //         'Message recieved.',
+        //     );
+        // };
+
         const file = this.fileInput.files[0];
         const reader = new FileReader();
         const componentState = this.state;
+
+        // worker.postMessage({file});
 
         reader.readAsArrayBuffer(file);
 
@@ -235,28 +260,37 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
 
             const functionToUse =
                 componentState.selectedGame === 'RBY'
-                    ? parsers.parseGen1Save(u, 'nuzlocke')
+                    ? parsers.parseGen1Save(u as Buffer, {type: 'nuzlocke'})
                     : parsers.parseGen2Save(u, 'nuzlocke');
+            try {
+                const result = await functionToUse;
 
-            functionToUse
-                // @ts-ignore
-                .then((res) => {
-                    res.pokemon = res.pokemon.filter((poke) => poke.species);
-                    const mergedPokemon = componentState.mergeDataMode
-                        ? DataEditorBase.pokeMerge(state.pokemon, res.pokemon)
-                        : res.pokemon;
-                    const data = {
-                        game: DataEditorBase.determineGame(res.isYellow),
-                        pokemon: mergedPokemon,
-                        trainer: res.trainer,
-                    };
-                    const newState = { ...state, ...data };
+                // strip out invalid species
+                result.pokemon = result.pokemon.filter((poke) => poke.species);
+                const mergedPokemon = componentState.mergeDataMode
+                    ? DataEditorBase.pokeMerge(state.pokemon, result.pokemon as Pokemon[])
+                    : result.pokemon;
+                const data = {
+                    // @ts-expect-error
+                    game: DataEditorBase.determineGame(result?.isYellow),
+                    pokemon: mergedPokemon,
+                    trainer: result.trainer,
+                };
+                const newState = { ...state, ...data };
 
-                    replaceState(newState);
-                })
-                .catch((err) => {
-                    console.error(err);
+                //worker.postMessage(newState);
+
+                replaceState(newState);
+                const t1 = performance.now();
+                console.info(`Call: ${t1 - t0} ms on ${componentState.selectedGame} save file type`);
+            } catch (e) {
+                const toaster = Toaster.create();
+                toaster.show({
+                    message: `Failed to parse save file. ${e}`,
+                    intent: Intent.DANGER,
                 });
+                console.error(e);
+            }
         });
     };
 
@@ -325,15 +359,12 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                             paddingBottom: '.5rem',
                             marginLeft: '.25rem',
                         }}>
-                        <input
-                            style={{ padding: '.25rem' }}
-                            className={Classes.FILE_INPUT}
-                            ref={(ref) => (this.fileInput = ref)}
-                            onChange={this.uploadFile(this.props.replaceState, this.props.state)}
-                            type="file"
-                            id="file"
-                            name="file"
-                            accept=".sav"
+                        <Switch
+                            label="Merge Data?"
+                            checked={this.state.mergeDataMode}
+                            onChange={(e) =>
+                                this.setState({ mergeDataMode: !this.state.mergeDataMode })
+                            }
                         />
                     </div>
 
@@ -344,12 +375,15 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                             paddingBottom: '.5rem',
                             marginLeft: '.25rem',
                         }}>
-                        <Switch
-                            label="Merge Data?"
-                            checked={this.state.mergeDataMode}
-                            onChange={(e) =>
-                                this.setState({ mergeDataMode: !this.state.mergeDataMode })
-                            }
+                        <input
+                            style={{ padding: '.25rem' }}
+                            className={Classes.FILE_INPUT}
+                            ref={(ref) => (this.fileInput = ref)}
+                            onChange={this.uploadFile(this.props.replaceState, this.props.state)}
+                            type="file"
+                            id="file"
+                            name="file"
+                            accept=".sav"
                         />
                     </div>
                 </div>
