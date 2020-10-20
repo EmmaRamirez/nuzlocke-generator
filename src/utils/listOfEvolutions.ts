@@ -71,6 +71,7 @@ export const EvolutionTree: EvolutionTree = {
     Seel: ['Dewgong'],
     Grimer: ['Muk'],
     Shellder: ['Cloyster'],
+    Onix: ['Steelix'],
     Gastly: ['Haunter'],
     Haunter: ['Gengar'],
 
@@ -108,18 +109,71 @@ export const EvolutionTree: EvolutionTree = {
     Magikarp: ['Gyarados'],
     Porygon: ['Porygon2'],
     Porygon2: ['Porygon-Z'],
+    Eevee: ['Jolteon', 'Flareon', 'Vaporeon', 'Sylveon', 'Umbreon', 'Espeon', 'Leafeon', 'Glaceon'],
     Omanyte: ['Omastar'],
     Kabuto: ['Kabutops'],
     Munchlax: ['Snorlax'],
     Dratini: ['Dragonair'],
     Dragonair: ['Dragonite'],
 
-    Eevee: ['Jolteon', 'Flareon', 'Vaporeon', 'Sylveon', 'Umbreon', 'Espeon', 'Leafeon', 'Glaceon'],
+    Chikorita: ['Bayleef'],
+    Bayleef: ['Meganium'],
+    Cyndaquil: ['Quilava'],
+    Quilava: ['Typhlosion'],
+
+    Totodile: ['Croconaw'],
+    Croconaw: ['Feraligatr'],
+
+    Hoothoot: ['Noctowl'],
+    Sentret: ['Furret'],
+
+    Ledyba: ['Ledian'],
+    Spinarak: ['Ariados'],
+
+    Togepi: ['Togetic'],
+    Togetic: ['Togekiss'],
+
+    Mareep: ['Flaaffy'],
+    Flaaffy: ['Ampharos'],
+    Wooper: ['Quagsire'],
+
+    Hoppip: ['Skiploom'],
+    Skiploom: ['Jumpluff'],
+
+    Pineco: ['Forretress'],
+    Yanma: ['Yanmega'],
+
+    Sunkern: ['Sunflora'],
+
+    Wynaut: ['Wobbuffet'],
+    Aipom: ['Ambipom'],
+    Snubbull: ['Granbull'],
+
+    Azurill: ['Marill'],
+    Marill: ['Azumarill'],
+    Remoraid: ['Octillery'],
+    Chinchou: ['Lanturn'],
+    Swinub: ['Piloswine'],
+    Piloswine: ['Mamoswine'],
+    Teddiursa: ['Ursaring'],
+    Phanpy: ['Donphan'],
+    Mantyke: ['Mantine'],
+
+    Murkrow: ['Honchkrow'],
+    Misdreavus: ['Mismagius'],
+    Houndour: ['Houndoom'],
+    Slugma: ['Magcargo'],
+
+    Sneasel: ['Weavile'],
+    Larvitar: ['Pupitar'],
+    Pupitar: ['Tyranitar'],
+    Gligar: ['Gliscor'],
+
 
     Turtwig: ['Grotle'],
     Grotle: ['Torterra'],
 
-    Gligar: ['Gliscor'],
+
     Shieldon: ['Bastiodon'],
     Budew: ['Roselia'],
     Roselia: ['Roserade'],
