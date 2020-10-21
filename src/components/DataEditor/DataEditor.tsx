@@ -25,7 +25,6 @@ import { BaseEditor } from 'components/BaseEditor';
 import { State } from 'state';
 import { noop } from 'redux-saga/utils';
 import { feature } from 'utils';
-import { result } from 'cypress/types/lodash';
 
 const trash = require('assets/img/trash.png');
 
