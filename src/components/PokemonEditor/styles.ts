@@ -25,3 +25,14 @@ export const evoMenuItem = css`
         transition: 300ms background;
     }
 `;
+
+export const moveInputWrapper = css`
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    .bp3-input {
+        max-width: 30rem;
+    }
+`;

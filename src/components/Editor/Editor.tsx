@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import './editor.css';
-import { css, cx } from 'emotion';
+import { useSelector } from 'react-redux';
+import { cx } from 'emotion';
 import { State } from 'state';
-import { Button, ButtonGroup, Classes, Icon, Spinner } from '@blueprintjs/core';
+import { Classes } from '@blueprintjs/core';
 import { ErrorBoundary } from 'components/Shared';
-import { undoEditorHistory, updateEditorHistory, replaceState, redoEditorHistory } from 'actions';
-import { last, omit } from 'ramda';
+import { editorStyles } from './styles';
+import './editor.css';
+
+const minimizedSelector = (state: State) => state.editor.minimized;
+const editorModeSelector = (state: State) => state.style.editorDarkMode;
 
 const PokemonEditor = React.lazy(() =>
     import('components/PokemonEditor').then((res) => ({ default: res.PokemonEditor })),
@@ -37,179 +39,77 @@ const StyleEditor = React.lazy(() =>
 const DataEditor = React.lazy(() =>
     import('components/DataEditor').then((res) => ({ default: res.DataEditor })),
 );
+const EditorControls = React.lazy(() =>
+    import('components/Editor/EditorControls').then((res => ({ default: res.EditorControls }))),
+);
 
 const Skeleteon = <div style={{ width: '100%', height: '100px' }} className="bp3-skeleton"></div>;
 
 /**
  * The main editor interface.
  */
-export class EditorBase extends React.Component<
-{
-    editor: State['editor'];
-    style: State['style'];
-    updateEditorHistory: updateEditorHistory;
-    present: Omit<State, 'editorHistory'>;
-    undoEditorHistory: undoEditorHistory;
-    editorHistory: State['editorHistory'];
-    replaceState: replaceState;
-    redoEditorHistory: redoEditorHistory;
-},
-{}
-> {
-    public editorRef: React.RefObject<HTMLDivElement>;
+export function Editor() {
+    const minimized = useSelector(minimizedSelector);
+    const editorDarkMode = useSelector(editorModeSelector);
 
-    public constructor(props) {
-        super(props);
-        this.editorRef = React.createRef();
-    }
-
-    public render() {
-        const {
-            present,
-            editorHistory,
-            editor: { minimized },
-            style: { editorDarkMode },
-        } = this.props;
-        const styles = {
-            base: css`
-                min-width: 30rem;
-                max-width: 40rem;
-                min-height: 100vh;
-                padding: 0.25rem;
-                padding-top: 2.5rem;
-                position: relative;
-            `,
-            historyControls: css`
-                left: 0;
-                position: fixed;
-                top: 0;
-                z-index: 12;
-                border-bottom: 1px solid;
-            `,
-            buttonGroup: css`
-                width: 100%;
-                padding: 0.25rem;
-            `,
-            edit: css`
-                display: flex;
-                padding: 0.25rem;
-                border-radius: 0.25rem;
-                border: 1px solid #eee;
-                margin: 2px;
-                align-items: center;
-            `,
-            path: css`
-                color: #666;
-                margin: 0 0.5rem;
-            `,
-            change: css``,
-        };
-
-        return (
-            <div
-                ref={this.editorRef}
-                className={cx('editor', styles.base, editorDarkMode ? Classes.DARK : '')}
-                style={{
-                    width: minimized ? '0%' : '33%',
-                    marginLeft: minimized ? '-30rem' : '0',
-                    background: editorDarkMode ? '#222' : '#fff',
-                }}>
-                <div
-                    className={styles.historyControls}
-                    style={{
-                        width: this.editorRef?.current?.offsetWidth,
-                        background: editorDarkMode ? '#222' : '#fff',
-                        borderBottomColor: editorDarkMode ? '#000' : '#ccc',
-                        display: minimized ? 'none' : 'block',
-                    }}>
-                    <ButtonGroup fill className={styles.buttonGroup}>
-                        <Button
-                            disabled={editorHistory?.past?.length <= 0}
-                            onClick={() => {
-                                this.props.undoEditorHistory(present);
-                                this.props.replaceState(last(editorHistory?.past));
-                            }}
-                            minimal
-                            fill
-                            icon="undo"
-                        />
-                        <Button
-                            disabled={editorHistory?.future?.length === 0}
-                            onClick={() => {
-                                this.props.redoEditorHistory(present);
-                                this.props.replaceState(last(editorHistory?.future));
-                            }}
-                            minimal
-                            fill
-                            icon="redo"
-                        />
-                    </ButtonGroup>
-                </div>
-                <div>
-                    past: {editorHistory?.past?.length}
-                    future: {editorHistory?.future?.length}
-                </div>
-                <ErrorBoundary>
-                    <React.Suspense fallback={Skeleteon}>
-                        <NuzlockeSaveControls />
-                    </React.Suspense>
-                </ErrorBoundary>
-                <ErrorBoundary>
-                    <React.Suspense fallback={Skeleteon}>
-                        <GameEditor />
-                    </React.Suspense>
-                </ErrorBoundary>
-                <ErrorBoundary>
-                    <React.Suspense fallback={Skeleteon}>
-                        <DataEditor />
-                    </React.Suspense>
-                </ErrorBoundary>
-                <ErrorBoundary>
-                    <React.Suspense fallback={Skeleteon}>
-                        <TrainerEditor />
-                    </React.Suspense>
-                </ErrorBoundary>
-                <ErrorBoundary>
-                    <React.Suspense fallback={Skeleteon}>
-                        <PokemonEditor />
-                    </React.Suspense>
-                </ErrorBoundary>
-                <ErrorBoundary>
-                    <React.Suspense fallback={Skeleteon}>
-                        <StyleEditor />
-                    </React.Suspense>
-                </ErrorBoundary>
-                <ErrorBoundary>
-                    <React.Suspense fallback={Skeleteon}>
-                        <StatsEditor />
-                    </React.Suspense>
-                </ErrorBoundary>
-                <ErrorBoundary>
-                    <React.Suspense fallback={Skeleteon}>
-                        <HotkeysEditor />
-                    </React.Suspense>
-                </ErrorBoundary>
-                <ErrorBoundary>
-                    <React.Suspense fallback={Skeleteon}>
-                        <BugReporter />
-                    </React.Suspense>
-                </ErrorBoundary>
-            </div>
-        );
-    }
+    return (
+        <div
+            className={cx('editor', editorStyles.base, editorDarkMode ? Classes.DARK : '')}
+            style={{
+                width: minimized ? '0%' : '33%',
+                marginLeft: minimized ? '-30rem' : '0',
+                background: editorDarkMode ? '#222' : '#fff',
+            }}>
+            <ErrorBoundary>
+                <React.Suspense fallback={Skeleteon}>
+                    <EditorControls editorDarkMode={editorDarkMode} minimized={minimized} />
+                </React.Suspense>
+            </ErrorBoundary>
+            <ErrorBoundary>
+                <React.Suspense fallback={Skeleteon}>
+                    <NuzlockeSaveControls />
+                </React.Suspense>
+            </ErrorBoundary>
+            <ErrorBoundary>
+                <React.Suspense fallback={Skeleteon}>
+                    <GameEditor />
+                </React.Suspense>
+            </ErrorBoundary>
+            <ErrorBoundary>
+                <React.Suspense fallback={Skeleteon}>
+                    <DataEditor />
+                </React.Suspense>
+            </ErrorBoundary>
+            <ErrorBoundary>
+                <React.Suspense fallback={Skeleteon}>
+                    <TrainerEditor />
+                </React.Suspense>
+            </ErrorBoundary>
+            <ErrorBoundary>
+                <React.Suspense fallback={Skeleteon}>
+                    <PokemonEditor />
+                </React.Suspense>
+            </ErrorBoundary>
+            <ErrorBoundary>
+                <React.Suspense fallback={Skeleteon}>
+                    <StyleEditor />
+                </React.Suspense>
+            </ErrorBoundary>
+            <ErrorBoundary>
+                <React.Suspense fallback={Skeleteon}>
+                    <StatsEditor />
+                </React.Suspense>
+            </ErrorBoundary>
+            <ErrorBoundary>
+                <React.Suspense fallback={Skeleteon}>
+                    <HotkeysEditor />
+                </React.Suspense>
+            </ErrorBoundary>
+            <ErrorBoundary>
+                <React.Suspense fallback={Skeleteon}>
+                    <BugReporter />
+                </React.Suspense>
+            </ErrorBoundary>
+        </div>
+    );
 }
-
-export const Editor = connect(
-    (state: State) => ({
-        editor: state.editor,
-        style: state.style,
-        editorHistory: state.editorHistory,
-        present: omit(['editorHistory'], state),
-    }),
-    {
-        updateEditorHistory,
-        undoEditorHistory,
-        redoEditorHistory,
-        replaceState,
-    },
-)(EditorBase);

@@ -11,6 +11,7 @@ import {
     gameOfOriginToColor,
     TemplateName,
     feature,
+    isLocal,
 } from 'utils';
 import { selectPokemon } from 'actions';
 import { PokemonIconBase } from 'components/PokemonIcon';
@@ -72,7 +73,7 @@ export const DeadPokemonBase = (poke: DeadPokemonProps) => {
         poke.gameOfOrigin &&
         poke.style.displayGameOriginForBoxedAndDead &&
         poke.style.displayBackgroundInsteadOfBadge;
-    const EMMA_MODE = feature.resultv2;
+    const EMMA_MODE = feature.resultv2 && isLocal();
 
     if (isMinimal && isCompactWithIcons) {
         return (

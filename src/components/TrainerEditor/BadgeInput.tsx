@@ -119,7 +119,6 @@ export function BadgeInput ({
                             toggle={toggle}
                             checkpointsObtained={checkpointsObtained}
                         />
-                        <Button onClick={() => {}} icon={'lock'} />
                     </div>
                 )}
             />

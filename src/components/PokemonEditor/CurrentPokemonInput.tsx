@@ -55,19 +55,19 @@ CurrentPokemonInputProps,
         };
     }
 
-    public static getDerivedStateFromProps(props, state) {
-        return {
-            value: props.value,
-        };
-    }
+    // public static getDerivedStateFromProps(props, state) {
+    //     return {
+    //         value: props.value,
+    //     };
+    // }
 
     public static defaultProps = {
         disabled: false,
     };
 
-    public componentWillUnmount() {
-        this.setState({ value: undefined });
-    }
+    // public componentWillUnmount() {
+    //     this.setState({ value: undefined });
+    // }
 
     public onChange = (
         inputName,
@@ -124,7 +124,7 @@ CurrentPokemonInputProps,
     };
 
     private delayedEdit() {
-        return debounce((edit) => this.props.editPokemon(edit, this.props.selectedId), 300);
+        return debounce((edit) => this.props.editPokemon(edit, this.props.selectedId), 1000);
     }
 
     public getInput({

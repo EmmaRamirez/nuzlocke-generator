@@ -11,3 +11,5 @@ export interface DialogView {
     importView?: false;
     exportView?: false;
 }
+
+export type DialogViewType = keyof DialogView;

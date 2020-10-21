@@ -32,3 +32,4 @@ export * from './toggleMobileResultView';
 export * from './stats';
 export * from './updateEditorHistory';
 export * from './triggerDownload';
+export * from './toggleDialog';

@@ -1,9 +1,6 @@
 import * as React from 'react';
 import {
-    speciesToNumber,
-    getSpriteIcon,
     getAdditionalFormes,
-    StoreContext,
     listOfPokemon,
     matchSpeciesToTypes,
     listOfItems,
@@ -12,9 +9,7 @@ import {
     getGameGeneration,
     listOfNatures,
     Game,
-    Forme,
     EvolutionTree,
-    getDeepObject,
     listOfPokeballs,
     getListOfTypes,
 } from 'utils';
@@ -38,16 +33,12 @@ import {
     PopoverInteractionKind,
     Button,
     Intent,
-    Menu,
-    MenuItem,
 } from '@blueprintjs/core';
 import { addPokemon } from 'actions';
 import { State } from 'state';
 import { CurrentPokemonLayoutItem } from './CurrentPokemonLayoutItem';
 import { MoveEditor } from 'components/MoveEditor';
-import { POSITION_BOTTOM } from '@blueprintjs/core/lib/esm/common/classes';
-import { BadgeInput, CheckpointsInputList } from 'components/TrainerEditor';
-import { pokemon } from 'reducers/pokemon';
+import { CheckpointsInputList } from 'components/TrainerEditor';
 
 const pokeball = require('assets/pokeball.png');
 
@@ -55,7 +46,7 @@ export interface CopyPokemonButtonProps {
     onClick: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
-export const CopyPokemonButton: React.SFC<CopyPokemonButtonProps> = ({
+export const CopyPokemonButton: React.FunctionComponent<CopyPokemonButtonProps> = ({
     onClick,
 }: CopyPokemonButtonProps) => {
     return (
@@ -525,7 +516,7 @@ CurrentPokemonEditState
                         }}
                     />
                 </CurrentPokemonLayoutItem>
-                <CurrentPokemonLayoutItem>
+                <CurrentPokemonLayoutItem className={Styles.moveInputWrapper}>
                     <CurrentPokemonInput
                         labelName="Moves"
                         inputName="moves"

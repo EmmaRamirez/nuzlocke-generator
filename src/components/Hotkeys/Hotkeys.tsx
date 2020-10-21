@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Toaster, Intent } from '@blueprintjs/core';
-import { selectPokemon, deletePokemon, addPokemon, newNuzlocke, changeEditorSize } from 'actions';
+import { selectPokemon, deletePokemon, addPokemon, newNuzlocke, changeEditorSize, toggleDialog } from 'actions';
 import { Pokemon } from 'models';
 import { sortPokes, sortPokesReverse, noop, generateEmptyPokemon } from 'utils';
-import { hotkeyList } from 'utils';
+import { listOfHotkeys } from 'utils';
 import { persistor } from 'store';
 import { State } from 'state';
 import { createStore } from 'redux';
@@ -17,6 +17,7 @@ export interface HotkeysProps {
     addPokemon: addPokemon;
     newNuzlocke: newNuzlocke;
     changeEditorSize: changeEditorSize;
+    toggleDialog: toggleDialog;
     pokemon: Pokemon[];
     selectedId: string;
     editor: Editor;
@@ -49,7 +50,7 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
     };
 
     private handleKeyUp = (e: KeyboardEvent) => {
-        hotkeyList.map((hotkey) => {
+        listOfHotkeys.map((hotkey) => {
             if (e.key === hotkey.key) {
                 if (this.isTextInput(e)) {
                     noop();
@@ -149,6 +150,10 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
         this.props.changeEditorSize(!this.props.editor.minimized);
     }
 
+    private toggleImageUploader() {
+        this.props.toggleDialog('imageUploader');
+    }
+
     public render() {
         return <div />;
     }
@@ -166,5 +171,6 @@ export const Hotkeys = connect(
         addPokemon,
         newNuzlocke,
         changeEditorSize,
+        toggleDialog,
     },
 )(HotkeysBase);

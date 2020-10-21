@@ -45,7 +45,7 @@ export class UpdaterBase extends React.Component<{
     // eslint-disable-next-line camelcase
     public UNSAFE_componentWillReceiveProps(prev) {
         if (
-            prev.lrt === 'update' &&
+            (prev.lrt === 'update') &&
             this.props.present != null &&
             this.props.present != null &&
             !isEqual(this.props.present, prev.present)
@@ -113,12 +113,12 @@ export class AppBase extends React.PureComponent<AppProps, {result2?: boolean}> 
                 <Hotkeys />
                 <Editor />
                 <Result />
-                {view?.dialogs?.imageUploader && <Drawer
-                    isOpen={true}
+                <Drawer
+                    isOpen={view?.dialogs?.imageUploader}
                     size={Drawer.SIZE_STANDARD}
                 >
                     <ImagesDrawer />
-                </Drawer>}
+                </Drawer>
             </div>
         );
     }

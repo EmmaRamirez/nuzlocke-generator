@@ -39,17 +39,11 @@ export function editorHistory(
                 const { past, present, future } = state;
 
                 const latest = past ? last(past) : [];
-
-                console.log({
-                    present: action.present,
-                    latest,
-                    pastL: init(past).length,
-                });
-
+                const newPast = past.slice(0, past.length - 1);
                 return {
-                    past: init(past),
+                    past: newPast,
                     present: action.present,
-                    future: [...future, present],
+                    future: [present, ...future],
                     lastRevisionType: 'undo',
                 };
             };
@@ -60,17 +54,13 @@ export function editorHistory(
             const redo = (): History<any> => {
                 const { past, present, future } = state;
 
-                const latest = future ? last(future) : [];
-
-                console.log({
-                    present: action.present,
-                    latest,
-                });
+                const next = future[0];
+                const newFuture = future.slice(1);
 
                 return {
                     past: [...past, present],
                     present: action.present,
-                    future: init(future),
+                    future: newFuture,
                     lastRevisionType: 'redo',
                 };
             };
@@ -81,3 +71,4 @@ export function editorHistory(
             return state;
     }
 }
+
