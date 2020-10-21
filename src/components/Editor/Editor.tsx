@@ -6,9 +6,8 @@ import { Classes } from '@blueprintjs/core';
 import { ErrorBoundary } from 'components/Shared';
 import { editorStyles } from './styles';
 import './editor.css';
+import { editorModeSelector, minimizedSelector } from 'selectors';
 
-const minimizedSelector = (state: State) => state.editor.minimized;
-const editorModeSelector = (state: State) => state.style.editorDarkMode;
 
 const PokemonEditor = React.lazy(() =>
     import('components/PokemonEditor').then((res) => ({ default: res.PokemonEditor })),

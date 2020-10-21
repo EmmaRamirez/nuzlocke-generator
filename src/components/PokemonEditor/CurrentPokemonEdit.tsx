@@ -39,6 +39,7 @@ import { State } from 'state';
 import { CurrentPokemonLayoutItem } from './CurrentPokemonLayoutItem';
 import { MoveEditor } from 'components/MoveEditor';
 import { CheckpointsInputList } from 'components/TrainerEditor';
+import { gameNameSelector } from 'selectors';
 
 const pokeball = require('assets/pokeball.png');
 
@@ -87,7 +88,6 @@ const getEvos = (species): string[] | undefined => {
     return EvolutionTree?.[species];
 };
 
-export const gameNameSelector = (state: State) => state.game.name;
 
 export function EvolutionSelection({ currentPokemon, onEvolve }) {
     const evos = getEvos(currentPokemon?.species);

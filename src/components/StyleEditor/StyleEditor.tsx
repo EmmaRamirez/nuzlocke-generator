@@ -29,7 +29,6 @@ import { ColorEdit, rgbaOrHex } from 'components/Shared';
 import { cx } from 'emotion';
 import * as Styles from './styles';
 import { ThemeEditor } from 'components/ThemeEditor';
-import { omit } from 'ramda';
 const debounce = require('lodash.debounce');
 
 const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'], game?: Game) => {
