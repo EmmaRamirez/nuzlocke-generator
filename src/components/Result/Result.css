@@ -446,7 +446,8 @@
 
 .pokemon-checkpoint[data-badge='Mars'],
 .pokemon-checkpoint[data-badge='Jupiter'],
-.pokemon-checkpoint[data-badge='Saturn'] {
+.pokemon-checkpoint[data-badge='Saturn'],
+.pokemon-checkpoint[data-badge~='Barry'] {
     padding: 1px;
     border-radius: 2px;
     justify-content: center;
@@ -463,10 +464,16 @@
     border: 1px solid #b36fbb;
 }
 
+.pokemon-checkpoint[data-badge='Barry'] {
+    background: rgb(218, 196, 75);
+    border: 1px solid rgb(192, 173, 66);
+}
+
 .trainer-checkpoint[data-badge='Mars'],
 .trainer-checkpoint[data-badge='Jupiter'],
 .trainer-checkpoint[data-badge='Saturn'],
-.trainer-checkpoint[data-badge='Cyrus'] {
+.trainer-checkpoint[data-badge='Cyrus'],
+.trainer-checkpoint[data-badge~='Barry'] {
     display: none;
 }
 
@@ -484,6 +491,9 @@
 
 .pokemon-checkpoint[data-badge='Jupiter'] {
     order: 4;
+}
+.pokemon-checkpoint[data-badge='Barry'] {
+    order: 6;
 }
 .pokemon-checkpoint[data-badge='Relic Badge'] {
     order: 5;

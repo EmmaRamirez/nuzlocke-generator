@@ -403,7 +403,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
             `,
         };
 
-        const EMMA_MODE = feature.resultv2 && isLocal();
+        const EMMA_MODE = isLocal();
 
         return (
             <div className="pokemon-container" {...data}>

@@ -19,7 +19,7 @@ import { CurrentPokemonInput } from 'components/PokemonEditor';
 import { DeletePokemonButton } from 'components/DeletePokemonButton';
 import { Autocomplete, ErrorBoundary } from 'components/Shared';
 import { selectPokemon, editPokemon } from 'actions';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { listOfGames, accentedE } from 'utils';
 import { PokemonIconBase } from 'components/PokemonIcon';
 import { cx } from 'emotion';
@@ -87,8 +87,16 @@ const getEvos = (species): string[] | undefined => {
     return EvolutionTree?.[species];
 };
 
+export const gameNameSelector = (state: State) => state.game.name;
+
 export function EvolutionSelection({ currentPokemon, onEvolve }) {
     const evos = getEvos(currentPokemon?.species);
+    const gameName = useSelector(gameNameSelector);
+
+    const supportedGames: Game[] = ['Red', 'Blue', 'Green', 'Yellow', 'Gold', 'Silver', 'Crystal'];
+    if (!supportedGames.includes(gameName)) {
+        return null;
+    }
 
     if (!evos?.length) {
         return null;
@@ -524,7 +532,7 @@ CurrentPokemonEditState
                         value={currentPokemon.moves}
                         type="moves"
                     />
-                    <Button intent={Intent.PRIMARY} onClick={this.toggleDialog} minimal>
+                    <Button className={Styles.moveEditButton} intent={Intent.PRIMARY} onClick={this.toggleDialog} minimal>
                         Edit Moves
                     </Button>
                 </CurrentPokemonLayoutItem>

@@ -73,7 +73,7 @@ export const DeadPokemonBase = (poke: DeadPokemonProps) => {
         poke.gameOfOrigin &&
         poke.style.displayGameOriginForBoxedAndDead &&
         poke.style.displayBackgroundInsteadOfBadge;
-    const EMMA_MODE = feature.resultv2 && isLocal();
+    const EMMA_MODE = isLocal();
 
     if (isMinimal && isCompactWithIcons) {
         return (

@@ -5,6 +5,7 @@ const spritesMode = require('assets/sprites-mode.png');
 const hexagonTheme = require('assets/hexagons-theme.png');
 const compactTheme = require('assets/compact-theme.png');
 const imageRender = require('assets/image-render.png');
+const checkpointsForPokemon = require('assets/checkpoints-for-pokemon.png');
 
 export function generateReleaseNotes(version: string) {
     return releaseNotes[version] || '';
@@ -626,8 +627,8 @@ Thank you!
 - **Undo/Redo**: accidentally deleted your Magikarp? Now you no longer have to live in regret!
     - Note: edit history is only through local storage and is not downloaded as part of json downloads
 - **Checkpoints for Pokémon**: you can now reward your Pokémon individually with badges
-![imageRender](${imageRender})
-
+![checkpointsForPokemon](${checkpointsForPokemon})
+- **Auto-Evolve Button**: available for Gen I & II games
 
 ## Fixes
 - Improved performance of custom CSS inputs

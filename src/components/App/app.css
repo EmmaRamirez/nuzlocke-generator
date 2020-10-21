@@ -38,6 +38,9 @@
   margin: 0 auto;
   max-width: 100%;
 }
+.release-notes-wrapper li ul {
+  margin: 0;
+}
 .release-notes-wrapper ul {
     list-style-type: disc;
     margin-left: 40px;
@@ -45,9 +48,7 @@
 .release-notes-wrapper li > ul {
     margin-left: 80px;
 }
-.release-notes-wrapper li ul {
-  margin: 0;
-}
+
 .bp3-dark .release-dialog h1,
 .bp3-dark .release-dialog h2,
 .bp3-dark .release-dialog h3,

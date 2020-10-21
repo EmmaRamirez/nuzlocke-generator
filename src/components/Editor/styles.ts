@@ -11,12 +11,12 @@ export const editorStyles = {
     `,
     historyControls: css`
         left: 0;
-        position: fixed;
-        top: 0;
+        position: sticky;
+        top: -.25rem;
         z-index: 12;
         border-bottom: 1px solid;
-        min-width: 20rem;
-        max-width: 30rem;
+        min-width: 100%;
+        max-width: 100%;
     `,
     buttonGroup: css`
         width: 100%;

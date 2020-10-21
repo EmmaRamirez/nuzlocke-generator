@@ -68,11 +68,11 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
                         <Button
                             disabled={!userReportTitle}
                             onClick={this.sendBugReport}
-                            className="bp3-minimal"
+                            minimal
                             intent={Intent.DANGER}>
                             Submit{' '}
                             <img
-                                style={{ height: '20px', verticalAlign: 'bottom' }}
+                                style={{ height: '20px', verticalAlign: 'bottom', display: 'inline' }}
                                 alt=""
                                 role="presentation"
                                 src={`./icons/pokemon/regular/${this.getButtonPokemon(stage)}.png`}

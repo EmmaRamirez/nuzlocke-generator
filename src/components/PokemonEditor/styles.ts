@@ -31,8 +31,10 @@ export const moveInputWrapper = css`
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: nowrap;
+`;
 
-    .bp3-input {
-        max-width: 30rem;
-    }
+export const moveEditButton = css`
+    margin-top: 1rem;
+    width: 20%;
 `;

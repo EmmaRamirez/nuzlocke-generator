@@ -16,7 +16,7 @@ import { ErrorBoundary } from 'components/Shared';
 import { TagInput, Classes, TextArea } from '@blueprintjs/core';
 import { State } from 'state';
 import { Pokemon } from 'models';
-import { debounce } from 'lodash';
+import { cx } from 'emotion';
 
 interface CurrentPokemonInputProps {
     labelName: string;
@@ -45,29 +45,14 @@ interface CurrentPokemonInputProps {
 }
 
 export class CurrentPokemonInputBase extends React.Component<
-CurrentPokemonInputProps,
-{ value?: any }
-> {
+CurrentPokemonInputProps> {
     public constructor(props: CurrentPokemonInputProps) {
         super(props);
-        this.state = {
-            value: this.props.value,
-        };
     }
-
-    // public static getDerivedStateFromProps(props, state) {
-    //     return {
-    //         value: props.value,
-    //     };
-    // }
 
     public static defaultProps = {
         disabled: false,
     };
-
-    // public componentWillUnmount() {
-    //     this.setState({ value: undefined });
-    // }
 
     public onChange = (
         inputName,
@@ -119,13 +104,8 @@ CurrentPokemonInputProps,
             };
         }
 
-        this.setState({ value: e.target.value });
-        this.delayedEdit()(edit);
+        this.props.editPokemon(edit, this.props.selectedId);
     };
-
-    private delayedEdit() {
-        return debounce((edit) => this.props.editPokemon(edit, this.props.selectedId), 1000);
-    }
 
     public getInput({
         labelName,
@@ -155,6 +135,7 @@ CurrentPokemonInputProps,
             return (
                 <ErrorBoundary>
                     <TagInput
+                        fill
                         leftIcon="ninja"
                         tagProps={(v, i) => {
                             // @TODO: Fix inconsitencies with bad parameter types
@@ -254,7 +235,7 @@ CurrentPokemonInputProps,
         }
         if (type === 'checkbox') {
             return (
-                <label className="bp3-control bp3-checkbox">
+                <label className={cx(Classes.CONTROL, Classes.CHECKBOX)}>
                     <input
                         onChange={this.onChange(inputName)}
                         checked={value}
@@ -327,7 +308,7 @@ CurrentPokemonInputProps,
                     usesKeyValue,
                     inputName,
                     type,
-                    value: this.state.value,
+                    value,
                     placeholder,
                     options,
                     pokemon,
