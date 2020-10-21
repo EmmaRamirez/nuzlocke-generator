@@ -109,10 +109,20 @@ const handleExceptions = (data) => {
     let updated: any = {};
 
     if (typeof data.pokemon === 'string') {
+        const toaster = Toaster.create();
+        toaster.show({
+            message: 'Issue with data detected. Attempting to fix...',
+            intent: Intent.DANGER,
+        });
         for (const prop in data) {
-            updated = { ...updated, [prop]: JSON.parse(data[prop])};
+            try {
+                updated = { ...updated, [prop]: JSON.parse(data[prop])};
+            } catch (e) {
+                console.log(
+                    `Failed to parse on ${prop}`
+                );
+            }
         }
-        console.log('done', updated?.checkpoints);
     }
 
     return (isEmpty(updated)) ? data : updated;
@@ -207,8 +217,6 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         }
 
         if (d.pokemon) {
-            console.log('done', d);
-
             return (
                 <div
                     className="team-icons"
