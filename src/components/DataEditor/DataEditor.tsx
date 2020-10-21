@@ -25,6 +25,7 @@ import { BaseEditor } from 'components/BaseEditor';
 import { State } from 'state';
 import { noop } from 'redux-saga/utils';
 import { feature } from 'utils';
+import { isEmpty } from 'lodash';
 
 const trash = require('assets/img/trash.png');
 
@@ -102,6 +103,21 @@ export function DeleteAlert({
     );
 }
 
+// This is to handle very weird/rare edge cases where data
+// can be parsed, but then in turn has to be "double-parsed"
+const handleExceptions = (data) => {
+    let updated: any = {};
+
+    if (typeof data.pokemon === 'string') {
+        for (const prop in data) {
+            updated = { ...updated, [prop]: JSON.parse(data[prop])};
+        }
+        console.log('done', updated?.checkpoints);
+    }
+
+    return (isEmpty(updated)) ? data : updated;
+};
+
 export class DataEditorBase extends React.Component<DataEditorProps, DataEditorState> {
     public textarea: any;
     public fileInput: any;
@@ -150,7 +166,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
     private confirmImport = (e) => {
         let cmm = { customMoveMap: [] };
         const override = this.state.overrideImport;
-        const data = JSON.parse(this.state.data);
+        const data = handleExceptions(JSON.parse(this.state.data));
         const nuz = this.props.state;
         const safeguards = { customTypes: [], customMoveMap: [], stats: [] };
         if (!Array.isArray(data.customMoveMap)) {
@@ -182,14 +198,17 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
     };
 
     private renderTeam(data) {
-        let d;
+        let d: any;
         try {
-            d = JSON.parse(data);
+            d = handleExceptions(JSON.parse(data));
+
         } catch {
             d = { pokemon: false };
         }
 
         if (d.pokemon) {
+            console.log('done', d);
+
             return (
                 <div
                     className="team-icons"
@@ -201,9 +220,9 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         display: 'flex',
                         justifyContent: 'center',
                     }}>
-                    {d.pokemon
-                        .filter((p) => p.status === 'Team')
-                        .map((p) => {
+                    {d?.pokemon
+                        ?.filter((p) => p.status === 'Team')
+                        ?.map((p) => {
                             return <PokemonIconBase key={p.id} {...p} />;
                         })}
                 </div>

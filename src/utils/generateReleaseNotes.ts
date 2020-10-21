@@ -634,7 +634,7 @@ Thank you!
 - Fixed an issue with base64 images as custom checkpoints
 - Added missing Gen II berries (they don't have images, as none exist in game data)
 - The loading screen now makes it clear deleting local storage is irreversible (so save your data!)
-
+- Fixed an edge case where importing a .json file would break the application
 
 ## Known Issues
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this

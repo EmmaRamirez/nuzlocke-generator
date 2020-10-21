@@ -13,6 +13,8 @@ import { omit } from 'ramda';
 import { History } from 'reducers/editorHistory';
 import { Drawer } from '@blueprintjs/core';
 import { ImagesDrawer } from 'components/Shared/ImagesDrawer';
+import { ErrorBoundary } from 'components';
+import { BugReporter } from 'components/BugReporter';
 
 export interface AppProps {
     style: State['style'];
@@ -103,23 +105,30 @@ export class AppBase extends React.PureComponent<AppProps, {result2?: boolean}> 
         });
 
         return (
-            <div
-                className="app"
-                role="main"
-                style={{
-                    background: this.props.style.editorDarkMode ? '#111' : '#fff',
-                }}>
-                <Updater />
-                <Hotkeys />
-                <Editor />
-                <Result />
-                <Drawer
-                    isOpen={view?.dialogs?.imageUploader}
-                    size={Drawer.SIZE_STANDARD}
-                >
-                    <ImagesDrawer />
-                </Drawer>
-            </div>
+            <ErrorBoundary errorMessage={<div className='p-6 center-text'>
+                <h2>There was a problem retrieving your nuzlocke data.</h2>
+                <p>Please consider submitting a bug report.</p>
+
+                <BugReporter defaultOpen />
+            </div>}>
+                <div
+                    className="app"
+                    role="main"
+                    style={{
+                        background: this.props.style.editorDarkMode ? '#111' : '#fff',
+                    }}>
+                    <Updater />
+                    <Hotkeys />
+                    <Editor />
+                    <Result />
+                    <Drawer
+                        isOpen={view?.dialogs?.imageUploader}
+                        size={Drawer.SIZE_STANDARD}
+                    >
+                        <ImagesDrawer />
+                    </Drawer>
+                </div>
+            </ErrorBoundary>
         );
     }
 }

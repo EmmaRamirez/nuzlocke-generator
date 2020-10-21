@@ -29,13 +29,13 @@ export function CheckpointsInputList({
     toggle,
     buttonText,
 }: CheckpointsInputListProps) {
-    const checkpoints = useSelector<State, State['checkpoints']>(state => state.checkpoints);
+    const checkpoints = useSelector<State, State['checkpoints']>(state => state?.checkpoints);
 
     return <Popover
         minimal={true}
         content={
             <Menu>
-                {checkpoints.map((badge) => (
+                {Array.isArray(checkpoints) && checkpoints?.map((badge) => (
                     <Checkbox
                         onChange={(e: any) => {
                             if (

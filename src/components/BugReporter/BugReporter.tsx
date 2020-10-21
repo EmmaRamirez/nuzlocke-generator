@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 export interface BugReporterProps {
     reportingUrl?: string;
     state: any;
+    defaultOpen?: boolean;
 }
 
 export interface BugReporterState {
@@ -25,9 +26,10 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
 
     public render() {
         const { userReport, userReportTitle, includeNuzlocke, stage } = this.state;
+        const { defaultOpen } = this.props;
 
         return (
-            <BaseEditor name="Bug Reports and Feature Requests" defaultOpen={false}>
+            <BaseEditor name="Bug Reports and Feature Requests" defaultOpen={defaultOpen}>
                 <div style={{ margin: '.5rem' }}>
                     <input
                         style={{
