@@ -53,7 +53,6 @@ export const styleEdit = css`
         margin-right: 0.25rem;
     }
     @media (max-width: 760px) {
-
         .bp3-label {
             margin: 2px;
             font-size: 80%;

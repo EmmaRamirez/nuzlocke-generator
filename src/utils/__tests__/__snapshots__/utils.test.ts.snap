@@ -3071,5 +3071,23 @@ Array [
   Object {
     "Zarude": Array [],
   },
+  Object {
+    "Regieleki": Array [],
+  },
+  Object {
+    "Regidrago": Array [],
+  },
+  Object {
+    "Glastrier": Array [],
+  },
+  Object {
+    "Spectrier": Array [],
+  },
+  Object {
+    "Calyrex": Array [
+      "Ice Rider",
+      "Shadow Rider",
+    ],
+  },
 ]
 `;

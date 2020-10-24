@@ -1,8 +1,9 @@
 import { Styles } from 'utils';
-import { Pokemon, Trainer, Game, Editor, Boxes } from 'models';
+import { Pokemon, Trainer, Game, Editor, Boxes, View } from 'models';
 import { Theme } from 'themes';
 import { Checkpoints } from 'reducers/checkpoints';
 import { Nuzlockes } from 'reducers/nuzlocke';
+import { History } from 'reducers/editorHistory';
 
 export interface State {
     box: Boxes;
@@ -21,4 +22,6 @@ export interface State {
     customTypes: { type: string; color: string; id: string }[];
     stats: { id?: string; key?: string; value?: string }[];
     nuzlockes: Nuzlockes;
+    editorHistory: History<any>;
+    view: View;
 }

@@ -1,9 +1,6 @@
 import * as React from 'react';
 import {
-    speciesToNumber,
-    getSpriteIcon,
     getAdditionalFormes,
-    StoreContext,
     listOfPokemon,
     matchSpeciesToTypes,
     listOfItems,
@@ -12,9 +9,7 @@ import {
     getGameGeneration,
     listOfNatures,
     Game,
-    Forme,
     EvolutionTree,
-    getDeepObject,
     listOfPokeballs,
     getListOfTypes,
 } from 'utils';
@@ -24,7 +19,7 @@ import { CurrentPokemonInput } from 'components/PokemonEditor';
 import { DeletePokemonButton } from 'components/DeletePokemonButton';
 import { Autocomplete, ErrorBoundary } from 'components/Shared';
 import { selectPokemon, editPokemon } from 'actions';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { listOfGames, accentedE } from 'utils';
 import { PokemonIconBase } from 'components/PokemonIcon';
 import { cx } from 'emotion';
@@ -43,6 +38,8 @@ import { addPokemon } from 'actions';
 import { State } from 'state';
 import { CurrentPokemonLayoutItem } from './CurrentPokemonLayoutItem';
 import { MoveEditor } from 'components/MoveEditor';
+import { CheckpointsInputList } from 'components/TrainerEditor';
+import { gameNameSelector } from 'selectors';
 
 const pokeball = require('assets/pokeball.png');
 
@@ -50,7 +47,7 @@ export interface CopyPokemonButtonProps {
     onClick: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
-export const CopyPokemonButton: React.SFC<CopyPokemonButtonProps> = ({
+export const CopyPokemonButton: React.FunctionComponent<CopyPokemonButtonProps> = ({
     onClick,
 }: CopyPokemonButtonProps) => {
     return (
@@ -85,6 +82,55 @@ export interface CurrentPokemonEditState {
     expandedView: boolean;
     isMoveEditorOpen: boolean;
     box: Boxes;
+}
+
+const getEvos = (species): string[] | undefined => {
+    return EvolutionTree?.[species];
+};
+
+
+export function EvolutionSelection({ currentPokemon, onEvolve }) {
+    const evos = getEvos(currentPokemon?.species);
+    const gameName = useSelector(gameNameSelector);
+
+    const supportedGames: Game[] = ['Red', 'Blue', 'Green', 'Yellow', 'Gold', 'Silver', 'Crystal'];
+    if (!supportedGames.includes(gameName)) {
+        return null;
+    }
+
+    if (!evos?.length) {
+        return null;
+    }
+
+    if (evos?.length === 1) {
+        const species = evos?.[0];
+        return (
+            <Button onClick={onEvolve(species)} className={Classes.MINIMAL} intent={Intent.PRIMARY}>
+                Evolve
+            </Button>
+        );
+    } else {
+        return (
+            <Popover
+                popoverClassName={'no-list-item-types'}
+                minimal
+                position={Position.BOTTOM_LEFT}
+                interactionKind={PopoverInteractionKind.CLICK_TARGET_ONLY}
+                content={
+                    <>
+                        {evos.map((evo) => (
+                            <div className={Styles.evoMenuItem} key={evo} onClick={onEvolve(evo)}>
+                                {evo}
+                            </div>
+                        ))}
+                    </>
+                }>
+                <Button className={Classes.MINIMAL} intent={Intent.PRIMARY}>
+                    Evolve
+                </Button>
+            </Popover>
+        );
+    }
 }
 
 export class CurrentPokemonEditBase extends React.Component<
@@ -143,35 +189,12 @@ CurrentPokemonEditState
 
     private parseTree(tree) {}
 
-    private evolvePokemon = (currentPokemon) => (e) => {
-        if (this.doesPokemonHaveEvolution(currentPokemon)) {
-            const evoTree = getDeepObject(EvolutionTree, currentPokemon.species);
-            const evolutionSpecies = evoTree && Object.keys(evoTree);
+    private evolvePokemon = (species) => (e) => {
+        const edit = {
+            species,
+        };
 
-            if (!evolutionSpecies) {
-                return false;
-            }
-
-            if (evolutionSpecies && evolutionSpecies.length > 1) {
-            } else {
-                const edit = {
-                    species: evolutionSpecies[0],
-                };
-
-                this.props.editPokemon(edit, this.state.selectedId);
-            }
-            return true;
-        } else {
-            return false;
-        }
-    };
-
-    private doesPokemonHaveEvolution = (currentPokemon) => {
-        if (getDeepObject(EvolutionTree, currentPokemon.species)) {
-            return true;
-        } else {
-            return false;
-        }
+        this.props.editPokemon(edit, this.state.selectedId);
     };
 
     private toggleDialog = () => this.setState({ isMoveEditorOpen: !this.state.isMoveEditorOpen });
@@ -182,6 +205,7 @@ CurrentPokemonEditState
     }
 
     public moreInputs(currentPokemon: Pokemon) {
+        const {editPokemon, selectPokemon} = this.props;
         const pokemonForLink = this.props.pokemon.map((p) => ({
             key: `${p.nickname} (${p.species})`,
             value: p.id,
@@ -205,6 +229,15 @@ CurrentPokemonEditState
                     type="double-select"
                     options={this.getTypes()}
                 />
+                <span
+                    className={'current-pokemon-input-wrapper current-pokemon-checklist current-pokemon-checkpoints'}>
+                    <label>Checkpoints</label>
+                    <CheckpointsInputList
+                        checkpointsObtained={currentPokemon.checkpoints ?? []}
+                        onChange={checkpoints => editPokemon({checkpoints}, currentPokemon.id)}
+                        buttonText='Award Checkpoints'
+                    />
+                </span>
                 <CurrentPokemonLayoutItem checkboxes>
                     <CurrentPokemonInput
                         labelName="Shiny"
@@ -261,8 +294,8 @@ CurrentPokemonEditState
                         const edit = {
                             item: e.target.value,
                         };
-                        this.props.editPokemon(edit, this.state.selectedId);
-                        this.props.selectPokemon(this.state.selectedId);
+                        editPokemon(edit, this.state.selectedId);
+                        selectPokemon(this.state.selectedId);
                     }}
                 />
                 <CurrentPokemonInput
@@ -379,13 +412,11 @@ CurrentPokemonEditState
                         type="select"
                         options={this.state.box.map((n) => n.name)}
                     />
-                    {/*this.doesPokemonHaveEvolution(currentPokemon) ? <Button
-                        style={{marginTop: '12px'}}
-                        onClick={this.evolvePokemon(currentPokemon)}
-                        className={Classes.MINIMAL}
-                        intent={Intent.PRIMARY}
-                    >Evolve</Button> : null*/}
                     <div className={cx(Styles.iconBar)}>
+                        <EvolutionSelection
+                            currentPokemon={currentPokemon}
+                            onEvolve={this.evolvePokemon}
+                        />
                         <CopyPokemonButton onClick={this.copyPokemon} />
                         <DeletePokemonButton id={this.state.selectedId} />
                     </div>
@@ -393,7 +424,7 @@ CurrentPokemonEditState
                 <CurrentPokemonLayoutItem>
                     <ErrorBoundary>
                         <Autocomplete
-                            items={listOfPokemon}
+                            items={(listOfPokemon as unknown) as string[]}
                             name="species"
                             label="Species"
                             disabled={currentPokemon.egg}
@@ -442,6 +473,9 @@ CurrentPokemonEditState
                         placeholder="Pallet Town"
                         value={currentPokemon.met || ''}
                         onChange={(e) => {
+                            if (!e?.target?.value) {
+                                return;
+                            }
                             const edit = {
                                 met: e.target.value,
                             };
@@ -490,7 +524,7 @@ CurrentPokemonEditState
                         }}
                     />
                 </CurrentPokemonLayoutItem>
-                <CurrentPokemonLayoutItem>
+                <CurrentPokemonLayoutItem className={Styles.moveInputWrapper}>
                     <CurrentPokemonInput
                         labelName="Moves"
                         inputName="moves"
@@ -498,11 +532,7 @@ CurrentPokemonEditState
                         value={currentPokemon.moves}
                         type="moves"
                     />
-                    <Button
-                        intent={Intent.PRIMARY}
-                        onClick={this.toggleDialog}
-                        minimal
-                    >
+                    <Button className={Styles.moveEditButton} intent={Intent.PRIMARY} onClick={this.toggleDialog} minimal>
                         Edit Moves
                     </Button>
                 </CurrentPokemonLayoutItem>

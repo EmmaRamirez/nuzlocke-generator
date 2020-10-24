@@ -1,4 +1,10 @@
-import { EDIT_CUSTOM_MOVE_MAP, DELETE_CUSTOM_MOVE, Action, REPLACE_STATE, VERSION_1116 } from 'actions';
+import {
+    EDIT_CUSTOM_MOVE_MAP,
+    DELETE_CUSTOM_MOVE,
+    Action,
+    REPLACE_STATE,
+    VERSION_1116,
+} from 'actions';
 const uuid = require('uuid');
 import { State } from 'state';
 

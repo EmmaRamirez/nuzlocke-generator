@@ -12,14 +12,14 @@
 .boxed-pokemon-icon {
   max-height: 3rem;
 }
-.container {
+.ng-container {
   padding-bottom: 0.5rem;
   position: relative;
   overflow: hidden;
   width: 100%;
   height: 100%;
 }
-.container h3 {
+.ng-container h3 {
   text-transform: uppercase;
   margin: 0.5rem;
   letter-spacing: 4px;
@@ -35,7 +35,7 @@
   font-size: 1.25rem;
   font-weight: bold;
 }
-.container {
+.ng-container {
   padding-bottom: 1rem;
   background-color: #383840;
   color: #eee;
@@ -55,10 +55,6 @@
 .logo {
   height: 2.5rem;
 }
-.trainer-container div span {
-  font-size: 0.8rem;
-  letter-spacing: 2px;
-}
 .trainer-image {
   border-radius: 50%;
   height: 3rem;
@@ -77,7 +73,6 @@
   font-weight: light;
 }
 .badge-wrapper {
-  display: inline-flex;
   width: 216px;
   flex-wrap: wrap;
   justify-content: center;
@@ -257,7 +252,6 @@
   background-position: top left, bottom left;
 }
 .trainer-container div {
-  display: inline-block;
   text-align: center;
 }
 .logo {
@@ -436,3 +430,90 @@
   align-items: center;
   border-radius: .25rem;
 }
+
+.pokemon-checkpoint {
+    height: 24px;
+    margin: 0 2px 0 0;
+}
+
+.pokemon-checkpoint.not-obtained {
+    display: none;
+}
+
+.pokemon-checkpoint.obtained {
+    display: flex;
+}
+/*
+.pokemon-checkpoint[data-badge='Mars'],
+.pokemon-checkpoint[data-badge='Jupiter'],
+.pokemon-checkpoint[data-badge='Saturn'],
+.pokemon-checkpoint[data-badge~='Barry'] {
+    padding: 1px;
+    border-radius: 2px;
+    justify-content: center;
+    align-items: center;
+}
+
+.pokemon-checkpoint[data-badge='Mars'] {
+    background: #a83232;
+    border: 1px solid #5e1b1b;
+}
+
+.pokemon-checkpoint[data-badge='Jupiter'] {
+    background: #d398d9;
+    border: 1px solid #b36fbb;
+}
+
+.pokemon-checkpoint[data-badge='Barry'] {
+    background: rgb(218, 196, 75);
+    border: 1px solid rgb(192, 173, 66);
+}
+
+.trainer-checkpoint[data-badge='Mars'],
+.trainer-checkpoint[data-badge='Jupiter'],
+.trainer-checkpoint[data-badge='Saturn'],
+.trainer-checkpoint[data-badge='Cyrus'],
+.trainer-checkpoint[data-badge~='Barry'] {
+    display: none;
+}
+
+.pokemon-checkpoint[data-badge='Coal Badge'] {
+    order: 1;
+}
+
+.pokemon-checkpoint[data-badge='Mars'] {
+    order: 2;
+}
+
+.pokemon-checkpoint[data-badge='Forest Badge'] {
+    order: 3;
+}
+
+.pokemon-checkpoint[data-badge='Jupiter'] {
+    order: 4;
+}
+.pokemon-checkpoint[data-badge='Barry'] {
+    order: 6;
+}
+.pokemon-checkpoint[data-badge='Relic Badge'] {
+    order: 5;
+}
+.pokemon-checkpoint[data-badge='Cobble Badge'] {
+    order: 6;
+}
+.pokemon-checkpoint[data-badge='Fen Badge'] {
+    order: 7;
+}
+
+.pokemon-checkpoint[data-badge='Mine Badge'] {
+    order: 8;
+}
+.pokemon-checkpoint[data-badge='Icicle Badge'] {
+    order: 9;
+}
+.pokemon-checkpoint[data-badge='Beacon Badge'] {
+    order: 10;
+}
+.pokemon-checkpoint[data-badge='Cynthia'] {
+    order: 11;
+} */

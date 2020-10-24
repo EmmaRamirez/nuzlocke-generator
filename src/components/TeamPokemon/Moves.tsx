@@ -12,6 +12,7 @@ import { Pokemon } from 'models';
 import { connect } from 'react-redux';
 import { State } from 'state';
 import { noop } from 'redux-saga/utils';
+import * as ReactDOMServer from 'react-dom/server';
 
 export interface MovesProps {
     generation: Generation;
@@ -20,9 +21,10 @@ export interface MovesProps {
     style: Styles;
     customMoveMap: State['customMoveMap'];
     customTypes: State['customTypes'];
+    stripClasses?: boolean;
 }
 
-export const Move = ({ index, style, type, move, customTypes }) =>
+export const Move = ({ index, style, type, move, customTypes, stripClasses = false }) =>
     move && (
         <div
             key={index}
@@ -38,9 +40,13 @@ export const Move = ({ index, style, type, move, customTypes }) =>
                         color: getContrastColor(typeToColor(type, customTypes)),
                     }
             }
-            className={`move move-${move.replace(/\s/g, '-')?.toLowerCase()} ${
-                move.length >= 10 ? 'long-text-move' : ''
-            }`}>
+            className={
+                stripClasses
+                    ? ''
+                    : `move move-${move.replace(/\s/g, '-')?.toLowerCase()} ${
+                        move.length >= 10 ? 'long-text-move' : ''
+                    }`
+            }>
             {move}
         </div>
     );
@@ -49,7 +55,7 @@ export const getMapMove = (moveMap, move) => moveMap?.find((m) => m.move === mov
 
 export class MovesBase extends React.Component<MovesProps> {
     private generateMoves(moves: MovesProps['moves']) {
-        const { style, customMoveMap, customTypes } = this.props;
+        const { style, customMoveMap, customTypes, stripClasses = false } = this.props;
 
         return (
             moves &&
@@ -73,6 +79,7 @@ export class MovesBase extends React.Component<MovesProps> {
                         style={style}
                         type={type}
                         move={move}
+                        stripClasses={stripClasses}
                         customTypes={customTypes}
                     />
                 );
@@ -80,12 +87,18 @@ export class MovesBase extends React.Component<MovesProps> {
         );
     }
 
+    public renderToString() {
+        const { moves } = this.props;
+        return this.generateMoves(moves)?.map((m) => ReactDOMServer.renderToString(m));
+    }
+
     public render() {
-        if (this.props.moves == null) return null;
-        return (
-            <div className={`pokemon-moves ${this.props.movesPosition}`}>
-                {this.generateMoves(this.props.moves)}
-            </div>
+        const { moves, movesPosition, stripClasses = false } = this.props;
+        if (moves == null) return null;
+        return stripClasses ? (
+            this.generateMoves(moves)
+        ) : (
+            <div className={`pokemon-moves ${movesPosition}`}>{this.generateMoves(moves)}</div>
         );
     }
 }

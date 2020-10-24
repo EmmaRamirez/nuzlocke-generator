@@ -1,4 +1,11 @@
-import { Action, NEW_NUZLOCKE, DELETE_NUZLOCKE, SWITCH_NUZLOCKE, UPDATE_NUZLOCKE, UPDATE_SWITCH_NUZLOCKE } from 'actions';
+import {
+    Action,
+    NEW_NUZLOCKE,
+    DELETE_NUZLOCKE,
+    SWITCH_NUZLOCKE,
+    UPDATE_NUZLOCKE,
+    UPDATE_SWITCH_NUZLOCKE,
+} from 'actions';
 const uuid = require('uuid');
 
 export interface Nuzlockes {
@@ -9,9 +16,11 @@ export interface Nuzlockes {
 export function nuzlockes(
     state: Nuzlockes = {
         currentId: '',
-        saves: []
+        saves: [],
     },
-    action: Action<NEW_NUZLOCKE | DELETE_NUZLOCKE | SWITCH_NUZLOCKE | UPDATE_NUZLOCKE | UPDATE_SWITCH_NUZLOCKE>,
+    action: Action<
+    NEW_NUZLOCKE | DELETE_NUZLOCKE | SWITCH_NUZLOCKE | UPDATE_NUZLOCKE | UPDATE_SWITCH_NUZLOCKE
+    >,
 ) {
     switch (action.type) {
         case NEW_NUZLOCKE:
@@ -25,14 +34,14 @@ export function nuzlockes(
                         id,
                         data: action?.data || null,
                         isCopy: action?.isCopy || false,
-                    }
-                ]
+                    },
+                ],
             };
 
         case DELETE_NUZLOCKE:
             return {
                 ...state,
-                saves: state.saves.filter(s => s.id !== action.id)
+                saves: state.saves.filter((s) => s.id !== action.id),
             };
         case SWITCH_NUZLOCKE:
             return {
@@ -44,12 +53,12 @@ export function nuzlockes(
                 ...state,
                 currentId: action.newId,
                 saves: [
-                    ...state.saves.filter(s => s.id !== action.id),
+                    ...state.saves.filter((s) => s.id !== action.id),
                     {
                         id: action.id,
                         data: action.data,
-                    }
-                ]
+                    },
+                ],
             };
         case UPDATE_NUZLOCKE:
             // const updateItem = state.saves.find(s => s.id === action.id);
@@ -70,12 +79,12 @@ export function nuzlockes(
             return {
                 ...state,
                 saves: [
-                    ...state.saves.filter(s => s.id !== action.id),
+                    ...state.saves.filter((s) => s.id !== action.id),
                     {
                         id: action.id,
                         data: action.data,
-                    }
-                ]
+                    },
+                ],
             };
         default:
             return state;

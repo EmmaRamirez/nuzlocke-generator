@@ -188,7 +188,7 @@ html.bp3-dark {
   width: 5.5rem;
 }
 .current-pokemon-moves {
-  width: 25rem;
+  width: 80%;
 }
 .current-pokemon-nature {
   width: 6.5rem;
@@ -250,7 +250,6 @@ input[name='metLevel'] {
   align-items: center;
   justify-content: center;
   height: 40px;
-  width: 40px;
 }
 .box .pokemon-icon img,
 .box .pokemon-icon {
