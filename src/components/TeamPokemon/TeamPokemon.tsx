@@ -140,7 +140,7 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                             />
                         )}
                         {pokemon.checkpoints && (
-                            <div className='flex'>
+                            <div className='flex flex-wrap' style={{maxWidth: '14rem'}}>
                                 <CheckpointsDisplay
                                     className='pokemon-checkpoint'
                                     game={game}
