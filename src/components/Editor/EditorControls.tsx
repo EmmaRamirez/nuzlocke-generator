@@ -34,10 +34,10 @@ export function EditorControls({editorDarkMode, minimized}) {
     };
 
     const dispatchFuture = () => {
-        redoEditorHistory(present);
-        replaceState(
+        dispatch(redoEditorHistory(present));
+        dispatch(replaceState(
             editorHistory?.future[0]
-        );
+        ));
     };
 
     return <div
