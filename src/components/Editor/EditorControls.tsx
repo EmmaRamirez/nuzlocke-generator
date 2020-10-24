@@ -19,7 +19,7 @@ export function EditorControls({editorDarkMode, minimized}) {
         }
     };
     const redo = (event: React.KeyboardEvent) => {
-        if (event.ctrlKey && event.key === 'z') {
+        if (event.ctrlKey && event.key === 'y') {
             event.preventDefault();
             dispatchFuture();
         }
