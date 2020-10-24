@@ -10,10 +10,13 @@ import {
     Forme,
     gameOfOriginToColor,
     TemplateName,
+    feature,
+    isLocal,
 } from 'utils';
 import { selectPokemon } from 'actions';
 import { PokemonIconBase } from 'components/PokemonIcon';
 import { State } from 'state';
+import { game } from 'reducers/game';
 
 const spriteStyle = (style: Styles) => {
     if (style.spritesMode) {
@@ -70,12 +73,14 @@ export const DeadPokemonBase = (poke: DeadPokemonProps) => {
         poke.gameOfOrigin &&
         poke.style.displayGameOriginForBoxedAndDead &&
         poke.style.displayBackgroundInsteadOfBadge;
+    const EMMA_MODE = isLocal();
 
     if (isMinimal && isCompactWithIcons) {
         return (
             <div
                 className={'dead-pokemon-container'}
                 data-league={poke.champion}
+                data-game={poke.gameOfOrigin}
                 style={{
                     background: useGameOfOriginColor
                         ? gameOfOriginToColor(poke.gameOfOrigin!)
@@ -85,16 +90,19 @@ export const DeadPokemonBase = (poke: DeadPokemonProps) => {
                         : getContrastColor(getAccentColor(poke)),
                     height: '50px',
                     fontSize: '90%',
-                    outline: '1px solid #222',
+                    //margin: '1px',
+                    outline: EMMA_MODE ? '' : '1px solid #222',
                 }}>
                 <div
                     className="goc-circle"
                     style={{
-                        background: `linear-gradient(to right, ${gameOfOriginToColor(
-                            poke.gameOfOrigin!,
-                        )}, transparent)`,
+                        background: EMMA_MODE
+                            ? gameOfOriginToColor(poke.gameOfOrigin!)
+                            : `linear-gradient(45deg, ${gameOfOriginToColor(
+                                poke.gameOfOrigin!,
+                            )}, transparent)`,
                         height: '100%',
-                        width: '6rem',
+                        width: poke.gameOfOrigin === 'Platinum' && EMMA_MODE ? '100%' : '50px',
                         position: 'absolute',
                         left: '0',
                         top: '0',
@@ -107,41 +115,47 @@ export const DeadPokemonBase = (poke: DeadPokemonProps) => {
                         {...(poke as any)}
                     />
                 </span>
-                <div
-                    style={{
-                        margin: 0,
-                        padding: 0,
-                        lineHeight: '14px',
-                        height: '100%',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        flexDirection: 'column',
-                    }}>
-                    <div>
-                        {poke.nickname} {GenderElement(poke.gender)} Levels {poke.metLevel}&mdash;
-                        {poke.level}
+                {poke.gameOfOrigin === 'Platinum' && (
+                    <div
+                        style={{
+                            margin: 0,
+                            padding: 0,
+                            lineHeight: '14px',
+                            height: '100%',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            flexDirection: 'column',
+                            zIndex: 1,
+                        }}>
+                        <div>
+                            {poke.nickname} {GenderElement(poke.gender)} Levels {poke.metLevel}
+                            &mdash;
+                            {poke.level}
+                        </div>
+                        <div>{poke.causeOfDeath}</div>
+                        {style.displayGameOriginForBoxedAndDead &&
+                            !poke.style.displayBackgroundInsteadOfBadge &&
+                            poke.gameOfOrigin && (
+                            <span
+                                className="pokemon-gameoforigin"
+                                style={{
+                                    fontSize: '80%',
+                                    borderRadius: '.25rem',
+                                    margin: '0',
+                                    marginTop: '.25rem',
+                                    marginLeft: '.25rem',
+                                    padding: '2px',
+                                    display: 'inline-block',
+                                    background: gameOfOriginToColor(poke.gameOfOrigin),
+                                    color: getContrastColor(
+                                        gameOfOriginToColor(poke.gameOfOrigin),
+                                    ),
+                                }}>
+                                {poke.gameOfOrigin}
+                            </span>
+                        )}
                     </div>
-                    <div>{poke.causeOfDeath}</div>
-                    {style.displayGameOriginForBoxedAndDead &&
-                        !poke.style.displayBackgroundInsteadOfBadge &&
-                        poke.gameOfOrigin && (
-                        <span
-                            className="pokemon-gameoforigin"
-                            style={{
-                                fontSize: '80%',
-                                borderRadius: '.25rem',
-                                margin: '0',
-                                marginTop: '.25rem',
-                                marginLeft: '.25rem',
-                                padding: '2px',
-                                display: 'inline-block',
-                                background: gameOfOriginToColor(poke.gameOfOrigin),
-                                color: getContrastColor(gameOfOriginToColor(poke.gameOfOrigin)),
-                            }}>
-                            {poke.gameOfOrigin}
-                        </span>
-                    )}
-                </div>
+                )}
             </div>
         );
     }

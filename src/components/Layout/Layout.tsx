@@ -59,6 +59,7 @@ export class Layout extends React.PureComponent<Partial<LayoutProps>> {
         const { display, direction, alignment, spacing, wrap } = this.props;
         return (
             <div
+                data-testid="layout"
                 style={
                     {
                         display: display,

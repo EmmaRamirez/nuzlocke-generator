@@ -84,6 +84,7 @@ export const movesByType: MovesByType = {
         'Lash Out',
         'Wicked Blow',
         'Baddy Bad',
+        'Fiery Wrath',
     ],
     Dragon: [
         'Dragon Claw',
@@ -112,6 +113,7 @@ export const movesByType: MovesByType = {
         'Breaking Swipe',
         'Clangorous Soul',
         'Scale Shot',
+        'Dragon Energy',
     ],
     Electric: [
         '10,000,000 Volt Thunderbolt',
@@ -157,6 +159,7 @@ export const movesByType: MovesByType = {
         'Rising Voltage',
         'Zippy Zap',
         'Pika Papow',
+        'Thunder Cage',
     ],
     Fairy: [
         'Dazzling Gleam',
@@ -241,6 +244,7 @@ export const movesByType: MovesByType = {
         'No Retreat',
         'Octolock',
         'Coaching',
+        'Thunderous Kick',
     ],
     Fire: [
         'Fire Blast',
@@ -344,6 +348,7 @@ export const movesByType: MovesByType = {
         'Menacing Moonraze Maelstrom',
         'HP Ghost',
         'Poltergeist',
+        'Astral Barrage',
     ],
     Grass: [
         'Frenzy Plant',
@@ -459,6 +464,7 @@ export const movesByType: MovesByType = {
         'Powder Snow',
         'HP Ice',
         'Triple Axel',
+        'Glacial Lance',
     ],
     Normal: [
         'Bide',
@@ -757,6 +763,8 @@ export const movesByType: MovesByType = {
         'HP Psychic',
         'Magic Powder',
         'Expanding Force',
+        'Freezing Glare',
+        'Eerie Spell',
     ],
     Rock: [
         'Rock Throw',

@@ -56,19 +56,37 @@ const getNumberOf = (status?: string, pokemon?: Pokemon[]) =>
               .filter((poke) => poke.status === status && !poke.hidden).length
         : 0;
 
-export function BackspriteMontage({pokemon}: {pokemon: Pokemon[]}) {
-    return <div className='backsprite-montage' style={{
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'bottom',
-        margin: '0 auto',
-        height: '92px',
-    }}>
-        {pokemon.map((poke, idx) => {
-            return <img style={{height: '128px', marginLeft: '-32px', zIndex: 6 - idx, imageRendering: 'pixelated' }} alt='' role='presentation' src={`https://img.pokemondb.net/sprites/firered-leafgreen/back-normal/${(poke.species || '').toLowerCase()}.png`} />;
-        })}
-    </div>;
+export function BackspriteMontage({ pokemon }: { pokemon: Pokemon[] }) {
+    return (
+        <div
+            className="backsprite-montage"
+            style={{
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'bottom',
+                margin: '0 auto',
+                height: '92px',
+            }}>
+            {pokemon.map((poke, idx) => {
+                return (
+                    <img
+                        style={{
+                            height: '128px',
+                            marginLeft: '-32px',
+                            zIndex: 6 - idx,
+                            imageRendering: 'pixelated',
+                        }}
+                        alt=""
+                        role="presentation"
+                        src={`https://img.pokemondb.net/sprites/platinum/back-normal/${(
+                            poke.species || ''
+                        ).toLowerCase()}.png`}
+                    />
+                );
+            })}
+        </div>
+    );
 }
 
 export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
@@ -173,6 +191,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             link.click();
             this.setState({ downloadError: null, isDownloading: false });
         } catch (e) {
+            console.log(e);
             this.setState({
                 downloadError:
                     'Failed to download. This is likely due to your image containing an image resource that does not allow Cross-Origin',
@@ -305,6 +324,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         const enableStats = style.displayStats;
         const enableChampImage = false && isLocal();
         const enableBackSpriteMontage = false && isLocal();
+        const renderStatsInResult = false && isLocal();
 
         return (
             <div className="hide-scrollbars" style={{ width: '100%', overflowY: 'scroll' }}>
@@ -331,7 +351,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     )}
                     <div
                         ref={this.resultRef}
-                        className={`result container ${
+                        className={`result ng-container ${
                             (style.template && style.template.toLowerCase().replace(/\s/g, '-')) ||
                             ''
                         } region-${getGameRegion(
@@ -443,11 +463,13 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             {style.displayRules && style.displayRulesLocation === 'bottom'
                                 ? rulesContainer
                                 : null}
-
-                            {enableStats && <Stats />}
                         </div>
 
-                        {enableBackSpriteMontage && <BackspriteMontage pokemon={this.getPokemonByStatus('Team')} />}
+                        {enableStats && renderStatsInResult && <Stats />}
+
+                        {enableBackSpriteMontage && (
+                            <BackspriteMontage pokemon={this.getPokemonByStatus('Team')} />
+                        )}
                     </div>
                 </ErrorBoundary>
             </div>

@@ -58,6 +58,7 @@ export interface Styles {
     displayStats: boolean;
     statsOptions: StatsOptions;
     linkedPokemonText: string;
+    customTeamHTML: string;
 }
 
 export const styleDefaults: Styles = {
@@ -111,4 +112,5 @@ export const styleDefaults: Styles = {
         mostCommonTypes: false,
         shiniesCaught: false,
     },
+    customTeamHTML: '',
 };

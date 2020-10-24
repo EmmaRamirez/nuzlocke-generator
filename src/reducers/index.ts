@@ -16,6 +16,8 @@ import { checkpoints } from './checkpoints';
 import { customMoveMap } from './customMoveMap';
 import { stats } from './stats';
 import { customTypes } from './customTypes';
+import { editorHistory } from './editorHistory';
+import { view } from './view';
 
 export const reducers = {
     box,
@@ -23,6 +25,7 @@ export const reducers = {
     confirmation,
     customMoveMap,
     customTypes,
+    editorHistory,
     game,
     nuzlockes,
     pokemon,
@@ -34,6 +37,7 @@ export const reducers = {
     rules,
     stats,
     style,
+    view,
 };
 
 export const appReducers = combineReducers(reducers);

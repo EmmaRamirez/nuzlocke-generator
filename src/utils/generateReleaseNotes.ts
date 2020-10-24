@@ -5,6 +5,7 @@ const spritesMode = require('assets/sprites-mode.png');
 const hexagonTheme = require('assets/hexagons-theme.png');
 const compactTheme = require('assets/compact-theme.png');
 const imageRender = require('assets/image-render.png');
+const checkpointsForPokemon = require('assets/checkpoints-for-pokemon.png');
 
 export function generateReleaseNotes(version: string) {
     return releaseNotes[version] || '';
@@ -606,13 +607,39 @@ Thank you!
 - You can now copy Nuzlockes in the Saves Manager!
 - A warning now pops up when attempting to delete a Nuzlocke
 - Display fixes for mobile
+- Fixed an issue that made ChampsPokemon icon widths unpredictable
 - Fixed a saves bug that would occur after deleting all data
 - Added Flyinium Z, Soothe Bell, Shell Bell
 - Fixed issues with using hotkeys after deleting all Pokémon
 - Various performance improvements
+- Added a sprite and image for Zarude
 
 ## Known Issues
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
-`
+`,
+    '1.4.0': `
+## Vote!
+- Vote on nuzlocke-generator features [here](https://www.strawpoll.me/21091547)
+- And if you're American, in the upcoming elections [here](https://www.vote.org/)
+
+## Features
+- **Crown Tundra**: new Pokémon, locations, and items from the DLC have been added
+- **Undo/Redo**: accidentally deleted your Magikarp? Now you no longer have to live in regret!
+    - Note: edit history is only through local storage and is not downloaded as part of json downloads
+- **Checkpoints for Pokémon**: you can now reward your Pokémon individually with badges
+![checkpointsForPokemon](${checkpointsForPokemon})
+- **Auto-Evolve Button**: available for Gen I & II games
+
+## Fixes
+- Improved performance of custom CSS inputs
+- Fixed an issue with base64 images as custom checkpoints
+- Added missing Gen II berries (they don't have images, as none exist in game data)
+- The loading screen now makes it clear deleting local storage is irreversible (so save your data!)
+- Fixed an edge case where importing a .json file would break the application
+
+## Known Issues
+- External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`,
 };

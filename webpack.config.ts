@@ -6,7 +6,6 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 // const WorkboxPlugin = require('workbox-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
-
 // @TODO: do not this lol
 const isProduction = true;
 

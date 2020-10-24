@@ -42,16 +42,18 @@ export const BoxedPokemonBase = (poke: BoxedPokemonProps) => {
                 // Its dependent on the way react-dnd is wired
                 // which needs to be updated to v11 anyhow
             }
-            {process.env.NODE_ENV !== 'test' && <PokemonIcon
-                species={poke?.species}
-                id={poke?.id}
-                style={{ cursor: 'pointer' }}
-                forme={poke?.forme}
-                shiny={poke?.shiny}
-                gender={poke?.gender}
-                customIcon={poke?.customIcon}
-                className={'boxed-pokemon-icon'}
-            />}
+            {process.env.NODE_ENV !== 'test' && (
+                <PokemonIcon
+                    species={poke?.species}
+                    id={poke?.id}
+                    style={{ cursor: 'pointer' }}
+                    forme={poke?.forme}
+                    shiny={poke?.shiny}
+                    gender={poke?.gender}
+                    customIcon={poke?.customIcon}
+                    className={'boxed-pokemon-icon'}
+                />
+            )}
             {isMinimal ? null : (
                 <div
                     className="boxed-pokemon-info"
@@ -60,7 +62,7 @@ export const BoxedPokemonBase = (poke: BoxedPokemonProps) => {
                             ? getContrastColor(gameOfOriginToColor(poke?.gameOfOrigin!))
                             : getAccentColor(poke),
                     }}>
-                    <span data-testid='boxed-pokemon-name' className="boxed-pokemon-name">
+                    <span data-testid="boxed-pokemon-name" className="boxed-pokemon-name">
                         {poke?.nickname} {GenderElement(poke?.gender)}{' '}
                         {poke?.level ? <span>lv. {poke?.level}</span> : null}
                         {poke?.style?.displayGameOriginForBoxedAndDead &&

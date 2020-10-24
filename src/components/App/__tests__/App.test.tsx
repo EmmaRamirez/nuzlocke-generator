@@ -11,7 +11,7 @@ describe('<App />', () => {
         const store = configureStore()({});
         const wrapper = mount(
             <Provider store={store}>
-                <App style={styleDefaults} />
+                <App view={{dialogs: {imageUploader: false}}} style={styleDefaults} />
             </Provider>,
         );
         expect(wrapper).toBeDefined();
