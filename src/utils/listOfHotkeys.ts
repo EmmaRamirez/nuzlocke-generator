@@ -24,6 +24,14 @@ export const betaHotkeys: HotkeyList[] = [
 
 export const listOfHotkeys: HotkeyList[] = [
     {
+        key: 'ctrl+z',
+        comment: 'Undo',
+    },
+    {
+        key: 'ctrl+y',
+        comment: 'Redo',
+    },
+    {
         key: 'j',
         comment: 'Previous Pok\xE9mon',
         onKeyUp: 'previousPokemon',

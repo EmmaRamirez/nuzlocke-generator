@@ -892,8 +892,11 @@ export const listOfPokemon = [
     'Kubfu',
     'Urshifu',
     'Zarude',
-    'Regidrago',
     'Regieleki',
+    'Regidrago',
+    'Glastrier',
+    'Spectrier',
+    'Calyrex',
 ] as const;
 
 const listOfTemtem = [

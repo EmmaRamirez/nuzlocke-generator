@@ -78,7 +78,7 @@ export class AppBase extends React.PureComponent<AppProps, {result2?: boolean}> 
         this.state = {result2: false};
     }
 
-    public componentDidUpdate() {
+    public componentDidMount() {
         if (feature.resultv2) {
             // TOP SECRET
             if (this.props.style.customCSS.includes('resultv2')) {

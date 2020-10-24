@@ -443,7 +443,7 @@
 .pokemon-checkpoint.obtained {
     display: flex;
 }
-
+/*
 .pokemon-checkpoint[data-badge='Mars'],
 .pokemon-checkpoint[data-badge='Jupiter'],
 .pokemon-checkpoint[data-badge='Saturn'],
@@ -516,4 +516,4 @@
 }
 .pokemon-checkpoint[data-badge='Cynthia'] {
     order: 11;
-}
+} */

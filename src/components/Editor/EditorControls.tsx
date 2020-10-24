@@ -5,12 +5,28 @@ import { useDispatch, useSelector } from 'react-redux';
 import { State } from 'state';
 import { editorStyles } from './styles';
 import { redoEditorHistory, replaceState, undoEditorHistory } from 'actions';
+import { useEvent } from 'utils/hooks';
 
 export function EditorControls({editorDarkMode, minimized}) {
     const present = useSelector<State, Omit<State, 'editorHistory'>>(state => omit(['editorHistory'], state));
     const editorHistory = useSelector<State, State['editorHistory']>(state => state.editorHistory);
-
     const dispatch = useDispatch();
+
+    const undo = (event: React.KeyboardEvent) => {
+        if (event.ctrlKey && event.key === 'z') {
+            event.preventDefault();
+            dispatchPast();
+        }
+    };
+    const redo = (event: React.KeyboardEvent) => {
+        if (event.ctrlKey && event.key === 'z') {
+            event.preventDefault();
+            dispatchFuture();
+        }
+    };
+
+    useEvent('keydown', undo);
+    useEvent('keydown', redo);
 
     const dispatchPast = () => {
         dispatch(undoEditorHistory(present));

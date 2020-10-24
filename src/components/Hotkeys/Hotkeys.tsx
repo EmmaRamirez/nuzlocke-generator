@@ -66,7 +66,7 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
         if (elem == null || elem.closest == null) {
             return false;
         }
-        const editable = elem.closest('input, textarea, [contenteditable=true]');
+        const editable = elem.closest('input, textarea, [contenteditable=true], select');
 
         if (editable == null) {
             return false;

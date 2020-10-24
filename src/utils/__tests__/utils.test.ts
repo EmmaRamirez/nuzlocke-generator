@@ -32,6 +32,7 @@ import {
     handleSignificantGenderDifference,
 } from 'utils/handleSignificantGenderDifferences';
 import { getAdditionalFormes } from 'utils/getAdditionalFormes';
+import { getEvolutionLine } from 'utils/listOfEvolutions';
 
 const objectPropertiesWhere = (obj: object, filter: any) =>
     Array.from(Object.values(obj)).filter(filter).length;
@@ -381,4 +382,26 @@ describe(handleSignificantGenderDifference.name, () => {
 describe(getAdditionalFormes.name, () => {
     const subject = listOfPokemon.map((species) => ({ [species]: getAdditionalFormes(species) }));
     expect(subject).toMatchSnapshot();
+});
+
+describe.skip(getEvolutionLine.name, () => {
+    it('returns proper data for basic line', () => {
+        const subject = getEvolutionLine('Bulbasaur');
+        expect(subject).toEqual(['Bulbasaur', 'Ivysaur', 'Venusaur']);
+    });
+
+    it('returns proper data for a split-evo line', () => {
+        const subject = getEvolutionLine('Burmy');
+        expect(subject).toEqual(['Burmy', 'Wormadam', 'Mothim']);
+    });
+
+    it('returns proper data for a split-evo line, multiple lines', () => {
+        const subject = getEvolutionLine('Oddish');
+        expect(subject).toEqual(['Oddish', 'Gloom', 'Vileplume', 'Bellossom']);
+    });
+
+    it('returns proper data for a split-evo line, final evo', () => {
+        const subject = getEvolutionLine('Politoed');
+        expect(subject).toEqual(['Poliwag', 'Poliwhirl', 'Poliwrath', 'Politoed']);
+    });
 });

@@ -1,4 +1,6 @@
 import { Species } from './listOfPokemon';
+import { flatten } from 'ramda';
+import { uniq } from 'lodash';
 
 export type EvolutionTree = { [S in Species]?: Species[] };
 
@@ -177,4 +179,67 @@ export const EvolutionTree: EvolutionTree = {
     Shieldon: ['Bastiodon'],
     Budew: ['Roselia'],
     Roselia: ['Roserade'],
+    Burmy: ['Wormadam', 'Mothim'],
 };
+
+const cycleThrough = (species: Species) => {
+    const found: Species[] = [];
+    for (const pokemon in EvolutionTree) {
+        if (EvolutionTree[pokemon].includes(species)) {
+            found.push(pokemon as Species);
+        }
+    }
+    return found;
+};
+
+export const getEvolutionLine = (species: Species, linear: boolean = false): Species[] => {
+    const line: Species[] = [];
+
+    // include queries species
+    line.push(species);
+
+    const getPriors = (species) => {
+        const priors = cycleThrough(species);
+        if (priors.length) {
+            line.push(...priors);
+            priors.forEach(prior => {
+                getPriors(prior);
+                getNextEvo(prior);
+            });
+        }
+    };
+
+    const getNextEvo = (species: Species) => {
+        const evolution = EvolutionTree[species];
+
+        console.log(`evo for ${species}`, evolution, cycleThrough(species));
+
+        if (!evolution) {
+            getPriors(species);
+        }
+        if (evolution && evolution.length === 1) {
+            line.push(evolution[0]);
+            if (EvolutionTree[evolution[0]]) {
+                getNextEvo(evolution[0]);
+            }
+        }
+        if (evolution && evolution.length > 1) {
+            return evolution.forEach(ev => getNextEvo(ev));
+        }
+    };
+
+    getNextEvo(species);
+
+
+    return uniq(line);
+};
+
+
+
+const tree = [
+    ['Bulbasaur', 'Ivysaur', 'Venusaur'],
+    ['Burmy', ['Mothim', 'Wormadam']],
+    ['Wurmple', ['Silcoon', 'Cascoon'], ['Beautifly', 'Dustox']]
+];
+
+const getFlat = tree.map(branch => flatten(branch));

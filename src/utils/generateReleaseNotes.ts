@@ -624,6 +624,7 @@ Thank you!
 - And if you're American, in the upcoming elections [here](https://www.vote.org/)
 
 ## Features
+- **Crown Tundra**: new Pokémon, locations, and items from the DLC have been added
 - **Undo/Redo**: accidentally deleted your Magikarp? Now you no longer have to live in regret!
     - Note: edit history is only through local storage and is not downloaded as part of json downloads
 - **Checkpoints for Pokémon**: you can now reward your Pokémon individually with badges

@@ -212,13 +212,6 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     ) : null}
                 </div>
 
-                <div className="custom-css-input-wrapper">
-                    <label style={{ padding: '.5rem', marginBottom: 0 }} className="bp3-label">
-                        Custom Team HTML {/*<a href=''>Check out Layout Guide</a>*/}
-                    </label>
-                    <TextAreaDebounced name="customTeamHTML" props={props} edit={editEvent} />
-                </div>
-
                 <div className={styleEdit}>
                     <RadioGroup
                         className={cx(Styles.radioGroup)}
@@ -820,6 +813,13 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     </label>
                     <TextAreaDebounced name="customCSS" props={props} edit={editEvent} />
                 </div>
+
+                {feature.resultv2 && <div className="custom-css-input-wrapper">
+                    <label style={{ padding: '.5rem', marginBottom: 0 }} className="bp3-label">
+                        Custom Team HTML {/*<a href=''>Check out Layout Guide</a>*/}
+                    </label>
+                    <TextAreaDebounced name="customTeamHTML" props={props} edit={editEvent} />
+                </div>}
             </BaseEditor>
         );
     }

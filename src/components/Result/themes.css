@@ -661,7 +661,8 @@
 .compact-with-icons .boxed-pokemon-info {
   border: none;
 }
-.compact-with-icons .dead-pokemon-container {
+/* scope this to the result */
+.result .compact-with-icons .dead-pokemon-container {
   width: calc(100% / 6);
 }
 .compact-with-icons .pokemon-container {
