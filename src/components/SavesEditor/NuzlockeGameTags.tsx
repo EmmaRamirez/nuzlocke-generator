@@ -42,7 +42,7 @@ export function NuzlockeGameTags({
                             <PokemonIcon key={poke.id} {...poke} />
                         ))}
                 </div>
-                <div style={{ display: 'flex', minWidth: '50%' }}>
+                <div className='flex justify-center' style={{ minWidth: '50%' }}>
                     <Tag
                         round
                         style={{

@@ -7,7 +7,7 @@ import { Button, Intent, Popover, Position, Menu, Switch, Classes } from '@bluep
 import { RulesEditorDialog } from 'components/RulesEditor';
 import { State } from 'state';
 import { BaseEditor } from 'components/BaseEditor';
-import { NuzlockeSaveControls } from './NuzlockeSaveControls';
+import { NuzlockeSaveControls } from '../SavesEditor/NuzlockeSaveControls';
 import { ErrorBoundary } from 'components';
 
 export interface GameEditorProps {

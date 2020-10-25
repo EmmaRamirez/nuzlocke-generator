@@ -13,7 +13,7 @@ const PokemonEditor = React.lazy(() =>
     import('components/PokemonEditor').then((res) => ({ default: res.PokemonEditor })),
 );
 const NuzlockeSaveControls = React.lazy(() =>
-    import('components/GameEditor/NuzlockeSaveControls').then((res) => ({
+    import('components/SavesEditor/NuzlockeSaveControls').then((res) => ({
         default: res.NuzlockeSaveControls,
     })),
 );

@@ -87,6 +87,18 @@ NuzlockeSaveControlsState
                 style={{
                     padding: '0.5rem',
                 }}>
+                <Button
+                    intent={Intent.SUCCESS}
+                    icon="add"
+                    className={'mb-1'}
+                    onClick={() => {
+                        updateNuzlocke(currentId, state);
+                        const data = createStore(appReducers)?.getState();
+                        newNuzlocke(JSON.stringify(data), { isCopy: false });
+                        replaceState(data);
+                    }}>
+                    New Nuzlocke
+                </Button>
                 {saves.map((nuzlocke) => {
                     const id = nuzlocke.id;
                     const { isCopy } = nuzlocke;
@@ -228,17 +240,6 @@ NuzlockeSaveControlsState
                         </div>
                     );
                 })}
-                <Button
-                    intent={Intent.SUCCESS}
-                    icon="add"
-                    onClick={() => {
-                        updateNuzlocke(currentId, state);
-                        const data = createStore(appReducers)?.getState();
-                        newNuzlocke(JSON.stringify(data), { isCopy: false });
-                        replaceState(data);
-                    }}>
-                    New Nuzlocke
-                </Button>
             </div>
         );
     }
