@@ -3,7 +3,7 @@ import { Pokemon } from 'models';
 import { sortPokes } from '.';
 import { Types } from './Types';
 
-export function generateEmptyPokemon(pokemon?: Pokemon[]): Pokemon {
+export function generateEmptyPokemon(pokemon?: Pokemon[], overrides?: Partial<Pokemon>): Pokemon {
     let position: number = 0;
     if (pokemon && pokemon.length > 0) {
         try {
@@ -30,5 +30,6 @@ export function generateEmptyPokemon(pokemon?: Pokemon[]): Pokemon {
         ability: '',
         types: [Types.Normal, Types.Normal],
         egg: false,
+        ...(overrides ?? {})
     };
 }

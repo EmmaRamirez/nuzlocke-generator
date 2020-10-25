@@ -31,6 +31,7 @@ import * as Styles from './styles';
 import { ThemeEditor } from 'components/ThemeEditor';
 import { customCSSGuide as text } from 'utils/customCSSGuide';
 const ReactMarkdown = require('react-markdown');
+const prism = require('remark-prism');
 
 const debounce = require('lodash.debounce');
 
@@ -204,7 +205,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         [Classes.DARK]: props.style.editorDarkMode,
                     })}>
                     <ReactMarkdown
-                        className='release-notes-wrapper'
+                        plugins={[prism]}
                         source={text}
                     />
                 </Drawer>
