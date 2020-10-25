@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { editGame, changeEditorSize, editStyle, resetCheckpoints, toggleTemtemMode } from 'actions';
-import { gameOfOriginToColor, listOfGames, feature } from 'utils';
+import { gameOfOriginToColor, listOfGames, feature, Game } from 'utils';
 
 import { Button, Intent, Popover, Position, Menu, Switch, Classes } from '@blueprintjs/core';
 import { RulesEditorDialog } from 'components/RulesEditor';
 import { State } from 'state';
 import { BaseEditor } from 'components/BaseEditor';
-import { NuzlockeSaveControls } from '../SavesEditor/NuzlockeSaveControls';
-import { ErrorBoundary } from 'components';
 
 export interface GameEditorProps {
     game: any;
@@ -28,26 +26,23 @@ const gameSubEditorStyle: any = {
 };
 
 export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: boolean }> {
-    public constructor(props) {
-        super(props);
-        this.state = {
-            isOpen: false,
-        };
-    }
-
-    private onInput = (e) => {
-        this.props.editGame({ name: e.target.value });
-        this.props.editStyle({
-            bgColor: gameOfOriginToColor(e.target.value),
-        });
-        this.props.resetCheckpoints(e.target.value);
+    public state = {
+        isOpen: false,
     };
 
-    private onInputName = (e) => {
+    private onInput = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        this.props.editGame({ name: e.target.value });
+        this.props.editStyle({
+            bgColor: gameOfOriginToColor(e.target.value as Game),
+        });
+        this.props.resetCheckpoints(e.target.value as Game);
+    };
+
+    private onInputName = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.props.editGame({ customName: e.target.value });
     };
 
-    private toggleDialog = (_) => this.setState({ isOpen: !this.state.isOpen });
+    private toggleDialog = () => this.setState({ isOpen: !this.state.isOpen });
 
     public render() {
         const { game } = this.props;

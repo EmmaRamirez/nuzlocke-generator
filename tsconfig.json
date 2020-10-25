@@ -4,7 +4,7 @@
       "module": "esnext",
       "moduleResolution": "node",
       "declaration": false,
-      "noImplicitAny": false,
+      "noImplicitAny": true,
       "removeComments": true,
       "strictNullChecks": true,
       "noImplicitReturns": true,

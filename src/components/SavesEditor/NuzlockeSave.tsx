@@ -44,7 +44,12 @@ export interface NuzlockeSaveControlsState {
     deletionFunction?: () => void;
 }
 
-const sort = (a, b) => a.id - b.id;
+interface ContainsId {
+    id: number;
+    [prop: string]: any;
+}
+
+const sort = (a: ContainsId, b: ContainsId) => a.id - b.id;
 
 export class NuzlockeSaveBase extends React.Component<
 NuzlockeSaveControlsProps,
@@ -109,7 +114,7 @@ NuzlockeSaveControlsState
                         return null;
                     }
 
-                    let parsedData;
+                    let parsedData: State | null = null;
 
                     try {
                         parsedData = isCurrent ? JSON.parse(state) : JSON.parse(data);
@@ -176,7 +181,7 @@ NuzlockeSaveControlsState
                                         <MenuItem
                                             shouldDismissPopover={false}
                                             icon="clipboard"
-                                            onClick={(_) => {
+                                            onClick={() => {
                                                 try {
                                                     if (typeof data !== 'string') {
                                                         throw new Error(
