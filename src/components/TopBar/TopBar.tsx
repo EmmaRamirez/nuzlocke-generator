@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { Button, Classes, Spinner, Switch, Intent } from '@blueprintjs/core';
+import { Button, Classes, Spinner, Intent } from '@blueprintjs/core';
 import { connect } from 'react-redux';
-import { reducers } from 'reducers';
 import * as styles from 'components/Result/styles';
-import { classWithDarkTheme, isEmpty, Styles, TeamImagesType } from 'utils';
+import { classWithDarkTheme, isEmpty, Styles } from 'utils';
 import {
     changeEditorSize,
     editStyle,
@@ -12,11 +11,12 @@ import {
     toggleMobileResultView,
 } from 'actions';
 import { pkg } from 'package';
-import { cx, css } from 'emotion';
+import { cx } from 'emotion';
 import { Pokemon, Editor } from 'models';
 import { ReleaseDialog } from 'components/Shared';
 import { State } from 'state';
 import { isMobile } from 'is-mobile';
+import { ZoomLevel } from 'components/StyleEditor/ZoomLevel';
 
 export interface TopBarProps {
     onClickDownload: (e?: React.MouseEvent<HTMLElement>) => void;
@@ -41,7 +41,7 @@ export interface TopBarState {
     isMenuOpen: boolean;
 }
 
-const darkModeStyle = (mode) => (mode ? { color: '#fff' } : {});
+const darkModeStyle = (mode: boolean) => (mode ? { color: '#fff' } : {});
 
 export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
     public state = {
@@ -56,12 +56,12 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
         }
     }
 
-    private closeDialog = (e) => {
+    private closeDialog = () => {
         this.props.seeRelease(pkg.version);
-        this.toggleDialog(null);
+        this.toggleDialog();
     };
 
-    private toggleDialog = (_) => this.setState({ isOpen: !this.state.isOpen });
+    private toggleDialog = () => this.setState({ isOpen: !this.state.isOpen });
 
     private isDownloadDisabled() {
         return (
@@ -96,7 +96,7 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                     <>
                         <Button
                             style={darkModeStyle(this.props.style.editorDarkMode)}
-                            onClick={(_) =>
+                            onClick={() =>
                                 this.setState((state) => ({ isMenuOpen: !state.isMenuOpen }))
                             }
                             className={Classes.MINIMAL}
@@ -109,7 +109,7 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                                 zIndex: 22,
                                 position: 'relative',
                             }}
-                            onClick={(_) => this.props.toggleMobileResultView()}
+                            onClick={() => this.props.toggleMobileResultView()}
                             className={cx(Classes.MINIMAL, styles.close_result_button)}
                             icon={showResultInMobile ? 'cross' : 'eye-open'}>
                             {showResultInMobile ? 'Close' : 'View Result'}
@@ -121,13 +121,14 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                     <>
                         <Button
                             style={darkModeStyle(this.props.style.editorDarkMode)}
-                            onClick={(_) =>
+                            onClick={() =>
                                 this.props.changeEditorSize(!this.props.editor.minimized)
                             }
                             className={Classes.MINIMAL}
                             icon={this.props.editor.minimized ? 'minimize' : 'maximize'}>
                             {this.props.editor.minimized ? 'Maximize' : 'Minimize'} Editor
                         </Button>
+                        <ZoomLevel />
                         {isDownloading ? (
                             <Button
                                 className={Classes.MINIMAL}
@@ -157,7 +158,7 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                         )}
                         <Button
                             style={darkModeStyle(this.props.style.editorDarkMode)}
-                            onClick={(_) => {
+                            onClick={() => {
                                 this.props.editStyle({
                                     editorDarkMode: !this.props.style.editorDarkMode,
                                 });

@@ -277,7 +277,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         const ww = window.innerWidth;
         const scale = ww / rw / 1.1;
         if (!editor.showResultInMobile) {
-            return {};
+            return { transform: `scale(${style.zoomLevel})` };
         }
         if (!Number.isNaN(rw)) {
             return { transform: `scale(${scale.toFixed(2)})` };
@@ -369,8 +369,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             border: 'none',
                             height: style.useAutoHeight ? 'auto' : `${style.resultHeight}px`,
                             marginBottom: '.5rem',
-                            // transform: `scale(${style.zoomLevel})`,
-                            // transformOrigin: '0 0',
+                            transformOrigin: '0 0',
                             width: `${style.resultWidth}px`,
                             ...this.getScale(style, editor),
                         }}>
