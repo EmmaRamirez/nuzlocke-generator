@@ -6,18 +6,7 @@ import { reducers } from 'reducers';
 import * as css from './styles';
 import { Pokemon } from 'models';
 import { Styles, generateEmptyPokemon, listOfThemes, classWithDarkTheme, Forme } from 'utils';
-import {
-    Button,
-    ITreeNode,
-    Tree,
-    Classes,
-    Menu,
-    MenuItem,
-    Icon,
-    Switch,
-    TextArea,
-    Intent,
-} from '@blueprintjs/core';
+import { Button, ITreeNode, Tree, Classes, Menu, MenuItem, Icon, Switch, TextArea, Intent } from '@blueprintjs/core';
 import { BoxedPokemon } from '../BoxedPokemon';
 import { ColorEdit, ThemeSelect } from 'components/Shared';
 import { ChampsPokemon, PokemonIcon, ErrorBoundary } from 'components';
@@ -29,7 +18,7 @@ import { ChampsPokemonView } from 'components/ChampsPokemon/ChampsPokemonCollect
 import * as Loadable from 'react-loadable';
 import { LayoutDisplay, LayoutDirection, LayoutAlignment, LayoutSpacing } from 'components/Layout';
 import { TeamPokemon } from 'components/TeamPokemon/TeamPokemon2';
-import { render } from 'react-dom';
+
 
 const modelPokemon: Pokemon = {
     ...generateEmptyPokemon(),
@@ -64,7 +53,7 @@ const modelPokemonC: Pokemon = {
     met: 'Hatched on Route 8',
     metLevel: 1,
     gameOfOrigin: 'Sword',
-    moves: ['Icicle Crash', 'Flare Blitz', 'U-turn', 'Earthquake'],
+    moves: ['Icicle Crash', 'Flare Blitz', 'U-turn', 'Earthquake']
 };
 
 const modelPokemonD: Pokemon = {
@@ -91,7 +80,7 @@ const modelPokemonF: Pokemon = {
     shiny: true,
     level: 90,
     gameOfOrigin: 'Emerald',
-    moves: ['Dragon Ascent', 'Fire Blast', 'Dragon Dance', 'Outrage'],
+    moves: ['Dragon Ascent', 'Fire Blast', 'Dragon Dance', 'Outrage']
 };
 
 const team: Pokemon[] = [
@@ -103,14 +92,16 @@ const team: Pokemon[] = [
     modelPokemonF,
 ];
 
+
 type ComponentNode = ITreeNode & {
-    component: any;
-    import?: string;
-    options?: { props: any; baseProps?: any };
-    childNodes?: ComponentNode[];
+    component: any,
+    import?: string,
+    options?: { props: any, baseProps?: any },
+    childNodes?: ComponentNode[]
 };
 
 const componentTree: ComponentNode[] = [
+
     {
         id: 8,
         icon: 'style',
@@ -124,13 +115,13 @@ const componentTree: ComponentNode[] = [
                     width: '4rem',
                 },
                 customCSS: '',
-                customHTML: undefined,
             },
             baseProps: {
                 pokemon: modelPokemon,
-            },
+            }
         },
-        childNodes: [],
+        childNodes: [
+        ]
     },
     {
         id: 91,
@@ -139,11 +130,13 @@ const componentTree: ComponentNode[] = [
         label: 'Boxed Pokemon',
         component: BoxedPokemon,
         options: {
-            props: {},
+            props: {
+
+            },
             baseProps: {
                 pokemon: modelPokemon,
-            },
-        },
+            }
+        }
     },
     {
         id: 10,
@@ -157,9 +150,10 @@ const componentTree: ComponentNode[] = [
             },
             baseProps: {
                 ...modelPokemon,
-            },
+            }
         },
-        childNodes: [],
+        childNodes: [
+        ],
     },
     {
         id: 9,
@@ -176,7 +170,7 @@ const componentTree: ComponentNode[] = [
             },
             baseProps: {
                 pokemon: team,
-            },
+            }
         },
         childNodes: [
             {
@@ -196,10 +190,10 @@ const componentTree: ComponentNode[] = [
                     },
                     baseProps: {
                         ...modelPokemon,
-                    },
+                    }
                 },
             },
-        ],
+        ]
     },
 ];
 
@@ -213,27 +207,17 @@ export interface ThemEditorState {
 
 export const NumericValue = ({ name, value, onChange }) => (
     <div className={cx(css.componentOption)}>
-        <label style={{ marginBottom: 0 }} className={Classes.LABEL}>
-            {name}
-        </label>
-        <input
-            className={Classes.INPUT}
-            name={name}
-            onChange={onChange}
-            type="number"
-            value={value}
-        />
+        <label className={Classes.LABEL}>{name}</label>
+        <input className={Classes.INPUT} name={name} onChange={onChange} type='number' value={value} />
     </div>
 );
 
 export const TextInput = ({ name, value, onChange }) => (
     <div className={cx(css.componentOption)}>
-        <label style={{ marginBottom: 0 }} className={Classes.LABEL}>
-            {name}
-        </label>
+        <label className={Classes.LABEL}>{name}</label>
         <input
             className={Classes.INPUT}
-            type="text"
+            type='text'
             value={value}
             name={name}
             onChange={onChange}
@@ -241,14 +225,13 @@ export const TextInput = ({ name, value, onChange }) => (
     </div>
 );
 
-export const WrapWithLabel = ({ name, children }) => (
+export const WrapWithLabel = ({name, children}) => (
     <div className={cx(css.componentOption)}>
-        <label style={{ marginBottom: 0 }} className={Classes.LABEL}>
-            {name}
-        </label>
+        <label className={Classes.LABEL}>{name}</label>
         {children}
     </div>
 );
+
 
 export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEditorState> {
     public state = { componentTree: [] };
@@ -292,12 +275,7 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
 
     private getComponent = (id, currentNode) => {
         console.log(currentNode);
-        return (
-            <currentNode.component
-                {...currentNode.options.baseProps}
-                {...currentNode.options.props}
-            />
-        );
+        return <currentNode.component {...currentNode.options.baseProps} {...currentNode.options.props} />;
         // }
 
         // if (id === 9) {
@@ -330,94 +308,6 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
         }
     }
 
-    private renderOptions(props) {
-        const currentNode: ComponentNode =
-            this.getCurrentNode() == null ? null : this.getCurrentNode();
-
-        const modify = (key, value) => (props[key] = value);
-
-        return Object.keys(props).map((propKey, idx) => {
-            if (!currentNode.options) {
-                return null;
-            }
-
-            if (typeof props[propKey] === 'object') {
-                return this.renderOptions(props[propKey]);
-            }
-
-            const type = typeof props[propKey];
-            const value = props[propKey];
-
-            if (propKey === 'customCSS' || propKey === 'customHTML') {
-                return (
-                    <WrapWithLabel name={propKey}>
-                        <TextArea
-                            value={value}
-                            name={propKey}
-                            onChange={(e) => {
-                                modify(propKey, e.target.value);
-                                this.setState(this.state);
-                            }}
-                        />
-                    </WrapWithLabel>
-                );
-            }
-
-            if (propKey === 'padding' || propKey === 'margin') {
-                return (
-                    <CSSUnitInput
-                        name={propKey}
-                        value={value}
-                        onChange={(e) => {
-                            modify(propKey, e.target.value);
-                            this.setState(this.state);
-                        }}
-                    />
-                );
-            }
-
-            if (type === 'boolean') {
-                return (
-                    <WrapWithLabel name={propKey}>
-                        <Switch
-                            onChange={(e: any) => {
-                                modify(propKey, e.target.checked);
-                                this.setState(this.state);
-                            }}
-                            key={idx}
-                            checked={value}
-                        />
-                    </WrapWithLabel>
-                );
-            }
-            if (type === 'number') {
-                return (
-                    <NumericValue
-                        name={propKey}
-                        value={value}
-                        onChange={(e) => {
-                            modify(propKey, e.target.value);
-                            this.setState(this.state);
-                        }}
-                    />
-                );
-            }
-            if (type === 'string') {
-                return (
-                    <TextInput
-                        value={value}
-                        name={propKey}
-                        onChange={(e) => {
-                            modify(propKey, e.target.value);
-                            this.setState(this.state);
-                        }}
-                    />
-                );
-            }
-            return JSON.stringify({ type, value });
-        });
-    }
-
     public render() {
         const currentNode: ComponentNode =
             this.getCurrentNode() == null ? null : this.getCurrentNode();
@@ -425,82 +315,147 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
             const { label } = currentNode;
         }
 
-        const modify = (key, value) => (currentNode!.options!.props[key] = value);
+        const modify = (key, value) => currentNode!.options!.props[key] = value;
 
-        return (
-            <>
-                <div
-                    className={cx(
-                        classWithDarkTheme(css, 'header', this.props.style.editorDarkMode),
-                    )}>
-                    <div>
-                        <strong>Current Theme:</strong>{' '}
-                        <ThemeSelect theme={this.props.style.template} />
-                    </div>
-                    <div>
-                        <Button style={{ margin: '4px' }} icon="download" intent={Intent.SUCCESS}>
-                            Export To theme.json
-                        </Button>
-                        <Button style={{ margin: '4px' }} icon="upload">
-                            Import from theme.json
-                        </Button>
-                    </div>
+        return <>
+            <div
+                className={cx(
+                    classWithDarkTheme(css, 'header', this.props.style.editorDarkMode),
+                )}>
+                <div>
+                    <strong>Current Theme:</strong>{' '}
+                    <ThemeSelect theme={this.props.style.template} />
                 </div>
-                <div className={cx(css.main)}>
-                    <div className={cx(css.sidebar)}>
-                        <label style={{ display: 'flex' }} className={Classes.LABEL}>
-                            <input
-                                style={{ margin: '4px', width: 'calc(80% - 8px)' }}
-                                className={Classes.INPUT}
-                                type="text"
-                                placeholder="Filter..."
-                            />
-                            <Button
-                                style={{ width: '20%' }}
-                                icon="search"
-                                className={Classes.MINIMAL}
-                            />
-                        </label>
-                        <Tree
-                            contents={componentTree}
-                            onNodeClick={this.onNodeClick}
-                            onNodeCollapse={this.onNodeCollapse}
-                            onNodeExpand={this.onNodeExpand}
+                <div>
+                    <Button
+                        style={{margin: '4px'}}
+                        icon='download'
+                        intent={Intent.SUCCESS}
+                    >Export To theme.json</Button>
+                    <Button
+                        style={{margin: '4px'}}
+                        icon='upload'
+                    >Import from theme.json</Button>
+                </div>
+            </div>
+            <div className={cx(css.main)}>
+                <div className={cx(css.sidebar)}>
+                    <label style={{ display: 'flex' }} className={Classes.LABEL}>
+                        <input
+                            style={{ margin: '4px', width: 'calc(80% - 8px)' }}
+                            className={Classes.INPUT}
+                            type="text"
+                            placeholder="Filter..."
                         />
-                    </div>
-                    <div className={cx(css.componentView)}>
-                        <ErrorBoundary errorMessage={JSON.stringify(currentNode)}>
-                            <div
-                                className={cx(
-                                    this.props.style.template.toLowerCase().replace(/\s/g, '-'),
-                                    classWithDarkTheme(
-                                        css,
-                                        'componentResult',
-                                        this.props.style.editorDarkMode,
-                                    ),
-                                )}>
-                                {currentNode &&
-                                    currentNode.options &&
-                                    this.getComponent(currentNode.id, currentNode)}
-                                {!currentNode && <Icon icon="grid" />}
-                            </div>
-                        </ErrorBoundary>
-                        <div className={cx(css.componentOptions)}>
-                            <strong className={css.componentOptionsLabel}>
-                                {this.getCurrentNode() == null ? '' : this.getCurrentNode().label}{' '}
-                                Options
-                            </strong>
-
-                            <Menu>
-                                {currentNode &&
-                                    currentNode.options &&
-                                    this.renderOptions(currentNode?.options?.props)}
-                            </Menu>
+                        <Button
+                            style={{ width: '20%' }}
+                            icon="search"
+                            className={Classes.MINIMAL}
+                        />
+                    </label>
+                    <Tree
+                        contents={componentTree}
+                        onNodeClick={this.onNodeClick}
+                        onNodeCollapse={this.onNodeCollapse}
+                        onNodeExpand={this.onNodeExpand}
+                    />
+                </div>
+                <div className={cx(css.componentView)}>
+                    <ErrorBoundary errorMessage={
+                        JSON.stringify(currentNode)
+                    }>
+                        <div
+                            className={cx(
+                                this.props.style.template.toLowerCase().replace(/\s/g, '-'),
+                                classWithDarkTheme(
+                                    css,
+                                    'componentResult',
+                                    this.props.style.editorDarkMode,
+                                ),
+                            )}>
+                            {currentNode &&
+                                currentNode.options &&
+                                this.getComponent(currentNode.id, currentNode)}
+                            {!currentNode && <Icon icon="grid" />}
                         </div>
+                    </ErrorBoundary>
+                    <div className={cx(css.componentOptions)}>
+                        <strong className={css.componentOptionsLabel}>
+                            {this.getCurrentNode() == null ? '' : this.getCurrentNode().label}{' '}
+                            Options
+                        </strong>
+
+                        <Menu>
+                            {currentNode &&
+                                currentNode.options &&
+                                Object.keys(currentNode.options.props).map((propKey, idx) => {
+                                    if (!currentNode.options) {
+                                        return null;
+                                    }
+                                    const type = typeof currentNode.options.props[propKey];
+                                    const value = currentNode.options.props[propKey];
+
+                                    if (propKey === 'customCSS') {
+                                        return <WrapWithLabel name={propKey}>
+                                            <TextArea
+                                                value={value}
+                                                name={propKey}
+                                                onChange={e => {
+                                                    modify(propKey, e.target.value);
+                                                    this.setState(this.state);
+                                                }}
+                                            />
+                                        </WrapWithLabel>;
+                                    }
+
+                                    if (propKey === 'padding' || propKey === 'margin') {
+                                        return <CSSUnitInput
+                                            name={propKey}
+                                            value={value}
+                                            onChange={e => {
+                                                modify(propKey, e.target.value);
+                                                this.setState(this.state);
+                                            }}
+                                        />;
+                                    }
+
+                                    if (type === 'boolean') {
+                                        return (
+                                            <WrapWithLabel name={propKey}>
+                                                <Switch onChange={(e: any) => {
+                                                    modify(propKey, e.target.checked);
+                                                    this.setState(this.state);
+                                                }} key={idx} checked={value} />
+                                            </WrapWithLabel>
+                                        );
+                                    }
+                                    if (type === 'number') {
+                                        return <NumericValue
+                                            name={propKey}
+                                            value={value}
+                                            onChange={e => {
+                                                modify(propKey, e.target.value);
+                                                this.setState(this.state);
+                                            }}
+                                        />;
+                                    }
+                                    if (type === 'string') {
+                                        return <TextInput
+                                            value={value}
+                                            name={propKey}
+                                            onChange={e => {
+                                                modify(propKey, e.target.value);
+                                                this.setState(this.state);
+                                            }}
+                                        />;
+                                    }
+                                    return JSON.stringify({type, value});
+                                })}
+                        </Menu>
                     </div>
                 </div>
-            </>
-        );
+            </div>
+        </>;
     }
 }
 

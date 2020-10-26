@@ -16,7 +16,7 @@ export * from './getForme';
 export * from './getGameRegion';
 export * from './getMoveType';
 export * from './getPokemonImage';
-export * from './listOfHotkeys';
+export * from './hotkeyList';
 export * from './listOfGames';
 export * from './listOfItems';
 export * from './listOfLocations';

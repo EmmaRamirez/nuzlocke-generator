@@ -12,25 +12,11 @@ export const betaHotkeys: HotkeyList[] = [
     {
         key: 'm',
         comment: 'Toggle editor',
-        onKeyUp: 'toggleEditor',
+        onKeyDown: 'toggleEditor',
     },
-    {
-        key: 'I',
-        label: 'shift+i',
-        comment: 'Toggle image uploader',
-        onKeyUp: 'toggleImageUploader',
-    }
 ];
 
-export const listOfHotkeys: HotkeyList[] = [
-    {
-        key: 'ctrl+z',
-        comment: 'Undo',
-    },
-    {
-        key: 'ctrl+y',
-        comment: 'Redo',
-    },
+export const hotkeyList: HotkeyList[] = [
     {
         key: 'j',
         comment: 'Previous Pok\xE9mon',

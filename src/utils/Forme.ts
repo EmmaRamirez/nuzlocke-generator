@@ -90,7 +90,4 @@ export enum Forme {
     Fan = 'fan',
     Heat = 'heat',
     Hail = 'hail',
-
-    IceRider = 'ice-rider',
-    ShadowRider = 'shadow-rider',
 }

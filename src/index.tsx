@@ -11,9 +11,6 @@ import { store, persistor } from './store';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/table/lib/css/table.css';
-import 'tailwindcss/dist/base.css';
-import 'tailwindcss/dist/components.css';
-import 'tailwindcss/dist/utilities.css';
 import 'normalize.css/normalize.css';
 import { DragDropContextProvider } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
@@ -69,6 +66,7 @@ const rollbarConfig = new Rollbar({
 Rollbar.init(rollbarConfig as any);
 
 const mountNode = document.getElementById('app');
+
 
 render(
     <Provider store={store}>

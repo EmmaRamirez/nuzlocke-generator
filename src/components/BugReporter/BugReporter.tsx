@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 export interface BugReporterProps {
     reportingUrl?: string;
     state: any;
-    defaultOpen?: boolean;
 }
 
 export interface BugReporterState {
@@ -26,10 +25,9 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
 
     public render() {
         const { userReport, userReportTitle, includeNuzlocke, stage } = this.state;
-        const { defaultOpen } = this.props;
 
         return (
-            <BaseEditor name="Bug Reports and Feature Requests" defaultOpen={defaultOpen}>
+            <BaseEditor name="Bug Reports and Feature Requests" defaultOpen={false}>
                 <div style={{ margin: '.5rem' }}>
                     <input
                         style={{
@@ -68,11 +66,11 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
                         <Button
                             disabled={!userReportTitle}
                             onClick={this.sendBugReport}
-                            minimal
+                            className="bp3-minimal"
                             intent={Intent.DANGER}>
                             Submit{' '}
                             <img
-                                style={{ height: '20px', verticalAlign: 'bottom', display: 'inline' }}
+                                style={{ height: '20px', verticalAlign: 'bottom' }}
                                 alt=""
                                 role="presentation"
                                 src={`./icons/pokemon/regular/${this.getButtonPokemon(stage)}.png`}

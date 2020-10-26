@@ -58,7 +58,7 @@ export class TrainerInfoEditor extends React.Component<{}, {}> {
                     name="title"
                     placeholder=""
                 />
-                <BadgeInput />
+                <BadgeInput enableCheckpointsEditor />
                 <LinkedTrainerInfoEditField
                     onInput={this.onInput}
                     label={
@@ -75,7 +75,7 @@ export class TrainerInfoEditor extends React.Component<{}, {}> {
                                 </Menu>
                             }>
                             <span>
-                                Trainer Image <Icon icon="info-sign" />
+                                Trainer Image <Icon icon='info-sign' />
                             </span>
                         </Popover>
                     }

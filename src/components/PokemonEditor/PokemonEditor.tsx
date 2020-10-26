@@ -95,7 +95,7 @@ const PokemonLocationChecklist = ({
                     </div>
                 );
             })}
-            <Callout intent={Intent.WARNING} style={{ fontSize: '80%', marginTop: '0.5rem' }}>
+            <Callout intent={Intent.WARNING} style={{fontSize: '80%', marginTop: '0.5rem'}}>
                 Tip: Pokémon with the "hidden" attribute are a great option for including Pokemon
                 that got away on a certain route!
             </Callout>
@@ -149,18 +149,14 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                     </BaseEditor>
                 </BaseEditor>
                 <React.Suspense fallback={<Spinner />}>
-                    {this.state.isMassEditorOpen && (
-                        <ErrorBoundary>
-                            <MassEditor
-                                isOpen={this.state.isMassEditorOpen}
-                                toggleDialog={(e) =>
-                                    this.setState({
-                                        isMassEditorOpen: !this.state.isMassEditorOpen,
-                                    })
-                                }
-                            />
-                        </ErrorBoundary>
-                    )}
+                    {this.state.isMassEditorOpen &&
+                        <ErrorBoundary><MassEditor
+                            isOpen={this.state.isMassEditorOpen}
+                            toggleDialog={(e) =>
+                                this.setState({ isMassEditorOpen: !this.state.isMassEditorOpen })
+                            }
+                        /></ErrorBoundary>
+                    }
                 </React.Suspense>
             </>
         );

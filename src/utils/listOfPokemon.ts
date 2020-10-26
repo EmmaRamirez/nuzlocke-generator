@@ -892,12 +892,7 @@ export const listOfPokemon = [
     'Kubfu',
     'Urshifu',
     'Zarude',
-    'Regieleki',
-    'Regidrago',
-    'Glastrier',
-    'Spectrier',
-    'Calyrex',
-] as const;
+];
 
 const listOfTemtem = [
     'Oree',
@@ -986,10 +981,7 @@ const listOfTemtem = [
     'Vulcrane',
     'Pigepic',
     'Anahir',
-] as const;
+];
 
 export const getListOfCreatures = (isTemtemMode?: boolean) =>
     isTemtemMode ? listOfTemtem : listOfPokemon;
-
-export type Species = typeof listOfPokemon[number];
-export type TemTemSpecies = typeof listOfTemtem[number];

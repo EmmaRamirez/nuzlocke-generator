@@ -56,7 +56,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
         return (
             <>
                 <RED isOpen={this.state.isOpen} onClose={this.toggleDialog} />
-                <BaseEditor name="Game">
+                <BaseEditor name='Game'>
                     <div style={gameSubEditorStyle}>
                         <div>
                             <label
@@ -117,11 +117,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
 }
 
 export const GameEditor = connect(
-    (state: Pick<State, keyof State>) => ({
-        game: state.game,
-        editor: state.editor,
-        style: state.style,
-    }),
+    (state: Pick<State, keyof State>) => ({ game: state.game, editor: state.editor, style: state.style, }),
     {
         editGame,
         editStyle,

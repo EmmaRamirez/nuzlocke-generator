@@ -5,4 +5,3 @@ export * from './Badge';
 export * from './Game';
 export * from './Editor';
 export * from './Box';
-export * from './View';

@@ -5,11 +5,7 @@ import { TestProvider } from 'utils/TestProvider';
 
 describe(Result.name, () => {
     it('returns a result element', () => {
-        render(
-            <TestProvider>
-                <Result />
-            </TestProvider>,
-        );
+        render(<TestProvider><Result /></TestProvider>);
         expect(screen.getByTestId('result')).toBeDefined();
     });
 });

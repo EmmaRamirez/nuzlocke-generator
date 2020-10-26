@@ -34,7 +34,7 @@
 .default-light .result-notes {
   color: #111;
 }
-.default-light .ng-container {
+.default-light .container {
   background-color: #eee;
 }
 .default-light .pokemon-container {
@@ -218,7 +218,7 @@
   vertical-align: top;
   flex-direction: column;
 }
-.generations .ng-container {
+.generations .container {
   position: relative;
 }
 .generations li {
@@ -459,7 +459,7 @@
   left: 0;
   top: -23px;
 }
-.compact .ng-container {
+.compact .container {
   border-width: 0 !important;
 }
 .compact .team-container {
@@ -523,7 +523,7 @@
   margin: unset;
   margin-left: -0.25rem;
 }
-.compact-with-icons .ng-container {
+.compact-with-icons .container {
   border-width: 0 !important;
 }
 .compact-with-icons .team-container {
@@ -597,7 +597,7 @@
 }
 .compact-with-icons .rules-container ol {
   display: inline-block;
-  /* padding-right: 8rem; */
+  padding-right: 8rem;
 }
 .compact-with-icons .stats {
   font-size: 120%;
@@ -614,7 +614,6 @@
   background: #383840;
   image-rendering: pixelated;
   border-radius: 0 0 0.25rem 0.25rem;
-  width: auto;
 }
 .compact-with-icons .pokemon-container {
   margin: 0.25rem;
@@ -661,8 +660,7 @@
 .compact-with-icons .boxed-pokemon-info {
   border: none;
 }
-/* scope this to the result */
-.result .compact-with-icons .dead-pokemon-container {
+.compact-with-icons .dead-pokemon-container {
   width: calc(100% / 6);
 }
 .compact-with-icons .pokemon-container {
@@ -681,7 +679,7 @@
   padding: 0.25rem;
 }
 .compact-with-icons .pokemon-item {
-  left: 8px;
+  left: 7px;
 }
 .compact-with-icons .badge-wrapper {
   width: 400px;
@@ -716,7 +714,7 @@
   display: none;
 }
 
-.generations-classic .ng-container {
+.generations-classic .container {
     position: relative;
   }
   .generations-classic li {

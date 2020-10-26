@@ -166,18 +166,6 @@ export const listOfItems = [
     'Wepear Berry',
     'Wiki Berry',
 
-    // Gen 2 berries
-    'Berry',
-    'Bitter Berry',
-    'Burnt Berry',
-    'Gold Berry',
-    'Ice Berry',
-    'Mint Berry',
-    'MiracleBerry',
-    'MysteryBerry',
-    'PRZCureBerry',
-    'PSNCureBerry',
-
     'Bug Gem',
     'Dark Gen',
     'Dragon Gem',

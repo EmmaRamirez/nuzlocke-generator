@@ -66,14 +66,14 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
                     backgroundSize: 'contain',
                     backgroundRepeat: 'no-repeat',
                     height: '48px',
-                    width: '48px',
+                    width: '48px'
                 }}
             />
         );
     }
 
     public render() {
-        const { margin, padding, customCSS } = this.props;
+        const {margin, padding, customCSS} = this.props;
         const className = champsPokemon({
             background: gameOfOriginToColor(this.props.gameOfOrigin),
             height: '48px',
@@ -84,7 +84,8 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
 
         return (
             <>
-                <div className={cx(className)}>
+                <div
+                    className={cx(className)}>
                     {this.props.useSprites ? (
                         this.getPokemonImage()
                     ) : (

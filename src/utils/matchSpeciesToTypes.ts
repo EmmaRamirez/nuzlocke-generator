@@ -237,56 +237,11 @@ export const handleSpeciesTypeEdgeCases = ({
     if (
         match({
             ...data,
-            species: ['Slowbro', 'Slowking'],
+            species: ['Slowbro'],
             forme: ['Galarian'],
         })
     )
         return [Types.Psychic, Types.Poison];
-
-    if (
-        match({
-            ...data,
-            species: ['Zapdos'],
-            forme: ['Galarian']
-        })
-    )
-        return [Types.Fighting, Types.Flying];
-
-    if (
-        match({
-            ...data,
-            species: ['Articuno'],
-            forme: ['Galarian'],
-        })
-    )
-        return [Types.Psychic, Types.Flying];
-
-    if (
-        match({
-            ...data,
-            species: ['Moltres'],
-            forme: ['Galarian']
-        })
-    )
-        return [Types.Dark, Types.Flying];
-
-    if (
-        match({
-            ...data,
-            species: ['Calyrex'],
-            forme: ['IceRider']
-        })
-    )
-        return [Types.Psychic, Types.Ice];
-
-    if (
-        match({
-            ...data,
-            species: ['Calyrex'],
-            forme: ['ShadowRider']
-        })
-    )
-        return [Types.Psychic, Types.Ghost];
 
     if (
         match({
@@ -1517,16 +1472,6 @@ export const matchSpeciesToTypes = (
         // 'Shaymin',
         case 'Victini':
             return [Types.Fire, Types.Psychic];
-        case 'Regieleki':
-            return [Types.Electric, Types.Electric];
-        case 'Regidrago':
-            return [Types.Dragon, Types.Dragon];
-        case 'Glastrier':
-            return [Types.Ice, Types.Ice];
-        case 'Spectrier':
-            return [Types.Ghost, Types.Ghost];
-        case 'Calyrex':
-            return [Types.Psychic, Types.Grass];
         // 'Snivy',
         // 'Pansage',
         // 'Simisage',

@@ -156,9 +156,7 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                                     value={this.state.newBox.inheritFrom}
                                     name="inheritFrom">
                                     {['Team', 'Boxed', 'Dead', 'Champs'].map((box, idx) => (
-                                        <option key={idx} value={box}>
-                                            {box}
-                                        </option>
+                                        <option key={idx} value={box}>{box}</option>
                                     ))}
                                 </select>
                             </div>
@@ -172,7 +170,8 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                                 onClick={this.toggleBoxForm}
                                 intent={Intent.DANGER}
                                 style={{ margin: '0 .5rem' }}
-                                minimal>
+                                minimal
+                            >
                                 Cancel
                             </Button>
                             <Button

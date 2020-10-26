@@ -6,7 +6,6 @@ import { Forme } from './Forme';
 import { getIconFormeSuffix } from './getIconFormeSuffix';
 import { Editor } from 'models';
 import { GenderElementProps, Gender } from 'components';
-import { Species } from './listOfPokemon';
 
 const getGameName = (name: Game) => {
     if (name === 'Red' || name === 'Blue') return 'rb';
@@ -109,8 +108,8 @@ export function getPokemonImage({
     editor,
     gender,
 }: GetPokemonImage) {
-    const regularNumber = speciesToNumber((species as Species) || 'Ditto');
-    const leadingZerosNumber = (speciesToNumber((species as Species) || 'Ditto') || 0)
+    const regularNumber = speciesToNumber(species || 'Ditto');
+    const leadingZerosNumber = (speciesToNumber(species || 'Ditto') || 0)
         .toString()
         .padStart(3, '0');
 
@@ -186,7 +185,7 @@ export function getPokemonImage({
         return `url(img/dw/${regularNumber || 1}.svg)`;
     }
 
-    const handleMimeJr = (s?: string) => (s === 'Mime Jr.' ? 'mime-jr' : s);
+    const handleMimeJr = (s?: string) => s === 'Mime Jr.' ? 'mime-jr' : s;
 
     if (style.teamImages === 'shuffle') {
         return `url(img/shuffle/${(handleMimeJr(species) || 'Ditto')

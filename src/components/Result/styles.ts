@@ -49,8 +49,6 @@ export const heading = css`
     justify-content: center;
     letter-spacing: 4px;
     margin: 0.5rem;
-    font-weight: bold;
-    font-size: 2rem;
     text-align: center;
     text-transform: uppercase;
     width: 100%;
@@ -290,8 +288,3 @@ export const result_download = css`
 `;
 
 /// v2 styles
-
-export const result_wrapper = css`
-    overflowy: scroll;
-    width: 100%;
-`;

@@ -1,15 +1,12 @@
 /* eslint-disable camelcase */
 import { css } from 'react-emotion';
 
-export const checkpointsEditor = css`
-    overflow-x: hidden;
-`;
+export const checkpointsEditor = css``;
 
 export const checkpointsList = css`
     height: 60vh;
     margin: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: auto;
     padding: 0;
 `;
 
@@ -39,7 +36,6 @@ export const checkpointName = css`
 `;
 
 export const checkpointImage = (size = 2) => css`
-    display: inline-block;
     width: ${size}rem;
     margin: 0 0.25rem;
 `;

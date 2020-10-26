@@ -80,19 +80,21 @@ export const componentOption = css`
 `;
 
 export const componentOptionsLabel = css`
-    margin: 0.5rem 0.25rem;
+    margin: .5rem 0.25rem;
     font-weight: light;
     font-size: 120%;
     display: block;
 `;
 
-export const cssUnit = css``;
+export const cssUnit = css`
+
+`;
 
 export const unitInput = css`
     width: 6rem;
 `;
 
 export const unitSelect = css`
-    margin-right: 0.25rem;
+    margin-right: .25rem;
     width: 4rem;
 `;

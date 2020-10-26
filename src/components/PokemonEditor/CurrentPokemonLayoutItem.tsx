@@ -18,22 +18,20 @@ const style = {
     `,
 };
 
-export function CurrentPokemonLayoutItem({
-    disabled, checkboxes, className, children
-}: {disabled?: boolean;
+export class CurrentPokemonLayoutItem extends React.PureComponent<{
+    disabled?: boolean;
     checkboxes?: boolean;
-    className?: string;
-    children: React.ReactNode;
-}) {
-    return (
-        <div
-            className={cx(
-                className ?? '',
-                style.Layout,
-                disabled && style.disabled,
-                checkboxes && style.checkboxes,
-            )}>
-            {children}
-        </div>
-    );
+}> {
+    public render() {
+        return (
+            <div
+                className={cx(
+                    style.Layout,
+                    this.props.disabled && style.disabled,
+                    this.props.checkboxes && style.checkboxes,
+                )}>
+                {this.props.children}
+            </div>
+        );
+    }
 }

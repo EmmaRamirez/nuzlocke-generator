@@ -141,8 +141,7 @@ export class BoxBase extends React.PureComponent<BoxProps, BoxState> {
         return bg && bg.startsWith('http') ? `url(${bg})` : `url(./assets/img/box/${bg}.png)`;
     }
 
-    private toggleDialog = () =>
-        this.setState({ deleteConfirmationOpen: !this.state.deleteConfirmationOpen });
+    private toggleDialog = () => this.setState({ deleteConfirmationOpen: !this.state.deleteConfirmationOpen });
 
     public render() {
         const {
@@ -179,11 +178,9 @@ export class BoxBase extends React.PureComponent<BoxProps, BoxState> {
                     onConfirm={(e) => {
                         this.props.deleteBox(id);
 
-                        pokemon
-                            .filter((pokemon) => pokemon.status === name)
-                            .forEach((element) => {
-                                this.props.deletePokemon(element.id);
-                            });
+                        pokemon.filter(pokemon => pokemon.status === name).forEach(element => {
+                            this.props.deletePokemon(element.id);
+                        });
 
                         this.setState({ deleteConfirmationOpen: true });
                     }}
@@ -191,8 +188,8 @@ export class BoxBase extends React.PureComponent<BoxProps, BoxState> {
                     cancelButtonText="Cancel"
                     intent={Intent.DANGER}>
                     <p>
-                        This will delete the currently selected Box and all Pokémon stored inside
-                        the box. Are you sure you want to do that?
+                        This will delete the currently selected Box and all Pokémon stored inside the box. Are you sure you want to do
+                        that?
                     </p>
                 </Alert>
                 <Popover
@@ -275,9 +272,12 @@ export class BoxBase extends React.PureComponent<BoxProps, BoxState> {
     }
 }
 
-export const Box = connect(null, {
-    clearBox,
-    editBox,
-    deleteBox,
-    deletePokemon,
-})(BoxBase);
+export const Box = connect(
+    null,
+    {
+        clearBox,
+        editBox,
+        deleteBox,
+        deletePokemon,
+    },
+)(BoxBase);

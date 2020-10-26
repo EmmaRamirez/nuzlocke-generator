@@ -3,14 +3,8 @@ import { Types } from './Types';
 import { Moves } from 'components/TeamPokemon/Moves';
 import { Forme } from './Forme';
 import { matchSpeciesToTypes } from './matchSpeciesToTypes';
-import { Pokemon } from 'models';
 
-export type PokemonFixtures = Record<
-'Pikachu' | 'Dragonite' | 'MegaMewtwoX' | 'ShinyCorsola' | 'CustomPokemon',
-Pokemon
->;
-
-export const PokemonFixtures: PokemonFixtures = {
+export const PokemonFixtures = {
     Pikachu: {
         ...generateEmptyPokemon(),
         species: 'Pikachu',

@@ -284,9 +284,6 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
     if (s === 'toxtricity') {
         return ['Amped-Up', 'Lowkey', 'Gigantamax'];
     }
-    if (s === 'calyrex') {
-        return ['Ice Rider', 'Shadow Rider'];
-    }
 
     return [];
 };

@@ -1,5 +1,4 @@
 import { GenderElementProps } from 'components/Shared';
-import { Checkpoints } from 'reducers/checkpoints';
 import { Types, Game, Forme } from 'utils';
 
 export interface Pokemon {
@@ -35,7 +34,6 @@ export interface Pokemon {
     pokeball?: string;
     notes?: string;
     linkedTo?: Pokemon['id'] | null;
-    checkpoints?: Checkpoints;
     /* @deprecated */
     champion?: boolean;
 }
@@ -74,6 +72,5 @@ export const PokemonKeys: Pokemon = {
     extraData: {},
     pokeball: 'None',
     notes: '',
-    checkpoints: [],
     linkedTo: null,
 };

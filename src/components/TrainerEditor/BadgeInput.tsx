@@ -1,127 +1,131 @@
 import * as React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 
+import { Styles } from 'utils';
 import { TrainerInfoEditField } from 'components/TrainerEditor/TrainerInfoEditField';
 import { editTrainer } from 'actions';
+import { Trainer } from 'models';
 
 import { Popover, Menu, Button, Position, Checkbox, Dialog, Classes } from '@blueprintjs/core';
 import { CheckpointsEditor } from './CheckpointsEditor';
 import { cx } from 'emotion';
 import { State } from 'state';
 import { Checkpoints } from 'reducers/checkpoints';
-import * as Styles from './style';
 
 export interface BadgeInputProps {
-    checkpointsCleared?: Checkpoints;
-    onChange?: (checkpoint: Checkpoints) => void;
+    trainer: Trainer;
+    checkpoints: Checkpoints;
+    game: any;
+    editTrainer: any;
+    style: Styles;
+    enableCheckpointsEditor: boolean;
 }
 
-export interface CheckpointsInputListProps {
-    onChange: (checkpoints: Checkpoints) => void;
-    checkpointsObtained: Checkpoints;
-    toggle?: () => void;
-    buttonText?: string;
+export interface BadgeInputState {
+    isOpen: boolean;
 }
 
-export function CheckpointsInputList({
-    onChange,
-    checkpointsObtained,
-    toggle,
-    buttonText,
-}: CheckpointsInputListProps) {
-    const checkpoints = useSelector<State, State['checkpoints']>(state => state?.checkpoints);
+export class BadgeInputBase extends React.Component<BadgeInputProps, BadgeInputState> {
+    public constructor(props: BadgeInputProps) {
+        super(props);
+        this.state = {
+            isOpen: false,
+        };
+    }
 
-    return <Popover
-        minimal={true}
-        content={
-            <Menu>
-                {Array.isArray(checkpoints) && checkpoints?.map((badge) => (
-                    <Checkbox
-                        onChange={(e: any) => {
-                            if (
-                                !e.target.checked ||
-                                checkpointsObtained.some((b) => b.name === badge.name)
-                            ) {
-                                const badges = checkpointsObtained.filter(
-                                    (b) => b.name !== badge.name,
-                                );
-                                onChange(badges);
-                            } else {
-                                const badges = [...checkpointsObtained, badge];
-                                onChange(badges);
+    private toggleCheckpointsEditor = (e?: React.SyntheticEvent<HTMLElement>) =>
+        this.setState({ isOpen: !this.state.isOpen });
+
+    public render() {
+        const trainerBadges = this.props.trainer.badges ? this.props.trainer.badges : [];
+        return (
+            <>
+                {this.props.enableCheckpointsEditor ? (
+                    <Dialog
+                        isOpen={this.state.isOpen}
+                        onClose={this.toggleCheckpointsEditor}
+                        className={cx(Classes.DIALOG, {
+                            [Classes.DARK]: this.props.style.editorDarkMode,
+                        })}
+                        canOutsideClickClose={false}
+                        title="Checkpoints Editor"
+                        icon="badge"
+                        style={{ width: '46rem' }}>
+                        <div className={Classes.DIALOG_BODY}>
+                            <CheckpointsEditor checkpoints={this.props.checkpoints} />
+                        </div>
+                    </Dialog>
+                ) : null}
+                <TrainerInfoEditField
+                    label="Checkpoints"
+                    name="badges"
+                    placeholder="..."
+                    value={''}
+                    onChange={null}
+                    element={(inputProps) => (
+                        <Popover
+                            minimal={true}
+                            content={
+                                <Menu>
+                                    {this.props.checkpoints.map((badge) => (
+                                        <Checkbox
+                                            onChange={(e: any) => {
+                                                if (
+                                                    !e.target.checked ||
+                                                    trainerBadges.some((b) => b.name === badge.name)
+                                                ) {
+                                                    this.props.editTrainer({
+                                                        badges: trainerBadges.filter(
+                                                            (b) => b.name !== badge.name,
+                                                        ),
+                                                    });
+                                                } else {
+                                                    this.props.editTrainer({
+                                                        badges: [...trainerBadges, badge],
+                                                    });
+                                                }
+                                            }}
+                                            checked={trainerBadges.some(
+                                                (b) => b.name === badge.name,
+                                            )}
+                                            key={badge.name}
+                                            label={badge.name}
+                                        />
+                                    ))}
+                                    {this.props.enableCheckpointsEditor ? (
+                                        <Button
+                                            onClick={this.toggleCheckpointsEditor}
+                                            minimal
+                                        >
+                                            Customize Checkpoints
+                                        </Button>
+                                    ) : null}
+                                </Menu>
                             }
-                        }}
-                        checked={checkpointsObtained.some(
-                            (b) => b.name === badge.name,
-                        )}
-                        key={badge.name}
-                        label={badge.name}
-                    />
-                ))}
-                {toggle && <Button onClick={toggle} minimal>
-                    Customize Checkpoints
-                </Button>}
-            </Menu>
-        }
-        position={Position.BOTTOM}>
-        <Button
-            fill
-            style={{
-                borderRadius: 0,
-            }}>
-            {buttonText ?? 'Select Checkpoints'}
-        </Button>
-    </Popover>;
+                            position={Position.BOTTOM}>
+                            <Button
+                                style={{
+                                    borderRadius: 0,
+                                    width: '164px',
+                                }}>
+                                Select Checkpoints
+                            </Button>
+                        </Popover>
+                    )}
+                />
+            </>
+        );
+    }
 }
 
-export function BadgeInput ({
-    onChange,
-    checkpointsCleared,
-}: BadgeInputProps) {
-    const [isOpen, setIsOpen] = React.useState(false);
-    const checkpoints = useSelector<State, State['checkpoints']>(state => state.checkpoints);
-    const trainer = useSelector<State, State['trainer']>(state => state.trainer);
-    const style = useSelector<State, State['style']>(state => state.style);
-    const onChangeInternal = (badges: Checkpoints) => dispatch(editTrainer({ badges }));
-    const onChangeUseable = onChange ?? onChangeInternal;
-    const dispatch = useDispatch();
-
-    const toggle = () => setIsOpen(!isOpen);
-
-    const checkpointsObtained = checkpointsCleared ?? trainer.badges ?? [];
-    return (
-        <>
-            <Dialog
-                isOpen={isOpen}
-                onClose={toggle}
-                className={cx(Classes.DIALOG, {
-                    [Classes.DARK]: style.editorDarkMode,
-                })}
-                canOutsideClickClose={false}
-                title="Checkpoints Editor"
-                icon="badge"
-                style={{ width: '60rem' }}>
-                <div className={cx(Classes.DIALOG_BODY, Styles.checkpointsEditor, 'has-nice-scrollbars')}>
-                    <CheckpointsEditor checkpoints={checkpoints} />
-                </div>
-            </Dialog>
-            <TrainerInfoEditField
-                data-testid='badge-input'
-                label="Checkpoints"
-                name="badges"
-                placeholder="..."
-                value={''}
-                onChange={null}
-                element={(inputProps) => (
-                    <div>
-                        <CheckpointsInputList
-                            onChange={onChangeUseable}
-                            toggle={toggle}
-                            checkpointsObtained={checkpointsObtained}
-                        />
-                    </div>
-                )}
-            />
-        </>
-    );
-}
+export const BadgeInput = connect(
+    (state: Pick<State, keyof State>) => ({
+        checkpoints: state.checkpoints,
+        trainer: state.trainer,
+        game: state.game,
+        style: state.style,
+    }),
+    {
+        editTrainer,
+    },
+)(BadgeInputBase);

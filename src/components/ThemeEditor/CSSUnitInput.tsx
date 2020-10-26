@@ -22,13 +22,25 @@ export const splitValue = (value: string) => {
     const value2 = value.split(/\d/g);
     return {
         num: first(value1),
-        unit: last(value2),
+        unit: last(value2)
     };
 };
 
 export class CSSUnitInput extends React.Component<CSSUnitInputProps, CSSUnitInputState> {
     public defaultProps = {
-        allowedUnits: ['px', 'cm', 'mm', 'in', 'pt', 'pc', 'em', 'rem', 'vw', 'vh', '%'],
+        allowedUnits: [
+            'px',
+            'cm',
+            'mm',
+            'in',
+            'pt',
+            'pc',
+            'em',
+            'rem',
+            'vw',
+            'vh',
+            '%',
+        ]
     };
 
     public static getDerivedStateFromProps(props) {
@@ -51,11 +63,9 @@ export class CSSUnitInput extends React.Component<CSSUnitInputProps, CSSUnitInpu
 
     private onChange = () => {
         const { chosenUnit, chosenNumber } = this.state;
-        this.props.onChange({
-            target: {
-                value: `${chosenNumber}${chosenUnit}`,
-            },
-        });
+        this.props.onChange({target: {
+            value: `${chosenNumber}${chosenUnit}`
+        }});
     };
 
     public render() {
@@ -63,30 +73,38 @@ export class CSSUnitInput extends React.Component<CSSUnitInputProps, CSSUnitInpu
         const { chosenUnit, chosenNumber } = this.state;
         const { unit, num } = splitValue(value);
 
-        const units = ['px', 'cm', 'mm', 'in', 'pt', 'pc', 'em', 'rem', 'vw', 'vh', '%'];
+        const units = [
+            'px',
+            'cm',
+            'mm',
+            'in',
+            'pt',
+            'pc',
+            'em',
+            'rem',
+            'vw',
+            'vh',
+            '%',
+        ];
 
         console.log(unit, num);
 
-        return (
-            <div className={cx(css.componentOption, css.cssUnit)}>
-                <label className={Classes.LABEL}>{name}</label>
-                <input
-                    className={cx(Classes.INPUT, css.unitInput)}
-                    name={name}
-                    onChange={this.setNumber}
-                    type="number"
-                    value={chosenNumber}
-                />
-                <div className={cx(Classes.SELECT, css.unitSelect)}>
-                    <select onChange={this.setUnit} value={chosenUnit}>
-                        {units?.map((u) => (
-                            <option key={u} value={u}>
-                                {u}
-                            </option>
-                        ))}
-                    </select>
-                </div>
+        return <div className={cx(css.componentOption, css.cssUnit)}>
+            <label className={Classes.LABEL}>{name}</label>
+            <input
+                className={cx(Classes.INPUT, css.unitInput)}
+                name={name}
+                onChange={this.setNumber}
+                type='number'
+                value={chosenNumber}
+            />
+            <div className={cx(Classes.SELECT, css.unitSelect)}>
+                <select onChange={this.setUnit} value={chosenUnit}>
+                    {
+                        units?.map(u => <option key={u} value={u}>{u}</option>)
+                    }
+                </select>
             </div>
-        );
+        </div>;
     }
 }

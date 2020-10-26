@@ -16,7 +16,6 @@ import { ErrorBoundary } from 'components/Shared';
 import { TagInput, Classes, TextArea } from '@blueprintjs/core';
 import { State } from 'state';
 import { Pokemon } from 'models';
-import { cx } from 'emotion';
 
 interface CurrentPokemonInputProps {
     labelName: string;
@@ -44,8 +43,45 @@ interface CurrentPokemonInputProps {
     customTypes: State['customTypes'];
 }
 
-export class CurrentPokemonInputBase extends React.Component<
-CurrentPokemonInputProps> {
+export class CurrentPokemonTextInputBase extends React.PureComponent<Omit<CurrentPokemonInputProps, 'customMoveMap' | 'customTypes'>> {
+    public onChange = (inputName) => (e) => {
+        this.props.editPokemon({
+            [inputName]: e.target.value,
+        }, this.props.selectedId);
+    };
+
+    public render() {
+        const {
+            inputName,
+            type,
+            value,
+            placeholder,
+            disabled,
+        } = this.props;
+
+        return <input
+            onChange={this.onChange(inputName)}
+            type={type}
+            name={inputName}
+            value={value}
+            placeholder={placeholder}
+            disabled={disabled}
+            className={disabled ? `${Classes.DISABLED} ${Classes.TEXT_MUTED}` : ''}
+        />;
+    }
+
+}
+
+export const CurrentPokemonTextInput = connect(
+    (state: Pick<State, keyof State>) => ({
+        selectedId: state.selectedId,
+    }),
+    { editPokemon },
+)(CurrentPokemonTextInputBase);
+
+
+
+export class CurrentPokemonInputBase extends React.PureComponent<CurrentPokemonInputProps> {
     public constructor(props: CurrentPokemonInputProps) {
         super(props);
     }
@@ -54,11 +90,9 @@ CurrentPokemonInputProps> {
         disabled: false,
     };
 
-    public onChange = (
-        inputName,
-        { position, value, pokemon }: { position?: number; value?: any; pokemon?: Pokemon } = {},
-    ) => (e: React.ChangeEvent & { target: { value: any; checked?: boolean } }) => {
-        e.persist();
+    public onChange = (inputName, {position, value, pokemon}: {position?: number, value?: any, pokemon?: Pokemon} = {}) => (
+        e: React.ChangeEvent & {target: {value: any, checked?: boolean}},
+    ) => {
         let edit;
 
         if (inputName === 'types' && position != null) {
@@ -104,6 +138,7 @@ CurrentPokemonInputProps> {
             };
         }
 
+        //this.setState({value: e.target.value});
         this.props.editPokemon(edit, this.props.selectedId);
     };
 
@@ -118,33 +153,31 @@ CurrentPokemonInputProps> {
         options,
         pokemon,
     }: {
-        labelName?: CurrentPokemonInputProps['labelName'];
-        usesKeyValue?: boolean;
-        disabled?: boolean;
-        inputName?: CurrentPokemonInputProps['inputName'];
-        type: string;
-        value: any;
-        placeholder?: string;
-        options?: any[];
-        pokemon?: Pokemon;
+        labelName?: CurrentPokemonInputProps['labelName'],
+        usesKeyValue?: boolean,
+        disabled?: boolean,
+        inputName?: CurrentPokemonInputProps['inputName'],
+        type: string,
+        value: any,
+        placeholder?: string,
+        options?: any[],
+        pokemon?: Pokemon,
     }) {
         const { customMoveMap, customTypes } = this.props;
 
-        value = value ?? '';
+        value = value == null ? '' : value;
         if (type === 'moves') {
             return (
                 <ErrorBoundary>
                     <TagInput
-                        fill
-                        leftIcon="ninja"
+                        leftIcon='ninja'
                         tagProps={(v, i) => {
                             // @TODO: Fix inconsitencies with bad parameter types
                             const background =
                                 typeToColor(
                                     // @ts-ignore
                                     customMoveMap.find((m) => m?.move === v)?.type ||
-                                        getMoveType(v?.toString()?.trim() || ''),
-                                    customTypes,
+                                        getMoveType(v?.toString()?.trim() || ''), customTypes,
                                 ) || 'transparent';
                             const color = getContrastColor(background);
                             return {
@@ -205,9 +238,7 @@ CurrentPokemonInputProps> {
         }
         if (type === 'select') {
             return (
-                <div
-                    className={Classes.SELECT}
-                    style={inputName === 'status' ? { width: '120px' } : {}}>
+                <div className={Classes.SELECT} style={inputName === 'status' ? { width: '120px' } : {}}>
                     {inputName === 'pokeball' && value && value !== 'None' ? (
                         <img
                             style={{ position: 'absolute' }}
@@ -216,7 +247,7 @@ CurrentPokemonInputProps> {
                         />
                     ) : null}
                     <select
-                        onChange={this.onChange(inputName, { pokemon })}
+                        onChange={this.onChange(inputName, {pokemon})}
                         value={value}
                         style={inputName === 'pokeball' ? { paddingLeft: '2rem' } : {}}
                         name={inputName}>
@@ -235,7 +266,7 @@ CurrentPokemonInputProps> {
         }
         if (type === 'checkbox') {
             return (
-                <label className={cx(Classes.CONTROL, Classes.CHECKBOX)}>
+                <label className="bp3-control bp3-checkbox">
                     <input
                         onChange={this.onChange(inputName)}
                         checked={value}
@@ -251,8 +282,8 @@ CurrentPokemonInputProps> {
                 <span className="double-select-wrapper">
                     <div className={Classes.SELECT}>
                         <select
-                            onChange={this.onChange(inputName, { position: 0, value })}
-                            value={value?.[0] == null ? 'None' : value?.[0]}
+                            onChange={this.onChange(inputName, {position: 0, value})}
+                            value={value[0] == null ? 'None' : value[0]}
                             name={inputName}>
                             {options
                                 ? options.map((item: string, index: number) => (
@@ -266,8 +297,8 @@ CurrentPokemonInputProps> {
                     <span>&nbsp;</span>
                     <div className={Classes.SELECT}>
                         <select
-                            onChange={this.onChange(inputName, { position: 1, value })}
-                            value={value?.[1] == null ? 'None' : value?.[1]}
+                            onChange={this.onChange(inputName, {position: 1, value})}
+                            value={value[1] == null ? 'None' : value[1]}
                             name={inputName}>
                             {options
                                 ? options.map((item, index) => (
@@ -325,6 +356,4 @@ export const CurrentPokemonInput = connect(
         customTypes: state.customTypes,
     }),
     { editPokemon, selectPokemon },
-    null,
-    { pure: false },
 )(CurrentPokemonInputBase);

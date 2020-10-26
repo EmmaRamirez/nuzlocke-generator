@@ -281,7 +281,7 @@ const parseTime = (buf: Buffer) => {
     return `${hours}:${minutesFormatted}`;
 };
 
-export const parseGen1Save = async (file: Buffer, options: SaveFileOptions) => {
+export const parseGen1Save = async (file, format) => {
     const yellow = file[OFFSETS.PIKACHU_FRIENDSHIP] > 0;
     const trainerName = convertWithCharMap(
         file.slice(OFFSETS.PLAYER_NAME, OFFSETS.PLAYER_NAME + 11),
@@ -289,7 +289,6 @@ export const parseGen1Save = async (file: Buffer, options: SaveFileOptions) => {
     );
     const trainerID = file
         .slice(OFFSETS.PLAYER_ID, OFFSETS.PLAYER_ID + 2)
-        // @ts-expect-error Buffer matches this
         .map((char) => char.toString())
         .join('');
     const rivalName = convertWithCharMap(file.slice(OFFSETS.RIVAL_NAME, OFFSETS.RIVAL_NAME + 11));
@@ -300,7 +299,6 @@ export const parseGen1Save = async (file: Buffer, options: SaveFileOptions) => {
     const money = parseInt(
         file
             .slice(OFFSETS.MONEY, OFFSETS.MONEY + 3)
-            // @ts-expect-error Buffer matches this
             .map((d) => d.toString(16))
             .join(''),
     );
@@ -310,7 +308,6 @@ export const parseGen1Save = async (file: Buffer, options: SaveFileOptions) => {
     const casinoCoins = parseInt(
         file
             .slice(OFFSETS.CASINO_COINS, OFFSETS.CASINO_COINS + 2)
-            // @ts-expect-error Buffer matches this
             .map((d) => d.toString(16))
             .join(''),
     );
@@ -319,6 +316,24 @@ export const parseGen1Save = async (file: Buffer, options: SaveFileOptions) => {
         file.slice(OFFSETS.CURRENT_BOX, OFFSETS.CURRENT_BOX + 0x462),
     );
     const deadPokemon = parseBoxedPokemon(file.slice(BOX_OFFSETS.TWO, BOX_OFFSETS.TWO + 0x462));
+
+    // const ellow = file[0];
+
+    const save = {
+        //yellow,
+        trainerName,
+        trainerID,
+        timePlayed,
+        money,
+        pokemonParty,
+        casinoCoins,
+        // pokedexOwned,
+        // pokedexSeen,
+        // badges,
+        rivalName,
+        boxedPokemon,
+        deadPokemon,
+    };
 
     const badgesPossible = [
         { name: 'Boulder Badge', image: 'boulder-badge' },
@@ -338,7 +353,7 @@ export const parseGen1Save = async (file: Buffer, options: SaveFileOptions) => {
         })
         .filter((badge) => badge);
 
-    const save = {
+    const save2 = {
         isYellow: yellow,
         trainer: {
             name: trainerName,
@@ -355,25 +370,18 @@ export const parseGen1Save = async (file: Buffer, options: SaveFileOptions) => {
         ],
     };
 
-    return save;
+    return save2;
 };
-
-export interface SaveFileOptions {
-    type: 'nuzlocke' | 'plain';
-    boxes?: {
-        [prop: string]: number[],
-    };
-}
 
 export const loadGen1SaveFile = async (
     filename: string,
-    options: SaveFileOptions,
+    format: 'plain' | 'nuzlocke' = 'nuzlocke',
 ) => {
     const save = await fs.readFileSync(filename);
 
     try {
         const file = Buffer.from(save);
-        const result = await parseGen1Save(file, options);
+        const result = await parseGen1Save(file, format);
         return await result;
     } catch {
         throw new Error('Oops');

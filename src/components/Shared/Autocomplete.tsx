@@ -1,7 +1,4 @@
 import * as React from 'react';
-import { cx } from 'emotion';
-import { debounce } from 'lodash';
-import './Autocomplete.css';
 
 export interface AutocompleteProps {
     items: string[];
@@ -20,12 +17,15 @@ export interface AutocompleteState {
     isOpen: boolean;
 }
 
+import './Autocomplete.css';
+import { cx } from 'emotion';
+
 export class Autocomplete extends React.Component<AutocompleteProps, AutocompleteState> {
     public constructor(props) {
         super(props);
         this.state = {
-            visibleItems: this.props.items,
-            currentValue: this.props.value,
+            visibleItems: [],
+            currentValue: '',
             isOpen: false,
         };
     }
@@ -42,6 +42,11 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
         });
     }
 
+    // eslint-disable-next-line camelcase
+    public UNSAFE_componentWillMount() {
+        this.setState({ currentValue: this.props.value });
+    }
+
     public componentWillUnmount() {
         this.setState({
             isOpen: false,
@@ -49,21 +54,9 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
         });
     }
 
-    public componentDidUpdate(prevProps) {
-        // if (this.isDebouncing) {
-        //   return;
-        // }
-        const {value} = this.props;
-
-        const {value: oldValue} = prevProps;
-        const {currentValue} = this.state;
-
-        if (typeof value !== 'undefined' && oldValue !== value && currentValue !== value) {
-            // Update state.value if new value passed via props, yep re-render should happen
-            this.setState({
-                currentValue: value
-            });
-        }
+    // eslint-disable-next-line camelcase
+    public UNSAFE_componentWillReceiveProps(nextProps) {
+        this.setState({ currentValue: nextProps.value });
     }
 
     private renderItems() {
@@ -81,7 +74,6 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
     }
 
     private updateItems = (e: any) => {
-        e.persist();
         if (e.target.value === '') {
             this.setState({
                 currentValue: e.target.value,
@@ -95,7 +87,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
                 ),
             });
         }
-        debounce(this.props.onChange, 300)(e);
+        this.props.onChange(e);
     };
 
     private openList = (e) => this.setState({ isOpen: true });
@@ -159,36 +151,3 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
         );
     }
 }
-
-// const closeList = () => {
-//     setTimeout(() => {
-//         setIsOpen(false);
-//         setVisibleItems(false);
-//     }, 250);
-// };
-
-// export function Autocomplete({}: AutocompleteProps) {
-//     const [visibleItems, setVisibleItems] = React.useState([]);
-//     const [currentValue, setCurrentValue] = React.useState('');
-//     const [isOpen, setIsOpen] = React.useState(false);
-
-//     return <div className={cx('current-pokemon-input-wrapper', 'autocomplete')}>
-//         <label>{this.props.label}</label>
-//         <input
-//             autoComplete="off"
-//             className={cx(className)}
-//             onKeyDown={this.handleKeyDown}
-//             onFocus={this.openList}
-//             onBlur={this.closeList}
-//             placeholder={this.props.placeholder}
-//             name={this.props.name}
-//             type="text"
-//             onChange={this.updateItems}
-//             value={this.state.currentValue}
-//             disabled={this.props.disabled}
-//         />
-//         {this.state.isOpen ? (
-//             <ul className="autocomplete-items has-nice-scrollbars">{this.renderItems()}</ul>
-//         ) : null}
-//     </div>;
-// }

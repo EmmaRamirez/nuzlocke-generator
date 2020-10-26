@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Toaster, Intent } from '@blueprintjs/core';
-import { selectPokemon, deletePokemon, addPokemon, newNuzlocke, changeEditorSize, toggleDialog } from 'actions';
+import { selectPokemon, deletePokemon, addPokemon, newNuzlocke, changeEditorSize } from 'actions';
 import { Pokemon } from 'models';
 import { sortPokes, sortPokesReverse, noop, generateEmptyPokemon } from 'utils';
-import { listOfHotkeys } from 'utils';
+import { hotkeyList } from 'utils';
 import { persistor } from 'store';
 import { State } from 'state';
 import { createStore } from 'redux';
@@ -17,7 +17,6 @@ export interface HotkeysProps {
     addPokemon: addPokemon;
     newNuzlocke: newNuzlocke;
     changeEditorSize: changeEditorSize;
-    toggleDialog: toggleDialog;
     pokemon: Pokemon[];
     selectedId: string;
     editor: Editor;
@@ -50,7 +49,7 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
     };
 
     private handleKeyUp = (e: KeyboardEvent) => {
-        listOfHotkeys.map((hotkey) => {
+        hotkeyList.map((hotkey) => {
             if (e.key === hotkey.key) {
                 if (this.isTextInput(e)) {
                     noop();
@@ -66,7 +65,7 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
         if (elem == null || elem.closest == null) {
             return false;
         }
-        const editable = elem.closest('input, textarea, [contenteditable=true], select');
+        const editable = elem.closest('input, textarea, [contenteditable=true]');
 
         if (editable == null) {
             return false;
@@ -142,16 +141,11 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
 
     private newNuzlocke() {
         const data = createStore(appReducers)?.getState();
-        this.props.newNuzlocke(JSON.stringify(data), { isCopy: false });
+        this.props.newNuzlocke(JSON.stringify(data), {isCopy: false});
     }
 
     private toggleEditor() {
-        console.log('pressed m');
         this.props.changeEditorSize(!this.props.editor.minimized);
-    }
-
-    private toggleImageUploader() {
-        this.props.toggleDialog('imageUploader');
     }
 
     public render() {
@@ -171,6 +165,5 @@ export const Hotkeys = connect(
         addPokemon,
         newNuzlocke,
         changeEditorSize,
-        toggleDialog,
     },
 )(HotkeysBase);
