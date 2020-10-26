@@ -127,7 +127,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                 <BaseEditor name="Pokemon">
                     <div className="button-row" style={{ display: 'flex' }}>
                         <AddPokemonButton
-                            defaultPokemon={{
+                            pokemon={{
                                 ...generateEmptyPokemon(team),
                                 gameOfOrigin: this.props.game.name || 'None',
                             }}
@@ -153,7 +153,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                         <ErrorBoundary>
                             <MassEditor
                                 isOpen={this.state.isMassEditorOpen}
-                                toggleDialog={(e) =>
+                                toggleDialog={() =>
                                     this.setState({
                                         isMassEditorOpen: !this.state.isMassEditorOpen,
                                     })

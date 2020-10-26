@@ -31,7 +31,7 @@ export class CSSUnitInput extends React.Component<CSSUnitInputProps, CSSUnitInpu
         allowedUnits: ['px', 'cm', 'mm', 'in', 'pt', 'pc', 'em', 'rem', 'vw', 'vh', '%'],
     };
 
-    public static getDerivedStateFromProps(props) {
+    public static getDerivedStateFromProps(props: CSSUnitInputProps) {
         const { name, value, allowedUnits } = props;
         const { unit, num } = splitValue(value);
         return {
@@ -40,13 +40,13 @@ export class CSSUnitInput extends React.Component<CSSUnitInputProps, CSSUnitInpu
         };
     }
 
-    private setUnit = (e) => {
+    private setUnit = (e: React.ChangeEvent<HTMLSelectElement>) => {
         this.setState({ chosenUnit: e.target.value });
         this.onChange();
     };
 
-    private setNumber = (e) => {
-        this.setState({ chosenNumber: e.target.value });
+    private setNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({ chosenNumber: Number.parseInt(e.target.value) });
     };
 
     private onChange = () => {

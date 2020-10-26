@@ -87,7 +87,7 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
     private getButtonPokemon = (stage: number) =>
         stage === 1 ? 'caterpie' : stage === 2 ? 'metapod' : 'butterfree';
 
-    private updateReport = (target: string) => (e) => {
+    private updateReport = (target: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const text = e.target.value;
         const update: Pick<BugReporterState, 'userReport' | 'userReportTitle'> = ({
             [target]: text,
@@ -99,7 +99,7 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
         return s.join('');
     }
 
-    private sendBugReport = (e) => {
+    private sendBugReport = () => {
         const { userReport, userReportTitle } = this.state;
         const { state } = this.props;
         const url = 'https://api.github.com/repos/EmmaRamirez/nuzlocke-generator/issues';
