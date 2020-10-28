@@ -88,6 +88,19 @@ const getGameNameSerebii = (name: Game) => {
     }
 };
 
+function fileToBase64(file: Blob) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+
+        reader.onloadend = function () {
+            resolve(reader.result);
+        };
+
+        reader.onerror = reject;
+    });
+};
+
 export interface GetPokemonImage {
     customImage?: string;
     forme?: keyof typeof Forme;
@@ -99,7 +112,14 @@ export interface GetPokemonImage {
     gender?: GenderElementProps;
 }
 
-export function getPokemonImage({
+export async function wrapImageInCORS(url: string) {
+    const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
+    const img = await response.blob();
+
+    return `url(${await fileToBase64(img)})`;
+}
+
+export async function getPokemonImage({
     customImage,
     forme,
     species,
@@ -108,13 +128,16 @@ export function getPokemonImage({
     shiny,
     editor,
     gender,
-}: GetPokemonImage) {
+}: GetPokemonImage): Promise<string> {
     const regularNumber = speciesToNumber((species as Species) || 'Ditto');
     const leadingZerosNumber = (speciesToNumber((species as Species) || 'Ditto') || 0)
         .toString()
         .padStart(3, '0');
 
     if (customImage) {
+        if (customImage.startsWith('http')) {
+            return await wrapImageInCORS(customImage);
+        }
         return `url(${customImage})`;
     }
 
@@ -147,25 +170,27 @@ export function getPokemonImage({
             name === 'XD Gale of Darkness')
     ) {
         if (!shiny) {
-            return `url(https://www.serebii.net/${getGameName(
+            const url = `https://www.serebii.net/${getGameName(
                 name,
-            )}/pokemon/${leadingZerosNumber}${getForme(forme)}.png)`;
+            )}/pokemon/${leadingZerosNumber}${getForme(forme)}.png`;
+
+            return await wrapImageInCORS(url);
         } else {
-            return `url(https://www.serebii.net/Shiny/${capitalize(
+            const url = `https://www.serebii.net/Shiny/${capitalize(
                 getGameNameSerebii(name as Game),
-            )}/${leadingZerosNumber}.png)`;
+            )}/${leadingZerosNumber}.png`;
+
+            return await wrapImageInCORS(url);
         }
     }
     if (style.spritesMode) {
-        if (!shiny) {
-            return `url(https://www.serebii.net/pokearth/sprites/${getGameName(
-                name as Game,
-            )}/${leadingZerosNumber}.png)`;
-        } else {
-            return `url(https://www.serebii.net/Shiny/${getGameNameSerebii(
-                name as Game,
-            )}/${leadingZerosNumber}.png)`;
-        }
+        const url = shiny ? `https://www.serebii.net/Shiny/${getGameNameSerebii(
+            name as Game,
+        )}/${leadingZerosNumber}.png` : `https://www.serebii.net/pokearth/sprites/${getGameName(
+            name as Game,
+        )}/${leadingZerosNumber}.png`;
+
+        return await wrapImageInCORS(url);
     }
 
     if (style.teamImages === 'sugimori') {

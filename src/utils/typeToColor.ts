@@ -37,7 +37,7 @@ export const typeToColor = (
         Nature: '#aedf78',
     };
     const overrides = customTypes?.length
-        ? customTypes?.forEach((t) => (types[t.type] = t.color))
+        ? customTypes?.forEach((t) => (types[t.type as Types] = t.color))
         : {};
     return types[type];
 };

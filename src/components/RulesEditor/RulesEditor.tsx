@@ -27,7 +27,7 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
                 />
                 <div
                     role="action"
-                    onClick={(e) => this.props.deleteRule(index)}
+                    onClick={() => this.props.deleteRule(index)}
                     className="rule-delete"
                     title="Delete Rule">
                     <Icon intent={Intent.DANGER} style={{ cursor: 'pointer' }} icon={'trash'} />
@@ -44,7 +44,7 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
                 </Button>
                 <Button
                     style={{ marginLeft: '1rem' }}
-                    onClick={(_) => {
+                    onClick={() => {
                         this.props.resetRules();
                         this.forceUpdate();
                     }}

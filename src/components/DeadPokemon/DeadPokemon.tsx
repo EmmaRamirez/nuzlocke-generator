@@ -241,6 +241,7 @@ export const DeadPokemonBase = (poke: DeadPokemonProps) => {
                         poke.style.spritesMode ? 'sprites-mode' : ''
                     }`}
                     style={{
+                        // @ts-expect-error
                         backgroundImage: getPokemonImage({
                             customImage: poke.customImage,
                             forme: poke.forme as any,

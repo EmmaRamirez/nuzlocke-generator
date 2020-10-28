@@ -131,23 +131,11 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         return <>{renderItems}</>;
     }
 
-    private getPokemonByStatus(status) {
+    private getPokemonByStatus(status: string) {
         return this.props.pokemon
             .filter((v) => v.hasOwnProperty('id'))
             .filter((poke) => poke.status === status)
             .filter((poke) => !poke.hidden);
-    }
-
-    private renderChampsPokemon(pokemon) {
-        return pokemon.map((poke, index) => {
-            return (
-                <ChampsPokemon
-                    useSprites={this.props.style.useSpritesForChampsPokemon}
-                    key={index}
-                    {...poke}
-                />
-            );
-        });
     }
 
     private renderDeadPokemon() {
@@ -224,7 +212,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         return {};
     };
 
-    private getH3 = (box, n) => {
+    private getH3 = (box: Box, n: number) => {
         if (box.name === 'Dead' || box.name === 'Champs') {
             if (n) {
                 return ` (${n})`;
@@ -245,7 +233,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                 {box?.name !== 'Team' && (
                     <h3 style={{ color: getContrastColor(this.props.style.bgColor || '#383840') }}>
                         {box?.name}
-                        {this.getH3(box, getNumberOf(box?.name, pokemon))}
+                        {this.getH3(box, getNumberOf(box?.name, pokemon) ?? 0)}
                     </h3>
                 )}
                 <div
@@ -272,7 +260,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             </div>
         ) : null;
 
-    private getScale(style, editor) {
+    private getScale(style: State['style'], editor: State['editor']) {
         const rw = parseInt(style.resultWidth.toString());
         const ww = window.innerWidth;
         const scale = ww / rw / 1.1;

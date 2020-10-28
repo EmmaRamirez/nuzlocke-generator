@@ -16,7 +16,7 @@ const getImages = () => {
         // @ts-expect-error
         const db = event?.target?.result;
         const imageStore = db.transaction('images', 'readwrite').objectStore('images');
-        imageStore.openCursor().onsuccess = function (event) {
+        imageStore.openCursor().onsuccess = function (event: any) {
             const cursor = event.target.result;
             if (cursor) {
                 const image = cursor?.value;
@@ -51,7 +51,7 @@ export function ImagesDrawer() {
                 .objectStore('images')
                 .delete(id);
 
-            request.onsuccess = event => {
+            request.onsuccess = () => {
                 console.log('image deleted');
                 setRefresh(id);
             };

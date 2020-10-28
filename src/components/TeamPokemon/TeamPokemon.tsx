@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Pokemon, Game, Editor } from 'models';
+import { Pokemon, Game, Editor, PokemonKeys } from 'models';
 import {
     getBackgroundGradient,
     typeToColor,
@@ -195,9 +195,35 @@ export interface TeamPokemonBaseProps {
     linkedPokemon?: Pokemon;
 }
 
-export class TeamPokemonBaseMinimal extends React.PureComponent<
-TeamPokemonBaseProps & { spriteStyle: object }
-> {
+export class TeamPokemonBaseMinimal extends React.Component<
+TeamPokemonBaseProps & { spriteStyle: object }, {image: string}> {
+    public state = {
+        image: '',
+    };
+
+    public async componentDidMount() {
+        const {
+            pokemon,
+            style,
+            game,
+            editor,
+        } = this.props;
+        const poke = pokemon;
+
+        const image = await getPokemonImage({
+            customImage: poke?.customImage,
+            forme: poke?.forme as any,
+            species: poke?.species,
+            shiny: poke?.shiny,
+            style: style,
+            name: game.name,
+            editor: editor,
+            gender: poke?.gender,
+        });
+
+        this.setState({ image });
+    }
+
     public render() {
         const { pokemon } = this.props;
 
@@ -211,16 +237,7 @@ TeamPokemonBaseProps & { spriteStyle: object }
                 style={{ color: getContrastColor(this.props?.style?.bgColor) }}>
                 <div
                     style={{
-                        backgroundImage: getPokemonImage({
-                            customImage: pokemon.customImage,
-                            forme: pokemon.forme as any,
-                            species: pokemon.species,
-                            style: this.props.style,
-                            name: this.props.game.name,
-                            shiny: pokemon.shiny,
-                            editor: this.props.editor,
-                            gender: pokemon.gender,
-                        }),
+                        backgroundImage: this.state.image,
                         ...this.props.spriteStyle,
                     }}
                     className={`pokemon-image ${(pokemon.species || 'missingno').toLowerCase()} ${
@@ -241,7 +258,34 @@ TeamPokemonBaseProps & { spriteStyle: object }
     }
 }
 
-export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
+export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, {image: string}> {
+    public state = {
+        image: '',
+    };
+
+    public async componentDidMount() {
+        const {
+            pokemon,
+            style,
+            game,
+            editor,
+        } = this.props;
+        const poke = pokemon;
+
+        const image = await getPokemonImage({
+            customImage: poke?.customImage,
+            forme: poke?.forme as any,
+            species: poke?.species,
+            shiny: poke?.shiny,
+            style: style,
+            name: game.name,
+            editor: editor,
+            gender: poke?.gender,
+        });
+
+        this.setState({ image });
+    }
+
     private getSpriteStyle() {
         if (this.props.style.spritesMode) {
             if (this.props.style.scaleSprites) {
@@ -297,6 +341,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
             return { [propName]: poke[item].toString() };
         };
 
+        // @TODO: update with new keys
         const dataKeys = [
             'id',
             'position',
@@ -429,16 +474,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                         />
                         <div
                             style={{
-                                backgroundImage: getPokemonImage({
-                                    customImage: poke.customImage,
-                                    forme: poke.forme as any,
-                                    species: poke.species,
-                                    shiny: poke.shiny,
-                                    style: this.props.style,
-                                    name: this.props.game.name,
-                                    editor: this.props.editor,
-                                    gender: poke.gender,
-                                }),
+                                backgroundImage: this.state.image,
                                 ...(spriteStyle as React.CSSProperties),
                             }}
                             className={`pokemon-image ${(
@@ -465,16 +501,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                         }}>
                         <div
                             style={{
-                                backgroundImage: getPokemonImage({
-                                    customImage: poke.customImage,
-                                    forme: poke.forme as any,
-                                    species: poke.species,
-                                    shiny: poke.shiny,
-                                    style: this.props.style,
-                                    name: this.props.game.name,
-                                    editor: this.props.editor,
-                                    gender: poke.gender,
-                                }),
+                                backgroundImage: this.state.image,
                                 ...(spriteStyle as React.CSSProperties),
                             }}
                             className={`pokemon-image ${(
