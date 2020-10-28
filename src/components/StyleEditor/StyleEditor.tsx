@@ -38,24 +38,19 @@ const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'],
     const propName = name || e.target.name;
     props.editStyle({ [propName]: e.target.value });
     if (propName === 'template' && e.target.value === 'Default Light') {
-        props.editStyle({ bgColor: '#eeeeee' });
-        props.editStyle({ topHeaderColor: '#dedede' });
+        props.editStyle({ bgColor: '#eeeeee', topHeaderColor: '#dedede' });
     }
     if (propName === 'template' && e.target.value === 'Default Dark') {
-        props.editStyle({ bgColor: '#383840' });
-        props.editStyle({ topHeaderColor: '#333333' });
+        props.editStyle({ bgColor: '#383840', topHeaderColor: '#333333' });
     }
     if (propName === 'template' && e.target.value === 'Compact with Icons') {
         props.editStyle({ imageStyle: 'square' });
     }
     if (propName === 'template' && e.target.value === 'Cards') {
-        props.editStyle({ imageStyle: 'square' });
-        props.editStyle({ movesPosition: 'horizontal' as OrientationType });
+        props.editStyle({ imageStyle: 'square', movesPosition: 'horizontal' as OrientationType });
     }
     if (propName === 'template' && e.target.value === 'Hexagons') {
-        props.editStyle({ resultWidth: 1320 });
-        props.editStyle({ accentColor: 'rgba(0, 0, 0, 0)' });
-        props.editStyle({ movesPosition: 'horizontal' as OrientationType });
+        props.editStyle({ resultWidth: 1320, accentColor: 'rgba(0, 0, 0, 0)', movesPosition: 'horizontal' as OrientationType });
     }
     if (
         (propName === 'template' && e.target.value === 'Generations') ||
@@ -63,30 +58,13 @@ const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'],
     ) {
         props.editStyle({
             bgColor: game ? gameOfOriginToColor(game) : '',
-        });
-        props.editStyle({
             minimalBoxedLayout: true,
-        });
-        props.editStyle({
+            // @TODO: only push if resultW/H is lower
             resultHeight: 870,
-        });
-        props.editStyle({
             resultWidth: 1460,
+            movesPosition: 'vertical'
         });
-        props.editStyle({ movesPosition: 'vertical' });
     }
-    // if (propName === 'trainerSectionOrientation' && e.target.value === 'vertical') {
-    //     props.editStyle({
-    //         trainerWidth: props.style.trainerHeight,
-    //         trainerHeight: props.style.trainerWidth,
-    //     });
-    // }
-    // if (propName === 'trainerSectionOrientation' && e.target.value === 'horizontal') {
-    //     props.editStyle({
-    //         trainerWidth: props.style.trainerHeight,
-    //         trainerHeight: props.style.trainerWidth,
-    //     });
-    // }
 };
 
 export interface StyleEditorProps {

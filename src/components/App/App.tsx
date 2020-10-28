@@ -52,8 +52,10 @@ export class UpdaterBase extends React.Component<{
             this.props.present != null &&
             !isEqual(this.props.present, prev.present)
         ) {
-            console.log(this.props.lrt, prev.lrt);
+            const t0 = performance.now();
             this.props.updateEditorHistory(prev.present);
+            const t1 = performance.now();
+            console.log(`Updated history in ${t1 - t0}ms`);
         }
     }
 

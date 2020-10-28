@@ -423,6 +423,15 @@ CurrentPokemonEditState
                 </span>
                 <CurrentPokemonLayoutItem>
                     <ErrorBoundary>
+                        {/*<CurrentPokemonInput
+                            inputName="species"
+                            labelName="Species"
+                            disabled={currentPokemon.egg}
+                            placeholder="Missing No."
+                            value={currentPokemon.species}
+                            type='autocomplete'
+                            items={(listOfPokemon as unknown) as string[]}
+                        />*/}
                         <Autocomplete
                             items={(listOfPokemon as unknown) as string[]}
                             name="species"
