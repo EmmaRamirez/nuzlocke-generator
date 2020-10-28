@@ -81,7 +81,6 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
     }
 
     private updateItems = (e: any) => {
-        e.persist();
         if (e.target.value === '') {
             this.setState({
                 currentValue: e.target.value,
@@ -95,7 +94,6 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
                 ),
             });
         }
-        debounce(this.props.onChange, 300)(e);
     };
 
     private openList = (e) => this.setState({ isOpen: true });
@@ -105,6 +103,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
             this.setState({ isOpen: false });
             this.setState({ visibleItems: [] });
         }, 250);
+        this.props.onChange(e);
     };
 
     private handleKeyDown = (e: React.KeyboardEvent) => {
@@ -115,6 +114,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, Autocomplet
             } else {
                 this.selectItem(this.state.visibleItems[0]);
             }
+            this.props.onChange(e);
         }
         if (e.which === 27 || e.which === 13 || e.which === 9) {
             this.closeList(e);

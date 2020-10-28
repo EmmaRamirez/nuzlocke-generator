@@ -1,6 +1,6 @@
 {
   "name": "nuzlocke-generator",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "A tool for generating nuzlocke team pics from data",
   "main": "dist/bundle.js",
   "scripts": {
@@ -33,6 +33,7 @@
   "license": "MIT",
   "dependencies": {
     "@emmaramirez/dom-to-image": "^3.0.2",
+    "@react-hook/debounce": "^3.0.0",
     "@types/chalk": "^2.2.0",
     "@types/color": "^3.0.0",
     "@types/cypress": "^1.1.3",
