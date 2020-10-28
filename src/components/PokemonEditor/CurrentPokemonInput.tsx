@@ -30,6 +30,7 @@ interface CurrentPokemonInputProps {
     | 'double-select'
     | 'moves'
     | 'textArea'
+    | 'autocomplete'
     | 'rich-text';
     value: any;
     placeholder?: string;
@@ -38,6 +39,8 @@ interface CurrentPokemonInputProps {
     options?: string[] | { key: string; value: string | null }[];
     pokemon?: Pokemon;
     usesKeyValue?: boolean;
+    className?: string;
+    items?: string[];
 }
 
 // selectedId: state.selectedId,
@@ -73,51 +76,6 @@ const createEdit = ({ inputName, value, pokemon, edit }: ChangeArgs) => {
     }
 
     return edit;
-
-    // if (inputName === 'types' && position != null) {
-    //     edit = {
-    //         [inputName]: value,
-    //     };
-    //     edit[inputName][position] = e.target.value;
-    // } else if (inputName === 'species') {
-    //     edit = {
-    //         [inputName]: e.target.value,
-    //         types: matchSpeciesToTypes(e.target.value),
-    //     };
-    // } else if (inputName === 'nature' && pokemon?.species === 'Toxtricity') {
-    //     edit = {
-    //         [inputName]: e.target.value,
-    //         forme: matchNatureToToxtricityForme(e.target.value),
-    //     };
-    // } else if (inputName === 'moves') {
-    //     edit = {
-    //         [inputName]: e.target.value,
-    //     };
-    // } else if (
-    //     inputName === 'champion' ||
-    //     inputName === 'shiny' ||
-    //     inputName === 'hidden' ||
-    //     inputName === 'mvp'
-    // ) {
-    //     edit = {
-    //         [inputName]: e.target.checked,
-    //     };
-    // } else if (inputName === 'egg') {
-    //     edit = {
-    //         [inputName]: e.target.checked,
-    //     };
-    // } else if (inputName === 'forme') {
-    //     edit = {
-    // forme: e.target.value,
-    // types: pokemon && matchSpeciesToTypes(pokemon?.species, e.target.value),
-    //     };
-    // } else {
-    //     edit = {
-    //         [inputName]: e.target.value,
-    //     };
-    // }
-    // const t1 = performance.now();
-    // console.log(t1 - t0);
 };
 
 export type InputTypesFromState = Partial<
@@ -136,6 +94,60 @@ export type InputTypesFromInternalState = {
 export type PokemonInputProps = CurrentPokemonInputProps &
 InputTypesFromState &
 InputTypesFromInternalState;
+
+export const renderItems = (visibleItems, setSelectedItem) => (
+    visibleItems.map((v, i) => {
+        return (
+            <li
+                key={i}
+                role="item"
+                onClick={(e) => setSelectedItem(v)}
+                style={v === this.state.currentValue ? { color: 'lightblue' } : {}}>
+                {v}
+            </li>
+        );
+    })
+);
+
+export function PokemonAutocompleteInput({
+    className,
+    placeholder,
+    inputName,
+    edit,
+    disabled,
+    onChange,
+    setEdit,
+    items,
+}: PokemonInputProps) {
+    const [isOpen, setIsOpen] = React.useState(false);
+    const [visibleItems, setVisibleItems] = React.useState(items);
+    const [selectedItem, setSelectedItem] = React.useState();
+    const handleKeyDown = () => {};
+    const updateItems = () => {};
+    const closeList = () => {};
+    const openList = () => {};
+
+
+    return <>
+        <input
+            autoComplete="off"
+            className={cx(className)}
+            onKeyDown={handleKeyDown}
+            onFocus={openList}
+            onBlur={closeList}
+            placeholder={placeholder}
+            name={inputName}
+            type="text"
+            value={edit[inputName]}
+            disabled={disabled}
+            onChange={onChange}
+            onInput={(e) => setEdit({ [inputName]: e.currentTarget.value })}
+        />
+        {isOpen ? (
+            <ul className="autocomplete-items has-nice-scrollbars">{renderItems(visibleItems, setSelectedItem)}</ul>
+        ) : null}
+    </>;
+}
 
 export function PokemonTextInput({
     inputName,
@@ -326,7 +338,7 @@ export function PokemonCheckboxInput({
             <input
                 onChange={(e) => {
                     onChange(e);
-                    setEdit({ [inputName]: e.currentTarget.value });
+                    setEdit({ [inputName]: e.currentTarget.checked });
                 }}
                 checked={edit[inputName]}
                 type={type}
@@ -403,7 +415,7 @@ export function CurrentPokemonInput(props: CurrentPokemonInputProps) {
 
     return (
         <span
-            className={`current-pokemon-input-wrapper current-pokemon-${props.type} current-pokemon-${props.inputName}`}>
+            className={`current-pokemon-input-wrapper current-pokemon-${props.type} ${props.type === 'autocomplete' && 'autocomplete'} current-pokemon-${props.inputName}`}>
             <label>{props.labelName}</label>
             {getInput({ ...props, selectedId, onChange, setEdit, edit, customMoveMap })}
         </span>
@@ -426,6 +438,8 @@ export function getInput(props: PokemonInputProps) {
             return <PokemonNumberInput {...props} />;
         case 'double-select':
             return <PokemonDoubleSelectInput {...props} />;
+        case 'autocomplete':
+            return <PokemonAutocompleteInput {...props} />;
         default:
             return 'No input for this type exists.';
     }
