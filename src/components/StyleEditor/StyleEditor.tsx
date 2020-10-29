@@ -9,7 +9,6 @@ import {
     Game,
     OrientationType,
     Styles as StylesType,
-    isLocal,
     feature,
 } from 'utils';
 import {
@@ -144,7 +143,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
             });
         const styleEdit = createStyleEdit(false);
         const teamImages = ['standard', 'sugimori', 'dream world', 'shuffle'];
-        if (isLocal()) {
+        if (feature.tcgImages) {
             teamImages.push('tcg');
         }
         const calloutStyle = {

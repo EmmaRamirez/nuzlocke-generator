@@ -13,7 +13,6 @@ import {
     formatBallText,
     TemplateName,
     feature,
-    isLocal,
 } from 'utils';
 import { GenderElement, ErrorBoundary } from 'components/Shared';
 import { selectPokemon } from 'actions';
@@ -403,7 +402,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
             `,
         };
 
-        const EMMA_MODE = isLocal();
+        const EMMA_MODE = feature.emmaMode;
 
         return (
             <div className="pokemon-container" {...data}>

@@ -15,7 +15,7 @@ import { ErrorBoundary } from 'components/Shared';
 import { Stats } from './Stats';
 import { Pokemon, Trainer, Editor, Box } from 'models';
 import { reducers } from 'reducers';
-import { Styles as StyleState, getGameRegion, sortPokes, getContrastColor, isLocal } from 'utils';
+import { Styles as StyleState, getGameRegion, sortPokes, getContrastColor, isLocal, feature } from 'utils';
 
 import * as Styles from './styles';
 
@@ -322,9 +322,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             (poke) => !['Team', 'Boxed', 'Dead', 'Champs'].includes(poke.status!),
         );
         const enableStats = style.displayStats;
-        const enableChampImage = false && isLocal();
-        const enableBackSpriteMontage = false && isLocal();
-        const renderStatsInResult = false && isLocal();
+        const enableChampImage = feature.emmaMode;
+        const enableBackSpriteMontage = feature.emmaMode;
 
         return (
             <div className="hide-scrollbars" style={{ width: '100%', overflowY: 'scroll' }}>
@@ -465,7 +464,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                                 : null}
                         </div>
 
-                        {enableStats && renderStatsInResult && <Stats />}
+                        {enableStats && <Stats />}
 
                         {enableBackSpriteMontage && (
                             <BackspriteMontage pokemon={this.getPokemonByStatus('Team')} />
