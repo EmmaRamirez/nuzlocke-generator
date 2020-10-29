@@ -653,6 +653,7 @@ Thank you!
     '1.4.2': `
 ## Fixes
 - Fixed issues with Pokémon inputs carrying data over between Pokémon
+- Fixed issue that prevented position from being updated
 - Fixed a bug on local where gradient background was misplaced
 - Fixed bug whereby stats would not display
 
