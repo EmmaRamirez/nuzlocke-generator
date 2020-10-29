@@ -55,7 +55,7 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
                 if (this.isTextInput(e)) {
                     noop();
                 } else {
-                    if (hotkey.onKeyUp) this[hotkey.onKeyUp]();
+                    if (hotkey?.onKeyUp) this[hotkey.onKeyUp]();
                 }
             }
         });

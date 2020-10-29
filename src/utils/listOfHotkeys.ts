@@ -62,5 +62,20 @@ export const listOfHotkeys: HotkeyList[] = [
         comment: 'Create New Nuzlocke',
         onKeyUp: 'newNuzlocke',
     },
+    {
+        label: 'shift+scroll',
+        key: '',
+        comment: 'Scroll image result',
+    },
+    {
+        label: 'double-click',
+        key: '',
+        comment: 'Reset image result dimensions',
+    },
+    {
+        label: 'drag',
+        key: '',
+        comment: 'Pan image result',
+    },
     ...(feature.newHotkeys ? betaHotkeys : []),
 ];

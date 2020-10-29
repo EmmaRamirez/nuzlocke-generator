@@ -10,6 +10,8 @@ export const topBar = css`
     font-size: 1.15rem;
     justify-content: center;
     padding: 0.5rem;
+    position: relative;
+    z-index: 25;
 `;
 
 export const topBar_mobile = css`

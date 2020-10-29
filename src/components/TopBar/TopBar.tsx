@@ -128,7 +128,6 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                             icon={this.props.editor.minimized ? 'minimize' : 'maximize'}>
                             {this.props.editor.minimized ? 'Maximize' : 'Minimize'} Editor
                         </Button>
-                        <ZoomLevel />
                         {isDownloading ? (
                             <Button
                                 className={Classes.MINIMAL}
@@ -167,6 +166,7 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                             icon={this.props.style.editorDarkMode ? 'flash' : 'moon'}>
                             {this.props.style.editorDarkMode ? 'Light' : 'Dark'} Mode
                         </Button>
+                        {this.props.children}
                         <Button
                             style={darkModeStyle(this.props.style.editorDarkMode)}
                             onClick={this.toggleDialog}
@@ -174,7 +174,6 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                             icon="star">
                             {pkg.version}
                         </Button>
-                        {this.props.children}
                     </>
                 )}
                 <ReleaseDialog

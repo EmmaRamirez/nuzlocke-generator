@@ -26,6 +26,7 @@ import { State } from 'state';
 import isMobile from 'is-mobile';
 import { Button, Classes } from '@blueprintjs/core';
 import { editor } from 'reducers/editor';
+import { max, clamp } from 'ramda';
 
 async function load() {
     const resource = await import('@emmaramirez/dom-to-image');
@@ -47,6 +48,8 @@ interface ResultProps {
 interface ResultState {
     isDownloading: boolean;
     downloadError: string | null;
+    panningCoordinates: [number?, number?];
+    zoomLevel: number;
 }
 
 const getNumberOf = (status?: string, pokemon?: Pokemon[]) =>
@@ -97,6 +100,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         this.state = {
             isDownloading: false,
             downloadError: null,
+            panningCoordinates: [undefined, undefined],
+            zoomLevel: 1,
         };
     }
 
@@ -111,23 +116,37 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             });
     }
 
-    private renderErrors() {
+    private renderTopBarItems() {
         const renderItems: React.ReactNode[] = [];
-        if (this.props.pokemon.filter((poke) => poke.status === 'Team').length > 6) {
-            renderItems.push(
-                <div key={uuid()} className="bp3-callout bp3-intent-danger">
-                    You have more than 6 Pokémon in your party.
-                </div>,
-            );
-        }
-        if (this.state.downloadError) {
-            renderItems.push(
-                <div key={uuid()} className="bp3-callout bp3-intent-danger">
-                    Image failed to download. Check that you are not using images that link to
-                    external sites.
-                </div>,
-            );
-        }
+        renderItems.push(<div className={cx(this.props.style.editorDarkMode && Classes.DARK, Classes.SELECT)}>
+            <select className={cx(this.props.style.editorDarkMode && Classes.DARK)} defaultValue={1} onChange={(e?: React.ChangeEvent<HTMLSelectElement>) => this.setState({zoomLevel: Number.parseFloat(e?.target?.value ?? '1')})}>
+                {[
+                    {key: 0.25, value: '25%'},
+                    {key: 0.5, value: '50%'},
+                    {key: 0.75, value: '75%'},
+                    {key: 1, value: '100%'},
+                    {key: 1.25, value: '125%'},
+                    {key: 1.5, value: '150%'},
+                    {key: 2, value: '200%'},
+                    {key: 3, value: '300%'},
+                ].map(opt => <option className={cx(this.props.style.editorDarkMode && Classes.DARK)} key={opt.key} value={opt.key}>Zoom: {opt.value}</option>)}
+            </select>
+        </div>);
+        // if (this.props.pokemon.filter((poke) => poke.status === 'Team').length > 6) {
+        //     renderItems.push(
+        //         <div key={uuid()} className="bp3-callout bp3-intent-danger w-60 fixed right-1 top-1">
+        //             You have more than 6 Pokémon in your party.
+        //         </div>,
+        //     );
+        // }
+        // if (this.state.downloadError) {
+        //     renderItems.push(
+        //         <div key={uuid()} className="bp3-callout bp3-intent-danger w-60 fixed right-1 top-4">
+        //             Image failed to download. Check that you are not using images that link to
+        //             external sites.
+        //         </div>,
+        //     );
+        // }
         return <>{renderItems}</>;
     }
 
@@ -260,12 +279,18 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             </div>
         ) : null;
 
-    private getScale(style: State['style'], editor: State['editor']) {
+    private getScale(style: State['style'], editor: State['editor'], coords: ResultState['panningCoordinates']) {
         const rw = parseInt(style.resultWidth.toString());
         const ww = window.innerWidth;
         const scale = ww / rw / 1.1;
+        const height = (this.resultRef?.current?.offsetHeight ?? 0) / this.state.zoomLevel;
+        const width = (this.resultRef?.current?.offsetWidth ?? 300) / this.state.zoomLevel;
+        const translate = `translateX(${clamp(-(width), width, (coords?.[0] ?? 0) / 1)}px) translateY(${clamp(-(height), Infinity, (coords?.[1] ?? 0) / 1)}px)`;
+        if (this.state.isDownloading) {
+            return { transform: undefined };
+        }
         if (!editor.showResultInMobile) {
-            return { transform: `scale(${style.zoomLevel})` };
+            return { transform: `scale(${this.state.zoomLevel}) ${translate}` };
         }
         if (!Number.isNaN(rw)) {
             return { transform: `scale(${scale.toFixed(2)})` };
@@ -273,6 +298,25 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             return { transform: 'scale(0.3)' };
         }
     }
+
+    private onPan = (e?: React.MouseEvent<HTMLElement>) => {
+        e?.preventDefault();
+        e?.persist();
+        if (e?.buttons === 1) {
+            this.setState(state => ({ panningCoordinates: [(state.panningCoordinates?.[0] ?? 0) + e?.movementX, (state.panningCoordinates?.[1] ?? 0) + e?.movementY] }));
+        }
+    };
+
+    private onZoom = (e?: React.WheelEvent<HTMLElement>) => {
+        // @ts-expect-error
+        if (event.shiftKey) {
+            this.setState({zoomLevel: clamp(0.1, 5, ( (-e?.deltaY! ?? 3) / 3 ))});
+        }
+    };
+
+    private resetPan = (e?: React.MouseEvent<HTMLElement>) => {
+        this.setState({ panningCoordinates: [0, 0], zoomLevel: 1 });
+    };
 
     public render() {
         const { style, box, trainer, pokemon, editor } = this.props;
@@ -315,7 +359,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         const renderStatsInResult = false && isLocal();
 
         return (
-            <div className="hide-scrollbars" style={{ width: '100%', overflowY: 'scroll' }}>
+            <div onWheel={this.onZoom} onMouseMove={this.onPan} onDoubleClick={this.resetPan} className="hide-scrollbars" style={{ width: '100%', overflowY: 'scroll' }}>
                 {isMobile() && editor.showResultInMobile && (
                     <div className={Classes.OVERLAY_BACKDROP}></div>
                 )}
@@ -323,7 +367,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     <TopBar
                         isDownloading={this.state.isDownloading}
                         onClickDownload={() => this.toImage()}>
-                        {this.renderErrors()}
+                        {this.renderTopBarItems()}
                     </TopBar>
                     <style>{style.customCSS}</style>
                     {isMobile() && editor.showResultInMobile && (
@@ -346,7 +390,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             this.props.game.name,
                         )} team-size-${numberOfTeam} ${trainerSectionOrientation}-trainer
                        ${editor.showResultInMobile ? Styles.result_mobile : ''}
-                    `}
+                        `}
                         style={{
                             fontFamily: style.usePokemonGBAFont ? 'pokemon_font' : 'inherit',
                             fontSize: style.usePokemonGBAFont ? '125%' : '100%',
@@ -357,9 +401,11 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             border: 'none',
                             height: style.useAutoHeight ? 'auto' : `${style.resultHeight}px`,
                             marginBottom: '.5rem',
+                            transition: 'transform 300ms ease-in-out',
                             transformOrigin: '0 0',
                             width: `${style.resultWidth}px`,
-                            ...this.getScale(style, editor),
+                            zIndex: 1,
+                            ...this.getScale(style, editor, this.state.panningCoordinates),
                         }}>
                         <div
                             className="trainer-container"

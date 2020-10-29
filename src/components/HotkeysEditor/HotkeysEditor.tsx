@@ -13,7 +13,7 @@ export class HotkeysEditor extends React.Component<{}> {
     public render() {
         return (
             <BaseEditor name="Hotkeys">
-                <ul style={{ listStyleType: 'none', paddingLeft: '1rem' }} className="hotkey-list">
+                <ul style={{ listStyleType: 'none', paddingLeft: '1rem', columnCount: 2, }} className="hotkey-list">
                     {listOfHotkeys.map((item) => (
                         <li key={item.key} style={{ display: 'flex' }}>
                             <kbd style={{ margin: '4px' }} className="bp3-code">
