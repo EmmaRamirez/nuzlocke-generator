@@ -41,6 +41,7 @@ interface CurrentPokemonInputProps {
     usesKeyValue?: boolean;
     className?: string;
     items?: string[];
+    key: string;
 }
 
 // selectedId: state.selectedId,

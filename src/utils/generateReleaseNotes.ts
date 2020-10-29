@@ -650,6 +650,17 @@ Thank you!
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
+    '1.4.2': `
+## Fixes
+- Fixed issues with Pokémon inputs carrying data over between Pokémon
+- Fixed issue that prevented position from being updated
+- Fixed a bug on local where gradient background was misplaced
+- Fixed bug whereby stats would not display
+
+## Known Issues
+- External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`,
     '1.5.0': `
 ## Features
 

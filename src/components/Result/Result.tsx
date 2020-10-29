@@ -15,7 +15,7 @@ import { ErrorBoundary } from 'components/Shared';
 import { Stats } from './Stats';
 import { Pokemon, Trainer, Editor, Box } from 'models';
 import { reducers } from 'reducers';
-import { Styles as StyleState, getGameRegion, sortPokes, getContrastColor, isLocal } from 'utils';
+import { Styles as StyleState, getGameRegion, sortPokes, getContrastColor, isLocal, feature } from 'utils';
 
 import * as Styles from './styles';
 
@@ -118,7 +118,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
 
     private renderTopBarItems() {
         const renderItems: React.ReactNode[] = [];
-        renderItems.push(<div className={cx(this.props.style.editorDarkMode && Classes.DARK, Classes.SELECT)}>
+        renderItems.push(<div key={1} className={cx(this.props.style.editorDarkMode && Classes.DARK, Classes.SELECT)}>
             <select className={cx(this.props.style.editorDarkMode && Classes.DARK)} defaultValue={1} onChange={(e?: React.ChangeEvent<HTMLSelectElement>) => this.setState({zoomLevel: Number.parseFloat(e?.target?.value ?? '1')})}>
                 {[
                     {key: 0.25, value: '25%'},
@@ -354,9 +354,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             (poke) => !['Team', 'Boxed', 'Dead', 'Champs'].includes(poke.status!),
         );
         const enableStats = style.displayStats;
-        const enableChampImage = false && isLocal();
-        const enableBackSpriteMontage = false && isLocal();
-        const renderStatsInResult = false && isLocal();
+        const enableChampImage = feature.emmaMode;
+        const enableBackSpriteMontage = feature.emmaMode;
 
         return (
             <div onWheel={this.onZoom} onMouseMove={this.onPan} onDoubleClick={this.resetPan} className="hide-scrollbars" style={{ width: '100%', overflowY: 'scroll' }}>
@@ -498,7 +497,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                                 : null}
                         </div>
 
-                        {enableStats && renderStatsInResult && <Stats />}
+                        {enableStats && <Stats />}
 
                         {enableBackSpriteMontage && (
                             <BackspriteMontage pokemon={this.getPokemonByStatus('Team')} />

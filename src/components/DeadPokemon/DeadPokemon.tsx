@@ -11,12 +11,10 @@ import {
     gameOfOriginToColor,
     TemplateName,
     feature,
-    isLocal,
 } from 'utils';
 import { selectPokemon } from 'actions';
 import { PokemonIconBase } from 'components/PokemonIcon';
 import { State } from 'state';
-import { game } from 'reducers/game';
 
 const spriteStyle = (style: Styles) => {
     if (style.spritesMode) {
@@ -73,7 +71,7 @@ export const DeadPokemonBase = (poke: DeadPokemonProps) => {
         poke.gameOfOrigin &&
         poke.style.displayGameOriginForBoxedAndDead &&
         poke.style.displayBackgroundInsteadOfBadge;
-    const EMMA_MODE = isLocal();
+    const EMMA_MODE = feature.emmaMode;
 
     if (isMinimal && isCompactWithIcons) {
         return (

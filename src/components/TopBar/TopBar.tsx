@@ -51,7 +51,7 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
 
     // eslint-disable-next-line camelcase
     public UNSAFE_componentWillMount() {
-        if (pkg.version.split('.')[2] !== 0) {
+        if (pkg.version.split('.')[2] !== 0 && !this.props.sawRelease?.[pkg.version]) {
             this.props.seeRelease(pkg.version);
         }
     }

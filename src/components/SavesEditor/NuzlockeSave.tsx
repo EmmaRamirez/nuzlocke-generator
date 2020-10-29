@@ -106,6 +106,7 @@ NuzlockeSaveControlsState
                 </Button>
                 {saves.map((nuzlocke) => {
                     const id = nuzlocke.id;
+                    console.log(nuzlocke.id);
                     const { isCopy } = nuzlocke;
                     const isCurrent = currentId === id;
                     const data = nuzlocke.data;
