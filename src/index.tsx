@@ -15,8 +15,8 @@ import 'tailwindcss/dist/base.min.css';
 import 'tailwindcss/dist/components.min.css';
 import 'tailwindcss/dist/utilities.min.css';
 import 'normalize.css/normalize.css';
-import { DragDropContextProvider } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
+import { DndProvider  } from 'react-dnd';
+import { HTML5Backend  } from 'react-dnd-html5-backend';
 import { isLocal } from 'utils';
 
 injectGlobal`
@@ -74,14 +74,14 @@ render(
     <Provider store={store}>
         {process.env.NODE_ENV !== 'test' ? (
             <PersistGate loading={<div>Loading...</div>} onBeforeLift={null} persistor={persistor}>
-                <DragDropContextProvider backend={HTML5Backend}>
+                <DndProvider  backend={HTML5Backend}>
                     <App />
-                </DragDropContextProvider>
+                </DndProvider>
             </PersistGate>
         ) : (
-            <DragDropContextProvider backend={HTML5Backend}>
+            <DndProvider  backend={HTML5Backend}>
                 <App />
-            </DragDropContextProvider>
+            </DndProvider>
         )}
     </Provider>,
     mountNode,
