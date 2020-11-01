@@ -6,7 +6,6 @@ export const editorStyles = {
         max-width: 40rem;
         min-height: 100vh;
         padding: 0.25rem;
-        padding-top: 2.5rem;
         position: relative;
     `,
     historyControls: css`

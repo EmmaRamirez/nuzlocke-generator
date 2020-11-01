@@ -15,6 +15,7 @@ import { Drawer } from '@blueprintjs/core';
 import { ImagesDrawer } from 'components/Shared/ImagesDrawer';
 import { ErrorBoundary } from 'components';
 import { BugReporter } from 'components/BugReporter';
+import { SuspenseBoundary } from 'components/Shared/SuspenseBoundary';
 
 export interface AppProps {
     style: State['style'];
@@ -25,13 +26,9 @@ function Loading() {
     return <div>Loading...</div>;
 }
 
-const Editor = Loadable({
-    loader: () => import('components/Editor'),
-    loading: Loading,
-    render(loaded) {
-        return <loaded.Editor />;
-    },
-});
+const Editor = React.lazy(() =>
+    import('components/Editor').then((res) => ({ default: res.Editor })),
+);
 
 export class UpdaterBase extends React.Component<{
     present: Omit<State, 'editorHistory'>;
@@ -121,7 +118,11 @@ export class AppBase extends React.PureComponent<AppProps, {result2?: boolean}> 
                     }}>
                     <Updater />
                     <Hotkeys />
-                    <Editor />
+                    <ErrorBoundary>
+                        <React.Suspense fallback={'Loading Editor...'}>
+                            <Editor />
+                        </React.Suspense>
+                    </ErrorBoundary>
                     <Result />
                     <Drawer
                         isOpen={view?.dialogs?.imageUploader}
