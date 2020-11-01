@@ -42,7 +42,7 @@
     "deep-diff": "^1.0.2",
     "deep-equal": "^1.0.1",
     "dotenv": "^8.2.0",
-    "draft-js": "^0.11.5",
+    "draft-js": "^0.11.7",
     "html-webpack-plugin": "^4.5.0",
     "is-mobile": "^2.2.1",
     "jest-emotion": "^9.2.7",
