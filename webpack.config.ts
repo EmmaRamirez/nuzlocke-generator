@@ -115,7 +115,7 @@ module.exports = {
             process: 'process/browser',
         }),
 
-        new Serve({ static: path.resolve(__dirname, 'dist') })
+        new Serve({ static: path.resolve(__dirname, 'dist'), host: 'localhost', port: 8080 })
 
         // new ReactLoadablePlugin({
         //     filename: './dist/react-lodable.json',
