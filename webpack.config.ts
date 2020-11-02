@@ -134,7 +134,7 @@ module.exports = {
         fs: {},
         path: {},
     },
-    watch: true,
+    // watch: true,
     // node: {
     //     process: false,
     // }
