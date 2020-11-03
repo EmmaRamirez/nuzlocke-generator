@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BoxedPokemonBase, BoxedPokemonProps } from '../BoxedPokemon';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from 'utils/testUtils';
 import { PokemonFixtures } from 'utils/fixtures';
 import { styleDefaults } from 'utils';
 describe(BoxedPokemonBase.name, () => {

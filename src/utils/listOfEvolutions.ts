@@ -1,6 +1,6 @@
 import { Species } from './listOfPokemon';
 import { flatten } from 'ramda';
-import { uniq } from 'lodash';
+const uniq = require('lodash/uniq');
 
 export type EvolutionTree = { [S in Species]?: Species[] };
 
