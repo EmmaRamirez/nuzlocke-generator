@@ -663,7 +663,7 @@ Thank you!
 `,
     '1.4.5': `
 ## Fixes
-
+- Some behind-the-scenes optimizations for file sizes and accessibility
 
 ## Known Issues
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this

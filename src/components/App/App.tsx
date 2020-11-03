@@ -1,19 +1,15 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import Loadable from 'react-loadable';
-
 import './app.css';
-import { Hotkeys } from 'components/Hotkeys';
 import { State } from 'state';
 import { updateEditorHistory } from 'actions';
 import { feature } from 'utils';
 import { omit } from 'ramda';
 import { History } from 'reducers/editorHistory';
-import { Drawer } from '@blueprintjs/core';
-import { ImagesDrawer } from 'components/Shared/ImagesDrawer';
 import { ErrorBoundary } from 'components';
-import { BugReporter } from 'components/BugReporter';
+import { Drawer } from '@blueprintjs/core';
+
 const isEqual = require('lodash/isEqual');
 
 
@@ -29,6 +25,23 @@ function Loading() {
 const Editor = React.lazy(() =>
     import('components/Editor').then((res) => ({ default: res.Editor })),
 );
+
+const Result = React.lazy(() =>
+    import('components/Result/Result').then((res) => ({ default: res.Result })),
+);
+
+const ImagesDrawer = React.lazy(() =>
+    import('components/Shared/ImagesDrawer').then((res) => ({ default: res.ImagesDrawer })),
+);
+
+const BugReporter = React.lazy(() =>
+    import('components/BugReporter').then((res) => ({ default: res.BugReporter })),
+);
+
+const Hotkeys = React.lazy(() =>
+    import('components/Hotkeys').then((res) => ({ default: res.Hotkeys })),
+);
+
 
 export class UpdaterBase extends React.Component<{
     present: Omit<State, 'editorHistory'>;
@@ -92,23 +105,14 @@ export class AppBase extends React.PureComponent<AppProps, {result2?: boolean}> 
         const {style, view} = this.props;
         console.log('features', feature);
 
-        const Result = Loadable({
-            loader: () =>
-                this.state.result2
-                    ? import('components/Result/Result2')
-                    : import('components/Result/Result'),
-            loading: Loading,
-            render(loaded) {
-                return <loaded.Result />;
-            },
-        });
-
         return (
             <ErrorBoundary errorMessage={<div className='p-6 center-text'>
                 <h2>There was a problem retrieving your nuzlocke data.</h2>
                 <p>Please consider submitting a bug report.</p>
 
-                <BugReporter defaultOpen />
+                <React.Suspense fallback={'Loading Bug Reporter...'}>
+                    <BugReporter defaultOpen />
+                </React.Suspense>
             </div>}>
                 <div
                     className="app"
@@ -117,18 +121,28 @@ export class AppBase extends React.PureComponent<AppProps, {result2?: boolean}> 
                         background: this.props.style.editorDarkMode ? '#111' : '#fff',
                     }}>
                     <Updater />
-                    <Hotkeys />
+                    <ErrorBoundary>
+                        <React.Suspense fallback={'Loading Hotkeys...'}>
+                            <Hotkeys />
+                        </React.Suspense>
+                    </ErrorBoundary>
                     <ErrorBoundary>
                         <React.Suspense fallback={'Loading Editor...'}>
                             <Editor />
                         </React.Suspense>
                     </ErrorBoundary>
-                    <Result />
+                    <ErrorBoundary>
+                        <React.Suspense fallback={'Loading Result...'}>
+                            <Result />
+                        </React.Suspense>
+                    </ErrorBoundary>
                     <Drawer
                         isOpen={view?.dialogs?.imageUploader}
                         size={Drawer.SIZE_STANDARD}
                     >
-                        <ImagesDrawer />
+                        <React.Suspense fallback={'Loading Drawer...'}>\
+                            <ImagesDrawer />
+                        </React.Suspense>
                     </Drawer>
                 </div>
             </ErrorBoundary>

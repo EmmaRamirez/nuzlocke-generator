@@ -5,9 +5,9 @@ import { injectGlobal } from 'emotion';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/table/lib/css/table.css';
-import 'tailwindcss/dist/base.min.css';
-import 'tailwindcss/dist/components.min.css';
-import 'tailwindcss/dist/utilities.min.css';
+// import 'tailwindcss/dist/base.min.css';
+// import 'tailwindcss/dist/components.min.css';
+// import 'tailwindcss/dist/utilities.min.css';
 import 'normalize.css/normalize.css';
 
 import { isLocal } from 'utils';
@@ -66,6 +66,17 @@ injectGlobal`
     .opacity-medium {
         oapcity: 0.5;
     }
+
+    .flex { display: flex; }
+    .p-6 { padding: 6rem; }
+    .center-text { text-align: center; }
+    .font-bold { font-weight: bold; }
+    .content-center { align-content: center; }
+    .justify-between { justify-content: space-between; }
+    .m-1 { margin: 0.25rem; }
+    .mb-2 { margin-bottom: 0.5rem; }
+    .cursor-pointer { pointer: cursor; }
+
 `;
 
 
