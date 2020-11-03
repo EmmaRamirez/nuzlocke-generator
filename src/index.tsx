@@ -1,12 +1,6 @@
 import * as React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/es/integration/react';
-const Rollbar = require('rollbar');
 import { injectGlobal } from 'emotion';
 
-import { App } from './components/App';
-import { store, persistor } from './store';
 
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
@@ -15,9 +9,36 @@ import 'tailwindcss/dist/base.min.css';
 import 'tailwindcss/dist/components.min.css';
 import 'tailwindcss/dist/utilities.min.css';
 import 'normalize.css/normalize.css';
-import { DndProvider  } from 'react-dnd';
-import { HTML5Backend  } from 'react-dnd-html5-backend';
+
 import { isLocal } from 'utils';
+import { ErrorBoundary } from 'components';
+
+async function getRollbar() {
+    // @ts-expect-error
+    const {default: Rollbar} = await import('rollbar');
+
+    const rollbarConfig = new Rollbar({
+        accessToken: '357eab6297524e6facb1c48b0403d869',
+        captureUncaught: true,
+        payload: {
+            environment: 'production',
+        },
+        autoInstrument: {
+            network: false,
+            log: false,
+            dom: true,
+            navigation: false,
+            connectivity: true,
+        },
+        maxItems: 20,
+        captureIp: false,
+        enabled: isLocal() ? false : true,
+    });
+
+    Rollbar.init(rollbarConfig as any);
+}
+
+getRollbar().then(res => res);
 
 injectGlobal`
     *,
@@ -47,42 +68,46 @@ injectGlobal`
     }
 `;
 
-const rollbarConfig = new Rollbar({
-    accessToken: '357eab6297524e6facb1c48b0403d869',
-    captureUncaught: true,
-    payload: {
-        context: store,
-        environment: 'production',
-    },
-    autoInstrument: {
-        network: false,
-        log: false,
-        dom: true,
-        navigation: false,
-        connectivity: true,
-    },
-    maxItems: 20,
-    captureIp: false,
-    enabled: isLocal() ? false : true,
-});
-
-Rollbar.init(rollbarConfig as any);
 
 const mountNode = document.getElementById('app');
 
-render(
-    <Provider store={store}>
-        {process.env.NODE_ENV !== 'test' ? (
-            <PersistGate loading={<div>Loading...</div>} onBeforeLift={null} persistor={persistor}>
+async function createRender() {
+    const { render } = await import('react-dom');
+    const { Provider } = await import('react-redux');
+
+    const { DndProvider  } = await import('react-dnd');
+    const { HTML5Backend  } = await import('react-dnd-html5-backend');
+    const { PersistGate } = await import('redux-persist/es/integration/react');
+    const { store, persistor } = await import('./store');
+
+    const App = React.lazy(() =>
+        import('components/App').then((res) => ({ default: res.App })),
+    );
+
+    render(
+        <Provider store={store}>
+            {process.env.NODE_ENV !== 'test' ? (
+                <PersistGate loading={<div>Loading...</div>} onBeforeLift={null} persistor={persistor}>
+                    <DndProvider  backend={HTML5Backend}>
+                        <ErrorBoundary>
+                            <React.Suspense fallback={'Loading App...'}>
+                                <App />
+                            </React.Suspense>
+                        </ErrorBoundary>
+                    </DndProvider>
+                </PersistGate>
+            ) : (
                 <DndProvider  backend={HTML5Backend}>
-                    <App />
+                    <ErrorBoundary>
+                        <React.Suspense fallback={'Loading App...'}>
+                            <App />
+                        </React.Suspense>
+                    </ErrorBoundary>
                 </DndProvider>
-            </PersistGate>
-        ) : (
-            <DndProvider  backend={HTML5Backend}>
-                <App />
-            </DndProvider>
-        )}
-    </Provider>,
-    mountNode,
-);
+            )}
+        </Provider>,
+        mountNode,
+    );
+}
+
+createRender().then(res => res);

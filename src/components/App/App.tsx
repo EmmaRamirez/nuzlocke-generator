@@ -8,14 +8,14 @@ import { Hotkeys } from 'components/Hotkeys';
 import { State } from 'state';
 import { updateEditorHistory } from 'actions';
 import { feature } from 'utils';
-import { isEqual } from 'lodash';
 import { omit } from 'ramda';
 import { History } from 'reducers/editorHistory';
 import { Drawer } from '@blueprintjs/core';
 import { ImagesDrawer } from 'components/Shared/ImagesDrawer';
 import { ErrorBoundary } from 'components';
 import { BugReporter } from 'components/BugReporter';
-import { SuspenseBoundary } from 'components/Shared/SuspenseBoundary';
+const isEqual = require('lodash/isEqual');
+
 
 export interface AppProps {
     style: State['style'];

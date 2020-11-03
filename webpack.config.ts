@@ -6,6 +6,9 @@ const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugi
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 // const WorkboxPlugin = require('workbox-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+
 
 const Dotenv = require('dotenv-webpack');
 
@@ -20,7 +23,7 @@ module.exports = {
     output: {
         publicPath: '/',
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
         chunkFilename: '[name].chunk.js',
     },
     mode: isProduction ? 'production' : 'development',
@@ -45,6 +48,20 @@ module.exports = {
     },
     optimization: {
         minimize: true,
+        minimizer: [
+            new TerserPlugin(),
+            new CssMinimizerPlugin(),
+        ],
+        splitChunks: {
+            chunks: 'all',
+            minSize: 10000,
+            cacheGroups: {
+                // extractPopupStyles: {
+                //     name: 'style',
+                //     chunks: chunk => chunk.name === 'popup',
+                // },
+            },
+        },
     },
     module: {
         rules: [
@@ -105,7 +122,7 @@ module.exports = {
             template: path.resolve(__dirname, 'src/index.html'),
         }),
 
-        new MiniCssExtractPlugin(),
+        new MiniCssExtractPlugin({ filename: '[name].css' }),
 
         new Dotenv({
             systemvars: true,
