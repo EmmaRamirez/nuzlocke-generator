@@ -1,11 +1,11 @@
-const badgeSelect = require('assets/badge-select.png');
-const download = require('assets/download.png');
-const cardsTheme = require('assets/cards-theme.png');
-const spritesMode = require('assets/sprites-mode.png');
-const hexagonTheme = require('assets/hexagons-theme.png');
-const compactTheme = require('assets/compact-theme.png');
-const imageRender = require('assets/image-render.png');
-const checkpointsForPokemon = require('assets/checkpoints-for-pokemon.png');
+const badgeSelect = require('assets/badge-select.png').default;
+const download = require('assets/download.png').default;
+const cardsTheme = require('assets/cards-theme.png').default;
+const spritesMode = require('assets/sprites-mode.png').default;
+const hexagonTheme = require('assets/hexagons-theme.png').default;
+const compactTheme = require('assets/compact-theme.png').default;
+const imageRender = require('assets/image-render.png').default;
+const checkpointsForPokemon = require('assets/checkpoints-for-pokemon.png').default;
 
 export function generateReleaseNotes(version: string) {
     return releaseNotes[version] || '';
@@ -659,6 +659,15 @@ Thank you!
 
 ## Known Issues
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`,
+    '1.4.5': `
+## Fixes
+- Some behind-the-scenes optimizations for file sizes and accessibility
+
+## Known Issues
+- External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
+- The 'Evolve' button is only available for Gen I & II games
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `
 };

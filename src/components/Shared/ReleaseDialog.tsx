@@ -3,7 +3,7 @@ import { Dialog, IDialogProps, Classes, Button } from '@blueprintjs/core';
 import { cx } from 'emotion';
 import * as styles from 'components/Result/styles';
 import { generateReleaseNotes, releaseNotes, Styles, classWithDarkTheme } from 'utils';
-import { pkg } from 'package';
+import { version } from 'package';
 const ReactMarkdown = require('react-markdown');
 import { tail } from 'ramda';
 
@@ -30,7 +30,7 @@ IDialogProps & ReleaseDialogProps,
                 isOpen={this.props.isOpen}
                 onClose={this.props.onClose}
                 icon="document"
-                title={`Release Notes ${pkg.version}`}
+                title={`Release Notes ${version}`}
                 className={`release-dialog ${
                     this.props.style.editorDarkMode ? 'bp3-dark' : 'bp3-light'
                 }`}>
@@ -44,12 +44,12 @@ IDialogProps & ReleaseDialogProps,
                                     this.props.style.editorDarkMode,
                                 ),
                             )}>
-                            {pkg.version}{' '}
-                            <img style={{ display: 'inline' }} alt="Croagunk" src={croagunk} />
+                            {version}{' '}
+                            <img style={{ display: 'inline' }} alt="Croagunk" src={croagunk.default} />
                         </h3>
                         <ReactMarkdown
                             className="release-notes"
-                            source={generateReleaseNotes(pkg.version)}
+                            source={generateReleaseNotes(version)}
                         />
                         <Button
                             onClick={(e) => this.setState({ seePrevious: !this.state.seePrevious })}

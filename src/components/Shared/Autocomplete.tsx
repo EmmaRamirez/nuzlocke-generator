@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { cx } from 'emotion';
-import { debounce } from 'lodash';
 import './Autocomplete.css';
 
 export interface AutocompleteProps {

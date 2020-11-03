@@ -25,9 +25,9 @@ import { BaseEditor } from 'components/BaseEditor';
 import { State } from 'state';
 import { noop } from 'redux-saga/utils';
 import { feature } from 'utils';
-import { isEmpty } from 'lodash';
+const isEmpty = require('lodash/isEmpty');
 
-const trash = require('assets/img/trash.png');
+const trash = require('assets/img/trash.png').default;
 
 export interface DataEditorProps {
     state: State;
