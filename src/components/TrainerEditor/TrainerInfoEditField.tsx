@@ -18,7 +18,7 @@ export function TrainerInfoEditField ({
     name,
     placeholder,
     onEdit,
-    onInput,
+    // onInput,
     value,
     element,
 }: TrainerInfoEditField) {
@@ -43,7 +43,7 @@ export function TrainerInfoEditField ({
     return <div className="trainer-info-field">
         <label>{label}</label>
         {element ? (
-            element({ label, name, placeholder, onEdit, onInput, value: innerValue })
+            element({ label, name, placeholder, onEdit, /*onInput,*/ value: innerValue })
         ) : (
             <input
                 type="text"

@@ -53,9 +53,7 @@ const SpanBlock = ({ text }) => (
 //     mapDispatchToProps,
 // )(TrainerInfoEditField as any);
 
-
-
-
+const trainerInfoEdit = (name, func) => e => func({ [name]: e.target.value });
 
 export function TrainerInfoEditor() {
     const trainer = useSelector<State, State['trainer']>(state => state.trainer);
@@ -63,7 +61,6 @@ export function TrainerInfoEditor() {
 
     return <div className="trainer-info-editor">
         <TrainerInfoEditField
-            onInput={this.onInput}
             onEdit={e => dispatch(editTrainer({ name: e.target.value }))}
             value={trainer.name}
             label="Trainer Name"
@@ -71,32 +68,32 @@ export function TrainerInfoEditor() {
             placeholder="Trainer Name"
         />
         <TrainerInfoEditField
-            onInput={this.onInput}
+            onEdit={e => dispatch(editTrainer({ id: e.target.value }))}
             label="ID"
             name="id"
             placeholder="Trainer ID"
         />
         <TrainerInfoEditField
-            onInput={this.onInput}
+            onEdit={e => dispatch(editTrainer({ time: e.target.value }))}
             label="Time"
             name="time"
             placeholder="0:00"
         />
         <TrainerInfoEditField
-            onInput={this.onInput}
+            onEdit={e => dispatch(editTrainer({ money: e.target.value }))}
             label="Money"
             name="money"
             placeholder="$0"
         />
         <TrainerInfoEditField
-            onInput={this.onInput}
+            onEdit={e => dispatch(editTrainer({ title: e.target.value }))}
             label="Title"
             name="title"
             placeholder=""
         />
         <BadgeInput />
         <TrainerInfoEditField
-            onInput={this.onInput}
+            onEdit={e => dispatch(editTrainer({ image: e.target.value }))}
             label={
                 <Popover
                     minimal={true}
@@ -119,7 +116,7 @@ export function TrainerInfoEditor() {
             placeholder="http://..."
         />
         <TrainerInfoEditField
-            onInput={this.onInput}
+            onEdit={e => dispatch(editTrainer({ notes: e.target.value }))}
             label="Notes"
             name="notes"
             placeholder=""
