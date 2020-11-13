@@ -675,6 +675,8 @@ Thank you!
 - Capped past undoable states to 50 for performance reasons
 - Undo/Redo state is now reset upon importing a new file or likewise similarly destructive action
 - Fixed a bug that broke the MassEditor with Checkpoints
+- Improved performance of TrainerEditor inputs
+- Improved performance of Autocomplete inputs
 
 ## Known Issues
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
