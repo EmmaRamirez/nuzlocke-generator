@@ -77,7 +77,7 @@ export function Autocomplete ({
         } else {
             selectItem(e)(visibleItems[currentIndex + 1]);
         }
-    }
+    };
     const openList = (e) => {
         setIsOpen(true);
     };
@@ -127,6 +127,7 @@ export function Autocomplete ({
             onChange={changeEvent}
             value={innerValue}
             disabled={disabled}
+            data-testid="autocomplete"
         />
         {isOpen ? (
             <ul className="autocomplete-items has-nice-scrollbars">{renderItems(
