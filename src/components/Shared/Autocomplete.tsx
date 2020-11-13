@@ -21,7 +21,7 @@ const renderItems = (visibleItems: string[], selectItem: any, innerValue: string
             key={i}
             role="item"
             onClick={(e) => selectItem(e)(v)}
-            style={v === innerValue ? { color: 'lightblue' } : {}}>
+            className={v === innerValue ? 'autocomplete-selected' : ''}>
             {v}
         </li>
     );

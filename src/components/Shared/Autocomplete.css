@@ -7,13 +7,13 @@
     border-bottom-right-radius: 0.25rem;
     max-height: 200px;
     position: absolute;
-    top: 2rem;
+    top: 2.25rem;
     margin-top: 0;
     padding: 0;
     overflow: auto;
     width: 11.5rem;
     z-index: 11;
-    background: #efefef;
+    background: #ffffff;
     color: #111;
 }
 .autocomplete-items li {
@@ -21,7 +21,10 @@
     padding: 3px;
 }
 .autocomplete-items li:hover {
-    background: rgba(158, 158, 158, 0.267);
+    background: rgba(228, 228, 228, 0.267);
+}
+.autocomplete-selected {
+    color: rgb(37, 37, 223);
 }
 
 @media screen and (max-width: 720px) {
@@ -37,4 +40,8 @@
 
 .pt-dark .autocomplete-items li:hover {
     background: rgba(238,238,238,0.1);
+}
+
+.pt-dark .autocomplete-selected {
+    color: rgb(37, 211, 223);
 }
