@@ -671,6 +671,9 @@ Thank you!
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
     '1.4.7': `
+## Features
+- **TCG images**: huge shoutouts to BlazeVolt for working on this! These images are all sourced from the trading card game.
+
 ## Fixes
 - Capped past undoable states to 50 for performance reasons
 - Undo/Redo state is now reset upon importing a new file or likewise similarly destructive action
