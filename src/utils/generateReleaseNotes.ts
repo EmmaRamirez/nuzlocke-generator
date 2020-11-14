@@ -680,6 +680,7 @@ Thank you!
 - Fixed a bug that broke the MassEditor with Checkpoints
 - Improved performance of TrainerEditor inputs
 - Improved performance of Autocomplete inputs
+- Added file size tag to saves display
 
 ## Known Issues
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
