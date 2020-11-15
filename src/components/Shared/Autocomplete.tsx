@@ -27,6 +27,8 @@ const renderItems = (visibleItems: string[], selectItem: any, innerValue: string
     );
 });
 
+const filter = (items, str) => items.filter(i => i.toLowerCase().startsWith(str.toLowerCase()));
+
 export function Autocomplete ({
     label,
     name,
@@ -48,23 +50,20 @@ export function Autocomplete ({
     );
 
     React.useEffect(() => {
+        console.log(innerValue, isOpen, visibleItems.length);
+
         value && setValue(value);
-        setVisibleItems(items);
+        setVisibleItems(filter(items, value));
         // setIsOpen(false);
     }, [value, items]);
 
     const changeEvent = (e) => {
-        e.persist();
         setValue(e.target.value);
 
         if (e.target.value === '') {
-            setValue(e.target.value);
             setVisibleItems(items);
         } else {
-            setValue(e.target.value);
-            setVisibleItems(items.filter((i) =>
-                i.toLowerCase().startsWith(e.target.value.toLowerCase()),
-            ));
+            setVisibleItems(filter(items, e.target.value));
         }
 
         delayedValue(e);
@@ -89,6 +88,7 @@ export function Autocomplete ({
         setValue(e.target.value);
     };
     const handleKeyDown = (e: React.KeyboardEvent) => {
+        e.persist();
         if (e.which === 13) {
             e.preventDefault();
             if (visibleItems.includes(innerValue)) {
