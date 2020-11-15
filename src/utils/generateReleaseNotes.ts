@@ -669,5 +669,22 @@ Thank you!
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
 - The 'Evolve' button is only available for Gen I & II games
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`,
+    '1.4.7': `
+## Features
+- **TCG images**: huge shoutouts to BlazeVolt for working on this! These images are all sourced from the trading card game.
+
+## Fixes
+- Capped past undoable states to 50 for performance reasons
+- Undo/Redo state is now reset upon importing a new file or likewise similarly destructive action
+- Fixed a bug that broke the MassEditor with Checkpoints
+- Improved performance of TrainerEditor inputs
+- Improved performance of Autocomplete inputs
+- Added file size tag to saves display
+
+## Known Issues
+- External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
+- The 'Evolve' button is only available for Gen I & II games
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `
 };

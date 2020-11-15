@@ -12,7 +12,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 // @TODO: do not this lol
-const isProduction = true;
+const isProduction = (process.env.NODE_ENV || 'development') === 'production';
 
 // console.log(path.resolve(__dirname, 'src/index.tsx'));
 
@@ -46,7 +46,7 @@ module.exports = {
         warnings: false,
     },
     optimization: {
-        minimize: true,
+        minimize: isProduction,
         minimizer: [
             new TerserPlugin(),
             new CssMinimizerPlugin(),

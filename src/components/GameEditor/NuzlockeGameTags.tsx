@@ -11,6 +11,8 @@ export interface NuzlockeGameTagsProps {
     data: State;
     color: string;
     isCopy: boolean;
+    /* size in kilobytes */
+    size: string;
 }
 
 export function NuzlockeGameTags({
@@ -20,6 +22,7 @@ export function NuzlockeGameTags({
     data,
     color,
     isCopy,
+    size,
 }: NuzlockeGameTagsProps) {
     return (
         <>
@@ -72,6 +75,17 @@ export function NuzlockeGameTags({
                                 color: darkMode ? '#fff' : '#000',
                             }}>
                             Copy
+                        </Tag>
+                    )}
+                    {size && (
+                        <Tag
+                            round
+                            style={{
+                                margin: '0 2px',
+                                background: 'rgba(0,0,0,0.1)',
+                                color: darkMode ? '#fff' : '#000',
+                            }}>
+                            {size}KB
                         </Tag>
                     )}
                 </div>

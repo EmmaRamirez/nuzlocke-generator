@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import './app.css';
 import { State } from 'state';
 import { updateEditorHistory } from 'actions';
 import { feature } from 'utils';
-import { omit } from 'ramda';
 import { History } from 'reducers/editorHistory';
 import { ErrorBoundary } from 'components';
 import { Drawer } from '@blueprintjs/core';
+import { updaterSelector, appSelector } from 'selectors';
 
 const isEqual = require('lodash/isEqual');
 
+import './app.css';
 
 export interface AppProps {
     style: State['style'];
@@ -75,10 +75,7 @@ export class UpdaterBase extends React.Component<{
 }
 
 export const Updater = connect(
-    (state: State) => ({
-        present: omit(['editorHistory'], state),
-        lrt: state?.editorHistory?.lastRevisionType,
-    }),
+    updaterSelector,
     { updateEditorHistory },
     null,
     { pure: false },
@@ -151,8 +148,5 @@ export class AppBase extends React.PureComponent<AppProps, {result2?: boolean}> 
 }
 
 export const App = connect(
-    (state: Pick<State, keyof State>) => ({
-        style: state.style,
-        view: state.view,
-    })
+    appSelector
 )(AppBase);

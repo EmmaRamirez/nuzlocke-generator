@@ -132,6 +132,7 @@ NuzlockeSaveControlsState
                                 data={parsedData}
                                 isCurrent={isCurrent}
                                 isCopy={isCopy}
+                                size={((data.length * 2) / 1024).toFixed(2)}
                             />
                             <DeleteAlert
                                 onConfirm={this.state.deletionFunction}

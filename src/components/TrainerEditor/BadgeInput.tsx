@@ -111,7 +111,6 @@ export function BadgeInput ({
                 name="badges"
                 placeholder="..."
                 value={''}
-                onChange={null}
                 element={(inputProps) => (
                     <div>
                         <CheckpointsInputList
