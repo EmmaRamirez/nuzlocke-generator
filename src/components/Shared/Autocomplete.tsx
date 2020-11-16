@@ -52,7 +52,7 @@ export function Autocomplete ({
     React.useEffect(() => {
         console.log(innerValue, isOpen, visibleItems.length);
 
-        value && setValue(value);
+        setValue(value);
         setVisibleItems(filter(items, value));
         // setIsOpen(false);
     }, [value, items]);
