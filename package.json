@@ -1,6 +1,6 @@
 {
   "name": "nuzlocke-generator",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "description": "A tool for generating nuzlocke team pics from data",
   "main": "dist/bundle.js",
   "scripts": {
@@ -15,7 +15,6 @@
     "lint": "eslint src/**/*.{ts,tsx} --fix",
     "prebuild": "rm -rf ./dist",
     "precommit": "npm run lint",
-    "prepush": "npm run build:production && git add . && git commit --no-verify -m 'chore: update build'",
     "pretest": "npm run lint",
     "serve:heroku": "npm run build:production && heroku local web",
     "serve:http": "npx http-server@0.12.0 --cors ./dist",
