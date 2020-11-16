@@ -58,6 +58,8 @@ export function Autocomplete ({
     }, [value, items]);
 
     const changeEvent = (e) => {
+        console.log(e, e.target.value);
+        
         setValue(e.target.value);
 
         if (e.target.value === '') {
@@ -66,7 +68,7 @@ export function Autocomplete ({
             setVisibleItems(filter(items, e.target.value));
         }
 
-        delayedValue(e);
+        delayedValue({ target: { value: innerValue }});
     };
 
     const handleMovement = (e) => {
@@ -94,9 +96,9 @@ export function Autocomplete ({
             if (visibleItems.includes(innerValue)) {
                 closeList(e);
             } else {
-                selectItem(e)(visibleItems[0]);
+                //selectItem(e)(visibleItems[0]);
             }
-            onChange(e);
+            changeEvent({ ...e, target: { value: innerValue }});
         }
         if (e.which === 8) {
             setVisibleItems(items);
