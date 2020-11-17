@@ -60,7 +60,7 @@ export function Autocomplete ({
     const changeEvent = (e) => {
         console.log(e, e.target.value);
         
-        setValue(e.target.value);
+        //setValue(e.target.value);
 
         if (e.target.value === '') {
             setVisibleItems(items);
