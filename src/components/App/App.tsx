@@ -1,21 +1,22 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import './app.css';
 import { State } from 'state';
 import { updateEditorHistory } from 'actions';
 import { feature } from 'utils';
-import { omit } from 'ramda';
 import { History } from 'reducers/editorHistory';
 import { ErrorBoundary } from 'components';
 import { Drawer } from '@blueprintjs/core';
+import { updaterSelector, appSelector } from 'selectors';
 
 const isEqual = require('lodash/isEqual');
 
+import './app.css';
 
 export interface AppProps {
     style: State['style'];
     view: State['view'];
+    editor: State['editor'];
 }
 
 function Loading() {
@@ -75,16 +76,13 @@ export class UpdaterBase extends React.Component<{
 }
 
 export const Updater = connect(
-    (state: State) => ({
-        present: omit(['editorHistory'], state),
-        lrt: state?.editorHistory?.lastRevisionType,
-    }),
+    updaterSelector,
     { updateEditorHistory },
     null,
     { pure: false },
 )(UpdaterBase);
 
-export class AppBase extends React.PureComponent<AppProps, {result2?: boolean}> {
+export class AppBase extends React.Component<AppProps, {result2?: boolean}> {
     public constructor(props: AppProps) {
         super(props);
         this.state = {result2: false};
@@ -102,8 +100,12 @@ export class AppBase extends React.PureComponent<AppProps, {result2?: boolean}> 
     }
 
     public render() {
-        const {style, view} = this.props;
+        const {style, view, editor} = this.props;
         console.log('features', feature);
+
+        const UpdaterComponent = !editor.editorHistoryDisabled && <Updater />;
+
+        console.log(!editor.editorHistoryDisabled, editor.editorHistoryDisabled, UpdaterComponent);
 
         return (
             <ErrorBoundary errorMessage={<div className='p-6 center-text'>
@@ -120,7 +122,7 @@ export class AppBase extends React.PureComponent<AppProps, {result2?: boolean}> 
                     style={{
                         background: this.props.style.editorDarkMode ? '#111' : '#fff',
                     }}>
-                    <Updater />
+                    {UpdaterComponent}
                     <ErrorBoundary>
                         <React.Suspense fallback={'Loading Hotkeys...'}>
                             <Hotkeys />
@@ -151,8 +153,5 @@ export class AppBase extends React.PureComponent<AppProps, {result2?: boolean}> 
 }
 
 export const App = connect(
-    (state: Pick<State, keyof State>) => ({
-        style: state.style,
-        view: state.view,
-    })
+    appSelector
 )(AppBase);
