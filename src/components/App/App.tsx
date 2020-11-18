@@ -16,6 +16,7 @@ import './app.css';
 export interface AppProps {
     style: State['style'];
     view: State['view'];
+    editor: State['editor'];
 }
 
 function Loading() {
@@ -81,7 +82,7 @@ export const Updater = connect(
     { pure: false },
 )(UpdaterBase);
 
-export class AppBase extends React.PureComponent<AppProps, {result2?: boolean}> {
+export class AppBase extends React.Component<AppProps, {result2?: boolean}> {
     public constructor(props: AppProps) {
         super(props);
         this.state = {result2: false};
@@ -99,8 +100,12 @@ export class AppBase extends React.PureComponent<AppProps, {result2?: boolean}> 
     }
 
     public render() {
-        const {style, view} = this.props;
+        const {style, view, editor} = this.props;
         console.log('features', feature);
+
+        const UpdaterComponent = !editor.editorHistoryDisabled && <Updater />;
+
+        console.log(!editor.editorHistoryDisabled, editor.editorHistoryDisabled, UpdaterComponent);
 
         return (
             <ErrorBoundary errorMessage={<div className='p-6 center-text'>
@@ -117,7 +122,7 @@ export class AppBase extends React.PureComponent<AppProps, {result2?: boolean}> 
                     style={{
                         background: this.props.style.editorDarkMode ? '#111' : '#fff',
                     }}>
-                    <Updater />
+                    {UpdaterComponent}
                     <ErrorBoundary>
                         <React.Suspense fallback={'Loading Hotkeys...'}>
                             <Hotkeys />

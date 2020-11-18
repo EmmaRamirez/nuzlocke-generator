@@ -690,6 +690,9 @@ Thank you!
 - Improved performance of TrainerEditor inputs
 - Improved performance of Autocomplete inputs
 - Added file size tag to saves display
+- Fixed a bug whereby file sizes would become excessively bloated
+- Added an option to disable editor history in order to improve performance
+    - Hopefully this option will be temporary in the long-term
 
 ## Known Issues
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this

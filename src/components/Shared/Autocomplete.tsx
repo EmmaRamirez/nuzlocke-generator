@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { cx } from 'emotion';
 import './Autocomplete.css';
+import { useDebounceCallback } from '@react-hook/debounce';
 const debounce = require('lodash.debounce');
 
 
@@ -44,9 +45,8 @@ export function Autocomplete ({
     const [isOpen, setIsOpen] = React.useState(false);
     const [visibleItems, setVisibleItems] = React.useState<string[]>([]);
 
-    const delayedValue = React.useCallback(
-        debounce((e) => onChange(e), 300),
-        [value]
+    const delayedValue = useDebounceCallback(
+        (e) => onChange(e), 300,
     );
 
     React.useEffect(() => {
@@ -58,9 +58,10 @@ export function Autocomplete ({
     }, [value, items]);
 
     const changeEvent = (e) => {
+        e?.persist();
         console.log(e, e.target.value);
         
-        //setValue(e.target.value);
+        setValue(e.target.value);
 
         if (e.target.value === '') {
             setVisibleItems(items);
@@ -68,7 +69,7 @@ export function Autocomplete ({
             setVisibleItems(filter(items, e.target.value));
         }
 
-        delayedValue({ target: { value: innerValue }});
+        delayedValue({ target: { value: e.target.value }});
     };
 
     const handleMovement = (e) => {

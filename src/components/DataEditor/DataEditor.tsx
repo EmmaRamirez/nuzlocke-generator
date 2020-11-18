@@ -13,12 +13,15 @@ import {
     Classes,
     Checkbox,
     IAlertProps,
+    Icon,
+    Popover,
+    PopoverInteractionKind,
 } from '@blueprintjs/core';
 import { PokemonIconBase } from 'components/PokemonIcon';
 import { ErrorBoundary } from 'components/Shared';
 const uuid = require('uuid');
 import { persistor } from 'store';
-import { newNuzlocke, replaceState } from 'actions';
+import { newNuzlocke, replaceState, setEditorHistoryDisabled } from 'actions';
 import { Game, Pokemon } from 'models';
 import { omit } from 'ramda';
 import { BaseEditor } from 'components/BaseEditor';
@@ -33,6 +36,7 @@ export interface DataEditorProps {
     state: State;
     replaceState: replaceState;
     newNuzlocke: newNuzlocke;
+    setEditorHistoryDisabled: setEditorHistoryDisabled;
 }
 
 export interface DataEditorState {
@@ -546,6 +550,11 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         Clear All Data
                     </Button>
                 </ButtonGroup>
+                <Checkbox
+                    checked={this.props.state.editor.editorHistoryDisabled}
+                    onChange={e => this.props.setEditorHistoryDisabled(e.currentTarget.checked)}
+                    labelElement={<>Disable Editor History <Popover content='Can be used to achieve better editor performance on large' interactionKind={PopoverInteractionKind.HOVER}><Icon icon='info-sign' /></Popover></>}
+                />
             </BaseEditor>
         );
     }
@@ -554,4 +563,5 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
 export const DataEditor = connect((state: State) => ({ state: state }), {
     replaceState,
     newNuzlocke,
+    setEditorHistoryDisabled,
 })(DataEditorBase as any);

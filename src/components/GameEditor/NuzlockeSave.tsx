@@ -252,7 +252,7 @@ NuzlockeSaveControlsState
 export const NuzlockeSave = connect(
     (state: State) => ({
         nuzlockes: state.nuzlockes,
-        state: JSON.stringify(omit(['nuzlockes'], state)),
+        state: JSON.stringify(omit(['nuzlockes', 'editorHistory'], state)),
         darkMode: state.style.editorDarkMode,
     }),
     {

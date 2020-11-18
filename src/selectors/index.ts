@@ -13,6 +13,7 @@ export const updaterSelector = (state: State) => ({
 export const appSelector = (state: State) => ({
     style: state.style,
     view: state.view,
+    editor: state.editor,
 });
 
 export const resultSelector = (state: Partial<State>) => ({
