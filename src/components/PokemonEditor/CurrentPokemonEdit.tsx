@@ -41,9 +41,8 @@ import { CurrentPokemonLayoutItem } from './CurrentPokemonLayoutItem';
 import { MoveEditor } from 'components/MoveEditor';
 import { CheckpointsInputList } from 'components/TrainerEditor';
 import { gameNameSelector } from 'selectors';
-import { selectedId } from 'reducers/selectedId';
 
-const pokeball = require('assets/pokeball.png');
+const pokeball = require('assets/pokeball.png').default;
 
 export interface CopyPokemonButtonProps {
     onClick: (event: React.MouseEvent<HTMLElement>) => void;

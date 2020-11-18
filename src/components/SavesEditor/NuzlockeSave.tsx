@@ -150,6 +150,7 @@ NuzlockeSaveControlsState
                                 data={parsedData}
                                 isCurrent={isCurrent}
                                 isCopy={isCopy}
+                                size={((data.length * 2) / 1024).toFixed(2)}
                             />
                             <DeleteAlert
                                 onConfirm={this.state.deletionFunction}
@@ -258,7 +259,7 @@ NuzlockeSaveControlsState
 export const NuzlockeSave = connect(
     (state: State) => ({
         nuzlockes: state.nuzlockes,
-        state: JSON.stringify(omit(['nuzlockes'], state)),
+        state: JSON.stringify(omit(['nuzlockes', 'editorHistory'], state)),
         darkMode: state.style.editorDarkMode,
     }),
     {

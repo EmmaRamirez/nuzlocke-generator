@@ -498,6 +498,7 @@ export const matchSpeciesToTypes = (
         case 'Grovyle':
         case 'Sceptile':
         case 'Bellossom':
+        case 'Snivy':
         case 'Servine':
         case 'Serperior':
         case 'Cherubi':

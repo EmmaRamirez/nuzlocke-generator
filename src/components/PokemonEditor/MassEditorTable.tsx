@@ -12,7 +12,7 @@ export interface MassEditorTableProps {
     editPokemon: editPokemonType;
 }
 
-const determineCell = (key: string, value: any, id, editPokemon) => {
+const determineCell = (key: keyof Pokemon, value: any, id, editPokemon) => {
     if (key === 'extraData') {
         return (
             <Cell>
@@ -22,6 +22,9 @@ const determineCell = (key: string, value: any, id, editPokemon) => {
     }
     if (key === 'id') {
         return <Cell>{id}</Cell>;
+    }
+    if (key === 'checkpoints') {
+        return <Cell><JSONFormat>{value}</JSONFormat></Cell>;
     }
     return (
         <EditableCell
@@ -37,18 +40,18 @@ const determineCell = (key: string, value: any, id, editPokemon) => {
     );
 };
 
-const cellRenderer: (pokemon: Pokemon[], key: string, editPokemon) => ICellRenderer = (
+const cellRenderer: (pokemon: Pokemon[], key: keyof Pokemon, editPokemon) => ICellRenderer = (
     pokemon: Pokemon[],
     key: string,
     editPokemon,
 ) => (rowIndex: number) => {
-    return determineCell(key, pokemon[rowIndex][key], pokemon[rowIndex].id, editPokemon);
+    return determineCell(key as keyof Pokemon, pokemon[rowIndex][key], pokemon[rowIndex].id, editPokemon);
 };
 
 export function renderColumns(pokemon, editPokemon) {
     return Object.keys(PokemonKeys).map((key) => {
         return (
-            <Column key={key} name={key} cellRenderer={cellRenderer(pokemon, key, editPokemon)} />
+            <Column key={key} name={key} cellRenderer={cellRenderer(pokemon, key as keyof Pokemon, editPokemon)} />
         );
     });
 }

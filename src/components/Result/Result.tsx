@@ -25,8 +25,8 @@ import 'assets/pokemon-font.css';
 import { State } from 'state';
 import isMobile from 'is-mobile';
 import { Button, Classes } from '@blueprintjs/core';
-import { editor } from 'reducers/editor';
-import { max, clamp } from 'ramda';
+import { clamp } from 'ramda';
+import { resultSelector } from 'selectors';
 
 async function load() {
     const resource = await import('@emmaramirez/dom-to-image');
@@ -509,18 +509,10 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     }
 }
 
-export const Result = connect<Partial<typeof reducers>, any, any>(
-    (state: Partial<typeof reducers>) => ({
-        pokemon: state.pokemon,
-        game: state.game,
-        trainer: state.trainer,
-        style: state.style,
-        box: state.box,
-        rules: state.rules,
-        editor: state.editor,
-    }),
+export const Result = connect(
+    resultSelector,
     {
         selectPokemon,
         toggleMobileResultView,
     },
-)(ResultBase);
+)(ResultBase as any);

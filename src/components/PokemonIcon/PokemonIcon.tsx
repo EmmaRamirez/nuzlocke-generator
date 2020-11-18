@@ -115,7 +115,7 @@ export function PokemonIconPlain({
 }: PokemonIconProps & { imageStyle: any }) {
     return (
         <div
-            role="icon"
+            role="presentation"
             onClick={(e) => {
                 e.preventDefault();
                 onClick && onClick();

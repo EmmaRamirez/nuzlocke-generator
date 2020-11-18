@@ -18,11 +18,11 @@ cache:
 
 script:
     #   ## print all Travis environment variables for debugging
-    - npm run start:ci &
-    - npm run cy:run
-    # after all tests finish running we need
-    # to kill all background jobs (like "npm start &")
-    - kill $(jobs -p) || true
+    # - npm run start:ci &
+    # - npm run cy:run
+    # # after all tests finish running we need
+    # # to kill all background jobs (like "npm start &")
+    # - kill $(jobs -p) || true
     - npm test
 
 after_success:

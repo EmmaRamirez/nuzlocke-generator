@@ -10,13 +10,12 @@ import {
     toggleTemtemMode,
     toggleMobileResultView,
 } from 'actions';
-import { pkg } from 'package';
-import { cx } from 'emotion';
+import { version } from 'package';
+import { cx, css } from 'emotion';
 import { Pokemon, Editor } from 'models';
 import { ReleaseDialog } from 'components/Shared';
 import { State } from 'state';
 import { isMobile } from 'is-mobile';
-import { ZoomLevel } from 'components/StyleEditor/ZoomLevel';
 
 export interface TopBarProps {
     onClickDownload: (e?: React.MouseEvent<HTMLElement>) => void;
@@ -45,19 +44,19 @@ const darkModeStyle = (mode: boolean) => (mode ? { color: '#fff' } : {});
 
 export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
     public state = {
-        isOpen: !this.props.sawRelease[pkg.version],
+        isOpen: !this.props.sawRelease[version],
         isMenuOpen: false,
     };
 
     // eslint-disable-next-line camelcase
     public UNSAFE_componentWillMount() {
-        if (pkg.version.split('.')[2] !== 0 && !this.props.sawRelease?.[pkg.version]) {
-            this.props.seeRelease(pkg.version);
+        if (version.split('.')[2] !== 0) {
+            this.props.seeRelease(version);
         }
     }
 
-    private closeDialog = () => {
-        this.props.seeRelease(pkg.version);
+    private closeDialog = (e) => {
+        this.props.seeRelease(version);
         this.toggleDialog();
     };
 
@@ -172,7 +171,7 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                             onClick={this.toggleDialog}
                             className={Classes.MINIMAL}
                             icon="star">
-                            {pkg.version}
+                            {version}
                         </Button>
                     </>
                 )}
