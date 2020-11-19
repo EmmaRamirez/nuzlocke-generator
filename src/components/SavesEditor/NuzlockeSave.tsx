@@ -95,7 +95,7 @@ NuzlockeSaveControlsState
                 <Button
                     intent={Intent.SUCCESS}
                     icon="add"
-                    className={'mb-1'}
+                    style={{marginBottom: '0.25rem'}}
                     onClick={() => {
                         updateNuzlocke(currentId, state);
                         const data = createStore(appReducers)?.getState();
