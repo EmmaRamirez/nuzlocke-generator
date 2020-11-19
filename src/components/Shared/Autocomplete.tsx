@@ -16,19 +16,19 @@ export interface AutocompleteProps {
     className?: string;
 }
 
-const renderItems = (visibleItems: string[], selectItem: any, innerValue: string) => visibleItems.map((v, i) => {
+const renderItems = (visibleItems: string[], selectItem: any, innerValue: string, selectedValue: string) => visibleItems.map((v, i) => {
     return (
         <li
             key={i}
             role="item"
             onClick={(e) => selectItem(e)(v)}
-            className={v === innerValue ? 'autocomplete-selected' : ''}>
+            className={v === selectedValue ? 'autocomplete-selected' : ''}>
             {v}
         </li>
     );
 });
 
-const filter = (items, str) => items.filter(i => i.toLowerCase().startsWith(str.toLowerCase()));
+const filter = (items, str) => items.filter(i => i?.toLowerCase().startsWith(str.toLowerCase()));
 
 export function Autocomplete ({
     label,
@@ -42,6 +42,7 @@ export function Autocomplete ({
     value,
 }: AutocompleteProps) {
     const [innerValue, setValue] = React.useState('');
+    const [selectedValue, setSelectedValue] = React.useState('');
     const [isOpen, setIsOpen] = React.useState(false);
     const [visibleItems, setVisibleItems] = React.useState<string[]>([]);
 
@@ -57,27 +58,22 @@ export function Autocomplete ({
         // setIsOpen(false);
     }, [value, items]);
 
-    const changeEvent = (e) => {
-        e?.persist();
+    const changeEvent = (innerEvent: boolean = true) => (e) => {
+        innerEvent && e.persist();
         console.log(e, e.target.value);
         
         setValue(e.target.value);
-
-        if (e.target.value === '') {
-            setVisibleItems(items);
-        } else {
-            setVisibleItems(filter(items, e.target.value));
-        }
-
+        setVisibleItems(filter(items, e.target.value));
+        
         delayedValue({ target: { value: e.target.value }});
     };
 
     const handleMovement = (e) => {
-        const currentIndex = visibleItems?.indexOf(innerValue);
+        const currentIndex = visibleItems?.indexOf(selectedValue);
         if (e.which === 38) {
-            selectItem(e)(visibleItems[currentIndex - 1]);
+            setSelectedValue(visibleItems[currentIndex - 1]);
         } else {
-            selectItem(e)(visibleItems[currentIndex + 1]);
+            setSelectedValue(visibleItems[currentIndex + 1]);
         }
     };
     const openList = (e) => {
@@ -90,30 +86,37 @@ export function Autocomplete ({
         }, 250);
         setValue(e.target.value);
     };
-    const handleKeyDown = (e: React.KeyboardEvent) => {
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         e.persist();
-        if (e.which === 13) {
-            e.preventDefault();
-            if (visibleItems.includes(innerValue)) {
+        setVisibleItems(filter(items, e.currentTarget.value));
+
+        switch (e.which) {
+            case 13:
+                e.preventDefault();
+                if (selectedValue) {
+                    setValue(selectedValue);
+                }
                 closeList(e);
-            } else {
-                //selectItem(e)(visibleItems[0]);
-            }
-            changeEvent({ ...e, target: { value: innerValue }});
-        }
-        if (e.which === 8) {
-            setVisibleItems(items);
-        }
-        if (e.which === 27 || e.which === 13 || e.which === 9) {
-            closeList(e);
-        }
-        if (e.which === 38 || e.which === 40) {
-            handleMovement(e);
-            setIsOpen(true);
+                changeEvent(false)({ ...e, target: { value: selectedValue !== '' ? selectedValue : innerValue }});
+                break;
+            case 8:
+                break;
+            case 27:
+            case 9:
+                closeList(e);
+                break;
+            case 38:
+            case 40:
+                handleMovement(e);
+                setIsOpen(true);
+                break;
+            default:
+                setSelectedValue('');
+                break;
         }
     };
     const selectItem = (e) => (value) => {
-        changeEvent({ ...e, target:{value}});
+        changeEvent(false)({ ...e, target:{value}});
     };
 
     return <div className={cx('current-pokemon-input-wrapper', 'autocomplete')}>
@@ -127,7 +130,7 @@ export function Autocomplete ({
             placeholder={placeholder}
             name={name}
             type="text"
-            onChange={changeEvent}
+            onChange={changeEvent()}
             value={innerValue}
             disabled={disabled}
             data-testid="autocomplete"
@@ -137,6 +140,7 @@ export function Autocomplete ({
                 visibleItems,
                 selectItem,
                 innerValue,
+                selectedValue,
             )}</ul>
         ) : null}
     </div>;
