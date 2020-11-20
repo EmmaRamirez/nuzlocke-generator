@@ -92,12 +92,6 @@ const getEvos = (species): string[] | undefined => {
 
 export function EvolutionSelection({ currentPokemon, onEvolve }) {
     const evos = getEvos(currentPokemon?.species);
-    const gameName = useSelector(gameNameSelector);
-
-    const supportedGames: Game[] = ['Red', 'Blue', 'Green', 'Yellow', 'Gold', 'Silver', 'Crystal'];
-    if (!supportedGames.includes(gameName)) {
-        return null;
-    }
 
     if (!evos?.length) {
         return null;
