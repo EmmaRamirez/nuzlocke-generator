@@ -171,15 +171,124 @@ export const EvolutionTree: EvolutionTree = {
     Pupitar: ['Tyranitar'],
     Gligar: ['Gliscor'],
 
+    Treecko: ['Grovyle'],
+    Grovyle: ['Sceptile'],
+
+    Torchic: ['Combusken'],
+    Combusken: ['Blaziken'],
+
+    Mudkip: ['Marshtomp'],
+    Marshtomp: ['Swampert'],
+
+    Poochyena: ['Mightyena'],
+    Zigzagoon: ['Linoone'],
+    Linoone: ['Obstagoon'],
+
+    Wurmple: ['Silcoon', 'Cascoon'],
+    Silcoon: ['Beautifly'],
+    Cascoon: ['Dustox'],
+
+    Lotad: ['Lombre'],
+    Lombre: ['Ludicolo'],
+
+    Seedot: ['Nuzleaf'],
+    Nuzleaf: ['Shiftry'],
+
+    Taillow: ['Swellow'],
+    Wingull: ['Pelipper'],
+
+    Ralts: ['Kirlia'],
+    Kirlia: ['Gardevoir', 'Gallade'],
+
+    Surskit: ['Masquerain'],
+    Shroomish: ['Breloom'],
+    Slakoth: ['Vigoroth'],
+    Vigoroth: ['Slaking'],
+
+    Nincada: ['Shedinja', 'Ninjask'],
+    Whismur: ['Loudred'],
+    Loudred:  ['Exploud'],
+
+    Makuhita: ['Hariyama'],
+    Nosepass: ['Probopass'],
+    Skitty: ['Delcatty'],
+    Aron: ['Lairon'],
+    Lairon: ['Aggron'],
+    Meditite: ['Medicham'],
+    Electrike: ['Manectric'],
+    Gulpin: ['Swalot'],
+    Carvanha: ['Sharpedo'],
+    Wailmer: ['Wailord'],
+    Numel: ['Camerupt'],
+    Spoink: ['Grumpig'],
+    Trapinch: ['Vibrava'],
+    Vibrava: ['Flygon'],
+    Cacnea: ['Cacturne'],
+    Swablu: ['Altaria'],
+    Barboach: ['Whiscash'],
+    Corphish: ['Crawdaunt'],
+    Baltoy: ['Claydol'],
+    Lileep: ['Cradily'],
+    Anorith: ['Armaldo'],
+    Feebas: ['Milotic'],
+    Shuppet: ['Banette'],
+    Duskull: ['Dusclops'],
+    Dusclops: ['Dusknoir'],
+    Snorunt: ['Glalie', 'Froslass'],
+    Spheal: ['Sealeo'],
+    Sealeo: ['Walrein'],
+    Clamperl: ['Huntail', 'Gorebyss'],
+    Bagon: ['Shelgon'],
+    Shelgon: ['Salamence'],
+    Beldum: ['Metang'],
+    Metang: ['Metagross'],
 
     Turtwig: ['Grotle'],
     Grotle: ['Torterra'],
 
+    Chimchar: ['Monferno'],
+    Monferno: ['Infernape'],
 
+    Piplup: ['Prinplup'],
+    Prinplup: ['Empoleon'],
+
+    Starly: ['Staravia'],
+    Staravia: ['Staraptor'],
+
+    Bidoof: ['Bibarel'],
+    Kricketot: ['Kricketune'],
+    Shinx: ['Luxio'],
+    Luxio: ['Luxray'],
+
+    Cranidos: ['Rampardos'],
     Shieldon: ['Bastiodon'],
     Budew: ['Roselia'],
     Roselia: ['Roserade'],
     Burmy: ['Wormadam', 'Mothim'],
+
+    Combee: ['Vespiquen'],
+    Buizel: ['Floatzel'],
+    Cherubi: ['Cherrim'],
+    Shellos: ['Gastrodon'],
+    Drifloon: ['Drifblim'],
+
+    Buneary: ['Lopunny'],
+    Glameow: ['Purugly'],
+    Stunky: ['Skuntank'],
+
+    Bronzor: ['Bronzong'],
+    Gible: ['Gabite'],
+    Gabite: ['Garchomp'],
+
+    Riolu: ['Lucario'],
+
+    Hippopotas: ['Hippowdon'],
+    Skorupi: ['Drapion'],
+
+    Croagunk: ['Toxicroak'],
+    Finneon: ['Lumineon'],
+    Snover: ['Abomasnow'],
+
 };
 
 const cycleThrough = (species: Species) => {
