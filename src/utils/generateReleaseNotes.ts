@@ -730,7 +730,7 @@ Thank you!
 
 ## Fixes
 - **Drag and drop now reorder positions**
-- Fixed Hatterene & Duraludon's name being misspelt
+- Fixed Hatterene & Duraludon's names being misspelt
 - Fixed the icon for Type: Null not showing up
 - Added all remaining standard images
 `,
