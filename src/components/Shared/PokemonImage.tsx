@@ -57,6 +57,7 @@ export function PokemonImage({
         name,
         editor,
         gender,
+        url,
     ]);
 
     return children?.(image) || <img src={image} />;

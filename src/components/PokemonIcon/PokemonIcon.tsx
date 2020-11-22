@@ -2,22 +2,22 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import {
     getIconFormeSuffix,
-    getForme as getFormeSWSH,
-    listOfPokemon,
     Forme,
-    speciesToNumber,
     Species,
     significantGenderDifferenceList,
+    handleMovesGenerationsExceptions,
 } from 'utils';
 import { Gender, GenderElementProps } from 'components/Shared';
-import { selectPokemon, SELECT_POKEMON } from 'actions';
+import { editPokemon, selectPokemon, SELECT_POKEMON } from 'actions';
 import { store } from 'store';
-import { DragSource, ConnectDragSource } from 'react-dnd';
+import { DragSource, ConnectDragSource, ConnectDropTarget, DropTarget } from 'react-dnd';
 import { Pokemon } from 'models';
 import { Dispatch } from 'redux';
 import { State } from 'state';
 import { Omit } from 'ramda';
 import { Action } from 'actions';
+import { normalizeSpeciesName } from 'utils/normalizeSpeciesName';
+import { PokemonImage } from 'components/Shared/PokemonImage';
 
 interface PokemonIconProps {
     /** The id of the Pokemon, used for selection **/
@@ -31,48 +31,75 @@ interface PokemonIconProps {
     customIcon?: Pokemon['customIcon'];
     hidden?: Pokemon['hidden'];
     egg?: Pokemon['egg'];
+    position?: Pokemon['position'];
     onClick: () => void;
     selectedId: string | null;
     /** Renders its shiny version if true **/
     shiny?: Pokemon['shiny'];
+    status?: Pokemon['status'];
     className?: string;
     style?: React.CSSProperties;
     styles?: State['style'];
     includeTitle?: boolean;
 
     connectDragSource?: ConnectDragSource;
+    connectDropTarget?: ConnectDropTarget;
+    canDrop?: boolean;
     isDragging?: boolean;
 }
 
-export const formatSpeciesName = (species: Species) => {
-    if (species == null) return 'unknown';
-    if (species === 'Nidoran♀') return 'nidoran-f';
-    if (species === 'Nidoran♂') return 'nidoran-m';
-    if (species === 'Mr. Mime') return 'mr-mime';
-    if (species === 'Mr. Rime') return 'mr-rime';
-    if (species.startsWith('Farfetch')) return 'farfetchd';
-    if (species.startsWith('Sirfetch')) return 'sirfetchd';
-    if (species === 'Mime Jr.') return 'mime-jr';
-    if (species === 'Flabébé') return 'flabebe';
-    if (species.startsWith('Tapu')) return species.toLowerCase().replace(/\s/, '-');
-    if (listOfPokemon.indexOf(species) < 0) return 'unknown';
-    return species.toLowerCase();
-};
+const iconSourceDrop = {
+    drop(props, monitor, component) {
+        const newPosition = props.position;
+        const newId = props.id;
+        const newStatus = props.status;
+        const item = monitor.getItem();
+        const oldId = item.id;
+        const oldPosition = item.position;
+        const oldStatus = item.status;
+        console.log(component, `
+            new: ${newPosition}, ${newId}
+            old: ${oldPosition}, ${oldId}
+        `);
+        store.dispatch(editPokemon(
+            {
+                position: oldPosition,
+                status: oldStatus,
+            },
+            newId,
+        ));
+        store.dispatch(editPokemon(
+            {
+                position: newPosition,
+                status: newStatus,
+            },
+            oldId
+        ))
+        //store.dispatch(editPokemon({ position: newPosition }, id));
+        return {};
+    },
 
-const getForme = (forme: Forme) => {
-    return '';
-};
+    hover(props, monitor) {
+        return {
+            isHovering: monitor.isOver({ shallow: true })
+        }
+    }
+}
 
 const iconSource = {
     beginDrag(props: PokemonIconProps) {
         store.dispatch(selectPokemon(props.id!));
         return {
             id: props.id,
+            position: props.position,
+            status: props.status,
         };
     },
     isDragging(props: PokemonIconProps) {
         return {
             id: props.id,
+            position: props.position,
+            status: props.status,
         };
     },
 };
@@ -91,15 +118,15 @@ export const getIconURL = ({ id, species, forme, shiny, gender, customIcon, egg 
             : '';
 
     if (species === 'Egg' || egg) return `${baseURL}egg.png`;
-    if (customIcon) return customIcon;
 
-    return `${baseURL}${isShiny}/${isFemaleSpecific}${formatSpeciesName(
+    return `${baseURL}${isShiny}/${isFemaleSpecific}${normalizeSpeciesName(
         species as Species,
     )}${getIconFormeSuffix(forme as keyof typeof Forme)}.png`;
 };
 
 export function PokemonIconPlain({
     isDragging,
+    canDrop,
     id,
     gender,
     species,
@@ -125,8 +152,16 @@ export function PokemonIconPlain({
             style={style}
             className={`${id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'} ${
                 className || ''
-            } ${isDragging ? 'opacity-medium' : ''}`}>
-            <img
+            } ${isDragging ? 'opacity-medium' : ''} ${canDrop ? 'droppable' : ''}`}>
+            {customIcon ? <PokemonImage
+                url={customIcon}
+            >
+                {(image) => <img
+                    style={imageStyle}
+                    alt={species}
+                    src={image}
+                />}
+            </PokemonImage> : <img
                 style={imageStyle}
                 alt={species}
                 src={getIconURL({
@@ -137,14 +172,19 @@ export function PokemonIconPlain({
                     gender,
                     customIcon,
                 } as IconURLArgs)}
-            />
+            /> }
         </div>
     );
 }
 
+
 @DragSource('ICON', iconSource as any, (connect, monitor) => ({
     connectDragSource: connect.dragSource(),
     isDragging: monitor.isDragging(),
+}))
+@DropTarget('ICON', iconSourceDrop, (connect, monitor) => ({
+    connectDropTarget: connect.dropTarget(),
+    canDrop: monitor.canDrop(),
 }))
 export class PokemonIconBase extends React.Component<PokemonIconProps> {
     public constructor(props: any) {
@@ -152,7 +192,7 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
     }
 
     public render() {
-        const { connectDragSource, styles, hidden } = this.props;
+        const { connectDragSource, connectDropTarget, styles, hidden } = this.props;
         const imageStyle = {
             maxHeight: '100%',
             opacity: hidden ? 0.5 : 1,
@@ -160,11 +200,11 @@ export class PokemonIconBase extends React.Component<PokemonIconProps> {
             maxWidth: 'auto',
             imageRendering: styles?.iconRendering,
         };
-        return connectDragSource!(
+        return connectDropTarget!(connectDragSource!(
             <div>
                 <PokemonIconPlain imageStyle={imageStyle} {...this.props} />
             </div>,
-        );
+        ));
     }
 }
 
