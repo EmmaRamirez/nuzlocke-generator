@@ -64,17 +64,17 @@ export const listOfHotkeys: HotkeyList[] = [
     },
     {
         label: 'shift+scroll',
-        key: '',
+        key: 'shift+scroll',
         comment: 'Scroll image result',
     },
     {
         label: 'double-click',
-        key: '',
+        key: 'double-click',
         comment: 'Reset image result dimensions',
     },
     {
         label: 'drag',
-        key: '',
+        key: 'drag',
         comment: 'Pan image result',
     },
     ...(feature.newHotkeys ? betaHotkeys : []),

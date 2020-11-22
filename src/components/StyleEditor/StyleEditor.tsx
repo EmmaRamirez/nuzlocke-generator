@@ -176,7 +176,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     icon="style"
                     className={cx(Styles.dialog, {
                         [Classes.DARK]: props.style.editorDarkMode,
-                    })}>
+                    }, 'release-notes-wrapper')}>
                     <ReactMarkdown
                         source={text}
                     />
@@ -802,9 +802,9 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 <div className="custom-css-input-wrapper">
                     <label className={cx(Classes.LABEL, 'flex', 'justify-between')}>
                         <span>Custom CSS</span>
-                        <Button minimal intent={Intent.PRIMARY} onClick={this.toggleCSSGuide}>
+                        {feature.themeEditing && <Button minimal intent={Intent.PRIMARY} onClick={this.toggleCSSGuide}>
                             Check out the CSS Guide!
-                        </Button>
+                        </Button>}
                     </label>
                     <TextAreaDebounced name="customCSS" props={props} edit={editEvent} />
                 </div>
