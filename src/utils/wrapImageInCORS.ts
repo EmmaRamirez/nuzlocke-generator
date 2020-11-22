@@ -9,7 +9,7 @@ function fileToBase64(file: Blob) {
 
         reader.onerror = reject;
     });
-};
+}
 
 export async function wrapImageInCORS(url: string) {
     const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);

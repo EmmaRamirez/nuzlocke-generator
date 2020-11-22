@@ -19,7 +19,7 @@ export const betaHotkeys: HotkeyList[] = [
         label: 'shift+i',
         comment: 'Toggle image uploader',
         onKeyUp: 'toggleImageUploader',
-    }
+    },
 ];
 
 export const listOfHotkeys: HotkeyList[] = [

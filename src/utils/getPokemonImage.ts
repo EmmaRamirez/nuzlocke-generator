@@ -11,7 +11,6 @@ import { GenderElementProps } from 'components';
 import { wrapImageInCORS } from './wrapImageInCORS';
 
 const handleTcgTransforms = (species?: string, gender?: GenderElementProps) => {
-    ;
     if (gender === 'Female') {
         if (species && significantGenderDifferenceList.includes(species)) return `${species}-f`;
     }
@@ -98,8 +97,6 @@ const getGameNameSerebii = (name: Game) => {
     }
 };
 
-
-
 export interface GetPokemonImage {
     customImage?: string;
     forme?: keyof typeof Forme;
@@ -176,11 +173,13 @@ export async function getPokemonImage({
         }
     }
     if (style?.spritesMode) {
-        const url = shiny ? `https://www.serebii.net/Shiny/${getGameNameSerebii(
-            name as Game,
-        )}/${leadingZerosNumber}.png` : `https://www.serebii.net/pokearth/sprites/${getGameName(
-            name as Game,
-        )}/${leadingZerosNumber}.png`;
+        const url = shiny
+            ? `https://www.serebii.net/Shiny/${getGameNameSerebii(
+                name as Game,
+            )}/${leadingZerosNumber}.png`
+            : `https://www.serebii.net/pokearth/sprites/${getGameName(
+                name as Game,
+            )}/${leadingZerosNumber}.png`;
 
         return await wrapImageInCORS(url);
     }
@@ -217,15 +216,10 @@ export async function getPokemonImage({
     if (style?.teamImages === 'tcg') {
         return `url(img/tcg/${(
             handleTcgTransforms(
-                addForme(
-                    (species || '')
-                        .replace(/\s/g, '')
-                        .replace(/'/g, ''), forme),
+                addForme((species || '').replace(/\s/g, '').replace(/'/g, ''), forme),
                 gender,
-            )
-                || 'missingno'
-        )
-            .toLowerCase()}.jpg)`;
+            ) || 'missingno'
+        ).toLowerCase()}.jpg)`;
     }
     // TEMPORARY STOPGAPS
     if (species === 'Dugtrio' && forme === 'Alolan' && shiny) {

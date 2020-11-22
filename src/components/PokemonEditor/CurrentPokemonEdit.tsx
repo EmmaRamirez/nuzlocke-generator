@@ -416,7 +416,10 @@ CurrentPokemonEditState
                         customIcon={currentPokemon.customIcon}
                         selectedId={null}
                         onClick={() => {}}
-                        imageStyle={{}}
+                        imageStyle={{
+                            maxHeight: '100%',
+                            height: '32px',
+                        }}
                     />
                     <CurrentPokemonInput
                         labelName="Status"

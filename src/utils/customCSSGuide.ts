@@ -1,5 +1,3 @@
-
-
 export const customCSSGuide = `# Custom CSS Guide
 Last updated \`v1.5.0\`
 

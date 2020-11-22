@@ -54,13 +54,13 @@ const iconSourceDrop = {
         const newId = props.id;
         const newStatus = props.status;
         const item = monitor.getItem();
-        const oldId = item.id;
-        const oldPosition = item.position;
-        const oldStatus = item.status;
-        console.log(component, `
-            new: ${newPosition}, ${newId}
-            old: ${oldPosition}, ${oldId}
-        `);
+        const oldId = item?.id;
+        const oldPosition = item?.position;
+        const oldStatus = item?.status;
+        // Prevent us from destroying a Pokemon's position accidentally
+        if (oldId == null || oldPosition == null || oldStatus == null) {
+            return;
+        }
         store.dispatch(editPokemon(
             {
                 position: oldPosition,

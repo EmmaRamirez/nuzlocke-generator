@@ -730,7 +730,5 @@ Thank you!
 
 ## Fixes
 - **Drag and drop now reorder positions**
-
-## Known Issues
-`
+`,
 };
