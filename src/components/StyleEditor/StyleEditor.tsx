@@ -147,10 +147,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 [Styles.widthHeightInputs]: isWidthHeight,
             });
         const styleEdit = createStyleEdit(false);
-        const teamImages = ['standard', 'sugimori', 'dream world', 'shuffle'];
-        if (feature.tcgImages) {
-            teamImages.push('tcg');
-        }
+        const teamImages = ['standard', 'sugimori', 'dream world', 'shuffle', 'tcg'];
         const calloutStyle = {
             marginLeft: '2px',
             fontSize: '80%',
