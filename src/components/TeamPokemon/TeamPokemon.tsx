@@ -545,17 +545,20 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, {imag
                             itemLabelStyle[style.itemStyle],
                             'pokemon-item',
                         )}>
-                        <img
-                            alt={poke.item}
-                            src={
-                                poke.customItemImage
-                                    ? poke.customItemImage
-                                    : `icons/hold-item/${(poke.item || '')
-                                        .toLowerCase()
-                                        .replace(/\'/g, '')
-                                        .replace(/\s/g, '-')}.png`
-                            }
-                        />
+                        {poke.customItemImage ?
+                            <PokemonImage url={poke.customItemImage}>
+                                {(image) => <img
+                                    alt={poke.item}
+                                    src={poke.customItemImage}
+                                />}
+                            </PokemonImage>
+                            : <img alt={poke.item}
+                                    src={`icons/hold-item/${(poke.item || '')
+                                    .toLowerCase()
+                                    .replace(/\'/g, '')
+                                    .replace(/\s/g, '-')}.png`}
+                                />
+                        }
                     </div>
                 ) : null}
                 {pokemon && (
