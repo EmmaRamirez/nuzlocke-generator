@@ -729,7 +729,7 @@ Thank you!
 - **Zoom & Pan**: controls for image results, double-click to reset
 
 ## Fixes
-- *Drag and drop now reorder positions*
+- **Drag and drop now reorder positions**
 
 ## Known Issues
 `

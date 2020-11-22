@@ -22,7 +22,7 @@ import { Autocomplete, ErrorBoundary } from 'components/Shared';
 import { selectPokemon, editPokemon } from 'actions';
 import { connect, useSelector } from 'react-redux';
 import { listOfGames, accentedE } from 'utils';
-import { PokemonIconBase } from 'components/PokemonIcon';
+import { PokemonIconBase, PokemonIconPlain } from 'components/PokemonIcon';
 import { cx } from 'emotion';
 import * as Styles from './styles';
 const uuid = require('uuid');
@@ -406,7 +406,7 @@ CurrentPokemonEditState
         return (
             <div className="current-pokemon">
                 <span className="current-pokemon-header">
-                    <PokemonIconBase
+                    <PokemonIconPlain
                         className="current-pokemon-image"
                         id={currentPokemon.id}
                         species={currentPokemon.species}
@@ -416,6 +416,7 @@ CurrentPokemonEditState
                         customIcon={currentPokemon.customIcon}
                         selectedId={null}
                         onClick={() => {}}
+                        imageStyle={{}}
                     />
                     <CurrentPokemonInput
                         labelName="Status"
