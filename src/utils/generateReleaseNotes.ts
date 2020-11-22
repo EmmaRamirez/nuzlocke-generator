@@ -708,7 +708,23 @@ Thank you!
 - The 'Evolve' button is only available for Gen I & II games
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
+    '1.4.10': `
+## Features
+- Auto-evolve button now works for all games & generations
+
+## Fixes
+
+
+## Known Issues
+- External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`,
     '1.5.0': `
-idk    
+## Features
+
+## Fixes
+
+## Known Issues
+
 `
 };
