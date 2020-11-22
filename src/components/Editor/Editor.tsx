@@ -59,52 +59,52 @@ export function Editor() {
                 marginLeft: minimized ? '-30rem' : '0',
                 background: editorDarkMode ? '#222' : '#fff',
             }}>
-            <ErrorBoundary>
+            <ErrorBoundary key={1}>
                 <React.Suspense fallback={Skeleteon}>
                     <EditorControls editorDarkMode={editorDarkMode} minimized={minimized} />
                 </React.Suspense>
             </ErrorBoundary>
-            <ErrorBoundary>
+            <ErrorBoundary key={2}>
                 <React.Suspense fallback={Skeleteon}>
                     <NuzlockeSaveControls />
                 </React.Suspense>
             </ErrorBoundary>
-            <ErrorBoundary>
+            <ErrorBoundary key={3}>
                 <React.Suspense fallback={Skeleteon}>
                     <GameEditor />
                 </React.Suspense>
             </ErrorBoundary>
-            <ErrorBoundary>
+            <ErrorBoundary key={4}>
                 <React.Suspense fallback={Skeleteon}>
                     <DataEditor />
                 </React.Suspense>
             </ErrorBoundary>
-            <ErrorBoundary>
+            <ErrorBoundary key={5}>
                 <React.Suspense fallback={Skeleteon}>
                     <TrainerEditor />
                 </React.Suspense>
             </ErrorBoundary>
-            <ErrorBoundary>
+            <ErrorBoundary key={6}>
                 <React.Suspense fallback={Skeleteon}>
                     <PokemonEditor />
                 </React.Suspense>
             </ErrorBoundary>
-            <ErrorBoundary>
+            <ErrorBoundary key={7}>
                 <React.Suspense fallback={Skeleteon}>
                     <StyleEditor />
                 </React.Suspense>
             </ErrorBoundary>
-            <ErrorBoundary>
+            <ErrorBoundary key={8}>
                 <React.Suspense fallback={Skeleteon}>
                     <StatsEditor />
                 </React.Suspense>
             </ErrorBoundary>
-            <ErrorBoundary>
+            <ErrorBoundary key={9}>
                 <React.Suspense fallback={Skeleteon}>
                     <HotkeysEditor />
                 </React.Suspense>
             </ErrorBoundary>
-            <ErrorBoundary>
+            <ErrorBoundary key={10}>
                 <React.Suspense fallback={Skeleteon}>
                     <BugReporter />
                 </React.Suspense>
