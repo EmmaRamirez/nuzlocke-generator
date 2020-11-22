@@ -93,4 +93,7 @@ export enum Forme {
 
     IceRider = 'ice-rider',
     ShadowRider = 'shadow-rider',
+
+    School = 'school',
+    Pirouette = 'pirouette',
 }
