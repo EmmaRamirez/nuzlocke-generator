@@ -459,7 +459,7 @@ export const EvolutionTree: EvolutionTree = {
     Clobbopus: ['Grapploct'],
     Sinistea: ['Polteageist'],
     Hatenna: ['Hattrem'],
-    Hattrem: ['Hattrene'],
+    Hattrem: ['Hatterene'],
     Impidimp: ['Morgrem'],
     Morgrem: ['Grimmsnarl'],
     Milcery: ['Alcremie'],
