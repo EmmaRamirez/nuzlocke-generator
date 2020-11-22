@@ -15,7 +15,7 @@ import { ErrorBoundary } from 'components/Shared';
 import { Stats } from './Stats';
 import { Pokemon, Trainer, Editor, Box } from 'models';
 import { reducers } from 'reducers';
-import { Styles as StyleState, getGameRegion, sortPokes, getContrastColor, isLocal } from 'utils';
+import { Styles as StyleState, getGameRegion, sortPokes, getContrastColor, isLocal, feature } from 'utils';
 
 import * as Styles from './styles';
 
@@ -26,6 +26,7 @@ import { State } from 'state';
 import isMobile from 'is-mobile';
 import { Button, Classes } from '@blueprintjs/core';
 import { editor } from 'reducers/editor';
+import { resultSelector } from 'selectors';
 
 async function load() {
     const resource = await import('@emmaramirez/dom-to-image');
@@ -322,9 +323,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             (poke) => !['Team', 'Boxed', 'Dead', 'Champs'].includes(poke.status!),
         );
         const enableStats = style.displayStats;
-        const enableChampImage = false && isLocal();
-        const enableBackSpriteMontage = false && isLocal();
-        const renderStatsInResult = false && isLocal();
+        const enableChampImage = feature.emmaMode;
+        const enableBackSpriteMontage = feature.emmaMode;
 
         return (
             <div className="hide-scrollbars" style={{ width: '100%', overflowY: 'scroll' }}>
@@ -465,7 +465,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                                 : null}
                         </div>
 
-                        {enableStats && renderStatsInResult && <Stats />}
+                        {enableStats && <Stats />}
 
                         {enableBackSpriteMontage && (
                             <BackspriteMontage pokemon={this.getPokemonByStatus('Team')} />
@@ -477,18 +477,10 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     }
 }
 
-export const Result = connect<Partial<typeof reducers>, any, any>(
-    (state: Partial<typeof reducers>) => ({
-        pokemon: state.pokemon,
-        game: state.game,
-        trainer: state.trainer,
-        style: state.style,
-        box: state.box,
-        rules: state.rules,
-        editor: state.editor,
-    }),
+export const Result = connect(
+    resultSelector,
     {
         selectPokemon,
         toggleMobileResultView,
     },
-)(ResultBase);
+)(ResultBase as any);

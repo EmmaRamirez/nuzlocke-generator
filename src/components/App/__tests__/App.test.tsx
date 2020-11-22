@@ -5,13 +5,15 @@ import { seeRelease, editRule, selectPokemon } from 'actions';
 import { styleDefaults, generateEmptyPokemon } from 'utils';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
+import { editor } from 'reducers/editor';
 
 describe('<App />', () => {
     it('renders', () => {
         const store = configureStore()({});
         const wrapper = mount(
             <Provider store={store}>
-                <App view={{dialogs: {imageUploader: false}}} style={styleDefaults} />
+                {/* @ts-expect-error */ }
+                <App editor={editor(undefined, 'NA')} view={{dialogs: {imageUploader: false}}} style={styleDefaults} />
             </Provider>,
         );
         expect(wrapper).toBeDefined();

@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { cx } from 'emotion';
-import { debounce } from 'lodash';
 import './Autocomplete.css';
+import { useDebounceCallback } from '@react-hook/debounce';
+const debounce = require('lodash.debounce');
+
 
 export interface AutocompleteProps {
     items: string[];
@@ -14,181 +16,132 @@ export interface AutocompleteProps {
     className?: string;
 }
 
-export interface AutocompleteState {
-    visibleItems: string[];
-    currentValue: string;
-    isOpen: boolean;
-}
+const renderItems = (visibleItems: string[], selectItem: any, innerValue: string, selectedValue: string) => visibleItems.map((v, i) => {
+    return (
+        <li
+            key={i}
+            role="item"
+            onClick={(e) => selectItem(e)(v)}
+            className={v === selectedValue ? 'autocomplete-selected' : ''}>
+            {v}
+        </li>
+    );
+});
 
-export class Autocomplete extends React.Component<AutocompleteProps, AutocompleteState> {
-    public constructor(props) {
-        super(props);
-        this.state = {
-            visibleItems: this.props.items,
-            currentValue: this.props.value,
-            isOpen: false,
-        };
-    }
+const filter = (items, str) => items.filter(i => i?.toLowerCase().startsWith(str.toLowerCase()));
 
-    private selectItem(v) {
-        this.setState({ currentValue: v, isOpen: false });
-        this.props.onChange({
-            target: {
-                value: v,
-            },
-        });
-        this.setState({
-            visibleItems: this.props.items,
-        });
-    }
+export function Autocomplete ({
+    label,
+    name,
+    placeholder,
+    onChange,
+    className,
+    disabled,
+    items,
+    // onInput,
+    value,
+}: AutocompleteProps) {
+    const [innerValue, setValue] = React.useState('');
+    const [selectedValue, setSelectedValue] = React.useState('');
+    const [isOpen, setIsOpen] = React.useState(false);
+    const [visibleItems, setVisibleItems] = React.useState<string[]>([]);
 
-    public componentWillUnmount() {
-        this.setState({
-            isOpen: false,
-            visibleItems: [],
-        });
-    }
+    const delayedValue = useDebounceCallback(
+        (e) => onChange(e), 300,
+    );
 
-    public componentDidUpdate(prevProps) {
-        // if (this.isDebouncing) {
-        //   return;
-        // }
-        const {value} = this.props;
+    React.useEffect(() => {
+        console.log(innerValue, isOpen, visibleItems.length);
 
-        const {value: oldValue} = prevProps;
-        const {currentValue} = this.state;
+        setValue(value);
+        setVisibleItems(filter(items, value));
+        // setIsOpen(false);
+    }, [value, items]);
 
-        if (typeof value !== 'undefined' && oldValue !== value && currentValue !== value) {
-            // Update state.value if new value passed via props, yep re-render should happen
-            this.setState({
-                currentValue: value
-            });
-        }
-    }
-
-    private renderItems() {
-        return this.state.visibleItems.map((v, i) => {
-            return (
-                <li
-                    key={i}
-                    role="item"
-                    onClick={(e) => this.selectItem(v)}
-                    style={v === this.state.currentValue ? { color: 'lightblue' } : {}}>
-                    {v}
-                </li>
-            );
-        });
-    }
-
-    private updateItems = (e: any) => {
-        e.persist();
-        if (e.target.value === '') {
-            this.setState({
-                currentValue: e.target.value,
-                visibleItems: this.props.items,
-            });
-        } else {
-            this.setState({
-                currentValue: e.target.value,
-                visibleItems: this.props.items.filter((i) =>
-                    i.toLowerCase().startsWith(e.target.value.toLowerCase()),
-                ),
-            });
-        }
-        debounce(this.props.onChange, 300)(e);
+    const changeEvent = (innerEvent: boolean = true) => (e) => {
+        innerEvent && e.persist();
+        console.log(e, e.target.value);
+        
+        setValue(e.target.value);
+        setVisibleItems(filter(items, e.target.value));
+        
+        delayedValue({ target: { value: e.target.value }});
     };
 
-    private openList = (e) => this.setState({ isOpen: true });
-
-    private closeList = (e) => {
-        setTimeout(() => {
-            this.setState({ isOpen: false });
-            this.setState({ visibleItems: [] });
-        }, 250);
-    };
-
-    private handleKeyDown = (e: React.KeyboardEvent) => {
-        if (e.which === 13) {
-            e.preventDefault();
-            if (this.state.visibleItems.includes(this.state.currentValue)) {
-                this.closeList(e);
-            } else {
-                this.selectItem(this.state.visibleItems[0]);
-            }
-        }
-        if (e.which === 27 || e.which === 13 || e.which === 9) {
-            this.closeList(e);
-        }
-        if (e.which === 38 || e.which === 40) {
-            this.handleMovement(e);
-            this.setState({ isOpen: true });
-        }
-    };
-
-    private handleMovement = (e) => {
-        const currentIndex = this.state.visibleItems.indexOf(this.state.currentValue);
+    const handleMovement = (e) => {
+        const currentIndex = visibleItems?.indexOf(selectedValue);
         if (e.which === 38) {
-            this.selectItem(this.state.visibleItems[currentIndex - 1]);
+            setSelectedValue(visibleItems[currentIndex - 1]);
         } else {
-            this.selectItem(this.state.visibleItems[currentIndex + 1]);
+            setSelectedValue(visibleItems[currentIndex + 1]);
         }
     };
+    const openList = (e) => {
+        setIsOpen(true);
+    };
+    const closeList = (e) => {
+        setTimeout(() => {
+            setIsOpen(false);
+            setVisibleItems(items);
+        }, 250);
+        setValue(e.target.value);
+    };
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        e.persist();
+        setVisibleItems(filter(items, e.currentTarget.value));
 
-    public render() {
-        const { className } = this.props;
-        return (
-            <div className={cx('current-pokemon-input-wrapper', 'autocomplete')}>
-                <label>{this.props.label}</label>
-                <input
-                    autoComplete="off"
-                    className={cx(className)}
-                    onKeyDown={this.handleKeyDown}
-                    onFocus={this.openList}
-                    onBlur={this.closeList}
-                    placeholder={this.props.placeholder}
-                    name={this.props.name}
-                    type="text"
-                    onChange={this.updateItems}
-                    value={this.state.currentValue}
-                    disabled={this.props.disabled}
-                />
-                {this.state.isOpen ? (
-                    <ul className="autocomplete-items has-nice-scrollbars">{this.renderItems()}</ul>
-                ) : null}
-            </div>
-        );
-    }
+        switch (e.which) {
+            case 13:
+                e.preventDefault();
+                if (selectedValue) {
+                    setValue(selectedValue);
+                }
+                closeList(e);
+                changeEvent(false)({ ...e, target: { value: selectedValue !== '' ? selectedValue : innerValue }});
+                break;
+            case 8:
+                break;
+            case 27:
+            case 9:
+                closeList(e);
+                break;
+            case 38:
+            case 40:
+                handleMovement(e);
+                setIsOpen(true);
+                break;
+            default:
+                setSelectedValue('');
+                break;
+        }
+    };
+    const selectItem = (e) => (value) => {
+        changeEvent(false)({ ...e, target:{value}});
+    };
+
+    return <div className={cx('current-pokemon-input-wrapper', 'autocomplete')}>
+        <label>{label}</label>
+        <input
+            autoComplete="off"
+            className={cx(className)}
+            onKeyDown={handleKeyDown}
+            onFocus={openList}
+            onBlur={closeList}
+            placeholder={placeholder}
+            name={name}
+            type="text"
+            onChange={changeEvent()}
+            value={innerValue}
+            disabled={disabled}
+            data-testid="autocomplete"
+        />
+        {isOpen ? (
+            <ul className="autocomplete-items has-nice-scrollbars">{renderItems(
+                visibleItems,
+                selectItem,
+                innerValue,
+                selectedValue,
+            )}</ul>
+        ) : null}
+    </div>;
 }
-
-// const closeList = () => {
-//     setTimeout(() => {
-//         setIsOpen(false);
-//         setVisibleItems(false);
-//     }, 250);
-// };
-
-// export function Autocomplete({}: AutocompleteProps) {
-//     const [visibleItems, setVisibleItems] = React.useState([]);
-//     const [currentValue, setCurrentValue] = React.useState('');
-//     const [isOpen, setIsOpen] = React.useState(false);
-
-//     return <div className={cx('current-pokemon-input-wrapper', 'autocomplete')}>
-//         <label>{this.props.label}</label>
-//         <input
-//             autoComplete="off"
-//             className={cx(className)}
-//             onKeyDown={this.handleKeyDown}
-//             onFocus={this.openList}
-//             onBlur={this.closeList}
-//             placeholder={this.props.placeholder}
-//             name={this.props.name}
-//             type="text"
-//             onChange={this.updateItems}
-//             value={this.state.currentValue}
-//             disabled={this.props.disabled}
-//         />
-//         {this.state.isOpen ? (
-//             <ul className="autocomplete-items has-nice-scrollbars">{this.renderItems()}</ul>
-//         ) : null}
-//     </div>;
-// }

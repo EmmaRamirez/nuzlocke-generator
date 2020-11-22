@@ -1,3 +1,4 @@
+/* eslint-disable prefer-template */
 import * as React from 'react';
 import {
     getAdditionalFormes,
@@ -41,7 +42,7 @@ import { MoveEditor } from 'components/MoveEditor';
 import { CheckpointsInputList } from 'components/TrainerEditor';
 import { gameNameSelector } from 'selectors';
 
-const pokeball = require('assets/pokeball.png');
+const pokeball = require('assets/pokeball.png').default;
 
 export interface CopyPokemonButtonProps {
     onClick: (event: React.MouseEvent<HTMLElement>) => void;
@@ -91,12 +92,6 @@ const getEvos = (species): string[] | undefined => {
 
 export function EvolutionSelection({ currentPokemon, onEvolve }) {
     const evos = getEvos(currentPokemon?.species);
-    const gameName = useSelector(gameNameSelector);
-
-    const supportedGames: Game[] = ['Red', 'Blue', 'Green', 'Yellow', 'Gold', 'Silver', 'Crystal'];
-    if (!supportedGames.includes(gameName)) {
-        return null;
-    }
 
     if (!evos?.length) {
         return null;
@@ -221,6 +216,7 @@ CurrentPokemonEditState
                     type="select"
                     options={['Normal', ...getAdditionalFormes(currentPokemon.species)]}
                     pokemon={currentPokemon}
+                    key={this.state.selectedId + 'forme'}
                 />
                 <CurrentPokemonInput
                     labelName="Types"
@@ -228,6 +224,7 @@ CurrentPokemonEditState
                     value={currentPokemon.types}
                     type="double-select"
                     options={this.getTypes()}
+                    key={this.state.selectedId + 'types'}
                 />
                 <span
                     className={'current-pokemon-input-wrapper current-pokemon-checklist current-pokemon-checkpoints'}>
@@ -244,24 +241,28 @@ CurrentPokemonEditState
                         inputName="shiny"
                         value={currentPokemon.shiny}
                         type="checkbox"
+                        key={this.state.selectedId + 'shiny'}
                     />
                     <CurrentPokemonInput
                         labelName="Egg"
                         inputName="egg"
                         value={currentPokemon.egg}
                         type="checkbox"
+                        key={this.state.selectedId + 'egg'}
                     />
                     <CurrentPokemonInput
                         labelName="Hidden"
                         inputName="hidden"
                         value={currentPokemon.hidden}
                         type="checkbox"
+                        key={this.state.selectedId + 'hidden'}
                     />
                     <CurrentPokemonInput
                         labelName="MVP"
                         inputName="mvp"
                         value={currentPokemon.mvp}
                         type="checkbox"
+                        key={this.state.selectedId + 'mvp'}
                     />
                 </CurrentPokemonLayoutItem>
                 <CurrentPokemonInput
@@ -270,6 +271,7 @@ CurrentPokemonEditState
                     placeholder="http://.."
                     value={currentPokemon.customImage}
                     type="text"
+                    key={this.state.selectedId}
                 />
                 <CurrentPokemonInput
                     labelName="Custom Icon"
@@ -277,12 +279,14 @@ CurrentPokemonEditState
                     placeholder="http://.."
                     value={currentPokemon.customIcon}
                     type="text"
+                    key={this.state.selectedId + 'customIcon'}
                 />
                 <CurrentPokemonInput
                     labelName="Cause of Death"
                     inputName="causeOfDeath"
                     value={currentPokemon.causeOfDeath}
                     type="text"
+                    key={this.state.selectedId + 'cod'}
                 />
                 <Autocomplete
                     items={listOfItems}
@@ -297,6 +301,7 @@ CurrentPokemonEditState
                         editPokemon(edit, this.state.selectedId);
                         selectPokemon(this.state.selectedId);
                     }}
+                    key={this.state.selectedId + 'item'}
                 />
                 <CurrentPokemonInput
                     labelName="Custom Item Image"
@@ -304,6 +309,7 @@ CurrentPokemonEditState
                     placeholder="http://.."
                     value={currentPokemon.customItemImage}
                     type="text"
+                    key={this.state.selectedId + 'customItemImage'}
                 />
                 <CurrentPokemonInput
                     labelName="Pokeball"
@@ -317,6 +323,7 @@ CurrentPokemonEditState
                                 `${ball.charAt(0).toUpperCase() + ball.slice(1, ball.length)} Ball`,
                         ),
                     ]}
+                    key={this.state.selectedId + 'ball'}
                 />
                 <CurrentPokemonLayoutItem>
                     <CurrentPokemonInput
@@ -324,13 +331,14 @@ CurrentPokemonEditState
                         inputName="wonderTradedFor"
                         value={currentPokemon.wonderTradedFor}
                         type="text"
+                        key={this.state.selectedId + 'wt'}
                     />
                     <CurrentPokemonInput
                         labelName="Position"
                         inputName="position"
-                        disabled={true}
                         value={currentPokemon.position}
                         type="number"
+                        key={this.state.selectedId + 'position'}
                     />
                     <CurrentPokemonInput
                         labelName="Game of Origin"
@@ -338,6 +346,7 @@ CurrentPokemonEditState
                         value={currentPokemon.gameOfOrigin}
                         type="select"
                         options={listOfGames}
+                        key={this.state.selectedId + 'goo'}
                     />
                 </CurrentPokemonLayoutItem>
                 <CurrentPokemonLayoutItem>
@@ -354,6 +363,7 @@ CurrentPokemonEditState
                             ...pokemonForLink,
                         ]}
                         usesKeyValue={true}
+                        key={this.state.selectedId + 'linked'}
                     />
                 </CurrentPokemonLayoutItem>
                 <CurrentPokemonLayoutItem>
@@ -362,6 +372,7 @@ CurrentPokemonEditState
                         inputName="notes"
                         value={currentPokemon.notes}
                         type="textArea"
+                        key={this.state.selectedId + 'notes'}
                     />
                     {/* <PokemonNotes /> */}
                 </CurrentPokemonLayoutItem>
@@ -373,6 +384,7 @@ CurrentPokemonEditState
                             type="text"
                             disabled
                             value={JSON.stringify(currentPokemon.extraData)}
+                            key={this.state.selectedId + 'extradata'}
                         />
                     )}
                 </CurrentPokemonLayoutItem>
@@ -411,6 +423,7 @@ CurrentPokemonEditState
                         value={currentPokemon.status}
                         type="select"
                         options={this.state.box.map((n) => n.name)}
+                        key={this.state.selectedId + 'status'}
                     />
                     <div className={cx(Styles.iconBar)}>
                         <EvolutionSelection
@@ -423,6 +436,15 @@ CurrentPokemonEditState
                 </span>
                 <CurrentPokemonLayoutItem>
                     <ErrorBoundary>
+                        {/*<CurrentPokemonInput
+                            inputName="species"
+                            labelName="Species"
+                            disabled={currentPokemon.egg}
+                            placeholder="Missing No."
+                            value={currentPokemon.species}
+                            type='autocomplete'
+                            items={(listOfPokemon as unknown) as string[]}
+                        />*/}
                         <Autocomplete
                             items={(listOfPokemon as unknown) as string[]}
                             name="species"
@@ -456,6 +478,7 @@ CurrentPokemonEditState
                         value={currentPokemon.nickname}
                         placeholder="Fluffy"
                         type="text"
+                        key={this.state.selectedId + 'nickname'}
                     />
                 </CurrentPokemonLayoutItem>
                 <CurrentPokemonLayoutItem>
@@ -465,6 +488,7 @@ CurrentPokemonEditState
                         placeholder="5"
                         value={currentPokemon.level}
                         type="number"
+                        key={this.state.selectedId + 'level'}
                     />
                     <Autocomplete
                         items={listOfLocations}
@@ -489,6 +513,7 @@ CurrentPokemonEditState
                         placeholder="5"
                         value={currentPokemon.metLevel}
                         type="number"
+                        key={this.state.selectedId + 'metlevel'}
                     />
                 </CurrentPokemonLayoutItem>
                 <CurrentPokemonLayoutItem>
@@ -499,6 +524,7 @@ CurrentPokemonEditState
                         value={currentPokemon.gender}
                         type="select"
                         options={['Neutral', 'Male', 'Female']}
+                        key={this.state.selectedId + 'gender'}
                     />
                     <CurrentPokemonInput
                         labelName="Nature"
@@ -508,6 +534,7 @@ CurrentPokemonEditState
                         type="select"
                         options={listOfNatures}
                         pokemon={currentPokemon}
+                        key={this.state.selectedId + 'nature'}
                     />
                     <Autocomplete
                         items={listOfAbilities}
@@ -522,6 +549,7 @@ CurrentPokemonEditState
                             this.props.editPokemon(edit, this.state.selectedId);
                             this.props.selectPokemon(this.state.selectedId);
                         }}
+                        key={this.state.selectedId + 'ability'}
                     />
                 </CurrentPokemonLayoutItem>
                 <CurrentPokemonLayoutItem className={Styles.moveInputWrapper}>
@@ -531,6 +559,7 @@ CurrentPokemonEditState
                         placeholder=""
                         value={currentPokemon.moves}
                         type="moves"
+                        key={this.state.selectedId + 'moves'}
                     />
                     <Button className={Styles.moveEditButton} intent={Intent.PRIMARY} onClick={this.toggleDialog} minimal>
                         Edit Moves

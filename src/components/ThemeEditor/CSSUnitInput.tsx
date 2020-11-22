@@ -2,8 +2,7 @@ import * as React from 'react';
 import { Classes } from '@blueprintjs/core';
 import * as css from './styles';
 import { cx } from 'emotion';
-import { first } from 'lodash';
-import { last } from 'ramda';
+import { head, last } from 'ramda';
 
 export interface CSSUnitInputProps {
     name: string;
@@ -21,7 +20,7 @@ export const splitValue = (value: string) => {
     const value1 = value.split(/\D/g);
     const value2 = value.split(/\d/g);
     return {
-        num: first(value1),
+        num: head(value1),
         unit: last(value2),
     };
 };

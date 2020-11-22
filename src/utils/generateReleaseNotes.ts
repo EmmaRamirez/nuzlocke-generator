@@ -1,11 +1,11 @@
-const badgeSelect = require('assets/badge-select.png');
-const download = require('assets/download.png');
-const cardsTheme = require('assets/cards-theme.png');
-const spritesMode = require('assets/sprites-mode.png');
-const hexagonTheme = require('assets/hexagons-theme.png');
-const compactTheme = require('assets/compact-theme.png');
-const imageRender = require('assets/image-render.png');
-const checkpointsForPokemon = require('assets/checkpoints-for-pokemon.png');
+const badgeSelect = require('assets/badge-select.png').default;
+const download = require('assets/download.png').default;
+const cardsTheme = require('assets/cards-theme.png').default;
+const spritesMode = require('assets/sprites-mode.png').default;
+const hexagonTheme = require('assets/hexagons-theme.png').default;
+const compactTheme = require('assets/compact-theme.png').default;
+const imageRender = require('assets/image-render.png').default;
+const checkpointsForPokemon = require('assets/checkpoints-for-pokemon.png').default;
 
 export function generateReleaseNotes(version: string) {
     return releaseNotes[version] || '';
@@ -642,4 +642,85 @@ Thank you!
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
+    '1.4.1': `
+## Fixes
+- Fixed performance of Pokémon-related inputs
+
+## Known Issues
+- External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`,
+    '1.4.2': `
+## Fixes
+- Fixed issues with Pokémon inputs carrying data over between Pokémon
+- Fixed issue that prevented position from being updated
+- Fixed a bug on local where gradient background was misplaced
+- Fixed bug whereby stats would not display
+
+## Known Issues
+- External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`,
+    '1.4.5': `
+## Fixes
+- Some behind-the-scenes optimizations for file sizes and accessibility
+
+## Known Issues
+- External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
+- The 'Evolve' button is only available for Gen I & II games
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`,
+    '1.4.7': `
+## Features
+- **TCG images**: huge shoutouts to BlazeVolt for working on this! These images are all sourced from the trading card game.
+
+## Fixes
+- None
+
+## Known Issues
+- External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
+- The 'Evolve' button is only available for Gen I & II games
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`,
+    '1.4.8': `
+## Fixes
+- Capped past undoable states to 50 for performance reasons
+- Undo/Redo state is now reset upon importing a new file or likewise similarly destructive action
+- Fixed a bug that broke the MassEditor with Checkpoints
+- Improved performance of TrainerEditor inputs
+- Improved performance of Autocomplete inputs
+- Added file size tag to saves display
+- Fixed a bug whereby file sizes would become excessively bloated
+- Added an option to disable editor history in order to improve performance
+    - Hopefully this option will be temporary in the long-term
+
+## Known Issues
+- External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
+- The 'Evolve' button is only available for Gen I & II games
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`,
+    '1.4.9': `
+## Fixes
+- Fixes to autocomplete inputs
+
+## Known Issues
+- External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
+- The 'Evolve' button is only available for Gen I & II games
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`,
+    '1.4.10': `s
+## Features
+- Auto-evolve button now works for all games & generations
+
+## Fixes
+- Fixed tcg image for Hydreigon
+- Fixed tcg images for various gendered formes
+- Fixed type matching for Oricorio & others
+- Added School form Wishiwashi
+- Added Pirouette form Meloetta
+
+## Known Issues
+- External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
+`
 };

@@ -9,6 +9,8 @@ const featuresFromEnv = {
     locks: process.env.LOCKS,
     gen2saves: process.env.GEN2_SAVES,
     imageUploads: process.env.IMAGE_UPLOADS,
+    emmaMode: process.env.EMMA_MODE,
+    tcgImages: process.env.TCG_IMAGES,
 };
 
 interface BooleanObject {
@@ -24,3 +26,5 @@ const featuresToBooleans = (f: typeof featuresFromEnv): BooleanObject => {
 };
 
 export const feature = Object.freeze(featuresToBooleans(featuresFromEnv));
+
+console.log(feature);

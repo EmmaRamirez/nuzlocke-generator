@@ -3,10 +3,9 @@ import { createLogger } from 'redux-logger';
 import createHistory from 'history/createBrowserHistory';
 import { persistCombineReducers, persistStore, createMigrate } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-
+import { version } from 'package';
 import { reducers } from '../reducers';
 
-const pkg = require('../../package.json');
 
 const migrations = {
     '0.0.6-beta': (state) => {
@@ -50,7 +49,7 @@ const config = {
     key: 'root',
     blacklist: ['router', 'editorHistory'],
     storage,
-    version: pkg.version,
+    version,
     migrations: createMigrate(migrations, { debug: false }),
 };
 
@@ -60,7 +59,7 @@ export const persistReducers = persistCombineReducers(config, reducers);
 
 export const middlewares: Middleware[] = [];
 
-if (process.env.NODE_ENV === 'test') {
+if (process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'production') {
 } else {
     const loggerMiddleware = createLogger();
     middlewares.push(loggerMiddleware);

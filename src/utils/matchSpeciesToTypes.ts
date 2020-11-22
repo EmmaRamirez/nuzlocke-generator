@@ -458,6 +458,56 @@ export const handleSpeciesTypeEdgeCases = ({
         return [Types.Bug, Types.Steel];
     }
 
+    if (
+        match({
+            ...data,
+            species: ['Oricorio'],
+            forme: ['Baile']
+        })
+    ) {
+        return [Types.Fire, Types.Flying];
+    }
+
+    if (
+        match({
+            ...data,
+            species: ['Oricorio'],
+            forme: ['Pa\'u']
+        })
+    ) {
+        return [Types.Psychic, Types.Flying];
+    }
+
+    if (
+        match({
+            ...data,
+            species: ['Oricorio'],
+            forme: ['Pom-Pom']
+        })
+    ) {
+        return [Types.Electric, Types.Flying];
+    }
+
+    if (
+        match({
+            ...data,
+            species: ['Oricorio'],
+            forme: ['Sensu']
+        })
+    ) {
+        return [Types.Ghost, Types.Flying];
+    }
+
+    if (
+        match({
+            ...data,
+            species: ['Meloetta'],
+            forme: ['Pirouette']
+        })
+    ) {
+        return [Types.Normal, Types.Fighting];
+    }
+
     return null;
 };
 
@@ -498,6 +548,7 @@ export const matchSpeciesToTypes = (
         case 'Grovyle':
         case 'Sceptile':
         case 'Bellossom':
+        case 'Snivy':
         case 'Servine':
         case 'Serperior':
         case 'Cherubi':
@@ -1527,15 +1578,17 @@ export const matchSpeciesToTypes = (
             return [Types.Ghost, Types.Ghost];
         case 'Calyrex':
             return [Types.Psychic, Types.Grass];
-        // 'Snivy',
-        // 'Pansage',
-        // 'Simisage',
-        // 'Woobat',
-        // 'Swoobat',
-        // 'Excadrill',
-        // 'Palpitoad',
-        // 'Seismitoad',
-        // 'Maractus',
+        case 'Woobat':
+        case 'Swoobat':
+            return [Types.Psychic, Types.Flying];
+        case 'Excadrill':
+            return [Types.Ground, Types.Steel];
+        case 'Palpitoad':
+        case 'Seismitoad':
+            return [Types.Water, Types.Ground];
+        case 'Maractus':
+            return [Types.Grass, Types.Grass];
+        
         // 'Sigilyph',
         // 'Tirtouga',
         // 'Archen',
@@ -1590,8 +1643,9 @@ export const matchSpeciesToTypes = (
         // 'Lycanroc',
         //  'Mareanie',
         // 'Toxapex',
-        // 'Fomantis',
-        // 'Lurantis',
+        // default in generator is Baile form
+        case 'Oricorio':
+            return [Types.Fire, Types.Flying];
         case 'Salandit':
         case 'Salazzle':
             return [Types.Poison, Types.Fire];
@@ -1605,11 +1659,16 @@ export const matchSpeciesToTypes = (
             return [Types.Dragon, Types.Fire];
         case 'Bruxish':
             return [Types.Psychic, Types.Water];
-        // 'Jangmo-o',
-        // 'Solgaleo',
-        // 'Nihilego',
-        // 'Celesteela',
-        // 'Kartana',
+        case 'Jangmo-o':
+            return [Types.Dragon, Types.Dragon];
+        case 'Solgaleo':
+            return [Types.Psychic, Types.Steel];
+        case 'Nihilego':
+            return [Types.Rock, Types.Poison];
+        case 'Celesteela':
+            return [Types.Steel, Types.Flying];
+        case 'Kartana':
+            return [Types.Steel, Types.Grass];
         case 'Taillow':
         case 'Pidgey':
         case 'Pidgeotto':
@@ -1638,7 +1697,6 @@ export const matchSpeciesToTypes = (
         case 'Toucannon':
             return [Types.Normal, Types.Flying];
         default:
-            // @ts-ignore
             return [Types.Normal, Types.Normal];
     }
 };

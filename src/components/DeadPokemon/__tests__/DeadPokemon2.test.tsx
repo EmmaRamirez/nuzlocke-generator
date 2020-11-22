@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DeadPokemon } from '../DeadPokemon2';
-import { generateEmptyPokemon, styleDefaults } from 'utils';
-import { render, screen } from '@testing-library/react';
+import { generateEmptyPokemon } from 'utils';
+import { render, screen } from 'utils/testUtils';
 import { TestProvider } from 'utils/TestProvider';
 
 const poke = {
