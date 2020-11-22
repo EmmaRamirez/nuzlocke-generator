@@ -230,7 +230,10 @@ export async function getPokemonImage({
     }
 
     return `url(img/${(
-        addForme((species || '').replace(/\s/g, '').replace(/'/g, ''), forme) || 'missingno'
+        addForme((species || '')
+            .replace(/\s/g, '')
+            .replace(/'/g, '')
+            .replace(/:/g, '-'), forme) || 'missingno'
     ).toLowerCase()}.jpg)`;
 }
 

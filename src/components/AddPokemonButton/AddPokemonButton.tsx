@@ -16,7 +16,7 @@ export function AddPokemonButton ({ pokemon }: {pokemon: Pokemon}) {
 
     const onDoubleClick = () => {
         if (isLocal()) {
-            take(151, listOfPokemon).forEach(species => {
+            listOfPokemon.forEach(species => {
                 dispatch(addPokemon(generateEmptyPokemon(undefined, {species})));
             });
         }

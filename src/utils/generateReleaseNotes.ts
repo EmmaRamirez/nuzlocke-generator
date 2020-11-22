@@ -730,5 +730,7 @@ Thank you!
 
 ## Fixes
 - **Drag and drop now reorder positions**
+- Fixed Hatterene's name being misspelt
+- Fixed the icon for Type: Null not showing up
 `,
 };
