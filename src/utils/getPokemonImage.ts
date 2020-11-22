@@ -1,12 +1,20 @@
 import { addForme, speciesToNumber, getForme } from 'utils';
-import { Styles } from './styleDefaults';
 import { capitalize } from './capitalize';
 import { Game } from 'utils';
 import { Forme } from './Forme';
 import { getIconFormeSuffix } from './getIconFormeSuffix';
 import { Editor } from 'models';
-import { GenderElementProps, Gender } from 'components';
 import { Species } from './listOfPokemon';
+import { State } from 'state';
+import { significantGenderDifferenceList } from './handleSignificantGenderDifferences';
+import { GenderElementProps } from 'components';
+
+const handleTcgTransforms = (species?: string, gender?: GenderElementProps) => {;
+    if (gender === 'Female') {
+        if (species && significantGenderDifferenceList.includes(species)) return `${species}-f`;
+    }
+    return species;
+}
 
 const getGameName = (name: Game) => {
     if (name === 'Red' || name === 'Blue') return 'rb';
@@ -106,7 +114,7 @@ export interface GetPokemonImage {
     forme?: keyof typeof Forme;
     species?: string;
     name?: Game;
-    style: Styles;
+    style: State['style'];
     shiny?: boolean;
     editor?: Editor;
     gender?: GenderElementProps;
@@ -224,8 +232,16 @@ export async function getPokemonImage({
 
     if (style.teamImages === 'tcg') {
         return `url(img/tcg/${(
-            addForme((species || '').replace(/\s/g, '').replace(/'/g, ''), forme) || 'missingno'
-        ).toLowerCase()}.jpg)`;
+            handleTcgTransforms(
+                addForme(
+                    (species || '')
+                        .replace(/\s/g, '')
+                        .replace(/'/g, ''), forme),
+                    gender,
+                )
+                || 'missingno'
+            )
+            .toLowerCase()}.jpg)`;
     }
     // TEMPORARY STOPGAPS
     if (species === 'Dugtrio' && forme === 'Alolan' && shiny) {

@@ -4,10 +4,10 @@ import {
     getIconFormeSuffix,
     getForme as getFormeSWSH,
     listOfPokemon,
-    significantGenderDifferenceList,
     Forme,
     speciesToNumber,
     Species,
+    significantGenderDifferenceList,
 } from 'utils';
 import { Gender, GenderElementProps } from 'components/Shared';
 import { selectPokemon, SELECT_POKEMON } from 'actions';
