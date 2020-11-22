@@ -15,6 +15,7 @@ import {
 import { selectPokemon } from 'actions';
 import { PokemonIconBase } from 'components/PokemonIcon';
 import { State } from 'state';
+import { PokemonImage } from 'components/Shared/PokemonImage';
 
 const spriteStyle = (style: Styles) => {
     if (style.spritesMode) {
@@ -232,27 +233,28 @@ export const DeadPokemonBase = (poke: DeadPokemonProps) => {
                     : getContrastColor(getAccentColor(poke)),
             }}>
             {style.template !== 'Generations' ? (
-                <div
-                    role="presentation"
-                    onClick={(e) => poke.selectPokemon(poke.id)}
-                    className={`dead-pokemon-picture ${
-                        poke.style.spritesMode ? 'sprites-mode' : ''
-                    }`}
-                    style={{
-                        // @ts-expect-error
-                        backgroundImage: getPokemonImage({
-                            customImage: poke.customImage,
-                            forme: poke.forme as any,
-                            shiny: poke.shiny,
-                            species: poke.species,
-                            style: poke.style,
-                            name: poke.game.name,
-                            gender: poke.gender,
-                        }),
-                        ...spriteStyle(style),
-                        filter: style.grayScaleDeadPokemon ? 'grayscale(100%)' : 'none',
-                    }}
-                />
+                <PokemonImage
+                    customImage={poke.customImage}
+                    forme={poke.forme as any}
+                    shiny={poke.shiny}
+                    species={poke.species}
+                    style={poke.style}
+                    name={poke.game.name}
+                    gender={poke.gender}
+                >
+                    {(backgroundImage) => <div
+                        role="presentation"
+                        onClick={(e) => poke.selectPokemon(poke.id)}
+                        className={`dead-pokemon-picture ${
+                            poke.style.spritesMode ? 'sprites-mode' : ''
+                        }`}
+                        style={{
+                            backgroundImage,
+                            ...spriteStyle(style),
+                            filter: style.grayScaleDeadPokemon ? 'grayscale(100%)' : 'none',
+                        }}
+                    />}
+                </PokemonImage>
             ) : (
                 <span style={{ filter: 'grayscale(100%)' }}>
                     <PokemonIconBase

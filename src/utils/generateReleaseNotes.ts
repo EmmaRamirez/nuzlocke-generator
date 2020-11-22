@@ -725,10 +725,13 @@ Thank you!
 `,
     '1.5.0': `
 ## Features
+- **Image Downloads update**: now capable of properly downloading external images!
+- **Zoom & Pan**: controls for image results
 
 ## Fixes
 
-## Known Issues
 
+## Known Issues
+- **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `
 };

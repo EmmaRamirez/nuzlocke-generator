@@ -8,13 +8,15 @@ import { Species } from './listOfPokemon';
 import { State } from 'state';
 import { significantGenderDifferenceList } from './handleSignificantGenderDifferences';
 import { GenderElementProps } from 'components';
+import { wrapImageInCORS } from './wrapImageInCORS';
 
-const handleTcgTransforms = (species?: string, gender?: GenderElementProps) => {;
+const handleTcgTransforms = (species?: string, gender?: GenderElementProps) => {
+    ;
     if (gender === 'Female') {
         if (species && significantGenderDifferenceList.includes(species)) return `${species}-f`;
     }
     return species;
-}
+};
 
 const getGameName = (name: Game) => {
     if (name === 'Red' || name === 'Blue') return 'rb';
@@ -96,35 +98,17 @@ const getGameNameSerebii = (name: Game) => {
     }
 };
 
-function fileToBase64(file: Blob) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
 
-        reader.onloadend = function () {
-            resolve(reader.result);
-        };
-
-        reader.onerror = reject;
-    });
-};
 
 export interface GetPokemonImage {
     customImage?: string;
     forme?: keyof typeof Forme;
     species?: string;
     name?: Game;
-    style: State['style'];
+    style?: State['style'];
     shiny?: boolean;
     editor?: Editor;
     gender?: GenderElementProps;
-}
-
-export async function wrapImageInCORS(url: string) {
-    const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
-    const img = await response.blob();
-
-    return `url(${await fileToBase64(img)})`;
 }
 
 export async function getPokemonImage({
@@ -154,7 +138,7 @@ export async function getPokemonImage({
     }
 
     if (
-        style.spritesMode &&
+        style?.spritesMode &&
         (name === 'Black' ||
             name === 'Emerald' ||
             name === 'Ruby' ||
@@ -191,7 +175,7 @@ export async function getPokemonImage({
             return await wrapImageInCORS(url);
         }
     }
-    if (style.spritesMode) {
+    if (style?.spritesMode) {
         const url = shiny ? `https://www.serebii.net/Shiny/${getGameNameSerebii(
             name as Game,
         )}/${leadingZerosNumber}.png` : `https://www.serebii.net/pokearth/sprites/${getGameName(
@@ -201,7 +185,7 @@ export async function getPokemonImage({
         return await wrapImageInCORS(url);
     }
 
-    if (style.teamImages === 'sugimori') {
+    if (style?.teamImages === 'sugimori') {
         if (
             [521, 592, 593, 668, 678].includes(regularNumber || 0) &&
             (gender === 'f' || gender === 'Female')
@@ -215,13 +199,13 @@ export async function getPokemonImage({
         )}.png)`;
     }
 
-    if (style.teamImages === 'dream world') {
+    if (style?.teamImages === 'dream world') {
         return `url(img/dw/${regularNumber || 1}.svg)`;
     }
 
     const handleMimeJr = (s?: string) => (s === 'Mime Jr.' ? 'mime-jr' : s);
 
-    if (style.teamImages === 'shuffle') {
+    if (style?.teamImages === 'shuffle') {
         return `url(img/shuffle/${(handleMimeJr(species) || 'Ditto')
             .trim()
             .replace(/\'/g, '')
@@ -230,17 +214,17 @@ export async function getPokemonImage({
             .toLocaleLowerCase()}${getIconFormeSuffix(forme as keyof typeof Forme)}.png)`;
     }
 
-    if (style.teamImages === 'tcg') {
+    if (style?.teamImages === 'tcg') {
         return `url(img/tcg/${(
             handleTcgTransforms(
                 addForme(
                     (species || '')
                         .replace(/\s/g, '')
                         .replace(/'/g, ''), forme),
-                    gender,
-                )
-                || 'missingno'
+                gender,
             )
+                || 'missingno'
+        )
             .toLowerCase()}.jpg)`;
     }
     // TEMPORARY STOPGAPS

@@ -11,7 +11,7 @@ import {
     toggleMobileResultView,
 } from 'actions';
 import { version } from 'package';
-import { cx, css } from 'emotion';
+import { cx } from 'emotion';
 import { Pokemon, Editor } from 'models';
 import { ReleaseDialog } from 'components/Shared';
 import { State } from 'state';
@@ -61,19 +61,6 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
     };
 
     private toggleDialog = () => this.setState({ isOpen: !this.state.isOpen });
-
-    private isDownloadDisabled() {
-        return (
-            this.props.style.spritesMode ||
-            this.props.style.useSpritesForChampsPokemon ||
-            this.props.pokemon.some(
-                (p) =>
-                    (p.status === 'Team' && !isEmpty(p.customImage)) ||
-                    !isEmpty(p.customIcon) ||
-                    (p.status === 'Team' && !isEmpty(p.customItemImage)),
-            )
-        );
-    }
 
     public render() {
         const {
@@ -143,15 +130,6 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                                 className={Classes.MINIMAL}
                                 icon="download">
                                 Download Image
-                            </Button>
-                        )}
-                        {this.isDownloadDisabled() && (
-                            <Button
-                                style={darkModeStyle(this.props.style.editorDarkMode)}
-                                className={Classes.MINIMAL}
-                                intent={Intent.DANGER}
-                                icon="error">
-                                Cross-origin resources detected. Downloads may not work.
                             </Button>
                         )}
                         <Button

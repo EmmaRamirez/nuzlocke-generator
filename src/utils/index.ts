@@ -51,3 +51,4 @@ export * from './getDisplayNameForTest';
 export * from './feature';
 export * from './matchNatureToToxtricityForme';
 export * from './handleSignificantGenderDifferences';
+export * from './wrapImageInCORS';

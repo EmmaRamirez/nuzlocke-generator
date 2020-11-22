@@ -1588,7 +1588,7 @@ export const matchSpeciesToTypes = (
             return [Types.Water, Types.Ground];
         case 'Maractus':
             return [Types.Grass, Types.Grass];
-        
+
         // 'Sigilyph',
         // 'Tirtouga',
         // 'Archen',
