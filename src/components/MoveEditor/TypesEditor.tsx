@@ -46,7 +46,7 @@ export class TypesEditor extends React.Component<TypesEditorProps, TypesEditorSt
                         name="color"
                         onColorChange={(color) => this.setState({ color: rgbaOrHex(color) })}
                     />
-                    <Button style={{ margin: '4px' }} onClick={(e) => createCustomType(this.state)}>
+                    <Button style={{ margin: '4px' }} onClick={() => createCustomType(this.state)}>
                         Add Type
                     </Button>
                 </div>

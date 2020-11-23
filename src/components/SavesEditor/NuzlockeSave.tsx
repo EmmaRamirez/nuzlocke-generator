@@ -44,7 +44,12 @@ export interface NuzlockeSaveControlsState {
     deletionFunction?: () => void;
 }
 
-const sort = (a, b) => a.id - b.id;
+interface ContainsId {
+    id: number;
+    [prop: string]: any;
+}
+
+const sort = (a: ContainsId, b: ContainsId) => a.id - b.id;
 
 export class NuzlockeSaveBase extends React.Component<
 NuzlockeSaveControlsProps,
@@ -87,8 +92,21 @@ NuzlockeSaveControlsState
                 style={{
                     padding: '0.5rem',
                 }}>
+                <Button
+                    intent={Intent.SUCCESS}
+                    icon="add"
+                    style={{marginBottom: '0.25rem'}}
+                    onClick={() => {
+                        updateNuzlocke(currentId, state);
+                        const data = createStore(appReducers)?.getState();
+                        newNuzlocke(JSON.stringify(data), { isCopy: false });
+                        replaceState(data);
+                    }}>
+                    New Nuzlocke
+                </Button>
                 {saves.map((nuzlocke) => {
                     const id = nuzlocke.id;
+                    console.log(nuzlocke.id);
                     const { isCopy } = nuzlocke;
                     const isCurrent = currentId === id;
                     const data = nuzlocke.data;
@@ -97,7 +115,7 @@ NuzlockeSaveControlsState
                         return null;
                     }
 
-                    let parsedData;
+                    let parsedData: State | null = null;
 
                     try {
                         parsedData = isCurrent ? JSON.parse(state) : JSON.parse(data);
@@ -165,7 +183,7 @@ NuzlockeSaveControlsState
                                         <MenuItem
                                             shouldDismissPopover={false}
                                             icon="clipboard"
-                                            onClick={(_) => {
+                                            onClick={() => {
                                                 try {
                                                     if (typeof data !== 'string') {
                                                         throw new Error(
@@ -229,17 +247,6 @@ NuzlockeSaveControlsState
                         </div>
                     );
                 })}
-                <Button
-                    intent={Intent.SUCCESS}
-                    icon="add"
-                    onClick={() => {
-                        updateNuzlocke(currentId, state);
-                        const data = createStore(appReducers)?.getState();
-                        newNuzlocke(JSON.stringify(data), { isCopy: false });
-                        replaceState(data);
-                    }}>
-                    New Nuzlocke
-                </Button>
             </div>
         );
     }

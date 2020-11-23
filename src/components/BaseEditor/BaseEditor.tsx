@@ -14,14 +14,11 @@ export class BaseEditor extends React.Component<BaseEditorProps, BaseEditorState
         defaultOpen: true,
     };
 
-    public constructor(props) {
-        super(props);
-        this.state = {
-            isOpen: this.props.defaultOpen!,
-        };
-    }
+    public state = {
+        isOpen: this.props.defaultOpen ?? BaseEditor.defaultProps.defaultOpen,
+    };
 
-    private toggleEditor = (e) => {
+    private toggleEditor = () => {
         this.setState({ isOpen: !this.state.isOpen });
     };
 

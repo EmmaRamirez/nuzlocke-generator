@@ -6,7 +6,6 @@ import storage from 'redux-persist/lib/storage';
 import { version } from 'package';
 import { reducers } from '../reducers';
 
-
 const migrations = {
     '0.0.6-beta': (state) => {
         return {

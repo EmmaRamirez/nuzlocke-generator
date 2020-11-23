@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { State } from 'state';
-import { Game, movesByType, isEmpty, getListOfTypes } from 'utils';
+import { movesByType, getListOfTypes } from 'utils';
 import { Dialog, Intent, Button, Icon, Classes } from '@blueprintjs/core';
 import { Move } from 'components/TeamPokemon/Moves';
 import {
@@ -11,8 +11,7 @@ import {
     createCustomType,
     editCustomType,
 } from 'actions';
-import InfiniteScroll from 'react-infinite-scroller';
-import { Autocomplete, ErrorBoundary } from 'components';
+import { ErrorBoundary } from 'components';
 import { TypesEditor } from './TypesEditor';
 import { cx } from 'emotion';
 
@@ -20,7 +19,7 @@ export interface MoveEditorProps {
     game: State['game'];
     style: State['style'];
     isOpen: boolean;
-    toggleDialog(e): void;
+    toggleDialog(): void;
     editCustomMoveMap: editCustomMoveMap;
     deleteCustomMove: deleteCustomMove;
     deleteCustomType: deleteCustomType;
@@ -48,7 +47,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
         return getListOfTypes(customTypes);
     }
 
-    private moveFilter = (move, type, searchTerm) => {
+    private moveFilter = (move: string, type: string, searchTerm: string) => {
         return (
             move.toLowerCase().includes(searchTerm.toLowerCase()) ||
             type.toLowerCase().includes(searchTerm.toLowerCase())

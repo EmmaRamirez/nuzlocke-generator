@@ -50,7 +50,6 @@ export class UpdaterBase extends React.Component<{
     lrt: History<any>['lastRevisionType'];
 }> {
     public componentDidMount() {
-        console.log('Called component did mount');
         // initial history record
         this.props.updateEditorHistory(this.props.present);
     }
@@ -105,8 +104,6 @@ export class AppBase extends React.Component<AppProps, {result2?: boolean}> {
 
         const UpdaterComponent = !editor.editorHistoryDisabled && <Updater />;
 
-        console.log(!editor.editorHistoryDisabled, editor.editorHistoryDisabled, UpdaterComponent);
-
         return (
             <ErrorBoundary errorMessage={<div className='p-6 center-text'>
                 <h2>There was a problem retrieving your nuzlocke data.</h2>
@@ -123,17 +120,17 @@ export class AppBase extends React.Component<AppProps, {result2?: boolean}> {
                         background: this.props.style.editorDarkMode ? '#111' : '#fff',
                     }}>
                     {UpdaterComponent}
-                    <ErrorBoundary>
+                    <ErrorBoundary key={1}>
                         <React.Suspense fallback={'Loading Hotkeys...'}>
                             <Hotkeys />
                         </React.Suspense>
                     </ErrorBoundary>
-                    <ErrorBoundary>
+                    <ErrorBoundary key={2}>
                         <React.Suspense fallback={'Loading Editor...'}>
                             <Editor />
                         </React.Suspense>
                     </ErrorBoundary>
-                    <ErrorBoundary>
+                    <ErrorBoundary key={3}>
                         <React.Suspense fallback={'Loading Result...'}>
                             <Result />
                         </React.Suspense>

@@ -21,7 +21,6 @@ import {
     Classes,
 } from '@blueprintjs/core';
 import { connect } from 'react-redux';
-import { equals } from 'ramda';
 
 const boxSource = {
     drop(props, monitor, component) {

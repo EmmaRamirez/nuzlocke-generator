@@ -50,6 +50,7 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
         return (
             <div
                 style={{
+                    // @ts-expect-error
                     backgroundImage: getPokemonImage({
                         customImage: this.props.customImage,
                         forme: this.props.forme,

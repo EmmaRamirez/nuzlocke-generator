@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Pokemon, Game, Editor } from 'models';
+import { Pokemon, Game, Editor, PokemonKeys } from 'models';
 import {
     getBackgroundGradient,
     typeToColor,
@@ -22,6 +22,7 @@ import { css, cx } from 'emotion';
 import { PokemonIcon } from 'components/PokemonIcon';
 import { getMetLocationString } from './getMetLocationString';
 import { CheckpointsDisplay } from 'components/Result';
+import { PokemonImage } from 'components/Shared/PokemonImage';
 
 export interface TeamPokemonInfoProps {
     generation: Generation;
@@ -30,6 +31,35 @@ export interface TeamPokemonInfoProps {
     customTypes: State['customTypes'];
     linkedPokemon?: Pokemon;
     game: State['game'];
+}
+
+function getSpriteStyle({
+    spritesMode, scaleSprites, teamImages
+}) {
+    if (spritesMode) {
+        if (scaleSprites) {
+            return {
+                backgroundSize: 'auto',
+                backgroundRepeat: 'no-repeat',
+            };
+        } else {
+            return {
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+            };
+        }
+    }
+    if (teamImages === 'dream world') {
+        return {
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+        };
+    } else {
+        return {
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+        };
+    }
 }
 
 export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
@@ -194,79 +224,82 @@ export interface TeamPokemonBaseProps {
     linkedPokemon?: Pokemon;
 }
 
-export class TeamPokemonBaseMinimal extends React.PureComponent<
-TeamPokemonBaseProps & { spriteStyle: object }
-> {
-    public render() {
-        const { pokemon } = this.props;
+export function TeamPokemonBaseMinimal (props: TeamPokemonBaseProps & {spriteStyle?: object }) {       const { pokemon, style, game, editor } = this.props;
+    const poke = pokemon;
 
-        if (!pokemon) {
-            return <div>A Pokémon could not be rendered.</div>;
-        }
+    if (!pokemon) {
+        return <div>A Pokémon could not be rendered.</div>;
+    }
 
-        return (
-            <div
-                className="pokemon-container minimal"
-                style={{ color: getContrastColor(this.props?.style?.bgColor) }}>
-                <div
-                    style={{
-                        backgroundImage: getPokemonImage({
-                            customImage: pokemon.customImage,
-                            forme: pokemon.forme as any,
-                            species: pokemon.species,
-                            style: this.props.style,
-                            name: this.props.game.name,
-                            shiny: pokemon.shiny,
-                            editor: this.props.editor,
-                            gender: pokemon.gender,
-                        }),
-                        ...this.props.spriteStyle,
-                    }}
-                    className={`pokemon-image ${(pokemon.species || 'missingno').toLowerCase()} ${
-                        this.props.style.imageStyle === 'round' ? 'round' : 'square'
-                    }`}
-                />
-                <div className="pokemon-info">
-                    <div className="pokemon-info-inner">
-                        <span className="pokemon-nickname">{pokemon.nickname}</span>
-                        <span className="pokemon-name">{pokemon.species}</span>
-                        {pokemon.level ? (
-                            <span className="pokemon-level">lv. {pokemon.level}</span>
-                        ) : null}
-                    </div>
+    return (
+        <div
+            className="pokemon-container minimal"
+            style={{ color: getContrastColor(props?.style?.bgColor) }}>
+            <PokemonImage
+                species={poke?.species}
+                gender={poke?.gender}
+                forme={poke?.forme}
+                customImage={poke?.customImage}
+                style={style}
+                editor={editor}
+                name={game.name}
+            >
+                {(backgroundImage) => {
+                    return <div
+                        style={{
+                            backgroundImage,
+                            ...(props.spriteStyle as React.CSSProperties),
+                        }}
+                        className={`pokemon-image ${(
+                            poke?.species || 'missingno'
+                        ).toLowerCase()} ${
+                            props.style.imageStyle === 'round' ? 'round' : 'square'
+                        }`}
+                    />
+                }}
+            </PokemonImage>
+            <div className="pokemon-info">
+                <div className="pokemon-info-inner">
+                    <span className="pokemon-nickname">{pokemon.nickname}</span>
+                    <span className="pokemon-name">{pokemon.species}</span>
+                    {pokemon.level ? (
+                        <span className="pokemon-level">lv. {pokemon.level}</span>
+                    ) : null}
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
-export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
-    private getSpriteStyle() {
-        if (this.props.style.spritesMode) {
-            if (this.props.style.scaleSprites) {
-                return {
-                    backgroundSize: 'auto',
-                    backgroundRepeat: 'no-repeat',
-                };
-            } else {
-                return {
-                    backgroundSize: 'cover',
-                    backgroundRepeat: 'no-repeat',
-                };
-            }
-        }
-        if (this.props.style.teamImages === 'dream world') {
-            return {
-                backgroundSize: 'contain',
-                backgroundRepeat: 'no-repeat',
-            };
-        } else {
-            return {
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat',
-            };
-        }
+export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, {image: string}> {
+    public state = {
+        image: '',
+    };
+
+    public async componentDidMount() {
+        const {
+            pokemon,
+            style,
+            game,
+            editor,
+        } = this.props;
+        const poke = pokemon;
+
+        const image = await getPokemonImage({
+            customImage: poke?.customImage,
+            forme: poke?.forme as any,
+            species: poke?.species,
+            shiny: poke?.shiny,
+            style: style,
+            name: game.name,
+            editor: editor,
+            gender: poke?.gender,
+        });
+
+        this.setState({ image });
     }
+
+    
 
     public render() {
         const {
@@ -287,7 +320,9 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
 
         const getFirstType = poke.types ? poke.types[0] : 'Normal';
         const getSecondType = poke.types ? poke.types[1] : 'Normal';
-        const spriteStyle = this.getSpriteStyle();
+    
+        const {spritesMode, scaleSprites, teamImages} = style;
+        const spriteStyle = getSpriteStyle({ spritesMode, scaleSprites, teamImages });
 
         const addProp = (item: any) => {
             const propName = `data-${item.toLowerCase()}`;
@@ -296,6 +331,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
             return { [propName]: poke[item].toString() };
         };
 
+        // @TODO: update with new keys
         const dataKeys = [
             'id',
             'position',
@@ -409,81 +445,45 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                 {style.template === 'Compact with Icons' && (
                     <PokemonIcon className="pokemon-icon-main" {...poke} />
                 )}
-                {EMMA_MODE ? (
-                    <>
-                        <div
-                            role="presentation"
-                            onClick={(e) => this.props.selectPokemon(poke.id)}
-                            className={`${this.props.style.imageStyle} pokemon-image-wrapper`}
-                            style={{
-                                cursor: 'pointer',
-                                background: this.props.style.teamPokemonBorder
-                                    ? getBackgroundGradient(
-                                        poke.types != null ? poke.types[0] : 'Normal',
-                                        poke.types != null ? poke.types[1] : 'Normal',
-                                        customTypes,
-                                    )
-                                    : 'transparent',
-                            }}
-                        />
-                        <div
-                            style={{
-                                backgroundImage: getPokemonImage({
-                                    customImage: poke.customImage,
-                                    forme: poke.forme as any,
-                                    species: poke.species,
-                                    shiny: poke.shiny,
-                                    style: this.props.style,
-                                    name: this.props.game.name,
-                                    editor: this.props.editor,
-                                    gender: poke.gender,
-                                }),
-                                ...(spriteStyle as React.CSSProperties),
-                            }}
-                            className={`pokemon-image ${(
-                                poke.species || 'missingno'
-                            ).toLowerCase()} ${
-                                this.props.style.imageStyle === 'round' ? 'round' : 'square'
-                            }`}
-                        />
-                    </>
-                ) : (
-                    <div
-                        role="presentation"
-                        onClick={(e) => this.props.selectPokemon(poke.id)}
-                        className={`${this.props.style.imageStyle} pokemon-image-wrapper`}
-                        style={{
-                            cursor: 'pointer',
-                            background: this.props.style.teamPokemonBorder
-                                ? getBackgroundGradient(
-                                    poke.types != null ? poke.types[0] : 'Normal',
-                                    poke.types != null ? poke.types[1] : 'Normal',
-                                    customTypes,
-                                )
-                                : 'transparent',
-                        }}>
-                        <div
-                            style={{
-                                backgroundImage: getPokemonImage({
-                                    customImage: poke.customImage,
-                                    forme: poke.forme as any,
-                                    species: poke.species,
-                                    shiny: poke.shiny,
-                                    style: this.props.style,
-                                    name: this.props.game.name,
-                                    editor: this.props.editor,
-                                    gender: poke.gender,
-                                }),
-                                ...(spriteStyle as React.CSSProperties),
-                            }}
-                            className={`pokemon-image ${(
-                                poke.species || 'missingno'
-                            ).toLowerCase()} ${
-                                this.props.style.imageStyle === 'round' ? 'round' : 'square'
-                            }`}
-                        />
-                    </div>
-                )}
+                <div
+                    role="presentation"
+                    onClick={(e) => this.props.selectPokemon(poke.id)}
+                    className={`${this.props.style.imageStyle} pokemon-image-wrapper`}
+                    style={{
+                        cursor: 'pointer',
+                        background: this.props.style.teamPokemonBorder
+                            ? getBackgroundGradient(
+                                poke.types != null ? poke.types[0] : 'Normal',
+                                poke.types != null ? poke.types[1] : 'Normal',
+                                customTypes,
+                            )
+                            : 'transparent',
+                    }}>
+                    <PokemonImage
+                        species={poke.species}
+                        gender={poke.gender}
+                        forme={poke.forme}
+                        customImage={poke.customImage}
+                        style={style}
+                        editor={editor}
+                        name={game.name}
+                    >
+                        {(backgroundImage) => {
+                            return <div
+                                style={{
+                                    backgroundImage,
+                                    ...(spriteStyle as React.CSSProperties),
+                                    imageRendering: style.iconRendering,
+                                }}
+                                className={`pokemon-image ${(
+                                    poke.species || 'missingno'
+                                ).toLowerCase()} ${
+                                    this.props.style.imageStyle === 'round' ? 'round' : 'square'
+                                }`}
+                            />
+                        }}
+                    </PokemonImage>
+                </div>
                 {poke.mvp && (
                     <div
                         className={cx(
@@ -546,17 +546,20 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps> {
                             itemLabelStyle[style.itemStyle],
                             'pokemon-item',
                         )}>
-                        <img
-                            alt={poke.item}
-                            src={
-                                poke.customItemImage
-                                    ? poke.customItemImage
-                                    : `icons/hold-item/${(poke.item || '')
-                                        .toLowerCase()
-                                        .replace(/\'/g, '')
-                                        .replace(/\s/g, '-')}.png`
-                            }
-                        />
+                        {poke.customItemImage ?
+                            <PokemonImage url={poke.customItemImage}>
+                                {(image) => <img
+                                    alt={poke.item}
+                                    src={poke.customItemImage}
+                                />}
+                            </PokemonImage>
+                            : <img alt={poke.item}
+                                    src={`icons/hold-item/${(poke.item || '')
+                                    .toLowerCase()
+                                    .replace(/\'/g, '')
+                                    .replace(/\s/g, '-')}.png`}
+                                />
+                        }
                     </div>
                 ) : null}
                 {pokemon && (

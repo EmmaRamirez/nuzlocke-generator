@@ -59,6 +59,7 @@ export interface Styles {
     statsOptions: StatsOptions;
     linkedPokemonText: string;
     customTeamHTML: string;
+    zoomLevel: number;
 }
 
 export const styleDefaults: Styles = {
@@ -113,4 +114,5 @@ export const styleDefaults: Styles = {
         shiniesCaught: false,
     },
     customTeamHTML: '',
+    zoomLevel: 1,
 };

@@ -1,4 +1,10 @@
-import { CHANGE_EDITOR_SIZE, Action, TOGGLE_TEMTEM_MODE, TOGGLE_MOBILE_RESULT_VIEW, SET_EDITOR_HISTORY_ENABLED } from 'actions';
+import {
+    CHANGE_EDITOR_SIZE,
+    Action,
+    TOGGLE_TEMTEM_MODE,
+    TOGGLE_MOBILE_RESULT_VIEW,
+    SET_EDITOR_HISTORY_ENABLED,
+} from 'actions';
 import { Editor } from 'models';
 
 export function editor(
@@ -9,7 +15,12 @@ export function editor(
         monsterType: 'Pokémon',
         editorHistoryDisabled: true,
     },
-    action: Action<CHANGE_EDITOR_SIZE | TOGGLE_TEMTEM_MODE | TOGGLE_MOBILE_RESULT_VIEW | SET_EDITOR_HISTORY_ENABLED>,
+    action: Action<
+    | CHANGE_EDITOR_SIZE
+    | TOGGLE_TEMTEM_MODE
+    | TOGGLE_MOBILE_RESULT_VIEW
+    | SET_EDITOR_HISTORY_ENABLED
+    >,
 ) {
     switch (action.type) {
         case CHANGE_EDITOR_SIZE:

@@ -361,14 +361,11 @@ export const parseGen1Save = async (file: Buffer, options: SaveFileOptions) => {
 export interface SaveFileOptions {
     type: 'nuzlocke' | 'plain';
     boxes?: {
-        [prop: string]: number[],
+        [prop: string]: number[];
     };
 }
 
-export const loadGen1SaveFile = async (
-    filename: string,
-    options: SaveFileOptions,
-) => {
+export const loadGen1SaveFile = async (filename: string, options: SaveFileOptions) => {
     const save = await fs.readFileSync(filename);
 
     try {

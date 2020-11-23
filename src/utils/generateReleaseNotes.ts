@@ -722,5 +722,19 @@ Thank you!
 ## Known Issues
 - External Cors-blocked images cannot be downloaded, however you can use a [base 64 converter](https://www.base64-image.de/) to bypass this
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
-`
+`,
+    '1.5.0': `
+## Features
+- **Image Downloads update**: now capable of properly downloading external images!
+- **Zoom & Pan**: controls for image results, double-click to reset
+
+## Fixes
+- **Drag and drop now reorder positions**
+- Added support for actual FRLG sprites in Sprites Mode
+- In Sprites Mode, LGPE now show up with Gen 7 sprites
+- Fixed Hatterene & Duraludon's names being misspelt
+- Fixed the icon for Type: Null not showing up
+- Added all remaining standard images
+- Location checklist is now closed by default
+`,
 };

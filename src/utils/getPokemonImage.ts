@@ -8,13 +8,15 @@ import { Species } from './listOfPokemon';
 import { State } from 'state';
 import { significantGenderDifferenceList } from './handleSignificantGenderDifferences';
 import { GenderElementProps } from 'components';
+import { wrapImageInCORS } from './wrapImageInCORS';
+import { normalizeSpeciesName } from './normalizeSpeciesName';
 
-const handleTcgTransforms = (species?: string, gender?: GenderElementProps) => {;
+const handleTcgTransforms = (species?: string, gender?: GenderElementProps) => {
     if (gender === 'Female') {
         if (species && significantGenderDifferenceList.includes(species)) return `${species}-f`;
     }
     return species;
-}
+};
 
 const getGameName = (name: Game) => {
     if (name === 'Red' || name === 'Blue') return 'rb';
@@ -101,13 +103,13 @@ export interface GetPokemonImage {
     forme?: keyof typeof Forme;
     species?: string;
     name?: Game;
-    style: State['style'];
+    style?: State['style'];
     shiny?: boolean;
     editor?: Editor;
     gender?: GenderElementProps;
 }
 
-export function getPokemonImage({
+export async function getPokemonImage({
     customImage,
     forme,
     species,
@@ -116,13 +118,16 @@ export function getPokemonImage({
     shiny,
     editor,
     gender,
-}: GetPokemonImage) {
+}: GetPokemonImage): Promise<string> {
     const regularNumber = speciesToNumber((species as Species) || 'Ditto');
     const leadingZerosNumber = (speciesToNumber((species as Species) || 'Ditto') || 0)
         .toString()
         .padStart(3, '0');
 
     if (customImage) {
+        if (customImage.startsWith('http')) {
+            return await wrapImageInCORS(customImage);
+        }
         return `url(${customImage})`;
     }
 
@@ -131,13 +136,11 @@ export function getPokemonImage({
     }
 
     if (
-        style.spritesMode &&
+        style?.spritesMode &&
         (name === 'Black' ||
             name === 'Emerald' ||
             name === 'Ruby' ||
             name === 'Sapphire' ||
-            name === 'LeafGreen' ||
-            name === 'FireRed' ||
             name === 'White' ||
             name === 'Black 2' ||
             name === 'White 2' ||
@@ -151,32 +154,52 @@ export function getPokemonImage({
             name === 'Ultra Moon' ||
             name === 'Sword' ||
             name === 'Shield' ||
+            name === 'Let\'s Go Eevee' ||
+            name === 'Let\'s Go Pikachu' ||
             name === 'Colosseum' ||
             name === 'XD Gale of Darkness')
     ) {
         if (!shiny) {
-            return `url(https://www.serebii.net/${getGameName(
+            const url = `https://www.serebii.net/${getGameName(
                 name,
-            )}/pokemon/${leadingZerosNumber}${getForme(forme)}.png)`;
+            )}/pokemon/${leadingZerosNumber}${getForme(forme)}.png`;
+
+            return await wrapImageInCORS(url);
         } else {
-            return `url(https://www.serebii.net/Shiny/${capitalize(
+            const url = `https://www.serebii.net/Shiny/${capitalize(
                 getGameNameSerebii(name as Game),
-            )}/${leadingZerosNumber}.png)`;
-        }
-    }
-    if (style.spritesMode) {
-        if (!shiny) {
-            return `url(https://www.serebii.net/pokearth/sprites/${getGameName(
-                name as Game,
-            )}/${leadingZerosNumber}.png)`;
-        } else {
-            return `url(https://www.serebii.net/Shiny/${getGameNameSerebii(
-                name as Game,
-            )}/${leadingZerosNumber}.png)`;
+            )}/${leadingZerosNumber}.png`;
+
+            return await wrapImageInCORS(url);
         }
     }
 
-    if (style.teamImages === 'sugimori') {
+    if (style?.spritesMode && (name === 'LeafGreen' ||
+    name === 'FireRed')) {
+        if (!shiny) {
+            const url = `https://img.pokemondb.net/sprites/firered-leafgreen/normal/${normalizeSpeciesName(species as Species)}.png`;
+
+            return await wrapImageInCORS(url);
+        } else {
+            const url = `https://img.pokemondb.net/sprites/firered-leafgreen/shiny/${normalizeSpeciesName(species as Species)}.png`;
+
+            return await wrapImageInCORS(url);
+        }
+    }
+
+    if (style?.spritesMode) {
+        const url = shiny
+            ? `https://www.serebii.net/Shiny/${getGameNameSerebii(
+                name as Game,
+            )}/${leadingZerosNumber}.png`
+            : `https://www.serebii.net/pokearth/sprites/${getGameName(
+                name as Game,
+            )}/${leadingZerosNumber}.png`;
+
+        return await wrapImageInCORS(url);
+    }
+
+    if (style?.teamImages === 'sugimori') {
         if (
             [521, 592, 593, 668, 678].includes(regularNumber || 0) &&
             (gender === 'f' || gender === 'Female')
@@ -190,13 +213,13 @@ export function getPokemonImage({
         )}.png)`;
     }
 
-    if (style.teamImages === 'dream world') {
+    if (style?.teamImages === 'dream world') {
         return `url(img/dw/${regularNumber || 1}.svg)`;
     }
 
     const handleMimeJr = (s?: string) => (s === 'Mime Jr.' ? 'mime-jr' : s);
 
-    if (style.teamImages === 'shuffle') {
+    if (style?.teamImages === 'shuffle') {
         return `url(img/shuffle/${(handleMimeJr(species) || 'Ditto')
             .trim()
             .replace(/\'/g, '')
@@ -205,18 +228,13 @@ export function getPokemonImage({
             .toLocaleLowerCase()}${getIconFormeSuffix(forme as keyof typeof Forme)}.png)`;
     }
 
-    if (style.teamImages === 'tcg') {
+    if (style?.teamImages === 'tcg') {
         return `url(img/tcg/${(
             handleTcgTransforms(
-                addForme(
-                    (species || '')
-                        .replace(/\s/g, '')
-                        .replace(/'/g, ''), forme),
-                    gender,
-                )
-                || 'missingno'
-            )
-            .toLowerCase()}.jpg)`;
+                addForme((species || '').replace(/\s/g, '').replace(/'/g, ''), forme),
+                gender,
+            ) || 'missingno'
+        ).toLowerCase()}.jpg)`;
     }
     // TEMPORARY STOPGAPS
     if (species === 'Dugtrio' && forme === 'Alolan' && shiny) {
@@ -227,7 +245,10 @@ export function getPokemonImage({
     }
 
     return `url(img/${(
-        addForme((species || '').replace(/\s/g, '').replace(/'/g, ''), forme) || 'missingno'
+        addForme((species || '')
+            .replace(/\s/g, '')
+            .replace(/'/g, '')
+            .replace(/:/g, '-'), forme) || 'missingno'
     ).toLowerCase()}.jpg)`;
 }
 
