@@ -15,7 +15,7 @@ export class BaseEditor extends React.Component<BaseEditorProps, BaseEditorState
     };
 
     public state = {
-        isOpen: BaseEditor.defaultProps.defaultOpen,
+        isOpen: this.props.defaultOpen ?? BaseEditor.defaultProps.defaultOpen,
     };
 
     private toggleEditor = () => {

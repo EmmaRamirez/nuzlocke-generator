@@ -733,5 +733,6 @@ Thank you!
 - Fixed Hatterene & Duraludon's names being misspelt
 - Fixed the icon for Type: Null not showing up
 - Added all remaining standard images
+- Location checklist is now closed by default
 `,
 };
