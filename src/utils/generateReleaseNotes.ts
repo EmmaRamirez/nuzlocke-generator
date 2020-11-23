@@ -730,6 +730,8 @@ Thank you!
 
 ## Fixes
 - **Drag and drop now reorder positions**
+- Added support for actual FRLG sprites in Sprites Mode
+- In Sprites Mode, LGPE now show up with Gen 7 sprites
 - Fixed Hatterene & Duraludon's names being misspelt
 - Fixed the icon for Type: Null not showing up
 - Added all remaining standard images

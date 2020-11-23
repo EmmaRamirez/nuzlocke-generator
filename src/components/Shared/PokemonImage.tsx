@@ -32,6 +32,7 @@ export function PokemonImage({
     const [image, setImage] = React.useState('');
 
     React.useEffect(() => {
+        setImage('https://cdn.dribbble.com/users/621155/screenshots/2835314/simple_pokeball.gif');
         // If a URL is defined, we return it through cors-anywhere
         // Otherwise, we just use getPokemonImage() (which also uses cors-anywhere under the hood)
         url ? (async () => {

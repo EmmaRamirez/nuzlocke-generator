@@ -473,6 +473,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, {imag
                                 style={{
                                     backgroundImage,
                                     ...(spriteStyle as React.CSSProperties),
+                                    imageRendering: style.iconRendering,
                                 }}
                                 className={`pokemon-image ${(
                                     poke.species || 'missingno'

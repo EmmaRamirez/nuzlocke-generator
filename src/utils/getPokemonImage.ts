@@ -9,6 +9,7 @@ import { State } from 'state';
 import { significantGenderDifferenceList } from './handleSignificantGenderDifferences';
 import { GenderElementProps } from 'components';
 import { wrapImageInCORS } from './wrapImageInCORS';
+import { normalizeSpeciesName } from './normalizeSpeciesName';
 
 const handleTcgTransforms = (species?: string, gender?: GenderElementProps) => {
     if (gender === 'Female') {
@@ -140,8 +141,6 @@ export async function getPokemonImage({
             name === 'Emerald' ||
             name === 'Ruby' ||
             name === 'Sapphire' ||
-            name === 'LeafGreen' ||
-            name === 'FireRed' ||
             name === 'White' ||
             name === 'Black 2' ||
             name === 'White 2' ||
@@ -155,6 +154,8 @@ export async function getPokemonImage({
             name === 'Ultra Moon' ||
             name === 'Sword' ||
             name === 'Shield' ||
+            name === 'Let\'s Go Eevee' ||
+            name === 'Let\'s Go Pikachu' ||
             name === 'Colosseum' ||
             name === 'XD Gale of Darkness')
     ) {
@@ -172,6 +173,20 @@ export async function getPokemonImage({
             return await wrapImageInCORS(url);
         }
     }
+
+    if (style?.spritesMode && (name === 'LeafGreen' ||
+    name === 'FireRed')) {
+        if (!shiny) {
+            const url = `https://img.pokemondb.net/sprites/firered-leafgreen/normal/${normalizeSpeciesName(species as Species)}.png`;
+
+            return await wrapImageInCORS(url);
+        } else {
+            const url = `https://img.pokemondb.net/sprites/firered-leafgreen/shiny/${normalizeSpeciesName(species as Species)}.png`;
+
+            return await wrapImageInCORS(url);
+        }
+    }
+
     if (style?.spritesMode) {
         const url = shiny
             ? `https://www.serebii.net/Shiny/${getGameNameSerebii(
