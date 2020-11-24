@@ -242,6 +242,7 @@ export function TeamPokemonBaseMinimal (props: TeamPokemonBaseProps & {spriteSty
                 customImage={poke?.customImage}
                 style={style}
                 editor={editor}
+                shiny={poke?.shiny}
                 name={game.name}
             >
                 {(backgroundImage) => {
@@ -467,6 +468,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, {imag
                         style={style}
                         editor={editor}
                         name={game.name}
+                        shiny={poke.shiny}
                     >
                         {(backgroundImage) => {
                             return <div

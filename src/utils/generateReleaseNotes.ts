@@ -737,4 +737,9 @@ Thank you!
 - Added all remaining standard images
 - Location checklist is now closed by default
 `,
+    '1.5.1': `
+## Fixes
+- Fixed an issue with sprites not appearing Champs section
+- Fixed an issue with shininess not showing up in TeamPokemon sprites    
+`
 };

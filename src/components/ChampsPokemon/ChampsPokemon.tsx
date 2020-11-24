@@ -5,6 +5,7 @@ import { gameOfOriginToColor, Game, getPokemonImage } from 'utils';
 import { Pokemon } from 'models';
 import { GenderElement } from '../Shared';
 import { css, cx } from 'emotion';
+import { PokemonImage } from 'components/Shared/PokemonImage';
 
 export const champsPokemon = (options: any) => css`
     height: ${options.height};
@@ -47,29 +48,37 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
     };
 
     private getPokemonImage() {
+        const {
+            customImage,
+            forme,
+            species,
+            gameOfOrigin,
+            shiny,
+            gender,
+        } = this.props;
+
         return (
-            <div
+            <PokemonImage
+                customImage={customImage}
+                name={gameOfOrigin}
+                species={species}
+                shiny={shiny}
+                gender={gender}
+                forme={forme}
                 style={{
-                    // @ts-expect-error
-                    backgroundImage: getPokemonImage({
-                        customImage: this.props.customImage,
-                        forme: this.props.forme,
-                        species: this.props.species,
-                        name: this.props.gameOfOrigin,
-                        shiny: this.props.shiny,
-                        gender: this.props.gender,
-                        style: {
-                            spritesMode: true,
-                            teamImages: null,
-                        } as any,
-                    }),
+                    spritesMode: true,
+                    useSpritesForChampsPokemon: true,
+                } as any}
+            >
+                {(backgroundImage) => <img style={{
+                    backgroundImage,
                     backgroundPosition: 'center center',
                     backgroundSize: 'contain',
                     backgroundRepeat: 'no-repeat',
                     height: '48px',
                     width: '48px',
-                }}
-            />
+                }} />}
+            </PokemonImage>
         );
     }
 
