@@ -24,14 +24,14 @@ You can also click the `Clone or Download` button and select to download it as a
 You should find it at `localhost:8080`. In order to check for updates, run the following
 
 ```bash
-git pull origin master
+git pull origin master && npm install
 ```
 
 And then re-run the server!
 
 ## Accessing Beta/In-Progress Features
 
-> ⚠️ Proceed at your own risk! These features can be unstable and possibly corrupt your data.
+> ⚠️ Proceed at your own risk! These features can be unstable and could possibly corrupt your data.
 
 First, create a `.env` file at the root. The following are the current in-use environment variables:
 
