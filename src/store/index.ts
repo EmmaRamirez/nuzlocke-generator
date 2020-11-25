@@ -43,9 +43,9 @@ const migrations = {
         ...state,
         customMoveMap: [],
     }),
-    '1.5.2': (state: State) => ({
+    '1.6.0': (state: State) => ({
         ...state,
-        // in 1.5.2, we allowed boxes to be reorganized with drag & drop
+        // in 1.6.0, we allowed boxes to be reorganized with drag & drop
         // The problem was that a long standing data inaccuracy existed in the reducer
         // whereby the position of Champs & Dead were the same
         // While this actually isn't that dramatic (it doesn't break the app)
@@ -65,7 +65,7 @@ const migrations = {
                     ...box,
                     position: 3,
                 }
-            ]
+            ];
         })(),
     }),
 };
