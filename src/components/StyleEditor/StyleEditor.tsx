@@ -154,7 +154,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
             padding: '7px',
         };
         return (
-            <BaseEditor name="Style">
+            <BaseEditor icon='style' name="Style">
                 {feature.themeEditing ? (
                     <Drawer
                         isOpen={this.state.isThemeEditorOpen}

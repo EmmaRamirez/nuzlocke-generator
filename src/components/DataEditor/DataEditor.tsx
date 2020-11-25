@@ -390,7 +390,12 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                             marginLeft: '.25rem',
                         }}>
                         <Switch
-                            label="Merge Data?"
+                            labelElement={
+                                <>
+                                    Merge Data?{' '}
+                                    <Popover content={<span style={{padding: '4px', width: '200px'}}>Merges the data from the first with the second. NOTE: this method of determining IDs is based off IVs in Gen I &amp; II.</span>}interactionKind={PopoverInteractionKind.HOVER}><Icon icon='info-sign' /></Popover>
+                                </>
+                            }
                             checked={this.state.mergeDataMode}
                             onChange={(e) =>
                                 this.setState({ mergeDataMode: !this.state.mergeDataMode })
@@ -416,6 +421,10 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                             accept=".sav"
                         />
                     </div>
+
+                    <Callout intent={Intent.WARNING} style={{ fontSize: '80%', marginTop: '0.5rem' }}>
+                        Tip: Box #1 in the save file maps to "Boxed," Box #2 maps to "Dead"
+                    </Callout>
                 </div>
             </>
         );
@@ -423,7 +432,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
 
     public render() {
         return (
-            <BaseEditor name="Data">
+            <BaseEditor icon='database' name="Data">
                 <DeleteAlert
                     onConfirm={this.clearAllData}
                     isOpen={this.state.isClearAllDataOpen}
