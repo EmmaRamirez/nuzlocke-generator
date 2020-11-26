@@ -18,7 +18,7 @@ const matchesStatus = (searchTerm) => ((poke: Pokemon) => poke.nickname?.toLower
     poke.species?.toLowerCase().startsWith(searchTerm?.toLowerCase()) ||
     poke.forme?.toLowerCase() === searchTerm?.toLowerCase() ||
     poke.nickname?.toLowerCase().startsWith(searchTerm?.toLowerCase()) ||
-    poke.gender?.toLowerCase().startsWith(searchTerm?.toLowerCase()) ||
+    poke.gender?.toLowerCase() === (searchTerm?.toLowerCase()) ||
     poke.moves?.includes(searchTerm) ||
     poke.gameOfOrigin?.toLowerCase() === searchTerm?.toLowerCase() ||
     poke.item?.toLowerCase() === searchTerm?.toLowerCase() ||
