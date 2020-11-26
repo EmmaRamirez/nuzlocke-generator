@@ -29,7 +29,7 @@
     "npm": "6.1.0"
   },
   "keywords": [],
-  "author": "Emma Ramirez <ramirez.emma.g@gmail.com> (http://emmaramirez.me)",
+  "author": "Emma Ramirez <ramireze.emma.g@gmail.com> (http://emmaramirez.me)",
   "license": "MIT",
   "dependencies": {
     "@emmaramirez/dom-to-image": "^3.0.2",

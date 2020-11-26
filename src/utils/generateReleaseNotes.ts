@@ -751,6 +751,9 @@ Thank you!
 - The Location Checklist is now case-insensitive
 - It now also lists out all Pokémon that match the area; previously, if a Pokémon's game of origin didn't match, it would not show up.
 - Added some more general pointers & tips throughout the app
-
+`,
+    '1.5.3': `
+## Fixes
+- Evolve button now properly changes types    
 `
 };
