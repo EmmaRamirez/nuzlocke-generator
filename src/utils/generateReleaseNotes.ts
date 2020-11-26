@@ -741,5 +741,9 @@ Thank you!
 ## Fixes
 - Fixed an issue with sprites not appearing Champs section
 - Fixed an issue with shininess not showing up in TeamPokemon sprites    
+`,
+    '1.5.3': `
+## Fixes
+- Evolve button now properly changes types    
 `
 };

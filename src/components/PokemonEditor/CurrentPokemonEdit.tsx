@@ -13,6 +13,7 @@ import {
     EvolutionTree,
     listOfPokeballs,
     getListOfTypes,
+    Forme,
 } from 'utils';
 import { Pokemon, Editor } from 'models';
 import { Boxes } from 'models';
@@ -182,11 +183,11 @@ CurrentPokemonEditState
         return this.props.pokemon.find((v: Pokemon) => v.id === this.state.selectedId);
     }
 
-    private parseTree(tree) {}
-
     private evolvePokemon = (species) => (e) => {
+        const pokemon = this.getCurrentPokemon();
         const edit = {
             species,
+            types: matchSpeciesToTypes(species, (pokemon?.forme || 'Normal') as keyof typeof Forme)
         };
 
         this.props.editPokemon(edit, this.state.selectedId);
