@@ -55,7 +55,6 @@ const boxSourceDrop = {
 
 const boxSourceDrag = {
     beginDrag(props: BoxProps) {
-        console.log(props);
         return props;
     },
     isDragging(props, monitor) {

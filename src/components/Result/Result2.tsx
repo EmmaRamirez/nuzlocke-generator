@@ -91,7 +91,7 @@ export function TopBarWithDownload({ forwardedRef }) {
 export function TeamPokemonMemberView({ pokemon }: { pokemon: Pokemon }) {
     const [showContext, setShowContext] = React.useState(false);
 
-    const onContextMenu = (event) => {
+    const onClick = (event) => {
         event.preventDefault();
         setShowContext(true);
     };
@@ -135,7 +135,7 @@ export function TeamPokemonMemberView({ pokemon }: { pokemon: Pokemon }) {
                     filter: 'drop-shadow(0 0 0 2px rgba(0,0,0,0.2)',
                 }),
             }}
-            onContextMenu={onContextMenu}>
+            onClick={onClick}>
             {showContext && renderMenu}
             <TeamPokemon options={{}} pokemon={pokemon} />
         </div>
