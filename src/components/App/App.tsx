@@ -27,9 +27,17 @@ const Editor = React.lazy(() =>
     import('components/Editor').then((res) => ({ default: res.Editor })),
 );
 
-const Result = React.lazy(() =>
-    import('components/Result/Result').then((res) => ({ default: res.Result })),
-);
+let Result;
+
+if (!feature.resultv2) {
+    Result = React.lazy(() =>
+        import('components/Result/Result').then((res) => ({ default: res.Result })),
+    );
+} else {
+    Result = React.lazy(() =>
+        import('components/Result/Result2').then((res) => ({ default: res.Result })),
+    );
+}
 
 const ImagesDrawer = React.lazy(() =>
     import('components/Shared/ImagesDrawer').then((res) => ({ default: res.ImagesDrawer })),
@@ -130,6 +138,7 @@ export class AppBase extends React.Component<AppProps, {result2?: boolean}> {
                             <Editor />
                         </React.Suspense>
                     </ErrorBoundary>
+                   
                     <ErrorBoundary key={3}>
                         <React.Suspense fallback={'Loading Result...'}>
                             <Result />
