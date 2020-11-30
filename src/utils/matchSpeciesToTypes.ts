@@ -247,7 +247,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Zapdos'],
-            forme: ['Galarian']
+            forme: ['Galarian'],
         })
     )
         return [Types.Fighting, Types.Flying];
@@ -265,7 +265,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Moltres'],
-            forme: ['Galarian']
+            forme: ['Galarian'],
         })
     )
         return [Types.Dark, Types.Flying];
@@ -274,7 +274,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Calyrex'],
-            forme: ['IceRider']
+            forme: ['IceRider'],
         })
     )
         return [Types.Psychic, Types.Ice];
@@ -283,7 +283,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Calyrex'],
-            forme: ['ShadowRider']
+            forme: ['ShadowRider'],
         })
     )
         return [Types.Psychic, Types.Ghost];
@@ -462,7 +462,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Oricorio'],
-            forme: ['Baile']
+            forme: ['Baile'],
         })
     ) {
         return [Types.Fire, Types.Flying];
@@ -472,7 +472,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Oricorio'],
-            forme: ['Pa\'u']
+            forme: ['Pa\'u'],
         })
     ) {
         return [Types.Psychic, Types.Flying];
@@ -482,7 +482,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Oricorio'],
-            forme: ['Pom-Pom']
+            forme: ['Pom-Pom'],
         })
     ) {
         return [Types.Electric, Types.Flying];
@@ -492,7 +492,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Oricorio'],
-            forme: ['Sensu']
+            forme: ['Sensu'],
         })
     ) {
         return [Types.Ghost, Types.Flying];
@@ -502,7 +502,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Meloetta'],
-            forme: ['Pirouette']
+            forme: ['Pirouette'],
         })
     ) {
         return [Types.Normal, Types.Fighting];
@@ -1588,7 +1588,7 @@ export const matchSpeciesToTypes = (
             return [Types.Water, Types.Ground];
         case 'Maractus':
             return [Types.Grass, Types.Grass];
-        
+
         // 'Sigilyph',
         // 'Tirtouga',
         // 'Archen',

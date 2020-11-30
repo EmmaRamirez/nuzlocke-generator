@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { Button, Classes, Spinner, Switch, Intent } from '@blueprintjs/core';
+import { Button, Classes, Spinner, Intent } from '@blueprintjs/core';
 import { connect } from 'react-redux';
-import { reducers } from 'reducers';
 import * as styles from 'components/Result/styles';
-import { classWithDarkTheme, isEmpty, Styles, TeamImagesType } from 'utils';
+import { classWithDarkTheme, isEmpty, Styles } from 'utils';
 import {
     changeEditorSize,
     editStyle,
@@ -12,7 +11,7 @@ import {
     toggleMobileResultView,
 } from 'actions';
 import { version } from 'package';
-import { cx, css } from 'emotion';
+import { cx } from 'emotion';
 import { Pokemon, Editor } from 'models';
 import { ReleaseDialog } from 'components/Shared';
 import { State } from 'state';
@@ -41,7 +40,7 @@ export interface TopBarState {
     isMenuOpen: boolean;
 }
 
-const darkModeStyle = (mode) => (mode ? { color: '#fff' } : {});
+const darkModeStyle = (mode: boolean) => (mode ? { color: '#fff' } : {});
 
 export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
     public state = {
@@ -58,23 +57,10 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
 
     private closeDialog = (e) => {
         this.props.seeRelease(version);
-        this.toggleDialog(null);
+        this.toggleDialog();
     };
 
-    private toggleDialog = (_) => this.setState({ isOpen: !this.state.isOpen });
-
-    private isDownloadDisabled() {
-        return (
-            this.props.style.spritesMode ||
-            this.props.style.useSpritesForChampsPokemon ||
-            this.props.pokemon.some(
-                (p) =>
-                    (p.status === 'Team' && !isEmpty(p.customImage)) ||
-                    !isEmpty(p.customIcon) ||
-                    (p.status === 'Team' && !isEmpty(p.customItemImage)),
-            )
-        );
-    }
+    private toggleDialog = () => this.setState({ isOpen: !this.state.isOpen });
 
     public render() {
         const {
@@ -96,7 +82,7 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                     <>
                         <Button
                             style={darkModeStyle(this.props.style.editorDarkMode)}
-                            onClick={(_) =>
+                            onClick={() =>
                                 this.setState((state) => ({ isMenuOpen: !state.isMenuOpen }))
                             }
                             className={Classes.MINIMAL}
@@ -109,7 +95,7 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                                 zIndex: 22,
                                 position: 'relative',
                             }}
-                            onClick={(_) => this.props.toggleMobileResultView()}
+                            onClick={() => this.props.toggleMobileResultView()}
                             className={cx(Classes.MINIMAL, styles.close_result_button)}
                             icon={showResultInMobile ? 'cross' : 'eye-open'}>
                             {showResultInMobile ? 'Close' : 'View Result'}
@@ -121,7 +107,7 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                     <>
                         <Button
                             style={darkModeStyle(this.props.style.editorDarkMode)}
-                            onClick={(_) =>
+                            onClick={() =>
                                 this.props.changeEditorSize(!this.props.editor.minimized)
                             }
                             className={Classes.MINIMAL}
@@ -146,18 +132,9 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                                 Download Image
                             </Button>
                         )}
-                        {this.isDownloadDisabled() && (
-                            <Button
-                                style={darkModeStyle(this.props.style.editorDarkMode)}
-                                className={Classes.MINIMAL}
-                                intent={Intent.DANGER}
-                                icon="error">
-                                Cross-origin resources detected. Downloads may not work.
-                            </Button>
-                        )}
                         <Button
                             style={darkModeStyle(this.props.style.editorDarkMode)}
-                            onClick={(_) => {
+                            onClick={() => {
                                 this.props.editStyle({
                                     editorDarkMode: !this.props.style.editorDarkMode,
                                 });
@@ -166,6 +143,7 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                             icon={this.props.style.editorDarkMode ? 'flash' : 'moon'}>
                             {this.props.style.editorDarkMode ? 'Light' : 'Dark'} Mode
                         </Button>
+                        {this.props.children}
                         <Button
                             style={darkModeStyle(this.props.style.editorDarkMode)}
                             onClick={this.toggleDialog}
@@ -173,7 +151,6 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                             icon="star">
                             {version}
                         </Button>
-                        {this.props.children}
                     </>
                 )}
                 <ReleaseDialog

@@ -1,6 +1,6 @@
 {
   "name": "nuzlocke-generator",
-  "version": "1.4.10",
+  "version": "1.5.3",
   "description": "A tool for generating nuzlocke team pics from data",
   "main": "dist/bundle.js",
   "scripts": {
@@ -21,6 +21,7 @@
     "serve": "webpack-serve --config webpack.config.ts",
     "start:ci": "npm start",
     "start": "npm run serve",
+    "start:persist": "while true; do npm start && break; done",
     "test": "jest --coverage --config jest-config.json"
   },
   "engines": {
@@ -59,6 +60,7 @@
     "react-infinite-scroller": "^1.2.4",
     "react-loadable-ts-transformer": "0.0.5",
     "redux-mock-store": "^1.5.3",
+    "remark-prism": "^1.1.17",
     "stylis-rule-sheet": "0.0.10",
     "tailwindcss": "^1.9.1",
     "tslib": "^2.0.0",

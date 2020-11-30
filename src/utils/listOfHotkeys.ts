@@ -19,7 +19,7 @@ export const betaHotkeys: HotkeyList[] = [
         label: 'shift+i',
         comment: 'Toggle image uploader',
         onKeyUp: 'toggleImageUploader',
-    }
+    },
 ];
 
 export const listOfHotkeys: HotkeyList[] = [
@@ -61,6 +61,21 @@ export const listOfHotkeys: HotkeyList[] = [
         label: 'shift+n',
         comment: 'Create New Nuzlocke',
         onKeyUp: 'newNuzlocke',
+    },
+    {
+        label: 'shift+scroll',
+        key: 'shift+scroll',
+        comment: 'Scroll image result',
+    },
+    {
+        label: 'double-click',
+        key: 'double-click',
+        comment: 'Reset image result dimensions',
+    },
+    {
+        label: 'drag',
+        key: 'drag',
+        comment: 'Pan image result',
     },
     ...(feature.newHotkeys ? betaHotkeys : []),
 ];

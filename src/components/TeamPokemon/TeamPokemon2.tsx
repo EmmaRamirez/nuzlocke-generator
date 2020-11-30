@@ -35,6 +35,7 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
     const style = useSelector<State, State['style']>((state) => state.style);
     const name = useSelector<State, State['game']['name']>((state) => state.game.name);
     const editor = useSelector<State, State['editor']>((state) => state.editor);
+    const [image, setImage] = React.useState('');
     const customMoveMap = useSelector<State, State['customMoveMap']>(
         (state) => state.customMoveMap,
     );
@@ -42,22 +43,31 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
 
     const teamHTML = style.customTeamHTML;
 
+    React.useEffect(() => {
+        (async () => {
+            const newImage = await getPokemonImage({
+                customImage: pokemon.customImage,
+                forme: pokemon.forme as any,
+                species: pokemon.species,
+                shiny: pokemon.shiny,
+                style: style,
+                name: name,
+                editor: editor,
+                gender: pokemon.gender,
+            });
+            console.log('team pokemon newimg:', newImage);
+            setImage(newImage);
+        })();
+        console.log('team pokemon image: ', image);
+    }, [pokemon.species]);
+
     const classes = {
         teamPokemon: teamPokemon(options),
         teamPokemonImage: teamPokemonImage(options),
     };
 
     const pokemonImage = stripURLCSS(
-        getPokemonImage({
-            customImage: pokemon.customImage,
-            forme: pokemon.forme as any,
-            species: pokemon.species,
-            shiny: pokemon.shiny,
-            style: style,
-            name: name,
-            editor: editor,
-            gender: pokemon.gender,
-        }),
+        image
     );
 
     const pokemonIcon = (
@@ -130,16 +140,7 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
                     style={{
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
-                        backgroundImage: getPokemonImage({
-                            customImage: pokemon.customImage,
-                            forme: pokemon.forme as any,
-                            species: pokemon.species,
-                            shiny: pokemon.shiny,
-                            style: style,
-                            name: name,
-                            editor: editor,
-                            gender: pokemon.gender,
-                        }),
+                        backgroundImage: image,
                     }}></div>
             </div>
         </>

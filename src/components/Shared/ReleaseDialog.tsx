@@ -52,7 +52,7 @@ IDialogProps & ReleaseDialogProps,
                             source={generateReleaseNotes(version)}
                         />
                         <Button
-                            onClick={(e) => this.setState({ seePrevious: !this.state.seePrevious })}
+                            onClick={() => this.setState({ seePrevious: !this.state.seePrevious })}
                             icon={seePrevious ? 'symbol-triangle-up' : 'symbol-triangle-down'}>
                             Previous Relase Notes
                         </Button>

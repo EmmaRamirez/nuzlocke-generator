@@ -63,7 +63,7 @@ export function MassEditorTableBase({ pokemon, editPokemon }: MassEditorTablePro
                 {renderColumns(pokemon, editPokemon)}
             </Table>
             <br />
-            <AddPokemonButton defaultPokemon={generateEmptyPokemon(pokemon)} />
+            <AddPokemonButton pokemon={generateEmptyPokemon(pokemon)} />
         </>
     );
 }

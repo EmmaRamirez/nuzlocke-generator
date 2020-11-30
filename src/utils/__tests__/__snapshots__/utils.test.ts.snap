@@ -2943,7 +2943,9 @@ Array [
     "Hattrem": Array [],
   },
   Object {
-    "Hattrene": Array [],
+    "Hatterene": Array [
+      "Gigantamax",
+    ],
   },
   Object {
     "Impidimp": Array [],
@@ -3035,9 +3037,7 @@ Array [
     "Arctovish": Array [],
   },
   Object {
-    "Duralodon": Array [
-      "Gigantamax",
-    ],
+    "Duraludon": Array [],
   },
   Object {
     "Dreepy": Array [],

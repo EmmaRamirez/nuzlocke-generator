@@ -65,6 +65,7 @@ html.bp3-dark {
 .reporter-editor,
 .requests-editor,
 .checklist-editor,
+.saves-editor,
 .data-editor,
 .stats-editor {
   padding: 0.3rem;

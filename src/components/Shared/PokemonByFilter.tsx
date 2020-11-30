@@ -27,12 +27,14 @@ export class PokemonByFilterBase extends React.PureComponent<PokemonByFilterProp
                     position={Position.TOP}>
                     <PokemonIcon
                         id={poke.id}
+                        status={poke.status}
                         species={poke.species}
                         forme={poke.forme}
                         shiny={poke.shiny}
                         gender={poke.gender}
                         customIcon={poke.customIcon}
                         hidden={poke.hidden}
+                        position={poke.position}
                     />
                 </Tooltip>
             ));

@@ -6,6 +6,7 @@ export function BoxedPokemon({ pokemon }: { pokemon: Pokemon }) {
     return (
         <div data-testid="boxed-pokemon">
             <PokemonIcon
+                position={pokemon?.position}
                 species={pokemon?.species}
                 id={pokemon?.id}
                 style={{ cursor: 'pointer' }}

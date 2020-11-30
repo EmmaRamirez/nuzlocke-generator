@@ -44,6 +44,7 @@ export const BoxedPokemonBase = (poke: BoxedPokemonProps) => {
             }
             {process.env.NODE_ENV !== 'test' && (
                 <PokemonIcon
+                    position={poke?.position}
                     species={poke?.species}
                     id={poke?.id}
                     style={{ cursor: 'pointer' }}

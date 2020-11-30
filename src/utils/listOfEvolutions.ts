@@ -208,7 +208,7 @@ export const EvolutionTree: EvolutionTree = {
 
     Nincada: ['Shedinja', 'Ninjask'],
     Whismur: ['Loudred'],
-    Loudred:  ['Exploud'],
+    Loudred: ['Exploud'],
 
     Makuhita: ['Hariyama'],
     Nosepass: ['Probopass'],
@@ -378,7 +378,7 @@ export const EvolutionTree: EvolutionTree = {
     Scatterbug: ['Spewpa'],
     Spewpa: ['Vivillon'],
     Litleo: ['Pyroar'],
-    'Flabébé': ['Floette'],
+    Flabébé: ['Floette'],
     Floette: ['Florges'],
     Skiddo: ['Gogoat'],
     Pancham: ['Pangoro'],
@@ -438,7 +438,7 @@ export const EvolutionTree: EvolutionTree = {
     Scorbunny: ['Raboot'],
     Raboot: ['Cinderace'],
     Sobble: ['Drizzile'],
-    Drizzile:  ['Inteleon'],
+    Drizzile: ['Inteleon'],
     Skwovet: ['Greedent'],
     Rookidee: ['Corvisquire'],
     Corvisquire: ['Corviknight'],
@@ -459,7 +459,7 @@ export const EvolutionTree: EvolutionTree = {
     Clobbopus: ['Grapploct'],
     Sinistea: ['Polteageist'],
     Hatenna: ['Hattrem'],
-    Hattrem: ['Hattrene'],
+    Hattrem: ['Hatterene'],
     Impidimp: ['Morgrem'],
     Morgrem: ['Grimmsnarl'],
     Milcery: ['Alcremie'],
@@ -490,7 +490,7 @@ export const getEvolutionLine = (species: Species, linear: boolean = false): Spe
         const priors = cycleThrough(species);
         if (priors.length) {
             line.push(...priors);
-            priors.forEach(prior => {
+            priors.forEach((prior) => {
                 getPriors(prior);
                 getNextEvo(prior);
             });
@@ -512,22 +512,19 @@ export const getEvolutionLine = (species: Species, linear: boolean = false): Spe
             }
         }
         if (evolution && evolution.length > 1) {
-            return evolution.forEach(ev => getNextEvo(ev));
+            return evolution.forEach((ev) => getNextEvo(ev));
         }
     };
 
     getNextEvo(species);
 
-
     return uniq(line);
 };
-
-
 
 const tree = [
     ['Bulbasaur', 'Ivysaur', 'Venusaur'],
     ['Burmy', ['Mothim', 'Wormadam']],
-    ['Wurmple', ['Silcoon', 'Cascoon'], ['Beautifly', 'Dustox']]
+    ['Wurmple', ['Silcoon', 'Cascoon'], ['Beautifly', 'Dustox']],
 ];
 
-const getFlat = tree.map(branch => flatten(branch));
+const getFlat = tree.map((branch) => flatten(branch));

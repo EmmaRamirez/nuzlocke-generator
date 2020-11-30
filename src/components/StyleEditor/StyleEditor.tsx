@@ -28,6 +28,9 @@ import { ColorEdit, rgbaOrHex } from 'components/Shared';
 import { cx } from 'emotion';
 import * as Styles from './styles';
 import { ThemeEditor } from 'components/ThemeEditor';
+import { customCSSGuide as text } from 'utils/customCSSGuide';
+const ReactMarkdown = require('react-markdown');
+
 const debounce = require('lodash.debounce');
 
 const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'], game?: Game) => {
@@ -71,6 +74,7 @@ export interface StyleEditorProps {
 
 export interface StyleEditorState {
     isThemeEditorOpen: boolean;
+    isCSSGuideOpen: boolean;
 }
 
 export const IconsNextToTeamPokemon = (props) => (
@@ -130,10 +134,11 @@ export const TextAreaDebounced = ({
 };
 
 export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEditorState> {
-    public state = { isThemeEditorOpen: false, showChromePicker: false };
-    private toggleThemeEditor = (e) =>
+    public state = { isThemeEditorOpen: false, showChromePicker: false, isCSSGuideOpen: false };
+    private toggleThemeEditor = () =>
         this.setState({ isThemeEditorOpen: !this.state.isThemeEditorOpen });
-
+    private toggleCSSGuide = () =>
+        this.setState({ isCSSGuideOpen: !this.state.isCSSGuideOpen });
     public render() {
         const props: StyleEditorProps = this.props;
         const createStyleEdit = (isWidthHeight?: boolean) =>
@@ -142,10 +147,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 [Styles.widthHeightInputs]: isWidthHeight,
             });
         const styleEdit = createStyleEdit(false);
-        const teamImages = ['standard', 'sugimori', 'dream world', 'shuffle'];
-        if (feature.tcgImages) {
-            teamImages.push('tcg');
-        }
+        const teamImages = ['standard', 'sugimori', 'dream world', 'shuffle', 'tcg'];
         const calloutStyle = {
             marginLeft: '2px',
             fontSize: '80%',
@@ -166,6 +168,19 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         <ThemeEditor />
                     </Drawer>
                 ) : null}
+                <Drawer
+                    isOpen={this.state.isCSSGuideOpen}
+                    onClose={this.toggleCSSGuide}
+                    size={Drawer.SIZE_LARGE}
+                    title="CSS Guide"
+                    icon="style"
+                    className={cx(Styles.dialog, {
+                        [Classes.DARK]: props.style.editorDarkMode,
+                    }, 'release-notes-wrapper')}>
+                    <ReactMarkdown
+                        source={text}
+                    />
+                </Drawer>
                 <div className={styleEdit}>
                     <label className={cx(Classes.LABEL, Classes.INLINE)}>Template</label>
                     <div className={Classes.SELECT}>
@@ -785,8 +800,11 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className="custom-css-input-wrapper">
-                    <label style={{ padding: '.25rem' }} className="bp3-label">
-                        Custom CSS {/*<a href=''>Check out Layout Guide</a>*/}
+                    <label className={cx(Classes.LABEL, 'flex', 'justify-between')}>
+                        <span>Custom CSS</span>
+                        {feature.themeEditing && <Button minimal intent={Intent.PRIMARY} onClick={this.toggleCSSGuide}>
+                            Check out the CSS Guide!
+                        </Button>}
                     </label>
                     <TextAreaDebounced name="customCSS" props={props} edit={editEvent} />
                 </div>

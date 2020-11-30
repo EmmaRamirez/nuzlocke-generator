@@ -19,11 +19,12 @@ export interface StatsEditorProps {
 }
 
 export class StatsEditorBase extends React.Component<StatsEditorProps> {
-    private onChange = (stat, use: 'key' | 'value') => (e) => {
+    private onChange = (stat: State['stats'][number], use: 'key' | 'value') => (e: React.ChangeEvent<HTMLInputElement>) => {
         const { editStat } = this.props;
+        if (!stat?.id || !stat?.key || !stat?.value) return;
         use === 'key'
-            ? editStat(stat.id, e.target.value, stat.value)
-            : editStat(stat.id, stat.key, e.target.value);
+            ? editStat(stat?.id, e.target.value, stat.value)
+            : editStat(stat?.id, stat.key, e.target.value);
     };
 
     public render() {
@@ -139,7 +140,7 @@ export class StatsEditorBase extends React.Component<StatsEditorProps> {
                                     intent={Intent.DANGER}
                                     style={{ margin: '6px', fontSize: '80%' }}
                                     className={cx(Classes.MINIMAL, Classes.BUTTON)}
-                                    onClick={(e) => stat?.id && deleteStat(stat?.id)}
+                                    onClick={() => stat?.id && deleteStat(stat?.id)}
                                 />
                             </li>
                         ))}
@@ -148,7 +149,7 @@ export class StatsEditorBase extends React.Component<StatsEditorProps> {
                             <Button
                                 icon="plus"
                                 style={{ margin: '4px', fontSize: '80%' }}
-                                onClick={(e) => addStat({ key: '', value: '' })}
+                                onClick={() => addStat({ key: '', value: '' })}
                                 intent={Intent.SUCCESS}>
                                 Add Custom Stat
                             </Button>
