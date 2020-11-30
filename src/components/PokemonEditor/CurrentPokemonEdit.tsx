@@ -141,7 +141,6 @@ CurrentPokemonEditState
             box: [],
             isMoveEditorOpen: false,
             expandedView: false,
-            currentPokemon: undefined,
         };
     }
 
@@ -161,15 +160,8 @@ CurrentPokemonEditState
         if (nextProps.selectedId !== prevProps.selectedId) {
             this.setState({
                 selectedId: nextProps.selectedId,
-                currentPokemon: this.props.pokemon.find((v: Pokemon) => v.id === nextProps.selectedId),
             });
         }
-    }
-
-    public componentDidMount() {
-        this.setState({
-            currentPokemon: this.props.pokemon.find((v: Pokemon) => v.id === this.state.selectedId),
-        });
     }
 
     private copyPokemon = (e) => {
@@ -191,7 +183,7 @@ CurrentPokemonEditState
     };
 
     private getCurrentPokemon() {
-        return this.state.currentPokemon;
+        return this.props.pokemon.find((v: Pokemon) => v.id === this.state.selectedId);
     }
 
     private evolvePokemon = (species) => (e) => {
