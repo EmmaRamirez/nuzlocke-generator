@@ -11,10 +11,6 @@ import { uniq } from 'ramda';
 import { Moves, MovesBase } from './Moves';
 import { customMoveMap } from 'reducers/customMoveMap';
 import { customTypes } from 'reducers/customTypes';
-import { Gender, GenderElement, GenderElementReact } from 'components/Shared';
-import { CheckpointsDisplay } from 'components/Result';
-import { game } from 'reducers/game';
-import { linkedPokemonSelector } from 'selectors';
 
 export interface TeamPokemonProps {
     pokemon: Pokemon;
@@ -35,41 +31,9 @@ export const teamPokemonImage = (options: TeamPokemonProps['options']) => css`
     width: ${options.width ?? '8rem'};
 `;
 
-const LinkedPokemon = ({
-    linkedPokemon,
-    style,
-}) => {
-    return linkedPokemon ? (
-        <ErrorBoundary>
-            <div className="pokemon-linked">
-                {style.linkedPokemonText}{' '}
-                {linkedPokemon.nickname || linkedPokemon.species}
-                <PokemonIconPlain {...linkedPokemon} />
-            </div>
-        </ErrorBoundary>
-    ) : null;
-};
-
-const TeamCheckpointsDisplay = ({game, pokemon, style}) => {
-    return <ErrorBoundary>
-        <div className='flex flex-wrap' style={{maxWidth: '14rem'}}>
-            <CheckpointsDisplay
-                className='pokemon-checkpoint'
-                game={game}
-                clearedCheckpoints={pokemon.checkpoints}
-                style={style}
-            />
-        </div>
-    </ErrorBoundary>;
-}
-
-
-
 export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPokemonProps) {
     const style = useSelector<State, State['style']>((state) => state.style);
-    const game = useSelector<State, State['game']>((state) => state.game);
-    const linkedPokemon = useSelector<State, Pokemon | undefined>(linkedPokemonSelector(pokemon));
-    const name = game.name;
+    const name = useSelector<State, State['game']['name']>((state) => state.game.name);
     const editor = useSelector<State, State['editor']>((state) => state.editor);
     const [image, setImage] = React.useState('');
     const customMoveMap = useSelector<State, State['customMoveMap']>(
@@ -91,9 +55,11 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
                 editor: editor,
                 gender: pokemon.gender,
             });
+            console.log('team pokemon newimg:', newImage);
             setImage(newImage);
         })();
-    }, [pokemon.species, pokemon.customImage, pokemon.forme, pokemon.shiny, style, name, editor, pokemon.gender]);
+        console.log('team pokemon image: ', image);
+    }, [pokemon.species]);
 
     const classes = {
         teamPokemon: teamPokemon(options),
@@ -119,8 +85,6 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
         />
     );
 
-    console.log(linkedPokemon, pokemon?.linkedTo);
-
     const view = {
         ...pokemon,
         typesFiltered: uniq(pokemon.types ?? []),
@@ -130,11 +94,7 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
         type1Color: typeToColor(pokemon?.types?.[0] ?? 'Normal'),
         type2Color: typeToColor(pokemon?.types?.[0] ?? 'Normal'),
         icon: ReactDOMServer.renderToString(pokemonIcon),
-        checkpoints: ReactDOMServer.renderToString(<div />),
-        genderSymbol: ReactDOMServer.renderToString(<GenderElementReact gender={pokemon?.gender} />),
         notes: pokemon.notes ?? '',
-        linkedPokemon: ReactDOMServer.renderToString(<LinkedPokemon style={style} linkedPokemon={linkedPokemon} />),
-        linkedPokemonData: linkedPokemon ?? null,
         movesColored: ReactDOMServer.renderToString(
             <MovesBase
                 style={style}
@@ -148,24 +108,20 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
         ),
     };
 
-    console.log(view.linkedPokemon);
+    console.log(view.icon);
 
     const CSS = (
         <style>{`
-            ${customCSS}
-        `}</style>
+        ${customCSS}
+    `}</style>
     );
 
     const teamViewHTML = customHTML ?? teamHTML;
     // mustache will sanitize the html from renderToString so instead we do it ourselves
     const html = teamViewHTML
-        .replace(/\{{genderSymbol}}/g, view.genderSymbol)
         .replace(/\{{icon}}/g, view.icon)
-        .replace(/\{{linkedPokemon}}/g, view.linkedPokemon)
         .replace(/\{{notes}}/g, view.notes)
-        .replace(/\{{checkpoints}}/g, view.checkpoints)
         .replace(/\{{movesColored}}/g, view.movesColored);
-
     if (teamViewHTML) {
         return (
             <ErrorBoundary>

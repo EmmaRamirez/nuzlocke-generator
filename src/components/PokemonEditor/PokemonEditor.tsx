@@ -1,11 +1,11 @@
-import { Button, Callout, Classes, Icon, Intent, Spinner } from '@blueprintjs/core';
+import { Button, Callout, Icon, Intent, Spinner } from '@blueprintjs/core';
 import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { Pokemon, Game, Box as BoxModel, Boxes } from 'models';
 import { State } from 'state';
 
-import { gameOfOriginToColor, generateEmptyPokemon, getEncounterMap } from 'utils';
+import { generateEmptyPokemon, getEncounterMap } from 'utils';
 import { CurrentPokemonEdit } from '.';
 
 import { AddPokemonButton } from 'components/AddPokemonButton';
@@ -13,7 +13,6 @@ import { BaseEditor } from 'components/BaseEditor';
 import { Box, BoxForm } from 'components/Box';
 import { PokemonIcon } from 'components/PokemonIcon';
 import { ErrorBoundary } from 'components/Shared';
-import { cx } from 'emotion';
 
 export interface PokemonEditorProps {
     team: Pokemon[];
@@ -24,26 +23,19 @@ export interface PokemonEditorProps {
 
 export interface PokemonEditorState {
     isMassEditorOpen: boolean;
-    searchTerm: string;
 }
 
 export interface BoxesComponentProps {
     boxes: Boxes;
     team: Pokemon[];
-    searchTerm: string;
 }
 
 export class BoxesComponent extends React.Component<BoxesComponentProps> {
     private renderBoxes(boxes, team) {
         return boxes
-            .sort((a: BoxModel, b: BoxModel) => {
-                const positionA = a.position || 0;
-                const positionB = b.position || 1;
-                
-                return positionA - positionB;
-            })
+            .sort((a: BoxModel, b: BoxModel) => a.id - b.id)
             .map((box) => {
-                return <Box searchTerm={this.props.searchTerm || ''} {...box} key={box.id} pokemon={team} />;
+                return <Box {...box} key={box.id} pokemon={team} />;
             });
     }
 
@@ -66,27 +58,24 @@ const PokemonLocationChecklist = ({
     const encounterMap = getEncounterMap(game.name);
 
     const getLocIcon = (name) => {
-        const pokemonFiltered = pokemon.filter((p) => p.met?.trim().toLocaleLowerCase() === name.toLocaleLowerCase());
-
-        return pokemonFiltered.map(poke => {
-            if (poke && !poke.hidden) {
-                return (
-                    <>
-                        <Icon icon="tick" />
-                        <PokemonIcon style={{ pointerEvents: 'none'}} species={poke.species} />
-                    </>
-                );
-            }
-            if (poke && poke.hidden) {
-                return (
-                    <>
-                        <Icon icon="cross" />
-                        <PokemonIcon style={{ pointerEvents: 'none' }} species={poke.species} />
-                    </>
-                );
-            }
-            return <Icon icon="circle" />;
-        });
+        const poke = pokemon.find((p) => p.met === name && p.gameOfOrigin === game.name);
+        if (poke && !poke.hidden) {
+            return (
+                <>
+                    <Icon icon="tick" />
+                    <PokemonIcon style={{ pointerEvents: 'none' }} species={poke.species} />
+                </>
+            );
+        }
+        if (poke && poke.hidden) {
+            return (
+                <>
+                    <Icon icon="cross" />
+                    <PokemonIcon style={{ pointerEvents: 'none' }} species={poke.species} />
+                </>
+            );
+        }
+        return <Icon icon="circle" />;
     };
 
     return (
@@ -121,7 +110,6 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
         super(props);
         this.state = {
             isMassEditorOpen: false,
-            searchTerm: '',
         };
     }
 
@@ -136,39 +124,24 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
 
         return (
             <>
-                <BaseEditor icon='circle' name="Pokemon">
-                    <div className="button-row" style={{ display: 'flex', alignItems: 'flex-start' }}>
+                <BaseEditor name="Pokemon">
+                    <div className="button-row" style={{ display: 'flex' }}>
                         <AddPokemonButton
                             pokemon={{
                                 ...generateEmptyPokemon(team),
                                 gameOfOrigin: this.props.game.name || 'None',
                             }}
                         />
-                        <div style={{ marginLeft: 'auto', width: '50%'}}>
-                            <Button
-                                icon={'heat-grid'}
-                                intent={Intent.PRIMARY}
-                                onClick={this.openMassEditor}
-                                className={cx(
-                                    Classes.MINIMAL,
-                                    Classes.FILL,
-                                )}>
-                                Open Mass Editor
-                            </Button>
-                            <input
-                                type='search'
-                                placeholder='Search...'
-                                className={Classes.INPUT}
-                                value={this.state.searchTerm}
-                                onChange={e => this.setState({
-                                    searchTerm: e.target.value,
-                                })}
-                                style={{margin: '0.25rem', width: '100%'}}
-                            />
-                        </div>
-                        
+                        <Button
+                            icon={'heat-grid'}
+                            onClick={this.openMassEditor}
+                            style={{ marginLeft: 'auto' }}
+                            className="bp3-intent-primary bp3-minimal">
+                            Open Mass Editor
+                        </Button>
                     </div>
-                    <BoxesComponent searchTerm={this.state.searchTerm} boxes={boxes} team={team} />
+                    <br />
+                    <BoxesComponent boxes={boxes} team={team} />
                     <BoxForm boxes={boxes} />
                     <CurrentPokemonEdit />
                     <BaseEditor name="Location Checklist" defaultOpen={false}>

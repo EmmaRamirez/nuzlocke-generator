@@ -43,7 +43,6 @@ export interface LayoutProps {
     spacing: LayoutSpacing;
     wrap: LayoutWrap;
     style: React.CSSProperties;
-    name: string;
 }
 
 export class Layout extends React.PureComponent<Partial<LayoutProps>> {
@@ -54,15 +53,13 @@ export class Layout extends React.PureComponent<Partial<LayoutProps>> {
         spacing: LayoutSpacing.Start,
         wrap: 'wrap',
         style: {},
-        name: '',
     };
 
     public render() {
-        const { display, direction, alignment, spacing, wrap, name } = this.props;
+        const { display, direction, alignment, spacing, wrap } = this.props;
         return (
             <div
                 data-testid="layout"
-                data-name={(name ?? '').replace(/\s/g, '-').toLowerCase()}
                 style={
                     {
                         display: display,

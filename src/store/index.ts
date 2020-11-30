@@ -5,7 +5,6 @@ import { persistCombineReducers, persistStore, createMigrate } from 'redux-persi
 import storage from 'redux-persist/lib/storage';
 import { version } from 'package';
 import { reducers } from '../reducers';
-import { State } from 'state';
 
 const migrations = {
     '0.0.6-beta': (state) => {
@@ -42,31 +41,6 @@ const migrations = {
     '1.1.4': (state) => ({
         ...state,
         customMoveMap: [],
-    }),
-    '1.6.0': (state: State) => ({
-        ...state,
-        // in 1.6.0, we allowed boxes to be reorganized with drag & drop
-        // The problem was that a long standing data inaccuracy existed in the reducer
-        // whereby the position of Champs & Dead were the same
-        // While this actually isn't that dramatic (it doesn't break the app)
-        // It's better to be safe than sorry, so this changes the position of Champs
-        // Assuming there is only 1 champs with the default length
-        boxes: (() => {
-            const isEditedHeuristic = state.box.length > 4;
-            const box = state.box.find(box => box.name === 'Champs');
-
-            if (isEditedHeuristic && box) {
-                return state;
-            }
-
-            return [
-                ...state.box.filter(box => box.name !== 'Champs'),
-                {
-                    ...box,
-                    position: 3,
-                }
-            ];
-        })(),
     }),
 };
 

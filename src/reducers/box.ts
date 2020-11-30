@@ -19,7 +19,7 @@ const defaultBoxes: Boxes = [
     },
     {
         id: 3,
-        position: 3,
+        position: 2,
         name: 'Champs',
     },
 ];
@@ -38,7 +38,7 @@ export function box(
         case ADD_BOX:
             const { name, background = 'grass-meadow', inheritFrom } = action;
             const id = state.length;
-            const position = state.length;
+            const position = state.length + 1;
             return [...state, { id, name, position, background, inheritFrom }];
         case DELETE_BOX:
             return state.filter((box) => box.id !== action.id);

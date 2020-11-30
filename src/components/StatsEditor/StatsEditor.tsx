@@ -33,7 +33,7 @@ export class StatsEditorBase extends React.Component<StatsEditorProps> {
         const stats = style?.statsOptions;
 
         return (
-            <BaseEditor icon='chart' name="Stats">
+            <BaseEditor name="Stats">
                 <ErrorBoundary>
                     <div>
                         <Checkbox

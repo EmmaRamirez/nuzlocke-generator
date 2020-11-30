@@ -1,10 +1,12 @@
 # [Nuzlocke Generator](https://nuzlocke-generator.com/) · ![Travis](https://img.shields.io/travis/EmmaRamirez/nuzlocke-generator.svg?style=flat-square)  ![Coveralls github](https://img.shields.io/coveralls/github/EmmaRamirez/nuzlocke-generator.svg?style=flat-square) ![Codacy grade](https://img.shields.io/codacy/grade/a41d81bbd4ad4479a0c71a1739707bf4.svg?style=flat-square) ![GitHub release](https://img.shields.io/github/release/EmmaRamirez/nuzlocke-generator.svg?style=flat-square)
 
-https://nuzlocke-generator.com/
+> https://nuzlocke-generator.com/
+
+This is a beta. Expect everything to break. Save backups if you value them.
 
 ## A Preview
 
-![alt](./src/assets/media-six.png)
+![alt](./src/assets/media-five.png)
 
 ## Running Locally
 
@@ -24,44 +26,11 @@ You can also click the `Clone or Download` button and select to download it as a
 You should find it at `localhost:8080`. In order to check for updates, run the following
 
 ```bash
-git pull origin master && npm install
+git pull origin master
 ```
 
 And then re-run the server!
 
-## Accessing Beta/In-Progress Features
-
-> ⚠️ Proceed at your own risk! These features can be unstable and could possibly corrupt your data.
-
-First, create a `.env` file at the root. The following are the current in-use environment variables:
-
-```bash
-# Determines if the build uses the faster production build or not
-NODE_ENV=<'development' OR 'production'>
-# Requires a Rollbar account, logs errors
-ROLLBAR_ACCESS_TOKEN=<TOKEN>
-ROLLBAR_ENDPOINT=https://api.rollbar.com/api/1/item/
-# Used for Bug Reporter
-GH_ACCESS_TOKEN=<GH_TOKEN>
-# Used for future Theme Editor
-THEME_EDITING=true
-# Used for future Tem Tem support
-TEM_TEM_SUPPORT=true
-# Lists out new hotkeys
-NEW_HOTKEYS=true
-# Used for future HoF feature
-HALL_OF_FAME=true
-# Used for refactored Results view (still very unstable)
-RESULT_V2=true
-# Used for future data-freeze feature
-LOCKS=true
-# Used for planned Gen II saves support
-GEN2_SAVES=true
-# Used for image uploads
-IMAGE_UPLOADS=true
-# Legacy, tcg images are now enabled by default
-TCG_IMAGES=true
-```
 
 ## Features
 - Record your nuzlocke with a flashy image
