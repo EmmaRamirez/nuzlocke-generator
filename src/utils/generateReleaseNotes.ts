@@ -748,6 +748,7 @@ Thank you!
 - **Pokémon Search**: a quick search for things like nickname or type
 
 ## Fixes
+- Fixed mobile layout bugs
 - The Location Checklist is now case-insensitive
 - It now also lists out all Pokémon that match the area; previously, if a Pokémon's game of origin didn't match, it would not show up.
 - Added some more general pointers & tips throughout the app
