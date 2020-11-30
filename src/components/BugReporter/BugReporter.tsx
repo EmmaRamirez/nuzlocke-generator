@@ -29,7 +29,7 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
         const { defaultOpen } = this.props;
 
         return (
-            <BaseEditor icon='error' name="Bug Reports and Feature Requests" defaultOpen={defaultOpen}>
+            <BaseEditor name="Bug Reports and Feature Requests" defaultOpen={defaultOpen}>
                 <div style={{ margin: '.5rem' }}>
                     <input
                         style={{

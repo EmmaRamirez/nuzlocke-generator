@@ -5,7 +5,7 @@ import { BaseEditor } from 'components/BaseEditor';
 export class TrainerEditor extends React.Component<{}, {}> {
     public render() {
         return (
-            <BaseEditor icon='person' name="Trainer">
+            <BaseEditor name="Trainer">
                 <TrainerInfoEditor />
             </BaseEditor>
         );

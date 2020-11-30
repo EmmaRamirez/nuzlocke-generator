@@ -34,27 +34,8 @@ const boxSource = {
     },
 };
 
-const boxSourceDrop = {
-    drop(props, monitor, component) {
-        const item = monitor.getItem();
-        store.dispatch(editBox(props.id, {
-            position: item.position,
-        }))
-        store.dispatch(editBox(item.id, {
-            position: props.position,
-        }))
-
-        return {
-
-        }
-    },
-    hover(props, monitor) {
-        return { isHovering: monitor.isOver({ shallow: true } )};
-    }
-}
-
 const boxSourceDrag = {
-    beginDrag(props: BoxProps) {
+    beginDrag(props) {
         return props;
     },
     isDragging(props, monitor) {
@@ -66,14 +47,12 @@ export type BoxProps = {
     pokemon: Pokemon[];
     connectDropTarget?: ConnectDropTarget;
     connectDragSource?: ConnectDragSource;
-    connectDropTargetBox?: ConnectDropTarget;
     canDrop?: boolean;
     clearBox: clearBox;
     editBox: editBox;
     deletePokemon: deletePokemon;
     background?: string;
     deleteBox: deleteBox;
-    searchTerm: string;
 } & BoxType;
 
 export const wallpapers = [
@@ -127,14 +106,6 @@ export interface BoxState {
     connectDropTarget: connect.dropTarget(),
     canDrop: monitor.canDrop(),
 }))
-@DragSource('BOX', boxSourceDrag, (connect, monitor) => ({
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging(),
-}))
-@DropTarget('BOX', boxSourceDrop, (connect, monitor) => ({
-    connectDropTargetBox: connect.dropTarget(),
-    isDragging: monitor.canDrop(),
-}))
 export class BoxBase extends React.PureComponent<BoxProps, BoxState> {
     public state = {
         deleteConfirmationOpen: false,
@@ -179,8 +150,6 @@ export class BoxBase extends React.PureComponent<BoxProps, BoxState> {
             name,
             id,
             connectDropTarget,
-            connectDragSource,
-            connectDropTargetBox,
             canDrop,
             background,
             collapsed: isCollapsed,
@@ -195,11 +164,10 @@ export class BoxBase extends React.PureComponent<BoxProps, BoxState> {
             }
             : {};
 
-        return connectDropTargetBox!(connectDragSource!(connectDropTarget!(
+        return connectDropTarget!(
             <div
                 style={{
                     backgroundImage: BoxBase.getBoxBackground(background, name),
-                    //cursor: 'grab',
                     ...collapsedStyle,
                 }}
                 className={`box ${name.replace(/\s/g, '-')}-box`}>
@@ -300,9 +268,9 @@ export class BoxBase extends React.PureComponent<BoxProps, BoxState> {
                         {name}
                     </span>
                 </Popover>
-                <PokemonByFilter searchTerm={this.props.searchTerm} team={pokemon} status={name} />
+                <PokemonByFilter team={pokemon} status={name} />
             </div>,
-        )));
+        );
     }
 }
 

@@ -4,7 +4,7 @@ import { BaseEditor } from 'components/BaseEditor';
 
 export function NuzlockeSaveControls () {
     return (
-        <BaseEditor name="Saves" icon='floppy-disk'>
+        <BaseEditor name="Saves">
             <NuzlockeSave />
         </BaseEditor>
     );

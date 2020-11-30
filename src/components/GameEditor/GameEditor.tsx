@@ -51,7 +51,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
         return (
             <>
                 <RED isOpen={this.state.isOpen} onClose={this.toggleDialog} />
-                <BaseEditor icon='ninja' name="Game">
+                <BaseEditor name="Game">
                     <div style={gameSubEditorStyle}>
                         <div>
                             <label

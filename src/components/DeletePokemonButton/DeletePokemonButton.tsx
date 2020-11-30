@@ -38,17 +38,17 @@ DeletePokemonButtonProps,
     }
 
     public render() {
-        console.log(this.props.id);
         return (
             <DeletePokemonButtonContainer>
                 <Alert
                     icon="trash"
                     isOpen={this.state.dialogOn && this.props.confirmation}
                     onCancel={this.toggleDialog}
-                    onConfirm={(e) => {
-                        this.props.id && this.props.deletePokemon(this.props.id);
-                        this.toggleDialog();
-                    }}
+                    onConfirm={(e) =>
+                        this.props.deletePokemon &&
+                        this.props.id &&
+                        this.props.deletePokemon(this.props.id)
+                    }
                     confirmButtonText="Delete Pokemon"
                     cancelButtonText="Cancel"
                     intent={Intent.DANGER}>

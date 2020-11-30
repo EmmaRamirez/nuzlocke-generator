@@ -84,7 +84,6 @@ export interface CurrentPokemonEditState {
     expandedView: boolean;
     isMoveEditorOpen: boolean;
     box: Boxes;
-    currentPokemon?: Pokemon;
 }
 
 const getEvos = (species): string[] | undefined => {
@@ -158,9 +157,7 @@ CurrentPokemonEditState
         prevProps: CurrentPokemonEditProps,
     ) {
         if (nextProps.selectedId !== prevProps.selectedId) {
-            this.setState({
-                selectedId: nextProps.selectedId,
-            });
+            this.setState({ selectedId: nextProps.selectedId });
         }
     }
 
