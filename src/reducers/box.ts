@@ -1,4 +1,4 @@
-import { EDIT_BOX, REPLACE_STATE, VERSION_0_0_6_BETA, Action, ADD_BOX, DELETE_BOX } from 'actions';
+import { EDIT_BOX, REPLACE_STATE, VERSION_0_0_6_BETA, Action, ADD_BOX, DELETE_BOX, UPDATE_BOXES } from 'actions';
 import { Boxes } from 'models';
 
 const defaultBoxes: Boxes = [
@@ -26,11 +26,14 @@ const defaultBoxes: Boxes = [
 
 export function box(
     state = defaultBoxes,
-    action: Action<EDIT_BOX | REPLACE_STATE | VERSION_0_0_6_BETA | ADD_BOX | DELETE_BOX>,
+    action: Action<EDIT_BOX | REPLACE_STATE | VERSION_0_0_6_BETA | ADD_BOX | DELETE_BOX | UPDATE_BOXES>,
 ) {
     switch (action.type) {
         case EDIT_BOX:
             const box = state.find((box) => box.id === action.id);
+            if (!box) {
+                return state;
+            }
             const newBox = { ...box, ...action.edits };
             return [...state.filter((box) => box.id !== action.id), newBox];
         case REPLACE_STATE:
@@ -42,6 +45,15 @@ export function box(
             return [...state, { id, name, position, background, inheritFrom }];
         case DELETE_BOX:
             return state.filter((box) => box.id !== action.id);
+        case UPDATE_BOXES:
+            if (state[0].position == null) {
+                return state.map((box, index) => ({
+                    ...box,
+                    id: index,
+                    position: index,
+                }));
+            }
+            return state;
         case VERSION_0_0_6_BETA:
             return defaultBoxes;
         default:

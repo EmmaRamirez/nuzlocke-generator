@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Pokemon } from 'models';
 import { Boxes } from 'models';
 
-import { editPokemon, clearBox, editBox, deleteBox, deletePokemon } from 'actions';
+import { editPokemon, clearBox, editBox, deleteBox, deletePokemon, updateBoxes } from 'actions';
 import { Box as BoxType } from 'models';
 
 import { PokemonByFilter } from 'components/Shared';
@@ -19,6 +19,8 @@ import {
     Intent,
     Alert,
     Classes,
+    Toaster,
+    Toast,
 } from '@blueprintjs/core';
 import { connect } from 'react-redux';
 
@@ -37,6 +39,16 @@ const boxSource = {
 const boxSourceDrop = {
     drop(props, monitor, component) {
         const item = monitor.getItem();
+
+        if (props.id == null || item.id == null) {
+            const toaster = Toaster.create();
+            toaster.show({
+                message: 'Failed to move Boxes',
+                intent: Intent.DANGER,
+            });
+            return;
+        }
+
         store.dispatch(editBox(props.id, {
             position: item.position,
         }))
@@ -73,6 +85,7 @@ export type BoxProps = {
     deletePokemon: deletePokemon;
     background?: string;
     deleteBox: deleteBox;
+    updateBoxes: updateBoxes;
     searchTerm: string;
 } & BoxType;
 
@@ -139,6 +152,10 @@ export class BoxBase extends React.PureComponent<BoxProps, BoxState> {
     public state = {
         deleteConfirmationOpen: false,
     };
+
+    public componentDidMount() {
+        this.props.updateBoxes();
+    }
 
     private clearBox = (name: string) => () => {
         this.props.clearBox(name);
@@ -311,4 +328,5 @@ export const Box = connect(null, {
     editBox,
     deleteBox,
     deletePokemon,
+    updateBoxes,
 })(BoxBase);
