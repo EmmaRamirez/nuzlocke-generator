@@ -39,24 +39,28 @@ export function TrainerInfoEditor() {
         />
         <TrainerInfoEditField
             onEdit={e => dispatch(editTrainer({ id: e.target.value }))}
+            value={trainer.id?.toString()}
             label="ID"
             name="id"
             placeholder="Trainer ID"
         />
         <TrainerInfoEditField
             onEdit={e => dispatch(editTrainer({ time: e.target.value }))}
+            value={trainer.time}
             label="Time"
             name="time"
             placeholder="0:00"
         />
         <TrainerInfoEditField
             onEdit={e => dispatch(editTrainer({ money: e.target.value }))}
+            value={trainer.money}
             label="Money"
             name="money"
             placeholder="$0"
         />
         <TrainerInfoEditField
             onEdit={e => dispatch(editTrainer({ title: e.target.value }))}
+            value={trainer.title}
             label="Title"
             name="title"
             placeholder=""
@@ -64,6 +68,7 @@ export function TrainerInfoEditor() {
         <BadgeInput />
         <TrainerInfoEditField
             onEdit={e => dispatch(editTrainer({ image: e.target.value }))}
+            value={trainer.image}
             label={
                 <Popover
                     minimal={true}
@@ -87,6 +92,7 @@ export function TrainerInfoEditor() {
         />
         <TrainerInfoEditField
             onEdit={e => dispatch(editTrainer({ notes: e.target.value }))}
+            value={trainer.notes}
             label="Notes"
             name="notes"
             placeholder=""

@@ -121,14 +121,19 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
 
     console.log(linkedPokemon, pokemon?.linkedTo);
 
+    const moves = pokemon?.moves?.map((move, index) => {
+        return { [`move${index + 1}`]: move };
+    });
+
     const view = {
         ...pokemon,
+        ...(moves ?? {}),
         typesFiltered: uniq(pokemon.types ?? []),
         image: pokemonImage,
         type1: pokemon?.types?.[0],
         type2: pokemon?.types?.[1],
         type1Color: typeToColor(pokemon?.types?.[0] ?? 'Normal'),
-        type2Color: typeToColor(pokemon?.types?.[0] ?? 'Normal'),
+        type2Color: typeToColor(pokemon?.types?.[1] ?? 'Normal'),
         icon: ReactDOMServer.renderToString(pokemonIcon),
         checkpoints: ReactDOMServer.renderToString(<div />),
         genderSymbol: ReactDOMServer.renderToString(<GenderElementReact gender={pokemon?.gender} />),
@@ -144,6 +149,16 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
                 moves={pokemon.moves}
                 movesPosition={style.movesPosition}
                 stripClasses
+            />,
+        ),
+        movesColoredWithClasses: ReactDOMServer.renderToString(
+            <MovesBase
+                style={style}
+                customMoveMap={customMoveMap}
+                customTypes={customTypes}
+                generation={getGameGeneration(name)}
+                moves={pokemon.moves}
+                movesPosition={style.movesPosition}
             />,
         ),
     };
@@ -163,6 +178,7 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
         .replace(/\{{icon}}/g, view.icon)
         .replace(/\{{linkedPokemon}}/g, view.linkedPokemon)
         .replace(/\{{notes}}/g, view.notes)
+        .replace(/\{{movesColoredWithClasses}}/g, view.movesColoredWithClasses)
         .replace(/\{{checkpoints}}/g, view.checkpoints)
         .replace(/\{{movesColored}}/g, view.movesColored);
 

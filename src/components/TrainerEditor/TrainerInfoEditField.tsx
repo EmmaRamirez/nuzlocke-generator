@@ -22,7 +22,7 @@ export function TrainerInfoEditField ({
     value,
     element,
 }: TrainerInfoEditField) {
-    const [innerValue, setValue] = React.useState('');
+    const [innerValue, setValue] = React.useState<string | undefined>('');
 
     const delayedValue = React.useCallback(
         debounce((e) => onEdit(e), 300),
@@ -30,7 +30,7 @@ export function TrainerInfoEditField ({
     );
 
     React.useEffect(() => {
-        value && setValue(value);
+        setValue(value);
     }, [value]);
 
     const onChange = (e) => {

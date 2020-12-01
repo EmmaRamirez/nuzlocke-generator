@@ -756,5 +756,10 @@ Thank you!
     '1.5.3': `
 ## Fixes
 - Evolve button now properly changes types    
+`,
+    '1.7.0': `
+## Features
+
+## Fixes
 `
 };

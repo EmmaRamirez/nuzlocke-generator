@@ -4,7 +4,7 @@ export interface Trainer {
     name?: string;
     id?: string | number;
     time?: string;
-    money?: number;
+    money?: string;
     badges?: Badge[];
     expShareStatus?: string;
     image?: string;
@@ -18,7 +18,7 @@ export const TrainerKeys: Trainer = {
     name: 'Red',
     id: '00123',
     time: '04:33',
-    money: 1244,
+    money: '$144',
     badges: [],
     expShareStatus: 'ON',
     image: 'http://placeholder.com',
