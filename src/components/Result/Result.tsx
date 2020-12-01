@@ -157,23 +157,19 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             .filter((poke) => !poke.hidden);
     }
 
-    private renderDeadPokemon() {
-        return this.props.pokemon
-            .filter((v) => v.hasOwnProperty('id'))
-            .filter((poke) => poke.status === 'Dead')
-            .filter((poke) => !poke.hidden)
-            .map((poke, index) => {
-                return <DeadPokemon minimal={false} key={index} {...poke} />;
-            });
-    }
-
     private getCorrectStatusWrapper(pokes: Pokemon[], box, paddingForVerticalTrainerSection) {
         return this.renderContainer(pokes, paddingForVerticalTrainerSection, box);
     }
 
     private renderOtherPokemonStatuses(paddingForVerticalTrainerSection) {
         return this.props.box
-            .filter((box) => !['Team', 'Boxed', 'Dead', 'Champs'].includes(box.name))
+            .filter((box) => !['Team'].includes(box.name))
+            .sort((a, b) => {
+                const posA = a.position || 0;
+                const posB = b.position || 1;
+
+                return posA - posB;
+            })
             .map((box) => {
                 const pokes = this.props.pokemon
                     .filter((v) => v.hasOwnProperty('id'))
@@ -448,7 +444,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         {style.template === 'Generations' &&
                         trainerSectionOrientation === 'vertical' ? (
                                 <div className="statuses-wrapper">
-                                    {this.renderContainer(
+                                    {/* {this.renderContainer(
                                         this.getPokemonByStatus('Boxed'),
                                         paddingForVerticalTrainerSection,
                                     box?.[1],
@@ -462,12 +458,12 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                                         this.getPokemonByStatus('Champs'),
                                         paddingForVerticalTrainerSection,
                                     box?.[3],
-                                    )}
+                                    )} */}
                                     {this.renderOtherPokemonStatuses(paddingForVerticalTrainerSection)}
                                 </div>
                             ) : (
                                 <>
-                                    {this.renderContainer(
+                                    {/* {this.renderContainer(
                                         this.getPokemonByStatus('Boxed'),
                                         paddingForVerticalTrainerSection,
                                     box?.[1],
@@ -481,7 +477,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                                         this.getPokemonByStatus('Champs'),
                                         paddingForVerticalTrainerSection,
                                     box?.[3],
-                                    )}
+                                    )} */}
                                     {this.renderOtherPokemonStatuses(paddingForVerticalTrainerSection)}
                                 </>
                             )}
