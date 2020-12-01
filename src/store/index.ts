@@ -51,22 +51,13 @@ const migrations = {
         // While this actually isn't that dramatic (it doesn't break the app)
         // It's better to be safe than sorry, so this changes the position of Champs
         // Assuming there is only 1 champs with the default length
-        boxes: (() => {
-            const isEditedHeuristic = state.box.length > 4;
-            const box = state.box.find(box => box.name === 'Champs');
-
-            if (isEditedHeuristic && box) {
-                return state;
+        box: state.box.map((box, index) => {
+            return {
+                ...box,
+                position: index,
+                id: index,
             }
-
-            return [
-                ...state.box.filter(box => box.name !== 'Champs'),
-                {
-                    ...box,
-                    position: 3,
-                }
-            ];
-        })(),
+        }),
     }),
 };
 

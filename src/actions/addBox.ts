@@ -18,3 +18,13 @@ export function addBox({ name, background, inheritFrom }: AddBoxArgs): Action<AD
         inheritFrom,
     };
 }
+
+export type UPDATE_BOXES = 'UPDATE_BOXES';
+export const UPDATE_BOXES: UPDATE_BOXES = 'UPDATE_BOXES';
+
+export type updateBoxes = () => Action<UPDATE_BOXES>;
+export function updateBoxes(): Action<UPDATE_BOXES> {
+    return {
+        type: UPDATE_BOXES,
+    }
+};
