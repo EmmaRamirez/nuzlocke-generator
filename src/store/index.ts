@@ -56,7 +56,7 @@ const migrations = {
                 ...box,
                 position: index,
                 id: index,
-            }
+            };
         }),
     }),
 };

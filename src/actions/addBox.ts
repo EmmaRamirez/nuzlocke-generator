@@ -26,5 +26,5 @@ export type updateBoxes = () => Action<UPDATE_BOXES>;
 export function updateBoxes(): Action<UPDATE_BOXES> {
     return {
         type: UPDATE_BOXES,
-    }
+    };
 };
