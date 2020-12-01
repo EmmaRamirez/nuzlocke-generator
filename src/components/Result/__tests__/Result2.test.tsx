@@ -1,14 +1,11 @@
 import * as React from 'react';
-import { screen, render } from '@testing-library/react';
+import { screen, render } from 'utils/testUtils';
 import { Result } from '../Result2';
-import { TestProvider } from 'utils/TestProvider';
 
 describe(Result.name, () => {
     it('returns a result element', () => {
         render(
-            <TestProvider>
-                <Result />
-            </TestProvider>,
+            <Result />
         );
         expect(screen.getByTestId('result')).toBeDefined();
     });

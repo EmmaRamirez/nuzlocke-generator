@@ -32,8 +32,8 @@ const getAllByStatus = (boxes?: Box[], pokemon?: Pokemon[], status?: string) => 
     const boxesByStatus = boxes
         ?.filter((box) => {
             return (
-                box.name.toLowerCase() === status?.toLowerCase() ||
-                box?.inheritFrom?.toLowerCase() === status?.toLowerCase()
+                box.name.toLowerCase() === status?.toLowerCase()
+                // || box?.inheritFrom?.toLowerCase() === status?.toLowerCase()
             );
         })
         .map((box) => box.name);
@@ -50,6 +50,7 @@ export interface DisplayProps {
     alignment?: LayoutAlignment;
     spacing?: LayoutSpacing;
     wrap?: LayoutWrap;
+    name?: string;
 }
 
 export enum DownloadStatus {
@@ -91,24 +92,10 @@ export function TopBarWithDownload({ forwardedRef }) {
 export function TeamPokemonMemberView({ pokemon }: { pokemon: Pokemon }) {
     const [showContext, setShowContext] = React.useState(false);
 
-    const onContextMenu = (event) => {
-        event.preventDefault();
-        setShowContext(true);
+    const onClick = (event) => {
+        //event.preventDefault();
+        setShowContext(!showContext);
     };
-
-    const onOutsideClick = (event: MouseEvent) => {
-        setShowContext(false);
-        return;
-    };
-
-    React.useEffect(() => {
-        window.addEventListener('click', onOutsideClick);
-        //window.addEventListener('contextmenu', onOutsideClick);
-        () => {
-            window.removeEventListener('click', onOutsideClick);
-            //window.removeEventListener('contextmenu', onOutsideClick);
-        };
-    });
 
     const renderMenu = (
         <Menu
@@ -135,7 +122,7 @@ export function TeamPokemonMemberView({ pokemon }: { pokemon: Pokemon }) {
                     filter: 'drop-shadow(0 0 0 2px rgba(0,0,0,0.2)',
                 }),
             }}
-            onContextMenu={onContextMenu}>
+            onClick={onClick}>
             {showContext && renderMenu}
             <TeamPokemon options={{}} pokemon={pokemon} />
         </div>
@@ -151,9 +138,11 @@ export function TeamPokemonView({
     alignment,
     spacing,
     wrap,
+    name,
 }: ViewProps) {
     return (
         <Layout
+            name={name}
             wrap={wrap}
             display={display}
             direction={direction}
@@ -230,7 +219,15 @@ export function Result() {
                 <ErrorBoundary>
                     <TeamPokemonView
                         wrap={LayoutWrap.Wrap}
+                        name={'team'}
                         pokemon={getAllByStatus(boxes, pokemon, 'team')}
+                    />
+                </ErrorBoundary>
+                <ErrorBoundary>
+                    <TeamPokemonView
+                        wrap={LayoutWrap.Wrap}
+                        name={boxes[1].name}
+                        pokemon={getAllByStatus(boxes, pokemon, boxes[1].name)}
                     />
                 </ErrorBoundary>
                 <BoxedPokemonView

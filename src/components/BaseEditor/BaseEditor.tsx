@@ -1,3 +1,4 @@
+import { Icon, IconName } from '@blueprintjs/core';
 import * as React from 'react';
 
 export interface BaseEditorState {
@@ -6,6 +7,7 @@ export interface BaseEditorState {
 
 export interface BaseEditorProps {
     name: string;
+    icon?: IconName;
     defaultOpen?: boolean;
 }
 
@@ -29,7 +31,14 @@ export class BaseEditor extends React.Component<BaseEditorProps, BaseEditorState
                     title={`${this.state.isOpen ? 'Collapse' : 'Open'} this editor.`}
                     className="font-bold flex content-center justify-between m-1 mb-2 cursor-pointer text-base"
                     onClick={this.toggleEditor}>
-                    {this.props.name}
+                    <span>
+                        {/* {this.props.icon && <Icon style={{
+                            opacity: 0.7,
+                            fontSize: '90%',
+                            marginRight: '4px',
+                        }} icon={this.props.icon} />} */}
+                        {this.props.name}
+                    </span>
                     <span
                         className={`bp3-icon bp3-icon-caret-${this.state.isOpen ? 'up' : 'down'}`}
                     />

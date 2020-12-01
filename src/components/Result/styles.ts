@@ -15,7 +15,7 @@ export const topBar = css`
 `;
 
 export const topBar_mobile = css`
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -274,7 +274,7 @@ export const pokemonInfo = css`
 
 export const result_mobile = css`
     position: fixed !important;
-    top: 2vh !important;
+    top: 25vh !important;
     left: 2vw !important;
     transform-origin: 0px center;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.33);

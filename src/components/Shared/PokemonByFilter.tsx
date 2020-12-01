@@ -11,21 +11,37 @@ export interface PokemonByFilterProps {
     team: Pokemon[];
     status: string;
     editPokemon: editPokemon;
+    searchTerm: string;
 }
+
+const matchesStatus = (searchTerm) => ((poke: Pokemon) => poke.nickname?.toLowerCase().startsWith(searchTerm?.toLowerCase()) ||
+    poke.species?.toLowerCase().startsWith(searchTerm?.toLowerCase()) ||
+    poke.forme?.toLowerCase() === searchTerm?.toLowerCase() ||
+    poke.nickname?.toLowerCase().startsWith(searchTerm?.toLowerCase()) ||
+    poke.gender?.toLowerCase() === (searchTerm?.toLowerCase()) ||
+    poke.moves?.includes(searchTerm) ||
+    poke.gameOfOrigin?.toLowerCase() === searchTerm?.toLowerCase() ||
+    poke.item?.toLowerCase() === searchTerm?.toLowerCase() ||
+    poke.types?.includes(searchTerm)
+);
 
 export class PokemonByFilterBase extends React.PureComponent<PokemonByFilterProps> {
     public render() {
-        const { team, status } = this.props;
+        const { team, status, searchTerm } = this.props;
 
         return team
             .sort(sortPokes)
-            .filter((poke) => poke.status === status)
+            .filter(poke => poke.status === status)
             .map((poke) => (
                 <Tooltip
                     key={poke.id}
                     content={poke.nickname || poke.species}
                     position={Position.TOP}>
                     <PokemonIcon
+                        style={{
+                            backgroundColor: searchTerm !== '' && matchesStatus(searchTerm)(poke) ? '#90EE90' : undefined,
+                            borderRadius: '50%'
+                        }}
                         id={poke.id}
                         status={poke.status}
                         species={poke.species}
