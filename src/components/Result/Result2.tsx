@@ -259,7 +259,7 @@ export class Result extends React.Component {
         this.ref = React.createRef();
     }
 
-    render() {
+    public render() {
         return (
             <div className={cx(Styles.result_wrapper, 'hide-scrollbars')}>
                 <TopBar ref={this.ref} />
