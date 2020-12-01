@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { TeamPokemon } from 'components/TeamPokemon/TeamPokemon2';
-import { css, cx } from 'emotion';
+import { cx } from 'emotion';
 import { Box, Pokemon } from 'models';
 import { useSelector } from 'react-redux';
 import { State } from 'state';
-import { pokemon } from 'reducers/pokemon';
 import { Menu, MenuItem } from '@blueprintjs/core';
 import {
     Layout,
@@ -20,6 +19,9 @@ import { DeadPokemon } from 'components/DeadPokemon/DeadPokemon2';
 import { ErrorBoundary } from 'components';
 import { TopBar } from 'components/TopBar';
 import * as Styles from './styles';
+import { TrainerResult } from './TrainerResult';
+import { getContrastColor } from 'utils';
+import { useEvent } from 'utils/hooks';
 
 const uuid = require('uuid');
 
@@ -62,6 +64,7 @@ export enum DownloadStatus {
 
 const toImage = (ref, setDS) => async () => {
     const resultNode = ref?.current;
+    console.log(resultNode);
     try {
         setDS(DownloadStatus.active);
         const domToImage = await load();
@@ -175,7 +178,7 @@ export function DeadPokemonView({ pokemon, display, direction, alignment, spacin
     );
 }
 
-export function Result() {
+export function ResultInner () {
     const resultRef = React.useRef(null);
 
     const [downloadStatus, setDownloadStatus] = React.useState(DownloadStatus.dormant);
@@ -185,6 +188,9 @@ export function Result() {
     const style = useSelector<State, State['style']>((state) => state.style);
     const boxes = useSelector<State, State['box']>((state) => state.box);
     const { bgColor } = style;
+
+    const topHeaderColor = style ? style.topHeaderColor : '#333333';
+
 
     const scrollToScale = (event) => {
         console.log(scrollY - window.scrollY);
@@ -202,47 +208,63 @@ export function Result() {
     ));
 
     return (
-        <div className={cx(Styles.result_wrapper, 'hide-scrollbars')}>
-            <TopBarWithRef />
-            <div
-                data-testid="result"
-                ref={resultRef}
-                style={{
-                    margin: '2rem',
-                    background: bgColor,
-                    color: '#222',
-                    height: `${style.resultHeight}px`,
-                    width: `${style.resultWidth}px`,
-                    overflowY: 'auto',
-                }}>
-                <style>{style.customCSS}</style>
-                <ErrorBoundary>
-                    <TeamPokemonView
-                        wrap={LayoutWrap.Wrap}
-                        name={'team'}
-                        pokemon={getAllByStatus(boxes, pokemon, 'team')}
-                    />
-                </ErrorBoundary>
-                <ErrorBoundary>
-                    <TeamPokemonView
-                        wrap={LayoutWrap.Wrap}
-                        name={boxes[1].name}
-                        pokemon={getAllByStatus(boxes, pokemon, boxes[1].name)}
-                    />
-                </ErrorBoundary>
-                <BoxedPokemonView
+        <div
+            data-testid="result"
+            ref={resultRef}
+            style={{
+                margin: '2rem',
+                background: bgColor,
+                color: '#222',
+                height: `${style.resultHeight}px`,
+                width: `${style.resultWidth}px`,
+                overflowY: 'auto',
+            }}>
+            <style>{style.customCSS}</style>
+            <TrainerResult
+                orientation={{
+                    backgroundColor: topHeaderColor,
+                    color: getContrastColor(topHeaderColor),
+                    width: style.trainerAuto ? '100%' : style.trainerWidth,
+                    height: style.trainerAuto ? 'auto' : style.trainerHeight,
+                }}
+            />
+            <ErrorBoundary>
+                <TeamPokemonView
+                    wrap={LayoutWrap.Wrap}
+                    name={'team'}
                     spacing={LayoutSpacing.Center}
-                    pokemon={getAllByStatus(boxes, pokemon, 'boxed')}
+                    pokemon={getAllByStatus(boxes, pokemon, 'team')}
                 />
-                <DeadPokemonView
-                    spacing={LayoutSpacing.Center}
-                    pokemon={getAllByStatus(boxes, pokemon, 'dead')}
-                />
-                <ChampsPokemonView
-                    spacing={LayoutSpacing.Center}
-                    pokemon={getAllByStatus(boxes, pokemon, 'champs')}
-                />
-            </div>
+            </ErrorBoundary>
+            <BoxedPokemonView
+                spacing={LayoutSpacing.Center}
+                pokemon={getAllByStatus(boxes, pokemon, 'boxed')}
+            />
+            <DeadPokemonView
+                spacing={LayoutSpacing.Center}
+                pokemon={getAllByStatus(boxes, pokemon, 'dead')}
+            />
+            <ChampsPokemonView
+                spacing={LayoutSpacing.Center}
+                pokemon={getAllByStatus(boxes, pokemon, 'champs')}
+            />
         </div>
     );
+}
+
+export class Result extends React.Component {
+    public ref: React.RefObject<HTMLDivElement>;
+    public constructor(props) {
+        super(props);
+        this.ref = React.createRef();
+    }
+
+    render() {
+        return (
+            <div className={cx(Styles.result_wrapper, 'hide-scrollbars')}>
+                <TopBar ref={this.ref} />
+                <ResultInner />
+            </div>
+        );
+    }
 }

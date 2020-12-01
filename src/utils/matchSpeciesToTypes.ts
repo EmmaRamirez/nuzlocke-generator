@@ -1588,8 +1588,11 @@ export const matchSpeciesToTypes = (
             return [Types.Water, Types.Ground];
         case 'Maractus':
             return [Types.Grass, Types.Grass];
+        case 'Landorus':
+            return [Types.Ground, Types.Flying];
+        case 'Sigilyph':
+            return [Types.Psychic, Types.Flying];
 
-        // 'Sigilyph',
         // 'Tirtouga',
         // 'Archen',
         // 'Archeops',
@@ -1613,7 +1616,6 @@ export const matchSpeciesToTypes = (
         // 'Terrakion',
         // 'Reshiram',
         // 'Zekrom',
-        // 'Landorus',
         // 'Kyurem',
         // 'Chespin',
         // 'Quilladin',

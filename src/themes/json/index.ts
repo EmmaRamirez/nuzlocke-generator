@@ -1,0 +1,1 @@
+export const defaultTheme = require('./default.json');

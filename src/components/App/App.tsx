@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 
 import { State } from 'state';
 import { updateEditorHistory } from 'actions';
-import { feature } from 'utils';
+import { feature, isLocal } from 'utils';
 import { History } from 'reducers/editorHistory';
 import { ErrorBoundary } from 'components';
-import { Drawer } from '@blueprintjs/core';
+import { Button, Drawer } from '@blueprintjs/core';
 import { updaterSelector, appSelector } from 'selectors';
 
 const isEqual = require('lodash/isEqual');
@@ -27,17 +27,14 @@ const Editor = React.lazy(() =>
     import('components/Editor').then((res) => ({ default: res.Editor })),
 );
 
-let Result;
+const Result = React.lazy(() =>
+    import('components/Result/Result').then((res) => ({ default: res.Result })),
+);
 
-if (!feature.resultv2) {
-    Result = React.lazy(() =>
-        import('components/Result/Result').then((res) => ({ default: res.Result })),
-    );
-} else {
-    Result = React.lazy(() =>
-        import('components/Result/Result2').then((res) => ({ default: res.Result })),
-    );
-}
+const Result2 = React.lazy(() =>
+    import('components/Result/Result2').then((res) => ({ default: res.Result })),
+);
+
 
 const ImagesDrawer = React.lazy(() =>
     import('components/Shared/ImagesDrawer').then((res) => ({ default: res.ImagesDrawer })),
@@ -108,6 +105,7 @@ export class AppBase extends React.Component<AppProps, {result2?: boolean}> {
 
     public render() {
         const {style, view, editor} = this.props;
+        const {result2} = this.state;
         console.log('features', feature);
 
         const UpdaterComponent = !editor.editorHistoryDisabled && <Updater />;
@@ -139,11 +137,28 @@ export class AppBase extends React.Component<AppProps, {result2?: boolean}> {
                         </React.Suspense>
                     </ErrorBoundary>
                    
-                    <ErrorBoundary key={3}>
+                    {result2 ? <ErrorBoundary key={3}>
+                        <React.Suspense fallback={'Loading Result...'}>
+                            <Result2 />
+                        </React.Suspense>
+                    </ErrorBoundary> : <ErrorBoundary key={3}>
                         <React.Suspense fallback={'Loading Result...'}>
                             <Result />
                         </React.Suspense>
-                    </ErrorBoundary>
+                    </ErrorBoundary>}
+
+                    {isLocal() && feature.resultv2 && <Button
+                        style={{
+                            position: 'absolute',
+                            top: '1rem',
+                            right: '1rem'
+                        }}
+                        onClick={e => this.setState({result2: !result2})}
+                    >
+                        Use Result v2
+                    </Button>}
+
+
                     <Drawer
                         isOpen={view?.dialogs?.imageUploader}
                         size={Drawer.SIZE_STANDARD}
