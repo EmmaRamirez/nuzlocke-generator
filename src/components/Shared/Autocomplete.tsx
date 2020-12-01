@@ -51,20 +51,15 @@ export function Autocomplete ({
     );
 
     React.useEffect(() => {
-        console.log(innerValue, isOpen, visibleItems.length);
-
         setValue(value);
         setVisibleItems(filter(items, value));
         // setIsOpen(false);
     }, [value, items]);
 
     const changeEvent = (innerEvent: boolean = true) => (e) => {
-        innerEvent && e.persist();
-        console.log(e, e.target.value);
-        
+        innerEvent && e.persist();        
         setValue(e.target.value);
         setVisibleItems(filter(items, e.target.value));
-        
         delayedValue({ target: { value: e.target.value }});
     };
 

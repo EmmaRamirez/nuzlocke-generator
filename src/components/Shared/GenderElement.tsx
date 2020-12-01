@@ -28,3 +28,7 @@ export const GenderElement = (gender: GenderElementProps) => {
         return null;
     }
 };
+
+export function GenderElementReact ({gender}) {
+    return GenderElement(gender);
+}
