@@ -1,3 +1,4 @@
+import { Intent, Toaster } from '@blueprintjs/core';
 import { Pokemon } from 'models';
 import * as React from 'react';
 import { State } from 'state';
@@ -32,23 +33,26 @@ export function PokemonImage({
     const [image, setImage] = React.useState('');
 
     React.useEffect(() => {
-        setImage('https://cdn.dribbble.com/users/621155/screenshots/2835314/simple_pokeball.gif');
         // If a URL is defined, we return it through cors-anywhere
         // Otherwise, we just use getPokemonImage() (which also uses cors-anywhere under the hood)
-        url ? (async () => {
-            setImage(await wrapImageInCORSPlain(url))
-        })() : (async () => {
-            setImage(await getPokemonImage({
-                customImage: customImage,
-                forme: forme as any,
-                species: species,
-                shiny: shiny,
-                style: style,
-                name: name,
-                editor: editor,
-                gender: gender,
-            }));
-        })();
+        try {
+            url ? (async () => {
+                setImage(await wrapImageInCORSPlain(url))
+            })() : (async () => {
+                setImage(await getPokemonImage({
+                    customImage: customImage,
+                    forme: forme as any,
+                    species: species,
+                    shiny: shiny,
+                    style: style,
+                    name: name,
+                    editor: editor,
+                    gender: gender,
+                }));
+            })();
+        } catch (e) {
+            console.error(e);
+        }
     }, [
         customImage,
         forme,

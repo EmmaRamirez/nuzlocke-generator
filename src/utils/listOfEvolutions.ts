@@ -29,6 +29,7 @@ export const EvolutionTree: EvolutionTree = {
     Nidorina: ['Nidoqueen'],
     'Nidoran♂': ['Nidorino'],
     Nidorino: ['Nidoking'],
+    Paras: ['Parasect'],
 
     Cleffa: ['Clefairy'],
     Clefairy: ['Clefable'],

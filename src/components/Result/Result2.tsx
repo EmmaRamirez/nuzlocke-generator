@@ -22,6 +22,7 @@ import * as Styles from './styles';
 import { TrainerResult } from './TrainerResult';
 import { getContrastColor } from 'utils';
 import { useEvent } from 'utils/hooks';
+import { TrainerNotes } from './TrainerNotes';
 
 const uuid = require('uuid');
 
@@ -220,14 +221,20 @@ export function ResultInner () {
                 overflowY: 'auto',
             }}>
             <style>{style.customCSS}</style>
-            <TrainerResult
-                orientation={{
+            <div
+                className='trainer-container'
+                style={{
                     backgroundColor: topHeaderColor,
                     color: getContrastColor(topHeaderColor),
                     width: style.trainerAuto ? '100%' : style.trainerWidth,
                     height: style.trainerAuto ? 'auto' : style.trainerHeight,
                 }}
-            />
+            >
+                <TrainerResult
+                    orientation={'horizontal'}
+                />
+            </div>
+            <TrainerNotes />
             <ErrorBoundary>
                 <TeamPokemonView
                     wrap={LayoutWrap.Wrap}
