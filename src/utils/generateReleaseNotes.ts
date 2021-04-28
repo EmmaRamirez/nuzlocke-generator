@@ -761,6 +761,7 @@ Thank you!
 ## Fixes
 - Paras can evolve now. Sorry for that, Paras.
 - Added S.S. Anne as a location
+- Added all type information for all Pokémon
 
 `
 };
