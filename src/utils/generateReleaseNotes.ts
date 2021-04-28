@@ -760,6 +760,7 @@ Thank you!
     '1.6.2': `
 ## Fixes
 - Paras can evolve now. Sorry for that, Paras.
+- Added S.S. Anne as a location
 
 `
 };

@@ -45,6 +45,7 @@ export const locations = {
         'Saffron City',
         'Seafoam Islands',
         'Silph Co',
+        'S.S. Anne',
         'Tohjo Falls',
         'Vermilion City',
         'Victory Road',
