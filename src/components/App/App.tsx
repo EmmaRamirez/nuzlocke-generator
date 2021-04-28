@@ -150,8 +150,9 @@ export class AppBase extends React.Component<AppProps, {result2?: boolean}> {
                     {isLocal() && feature.resultv2 && <Button
                         style={{
                             position: 'absolute',
-                            top: '1rem',
-                            right: '1rem'
+                            top: '0.5rem',
+                            right: '0.5rem',
+                            zIndex: 1000,
                         }}
                         onClick={e => this.setState({result2: !result2})}
                     >

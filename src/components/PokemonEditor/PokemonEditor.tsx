@@ -14,6 +14,7 @@ import { Box, BoxForm } from 'components/Box';
 import { PokemonIcon } from 'components/PokemonIcon';
 import { ErrorBoundary } from 'components/Shared';
 import { cx } from 'emotion';
+import { PokemonFixtures } from 'utils/fixtures';
 
 export interface PokemonEditorProps {
     team: Pokemon[];
@@ -54,6 +55,17 @@ export class BoxesComponent extends React.Component<BoxesComponentProps> {
     }
 }
 
+export function PokemonLocationChecklistControls({
+    pokemon
+}: {
+    pokemon: Pokemon[];
+}) {
+
+    return <div className='pokemon-location-checklist-controls'>
+
+    </div>;
+}
+
 const PokemonLocationChecklist = ({
     pokemon,
     game,
@@ -89,9 +101,18 @@ const PokemonLocationChecklist = ({
         });
     };
 
+    const createMapAnalytics = () => {
+        
+    }
+
     return (
         <div>
+            <PokemonLocationChecklistControls
+                pokemon={pokemon}
+            />
             {encounterMap.map((area) => {
+
+
                 return (
                     <div
                         key={area.toString()}

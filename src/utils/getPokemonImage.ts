@@ -18,6 +18,7 @@ const handleTcgTransforms = (species?: string, gender?: GenderElementProps) => {
     return species;
 };
 
+
 const getGameName = (name: Game) => {
     if (name === 'Red' || name === 'Blue') return 'rb';
     if (
