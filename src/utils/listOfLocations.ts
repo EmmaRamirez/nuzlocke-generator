@@ -318,6 +318,7 @@ export const locations = {
         'Twinleaf Town',
         'Valley Windworks',
         'Valor Lakefront',
+        'Verity Lakefront',
         'Victory Road',
         'Wayward Cave',
     ],
