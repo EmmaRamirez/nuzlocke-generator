@@ -253,10 +253,10 @@ export function PokemonSelectInput({
                 name={inputName}>
                 {!usesKeyValue
                     ? options
-                        ? // @ts-expect-error array mapping, re-check
+                        ?
                           options?.map((item, index) => <option key={index}>{item}</option>)
                         : null
-                    : // @ts-expect-error array mapping, re-check
+                    :
                       options?.map((item, index) => (
                           <option value={item.value} key={index}>
                               {item.key}
@@ -297,8 +297,7 @@ export function PokemonDoubleSelectInput({
                 <select onChange={onSelect(0)} value={edit?.[inputName]?.[0]} name={inputName}>
                     {options
                         ?
-                        // @ts-expect-error @TODO: mapping
-                        options.map((item: string, index: number) => (
+                        options.map((item, index) => (
                             <option value={item} key={index}>
                                 {item}
                             </option>
@@ -311,7 +310,6 @@ export function PokemonDoubleSelectInput({
                 <select onChange={onSelect(1)} value={edit?.[inputName]?.[1]} name={inputName}>
                     {options
                         ?
-                        // @ts-expect-error @TODO: mapping
                         options.map((item, index) => (
                             <option value={item} key={index}>
                                 {item}
