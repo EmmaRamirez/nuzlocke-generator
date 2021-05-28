@@ -97,14 +97,14 @@ export type PokemonInputProps = CurrentPokemonInputProps &
 InputTypesFromState &
 InputTypesFromInternalState;
 
-export const renderItems = (visibleItems, setSelectedItem) => (
+export const renderItems = (visibleItems, setSelectedItem, selectedItem) => (
     visibleItems.map((v, i) => {
         return (
             <li
                 key={i}
                 role="item"
                 onClick={(e) => setSelectedItem(v)}
-                style={v === this.state.currentValue ? { color: 'lightblue' } : {}}>
+                style={v === selectedItem ? { color: 'lightblue' } : {}}>
                 {v}
             </li>
         );
@@ -146,7 +146,7 @@ export function PokemonAutocompleteInput({
             onInput={(e) => setEdit({ [inputName]: e.currentTarget.value })}
         />
         {isOpen ? (
-            <ul className="autocomplete-items has-nice-scrollbars">{renderItems(visibleItems, setSelectedItem)}</ul>
+            <ul className="autocomplete-items has-nice-scrollbars">{renderItems(visibleItems, setSelectedItem, selectedItem)}</ul>
         ) : null}
     </>;
 }
