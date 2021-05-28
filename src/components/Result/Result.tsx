@@ -15,7 +15,7 @@ import { ErrorBoundary } from 'components/Shared';
 import { Stats } from './Stats';
 import { Pokemon, Trainer, Editor, Box } from 'models';
 import { reducers } from 'reducers';
-import { Styles as StyleState, getGameRegion, sortPokes, getContrastColor, isLocal, feature } from 'utils';
+import { Styles as StyleState, getGameRegion, sortPokes, getContrastColor, isLocal, feature, getIconFormeSuffix, Species } from 'utils';
 
 import * as Styles from './styles';
 
@@ -27,6 +27,8 @@ import isMobile from 'is-mobile';
 import { Button, Classes } from '@blueprintjs/core';
 import { clamp } from 'ramda';
 import { resultSelector } from 'selectors';
+import { PokemonImage } from 'components/Shared/PokemonImage';
+import { normalizeSpeciesName } from 'utils/normalizeSpeciesName';
 
 async function load() {
     const resource = await import('@emmaramirez/dom-to-image');
@@ -72,20 +74,31 @@ export function BackspriteMontage({ pokemon }: { pokemon: Pokemon[] }) {
                 height: '92px',
             }}>
             {pokemon.map((poke, idx) => {
+                const image = `https://img.pokemondb.net/sprites/platinum/back-normal/${(
+                    normalizeSpeciesName(poke.species as Species) || ''
+                ).toLowerCase()}${getIconFormeSuffix(poke.forme as any)}.png`;
+                
                 return (
-                    <img
-                        style={{
-                            height: '128px',
-                            marginLeft: '-32px',
-                            zIndex: 6 - idx,
-                            imageRendering: 'pixelated',
-                        }}
-                        alt=""
-                        role="presentation"
-                        src={`https://img.pokemondb.net/sprites/platinum/back-normal/${(
-                            poke.species || ''
-                        ).toLowerCase()}.png`}
-                    />
+                    <PokemonImage
+                        key={poke.id}
+                        url={image}
+                    >
+                        {(backgroundImage) => <img
+                            className="backsprite-montage-sprite"
+                            data-sprite-id={idx}
+                            data-sprite-species={poke.species}
+                            style={{
+                                height: '128px',
+                                marginLeft: '-32px',
+                                zIndex: 6 - idx,
+                                imageRendering: 'pixelated',
+                            }}
+                            alt=""
+                            role="presentation"
+                            src={backgroundImage} />
+                        }
+                    </PokemonImage>
+                    
                 );
             })}
         </div>
@@ -317,9 +330,6 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     public render() {
         const { style, box, trainer, pokemon, editor } = this.props;
         const numberOfTeam = getNumberOf('Team', pokemon);
-        const numberOfDead = getNumberOf('Dead', pokemon);
-        const numberOfBoxed = getNumberOf('Boxed', pokemon);
-        const numberOfChamps = getNumberOf('Champs', pokemon);
         const bgColor = style ? style.bgColor : '#383840';
         const topHeaderColor = style ? style.topHeaderColor : '#333333';
         const accentColor = style ? style.accentColor : '#111111';
@@ -352,6 +362,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         const enableStats = style.displayStats;
         const enableChampImage = feature.emmaMode;
         const enableBackSpriteMontage = feature.emmaMode;
+        const EMMA_MODE = feature.emmaMode;
 
         return (
             <div onWheel={this.onZoom} onMouseMove={this.onPan} onDoubleClick={this.resetPan} className="hide-scrollbars" style={{ width: '100%', overflowY: 'scroll' }}>
@@ -430,13 +441,6 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                                 {trainer.notes}
                             </div>
                         ) : null}
-                        {enableChampImage && (
-                            <img
-                                src="./img/dev/champs3.jpg"
-                                alt="fads"
-                                style={{ width: '500px', display: 'block', margin: '0 auto' }}
-                            />
-                        )}
                         {style.displayRules && style.displayRulesLocation === 'top'
                             ? rulesContainer
                             : null}
@@ -493,7 +497,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                                 : null}
                         </div>
 
-                        {enableStats && <Stats />}
+                        {enableStats && !EMMA_MODE && <Stats />}
 
                         {enableBackSpriteMontage && (
                             <BackspriteMontage pokemon={this.getPokemonByStatus('Team')} />

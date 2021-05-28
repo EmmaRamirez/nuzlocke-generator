@@ -757,9 +757,11 @@ Thank you!
 ## Fixes
 - Evolve button now properly changes types    
 `,
-    '1.7.0': `
-## Features
-
+    '1.6.2': `
 ## Fixes
+- Paras can evolve now. Sorry for that, Paras.
+- Added S.S. Anne as a location
+- Added all type information for all Pokémon
+
 `
 };

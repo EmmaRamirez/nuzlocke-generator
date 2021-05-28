@@ -8,6 +8,7 @@ import {
     typeToColor,
     getContrastColor,
     matchNatureToToxtricityForme,
+    Species,
 } from 'utils';
 import { editPokemon, selectPokemon, editStat } from 'actions';
 
@@ -72,7 +73,7 @@ const createEdit = ({ inputName, value, pokemon, edit }: ChangeArgs) => {
     } else if (inputName === 'forme') {
         return {
             ...edit,
-            types: pokemon && matchSpeciesToTypes(pokemon?.species, value)
+            types: pokemon && matchSpeciesToTypes(pokemon?.species as Species, value)
         };
     }
 

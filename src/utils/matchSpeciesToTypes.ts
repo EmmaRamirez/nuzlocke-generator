@@ -1,5 +1,6 @@
 import { Types, Generation } from 'utils';
 import { Forme } from './Forme';
+import { Species } from './listOfPokemon';
 
 const match = ({
     s,
@@ -46,7 +47,7 @@ export const handleSpeciesTypeEdgeCases = ({
     forme,
     generation,
 }: {
-    species: string;
+    species: Species;
     forme?: keyof typeof Forme;
     generation?: Generation;
 }): [Types, Types] | null => {
@@ -512,7 +513,7 @@ export const handleSpeciesTypeEdgeCases = ({
 };
 
 export const matchSpeciesToTypes = (
-    species: string,
+    species: Species,
     forme?: keyof typeof Forme,
     generation?: Generation,
 ): [Types, Types] => {
@@ -568,6 +569,12 @@ export const matchSpeciesToTypes = (
         case 'Gossifleur':
         case 'Eldegoss':
         case 'Shaymin':
+        case 'Pansage':
+        case 'Simisage':
+        case 'Chespin':
+        case 'Quilladin':
+        case 'Skiddo':
+        case 'Gogoat':
             return [Types.Grass, Types.Grass];
         case 'Torterra':
             return [Types.Grass, Types.Ground];
@@ -805,7 +812,7 @@ export const matchSpeciesToTypes = (
 
         case 'Shedinja':
             return [Types.Bug, Types.Ghost];
-        case 'Sabeleye':
+        case 'Sableye':
             return [Types.Dark, Types.Ghost];
         case 'Rotom':
             return [Types.Electric, Types.Ghost];
@@ -859,14 +866,14 @@ export const matchSpeciesToTypes = (
             return [Types.Fire, Types.Fighting];
         case 'Breloom':
         case 'Virizion':
-        case 'Chensaught':
+        case 'Chesnaught':
             return [Types.Grass, Types.Fighting];
         case 'Stufful':
         case 'Bewear':
             return [Types.Normal, Types.Fighting];
         case 'Gallade':
             return [Types.Psychic, Types.Fighting];
-        case 'Terrakon':
+        case 'Terrakion':
             return [Types.Rock, Types.Fighting];
         case 'Cobalion':
             return [Types.Steel, Types.Fighting];
@@ -883,6 +890,12 @@ export const matchSpeciesToTypes = (
         case 'Bagon':
         case 'Shelgon':
         case 'Druddigon':
+        case 'Axew':
+        case 'Fraxure':
+        case 'Haxorus':
+        case 'Goomy':
+        case 'Sliggoo':
+        case 'Goodra':
             return [Types.Dragon, Types.Dragon];
         case 'Dragonite':
         case 'Salamence':
@@ -891,7 +904,7 @@ export const matchSpeciesToTypes = (
         case 'Omastar':
         case 'Kabuto':
         case 'Kabutops':
-        case 'Tirtuoga':
+        case 'Tirtouga':
         case 'Carracosta':
         case 'Corsola':
         case 'Binacle':
@@ -914,7 +927,7 @@ export const matchSpeciesToTypes = (
         case 'Burmy':
         case 'Karrablast':
         case 'Shelmet':
-        case 'Accelogr':
+        case 'Accelgor':
         case 'Scatterbug':
         case 'Spewpa':
         case 'Grubbin':
@@ -1070,8 +1083,8 @@ export const matchSpeciesToTypes = (
         case 'Hydreigon':
         case 'Guzzlord':
             return [Types.Dark, Types.Dragon];
-        case 'Hondour':
-        case 'Hondoom':
+        case 'Houndour':
+        case 'Houndoom':
             return [Types.Dark, Types.Fire];
         case 'Murkrow':
         case 'Honchkrow':
@@ -1138,8 +1151,8 @@ export const matchSpeciesToTypes = (
         case 'Blitzle':
         case 'Zebstrika':
         case 'Tynamo':
-        case 'Elektrik':
-        case 'Elektross':
+        case 'Eelektrik':
+        case 'Eelektross':
         case 'Xurkitree':
         case 'Zeraora':
             return [Types.Electric, Types.Electric];
@@ -1187,7 +1200,7 @@ export const matchSpeciesToTypes = (
         case 'Duosion':
         case 'Reuniclus':
         case 'Elgyem':
-        case 'Beeheeyem':
+        case 'Beheeyem':
         case 'Espurr':
         case 'Meowstic':
         case 'Cosmog':
@@ -1202,8 +1215,24 @@ export const matchSpeciesToTypes = (
             return [Types.Grass, Types.Psychic];
         case 'Tentacool':
         case 'Tentacruel':
+        case 'Skrelp':
             return [Types.Water, Types.Poison];
-        case 'Farfetch’d':
+        case 'Dragalge':
+            return [Types.Dragon, Types.Poison];
+        case 'Helioptile':
+        case 'Heliolisk':
+            return [Types.Electric, Types.Normal];
+        case 'Tyrunt':
+        case 'Tyrantrum':
+            return [Types.Rock, Types.Dragon];
+        case 'Amaura':
+        case 'Aurorus':
+            return [Types.Rock, Types.Ice];
+        case 'Naganadel':
+            return [Types.Poison, Types.Dragon];
+        case 'Stakataka':
+            return [Types.Rock, Types.Steel];
+        case 'Farfetch\'d':
             return [Types.Normal, Types.Flying];
         case 'Dewgong':
         case 'Cloyster':
@@ -1218,6 +1247,9 @@ export const matchSpeciesToTypes = (
         case 'Muk':
         case 'Koffing':
         case 'Weezing':
+        case 'Trubbish':
+        case 'Garbodor':
+        case 'Poipole':
             return [Types.Poison, Types.Poison];
         case 'Nidoqueen':
         case 'Nidoking':
@@ -1227,6 +1259,8 @@ export const matchSpeciesToTypes = (
         case 'Crobat':
             return [Types.Poison, Types.Flying];
         case 'Aerodactyl':
+        case 'Archen':
+        case 'Archeops':
             return [Types.Rock, Types.Flying];
         case 'Articuno':
         case 'Delibird':
@@ -1314,6 +1348,9 @@ export const matchSpeciesToTypes = (
         case 'Silvally':
         case 'Komala':
         case 'Wooloo':
+        case 'Skwovet':
+        case 'Greedent':
+        case 'Dubwool':
             return [Types.Normal, Types.Normal];
         case 'Drampa':
             return [Types.Normal, Types.Dragon];
@@ -1334,7 +1371,7 @@ export const matchSpeciesToTypes = (
             return [Types.Water, Types.Poison];
         case 'Skarmory':
         case 'Celesteela':
-        case 'Corvinight':
+        case 'Corviknight':
             return [Types.Steel, Types.Flying];
         case 'Houndour':
         case 'Houndoom':
@@ -1430,6 +1467,9 @@ export const matchSpeciesToTypes = (
         case 'Registeel':
         case 'Melmetal':
         case 'Meltan':
+        case 'Klink':
+        case 'Klang':
+        case 'Klinklang':
             return [Types.Steel, Types.Steel];
         case 'Latias':
         case 'Latios':
@@ -1507,10 +1547,10 @@ export const matchSpeciesToTypes = (
         case 'Sinistea':
         case 'Polteageist':
             return [Types.Ghost, Types.Ghost];
-        case 'Hetenna':
+        case 'Hatenna':
         case 'Hattrem':
             return [Types.Psychic, Types.Psychic];
-        case 'Hattrene':
+        case 'Hatterene':
             return [Types.Psychic, Types.Fairy];
         case 'Impidimp':
         case 'Morgrem':
@@ -1543,7 +1583,7 @@ export const matchSpeciesToTypes = (
             return [Types.Water, Types.Dragon];
         case 'Arctovish':
             return [Types.Water, Types.Ice];
-        case 'Duralodon':
+        case 'Duraludon':
             return [Types.Steel, Types.Dragon];
         case 'Dreepy':
         case 'Drakloak':
@@ -1592,59 +1632,32 @@ export const matchSpeciesToTypes = (
             return [Types.Ground, Types.Flying];
         case 'Sigilyph':
             return [Types.Psychic, Types.Flying];
-
-        // 'Tirtouga',
-        // 'Archen',
-        // 'Archeops',
-        // 'Trubbish',
-        // 'Garbodor',
-        // 'Ducklett',
-        // 'Swanna',
-        // 'Ferroseed',
-        // 'Ferrothorn',
-        // 'Klink',
-        // 'Klang',
-        // 'Klinklang',
-        // 'Eelektrik',
-        // 'Eelektross',
-        // 'Beheeyem',
-        // 'Axew',
-        // 'Fraxure',
-        // 'Haxorus',
-        // 'Accelgor',
-        // 'Stunfisk',
-        // 'Terrakion',
-        // 'Reshiram',
-        // 'Zekrom',
-        // 'Kyurem',
-        // 'Chespin',
-        // 'Quilladin',
-        // 'Chesnaught',
-        // 'Delphox',
-        // 'Litleo',
-        // 'Pyroar',
-        // 'Skiddo',
-        // 'Gogoat',
-        // 'Skrelp',
-        // 'Dragalge',
-        // 'Helioptile',
-        // 'Heliolisk',
-        // 'Tyrunt',
-        // 'Tyrantrum',
-        // 'Amaura',
-        // 'Aurorus',
-        // 'Goomy',
-        // 'Sliggoo',
-        // 'Goodra',
+        case 'Tirtouga':
+            return [Types.Water, Types.Rock];
+        case 'Ducklett':
+        case 'Swanna':
+            return [Types.Water, Types.Flying];
+        case 'Stunfisk':
+            return [Types.Ground, Types.Electric];
+        case 'Reshiram':
+            return [Types.Dragon, Types.Fire];
+        case 'Zekrom':
+            return [Types.Dragon, Types.Electric];
+        case 'Delphox':
+            return [Types.Fire, Types.Psychic];
+        case 'Litleo':
+        case 'Pyroar':
+            return [Types.Fire, Types.Normal];
         case 'Zygarde':
             return [Types.Dragon, Types.Ground];
         case 'Volcanion':
             return [Types.Fire, Types.Water];
-        // 'Oricorio',
-        // 'Rockruff',
-        // 'Lycanroc',
-        //  'Mareanie',
-        // 'Toxapex',
+        case 'Rockruff':
+        case 'Lycanroc':
+            return [Types.Rock, Types.Rock];
+        case 'Mareanie':
+        case 'Toxapex':
+            return [Types.Water, Types.Poison];
         // default in generator is Baile form
         case 'Oricorio':
             return [Types.Fire, Types.Flying];
@@ -1671,6 +1684,9 @@ export const matchSpeciesToTypes = (
             return [Types.Steel, Types.Flying];
         case 'Kartana':
             return [Types.Steel, Types.Grass];
+        case 'Ferroseed':
+        case 'Ferrothorn':
+            return [Types.Grass, Types.Steel];
         case 'Taillow':
         case 'Pidgey':
         case 'Pidgeotto':

@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOMServer from 'react-dom/server';
 import { useSelector } from 'react-redux';
 import { State } from 'state';
-import { getGameGeneration, getPokemonImage, stripURLCSS, typeToColor } from 'utils';
+import { formatBallText, getGameGeneration, getPokemonImage, stripURLCSS, typeToColor } from 'utils';
 import { css, cx } from 'emotion';
 import * as Mustache from 'mustache';
 import { ErrorBoundary, PokemonIcon, PokemonIconPlain } from 'components';
@@ -15,6 +15,8 @@ import { Gender, GenderElement, GenderElementReact } from 'components/Shared';
 import { CheckpointsDisplay } from 'components/Result';
 import { game } from 'reducers/game';
 import { linkedPokemonSelector } from 'selectors';
+import { PokemonItem } from './PokemonItem';
+import { PokemonPokeball } from './PokemonPokeball';
 
 export interface TeamPokemonProps {
     pokemon: Pokemon;
@@ -134,6 +136,14 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
         type2: pokemon?.types?.[1],
         type1Color: typeToColor(pokemon?.types?.[0] ?? 'Normal'),
         type2Color: typeToColor(pokemon?.types?.[1] ?? 'Normal'),
+        pokeball: pokemon.pokeball ?
+            `icons/pokeball/${formatBallText(pokemon?.pokeball || 'None')}.png` : undefined,
+        pokeballComponent: ReactDOMServer.renderToString(<PokemonPokeball pokemon={pokemon} style={style} customTypes={customTypes} />),
+        item: pokemon.item ? `icons/hold-item/${(pokemon.item || '')
+            .toLowerCase()
+            .replace(/\'/g, '')
+            .replace(/\s/g, '-')}.png` : undefined,
+        itemComponent: ReactDOMServer.renderToString(<PokemonItem pokemon={pokemon} style={style} customTypes={customTypes} />),
         icon: ReactDOMServer.renderToString(pokemonIcon),
         checkpoints: ReactDOMServer.renderToString(<div />),
         genderSymbol: ReactDOMServer.renderToString(<GenderElementReact gender={pokemon?.gender} />),
@@ -163,7 +173,7 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
         ),
     };
 
-    console.log(view.linkedPokemon);
+    console.log(view.pokeball, view.item);
 
     const CSS = (
         <style>{`
@@ -178,6 +188,8 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
         .replace(/\{{icon}}/g, view.icon)
         .replace(/\{{linkedPokemon}}/g, view.linkedPokemon)
         .replace(/\{{notes}}/g, view.notes)
+        .replace(/\{{itemComponent}}/g, view.itemComponent)
+        .replace(/\{{pokeballComponent}}/g, view.pokeballComponent)
         .replace(/\{{movesColoredWithClasses}}/g, view.movesColoredWithClasses)
         .replace(/\{{checkpoints}}/g, view.checkpoints)
         .replace(/\{{movesColored}}/g, view.movesColored);

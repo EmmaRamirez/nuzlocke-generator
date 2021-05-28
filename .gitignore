@@ -15,6 +15,7 @@ nuzlockes
 ./dist
 */dist
 dist/
+src/img/*.zip
 
 # Runtime data
 pids

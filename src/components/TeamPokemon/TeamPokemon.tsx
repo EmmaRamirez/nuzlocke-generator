@@ -23,6 +23,9 @@ import { PokemonIcon } from 'components/PokemonIcon';
 import { getMetLocationString } from './getMetLocationString';
 import { CheckpointsDisplay } from 'components/Result';
 import { PokemonImage } from 'components/Shared/PokemonImage';
+import { PokemonItem } from './PokemonItem';
+import { PokemonPokeball } from './PokemonPokeball';
+
 
 export interface TeamPokemonInfoProps {
     generation: Generation;
@@ -446,7 +449,47 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, {imag
                 {style.template === 'Compact with Icons' && (
                     <PokemonIcon className="pokemon-icon-main" {...poke} />
                 )}
-                <div
+                {EMMA_MODE ? <>
+                    <div
+                        role="presentation"
+                        onClick={(e) => this.props.selectPokemon(poke.id)}
+                        className={`${this.props.style.imageStyle} pokemon-image-wrapper`}
+                        style={{
+                            cursor: 'pointer',
+                            background: this.props.style.teamPokemonBorder
+                                ? getBackgroundGradient(
+                                    poke.types != null ? poke.types[0] : 'Normal',
+                                    poke.types != null ? poke.types[1] : 'Normal',
+                                    customTypes,
+                                )
+                                : 'transparent',
+                    }} />
+                    <PokemonImage
+                        species={poke.species}
+                        gender={poke.gender}
+                        forme={poke.forme}
+                        customImage={poke.customImage}
+                        style={style}
+                        editor={editor}
+                        name={game.name}
+                        shiny={poke.shiny}
+                    >
+                        {(backgroundImage) => {
+                            return <div
+                                style={{
+                                    backgroundImage,
+                                    ...(spriteStyle as React.CSSProperties),
+                                    imageRendering: style.iconRendering,
+                                }}
+                                className={`pokemon-image ${(
+                                    poke.species || 'missingno'
+                                ).toLowerCase()} ${
+                                    this.props.style.imageStyle === 'round' ? 'round' : 'square'
+                                }`}
+                            />
+                        }}
+                    </PokemonImage>
+                </>: <div
                     role="presentation"
                     onClick={(e) => this.props.selectPokemon(poke.id)}
                     className={`${this.props.style.imageStyle} pokemon-image-wrapper`}
@@ -485,7 +528,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, {imag
                             />
                         }}
                     </PokemonImage>
-                </div>
+                </div>}
                 {poke.mvp && (
                     <div
                         className={cx(
@@ -502,68 +545,16 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, {imag
                         />
                     </div>
                 )}
-                {poke.pokeball && poke.pokeball !== 'None' && (
-                    <div
-                        style={{
-                            top: style.template === 'Cards' ? '1rem' : undefined,
-                            left: '6rem',
-                            zIndex: 10,
-                            borderColor: typeToColor(getFirstType, customTypes) || 'transparent',
-                            backgroundImage:
-                                style.template === 'Hexagons' ||
-                                style.pokeballStyle === 'outer glow'
-                                    ? getBackgroundGradient(
-                                        poke.types != null ? poke.types[0] : 'Normal',
-                                        poke.types != null ? poke.types[1] : 'Normal',
-                                        customTypes,
-                                    )
-                                    : '',
-                        }}
-                        className={cx(
-                            itemLabelStyle.base,
-                            itemLabelStyle[style.pokeballStyle],
-                            'pokemon-pokeball',
-                        )}>
-                        <img
-                            alt={poke.pokeball}
-                            src={`icons/pokeball/${formatBallText(poke.pokeball)}.png`}
-                        />
-                    </div>
-                )}
-                {(poke.item || poke.customItemImage) && !style.displayItemAsText ? (
-                    <div
-                        style={{
-                            borderColor: typeToColor(getSecondType, customTypes) || 'transparent',
-                            backgroundImage:
-                                style.template === 'Hexagons' || style.itemStyle === 'outer glow'
-                                    ? getBackgroundGradient(
-                                        poke.types != null ? poke.types[0] : 'Normal',
-                                        poke.types != null ? poke.types[1] : 'Normal',
-                                        customTypes,
-                                    )
-                                    : '',
-                        }}
-                        className={cx(
-                            itemLabelStyle.base,
-                            itemLabelStyle[style.itemStyle],
-                            'pokemon-item',
-                        )}>
-                        {poke.customItemImage ?
-                            <PokemonImage url={poke.customItemImage}>
-                                {(image) => <img
-                                    alt={poke.item}
-                                    src={poke.customItemImage}
-                                />}
-                            </PokemonImage>
-                            : <img alt={poke.item}
-                                    src={`icons/hold-item/${(poke.item || '')
-                                    .toLowerCase()
-                                    .replace(/\'/g, '')
-                                    .replace(/\s/g, '-')}.png`}
-                                />
-                        }
-                    </div>
-                ) : null}
+                <PokemonPokeball
+                    pokemon={poke}
+                    style={style}
+                    customTypes={customTypes}
+                />
+                <PokemonItem
+                    pokemon={poke}
+                    style={style}
+                    customTypes={customTypes}
+                />
                 {pokemon && (
                     <TeamPokemonInfo
                         generation={getGameGeneration(this.props.game.name)}
