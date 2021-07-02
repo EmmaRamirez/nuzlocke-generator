@@ -19,13 +19,16 @@ module.exports = {
     },
     "extends": [
         "prettier",
-        "prettier/@typescript-eslint"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "project": "tsconfig.json",
         "sourceType": "module"
     },
+    "ignorePatterns": [
+        "./webpack.config.ts",
+        "./.eslintrc.js"
+    ],
     "plugins": [
         "@typescript-eslint",
         "@typescript-eslint/tslint"

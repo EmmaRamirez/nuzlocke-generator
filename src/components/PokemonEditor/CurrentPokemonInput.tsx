@@ -254,10 +254,10 @@ export function PokemonSelectInput({
                 {!usesKeyValue
                     ? options
                         ?
-                          options?.map((item, index) => <option key={index}>{item}</option>)
+                          (options as any)?.map((item, index) => <option key={index}>{item}</option>)
                         : null
                     :
-                      options?.map((item, index) => (
+                      (options as any)?.map((item, index) => (
                           <option value={item.value} key={index}>
                               {item.key}
                           </option>
@@ -297,7 +297,7 @@ export function PokemonDoubleSelectInput({
                 <select onChange={onSelect(0)} value={edit?.[inputName]?.[0]} name={inputName}>
                     {options
                         ?
-                        options.map((item, index) => (
+                        (options as any).map((item, index) => (
                             <option value={item} key={index}>
                                 {item}
                             </option>
@@ -310,7 +310,7 @@ export function PokemonDoubleSelectInput({
                 <select onChange={onSelect(1)} value={edit?.[inputName]?.[1]} name={inputName}>
                     {options
                         ?
-                        options.map((item, index) => (
+                        (options as any).map((item, index) => (
                             <option value={item} key={index}>
                                 {item}
                             </option>
