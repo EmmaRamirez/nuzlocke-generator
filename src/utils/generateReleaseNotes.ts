@@ -770,6 +770,7 @@ Thank you!
 `,
     '1.7.0': `
 ## Features
+- **Gift Pokémon**: can now be marked as such, and optionally filtered from the locations checklist
 
 ## Fixes
 - Sprites mode fixed!

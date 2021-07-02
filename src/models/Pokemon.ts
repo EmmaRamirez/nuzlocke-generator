@@ -36,6 +36,7 @@ export interface Pokemon {
     notes?: string;
     linkedTo?: Pokemon['id'] | null;
     checkpoints?: Checkpoints;
+    gift?: boolean;
     /* @deprecated */
     champion?: boolean;
 }
@@ -75,5 +76,6 @@ export const PokemonKeys: Pokemon = {
     pokeball: 'None',
     notes: '',
     checkpoints: [],
+    gift: false,
     linkedTo: null,
 };

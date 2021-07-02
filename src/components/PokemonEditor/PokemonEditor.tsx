@@ -40,7 +40,6 @@ export class BoxesComponent extends React.Component<BoxesComponentProps> {
             .sort((a: BoxModel, b: BoxModel) => {
                 const positionA = a.position || 0;
                 const positionB = b.position || 1;
-                
                 return positionA - positionB;
             })
             .map((box) => {
@@ -75,13 +74,18 @@ const PokemonLocationChecklist = ({
     game: Game;
     style: State['style'];
 }) => {
+    const [excludeGifts, setExcludeGifts] = React.useState(false);
     const encounterMap = getEncounterMap(game.name);
 
-    const getLocIcon = (name) => {
+    React.useEffect(() => {
+        console.log(excludeGifts);
+    }, [excludeGifts]);
+
+    const getLocIcon = (name: string) => {
         const pokemonFiltered = pokemon.filter((p) => p.met?.trim().toLocaleLowerCase() === name.toLocaleLowerCase());
 
         return pokemonFiltered.map(poke => {
-            if (poke && !poke.hidden) {
+            if (poke && !poke.hidden && (!poke.gift || !excludeGifts)) {
                 return (
                     <>
                         <Icon icon="tick" />
@@ -102,8 +106,8 @@ const PokemonLocationChecklist = ({
     };
 
     const createMapAnalytics = () => {
-        
-    }
+
+    };
 
     return (
         <div>
@@ -111,8 +115,6 @@ const PokemonLocationChecklist = ({
                 pokemon={pokemon}
             />
             {encounterMap.map((area) => {
-
-
                 return (
                     <div
                         key={area.toString()}
@@ -127,6 +129,11 @@ const PokemonLocationChecklist = ({
                     </div>
                 );
             })}
+            <label className={cx(Classes.CONTROL, Classes.CHECKBOX)} style={{margin: '.25rem 0' }}>
+                <input type='checkbox' checked={excludeGifts} onChange={e => setExcludeGifts(e?.target.checked)} />
+                <span className={Classes.CONTROL_INDICATOR}></span>
+                <span className={Classes.LABEL}>Exclude Gifts</span>
+            </label>
             <Callout intent={Intent.WARNING} style={{ fontSize: '80%', marginTop: '0.5rem' }}>
                 Tip: Pokémon with the "hidden" attribute are a great option for including Pokemon
                 that got away on a certain route!
@@ -187,7 +194,6 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                                 style={{margin: '0.25rem', width: '100%'}}
                             />
                         </div>
-                        
                     </div>
                     <BoxesComponent searchTerm={this.state.searchTerm} boxes={boxes} team={team} />
                     <BoxForm boxes={boxes} />
