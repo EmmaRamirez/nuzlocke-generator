@@ -13,6 +13,10 @@ import 'normalize.css/normalize.css';
 import { isLocal } from 'utils';
 import { ErrorBoundary } from 'components';
 
+(window as any).global = window;
+// @ts-ignore
+window.Buffer = window.Buffer || require('buffer').Buffer;
+
 async function getRollbar() {
     // @ts-expect-error
     const {default: Rollbar} = await import('rollbar');

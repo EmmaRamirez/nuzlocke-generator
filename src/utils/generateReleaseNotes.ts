@@ -763,5 +763,9 @@ Thank you!
 - Added S.S. Anne and Verity Lakefront as locations
 - Added all type information for all Pokémon
 
+`,
+    '1.6.3': `
+## Fixes
+- Save file upload works again    
 `
 };
