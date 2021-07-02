@@ -772,6 +772,9 @@ Thank you!
 ## Features
 
 ## Fixes
-- Sprites mode fixed
+- Sprites mode fixed!
+    - This was due to cors-anywhere, which was used for sprites, shutting down most forms of access.
+    - Please see instructions [here]() if you are running a local instance (Note: it will require running your own instance of cors-anywhere)
+
 `
 };
