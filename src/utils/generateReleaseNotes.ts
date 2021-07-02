@@ -742,6 +742,10 @@ Thank you!
 - Fixed an issue with sprites not appearing Champs section
 - Fixed an issue with shininess not showing up in TeamPokemon sprites    
 `,
+    '1.5.3': `
+## Fixes
+- Evolve button now properly changes types    
+`,
     '1.6.0': `
 ## Features
 - **Drag & Drop Boxes**: boxes can now be moved around like Pokémon!
@@ -753,15 +757,15 @@ Thank you!
 - It now also lists out all Pokémon that match the area; previously, if a Pokémon's game of origin didn't match, it would not show up.
 - Added some more general pointers & tips throughout the app
 `,
-    '1.5.3': `
-## Fixes
-- Evolve button now properly changes types    
-`,
     '1.6.2': `
 ## Fixes
 - Paras can evolve now. Sorry for that, Paras.
-- Added S.S. Anne as a location
+- Added S.S. Anne and Verity Lakefront as locations
 - Added all type information for all Pokémon
 
+`,
+    '1.6.3': `
+## Fixes
+- Save file upload works again    
 `
 };

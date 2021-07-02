@@ -97,14 +97,14 @@ export type PokemonInputProps = CurrentPokemonInputProps &
 InputTypesFromState &
 InputTypesFromInternalState;
 
-export const renderItems = (visibleItems, setSelectedItem) => (
+export const renderItems = (visibleItems, setSelectedItem, selectedItem) => (
     visibleItems.map((v, i) => {
         return (
             <li
                 key={i}
                 role="item"
                 onClick={(e) => setSelectedItem(v)}
-                style={v === this.state.currentValue ? { color: 'lightblue' } : {}}>
+                style={v === selectedItem ? { color: 'lightblue' } : {}}>
                 {v}
             </li>
         );
@@ -146,7 +146,7 @@ export function PokemonAutocompleteInput({
             onInput={(e) => setEdit({ [inputName]: e.currentTarget.value })}
         />
         {isOpen ? (
-            <ul className="autocomplete-items has-nice-scrollbars">{renderItems(visibleItems, setSelectedItem)}</ul>
+            <ul className="autocomplete-items has-nice-scrollbars">{renderItems(visibleItems, setSelectedItem, selectedItem)}</ul>
         ) : null}
     </>;
 }
@@ -253,11 +253,11 @@ export function PokemonSelectInput({
                 name={inputName}>
                 {!usesKeyValue
                     ? options
-                        ? // @ts-expect-error array mapping, re-check
-                          options?.map((item, index) => <option key={index}>{item}</option>)
+                        ?
+                          (options as any)?.map((item, index) => <option key={index}>{item}</option>)
                         : null
-                    : // @ts-expect-error array mapping, re-check
-                      options?.map((item, index) => (
+                    :
+                      (options as any)?.map((item, index) => (
                           <option value={item.value} key={index}>
                               {item.key}
                           </option>
@@ -297,8 +297,7 @@ export function PokemonDoubleSelectInput({
                 <select onChange={onSelect(0)} value={edit?.[inputName]?.[0]} name={inputName}>
                     {options
                         ?
-                        // @ts-expect-error @TODO: mapping
-                        options.map((item: string, index: number) => (
+                        (options as any).map((item, index) => (
                             <option value={item} key={index}>
                                 {item}
                             </option>
@@ -311,8 +310,7 @@ export function PokemonDoubleSelectInput({
                 <select onChange={onSelect(1)} value={edit?.[inputName]?.[1]} name={inputName}>
                     {options
                         ?
-                        // @ts-expect-error @TODO: mapping
-                        options.map((item, index) => (
+                        (options as any).map((item, index) => (
                             <option value={item} key={index}>
                                 {item}
                             </option>
