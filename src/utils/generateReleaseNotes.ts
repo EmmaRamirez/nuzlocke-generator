@@ -776,6 +776,6 @@ Thank you!
 - Sprites mode fixed!
     - This was due to cors-anywhere, which was used for sprites, shutting down most forms of access.
     - Please see instructions [here]() if you are running a local instance (Note: it will require running your own instance of cors-anywhere)
-
+- Added a TCG image for Girafarig
 `
 };
