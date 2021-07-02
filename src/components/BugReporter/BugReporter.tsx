@@ -44,7 +44,7 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
                         onChange={this.updateReport('userReportTitle')}
                     />
                     <TextArea
-                        placeholder="Description (Optional)."
+                        placeholder="Description (Optional). If relevant, please include info such as steps to reproduce, browser, and OS."
                         style={{ width: '100%' }}
                         value={userReport}
                         onChange={this.updateReport('userReport')}
