@@ -767,5 +767,11 @@ Thank you!
     '1.6.3': `
 ## Fixes
 - Save file upload works again    
+`,
+    '1.7.0': `
+## Features
+
+## Fixes
+- Sprites mode fixed
 `
 };
