@@ -25,8 +25,8 @@
     "test": "jest --coverage --config jest-config.json"
   },
   "engines": {
-    "node": "13.11.0",
-    "npm": "6.1.0"
+    "node": "^16",
+    "npm": "^7"
   },
   "keywords": [],
   "author": "Emma Ramirez <ramireze.emma.g@gmail.com> (http://emmaramirez.me)",
