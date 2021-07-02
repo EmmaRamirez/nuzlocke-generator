@@ -37,7 +37,7 @@ export function PokemonImage({
         // Otherwise, we just use getPokemonImage() (which also uses cors-anywhere under the hood)
         try {
             url ? (async () => {
-                setImage(await wrapImageInCORSPlain(url))
+                setImage(await wrapImageInCORSPlain(url));
             })() : (async () => {
                 setImage(await getPokemonImage({
                     customImage: customImage,

@@ -12,7 +12,7 @@ function fileToBase64(file: Blob) {
 }
 
 export async function wrapImageInCORS(url: string) {
-    const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`, {
+    const response = await fetch(`https://cors-anywhere-nuzgen.herokuapp.com/${url}`, {
         mode: 'cors',
         // Origin: location.origin,
         // @ts-ignore
@@ -24,7 +24,7 @@ export async function wrapImageInCORS(url: string) {
 }
 
 export async function wrapImageInCORSPlain(url: string) {
-    const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`, {
+    const response = await fetch(`https://cors-anywhere-nuzgen.herokuapp.com/${url}`, {
         mode: 'cors',
     });
     const img = await response.blob();
