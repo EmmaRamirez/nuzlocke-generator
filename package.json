@@ -36,6 +36,7 @@
     "@react-hook/debounce": "^3.0.0",
     "@types/react-dnd-html5-backend": "^3.0.2",
     "@types/webpack": "^4.41.24",
+    "@typescript-eslint/typescript-estree": "^4.28.1",
     "autoprefixer": "^10.0.1",
     "babel-plugin-module-resolver": "^3.1.1",
     "buffer": "^6.0.3",

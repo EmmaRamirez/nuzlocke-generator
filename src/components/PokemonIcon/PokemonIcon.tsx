@@ -74,7 +74,7 @@ const iconSourceDrop = {
                 status: newStatus,
             },
             oldId
-        ))
+        ));
         //store.dispatch(editPokemon({ position: newPosition }, id));
         return {};
     },
@@ -82,9 +82,9 @@ const iconSourceDrop = {
     hover(props, monitor) {
         return {
             isHovering: monitor.isOver({ shallow: true })
-        }
+        };
     }
-}
+};
 
 const iconSource = {
     beginDrag(props: PokemonIconProps) {
