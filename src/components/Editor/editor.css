@@ -44,6 +44,9 @@ html.bp3-dark {
   .base-editor {
     width: 98vw;
   }
+  .bug-reports-and-feature-requests-editor {
+    margin-bottom: 3rem !important;
+  }
 }
 .editor.bp3-dark {
   border: 1px solid #000;

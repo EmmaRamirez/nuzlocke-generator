@@ -778,6 +778,7 @@ Thank you!
     - Please see instructions [here](https://github.com/EmmaRamirez/nuzlocke-generator#enabling-sprites-mode-in-local-instances) if you are running a local instance (Note: it will require running your own instance of cors-anywhere)
 - Added a TCG image for Girafarig
 - Pokémon sprites in the Editor now ignore casing
+- Bug Reporter/Feature Request section no longer cuts off in mobile
 
 ## Known Issues
 - Download Image may not always work. This will depend on the browser's policies for requesting images from a different domain inside of an HTML canvas.
