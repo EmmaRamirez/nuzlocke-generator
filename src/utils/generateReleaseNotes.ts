@@ -767,5 +767,20 @@ Thank you!
     '1.6.3': `
 ## Fixes
 - Save file upload works again    
+`,
+    '1.7.0': `
+## Features
+- **Gift Pokémon**: can now be marked as such, and optionally filtered from the locations checklist
+
+## Fixes
+- Sprites mode fixed!
+    - This was due to cors-anywhere, which was used for sprites, shutting down most forms of access.
+    - Please see instructions [here](https://github.com/EmmaRamirez/nuzlocke-generator#enabling-sprites-mode-in-local-instances) if you are running a local instance (Note: it will require running your own instance of cors-anywhere)
+- Added a TCG image for Girafarig
+- Pokémon sprites in the Editor now ignore casing
+- Bug Reporter/Feature Request section no longer cuts off in mobile
+
+## Known Issues
+- Download Image may not always work. This will depend on the browser's policies for requesting images from a different domain inside of an HTML canvas.
 `
 };

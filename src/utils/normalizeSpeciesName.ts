@@ -1,4 +1,4 @@
-import { listOfPokemon, Species } from './listOfPokemon';
+import { listOfPokemonLowercased, Species } from './listOfPokemon';
 
 export const normalizeSpeciesName = (species: Species) => {
     if (species == null) return 'unknown';
@@ -12,6 +12,6 @@ export const normalizeSpeciesName = (species: Species) => {
     if (species === 'Flabébé') return 'flabebe';
     if (species === 'Type: Null') return 'type-null';
     if (species.startsWith('Tapu')) return species.toLowerCase().replace(/\s/, '-');
-    if (listOfPokemon.indexOf(species) < 0) return 'unknown';
+    if (listOfPokemonLowercased.indexOf(species.toLowerCase()) < 0) return 'unknown';
     return species.toLowerCase();
 };

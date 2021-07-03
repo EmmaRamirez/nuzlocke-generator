@@ -77,7 +77,7 @@ export function BackspriteMontage({ pokemon }: { pokemon: Pokemon[] }) {
                 const image = `https://img.pokemondb.net/sprites/platinum/back-normal/${(
                     normalizeSpeciesName(poke.species as Species) || ''
                 ).toLowerCase()}${getIconFormeSuffix(poke.forme as any)}.png`;
-                
+
                 return (
                     <PokemonImage
                         key={poke.id}
@@ -98,7 +98,6 @@ export function BackspriteMontage({ pokemon }: { pokemon: Pokemon[] }) {
                             src={backgroundImage} />
                         }
                     </PokemonImage>
-                    
                 );
             })}
         </div>

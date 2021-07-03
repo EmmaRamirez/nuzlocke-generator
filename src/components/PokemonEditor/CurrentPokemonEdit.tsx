@@ -268,6 +268,13 @@ CurrentPokemonEditState
                         type="checkbox"
                         key={this.state.selectedId + 'mvp'}
                     />
+                    <CurrentPokemonInput
+                        labelName="Gift"
+                        inputName="gift"
+                        value={currentPokemon?.gift}
+                        type="checkbox"
+                        key={this.state.selectedId + 'gift'}
+                    />
                 </CurrentPokemonLayoutItem>
                 <CurrentPokemonInput
                     labelName="Custom Image"

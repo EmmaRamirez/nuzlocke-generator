@@ -12,10 +12,10 @@ function fileToBase64(file: Blob) {
 }
 
 export async function wrapImageInCORS(url: string) {
-    const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`, {
+    const response = await fetch(`${process.env.CORS_ANYWHERE_URL}/${url}`, {
         mode: 'cors',
         // Origin: location.origin,
-        // @ts-ignore
+        // @ts-expect-error valid for cors-anywhere
         'X-Requested-With': 'XMLHttpRequest'
     });
     const img = await response.blob();
@@ -24,8 +24,10 @@ export async function wrapImageInCORS(url: string) {
 }
 
 export async function wrapImageInCORSPlain(url: string) {
-    const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`, {
+    const response = await fetch(`${process.env.ORS_ANYWHERE_URL}/${url}`, {
         mode: 'cors',
+        // @ts-expect-error valid for cors-anywhere
+        'X-Requested-With': 'XMLHttpRequest'
     });
     const img = await response.blob();
 

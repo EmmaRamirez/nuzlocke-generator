@@ -61,9 +61,12 @@ GEN2_SAVES=true
 IMAGE_UPLOADS=true
 # Legacy, tcg images are now enabled by default
 TCG_IMAGES=true
+# Required for cross-origin images (i.e. sprites mode)
+CORS_ANYWHERE_URL=<URL>
 ```
 
 ## Features
+
 - Record your nuzlocke with a flashy image
 - Save data on each of your Pokémon as a `json` file
 - Flexible style editing for multiple scenarios
@@ -71,6 +74,10 @@ TCG_IMAGES=true
 - Import from your actual save files!
 
 If you have ideas for features of fixes, please tell me! I want to make this app as useful as possible.
+
+## Enabling Sprites Mode in Local Instances
+
+Unfortunately, [due to changes in cors-anywhere](https://github.com/Rob--W/cors-anywhere/issues/301), you will need to stand up your own instance of cors-anywhere in order to access cross-origin images (anything that comes from a non-nuzlocke-generator URL). After standing up your own server and whitelisting your localhost (you can run this locally as well), you can add `CORS_ANYWHERE_URL=<YOUR_URL>` to your `.env` file.
 
 ## Legal
 
