@@ -30,6 +30,7 @@ export function generateEmptyPokemon(pokemon?: Pokemon[], overrides?: Partial<Po
         ability: '',
         types: [Types.Normal, Types.Normal],
         egg: false,
+        gift: false,
         ...(overrides ?? {}),
     };
 }
