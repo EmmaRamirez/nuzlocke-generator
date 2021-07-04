@@ -58,9 +58,8 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
         const { searchTerm } = this.state;
         const { style, customMoveMap, customTypes } = this.props;
         const types = this.getTypes();
-        const movesToDisplay = React.useMemo(() => customMoveMap
-            .filter((m) => this.moveFilter(m.move, m.type, searchTerm)),
-        [customMoveMap]);
+        const movesToDisplay = customMoveMap
+            .filter((m) => this.moveFilter(m.move, m.type, searchTerm));
 
         const onChange = (move) => (e) => {
             this.props.editCustomMoveMap(e.target.value, move);

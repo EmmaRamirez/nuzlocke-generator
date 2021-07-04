@@ -19,6 +19,7 @@ import { State } from 'state';
 import { Pokemon } from 'models';
 import { cx } from 'emotion';
 import { useDebounceCallback } from '@react-hook/debounce';
+import { useMemo } from 'react';
 
 interface CurrentPokemonInputProps {
     labelName: string;
@@ -364,6 +365,7 @@ export function PokemonMoveInput({
     selectedId,
 }: PokemonInputProps) {
     const dispatch = useDispatch();
+    const moves = useMemo(() => (v: string) => customMoveMap?.find((m) => m?.move === v)?.type, [customMoveMap]);
 
     return <ErrorBoundary>
         <TagInput
@@ -374,8 +376,7 @@ export function PokemonMoveInput({
                 const background =
                     typeToColor(
                         // @ts-expect-error @TODO: fix mapping
-                        customMoveMap?.find((m) => m?.move === v)?.type ||
-                            getMoveType(v?.toString()?.trim() || ''),
+                        moves(v) || getMoveType(v?.toString()?.trim() || ''),
                         customTypes,
                     ) || 'transparent';
                 const color = getContrastColor(background);
