@@ -22,7 +22,7 @@ import { ErrorBoundary } from 'components/Shared';
 const uuid = require('uuid');
 import { persistor } from 'store';
 import { newNuzlocke, replaceState, setEditorHistoryDisabled } from 'actions';
-import { Game, Pokemon } from 'models';
+import { Game, Pokemon, Trainer } from 'models';
 import { omit } from 'ramda';
 import { BaseEditor } from 'components/BaseEditor';
 import { State } from 'state';
@@ -266,61 +266,47 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
 
     private uploadFile = (replaceState, state) => (e) => {
         const t0 = performance.now();
-        // const worker = new Worker('./parseFile.js');
-
-        // worker.onmessage = (e) => {
-        //     console.log(
-        //         e.data,
-        //         'Message recieved.',
-        //     );
-        // };
+        const worker = new Worker(new URL('parsers/worker.ts', import.meta.url));
 
         const file = this.fileInput.files[0];
         const reader = new FileReader();
         const componentState = this.state;
-
-        // worker.postMessage({file});
 
         reader.readAsArrayBuffer(file);
 
         reader.addEventListener('load', async function () {
             const u = new Uint8Array(this.result as ArrayBuffer);
 
-            const parsers = await import('parsers');
+            worker.postMessage({
+                selectedGame: componentState.selectedGame,
+                save: u,
+            });
 
-            const functionToUse =
-                componentState.selectedGame === 'RBY'
-                    ? parsers.parseGen1Save(u as Buffer, {type: 'nuzlocke'})
-                    : parsers.parseGen2Save(u, 'nuzlocke');
-            try {
-                const result = await functionToUse;
-
-                // strip out invalid species
-                result.pokemon = result.pokemon.filter((poke) => poke.species);
+            worker.onmessage = (e: MessageEvent<{ pokemon: Pokemon[], isYellow?: boolean, trainer: Trainer }>) => {
+                const result = e.data;
                 const mergedPokemon = componentState.mergeDataMode
                     ? DataEditorBase.pokeMerge(state.pokemon, result.pokemon as Pokemon[])
                     : result.pokemon;
                 const data = {
-                    // @ts-expect-error
-                    game: DataEditorBase.determineGame(result?.isYellow),
+                    game: DataEditorBase.determineGame(result?.isYellow || false),
                     pokemon: mergedPokemon,
                     trainer: result.trainer,
                 };
                 const newState = { ...state, ...data };
-
-                //worker.postMessage(newState);
-
                 replaceState(newState);
-                const t1 = performance.now();
-                console.info(`Call: ${t1 - t0} ms on ${componentState.selectedGame} save file type`);
-            } catch (e) {
+            };
+
+            worker.onmessageerror = (err) => {
                 const toaster = Toaster.create();
                 toaster.show({
-                    message: `Failed to parse save file. ${e}`,
+                    message: `Failed to parse save file. ${err}`,
                     intent: Intent.DANGER,
                 });
-                console.error(e);
-            }
+                console.error(err);
+            };
+
+            const t1 = performance.now();
+            console.info(`Call: ${t1 - t0} ms on ${componentState.selectedGame} save file type`);
         });
     };
 

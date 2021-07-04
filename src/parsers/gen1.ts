@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/prefer-for-of */
 import * as fs from 'fs';
 import { splitUp, GEN_1_POKEMON_MAP, GEN_1_CHARACTER_MAP, MOVES_ARRAY } from './utils';
+import { Buffer } from 'buffer';
 const uuid = require('uuid');
 
 // tslint:disable-next-line:class-name
@@ -369,11 +370,11 @@ export const loadGen1SaveFile = async (filename: string, options: SaveFileOption
     const save = await fs.readFileSync(filename);
 
     try {
-        const file = Buffer.from(save);
+        const file: Buffer = Buffer.from(save);
         const result = await parseGen1Save(file, options);
-        return await result;
+        return result;
     } catch {
-        throw new Error('Oops');
+        throw new Error('Could not parse save file.');
     }
 };
 
