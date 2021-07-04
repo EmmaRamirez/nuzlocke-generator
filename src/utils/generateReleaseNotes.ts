@@ -782,5 +782,15 @@ Thank you!
 
 ## Known Issues
 - Download Image may not always work. This will depend on the browser's policies for requesting images from a different domain inside of an HTML canvas.
+`,
+    '1.7.1': `
+## Fixes
+- Fixed Minimal Layout
+- Fixed margins on dead Pokémon in Generations theme
+- Fixed UI when clicking download button
+- Fixed Average Levels stat + added option for more detailed version
+
+## Known Issues
+- Download Image may not always work. This will depend on the browser's policies for requesting images from a different domain inside of an HTML canvas.
 `
 };
