@@ -77,10 +77,6 @@ const PokemonLocationChecklist = ({
     const [excludeGifts, setExcludeGifts] = React.useState(false);
     const encounterMap = getEncounterMap(game.name);
 
-    React.useEffect(() => {
-        console.log(excludeGifts);
-    }, [excludeGifts]);
-
     const getLocIcon = (name: string) => {
         const pokemonFiltered = pokemon.filter((p) => p.met?.trim().toLocaleLowerCase() === name.toLocaleLowerCase());
 
