@@ -14,6 +14,7 @@ import {
     listOfPokeballs,
     getListOfTypes,
     Forme,
+    Species,
 } from 'utils';
 import { Pokemon, Editor } from 'models';
 import { Boxes } from 'models';
@@ -186,7 +187,7 @@ CurrentPokemonEditState
         return this.props.pokemon.find((v: Pokemon) => v.id === this.state.selectedId);
     }
 
-    private evolvePokemon = (species) => (e) => {
+    private evolvePokemon = (species: Species) => (e) => {
         const pokemon = this.getCurrentPokemon();
         const edit = {
             species,

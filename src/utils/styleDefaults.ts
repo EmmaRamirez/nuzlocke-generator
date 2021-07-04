@@ -7,6 +7,7 @@ export type ItemStyle = 'outer glow' | 'round' | 'square' | 'text';
 
 export interface StatsOptions {
     averageLevel: boolean;
+    averageLevelDetailed: boolean;
     mostCommonKillers: boolean;
     mostCommonTypes: boolean;
     shiniesCaught: boolean;
@@ -109,6 +110,7 @@ export const styleDefaults: Styles = {
     linkedPokemonText: 'Linked To',
     statsOptions: {
         averageLevel: false,
+        averageLevelDetailed: false,
         mostCommonKillers: false,
         mostCommonTypes: false,
         shiniesCaught: false,

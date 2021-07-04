@@ -121,7 +121,7 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                                     ...darkModeStyle(this.props.style.editorDarkMode),
                                     height: '30px',
                                 }}>
-                                <Spinner /> Downloading
+                                <Spinner className={'inline-flex'} size={20}  /> Downloading
                             </Button>
                         ) : (
                             <Button

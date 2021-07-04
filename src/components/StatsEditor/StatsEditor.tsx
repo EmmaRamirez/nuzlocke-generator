@@ -18,13 +18,19 @@ export interface StatsEditorProps {
     deleteStat: deleteStat;
 }
 
+const sortById = (a, b) => {
+    if (a.id > b.id) return 1;
+    if (b.id > a.id) return -1;
+    return 0;
+};
+
 export class StatsEditorBase extends React.Component<StatsEditorProps> {
     private onChange = (stat: State['stats'][number], use: 'key' | 'value') => (e: React.ChangeEvent<HTMLInputElement>) => {
         const { editStat } = this.props;
-        if (!stat?.id || !stat?.key || !stat?.value) return;
+        //if (!stat?.id || !stat?.key || !stat?.value) return;
         use === 'key'
-            ? editStat(stat?.id, e.target.value, stat.value)
-            : editStat(stat?.id, stat.key, e.target.value);
+            ? editStat(stat?.id!, e.target.value, stat.value ?? '')
+            : editStat(stat?.id!, stat.key ?? '', e.target.value);
     };
 
     public render() {
@@ -55,6 +61,23 @@ export class StatsEditorBase extends React.Component<StatsEditorProps> {
                                 checked={stats?.averageLevel}
                                 name="averageLevel"
                                 label="Average Level"
+                                onChange={(e: any) =>
+                                    editStyle({
+                                        statsOptions: {
+                                            ...stats,
+                                            [e.target.name]: e.target.checked,
+                                        },
+                                    })
+                                }
+                            />
+                        </li>
+
+                        <li>
+                            {/* @NOTE: introduced in 1.7.1 */}
+                            <Switch
+                                checked={stats?.averageLevelDetailed}
+                                name="averageLevelDetailed"
+                                label="Average Level (Detailed)"
                                 onChange={(e: any) =>
                                     editStyle({
                                         statsOptions: {
@@ -114,7 +137,7 @@ export class StatsEditorBase extends React.Component<StatsEditorProps> {
                             />
                         </li>
 
-                        {this.props.stats?.map((stat) => (
+                        {this.props.stats?.sort(sortById).map((stat) => (
                             <li
                                 style={{ display: 'flex', alignItems: 'center' }}
                                 className={Classes.INPUT_GROUP}

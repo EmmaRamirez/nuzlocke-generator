@@ -80,7 +80,7 @@ injectGlobal`
     .m-1 { margin: 0.25rem; }
     .mb-2 { margin-bottom: 0.5rem; }
     .cursor-pointer { pointer: cursor; }
-
+    .inline-flex { display: inline-flex !important; }
 `;
 
 

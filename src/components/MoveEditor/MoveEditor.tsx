@@ -58,6 +58,8 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
         const { searchTerm } = this.state;
         const { style, customMoveMap, customTypes } = this.props;
         const types = this.getTypes();
+        const movesToDisplay = customMoveMap
+            .filter((m) => this.moveFilter(m.move, m.type, searchTerm));
 
         const onChange = (move) => (e) => {
             this.props.editCustomMoveMap(e.target.value, move);
@@ -67,8 +69,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
             if (!Array.isArray(customMoveMap)) {
                 return null;
             }
-            return customMoveMap
-                .filter((m) => this.moveFilter(m.move, m.type, searchTerm))
+            return movesToDisplay
                 .map(({ move, type, id }, index) => {
                     return (
                         <div
@@ -270,8 +271,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
     }
 }
 
-// @TODO: use more responsible typing
-export const MoveEditor: any = connect(
+export const MoveEditor = connect(
     (state: State) => ({
         game: state.game,
         style: state.style,
@@ -287,4 +287,4 @@ export const MoveEditor: any = connect(
     },
     null,
     { pure: false },
-)(MoveEditorBase as any);
+)(MoveEditorBase);

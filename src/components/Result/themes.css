@@ -313,6 +313,7 @@
 }
 .generations .boxed-container,
 .generations .team-container,
+.generations .dead-container,
 .generations .champs-container {
     margin: 0.5rem !important;
 }

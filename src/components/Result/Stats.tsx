@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { State } from 'state';
 import { PokemonIcon } from 'components/PokemonIcon';
 import { Layout, LayoutDisplay } from 'components/Layout';
-import { isLocal } from 'utils';
 import { range } from 'ramda';
 
 export interface StatsProps {
@@ -11,6 +10,7 @@ export interface StatsProps {
     status?: string;
     stats?: State['stats'];
     style: State['style'];
+    box: State['box'];
 }
 
 export class StatsBase extends React.Component<StatsProps, { pokemon: State['pokemon'] }> {
@@ -114,19 +114,23 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
 
     private getAverageLevel() {
         const pokes = this.props.pokemon.filter((p) => !p.hidden);
-        const levels = pokes.map((p) =>
-            Number.isNaN(parseInt(p?.level as any)) ? 0 : parseInt(p?.level as any),
-        );
-        return (levels.reduce((p, c) => p + c, 0) / pokes.length).toFixed(0);
+        return pokes.reduce((prev, poke, arr) => {
+            if (Number.isNaN(poke.level) || !poke.level) {
+                return prev;
+            }
+            return prev + Number.parseInt(poke.level as unknown as string);
+        }, 0);
     }
 
     private getAverageLevelByStatus(status: string) {
         const pokes = this.props.pokemon.filter((p) => !p.hidden && p.status === status);
         if (!pokes.length) return 0;
-        const levels = pokes.map((p) =>
-            Number.isNaN(parseInt(p?.level as any)) ? 0 : parseInt(p?.level as any),
-        );
-        return (levels.reduce((p, c) => p + c, 0) / pokes.length).toFixed(0);
+        return pokes.reduce((prev, poke, arr) => {
+            if (Number.isNaN(poke.level) || !poke.level) {
+                return prev;
+            }
+            return prev + Number.parseInt(poke.level as unknown as string);
+        }, 0);
     }
 
     private getShinies() {
@@ -140,6 +144,17 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
 
     private numberOfShinies = this.props.pokemon.filter((s) => s.shiny).length;
 
+    private getAverageLevelComponent() {
+        return <div>Average Level: {this.getAverageLevel()}</div>;
+    }
+
+    private getAverageLevelDetailedComponent() {
+        return <div>Average Level: {this.props.box.map((b, idx, arr) => {
+            return <> {b.name} ({this.getAverageLevelByStatus(b.name)}){idx < arr.length - 1 ? ',' : ''}</>;
+        })}
+        </div>;
+    }
+
     public render() {
         const { stats, style } = this.props;
 
@@ -148,20 +163,12 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
                 <h3 style={{ color: 'inherit' }}>Stats</h3>
 
                 <div style={{ marginTop: '10px', margin: '0 10px' }}>
-                    {style.statsOptions.averageLevel ? (
-                        this.state.pokemon.length ? (
-                            isLocal() ? (
-                                <div>
-                                    Average Level: Team ({this.getAverageLevelByStatus('Team')}),
-                                    Boxed ({this.getAverageLevelByStatus('Boxed')}), Dead (
-                                    {this.getAverageLevelByStatus('Dead')}), Champs (
-                                    {this.getAverageLevelByStatus('Champs')})
-                                </div>
-                            ) : (
-                                <div>Average Level: {this.getAverageLevel()}</div>
-                            )
-                        ) : null
-                    ) : null}
+                    {this.props.pokemon.length && style.statsOptions.averageLevel ?
+                        this.getAverageLevelComponent() : null
+                    }
+                    {this.props.pokemon.length && style.statsOptions.averageLevelDetailed ?
+                        this.getAverageLevelDetailedComponent() : null
+                    }
                     {style.statsOptions.mostCommonKillers ? (
                         <div>
                             Most Common Killers:{' '}
@@ -199,4 +206,5 @@ export const Stats = connect((state: State) => ({
     pokemon: state.pokemon,
     stats: state.stats,
     style: state.style,
+    box: state.box,
 }))(StatsBase as any);
