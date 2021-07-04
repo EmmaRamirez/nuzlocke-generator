@@ -227,7 +227,8 @@ export interface TeamPokemonBaseProps {
     linkedPokemon?: Pokemon;
 }
 
-export function TeamPokemonBaseMinimal (props: TeamPokemonBaseProps & {spriteStyle?: object }) {       const { pokemon, style, game, editor } = this.props;
+export function TeamPokemonBaseMinimal (props: TeamPokemonBaseProps & {spriteStyle?: object }) {
+    const { pokemon, style, game, editor } = props;
     const poke = pokemon;
 
     if (!pokemon) {
@@ -259,7 +260,7 @@ export function TeamPokemonBaseMinimal (props: TeamPokemonBaseProps & {spriteSty
                         ).toLowerCase()} ${
                             props.style.imageStyle === 'round' ? 'round' : 'square'
                         }`}
-                    />
+                    />;
                 }}
             </PokemonImage>
             <div className="pokemon-info">
@@ -303,7 +304,6 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, {imag
         this.setState({ image });
     }
 
-    
 
     public render() {
         const {
@@ -324,7 +324,6 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, {imag
 
         const getFirstType = poke.types ? poke.types[0] : 'Normal';
         const getSecondType = poke.types ? poke.types[1] : 'Normal';
-    
         const {spritesMode, scaleSprites, teamImages} = style;
         const spriteStyle = getSpriteStyle({ spritesMode, scaleSprites, teamImages });
 
@@ -463,7 +462,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, {imag
                                     customTypes,
                                 )
                                 : 'transparent',
-                    }} />
+                        }} />
                     <PokemonImage
                         species={poke.species}
                         gender={poke.gender}
@@ -486,10 +485,10 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, {imag
                                 ).toLowerCase()} ${
                                     this.props.style.imageStyle === 'round' ? 'round' : 'square'
                                 }`}
-                            />
+                            />;
                         }}
                     </PokemonImage>
-                </>: <div
+                </> : <div
                     role="presentation"
                     onClick={(e) => this.props.selectPokemon(poke.id)}
                     className={`${this.props.style.imageStyle} pokemon-image-wrapper`}
@@ -525,7 +524,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, {imag
                                 ).toLowerCase()} ${
                                     this.props.style.imageStyle === 'round' ? 'round' : 'square'
                                 }`}
-                            />
+                            />;
                         }}
                     </PokemonImage>
                 </div>}
