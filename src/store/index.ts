@@ -59,6 +59,16 @@ const migrations = {
             };
         }),
     }),
+    '1.7.1': (state: State) => ({
+        ...state,
+        style: {
+            ...state.style,
+            statsOptions: {
+                ...state.style.statsOptions,
+                averageLevelDetailed: false,
+            }
+        }
+    })
 };
 
 const config = {
@@ -66,7 +76,7 @@ const config = {
     blacklist: ['router', 'editorHistory'],
     storage,
     version,
-    migrations: createMigrate(migrations, { debug: false }),
+    migrations: createMigrate(migrations, { debug: true }),
 };
 
 export const history = createHistory();

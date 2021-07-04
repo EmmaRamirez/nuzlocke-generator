@@ -73,6 +73,23 @@ export class StatsEditorBase extends React.Component<StatsEditorProps> {
                         </li>
 
                         <li>
+                            {/* @NOTE: introduced in 1.7.1 */}
+                            <Switch
+                                checked={stats?.averageLevelDetailed}
+                                name="averageLevelDetailed"
+                                label="Average Level (Detailed)"
+                                onChange={(e: any) =>
+                                    editStyle({
+                                        statsOptions: {
+                                            ...stats,
+                                            [e.target.name]: e.target.checked,
+                                        },
+                                    })
+                                }
+                            />
+                        </li>
+
+                        <li>
                             <Switch
                                 checked={stats?.mostCommonKillers}
                                 name="mostCommonKillers"
