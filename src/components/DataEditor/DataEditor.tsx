@@ -28,7 +28,6 @@ import { BaseEditor } from 'components/BaseEditor';
 import { State } from 'state';
 import { noop } from 'redux-saga/utils';
 import { feature } from 'utils';
-import { getFileUrl } from 'utils';
 const isEmpty = require('lodash/isEmpty');
 const trash = require('assets/img/trash.png').default;
 import codegen from 'codegen.macro';
