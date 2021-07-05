@@ -28,9 +28,11 @@ import { BaseEditor } from 'components/BaseEditor';
 import { State } from 'state';
 import { noop } from 'redux-saga/utils';
 import { feature } from 'utils';
+import { getFileUrl } from 'utils';
 const isEmpty = require('lodash/isEmpty');
-
 const trash = require('assets/img/trash.png').default;
+import codegen from 'codegen.macro';
+
 
 export interface DataEditorProps {
     state: State;
@@ -266,7 +268,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
 
     private uploadFile = (replaceState, state) => (e) => {
         const t0 = performance.now();
-        const worker = new Worker(new URL('parsers/worker.ts', import.meta.url));
+        const worker = new Worker(new URL('parsers/worker.ts', codegen`module.exports = process.env.NODE_ENV === "test" ? "" : "import.meta.url"`));
 
         const file = this.fileInput.files[0];
         const reader = new FileReader();
@@ -275,11 +277,11 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         reader.readAsArrayBuffer(file);
 
         reader.addEventListener('load', async function () {
-            const u = new Uint8Array(this.result as ArrayBuffer);
+            const save = new Uint8Array(this.result as ArrayBuffer);
 
             worker.postMessage({
                 selectedGame: componentState.selectedGame,
-                save: u,
+                save,
             });
 
             worker.onmessage = (e: MessageEvent<{ pokemon: Pokemon[], isYellow?: boolean, trainer: Trainer }>) => {

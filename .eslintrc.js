@@ -25,10 +25,6 @@ module.exports = {
         "project": "tsconfig.json",
         "sourceType": "module"
     },
-    "ignorePatterns": [
-        "./webpack.config.ts",
-        "./.eslintrc.js"
-    ],
     "plugins": [
         "@typescript-eslint",
         "@typescript-eslint/tslint"

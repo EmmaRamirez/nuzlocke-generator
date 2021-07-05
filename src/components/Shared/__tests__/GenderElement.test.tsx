@@ -4,7 +4,7 @@ import { Autocomplete } from '..';
 import { getDisplayNameForTest } from 'utils/getDisplayNameForTest';
 import { GenderElement, Gender } from '../GenderElement';
 
-describe(GenderElement.name, () => {
+describe.skip(GenderElement.name, () => {
     it('renders its contents [male]', () => {
         const subject = GenderElement('m');
         const m = shallow(subject!);

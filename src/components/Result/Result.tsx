@@ -255,6 +255,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     ) =>
         box && pokemon && getNumberOf(box?.name, pokemon)! > 0 ? (
             <div
+                key={box.id}
                 style={paddingForVerticalTrainerSection}
                 className={`${this.getBoxClass(box?.inheritFrom || box.name)}-container`}>
                 {box?.name !== 'Team' && (

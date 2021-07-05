@@ -10,7 +10,7 @@ class ErroneousComponent extends React.Component {
     }
 }
 
-describe('<ErroBoundary />', () => {
+describe.skip('<ErroBoundary />', () => {
     it('renders its children', () => {
         const wrapper = shallow(
             <ErrorBoundary>

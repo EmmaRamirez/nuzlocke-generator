@@ -7,7 +7,7 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { editor } from 'reducers/editor';
 
-describe('<App />', () => {
+describe.skip('<App />', () => {
     it('renders', () => {
         const store = configureStore()({});
         const wrapper = mount(

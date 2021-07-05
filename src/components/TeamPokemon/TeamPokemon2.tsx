@@ -63,9 +63,7 @@ const TeamCheckpointsDisplay = ({game, pokemon, style}) => {
             />
         </div>
     </ErrorBoundary>;
-}
-
-
+};
 
 export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPokemonProps) {
     const style = useSelector<State, State['style']>((state) => state.style);

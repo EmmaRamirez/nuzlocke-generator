@@ -157,7 +157,7 @@ export const loadGen2SaveFile = async (
     try {
         const file = Buffer.from(save);
         const result = await parseGen2Save(file, format);
-        return await result;
+        return result;
     } catch {
         throw new Error('Oops');
     }
