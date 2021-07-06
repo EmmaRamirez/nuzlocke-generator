@@ -1,10 +1,60 @@
 /* eslint-disable @typescript-eslint/prefer-for-of */
 import * as fs from 'fs';
 import { HELD_ITEM, GEN_2_POKEMON_MAP, GEN_2_CHARACTER_MAP, MOVES_ARRAY, splitUp } from './utils';
+import { Buffer } from 'buffer';
+import { matchSpeciesToTypes, Species } from 'utils';
+
+// Offset	Contents	Size
+// 0x00	Index number of the species	1 byte
+// 0x01	Index number of held item	1 byte
+// 0x02	Index number of move 1	1 byte
+// 0x03	Index number of move 2	1 byte
+// 0x04	Index number of move 3	1 byte
+// 0x05	Index number of move 4	1 byte
+// 0x06	Original Trainer ID number	2 bytes
+// 0x08	Experience points	3 bytes
+// 0x0B	HP EV data	2 bytes
+// 0x0D	Attack EV data	2 bytes
+// 0x0F	Defense EV data	2 bytes
+// 0x11	Speed EV data	2 bytes
+// 0x13	Special EV data	2 bytes
+// 0x15	IV data	2 bytes
+// 0x17	Move 1's PP values	1 byte
+// 0x18	Move 2's PP values	1 byte
+// 0x19	Move 3's PP values	1 byte
+// 0x1A	Move 4's PP values	1 byte
+// 0x1B	Friendship	1 byte
+// 0x1C	Pokérus	1 byte
+// 0x1D	Caught data	2 bytes
+// 0x1F	Level	1 byte
+// 0x20	Status condition	1 byte
+// 0x21	Unused byte	1 byte
+// 0x22	Current HP	2 bytes
+// 0x24	Maximum HP	2 bytes
+// 0x26	Attack	2 bytes
+// 0x28	Defense	2 bytes
+// 0x2A	Speed	2 bytes
+// 0x2C	Special Attack	2 bytes
+// 0x2E	Special Defense	2 bytes
+
+export interface Gen2PokemonObject {
+    entriesUsed: number;
+    speciesList: string[];
+    pokemonList: {
+        species: string;
+        level: number;
+        moves: string[];
+        id: string;
+        item?: string;
+        extraData: object;
+    }[];
+    pokemonNames: string[];
+}
 
 const OFFSETS = {
     PLAYER_ID: [0x2009, 0x2009 + 2],
     PLAYER_NAME: [0x200b, 0x200b + 11],
+    PLAYER_MONEY: [0x23DB, 0x23DB + 3],
     RIVAL_NAME: [0x2013, 0x2013 + 11],
     TIME_PLAYED: [0x2053, 0x2053 + 4],
     JOHTO_BADGES: [0x23e4, 0x23e4 + 1],
@@ -16,6 +66,7 @@ const OFFSETS = {
 };
 
 const CRYSTAL_OFFSETS = {
+    PLAYER_MONEY: [0x23DC, 0x23DC + 3],
     JOHTO_BADGES: [0x23e5, 0x23e5 + 1],
     CURRENT_PC_BOX_NUMBER: [0x2700, 0x2700 + 1],
     TEAM_POKEMON_LIST: [0x2865, 0x2865 + 428],
@@ -23,6 +74,10 @@ const CRYSTAL_OFFSETS = {
     PLAYER_GENDER: [0x3e3d, 0x3e3d + 1],
     POKEMON_NAMES: [0x53384, 0x53384 + 256 * 10],
 };
+
+function buf2hex(buffer: Buffer) {
+    return [...new Uint8Array(buffer)].map(x => x.toString(16).padStart(2, '0')).join('');
+}
 
 const readCaughtData = (data) => {
     const binary = (data >>> 0).toString(2);
@@ -43,10 +98,14 @@ const readCaughtData = (data) => {
 
 const MOVES = {};
 
+const to16BitInt = (buf: Buffer) => Buffer.from(buf).readInt16BE(0);
+
 const parsePartyPokemon = (buf: Buffer, boxed = false) => {
     const pokemon = Buffer.from(buf);
+    //console.log('parser - pokemon buffer', pokemon);
     const species = GEN_2_POKEMON_MAP[pokemon[0x00]];
-    const heldItem = HELD_ITEM[pokemon[0x01]];
+    //console.log('parser - party species', species);
+    const item = HELD_ITEM[pokemon[0x01]];
     const moves = [
         MOVES_ARRAY[pokemon[0x02]],
         MOVES_ARRAY[pokemon[0x03]],
@@ -54,16 +113,37 @@ const parsePartyPokemon = (buf: Buffer, boxed = false) => {
         MOVES_ARRAY[pokemon[0x05]],
     ];
     const friendship = pokemon[0x1b];
-    const caughtData = pokemon.slice(0x1d, 0x1d + 2);
+    const caughtData = to16BitInt(pokemon.slice(0x1d, 0x1d + 2));
+    const expData = to16BitInt(pokemon.slice(0x08, 0x08 + 3));
+
     const level = pokemon[0x1f];
     const ivs = pokemon.slice(0x15, 0x15 + 2);
     const id = ivs.toString('binary');
+
+    const extraData = boxed
+        ? undefined
+        : {
+            currentHp: to16BitInt(pokemon.slice(0x22, 0x22 + 2)),
+            maxHp: to16BitInt(pokemon.slice(0x24, 0x24 + 2)),
+            attack: to16BitInt(pokemon.slice(0x26, 0x26 + 2)),
+            defense: to16BitInt(pokemon.slice(0x28, 0x28 + 2)),
+            speed: to16BitInt(pokemon.slice(0x2a, 0x2a + 2)),
+            specialAttack: to16BitInt(pokemon.slice(0x2c, 0x2c + 2)),
+            specialDefense: to16BitInt(pokemon.slice(0x2E, 0x2E + 2)),
+        };
 
     return {
         species,
         level,
         moves,
         id,
+        item,
+        extraData: {
+            friendship,
+            expData,
+            caughtData,
+            ...extraData,
+        }
     };
 };
 
@@ -71,6 +151,7 @@ const getSpeciesList = (buf: Buffer) => {
     const str: any[] = [];
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < buf.length; i++) {
+        console.log('parser - buf', buf[i]);
         if (buf[i] === 0xff) {
             break;
         } else {
@@ -86,8 +167,33 @@ const getPokemonListForParty = (buf: Buffer, entries: number = 6) => {
     return pokes;
 };
 
-const transformPokemon = (pokemon, status) => {
-    return pokemon;
+const getPokemonNames = (buf: Buffer, entries: number = 6) => {
+    const names = splitUp(Buffer.from(buf), entries);
+    const pokes = names.map((name) => convertWithCharMap(name, true));
+    return pokes;
+};
+
+const transformPokemon = (pokemonObject: Gen2PokemonObject, status) => {
+    const TIER: Readonly<{ [status: string]: number }> = Object.freeze({
+        Team: 1,
+        Boxed: 2,
+        Dead: 3,
+    });
+    return pokemonObject.pokemonList
+        .map((poke, index) => {
+            return {
+                position: (index + 1) * TIER[status],
+                species: poke.species,
+                status: status,
+                level: poke.level,
+                types: matchSpeciesToTypes(poke.species as Species),
+                moves: poke.moves,
+                nickname: pokemonObject.pokemonNames[index],
+                id: `${poke.id}-sav`,
+                extraData: poke.extraData,
+            };
+        })
+        .filter((poke) => poke.species);
 };
 
 const convertWithCharMap = (buf: Buffer, nickname = false) => {
@@ -105,46 +211,89 @@ const makeFileSlicer = (file) => (offset: number[]) => {
     return file.slice(offset[0], offset[1]);
 };
 
-export const parsePokemon = (buf: Buffer) => {
+export const parsePokemon = (buf: Buffer): Gen2PokemonObject => {
     const data = Buffer.from(buf);
-    const entriesUsed = data[0x0000];
-    const rawSpeciesList = data.slice(0x0001, 0x0007);
-    console.log(rawSpeciesList);
-    const speciesList = getSpeciesList(rawSpeciesList);
-    const pokemonListAddress = 0x0002;
+    const entriesUsed = data[0x00];
+    const speciesList = getSpeciesList(Buffer.from(data.slice(0x01, 0x01 + 7)));
+    console.log('parser - specieslist', speciesList);
+
+
+    //const pokemonData = data.slice(0x01 + 7, 0x08 + (6 * 48));
+    //console.log('parser - pokemon data', pokemonData);
+
+    //const entriesUsed = data[0x0000];
+    // const rawSpeciesList = data.slice(0x0001, 0x0007);
+    // console.log(rawSpeciesList);
+    // const speciesList = getSpeciesList(rawSpeciesList);
+    const pokemonListAddress = 0x0008;
+    const pokemonListAddressEnd = pokemonListAddress + (48 * 6);
+    const otsAddress = pokemonListAddressEnd;
+    const otsAddressEnd = otsAddress + (11 * 6);
+    const pokemonNamesAddress = otsAddressEnd;
+    const pokemonNamesAddressEnd = pokemonNamesAddress + (11 * 6);
     const pokemonList = getPokemonListForParty(
-        data.slice(pokemonListAddress, pokemonListAddress + 428),
+        data.slice(pokemonListAddress, pokemonListAddressEnd),
         6,
     );
+    console.log('parser - pokemon list', pokemonList);
+    const pokemonNames = getPokemonNames(
+        data.slice(
+            pokemonNamesAddress,
+            pokemonNamesAddressEnd
+        ),
+        6
+    );
+    console.log('parser - pokemon names', data.slice(pokemonListAddress, pokemonListAddressEnd), pokemonNames);
+
+    // console.log('parser', pokemonList);
 
     return {
         entriesUsed,
         speciesList,
         pokemonList,
+        pokemonNames,
     };
 };
+
+
+
 
 export const parseGen2Save = async (file, format, isCrystal = true) => {
     const fileSlice = makeFileSlicer(file);
 
     const trainerName = convertWithCharMap(fileSlice(OFFSETS.PLAYER_NAME));
+    const trainerId = fileSlice(OFFSETS.PLAYER_ID)
+        .map((char) => char.toString())
+        .join('');
+    console.log('parser - trainer Id', trainerId);
+    const trainerMoney = isCrystal
+        ? fileSlice(CRYSTAL_OFFSETS.PLAYER_MONEY)
+        : fileSlice(OFFSETS.PLAYER_MONEY);
     const johtoBadges = fileSlice(OFFSETS.JOHTO_BADGES);
     const currentPCId = isCrystal
         ? fileSlice(CRYSTAL_OFFSETS.CURRENT_PC_BOX_NUMBER)
         : fileSlice(OFFSETS.CURRENT_PC_BOX_NUMBER);
-    const partyPokemon = isCrystal
+    const partyPokemonData = isCrystal
         ? fileSlice(CRYSTAL_OFFSETS.TEAM_POKEMON_LIST)
         : fileSlice(OFFSETS.TEAM_POKEMON_LIST);
+    const partyPokemon = transformPokemon(
+        parsePokemon(partyPokemonData),
+        'Team'
+    );
+
+    console.log('parser - party pokemon', partyPokemon);
 
     return {
         trainer: {
             name: trainerName,
-            id: 1000,
+            id: trainerId,
             time: '10:33',
-            money: 1000,
+            money: trainerMoney,
             badges: [],
         },
-        pokemon: [...partyPokemon],
+        pokemon: [
+            ...partyPokemon
+        ],
     };
 };
 

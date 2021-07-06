@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { generateEmptyPokemon, styleDefaults } from 'utils';
+import { generateEmptyPokemon } from 'utils';
 import { State } from 'state';
 
 export function TestProvider({ children }: any) {

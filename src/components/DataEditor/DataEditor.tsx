@@ -146,7 +146,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
             mode: 'export',
             data: '',
             href: '',
-            selectedGame: 'RBY',
+            selectedGame: 'GS',
             mergeDataMode: true,
             showSaveFileUI: false,
             overrideImport: true,
@@ -245,8 +245,16 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         }
     }
 
-    private static determineGame(isYellow: boolean): Game {
+    private static determineGame({
+        isYellow,
+        selectedGame,
+    }: {
+        isYellow?: boolean,
+        selectedGame?: string
+    }): Game {
         if (isYellow) return { name: 'Yellow', customName: '' };
+        if (selectedGame === 'GS') return { name: 'Gold', customName: '' };
+        if (selectedGame === 'Crystal') return { name: 'Crystal', customName: '' };
         return { name: 'Red', customName: '' };
     }
 
@@ -289,7 +297,10 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     ? DataEditorBase.pokeMerge(state.pokemon, result.pokemon as Pokemon[])
                     : result.pokemon;
                 const data = {
-                    game: DataEditorBase.determineGame(result?.isYellow || false),
+                    game: DataEditorBase.determineGame({
+                        isYellow: result.isYellow,
+                        selectedGame: componentState.selectedGame,
+                    }),
                     pokemon: mergedPokemon,
                     trainer: result.trainer,
                 };

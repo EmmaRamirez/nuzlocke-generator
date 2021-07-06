@@ -1,8 +1,7 @@
 import * as React from 'react';
 import * as sinon from 'sinon';
-import { shallow, mount } from 'enzyme';
 import { ErrorBoundary } from '..';
-
+import { screen, render } from 'utils/testUtils';
 class ErroneousComponent extends React.Component {
     public render() {
         throw new Error('Failure');
@@ -10,20 +9,20 @@ class ErroneousComponent extends React.Component {
     }
 }
 
-describe.skip('<ErroBoundary />', () => {
+describe('<ErroBoundary />', () => {
     it('renders its children', () => {
-        const wrapper = shallow(
+        render(
             <ErrorBoundary>
-                <div>Test</div>
+                <div data-testid="test">Test</div>
             </ErrorBoundary>,
         );
-        expect(wrapper.contains(<div>Test</div>)).toBe(true);
+        expect(screen.getByTestId('test').textContent).toContain('Test');
     });
 
     it('catches errors and renders errorMessage', () => {
         const spy = sinon.spy(ErrorBoundary.prototype, 'componentDidCatch');
         // the mount here triggers the error
-        const wrapper = mount(
+        render(
             <ErrorBoundary errorMessage={<div>Error!</div>}>
                 <ErroneousComponent />
             </ErrorBoundary>,

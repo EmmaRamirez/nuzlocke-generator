@@ -161,7 +161,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
         return (
             <>
                 <BaseEditor icon='circle' name="Pokemon">
-                    <div className="button-row" style={{ display: 'flex', alignItems: 'flex-start' }}>
+                    <div data-testid="pokemon-editor" className="button-row" style={{ display: 'flex', alignItems: 'flex-start' }}>
                         <AddPokemonButton
                             pokemon={{
                                 ...generateEmptyPokemon(team),

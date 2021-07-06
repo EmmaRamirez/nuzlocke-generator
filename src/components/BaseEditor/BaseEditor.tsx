@@ -26,7 +26,7 @@ export class BaseEditor extends React.Component<BaseEditorProps, BaseEditorState
 
     public render() {
         return (
-            <div className={`${this.props.name.toLowerCase().replace(/\s/g, '-')}-editor base-editor`}>
+            <div data-testid="base-editor" className={`${this.props.name.toLowerCase().replace(/\s/g, '-')}-editor base-editor`}>
                 <h4
                     title={`${this.state.isOpen ? 'Collapse' : 'Open'} this editor.`}
                     className="font-bold flex content-center justify-between m-1 mb-2 cursor-pointer text-base"

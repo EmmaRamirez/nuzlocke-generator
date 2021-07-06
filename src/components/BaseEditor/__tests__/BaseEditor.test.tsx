@@ -1,19 +1,21 @@
 import * as React from 'react';
 import { BaseEditor } from '..';
-import { shallow, mount } from 'enzyme';
 
-describe.skip('<BaseEditor />', () => {
+import { render, screen } from 'utils/testUtils';
+
+describe('<BaseEditor />', () => {
     it('renders its contents', () => {
-        const wrapper = shallow(<BaseEditor name="test" />);
-        expect(wrapper.prop('className')).toBe('test-editor base-editor');
+        render(<BaseEditor name="test" />);
+        expect(screen.getByTestId('base-editor').className).toContain('test-editor');
+        expect(screen.getByTestId('base-editor').textContent).toContain('test');
     });
 
     it('renders its children', () => {
-        const wrapper = mount(
+        render(
             <BaseEditor name="test">
                 <div>Hello World!</div>
             </BaseEditor>,
         );
-        expect(wrapper.contains(<div>Hello World!</div>)).toBe(true);
+        expect(screen.findByText('Hello World!')).toBeDefined();
     });
 });

@@ -1,20 +1,19 @@
 import * as React from 'react';
-import { shallow, mount } from 'enzyme';
 import { Autocomplete } from '..';
-import { getDisplayNameForTest } from 'utils/getDisplayNameForTest';
 import { GenderElement, Gender } from '../GenderElement';
+import { render, screen } from 'utils/testUtils';
 
-describe.skip(GenderElement.name, () => {
+describe(GenderElement.name, () => {
     it('renders its contents [male]', () => {
         const subject = GenderElement('m');
-        const m = shallow(subject!);
-        expect(m.find('.gender-color-male').length).toBe(1);
+        render(subject!);
+        expect(screen.getByTestId('gender-text').textContent).toBe('♂');
     });
 
     it('renders its contents [female]', () => {
         const subject = GenderElement('f');
-        const m = shallow(subject!);
-        expect(m.find('.gender-color-female').length).toBe(1);
+        render(subject!);
+        expect(screen.getByTestId('gender-text').textContent).toBe('♀');
     });
 
     it('renders its content [neutral]', () => {

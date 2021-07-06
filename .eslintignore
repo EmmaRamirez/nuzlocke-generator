@@ -6,3 +6,5 @@ server.ts
 setupTests.ts
 stylus.config.ts
 babel.config.js
+imageCheck.ts
+massRename.ts
