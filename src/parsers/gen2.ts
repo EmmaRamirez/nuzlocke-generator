@@ -2,7 +2,8 @@
 import * as fs from 'fs';
 import { HELD_ITEM, GEN_2_POKEMON_MAP, GEN_2_CHARACTER_MAP, MOVES_ARRAY, splitUp } from './utils';
 import { Buffer } from 'buffer';
-import { matchSpeciesToTypes, Species } from 'utils';
+import { Forme, matchSpeciesToTypes, Species } from 'utils';
+import { BoxMapping } from './utils/boxMapping';
 
 // Offset	Contents	Size
 // 0x00	Index number of the species	1 byte
@@ -63,6 +64,22 @@ const OFFSETS = {
     CURRENT_BOX_POKEMON_LIST: [0x2d6c, 0x2d6c + 1102],
     PC_BOXES_POKEMON_LIST: [0x4000, 0x4000 + 1102 * 14],
     POKEMON_NAMES: [0x1b0b74, 0x1b0b74 + 256 * 10],
+    BOXES: [
+        [0x4000, 0x4000 + 1102],
+        [0x4450, 0x4450 + 1102],
+        [0x48A0, 0x48A0 + 1102],
+        [0x4CF0, 0x4CF0	+ 1102],
+        [0x5140, 0x5140 + 1102],
+        [0x5590, 0x5590 + 1102],
+        [0x59E0, 0x59E0 + 1102],
+        [0x6000, 0x6000 + 1102],
+        [0x6450, 0x6450 + 1102],
+        [0x68A0, 0x68A0 + 1102],
+        [0x6CF0, 0x6CF0 + 1102],
+        [0x7140, 0x7140 + 1102],
+        [0x7590, 0x7590 + 1102],
+        [0x79E0, 0x79E0 + 1102]
+    ],
 };
 
 const CRYSTAL_OFFSETS = {
@@ -98,12 +115,26 @@ const readCaughtData = (data) => {
 
 const MOVES = {};
 
+// In Generation II, Unown's letter is taken from the combination of the center two bits of the Attack, Defense, Speed and Special IV nibbles. This combination is then divided by ten, and the result is rounded down (floor[]) to only include the integer part of the number. This integer will range from 0-25, corresponding to a letter in the Latin alphabet, which will be the Unown's letter (where 0=A, 1=B, 2=C, ..., 23=X, 24=Y, 25=Z).
+
+// In Generation II, due to this method of calculating Unown's letter and the way that Shiny Pokémon are determined, a Shiny Unown can only exist in the shape of the letter I or V. Additionally, due to this method of calculating Unown's letter, only 6 combinations correspond to Unown Z, whereas 10 combinations correspond to every other Unown, making Unown Z less common.
+
+// In Generation III, Unown's letter is determined by the Pokémon's personality value. From Generation IV onward, it is determined by a separate form identifier. Generation III also introduced Unown '!' or '?'.
+
+const determineUnownForme = (ivs: Buffer) => {
+    const buf = Buffer.from(ivs);
+    const asBinary = buf.toString('binary');
+    console.log('parser - unown', asBinary);
+
+    return Forme.A;
+};
+
 const to16BitInt = (buf: Buffer) => Buffer.from(buf).readInt16BE(0);
 
-const parsePartyPokemon = (buf: Buffer, boxed = false) => {
+const parsePokemon = (buf: Buffer, boxed = false) => {
     const pokemon = Buffer.from(buf);
-    //console.log('parser - pokemon buffer', pokemon);
     const species = GEN_2_POKEMON_MAP[pokemon[0x00]];
+
     //console.log('parser - party species', species);
     const item = HELD_ITEM[pokemon[0x01]];
     const moves = [
@@ -113,12 +144,13 @@ const parsePartyPokemon = (buf: Buffer, boxed = false) => {
         MOVES_ARRAY[pokemon[0x05]],
     ];
     const friendship = pokemon[0x1b];
-    const caughtData = to16BitInt(pokemon.slice(0x1d, 0x1d + 2));
-    const expData = to16BitInt(pokemon.slice(0x08, 0x08 + 3));
+    const caughtData = boxed ? undefined : to16BitInt(pokemon.slice(0x1d, 0x1d + 2));
+    const expData = boxed ? undefined : to16BitInt(pokemon.slice(0x08, 0x08 + 3));
 
     const level = pokemon[0x1f];
+    const id = pokemon.toString('binary');
     const ivs = pokemon.slice(0x15, 0x15 + 2);
-    const id = ivs.toString('binary');
+    const unownForme = determineUnownForme(ivs);
 
     const extraData = boxed
         ? undefined
@@ -142,7 +174,7 @@ const parsePartyPokemon = (buf: Buffer, boxed = false) => {
             friendship,
             expData,
             caughtData,
-            ...extraData,
+            ...(extraData ?? {}),
         }
     };
 };
@@ -161,9 +193,9 @@ const getSpeciesList = (buf: Buffer) => {
     return str;
 };
 
-const getPokemonListForParty = (buf: Buffer, entries: number = 6) => {
+const getPokemonList = (buf: Buffer, entries: number = 6, boxed: boolean = false) => {
     const party = splitUp(Buffer.from(buf), entries);
-    const pokes = party.map((box) => parsePartyPokemon(box));
+    const pokes = party.map((box) => parsePokemon(box, boxed));
     return pokes;
 };
 
@@ -173,7 +205,7 @@ const getPokemonNames = (buf: Buffer, entries: number = 6) => {
     return pokes;
 };
 
-const transformPokemon = (pokemonObject: Gen2PokemonObject, status) => {
+const transformPokemon = (pokemonObject: Gen2PokemonObject, status, boxIndex: number = 1) => {
     const TIER: Readonly<{ [status: string]: number }> = Object.freeze({
         Team: 1,
         Boxed: 2,
@@ -182,7 +214,7 @@ const transformPokemon = (pokemonObject: Gen2PokemonObject, status) => {
     return pokemonObject.pokemonList
         .map((poke, index) => {
             return {
-                position: (index + 1) * TIER[status],
+                position: (index + 1) * (TIER[status] + boxIndex),
                 species: poke.species,
                 status: status,
                 level: poke.level,
@@ -191,6 +223,8 @@ const transformPokemon = (pokemonObject: Gen2PokemonObject, status) => {
                 nickname: pokemonObject.pokemonNames[index],
                 id: `${poke.id}-sav`,
                 extraData: poke.extraData,
+                // @NOTE: A pokemon nicknamed "EGG" would override this and show up as egg: true, but that's your own fault lol
+                egg: pokemonObject.pokemonNames[index] === 'EGG' ? true : false,
             };
         })
         .filter((poke) => poke.species);
@@ -211,29 +245,27 @@ const makeFileSlicer = (file) => (offset: number[]) => {
     return file.slice(offset[0], offset[1]);
 };
 
-export const parsePokemon = (buf: Buffer): Gen2PokemonObject => {
+export const parsePokemonList = (buf: Buffer, entries = 6): Gen2PokemonObject => {
     const data = Buffer.from(buf);
+    console.log('parser - data', data);
+    const isBoxed = entries > 6 ? true : false;
+    console.log('parser - entries', entries);
+    console.log('parser - isBoxed', isBoxed);
     const entriesUsed = data[0x00];
-    const speciesList = getSpeciesList(Buffer.from(data.slice(0x01, 0x01 + 7)));
+    const speciesListEnd = 0x01 + entries + 1;
+    const speciesList = getSpeciesList(Buffer.from(data.slice(0x01, speciesListEnd)));
     console.log('parser - specieslist', speciesList);
 
-
-    //const pokemonData = data.slice(0x01 + 7, 0x08 + (6 * 48));
-    //console.log('parser - pokemon data', pokemonData);
-
-    //const entriesUsed = data[0x0000];
-    // const rawSpeciesList = data.slice(0x0001, 0x0007);
-    // console.log(rawSpeciesList);
-    // const speciesList = getSpeciesList(rawSpeciesList);
-    const pokemonListAddress = 0x0008;
-    const pokemonListAddressEnd = pokemonListAddress + (48 * 6);
+    const pokemonListAddress = speciesListEnd;
+    const pokemonListAddressEnd = pokemonListAddress + ((isBoxed ? 32 : 48) * entries);
     const otsAddress = pokemonListAddressEnd;
-    const otsAddressEnd = otsAddress + (11 * 6);
+    const otsAddressEnd = otsAddress + (11 * entries);
     const pokemonNamesAddress = otsAddressEnd;
-    const pokemonNamesAddressEnd = pokemonNamesAddress + (11 * 6);
-    const pokemonList = getPokemonListForParty(
+    const pokemonNamesAddressEnd = pokemonNamesAddress + (11 * entries);
+    const pokemonList = getPokemonList(
         data.slice(pokemonListAddress, pokemonListAddressEnd),
-        6,
+        entries,
+        isBoxed,
     );
     console.log('parser - pokemon list', pokemonList);
     const pokemonNames = getPokemonNames(
@@ -241,9 +273,15 @@ export const parsePokemon = (buf: Buffer): Gen2PokemonObject => {
             pokemonNamesAddress,
             pokemonNamesAddressEnd
         ),
-        6
+        entries,
     );
     console.log('parser - pokemon names', data.slice(pokemonListAddress, pokemonListAddressEnd), pokemonNames);
+    console.log('parser - addresses',
+        pokemonNamesAddress,
+        pokemonNamesAddressEnd,
+        pokemonListAddress,
+        pokemonListAddressEnd,
+    );
 
     // console.log('parser', pokemonList);
 
@@ -256,9 +294,18 @@ export const parsePokemon = (buf: Buffer): Gen2PokemonObject => {
 };
 
 
+export interface ParserOptions {
+    isCrystal: boolean;
+    boxMapping: BoxMapping;
+}
 
+const sliceBoxes = (buf: Buffer) => {
+    const fileSlice = makeFileSlicer(buf);
 
-export const parseGen2Save = async (file, format, isCrystal = true) => {
+    return OFFSETS.BOXES.map((box) => fileSlice(box));
+};
+
+export const parseGen2Save = async (file, format, options: ParserOptions) => {
     const fileSlice = makeFileSlicer(file);
 
     const trainerName = convertWithCharMap(fileSlice(OFFSETS.PLAYER_NAME));
@@ -266,22 +313,32 @@ export const parseGen2Save = async (file, format, isCrystal = true) => {
         .map((char) => char.toString())
         .join('');
     console.log('parser - trainer Id', trainerId);
-    const trainerMoney = isCrystal
+    const trainerMoney = options.isCrystal
         ? fileSlice(CRYSTAL_OFFSETS.PLAYER_MONEY)
         : fileSlice(OFFSETS.PLAYER_MONEY);
     const johtoBadges = fileSlice(OFFSETS.JOHTO_BADGES);
-    const currentPCId = isCrystal
+    const currentPCId = options.isCrystal
         ? fileSlice(CRYSTAL_OFFSETS.CURRENT_PC_BOX_NUMBER)
         : fileSlice(OFFSETS.CURRENT_PC_BOX_NUMBER);
-    const partyPokemonData = isCrystal
+    const partyPokemonData = options.isCrystal
         ? fileSlice(CRYSTAL_OFFSETS.TEAM_POKEMON_LIST)
         : fileSlice(OFFSETS.TEAM_POKEMON_LIST);
     const partyPokemon = transformPokemon(
-        parsePokemon(partyPokemonData),
+        parsePokemonList(partyPokemonData),
         'Team'
     );
+    const boxedPokemon = sliceBoxes(file).map((boxData, boxIndex) => {
+        return transformPokemon(
+            parsePokemonList(boxData, 20),
+            'Boxed',
+            boxIndex
+        );
+    }).flat();
 
-    console.log('parser - party pokemon', partyPokemon);
+    // const boxedPokemon2 = transformPokemon(
+    //     parsePokemonList(sliceBoxes(file)[0], 20),
+    //     'Boxed'
+    // );
 
     return {
         trainer: {
@@ -292,7 +349,9 @@ export const parseGen2Save = async (file, format, isCrystal = true) => {
             badges: [],
         },
         pokemon: [
-            ...partyPokemon
+            ...partyPokemon,
+            //...boxedPokemon,
+            ...boxedPokemon,
         ],
     };
 };
@@ -305,7 +364,10 @@ export const loadGen2SaveFile = async (
 
     try {
         const file = Buffer.from(save);
-        const result = await parseGen2Save(file, format);
+        const result = await parseGen2Save(file, format, {
+            isCrystal: true,
+            boxMapping: []
+        });
         return result;
     } catch {
         throw new Error('Oops');

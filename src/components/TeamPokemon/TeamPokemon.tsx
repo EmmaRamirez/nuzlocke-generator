@@ -68,6 +68,7 @@ function getSpriteStyle({
 export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
     public render() {
         const { pokemon, style, customTypes, linkedPokemon, game } = this.props;
+        const generation = getGameGeneration(game.name);
 
         if (!pokemon) {
             return null;
@@ -189,11 +190,30 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                                     fontSize: '12px',
                                     width: '255px',
                                 }}>
-                                {stat(pokemon.extraData['currentHp'], 'HP')}
-                                {stat(pokemon.extraData['attack'], 'ATK')}
-                                {stat(pokemon.extraData['defense'], 'DEF')}
-                                {stat(pokemon.extraData['special'], 'SPC')}
-                                {stat(pokemon.extraData['speed'], 'SPE')}
+                                {/* @TOOD: allow as styles option */}
+                                {/* {Object.keys(pokemon.extraData).map(key => {
+                                    return <React.Fragment key={key}>
+                                        {stat(pokemon?.extraData?.[key], key)}
+                                    </React.Fragment>;
+                                })} */}
+                                {generation === Generation.Gen1 ?
+                                    <>
+                                        {stat(pokemon.extraData['currentHp'], 'HP')}
+                                        {stat(pokemon.extraData['attack'], 'ATK')}
+                                        {stat(pokemon.extraData['defense'], 'DEF')}
+                                        {stat(pokemon.extraData['special'], 'SPC')}
+                                        {stat(pokemon.extraData['speed'], 'SPE')}
+                                    </>
+                                    :
+                                    <>
+                                        {stat(pokemon.extraData['currentHp'], 'HP')}
+                                        {stat(pokemon.extraData['attack'], 'ATK')}
+                                        {stat(pokemon.extraData['defense'], 'DEF')}
+                                        {stat(pokemon.extraData['specialAttack'], 'SPATK')}
+                                        {stat(pokemon.extraData['specialDefense'], 'SPDEF')}
+                                        {stat(pokemon.extraData['speed'], 'SPE')}
+                                    </>
+                                }
                             </div>
                         ) : null}
                         {linkedPokemon && (
