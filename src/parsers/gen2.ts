@@ -123,8 +123,12 @@ const MOVES = {};
 
 const determineUnownForme = (ivs: Buffer) => {
     const buf = Buffer.from(ivs);
-    const asBinary = buf.toString('binary');
-    console.log('parser - unown', asBinary);
+    const asBinary = buf.readUIntBE(0, buf.byteLength);
+    let ivString = '';
+    for (const iv of ivs) {
+        ivString += iv.toString();
+    }
+    console.log('parser - unown', ivString, buf);
 
     return Forme.A;
 };
@@ -150,7 +154,7 @@ const parsePokemon = (buf: Buffer, boxed = false) => {
     const level = pokemon[0x1f];
     const id = pokemon.toString('binary');
     const ivs = pokemon.slice(0x15, 0x15 + 2);
-    const unownForme = determineUnownForme(ivs);
+    const unownForme = species === 'Unown' ? determineUnownForme(ivs) : undefined;
 
     const extraData = boxed
         ? undefined
