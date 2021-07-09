@@ -224,7 +224,7 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                             </div>
                         )}
                     </div>
-                    {style.showPokemonMoves ? (
+                    {style.showPokemonMoves && !pokemon.egg ? (
                         <Moves
                             generation={this.props.generation}
                             moves={pokemon.moves}

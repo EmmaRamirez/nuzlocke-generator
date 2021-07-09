@@ -116,6 +116,7 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
             forme={pokemon?.forme}
             shiny={pokemon?.shiny}
             gender={pokemon?.gender}
+            egg={pokemon?.egg}
             customIcon={pokemon?.customIcon}
         />
     );

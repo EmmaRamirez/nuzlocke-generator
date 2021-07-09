@@ -85,7 +85,7 @@ const PokemonLocationChecklist = ({
                 return (
                     <>
                         <Icon icon="tick" />
-                        <PokemonIcon style={{ pointerEvents: 'none'}} species={poke.species} />
+                        <PokemonIcon style={{ pointerEvents: 'none'}} {...poke} />
                     </>
                 );
             }
@@ -93,7 +93,7 @@ const PokemonLocationChecklist = ({
                 return (
                     <>
                         <Icon icon="cross" />
-                        <PokemonIcon style={{ pointerEvents: 'none' }} species={poke.species} />
+                        <PokemonIcon style={{ pointerEvents: 'none' }} {...poke} />
                     </>
                 );
             }

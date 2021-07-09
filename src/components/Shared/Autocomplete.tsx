@@ -2,6 +2,7 @@ import * as React from 'react';
 import { cx } from 'emotion';
 import './Autocomplete.css';
 import { useDebounceCallback } from '@react-hook/debounce';
+import { css } from 'emotion';
 const debounce = require('lodash.debounce');
 
 
@@ -14,6 +15,9 @@ export interface AutocompleteProps {
     value: string;
     onChange: any;
     className?: string;
+    /* @NOTE: this value should always be in conjunction with disabled
+       it is used to obscure unimportant data, like Species when a Pokemon is an egg */
+    makeInvisibleText?: boolean;
 }
 
 const renderItems = (visibleItems: string[], selectItem: any, innerValue: string, selectedValue: string) => visibleItems.map((v, i) => {
@@ -30,6 +34,10 @@ const renderItems = (visibleItems: string[], selectItem: any, innerValue: string
 
 const filter = (items, str) => items.filter(i => i?.toLowerCase().startsWith(str.toLowerCase()));
 
+const invisibleText = css`
+    color: transparent !important;
+`;
+
 export function Autocomplete ({
     label,
     name,
@@ -37,6 +45,7 @@ export function Autocomplete ({
     onChange,
     className,
     disabled,
+    makeInvisibleText,
     items,
     // onInput,
     value,
@@ -57,7 +66,7 @@ export function Autocomplete ({
     }, [value, items]);
 
     const changeEvent = (innerEvent: boolean = true) => (e) => {
-        innerEvent && e.persist();        
+        innerEvent && e.persist();
         setValue(e.target.value);
         setVisibleItems(filter(items, e.target.value));
         delayedValue({ target: { value: e.target.value }});
@@ -118,7 +127,7 @@ export function Autocomplete ({
         <label>{label}</label>
         <input
             autoComplete="off"
-            className={cx(className)}
+            className={cx(className, makeInvisibleText && invisibleText)}
             onKeyDown={handleKeyDown}
             onFocus={openList}
             onBlur={closeList}

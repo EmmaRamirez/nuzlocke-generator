@@ -51,6 +51,7 @@ export class PokemonByFilterBase extends React.PureComponent<PokemonByFilterProp
                         customIcon={poke.customIcon}
                         hidden={poke.hidden}
                         position={poke.position}
+                        egg={poke.egg}
                     />
                 </Tooltip>
             ));

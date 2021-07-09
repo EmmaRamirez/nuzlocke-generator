@@ -426,6 +426,7 @@ CurrentPokemonEditState
                         shiny={currentPokemon.shiny}
                         gender={currentPokemon.gender}
                         customIcon={currentPokemon.customIcon}
+                        egg={currentPokemon.egg}
                         selectedId={null}
                         onClick={() => {}}
                         imageStyle={{
@@ -466,6 +467,7 @@ CurrentPokemonEditState
                             name="species"
                             label="Species"
                             disabled={currentPokemon.egg}
+                            makeInvisibleText={currentPokemon.egg}
                             placeholder="Missing No."
                             value={currentPokemon.species}
                             onChange={(e) => {
