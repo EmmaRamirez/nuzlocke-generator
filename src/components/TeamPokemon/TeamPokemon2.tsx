@@ -90,10 +90,11 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
                 name: name,
                 editor: editor,
                 gender: pokemon.gender,
+                egg: pokemon.egg,
             });
             setImage(newImage);
         })();
-    }, [pokemon.species, pokemon.customImage, pokemon.forme, pokemon.shiny, style, name, editor, pokemon.gender]);
+    }, [pokemon.species, pokemon.customImage, pokemon.forme, pokemon.shiny, style, name, editor, pokemon.gender, pokemon.egg]);
 
     const classes = {
         teamPokemon: teamPokemon(options),

@@ -3,7 +3,7 @@ import { capitalize } from './capitalize';
 import { Game } from 'utils';
 import { Forme } from './Forme';
 import { getIconFormeSuffix } from './getIconFormeSuffix';
-import { Editor } from 'models';
+import { Editor, Pokemon } from 'models';
 import { Species } from './listOfPokemon';
 import { State } from 'state';
 import { significantGenderDifferenceList } from './handleSignificantGenderDifferences';
@@ -108,6 +108,7 @@ export interface GetPokemonImage {
     shiny?: boolean;
     editor?: Editor;
     gender?: GenderElementProps;
+    egg?: Pokemon['egg'];
 }
 
 export async function getPokemonImage({
@@ -119,6 +120,7 @@ export async function getPokemonImage({
     shiny,
     editor,
     gender,
+    egg,
 }: GetPokemonImage): Promise<string> {
     const regularNumber = speciesToNumber((species as Species) || 'Ditto');
     const leadingZerosNumber = (speciesToNumber((species as Species) || 'Ditto') || 0)
@@ -134,6 +136,10 @@ export async function getPokemonImage({
 
     if (editor?.temtemMode) {
         return `url(img/temtem/${species?.trim()}.png)`;
+    }
+
+    if (egg) {
+        return 'url(img/egg.jpg)';
     }
 
     if (
