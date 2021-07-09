@@ -237,9 +237,12 @@ export async function getPokemonImage({
             ) || 'missingno'
         ).toLowerCase()}.jpg)`;
     }
-    // TEMPORARY STOPGAPS
+    // TEMPORARY STOPGAPS & Edge Cases & Special favors
     if (species === 'Dugtrio' && forme === 'Alolan' && shiny) {
         return 'url(img/alolan-dugtrio-shiny.jpg)';
+    }
+    if (species === 'Gyarados' && shiny) {
+        return 'url(img/gyarados-shiny.jpg)';
     }
     if (species === 'Indeedee' && gender === 'Male') {
         return 'url(img/indeedee-m.jpg)';

@@ -792,5 +792,15 @@ Thank you!
 
 ## Known Issues
 - Download Image may not always work. This will depend on the browser's policies for requesting images from a different domain inside of an HTML canvas.
+`,
+    '1.8.0': `
+## Features
+- **Generation II**: now available in the save file uploader!
+- **Box Mapping**: have lots of boxes? Now you can decide what status all of them correspond to.
+
+## Fixes
+
+## Known Issues
+- Download Image may not always work. This will depend on the browser's policies for requesting images from a different domain inside of an HTML canvas.
 `
 };

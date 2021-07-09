@@ -1,0 +1,29 @@
+import * as React from 'react';
+import { useSelector } from 'react-redux';
+import { Alert, Intent, AlertProps } from '@blueprintjs/core';
+import { State } from 'state';
+
+const trash = require('assets/img/trash.png').default;
+
+export type WarningText = { warningText?: string };
+export function DeleteAlert({
+    warningText = 'This will permanently delete all your local storage data, with no way to retrieve it. Are you sure you want to do this?',
+    ...props
+}: AlertProps & WarningText) {
+    const style = useSelector<State, State['style']>((state) => state.style);
+
+    return (
+        <Alert
+            cancelButtonText="Nevermind"
+            confirmButtonText="Delete Anyway"
+            className={style.editorDarkMode ? 'bp3-dark' : 'bp3-light'}
+            style={{ maxWidth: '600px' }}
+            intent={Intent.DANGER}
+            {...props}>
+            <div style={{ display: 'flex' }}>
+                <img style={{ height: '10rem' }} src={trash} alt="Sad Trubbish" />
+                <p style={{ fontSize: '1.2rem', padding: '1rem' }}>{warningText}</p>
+            </div>
+        </Alert>
+    );
+}

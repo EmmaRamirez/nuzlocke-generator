@@ -4,6 +4,7 @@ import { HELD_ITEM, GEN_2_POKEMON_MAP, GEN_2_CHARACTER_MAP, MOVES_ARRAY, splitUp
 import { Buffer } from 'buffer';
 import { Forme, matchSpeciesToTypes, Species } from 'utils';
 import { BoxMapping } from './utils/boxMapping';
+import { Pokemon } from 'models';
 
 // Offset	Contents	Size
 // 0x00	Index number of the species	1 byte
@@ -41,14 +42,7 @@ import { BoxMapping } from './utils/boxMapping';
 export interface Gen2PokemonObject {
     entriesUsed: number;
     speciesList: string[];
-    pokemonList: {
-        species: string;
-        level: number;
-        moves: string[];
-        id: string;
-        item?: string;
-        extraData: object;
-    }[];
+    pokemonList: Pick<Pokemon, 'species' | 'level' | 'moves' | 'id' | 'item' | 'extraData' | 'shiny'>[];
     pokemonNames: string[];
 }
 
@@ -133,6 +127,67 @@ const determineUnownForme = (ivs: Buffer) => {
     return Forme.A;
 };
 
+// const badgesBinary = (badgesByte >>> 0).toString(2);
+//     const badges = badgesBinary
+//         .split('')
+//         .map((bit, index) => {
+//             return parseInt(bit) ? badgesPossible[index] : null;
+//         })
+//         .filter((badge) => badge);
+
+// Its Defense, Speed, and Special IVs are all 10.
+// Its Attack IV is 2, 3, 6, 7, 10, 11, 14, or 15.
+// The HP IV is calculated by taking the least significant bit (the final binary digit) of the Attack, Defense, Speed, and Special IVs, then creating a binary string by placing them in that order. As such, a Pokémon with an odd-number Attack IV has 8 added to its HP IV, an odd-number Defense IV has 4 added, an odd-number Speed IV has 2 added, and an odd-number Special IV has 1 added.
+
+interface Ivs {
+    atk: number;
+    def: number;
+    special: number;
+    speed: number;
+    hp: number;
+}
+
+const getIvs = (ivs: Buffer): Ivs => {
+    // eslint-disable-next-line prefer-template
+    const part1 = (ivs[0]).toString(2);
+    const part2 = (ivs[1]).toString(2);
+    console.log('parser - shiny', ivs, part1, part1.length, part2, part2.length);
+    const ivString = part1 + part2;
+    // 111 1010
+    const part1Shifted = part1.length === 7 ? `0${part1}` : part1;
+    const atk = parseInt(part1Shifted.slice(0, 4), 2);
+    const def = parseInt(part1Shifted.slice(4, 8), 2);
+    const speed = parseInt(part2.slice(0, 4), 2);
+    const special = parseInt(part2.slice(4, 8), 2);
+    const hp = parseInt(part1[3] + part1[7] + part2[3] + part2[7], 2);
+    console.log('parser - shiny',
+        'part1: ', part1,
+        'iv string: ', ivString,
+        'def: ', part1.slice(4, 8),
+        'length: ', ivs.length,
+        'string: ', ivs.toString()
+    );
+
+    return {
+        atk,
+        def,
+        speed,
+        special,
+        hp
+    };
+};
+
+const isShiny = (ivs: Buffer): boolean => {
+    const {atk, def, special, speed} = getIvs(ivs);
+    console.log('parser - shiny', getIvs(ivs));
+
+    if ([2, 3, 6, 7, 10, 11, 14, 15].includes(atk) && def === 10 && speed === 10 && special === 10) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
 const to16BitInt = (buf: Buffer) => Buffer.from(buf).readInt16BE(0);
 
 const parsePokemon = (buf: Buffer, boxed = false) => {
@@ -155,6 +210,7 @@ const parsePokemon = (buf: Buffer, boxed = false) => {
     const id = pokemon.toString('binary');
     const ivs = pokemon.slice(0x15, 0x15 + 2);
     const unownForme = species === 'Unown' ? determineUnownForme(ivs) : undefined;
+    const shiny = isShiny(Buffer.from(ivs));
 
     const extraData = boxed
         ? undefined
@@ -174,6 +230,7 @@ const parsePokemon = (buf: Buffer, boxed = false) => {
         moves,
         id,
         item,
+        shiny,
         extraData: {
             friendship,
             expData,
@@ -224,6 +281,7 @@ const transformPokemon = (pokemonObject: Gen2PokemonObject, status, boxIndex: nu
                 level: poke.level,
                 types: matchSpeciesToTypes(poke.species as Species),
                 moves: poke.moves,
+                shiny: poke.shiny,
                 nickname: pokemonObject.pokemonNames[index],
                 id: `${poke.id}-sav`,
                 extraData: poke.extraData,
