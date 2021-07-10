@@ -21,7 +21,6 @@ import * as Styles from './styles';
 
 import './Result.css';
 import './themes.css';
-import 'assets/pokemon-font.css';
 import { State } from 'state';
 import isMobile from 'is-mobile';
 import { Button, Classes } from '@blueprintjs/core';
@@ -57,8 +56,8 @@ interface ResultState {
 const getNumberOf = (status?: string, pokemon?: Pokemon[]) =>
     status
         ? pokemon
-              ?.filter((v) => v.hasOwnProperty('id'))
-              .filter((poke) => poke.status === status && !poke.hidden).length
+            ?.filter((v) => v.hasOwnProperty('id'))
+            .filter((poke) => poke.status === status && !poke.hidden).length
         : 0;
 
 export function BackspriteMontage({ pokemon }: { pokemon: Pokemon[] }) {
@@ -199,7 +198,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         }
         try {
             const domToImage = await load();
-            const dataUrl = await (domToImage as any).toPng(resultNode, { corsImage: true });
+            const dataUrl = await domToImage.toPng(resultNode, { corsImage: true });
+            console.log(dataUrl, resultNode);
             const link = document.createElement('a');
             link.download = `nuzlocke-${uuid()}.png`;
             link.href = dataUrl;
@@ -406,7 +406,6 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             backgroundRepeat: style.tileBackground ? 'repeat' : 'no-repeat',
                             border: 'none',
                             height: style.useAutoHeight ? 'auto' : `${style.resultHeight}px`,
-                            marginBottom: '.5rem',
                             transition: 'transform 300ms ease-in-out',
                             transformOrigin: '0 0',
                             width: `${style.resultWidth}px`,

@@ -2,6 +2,8 @@
 import * as fs from 'fs';
 import { splitUp, GEN_1_POKEMON_MAP, GEN_1_CHARACTER_MAP, MOVES_ARRAY } from './utils';
 import { Buffer } from 'buffer';
+import { parseTime } from './utils/parseTime';
+import { ParserOptions } from './utils/parserOptions';
 const uuid = require('uuid');
 
 // tslint:disable-next-line:class-name
@@ -273,16 +275,9 @@ const transformPokemon = (pokemonObject: Gen1PokemonObject, status: string) => {
         .filter((poke) => poke.species);
 };
 
-const parseTime = (buf: Buffer) => {
-    const time = Buffer.from(buf);
-    const hours = time[0x01] + time[0x00];
-    const minutes = Math.ceil(time[0x02] + time[0x03] / 60);
-    const minutesFormatted = minutes === 0 ? '00' : minutes;
 
-    return `${hours}:${minutesFormatted}`;
-};
 
-export const parseGen1Save = async (file: Buffer, options: SaveFileOptions) => {
+export const parseGen1Save = async (file: Buffer, options: ParserOptions) => {
     const yellow = file[OFFSETS.PIKACHU_FRIENDSHIP] > 0;
     const trainerName = convertWithCharMap(
         file.slice(OFFSETS.PLAYER_NAME, OFFSETS.PLAYER_NAME + 11),
@@ -358,30 +353,3 @@ export const parseGen1Save = async (file: Buffer, options: SaveFileOptions) => {
 
     return save;
 };
-
-export interface SaveFileOptions {
-    type: 'nuzlocke' | 'plain';
-    boxes?: {
-        [prop: string]: number[];
-    };
-}
-
-export const loadGen1SaveFile = async (filename: string, options: SaveFileOptions) => {
-    const save = await fs.readFileSync(filename);
-
-    try {
-        const file: Buffer = Buffer.from(save);
-        const result = await parseGen1Save(file, options);
-        return result;
-    } catch {
-        throw new Error('Could not parse save file.');
-    }
-};
-
-/**
- * Money: 3175
- * Badges: 0?
- * Time: 0:35
- * Name: YELLOW
- * Party: level 11 PIKACHU
- */

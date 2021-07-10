@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/prefer-for-of */
 import * as fs from 'fs';
-import { HELD_ITEM, GEN_2_POKEMON_MAP, GEN_2_CHARACTER_MAP, MOVES_ARRAY, splitUp } from './utils';
+import { HELD_ITEM, GEN_2_POKEMON_MAP, GEN_2_CHARACTER_MAP, MOVES_ARRAY, splitUp, GEN_2_LOCATIONS } from './utils';
 import { Buffer } from 'buffer';
 import { Forme, matchSpeciesToTypes, Species } from 'utils';
-import { BoxMapping } from './utils/boxMapping';
+import { BoxMappings } from './utils/boxMappings';
 import { Pokemon } from 'models';
+import { parseTime } from './utils/parseTime';
+import { ParserOptions } from './utils/parserOptions';
 
 // Offset	Contents	Size
 // 0x00	Index number of the species	1 byte
@@ -42,7 +44,7 @@ import { Pokemon } from 'models';
 export interface Gen2PokemonObject {
     entriesUsed: number;
     speciesList: string[];
-    pokemonList: Pick<Pokemon, 'species' | 'level' | 'moves' | 'id' | 'item' | 'extraData' | 'shiny'>[];
+    pokemonList: Pick<Pokemon, 'species' | 'level' | 'moves' | 'id' | 'item' | 'extraData' | 'shiny' | 'met' | 'metLevel'>[];
     pokemonNames: string[];
 }
 
@@ -90,24 +92,42 @@ function buf2hex(buffer: Buffer) {
     return [...new Uint8Array(buffer)].map(x => x.toString(16).padStart(2, '0')).join('');
 }
 
-const readCaughtData = (data) => {
-    const binary = (data >>> 0).toString(2);
-    const timeSlice = binary.slice(0, 1);
-    const timeHex = parseInt(timeSlice[0] + timeSlice[1], 2)
-        .toString(16)
-        .toUpperCase();
-    const timeMap = {
-        0x01: 'morning',
-        0x02: 'day',
-        0x03: 'night',
-    };
-    const level = binary.slice(2, 8);
+// Caught data is only generated in Crystal but transferrable across versions
+const readCaughtData = (data: Buffer) => {
+    const buf = Buffer.from(data);
+    // @NOTE: buffer.map() coerces types
+    const [binaryA, binaryB]: string[] = [
+        buf[0].toString(2).padStart(8, '0'),
+        buf[1].toString(2).padStart(8, '0')
+    ];
 
-    const OtGender = binary.slice(9, 10);
-    const location = binary.slice(11, 16);
+    if (binaryA === '0' && binaryB === '0') return {
+        level: undefined,
+        timeOfDay: undefined,
+        location: undefined,
+        otGender: undefined,
+    };
+    const level = Number.parseInt(binaryA.slice(1, 7), 2);
+    const timeDigit = Number.parseInt(binaryA.slice(0, 1), 2);
+    const timeMap = {
+        1: 'morning',
+        2: 'day',
+        3: 'night',
+    };
+    const timeOfDay = timeMap[timeDigit];
+    const otGender = binaryB[0] ? 'M' : 'F';
+    const locationAddress = Number.parseInt(binaryB.slice(1), 2).toString(16).toUpperCase();
+    const location = GEN_2_LOCATIONS?.[locationAddress];
+    console.log('parser - location', location, binaryB.slice(1), locationAddress);
+
+    return {
+        timeOfDay,
+        level,
+        location,
+        otGender,
+    };
 };
 
-const MOVES = {};
 
 // In Generation II, Unown's letter is taken from the combination of the center two bits of the Attack, Defense, Speed and Special IV nibbles. This combination is then divided by ten, and the result is rounded down (floor[]) to only include the integer part of the number. This integer will range from 0-25, corresponding to a letter in the Latin alphabet, which will be the Unown's letter (where 0=A, 1=B, 2=C, ..., 23=X, 24=Y, 25=Z).
 
@@ -148,25 +168,13 @@ interface Ivs {
 }
 
 const getIvs = (ivs: Buffer): Ivs => {
-    // eslint-disable-next-line prefer-template
-    const part1 = (ivs[0]).toString(2);
-    const part2 = (ivs[1]).toString(2);
-    console.log('parser - shiny', ivs, part1, part1.length, part2, part2.length);
-    const ivString = part1 + part2;
-    // 111 1010
-    const part1Shifted = part1.length === 7 ? `0${part1}` : part1;
-    const atk = parseInt(part1Shifted.slice(0, 4), 2);
-    const def = parseInt(part1Shifted.slice(4, 8), 2);
+    const part1 = (ivs[0]).toString(2).padStart(8, '0');
+    const part2 = (ivs[1]).toString(2).padStart(8, '0');
+    const atk = parseInt(part1.slice(0, 4), 2);
+    const def = parseInt(part1.slice(4, 8), 2);
     const speed = parseInt(part2.slice(0, 4), 2);
     const special = parseInt(part2.slice(4, 8), 2);
     const hp = parseInt(part1[3] + part1[7] + part2[3] + part2[7], 2);
-    console.log('parser - shiny',
-        'part1: ', part1,
-        'iv string: ', ivString,
-        'def: ', part1.slice(4, 8),
-        'length: ', ivs.length,
-        'string: ', ivs.toString()
-    );
 
     return {
         atk,
@@ -179,7 +187,6 @@ const getIvs = (ivs: Buffer): Ivs => {
 
 const isShiny = (ivs: Buffer): boolean => {
     const {atk, def, special, speed} = getIvs(ivs);
-    console.log('parser - shiny', getIvs(ivs));
 
     if ([2, 3, 6, 7, 10, 11, 14, 15].includes(atk) && def === 10 && speed === 10 && special === 10) {
         return true;
@@ -190,11 +197,9 @@ const isShiny = (ivs: Buffer): boolean => {
 
 const to16BitInt = (buf: Buffer) => Buffer.from(buf).readInt16BE(0);
 
-const parsePokemon = (buf: Buffer, boxed = false) => {
+const parsePokemon = (buf: Buffer, boxed = false): Gen2PokemonObject['pokemonList'][number] => {
     const pokemon = Buffer.from(buf);
     const species = GEN_2_POKEMON_MAP[pokemon[0x00]];
-
-    //console.log('parser - party species', species);
     const item = HELD_ITEM[pokemon[0x01]];
     const moves = [
         MOVES_ARRAY[pokemon[0x02]],
@@ -203,7 +208,14 @@ const parsePokemon = (buf: Buffer, boxed = false) => {
         MOVES_ARRAY[pokemon[0x05]],
     ];
     const friendship = pokemon[0x1b];
-    const caughtData = boxed ? undefined : to16BitInt(pokemon.slice(0x1d, 0x1d + 2));
+
+    let caughtData;
+    if (!boxed) {
+        caughtData = readCaughtData(pokemon.slice(0x1d, 0x1d + 2));
+    } else {
+        caughtData = {level: undefined, location: undefined};
+    }
+    // const caughtData = readCaughtData(pokemon.slice(0x1d, 0x1d + 2));
     const expData = boxed ? undefined : to16BitInt(pokemon.slice(0x08, 0x08 + 3));
 
     const level = pokemon[0x1f];
@@ -213,7 +225,7 @@ const parsePokemon = (buf: Buffer, boxed = false) => {
     const shiny = isShiny(Buffer.from(ivs));
 
     const extraData = boxed
-        ? undefined
+        ? {}
         : {
             currentHp: to16BitInt(pokemon.slice(0x22, 0x22 + 2)),
             maxHp: to16BitInt(pokemon.slice(0x24, 0x24 + 2)),
@@ -231,11 +243,13 @@ const parsePokemon = (buf: Buffer, boxed = false) => {
         id,
         item,
         shiny,
+        met: caughtData.location,
+        metLevel: caughtData.level,
         extraData: {
             friendship,
             expData,
             caughtData,
-            ...(extraData ?? {}),
+            ...extraData,
         }
     };
 };
@@ -244,7 +258,6 @@ const getSpeciesList = (buf: Buffer) => {
     const str: any[] = [];
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < buf.length; i++) {
-        console.log('parser - buf', buf[i]);
         if (buf[i] === 0xff) {
             break;
         } else {
@@ -266,16 +279,11 @@ const getPokemonNames = (buf: Buffer, entries: number = 6) => {
     return pokes;
 };
 
-const transformPokemon = (pokemonObject: Gen2PokemonObject, status, boxIndex: number = 1) => {
-    const TIER: Readonly<{ [status: string]: number }> = Object.freeze({
-        Team: 1,
-        Boxed: 2,
-        Dead: 3,
-    });
+const transformPokemon = (pokemonObject: Gen2PokemonObject, status: string, boxIndex: number = 1) => {
     return pokemonObject.pokemonList
         .map((poke, index) => {
             return {
-                position: (index + 1) * (TIER[status] + boxIndex),
+                position: (index + 1) * (boxIndex),
                 species: poke.species,
                 status: status,
                 level: poke.level,
@@ -283,6 +291,8 @@ const transformPokemon = (pokemonObject: Gen2PokemonObject, status, boxIndex: nu
                 moves: poke.moves,
                 shiny: poke.shiny,
                 nickname: pokemonObject.pokemonNames[index],
+                met: poke.met,
+                metLevel: poke.metLevel,
                 id: `${poke.id}-sav`,
                 extraData: poke.extraData,
                 // @NOTE: A pokemon nicknamed "EGG" would override this and show up as egg: true, but that's your own fault lol
@@ -309,15 +319,10 @@ const makeFileSlicer = (file) => (offset: number[]) => {
 
 export const parsePokemonList = (buf: Buffer, entries = 6): Gen2PokemonObject => {
     const data = Buffer.from(buf);
-    console.log('parser - data', data);
     const isBoxed = entries > 6 ? true : false;
-    console.log('parser - entries', entries);
-    console.log('parser - isBoxed', isBoxed);
     const entriesUsed = data[0x00];
     const speciesListEnd = 0x01 + entries + 1;
     const speciesList = getSpeciesList(Buffer.from(data.slice(0x01, speciesListEnd)));
-    console.log('parser - specieslist', speciesList);
-
     const pokemonListAddress = speciesListEnd;
     const pokemonListAddressEnd = pokemonListAddress + ((isBoxed ? 32 : 48) * entries);
     const otsAddress = pokemonListAddressEnd;
@@ -329,7 +334,6 @@ export const parsePokemonList = (buf: Buffer, entries = 6): Gen2PokemonObject =>
         entries,
         isBoxed,
     );
-    console.log('parser - pokemon list', pokemonList);
     const pokemonNames = getPokemonNames(
         data.slice(
             pokemonNamesAddress,
@@ -337,15 +341,6 @@ export const parsePokemonList = (buf: Buffer, entries = 6): Gen2PokemonObject =>
         ),
         entries,
     );
-    console.log('parser - pokemon names', data.slice(pokemonListAddress, pokemonListAddressEnd), pokemonNames);
-    console.log('parser - addresses',
-        pokemonNamesAddress,
-        pokemonNamesAddressEnd,
-        pokemonListAddress,
-        pokemonListAddressEnd,
-    );
-
-    // console.log('parser', pokemonList);
 
     return {
         entriesUsed,
@@ -356,28 +351,28 @@ export const parsePokemonList = (buf: Buffer, entries = 6): Gen2PokemonObject =>
 };
 
 
-export interface ParserOptions {
-    isCrystal: boolean;
-    boxMapping: BoxMapping;
-}
-
 const sliceBoxes = (buf: Buffer) => {
     const fileSlice = makeFileSlicer(buf);
 
     return OFFSETS.BOXES.map((box) => fileSlice(box));
 };
 
-export const parseGen2Save = async (file, format, options: ParserOptions) => {
+export const parseGen2Save = async (file, options: ParserOptions) => {
     const fileSlice = makeFileSlicer(file);
 
     const trainerName = convertWithCharMap(fileSlice(OFFSETS.PLAYER_NAME));
     const trainerId = fileSlice(OFFSETS.PLAYER_ID)
         .map((char) => char.toString())
         .join('');
-    console.log('parser - trainer Id', trainerId);
     const trainerMoney = options.isCrystal
         ? fileSlice(CRYSTAL_OFFSETS.PLAYER_MONEY)
         : fileSlice(OFFSETS.PLAYER_MONEY);
+    const money = parseInt(
+        trainerMoney
+            .map((d) => d.toString(16))
+            .join(''),
+    );
+    const time = parseTime(fileSlice(OFFSETS.TIME_PLAYED));
     const johtoBadges = fileSlice(OFFSETS.JOHTO_BADGES);
     const currentPCId = options.isCrystal
         ? fileSlice(CRYSTAL_OFFSETS.CURRENT_PC_BOX_NUMBER)
@@ -392,46 +387,22 @@ export const parseGen2Save = async (file, format, options: ParserOptions) => {
     const boxedPokemon = sliceBoxes(file).map((boxData, boxIndex) => {
         return transformPokemon(
             parsePokemonList(boxData, 20),
-            'Boxed',
-            boxIndex
+            options.boxMappings[boxIndex]['status'],
+            boxIndex + 1,
         );
     }).flat();
-
-    // const boxedPokemon2 = transformPokemon(
-    //     parsePokemonList(sliceBoxes(file)[0], 20),
-    //     'Boxed'
-    // );
 
     return {
         trainer: {
             name: trainerName,
             id: trainerId,
-            time: '10:33',
-            money: trainerMoney,
+            time,
+            money,
             badges: [],
         },
         pokemon: [
             ...partyPokemon,
-            //...boxedPokemon,
             ...boxedPokemon,
         ],
     };
-};
-
-export const loadGen2SaveFile = async (
-    filename: string,
-    format: 'plain' | 'nuzlocke' = 'nuzlocke',
-) => {
-    const save = await fs.readFileSync(filename);
-
-    try {
-        const file = Buffer.from(save);
-        const result = await parseGen2Save(file, format, {
-            isCrystal: true,
-            boxMapping: []
-        });
-        return result;
-    } catch {
-        throw new Error('Oops');
-    }
 };

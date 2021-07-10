@@ -13,9 +13,7 @@ import {
     Checkbox,
     Icon,
     Popover,
-    Menu,
     PopoverInteractionKind,
-    MenuItem,
 } from '@blueprintjs/core';
 import { PokemonIconBase } from 'components/PokemonIcon';
 import { ErrorBoundary } from 'components/Shared';
@@ -29,10 +27,10 @@ import { State } from 'state';
 import { noop } from 'redux-saga/utils';
 import { feature, GameSaveFormat } from 'utils';
 import { DeleteAlert } from './DeleteAlert';
-import { Select } from '@blueprintjs/select';
 
 const isEmpty = require('lodash/isEmpty');
 import codegen from 'codegen.macro';
+import { BoxMappings } from 'parsers/utils/boxMappings';
 
 
 export interface DataEditorProps {
@@ -53,6 +51,7 @@ export interface DataEditorState {
     showSaveFileUI: boolean;
     overrideImport: boolean;
     isSettingsOpen: boolean;
+    boxMappings: BoxMappings;
 }
 
 const getGameNumberOfBoxes = (game: GameSaveFormat) => {
@@ -108,21 +107,30 @@ export interface SaveGameSettingsDialogProps {
     mergeDataMode: boolean;
     boxes: State['box'];
     selectedGame: GameSaveFormat;
+    boxMappings: BoxMappings;
+    setBoxMappings: ({key, status}) => void;
 }
 
 // Quick and dirty method of getting Array w n.length
 const generateArray = (n: number) => {
-    const arr: number[] = [];
+    const arr: BoxMappings = [];
     for (let i = 1; i < n + 1; i++) {
-        arr.push(i);
+        if (i === 2) {
+            arr.push({key: i, status: 'Dead'});
+        } else {
+            arr.push({key: i, status: 'Boxed'});
+        }
     }
     return arr;
 };
 
-export function BoxSelect({boxes}: {boxes: State['box']}) {
+const generateBoxMappingsDefault = (saveFormat) => generateArray(getGameNumberOfBoxes(saveFormat));
+
+export function BoxSelect({boxes, value, boxKey, setBoxMappings}: {boxes: State['box'], value: string, boxKey: number, setBoxMappings: SaveGameSettingsDialogProps['setBoxMappings']}) {
     return <div className={Classes.SELECT}>
         <select
-            value={'Boxed'}
+            value={value}
+            onChange={e => setBoxMappings({ key: boxKey, status: e.target.value })}
         >
             {boxes.map((box) => (
                 <option key={box.id} value={box.name}>
@@ -138,6 +146,8 @@ export function SaveGameSettingsDialog({
     mergeDataMode,
     boxes,
     selectedGame,
+    boxMappings,
+    setBoxMappings,
 }: SaveGameSettingsDialogProps) {
 
     // const select = (
@@ -163,14 +173,14 @@ export function SaveGameSettingsDialog({
         />
 
         <div style={{height: '60vh', overflow: 'auto', display: 'flex', flexDirection: 'column', flexWrap: 'wrap'}} className='has-nice-scrollbars'>
-            {generateArray(getGameNumberOfBoxes(selectedGame)).map((value, index) => {
+            {boxMappings.map((value, index) => {
                 return <div style={{padding: '0.25rem'}}>
-                    <BoxSelect boxes={boxes} />
+                    <BoxSelect boxKey={value.key} setBoxMappings={setBoxMappings} value={value.status} boxes={boxes} />
                     <div
                         className={Classes.BUTTON}
                         style={{marginLeft: '0.25rem',
                             cursor: 'default', width: '8rem'}}
-                    >{`Box ${value}`}</div>
+                    >{`Box ${value.key}`}</div>
                 </div>;
             })}
         </div>
@@ -196,7 +206,14 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
             showSaveFileUI: false,
             overrideImport: true,
             isSettingsOpen: false,
+            boxMappings: [],
         };
+    }
+
+    public componentDidMount() {
+        this.setState(state => ({
+            boxMappings: generateBoxMappingsDefault(state.selectedGame)
+        }));
     }
 
     private uploadJSON = (e) => {
@@ -336,6 +353,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
             worker.postMessage({
                 selectedGame: componentState.selectedGame,
                 save,
+                boxMappings: componentState.boxMappings,
             });
 
             worker.onmessage = (e: MessageEvent<{ pokemon: Pokemon[], isYellow?: boolean, trainer: Trainer }>) => {
@@ -465,6 +483,21 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                             onMergeDataChange={() => this.setState({ mergeDataMode: !this.state.mergeDataMode })}
                             boxes={this.props.state.box}
                             selectedGame={this.state.selectedGame}
+                            boxMappings={this.state.boxMappings}
+                            setBoxMappings={({key, status}) => {
+                                console.log('setBoxMappings:', key, status);
+                                this.setState(({boxMappings}) => {
+                                    const newBoxMappings = boxMappings.map(({key: boxKey, status: boxStatus}) => {
+                                        if (key === boxKey) {
+                                            return {key, status};
+                                        }
+                                        return {key: boxKey, status: boxStatus};
+                                    });
+                                    return {
+                                        boxMappings: newBoxMappings,
+                                    };
+                                });
+                            }}
                         />
                     </Dialog>
                 </div>

@@ -423,6 +423,7 @@
   padding: 0.5rem;
   top: 0;
   height: 37px;
+  font-size: 0.8rem;
 }
 .pokemon-linked {
   display: flex;

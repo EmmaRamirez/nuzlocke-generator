@@ -1,4 +1,4 @@
-export type BoxMapping = {
+export type BoxMappings = {
     key: number;
     status: string;
 }[];
