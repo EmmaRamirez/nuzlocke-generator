@@ -44,7 +44,7 @@ import { ParserOptions } from './utils/parserOptions';
 export interface Gen2PokemonObject {
     entriesUsed: number;
     speciesList: string[];
-    pokemonList: Pick<Pokemon, 'species' | 'level' | 'moves' | 'id' | 'item' | 'extraData' | 'shiny' | 'met' | 'metLevel'>[];
+    pokemonList: Pick<Pokemon, 'species' | 'level' | 'moves' | 'id' | 'item' | 'extraData' | 'shiny' | 'met' | 'metLevel' | 'forme'>[];
     pokemonNames: string[];
 }
 
@@ -135,16 +135,47 @@ const readCaughtData = (data: Buffer) => {
 
 // In Generation III, Unown's letter is determined by the Pokémon's personality value. From Generation IV onward, it is determined by a separate form identifier. Generation III also introduced Unown '!' or '?'.
 
-const determineUnownForme = (ivs: Buffer) => {
-    const buf = Buffer.from(ivs);
-    const asBinary = buf.readUIntBE(0, buf.byteLength);
-    let ivString = '';
-    for (const iv of ivs) {
-        ivString += iv.toString();
-    }
-    console.log('parser - unown', ivString, buf);
+// Array index access for Unown formes
+const unownFormes = [
+    Forme.A,
+    Forme.B,
+    Forme.C,
+    Forme.D,
+    Forme.E,
+    Forme.F,
+    Forme.G,
+    Forme.H,
+    Forme.I,
+    Forme.J,
+    Forme.K,
+    Forme.L,
+    Forme.M,
+    Forme.N,
+    Forme.O,
+    Forme.P,
+    Forme.Q,
+    Forme.R,
+    Forme.S,
+    Forme.T,
+    Forme.U,
+    Forme.V,
+    Forme.W,
+    Forme.X,
+    Forme.Y,
+    Forme.Z,
+];
 
-    return Forme.A;
+const determineUnownForme = (ivs: Buffer): Forme => {
+    const part1 = (ivs[0]).toString(2).padStart(8, '0');
+    const part2 = (ivs[1]).toString(2).padStart(8, '0');
+    const atk = part1.slice(0, 4).slice(1, 3);
+    const def = part1.slice(4).slice(1, 3);
+    const speed = part2.slice(0, 4).slice(1, 3);
+    const special = part2.slice(4).slice(1, 3);
+    const comboString = atk + def + speed + special;
+    const formeId = Math.floor(Number.parseInt(comboString, 2) / 10);
+
+    return unownFormes?.[formeId]?.toUpperCase() as Forme;
 };
 
 // const badgesBinary = (badgesByte >>> 0).toString(2);
@@ -243,6 +274,7 @@ const parsePokemon = (buf: Buffer, boxed = false): Gen2PokemonObject['pokemonLis
         id,
         item,
         shiny,
+        forme: unownForme,
         met: caughtData.location,
         metLevel: caughtData.level,
         extraData: {
@@ -290,6 +322,7 @@ const transformPokemon = (pokemonObject: Gen2PokemonObject, status: string, boxI
                 types: matchSpeciesToTypes(poke.species as Species),
                 moves: poke.moves,
                 shiny: poke.shiny,
+                forme: poke.forme,
                 nickname: pokemonObject.pokemonNames[index],
                 met: poke.met,
                 metLevel: poke.metLevel,
