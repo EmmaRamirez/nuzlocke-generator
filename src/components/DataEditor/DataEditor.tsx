@@ -201,7 +201,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
             mode: 'export',
             data: '',
             href: '',
-            selectedGame: 'GS',
+            selectedGame: 'RBY',
             mergeDataMode: true,
             showSaveFileUI: false,
             overrideImport: true,
