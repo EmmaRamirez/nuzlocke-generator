@@ -240,7 +240,7 @@ NuzlockeSaveControlsState
                                     </Menu>
                                 }>
                                 <Icon
-                                    style={{ transform: 'rotate(90deg)', marginLeft: 'auto' }}
+                                    style={{ transform: 'rotate(90deg)', marginLeft: 'auto', cursor: 'pointer' }}
                                     icon="more"
                                 />
                             </Popover>
