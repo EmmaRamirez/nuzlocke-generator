@@ -50,20 +50,20 @@ const OFFSETS = {
     POKEMON_PC_SECOND_HALF: 0x6000,
 };
 
-const BOX_OFFSETS = {
-    ONE: 0x4000,
-    TWO: 0x4462,
-    THREE: 0x48c4,
-    FOUR: 0x4d26,
-    FIVE: 0x5188,
-    SIX: 0x55ea,
-    SEVEN: 0x6000,
-    EIGHT: 0x6462,
-    NINE: 0x68c4,
-    TEN: 0x6d26,
-    ELEVEN: 0x7188,
-    TWELVE: 0x75ea,
-};
+const BOX_OFFSETS = [
+    0x4000,
+    0x4462,
+    0x48c4,
+    0x4d26,
+    0x5188,
+    0x55ea,
+    0x6000,
+    0x6462,
+    0x68c4,
+    0x6d26,
+    0x7188,
+    0x75ea,
+];
 
 const checksum = (data: Uint8Array) => {
     let checksumN = 255;
@@ -212,11 +212,6 @@ const removeLastEntries = (entries, arr) => {
 };
 
 const parsePokemonParty = (buf: Buffer) => {
-    // 5
-    // pokemon[5]
-    // 4
-    // pokemon[4], pokemon[5]
-
     const party = Buffer.from(buf);
     const entriesUsed = party[0x0000];
     const rawSpeciesList = party.slice(0x0001, 0x0007);
@@ -252,16 +247,11 @@ const parseBoxedPokemon = (buf: Buffer): Gen1PokemonObject => {
     };
 };
 
-const transformPokemon = (pokemonObject: Gen1PokemonObject, status: string) => {
-    const TIER: Readonly<{ [status: string]: number }> = Object.freeze({
-        Team: 1,
-        Boxed: 2,
-        Dead: 3,
-    });
+const transformPokemon = (pokemonObject: Gen1PokemonObject, status: string, boxIndex = 1) => {
     return pokemonObject.pokemonList
         .map((poke, index) => {
             return {
-                position: (index + 1) * TIER[status],
+                position: (index + 1) * (boxIndex),
                 species: poke.species,
                 status: status,
                 level: poke.level,
@@ -311,10 +301,13 @@ export const parseGen1Save = async (file: Buffer, options: ParserOptions) => {
             .join(''),
     );
 
-    const boxedPokemon = parseBoxedPokemon(
-        file.slice(OFFSETS.CURRENT_BOX, OFFSETS.CURRENT_BOX + 0x462),
-    );
-    const deadPokemon = parseBoxedPokemon(file.slice(BOX_OFFSETS.TWO, BOX_OFFSETS.TWO + 0x462));
+    const pokemonFromBoxes = BOX_OFFSETS.map((box, boxIndex) => {
+        return transformPokemon(
+            parseBoxedPokemon(file.slice(box, box + 0x462)),
+            options.boxMappings[boxIndex]['status'],
+            boxIndex + 1,
+        );
+    }).flat();
 
     const badgesPossible = [
         { name: 'Boulder Badge', image: 'boulder-badge' },
@@ -346,8 +339,7 @@ export const parseGen1Save = async (file: Buffer, options: ParserOptions) => {
         pokemon: [
             // @ts-ignore
             ...transformPokemon(pokemonParty, 'Team'),
-            ...transformPokemon(boxedPokemon, 'Boxed'),
-            ...transformPokemon(deadPokemon, 'Dead'),
+            ...pokemonFromBoxes,
         ],
     };
 
