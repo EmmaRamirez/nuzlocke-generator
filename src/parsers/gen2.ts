@@ -2,8 +2,7 @@
 import * as fs from 'fs';
 import { HELD_ITEM, GEN_2_POKEMON_MAP, GEN_2_CHARACTER_MAP, MOVES_ARRAY, splitUp, GEN_2_LOCATIONS } from './utils';
 import { Buffer } from 'buffer';
-import { Forme, matchSpeciesToTypes, Species } from 'utils';
-import { BoxMappings } from './utils/boxMappings';
+import { Forme, getBadges, matchSpeciesToTypes, Species } from 'utils';
 import { Pokemon } from 'models';
 import { parseTime } from './utils/parseTime';
 import { ParserOptions } from './utils/parserOptions';
@@ -54,7 +53,7 @@ const OFFSETS = {
     PLAYER_MONEY: [0x23DB, 0x23DB + 3],
     RIVAL_NAME: [0x2013, 0x2013 + 11],
     TIME_PLAYED: [0x2053, 0x2053 + 4],
-    JOHTO_BADGES: [0x23e4, 0x23e4 + 1],
+    JOHTO_BADGES: [0x23e4, 0x23e4 + 2],
     CURRENT_PC_BOX_NUMBER: [0x2724, 0x2724 + 1],
     TEAM_POKEMON_LIST: [0x288a, 0x288a + 428],
     CURRENT_BOX_POKEMON_LIST: [0x2d6c, 0x2d6c + 1102],
@@ -80,7 +79,7 @@ const OFFSETS = {
 
 const CRYSTAL_OFFSETS = {
     PLAYER_MONEY: [0x23DC, 0x23DC + 3],
-    JOHTO_BADGES: [0x23e5, 0x23e5 + 1],
+    JOHTO_BADGES: [0x23e5, 0x23e5 + 2],
     CURRENT_PC_BOX_NUMBER: [0x2700, 0x2700 + 1],
     TEAM_POKEMON_LIST: [0x2865, 0x2865 + 428],
     CURRENT_BOX_POKEMON_LIST: [0x2d10, 0x2d10 + 1102],
@@ -311,6 +310,18 @@ const getPokemonNames = (buf: Buffer, entries: number = 6) => {
     return pokes;
 };
 
+const parseJohtoBadges = (buf: Buffer) => {
+    const bits = buf[0].toString(2).padStart(8, '0') + buf[1].toString(2).padStart(8, '0');
+    const badges = getBadges('Gold'); // Doesn't matter as long as it's gen 2
+    const badgesObtainedMap = bits.split('').map(badge => {
+        return badge === '1' ? true : false;
+    });
+    const badgesFiltered = badges.filter((badge, idx) => {
+        return badgesObtainedMap[idx];
+    });
+    return badgesFiltered;
+};
+
 const transformPokemon = (pokemonObject: Gen2PokemonObject, status: string, boxIndex: number = 1) => {
     return pokemonObject.pokemonList
         .map((poke, index) => {
@@ -393,8 +404,8 @@ const sliceBoxes = (buf: Buffer) => {
 export const parseGen2Save = async (file, options: ParserOptions) => {
     const fileSlice = makeFileSlicer(file);
 
-    const trainerName = convertWithCharMap(fileSlice(OFFSETS.PLAYER_NAME));
-    const trainerId = fileSlice(OFFSETS.PLAYER_ID)
+    const name = convertWithCharMap(fileSlice(OFFSETS.PLAYER_NAME));
+    const id = fileSlice(OFFSETS.PLAYER_ID)
         .map((char) => char.toString())
         .join('');
     const trainerMoney = options.isCrystal
@@ -406,7 +417,9 @@ export const parseGen2Save = async (file, options: ParserOptions) => {
             .join(''),
     );
     const time = parseTime(fileSlice(OFFSETS.TIME_PLAYED));
-    const johtoBadges = fileSlice(OFFSETS.JOHTO_BADGES);
+    const badges = parseJohtoBadges(options.isCrystal ?
+        fileSlice(CRYSTAL_OFFSETS.JOHTO_BADGES) :
+        fileSlice(OFFSETS.JOHTO_BADGES));
     const currentPCId = options.isCrystal
         ? fileSlice(CRYSTAL_OFFSETS.CURRENT_PC_BOX_NUMBER)
         : fileSlice(OFFSETS.CURRENT_PC_BOX_NUMBER);
@@ -427,11 +440,11 @@ export const parseGen2Save = async (file, options: ParserOptions) => {
 
     return {
         trainer: {
-            name: trainerName,
-            id: trainerId,
+            name,
+            id,
             time,
             money,
-            badges: [],
+            badges,
         },
         pokemon: [
             ...partyPokemon,
