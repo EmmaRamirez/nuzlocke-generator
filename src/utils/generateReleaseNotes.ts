@@ -802,6 +802,7 @@ Thank you!
 - Eggs will now show up with a proper egg image under most circumstances
 - Data from eggs like species or type is no longer shown (but still in the editor, so the egg checkbox is now a toggle for it)
 - Minor UI fixes
+- Average level now displays... average levels. Whoops.
 
 ## Known Issues
 - Download Image may not always work. This will depend on the browser's policies for requesting images from a different domain inside of an HTML canvas.
