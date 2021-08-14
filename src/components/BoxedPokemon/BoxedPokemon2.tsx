@@ -13,6 +13,7 @@ export function BoxedPokemon({ pokemon }: { pokemon: Pokemon }) {
                 forme={pokemon?.forme}
                 shiny={pokemon?.shiny}
                 gender={pokemon?.gender}
+                egg={pokemon?.egg}
                 customIcon={pokemon?.customIcon}
             />
         </div>

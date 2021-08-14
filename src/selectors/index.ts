@@ -5,7 +5,8 @@ import { Pokemon } from 'models';
 export const gameNameSelector = (state: State) => state.game.name;
 export const minimizedSelector = (state: State) => state.editor.minimized;
 export const editorModeSelector = (state: State) => state.style.editorDarkMode;
-export const linkedPokemonSelector = (pokemon: Pokemon) => (state: State) => state.pokemon.find((p) => p.id === pokemon?.linkedTo);
+export const linkedPokemonSelector = (pokemon: Pokemon) => (state: State) =>
+    state.pokemon.find((p) => p.id === pokemon?.linkedTo);
 
 export const updaterSelector = (state: State) => ({
     present: omit(['editorHistory'], state),

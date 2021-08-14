@@ -81,17 +81,17 @@ const toImage = (ref, setDS) => async () => {
     }
 };
 
-export function TopBarWithDownload({ forwardedRef }) {
+export const TopBarWithDownload = React.forwardRef((props, ref) => {
     const [downloadStatus, setDownloadStatus] = React.useState(DownloadStatus.dormant);
 
     return (
         <ErrorBoundary>
             <TopBar
                 isDownloading={downloadStatus === DownloadStatus.active}
-                onClickDownload={toImage(forwardedRef, setDownloadStatus)}></TopBar>
+                onClickDownload={toImage(ref, setDownloadStatus)}></TopBar>
         </ErrorBoundary>
     );
-}
+});
 
 export function TeamPokemonMemberView({ pokemon }: { pokemon: Pokemon }) {
     const [showContext, setShowContext] = React.useState(false);
@@ -179,9 +179,7 @@ export function DeadPokemonView({ pokemon, display, direction, alignment, spacin
     );
 }
 
-export function ResultInner () {
-    const resultRef = React.useRef(null);
-
+export const ResultInner = React.forwardRef((props, resultRef: React.Ref<HTMLDivElement>) => {
     const [downloadStatus, setDownloadStatus] = React.useState(DownloadStatus.dormant);
     const [scale, setScale] = React.useState(1);
     const [srollY, setScrollY] = React.useState(0);
@@ -203,10 +201,6 @@ export function ResultInner () {
         window.addEventListener('scroll', scrollToScale);
         return () => window.removeEventListener('scroll', scrollToScale);
     });
-
-    const TopBarWithRef = React.forwardRef((props, ref) => (
-        <TopBarWithDownload forwardedRef={ref} />
-    ));
 
     return (
         <div
@@ -257,7 +251,7 @@ export function ResultInner () {
             />
         </div>
     );
-}
+});
 
 export class Result extends React.Component {
     public ref: React.RefObject<HTMLDivElement>;
@@ -270,7 +264,7 @@ export class Result extends React.Component {
         return (
             <div className={cx(Styles.result_wrapper, 'hide-scrollbars')}>
                 <TopBar ref={this.ref} />
-                <ResultInner />
+                <ResultInner ref={this.ref} />
             </div>
         );
     }

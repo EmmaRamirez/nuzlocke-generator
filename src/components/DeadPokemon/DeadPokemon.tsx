@@ -131,7 +131,7 @@ export const DeadPokemonBase = (poke: DeadPokemonProps) => {
                             &mdash;
                             {poke.level}
                         </div>
-                        <div>{poke.causeOfDeath}</div>
+                        <div data-testid="cause-of-death">{poke.causeOfDeath}</div>
                         {style.displayGameOriginForBoxedAndDead &&
                             !poke.style.displayBackgroundInsteadOfBadge &&
                             poke.gameOfOrigin && (
@@ -195,7 +195,7 @@ export const DeadPokemonBase = (poke: DeadPokemonProps) => {
                         {poke.nickname} {GenderElement(poke.gender)} Levels {poke.metLevel}&mdash;
                         {poke.level}
                     </div>
-                    <div>{poke.causeOfDeath}</div>
+                    <div data-testid="cause-of-death">{poke.causeOfDeath}</div>
                     {style.displayGameOriginForBoxedAndDead &&
                         !poke.style.displayBackgroundInsteadOfBadge &&
                         poke.gameOfOrigin && (
@@ -271,7 +271,7 @@ export const DeadPokemonBase = (poke: DeadPokemonProps) => {
                     Levels {poke.metLevel}&mdash;{poke.level}
                 </div>
                 <br />
-                <div className="pokemon-causeofdeath">{poke.causeOfDeath}</div>
+                <div data-testid="cause-of-death" className="pokemon-causeofdeath">{poke.causeOfDeath}</div>
                 {style.displayGameOriginForBoxedAndDead &&
                     !poke.style.displayBackgroundInsteadOfBadge &&
                     poke.gameOfOrigin && (

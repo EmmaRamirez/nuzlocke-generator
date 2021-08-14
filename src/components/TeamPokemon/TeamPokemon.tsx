@@ -68,6 +68,7 @@ function getSpriteStyle({
 export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
     public render() {
         const { pokemon, style, customTypes, linkedPokemon, game } = this.props;
+        const generation = getGameGeneration(game.name);
 
         if (!pokemon) {
             return null;
@@ -111,8 +112,8 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                         // backgroundImage: isCardsTheme ? undefined : `linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px)`,
                         backgroundImage: isCompactTheme
                             ? getBackgroundGradient(
-                                pokemon.types != null ? pokemon?.types[1] : 'Normal',
-                                pokemon.types != null ? pokemon?.types[0] : 'Normal',
+                                pokemon.types != null && !pokemon.egg ? pokemon?.types[1] : 'Normal',
+                                pokemon.types != null && !pokemon.egg ? pokemon?.types[0] : 'Normal',
                                 customTypes,
                             )
                             : undefined,
@@ -126,7 +127,7 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                                 {pokemon.nickname}
                             </span>
                             <span className="pokemon-name">
-                                {pokemon.species}
+                                {!pokemon.egg ? pokemon.species : '???'}
                                 {pokemon.item && style.itemStyle === 'text'
                                     ? ` @ ${pokemon.item}`
                                     : null}
@@ -189,11 +190,30 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                                     fontSize: '12px',
                                     width: '255px',
                                 }}>
-                                {stat(pokemon.extraData['currentHp'], 'HP')}
-                                {stat(pokemon.extraData['attack'], 'ATK')}
-                                {stat(pokemon.extraData['defense'], 'DEF')}
-                                {stat(pokemon.extraData['special'], 'SPC')}
-                                {stat(pokemon.extraData['speed'], 'SPE')}
+                                {/* @TOOD: allow as styles option */}
+                                {/* {Object.keys(pokemon.extraData).map(key => {
+                                    return <React.Fragment key={key}>
+                                        {stat(pokemon?.extraData?.[key], key)}
+                                    </React.Fragment>;
+                                })} */}
+                                {generation === Generation.Gen1 ?
+                                    <>
+                                        {stat(pokemon.extraData['currentHp'], 'HP')}
+                                        {stat(pokemon.extraData['attack'], 'ATK')}
+                                        {stat(pokemon.extraData['defense'], 'DEF')}
+                                        {stat(pokemon.extraData['special'], 'SPC')}
+                                        {stat(pokemon.extraData['speed'], 'SPE')}
+                                    </>
+                                    :
+                                    <>
+                                        {stat(pokemon.extraData['currentHp'], 'HP')}
+                                        {stat(pokemon.extraData['attack'], 'ATK')}
+                                        {stat(pokemon.extraData['defense'], 'DEF')}
+                                        {stat(pokemon.extraData['specialAttack'], 'SPATK')}
+                                        {stat(pokemon.extraData['specialDefense'], 'SPDEF')}
+                                        {stat(pokemon.extraData['speed'], 'SPE')}
+                                    </>
+                                }
                             </div>
                         ) : null}
                         {linkedPokemon && (
@@ -204,7 +224,7 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                             </div>
                         )}
                     </div>
-                    {style.showPokemonMoves ? (
+                    {style.showPokemonMoves && !pokemon.egg ? (
                         <Moves
                             generation={this.props.generation}
                             moves={pokemon.moves}
@@ -247,6 +267,7 @@ export function TeamPokemonBaseMinimal (props: TeamPokemonBaseProps & {spriteSty
                 style={style}
                 editor={editor}
                 shiny={poke?.shiny}
+                egg={poke?.egg}
                 name={game.name}
             >
                 {(backgroundImage) => {
@@ -266,7 +287,7 @@ export function TeamPokemonBaseMinimal (props: TeamPokemonBaseProps & {spriteSty
             <div className="pokemon-info">
                 <div className="pokemon-info-inner">
                     <span className="pokemon-nickname">{pokemon.nickname}</span>
-                    <span className="pokemon-name">{pokemon.species}</span>
+                    <span className="pokemon-name">{!pokemon.egg ? pokemon.species : '???'}</span>
                     {pokemon.level ? (
                         <span className="pokemon-level">lv. {pokemon.level}</span>
                     ) : null}
@@ -299,6 +320,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, {imag
             name: game.name,
             editor: editor,
             gender: poke?.gender,
+            egg: poke?.egg,
         });
 
         this.setState({ image });
@@ -457,8 +479,8 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, {imag
                             cursor: 'pointer',
                             background: this.props.style.teamPokemonBorder
                                 ? getBackgroundGradient(
-                                    poke.types != null ? poke.types[0] : 'Normal',
-                                    poke.types != null ? poke.types[1] : 'Normal',
+                                    poke.types != null && !poke.egg ? poke.types[0] : 'Normal',
+                                    poke.types != null && !poke.egg ? poke.types[1] : 'Normal',
                                     customTypes,
                                 )
                                 : 'transparent',
@@ -471,6 +493,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, {imag
                         style={style}
                         editor={editor}
                         name={game.name}
+                        egg={poke.egg}
                         shiny={poke.shiny}
                     >
                         {(backgroundImage) => {
@@ -496,8 +519,8 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, {imag
                         cursor: 'pointer',
                         background: this.props.style.teamPokemonBorder
                             ? getBackgroundGradient(
-                                poke.types != null ? poke.types[0] : 'Normal',
-                                poke.types != null ? poke.types[1] : 'Normal',
+                                poke.types != null && !poke.egg ? poke.types[0] : 'Normal',
+                                poke.types != null && !poke.egg ? poke.types[1] : 'Normal',
                                 customTypes,
                             )
                             : 'transparent',
@@ -510,6 +533,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, {imag
                         style={style}
                         editor={editor}
                         name={game.name}
+                        egg={poke.egg}
                         shiny={poke.shiny}
                     >
                         {(backgroundImage) => {

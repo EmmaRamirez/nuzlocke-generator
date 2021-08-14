@@ -1,4 +1,12 @@
-import { EDIT_BOX, REPLACE_STATE, VERSION_0_0_6_BETA, Action, ADD_BOX, DELETE_BOX, UPDATE_BOXES } from 'actions';
+import {
+    EDIT_BOX,
+    REPLACE_STATE,
+    VERSION_0_0_6_BETA,
+    Action,
+    ADD_BOX,
+    DELETE_BOX,
+    UPDATE_BOXES,
+} from 'actions';
 import { Boxes } from 'models';
 
 const defaultBoxes: Boxes = [
@@ -26,7 +34,9 @@ const defaultBoxes: Boxes = [
 
 export function box(
     state = defaultBoxes,
-    action: Action<EDIT_BOX | REPLACE_STATE | VERSION_0_0_6_BETA | ADD_BOX | DELETE_BOX | UPDATE_BOXES>,
+    action: Action<
+    EDIT_BOX | REPLACE_STATE | VERSION_0_0_6_BETA | ADD_BOX | DELETE_BOX | UPDATE_BOXES
+    >,
 ) {
     switch (action.type) {
         case EDIT_BOX:

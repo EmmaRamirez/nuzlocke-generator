@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
 import { DeadPokemonBase } from '../DeadPokemon';
 import { generateEmptyPokemon, styleDefaults } from 'utils';
-import { Pokemon } from 'models';
+import { render, screen } from 'utils/testUtils';
 
 const poke = {
     ...generateEmptyPokemon(),
@@ -15,7 +14,7 @@ const poke = {
 
 describe('<DeadPokemon />', () => {
     it('renders its content', () => {
-        const wrapper = mount(
+        render(
             <DeadPokemonBase
                 game={{ name: 'Red', customName: '' }}
                 style={styleDefaults}
@@ -24,7 +23,6 @@ describe('<DeadPokemon />', () => {
                 {...poke}
             />,
         );
-        expect(wrapper.text()).toContain(poke.causeOfDeath);
-        expect(wrapper.text()).toContain(poke.nickname);
+        expect(screen.getByTestId('cause-of-death').textContent).toContain(poke.causeOfDeath);
     });
 });

@@ -14,6 +14,7 @@
       "experimentalDecorators": true,
       "allowSyntheticDefaultImports": false,
       "esModuleInterop": true,
+      "resolveJsonModule": true,
       "allowJs": true,
       "lib": [
         "dom",

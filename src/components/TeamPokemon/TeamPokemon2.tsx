@@ -63,9 +63,7 @@ const TeamCheckpointsDisplay = ({game, pokemon, style}) => {
             />
         </div>
     </ErrorBoundary>;
-}
-
-
+};
 
 export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPokemonProps) {
     const style = useSelector<State, State['style']>((state) => state.style);
@@ -92,10 +90,11 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
                 name: name,
                 editor: editor,
                 gender: pokemon.gender,
+                egg: pokemon.egg,
             });
             setImage(newImage);
         })();
-    }, [pokemon.species, pokemon.customImage, pokemon.forme, pokemon.shiny, style, name, editor, pokemon.gender]);
+    }, [pokemon.species, pokemon.customImage, pokemon.forme, pokemon.shiny, style, name, editor, pokemon.gender, pokemon.egg]);
 
     const classes = {
         teamPokemon: teamPokemon(options),
@@ -117,6 +116,7 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
             forme={pokemon?.forme}
             shiny={pokemon?.shiny}
             gender={pokemon?.gender}
+            egg={pokemon?.egg}
             customIcon={pokemon?.customIcon}
         />
     );

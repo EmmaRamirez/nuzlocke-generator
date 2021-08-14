@@ -51,6 +51,7 @@ export const BoxedPokemonBase = (poke: BoxedPokemonProps) => {
                     forme={poke?.forme}
                     shiny={poke?.shiny}
                     gender={poke?.gender}
+                    egg={poke?.egg}
                     customIcon={poke?.customIcon}
                     className={'boxed-pokemon-icon'}
                 />
@@ -69,21 +70,21 @@ export const BoxedPokemonBase = (poke: BoxedPokemonProps) => {
                         {poke?.style?.displayGameOriginForBoxedAndDead &&
                             !poke?.style?.displayBackgroundInsteadOfBadge &&
                             poke?.gameOfOrigin && (
-                                <span
-                                    className="boxed-pokemon-gameoforigin"
-                                    style={{
-                                        background: gameOfOriginToColor(poke?.gameOfOrigin),
-                                        color: getContrastColor(
-                                            gameOfOriginToColor(poke?.gameOfOrigin),
-                                        ),
-                                        fontSize: '80%',
-                                        borderRadius: '.25rem',
-                                        margin: '.25rem',
-                                        padding: '.25rem',
-                                    }}>
-                                    {poke?.gameOfOrigin}
-                                </span>
-                            )}
+                            <span
+                                className="boxed-pokemon-gameoforigin"
+                                style={{
+                                    background: gameOfOriginToColor(poke?.gameOfOrigin),
+                                    color: getContrastColor(
+                                        gameOfOriginToColor(poke?.gameOfOrigin),
+                                    ),
+                                    fontSize: '80%',
+                                    borderRadius: '.25rem',
+                                    margin: '.25rem',
+                                    padding: '.25rem',
+                                }}>
+                                {poke?.gameOfOrigin}
+                            </span>
+                        )}
                     </span>
                 </div>
             )}

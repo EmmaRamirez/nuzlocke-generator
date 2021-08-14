@@ -120,6 +120,7 @@ export class AppBase extends React.Component<AppProps, {result2?: boolean}> {
                 </React.Suspense>
             </div>}>
                 <div
+                    data-testid="app"
                     className="app"
                     role="main"
                     style={{
@@ -136,7 +137,6 @@ export class AppBase extends React.Component<AppProps, {result2?: boolean}> {
                             <Editor />
                         </React.Suspense>
                     </ErrorBoundary>
-                   
                     {result2 ? <ErrorBoundary key={3}>
                         <React.Suspense fallback={'Loading Result...'}>
                             <Result2 />

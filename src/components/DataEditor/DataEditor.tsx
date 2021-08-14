@@ -7,12 +7,10 @@ import {
     Callout,
     TextArea,
     Intent,
-    Alert,
     Toaster,
     Switch,
     Classes,
     Checkbox,
-    IAlertProps,
     Icon,
     Popover,
     PopoverInteractionKind,
@@ -22,15 +20,18 @@ import { ErrorBoundary } from 'components/Shared';
 const uuid = require('uuid');
 import { persistor } from 'store';
 import { newNuzlocke, replaceState, setEditorHistoryDisabled } from 'actions';
-import { Game, Pokemon } from 'models';
+import { Game, Pokemon, Trainer } from 'models';
 import { omit } from 'ramda';
 import { BaseEditor } from 'components/BaseEditor';
 import { State } from 'state';
 import { noop } from 'redux-saga/utils';
-import { feature } from 'utils';
-const isEmpty = require('lodash/isEmpty');
+import { feature, GameSaveFormat } from 'utils';
+import { DeleteAlert } from './DeleteAlert';
 
-const trash = require('assets/img/trash.png').default;
+const isEmpty = require('lodash/isEmpty');
+import codegen from 'codegen.macro';
+import { BoxMappings } from 'parsers/utils/boxMappings';
+
 
 export interface DataEditorProps {
     state: State;
@@ -45,13 +46,15 @@ export interface DataEditorState {
     mode: 'import' | 'export';
     data: string;
     href: string;
-    selectedGame: string;
+    selectedGame: GameSaveFormat;
     mergeDataMode: boolean;
     showSaveFileUI: boolean;
     overrideImport: boolean;
+    isSettingsOpen: boolean;
+    boxMappings: BoxMappings;
 }
 
-const getGameNumberOfBoxes = (game: string) => {
+const getGameNumberOfBoxes = (game: GameSaveFormat) => {
     switch (game) {
         case 'RBY':
             return 12;
@@ -63,18 +66,6 @@ const getGameNumberOfBoxes = (game: string) => {
     }
 };
 
-const hexEncode = function (str: string) {
-    let hex, i;
-
-    let result = '';
-    for (i = 0; i < str.length; i++) {
-        hex = str.charCodeAt(i).toString(16);
-        result += `000${hex}`.slice(-4);
-    }
-
-    return result;
-};
-
 const isValidJSON = (data: string): boolean => {
     try {
         JSON.parse(data);
@@ -84,28 +75,7 @@ const isValidJSON = (data: string): boolean => {
     }
 };
 
-export type WarningText = { warningText?: string };
-export function DeleteAlert({
-    warningText = 'This will permanently delete all your local storage data, with no way to retrieve it. Are you sure you want to do this?',
-    ...props
-}: IAlertProps & WarningText) {
-    const style = useSelector<State, State['style']>((state) => state.style);
 
-    return (
-        <Alert
-            cancelButtonText="Nevermind"
-            confirmButtonText="Delete Anyway"
-            className={style.editorDarkMode ? 'bp3-dark' : 'bp3-light'}
-            style={{ maxWidth: '600px' }}
-            intent={Intent.DANGER}
-            {...props}>
-            <div style={{ display: 'flex' }}>
-                <img style={{ height: '10rem' }} src={trash} alt="Sad Trubbish" />
-                <p style={{ fontSize: '1.2rem', padding: '1rem' }}>{warningText}</p>
-            </div>
-        </Alert>
-    );
-}
 
 // This is to handle very weird/rare edge cases where data
 // can be parsed, but then in turn has to be "double-parsed"
@@ -132,6 +102,92 @@ const handleExceptions = (data) => {
     return (isEmpty(updated)) ? data : updated;
 };
 
+export interface SaveGameSettingsDialogProps {
+    onMergeDataChange: (e: any) => void;
+    mergeDataMode: boolean;
+    boxes: State['box'];
+    selectedGame: GameSaveFormat;
+    boxMappings: BoxMappings;
+    setBoxMappings: ({key, status}) => void;
+}
+
+// Quick and dirty method of getting Array w n.length
+const generateArray = (n: number) => {
+    const arr: BoxMappings = [];
+    for (let i = 1; i < n + 1; i++) {
+        if (i === 2) {
+            arr.push({key: i, status: 'Dead'});
+        } else {
+            arr.push({key: i, status: 'Boxed'});
+        }
+    }
+    return arr;
+};
+
+const generateBoxMappingsDefault = (saveFormat) => generateArray(getGameNumberOfBoxes(saveFormat));
+
+export function BoxSelect({boxes, value, boxKey, setBoxMappings}: {boxes: State['box'], value: string, boxKey: number, setBoxMappings: SaveGameSettingsDialogProps['setBoxMappings']}) {
+    return <div className={Classes.SELECT}>
+        <select
+            value={value}
+            onChange={e => setBoxMappings({ key: boxKey, status: e.target.value })}
+        >
+            {boxes.map((box) => (
+                <option key={box.id} value={box.name}>
+                    {box.name}
+                </option>
+            ))}
+        </select>
+    </div>;
+}
+
+export function SaveGameSettingsDialog({
+    onMergeDataChange,
+    mergeDataMode,
+    boxes,
+    selectedGame,
+    boxMappings,
+    setBoxMappings,
+}: SaveGameSettingsDialogProps) {
+
+    // const select = (
+    //     <Select
+    //         items={boxes}
+    //         onItemSelect={() => {}}
+    //     >
+    //     </Select>
+    // );
+
+    return <div className="bp3-dialog-body has-nice-scrollbars">
+        <Switch
+            labelElement={<>
+                <strong>Merge Data?</strong>
+                <p className={Classes.TEXT_MUTED}>
+                    Merges your current data with that of the save file, using an ID match algorithm.
+                    Disabling this will overwrite your current data with that from the save file.
+                    NOTE: this method of determining IDs is based off IVs in Gen I &amp; II.
+                </p>
+            </>}
+            checked={mergeDataMode}
+            onChange={onMergeDataChange}
+        />
+
+        <div style={{height: '60vh', overflow: 'auto', display: 'flex', flexDirection: 'column', flexWrap: 'wrap'}} className='has-nice-scrollbars'>
+            {boxMappings.map((value, index) => {
+                return <div style={{padding: '0.25rem'}}>
+                    <BoxSelect boxKey={value.key} setBoxMappings={setBoxMappings} value={value.status} boxes={boxes} />
+                    <div
+                        className={Classes.BUTTON}
+                        style={{marginLeft: '0.25rem',
+                            cursor: 'default', width: '8rem'}}
+                    >{`Box ${value.key}`}</div>
+                </div>;
+            })}
+        </div>
+
+    </div>;
+}
+
 export class DataEditorBase extends React.Component<DataEditorProps, DataEditorState> {
     public textarea: any;
     public fileInput: any;
@@ -149,7 +205,15 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
             mergeDataMode: true,
             showSaveFileUI: false,
             overrideImport: true,
+            isSettingsOpen: false,
+            boxMappings: [],
         };
+    }
+
+    public componentDidMount() {
+        this.setState(state => ({
+            boxMappings: generateBoxMappingsDefault(state.selectedGame)
+        }));
     }
 
     private uploadJSON = (e) => {
@@ -244,8 +308,16 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         }
     }
 
-    private static determineGame(isYellow: boolean): Game {
+    private static determineGame({
+        isYellow,
+        selectedGame,
+    }: {
+        isYellow?: boolean,
+        selectedGame?: GameSaveFormat
+    }): Game {
         if (isYellow) return { name: 'Yellow', customName: '' };
+        if (selectedGame === 'GS') return { name: 'Gold', customName: '' };
+        if (selectedGame === 'Crystal') return { name: 'Crystal', customName: '' };
         return { name: 'Red', customName: '' };
     }
 
@@ -266,61 +338,52 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
 
     private uploadFile = (replaceState, state) => (e) => {
         const t0 = performance.now();
-        // const worker = new Worker('./parseFile.js');
-
-        // worker.onmessage = (e) => {
-        //     console.log(
-        //         e.data,
-        //         'Message recieved.',
-        //     );
-        // };
+        // @NOTE: this is a gross work-around a bug with jest and import.meta.url
+        const worker = new Worker(new URL('parsers/worker.ts', codegen`module.exports = process.env.NODE_ENV === "test" ? "" : "import.meta.url"`));
 
         const file = this.fileInput.files[0];
         const reader = new FileReader();
         const componentState = this.state;
 
-        // worker.postMessage({file});
-
         reader.readAsArrayBuffer(file);
 
         reader.addEventListener('load', async function () {
-            const u = new Uint8Array(this.result as ArrayBuffer);
+            const save = new Uint8Array(this.result as ArrayBuffer);
 
-            const parsers = await import('parsers');
+            worker.postMessage({
+                selectedGame: componentState.selectedGame,
+                save,
+                boxMappings: componentState.boxMappings,
+            });
 
-            const functionToUse =
-                componentState.selectedGame === 'RBY'
-                    ? parsers.parseGen1Save(u as Buffer, {type: 'nuzlocke'})
-                    : parsers.parseGen2Save(u, 'nuzlocke');
-            try {
-                const result = await functionToUse;
-
-                // strip out invalid species
-                result.pokemon = result.pokemon.filter((poke) => poke.species);
+            worker.onmessage = (e: MessageEvent<{ pokemon: Pokemon[], isYellow?: boolean, trainer: Trainer }>) => {
+                const result = e.data;
                 const mergedPokemon = componentState.mergeDataMode
                     ? DataEditorBase.pokeMerge(state.pokemon, result.pokemon as Pokemon[])
                     : result.pokemon;
                 const data = {
-                    // @ts-expect-error
-                    game: DataEditorBase.determineGame(result?.isYellow),
+                    game: DataEditorBase.determineGame({
+                        isYellow: result.isYellow,
+                        selectedGame: componentState.selectedGame,
+                    }),
                     pokemon: mergedPokemon,
                     trainer: result.trainer,
                 };
                 const newState = { ...state, ...data };
-
-                //worker.postMessage(newState);
-
                 replaceState(newState);
-                const t1 = performance.now();
-                console.info(`Call: ${t1 - t0} ms on ${componentState.selectedGame} save file type`);
-            } catch (e) {
+            };
+
+            worker.onmessageerror = (err) => {
                 const toaster = Toaster.create();
                 toaster.show({
-                    message: `Failed to parse save file. ${e}`,
+                    message: `Failed to parse save file. ${err}`,
                     intent: Intent.DANGER,
                 });
-                console.error(e);
-            }
+                console.error(err);
+            };
+
+            const t1 = performance.now();
+            console.info(`Call: ${t1 - t0} ms on ${componentState.selectedGame} save file type`);
         });
     };
 
@@ -372,7 +435,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         <div className={Classes.SELECT}>
                             <select
                                 value={this.state.selectedGame}
-                                onChange={(e) => this.setState({ selectedGame: e.target.value })}>
+                                onChange={(e) => this.setState({ selectedGame: e.target.value as GameSaveFormat })}>
                                 {allowedGames.map((game) => (
                                     <option key={game} value={game}>
                                         {game}
@@ -380,27 +443,6 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                                 ))}
                             </select>
                         </div>
-                    </div>
-
-                    <div
-                        className="bp3-label bp3-inline"
-                        style={{
-                            padding: '.25rem 0',
-                            paddingBottom: '.5rem',
-                            marginLeft: '.25rem',
-                        }}>
-                        <Switch
-                            labelElement={
-                                <>
-                                    Merge Data?{' '}
-                                    <Popover content={<span style={{padding: '4px', width: '200px'}}>Merges the data from the first with the second. NOTE: this method of determining IDs is based off IVs in Gen I &amp; II.</span>}interactionKind={PopoverInteractionKind.HOVER}><Icon icon='info-sign' /></Popover>
-                                </>
-                            }
-                            checked={this.state.mergeDataMode}
-                            onChange={(e) =>
-                                this.setState({ mergeDataMode: !this.state.mergeDataMode })
-                            }
-                        />
                     </div>
 
                     <div
@@ -422,9 +464,42 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         />
                     </div>
 
-                    <Callout intent={Intent.WARNING} style={{ fontSize: '80%', marginTop: '0.5rem' }}>
-                        Tip: Box #1 in the save file maps to "Boxed," Box #2 maps to "Dead"
-                    </Callout>
+                    <Button
+                        onClick={(e) => this.setState({ isSettingsOpen: true })}
+                        minimal
+                        intent={Intent.PRIMARY}
+                    >
+                        Options
+                    </Button>
+
+                    <Dialog
+                        isOpen={this.state.isSettingsOpen}
+                        onClose={(e) => this.setState({ isSettingsOpen: false })}
+                        title={'Save Upload Settings'}
+                        className={this.props.state.style.editorDarkMode ? 'bp3-dark' : ''}
+                        icon="floppy-disk">
+                        <SaveGameSettingsDialog
+                            mergeDataMode={this.state.mergeDataMode}
+                            onMergeDataChange={() => this.setState({ mergeDataMode: !this.state.mergeDataMode })}
+                            boxes={this.props.state.box}
+                            selectedGame={this.state.selectedGame}
+                            boxMappings={this.state.boxMappings}
+                            setBoxMappings={({key, status}) => {
+                                console.log('setBoxMappings:', key, status);
+                                this.setState(({boxMappings}) => {
+                                    const newBoxMappings = boxMappings.map(({key: boxKey, status: boxStatus}) => {
+                                        if (key === boxKey) {
+                                            return {key, status};
+                                        }
+                                        return {key: boxKey, status: boxStatus};
+                                    });
+                                    return {
+                                        boxMappings: newBoxMappings,
+                                    };
+                                });
+                            }}
+                        />
+                    </Dialog>
                 </div>
             </>
         );
@@ -562,7 +637,10 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                 <Checkbox
                     checked={this.props.state.editor.editorHistoryDisabled}
                     onChange={e => this.props.setEditorHistoryDisabled(e.currentTarget.checked)}
-                    labelElement={<>Disable Editor History <Popover content='Can be used to achieve better editor performance on larger saves' interactionKind={PopoverInteractionKind.HOVER}><Icon icon='info-sign' /></Popover></>}
+                    labelElement={<>Disable Editor History <Popover content={
+                        <div style={{width: '8rem', padding: '.25rem'}}>Can be used to achieve better editor performance on larger saves</div>
+                    }
+                    interactionKind={PopoverInteractionKind.HOVER}><Icon icon='info-sign' /></Popover></>}
                 />
             </BaseEditor>
         );

@@ -16,6 +16,8 @@ import { ErrorBoundary } from 'components';
 (window as any).global = window;
 // @ts-ignore
 window.Buffer = window.Buffer || require('buffer').Buffer;
+// @ts-ignore
+window.path = window.path || require('path').path;
 
 async function getRollbar() {
     // @ts-expect-error

@@ -1,0 +1,141 @@
+{
+    "dev": [
+        {
+            "name": "emma",
+            "link": "http://emmaramirez.me/",
+            "role": "creator"
+        },
+        {
+            "name": "BlazeVolt",
+            "link": "https://github.com/BlazeVolt",
+            "role": "tcg images"
+        },
+        {
+            "name": "steven",
+            "link": "https://github.com/shdblowers",
+            "role": "bugfixes"
+        },
+        {
+            "name": "PJ",
+            "link": "https://www.pjsilverio.com/",
+            "role": "ui/ux feedback"
+        }
+    ],
+    "art": [
+        {
+            "name": "Mark331",
+            "link": "https://www.deviantart.com/mark331",
+            "role": "Bulbasaur"
+        },
+        {
+            "name": "Joltik92",
+            "link": "https://www.deviantart.com/joltik92",
+            "role": "Ivysaur"
+        },
+        {
+            "name": "Vermeilbird",
+            "link": "https://www.deviantart.com/vermeilbird/",
+            "role": "Charmander"
+        },
+        {
+            "name": "Korriarendo",
+            "link": "https://www.deviantart.com/koriarredondo",
+            "role": "Squirtle"
+        },
+        {
+            "name": "Clefdesol",
+            "link": "https://www.deviantart.com/clefdesoll",
+            "role": "Blastoise"
+        },
+        {
+            "name": "Axmongrel",
+            "link": "https://www.deviantart.com/axmongrel",
+            "role": "Alakazam"
+        },
+        {
+            "name": "Jarrett Onions",
+            "link": "https://www.deviantart.com/jarrettonions",
+            "role": "Abra"
+        },
+        {
+            "name": "Paperbagedhead",
+            "link": "https://www.deviantart.com/paperbagedhead",
+            "role": "Bellsprout"
+        },
+        {
+            "name": "SergeantSera",
+            "link": "https://www.deviantart.com/sergeantsera",
+            "role": "Pidgeot, Vaporeon"
+        },
+        {
+            "name": "Tamaume",
+            "link": "https://www.deviantart.com/tamaume",
+            "role": "Beedrill"
+        },
+        {
+            "name": "Tsaoshin",
+            "link": "https://www.deviantart.com/tsaoshin",
+            "role": "Arcanine"
+        },
+        {
+            "name": "Nintendojr",
+            "link": "https://www.deviantart.com/nintendo-jr",
+            "role": "Butterfree"
+        },
+        {
+            "name": "Arashi",
+            "link": "https://www.deviantart.com/thearashi",
+            "role": "Gengar"
+        },
+        {
+            "name": "Kristanye",
+            "link": "https://www.deviantart.com/krisantyne",
+            "role": "Porygon2"
+        },
+        {
+            "name": "Avro Illusion",
+            "link": "https://www.deviantart.com/avroillusion",
+            "role": "Porygon"
+        },
+        {
+            "name": "Kylogram",
+            "link": "https://www.deviantart.com/kylogram",
+            "role": "Spearow"
+        },
+        {
+            "name": "Louivi",
+            "link": "https://www.deviantart.com/louivi",
+            "role": "Chansey"
+        },
+        {
+            "name": "SalvadorKatz",
+            "link": "https://www.deviantart.com/salvadorkatz",
+            "role": "Ditto"
+        },
+        {
+            "name": "Nil's Art",
+            "link": "https://nils302.tumblr.com/",
+            "role": "Arbok"
+        },
+        {
+            "name": "Destroyedsteak",
+            "link": "https://www.deviantart.com/destroyedsteak",
+            "role": "Fearow"
+        },
+        {
+            "name": "Meloetta's Cafe",
+            "link": "https://www.deviantart.com/meloettascafe",
+            "role": "Exeggcute"
+        },
+        {
+            "name": "Raizy",
+            "link": "https://www.deviantart.com/raizy",
+            "role": "Golbat"
+        },
+        {
+            "name": "match",
+            "link": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/xy-series/g1/8/",
+            "role": "Tangela"
+        }
+    ]
+}

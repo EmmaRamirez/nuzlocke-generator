@@ -11,6 +11,7 @@ export interface PokemonImageProps {
     shiny?: Pokemon['shiny'];
     species?: Pokemon['species'];
     gender?: Pokemon['gender'];
+    egg?: Pokemon['egg'];
     style?: State['style'];
     editor?: State['editor'];
     name?: State['game']['name'];
@@ -29,6 +30,7 @@ export function PokemonImage({
     name,
     gender,
     url,
+    egg,
 }: PokemonImageProps) {
     const [image, setImage] = React.useState('');
 
@@ -48,6 +50,7 @@ export function PokemonImage({
                     name: name,
                     editor: editor,
                     gender: gender,
+                    egg: egg,
                 }));
             })();
         } catch (e) {
@@ -63,6 +66,7 @@ export function PokemonImage({
         editor,
         gender,
         url,
+        egg,
     ]);
 
     return children?.(image) || <img src={image} />;

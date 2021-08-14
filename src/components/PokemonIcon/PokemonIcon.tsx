@@ -135,6 +135,7 @@ export function PokemonIconPlain({
     selectedId,
     className,
     shiny,
+    egg,
     style,
     customIcon,
     includeTitle,
@@ -170,6 +171,7 @@ export function PokemonIconPlain({
                     forme,
                     shiny,
                     gender,
+                    egg,
                     customIcon,
                 } as IconURLArgs)}
             /> }

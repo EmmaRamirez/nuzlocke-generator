@@ -39,7 +39,6 @@ export function TrainerInfoEditField ({
         delayedValue(e);
     };
 
-
     return <div className="trainer-info-field">
         <label>{label}</label>
         {element ? (

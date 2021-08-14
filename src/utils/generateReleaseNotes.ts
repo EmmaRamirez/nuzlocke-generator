@@ -708,7 +708,7 @@ Thank you!
 - The 'Evolve' button is only available for Gen I & II games
 - **Drag and drop will not reorder positions, you will still have to do that in the editor**
 `,
-    '1.4.10': `s
+    '1.4.10': `
 ## Features
 - Auto-evolve button now works for all games & generations
 
@@ -792,5 +792,21 @@ Thank you!
 
 ## Known Issues
 - Download Image may not always work. This will depend on the browser's policies for requesting images from a different domain inside of an HTML canvas.
-`
+`,
+    '1.8.0': `
+## Features
+- **Generation II**: now available in the save file uploader!
+- **Box Mapping**: have lots of boxes in your saves? Now you can decide what status all of them correspond to.
+- **Credits**: there is a now a section of the nuzlocke-generator dedicated to credits, check it out!
+    - I'll be working on updating the art credits for the next few updates. Please be patient as I work to properly credit all the artists!
+
+## Fixes
+- Eggs will now show up with a proper egg image under most circumstances
+- Data from eggs like species or type is no longer shown (but still in the editor, so the egg checkbox is now a toggle for it)
+- Minor UI fixes
+- Average level now displays... average levels. Whoops.
+
+## Known Issues
+- Download Image may not always work. This will depend on the browser's policies for requesting images from a different domain inside of an HTML canvas.
+`,
 };

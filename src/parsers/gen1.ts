@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/prefer-for-of */
 import * as fs from 'fs';
 import { splitUp, GEN_1_POKEMON_MAP, GEN_1_CHARACTER_MAP, MOVES_ARRAY } from './utils';
+import { Buffer } from 'buffer';
+import { parseTime } from './utils/parseTime';
+import { ParserOptions } from './utils/parserOptions';
 const uuid = require('uuid');
 
 // tslint:disable-next-line:class-name
@@ -47,20 +50,20 @@ const OFFSETS = {
     POKEMON_PC_SECOND_HALF: 0x6000,
 };
 
-const BOX_OFFSETS = {
-    ONE: 0x4000,
-    TWO: 0x4462,
-    THREE: 0x48c4,
-    FOUR: 0x4d26,
-    FIVE: 0x5188,
-    SIX: 0x55ea,
-    SEVEN: 0x6000,
-    EIGHT: 0x6462,
-    NINE: 0x68c4,
-    TEN: 0x6d26,
-    ELEVEN: 0x7188,
-    TWELVE: 0x75ea,
-};
+const BOX_OFFSETS = [
+    0x4000,
+    0x4462,
+    0x48c4,
+    0x4d26,
+    0x5188,
+    0x55ea,
+    0x6000,
+    0x6462,
+    0x68c4,
+    0x6d26,
+    0x7188,
+    0x75ea,
+];
 
 const checksum = (data: Uint8Array) => {
     let checksumN = 255;
@@ -209,11 +212,6 @@ const removeLastEntries = (entries, arr) => {
 };
 
 const parsePokemonParty = (buf: Buffer) => {
-    // 5
-    // pokemon[5]
-    // 4
-    // pokemon[4], pokemon[5]
-
     const party = Buffer.from(buf);
     const entriesUsed = party[0x0000];
     const rawSpeciesList = party.slice(0x0001, 0x0007);
@@ -249,16 +247,11 @@ const parseBoxedPokemon = (buf: Buffer): Gen1PokemonObject => {
     };
 };
 
-const transformPokemon = (pokemonObject: Gen1PokemonObject, status: string) => {
-    const TIER: Readonly<{ [status: string]: number }> = Object.freeze({
-        Team: 1,
-        Boxed: 2,
-        Dead: 3,
-    });
+const transformPokemon = (pokemonObject: Gen1PokemonObject, status: string, boxIndex = 1) => {
     return pokemonObject.pokemonList
         .map((poke, index) => {
             return {
-                position: (index + 1) * TIER[status],
+                position: (index + 1) * boxIndex,
                 species: poke.species,
                 status: status,
                 level: poke.level,
@@ -272,16 +265,7 @@ const transformPokemon = (pokemonObject: Gen1PokemonObject, status: string) => {
         .filter((poke) => poke.species);
 };
 
-const parseTime = (buf: Buffer) => {
-    const time = Buffer.from(buf);
-    const hours = time[0x01] + time[0x00];
-    const minutes = Math.ceil(time[0x02] + time[0x03] / 60);
-    const minutesFormatted = minutes === 0 ? '00' : minutes;
-
-    return `${hours}:${minutesFormatted}`;
-};
-
-export const parseGen1Save = async (file: Buffer, options: SaveFileOptions) => {
+export const parseGen1Save = async (file: Buffer, options: ParserOptions) => {
     const yellow = file[OFFSETS.PIKACHU_FRIENDSHIP] > 0;
     const trainerName = convertWithCharMap(
         file.slice(OFFSETS.PLAYER_NAME, OFFSETS.PLAYER_NAME + 11),
@@ -315,10 +299,13 @@ export const parseGen1Save = async (file: Buffer, options: SaveFileOptions) => {
             .join(''),
     );
 
-    const boxedPokemon = parseBoxedPokemon(
-        file.slice(OFFSETS.CURRENT_BOX, OFFSETS.CURRENT_BOX + 0x462),
-    );
-    const deadPokemon = parseBoxedPokemon(file.slice(BOX_OFFSETS.TWO, BOX_OFFSETS.TWO + 0x462));
+    const pokemonFromBoxes = BOX_OFFSETS.map((box, boxIndex) => {
+        return transformPokemon(
+            parseBoxedPokemon(file.slice(box, box + 0x462)),
+            options.boxMappings[boxIndex]['status'],
+            boxIndex + 1,
+        );
+    }).flat();
 
     const badgesPossible = [
         { name: 'Boulder Badge', image: 'boulder-badge' },
@@ -350,37 +337,9 @@ export const parseGen1Save = async (file: Buffer, options: SaveFileOptions) => {
         pokemon: [
             // @ts-ignore
             ...transformPokemon(pokemonParty, 'Team'),
-            ...transformPokemon(boxedPokemon, 'Boxed'),
-            ...transformPokemon(deadPokemon, 'Dead'),
+            ...pokemonFromBoxes,
         ],
     };
 
     return save;
 };
-
-export interface SaveFileOptions {
-    type: 'nuzlocke' | 'plain';
-    boxes?: {
-        [prop: string]: number[];
-    };
-}
-
-export const loadGen1SaveFile = async (filename: string, options: SaveFileOptions) => {
-    const save = await fs.readFileSync(filename);
-
-    try {
-        const file = Buffer.from(save);
-        const result = await parseGen1Save(file, options);
-        return await result;
-    } catch {
-        throw new Error('Oops');
-    }
-};
-
-/**
- * Money: 3175
- * Badges: 0?
- * Time: 0:35
- * Name: YELLOW
- * Party: level 11 PIKACHU
- */

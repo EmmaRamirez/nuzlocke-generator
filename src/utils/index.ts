@@ -52,3 +52,4 @@ export * from './feature';
 export * from './matchNatureToToxtricityForme';
 export * from './handleSignificantGenderDifferences';
 export * from './wrapImageInCORS';
+export * from './gameSaveFormat';

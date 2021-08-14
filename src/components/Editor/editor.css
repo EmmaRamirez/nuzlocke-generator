@@ -70,6 +70,7 @@ html.bp3-dark {
 .checklist-editor,
 .saves-editor,
 .data-editor,
+.bug-reports-and-feature-requests-editor,
 .stats-editor {
   padding: 0.3rem;
 }

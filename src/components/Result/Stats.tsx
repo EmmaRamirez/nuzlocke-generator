@@ -119,18 +119,18 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
                 return prev;
             }
             return prev + Number.parseInt(poke.level as unknown as string);
-        }, 0);
+        }, 0) / pokes.length;
     }
 
     private getAverageLevelByStatus(status: string) {
         const pokes = this.props.pokemon.filter((p) => !p.hidden && p.status === status);
         if (!pokes.length) return 0;
-        return pokes.reduce((prev, poke, arr) => {
+        return (pokes.reduce((prev, poke, arr) => {
             if (Number.isNaN(poke.level) || !poke.level) {
                 return prev;
             }
             return prev + Number.parseInt(poke.level as unknown as string);
-        }, 0);
+        }, 0) / pokes.length);
     }
 
     private getShinies() {
@@ -145,12 +145,12 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
     private numberOfShinies = this.props.pokemon.filter((s) => s.shiny).length;
 
     private getAverageLevelComponent() {
-        return <div>Average Level: {this.getAverageLevel()}</div>;
+        return <div>Average Level: {this.getAverageLevel()?.toFixed(0)}</div>;
     }
 
     private getAverageLevelDetailedComponent() {
         return <div>Average Level: {this.props.box.map((b, idx, arr) => {
-            return <> {b.name} ({this.getAverageLevelByStatus(b.name)}){idx < arr.length - 1 ? ',' : ''}</>;
+            return <> {b.name} ({this.getAverageLevelByStatus(b.name)?.toFixed(0)}){idx < arr.length - 1 ? ',' : ''}</>;
         })}
         </div>;
     }
@@ -189,12 +189,12 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
                     ) : null}
                     {stats?.length
                         ? stats?.map((stat, idx) =>
-                              stat.key?.length && stat.value?.length ? (
-                                  <div key={stat.id}>
-                                      {stat.key}: {stat.value}
-                                  </div>
-                              ) : null,
-                          )
+                            stat.key?.length && stat.value?.length ? (
+                                <div key={stat.id}>
+                                    {stat.key}: {stat.value}
+                                </div>
+                            ) : null,
+                        )
                         : null}
                 </div>
             </div>

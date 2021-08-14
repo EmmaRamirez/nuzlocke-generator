@@ -11,7 +11,7 @@ export const topBar = css`
     justify-content: center;
     padding: 0.5rem;
     position: relative;
-    z-index: 25;
+    z-index: 19;
 `;
 
 export const topBar_mobile = css`

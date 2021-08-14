@@ -66,9 +66,9 @@ const migrations = {
             statsOptions: {
                 ...state.style.statsOptions,
                 averageLevelDetailed: false,
-            }
-        }
-    })
+            },
+        },
+    }),
 };
 
 const config = {

@@ -31,7 +31,8 @@ module.exports = {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
         modules: [path.resolve('src'), path.resolve('node_modules')],
         fallback: {
-            "buffer": require.resolve("buffer")
+            "buffer": require.resolve("buffer"),
+            "path": require.resolve("path"),
         },
     },
     devServer: {
@@ -69,7 +70,7 @@ module.exports = {
         rules: [
             {
                 test: /\.tsx?$/,
-                loader: 'ts-loader',
+                use: ['babel-loader', 'ts-loader'],
                 include: [path.resolve(__dirname, 'src')],
             },
             {
@@ -151,7 +152,6 @@ module.exports = {
     ],
     externals: {
         fs: {},
-        path: {},
     },
     // watch: true,
     // node: {

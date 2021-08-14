@@ -85,7 +85,7 @@ const PokemonLocationChecklist = ({
                 return (
                     <>
                         <Icon icon="tick" />
-                        <PokemonIcon style={{ pointerEvents: 'none'}} species={poke.species} />
+                        <PokemonIcon style={{ pointerEvents: 'none'}} {...poke} />
                     </>
                 );
             }
@@ -93,7 +93,7 @@ const PokemonLocationChecklist = ({
                 return (
                     <>
                         <Icon icon="cross" />
-                        <PokemonIcon style={{ pointerEvents: 'none' }} species={poke.species} />
+                        <PokemonIcon style={{ pointerEvents: 'none' }} {...poke} />
                     </>
                 );
             }
@@ -161,7 +161,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
         return (
             <>
                 <BaseEditor icon='circle' name="Pokemon">
-                    <div className="button-row" style={{ display: 'flex', alignItems: 'flex-start' }}>
+                    <div data-testid="pokemon-editor" className="button-row" style={{ display: 'flex', alignItems: 'flex-start' }}>
                         <AddPokemonButton
                             pokemon={{
                                 ...generateEmptyPokemon(team),
