@@ -797,6 +797,8 @@ Thank you!
 ## Features
 - **Generation II**: now available in the save file uploader!
 - **Box Mapping**: have lots of boxes? Now you can decide what status all of them correspond to.
+- **Credits**: there is a now a section of the nuzlocke-generator dedicated to credits, check it out!
+    - I'll be working on updating the art credits for the next few updates. Please be patient as I work to properly credit all the artists!
 
 ## Fixes
 - Eggs will now show up with a proper egg image under most circumstances

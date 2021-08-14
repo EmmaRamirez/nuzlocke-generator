@@ -41,8 +41,11 @@ const DataEditor = React.lazy(() =>
 const EditorControls = React.lazy(() =>
     import('components/Editor/EditorControls').then((res => ({ default: res.EditorControls }))),
 );
+const Credits = React.lazy(() =>
+    import('components/Credits').then((res) => ({ default: res.Credits })),
+);
 
-const Skeleteon = <div style={{ width: '100%', height: '100px' }} className="bp3-skeleton"></div>;
+const Skeleton = <div style={{ width: '100%', height: '100px' }} className="bp3-skeleton"></div>;
 
 /**
  * The main editor interface.
@@ -60,53 +63,58 @@ export function Editor() {
                 background: editorDarkMode ? '#222' : '#fff',
             }}>
             <ErrorBoundary key={1}>
-                <React.Suspense fallback={Skeleteon}>
+                <React.Suspense fallback={Skeleton}>
                     <EditorControls editorDarkMode={editorDarkMode} minimized={minimized} />
                 </React.Suspense>
             </ErrorBoundary>
             <ErrorBoundary key={2}>
-                <React.Suspense fallback={Skeleteon}>
+                <React.Suspense fallback={Skeleton}>
                     <NuzlockeSaveControls />
                 </React.Suspense>
             </ErrorBoundary>
             <ErrorBoundary key={3}>
-                <React.Suspense fallback={Skeleteon}>
+                <React.Suspense fallback={Skeleton}>
                     <GameEditor />
                 </React.Suspense>
             </ErrorBoundary>
             <ErrorBoundary key={4}>
-                <React.Suspense fallback={Skeleteon}>
+                <React.Suspense fallback={Skeleton}>
                     <DataEditor />
                 </React.Suspense>
             </ErrorBoundary>
             <ErrorBoundary key={5}>
-                <React.Suspense fallback={Skeleteon}>
+                <React.Suspense fallback={Skeleton}>
                     <TrainerEditor />
                 </React.Suspense>
             </ErrorBoundary>
             <ErrorBoundary key={6}>
-                <React.Suspense fallback={Skeleteon}>
+                <React.Suspense fallback={Skeleton}>
                     <PokemonEditor />
                 </React.Suspense>
             </ErrorBoundary>
             <ErrorBoundary key={7}>
-                <React.Suspense fallback={Skeleteon}>
+                <React.Suspense fallback={Skeleton}>
                     <StyleEditor />
                 </React.Suspense>
             </ErrorBoundary>
             <ErrorBoundary key={8}>
-                <React.Suspense fallback={Skeleteon}>
+                <React.Suspense fallback={Skeleton}>
                     <StatsEditor />
                 </React.Suspense>
             </ErrorBoundary>
             <ErrorBoundary key={9}>
-                <React.Suspense fallback={Skeleteon}>
+                <React.Suspense fallback={Skeleton}>
                     <HotkeysEditor />
                 </React.Suspense>
             </ErrorBoundary>
             <ErrorBoundary key={10}>
-                <React.Suspense fallback={Skeleteon}>
+                <React.Suspense fallback={Skeleton}>
                     <BugReporter />
+                </React.Suspense>
+            </ErrorBoundary>
+            <ErrorBoundary key={11}>
+                <React.Suspense fallback={Skeleton}>
+                    <Credits />
                 </React.Suspense>
             </ErrorBoundary>
         </div>
