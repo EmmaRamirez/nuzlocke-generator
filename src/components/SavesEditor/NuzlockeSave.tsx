@@ -26,6 +26,7 @@ import { createStore } from 'redux';
 import { appReducers } from 'reducers';
 import { NuzlockeGameTags } from './NuzlockeGameTags';
 import { DeleteAlert } from 'components/DataEditor';
+import { HallOfFameDialog } from './HallOfFameDialog';
 
 export interface NuzlockeSaveControlsProps {
     nuzlockes: State['nuzlockes'];
@@ -41,6 +42,7 @@ export interface NuzlockeSaveControlsProps {
 
 export interface NuzlockeSaveControlsState {
     isDeletingNuzlocke: boolean;
+    isHofOpen: boolean;
     deletionFunction?: () => void;
 }
 
@@ -58,6 +60,7 @@ NuzlockeSaveControlsState
     public state = {
         isDeletingNuzlocke: false,
         deletionFunction: undefined,
+        isHofOpen: false,
     };
 
     // eslint-disable-next-line camelcase
@@ -70,6 +73,10 @@ NuzlockeSaveControlsState
 
     private toggleIsDeletingNuzlocke = () => {
         this.setState((state) => ({ isDeletingNuzlocke: !state.isDeletingNuzlocke }));
+    };
+
+    private toggleIsHofOpen = () => {
+        this.setState((state) => ({ isHofOpen: !state.isHofOpen }));
     };
 
     public renderMenu() {
@@ -85,6 +92,7 @@ NuzlockeSaveControlsState
         } = this.props;
         const { nuzlockes } = this.props;
         const { currentId } = this.props.nuzlockes;
+        const { isHofOpen, isDeletingNuzlocke, deletionFunction } = this.state;
         const saves = nuzlockes.saves.sort(sort);
 
         return (
@@ -153,11 +161,19 @@ NuzlockeSaveControlsState
                                 size={((data.length * 2) / 1024).toFixed(2)}
                             />
                             <DeleteAlert
-                                onConfirm={this.state.deletionFunction}
-                                isOpen={this.state.isDeletingNuzlocke}
+                                onConfirm={deletionFunction}
+                                isOpen={isDeletingNuzlocke}
                                 onCancel={this.toggleIsDeletingNuzlocke}
                                 warningText="This will delete your Nuzlocke save without any to retrieve it. Are you sure you want to do this?"
                             />
+                            {feature.hallOfFame &&
+                                <HallOfFameDialog
+                                    icon={'crown'}
+                                    isOpen={isHofOpen}
+                                    onClose={this.toggleIsHofOpen}
+                                    title='Hall of Fame'
+                                />
+                            }
                             <Popover
                                 position={Position.BOTTOM_RIGHT}
                                 content={
@@ -203,7 +219,7 @@ NuzlockeSaveControlsState
                                         {feature.hallOfFame && (
                                             <MenuItem
                                                 shouldDismissPopover={false}
-                                                onClick={() => {}}
+                                                onClick={this.toggleIsHofOpen}
                                                 icon={'crown'}
                                                 text="Submit to Hall of Fame"
                                             />
