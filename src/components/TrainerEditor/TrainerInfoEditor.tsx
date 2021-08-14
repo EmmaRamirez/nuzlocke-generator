@@ -75,8 +75,8 @@ export function TrainerInfoEditor() {
                     interactionKind={PopoverInteractionKind.HOVER}
                     position={Position.BOTTOM}
                     content={
-                        <Menu>
-                            Type: image url. You can also specify a plain string of{' '}
+                        <Menu style={{width: '10rem'}}>
+                            Type: image url. You can also use these keywords{' '}
                             {listOfTrainers.map((t) => (
                                 <SpanBlock key={t} text={capitalize(t)} />
                             ))}

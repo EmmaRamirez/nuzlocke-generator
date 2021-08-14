@@ -637,7 +637,10 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                 <Checkbox
                     checked={this.props.state.editor.editorHistoryDisabled}
                     onChange={e => this.props.setEditorHistoryDisabled(e.currentTarget.checked)}
-                    labelElement={<>Disable Editor History <Popover content='Can be used to achieve better editor performance on larger saves' interactionKind={PopoverInteractionKind.HOVER}><Icon icon='info-sign' /></Popover></>}
+                    labelElement={<>Disable Editor History <Popover content={
+                        <div style={{width: '8rem', padding: '.25rem'}}>Can be used to achieve better editor performance on larger saves</div>
+                    }
+                    interactionKind={PopoverInteractionKind.HOVER}><Icon icon='info-sign' /></Popover></>}
                 />
             </BaseEditor>
         );

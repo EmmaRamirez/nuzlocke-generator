@@ -796,7 +796,7 @@ Thank you!
     '1.8.0': `
 ## Features
 - **Generation II**: now available in the save file uploader!
-- **Box Mapping**: have lots of boxes? Now you can decide what status all of them correspond to.
+- **Box Mapping**: have lots of boxes in your saves? Now you can decide what status all of them correspond to.
 - **Credits**: there is a now a section of the nuzlocke-generator dedicated to credits, check it out!
     - I'll be working on updating the art credits for the next few updates. Please be patient as I work to properly credit all the artists!
 
