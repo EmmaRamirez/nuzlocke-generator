@@ -988,7 +988,7 @@ const listOfTemtem = [
     'Anahir',
 ] as const;
 
-export const listOfPokemonLowercased = listOfPokemon.map(s => s.toLowerCase());
+export const listOfPokemonLowercased = listOfPokemon.map((s) => s.toLowerCase());
 
 export const getListOfCreatures = (isTemtemMode?: boolean) =>
     isTemtemMode ? listOfTemtem : listOfPokemon;

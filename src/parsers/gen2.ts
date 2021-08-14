@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/prefer-for-of */
 import * as fs from 'fs';
-import { HELD_ITEM, GEN_2_POKEMON_MAP, GEN_2_CHARACTER_MAP, MOVES_ARRAY, splitUp, GEN_2_LOCATIONS } from './utils';
+import {
+    HELD_ITEM,
+    GEN_2_POKEMON_MAP,
+    GEN_2_CHARACTER_MAP,
+    MOVES_ARRAY,
+    splitUp,
+    GEN_2_LOCATIONS,
+} from './utils';
 import { Buffer } from 'buffer';
 import { Forme, getBadges, matchSpeciesToTypes, Species } from 'utils';
 import { Pokemon } from 'models';
@@ -43,14 +50,26 @@ import { ParserOptions } from './utils/parserOptions';
 export interface Gen2PokemonObject {
     entriesUsed: number;
     speciesList: string[];
-    pokemonList: Pick<Pokemon, 'species' | 'level' | 'moves' | 'id' | 'item' | 'extraData' | 'shiny' | 'met' | 'metLevel' | 'forme'>[];
+    pokemonList: Pick<
+    Pokemon,
+    | 'species'
+    | 'level'
+    | 'moves'
+    | 'id'
+    | 'item'
+    | 'extraData'
+    | 'shiny'
+    | 'met'
+    | 'metLevel'
+    | 'forme'
+    >[];
     pokemonNames: string[];
 }
 
 const OFFSETS = {
     PLAYER_ID: [0x2009, 0x2009 + 2],
     PLAYER_NAME: [0x200b, 0x200b + 11],
-    PLAYER_MONEY: [0x23DB, 0x23DB + 3],
+    PLAYER_MONEY: [0x23db, 0x23db + 3],
     RIVAL_NAME: [0x2013, 0x2013 + 11],
     TIME_PLAYED: [0x2053, 0x2053 + 4],
     JOHTO_BADGES: [0x23e4, 0x23e4 + 2],
@@ -62,23 +81,23 @@ const OFFSETS = {
     BOXES: [
         [0x4000, 0x4000 + 1102],
         [0x4450, 0x4450 + 1102],
-        [0x48A0, 0x48A0 + 1102],
-        [0x4CF0, 0x4CF0	+ 1102],
+        [0x48a0, 0x48a0 + 1102],
+        [0x4cf0, 0x4cf0 + 1102],
         [0x5140, 0x5140 + 1102],
         [0x5590, 0x5590 + 1102],
-        [0x59E0, 0x59E0 + 1102],
+        [0x59e0, 0x59e0 + 1102],
         [0x6000, 0x6000 + 1102],
         [0x6450, 0x6450 + 1102],
-        [0x68A0, 0x68A0 + 1102],
-        [0x6CF0, 0x6CF0 + 1102],
+        [0x68a0, 0x68a0 + 1102],
+        [0x6cf0, 0x6cf0 + 1102],
         [0x7140, 0x7140 + 1102],
         [0x7590, 0x7590 + 1102],
-        [0x79E0, 0x79E0 + 1102]
+        [0x79e0, 0x79e0 + 1102],
     ],
 };
 
 const CRYSTAL_OFFSETS = {
-    PLAYER_MONEY: [0x23DC, 0x23DC + 3],
+    PLAYER_MONEY: [0x23dc, 0x23dc + 3],
     JOHTO_BADGES: [0x23e5, 0x23e5 + 2],
     CURRENT_PC_BOX_NUMBER: [0x2700, 0x2700 + 1],
     TEAM_POKEMON_LIST: [0x2865, 0x2865 + 428],
@@ -88,7 +107,7 @@ const CRYSTAL_OFFSETS = {
 };
 
 function buf2hex(buffer: Buffer) {
-    return [...new Uint8Array(buffer)].map(x => x.toString(16).padStart(2, '0')).join('');
+    return [...new Uint8Array(buffer)].map((x) => x.toString(16).padStart(2, '0')).join('');
 }
 
 // Caught data is only generated in Crystal but transferrable across versions
@@ -97,15 +116,16 @@ const readCaughtData = (data: Buffer) => {
     // @NOTE: buffer.map() coerces types
     const [binaryA, binaryB]: string[] = [
         buf[0].toString(2).padStart(8, '0'),
-        buf[1].toString(2).padStart(8, '0')
+        buf[1].toString(2).padStart(8, '0'),
     ];
 
-    if (binaryA === '0' && binaryB === '0') return {
-        level: undefined,
-        timeOfDay: undefined,
-        location: undefined,
-        otGender: undefined,
-    };
+    if (binaryA === '0' && binaryB === '0')
+        return {
+            level: undefined,
+            timeOfDay: undefined,
+            location: undefined,
+            otGender: undefined,
+        };
     const level = Number.parseInt(binaryA.slice(1, 7), 2);
     const timeDigit = Number.parseInt(binaryA.slice(0, 1), 2);
     const timeMap = {
@@ -126,7 +146,6 @@ const readCaughtData = (data: Buffer) => {
         otGender,
     };
 };
-
 
 // In Generation II, Unown's letter is taken from the combination of the center two bits of the Attack, Defense, Speed and Special IV nibbles. This combination is then divided by ten, and the result is rounded down (floor[]) to only include the integer part of the number. This integer will range from 0-25, corresponding to a letter in the Latin alphabet, which will be the Unown's letter (where 0=A, 1=B, 2=C, ..., 23=X, 24=Y, 25=Z).
 
@@ -165,8 +184,8 @@ const unownFormes = [
 ];
 
 const determineUnownForme = (ivs: Buffer): Forme => {
-    const part1 = (ivs[0]).toString(2).padStart(8, '0');
-    const part2 = (ivs[1]).toString(2).padStart(8, '0');
+    const part1 = ivs[0].toString(2).padStart(8, '0');
+    const part2 = ivs[1].toString(2).padStart(8, '0');
     const atk = part1.slice(0, 4).slice(1, 3);
     const def = part1.slice(4).slice(1, 3);
     const speed = part2.slice(0, 4).slice(1, 3);
@@ -198,8 +217,8 @@ interface Ivs {
 }
 
 const getIvs = (ivs: Buffer): Ivs => {
-    const part1 = (ivs[0]).toString(2).padStart(8, '0');
-    const part2 = (ivs[1]).toString(2).padStart(8, '0');
+    const part1 = ivs[0].toString(2).padStart(8, '0');
+    const part2 = ivs[1].toString(2).padStart(8, '0');
     const atk = parseInt(part1.slice(0, 4), 2);
     const def = parseInt(part1.slice(4, 8), 2);
     const speed = parseInt(part2.slice(0, 4), 2);
@@ -211,14 +230,19 @@ const getIvs = (ivs: Buffer): Ivs => {
         def,
         speed,
         special,
-        hp
+        hp,
     };
 };
 
 const isShiny = (ivs: Buffer): boolean => {
-    const {atk, def, special, speed} = getIvs(ivs);
+    const { atk, def, special, speed } = getIvs(ivs);
 
-    if ([2, 3, 6, 7, 10, 11, 14, 15].includes(atk) && def === 10 && speed === 10 && special === 10) {
+    if (
+        [2, 3, 6, 7, 10, 11, 14, 15].includes(atk) &&
+        def === 10 &&
+        speed === 10 &&
+        special === 10
+    ) {
         return true;
     } else {
         return false;
@@ -243,7 +267,7 @@ const parsePokemon = (buf: Buffer, boxed = false): Gen2PokemonObject['pokemonLis
     if (!boxed) {
         caughtData = readCaughtData(pokemon.slice(0x1d, 0x1d + 2));
     } else {
-        caughtData = {level: undefined, location: undefined};
+        caughtData = { level: undefined, location: undefined };
     }
     // const caughtData = readCaughtData(pokemon.slice(0x1d, 0x1d + 2));
     const expData = boxed ? undefined : to16BitInt(pokemon.slice(0x08, 0x08 + 3));
@@ -263,7 +287,7 @@ const parsePokemon = (buf: Buffer, boxed = false): Gen2PokemonObject['pokemonLis
             defense: to16BitInt(pokemon.slice(0x28, 0x28 + 2)),
             speed: to16BitInt(pokemon.slice(0x2a, 0x2a + 2)),
             specialAttack: to16BitInt(pokemon.slice(0x2c, 0x2c + 2)),
-            specialDefense: to16BitInt(pokemon.slice(0x2E, 0x2E + 2)),
+            specialDefense: to16BitInt(pokemon.slice(0x2e, 0x2e + 2)),
         };
 
     return {
@@ -281,7 +305,7 @@ const parsePokemon = (buf: Buffer, boxed = false): Gen2PokemonObject['pokemonLis
             expData,
             caughtData,
             ...extraData,
-        }
+        },
     };
 };
 
@@ -313,7 +337,7 @@ const getPokemonNames = (buf: Buffer, entries: number = 6) => {
 const parseJohtoBadges = (buf: Buffer) => {
     const bits = buf[0].toString(2).padStart(8, '0') + buf[1].toString(2).padStart(8, '0');
     const badges = getBadges('Gold'); // Doesn't matter as long as it's gen 2
-    const badgesObtainedMap = bits.split('').map(badge => {
+    const badgesObtainedMap = bits.split('').map((badge) => {
         return badge === '1' ? true : false;
     });
     const badgesFiltered = badges.filter((badge, idx) => {
@@ -322,11 +346,15 @@ const parseJohtoBadges = (buf: Buffer) => {
     return badgesFiltered;
 };
 
-const transformPokemon = (pokemonObject: Gen2PokemonObject, status: string, boxIndex: number = 1) => {
+const transformPokemon = (
+    pokemonObject: Gen2PokemonObject,
+    status: string,
+    boxIndex: number = 1,
+) => {
     return pokemonObject.pokemonList
         .map((poke, index) => {
             return {
-                position: (index + 1) * (boxIndex),
+                position: (index + 1) * boxIndex,
                 species: poke.species,
                 status: status,
                 level: poke.level,
@@ -368,21 +396,18 @@ export const parsePokemonList = (buf: Buffer, entries = 6): Gen2PokemonObject =>
     const speciesListEnd = 0x01 + entries + 1;
     const speciesList = getSpeciesList(Buffer.from(data.slice(0x01, speciesListEnd)));
     const pokemonListAddress = speciesListEnd;
-    const pokemonListAddressEnd = pokemonListAddress + ((isBoxed ? 32 : 48) * entries);
+    const pokemonListAddressEnd = pokemonListAddress + (isBoxed ? 32 : 48) * entries;
     const otsAddress = pokemonListAddressEnd;
-    const otsAddressEnd = otsAddress + (11 * entries);
+    const otsAddressEnd = otsAddress + 11 * entries;
     const pokemonNamesAddress = otsAddressEnd;
-    const pokemonNamesAddressEnd = pokemonNamesAddress + (11 * entries);
+    const pokemonNamesAddressEnd = pokemonNamesAddress + 11 * entries;
     const pokemonList = getPokemonList(
         data.slice(pokemonListAddress, pokemonListAddressEnd),
         entries,
         isBoxed,
     );
     const pokemonNames = getPokemonNames(
-        data.slice(
-            pokemonNamesAddress,
-            pokemonNamesAddressEnd
-        ),
+        data.slice(pokemonNamesAddress, pokemonNamesAddressEnd),
         entries,
     );
 
@@ -393,7 +418,6 @@ export const parsePokemonList = (buf: Buffer, entries = 6): Gen2PokemonObject =>
         pokemonNames,
     };
 };
-
 
 const sliceBoxes = (buf: Buffer) => {
     const fileSlice = makeFileSlicer(buf);
@@ -411,32 +435,29 @@ export const parseGen2Save = async (file, options: ParserOptions) => {
     const trainerMoney = options.isCrystal
         ? fileSlice(CRYSTAL_OFFSETS.PLAYER_MONEY)
         : fileSlice(OFFSETS.PLAYER_MONEY);
-    const money = parseInt(
-        trainerMoney
-            .map((d) => d.toString(16))
-            .join(''),
-    );
+    const money = parseInt(trainerMoney.map((d) => d.toString(16)).join(''));
     const time = parseTime(fileSlice(OFFSETS.TIME_PLAYED));
-    const badges = parseJohtoBadges(options.isCrystal ?
-        fileSlice(CRYSTAL_OFFSETS.JOHTO_BADGES) :
-        fileSlice(OFFSETS.JOHTO_BADGES));
+    const badges = parseJohtoBadges(
+        options.isCrystal
+            ? fileSlice(CRYSTAL_OFFSETS.JOHTO_BADGES)
+            : fileSlice(OFFSETS.JOHTO_BADGES),
+    );
     const currentPCId = options.isCrystal
         ? fileSlice(CRYSTAL_OFFSETS.CURRENT_PC_BOX_NUMBER)
         : fileSlice(OFFSETS.CURRENT_PC_BOX_NUMBER);
     const partyPokemonData = options.isCrystal
         ? fileSlice(CRYSTAL_OFFSETS.TEAM_POKEMON_LIST)
         : fileSlice(OFFSETS.TEAM_POKEMON_LIST);
-    const partyPokemon = transformPokemon(
-        parsePokemonList(partyPokemonData),
-        'Team'
-    );
-    const boxedPokemon = sliceBoxes(file).map((boxData, boxIndex) => {
-        return transformPokemon(
-            parsePokemonList(boxData, 20),
-            options.boxMappings[boxIndex]['status'],
-            boxIndex + 1,
-        );
-    }).flat();
+    const partyPokemon = transformPokemon(parsePokemonList(partyPokemonData), 'Team');
+    const boxedPokemon = sliceBoxes(file)
+        .map((boxData, boxIndex) => {
+            return transformPokemon(
+                parsePokemonList(boxData, 20),
+                options.boxMappings[boxIndex]['status'],
+                boxIndex + 1,
+            );
+        })
+        .flat();
 
     return {
         trainer: {
@@ -446,9 +467,6 @@ export const parseGen2Save = async (file, options: ParserOptions) => {
             money,
             badges,
         },
-        pokemon: [
-            ...partyPokemon,
-            ...boxedPokemon,
-        ],
+        pokemon: [...partyPokemon, ...boxedPokemon],
     };
 };

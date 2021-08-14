@@ -251,7 +251,7 @@ const transformPokemon = (pokemonObject: Gen1PokemonObject, status: string, boxI
     return pokemonObject.pokemonList
         .map((poke, index) => {
             return {
-                position: (index + 1) * (boxIndex),
+                position: (index + 1) * boxIndex,
                 species: poke.species,
                 status: status,
                 level: poke.level,
@@ -264,8 +264,6 @@ const transformPokemon = (pokemonObject: Gen1PokemonObject, status: string, boxI
         })
         .filter((poke) => poke.species);
 };
-
-
 
 export const parseGen1Save = async (file: Buffer, options: ParserOptions) => {
     const yellow = file[OFFSETS.PIKACHU_FRIENDSHIP] > 0;

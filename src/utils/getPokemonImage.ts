@@ -18,7 +18,6 @@ const handleTcgTransforms = (species?: string, gender?: GenderElementProps) => {
     return species;
 };
 
-
 const getGameName = (name: Game) => {
     if (name === 'Red' || name === 'Blue') return 'rb';
     if (
@@ -181,14 +180,17 @@ export async function getPokemonImage({
         }
     }
 
-    if (style?.spritesMode && (name === 'LeafGreen' ||
-    name === 'FireRed')) {
+    if (style?.spritesMode && (name === 'LeafGreen' || name === 'FireRed')) {
         if (!shiny) {
-            const url = `https://img.pokemondb.net/sprites/firered-leafgreen/normal/${normalizeSpeciesName(species as Species)}.png`;
+            const url = `https://img.pokemondb.net/sprites/firered-leafgreen/normal/${normalizeSpeciesName(
+                species as Species,
+            )}.png`;
 
             return await wrapImageInCORS(url);
         } else {
-            const url = `https://img.pokemondb.net/sprites/firered-leafgreen/shiny/${normalizeSpeciesName(species as Species)}.png`;
+            const url = `https://img.pokemondb.net/sprites/firered-leafgreen/shiny/${normalizeSpeciesName(
+                species as Species,
+            )}.png`;
 
             return await wrapImageInCORS(url);
         }
@@ -255,10 +257,8 @@ export async function getPokemonImage({
     }
 
     return `url(img/${(
-        addForme((species || '')
-            .replace(/\s/g, '')
-            .replace(/'/g, '')
-            .replace(/:/g, '-'), forme) || 'missingno'
+        addForme((species || '').replace(/\s/g, '').replace(/'/g, '').replace(/:/g, '-'), forme) ||
+        'missingno'
     ).toLowerCase()}.jpg)`;
 }
 
