@@ -13,6 +13,7 @@ const creditsContainer = css`
     background: #fff;
     border: 1px solid #ccc;
     border-radius: .25rem;
+    margin: 1rem;
 `;
 
 const creditsContainerDark = css`
