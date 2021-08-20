@@ -809,4 +809,11 @@ Thank you!
 ## Known Issues
 - Download Image may not always work. This will depend on the browser's policies for requesting images from a different domain inside of an HTML canvas.
 `,
+    '1.8.1.': `
+## Fixes
+- Pokémon GBA Font is now restored
+
+## Known Issues
+- Download Image may not always work. This will depend on the browser's policies for requesting images from a different domain inside of an HTML canvas.
+`
 };
