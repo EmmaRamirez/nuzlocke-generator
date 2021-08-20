@@ -829,6 +829,7 @@ Thank you!
 - **Friendship**: friendship data from gen II save files is now displayable ♡
 
 ## Fixes
+- Autoheight is now the default option
 
 ## Known Issues
 - Download Image may not always work. This will depend on the browser's policies for requesting images from a different domain inside of an HTML canvas.
