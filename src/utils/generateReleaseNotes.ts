@@ -817,4 +817,11 @@ Thank you!
 ## Known Issues
 - Download Image may not always work. This will depend on the browser's policies for requesting images from a different domain inside of an HTML canvas.
 `,
+    '1.8.2': `
+## Fixes
+- Switching between RBY/GS/C save formats now properly resets box mapping
+
+## Known Issues
+- Download Image may not always work. This will depend on the browser's policies for requesting images from a different domain inside of an HTML canvas.
+`
 };
