@@ -435,7 +435,12 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         <div className={Classes.SELECT}>
                             <select
                                 value={this.state.selectedGame}
-                                onChange={(e) => this.setState({ selectedGame: e.target.value as GameSaveFormat })}>
+                                onChange={(e) => {
+                                    this.setState({
+                                        selectedGame: e.target.value as GameSaveFormat,
+                                        boxMappings: generateBoxMappingsDefault(e.target.value as GameSaveFormat)
+                                    });
+                                }}>
                                 {allowedGames.map((game) => (
                                     <option key={game} value={game}>
                                         {game}
