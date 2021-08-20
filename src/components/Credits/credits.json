@@ -1,6 +1,5 @@
 {
-    "dev": [
-        {
+    "dev": [{
             "name": "emma",
             "link": "http://emmaramirez.me/",
             "role": "creator"
@@ -19,10 +18,14 @@
             "name": "PJ",
             "link": "https://www.pjsilverio.com/",
             "role": "ui/ux feedback"
+        },
+        {
+            "name": "Kristantyne",
+            "link": "https://github.com/krisantyne",
+            "role": "art + credits sourcing"
         }
     ],
-    "art": [
-        {
+    "art": [{
             "name": "Mark331",
             "link": "https://www.deviantart.com/mark331",
             "role": "Bulbasaur"
@@ -88,7 +91,7 @@
             "role": "Gengar"
         },
         {
-            "name": "Kristanye",
+            "name": "Kristantye",
             "link": "https://www.deviantart.com/krisantyne",
             "role": "Porygon2"
         },
@@ -136,6 +139,291 @@
             "name": "match",
             "link": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/xy-series/g1/8/",
             "role": "Tangela"
+        },
+        {
+            "role": "Chikorita",
+            "name": "PinkGermy",
+            "link": "https://www.deviantart.com/pinkgermy"
+        }, {
+            "role": "Bayleef",
+            "name": "extyrannomon",
+            "link": "https://www.deviantart.com/extyrannomon"
+        }, {
+            "role": "Meganium",
+            "name": "ぴっぴ",
+            "link": "https://www.pixiv.net/en/users/1922055"
+        }, {
+            "role": "Quilava",
+            "name": "Apricolor",
+            "link": "https://www.deviantart.com/apricolor"
+        }, {
+            "role": "Typhlosion",
+            "name": "Aritimas",
+            "link": "https://www.deviantart.com/aritimas"
+        }, {
+            "role": "Totodile",
+            "name": "LesFrites",
+            "link": "https://lesfrites.tumblr.com"
+        }, {
+            "role": "Croconaw, Slowking",
+            "name": "Psidra",
+            "link": "https://www.deviantart.com/psidra"
+        }, {
+            "role": "Feraligatr",
+            "name": "Tesshii (Rize4828)",
+            "link": "https://danbooru.donmai.us/artists/125175"
+        }, {
+            "role": "Sentret, Mareep",
+            "name": "SunsetTheDragon",
+            "link": "https://www.deviantart.com/sunsetthedragon"
+        }, {
+            "role": "Furret",
+            "name": "Rock-Bomber",
+            "link": "https://www.deviantart.com"
+        }, {
+            "role": "Hoothoot",
+            "name": "Puppy-Chow",
+            "link": "https://www.deviantart.com/puppy-chow"
+        }, {
+            "role": "Noctowl",
+            "name": "kankakanka",
+            "link": "https://www.deviantart.com/kankakanka"
+        }, {
+            "role": "Ledyba, Bellossom, Granbull, Sneasel, Houndoom, Mega Heracross",
+            "name": "All0412",
+            "link": "https://www.deviantart.com/all0412/art/Ledyba-349969971"
+        }, {
+            "role": "Spinarak",
+            "name": "Rachiello",
+            "link": "https://www.deviantart.com/rachiello"
+        }, {
+            "role": "Ariados",
+            "name": "Manuel Veloz Aguilar",
+            "link": "https://www.artstation.com/dawnbreaker"
+        }, {
+            "role": "Crobat",
+            "name": "Rinnai-Rai",
+            "link": "https://rinnai-rai.tumblr.com/"
+        }, {
+            "role": "Chinchou, Donphan",
+            "name": "Dizzie Skizze",
+            "link": "https://dizzieskizze.tumblr.com/"
+        }, {
+            "role": "Lanturn",
+            "name": "Joltik92",
+            "link": "https://www.deviantart.com/joltik92"
+        }, {
+            "role": "Cleffa",
+            "name": "pettyartist",
+            "link": "https://www.deviantart.com/pettyartist"
+        }, {
+            "role": "Igglybuff",
+            "name": "tay shannon",
+            "link": "https://www.deviantart.com/drill-tail"
+        }, {
+            "role": "Togetic, Larvitar",
+            "name": "salanchu",
+            "link": "https://www.deviantart.com/salanchu"
+        }, {
+            "role": "Xatu, Flaaffy, Marill, Politoed, Qwilfish, Octillery, Magby, Miltank",
+            "name": "SailorClef",
+            "link": "https://www.deviantart.com/sailorclef"
+        }, {
+            "role": "Ampharos",
+            "name": "W22374",
+            "link": "https://www.deviantart.com/w22374"
+        }, {
+            "role": "Mega Ampharos",
+            "name": "salvicorn",
+            "link": "https://www.deviantart.com/salvicorn"
+        }, {
+            "role": "Azumarill",
+            "name": "goldgust",
+            "link": "https://www.deviantart.com/goldgust"
+        }, {
+            "role": "Sudowoodo",
+            "name": "Fer Aguilera Reyes",
+            "link": "https://www.behance.net/pigmachine"
+        }, {
+            "role": "Hoppip",
+            "name": "Seiga",
+            "link": "https://www.deviantart.com/seiga"
+        }, {
+            "role": "Skiploom",
+            "name": "CookieHana",
+            "link": "https://www.deviantart.com/cookiehana"
+        }, {
+            "role": "Jumpluff",
+            "name": "ChrisMoschler",
+            "link": "https://www.deviantart.com/chrismoschler"
+        }, {
+            "role": "Sunflora",
+            "name": "MurPloxy",
+            "link": "https://www.deviantart.com/murploxy"
+        }, {
+            "role": "Yanma",
+            "name": "Chibi-C",
+            "link": "https://www.deviantart.com/chibi-c/"
+        }, {
+            "role": "Espeon",
+            "name": "Vermeilbird",
+            "link": "https://www.deviantart.com/vermeilbird/"
+        }, {
+            "role": "Umbreon",
+            "name": "Orca Owl",
+            "link": "https://orcaowlart.tumblr.com"
+        }, {
+            "role": "Galarian Slowking",
+            "name": "aguaguelito",
+            "link": "https://twitter.com/aguaguelito"
+        }, {
+            "role": "Unown",
+            "name": "ILKCMP",
+            "link": "https://www.deviantart.com/ilkcmp"
+        }, {
+            "role": "Wobbuffet",
+            "name": "nintendo-jr",
+            "link": "https://www.deviantart.com/nintendo-jr"
+        }, {
+            "role": "Girafarig",
+            "name": "jaclynonacloud",
+            "link": "https://www.deviantart.com/jaclynonacloud"
+        }, {
+            "role": "Pineco",
+            "name": "Inert Strokes",
+            "link": "https://www.artstation.com/inert-strokes"
+        }, {
+            "role": "Forretress",
+            "name": "elyoncat",
+            "link": "https://www.deviantart.com/elyoncat"
+        }, {
+            "role": "Dunsparce",
+            "name": "skepticarcher",
+            "link": "http://skepticarcher.tumblr.com/"
+        }, {
+            "role": "Gligar",
+            "name": "Phycofox",
+            "link": "https://www.deviantart.com/phycofox"
+        }, {
+            "role": "Steelix",
+            "name": "EonBlitz47",
+            "link": "https://www.deviantart.com/eonblitz47"
+        }, {
+            "role": "Mega Steelix",
+            "name": "Garmmon",
+            "link": "https://www.deviantart.com/garmmon"
+        }, {
+            "role": "Snubbull",
+            "name": "CelestiallKirin",
+            "link": "https://www.deviantart.com/celestiallkirin"
+        }, {
+            "role": "Scizor",
+            "name": "Macuarrorro",
+            "link": "https://www.deviantart.com/macuarrorro"
+        }, {
+            "role": "Mega Scizor",
+            "name": "Pon-ee",
+            "link": "https://www.deviantart.com/pon-ee"
+        }, {
+            "role": "Shuckle",
+            "name": "Trozte",
+            "link": "https://www.deviantart.com/trozte"
+        }, {
+            "role": "Heracross",
+            "name": "Haychel",
+            "link": "https://www.deviantart.com/haychel"
+        }, {
+            "role": "Teddiursa",
+            "name": "mayasato",
+            "link": "https://www.deviantart.com/mayasato"
+        }, {
+            "name": "EriiRapbito",
+            "link": "https://www.deviantart.com/eriirapbito",
+            "role": "Ursaring"
+        }, {
+            "name": "Scribblehatch",
+            "link": "http://emmaramirez.me/",
+            "role": "Magcargo"
+        }, {
+            "role": "Piloswine",
+            "name": "Calloona",
+            "link": "https://twitter.com/Calloona"
+        }, {
+            "role": "Corsola",
+            "name": "ぷっと",
+            "link": "https://www.pixiv.net/en/users/5706880"
+        }, {
+            "role": "Galarian Corsola",
+            "name": "LAWEN1",
+            "link": "https://www.deviantart.com/lawen1"
+        }, {
+            "role": "Remoraid",
+            "name": "EvilApple",
+            "link": "https://www.deviantart.com/evilapple513"
+        }, {
+            "role": "Mantine",
+            "name": "endless-whispers",
+            "link": "https://www.deviantart.com/endless-whispers"
+        }, {
+            "role": "Houndour",
+            "name": "Seuol",
+            "link": "https://www.deviantart.com/seuol"
+        }, {
+            "role": "Mega Houndoom",
+            "name": "Dark-Pangolin",
+            "link": "https://www.deviantart.com/dark-pangolin"
+        }, {
+            "role": "Phanpy",
+            "name": "Sorocabano",
+            "link": "https://www.deviantart.com/sorocabano"
+        }, {
+            "role": "Porygon2",
+            "name": "Krisantyne",
+            "link": "https://www.deviantart.com/krisantyne"
+        }, {
+            "role": "Stantler",
+            "name": "Tania Castillo",
+            "link": "https://www.pixiv.net/en/users/6364490"
+        }, {
+            "role": "Tyrogue",
+            "name": "AutobotTesla",
+            "link": "https://www.deviantart.com/autobottesla"
+        }, {
+            "role": "Hitmontop",
+            "name": "nganlamsong",
+            "link": "https://www.deviantart.com/nganlamsong"
+        }, {
+            "role": "Smoochum",
+            "name": "little-amb",
+            "link": "https://little-amb.tumblr.com"
+        }, {
+            "name": "GnagnaParadeProject",
+            "link": "https://www.deviantart.com/gnagnaparadeproject",
+            "role": "Elekid"
+        }, {
+            "role": "Raikou",
+            "name": "awesomecirous",
+            "link": "https://www.deviantart.com/awesomecirous"
+        }, {
+            "role": "Suicune",
+            "name": "AeroSocks",
+            "link": "https://www.deviantart.com/aerosocks"
+        }, {
+            "role": "Pupitar",
+            "name": "Sushan Yue",
+            "link": "https://sushanyue.wordpress.com"
+        }, {
+            "role": "Tyranitar",
+            "name": "Black-Wing24",
+            "link": "https://www.deviantart.com/black-wing24"
+        }, {
+            "role": "Mega Tyranitar",
+            "name": "totyjarcor",
+            "link": "https://www.deviantart.com/totyjarcor"
+        }, {
+            "role": "Celebi",
+            "name": "Mofinngram",
+            "link": "https://aminoapps.com/c/pokemon/page/user/mofinngram/o6hJ_fl36DonMk02N8a743dwkrben"
         }
     ]
 }

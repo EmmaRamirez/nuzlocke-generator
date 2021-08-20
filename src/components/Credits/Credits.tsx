@@ -13,6 +13,11 @@ const creditsContainer = css`
     background: #fff;
     border: 1px solid #ccc;
     border-radius: .25rem;
+    overflow-y: auto;
+`;
+
+const creditsItem = css`
+    height: 100%;
 `;
 
 const creditsContainerDark = css`
@@ -51,7 +56,7 @@ export function Credits({}: CreditsProps) {
                 title="Credits"
             >
                 <div className={cx('has-nice-scrollbars', creditsContainer, style.editorDarkMode ? creditsContainerDark : '')}>
-                    <div style={{ width: '50%', padding: '1rem' }}>
+                    <div className={creditsItem} style={{ width: '50%', padding: '1rem' }}>
                         <strong>Development/Design</strong>
                         {(credits as CreditsData).dev.map(creditItem => {
                             return (
@@ -63,7 +68,7 @@ export function Credits({}: CreditsProps) {
                             );
                         })}
                     </div>
-                    <div style={{ padding: '1rem', borderLeft: '1px solid rgba(0, 0, 0, 0.33)' }}>
+                    <div className={creditsItem} style={{ padding: '1rem', borderLeft: '1px solid rgba(0, 0, 0, 0.33)' }}>
                         <strong>Art</strong>
                         {(credits as CreditsData).art.sort(sortByRole).map(creditItem => {
                             return (
