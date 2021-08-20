@@ -27,9 +27,10 @@ export interface PokemonFriendshipProps {
 }
 
 export function PokemonFriendship({ friendship }: PokemonFriendshipProps) {
+    React.useEffect(() => console.log(friendship), [friendship]);
+
     if (!friendship) return null;
     const numberOfHearts = determineNumberOfHearts(friendship);
-
     if (numberOfHearts === 0) return <Icon data-testid='friendship-broken-icon' icon='heart-broken' />;
 
     return <>{generateHearts(numberOfHearts)}</>;

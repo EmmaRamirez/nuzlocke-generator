@@ -25,6 +25,7 @@ import { CheckpointsDisplay } from 'components/Result';
 import { PokemonImage } from 'components/Shared/PokemonImage';
 import { PokemonItem } from './PokemonItem';
 import { PokemonPokeball } from './PokemonPokeball';
+import { PokemonFriendship } from './PokemonFriendship';
 
 
 export interface TeamPokemonInfoProps {
@@ -215,6 +216,9 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                                     </>
                                 }
                             </div>
+                        ) : null}
+                        {style.displayExtraData && pokemon.extraData ? (
+                            <PokemonFriendship friendship={pokemon.extraData?.['friendship']} />
                         ) : null}
                         {linkedPokemon && (
                             <div className="pokemon-linked">
