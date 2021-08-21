@@ -31,6 +31,7 @@ import { DeleteAlert } from './DeleteAlert';
 const isEmpty = require('lodash/isEmpty');
 import codegen from 'codegen.macro';
 import { BoxMappings } from 'parsers/utils/boxMappings';
+import { cx } from 'emotion';
 
 
 export interface DataEditorProps {
@@ -158,7 +159,7 @@ export function SaveGameSettingsDialog({
     //     </Select>
     // );
 
-    return <div className="bp3-dialog-body has-nice-scrollbars">
+    return <div className={cx(Classes.DIALOG_BODY, 'has-nice-scrollbars')}>
         <Switch
             labelElement={<>
                 <strong>Merge Data?</strong>
@@ -430,7 +431,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         padding: '0.25rem',
                     }}>
                     <div
-                        className="bp3-label bp3-inline"
+                        className={cx(Classes.LABEL, Classes.INLINE)}
                         style={{ padding: '.25rem 0', paddingBottom: '.5rem' }}>
                         <div className={Classes.SELECT}>
                             <select
@@ -451,7 +452,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     </div>
 
                     <div
-                        className="bp3-label bp3-inline"
+                        className={cx(Classes.LABEL, Classes.INLINE)}
                         style={{
                             padding: '.25rem 0',
                             paddingBottom: '.5rem',
@@ -481,7 +482,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         isOpen={this.state.isSettingsOpen}
                         onClose={(e) => this.setState({ isSettingsOpen: false })}
                         title={'Save Upload Settings'}
-                        className={this.props.state.style.editorDarkMode ? 'bp3-dark' : ''}
+                        className={this.props.state.style.editorDarkMode ? Classes.DARK : ''}
                         icon="floppy-disk">
                         <SaveGameSettingsDialog
                             mergeDataMode={this.state.mergeDataMode}
@@ -526,19 +527,20 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                             ? 'Exported Nuzlocke Save'
                             : 'Import Nuzlocke Save'
                     }
-                    className={this.props.state.style.editorDarkMode ? 'bp3-dark' : ''}
+                    className={this.props.state.style.editorDarkMode ? Classes.DARK : ''}
                     icon="floppy-disk">
                     {this.state.mode === 'export' ? (
                         <>
                             <Callout>Copy this and paste it somewhere safe!</Callout>
                             <div
                                 style={{ height: '40vh', overflow: 'auto' }}
-                                className="bp3-dialog-body has-nice-scrollbars">
+                                className={cx(Classes.DIALOG_BODY, 'has-nice-scrollbars')}
+                            >
                                 <span suppressContentEditableWarning={true} contentEditable={true}>
                                     {JSON.stringify(this.props.state, null, 2)}
                                 </span>
                             </div>
-                            <div className="bp3-dialog-footer">
+                            <div className={Classes.DIALOG_FOOTER}>
                                 <a
                                     href={this.state.href}
                                     download={`nuzlocke_${
@@ -558,9 +560,9 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         </>
                     ) : (
                         <>
-                            <div className="bp3-dialog-body has-nice-scrollbars">
+                            <div className={cx(Classes.DIALOG_BODY, 'has-nice-scrollbars')}>
                                 <TextArea
-                                    className="custom-css-input bp3-fill"
+                                    className={cx('custom-css-input', Classes.FILL)}
                                     onChange={this.uploadJSON}
                                     placeholder="Paste nuzlocke.json contents here, or use the file uploader"
                                     value={this.state.data}

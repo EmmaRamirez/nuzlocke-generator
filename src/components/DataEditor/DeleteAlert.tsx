@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
-import { Alert, Intent, AlertProps } from '@blueprintjs/core';
+import { Alert, Intent, AlertProps, Classes } from '@blueprintjs/core';
 import { State } from 'state';
 
 const trash = require('assets/img/trash.png').default;
@@ -16,7 +16,7 @@ export function DeleteAlert({
         <Alert
             cancelButtonText="Nevermind"
             confirmButtonText="Delete Anyway"
-            className={style.editorDarkMode ? 'bp3-dark' : 'bp3-light'}
+            className={style.editorDarkMode ? Classes.DARK : ''}
             style={{ maxWidth: '600px' }}
             intent={Intent.DANGER}
             {...props}>

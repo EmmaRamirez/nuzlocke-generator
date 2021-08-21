@@ -21,6 +21,7 @@ import {
     Dialog,
     Classes,
     Drawer,
+    Icon,
 } from '@blueprintjs/core';
 import { State } from 'state';
 import { BaseEditor } from 'components/BaseEditor';
@@ -126,7 +127,7 @@ export const TextAreaDebounced = ({
         <TextArea
             large={true}
             onChange={onChange}
-            className="custom-css-input bp3-fill"
+            className={cx('custom-css-input', Classes.FILL)}
             value={value}
             name={name}
         />
@@ -266,7 +267,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                             min="0"
                             step="10"
                         />
-                        <span style={{ marginRight: '0' }} className="bp3-icon bp3-icon-cross" />
+                        <Icon icon='cross' style={{marginRight: '0'}} />
                         <span style={{ fontSize: '80%', marginRight: '2px' }}>h</span>
                         <input
                             name="resultHeight"
@@ -317,7 +318,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                             }}
                             value={props.style.trainerWidth}
                         />
-                        <span style={{ marginRight: '0' }} className="bp3-icon bp3-icon-cross" />
+                        <Icon icon='cross' style={{marginRight: '0'}} />
                         <span style={{ fontSize: '80%', marginRight: '2px' }}>h</span>
                         <input
                             name="trainerHeight"
@@ -482,7 +483,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     </div>
                     {(props.game.name === 'Sword' || props.game.name === 'Shield') &&
                     props.style.teamImages === 'shuffle' ? (
-                            <div className="bp3-callout bp3-intent-danger" style={calloutStyle}>
+                            <div className={cx(Classes.CALLOUT, Classes.INTENT_DANGER)} style={calloutStyle}>
                             Shuffle images are not supported for this game
                             </div>
                         ) : null}
@@ -496,13 +497,13 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         'Ultra Sun',
                         'Ultra Moon',
                     ].includes(props.game.name) && props.style.teamImages === 'dream world' ? (
-                            <div className="bp3-callout bp3-intent-danger" style={calloutStyle}>
+                            <div className={cx(Classes.CALLOUT, Classes.INTENT_DANGER)} style={calloutStyle}>
                             Dream world images are not supported for this game
                             </div>
                         ) : null}
                     {['Sword', 'Shield'].includes(props.game.name) &&
                     props.style.teamImages === 'tcg' ? (
-                            <div className="bp3-callout bp3-intent-danger" style={calloutStyle}>
+                            <div className={cx(Classes.CALLOUT, Classes.INTENT_DANGER)} style={calloutStyle}>
                             TCG images are not fully supported for this game
                             </div>
                         ) : null}
@@ -810,7 +811,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 {feature.resultv2 && <div className="custom-css-input-wrapper">
-                    <label style={{ padding: '.5rem', marginBottom: 0 }} className="bp3-label">
+                    <label style={{ padding: '.5rem', marginBottom: 0 }} className={Classes.LABEL}>
                         Custom Team HTML {/*<a href=''>Check out Layout Guide</a>*/}
                     </label>
                     <TextAreaDebounced name="customTeamHTML" props={props} edit={editEvent} />

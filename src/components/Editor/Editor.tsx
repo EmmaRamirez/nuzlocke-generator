@@ -45,7 +45,7 @@ const Credits = React.lazy(() =>
     import('components/Credits').then((res) => ({ default: res.Credits })),
 );
 
-const Skeleton = <div style={{ width: '100%', height: '100px' }} className="bp3-skeleton"></div>;
+const Skeleton = <div style={{ width: '100%', height: '100px' }} className={Classes.SKELETON}></div>;
 
 /**
  * The main editor interface.

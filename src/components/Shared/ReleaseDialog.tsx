@@ -32,7 +32,7 @@ IDialogProps & ReleaseDialogProps,
                 icon="document"
                 title={`Release Notes ${version}`}
                 className={`release-dialog ${
-                    this.props.style.editorDarkMode ? 'bp3-dark' : 'bp3-light'
+                    this.props.style.editorDarkMode ? Classes.DARK : ''
                 }`}>
                 <div className={Classes.DIALOG_BODY}>
                     <div className="release-notes-wrapper">

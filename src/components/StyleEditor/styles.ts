@@ -1,5 +1,8 @@
 /* eslint-disable camelcase */
+import { Classes } from '@blueprintjs/core';
 import { cx, css } from 'emotion';
+
+const BP_VERSION = `bp3`;
 
 export const colorTextInput_dark = css`
     background: rgba(16, 22, 26, 0.3);
@@ -44,7 +47,7 @@ export const styleEdit = css`
     display: flex;
     padding: 0.5rem;
     width: 100%;
-    .bp3-label {
+    .${BP_VERSION}-label {
         margin: 0;
         min-width: 10rem;
     }
@@ -53,12 +56,12 @@ export const styleEdit = css`
         margin-right: 0.25rem;
     }
     @media (max-width: 760px) {
-        .bp3-label {
+        .${BP_VERSION}-label {
             margin: 2px;
             font-size: 80%;
             min-width: 6rem;
         }
-        .bp3-input {
+        .${BP_VERSION}-input {
             max-width: 9rem;
         }
     }
@@ -69,7 +72,7 @@ export const widthHeightInputs = css`
     @media (max-width: 760px) {
         flex-direction: column;
 
-        .bp3-label {
+        .${BP_VERSION}-label {
             display: inline-block;
         }
     }
@@ -97,11 +100,11 @@ export const radioGroup = css`
     align-content: center;
     align-items: center;
     display: flex;
-    .bp3-control {
+    .${BP_VERSION}-control {
         border-radius: 0.25rem;
         margin: 0.25rem;
     }
-    label.bp3-label {
+    label.${BP_VERSION}-label {
         margin: 0;
     }
 `;
