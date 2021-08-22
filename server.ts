@@ -1,7 +1,9 @@
 const express = require('express');
+// @ts-ignore false redeclare warning
+const path = require('path');
 const app = express();
 require('dotenv').config()
-// @ts-expect-error
+// @ts-ignore false redeclare warning
 const fetch = require('node-fetch');
 const GH_URL = 'https://api.github.com/repos/EmmaRamirez/nuzlocke-generator/issues';
 const GH_ACCESS_TOKEN = process.env.GH_ACCESS_TOKEN;
@@ -16,12 +18,11 @@ interface ReportArgs {
   data?: string;
 }
 
-const PORT = 3000;
+const PORT = process.argv?.[3] || 3000;
 
 app.get('/', async (req, res, next) => {
-  res.send('Hemlo :]');
+  app.use(express.static(path.join(__dirname, 'dist')))
   next();
-  //app.use(express.static(path.join(__dirname, 'dist')))
 });
 
 

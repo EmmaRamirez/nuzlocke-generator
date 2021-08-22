@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const { WebpackPluginServe: Serve } = require('webpack-plugin-serve');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+// @ts-ignore false redeclare warning
 const path = require('path');
 const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
 const HTMLWebpackPlugin = require('html-webpack-plugin');
