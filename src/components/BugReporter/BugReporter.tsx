@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { BaseEditor } from 'components/BaseEditor';
-import { Button, Intent, TextArea, Checkbox, Toaster, Classes } from '@blueprintjs/core';
+import { Button, Intent, TextArea, Checkbox, Toaster, Classes, Spinner } from '@blueprintjs/core';
 import { connect } from 'react-redux';
+import { css } from 'emotion';
 
 export interface BugReporterProps {
     reportingUrl?: string;
@@ -14,7 +15,12 @@ export interface BugReporterState {
     userReportTitle: string;
     includeNuzlocke: boolean;
     stage: number;
+    isSending: boolean;
 }
+
+const spinner = css`
+    display: inline-block;
+`;
 
 export class BugReporterBase extends React.Component<BugReporterProps, BugReporterState> {
     public state = {
@@ -22,10 +28,11 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
         userReportTitle: '',
         includeNuzlocke: true,
         stage: 1,
+        isSending: false,
     };
 
     public render() {
-        const { userReport, userReportTitle, includeNuzlocke, stage } = this.state;
+        const { userReport, userReportTitle, includeNuzlocke, stage, isSending } = this.state;
         const { defaultOpen } = this.props;
 
         return (
@@ -66,17 +73,17 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
                             label={'include nuzlocke.json file'}
                         />
                         <Button
-                            disabled={!userReportTitle}
+                            disabled={!userReportTitle || isSending}
                             onClick={this.sendBugReport}
                             minimal
                             intent={Intent.DANGER}>
                             Submit{' '}
-                            <img
+                            {isSending ? <Spinner className={spinner} size={20} /> : <img
                                 style={{ height: '20px', verticalAlign: 'bottom', display: 'inline' }}
                                 alt=""
                                 role="presentation"
                                 src={`./icons/pokemon/regular/${this.getButtonPokemon(stage)}.png`}
-                            />
+                            />}
                         </Button>
                     </div>
                 </div>
@@ -95,38 +102,28 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
         this.setState(update);
     };
 
-    private accum(s: string[]) {
-        return s.join('');
-    }
-
     private sendBugReport = () => {
         const { userReport, userReportTitle } = this.state;
         const { state } = this.props;
-        const url = 'https://api.github.com/repos/EmmaRamirez/nuzlocke-generator/issues';
+        const url = 'http://localhost:3000/report';
+
+        this.setState({ isSending: true });
 
         fetch(url, {
             method: 'POST',
             headers: {
-                Accept: 'application/vnd.github.cloak-preview',
-                Authorization: `Token ${process.env.GH_ACCESS_TOKEN}`,
                 'Content-Type': 'application/json',
             },
             mode: 'cors',
             body: JSON.stringify({
-                title: userReportTitle || userReport.slice(0, 20),
-                body: `${userReport}
-
-\`\`\`json
-${JSON.stringify(state)}
-\`\`\`
-                `,
-                assigness: ['EmmaRamirez'],
-                labels: ['User Submitted', 'Type: Bug'],
+                report: userReport,
+                title: userReportTitle,
+                data: this.state.includeNuzlocke ? JSON.stringify(state) : undefined,
             }),
         })
             .then((res) => res.json())
-            .then((data) => {
-                if (data && data.url) {
+            .then((res) => {
+                if (res.status === 200 || res.status === 201) {
                     const toaster = Toaster.create();
                     toaster.show({
                         message: 'Bug report sent!',
@@ -134,7 +131,9 @@ ${JSON.stringify(state)}
                     });
                     this.setState({
                         userReport: '',
+                        userReportTitle: '',
                         stage: this.state.stage + 1,
+                        isSending: false,
                     });
                 } else {
                     const toaster = Toaster.create();
@@ -142,6 +141,7 @@ ${JSON.stringify(state)}
                         message: 'Bug report failed. Please try again.',
                         intent: Intent.DANGER,
                     });
+                    this.setState({ isSending: false });
                 }
             })
             .catch((err) => {
@@ -150,6 +150,7 @@ ${JSON.stringify(state)}
                     message: `Bug report failed. Please try again. ${err}`,
                     intent: Intent.DANGER,
                 });
+                this.setState({ isSending: false });
             });
     };
 }
