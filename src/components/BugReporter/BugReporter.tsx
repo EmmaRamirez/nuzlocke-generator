@@ -105,7 +105,7 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
     private sendBugReport = () => {
         const { userReport, userReportTitle } = this.state;
         const { state } = this.props;
-        const url = 'http://localhost:8080/report';
+        const url = `${window.location.origin}/report`;
 
         this.setState({ isSending: true });
 

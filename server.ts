@@ -21,7 +21,7 @@ interface ReportArgs {
   data?: string;
 }
 
-const PORT = process.argv?.[3] || 3000;
+const PORT = process.env.PORT || 3000;
 
 app.get('/', async (req, res, next) => {
   app.use(express.static(path.join(__dirname, 'dist')))
