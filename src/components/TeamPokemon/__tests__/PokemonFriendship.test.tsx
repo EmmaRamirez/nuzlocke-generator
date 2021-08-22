@@ -14,10 +14,10 @@ describe(determineNumberOfHearts.name, () => {
 });
 
 describe(PokemonFriendship.name, () => {
-    it('should render', async () => {
+    it('should not render', async () => {
         const screen = render(<PokemonFriendship />);
         console.log(await screen.debug());
-        expect(await screen.findAllByTestId('friendship-icon')).toBeFalsy();
+        expect(await screen.queryByTestId('friendship-icon')).toBeNull();
     });
 
     it('should render the correct # of hearts', async () => {
