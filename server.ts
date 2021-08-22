@@ -5,13 +5,16 @@ const app = express();
 require('dotenv').config()
 // @ts-ignore false redeclare warning
 const fetch = require('node-fetch');
+const compression = require('compression')
+const cors = require('cors');
+
 const GH_URL = 'https://api.github.com/repos/EmmaRamirez/nuzlocke-generator/issues';
 const GH_ACCESS_TOKEN = process.env.GH_ACCESS_TOKEN;
 
-const cors = require('cors');
-
 app.use(express.json({ limit: '50mb' }));
 app.use(cors());
+app.use(compression());
+
 interface ReportArgs {
   title?: string;
   report?: string;
