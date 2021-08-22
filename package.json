@@ -17,7 +17,7 @@
     "precommit": "npm run lint",
     "pretest": "npm run lint",
     "serve:heroku": "npm run build:production && heroku local web",
-    "serve:node": "ts-node ./server.ts",
+    "serve:node": "npx ts-node ./server.ts",
     "serve:http": "npx http-server@0.12.0 --cors ./dist",
     "serve": "webpack-serve --config webpack.config.ts",
     "start:ci": "npm start",
