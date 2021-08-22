@@ -23,7 +23,8 @@
     "start:ci": "npm start",
     "start": "npm run serve",
     "start:persist": "while true; do npm start && break; done",
-    "test": "jest --coverage --config jest-config.json"
+    "test": "jest --coverage --config jest-config.json",
+    "todos": "npx leasot 'src/**/*.tsx' 'src/**/*.ts'"
   },
   "engines": {
     "node": "^16",
