@@ -5,15 +5,34 @@ const app = express();
 require('dotenv').config()
 // @ts-ignore false redeclare warning
 const fetch = require('node-fetch');
-const compression = require('compression')
+const compression = require('compression');
+const logger = require('pino')({
+  prettyPrint: true,
+  messageFormat: '☰nuz: {levelLabel} - {pid} - url:{request.url}'
+});
 const cors = require('cors');
+const Webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const webpackConfig = require('./webpack.config');
+
+const compiler = Webpack(webpackConfig);
+const middleware = require('webpack-dev-middleware');
 
 const GH_URL = 'https://api.github.com/repos/EmmaRamirez/nuzlocke-generator/issues';
 const GH_ACCESS_TOKEN = process.env.GH_ACCESS_TOKEN;
+const productionFlag = process.env.NODE_ENV === 'production';
 
 app.use(express.json({ limit: '50mb' }));
 app.use(cors());
 app.use(compression());
+if (!productionFlag) {
+  logger.info(`Running server in development mode.`);
+  app.use(
+    middleware(compiler, {})
+  );
+} else {
+  logger.info(`Running server in production mode.`);
+}
 
 interface ReportArgs {
   title?: string;
@@ -21,7 +40,7 @@ interface ReportArgs {
   data?: string;
 }
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 app.get('/', async (req, res, next) => {
   app.use(express.static(path.join(__dirname, 'dist')))
@@ -30,9 +49,8 @@ app.get('/', async (req, res, next) => {
 
 
 app.post('/report', async (req, res, next) => {
-  console.log(req.body);
   const { report, title, data } = req.body as ReportArgs;
-  console.log(report, title, data);
+  logger.info(report, title, data);
 
   if (!title) next(new Error('Missing report title.'));
   const githubCall = await fetch(GH_URL, {
@@ -56,14 +74,15 @@ ${data ? JSON.stringify(data) : 'User chose not to attach nuzlocke.json'}
     })
   });
   if (githubCall.status.toString()[0] === '2') {
-    console.info(`[/report] Successfully called at ${new Date().toUTCString()}`);
+    logger.info(`Successfully called Github`);
   }
   res.send({ status: githubCall.status });
   next();
 });
 
 app.get('/nuzlocke/:id', async (req, res, next) => {
-
+  logger.info('Retrieving nuzlocke ', req.params.id);
+  res.send({ status: 200 });
 });
 
 app.post('/nuzlocke', async (req, res, next) => {
@@ -76,7 +95,5 @@ app.get('/nuzlockes', async (req, res, next) => {
 
 
 app.listen(PORT, () => {
-  console.log(`
-    🚀 Running server on http://localhost:${PORT} 🚀
-  `);
-})
+  logger.info(`Running server on http://localhost:${PORT} 🚀`);
+});
