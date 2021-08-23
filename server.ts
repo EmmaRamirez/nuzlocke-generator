@@ -80,9 +80,15 @@ ${data ? JSON.stringify(data) : 'User chose not to attach nuzlocke.json'}
   next();
 });
 
+app.get('/release-notes', async (req, res, next) => {
+  res.send({ status: 200 });
+  next();
+});
+
 app.get('/nuzlocke/:id', async (req, res, next) => {
   logger.info('Retrieving nuzlocke ', req.params.id);
   res.send({ status: 200 });
+  next();
 });
 
 app.post('/nuzlocke', async (req, res, next) => {

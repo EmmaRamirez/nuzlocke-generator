@@ -88,7 +88,8 @@
     "tailwindcss": "^1.9.1",
     "ts-node": "^10.0.0",
     "tslib": "^2.0.0",
-    "tslint": "^6.1.2"
+    "tslint": "^6.1.2",
+    "webpack-dev-server": "^3.11.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.1",
