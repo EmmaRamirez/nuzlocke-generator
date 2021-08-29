@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Dialog, IDialogProps, Classes, Button } from '@blueprintjs/core';
-import { cx } from 'emotion';
+import { Dialog, Classes, Button, DialogProps } from '@blueprintjs/core';
+import { css, cx } from 'emotion';
 import * as styles from 'components/Result/styles';
 import { generateReleaseNotes, releaseNotes, Styles, classWithDarkTheme } from 'utils';
 import { version } from 'package';
@@ -8,19 +8,63 @@ const ReactMarkdown = require('react-markdown');
 import { tail } from 'ramda';
 
 const croagunk = require('assets/img/croagunk.gif');
+const togepi = require('assets/icons/pokemon/regular/togepi.png');
+const porygon2 = require('assets/icons/pokemon/regular/porygon2.png');
+const lapras = require('assets/icons/pokemon/regular/lapras.png');
+const magneton = require('assets/icons/pokemon/regular/magneton.png');
+const noctowl = require('assets/icons/pokemon/regular/noctowl.png');
+const calyrex = require('assets/icons/pokemon/regular/calyrex.png');
+const dugtrio = require('assets/icons/pokemon/regular/dugtrio.png');
+const kubfu = require('assets/icons/pokemon/regular/kubfu.png');
+const porygon = require('assets/icons/pokemon/regular/porygon.png');
+const mew = require('assets/icons/pokemon/regular/mew.png');
 
+export const getMascot = v => {
+    switch (v) {
+        case '1.9':
+            return togepi.default;
+        case '1.8':
+            return porygon2.default;
+        case '1.7':
+            return lapras.default;
+        case '1.6':
+            return magneton.default;
+        case '1.5':
+            return noctowl.default;
+        case '1.4':
+            return calyrex.default;
+        case '1.3':
+            return dugtrio.default;
+        case '1.2':
+            return kubfu.default;
+        case '1.1':
+            return porygon.default;
+        case '1.0':
+            return mew.default;
+        default:
+            return croagunk.default;
+    };
+};
+
+const mascot = css`
+    display: inline-block;
+`;
 export interface ReleaseDialogProps {
     onClose: (e?: React.SyntheticEvent) => void;
     style: Styles;
 }
 
 export class ReleaseDialog extends React.Component<
-IDialogProps & ReleaseDialogProps,
+DialogProps & ReleaseDialogProps,
 { seePrevious?: boolean }
 > {
     public state = {
         seePrevious: false,
     };
+
+    public static getMajorVersion(v: string) {
+        return v.match(/^(\d+\.)?(\d+)/)?.[0];
+    }
 
     public render() {
         const { seePrevious } = this.state;
@@ -45,7 +89,7 @@ IDialogProps & ReleaseDialogProps,
                                 ),
                             )}>
                             {version}{' '}
-                            <img style={{ display: 'inline' }} alt="Croagunk" src={croagunk.default} />
+                            <img className={mascot} alt="mascot" src={getMascot(ReleaseDialog.getMajorVersion(version))} />
                         </h3>
                         <ReactMarkdown
                             className="release-notes"
@@ -62,7 +106,7 @@ IDialogProps & ReleaseDialogProps,
                                     <ReactMarkdown
                                         key={key}
                                         className="release-notes"
-                                        source={`#### ${key}\n${generateReleaseNotes(key)}`}
+                                        source={`#### ![${mascot}](${getMascot(ReleaseDialog.getMajorVersion(key))}) ${key}\n${generateReleaseNotes(key)}`}
                                     />
                                 );
                             })}

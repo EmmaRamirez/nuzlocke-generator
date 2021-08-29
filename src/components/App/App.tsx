@@ -6,21 +6,18 @@ import { updateEditorHistory } from 'actions';
 import { feature, isLocal } from 'utils';
 import { History } from 'reducers/editorHistory';
 import { ErrorBoundary } from 'components';
-import { Button, Drawer } from '@blueprintjs/core';
+import { Button } from '@blueprintjs/core';
 import { updaterSelector, appSelector } from 'selectors';
 
 const isEqual = require('lodash/isEqual');
 
 import './app.css';
+import { Skeleton } from 'components/Shared';
 
 export interface AppProps {
     style: State['style'];
     view: State['view'];
     editor: State['editor'];
-}
-
-function Loading() {
-    return <div>Loading...</div>;
 }
 
 const Editor = React.lazy(() =>
@@ -106,6 +103,7 @@ export class AppBase extends React.Component<AppProps, {result2?: boolean}> {
     public render() {
         const {style, view, editor} = this.props;
         const {result2} = this.state;
+        const isDarkMode = style.editorDarkMode;
         console.log('features', feature);
 
         const UpdaterComponent = !editor.editorHistoryDisabled && <Updater />;
@@ -128,21 +126,21 @@ export class AppBase extends React.Component<AppProps, {result2?: boolean}> {
                     }}>
                     {UpdaterComponent}
                     <ErrorBoundary key={1}>
-                        <React.Suspense fallback={'Loading Hotkeys...'}>
+                        <React.Suspense fallback={Skeleton}>
                             <Hotkeys />
                         </React.Suspense>
                     </ErrorBoundary>
                     <ErrorBoundary key={2}>
-                        <React.Suspense fallback={'Loading Editor...'}>
+                        <React.Suspense fallback={Skeleton}>
                             <Editor />
                         </React.Suspense>
                     </ErrorBoundary>
                     {result2 ? <ErrorBoundary key={3}>
-                        <React.Suspense fallback={'Loading Result...'}>
+                        <React.Suspense fallback={Skeleton}>
                             <Result2 />
                         </React.Suspense>
                     </ErrorBoundary> : <ErrorBoundary key={3}>
-                        <React.Suspense fallback={'Loading Result...'}>
+                        <React.Suspense fallback={Skeleton}>
                             <Result />
                         </React.Suspense>
                     </ErrorBoundary>}
@@ -159,15 +157,11 @@ export class AppBase extends React.Component<AppProps, {result2?: boolean}> {
                         Use Result v2
                     </Button>}
 
-
-                    <Drawer
-                        isOpen={view?.dialogs?.imageUploader}
-                        size={Drawer.SIZE_STANDARD}
-                    >
-                        <React.Suspense fallback={'Loading Drawer...'}>\
+                    <ErrorBoundary key={4}>
+                        <React.Suspense fallback={Skeleton}>
                             <ImagesDrawer />
                         </React.Suspense>
-                    </Drawer>
+                    </ErrorBoundary>
                 </div>
             </ErrorBoundary>
         );

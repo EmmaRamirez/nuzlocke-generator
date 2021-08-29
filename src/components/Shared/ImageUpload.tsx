@@ -17,8 +17,16 @@ export interface ImageUploadProps {
 
 const onUpload = ({onSuccess, onError}: ImageUploadProps) => async (e: any) => {
     const file = e?.target?.files?.[0];
-    const size = e.target.files[0].size / 1024 / 1024;
     const toaster = Toaster.create();
+    if (!file) {
+        onError && onError(e);
+        toaster.show({
+            message: 'No file detected.',
+            intent: Intent.DANGER,
+        });
+        return;
+    }
+    const size = file?.size / 1024 / 1024;
     if (size > 0.5) {
         toaster.show({
             message: `File size of 500KB exceeded. File was ${size.toFixed(2)}MB`,
@@ -46,7 +54,9 @@ const onUpload = ({onSuccess, onError}: ImageUploadProps) => async (e: any) => {
 
 export function ImageUpload({onSuccess, onError}: ImageUploadProps) {
     return <>
-        <Button icon='upload'>Upload Image</Button>
-        <input accept='image/*' style={{ cursor: 'pointer', opacity: 0, position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} onChange={onUpload({onSuccess, onError})} type='file' />
+        <Button icon='upload' style={{ position: 'relative', cursor: 'pointer',  }}>
+            Upload Image
+            <input accept='image/*' style={{ cursor: 'pointer', opacity: 0, position: 'absolute', left: 0, top: 0, width: '100%', height: '100%' }} onChange={onUpload({onSuccess, onError})} type='file' />
+        </Button>
     </>;
 }
