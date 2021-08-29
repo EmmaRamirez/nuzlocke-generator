@@ -1,1 +1,0 @@
-export const getMajorVersion = (v: string) => v.match(/^(\d+\.)?(\d+)/)?.[0];
