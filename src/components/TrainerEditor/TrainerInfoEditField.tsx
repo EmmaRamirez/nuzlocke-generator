@@ -3,14 +3,14 @@ import { Omit } from 'ramda';
 const debounce = require('lodash.debounce');
 
 
-export interface TrainerInfoEditField {
+export interface TrainerInfoEditFieldProps {
     label: React.ReactElement<any> | string;
     name: string;
     placeholder: string;
     onEdit?: any;
     onInput?: any;
     value?: string;
-    element?: (inputProps: Omit<TrainerInfoEditField, 'element'>) => any;
+    element?: (inputProps: Omit<TrainerInfoEditFieldProps, 'element'>) => any;
 }
 
 export function TrainerInfoEditField ({
@@ -21,7 +21,7 @@ export function TrainerInfoEditField ({
     // onInput,
     value,
     element,
-}: TrainerInfoEditField) {
+}: TrainerInfoEditFieldProps) {
     const [innerValue, setValue] = React.useState<string | undefined>('');
 
     const delayedValue = React.useCallback(
