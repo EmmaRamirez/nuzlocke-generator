@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-redeclare */
 import { Action } from './action';
 
 export type VERSION_0_0_6_BETA = 'VERSION_0_0_6_BETA';

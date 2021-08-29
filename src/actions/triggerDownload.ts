@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-redeclare */
 import { Action } from './action';
 
 export type TRIGGER_DOWNLOAD = 'TRIGGER_DOWNLOAD';

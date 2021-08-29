@@ -79,8 +79,7 @@ module.exports = {
         "no-caller": "error",
         "no-eval": "error",
         "no-new-wrappers": "error",
-        // This will otherwise error on most action declarations, which is a bit odd
-        "no-redeclare": "warn",
+        "@typescript-eslint/no-redeclare": "error",
         "no-trailing-spaces": "error",
         "no-underscore-dangle": "error",
         "no-unsafe-finally": "error",

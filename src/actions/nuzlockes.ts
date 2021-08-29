@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-redeclare */
 import { Action } from 'actions';
 
 export type NEW_NUZLOCKE = 'NEW_NUZLOCKE';

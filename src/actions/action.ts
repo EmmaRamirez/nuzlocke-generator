@@ -1,12 +1,14 @@
+/* eslint-disable @typescript-eslint/no-redeclare */
+
 /**
  * @interface Action
  * @param T type
  * @param P payload
  */
-export interface Action<T, P = any> {
+export interface Action<T, P = unknown> {
     type: T;
-    [payload: string]: P | T;
-    readonly meta?: any;
+    [payload: string]: P | T | unknown;
+    readonly meta?: unknown;
 }
 
 export namespace Action {
