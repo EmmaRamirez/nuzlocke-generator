@@ -5,7 +5,7 @@
  * @param T type
  * @param P payload
  */
-export interface Action<T, P = unknown> {
+export interface Action<T, P = any> {
     type: T;
     [payload: string]: P | T;
     readonly meta?: any;
