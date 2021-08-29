@@ -186,6 +186,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     <label className={cx(Classes.LABEL, Classes.INLINE)}>Template</label>
                     <div className={Classes.SELECT}>
                         <select
+                            className={Classes.SELECT}
                             name="template"
                             onChange={(e) => editEvent(e, props, undefined, props.game.name)}
                             value={props.style.template}>

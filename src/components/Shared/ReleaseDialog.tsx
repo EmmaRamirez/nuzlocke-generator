@@ -6,6 +6,7 @@ import { generateReleaseNotes, releaseNotes, Styles, classWithDarkTheme } from '
 import { version } from 'package';
 const ReactMarkdown = require('react-markdown');
 import { tail } from 'ramda';
+import { getMajorVersion } from 'utils/getMajorVersion';
 
 const croagunk = require('assets/img/croagunk.gif');
 const togepi = require('assets/icons/pokemon/regular/togepi.png');
@@ -62,10 +63,6 @@ DialogProps & ReleaseDialogProps,
         seePrevious: false,
     };
 
-    public static getMajorVersion(v: string) {
-        return v.match(/^(\d+\.)?(\d+)/)?.[0];
-    }
-
     public render() {
         const { seePrevious } = this.state;
 
@@ -89,7 +86,7 @@ DialogProps & ReleaseDialogProps,
                                 ),
                             )}>
                             {version}{' '}
-                            <img className={mascot} alt="mascot" src={getMascot(ReleaseDialog.getMajorVersion(version))} />
+                            <img className={mascot} alt="mascot" src={getMascot(getMajorVersion(version))} />
                         </h3>
                         <ReactMarkdown
                             className="release-notes"
@@ -106,7 +103,7 @@ DialogProps & ReleaseDialogProps,
                                     <ReactMarkdown
                                         key={key}
                                         className="release-notes"
-                                        source={`#### ![${mascot}](${getMascot(ReleaseDialog.getMajorVersion(key))}) ${key}\n${generateReleaseNotes(key)}`}
+                                        source={`#### ![${mascot}](${getMascot(getMajorVersion(key))}) ${key}\n${generateReleaseNotes(key)}`}
                                     />
                                 );
                             })}

@@ -92,6 +92,7 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
         };
         const stat = (stat, statName) => (
             <div
+                className={`pokemon-stat-${statName}`}
                 style={{
                     display: 'flex',
                     justifyContent: 'center',
@@ -185,9 +186,10 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                         )}
                         {style.displayExtraData && pokemon.extraData ? (
                             <div
+                                className='pokemon-extra-data'
                                 style={{
                                     display: 'flex',
-                                    justifyContent: 'space-evenly',
+                                    //justifyContent: 'space-evenly',
                                     fontSize: '12px',
                                     width: '255px',
                                 }}>

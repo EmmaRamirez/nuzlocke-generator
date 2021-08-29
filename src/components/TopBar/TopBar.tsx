@@ -16,6 +16,7 @@ import { Pokemon, Editor } from 'models';
 import { ReleaseDialog } from 'components/Shared';
 import { State } from 'state';
 import { isMobile } from 'is-mobile';
+import { getMajorVersion } from 'utils/getMajorVersion';
 
 export interface TopBarProps {
     onClickDownload: (e?: React.MouseEvent<HTMLElement>) => void;
@@ -44,19 +45,19 @@ const darkModeStyle = (mode: boolean) => (mode ? { color: '#fff' } : {});
 
 export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
     public state = {
-        isOpen: !this.props.sawRelease[version],
+        isOpen: !this.props.sawRelease?.[getMajorVersion(version) ?? 0],
         isMenuOpen: false,
     };
 
     // eslint-disable-next-line camelcase
     public UNSAFE_componentWillMount() {
         if (version.split('.')[2] !== 0) {
-            this.props.seeRelease(version);
+            this.props.seeRelease(getMajorVersion(version));
         }
     }
 
     private closeDialog = (e) => {
-        this.props.seeRelease(version);
+        this.props.seeRelease(getMajorVersion(version));
         this.toggleDialog();
     };
 

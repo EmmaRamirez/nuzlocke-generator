@@ -7,8 +7,8 @@
  */
 export interface Action<T, P = unknown> {
     type: T;
-    [payload: string]: P | T | unknown;
-    readonly meta?: unknown;
+    [payload: string]: P | T;
+    readonly meta?: any;
 }
 
 export namespace Action {
