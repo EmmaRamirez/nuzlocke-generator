@@ -54,3 +54,5 @@ jspm_packages
 imageCheck.js
 
 *.env.*
+
+lighthouse/

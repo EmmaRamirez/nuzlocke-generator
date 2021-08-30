@@ -25,7 +25,8 @@
     "start": "npm run serve",
     "start:persist": "while true; do npm start && break; done",
     "test": "jest --coverage --config jest-config.json",
-    "todos": "npx leasot 'src/**/*.tsx' 'src/**/*.ts'"
+    "todos": "npx leasot 'src/**/*.tsx' 'src/**/*.ts'",
+    "lh": "npx lighthouse http://localhost:8080 --output-path=./lighthouse/audit.html --save-assets --preset=desktop --quiet --chrome-flags=headless"
   },
   "engines": {
     "node": "^16",
