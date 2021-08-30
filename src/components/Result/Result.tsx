@@ -406,7 +406,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             backgroundRepeat: style.tileBackground ? 'repeat' : 'no-repeat',
                             border: 'none',
                             height: style.useAutoHeight ? 'auto' : `${style.resultHeight}px`,
-                            minHeight: style.useAutoHeight ? '900px' : undefined,
+                            minHeight: style.useAutoHeight ? '600px' : undefined,
                             transition: 'transform 300ms ease-in-out',
                             transformOrigin: '0 0',
                             width: `${style.resultWidth}px`,
