@@ -11,12 +11,19 @@ const logger = require('pino')({
   messageFormat: '☰nuz: {levelLabel} - {pid} - url:{request.url}'
 });
 const cors = require('cors');
-const Webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
-const webpackConfig = require('./webpack.config');
 
-const compiler = Webpack(webpackConfig);
-const middleware = require('webpack-dev-middleware');
+const isLocal = process.env.NODE_ENV === 'local';
+
+let middleware, compiler;
+
+if (isLocal) {
+  const Webpack = require('webpack');
+  const WebpackDevServer = require('webpack-dev-server');
+  const webpackConfig = require('./webpack.config');
+
+  compiler = Webpack(webpackConfig);
+  middleware = require('webpack-dev-middleware');
+}
 
 const GH_URL = 'https://api.github.com/repos/EmmaRamirez/nuzlocke-generator/issues';
 const GH_ACCESS_TOKEN = process.env.GH_ACCESS_TOKEN;
@@ -25,7 +32,7 @@ const productionFlag = process.env.NODE_ENV === 'production';
 app.use(express.json({ limit: '50mb' }));
 app.use(cors());
 app.use(compression());
-if (!productionFlag) {
+if (isLocal && middleware && compiler) {
   logger.info(`Running server in development mode.`);
   app.use(
     middleware(compiler, {})
@@ -101,5 +108,6 @@ app.get('/nuzlockes', async (req, res, next) => {
 
 
 app.listen(PORT, () => {
+  logger.info(`Current environment: ${process.env.NODE_ENV}`);
   logger.info(`Running server on http://localhost:${PORT} 🚀`);
 });
