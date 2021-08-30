@@ -52,6 +52,12 @@
   padding: 1rem;
   position: relative;
 }
+.pokemon-container {
+  display: inline-flex;
+}
+.pokemon-image-wrapper {
+  align-self: center;
+}
 .logo {
   height: 2.5rem;
 }

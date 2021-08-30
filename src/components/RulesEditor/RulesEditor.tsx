@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Dialog, Intent, TextArea, Icon } from '@blueprintjs/core';
+import { Button, Dialog, Intent, TextArea, Icon, Classes } from '@blueprintjs/core';
 import { connect } from 'react-redux';
 import { editRule, addRule, deleteRule, resetRules } from 'actions';
 
@@ -21,7 +21,7 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
                 <div className="rule-no">{index + 1}</div>
                 <TextArea
                     defaultValue={rule}
-                    className="bp3-fill"
+                    className={Classes.FILL}
                     onChange={(e: any) => this.props.editRule(index, e.target.value)}
                     dir="auto"
                 />
@@ -80,11 +80,11 @@ export const RulesEditorDialogBase = (
             isOpen={props.isOpen}
             onClose={props.onClose}
             className={`rules-editor-dialog ${
-                props.style.editorDarkMode ? 'bp3-dark' : 'bp3-light'
+                props.style.editorDarkMode ? Classes.DARK : ''
             }`}
             title="Rules Editor"
             icon="edit">
-            <div className="bp3-dialog-body">
+            <div className={Classes.DIALOG_BODY}>
                 <RulesEditor
                     rules={props.rules}
                     editRule={props.editRule}

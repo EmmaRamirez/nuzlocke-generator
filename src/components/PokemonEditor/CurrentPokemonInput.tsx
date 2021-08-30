@@ -196,7 +196,7 @@ export function PokemonTextAreaInput({
             placeholder={placeholder}
             disabled={disabled}
             style={{ width: '100%' }}
-            className={disabled ? `${Classes.DISABLED} ${Classes.TEXT_MUTED} bp3-fill` : ''}
+            className={disabled ? `${Classes.DISABLED} ${Classes.TEXT_MUTED} ${Classes.FILL}` : ''}
         />
     );
 }
@@ -255,14 +255,14 @@ export function PokemonSelectInput({
                 {!usesKeyValue
                     ? options
                         ?
-                          (options as any)?.map((item, index) => <option key={index}>{item}</option>)
+                        (options as any)?.map((item, index) => <option key={index}>{item}</option>)
                         : null
                     :
-                      (options as any)?.map((item, index) => (
-                          <option value={item.value} key={index}>
-                              {item.key}
-                          </option>
-                      ))}
+                    (options as any)?.map((item, index) => (
+                        <option value={item.value} key={index}>
+                            {item.key}
+                        </option>
+                    ))}
             </select>
         </div>
     );

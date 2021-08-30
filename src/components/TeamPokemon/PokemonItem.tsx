@@ -77,11 +77,11 @@ export function PokemonItem({
                     />}
                 </PokemonImage>
                 : <img alt={pokemon.item}
-                        src={`icons/hold-item/${(pokemon.item || '')
+                    src={`icons/hold-item/${(pokemon.item || '')
                         .toLowerCase()
                         .replace(/\'/g, '')
                         .replace(/\s/g, '-')}.png`}
-                    />
+                />
             }
         </div>
     ) : null;

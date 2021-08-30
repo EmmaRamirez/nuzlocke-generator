@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-redeclare */
 import { Action } from 'actions';
 
 export type CREATE_CUSTOM_TYPE = 'CREATE_CUSTOM_TYPE';

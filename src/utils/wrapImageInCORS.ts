@@ -24,7 +24,7 @@ export async function wrapImageInCORS(url: string) {
 }
 
 export async function wrapImageInCORSPlain(url: string) {
-    const response = await fetch(`${process.env.ORS_ANYWHERE_URL}/${url}`, {
+    const response = await fetch(`${process.env.CORS_ANYWHERE_URL}/${url}`, {
         mode: 'cors',
         // @ts-expect-error valid for cors-anywhere
         'X-Requested-With': 'XMLHttpRequest',

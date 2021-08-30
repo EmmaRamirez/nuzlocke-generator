@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-redeclare */
 import { Action } from './action';
 
 export type DELETE_POKEMON = 'DELETE_POKEMON';

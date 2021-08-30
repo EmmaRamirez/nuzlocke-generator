@@ -99,7 +99,7 @@ export const styleDefaults: Styles = {
     displayGameOriginForBoxedAndDead: false,
     displayBackgroundInsteadOfBadge: false,
     displayExtraData: true,
-    useAutoHeight: false,
+    useAutoHeight: true,
     usePokemonGBAFont: false,
     displayItemAsText: false,
     displayRulesLocation: 'bottom' as RulesLocation,

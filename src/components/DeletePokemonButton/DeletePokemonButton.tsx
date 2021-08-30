@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Alert, Intent, Icon, Popover, Position, PopoverInteractionKind } from '@blueprintjs/core';
-import styled from 'react-emotion';
+import { Alert, Intent, Icon, Popover, Position, PopoverInteractionKind, Classes } from '@blueprintjs/core';
+import styled, { cx } from 'react-emotion';
 
 import { deletePokemon, modifyDeletionConfirmation } from 'actions';
 import { connect } from 'react-redux';
@@ -57,7 +57,7 @@ DeletePokemonButtonProps,
                         that?
                     </p>
 
-                    <label className="bp3-control bp3-checkbox .modifier">
+                    <label className={cx(Classes.CONTROL, Classes.CHECKBOX)}>
                         <input
                             onChange={(event) =>
                                 this.props.modifyDeletionConfirmation &&
@@ -65,7 +65,7 @@ DeletePokemonButtonProps,
                             }
                             type="checkbox"
                         />
-                        <span className="bp3-control-indicator" />
+                        <span className={Classes.CONTROL_INDICATOR} />
                         Don't Ask Me For Confirmation Again
                     </label>
                 </Alert>

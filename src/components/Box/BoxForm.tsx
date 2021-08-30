@@ -147,7 +147,7 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                         </div>
 
                         <div style={inputStyle}>
-                            <label style={labelStyle} className="bp3-label">
+                            <label style={labelStyle} className={Classes.LABEL}>
                                 Inherit From...
                             </label>
                             <div className={Classes.SELECT}>

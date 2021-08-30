@@ -213,6 +213,8 @@ export const ResultInner = React.forwardRef((props, resultRef: React.Ref<HTMLDiv
                 height: `${style.resultHeight}px`,
                 width: `${style.resultWidth}px`,
                 overflowY: 'auto',
+                fontFamily: style.usePokemonGBAFont ? 'pokemon_font' : 'inherit',
+                fontSize: style.usePokemonGBAFont ? '125%' : '100%',
             }}>
             <style>{style.customCSS}</style>
             <div

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { cx } from 'emotion';
 import { State } from 'state';
 import { Classes } from '@blueprintjs/core';
-import { ErrorBoundary } from 'components/Shared';
+import { ErrorBoundary, Skeleton } from 'components/Shared';
 import { editorStyles } from './styles';
 import './editor.css';
 import { editorModeSelector, minimizedSelector } from 'selectors';
@@ -45,7 +45,6 @@ const Credits = React.lazy(() =>
     import('components/Credits').then((res) => ({ default: res.Credits })),
 );
 
-const Skeleton = <div style={{ width: '100%', height: '100px' }} className="bp3-skeleton"></div>;
 
 /**
  * The main editor interface.

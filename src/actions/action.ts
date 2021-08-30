@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-redeclare */
+
 /**
  * @interface Action
  * @param T type

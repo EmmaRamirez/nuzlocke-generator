@@ -22,11 +22,19 @@
   background: rgba(244,244,244,0.1);
   border-radius: 0.25rem;
   margin: 2px;
-  padding: 2px;
-  font-size: 70%;
+  padding: 2px 4px;
+  font-size: 80%;
   font-weight: normal;
-  width: 4rem;
+  width: 8rem;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.release-notes-wrapper h4 img {
+  display: inline;
+  image-rendering: pixelated;
+  height: 100%;
 }
 .release-notes-wrapper a {
     color: #187daf;

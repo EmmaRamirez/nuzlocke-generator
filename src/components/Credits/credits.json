@@ -31,16 +31,6 @@
             "role": "Bulbasaur"
         },
         {
-            "name": "Joltik92",
-            "link": "https://www.deviantart.com/joltik92",
-            "role": "Ivysaur"
-        },
-        {
-            "name": "Vermeilbird",
-            "link": "https://www.deviantart.com/vermeilbird/",
-            "role": "Charmander"
-        },
-        {
             "name": "Korriarendo",
             "link": "https://www.deviantart.com/koriarredondo",
             "role": "Squirtle"
@@ -209,7 +199,7 @@
             "name": "Dizzie Skizze",
             "link": "https://dizzieskizze.tumblr.com/"
         }, {
-            "role": "Lanturn",
+            "role": "Ivysaur, Lanturn",
             "name": "Joltik92",
             "link": "https://www.deviantart.com/joltik92"
         }, {
@@ -265,7 +255,7 @@
             "name": "Chibi-C",
             "link": "https://www.deviantart.com/chibi-c/"
         }, {
-            "role": "Espeon",
+            "role": "Charmander, Espeon",
             "name": "Vermeilbird",
             "link": "https://www.deviantart.com/vermeilbird/"
         }, {
@@ -424,6 +414,46 @@
             "role": "Celebi",
             "name": "Mofinngram",
             "link": "https://aminoapps.com/c/pokemon/page/user/mofinngram/o6hJ_fl36DonMk02N8a743dwkrben"
+        },
+        {
+            "role": "Cyndaquil",
+            "name": "Rileykitty",
+            "link": "https://www.deviantart.com/rileykitty"
+        },
+        {
+            "role": "Ledian",
+            "name": "laplace i",
+            "link": "https://laplace-i.tumblr.com/"
+        },
+        {
+            "role": "Wooper",
+            "name": "Oliver Hamlin",
+            "link": "https://revilonilmah.tumblr.com/"
+        },
+        {
+            "role": "Quagsire",
+            "name": "Teaiel",
+            "link": "https://www.tumgir.com/teaiel"
+        },
+        {
+            "role": "Murkrow",
+            "name": "1-084",
+            "link": "https://www.deviantart.com/1-084"
+        },
+        {
+            "role": "Misdreavus",
+            "name": "Liczka-km",
+            "link": "https://www.deviantart.com/liczka-km"
+        },
+        {
+            "role": "Slugma",
+            "name": "Narvii",
+            "link": "https://pm1.narvii.com/"
+        },
+        {
+            "role": "Swinub",
+            "name": "Autobot Tesla",
+            "link": "https://www.deviantart.com/autobottesla"
         }
     ]
 }

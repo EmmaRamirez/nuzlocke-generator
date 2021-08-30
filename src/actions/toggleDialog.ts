@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-redeclare */
 import { Action } from 'actions';
 import { DialogViewType } from 'models';
 

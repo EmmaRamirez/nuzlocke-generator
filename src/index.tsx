@@ -70,7 +70,7 @@ injectGlobal`
     }
 
     .opacity-medium {
-        oapcity: 0.5;
+        opacity: 0.5;
     }
 
     .flex { display: flex; }
@@ -81,7 +81,7 @@ injectGlobal`
     .justify-between { justify-content: space-between; }
     .m-1 { margin: 0.25rem; }
     .mb-2 { margin-bottom: 0.5rem; }
-    .cursor-pointer { pointer: cursor; }
+    .cursor-pointer { cursor: pointer; }
     .inline-flex { display: inline-flex !important; }
 `;
 

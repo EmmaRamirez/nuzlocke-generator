@@ -25,6 +25,7 @@ import { CheckpointsDisplay } from 'components/Result';
 import { PokemonImage } from 'components/Shared/PokemonImage';
 import { PokemonItem } from './PokemonItem';
 import { PokemonPokeball } from './PokemonPokeball';
+import { PokemonFriendship } from './PokemonFriendship';
 
 
 export interface TeamPokemonInfoProps {
@@ -91,6 +92,7 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
         };
         const stat = (stat, statName) => (
             <div
+                className={`pokemon-stat-${statName}`}
                 style={{
                     display: 'flex',
                     justifyContent: 'center',
@@ -184,9 +186,10 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                         )}
                         {style.displayExtraData && pokemon.extraData ? (
                             <div
+                                className='pokemon-extra-data'
                                 style={{
                                     display: 'flex',
-                                    justifyContent: 'space-evenly',
+                                    //justifyContent: 'space-evenly',
                                     fontSize: '12px',
                                     width: '255px',
                                 }}>
@@ -215,6 +218,9 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                                     </>
                                 }
                             </div>
+                        ) : null}
+                        {style.displayExtraData && pokemon.extraData ? (
+                            <PokemonFriendship friendship={pokemon.extraData?.['friendship']} />
                         ) : null}
                         {linkedPokemon && (
                             <div className="pokemon-linked">

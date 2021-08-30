@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-redeclare */
 import { Trainer } from 'models';
 import { Action } from './action';
 

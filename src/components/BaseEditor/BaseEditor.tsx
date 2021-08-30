@@ -39,9 +39,7 @@ export class BaseEditor extends React.Component<BaseEditorProps, BaseEditorState
                         }} icon={this.props.icon} />} */}
                         {this.props.name}
                     </span>
-                    <span
-                        className={`bp3-icon bp3-icon-caret-${this.state.isOpen ? 'up' : 'down'}`}
-                    />
+                    <Icon icon={this.state.isOpen ? 'caret-up' : 'caret-down'} />
                 </h4>
                 {this.state.isOpen ? this.props.children : null}
             </div>

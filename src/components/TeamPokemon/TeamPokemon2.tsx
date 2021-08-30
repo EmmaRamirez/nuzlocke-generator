@@ -150,6 +150,7 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
         notes: pokemon.notes ?? '',
         linkedPokemon: ReactDOMServer.renderToString(<LinkedPokemon style={style} linkedPokemon={linkedPokemon} />),
         linkedPokemonData: linkedPokemon ?? null,
+        extraData: '',
         movesColored: ReactDOMServer.renderToString(
             <MovesBase
                 style={style}
@@ -213,7 +214,8 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
                         backgroundImage: image,
-                    }}></div>
+                    }}>
+                </div>
             </div>
         </>
     );

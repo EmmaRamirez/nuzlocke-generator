@@ -823,5 +823,18 @@ Thank you!
 
 ## Known Issues
 - Download Image may not always work. This will depend on the browser's policies for requesting images from a different domain inside of an HTML canvas.
-`
+`,
+    '1.9.0': `
+## Features
+- **Friendship**: friendship data from gen II save files is now displayable ♡
+
+## Fixes
+- Autoheight is now the default option (only future nuzlockes are affected by this change)
+- Fixed a typo that prevented custom icons from being rendered
+- Added more credits and replaced standard images for which a credit couldn't be found
+- The release notes popup will now only show up on major and minor release, patch notes will still be viewable
+
+## Known Issues
+- Download Image may not always work. This will depend on the browser's policies for requesting images from a different domain inside of an HTML canvas.
+`,
 };
