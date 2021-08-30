@@ -80,7 +80,7 @@ ${data ? JSON.stringify(data) : 'User chose not to attach nuzlocke.json'}
         labels: ['User Submitted', 'Type: Bug'],
     })
   });
-  if (githubCall.status.toString()[0] === '2') {
+  if (githubCall?.status?.toString()[0] === '2') {
     logger.info(`Successfully called Github`);
   }
   res.send({ status: githubCall.status });
