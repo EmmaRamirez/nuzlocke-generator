@@ -5,7 +5,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-// const WorkboxPlugin = require('workbox-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -15,9 +14,6 @@ const Dotenv = require('dotenv-webpack');
 // @TODO: do not this lol
 const isProduction = (process.env.NODE_ENV || 'development') === 'production';
 
-// console.log(path.resolve(__dirname, 'src/index.tsx'));
-
-// tslint:disable-next-line:no-default-export
 module.exports = {
     entry: path.resolve(__dirname, 'src/index.tsx'),
     output: {
@@ -38,7 +34,6 @@ module.exports = {
     },
     devServer: {
         contentBase: 'dist',
-        // inline: true,
         host: 'localhost',
         port: 8080,
         noInfo: true,
@@ -59,12 +54,6 @@ module.exports = {
         splitChunks: {
             chunks: 'all',
             minSize: 10000,
-            cacheGroups: {
-                // extractPopupStyles: {
-                //     name: 'style',
-                //     chunks: chunk => chunk.name === 'popup',
-                // },
-            },
         },
     },
     module: {
@@ -107,10 +96,6 @@ module.exports = {
                     module: false,
                 },
             },
-            // {
-            //     test: require.resolve('@blueprintjs/core'),
-            //     loader: 'imports-loader?this=>window,global=>{window: this}',
-            // },
         ],
     },
     plugins: [
@@ -137,25 +122,8 @@ module.exports = {
         }),
 
         new Serve({ static: path.resolve(__dirname, 'dist'), host: 'localhost', port: 8080 })
-
-        // new ReactLoadablePlugin({
-        //     filename: './dist/react-lodable.json',
-        // }),
-
-        // new WorkboxPlugin.GenerateSW({
-        //     clientsClaim: true,
-        //     skipWaiting: true,
-        // }),
-
-        // new OfflinePlugin({
-        //     excludes: ['**/*.js', '*.js']
-        // })
     ],
     externals: {
         fs: {},
     },
-    // watch: true,
-    // node: {
-    //     process: false,
-    // }
 };
