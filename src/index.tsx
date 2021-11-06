@@ -83,6 +83,7 @@ injectGlobal`
     .mb-2 { margin-bottom: 0.5rem; }
     .cursor-pointer { cursor: pointer; }
     .inline-flex { display: inline-flex !important; }
+    .full-width { width: 100%; }
 `;
 
 
