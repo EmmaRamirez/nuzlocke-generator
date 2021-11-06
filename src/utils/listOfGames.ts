@@ -34,7 +34,9 @@ export type Game =
     | 'Let\'s Go Eevee'
     | 'Let\'s Go Pikachu'
     | 'Sword'
-    | 'Shield';
+    | 'Shield'
+    | 'Brilliant Diamond'
+    | 'Shining Pearl';
 
 export const listOfGames: Game[] = [
     'None',
@@ -73,5 +75,7 @@ export const listOfGames: Game[] = [
     'Let\'s Go Pikachu',
     'Sword',
     'Shield',
+    'Brilliant Diamond',
+    'Shining Pearl'
     //'Custom...',
 ];
