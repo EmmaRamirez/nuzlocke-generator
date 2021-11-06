@@ -33,7 +33,6 @@ module.exports = {
         "jest"
     ],
     "rules": {
-        // "@typescript-eslint/class-name-casing": "error",
         "@typescript-eslint/explicit-member-accessibility": [
             "error",
             {
@@ -77,7 +76,6 @@ module.exports = {
             "undefined"
         ],
         "id-match": "error",
-        // "import/no-default-export": "error",
         "import/order": "off",
         "no-caller": "error",
         "no-eval": "error",
