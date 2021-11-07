@@ -73,7 +73,7 @@ app.post('/report', async (req, res, next) => {
         body: `${report}
  
 \`\`\`json
-${data ? JSON.stringify(data) : 'User chose not to attach nuzlocke.json'}
+${data ? data : 'User chose not to attach nuzlocke.json'}
 \`\`\`
         `,
         assigness: ['EmmaRamirez'],
