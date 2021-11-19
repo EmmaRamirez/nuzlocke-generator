@@ -170,7 +170,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                     <img
                         className="trainer-image"
                         src={mapTrainerImage(trainer.image)}
-                        alt="Trainer Image"
+                        alt="Trainer"
                     />
                 ) : null}
                 {trainer.title ? (
