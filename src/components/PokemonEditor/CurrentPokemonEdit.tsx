@@ -388,13 +388,14 @@ CurrentPokemonEditState
                     />
                     {/* <PokemonNotes /> */}
                 </CurrentPokemonLayoutItem>
-                <CurrentPokemonLayoutItem disabled>
+                <CurrentPokemonLayoutItem fullWidth>
                     {currentPokemon.extraData && (
                         <CurrentPokemonInput
                             labelName="Extra Data"
                             inputName="extraData"
-                            type="text"
+                            type="textArea"
                             disabled
+                            className="full-width"
                             value={JSON.stringify(currentPokemon.extraData)}
                             key={this.state.selectedId + 'extradata'}
                         />

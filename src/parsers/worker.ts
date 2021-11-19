@@ -36,6 +36,5 @@ self.onmessage = async ({ data: { save, selectedGame, boxMappings } }: MessageDa
     result.pokemon = result.pokemon.filter((poke) => poke.species);
 
     console.log('parser', result);
-    // @ts-expect-error actually valid
     self.postMessage(result);
 };

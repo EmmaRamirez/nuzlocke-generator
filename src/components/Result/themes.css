@@ -703,9 +703,9 @@
   border-radius: 0;
   height: auto;
 }
-.blank * {
+/* .blank *:not(:where(.trainer-checkpoint,.badge-wrapper)) {
   all: unset;
-}
+} */
 /* .blank .pokemon-image-wrapper, */
 .blank .pokemon-image {
   display: block;

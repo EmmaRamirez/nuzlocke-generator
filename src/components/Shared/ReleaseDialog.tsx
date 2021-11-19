@@ -2,11 +2,10 @@ import * as React from 'react';
 import { Dialog, Classes, Button, DialogProps } from '@blueprintjs/core';
 import { css, cx } from 'emotion';
 import * as styles from 'components/Result/styles';
-import { generateReleaseNotes, releaseNotes, Styles, classWithDarkTheme } from 'utils';
-import { version } from 'package';
+import { Styles, classWithDarkTheme } from 'utils';
 const ReactMarkdown = require('react-markdown');
-import { tail } from 'ramda';
 import { getPatchlessVersion } from 'utils/getPatchlessVersion';
+import useSwr from 'swr';
 
 const croagunk = require('assets/img/croagunk.gif');
 const togepi = require('assets/icons/pokemon/regular/togepi.png');
@@ -50,66 +49,82 @@ export const getMascot = v => {
 const mascot = css`
     display: inline-block;
 `;
+
+// @ts-ignore
+const fetcher = (...args) => fetch(...args).then(res => res.json());
+
 export interface ReleaseDialogProps {
     onClose: (e?: React.SyntheticEvent) => void;
     style: Styles;
 }
 
-export class ReleaseDialog extends React.Component<
-DialogProps & ReleaseDialogProps,
-{ seePrevious?: boolean }
-> {
-    public state = {
-        seePrevious: false,
-    };
+export interface ReleaseNote {
+    id: number;
+    version: string;
+    note: string;
+}
 
-    public render() {
-        const { seePrevious } = this.state;
+export function ReleaseDialog (props: DialogProps & ReleaseDialogProps) {
+    const [seePrevious, setSeePrevious] = React.useState(false);
+    const { data, error } = useSwr('/release/latest', fetcher);
+    const { data: allNotesData, error: allNotesError } = useSwr('/release/all', fetcher);
 
-        return (
-            <Dialog
-                isOpen={this.props.isOpen}
-                onClose={this.props.onClose}
-                icon="document"
-                title={`Release Notes ${version}`}
-                className={`release-dialog ${
-                    this.props.style.editorDarkMode ? Classes.DARK : ''
-                }`}>
-                <div className={Classes.DIALOG_BODY}>
-                    <div className="release-notes-wrapper">
-                        <h3
-                            className={cx(
-                                classWithDarkTheme(
-                                    styles,
-                                    'heading',
-                                    this.props.style.editorDarkMode,
-                                ),
-                            )}>
-                            {version}{' '}
-                            <img className={mascot} alt="mascot" src={getMascot(getPatchlessVersion(version))} />
-                        </h3>
-                        <ReactMarkdown
-                            className="release-notes"
-                            source={generateReleaseNotes(version)}
-                        />
-                        <Button
-                            onClick={() => this.setState({ seePrevious: !this.state.seePrevious })}
-                            icon={seePrevious ? 'symbol-triangle-up' : 'symbol-triangle-down'}>
-                            Previous Relase Notes
-                        </Button>
-                        {seePrevious &&
-                            tail(Object.keys(releaseNotes).reverse()).map((key) => {
-                                return (
-                                    <ReactMarkdown
-                                        key={key}
-                                        className="release-notes"
-                                        source={`#### ![${mascot}](${getMascot(getPatchlessVersion(key))}) ${key}\n${generateReleaseNotes(key)}`}
-                                    />
-                                );
-                            })}
-                    </div>
+    React.useEffect(() => console.log(data), [data]);
+
+    // @TODO: figure out these states
+    if (error || allNotesError) return null;
+    if (!data || !allNotesData) return null;
+
+    const note = data.payload.notes[0];
+    const { version } = note;
+
+    const allNotes = allNotesData.payload.notes;
+
+
+    return (
+        <Dialog
+            isOpen={props.isOpen}
+            onClose={props.onClose}
+            icon="document"
+            title={`Release Notes ${version}`}
+            className={`release-dialog ${
+                props.style.editorDarkMode ? Classes.DARK : ''
+            }`}>
+            <div className={Classes.DIALOG_BODY}>
+                <div className="release-notes-wrapper">
+                    <h3
+                        className={cx(
+                            classWithDarkTheme(
+                                styles,
+                                'heading',
+                                props.style.editorDarkMode,
+                            ),
+                        )}>
+                        {version}{' '}
+                        <img className={mascot} alt="mascot" src={getMascot(getPatchlessVersion(version))} />
+                    </h3>
+                    {data && <ReactMarkdown
+                        className="release-notes"
+                        source={note.note}
+                    />}
+                    {error && <div>There was an error retrieving release notes.</div>}
+                    <Button
+                        onClick={() => setSeePrevious(!seePrevious)}
+                        icon={seePrevious ? 'symbol-triangle-up' : 'symbol-triangle-down'}>
+                        Previous Relase Notes
+                    </Button>
+                    {seePrevious &&
+                        allNotes.map((note) => {
+                            return (
+                                <ReactMarkdown
+                                    key={note.id}
+                                    className="release-notes"
+                                    source={`#### ![${mascot}](${getMascot(getPatchlessVersion(note.version))}) ${note.version}\n${note.note}`}
+                                />
+                            );
+                        })}
                 </div>
-            </Dialog>
-        );
-    }
+            </div>
+        </Dialog>
+    );
 }

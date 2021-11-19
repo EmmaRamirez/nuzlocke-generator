@@ -19,6 +19,8 @@ module.exports = {
     },
     "extends": [
         "prettier",
+        "plugin:jsx-a11y/recommended",
+        "plugin:jest/recommended",
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -27,10 +29,10 @@ module.exports = {
     },
     "plugins": [
         "@typescript-eslint",
-        "@typescript-eslint/tslint"
+        "jsx-a11y",
+        "jest"
     ],
     "rules": {
-        // "@typescript-eslint/class-name-casing": "error",
         "@typescript-eslint/explicit-member-accessibility": [
             "error",
             {
@@ -74,7 +76,6 @@ module.exports = {
             "undefined"
         ],
         "id-match": "error",
-        // "import/no-default-export": "error",
         "import/order": "off",
         "no-caller": "error",
         "no-eval": "error",
@@ -86,39 +87,5 @@ module.exports = {
         "no-var": "error",
         "prefer-const": "error",
         "prefer-template": "error",
-        "@typescript-eslint/tslint/config": [
-            "error",
-            {
-                "rules": {
-                    "insecure-random": true,
-                    "mocha-avoid-only": true,
-                    "no-document-domain": true,
-                    "no-document-write": true,
-                    "no-duplicate-case": true,
-                    "no-empty-interfaces": true,
-                    "react-a11y-anchors": true,
-                    "react-a11y-aria-unsupported-elements": true,
-                    "react-a11y-event-has-role": true,
-                    "react-a11y-img-has-alt": true,
-                    "react-a11y-lang": true,
-                    "react-a11y-tabindex-no-positive": true,
-                    "react-this-binding-issue": [
-                        true,
-                        {
-                            "allow-anonymous-listeners": true
-                        }
-                    ],
-                    "valid-typeof": true,
-                    "whitespace": [
-                        true,
-                        "check-branch",
-                        "check-decl",
-                        "check-operator",
-                        "check-separator",
-                        "check-module"
-                    ]
-                }
-            }
-        ]
     }
 };

@@ -16,14 +16,19 @@ const style = {
         margin-top: -1rem;
         padding: 0.5rem;
     `,
+    fullWidth: css`
+        width: 100%;
+    `,
 };
 
 export function CurrentPokemonLayoutItem({
-    disabled, checkboxes, className, children
-}: {disabled?: boolean;
+    disabled, checkboxes, className, children, fullWidth
+}: {
+    disabled?: boolean;
     checkboxes?: boolean;
     className?: string;
     children: React.ReactNode;
+    fullWidth?: boolean;
 }) {
     return (
         <div
@@ -32,6 +37,7 @@ export function CurrentPokemonLayoutItem({
                 style.Layout,
                 disabled && style.disabled,
                 checkboxes && style.checkboxes,
+                fullWidth && style.fullWidth,
             )}>
             {children}
         </div>

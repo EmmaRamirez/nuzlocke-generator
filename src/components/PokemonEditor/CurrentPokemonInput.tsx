@@ -45,13 +45,6 @@ interface CurrentPokemonInputProps {
     items?: string[];
     key: string;
 }
-
-// selectedId: state.selectedId,
-//         customMoveMap: state.customMoveMap,
-//         customTypes: state.customTypes,
-//     }),
-//     { editPokemon, selectPokemon },
-
 interface ChangeArgs {
     inputName: CurrentPokemonInputProps['inputName'];
     position?: number;
@@ -399,7 +392,7 @@ export function PokemonMoveInput({
 }
 
 export function CurrentPokemonInput(props: CurrentPokemonInputProps) {
-    const { inputName, value } = props;
+    const { inputName, value, className } = props;
     const selectedId = useSelector<State, State['selectedId']>((state) => state.selectedId);
     const customMoveMap = useSelector<State, State['customMoveMap']>(
         (state) => state.customMoveMap,
@@ -416,7 +409,7 @@ export function CurrentPokemonInput(props: CurrentPokemonInputProps) {
 
     return (
         <span
-            className={`current-pokemon-input-wrapper current-pokemon-${props.type} ${props.type === 'autocomplete' && 'autocomplete'} current-pokemon-${props.inputName}`}>
+            className={`current-pokemon-input-wrapper current-pokemon-${props.type} ${props.type === 'autocomplete' && 'autocomplete'} current-pokemon-${props.inputName} ${className}`}>
             <label>{props.labelName}</label>
             {getInput({ ...props, selectedId, onChange, setEdit, edit, customMoveMap })}
         </span>

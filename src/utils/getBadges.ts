@@ -70,7 +70,7 @@ export function getBadges(name: Game): Badge[] {
         ];
     }
 
-    if (name === 'Diamond' || name === 'Pearl' || name === 'Platinum') {
+    if (name === 'Diamond' || name === 'Pearl' || name === 'Platinum' || name === 'Brilliant Diamond' || name === 'Shining Pearl') {
         return [
             { name: 'Coal Badge', image: 'coal-badge' },
             { name: 'Forest Badge', image: 'forest-badge' },
