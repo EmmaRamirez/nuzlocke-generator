@@ -110,7 +110,7 @@ app.get('/release/:type', async (req, res, next) => {
         'Content-Type': 'application/json',
     },
     mode: 'cors',
-  }).then(res => res.json()).then(res => res.map(rel => ({ id: rel.id, url: rel.html_url, version: rel.tag_name, note: rel.body })))
+  }).then(res => res.json()).then(res => res.map(rel => ({ id: rel.id, url: rel.html_url, version: rel.tag_name, note: rel.body, timestamp: rel.published_at })))
 
   if (type === 'latest') {
     const notes = head(releases);
