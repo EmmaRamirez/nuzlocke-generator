@@ -352,6 +352,17 @@ export const handleSpeciesTypeEdgeCases = ({
     if (
         match({
             ...data,
+            species: ['Cottonee', 'Whimsicott'],
+            generation: [
+                Generation.Gen5,
+            ],
+        })
+    )
+        return [Types.Grass, Types.Grass];
+
+    if (
+        match({
+            ...data,
             species: ['Shaymin'],
             forme: ['Sky'],
         })
