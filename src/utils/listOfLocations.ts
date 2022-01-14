@@ -321,6 +321,25 @@ export const locations = {
         'Verity Lakefront',
         'Victory Road',
         'Wayward Cave',
+
+        'Rocky Cave',
+        'Grassland Cave',
+        'Fountainspring Cave',
+        'Spacious Cave',
+        'Volcanic Cave',
+        'Swampy Cave',
+        'Dazzling Cave',
+        'Stargleam Cave',
+        'Whiteout Cave',
+        'Icy Cave',
+        'Glacier Cave',
+        'Riverbank Cave',
+        'Sandsear Cave',
+        'Still-Water Cave',
+        'Sunlit Cavern',
+        'Big Bluff Cavern',
+        'Bosgunk Cavern',
+        'Typhlo Cavern',
     ],
     Unova: [
         'Route 1',
@@ -606,6 +625,10 @@ export const locations = {
         'Split-DecisiRuins',
         'Max Lair',
     ],
+    Misc: [
+        'Mystery Gift',
+        'Fateful Encounter',
+    ]
 };
 
 export const listOfLocations = [
@@ -619,4 +642,5 @@ export const listOfLocations = [
     ...locations.Kalos,
     ...locations.Alola,
     ...locations.Galar,
+    ...locations.Misc,
 ];
