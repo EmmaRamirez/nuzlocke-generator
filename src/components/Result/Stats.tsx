@@ -159,7 +159,7 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
         const { stats, style } = this.props;
 
         return (
-            <div className="stats sstats-container">
+            <div className="stats stats-container">
                 <h3 style={{ color: 'inherit' }}>Stats</h3>
 
                 <div style={{ marginTop: '10px', margin: '0 10px' }}>
