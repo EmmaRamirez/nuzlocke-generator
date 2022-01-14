@@ -188,6 +188,7 @@ export function getAllBadges() {
     return [
         ...getBadges('Gold'),
         { name: 'Champion', image: 'champion-ribbon' },
+        { name: 'Legend Ribbon', image: 'legend-ribbon' },
         ...getBadges('Emerald'),
         { name: 'Hoenn Champion', image: 'hoenn-champion-ribbon' },
         ...getBadges('Platinum'),
