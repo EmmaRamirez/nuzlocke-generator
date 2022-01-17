@@ -77,6 +77,7 @@ injectGlobal`
     .p-6 { padding: 6rem; }
     .center-text { text-align: center; }
     .font-bold { font-weight: bold; }
+    .items-center { align-items: center; }
     .content-center { align-content: center; }
     .justify-between { justify-content: space-between; }
     .m-1 { margin: 0.25rem; }

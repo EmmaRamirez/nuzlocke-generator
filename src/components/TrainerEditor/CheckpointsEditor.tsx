@@ -74,7 +74,6 @@ CheckpointsSelectState
                     interactionKind={PopoverInteractionKind.CLICK}
                     content={this.renderOptions(checkpoint)}>
                     <div
-                        role="select"
                         className={cx(styles.checkpointSelect, Classes.SELECT, Classes.BUTTON, 'has-nice-scrollbars')}>
                         <div>
                             <img
