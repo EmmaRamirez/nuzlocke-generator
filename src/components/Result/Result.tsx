@@ -276,6 +276,9 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             return (
                                 <ChampsPokemon
                                     useSprites={this.props.style.useSpritesForChampsPokemon}
+                                    showGender={!this.props.style.minimalChampsLayout}
+                                    showLevel={!this.props.style.minimalChampsLayout}
+                                    showNickname={!this.props.style.minimalChampsLayout}
                                     key={index}
                                     {...poke}
                                 />

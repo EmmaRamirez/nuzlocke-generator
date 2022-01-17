@@ -13,7 +13,7 @@ export const champsPokemon = (options: any) => css`
     margin: ${options.margin};
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    justify-content: ${options.minimal ? 'center' : 'start'};
     background: ${options.background};
     padding: ${options.padding};
     cursor: pointer;
@@ -55,6 +55,7 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
             gameOfOrigin,
             shiny,
             gender,
+            nickname,
         } = this.props;
 
         return (
@@ -70,7 +71,7 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
                     useSpritesForChampsPokemon: true,
                 } as any}
             >
-                {(backgroundImage) => <img style={{
+                {(backgroundImage) => <img alt={''} style={{
                     backgroundImage,
                     backgroundPosition: 'center center',
                     backgroundSize: 'contain',
@@ -90,6 +91,7 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
             width: `${this.getWidth()}px`,
             margin,
             padding,
+            minimal: !(this.props.showNickname || this.props.showGender || this.props.showLevel),
         });
 
         return (
@@ -100,9 +102,9 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
                     ) : (
                         <PokemonIcon {...(this.props as any)} />
                     )}
-                    {this.props.showNickname && this.props.nickname}
+                    <span style={{ margin: '0 4px' }}>{this.props.showNickname && this.props.nickname}</span>
                     {this.props.showGender && GenderElement(this.props.gender)}
-                    {this.props.showLevel && ` Lv ${this.props.level}`}
+                    <span style={{ marginLeft: '2px' }}>{this.props.showLevel && ` Lv ${this.props.level ?? 0}`}</span>
                 </div>
                 <style>
                     {`.${className} {
