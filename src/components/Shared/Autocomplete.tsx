@@ -32,7 +32,7 @@ const renderItems = (visibleItems: string[], selectItem: any, innerValue: string
     );
 });
 
-const filter = (items, str) => items.filter(i => i?.toLowerCase().startsWith(str.toLowerCase()));
+const filter = (items, str) => items?.filter(i => i?.toLowerCase().startsWith(str.toLowerCase()));
 
 const invisibleText = css`
     color: transparent !important;

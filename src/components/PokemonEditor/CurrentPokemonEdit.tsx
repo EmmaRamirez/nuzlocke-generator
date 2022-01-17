@@ -1,19 +1,20 @@
 /* eslint-disable prefer-template */
 import * as React from 'react';
 import {
+    EvolutionTree,
+    feature,
+    Forme,
+    Game,
     getAdditionalFormes,
-    listOfPokemon,
-    matchSpeciesToTypes,
+    getGameGeneration,
+    getListOfTypes,
+    listOfAbilities,
     listOfItems,
     listOfLocations,
-    listOfAbilities,
-    getGameGeneration,
     listOfNatures,
-    Game,
-    EvolutionTree,
     listOfPokeballs,
-    getListOfTypes,
-    Forme,
+    listOfPokemon,
+    matchSpeciesToTypes,
     Species,
 } from 'utils';
 import { Pokemon, Editor } from 'models';
@@ -43,6 +44,7 @@ import { CurrentPokemonLayoutItem } from './CurrentPokemonLayoutItem';
 import { MoveEditor } from 'components/MoveEditor';
 import { CheckpointsInputList } from 'components/TrainerEditor';
 import { gameNameSelector } from 'selectors';
+import { getImages, Image } from 'components/Shared/ImagesDrawer';
 
 const pokeball = require('assets/pokeball.png').default;
 
@@ -86,6 +88,7 @@ export interface CurrentPokemonEditState {
     isMoveEditorOpen: boolean;
     box: Boxes;
     currentPokemon?: Pokemon;
+    images?: Image[];
 }
 
 const getEvos = (species): string[] | undefined => {
@@ -117,7 +120,7 @@ export function EvolutionSelection({ currentPokemon, onEvolve }) {
                 content={
                     <>
                         {evos.map((evo) => (
-                            <div className={Styles.evoMenuItem} key={evo} onClick={onEvolve(evo)}>
+                            <div role='button' tabIndex={-2} className={Styles.evoMenuItem} key={evo} onClick={onEvolve(evo)} onKeyPress={onEvolve(evo)}>
                                 {evo}
                             </div>
                         ))}
@@ -131,6 +134,8 @@ export function EvolutionSelection({ currentPokemon, onEvolve }) {
     }
 }
 
+
+
 export class CurrentPokemonEditBase extends React.Component<
 CurrentPokemonEditProps,
 CurrentPokemonEditState
@@ -142,6 +147,7 @@ CurrentPokemonEditState
             box: [],
             isMoveEditorOpen: false,
             expandedView: false,
+            images: [],
         };
     }
 
@@ -163,6 +169,10 @@ CurrentPokemonEditState
                 selectedId: nextProps.selectedId,
             });
         }
+    }
+
+    public componentDidMount() {
+        getImages().then(res => this.setState({ images: res, }));
     }
 
     private copyPokemon = (e) => {
@@ -206,6 +216,7 @@ CurrentPokemonEditState
 
     public moreInputs(currentPokemon: Pokemon) {
         const {editPokemon, selectPokemon} = this.props;
+        const imageNames = this.state.images?.map(img => img.name ?? '') ?? [];
         const pokemonForLink = this.props.pokemon.map((p) => ({
             key: `${p.nickname} (${p.species})`,
             value: p.id,
@@ -233,7 +244,7 @@ CurrentPokemonEditState
                 />
                 <span
                     className={'current-pokemon-input-wrapper current-pokemon-checklist current-pokemon-checkpoints'}>
-                    <label>Checkpoints</label>
+                    <label htmlFor='checkpointsInputList'>Checkpoints</label>
                     <CheckpointsInputList
                         checkpointsObtained={currentPokemon.checkpoints ?? []}
                         onChange={checkpoints => editPokemon({checkpoints}, currentPokemon.id)}
@@ -277,18 +288,31 @@ CurrentPokemonEditState
                         key={this.state.selectedId + 'gift'}
                     />
                 </CurrentPokemonLayoutItem>
-                <CurrentPokemonInput
+                {feature.imageUploads ? <Autocomplete
+                    items={imageNames}
+                    name="customImage"
+                    label="Custom Image"
+                    placeholder="http://..."
+                    value={currentPokemon.customImage || ''}
+                    onChange={(e) => {
+                        const edit = {
+                            customImage: e.target.value,
+                        };
+                        editPokemon(edit, this.state.selectedId);
+                    }}
+                    key={this.state.selectedId + 'customimage'}
+                /> : <CurrentPokemonInput
                     labelName="Custom Image"
                     inputName="customImage"
-                    placeholder="http://.."
+                    placeholder="http://..."
                     value={currentPokemon.customImage}
                     type="text"
-                    key={this.state.selectedId}
-                />
+                    key={this.state.selectedId + 'customImage'}
+                />}
                 <CurrentPokemonInput
                     labelName="Custom Icon"
                     inputName="customIcon"
-                    placeholder="http://.."
+                    placeholder="http://..."
                     value={currentPokemon.customIcon}
                     type="text"
                     key={this.state.selectedId + 'customIcon'}
