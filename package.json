@@ -12,7 +12,7 @@
     "cy:run": "npx cypress run",
     "deploy": "npm run build && git push heroku master",
     "format": "npx prettier --config .prettierrc --write **/**/*.{ts,tsx} && npm run lint",
-    "lint": "eslint src/**/*.{ts,tsx} --fix",
+    "lint": "npx eslint src/**/*.{ts,tsx} --fix",
     "prebuild": "rm -rf ./dist",
     "precommit": "npm run lint",
     "pretest": "npm run lint",
