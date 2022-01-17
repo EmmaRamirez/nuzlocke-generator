@@ -10,6 +10,7 @@ import { significantGenderDifferenceList } from './handleSignificantGenderDiffer
 import { GenderElementProps } from 'components';
 import { wrapImageInCORS } from './wrapImageInCORS';
 import { normalizeSpeciesName } from './normalizeSpeciesName';
+import { getImages } from 'components/Shared/ImagesDrawer';
 
 const handleTcgTransforms = (species?: string, gender?: GenderElementProps) => {
     if (gender === 'Female') {
@@ -112,6 +113,7 @@ export interface GetPokemonImage {
     egg?: Pokemon['egg'];
 }
 
+
 export async function getPokemonImage({
     customImage,
     forme,
@@ -129,6 +131,11 @@ export async function getPokemonImage({
         .padStart(3, '0');
 
     if (customImage) {
+        const images = await getImages();
+        const selectedImage = images.find(img => img.name === customImage)?.image;
+        if (selectedImage) {
+            return `url(${selectedImage})`;
+        }
         if (customImage.startsWith('http')) {
             return await wrapImageInCORS(customImage);
         }
