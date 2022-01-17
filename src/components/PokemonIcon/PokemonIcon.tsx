@@ -165,6 +165,10 @@ export function PokemonIconPlain({
             </PokemonImage> : <img
                 style={imageStyle}
                 alt={species}
+                onError={({ currentTarget }) => {
+                    currentTarget.onerror = null; // prevents looping
+                    currentTarget.src= 'icons/pokemon/unknown.png';
+                }}
                 src={getIconURL({
                     id,
                     species,
