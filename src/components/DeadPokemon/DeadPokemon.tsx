@@ -175,7 +175,6 @@ export const DeadPokemonBase = (poke: DeadPokemonProps) => {
                         : getContrastColor(getAccentColor(poke)),
                     height: '50px',
                     fontSize: '90%',
-                    outline: '1px solid #222',
                 }}>
                 <span style={{ filter: 'grayscale(100%)' }}>
                     <PokemonIconBase
