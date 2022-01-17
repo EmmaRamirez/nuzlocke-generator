@@ -2,10 +2,11 @@ import { Button, Callout, Classes, Icon, Intent, Spinner } from '@blueprintjs/co
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Pokemon, Game, Box as BoxModel, Boxes } from 'models';
+import { Pokemon, Box as BoxModel, Boxes, Game } from 'models';
+import { Game as GameName } from 'utils';
 import { State } from 'state';
 
-import { gameOfOriginToColor, generateEmptyPokemon, getEncounterMap } from 'utils';
+import { gameOfOriginToColor, generateEmptyPokemon, getEncounterMap, listOfGames } from 'utils';
 import { CurrentPokemonEdit } from '.';
 
 import { AddPokemonButton } from 'components/AddPokemonButton';
@@ -75,10 +76,12 @@ const PokemonLocationChecklist = ({
     style: State['style'];
 }) => {
     const [excludeGifts, setExcludeGifts] = React.useState(false);
+    const [currentGame, setCurrentGame] = React.useState<GameName>('None');
     const encounterMap = getEncounterMap(game.name);
 
     const getLocIcon = (name: string) => {
-        const pokemonFiltered = pokemon.filter((p) => p.met?.trim().toLocaleLowerCase() === name.toLocaleLowerCase());
+        const pokemonFiltered = pokemon
+            .filter((p) => p.met?.trim().toLocaleLowerCase() === name.toLocaleLowerCase() && (currentGame === 'None' || p.gameOfOrigin === currentGame));
 
         return pokemonFiltered.map(poke => {
             if (poke && !poke.hidden && (!poke.gift || !excludeGifts)) {
@@ -110,6 +113,21 @@ const PokemonLocationChecklist = ({
             <PokemonLocationChecklistControls
                 pokemon={pokemon}
             />
+            <div className={'flex items-center'}>
+                <label className={cx(Classes.CONTROL, Classes.CHECKBOX)} style={{margin: '.25rem 0' }}>
+                    <input type='checkbox' checked={excludeGifts} onChange={e => setExcludeGifts(e?.target.checked)} />
+                    <span className={Classes.CONTROL_INDICATOR}></span>
+                    <span className={Classes.LABEL}>Exclude Gifts</span>
+                </label>
+                <label className={cx(Classes.CONTROL)} style={{margin: '.25rem 0'}}>
+                    <span className={Classes.LABEL}>Filter by Game</span>
+                    <div className={Classes.SELECT} style={{marginLeft: '0.25rem'}}>
+                        <select onBlur={e => setCurrentGame(e?.target.value as GameName)}>
+                            {listOfGames.map(game => <option key={game}>{game}</option>)}
+                        </select>
+                    </div>
+                </label>
+            </div>
             {encounterMap.map((area) => {
                 return (
                     <div
@@ -125,11 +143,6 @@ const PokemonLocationChecklist = ({
                     </div>
                 );
             })}
-            <label className={cx(Classes.CONTROL, Classes.CHECKBOX)} style={{margin: '.25rem 0' }}>
-                <input type='checkbox' checked={excludeGifts} onChange={e => setExcludeGifts(e?.target.checked)} />
-                <span className={Classes.CONTROL_INDICATOR}></span>
-                <span className={Classes.LABEL}>Exclude Gifts</span>
-            </label>
             <Callout intent={Intent.WARNING} style={{ fontSize: '80%', marginTop: '0.5rem' }}>
                 Tip: Pokémon with the "hidden" attribute are a great option for including Pokemon
                 that got away on a certain route!
