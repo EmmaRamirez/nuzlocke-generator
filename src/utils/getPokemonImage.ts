@@ -53,7 +53,7 @@ const getGameName = (name: Game) => {
     ) {
         return name.toLowerCase();
     }
-    if (name === 'Sword' || name === 'Shield') {
+    if (name === 'Sword' || name === 'Shield' || name === 'Brilliant Diamond' || name === 'Shining Pearl') {
         return 'swordshield';
     }
     return 'sm';
@@ -92,6 +92,8 @@ const getGameNameSerebii = (name: Game) => {
             return 'XY';
         case 'Sword':
         case 'Shield':
+        case 'Brilliant Diamond':
+        case 'Shining Pearl':
             return 'swordshield';
         default:
             return 'SM';
