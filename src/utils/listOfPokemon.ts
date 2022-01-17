@@ -897,6 +897,9 @@ export const listOfPokemon = [
     'Glastrier',
     'Spectrier',
     'Calyrex',
+    'Wyrdeer',
+    'Basculegion',
+    'Kleavor',
 ] as const;
 
 const listOfTemtem = [

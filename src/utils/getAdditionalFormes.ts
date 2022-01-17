@@ -1,6 +1,6 @@
 export const getAdditionalFormes = (species: string | undefined): string[] => {
     if (species == null) return [];
-    const s = species.toLowerCase();
+    const s: Lowercase<string> = species.toLowerCase();
     if (s === 'pikachu') {
         return [
             'Rock Star',
@@ -168,13 +168,15 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
         s === 'yamask' ||
         s === 'stunfisk' ||
         s === 'slowpoke' ||
-        s === 'slowbro' ||
         s === 'slowking' ||
         s === 'zapdos' ||
         s === 'articuno' ||
         s === 'moltres'
     ) {
         return ['Galarian'];
+    }
+    if (s === 'slowbro') {
+        return ['Galarian', 'Mega'];
     }
     if (s === 'urshifu') {
         return [
@@ -210,7 +212,6 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
         s === 'abomasnow' ||
         s === 'beedrill' ||
         s === 'pidgeot' ||
-        s === 'slowbro' ||
         s === 'steelix' ||
         s === 'sceptile' ||
         s === 'swampert' ||
@@ -286,6 +287,15 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
     }
     if (s === 'calyrex') {
         return ['Ice Rider', 'Shadow Rider'];
+    }
+    if (
+        s === 'growlithe' ||
+        s === 'voltorb' ||
+        s === 'zorua' ||
+        s === 'zoroark' ||
+        s === 'braviary'
+    ) {
+        return ['Hisuian'];
     }
 
     return [];

@@ -40,7 +40,8 @@ export const gameOfOriginToColor = (game: Game) => {
         Sword: '#48A9A6',
         Shield: '#C1474D',
         'Brilliant Diamond': '#408ed6',
-        'Shining Pearl': '#ed5880'
+        'Shining Pearl': '#ed5880',
+        'Legends: Arceus': '#87c196',
     };
 
     return gameToColor[game] || '';
