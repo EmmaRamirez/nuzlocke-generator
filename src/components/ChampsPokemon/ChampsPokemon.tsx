@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { PokemonIcon } from 'components/PokemonIcon';
-import { gameOfOriginToColor, Game, getPokemonImage } from 'utils';
+import { gameOfOriginToColor, Game, getPokemonImage, getContrastColor } from 'utils';
 import { Pokemon } from 'models';
 import { GenderElement } from '../Shared';
 import { css, cx } from 'emotion';
@@ -85,13 +85,16 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
 
     public render() {
         const { margin, padding, customCSS } = this.props;
+        const color = gameOfOriginToColor(this.props.gameOfOrigin);
+        const minimal = !(this.props.showNickname || this.props.showGender || this.props.showLevel);
         const className = champsPokemon({
-            background: gameOfOriginToColor(this.props.gameOfOrigin),
+            background: color,
+            color: getContrastColor(color),
             height: '48px',
-            width: `${this.getWidth()}px`,
+            width: minimal ? `${this.getWidth()}px` : 'auto',
             margin,
-            padding,
-            minimal: !(this.props.showNickname || this.props.showGender || this.props.showLevel),
+            padding: minimal ? padding : '0 4px 0 0',
+            minimal,
         });
 
         return (

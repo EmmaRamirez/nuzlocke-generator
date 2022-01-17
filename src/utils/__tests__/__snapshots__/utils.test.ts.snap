@@ -225,7 +225,9 @@ Array [
     "Primeape": Array [],
   },
   Object {
-    "Growlithe": Array [],
+    "Growlithe": Array [
+      "Hisuian",
+    ],
   },
   Object {
     "Arcanine": Array [],
@@ -309,6 +311,7 @@ Array [
   Object {
     "Slowbro": Array [
       "Galarian",
+      "Mega",
     ],
   },
   Object {
@@ -380,7 +383,9 @@ Array [
     ],
   },
   Object {
-    "Voltorb": Array [],
+    "Voltorb": Array [
+      "Hisuian",
+    ],
   },
   Object {
     "Electrode": Array [],
@@ -1973,10 +1978,14 @@ Array [
     ],
   },
   Object {
-    "Zorua": Array [],
+    "Zorua": Array [
+      "Hisuian",
+    ],
   },
   Object {
-    "Zoroark": Array [],
+    "Zoroark": Array [
+      "Hisuian",
+    ],
   },
   Object {
     "Minccino": Array [],
@@ -2159,7 +2168,9 @@ Array [
     "Rufflet": Array [],
   },
   Object {
-    "Braviary": Array [],
+    "Braviary": Array [
+      "Hisuian",
+    ],
   },
   Object {
     "Vullaby": Array [],
@@ -3088,6 +3099,15 @@ Array [
       "Ice Rider",
       "Shadow Rider",
     ],
+  },
+  Object {
+    "Wyrdeer": Array [],
+  },
+  Object {
+    "Basculegion": Array [],
+  },
+  Object {
+    "Kleavor": Array [],
   },
 ]
 `;

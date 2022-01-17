@@ -227,6 +227,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         if (s === 'Champs')
             return {
                 margin: this.props.style.template === 'Compact' ? 0 : '.5rem',
+                display: 'flex',
+                flexWrap: 'wrap' as React.CSSProperties['flexWrap'],
             };
         if (s === 'Dead')
             return {
