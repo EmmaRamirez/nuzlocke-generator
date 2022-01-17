@@ -135,7 +135,6 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
         const baseDivStyle = isVertical ? { padding: '2px' } : { padding: '.25rem' };
         const tciProps = { trainer, orientation };
         const enableStats = style.displayStats;
-        const renderStatsInTrainer = feature.emmaMode;
 
         return (
             <div
@@ -183,7 +182,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                     </div>
                 )}
                 {feature.resultv2 ? (
-                    <div className="flex">
+                    <div className="flex trainer-info-columns">
                         {['name', 'money', 'time', 'id', 'totalTime'].map((item) => (
                             <TrainerColumnItem key={item} prop={item} {...tciProps} />
                         ))}
@@ -213,7 +212,6 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                         </ol>
                     </div>
                 ) : null}
-                {enableStats && renderStatsInTrainer && <Stats />}
             </div>
         );
     }
