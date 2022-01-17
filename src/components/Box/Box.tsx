@@ -51,19 +51,19 @@ const boxSourceDrop = {
 
         store.dispatch(editBox(props.id, {
             position: item.position,
-        }))
+        }));
         store.dispatch(editBox(item.id, {
             position: props.position,
-        }))
+        }));
 
         return {
 
-        }
+        };
     },
     hover(props, monitor) {
         return { isHovering: monitor.isOver({ shallow: true } )};
     }
-}
+};
 
 const boxSourceDrag = {
     beginDrag(props: BoxProps) {

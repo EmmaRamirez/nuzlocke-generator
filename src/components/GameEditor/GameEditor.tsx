@@ -60,7 +60,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                                 Version
                             </label>
                             <div className={Classes.SELECT}>
-                                <select onChange={this.onInput} value={game.name}>
+                                <select onBlur={this.onInput} value={game.name}>
                                     {listOfGames.map((game) => (
                                         <option key={game}>{game}</option>
                                     ))}

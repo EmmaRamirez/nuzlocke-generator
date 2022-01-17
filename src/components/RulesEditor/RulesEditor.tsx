@@ -26,8 +26,9 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
                     dir="auto"
                 />
                 <div
-                    role="action"
                     onClick={() => this.props.deleteRule(index)}
+                    onKeyPress={() => this.props.deleteRule(index)}
+                    role='none'
                     className="rule-delete"
                     title="Delete Rule">
                     <Icon intent={Intent.DANGER} style={{ cursor: 'pointer' }} icon={'trash'} />

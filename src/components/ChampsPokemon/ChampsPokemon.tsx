@@ -15,8 +15,10 @@ export const champsPokemon = (options: any) => css`
     align-items: center;
     justify-content: ${options.minimal ? 'center' : 'start'};
     background: ${options.background};
+    color: ${options.color};
     padding: ${options.padding};
     cursor: pointer;
+    flex-grow: 4;
 `;
 
 export type ChampsPokemonProps = { [P in keyof Pokemon]?: any } & {

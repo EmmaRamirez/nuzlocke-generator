@@ -152,7 +152,7 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                             </label>
                             <div className={Classes.SELECT}>
                                 <select
-                                    onChange={this.editFormInput}
+                                    onBlur={this.editFormInput}
                                     value={this.state.newBox.inheritFrom}
                                     name="inheritFrom">
                                     {['Team', 'Boxed', 'Dead', 'Champs'].map((box, idx) => (

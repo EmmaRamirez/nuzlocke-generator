@@ -90,7 +90,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                                 />
                             </div>
                             <div className={Classes.SELECT} style={{ width: '8rem' }}>
-                                <select onChange={onChange(move)} value={type}>
+                                <select onBlur={onChange(move)} value={type}>
                                     {types.map((opt) => (
                                         <option key={opt} value={opt}>
                                             {opt}
@@ -130,7 +130,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                             />
                         </div>
                         <div className={Classes.SELECT} style={{ width: '8rem' }}>
-                            <select onChange={onChange(move)} value={type}>
+                            <select onBlur={onChange(move)} value={type}>
                                 {types.map((opt) => (
                                     <option key={opt} value={opt}>
                                         {opt}
@@ -203,7 +203,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                                 className={Classes.SELECT}
                                 style={{ width: '8rem', margin: '0 .25rem' }}>
                                 <select
-                                    onChange={(e) => this.setState({ moveType: e.target.value })}
+                                    onBlur={(e) => this.setState({ moveType: e.target.value })}
                                     value={moveType}>
                                     {types.map((opt) => (
                                         <option key={opt} value={opt}>

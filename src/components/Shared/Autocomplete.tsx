@@ -24,7 +24,6 @@ const renderItems = (visibleItems: string[], selectItem: any, innerValue: string
     return (
         <li
             key={i}
-            role="item"
             onClick={(e) => selectItem(e)(v)}
             className={v === selectedValue ? 'autocomplete-selected' : ''}>
             {v}

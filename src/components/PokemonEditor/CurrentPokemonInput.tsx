@@ -96,7 +96,6 @@ export const renderItems = (visibleItems, setSelectedItem, selectedItem) => (
         return (
             <li
                 key={i}
-                role="item"
                 onClick={(e) => setSelectedItem(v)}
                 style={v === selectedItem ? { color: 'lightblue' } : {}}>
                 {v}
@@ -238,7 +237,7 @@ export function PokemonSelectInput({
                 />
             ) : null}
             <select
-                onChange={(e) => {
+                onBlur={(e) => {
                     onChange(e);
                     setEdit({ [inputName]: e.currentTarget.value });
                 }}
@@ -288,7 +287,7 @@ export function PokemonDoubleSelectInput({
     return (
         <span className="double-select-wrapper">
             <div className={Classes.SELECT}>
-                <select onChange={onSelect(0)} value={edit?.[inputName]?.[0]} name={inputName}>
+                <select onBlur={onSelect(0)} value={edit?.[inputName]?.[0]} name={inputName}>
                     {options
                         ?
                         (options as any).map((item, index) => (
@@ -301,7 +300,7 @@ export function PokemonDoubleSelectInput({
             </div>
             <span>&nbsp;</span>
             <div className={Classes.SELECT}>
-                <select onChange={onSelect(1)} value={edit?.[inputName]?.[1]} name={inputName}>
+                <select onBlur={onSelect(1)} value={edit?.[inputName]?.[1]} name={inputName}>
                     {options
                         ?
                         (options as any).map((item, index) => (
