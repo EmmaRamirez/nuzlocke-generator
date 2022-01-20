@@ -11,6 +11,7 @@ export interface StatsProps {
     stats?: State['stats'];
     style: State['style'];
     box: State['box'];
+    color?: string;
 }
 
 export class StatsBase extends React.Component<StatsProps, { pokemon: State['pokemon'] }> {
@@ -106,6 +107,14 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
     }
 
     private displayMostCommonDeath(data: { name?: string; total?: string }[]) {
+        const numOfDead = this.props.pokemon
+            .filter((s) => s.status === 'Dead')
+            .length;
+
+        if (numOfDead === 0) {
+            return 'None';
+        }
+
         return data
             .filter((d) => d.name != null)
             .map((d) => `${d.name} (${d.total} deaths)`)
@@ -156,11 +165,11 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
     }
 
     public render() {
-        const { stats, style } = this.props;
+        const { stats, style, color } = this.props;
 
         return (
-            <div className="stats sstats-container">
-                <h3 style={{ color: 'inherit' }}>Stats</h3>
+            <div className="stats stats-container" style={{color}}>
+                <h3 style={{color}}>Stats</h3>
 
                 <div style={{ marginTop: '10px', margin: '0 10px' }}>
                     {this.props.pokemon.length && style.statsOptions.averageLevel ?
@@ -207,4 +216,4 @@ export const Stats = connect((state: State) => ({
     stats: state.stats,
     style: state.style,
     box: state.box,
-}))(StatsBase as any);
+}), undefined, undefined, { pure: false })(StatsBase as any);

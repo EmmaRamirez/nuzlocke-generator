@@ -13,7 +13,7 @@ const match = ({
     species: string[];
     forme?: (keyof typeof Forme)[];
     generation?: Generation[];
-    s: string;
+    s: string; // species input
     f?: string;
     g?: Generation;
 }) => {
@@ -242,7 +242,7 @@ export const handleSpeciesTypeEdgeCases = ({
             forme: ['Galarian'],
         })
     )
-        return [Types.Psychic, Types.Poison];
+        return [Types.Poison, Types.Psychic];
 
     if (
         match({
@@ -348,6 +348,17 @@ export const handleSpeciesTypeEdgeCases = ({
         })
     )
         return [Types.Steel, Types.Steel];
+
+    if (
+        match({
+            ...data,
+            species: ['Cottonee', 'Whimsicott'],
+            generation: [
+                Generation.Gen5,
+            ],
+        })
+    )
+        return [Types.Grass, Types.Grass];
 
     if (
         match({
@@ -507,6 +518,22 @@ export const handleSpeciesTypeEdgeCases = ({
         })
     ) {
         return [Types.Normal, Types.Fighting];
+    }
+
+    if (match({ ...data, species: ['Growlithe'], forme: ['Hisuian']})) {
+        return [Types.Fire, Types.Rock];
+    }
+
+    if (match({ ...data, species: ['Voltorb'], forme: ['Hisuian']})) {
+        return [Types.Electric, Types.Grass];
+    }
+
+    if (match({ ...data, species: ['Zorua', 'Zoroark'], forme: ['Hisuian']})) {
+        return [Types.Normal, Types.Ghost];
+    }
+
+    if (match({ ...data, species: ['Braviary'], forme: ['Hisuian']})) {
+        return [Types.Psychic, Types.Flying];
     }
 
     return null;
@@ -832,6 +859,7 @@ export const matchSpeciesToTypes = (
             return [Types.Steel, Types.Ghost];
         case 'Frillish':
         case 'Jellicent':
+        case 'Basculegion':
             return [Types.Water, Types.Ghost];
         /**
          * @type Fighting
@@ -981,6 +1009,7 @@ export const matchSpeciesToTypes = (
         case 'Shuckle':
         case 'Dwebble':
         case 'Crustle':
+        case 'Kleavor':
             return [Types.Bug, Types.Rock];
         case 'Forretress':
         case 'Scizor':
@@ -1362,6 +1391,7 @@ export const matchSpeciesToTypes = (
         case 'Girafarig':
         case 'Meloetta':
         case 'Oranguru':
+        case 'Wyrdeer':
             return [Types.Normal, Types.Psychic];
         case 'Bibarel':
             return [Types.Normal, Types.Water];

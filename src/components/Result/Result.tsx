@@ -227,6 +227,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         if (s === 'Champs')
             return {
                 margin: this.props.style.template === 'Compact' ? 0 : '.5rem',
+                display: 'flex',
+                flexWrap: 'wrap' as React.CSSProperties['flexWrap'],
             };
         if (s === 'Dead')
             return {
@@ -276,6 +278,9 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             return (
                                 <ChampsPokemon
                                     useSprites={this.props.style.useSpritesForChampsPokemon}
+                                    showGender={!this.props.style.minimalChampsLayout}
+                                    showLevel={!this.props.style.minimalChampsLayout}
+                                    showNickname={!this.props.style.minimalChampsLayout}
                                     key={index}
                                     {...poke}
                                 />
@@ -375,6 +380,15 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         onClickDownload={() => this.toImage()}>
                         {this.renderTopBarItems()}
                     </TopBar>
+                    <style>
+                        {`
+                            .result {
+                                --background-color: ${bgColor};
+                                --accent-color: ${accentColor};
+                                --header-color: ${topHeaderColor};
+                            }
+                        `}
+                    </style>
                     <style>{style.customCSS}</style>
                     {isMobile() && editor.showResultInMobile && (
                         <Button
@@ -497,7 +511,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                                 : null}
                         </div>
 
-                        {enableStats && !EMMA_MODE && <Stats />}
+                        {enableStats && !EMMA_MODE && <Stats color={getContrastColor(bgColor)} />}
 
                         {enableBackSpriteMontage && (
                             <BackspriteMontage pokemon={this.getPokemonByStatus('Team')} />

@@ -38,6 +38,7 @@ export enum Forme {
 
     Alolan = 'alola',
     Galarian = 'galar',
+    Hisuian = 'hisui',
     Gigantamax = 'gigantamax',
 
     '10%' = '10-percent',

@@ -43,11 +43,14 @@ export const EvolutionTree: EvolutionTree = {
     Oddish: ['Gloom'],
     Gloom: ['Vileplume', 'Bellossom'],
 
+    Venonat: ['Venomoth'],
+
     Diglett: ['Dugtrio'],
     Meowth: ['Persian', 'Perrserker'],
     Psyduck: ['Golduck'],
     Mankey: ['Primeape'],
     Growlithe: ['Arcanine'],
+    Vulpix: ['Ninetales'],
     Poliwag: ['Poliwhirl'],
     Poliwhirl: ['Politoed', 'Poliwrath'],
     Abra: ['Kadabra'],
@@ -136,6 +139,8 @@ export const EvolutionTree: EvolutionTree = {
 
     Togepi: ['Togetic'],
     Togetic: ['Togekiss'],
+
+    Natu: ['Xatu'],
 
     Mareep: ['Flaaffy'],
     Flaaffy: ['Ampharos'],

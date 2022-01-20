@@ -32,7 +32,7 @@ export function HallOfFameDialog(props: HallOfFameDialogProps) {
             {...props}
         >
             <div className={cx(styles.hallOfFameDialog, Classes.DIALOG_BODY)}>
-                <img className={styles.hallOfFameImage} src={hofImage} />
+                <img alt='Hall of Fame' className={styles.hallOfFameImage} src={hofImage} />
                 <p className={styles.hallOfFameText}>
                     Submitting to the Hall of Fame uploads your nuzlocke to a persistent record.
                 </p>

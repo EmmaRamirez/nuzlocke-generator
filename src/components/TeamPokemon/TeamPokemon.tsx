@@ -175,7 +175,7 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                             />
                         )}
                         {pokemon.checkpoints && (
-                            <div className='flex flex-wrap' style={{maxWidth: '14rem'}}>
+                            <div className='flex flex-wrap pokemon-checkpoints' style={{maxWidth: '14rem'}}>
                                 <CheckpointsDisplay
                                     className='pokemon-checkpoint'
                                     game={game}
@@ -469,7 +469,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, {imag
             `,
         };
 
-        const EMMA_MODE = feature.emmaMode;
+        const EMMA_MODE = false;
 
         return (
             <div className="pokemon-container" {...data}>

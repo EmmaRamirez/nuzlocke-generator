@@ -24,7 +24,6 @@ const renderItems = (visibleItems: string[], selectItem: any, innerValue: string
     return (
         <li
             key={i}
-            role="item"
             onClick={(e) => selectItem(e)(v)}
             className={v === selectedValue ? 'autocomplete-selected' : ''}>
             {v}
@@ -32,7 +31,7 @@ const renderItems = (visibleItems: string[], selectItem: any, innerValue: string
     );
 });
 
-const filter = (items, str) => items.filter(i => i?.toLowerCase().startsWith(str.toLowerCase()));
+const filter = (items, str) => items?.filter(i => i?.toLowerCase().startsWith(str.toLowerCase()));
 
 const invisibleText = css`
     color: transparent !important;

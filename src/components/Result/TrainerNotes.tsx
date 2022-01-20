@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useSelector } from "react-redux";
-import { State } from "state";
+import { useSelector } from 'react-redux';
+import { State } from 'state';
 import { getContrastColor } from 'utils';
 
 

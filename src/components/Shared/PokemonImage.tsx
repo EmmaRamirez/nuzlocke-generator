@@ -69,5 +69,5 @@ export function PokemonImage({
         egg,
     ]);
 
-    return children?.(image) || <img src={image} />;
+    return children?.(image) || <img alt={name} src={image} />;
 }

@@ -1,4 +1,4 @@
-import { Classes, Drawer, DrawerSize, Icon, Intent, Toaster } from '@blueprintjs/core';
+import { Button, Classes, Drawer, DrawerSize, Icon, Intent, Toaster } from '@blueprintjs/core';
 import { css, cx } from 'emotion';
 import * as React from 'react';
 import { ImageUpload } from './ImageUpload';
@@ -81,7 +81,7 @@ class NuzlockeGeneratorDB extends Dexie {
     }
 }
 
-const db = new NuzlockeGeneratorDB();
+export const db = new NuzlockeGeneratorDB();
 // db.version(1).stores({
 //     // eslint-disable-next-line @typescript-eslint/quotes
 //     images: `++id, image, name`
@@ -91,7 +91,7 @@ const uuid = require('uuid');
 
 const userImages = new Set<Image>();
 
-const getImages = async () => {
+export const getImages = async () => {
     const images = await db.images.toArray();
 
     console.log(images);
@@ -151,8 +151,8 @@ export function ImagesDrawerInner() {
                     setRefresh(id);
                 }}
             />
-            <span style={{ display: 'none' }}>
-                <Icon className={styles.layoutViewIcon} onClick={setLayout} icon={layoutView === ImagesDrawerLayout.Grid ? 'list' : 'grid-view'} />
+            <span>
+                <Button className={styles.layoutViewIcon} onClick={setLayout} icon={layoutView === ImagesDrawerLayout.Grid ? 'list' : 'grid-view'}>{layoutView === ImagesDrawerLayout.Grid ? 'List' : 'Grid'}</Button>
             </span>
         </div>
         <div className={styles.images}>

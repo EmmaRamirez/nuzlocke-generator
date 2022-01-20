@@ -27,12 +27,13 @@ export const Showdown = ({
     editor: State['editor'];
     game: State['game'];
 }) => {
-    const { customImage, shiny, species, gender, forme } = pokemon;
+    const { customImage, shiny, species, gender, forme, nickname } = pokemon;
     const { name } = game;
 
     return (
         <div className={styles.showdownBase}>
             <img
+                alt={nickname}
                 className={styles.showdownImage}
                 src={stripURLCSS(
                     getPokemonImage({

@@ -1,6 +1,6 @@
 {
   "name": "nuzlocke-generator",
-  "version": "1.9.1",
+  "version": "1.10.0",
   "description": "A tool for generating nuzlocke team pics from data",
   "main": "dist/bundle.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "cy:run": "npx cypress run",
     "deploy": "npm run build && git push heroku master",
     "format": "npx prettier --config .prettierrc --write **/**/*.{ts,tsx} && npm run lint",
-    "lint": "eslint src/**/*.{ts,tsx} --fix",
+    "lint": "npx eslint src/**/*.{ts,tsx} --fix",
     "prebuild": "rm -rf ./dist",
     "precommit": "npm run lint",
     "pretest": "npm run lint",
@@ -30,7 +30,7 @@
   },
   "engines": {
     "node": "^16",
-    "npm": "^7"
+    "npm": "^8"
   },
   "keywords": [],
   "author": "Emma Ramirez <ramireze.emma.g@gmail.com> (http://emmaramirez.me)",
@@ -67,6 +67,7 @@
     "draft-js": "^0.11.7",
     "eslint-plugin-jest": "^25.2.3",
     "express": "^4.17.1",
+    "fake-indexeddb": "^3.1.7",
     "html-webpack-plugin": "^4.5.0",
     "is-mobile": "^2.2.1",
     "jest-emotion": "^9.2.7",

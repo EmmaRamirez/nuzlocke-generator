@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-onchange */
 import * as React from 'react';
 import { connect, useSelector, useDispatch } from 'react-redux';
 
@@ -96,7 +97,6 @@ export const renderItems = (visibleItems, setSelectedItem, selectedItem) => (
         return (
             <li
                 key={i}
-                role="item"
                 onClick={(e) => setSelectedItem(v)}
                 style={v === selectedItem ? { color: 'lightblue' } : {}}>
                 {v}
@@ -130,13 +130,12 @@ export function PokemonAutocompleteInput({
             className={cx(className)}
             onKeyDown={handleKeyDown}
             onFocus={openList}
-            onBlur={closeList}
+            onChange={closeList}
             placeholder={placeholder}
             name={inputName}
             type="text"
             value={edit[inputName]}
             disabled={disabled}
-            onChange={onChange}
             onInput={(e) => setEdit({ [inputName]: e.currentTarget.value })}
         />
         {isOpen ? (

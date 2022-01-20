@@ -7,20 +7,23 @@ const ReactMarkdown = require('react-markdown');
 import { getPatchlessVersion } from 'utils/getPatchlessVersion';
 import useSwr from 'swr';
 
-const croagunk = require('assets/img/croagunk.gif');
-const togepi = require('assets/icons/pokemon/regular/togepi.png');
-const porygon2 = require('assets/icons/pokemon/regular/porygon2.png');
-const lapras = require('assets/icons/pokemon/regular/lapras.png');
-const magneton = require('assets/icons/pokemon/regular/magneton.png');
-const noctowl = require('assets/icons/pokemon/regular/noctowl.png');
 const calyrex = require('assets/icons/pokemon/regular/calyrex.png');
+const croagunk = require('assets/img/croagunk.gif');
 const dugtrio = require('assets/icons/pokemon/regular/dugtrio.png');
 const kubfu = require('assets/icons/pokemon/regular/kubfu.png');
-const porygon = require('assets/icons/pokemon/regular/porygon.png');
+const lapras = require('assets/icons/pokemon/regular/lapras.png');
+const magneton = require('assets/icons/pokemon/regular/magneton.png');
 const mew = require('assets/icons/pokemon/regular/mew.png');
+const noctowl = require('assets/icons/pokemon/regular/noctowl.png');
+const porygon = require('assets/icons/pokemon/regular/porygon.png');
+const porygon2 = require('assets/icons/pokemon/regular/porygon2.png');
+const togepi = require('assets/icons/pokemon/regular/togepi.png');
+const arceus = require('assets/icons/pokemon/regular/arceus.png');
 
 export const getMascot = v => {
     switch (v) {
+        case '1.10':
+            return arceus.default;
         case '1.9':
             return togepi.default;
         case '1.8':
@@ -119,7 +122,7 @@ export function ReleaseDialog (props: DialogProps & ReleaseDialogProps) {
                                 <ReactMarkdown
                                     key={note.id}
                                     className="release-notes"
-                                    source={`#### ![${mascot}](${getMascot(getPatchlessVersion(note.version))}) ${note.version}\n${note.note}`}
+                                    source={`#### ![${mascot}](${getMascot(getPatchlessVersion(note.version))}) ${note.version}\n${note.note}\n\n_Uploaded on ${new Date(note.timestamp).toLocaleString()}_`}
                                 />
                             );
                         })}

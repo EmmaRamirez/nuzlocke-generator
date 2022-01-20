@@ -10,6 +10,7 @@ import { significantGenderDifferenceList } from './handleSignificantGenderDiffer
 import { GenderElementProps } from 'components';
 import { wrapImageInCORS } from './wrapImageInCORS';
 import { normalizeSpeciesName } from './normalizeSpeciesName';
+import { getImages } from 'components/Shared/ImagesDrawer';
 
 const handleTcgTransforms = (species?: string, gender?: GenderElementProps) => {
     if (gender === 'Female') {
@@ -53,7 +54,7 @@ const getGameName = (name: Game) => {
     ) {
         return name.toLowerCase();
     }
-    if (name === 'Sword' || name === 'Shield') {
+    if (name === 'Sword' || name === 'Shield' || name === 'Brilliant Diamond' || name === 'Shining Pearl') {
         return 'swordshield';
     }
     return 'sm';
@@ -92,6 +93,8 @@ const getGameNameSerebii = (name: Game) => {
             return 'XY';
         case 'Sword':
         case 'Shield':
+        case 'Brilliant Diamond':
+        case 'Shining Pearl':
             return 'swordshield';
         default:
             return 'SM';
@@ -110,6 +113,7 @@ export interface GetPokemonImage {
     egg?: Pokemon['egg'];
 }
 
+
 export async function getPokemonImage({
     customImage,
     forme,
@@ -127,6 +131,11 @@ export async function getPokemonImage({
         .padStart(3, '0');
 
     if (customImage) {
+        const images = await getImages();
+        const selectedImage = images.find(img => img.name === customImage)?.image;
+        if (selectedImage) {
+            return `url(${selectedImage})`;
+        }
         if (customImage.startsWith('http')) {
             return await wrapImageInCORS(customImage);
         }

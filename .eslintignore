@@ -9,3 +9,4 @@ babel.config.js
 imageCheck.ts
 massRename.ts
 scraper.js
+**/__tests__/*.ts

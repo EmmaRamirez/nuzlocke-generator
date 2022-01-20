@@ -90,7 +90,10 @@ export const DeadPokemonBase = (poke: DeadPokemonProps) => {
                     height: '50px',
                     fontSize: '90%',
                     //margin: '1px',
+                    // justifySelf: 'stretch',
+                    //flexGrow: 4,
                     outline: EMMA_MODE ? '' : '1px solid #222',
+                    width: poke.gameOfOrigin === 'SoulSilver' && EMMA_MODE ? '14rem' : '50px',
                 }}>
                 <div
                     className="goc-circle"
@@ -101,24 +104,26 @@ export const DeadPokemonBase = (poke: DeadPokemonProps) => {
                                 poke.gameOfOrigin!,
                             )}, transparent)`,
                         height: '100%',
-                        width: poke.gameOfOrigin === 'Platinum' && EMMA_MODE ? '100%' : '50px',
+                        //width: poke.gameOfOrigin === 'SoulSilver' && EMMA_MODE ? '100%' : '50px',
+                        width: '100%',
                         position: 'absolute',
                         left: '0',
                         top: '0',
                         opacity: 0.7,
                     }}
                 />
-                <span style={{ filter: 'grayscale(100%)' }}>
+                <span style={{ filter: 'grayscale(100%)', margin: '0 auto' }}>
                     <PokemonIconBase
                         onClick={(e) => poke.selectPokemon(poke.id)}
                         {...(poke as any)}
                     />
                 </span>
-                {poke.gameOfOrigin === 'Platinum' && (
+                {poke.gameOfOrigin === 'SoulSilver' && EMMA_MODE && (
                     <div
                         style={{
                             margin: 0,
                             padding: 0,
+                            paddingTop: '12px',
                             lineHeight: '14px',
                             height: '100%',
                             display: 'flex',
@@ -173,7 +178,6 @@ export const DeadPokemonBase = (poke: DeadPokemonProps) => {
                         : getContrastColor(getAccentColor(poke)),
                     height: '50px',
                     fontSize: '90%',
-                    outline: '1px solid #222',
                 }}>
                 <span style={{ filter: 'grayscale(100%)' }}>
                     <PokemonIconBase

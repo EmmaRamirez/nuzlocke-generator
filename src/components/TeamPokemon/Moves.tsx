@@ -43,7 +43,7 @@ export const Move = ({ index, style, type, move, customTypes, stripClasses = fal
             className={
                 stripClasses
                     ? ''
-                    : `move move-${move.replace(/\s/g, '-')?.toLowerCase()} ${
+                    : `move move-${move.replace(/\s/g, '-')?.toLowerCase()} move-${type.toLowerCase()} ${
                         move.length >= 10 ? 'long-text-move' : ''
                     }`
             }>

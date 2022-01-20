@@ -32,6 +32,7 @@ export interface Styles {
     minimalBoxedLayout: boolean;
     minimalTeamLayout: boolean;
     minimalDeadLayout: boolean;
+    minimalChampsLayout: boolean;
     movesPosition: OrientationType;
     oldMetLocationFormat: boolean;
     resultHeight: string | number;
@@ -81,6 +82,7 @@ export const styleDefaults: Styles = {
     minimalBoxedLayout: false,
     minimalTeamLayout: false,
     minimalDeadLayout: false,
+    minimalChampsLayout: true,
     movesPosition: 'horizontal' as OrientationType,
     oldMetLocationFormat: false,
     resultHeight: '900',

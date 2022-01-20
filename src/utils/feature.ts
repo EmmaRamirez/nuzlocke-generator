@@ -13,16 +13,16 @@ const featuresFromEnv = {
     tcgImages: process.env.TCG_IMAGES,
 };
 
-interface BooleanObject {
-    [x: string]: boolean;
-}
+type FeatureObject = {
+    [K in keyof typeof featuresFromEnv]: boolean;
+};
 
-const featuresToBooleans = (f: typeof featuresFromEnv): BooleanObject => {
-    const obj = {};
+const featuresToBooleans = (f: typeof featuresFromEnv): FeatureObject => {
+    const obj: Partial<FeatureObject> = {};
     for (const feature in f) {
         obj[feature] = Boolean(f[feature]);
     }
-    return obj;
+    return (obj as FeatureObject);
 };
 
 export const feature = Object.freeze(featuresToBooleans(featuresFromEnv));

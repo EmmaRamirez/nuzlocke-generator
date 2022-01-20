@@ -613,6 +613,22 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
 
                 <div className={styleEdit}>
                     <Checkbox
+                        checked={props.style.minimalChampsLayout}
+                        name="minimalChampsLayout"
+                        label="Minimal Champs Layout"
+                        onChange={(e: any) =>
+                            editEvent(
+                                { ...e, target: { value: e.target.checked } },
+                                props,
+                                'minimalChampsLayout',
+                            )
+                        }
+                    />
+                </div>
+
+
+                <div className={styleEdit}>
+                    <Checkbox
                         checked={props.style.displayBadges}
                         name="displayBadges"
                         label="Display Badges"

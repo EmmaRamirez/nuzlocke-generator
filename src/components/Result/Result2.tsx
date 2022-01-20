@@ -126,6 +126,8 @@ export function TeamPokemonMemberView({ pokemon }: { pokemon: Pokemon }) {
                     filter: 'drop-shadow(0 0 0 2px rgba(0,0,0,0.2)',
                 }),
             }}
+            role='group'
+            onKeyPress={onClick}
             onClick={onClick}>
             {showContext && renderMenu}
             <TeamPokemon options={{}} pokemon={pokemon} />
