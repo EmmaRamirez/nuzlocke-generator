@@ -88,6 +88,88 @@ const FRLG_OFFSETS = {
 
 };
 
+const POKEMON_OFFSETS = {
+    PID: [0, 0x0000 + 4],
+    OT_ID: [4, 8],
+    NICKNAME: [8, 10],
+    LANG: [18, 19],
+    EGG: [19, 20],
+    OT_NAME: [20, 27],
+    MARKINGS: [27, 28],
+    CHECKSUM: [28, 30],
+    DATA: [32, 80],
+    STATUS: [80, 84],
+    LEVEL: [84, 85],
+    POKERUS: [85, 86],
+    CURRENT_HP: [86, 88],
+    TOTAL_HP: [88, 90],
+    ATTACK: [90, 92],
+    DEFENSE: [92, 94],
+    SPEED: [94, 96],
+    SPECIAL_ATTACK: [96, 98],
+    SPECIAL_DEFENSE: [98, 100]
+};
+
+const POKEMON_SUBSTRUCTURE_OFFSETS = {
+    // Growth
+    G: {
+
+    },
+    // Attacks
+    A: {
+
+    },
+    // EVs and Condition
+    E: {
+
+    },
+    // Miscellaneous
+    M: {
+
+    }
+};
+
+const substructures = [
+    'GAEM',
+    'GAME',
+    'GEAM',
+    'GEMA',
+    'GMAE',
+    'GMEA',
+    'AGEM',
+    'AGME',
+    'AEGM',
+    'AEMG',
+    'AMGE',
+    'AMEG',
+    'EGAM',
+    'EGMA',
+    'EAGM',
+    'EAMG',
+    'EMGA',
+    'EMAG',
+    'MGAE',
+    'MGEA',
+    'MAGE',
+    'MAEG',
+    'MEGA',
+    'MEAG',
+];
+
+const getBits = (data) => (n, x): number => {
+    return 0;
+};
+
+const getOrigin = (originData) => {
+    const getOriginBits = getBits(originData);
+    // 0 = hatched
+    const levelMet = getOriginBits(0, 6);
+    const gameOfOrigin = getOriginBits(7, 10);
+    const pokeball = getOriginBits(11, 14);
+    const trainerGender = getOriginBits(15, 16);
+
+};
+
 function buf2hex(buffer: Buffer) {
     return [...new Uint8Array(buffer)].map((x) => x.toString(16).padStart(2, '0')).join('');
 }
