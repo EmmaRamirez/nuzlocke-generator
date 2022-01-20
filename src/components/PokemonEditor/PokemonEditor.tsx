@@ -122,7 +122,7 @@ const PokemonLocationChecklist = ({
                 <label className={cx(Classes.CONTROL)} style={{margin: '.25rem 0'}}>
                     <span className={Classes.LABEL}>Filter by Game</span>
                     <div className={Classes.SELECT} style={{marginLeft: '0.25rem'}}>
-                        <select onBlur={e => setCurrentGame(e?.target.value as GameName)}>
+                        <select onChange={e => setCurrentGame(e?.target.value as GameName)}>
                             {listOfGames.map(game => <option key={game}>{game}</option>)}
                         </select>
                     </div>

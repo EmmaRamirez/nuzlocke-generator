@@ -77,7 +77,7 @@ export class CSSUnitInput extends React.Component<CSSUnitInputProps, CSSUnitInpu
                     value={chosenNumber}
                 />
                 <div className={cx(Classes.SELECT, css.unitSelect)}>
-                    <select onBlur={this.setUnit} value={chosenUnit}>
+                    <select onChange={this.setUnit} value={chosenUnit}>
                         {units?.map((u) => (
                             <option key={u} value={u}>
                                 {u}

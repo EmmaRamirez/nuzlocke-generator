@@ -91,5 +91,6 @@ module.exports = {
         "jsx-a11y/no-noninteractive-element-interactions": "warn",
         "jsx-a11y/label-has-associated-control": "warn",
         "jest/valid-title": "warn",
+        "jsx-a11y/no-onchange": "warn"
     }
 };

@@ -135,6 +135,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
         const baseDivStyle = isVertical ? { padding: '2px' } : { padding: '.25rem' };
         const tciProps = { trainer, orientation };
         const enableStats = style.displayStats;
+        const emmaMode = feature.emmaMode;
 
         return (
             <div
@@ -212,6 +213,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                         </ol>
                     </div>
                 ) : null}
+                {emmaMode && <Stats />}
             </div>
         );
     }

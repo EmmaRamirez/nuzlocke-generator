@@ -188,7 +188,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         <select
                             className={Classes.SELECT}
                             name="template"
-                            onBlur={(e) => editEvent(e, props, undefined, props.game.name)}
+                            onChange={(e) => editEvent(e, props, undefined, props.game.name)}
                             value={props.style.template}>
                             {listOfThemes.map((o) => (
                                 <option key={o}>{o}</option>
@@ -222,7 +222,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     <div className={Classes.SELECT}>
                         <select
                             name="itemStyle"
-                            onBlur={(e) => editEvent(e, props, undefined)}
+                            onChange={(e) => editEvent(e, props, undefined)}
                             value={props.style.itemStyle}>
                             {smallItemOptions.map((v) => {
                                 return (
@@ -240,7 +240,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     <div className={Classes.SELECT}>
                         <select
                             name="pokeballStyle"
-                            onBlur={(e) => editEvent(e, props, undefined)}
+                            onChange={(e) => editEvent(e, props, undefined)}
                             value={props.style.pokeballStyle}>
                             {smallItemOptions.map((v) => {
                                 return (
@@ -435,7 +435,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     <div className={Classes.SELECT}>
                         <select
                             name="displayRulesLocation"
-                            onBlur={(e) => editEvent(e, props, undefined)}
+                            onChange={(e) => editEvent(e, props, undefined)}
                             value={props.style.displayRulesLocation}>
                             <option key={'inside trainer section'}>
                                 {'inside trainer section'}
@@ -473,7 +473,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     <div className={Classes.SELECT}>
                         <select
                             name="teamImages"
-                            onBlur={(e) => editEvent(e, props, undefined, props.game.name)}
+                            onChange={(e) => editEvent(e, props, undefined, props.game.name)}
                             value={props.style.teamImages}>
                             {teamImages.map((o) => (
                                 <option value={o} key={o}>

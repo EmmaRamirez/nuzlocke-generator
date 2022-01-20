@@ -12,7 +12,7 @@ export interface ThemeSelectProps {
 
 export const ThemeSelectBase = ({ theme, onChange }) => (
     <div className={Classes.SELECT}>
-        <select value={theme} onBlur={(e) => onChange({ template: e.target.value })}>
+        <select value={theme} onChange={(e) => onChange({ template: e.target.value })}>
             {listOfThemes.map((o) => (
                 <option value={o}>{o}</option>
             ))}

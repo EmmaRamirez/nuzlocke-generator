@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-onchange */
 import * as React from 'react';
 import { connect, useSelector, useDispatch } from 'react-redux';
 
@@ -129,13 +130,12 @@ export function PokemonAutocompleteInput({
             className={cx(className)}
             onKeyDown={handleKeyDown}
             onFocus={openList}
-            onBlur={closeList}
+            onChange={closeList}
             placeholder={placeholder}
             name={inputName}
             type="text"
             value={edit[inputName]}
             disabled={disabled}
-            onChange={onChange}
             onInput={(e) => setEdit({ [inputName]: e.currentTarget.value })}
         />
         {isOpen ? (
@@ -237,7 +237,7 @@ export function PokemonSelectInput({
                 />
             ) : null}
             <select
-                onBlur={(e) => {
+                onChange={(e) => {
                     onChange(e);
                     setEdit({ [inputName]: e.currentTarget.value });
                 }}
@@ -287,7 +287,7 @@ export function PokemonDoubleSelectInput({
     return (
         <span className="double-select-wrapper">
             <div className={Classes.SELECT}>
-                <select onBlur={onSelect(0)} value={edit?.[inputName]?.[0]} name={inputName}>
+                <select onChange={onSelect(0)} value={edit?.[inputName]?.[0]} name={inputName}>
                     {options
                         ?
                         (options as any).map((item, index) => (
@@ -300,7 +300,7 @@ export function PokemonDoubleSelectInput({
             </div>
             <span>&nbsp;</span>
             <div className={Classes.SELECT}>
-                <select onBlur={onSelect(1)} value={edit?.[inputName]?.[1]} name={inputName}>
+                <select onChange={onSelect(1)} value={edit?.[inputName]?.[1]} name={inputName}>
                     {options
                         ?
                         (options as any).map((item, index) => (

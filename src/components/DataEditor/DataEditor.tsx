@@ -131,7 +131,7 @@ export function BoxSelect({boxes, value, boxKey, setBoxMappings}: {boxes: State[
     return <div className={Classes.SELECT}>
         <select
             value={value}
-            onBlur={e => setBoxMappings({ key: boxKey, status: e.target.value })}
+            onChange={e => setBoxMappings({ key: boxKey, status: e.target.value })}
         >
             {boxes.map((box) => (
                 <option key={box.id} value={box.name}>
@@ -436,7 +436,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         <div className={Classes.SELECT}>
                             <select
                                 value={this.state.selectedGame}
-                                onBlur={(e) => {
+                                onChange={(e) => {
                                     this.setState({
                                         selectedGame: e.target.value as GameSaveFormat,
                                         boxMappings: generateBoxMappingsDefault(e.target.value as GameSaveFormat)

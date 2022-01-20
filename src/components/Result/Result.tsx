@@ -130,7 +130,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     private renderTopBarItems() {
         const renderItems: React.ReactNode[] = [];
         renderItems.push(<div key={1} className={cx(this.props.style.editorDarkMode && Classes.DARK, Classes.SELECT)}>
-            <select className={cx(this.props.style.editorDarkMode && Classes.DARK)} defaultValue={1} onBlur={(e?: React.ChangeEvent<HTMLSelectElement>) => this.setState({zoomLevel: Number.parseFloat(e?.target?.value ?? '1')})}>
+            <select className={cx(this.props.style.editorDarkMode && Classes.DARK)} defaultValue={1} onChange={(e?: React.ChangeEvent<HTMLSelectElement>) => this.setState({zoomLevel: Number.parseFloat(e?.target?.value ?? '1')})}>
                 {[
                     {key: 0.25, value: '25%'},
                     {key: 0.5, value: '50%'},
@@ -380,6 +380,15 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                         onClickDownload={() => this.toImage()}>
                         {this.renderTopBarItems()}
                     </TopBar>
+                    <style>
+                        {`
+                            .result {
+                                --background-color: ${bgColor};
+                                --accent-color: ${accentColor};
+                                --header-color: ${topHeaderColor};
+                            }
+                        `}
+                    </style>
                     <style>{style.customCSS}</style>
                     {isMobile() && editor.showResultInMobile && (
                         <Button

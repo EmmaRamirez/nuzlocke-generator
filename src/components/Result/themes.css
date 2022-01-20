@@ -657,7 +657,7 @@
   height: 0.75rem !important;
 }
 .compact-with-icons .boxed-pokemon-container {
-  outline: 1px solid #222;
+  
 }
 .compact-with-icons .boxed-pokemon-info {
   border: none;
@@ -814,3 +814,4 @@
     bottom: -50px;
     right: 0;
   }
+

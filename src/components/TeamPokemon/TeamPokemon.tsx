@@ -469,7 +469,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, {imag
             `,
         };
 
-        const EMMA_MODE = feature.emmaMode;
+        const EMMA_MODE = false;
 
         return (
             <div className="pokemon-container" {...data}>

@@ -18,7 +18,7 @@ export const champsPokemon = (options: any) => css`
     color: ${options.color};
     padding: ${options.padding};
     cursor: pointer;
-    flex-grow: 4;
+    /* flex-grow: 4; */
 `;
 
 export type ChampsPokemonProps = { [P in keyof Pokemon]?: any } & {
@@ -73,7 +73,7 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
                     useSpritesForChampsPokemon: true,
                 } as any}
             >
-                {(backgroundImage) => <img alt={''} style={{
+                {(backgroundImage) => <img className='champs-pokemon-image' alt={''} style={{
                     backgroundImage,
                     backgroundPosition: 'center center',
                     backgroundSize: 'contain',
@@ -101,21 +101,21 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
 
         return (
             <>
-                <div className={cx(className)}>
+                <div className={cx(className, 'champs-pokemon')}>
                     {this.props.useSprites ? (
                         this.getPokemonImage()
                     ) : (
-                        <PokemonIcon {...(this.props as any)} />
+                        <PokemonIcon className='champs-pokemon-image' {...(this.props as any)} />
                     )}
-                    <span style={{ margin: '0 4px' }}>{this.props.showNickname && this.props.nickname}</span>
+                    <span className='champs-pokemon-nickname' style={{ margin: '0 4px' }}>{this.props.showNickname && this.props.nickname}</span>
                     {this.props.showGender && GenderElement(this.props.gender)}
-                    <span style={{ marginLeft: '2px' }}>{this.props.showLevel && ` Lv ${this.props.level ?? 0}`}</span>
+                    <span className='champs-pokemon-level' style={{ marginLeft: '2px' }}>{this.props.showLevel && ` Lv ${this.props.level ?? 0}`}</span>
                 </div>
-                <style>
+                {customCSS && <style>
                     {`.${className} {
                         ${customCSS}
                     }`}
-                </style>
+                </style>}
             </>
         );
     }
