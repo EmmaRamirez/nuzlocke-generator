@@ -190,16 +190,28 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             });
     }
 
+    private async getNode() {
+        return new Promise((res, rej) => {
+            try {
+                res(this.resultRef.current);
+            } catch {
+                rej('Could not create noderef.');
+            }
+        });
+    }
+
     private async toImage() {
-        const resultNode = this.resultRef.current;
         this.setState({ isDownloading: true });
+        // const resultNode = this.resultRef.current;
         if (process.env.NODE_ENV === 'test') {
             return;
         }
         try {
+            const resultNode = await this.getNode();
+
             const domToImage = await load();
             const dataUrl = await domToImage.toPng(resultNode, { corsImage: true });
-            console.log(dataUrl, resultNode);
+            console.log(resultNode);
             const link = document.createElement('a');
             link.download = `nuzlocke-${uuid()}.png`;
             link.href = dataUrl;
@@ -294,6 +306,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         ) : null;
 
     private getScale(style: State['style'], editor: State['editor'], coords: ResultState['panningCoordinates']) {
+        console.log('this.getScale() fired', `download: ${this.state.isDownloading}`);
         const rw = parseInt(style.resultWidth.toString());
         const ww = window.innerWidth;
         const scale = ww / rw / 1.1;
@@ -301,9 +314,11 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         const width = (this.resultRef?.current?.offsetWidth ?? 300) / this.state.zoomLevel;
         const translate = `translateX(${clamp(-(width), width, (coords?.[0] ?? 0) / 1)}px) translateY(${clamp(-(height), Infinity, (coords?.[1] ?? 0) / 1)}px)`;
         if (this.state.isDownloading) {
-            return { transform: undefined };
+            //return [0,0];
+            return { transform: 'none' };
         }
         if (!editor.showResultInMobile) {
+            //return [clamp(-(width), width, (coords?.[0] ?? 0) / 1), clamp(-(height), Infinity, (coords?.[1] ?? 0) / 1)];
             return { transform: `scale(${this.state.zoomLevel}) ${translate}` };
         }
         if (!Number.isNaN(rw)) {
@@ -401,121 +416,126 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             Download
                         </Button>
                     )}
-                    <div
-                        ref={this.resultRef}
-                        className={`result ng-container ${
-                            (style.template && style.template.toLowerCase().replace(/\s/g, '-')) ||
+                    {/* transform wrapper prevents bugs with image download */}
+                    <div style={{
+                        transition: 'transform 300ms ease-in-out',
+                        transformOrigin: '0 0',
+                        ...this.getScale(style, editor, this.state.panningCoordinates),
+
+                    }}>
+                        <div
+                            ref={this.resultRef}
+                            className={`result ng-container ${
+                                (style.template && style.template.toLowerCase().replace(/\s/g, '-')) ||
                             ''
-                        } region-${getGameRegion(
-                            this.props.game.name,
-                        )} team-size-${numberOfTeam} ${trainerSectionOrientation}-trainer
+                            } region-${getGameRegion(
+                                this.props.game.name,
+                            )} team-size-${numberOfTeam} ${trainerSectionOrientation}-trainer
                        ${editor.showResultInMobile ? Styles.result_mobile : ''}
                         `}
-                        style={{
-                            fontFamily: style.usePokemonGBAFont ? 'pokemon_font' : 'inherit',
-                            fontSize: style.usePokemonGBAFont ? '125%' : '100%',
-                            margin: this.state.isDownloading ? '0' : '3rem auto',
-                            backgroundColor: bgColor,
-                            backgroundImage: `url(${style.backgroundImage})`,
-                            backgroundRepeat: style.tileBackground ? 'repeat' : 'no-repeat',
-                            border: 'none',
-                            height: style.useAutoHeight ? 'auto' : `${style.resultHeight}px`,
-                            minHeight: style.useAutoHeight ? '600px' : undefined,
-                            transition: 'transform 300ms ease-in-out',
-                            transformOrigin: '0 0',
-                            width: `${style.resultWidth}px`,
-                            zIndex: 1,
-                            ...this.getScale(style, editor, this.state.panningCoordinates),
-                        }}>
-                        <div
-                            className="trainer-container"
-                            style={
-                                trainerSectionOrientation === 'vertical'
-                                    ? {
-                                        backgroundColor: topHeaderColor,
-                                        color: getContrastColor(topHeaderColor),
-                                        width: style.trainerWidth,
-                                        position: 'absolute',
-                                        height: `calc(${style.trainerHeight} + 2%)`,
-                                        display: 'flex',
-                                    }
-                                    : {
-                                        backgroundColor: topHeaderColor,
-                                        color: getContrastColor(topHeaderColor),
-                                        width: style.trainerAuto ? '100%' : style.trainerWidth,
-                                        height: style.trainerAuto ? 'auto' : style.trainerHeight,
-                                    }
-                            }>
-                            <TrainerResult orientation={trainerSectionOrientation} />
-                        </div>
-                        {trainer && trainer.notes ? (
-                            <div
-                                style={{ color: getContrastColor(bgColor) }}
-                                className="result-notes">
-                                {trainer.notes}
-                            </div>
-                        ) : null}
-                        {style.displayRules && style.displayRulesLocation === 'top'
-                            ? rulesContainer
-                            : null}
-                        {teamContainer}
-                        {style.template === 'Generations' &&
-                        trainerSectionOrientation === 'vertical' ? (
-                                <div className="statuses-wrapper">
-                                    {/* {this.renderContainer(
-                                        this.getPokemonByStatus('Boxed'),
-                                        paddingForVerticalTrainerSection,
-                                    box?.[1],
-                                    )}
-                                    {this.renderContainer(
-                                        this.getPokemonByStatus('Dead'),
-                                        paddingForVerticalTrainerSection,
-                                    box?.[2],
-                                    )}
-                                    {this.renderContainer(
-                                        this.getPokemonByStatus('Champs'),
-                                        paddingForVerticalTrainerSection,
-                                    box?.[3],
-                                    )} */}
-                                    {this.renderOtherPokemonStatuses(paddingForVerticalTrainerSection)}
-                                </div>
-                            ) : (
-                                <>
-                                    {/* {this.renderContainer(
-                                        this.getPokemonByStatus('Boxed'),
-                                        paddingForVerticalTrainerSection,
-                                    box?.[1],
-                                    )}
-                                    {this.renderContainer(
-                                        this.getPokemonByStatus('Dead'),
-                                        paddingForVerticalTrainerSection,
-                                    box?.[2],
-                                    )}
-                                    {this.renderContainer(
-                                        this.getPokemonByStatus('Champs'),
-                                        paddingForVerticalTrainerSection,
-                                    box?.[3],
-                                    )} */}
-                                    {this.renderOtherPokemonStatuses(paddingForVerticalTrainerSection)}
-                                </>
-                            )}
-
-                        <div
                             style={{
-                                ...paddingForVerticalTrainerSection,
-                                display: 'flex',
-                                color: getContrastColor(bgColor),
+                                fontFamily: style.usePokemonGBAFont ? 'pokemon_font' : 'inherit',
+                                fontSize: style.usePokemonGBAFont ? '125%' : '100%',
+                                margin: this.state.isDownloading ? '0' : '3rem auto',
+                                backgroundColor: bgColor,
+                                backgroundImage: `url(${style.backgroundImage})`,
+                                backgroundRepeat: style.tileBackground ? 'repeat' : 'no-repeat',
+                                border: 'none',
+                                height: style.useAutoHeight ? 'auto' : `${style.resultHeight}px`,
+                                minHeight: style.useAutoHeight ? '600px' : undefined,
+                                width: `${style.resultWidth}px`,
+                                zIndex: 1,
                             }}>
-                            {style.displayRules && style.displayRulesLocation === 'bottom'
+                            <div
+                                className="trainer-container"
+                                style={
+                                    trainerSectionOrientation === 'vertical'
+                                        ? {
+                                            backgroundColor: topHeaderColor,
+                                            color: getContrastColor(topHeaderColor),
+                                            width: style.trainerWidth,
+                                            position: 'absolute',
+                                            height: `calc(${style.trainerHeight} + 2%)`,
+                                            display: 'flex',
+                                        }
+                                        : {
+                                            backgroundColor: topHeaderColor,
+                                            color: getContrastColor(topHeaderColor),
+                                            width: style.trainerAuto ? '100%' : style.trainerWidth,
+                                            height: style.trainerAuto ? 'auto' : style.trainerHeight,
+                                        }
+                                }>
+                                <TrainerResult orientation={trainerSectionOrientation} />
+                            </div>
+                            {trainer && trainer.notes ? (
+                                <div
+                                    style={{ color: getContrastColor(bgColor) }}
+                                    className="result-notes">
+                                    {trainer.notes}
+                                </div>
+                            ) : null}
+                            {style.displayRules && style.displayRulesLocation === 'top'
                                 ? rulesContainer
                                 : null}
+                            {teamContainer}
+                            {style.template === 'Generations' &&
+                        trainerSectionOrientation === 'vertical' ? (
+                                    <div className="statuses-wrapper">
+                                        {/* {this.renderContainer(
+                                        this.getPokemonByStatus('Boxed'),
+                                        paddingForVerticalTrainerSection,
+                                    box?.[1],
+                                    )}
+                                    {this.renderContainer(
+                                        this.getPokemonByStatus('Dead'),
+                                        paddingForVerticalTrainerSection,
+                                    box?.[2],
+                                    )}
+                                    {this.renderContainer(
+                                        this.getPokemonByStatus('Champs'),
+                                        paddingForVerticalTrainerSection,
+                                    box?.[3],
+                                    )} */}
+                                        {this.renderOtherPokemonStatuses(paddingForVerticalTrainerSection)}
+                                    </div>
+                                ) : (
+                                    <>
+                                        {/* {this.renderContainer(
+                                        this.getPokemonByStatus('Boxed'),
+                                        paddingForVerticalTrainerSection,
+                                    box?.[1],
+                                    )}
+                                    {this.renderContainer(
+                                        this.getPokemonByStatus('Dead'),
+                                        paddingForVerticalTrainerSection,
+                                    box?.[2],
+                                    )}
+                                    {this.renderContainer(
+                                        this.getPokemonByStatus('Champs'),
+                                        paddingForVerticalTrainerSection,
+                                    box?.[3],
+                                    )} */}
+                                        {this.renderOtherPokemonStatuses(paddingForVerticalTrainerSection)}
+                                    </>
+                                )}
+
+                            <div
+                                style={{
+                                    ...paddingForVerticalTrainerSection,
+                                    display: 'flex',
+                                    color: getContrastColor(bgColor),
+                                }}>
+                                {style.displayRules && style.displayRulesLocation === 'bottom'
+                                    ? rulesContainer
+                                    : null}
+                            </div>
+
+                            {enableStats && !EMMA_MODE && <Stats color={getContrastColor(bgColor)} />}
+
+                            {enableBackSpriteMontage && (
+                                <BackspriteMontage pokemon={this.getPokemonByStatus('Team')} />
+                            )}
                         </div>
-
-                        {enableStats && !EMMA_MODE && <Stats color={getContrastColor(bgColor)} />}
-
-                        {enableBackSpriteMontage && (
-                            <BackspriteMontage pokemon={this.getPokemonByStatus('Team')} />
-                        )}
                     </div>
                 </ErrorBoundary>
             </div>
