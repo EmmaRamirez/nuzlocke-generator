@@ -138,7 +138,7 @@ export function Autocomplete ({
     return <div className={cx('current-pokemon-input-wrapper', 'autocomplete')}>
         {label && <label>{label}</label>}
         <input
-            autoComplete="off"
+            autoComplete="new-password"
             className={cx(className, makeInvisibleText && invisibleText)}
             onKeyDown={handleKeyDown}
             onFocus={openList}
