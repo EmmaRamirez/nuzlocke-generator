@@ -202,23 +202,20 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
 
     private async toImage() {
         this.setState({ isDownloading: true });
-        // const resultNode = this.resultRef.current;
         if (process.env.NODE_ENV === 'test') {
             return;
         }
         try {
             const resultNode = await this.getNode();
-
             const domToImage = await load();
             const dataUrl = await domToImage.toPng(resultNode, { corsImage: true });
-            console.log(resultNode);
             const link = document.createElement('a');
             link.download = `nuzlocke-${uuid()}.png`;
             link.href = dataUrl;
             link.click();
             this.setState({ downloadError: null, isDownloading: false });
         } catch (e) {
-            console.log(e);
+            console.error(e);
             this.setState({
                 downloadError:
                     'Failed to download. This is likely due to your image containing an image resource that does not allow Cross-Origin',
@@ -306,7 +303,6 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         ) : null;
 
     private getScale(style: State['style'], editor: State['editor'], coords: ResultState['panningCoordinates']) {
-        console.log('this.getScale() fired', `download: ${this.state.isDownloading}`);
         const rw = parseInt(style.resultWidth.toString());
         const ww = window.innerWidth;
         const scale = ww / rw / 1.1;

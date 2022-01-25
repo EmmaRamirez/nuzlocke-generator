@@ -14,6 +14,7 @@ export interface AutocompleteProps {
     disabled?: boolean;
     value: string;
     onChange: any;
+    onInput: any;
     className?: string;
     /* @NOTE: this value should always be in conjunction with disabled
        it is used to obscure unimportant data, like Species when a Pokemon is an egg */
@@ -37,6 +38,8 @@ const invisibleText = css`
     color: transparent !important;
 `;
 
+const determineTopValue = (scrollTop: number, value: number) => scrollTop + value;
+
 export function Autocomplete ({
     label,
     name,
@@ -46,13 +49,15 @@ export function Autocomplete ({
     disabled,
     makeInvisibleText,
     items,
-    // onInput,
+    onInput,
     value,
 }: AutocompleteProps) {
     const [innerValue, setValue] = React.useState('');
     const [selectedValue, setSelectedValue] = React.useState('');
     const [isOpen, setIsOpen] = React.useState(false);
     const [visibleItems, setVisibleItems] = React.useState<string[]>([]);
+    const inputRef = React.useRef<HTMLInputElement>(null);
+    const itemsRef = React.useRef<HTMLUListElement>(null);
 
     const delayedValue = useDebounceCallback(
         (e) => onChange(e), 300,
@@ -69,13 +74,20 @@ export function Autocomplete ({
         setValue(e.target.value);
         setVisibleItems(filter(items, e.target.value));
         delayedValue({ target: { value: e.target.value }});
+        onInput({ ...e, currentTarget: { value: e.target.value }});
     };
+
+
 
     const handleMovement = (e) => {
         const currentIndex = visibleItems?.indexOf(selectedValue);
+        const scrollTop = itemsRef.current?.scrollTop || 0;
+        console.log('scrollTop', scrollTop, itemsRef?.current?.scrollTop);
         if (e.which === 38) {
+            itemsRef.current?.scrollTo({ top: determineTopValue(scrollTop, -10), behavior: 'smooth' });
             setSelectedValue(visibleItems[currentIndex - 1]);
         } else {
+            itemsRef.current?.scrollTo({ top: determineTopValue(scrollTop, 10), behavior: 'smooth' });
             setSelectedValue(visibleItems[currentIndex + 1]);
         }
     };
@@ -93,8 +105,8 @@ export function Autocomplete ({
         e.persist();
         setVisibleItems(filter(items, e.currentTarget.value));
 
-        switch (e.which) {
-            case 13:
+        switch (e.key) {
+            case 'Enter':
                 e.preventDefault();
                 if (selectedValue) {
                     setValue(selectedValue);
@@ -102,14 +114,15 @@ export function Autocomplete ({
                 closeList(e);
                 changeEvent(false)({ ...e, target: { value: selectedValue !== '' ? selectedValue : innerValue }});
                 break;
-            case 8:
+            case 'Backspace':
+                setSelectedValue(visibleItems?.[0]);
                 break;
-            case 27:
-            case 9:
+            case 'Escape':
+            case 'Tab':
                 closeList(e);
                 break;
-            case 38:
-            case 40:
+            case 'ArrowDown':
+            case 'ArrowUp':
                 handleMovement(e);
                 setIsOpen(true);
                 break;
@@ -119,17 +132,18 @@ export function Autocomplete ({
         }
     };
     const selectItem = (e) => (value) => {
-        changeEvent(false)({ ...e, target:{value}});
+        changeEvent(false)({ ...e, target: {value}});
     };
 
     return <div className={cx('current-pokemon-input-wrapper', 'autocomplete')}>
-        <label>{label}</label>
+        {label && <label>{label}</label>}
         <input
             autoComplete="off"
             className={cx(className, makeInvisibleText && invisibleText)}
             onKeyDown={handleKeyDown}
             onFocus={openList}
             onBlur={closeList}
+            onInput={onInput}
             placeholder={placeholder}
             name={name}
             type="text"
@@ -137,14 +151,20 @@ export function Autocomplete ({
             value={innerValue}
             disabled={disabled}
             data-testid="autocomplete"
+            ref={inputRef}
         />
         {isOpen ? (
-            <ul className="autocomplete-items has-nice-scrollbars">{renderItems(
-                visibleItems,
-                selectItem,
-                innerValue,
-                selectedValue,
-            )}</ul>
+            <ul
+                ref={itemsRef}
+                style={{
+                    top: (inputRef?.current?.offsetHeight || 20) + 5,
+                    width: inputRef?.current?.offsetWidth,
+                }} className="autocomplete-items has-nice-scrollbars">{renderItems(
+                    visibleItems,
+                    selectItem,
+                    innerValue,
+                    selectedValue,
+                )}</ul>
         ) : null}
     </div>;
 }

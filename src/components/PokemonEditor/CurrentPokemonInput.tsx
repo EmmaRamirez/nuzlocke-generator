@@ -10,10 +10,12 @@ import {
     getContrastColor,
     matchNatureToToxtricityForme,
     Species,
+    getGameGeneration,
+    Game,
 } from 'utils';
 import { editPokemon, selectPokemon, editStat } from 'actions';
 
-import { ErrorBoundary } from 'components/Shared';
+import { ErrorBoundary, Autocomplete } from 'components/Shared';
 
 import { TagInput, Classes, TextArea } from '@blueprintjs/core';
 import { State } from 'state';
@@ -51,14 +53,28 @@ interface ChangeArgs {
     position?: number;
     value?: any;
     pokemon?: Pokemon;
+    game: Game;
     edit: { [x: string]: any };
 }
 
-const createEdit = ({ inputName, value, pokemon, edit }: ChangeArgs) => {
+// this.props.editPokemon(
+//     {
+//         types: matchSpeciesToTypes(
+//             e.target.value,
+//             // @TODO: tighten type
+//             currentPokemon.forme as any,
+//             getGameGeneration(this.props.game.name as Game),
+//         ),
+//     },
+//     this.state.selectedId,
+// );
+
+const createEdit = ({ inputName, value, pokemon, edit, game }: ChangeArgs) => {
+    console.log(inputName, value, pokemon?.species);
     if (inputName === 'species') {
         return {
             ...edit,
-            types: matchSpeciesToTypes(edit['species'])
+            types: matchSpeciesToTypes(edit['species'], pokemon?.forme as any, getGameGeneration(game))
         };
     } else if (inputName === 'nature' && pokemon?.species === 'Toxtricity') {
         return {
@@ -68,7 +84,7 @@ const createEdit = ({ inputName, value, pokemon, edit }: ChangeArgs) => {
     } else if (inputName === 'forme') {
         return {
             ...edit,
-            types: pokemon && matchSpeciesToTypes(pokemon?.species as Species, value)
+            types: pokemon && matchSpeciesToTypes(pokemon?.species as Species, value, getGameGeneration(game))
         };
     }
 
@@ -117,30 +133,36 @@ export function PokemonAutocompleteInput({
 }: PokemonInputProps) {
     const [isOpen, setIsOpen] = React.useState(false);
     const [visibleItems, setVisibleItems] = React.useState(items);
-    const [selectedItem, setSelectedItem] = React.useState();
+    const [selectedItem, setSelectedItem] = React.useState('');
     const handleKeyDown = () => {};
     const updateItems = () => {};
-    const closeList = () => {};
-    const openList = () => {};
+
+    const closeList = () => {
+        //setIsOpen(false);
+    };
+    const openList = () => {
+        setIsOpen(true);
+    };
+    const handleChange = (e) => {
+        const newVisibleItems = items?.filter(i => i.toLowerCase() === e.target.value);
+        setVisibleItems(newVisibleItems);
+        onChange(e);
+    };
+
+    React.useEffect(() => {
+        console.log(selectedItem);
+    }, [selectedItem]);
 
 
     return <>
-        <input
-            autoComplete="off"
-            className={cx(className)}
-            onKeyDown={handleKeyDown}
-            onFocus={openList}
-            onChange={closeList}
-            placeholder={placeholder}
+        <Autocomplete
+            items={items ?? []}
             name={inputName}
-            type="text"
+            placeholder={placeholder}
             value={edit[inputName]}
-            disabled={disabled}
+            onChange={onChange}
             onInput={(e) => setEdit({ [inputName]: e.currentTarget.value })}
         />
-        {isOpen ? (
-            <ul className="autocomplete-items has-nice-scrollbars">{renderItems(visibleItems, setSelectedItem, selectedItem)}</ul>
-        ) : null}
     </>;
 }
 
@@ -396,6 +418,7 @@ export function CurrentPokemonInput(props: CurrentPokemonInputProps) {
     const customMoveMap = useSelector<State, State['customMoveMap']>(
         (state) => state.customMoveMap,
     );
+    const game = useSelector<State, State['game']['name']>(state => state.game.name);
     const customTypes = useSelector<State, State['customTypes']>((state) => state.customTypes);
     const dispatch = useDispatch();
 
@@ -403,7 +426,7 @@ export function CurrentPokemonInput(props: CurrentPokemonInputProps) {
     if (!selectedId) {
         return null;
     }
-    const onChange = useDebounceCallback(() => dispatch(editPokemon(createEdit({inputName, value: edit[inputName], edit, pokemon: props.pokemon}), selectedId)), 300);
+    const onChange = useDebounceCallback(() => dispatch(editPokemon(createEdit({inputName, value: edit[inputName], edit, pokemon: props.pokemon, game}), selectedId)), 300);
     React.useEffect(() => setEdit({ [inputName]: value }), [inputName, value]);
 
     return (

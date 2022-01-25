@@ -1,7 +1,7 @@
 import { Forme } from './Forme';
 import { Nature } from './Nature';
 
-export const matchNatureToToxtricityForme = (nature: Nature): keyof typeof Forme => {
+export const matchNatureToToxtricityForme = (nature: Nature): string => {
     console.log(nature);
 
     if (
@@ -21,7 +21,7 @@ export const matchNatureToToxtricityForme = (nature: Nature): keyof typeof Forme
             'Sassy',
         ].includes(nature)
     ) {
-        return 'Amped';
+        return 'Amped-Up';
     } else {
         return 'Lowkey';
     }

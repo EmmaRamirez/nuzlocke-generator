@@ -45,6 +45,7 @@ import { MoveEditor } from 'components/MoveEditor';
 import { CheckpointsInputList } from 'components/TrainerEditor';
 import { gameNameSelector } from 'selectors';
 import { getImages, Image } from 'components/Shared/ImagesDrawer';
+import { pokemon } from 'reducers/pokemon';
 
 const pokeball = require('assets/pokeball.png').default;
 
@@ -288,18 +289,13 @@ CurrentPokemonEditState
                         key={this.state.selectedId + 'gift'}
                     />
                 </CurrentPokemonLayoutItem>
-                {feature.imageUploads ? <Autocomplete
-                    items={imageNames}
-                    name="customImage"
-                    label="Custom Image"
+                {feature.imageUploads ? <CurrentPokemonInput
+                    items={(imageNames as unknown) as string[]}
+                    inputName="customName"
+                    labelName="Custom Image"
                     placeholder="http://..."
-                    value={currentPokemon.customImage || ''}
-                    onChange={(e) => {
-                        const edit = {
-                            customImage: e.target.value,
-                        };
-                        editPokemon(edit, this.state.selectedId);
-                    }}
+                    value={currentPokemon?.customImage ?? ''}
+                    type="autocomplete"
                     key={this.state.selectedId + 'customimage'}
                 /> : <CurrentPokemonInput
                     labelName="Custom Image"
@@ -324,19 +320,13 @@ CurrentPokemonEditState
                     type="text"
                     key={this.state.selectedId + 'cod'}
                 />
-                <Autocomplete
-                    items={listOfItems}
-                    name="item"
-                    label="Item"
+                <CurrentPokemonInput
+                    items={(listOfItems as unknown) as string[]}
+                    inputName="item"
+                    labelName="Item"
                     placeholder="Item"
-                    value={currentPokemon.item || ''}
-                    onChange={(e) => {
-                        const edit = {
-                            item: e.target.value,
-                        };
-                        editPokemon(edit, this.state.selectedId);
-                        selectPokemon(this.state.selectedId);
-                    }}
+                    value={currentPokemon?.item ?? ''}
+                    type="autocomplete"
                     key={this.state.selectedId + 'item'}
                 />
                 <CurrentPokemonInput
@@ -487,32 +477,15 @@ CurrentPokemonEditState
                             type='autocomplete'
                             items={(listOfPokemon as unknown) as string[]}
                         />*/}
-                        <Autocomplete
+                        <CurrentPokemonInput
                             items={(listOfPokemon as unknown) as string[]}
-                            name="species"
-                            label="Species"
-                            disabled={currentPokemon.egg}
-                            makeInvisibleText={currentPokemon.egg}
+                            inputName="species"
+                            labelName="Species"
                             placeholder="Missing No."
-                            value={currentPokemon.species}
-                            onChange={(e) => {
-                                const edit = {
-                                    species: e.target.value,
-                                };
-                                this.props.editPokemon(edit, this.state.selectedId);
-                                this.props.editPokemon(
-                                    {
-                                        types: matchSpeciesToTypes(
-                                            e.target.value,
-                                            // @TODO: tighten type
-                                            currentPokemon.forme as any,
-                                            getGameGeneration(this.props.game.name as Game),
-                                        ),
-                                    },
-                                    this.state.selectedId,
-                                );
-                                this.props.selectPokemon(this.state.selectedId);
-                            }}
+                            value={currentPokemon?.species ?? ''}
+                            type="autocomplete"
+                            disabled={currentPokemon.egg}
+                            key={this.state.selectedId + 'species'}
                         />
                     </ErrorBoundary>
                     <CurrentPokemonInput
@@ -533,7 +506,7 @@ CurrentPokemonEditState
                         type="number"
                         key={this.state.selectedId + 'level'}
                     />
-                    <Autocomplete
+                    {/* <Autocomplete
                         items={listOfLocations}
                         name="met"
                         label="Met Location"
@@ -549,6 +522,15 @@ CurrentPokemonEditState
                             this.props.editPokemon(edit, this.state.selectedId);
                             this.props.selectPokemon(this.state.selectedId);
                         }}
+                    /> */}
+                    <CurrentPokemonInput
+                        items={(listOfLocations as unknown) as string[]}
+                        inputName="met"
+                        labelName="Met Location"
+                        placeholder="Pallet Town"
+                        value={currentPokemon?.met ?? ''}
+                        type="autocomplete"
+                        key={this.state.selectedId + 'met'}
                     />
                     <CurrentPokemonInput
                         labelName="Met Level"
@@ -570,28 +552,39 @@ CurrentPokemonEditState
                         key={this.state.selectedId + 'gender'}
                     />
                     <CurrentPokemonInput
-                        labelName="Nature"
+                        items={(listOfNatures as unknown) as string[]}
                         inputName="nature"
-                        placeholder="Sassy"
-                        value={currentPokemon.nature}
-                        type="select"
-                        options={listOfNatures}
-                        pokemon={currentPokemon}
+                        labelName="Nature"
+                        disabled={currentPokemon.egg}
+                        placeholder="None"
+                        value={currentPokemon?.nature ?? ''}
+                        type="autocomplete"
                         key={this.state.selectedId + 'nature'}
+                        pokemon={currentPokemon}
                     />
-                    <Autocomplete
-                        items={listOfAbilities}
-                        name="ability"
-                        label="Ability"
-                        placeholder=""
-                        value={currentPokemon.ability || ''}
+                    {/* <Autocomplete
+                        items={(listOfNatures as unknown) as string[]}
+                        name="nature"
+                        label="Nature"
+                        disabled={currentPokemon.egg}
+                        makeInvisibleText={currentPokemon.egg}
+                        placeholder="None"
+                        value={currentPokemon?.nature ?? ''}
                         onChange={(e) => {
                             const edit = {
-                                ability: e.target.value,
+                                nature: e.target.value,
                             };
                             this.props.editPokemon(edit, this.state.selectedId);
-                            this.props.selectPokemon(this.state.selectedId);
                         }}
+                    /> */}
+                    <CurrentPokemonInput
+                        items={(listOfAbilities as unknown) as string[]}
+                        inputName="ability"
+                        labelName="Ability"
+                        disabled={currentPokemon.egg}
+                        placeholder=""
+                        value={currentPokemon?.ability ?? ''}
+                        type="autocomplete"
                         key={this.state.selectedId + 'ability'}
                     />
                 </CurrentPokemonLayoutItem>

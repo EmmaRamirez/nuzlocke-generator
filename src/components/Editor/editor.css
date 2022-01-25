@@ -231,6 +231,12 @@ input[name='metLevel'] {
 .has-nice-scrollbars::-webkit-scrollbar-thumb {
   background: #aaa;
 }
+.bp3-dark .has-nice-scrollbars::-webkit-scrollbar {
+  background-color: #222;
+}
+.bp3-dark .has-nice-scrollbars::-webkit-scrollbar-thumb {
+  background: #444;
+}
 .no-pokemon-selected {
   display: flex;
   align-items: center;
