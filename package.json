@@ -172,7 +172,7 @@
     "react-markdown": "^3.1.5",
     "react-polyfills": "0.0.1",
     "react-redux": "^7.2.1",
-    "react-styleguidist": "^11.1.1",
+    "react-styleguidist": "^11.2.0",
     "react-test-renderer": "^17.0.1",
     "react-transition-group": "^2.2.1",
     "recompose": "^0.25.1",
