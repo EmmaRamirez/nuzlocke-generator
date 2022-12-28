@@ -11,6 +11,7 @@ export enum Region {
     Orre = 'orre',
     Galar = 'galar',
     Hisui = 'hisui',
+    Paldea = 'Paldea',
     Other = 'other',
 }
 
@@ -34,6 +35,7 @@ export const getGameRegion = (game: Game): Region => {
     const orre: Game[] = ['XD Gale of Darkness', 'Colosseum'];
     const galar: Game[] = ['Sword', 'Shield'];
     const hisui: Game[] = ['Legends: Arceus'];
+    const paldea: Game[] = ['Scarlet', 'Violet'];
 
     if (kanto.includes(game)) return Region.Kanto;
     if (johto.includes(game)) return Region.Johto;
@@ -45,6 +47,7 @@ export const getGameRegion = (game: Game): Region => {
     if (orre.includes(game)) return Region.Orre;
     if (galar.includes(game)) return Region.Galar;
     if (hisui.includes(game)) return Region.Hisui;
+    if (paldea.includes(game)) return Region.Paldea;
 
     return Region.Other;
 };

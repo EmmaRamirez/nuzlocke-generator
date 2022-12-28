@@ -475,6 +475,9 @@ export const EvolutionTree: EvolutionTree = {
     Dreepy: ['Drakloak'],
     Drakloak: ['Dragapult'],
     Kubfu: ['Urshifu'],
+
+    Sprigatito: ['Floragato'],
+    Floragato: ['Meowscarada'],
 };
 
 const cycleThrough = (species: Species) => {

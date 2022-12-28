@@ -293,9 +293,22 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
         s === 'voltorb' ||
         s === 'zorua' ||
         s === 'zoroark' ||
-        s === 'braviary'
+        s === 'braviary' ||
+        s === 'sneasel' ||
+        s === 'sligoo' ||
+        s === 'goodra' ||
+        s === 'avalugg' ||
+        s === 'lilligant' ||
+        s === 'qwilfish'
     ) {
         return ['Hisuian'];
+    }
+
+    if (
+        s === 'wooper' ||
+        s === 'tauros'
+    ) {
+        return ['Paldean'];
     }
 
     return [];
