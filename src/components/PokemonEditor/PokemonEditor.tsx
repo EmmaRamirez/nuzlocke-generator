@@ -172,16 +172,16 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
     };
 
     public componentDidMount() {
-        const {team} = this.props;
+        // const {team} = this.props;
 
-        listOfPokemon.slice(906).forEach((value) => {
-            this.props.addPokemon(
-                generateEmptyPokemon(team, {
-                    species: value,
-                    // @ts-ignore cuzi said so
-                    types: matchSpeciesToTypes(value)
-                }));
-        });
+        // listOfPokemon.slice(906).forEach((value) => {
+        //     this.props.addPokemon(
+        //         generateEmptyPokemon(team, {
+        //             species: value,
+        //             // @ts-ignore cuzi said so
+        //             types: matchSpeciesToTypes(value)
+        //         }));
+        // });
     }
 
     public render() {

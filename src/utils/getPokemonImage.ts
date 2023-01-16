@@ -60,6 +60,7 @@ const getGameName = (name: Game) => {
     return 'sm';
 };
 
+
 const getGameNameSerebii = (name: Game) => {
     switch (name) {
         case 'Black':
@@ -184,6 +185,18 @@ export async function getPokemonImage({
             const url = `https://www.serebii.net/Shiny/${capitalize(
                 getGameNameSerebii(name as Game),
             )}/${leadingZerosNumber}.png`;
+
+            return await wrapImageInCORS(url);
+        }
+    }
+
+    if (style?.spritesMode && (name === 'Scarlet' || name === 'Violet')) {
+        if (!shiny) {
+            const url = `https://serebii.net/scarletviolet/pokemon/new/${speciesToNumber(species as Species)}.png`;
+
+            return await wrapImageInCORS(url);
+        } else {
+            const url = `https://serebii.net/Shiny/SV/new/${speciesToNumber(species as Species)}.png`;
 
             return await wrapImageInCORS(url);
         }
