@@ -3,7 +3,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { Pokemon, Box as BoxModel, Boxes, Game } from 'models';
-import { Game as GameName } from 'utils';
+import { Game as GameName, listOfPokemon, matchSpeciesToTypes } from 'utils';
 import { State } from 'state';
 
 import { gameOfOriginToColor, generateEmptyPokemon, getEncounterMap, listOfGames } from 'utils';
@@ -16,12 +16,15 @@ import { PokemonIcon } from 'components/PokemonIcon';
 import { ErrorBoundary } from 'components/Shared';
 import { cx } from 'emotion';
 import { PokemonFixtures } from 'utils/fixtures';
+import { addPokemon } from 'actions';
 
 export interface PokemonEditorProps {
     team: Pokemon[];
     boxes: Boxes;
     game: Game;
     style: State['style'];
+
+    // addPokemon: addPokemon;
 }
 
 export interface PokemonEditorState {
@@ -168,6 +171,19 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
         });
     };
 
+    public componentDidMount() {
+        // const {team} = this.props;
+
+        // listOfPokemon.slice(906).forEach((value) => {
+        //     this.props.addPokemon(
+        //         generateEmptyPokemon(team, {
+        //             species: value,
+        //             // @ts-ignore cuzi said so
+        //             types: matchSpeciesToTypes(value)
+        //         }));
+        // });
+    }
+
     public render() {
         const { team, boxes, game, style } = this.props;
 
@@ -237,7 +253,9 @@ export const PokemonEditor = connect(
         game: state.game,
         style: state.style,
     }),
-    null,
+    {
+        addPokemon: addPokemon,
+    },
     null,
     { pure: true },
 )(PokemonEditorBase as any);

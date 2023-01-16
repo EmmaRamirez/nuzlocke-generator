@@ -39,7 +39,16 @@ export enum Forme {
     Alolan = 'alola',
     Galarian = 'galar',
     Hisuian = 'hisui',
+    Paldean = 'paldea',
     Gigantamax = 'gigantamax',
+
+    PaldeanBalze = 'paldea-blaze',
+    PaldeanAqua = 'paldea-aqua',
+
+    GreenPlumage = 'green-plumage',
+    BluePlumage = 'blue-plumage',
+    YellowPlumage = 'yellow-plumage',
+    WhitePlumage = 'white-plumage',
 
     '10%' = '10-percent',
     '50%' = '50-percent',

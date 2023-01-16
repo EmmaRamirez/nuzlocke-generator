@@ -13,4 +13,5 @@ export const significantGenderDifferenceList = [
     'Pyroar',
     'Meowstic',
     'Indeedee',
+    'Oinkologne'
 ];

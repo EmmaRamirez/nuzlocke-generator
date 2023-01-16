@@ -481,7 +481,9 @@ Array [
     ],
   },
   Object {
-    "Tauros": Array [],
+    "Tauros": Array [
+      "Paldean",
+    ],
   },
   Object {
     "Magikarp": Array [],
@@ -702,7 +704,9 @@ Array [
     "Yanma": Array [],
   },
   Object {
-    "Wooper": Array [],
+    "Wooper": Array [
+      "Paldean",
+    ],
   },
   Object {
     "Quagsire": Array [],
@@ -786,7 +790,9 @@ Array [
     "Granbull": Array [],
   },
   Object {
-    "Qwilfish": Array [],
+    "Qwilfish": Array [
+      "Hisuian",
+    ],
   },
   Object {
     "Scizor": Array [
@@ -802,7 +808,9 @@ Array [
     ],
   },
   Object {
-    "Sneasel": Array [],
+    "Sneasel": Array [
+      "Hisuian",
+    ],
   },
   Object {
     "Teddiursa": Array [],
@@ -1904,7 +1912,9 @@ Array [
     "Petilil": Array [],
   },
   Object {
-    "Lilligant": Array [],
+    "Lilligant": Array [
+      "Hisuian",
+    ],
   },
   Object {
     "Basculin": Array [
@@ -2454,7 +2464,9 @@ Array [
     "Sliggoo": Array [],
   },
   Object {
-    "Goodra": Array [],
+    "Goodra": Array [
+      "Hisuian",
+    ],
   },
   Object {
     "Klefki": Array [],
@@ -2475,7 +2487,9 @@ Array [
     "Bergmite": Array [],
   },
   Object {
-    "Avalugg": Array [],
+    "Avalugg": Array [
+      "Hisuian",
+    ],
   },
   Object {
     "Noibat": Array [],
@@ -3104,10 +3118,346 @@ Array [
     "Wyrdeer": Array [],
   },
   Object {
+    "Kleavor": Array [],
+  },
+  Object {
+    "Ursaluna": Array [],
+  },
+  Object {
     "Basculegion": Array [],
   },
   Object {
-    "Kleavor": Array [],
+    "Sneasler": Array [],
+  },
+  Object {
+    "Overqwil": Array [],
+  },
+  Object {
+    "Enamorus": Array [],
+  },
+  Object {
+    "Sprigatito": Array [],
+  },
+  Object {
+    "Floragato": Array [],
+  },
+  Object {
+    "Meowscarada": Array [],
+  },
+  Object {
+    "Fuecoco": Array [],
+  },
+  Object {
+    "Crocalor": Array [],
+  },
+  Object {
+    "Skeledirge": Array [],
+  },
+  Object {
+    "Quaxly": Array [],
+  },
+  Object {
+    "Quaxwell": Array [],
+  },
+  Object {
+    "Quaquaval": Array [],
+  },
+  Object {
+    "Lechonk": Array [],
+  },
+  Object {
+    "Oinkologne": Array [],
+  },
+  Object {
+    "Tarountula": Array [],
+  },
+  Object {
+    "Spidops": Array [],
+  },
+  Object {
+    "Nymble": Array [],
+  },
+  Object {
+    "Lokix": Array [],
+  },
+  Object {
+    "Pawmi": Array [],
+  },
+  Object {
+    "Pawmo": Array [],
+  },
+  Object {
+    "Pawmot": Array [],
+  },
+  Object {
+    "Clodsire": Array [],
+  },
+  Object {
+    "Tandemaus": Array [],
+  },
+  Object {
+    "Maushold": Array [
+      "Family of Four",
+    ],
+  },
+  Object {
+    "Fidough": Array [],
+  },
+  Object {
+    "Dachsbun": Array [],
+  },
+  Object {
+    "Smoliv": Array [],
+  },
+  Object {
+    "Dolliv": Array [],
+  },
+  Object {
+    "Arboliva": Array [],
+  },
+  Object {
+    "Squawkabilly": Array [],
+  },
+  Object {
+    "Nacli": Array [],
+  },
+  Object {
+    "Naclstack": Array [],
+  },
+  Object {
+    "Garganacl": Array [],
+  },
+  Object {
+    "Annihilape": Array [],
+  },
+  Object {
+    "Charcadet": Array [],
+  },
+  Object {
+    "Armarouge": Array [],
+  },
+  Object {
+    "Ceruledge": Array [],
+  },
+  Object {
+    "Tadbulb": Array [],
+  },
+  Object {
+    "Bellibolt": Array [],
+  },
+  Object {
+    "Wattrel": Array [],
+  },
+  Object {
+    "Kilowattrel": Array [],
+  },
+  Object {
+    "Farigarif": Array [],
+  },
+  Object {
+    "Maschiff": Array [],
+  },
+  Object {
+    "Mabosstiff": Array [],
+  },
+  Object {
+    "Shroodle": Array [],
+  },
+  Object {
+    "Grafaiai": Array [],
+  },
+  Object {
+    "Bramblin": Array [],
+  },
+  Object {
+    "Brambleghast": Array [],
+  },
+  Object {
+    "Toedscool": Array [],
+  },
+  Object {
+    "Toedscruel": Array [],
+  },
+  Object {
+    "Klawf": Array [],
+  },
+  Object {
+    "Capsakid": Array [],
+  },
+  Object {
+    "Scovillain": Array [],
+  },
+  Object {
+    "Rellor": Array [],
+  },
+  Object {
+    "Rabsca": Array [],
+  },
+  Object {
+    "Flittle": Array [],
+  },
+  Object {
+    "Espathra": Array [],
+  },
+  Object {
+    "Tinkatink": Array [],
+  },
+  Object {
+    "Tinkatuff": Array [],
+  },
+  Object {
+    "Tinkaton": Array [],
+  },
+  Object {
+    "Wiglett": Array [],
+  },
+  Object {
+    "Wugtrio": Array [],
+  },
+  Object {
+    "Bombirdier": Array [],
+  },
+  Object {
+    "Finizen": Array [],
+  },
+  Object {
+    "Palafin": Array [],
+  },
+  Object {
+    "Varoom": Array [],
+  },
+  Object {
+    "Revavroom": Array [],
+  },
+  Object {
+    "Cyclizar": Array [],
+  },
+  Object {
+    "Orthworm": Array [],
+  },
+  Object {
+    "Glimmet": Array [],
+  },
+  Object {
+    "Glimmora": Array [],
+  },
+  Object {
+    "Greavard": Array [],
+  },
+  Object {
+    "Houndstone": Array [],
+  },
+  Object {
+    "Flamigo": Array [],
+  },
+  Object {
+    "Cetoddle": Array [],
+  },
+  Object {
+    "Cetitan": Array [],
+  },
+  Object {
+    "Veluza": Array [],
+  },
+  Object {
+    "Dondozo": Array [],
+  },
+  Object {
+    "Tatsugiri": Array [],
+  },
+  Object {
+    "Annihilape": Array [],
+  },
+  Object {
+    "Clodsire": Array [],
+  },
+  Object {
+    "Firagarif": Array [],
+  },
+  Object {
+    "Dudunsparce": Array [
+      "Three Segment",
+    ],
+  },
+  Object {
+    "Kingambit": Array [],
+  },
+  Object {
+    "Great Tusk": Array [],
+  },
+  Object {
+    "Scream Tail": Array [],
+  },
+  Object {
+    "Brute Bonnet": Array [],
+  },
+  Object {
+    "Flutter Mane": Array [],
+  },
+  Object {
+    "Slither Wing": Array [],
+  },
+  Object {
+    "Sandy Shocks": Array [],
+  },
+  Object {
+    "Iron Treads": Array [],
+  },
+  Object {
+    "Iron Bundle": Array [],
+  },
+  Object {
+    "Iron Hands": Array [],
+  },
+  Object {
+    "Iron Jugulis": Array [],
+  },
+  Object {
+    "Iron Moth": Array [],
+  },
+  Object {
+    "Iron Thorns": Array [],
+  },
+  Object {
+    "Frigibax": Array [],
+  },
+  Object {
+    "Arctibax": Array [],
+  },
+  Object {
+    "Baxcalibur": Array [],
+  },
+  Object {
+    "Gimmighoul": Array [
+      "Roaming",
+    ],
+  },
+  Object {
+    "Gholdengo": Array [],
+  },
+  Object {
+    "Wo-Chien": Array [],
+  },
+  Object {
+    "Chien-Pao": Array [],
+  },
+  Object {
+    "Ting-Lu": Array [],
+  },
+  Object {
+    "Chi-Yu": Array [],
+  },
+  Object {
+    "Roaring Moon": Array [],
+  },
+  Object {
+    "Iron Valiant": Array [],
+  },
+  Object {
+    "Koraidon": Array [],
+  },
+  Object {
+    "Miraidon": Array [],
   },
 ]
 `;

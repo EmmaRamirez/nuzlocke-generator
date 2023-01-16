@@ -37,7 +37,10 @@ export type Game =
     | 'Shield'
     | 'Brilliant Diamond'
     | 'Shining Pearl'
-    | 'Legends: Arceus';
+    | 'Legends: Arceus'
+    | 'Scarlet'
+    | 'Violet';
+
 
 export const listOfGames: Game[] = [
     'None',
@@ -79,5 +82,7 @@ export const listOfGames: Game[] = [
     'Brilliant Diamond',
     'Shining Pearl',
     'Legends: Arceus',
+    'Scarlet',
+    'Violet',
     //'Custom...',
 ];

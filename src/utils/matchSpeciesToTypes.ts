@@ -536,6 +536,16 @@ export const handleSpeciesTypeEdgeCases = ({
         return [Types.Psychic, Types.Flying];
     }
 
+    if (match({ ...data, species: ['Sneasel'], forme: ['Hisuian']})) {
+        return [Types.Fighting, Types.Poison];
+    }
+
+    if (match({ ...data, species: ['Qwilfish'], forme: ['Hisuian']})) {
+        return [Types.Dark, Types.Poison];
+    }
+
+
+
     return null;
 };
 
@@ -649,6 +659,8 @@ export const matchSpeciesToTypes = (
         case 'Scorbunny':
         case 'Raboot':
         case 'Cinderace':
+        case 'Fuecoco':
+        case 'Crocalor':
             return [Types.Fire, Types.Fire];
         case 'Charizard':
         case 'Moltres':
@@ -656,6 +668,167 @@ export const matchSpeciesToTypes = (
         case 'Fletchinder':
         case 'Talonflame':
             return [Types.Fire, Types.Flying];
+        case 'Meowscarada':
+            return [Types.Grass, Types.Dark];
+        case 'Skeledirge':
+            return [Types.Fire, Types.Ghost];
+        case 'Quaquaval':
+            return [Types.Water, Types.Fighting];
+        case 'Lechonk':
+        case 'Oinkologne':
+        case 'Tandemaus':
+        case 'Maushold':
+        case 'Dudunsparce':
+            return [Types.Normal, Types.Normal];
+        case 'Tarountula':
+        case 'Spidops':
+        case 'Nymble':
+            return [Types.Bug, Types.Bug];
+        case 'Lokix':
+            return [Types.Bug, Types.Dark];
+        case 'Pawmi':
+            return [Types.Electric, Types.Electric];
+        case 'Pawmo':
+        case 'Pawmot':
+            return [Types.Electric, Types.Fighting];
+        case 'Fidough':
+        case 'Dachsbun':
+            return [Types.Fairy, Types.Fairy];
+        case 'Smoliv':
+        case 'Dolliv':
+        case 'Arboliva':
+            return [Types.Grass, Types.Normal];
+        case 'Squawkabilly':
+            return [Types.Normal, Types.Flying];
+        case 'Nacli':
+        case 'Naclstack':
+        case 'Garganacl':
+        case 'Klawf':
+            return [Types.Rock, Types.Rock];
+        case 'Charcadet':
+            return [Types.Fire, Types.Fire];
+        case 'Armarouge':
+            return [Types.Fire, Types.Psychic];
+        case 'Ceruledge':
+            return [Types.Fire, Types.Ghost];
+        case 'Tadbulb':
+        case 'Bellibolt':
+            return [Types.Electric, Types.Electric];
+        case 'Wattrel':
+        case 'Kilowattrel':
+            return [Types.Electric, Types.Flying];
+        case 'Maschiff':
+        case 'Mabosstiff':
+            return [Types.Dark, Types.Dark];
+        case 'Shroodle':
+        case 'Grafaiai':
+            return [Types.Poison, Types.Normal];
+        case 'Bramblin':
+        case 'Brambleghast':
+            return [Types.Grass, Types.Ghost];
+        case 'Toedscool':
+        case 'Toedscruel':
+            return [Types.Ground, Types.Grass];
+        case 'Capsakid':
+            return [Types.Grass, Types.Grass];
+        case 'Scovillain':
+            return [Types.Grass, Types.Fire];
+        case 'Rellor':
+            return [Types.Bug, Types.Bug];
+        case 'Rabsca':
+            return [Types.Bug, Types.Psychic];
+        case 'Flittle':
+        case 'Espathra':
+            return [Types.Psychic, Types.Psychic];
+        case 'Tinkaton':
+        case 'Tinkatink':
+        case 'Tinkatuff':
+            return [Types.Fairy, Types.Steel];
+        case 'Wiglett':
+        case 'Wugtrio':
+        case 'Finizen':
+        case 'Palafin':
+        case 'Dondozo':
+            return [Types.Water, Types.Water];
+        case 'Bombirdier':
+            return [Types.Flying, Types.Dark];
+        case 'Varoom':
+        case 'Revavroom':
+            return [Types.Steel, Types.Poison];
+        case 'Cyclizar':
+            return [Types.Dragon, Types.Normal];
+        case 'Orthworm':
+            return [Types.Steel, Types.Steel];
+        case 'Glimmet':
+        case 'Glimmora':
+            return [Types.Rock, Types.Poison];
+        case 'Greavard':
+        case 'Houndstone':
+        case 'Gimmighoul':
+            return [Types.Ghost, Types.Ghost];
+        case 'Flamigo':
+            return [Types.Flying, Types.Fighting];
+        case 'Cetoddle':
+        case 'Cetitan':
+            return [Types.Ice, Types.Ice];
+        case 'Veluza':
+            return [Types.Water, Types.Psychic];
+        case 'Tatsugiri':
+            return [Types.Dragon, Types.Water];
+        case 'Annihilape':
+            return [Types.Fighting, Types.Ghost];
+        case 'Clodsire':
+            return [Types.Poison, Types.Ground];
+        case 'Farigarif':
+            return [Types.Normal, Types.Psychic];
+        case 'Kingambit':
+            return [Types.Dark, Types.Steel];
+        case 'Great Tusk':
+            return [Types.Ground, Types.Fighting];
+        case 'Scream Tail':
+            return [Types.Fairy, Types.Psychic];
+        case 'Brute Bonnet':
+            return [Types.Grass, Types.Dark];
+        case 'Flutter Mane':
+            return [Types.Ghost, Types.Fairy];
+        case 'Slither Wing':
+            return [Types.Bug, Types.Fighting];
+        case 'Sandy Shocks':
+            return [Types.Electric, Types.Ground];
+        case 'Iron Treads':
+            return [Types.Ground, Types.Steel];
+        case 'Iron Bundle':
+            return [Types.Ice, Types.Water];
+        case 'Iron Hands':
+            return [Types.Fighting, Types.Electric];
+        case 'Iron Moth':
+            return [Types.Fire, Types.Poison];
+        case 'Frigibax':
+        case 'Arctibax':
+        case 'Baxcalibur':
+            return [Types.Dragon, Types.Ice];
+        case 'Gholdengo':
+            return [Types.Steel, Types.Ghost];
+        case 'Wo-Chien':
+            return [Types.Dark, Types.Grass];
+        case 'Chien-Pao':
+            return [Types.Dark, Types.Ice];
+        case 'Ting-Lu':
+            return [Types.Dark, Types.Ground];
+        case 'Chi-Yu':
+            return [Types.Dark, Types.Fire];
+        case 'Roaring Moon':
+            return [Types.Dragon, Types.Dark];
+        case 'Iron Valiant':
+            return [Types.Fairy, Types.Fighting];
+        case 'Koraidon':
+            return [Types.Fighting, Types.Dragon];
+        case 'Miraidon':
+            return [Types.Electric, Types.Dragon];
+        case 'Iron Thorns':
+            return [Types.Steel, Types.Electric];
+        case 'Iron Jugulis':
+            return [Types.Flying, Types.Dark];
         /**
          * @type Water Type
          */
@@ -724,6 +897,8 @@ export const matchSpeciesToTypes = (
         case 'Sobble':
         case 'Drizzile':
         case 'Inteleon':
+        case 'Quaxly':
+        case 'Quaxwell':
             return [Types.Water, Types.Water];
         case 'Slowpoke':
         case 'Slowbro':
@@ -867,6 +1042,8 @@ export const matchSpeciesToTypes = (
         case 'Meditite':
         case 'Medicham':
             return [Types.Fighting, Types.Psychic];
+        case 'Sneasler':
+            return [Types.Fighting, Types.Poison];
         case 'Lucario':
             return [Types.Fighting, Types.Steel];
         case 'Pangoro':
@@ -1066,6 +1243,7 @@ export const matchSpeciesToTypes = (
             return [Types.Fairy, Types.Fairy];
         case 'Togetic':
         case 'Togekiss':
+        case 'Enamorus':
             return [Types.Fairy, Types.Flying];
         case 'Dedenne':
         case 'Tapu Koko':
@@ -1142,6 +1320,8 @@ export const matchSpeciesToTypes = (
         case 'Krokorok':
         case 'Krookodile':
             return [Types.Ground, Types.Dark];
+        case 'Ursaluna':
+            return [Types.Ground, Types.Normal];
         case 'Stunky':
         case 'Skuntank':
         case 'Drapion':
@@ -1475,6 +1655,8 @@ export const matchSpeciesToTypes = (
             return [Types.Rock, Types.Rock];
         case 'Seedot':
         case 'Shroomish':
+        case 'Sprigatito':
+        case 'Floragato':
             return [Types.Grass, Types.Grass];
         case 'Vibrava':
         case 'Flygon':
