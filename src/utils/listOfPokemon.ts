@@ -915,7 +915,7 @@ export const listOfPokemon = [
     'Quaquaval',
     'Lechonk',
     'Oinkologne',
-    'Tarantoula',
+    'Tarountula',
     'Spidops',
     'Nymble',
     'Lokix',

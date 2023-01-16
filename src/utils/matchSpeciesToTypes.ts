@@ -680,7 +680,7 @@ export const matchSpeciesToTypes = (
         case 'Maushold':
         case 'Dudunsparce':
             return [Types.Normal, Types.Normal];
-        case 'Tarantoula':
+        case 'Tarountula':
         case 'Spidops':
         case 'Nymble':
             return [Types.Bug, Types.Bug];
