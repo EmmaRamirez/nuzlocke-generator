@@ -24,7 +24,7 @@ export interface PokemonEditorProps {
     game: Game;
     style: State['style'];
 
-    addPokemon: addPokemon;
+    // addPokemon: addPokemon;
 }
 
 export interface PokemonEditorState {
