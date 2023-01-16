@@ -47,6 +47,10 @@ export function getEncounterMap(game: Game) {
         return locations.Orre;
     }
 
+    if (region === Region.Paldea) {
+        return locations.Paldea;
+    }
+
     return ['This game does not have location info.'];
 
     // return {
