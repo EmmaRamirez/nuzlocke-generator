@@ -311,5 +311,17 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
         return ['Paldean'];
     }
 
+    if (s === 'maushold') {
+        return ['Family of Four'];
+    }
+
+    if (s === 'dudunsparce') {
+        return ['Three Segment'];
+    }
+
+    if (s === 'gimmighoul') {
+        return ['Roaming'];
+    }
+
     return [];
 };
