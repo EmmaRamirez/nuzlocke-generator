@@ -940,7 +940,6 @@ export const listOfPokemon = [
     'Bellibolt',
     'Wattrel',
     'Kilowattrel',
-    'Farigarif',
     'Maschiff',
     'Mabosstiff',
     'Shroodle',
