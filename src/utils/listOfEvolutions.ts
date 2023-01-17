@@ -169,7 +169,7 @@ export const EvolutionTree: EvolutionTree = {
     Ursaring: ['Ursaluna'],
     Phanpy: ['Donphan'],
     Mantyke: ['Mantine'],
-    Girafarig: ['Farigarif'],
+    Girafarig: ['Farigiraf'],
     Dunsparce: ['Dudunsparce'],
     Qwilfish: ['Overqwil'],
     Stantler: ['Wyrdeer'],

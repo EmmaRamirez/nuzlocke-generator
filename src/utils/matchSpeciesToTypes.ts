@@ -779,7 +779,7 @@ export const matchSpeciesToTypes = (
             return [Types.Fighting, Types.Ghost];
         case 'Clodsire':
             return [Types.Poison, Types.Ground];
-        case 'Farigarif':
+        case 'Farigiraf':
             return [Types.Normal, Types.Psychic];
         case 'Kingambit':
             return [Types.Dark, Types.Steel];

@@ -979,7 +979,7 @@ export const listOfPokemon = [
     'Tatsugiri',
     'Annihilape',
     'Clodsire',
-    'Firagarif',
+    'Farigiraf',
     'Dudunsparce',
     'Kingambit',
     'Great Tusk',
