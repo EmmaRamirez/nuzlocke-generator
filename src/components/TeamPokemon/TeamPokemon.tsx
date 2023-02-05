@@ -135,7 +135,7 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                                     : null}
                             </span>
                             {Boolean(pokemon.teraType) && <span className="pokemon-teratype">
-                                <img alt={`Tera: ${pokemon.teraType}`} style={{ height: '1rem' }} src={`icons/tera/${pokemon.teraType}.png`} />
+                                <img alt={`Tera: ${pokemon.teraType}`} style={{ height: '1rem' }} src={`icons/tera/${pokemon.teraType?.toLowerCase()}.png`} />
                             </span>}
                             {GenderElement(pokemon.gender)}
                             {pokemon.level ? (
