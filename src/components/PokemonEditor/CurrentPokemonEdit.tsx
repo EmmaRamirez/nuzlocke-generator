@@ -384,6 +384,14 @@ CurrentPokemonEditState
                         options={listOfGames}
                         key={this.state.selectedId + 'goo'}
                     />
+                    <CurrentPokemonInput
+                        labelName="Tera Type"
+                        inputName="teraType"
+                        value={currentPokemon.teraType}
+                        type="select"
+                        options={this.getTypes()}
+                        key={this.state.selectedId + 'teraType'}
+                    />
                 </CurrentPokemonLayoutItem>
                 <CurrentPokemonLayoutItem>
                     <CurrentPokemonInput
