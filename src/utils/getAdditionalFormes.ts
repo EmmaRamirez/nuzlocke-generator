@@ -80,7 +80,7 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
     if (s === 'deerling' || s === 'sawsbuck') {
         return ['Spring', 'Summer', 'Autumn', 'Winter'];
     }
-    if (s === 'tornadus' || s === 'thundurus' || s === 'landorus') {
+    if (s === 'tornadus' || s === 'thundurus' || s === 'landorus' || s === 'enamorus') {
         return ['Incarnate', 'Therian'];
     }
     if (s === 'kyurem') {

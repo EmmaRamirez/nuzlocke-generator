@@ -84,6 +84,8 @@ export const addForme = (species: string | undefined, forme?: keyof typeof Forme
 
                 'School',
                 'Pirouette',
+
+                'Therian'
             ].includes(forme)
         ) {
             return `${species}-${forme.replace(/\s/g, '-').replace(/\'/g, '-').toLowerCase()}`;
