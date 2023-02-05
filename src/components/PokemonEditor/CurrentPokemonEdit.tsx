@@ -209,9 +209,9 @@ CurrentPokemonEditState
 
     private toggleDialog = () => this.setState({ isMoveEditorOpen: !this.state.isMoveEditorOpen });
 
-    private getTypes() {
+    private getTypes(includeShadow = true) {
         const { customTypes, editor } = this.props;
-        return getListOfTypes(customTypes, editor.temtemMode);
+        return getListOfTypes(customTypes, editor.temtemMode).filter(type => includeShadow ?  true : type !== 'Shadow');
     }
 
     public moreInputs(currentPokemon: Pokemon) {
@@ -389,7 +389,7 @@ CurrentPokemonEditState
                         inputName="teraType"
                         value={currentPokemon.teraType}
                         type="select"
-                        options={this.getTypes()}
+                        options={this.getTypes(false)}
                         key={this.state.selectedId + 'teraType'}
                     />
                 </CurrentPokemonLayoutItem>

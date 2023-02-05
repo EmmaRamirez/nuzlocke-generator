@@ -19,6 +19,7 @@ export interface Pokemon {
     forme?: Forme;
     item?: string;
     types?: [Types, Types];
+    teraType?: Types;
     customImage?: string;
     customIcon?: string;
     customItemImage?: string;
@@ -59,6 +60,7 @@ export const PokemonKeys: Pokemon = {
     forme: 'Normal' as Forme,
     item: '',
     types: [Types.Normal, Types.Normal],
+    teraType: Types.Normal,
     customImage: '',
     customIcon: '',
     customItemImage: '',
