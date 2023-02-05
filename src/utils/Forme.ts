@@ -106,4 +106,6 @@ export enum Forme {
 
     School = 'school',
     Pirouette = 'pirouette',
+
+    Therian = 'therian',
 }

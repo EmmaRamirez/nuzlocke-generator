@@ -683,5 +683,6 @@ export const listOfLocations = [
     ...locations.Kalos,
     ...locations.Alola,
     ...locations.Galar,
+    ...locations.Paldea,
     ...locations.Misc,
 ];

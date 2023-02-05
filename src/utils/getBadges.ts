@@ -181,6 +181,28 @@ export function getBadges(name: Game): Badge[] {
         ];
     }
 
+    if (name === 'Scarlet' || name === 'Violet') {
+        return [
+            { name: 'Cortondo Gym', image: 'paldea/bug-badge' },
+            { name: 'Stony Cliff Titan', image: 'paldea/rock-badge' },
+            { name: 'Artazon Gym', image: 'paldea/grass-badge' },
+            { name: 'Team Star Dark', image: 'paldea/dark-badge' },
+            { name: 'Levincia Gym', image: 'paldea/electric-badge' },
+            { name: 'Team Star Fire', image: 'paldea/fire-badge' },
+            { name: 'Lurking Steel Titan', image: 'paldea/steel-badge' },
+            { name: 'Cascarrafa Gym', image: 'paldea/water-badge' },
+            { name: 'Team Star Poison', image: 'paldea/poison-badge' },
+            { name: 'Medali Gym', image: 'paldea/normal-badge' },
+            { name: 'Montenevera Gym', image: 'paldea/ghost-badge' },
+            { name: 'Quaking Earth Titan', image: 'paldea/ground-badge' },
+            { name: 'Alfornada Gym', image: 'paldea/psychic-badge' },
+            { name: 'Glaseado Gym', image: 'paldea/ice-badge' },
+            { name: 'Team Star Fairy', image: 'paldea/fairy-badge'},
+            { name: 'False Dragon Titan', image: 'paldea/dragon-badge' },
+            { name: 'Team Star Fighting', image: 'paldea/fighting-badge' },
+        ];
+    }
+
     return [];
 }
 
@@ -204,6 +226,8 @@ export function getAllBadges() {
         ...getBadges('Sword'),
         { name: 'Ghost Badge', image: 'ghost-badge' },
         { name: 'Ice Badge', image: 'ice-badge' },
+        ...getBadges('Violet'),
+        { name: 'Paldea Champion', image: 'paldea-champion-ribbon' },
         { name: 'Empty Badge', image: 'unknown' },
     ];
 }
