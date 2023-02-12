@@ -24,7 +24,9 @@ export interface PokemonEditorProps {
     game: Game;
     style: State['style'];
 
-    addPokemon: addPokemon;
+    // @NOTE: uncomment this if you need to auto-generate Pokemon
+    // will create failing tests as a warning to not push this :]
+    // addPokemon: addPokemon;
 }
 
 export interface PokemonEditorState {
