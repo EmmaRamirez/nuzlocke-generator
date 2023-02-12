@@ -287,6 +287,13 @@ CurrentPokemonEditState
                         type="checkbox"
                         key={this.state.selectedId + 'gift'}
                     />
+                    <CurrentPokemonInput
+                        labelName="Alpha"
+                        inputName="alpha"
+                        value={currentPokemon?.alpha}
+                        type="checkbox"
+                        key={this.state.selectedId + 'alpha'}
+                    />
                 </CurrentPokemonLayoutItem>
                 {feature.imageUploads ? <Autocomplete
                     items={imageNames}

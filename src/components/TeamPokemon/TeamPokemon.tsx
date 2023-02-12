@@ -134,6 +134,9 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                                     ? ` @ ${pokemon.item}`
                                     : null}
                             </span>
+                            {Boolean(pokemon.alpha) && <span className="pokemon-alpha">
+                                <img alt={'alpha'} style={{ height: '1rem' }} src={'icons/alpha-icon.png'} />
+                            </span>}
                             {Boolean(pokemon.teraType) && <span className="pokemon-teratype">
                                 <img alt={`Tera: ${pokemon.teraType}`} style={{ height: '1rem' }} src={`icons/tera/${pokemon.teraType?.toLowerCase()}.png`} />
                             </span>}
