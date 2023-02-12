@@ -544,6 +544,21 @@ export const handleSpeciesTypeEdgeCases = ({
         return [Types.Dark, Types.Poison];
     }
 
+    if (match({ ...data, species: ['Wooper'], forme: ['Paldean']})) {
+        return [Types.Poison, Types.Ground];
+    }
+
+    if (match({ ...data, species: ['Tauros'], forme: ['Paldean']})) {
+        return [Types.Fighting, Types.Fighting];
+    }
+
+    if (match({ ...data, species: ['Tauros'], forme: ['PaldeanBlaze']})) {
+        return [Types.Fighting, Types.Fire];
+    }
+
+    if (match({ ...data, species: ['Tauros'], forme: ['PaldeanAqua']})) {
+        return [Types.Fighting, Types.Water];
+    }
 
 
     return null;

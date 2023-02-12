@@ -20,9 +20,15 @@ const porygon2 = require('assets/icons/pokemon/regular/porygon2.png');
 const togepi = require('assets/icons/pokemon/regular/togepi.png');
 const arceus = require('assets/icons/pokemon/regular/arceus.png');
 const sprigatito = require('assets/icons/pokemon/regular/sprigatito.png');
+const fuecoco = require('assets/icons/pokemon/regular/fuecoco.png');
+const quaxly = require('assets/icons/pokemon/regular/quaxly.png');
 
 export const getMascot = v => {
     switch (v) {
+        case '1.13':
+            return quaxly.default;
+        case '1.12':
+            return fuecoco.default;
         case '1.11':
             return sprigatito.default;
         case '1.10':

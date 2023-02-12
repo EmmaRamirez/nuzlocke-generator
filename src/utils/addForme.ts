@@ -11,6 +11,15 @@ export const addForme = (species: string | undefined, forme?: keyof typeof Forme
         if (forme === 'Alolan') {
             return `alolan-${species}`;
         }
+        if (forme === 'Paldean') {
+            return `paldean-${species}`;
+        }
+        if (forme === 'PaldeanAqua') {
+            return `palden-aqua-${species}`;
+        }
+        if (forme === 'PaldeanBlaze') {
+            return `paldean-blaze-${species}`;
+        }
         if (forme === 'Galarian') {
             return `galarian-${species}`;
         }

@@ -3,6 +3,7 @@
   "version": "1.12.1",
   "description": "A tool for generating nuzlocke team pics from data",
   "main": "dist/bundle.js",
+  "type": "commonjs",
   "scripts": {
     "build:production": "webpack --mode production",
     "build:watch": "webpack --watch --display-error-details",

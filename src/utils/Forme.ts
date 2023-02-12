@@ -42,7 +42,7 @@ export enum Forme {
     Paldean = 'paldea',
     Gigantamax = 'gigantamax',
 
-    PaldeanBalze = 'paldea-blaze',
+    PaldeanBlaze = 'paldea-blaze',
     PaldeanAqua = 'paldea-aqua',
 
     GreenPlumage = 'green-plumage',
@@ -108,4 +108,5 @@ export enum Forme {
     Pirouette = 'pirouette',
 
     Therian = 'therian',
+
 }
