@@ -24,6 +24,8 @@ export interface PokemonEditorProps {
     game: Game;
     style: State['style'];
 
+    // @NOTE: uncomment this if you need to auto-generate Pokemon
+    // will create failing tests as a warning to not push this :]
     // addPokemon: addPokemon;
 }
 
@@ -172,6 +174,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
     };
 
     public componentDidMount() {
+        // @NOTE: refactor so that there's an easier way to auto-generate Pokemon data
         // const {team} = this.props;
 
         // listOfPokemon.slice(906).forEach((value) => {

@@ -305,10 +305,15 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
     }
 
     if (
-        s === 'wooper' ||
-        s === 'tauros'
+        s === 'wooper'
     ) {
         return ['Paldean'];
+    }
+
+    if (
+        s === 'tauros'
+    ) {
+        return ['Paldean', 'Paldean-Aqua', 'Paldean-Blaze'];
     }
 
     if (s === 'maushold') {

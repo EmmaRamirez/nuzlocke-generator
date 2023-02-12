@@ -290,6 +290,7 @@ export const EvolutionTree: EvolutionTree = {
     Glameow: ['Purugly'],
     Stunky: ['Skuntank'],
 
+    Chingling: ['Chimecho'],
     Bronzor: ['Bronzong'],
     Gible: ['Gabite'],
     Gabite: ['Garchomp'],
@@ -575,6 +576,9 @@ export const getEvolutionLine = (species: Species, linear: boolean = false): Spe
     return uniq(line);
 };
 
+/**
+ * @NOTE: there were original plans to style this as a tree, but I think it was pointlessly complex.
+ */
 const tree = [
     ['Bulbasaur', 'Ivysaur', 'Venusaur'],
     ['Burmy', ['Mothim', 'Wormadam']],

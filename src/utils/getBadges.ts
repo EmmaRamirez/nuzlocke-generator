@@ -186,6 +186,7 @@ export function getBadges(name: Game): Badge[] {
             { name: 'Cortondo Gym', image: 'paldea/bug-badge' },
             { name: 'Stony Cliff Titan', image: 'paldea/rock-badge' },
             { name: 'Artazon Gym', image: 'paldea/grass-badge' },
+            { name: 'Open Sky Titan', image: 'paldea/flying-badge' },
             { name: 'Team Star Dark', image: 'paldea/dark-badge' },
             { name: 'Levincia Gym', image: 'paldea/electric-badge' },
             { name: 'Team Star Fire', image: 'paldea/fire-badge' },

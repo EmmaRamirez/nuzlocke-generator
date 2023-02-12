@@ -1,3 +1,6 @@
+/**
+ * In order to run this script, use Node 16 and convert it to js with `tsc`
+ */
 import * as fs from 'fs';
 import * as chalk from 'chalk';
 
@@ -20,7 +23,8 @@ function missingByGeneration(list) {
         { start: 493, end: 649 },
         { start: 649, end: 721 },
         { start: 721, end: 807 },
-        { start: 808, end: 890 },
+        { start: 808, end: 905 },
+        { start: 906, end: 1008 }
     ];
 
     const resultMap = generationPoints.map((point, idx) => {
