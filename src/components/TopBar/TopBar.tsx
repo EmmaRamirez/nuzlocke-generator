@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button, Classes, Spinner, Intent } from '@blueprintjs/core';
 import { connect } from 'react-redux';
 import * as styles from 'components/Result/styles';
-import { classWithDarkTheme, isEmpty, Styles } from 'utils';
+import { classWithDarkTheme, getPatchlessVersion, Styles } from 'utils';
 import {
     changeEditorSize,
     editStyle,
@@ -16,7 +16,6 @@ import { Pokemon, Editor } from 'models';
 import { ReleaseDialog } from 'components/Shared';
 import { State } from 'state';
 import { isMobile } from 'is-mobile';
-import { getPatchlessVersion } from 'utils/getPatchlessVersion';
 
 export interface TopBarProps {
     onClickDownload: (e?: React.MouseEvent<HTMLElement>) => void;

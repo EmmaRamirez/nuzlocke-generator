@@ -1,4 +1,4 @@
-import { Forme } from './Forme';
+import { Forme } from 'utils';
 
 export const getIconFormeSuffix = (forme: keyof typeof Forme) => {
     if (forme == null) return '';

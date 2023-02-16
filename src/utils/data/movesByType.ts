@@ -1,5 +1,5 @@
 import { Types } from 'utils';
-import { TemtemTypes } from './Types';
+import { TemtemTypes } from '../Types';
 
 export type MovesByType = { [T in Exclude<Types, TemtemTypes>]: string[] };
 

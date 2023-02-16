@@ -2,9 +2,8 @@ import * as React from 'react';
 import { Dialog, Classes, Button, DialogProps } from '@blueprintjs/core';
 import { css, cx } from 'emotion';
 import * as styles from 'components/Result/styles';
-import { Styles, classWithDarkTheme } from 'utils';
+import { Styles, classWithDarkTheme, getPatchlessVersion } from 'utils';
 const ReactMarkdown = require('react-markdown');
-import { getPatchlessVersion } from 'utils/getPatchlessVersion';
 import useSwr from 'swr';
 
 const calyrex = require('assets/icons/pokemon/regular/calyrex.png');

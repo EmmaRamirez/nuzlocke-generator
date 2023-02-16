@@ -1,7 +1,6 @@
-import { Game } from './listOfGames';
+import { Game, locations } from 'utils';
 import { getGameRegion, Region } from './getGameRegion';
 import { Generation, getGameGeneration } from './getGameGeneration';
-import { locations } from './listOfLocations';
 
 export function getEncounterMap(game: Game) {
     const region = getGameRegion(game);

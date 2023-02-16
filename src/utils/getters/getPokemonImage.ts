@@ -1,15 +1,9 @@
 import { addForme, speciesToNumber, getForme } from 'utils';
-import { capitalize } from './capitalize';
-import { Game } from 'utils';
-import { Forme } from './Forme';
+import { capitalize, Game, Forme, Species, significantGenderDifferenceList, wrapImageInCORS, normalizeSpeciesName } from 'utils';
 import { getIconFormeSuffix } from './getIconFormeSuffix';
 import { Editor, Pokemon } from 'models';
-import { Species } from './listOfPokemon';
 import { State } from 'state';
-import { significantGenderDifferenceList } from './handleSignificantGenderDifferences';
 import { GenderElementProps } from 'components';
-import { wrapImageInCORS } from './wrapImageInCORS';
-import { normalizeSpeciesName } from './normalizeSpeciesName';
 import { getImages } from 'components/Shared/ImagesDrawer';
 
 const handleTcgTransforms = (species?: string, gender?: GenderElementProps) => {

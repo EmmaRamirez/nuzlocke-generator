@@ -483,6 +483,8 @@ Array [
   Object {
     "Tauros": Array [
       "Paldean",
+      "Paldean-Aqua",
+      "Paldean-Blaze",
     ],
   },
   Object {
@@ -3133,7 +3135,10 @@ Array [
     "Overqwil": Array [],
   },
   Object {
-    "Enamorus": Array [],
+    "Enamorus": Array [
+      "Incarnate",
+      "Therian",
+    ],
   },
   Object {
     "Sprigatito": Array [],

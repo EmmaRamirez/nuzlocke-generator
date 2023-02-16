@@ -16,7 +16,7 @@ import { Dispatch } from 'redux';
 import { State } from 'state';
 import { Omit } from 'ramda';
 import { Action } from 'actions';
-import { normalizeSpeciesName } from 'utils/normalizeSpeciesName';
+import { normalizeSpeciesName } from 'utils/getters/normalizeSpeciesName';
 import { PokemonImage } from 'components/Shared/PokemonImage';
 
 interface PokemonIconProps {

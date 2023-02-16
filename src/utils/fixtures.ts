@@ -2,7 +2,7 @@ import { generateEmptyPokemon } from './generateEmptyPokemon';
 import { Types } from './Types';
 import { Moves } from 'components/TeamPokemon/Moves';
 import { Forme } from './Forme';
-import { matchSpeciesToTypes } from './matchSpeciesToTypes';
+import { matchSpeciesToTypes } from './formatters/matchSpeciesToTypes';
 import { Pokemon } from 'models';
 
 export type PokemonFixtures = Record<
