@@ -35,6 +35,7 @@ export function CheckpointsInputList({
         minimal={true}
         content={
             <Menu>
+                {checkpoints.length === 0 && <div style={{ width: '200px'}}>Select a game or configure custom checkpoints to see them here!</div>}
                 {Array.isArray(checkpoints) && checkpoints?.map((badge) => (
                     <Checkbox
                         onChange={(e: any) => {

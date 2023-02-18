@@ -1,4 +1,4 @@
-import { listOfPokemonLowercased, Species } from './listOfPokemon';
+import { listOfPokemonLowercased, Species } from 'utils';
 
 export const normalizeSpeciesName = (species: Species) => {
     if (species == null) return 'unknown';

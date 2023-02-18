@@ -1,6 +1,5 @@
-import { speciesToNumber } from './speciesToNumber';
+import { speciesToNumber, Species } from 'utils';
 import { getForme } from './getForme';
-import { Species } from './listOfPokemon';
 
 /**
  * @deprecated Use PokemonIcon component

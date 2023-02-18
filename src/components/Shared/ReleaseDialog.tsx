@@ -2,9 +2,8 @@ import * as React from 'react';
 import { Dialog, Classes, Button, DialogProps } from '@blueprintjs/core';
 import { css, cx } from 'emotion';
 import * as styles from 'components/Result/styles';
-import { Styles, classWithDarkTheme } from 'utils';
+import { Styles, classWithDarkTheme, getPatchlessVersion } from 'utils';
 const ReactMarkdown = require('react-markdown');
-import { getPatchlessVersion } from 'utils/getPatchlessVersion';
 import useSwr from 'swr';
 
 const calyrex = require('assets/icons/pokemon/regular/calyrex.png');
@@ -22,9 +21,12 @@ const arceus = require('assets/icons/pokemon/regular/arceus.png');
 const sprigatito = require('assets/icons/pokemon/regular/sprigatito.png');
 const fuecoco = require('assets/icons/pokemon/regular/fuecoco.png');
 const quaxly = require('assets/icons/pokemon/regular/quaxly.png');
+const miraidon = require('assets/icons/pokemon/regular/miraidon.png');
 
 export const getMascot = v => {
     switch (v) {
+        case '1.14':
+            return miraidon.default;
         case '1.13':
             return quaxly.default;
         case '1.12':

@@ -1,4 +1,4 @@
-import { Game } from './listOfGames';
+import { Game } from 'utils';
 
 export enum Region {
     Kanto = 'kanto',

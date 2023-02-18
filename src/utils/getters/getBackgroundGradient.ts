@@ -1,5 +1,4 @@
-import { typeToColor } from './typeToColor';
-import { Types } from './Types';
+import { typeToColor, Types } from 'utils';
 import { State } from 'state';
 
 export const getBackgroundGradient = (

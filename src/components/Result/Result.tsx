@@ -27,7 +27,7 @@ import { Button, Classes } from '@blueprintjs/core';
 import { clamp } from 'ramda';
 import { resultSelector } from 'selectors';
 import { PokemonImage } from 'components/Shared/PokemonImage';
-import { normalizeSpeciesName } from 'utils/normalizeSpeciesName';
+import { normalizeSpeciesName } from 'utils/getters/normalizeSpeciesName';
 
 async function load() {
     const resource = await import('@emmaramirez/dom-to-image');

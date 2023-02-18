@@ -4,9 +4,7 @@ export const iconBar = css`
     align-items: center;
     display: flex;
     margin-left: auto;
-    * {
-        margin: 0.25rem;
-    }
+    gap: .25rem;
 `;
 
 export const copyButton = css`

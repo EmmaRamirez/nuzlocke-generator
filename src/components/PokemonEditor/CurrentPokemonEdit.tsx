@@ -37,6 +37,8 @@ import {
     PopoverInteractionKind,
     Button,
     Intent,
+    ButtonGroup,
+    Tooltip,
 } from '@blueprintjs/core';
 import { addPokemon } from 'actions';
 import { State } from 'state';
@@ -95,7 +97,6 @@ const getEvos = (species): string[] | undefined => {
     return EvolutionTree?.[species];
 };
 
-
 export function EvolutionSelection({ currentPokemon, onEvolve }) {
     const evos = getEvos(currentPokemon?.species);
 
@@ -120,7 +121,13 @@ export function EvolutionSelection({ currentPokemon, onEvolve }) {
                 content={
                     <>
                         {evos.map((evo) => (
-                            <div role='button' tabIndex={-2} className={Styles.evoMenuItem} key={evo} onClick={onEvolve(evo)} onKeyPress={onEvolve(evo)}>
+                            <div
+                                role="button"
+                                tabIndex={-2}
+                                className={Styles.evoMenuItem}
+                                key={evo}
+                                onClick={onEvolve(evo)}
+                                onKeyPress={onEvolve(evo)}>
                                 {evo}
                             </div>
                         ))}
@@ -134,11 +141,9 @@ export function EvolutionSelection({ currentPokemon, onEvolve }) {
     }
 }
 
-
-
 export class CurrentPokemonEditBase extends React.Component<
-CurrentPokemonEditProps,
-CurrentPokemonEditState
+    CurrentPokemonEditProps,
+    CurrentPokemonEditState
 > {
     public constructor(props: CurrentPokemonEditProps) {
         super(props);
@@ -172,7 +177,7 @@ CurrentPokemonEditState
     }
 
     public componentDidMount() {
-        getImages().then(res => this.setState({ images: res, }));
+        getImages().then((res) => this.setState({ images: res }));
     }
 
     private copyPokemon = (e) => {
@@ -201,7 +206,20 @@ CurrentPokemonEditState
         const pokemon = this.getCurrentPokemon();
         const edit = {
             species,
-            types: matchSpeciesToTypes(species, (pokemon?.forme || 'Normal') as keyof typeof Forme)
+            types: matchSpeciesToTypes(species, (pokemon?.forme || 'Normal') as keyof typeof Forme),
+        };
+
+        this.props.editPokemon(edit, this.state.selectedId);
+    };
+
+    // levelUp true = +1, false = -1
+    private levelPokemon = (levelUp?: boolean) => () => {
+        const pokemon = this.getCurrentPokemon();
+        // @ts-expect-error data from level can sometimes be a string... whoops
+        const level = Number.parseInt(pokemon?.level ?? '0');
+
+        const edit = {
+            level: (level ?? 0) + (levelUp ? 1 : -1)
         };
 
         this.props.editPokemon(edit, this.state.selectedId);
@@ -211,12 +229,14 @@ CurrentPokemonEditState
 
     private getTypes(includeShadow = true) {
         const { customTypes, editor } = this.props;
-        return getListOfTypes(customTypes, editor.temtemMode).filter(type => includeShadow ?  true : type !== 'Shadow');
+        return getListOfTypes(customTypes, editor.temtemMode).filter((type) =>
+            includeShadow ? true : type !== 'Shadow',
+        );
     }
 
     public moreInputs(currentPokemon: Pokemon) {
-        const {editPokemon, selectPokemon} = this.props;
-        const imageNames = this.state.images?.map(img => img.name ?? '') ?? [];
+        const { editPokemon, selectPokemon } = this.props;
+        const imageNames = this.state.images?.map((img) => img.name ?? '') ?? [];
         const pokemonForLink = this.props.pokemon.map((p) => ({
             key: `${p.nickname} (${p.species})`,
             value: p.id,
@@ -243,12 +263,14 @@ CurrentPokemonEditState
                     key={this.state.selectedId + 'types'}
                 />
                 <span
-                    className={'current-pokemon-input-wrapper current-pokemon-checklist current-pokemon-checkpoints'}>
-                    <label htmlFor='checkpointsInputList'>Checkpoints</label>
+                    className={
+                        'current-pokemon-input-wrapper current-pokemon-checklist current-pokemon-checkpoints'
+                    }>
+                    <label htmlFor="checkpointsInputList">Checkpoints</label>
                     <CheckpointsInputList
                         checkpointsObtained={currentPokemon.checkpoints ?? []}
-                        onChange={checkpoints => editPokemon({checkpoints}, currentPokemon.id)}
-                        buttonText='Award Checkpoints'
+                        onChange={(checkpoints) => editPokemon({ checkpoints }, currentPokemon.id)}
+                        buttonText="Award Checkpoints"
                     />
                 </span>
                 <CurrentPokemonLayoutItem checkboxes>
@@ -287,28 +309,39 @@ CurrentPokemonEditState
                         type="checkbox"
                         key={this.state.selectedId + 'gift'}
                     />
+                    <CurrentPokemonInput
+                        labelName="Alpha"
+                        inputName="alpha"
+                        value={currentPokemon?.alpha}
+                        type="checkbox"
+                        key={this.state.selectedId + 'alpha'}
+                    />
                 </CurrentPokemonLayoutItem>
-                {feature.imageUploads ? <Autocomplete
-                    items={imageNames}
-                    name="customImage"
-                    label="Custom Image"
-                    placeholder="http://..."
-                    value={currentPokemon.customImage || ''}
-                    onChange={(e) => {
-                        const edit = {
-                            customImage: e.target.value,
-                        };
-                        editPokemon(edit, this.state.selectedId);
-                    }}
-                    key={this.state.selectedId + 'customimage'}
-                /> : <CurrentPokemonInput
-                    labelName="Custom Image"
-                    inputName="customImage"
-                    placeholder="http://..."
-                    value={currentPokemon.customImage}
-                    type="text"
-                    key={this.state.selectedId + 'customImage'}
-                />}
+                {feature.imageUploads ? (
+                    <Autocomplete
+                        items={imageNames}
+                        name="customImage"
+                        label="Custom Image"
+                        placeholder="http://..."
+                        value={currentPokemon.customImage || ''}
+                        onChange={(e) => {
+                            const edit = {
+                                customImage: e.target.value,
+                            };
+                            editPokemon(edit, this.state.selectedId);
+                        }}
+                        key={this.state.selectedId + 'customimage'}
+                    />
+                ) : (
+                    <CurrentPokemonInput
+                        labelName="Custom Image"
+                        inputName="customImage"
+                        placeholder="http://..."
+                        value={currentPokemon.customImage}
+                        type="text"
+                        key={this.state.selectedId + 'customImage'}
+                    />
+                )}
                 <CurrentPokemonInput
                     labelName="Custom Icon"
                     inputName="customIcon"
@@ -475,7 +508,15 @@ CurrentPokemonEditState
                         options={this.state.box.map((n) => n.name)}
                         key={this.state.selectedId + 'status'}
                     />
+
                     <div className={cx(Styles.iconBar)}>
+                        <Tooltip content="Level Up/Down">
+                            <ButtonGroup>
+                                <Button onClick={this.levelPokemon(false)} small>-1</Button>
+                                <Button onClick={this.levelPokemon(true)} small>+1</Button>
+                            </ButtonGroup>
+                        </Tooltip>
+
                         <EvolutionSelection
                             currentPokemon={currentPokemon}
                             onEvolve={this.evolvePokemon}
@@ -496,7 +537,7 @@ CurrentPokemonEditState
                             items={(listOfPokemon as unknown) as string[]}
                         />*/}
                         <Autocomplete
-                            items={(listOfPokemon as unknown) as string[]}
+                            items={listOfPokemon as unknown as string[]}
                             name="species"
                             label="Species"
                             disabled={currentPokemon.egg}
@@ -612,7 +653,11 @@ CurrentPokemonEditState
                         type="moves"
                         key={this.state.selectedId + 'moves'}
                     />
-                    <Button className={Styles.moveEditButton} intent={Intent.PRIMARY} onClick={this.toggleDialog} minimal>
+                    <Button
+                        className={Styles.moveEditButton}
+                        intent={Intent.PRIMARY}
+                        onClick={this.toggleDialog}
+                        minimal>
                         Edit Moves
                     </Button>
                 </CurrentPokemonLayoutItem>

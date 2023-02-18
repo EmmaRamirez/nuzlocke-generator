@@ -40,6 +40,7 @@ export interface Pokemon {
     gift?: boolean;
     /* @deprecated */
     champion?: boolean;
+    alpha?: boolean;
 }
 
 // We export a non-type version when we need all the keys easily
@@ -80,4 +81,5 @@ export const PokemonKeys: Pokemon = {
     checkpoints: [],
     gift: false,
     linkedTo: null,
+    alpha: undefined,
 };

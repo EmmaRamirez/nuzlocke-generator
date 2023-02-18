@@ -1,6 +1,6 @@
 import { Types, Generation } from 'utils';
-import { Forme } from './Forme';
-import { Species } from './listOfPokemon';
+import { Forme } from '../Forme';
+import { Species } from '..';
 
 const match = ({
     s,
