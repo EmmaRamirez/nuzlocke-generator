@@ -21,9 +21,12 @@ const arceus = require('assets/icons/pokemon/regular/arceus.png');
 const sprigatito = require('assets/icons/pokemon/regular/sprigatito.png');
 const fuecoco = require('assets/icons/pokemon/regular/fuecoco.png');
 const quaxly = require('assets/icons/pokemon/regular/quaxly.png');
+const miraidon = require('assets/icons/pokemon/regular/miraidon.png');
 
 export const getMascot = v => {
     switch (v) {
+        case '1.14':
+            return miraidon.default;
         case '1.13':
             return quaxly.default;
         case '1.12':
