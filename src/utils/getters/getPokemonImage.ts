@@ -186,11 +186,11 @@ export async function getPokemonImage({
 
     if (style?.spritesMode && (name === 'Scarlet' || name === 'Violet')) {
         if (!shiny) {
-            const url = `https://serebii.net/scarletviolet/pokemon/new/${speciesToNumber(species as Species)}.png`;
+            const url = `https://serebii.net/scarletviolet/pokemon/new/${leadingZerosNumber}.png`;
 
             return await wrapImageInCORS(url);
         } else {
-            const url = `https://serebii.net/Shiny/SV/new/${speciesToNumber(species as Species)}.png`;
+            const url = `https://serebii.net/Shiny/SV/new/${leadingZerosNumber}.png`;
 
             return await wrapImageInCORS(url);
         }
