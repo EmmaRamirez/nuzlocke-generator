@@ -664,7 +664,7 @@ export const locations = {
         'Casseroya Lake',
         'North Province Area One',
         'North Province Area Two',
-        'North Province Are Three',
+        'North Province Area Three',
         'North Paldean Sea',
         'Area Zero',
     ],
