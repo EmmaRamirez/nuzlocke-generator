@@ -13,6 +13,7 @@ import {
     formatBallText,
     TemplateName,
     feature,
+    Types,
 } from 'utils';
 import { GenderElement, ErrorBoundary } from 'components/Shared';
 import { selectPokemon } from 'actions';
@@ -137,7 +138,7 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                             {Boolean(pokemon.alpha) && <span className="pokemon-alpha">
                                 <img alt={'alpha'} style={{ height: '1rem' }} src={'icons/alpha-icon.png'} />
                             </span>}
-                            {Boolean(pokemon.teraType) && <span className="pokemon-teratype">
+                            {Boolean(pokemon.teraType && pokemon.teraType !== 'None' as Types) && <span className="pokemon-teratype">
                                 <img alt={`Tera: ${pokemon.teraType}`} style={{ height: '1rem' }} src={`icons/tera/${pokemon.teraType?.toLowerCase()}.png`} />
                             </span>}
                             {GenderElement(pokemon.gender)}
