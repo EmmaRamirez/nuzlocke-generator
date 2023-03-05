@@ -69,6 +69,10 @@ const migrations = {
             },
         },
     }),
+    '1.15.1': (state: State) => ({
+        ...state,
+        excludedAreas: [],
+    })
 };
 
 const config = {

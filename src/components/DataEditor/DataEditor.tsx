@@ -76,8 +76,6 @@ const isValidJSON = (data: string): boolean => {
     }
 };
 
-
-
 // This is to handle very weird/rare edge cases where data
 // can be parsed, but then in turn has to be "double-parsed"
 const handleExceptions = (data) => {
@@ -247,7 +245,8 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         const override = this.state.overrideImport;
         const data = handleExceptions(JSON.parse(this.state.data));
         const nuz = this.props.state;
-        const safeguards = { customTypes: [], customMoveMap: [], stats: [] };
+        // @NOTE this prevents previously undefined states from blowing up the app
+        const safeguards = { customTypes: [], customMoveMap: [], stats: [], excludedAreas: [] };
         if (!Array.isArray(data.customMoveMap)) {
             noop();
         } else {
