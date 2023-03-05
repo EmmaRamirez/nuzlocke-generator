@@ -5,6 +5,8 @@ import { State } from 'state';
 import { PokemonIcon } from 'components/PokemonIcon';
 import {  Callout, Classes, Icon, Intent, TextArea, Tooltip } from '@blueprintjs/core';
 import { cx } from 'emotion';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateExcludedAreas } from 'actions';
 
 
 const LocationIcon = ({ area, currentGame, excludeGifts, pokemon }) => {
@@ -65,16 +67,17 @@ export const PokemonLocationChecklist = ({
 
     const [excludeGifts, setExcludeGifts] = React.useState(false);
     const [currentGame, setCurrentGame] = React.useState<GameName>('None');
-    const [excludedAreas, setExcludedAreas] = React.useState<string[]>([]);
+    const excludedAreas = useSelector<State, State['excludedAreas']>(state => state.excludedAreas);
+    const dispatch = useDispatch();
     const encounterMap = React.useMemo(() => getEncounterMap(game.name).filter(area => !excludedAreas.includes(area)), [game.name, excludedAreas]);
     const totals = React.useMemo(() => calcTotals(boxes, pokemon, encounterMap, currentGame), [boxes, JSON.stringify(pokemon), encounterMap, currentGame]);
 
-    const hideArea = (area: string) => () => setExcludedAreas(areas => [...areas, area]);
+    const hideArea = (area: string) => () => dispatch(updateExcludedAreas([...excludedAreas, area]));
 
-    const updateExcludedAreas = (event) => {
+    const updateExcludedAreasFromText = (event) => {
         const value = event.currentTarget.value;
         const areas = value.split('\n');
-        setExcludedAreas(areas);
+        updateExcludedAreas(areas);
     };
 
     const colors = ['#0e1d6b', '#468189', '#77ACA2', '#9DBEBB', '#F4E9CD', '#0DAB76', '#139A43', '#D4AFB9', '#9CADCE'];
@@ -83,7 +86,7 @@ export const PokemonLocationChecklist = ({
         return <Tooltip content={
             <>
                 {percentages.map((percentage, idx) => <div>
-                    <div style={{ display: 'inline-block', width: '0.5rem', height: '0.5rem', borderRadius: '50%', background: colors[idx], marginRight: '0.25rem' }}></div>
+                    <div key={percentage.key} style={{ display: 'inline-block', width: '0.5rem', height: '0.5rem', borderRadius: '50%', background: colors[idx], marginRight: '0.25rem' }}></div>
                     {percentage.key}: {percentage.percentage}
                 </div>)}
             </>
@@ -153,8 +156,8 @@ export const PokemonLocationChecklist = ({
                 </label>
                 <TextArea
                     name='excludedAreas'
-                    onChange={updateExcludedAreas}
-                    value={excludedAreas.join('\n')}
+                    onChange={updateExcludedAreasFromText}
+                    defaultValue={excludedAreas.join('\n')}
                 />
             </div>
             <Callout intent={Intent.WARNING} style={{ fontSize: '80%', marginTop: '0.5rem' }}>

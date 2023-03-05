@@ -17,6 +17,7 @@ import { customMoveMap } from './customMoveMap';
 import { stats } from './stats';
 import { customTypes } from './customTypes';
 import { editorHistory } from './editorHistory';
+import { excludedAreas } from './excludedAreas';
 import { view } from './view';
 
 export const reducers = {
@@ -26,6 +27,7 @@ export const reducers = {
     customMoveMap,
     customTypes,
     editorHistory,
+    excludedAreas,
     game,
     nuzlockes,
     pokemon,

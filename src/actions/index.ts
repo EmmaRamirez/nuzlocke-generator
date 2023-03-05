@@ -34,3 +34,4 @@ export * from './updateEditorHistory';
 export * from './triggerDownload';
 export * from './toggleDialog';
 export * from './setEditorHistoryEnabled';
+export * from './updateExcludedAreas';

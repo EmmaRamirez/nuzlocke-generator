@@ -9,6 +9,7 @@ export interface State {
     confirmation: boolean;
     checkpoints: Checkpoints;
     editor: Editor;
+    excludedAreas: string[];
     game: Game;
     pokemon: Pokemon[];
     rules: string[];
