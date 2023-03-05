@@ -52,6 +52,9 @@ export function box(
             const { name, background = 'grass-meadow', inheritFrom } = action;
             const id = state.length;
             const position = state.length;
+            if (state.map(b => b.name).includes(name)) {
+                throw new Error('Cannot name a box the same as a current one.');
+            }
             return [...state, { id, name, position, background, inheritFrom }];
         case DELETE_BOX:
             return state.filter((box) => box.id !== action.id);
