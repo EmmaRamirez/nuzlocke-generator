@@ -8,7 +8,7 @@ export function excludedAreas(
         case UPDATE_EXCLUDED_AREAS:
             return action.excludedAreas;
         case REPLACE_STATE:
-            return action.replaceWith.excludedAreas;
+            return action.replaceWith.excludedAreas ?? [];
         default:
             return state;
     }

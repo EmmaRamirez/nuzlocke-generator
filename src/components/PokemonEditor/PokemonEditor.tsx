@@ -17,6 +17,7 @@ export interface PokemonEditorProps {
     boxes: Boxes;
     game: Game;
     style: State['style'];
+    excludedAreas: State['excludedAreas'];
 
     // @NOTE: uncomment this if you need to auto-generate Pokemon
     // will create failing tests as a warning to not push this :]
@@ -87,7 +88,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
     }
 
     public render() {
-        const { team, boxes, game, style } = this.props;
+        const { team, boxes, game, style, excludedAreas } = this.props;
 
         return (
             <>
@@ -127,7 +128,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                     <CurrentPokemonEdit />
                     <BaseEditor name="Location Checklist" defaultOpen={false}>
                         <React.Suspense fallback={<Spinner />}>
-                            <PokemonLocationChecklist boxes={boxes} style={style} pokemon={team} game={game} />
+                            <PokemonLocationChecklist excludedAreas={excludedAreas} boxes={boxes} style={style} pokemon={team} game={game} />
                         </React.Suspense>
                     </BaseEditor>
                 </BaseEditor>
@@ -156,6 +157,7 @@ export const PokemonEditor = connect(
         boxes: state.box,
         game: state.game,
         style: state.style,
+        excludedAreas: state.excludedAreas,
     }),
     {
         addPokemon: addPokemon,
