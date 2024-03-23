@@ -6,8 +6,45 @@ import { PokemonIcon } from 'components/PokemonIcon';
 import {  Callout, Classes, Icon, Intent, TextArea, Tooltip } from '@blueprintjs/core';
 import { cx } from 'emotion';
 import { useDispatch } from 'react-redux';
-import { updateExcludedAreas } from 'actions';
+import { updateExcludedAreas, updateCustomAreas } from 'actions';
 
+
+const EncounterMap = ({
+    encounterMap,
+    style,
+    pokemon,
+    currentGame,
+    excludeGifts,
+    displayHideArea,
+    onClickHideArea,
+}) => {
+    return encounterMap.map((area) => {
+        if (area === '') return null;
+        return (
+            <div
+                key={area.toString()}
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    margin: '2px',
+                    borderBottom: `1px solid ${style?.editorDarkMode ? '#333' : '#efefef'}`,
+                }}>
+                <LocationIcon
+                    area={area}
+                    pokemon={pokemon}
+                    currentGame={currentGame}
+                    excludeGifts={excludeGifts}
+                />
+                <div style={{ marginLeft: '4px' }}>{area}</div>
+                {displayHideArea && <div role='menuitem' tabIndex={0} onKeyDown={onClickHideArea(area)} onClick={onClickHideArea(area)} style={{ marginLeft: 'auto', cursor: 'pointer' }}>
+                    <Tooltip content={`Hide ${area}`}>
+                        <Icon icon='cross' />
+                    </Tooltip>
+                </div>}
+            </div>
+        );
+    });
+};
 
 const LocationIcon = ({ area, currentGame, excludeGifts, pokemon }: {
     area: string;
@@ -36,20 +73,20 @@ const LocationIcon = ({ area, currentGame, excludeGifts, pokemon }: {
     return null;
 };
 
-const selectExcludedAreas = (state: State) => state.excludedAreas;
-
 export const PokemonLocationChecklist = ({
     pokemon,
     game,
     style,
     boxes,
     excludedAreas,
+    customAreas,
 }: {
     pokemon: Pokemon[];
     game: Game;
     style: State['style'];
     boxes: Boxes;
     excludedAreas: string[];
+    customAreas: string[];
 }) => {
 
     const calcTotals = (boxes, pokemon, encounterMap, currentGame) => {
@@ -77,15 +114,22 @@ export const PokemonLocationChecklist = ({
     const [excludeGifts, setExcludeGifts] = React.useState(false);
     const [currentGame, setCurrentGame] = React.useState<GameName>('None');
     const dispatch = useDispatch();
-    const encounterMap = React.useMemo(() => getEncounterMap(game.name).filter(area => !excludedAreas.includes(area)), [game.name, excludedAreas]);
+    const encounterMap = React.useMemo(() => getEncounterMap(game.name).concat(customAreas).filter(area => !excludedAreas.includes(area)), [game.name, excludedAreas, customAreas]);
     const totals = React.useMemo(() => calcTotals(boxes, pokemon, encounterMap, currentGame), [boxes, JSON.stringify(pokemon), encounterMap, currentGame]);
     const hideArea = (area: string) => () => dispatch(updateExcludedAreas([...excludedAreas, area]));
 
     const updateExcludedAreasFromText = (event) => {
         const value = event.currentTarget.value;
         const areas = value.split('\n');
-        console.log(value, areas);
+        console.log('areas', value, areas);
         dispatch(updateExcludedAreas(areas));
+    };
+
+    const updateCustomAreasFromText = (event) => {
+        const value = event.currentTarget.value;
+        const areas = value.split('\n');
+        console.log('areas', value, areas);
+        dispatch(updateCustomAreas(areas));
     };
 
 
@@ -138,39 +182,29 @@ export const PokemonLocationChecklist = ({
             <div className='flex' style={{ justifyContent: 'center' }}>
                 {buildTotals(totals)}
             </div>
-            {encounterMap.map((area) => {
-                return (
-                    <div
-                        key={area.toString()}
-                        style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            margin: '2px',
-                            borderBottom: `1px solid ${style?.editorDarkMode ? '#333' : '#efefef'}`,
-                        }}>
-                        <LocationIcon
-                            area={area}
-                            pokemon={pokemon}
-                            currentGame={currentGame}
-                            excludeGifts={excludeGifts}
-                        />
-                        <div style={{ marginLeft: '4px' }}>{area}</div>
-                        <div role='menuitem' tabIndex={0} onKeyDown={hideArea(area)} onClick={hideArea(area)} style={{ marginLeft: 'auto', cursor: 'pointer' }}>
-                            <Tooltip content={`Hide ${area}`}>
-                                <Icon icon='cross' />
-                            </Tooltip>
-                        </div>
-                    </div>
-                );
-            })}
+            <EncounterMap
+                encounterMap={encounterMap}
+                pokemon={pokemon}
+                style={style}
+                currentGame={currentGame}
+                excludeGifts={excludeGifts}
+                displayHideArea={true}
+                onClickHideArea={hideArea}
+            />
             <div style={{ padding: '0.25rem' }}>
-                <label htmlFor='excludedAreas' className={Classes.LABEL}>
-                    <strong>Excluded Areas</strong>
-                </label>
+                <div>Excluded Areas</div>
                 <TextArea
+                    fill
                     name='excludedAreas'
                     onChange={updateExcludedAreasFromText}
                     value={excludedAreas.join('\n')}
+                />
+                <div>Custom Areas</div>
+                <TextArea
+                    fill
+                    name='customAreas'
+                    onChange={updateCustomAreasFromText}
+                    value={customAreas.join('\n')}
                 />
             </div>
             <Callout intent={Intent.WARNING} style={{ fontSize: '80%', marginTop: '0.5rem' }}>

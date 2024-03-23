@@ -8,6 +8,7 @@ export interface State {
     box: Boxes;
     confirmation: boolean;
     checkpoints: Checkpoints;
+    customAreas: string[];
     editor: Editor;
     excludedAreas: string[];
     game: Game;
