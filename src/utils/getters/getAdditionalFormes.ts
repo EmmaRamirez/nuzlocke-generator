@@ -75,7 +75,7 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
         return ['Land', 'Sky'];
     }
     if (s === 'basculin') {
-        return ['Red-Striped', 'Blue-Striped'];
+        return ['Red-Striped', 'Blue-Striped', 'White-Striped'];
     }
     if (s === 'deerling' || s === 'sawsbuck') {
         return ['Spring', 'Summer', 'Autumn', 'Winter'];
@@ -326,6 +326,14 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
 
     if (s === 'gimmighoul') {
         return ['Roaming'];
+    }
+
+    if (s === 'ogerpon') {
+        return ['Teal Mask', 'Wellspring', 'Heartflame', 'Cornerstone'];
+    }
+
+    if (s === 'terapagos') {
+        return ['Terastal'];
     }
 
     return [];

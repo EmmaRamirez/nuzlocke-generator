@@ -39,7 +39,8 @@ export type Game =
     | 'Shining Pearl'
     | 'Legends: Arceus'
     | 'Scarlet'
-    | 'Violet';
+    | 'Violet'
+    | 'Legends: Z-A';
 
 
 export const listOfGames: Game[] = [
@@ -84,5 +85,6 @@ export const listOfGames: Game[] = [
     'Legends: Arceus',
     'Scarlet',
     'Violet',
+    'Legends: Z-A'
     //'Custom...',
 ];

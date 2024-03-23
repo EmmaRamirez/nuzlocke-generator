@@ -271,6 +271,9 @@ export async function getPokemonImage({
     if (species === 'Indeedee' && gender === 'Male') {
         return 'url(img/indeedee-m.jpg)';
     }
+    if (species === 'Basculegion' && gender === 'Female') {
+        return 'url(img/basculegion-f.jpg)';
+    }
 
     return `url(img/${(
         addForme((species || '').trim().replace(/\s/g, '-').replace(/'/g, '').replace(/:/g, '-'), forme) ||

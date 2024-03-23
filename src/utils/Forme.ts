@@ -109,4 +109,8 @@ export enum Forme {
 
     Therian = 'therian',
 
+    Wellspring = 'wellspring',
+    Heartflame = 'heartflame',
+    Cornerstone = 'cornerstone',
+
 }

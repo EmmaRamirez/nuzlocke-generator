@@ -17,13 +17,14 @@ import { customMoveMap } from './customMoveMap';
 import { stats } from './stats';
 import { customTypes } from './customTypes';
 import { editorHistory } from './editorHistory';
-import { excludedAreas } from './excludedAreas';
+import { excludedAreas, customAreas } from './areas';
 import { view } from './view';
 
 export const reducers = {
     box,
     checkpoints,
     confirmation,
+    customAreas,
     customMoveMap,
     customTypes,
     editorHistory,

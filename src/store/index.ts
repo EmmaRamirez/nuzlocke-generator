@@ -72,7 +72,11 @@ const migrations = {
     '1.15.1': (state: State) => ({
         ...state,
         excludedAreas: [],
-    })
+    }),
+    '1.16.0': (state: State) => ({
+        ...state,
+        customAreas: [],
+    }),
 };
 
 const config = {

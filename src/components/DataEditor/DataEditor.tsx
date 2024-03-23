@@ -246,7 +246,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         const data = handleExceptions(JSON.parse(this.state.data));
         const nuz = this.props.state;
         // @NOTE this prevents previously undefined states from blowing up the app
-        const safeguards = { customTypes: [], customMoveMap: [], stats: [], excludedAreas: [] };
+        const safeguards = { customTypes: [], customMoveMap: [], stats: [], excludedAreas: [], customAreas: [] };
         if (!Array.isArray(data.customMoveMap)) {
             noop();
         } else {

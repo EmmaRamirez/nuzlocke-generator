@@ -1007,6 +1007,23 @@ export const listOfPokemon = [
     'Iron Valiant',
     'Koraidon',
     'Miraidon',
+    'Walking Wake',
+    'Iron Leaves',
+    'Dipplin',
+    'Poltchageist',
+    'Sinistcha',
+    'Okidogi',
+    'Munkidori',
+    'Fezandipiti',
+    'Ogerpon',
+    'Archaludon',
+    'Hydrapple',
+    'Gouging Fire',
+    'Raging Bolt',
+    'Iron Boulder',
+    'Iron Crown',
+    'Terapagos',
+    'Pecharunt',
 ] as const;
 
 const listOfTemtem = [
