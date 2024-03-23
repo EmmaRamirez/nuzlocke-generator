@@ -640,6 +640,7 @@ export const locations = {
         'South Province Area Four',
         'South Province Area Five',
         'South Province Area Six',
+        'Inlet Grotto',
         'Porto Marinada',
         'Medali',
         'Cascarrafa',
