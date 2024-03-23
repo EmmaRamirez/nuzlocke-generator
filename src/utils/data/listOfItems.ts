@@ -30,6 +30,7 @@ export const listOfItems = [
     'Eviolite',
     'Exp Share',
     'Expert Belt',
+    'Fairy Feather',
     'Flame Orb',
     'Float Stone',
     'Focus Band',
