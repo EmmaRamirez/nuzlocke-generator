@@ -44,6 +44,7 @@ export const gameOfOriginToColor = (game: Game) => {
         'Legends: Arceus': '#87c196',
         'Scarlet': '#e54310',
         'Violet': '#491a6a',
+        'Legends: Z-A': '#68a090',
     };
 
     return gameToColor[game] || '';

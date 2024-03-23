@@ -328,5 +328,13 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
         return ['Roaming'];
     }
 
+    if (s === 'ogerpon') {
+        return ['Teal Mask', 'Wellspring', 'Heartflame', 'Cornerstone'];
+    }
+
+    if (s === 'terapagos') {
+        return ['Terastal'];
+    }
+
     return [];
 };

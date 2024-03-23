@@ -3,7 +3,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Pokemon, Box as BoxModel, Boxes, Game } from 'models';
 import { State } from 'state';
-import { generateEmptyPokemon } from 'utils';
+import { generateEmptyPokemon, listOfPokemon, matchSpeciesToTypes } from 'utils';
 import { CurrentPokemonEdit } from '.';
 import { AddPokemonButton } from 'components/AddPokemonButton';
 import { BaseEditor } from 'components/BaseEditor';
@@ -22,7 +22,7 @@ export interface PokemonEditorProps {
 
     // @NOTE: uncomment this if you need to auto-generate Pokemon
     // will create failing tests as a warning to not push this :]
-    // addPokemon: addPokemon;
+    addPokemon: addPokemon;
 }
 
 export interface PokemonEditorState {
@@ -78,7 +78,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
         // @NOTE: refactor so that there's an easier way to auto-generate Pokemon data
         // const {team} = this.props;
 
-        // listOfPokemon.slice(906).forEach((value) => {
+        // listOfPokemon.slice(1008).forEach((value) => {
         //     this.props.addPokemon(
         //         generateEmptyPokemon(team, {
         //             species: value,
