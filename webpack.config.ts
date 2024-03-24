@@ -65,11 +65,32 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'resolve-url-loader'],
+                use: [MiniCssExtractPlugin.loader, {
+                    loader: 'css-loader',
+                    options: {
+                        sourceMap: true,
+                    }
+                },  'resolve-url-loader', {
+                    loader: 'postcss-loader',
+                    options: {
+                        sourceMap: true,
+                    }
+                }],
             },
             {
                 test: /\.s(a|c)ss$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'resolve-url-loader', 'sass-loader'],
+                use: [MiniCssExtractPlugin.loader, {
+                    loader: 'css-loader',
+                    options: {
+                        sourceMap: true,
+                    }
+                 }, {
+                    loader: 'resolve-url-loader'
+                }, {
+                    loader: 'sass-loader',
+                options: {
+                    sourceMap: true
+                } }],
             },
             {
                 test: /\.(woff|woff2)$/,
