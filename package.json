@@ -30,7 +30,7 @@
     "lh": "npx lighthouse http://localhost:8080 --output-path=./lighthouse/audit.html --save-assets --preset=desktop --quiet --chrome-flags=headless"
   },
   "engines": {
-    "node": "^16",
+    "node": "^18",
     "npm": "^8"
   },
   "keywords": [],
@@ -103,7 +103,7 @@
     "@babel/core": "^7.10.1",
     "@babel/plugin-syntax-import-meta": "^7.10.4",
     "@blueprintjs/core": "^3.54.0",
-    "@blueprintjs/icons": "^3.33.0",
+    "@blueprintjs/icons": "^5.9.0",
     "@blueprintjs/table": "^3.10.0",
     "@testing-library/react": "^10.4.9",
     "@types/chai": "^4.0.10",
