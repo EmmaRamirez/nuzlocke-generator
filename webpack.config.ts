@@ -27,10 +27,10 @@ module.exports = {
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
         modules: [path.resolve('src'), path.resolve('node_modules')],
-        fallback: {
-            "buffer": require.resolve("buffer"),
-            "path": require.resolve("path"),
-        },
+        // fallback: {
+        //     "buffer": require.resolve("buffer"),
+        //     "path": require.resolve("path"),
+        // },
     },
     devServer: {
         contentBase: 'dist',
