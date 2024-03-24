@@ -7,7 +7,7 @@
   "scripts": {
     "build:production": "webpack --mode production",
     "build:watch": "webpack --watch --display-error-details",
-    "build": "webpack --mode production --progress --stats --performance-hints warning",
+    "build": "webpack --mode production --progress --stats",
     "clean": "rimraf dist",
     "cy:open": "npx cypress open",
     "cy:run": "npx cypress run",
