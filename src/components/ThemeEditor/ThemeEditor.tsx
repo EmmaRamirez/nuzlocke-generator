@@ -204,7 +204,7 @@ const componentTree: ComponentNode[] = [
 ];
 
 export interface ThemeEditorProps {
-    style: Styles;
+    style?: Styles;
 }
 
 export interface ThemEditorState {
@@ -419,6 +419,8 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
     }
 
     public render() {
+        if (!this.props.style) return null;
+
         const currentNode: ComponentNode =
             this.getCurrentNode() == null ? null : this.getCurrentNode();
         if (currentNode) {
@@ -509,5 +511,4 @@ export const ThemeEditor = connect(
         style: state.style,
     }),
     null,
-    //@ts-ignore: React-Redux
 )(ThemeEditorBase);
