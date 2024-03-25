@@ -43,7 +43,7 @@ const productionFlag = process.env.NODE_ENV === 'production';
 
 app.use(express.json({ limit: '50mb' }));
 app.use(cors());
-app.use(compression);
+app.use(compression());
 if (isLocal && middleware && compiler) {
     logger.info(`Running server in development mode.`);
     app.use(middleware(compiler, {}));
