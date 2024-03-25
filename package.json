@@ -203,6 +203,12 @@
     },
     "webpack-plugin-serve": {
       "webpack": "^5.91.0"
+    },
+    "@webpack-cli/configtest": {
+      "webpack": "^5.91.0"
+    },
+    "webpack-serve": {
+      "webpack": "^5.91.0"
     }
   }
 }
