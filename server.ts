@@ -10,7 +10,7 @@ const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fet
 const compression = require('compression');
 const cors = require('cors');
 const logger = require('pino')({
-  prettyPrint: true,
+  // prettyPrint: true,
   messageFormat: '☰nuz: {levelLabel} - {pid} - url:{request.url}'
 });
 
