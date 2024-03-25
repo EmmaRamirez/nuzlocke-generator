@@ -136,18 +136,18 @@ export interface BoxState {
     deleteConfirmationOpen: boolean;
 }
 
-@DropTarget('ICON', boxSource, (connect, monitor) => ({
-    connectDropTarget: connect.dropTarget(),
-    canDrop: monitor.canDrop(),
-}))
-@DragSource('BOX', boxSourceDrag, (connect, monitor) => ({
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging(),
-}))
-@DropTarget('BOX', boxSourceDrop, (connect, monitor) => ({
-    connectDropTargetBox: connect.dropTarget(),
-    isDragging: monitor.canDrop(),
-}))
+// @DropTarget('ICON', boxSource, (connect, monitor) => ({
+//     connectDropTarget: connect.dropTarget(),
+//     canDrop: monitor.canDrop(),
+// }))
+// @DragSource('BOX', boxSourceDrag, (connect, monitor) => ({
+//     connectDragSource: connect.dragSource(),
+//     isDragging: monitor.isDragging(),
+// }))
+// @DropTarget('BOX', boxSourceDrop, (connect, monitor) => ({
+//     connectDropTargetBox: connect.dropTarget(),
+//     isDragging: monitor.canDrop(),
+// }))
 export class BoxBase extends React.PureComponent<BoxProps, BoxState> {
     public state = {
         deleteConfirmationOpen: false,

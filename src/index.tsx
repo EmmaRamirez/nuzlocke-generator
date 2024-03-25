@@ -104,6 +104,7 @@ async function createRender() {
     );
 
     render(
+        /* @ts-expect-error stupid typing */
         <Provider store={store}>
             {process.env.NODE_ENV !== 'test' ? (
                 <PersistGate loading={<div>Loading...</div>} onBeforeLift={null} persistor={persistor}>
