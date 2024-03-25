@@ -109,15 +109,19 @@ app.get('/release/:type', async (req, res, next) => {
         // mode: 'cors',
     })
         .then((res) => res.json())
-        .then((res) =>
-            (res as any)?.map((rel) => ({
+        .then((res) => {
+          if (Array.isArray(res)) {
+              return res.map((rel) => ({
                 id: rel.id,
                 url: rel.html_url,
                 version: rel.tag_name,
                 note: rel.body,
                 timestamp: rel.published_at,
-            })),
-        );
+            }));
+          } else {
+            return [];
+          }
+    });
 
     if (type === 'latest') {
         const notes = head(releases);
