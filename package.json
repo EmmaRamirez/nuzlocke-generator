@@ -7,7 +7,7 @@
   "scripts": {
     "build:production": "webpack --mode production",
     "build:watch": "webpack --watch --display-error-details",
-    "build": "webpack --openssl-legacy-provider --mode production --progress --stats",
+    "build": "webpack --mode production --progress --stats",
     "clean": "rimraf dist",
     "cy:open": "npx cypress open",
     "cy:run": "npx cypress run",
@@ -30,8 +30,8 @@
     "lh": "npx lighthouse http://localhost:8080 --output-path=./lighthouse/audit.html --save-assets --preset=desktop --quiet --chrome-flags=headless"
   },
   "engines": {
-    "node": "^18",
-    "npm": "^8"
+    "node": "^20",
+    "npm": "^10"
   },
   "keywords": [],
   "author": "Emma Ramirez <ramireze.emma.g@gmail.com> (http://emmaramirez.me)",
