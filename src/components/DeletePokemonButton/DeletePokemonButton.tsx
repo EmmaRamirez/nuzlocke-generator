@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Alert, Intent, Icon, Popover, Position, PopoverInteractionKind, Classes } from '@blueprintjs/core';
-import { cx } from 'emotion';
+import { cx, css } from 'emotion';
 
 import { deletePokemon, modifyDeletionConfirmation } from 'actions';
 import { connect } from 'react-redux';

@@ -1,6 +1,6 @@
 export const getAdditionalFormes = (species: string | undefined): string[] => {
     if (species == null) return [];
-    const s: Lowercase<string> = species.toLowerCase();
+    const s: Lowercase<string> = species.toLowerCase() as Lowercase<string>;
     if (s === 'pikachu') {
         return [
             'Rock Star',

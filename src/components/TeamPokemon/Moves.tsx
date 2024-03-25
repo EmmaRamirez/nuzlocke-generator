@@ -57,8 +57,9 @@ export class MovesBase extends React.Component<MovesProps> {
     private generateMoves(moves: MovesProps['moves']) {
         const { style, customMoveMap, customTypes, stripClasses = false } = this.props;
 
+        if (!moves) return null;
+
         return (
-            moves &&
             moves.map((move, index) => {
                 let customMove;
                 try {

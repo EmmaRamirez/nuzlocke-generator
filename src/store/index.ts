@@ -1,7 +1,7 @@
 import { applyMiddleware, createStore, Middleware } from 'redux';
 import { createLogger } from 'redux-logger';
 import createHistory from 'history/createBrowserHistory';
-import { persistCombineReducers, persistStore, createMigrate } from 'redux-persist';
+import { persistCombineReducers, persistStore, createMigrate, MigrationManifest } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { version } from 'package';
 import { reducers } from '../reducers';
@@ -84,21 +84,21 @@ const config = {
     blacklist: ['router', 'editorHistory'],
     storage,
     version,
-    migrations: createMigrate(migrations, { debug: true }),
+    migrations: createMigrate(migrations as unknown as MigrationManifest, { debug: true }),
 };
 
 export const history = createHistory();
 
-export const persistReducers = persistCombineReducers(config, reducers);
+export const persistReducers = persistCombineReducers(config, reducers as any);
 
 export const middlewares: Middleware[] = [];
 
 if (process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'production') {
 } else {
     const loggerMiddleware = createLogger();
-    middlewares.push(loggerMiddleware);
+    middlewares.push(loggerMiddleware as any);
 }
 
 export const store = createStore(persistReducers, applyMiddleware(...middlewares));
 
-export const persistor = persistStore(store, null);
+export const persistor = persistStore(store, undefined);

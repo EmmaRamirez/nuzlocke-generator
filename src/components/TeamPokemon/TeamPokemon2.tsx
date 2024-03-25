@@ -152,6 +152,7 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
         linkedPokemonData: linkedPokemon ?? null,
         extraData: '',
         movesColored: ReactDOMServer.renderToString(
+            // @ts-expect-error
             <MovesBase
                 style={style}
                 customMoveMap={customMoveMap}
@@ -163,6 +164,7 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
             />,
         ),
         movesColoredWithClasses: ReactDOMServer.renderToString(
+            // @ts-expect-error
             <MovesBase
                 style={style}
                 customMoveMap={customMoveMap}
