@@ -200,6 +200,9 @@
   "overrides": {
     "serviceworker-webpack-plugin": {
       "webpack": "^5.91.0"
+    },
+    "webpack-plugin-serve": {
+      "webpack": "^5.91.0"
     }
   }
 }
