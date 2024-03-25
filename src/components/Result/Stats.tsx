@@ -216,4 +216,4 @@ export const Stats = connect((state: State) => ({
     stats: state.stats,
     style: state.style,
     box: state.box,
-}), undefined, undefined, { pure: false })(StatsBase as any);
+}), undefined, undefined, { pure: false })(StatsBase);

@@ -267,6 +267,8 @@ export class Result extends React.Component {
     public render() {
         return (
             <div className={cx(Styles.result_wrapper, 'hide-scrollbars')}>
+                {/* @TODO fix this */}
+                {/* @ts-expect-error */}
                 <TopBar ref={this.ref} />
                 <ResultInner ref={this.ref} />
             </div>

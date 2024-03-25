@@ -196,5 +196,10 @@
     "webpack-dashboard": "^3.2.1",
     "webpack-serve": "^4.0.0",
     "workbox-webpack-plugin": "^7.0.0"
+  },
+  "overrides": {
+    "serviceworker-webpack-plugin": {
+      "webpack": "^5.91.0"
+    }
   }
 }
