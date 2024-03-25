@@ -21,6 +21,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].bundle.js',
         chunkFilename: '[name].chunk.js',
+        hashFunction: 'sha512'
     },
     mode: isProduction ? 'production' : 'development',
     devtool: 'source-map',

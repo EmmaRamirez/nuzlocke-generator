@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { css } from 'react-emotion';
+import { css } from 'emotion';
 
 export const checkpointsEditor = css`
     overflow-x: hidden;
