@@ -97,8 +97,8 @@
     "ts-node": "^10.0.0",
     "tslib": "^2.0.0",
     "tslint": "^6.1.2",
-    "webpack-dev-server": "^3.11.0",
-    "webpack-plugin-serve": "^0.12.1"
+    "webpack-dev-server": "^5.0.4",
+    "webpack-plugin-serve": "^1.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.1",
@@ -175,7 +175,7 @@
     "react-markdown": "^3.1.5",
     "react-polyfills": "0.0.1",
     "react-redux": "^7.2.1",
-    "react-styleguidist": "^11.2.0",
+    "react-styleguidist": "^13.1.2",
     "react-test-renderer": "^17.0.1",
     "react-transition-group": "^2.2.1",
     "recompose": "^0.25.1",
@@ -204,7 +204,7 @@
     "webpack-bundle-analyzer": "^3.9.0",
     "webpack-cli": "^4.1.0",
     "webpack-dashboard": "^3.2.1",
-    "webpack-serve": "^3.2.0",
+    "webpack-serve": "^4.0.0",
     "workbox-webpack-plugin": "^5.1.4"
   }
 }
