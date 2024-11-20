@@ -20,7 +20,7 @@ import {
     replaceState,
     updateSwitchNuzlocke,
 } from 'actions';
-import { feature, gameOfOriginToColor, getContrastColor } from 'utils';
+import { feature, gameOfOriginToColor, getContrastColor, Species, speciesToNumber } from 'utils';
 import { omit } from 'ramda';
 import { createStore } from 'redux';
 import { appReducers } from 'reducers';
@@ -93,14 +93,16 @@ NuzlockeSaveControlsState
         const { nuzlockes } = this.props;
         const { currentId } = this.props.nuzlockes;
         const { isHofOpen, isDeletingNuzlocke, deletionFunction } = this.state;
-        const saves = nuzlockes.saves.sort(sort);
+        // const saves = nuzlockes?.saves.sort(sort);
+        const saves: any[] = [];
 
         return (
             <div
                 style={{
                     padding: '0.5rem',
                 }}>
-                <Button
+                {}
+                {/* <Button
                     intent={Intent.SUCCESS}
                     icon="add"
                     style={{marginBottom: '0.25rem'}}
@@ -111,7 +113,7 @@ NuzlockeSaveControlsState
                         replaceState(data);
                     }}>
                     New Nuzlocke
-                </Button>
+                </Button> */}
                 {saves.map((nuzlocke) => {
                     const id = nuzlocke.id;
                     console.log(nuzlocke.id);

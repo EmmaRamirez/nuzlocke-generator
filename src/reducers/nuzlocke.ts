@@ -28,20 +28,20 @@ export function nuzlockes(
             return {
                 ...state,
                 currentId: id,
-                saves: [
-                    ...state.saves,
-                    {
-                        id,
-                        data: action?.data || null,
-                        isCopy: action?.isCopy || false,
-                    },
-                ],
+                // saves: [
+                //     ...state.saves,
+                //     {
+                //         id,
+                //         data: action?.data || null,
+                //         isCopy: action?.isCopy || false,
+                //     },
+                // ],
             };
 
         case DELETE_NUZLOCKE:
             return {
                 ...state,
-                saves: state.saves.filter((s) => s.id !== action.id),
+                // saves: state.saves.filter((s) => s.id !== action.id),
             };
         case SWITCH_NUZLOCKE:
             return {
@@ -52,13 +52,13 @@ export function nuzlockes(
             return {
                 ...state,
                 currentId: action.newId,
-                saves: [
-                    ...state.saves.filter((s) => s.id !== action.id),
-                    {
-                        id: action.id,
-                        data: action.data,
-                    },
-                ],
+                // saves: [
+                //     ...state.saves.filter((s) => s.id !== action.id),
+                //     {
+                //         id: action.id,
+                //         data: action.data,
+                //     },
+                // ],
             };
         case UPDATE_NUZLOCKE:
             // const updateItem = state.saves.find(s => s.id === action.id);
@@ -78,13 +78,14 @@ export function nuzlockes(
             // }
             return {
                 ...state,
-                saves: [
-                    ...state.saves.filter((s) => s.id !== action.id),
-                    {
-                        id: action.id,
-                        data: action.data,
-                    },
-                ],
+                saves: [],
+                // saves: [
+                //     ...state.saves.filter((s) => s.id !== action.id),
+                //     {
+                //         id: action.id,
+                //         data: action.data,
+                //     },
+                // ],
             };
         default:
             return state;

@@ -6,6 +6,8 @@ import storage from 'redux-persist/lib/storage';
 import { version } from 'package';
 import { reducers } from '../reducers';
 import { State } from 'state';
+const localforage = require('localforage');
+
 
 const migrations = {
     '0.0.6-beta': (state) => {
@@ -76,13 +78,17 @@ const migrations = {
     '1.16.0': (state: State) => ({
         ...state,
         customAreas: [],
+        nuzlockes: {
+            ...state.nuzlockes,
+            saves: [],
+        }
     }),
 };
 
 const config = {
     key: 'root',
     blacklist: ['router', 'editorHistory'],
-    storage,
+    storage: localforage,
     version,
     migrations: createMigrate(migrations, { debug: true }),
 };

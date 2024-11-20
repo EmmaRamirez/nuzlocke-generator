@@ -3,7 +3,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Pokemon, Box as BoxModel, Boxes, Game } from 'models';
 import { State } from 'state';
-import { generateEmptyPokemon, listOfPokemon, matchSpeciesToTypes } from 'utils';
+import { generateEmptyPokemon, getEvolutionLine, listOfPokemon, matchSpeciesToTypes, Species, speciesToNumber } from 'utils';
 import { CurrentPokemonEdit } from '.';
 import { AddPokemonButton } from 'components/AddPokemonButton';
 import { BaseEditor } from 'components/BaseEditor';
@@ -11,6 +11,7 @@ import { Box, BoxForm } from 'components/Box';
 import { ErrorBoundary } from 'components/Shared';
 import { cx } from 'emotion';
 import { addPokemon } from 'actions';
+import { PokemonIcon } from 'components';
 
 export interface PokemonEditorProps {
     team: Pokemon[];
@@ -88,8 +89,19 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
         // });
     }
 
+    private getChampsLines = (pokemon: Pokemon[]) => {
+        const champs = pokemon.filter(poke => poke.status === 'Champs');
+
+        const allLines = champs.flatMap(poke => getEvolutionLine(poke.species as Species));
+        const sortedByDexNo = allLines?.sort((pokeA, pokeB) => (speciesToNumber(pokeA) ?? 0) - (speciesToNumber(pokeB) ?? 0));
+
+
+        return sortedByDexNo;
+    };
+
     public render() {
         const { team, boxes, game, style, excludedAreas, customAreas } = this.props;
+        const champsLines = this.getChampsLines(team);
 
         return (
             <>
@@ -131,6 +143,27 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                         <React.Suspense fallback={<Spinner />}>
                             <PokemonLocationChecklist customAreas={customAreas} excludedAreas={excludedAreas} boxes={boxes} style={style} pokemon={team} game={game} />
                         </React.Suspense>
+                    </BaseEditor>
+                    <BaseEditor name={`Champs Lines ${champsLines.length}`} defaultOpen={false}>
+                        <div style={{
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            gap: '0.25rem',
+                        }}>
+                            {champsLines.map(champ => <div className="pokemon-champ" style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'center',
+                                padding: '0.25rem',
+                                border: '1px solid #eee',
+                                borderRadius: '0.25rem',
+                                width: '5rem',
+                                textAlign: 'center',
+                                alignItems: 'center',
+                            }}>
+                                <PokemonIcon species={champ} /> {champ}
+                            </div>)}
+                        </div>
                     </BaseEditor>
                 </BaseEditor>
                 <React.Suspense fallback={<Spinner />}>

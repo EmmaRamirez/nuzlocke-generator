@@ -156,7 +156,7 @@
     "istanbul": "^0.4.5",
     "jest": "^27.0.6",
     "jest-css-modules": "^2.1.0",
-    "localforage": "^1.5.5",
+    "localforage": "^1.10.0",
     "mocha": "^8.2.0",
     "offline-plugin": "^5.0.5",
     "pg": "^8.7.1",

@@ -540,6 +540,29 @@ const cycleThrough = (species: Species) => {
 export const getEvolutionLine = (species: Species, linear: boolean = false): Species[] => {
     const line: Species[] = [];
 
+    // didn't feel like dealing with forked evos so just brute forcing it
+    const OddishLine: Species[] = ['Oddish', 'Gloom', 'Vileplume', 'Bellossom'];
+    const EeveeLine: Species[] = ['Eevee', 'Jolteon', 'Flareon', 'Vaporeon', 'Sylveon', 'Umbreon', 'Espeon', 'Leafeon', 'Glaceon'];
+    const SlowbroLine: Species[] = ['Slowpoke', 'Slowbro', 'Slowking'];
+    const ScytherLine: Species[] = ['Scyther', 'Scizor', 'Kleavor'];
+    const PoliLine: Species[] = ['Poliwag', 'Poliwhirl', 'Politoed', 'Poliwrath'];
+    if (OddishLine.includes(species)) return OddishLine;
+    if (SlowbroLine.includes(species)) return SlowbroLine;
+    if (EeveeLine.includes(species)) return EeveeLine;
+    if (ScytherLine.includes(species)) return ScytherLine;
+    if (PoliLine.includes(species)) return PoliLine;
+
+    // weird exception need to investigate
+    const HorseaLine: Species[] = ['Horsea', 'Seadra', 'Kingdra'];
+    const ElekidLine: Species[] = ['Elekid', 'Electabuzz', 'Electivire'];
+    const TogeLine: Species[] = ['Togepi', 'Togekiss', 'Togetic'];
+
+    if (HorseaLine.includes(species)) return HorseaLine;
+    if (ElekidLine.includes(species)) return ElekidLine;
+    if (TogeLine.includes(species)) return TogeLine;
+
+
+
     // include queries species
     line.push(species);
 
