@@ -5,19 +5,19 @@ import {
     Forme,
     Species,
     significantGenderDifferenceList,
-    handleMovesGenerationsExceptions,
 } from 'utils';
 import { Gender, GenderElementProps } from 'components/Shared';
 import { editPokemon, selectPokemon, SELECT_POKEMON } from 'actions';
 import { store } from 'store';
-import { DragSource, ConnectDragSource, ConnectDropTarget, DropTarget, useDrag } from 'react-dnd';
-import { Pokemon } from 'models';
+import { ConnectDragSource, ConnectDropTarget, DragSourceHookSpec } from 'react-dnd';
+import { useDrag, useDrop } from 'react-dnd';
 import { Dispatch } from 'redux';
 import { State } from 'state';
 import { Omit } from 'ramda';
 import { Action } from 'actions';
 import { normalizeSpeciesName } from 'utils/getters/normalizeSpeciesName';
 import { PokemonImage } from 'components/Shared/PokemonImage';
+import { Pokemon } from 'models';
 
 interface PokemonIconProps {
     /** The id of the Pokemon, used for selection **/
@@ -48,70 +48,64 @@ interface PokemonIconProps {
     isDragging?: boolean;
 }
 
-const iconSourceDrop = {
-    drop(props, monitor, component) {
-        const newPosition = props.position;
-        const newId = props.id;
-        const newStatus = props.status;
-        const item = monitor.getItem();
-        const oldId = item?.id;
-        const oldPosition = item?.position;
-        const oldStatus = item?.status;
-        // Prevent us from destroying a Pokemon's position accidentally
-        if (oldId == null || oldPosition == null || oldStatus == null) {
-            return;
-        }
-        store.dispatch(
-            editPokemon(
-                {
-                    position: oldPosition,
-                    status: oldStatus,
-                },
-                newId,
-            ),
-        );
-        store.dispatch(
-            editPokemon(
-                {
-                    position: newPosition,
-                    status: newStatus,
-                },
-                oldId,
-            ),
-        );
-        //store.dispatch(editPokemon({ position: newPosition }, id));
-        return {};
-    },
-
-    hover(props, monitor) {
-        return {
-            isHovering: monitor.isOver({ shallow: true }),
-        };
-    },
-};
-
-const iconSource = {
-    beginDrag(props: PokemonIconProps) {
-        store.dispatch(selectPokemon(props.id!));
-        return {
+const usePokemonDrag = (props: PokemonIconProps) => {
+    const [, dragRef] = useDrag({
+        type: 'POKEMON_ICON',
+        item: {
             id: props.id,
             position: props.position,
             status: props.status,
-        };
-    },
-    isDragging(props: PokemonIconProps) {
-        return {
-            id: props.id,
-            position: props.position,
-            status: props.status,
-        };
-    },
+        },
+        collect: (monitor) => ({
+            isDragging: monitor.isDragging(),
+        }),
+        begin: () => {
+            store.dispatch(selectPokemon(props.id!));
+        },
+    });
+
+    return dragRef;
 };
 
-type IconURLArgs = Pick<
-    Pokemon,
-    'id' | 'species' | 'forme' | 'shiny' | 'gender' | 'customIcon' | 'egg'
->;
+const usePokemonDrop = (props: PokemonIconProps) => {
+    const [, dropRef] = useDrop({
+        accept: 'POKEMON_ICON',
+        drop: (item: { id: string; position: number; status: string }) => {
+            const newPosition = props.position;
+            const newId = props.id;
+            const newStatus = props.status;
+            const oldId = item?.id;
+            const oldPosition = item?.position;
+            const oldStatus = item?.status;
+
+            if (newId == null || oldId == null || oldPosition == null || oldStatus == null) {
+                return;
+            }
+
+            store.dispatch(
+                editPokemon(
+                    {
+                        position: oldPosition,
+                        status: oldStatus,
+                    },
+                    newId,
+                ),
+            );
+            store.dispatch(
+                editPokemon(
+                    {
+                        position: newPosition,
+                        status: newStatus,
+                    },
+                    oldId,
+                ),
+            );
+        },
+    });
+
+    return dropRef;
+};
+type IconURLArgs = Pick<Pokemon, 'id' | 'species' | 'forme' | 'shiny' | 'gender' | 'customIcon' | 'egg'>;
 
 export const getIconURL = ({ id, species, forme, shiny, gender, customIcon, egg }: IconURLArgs) => {
     const baseURL = 'icons/pokemon/';
@@ -145,6 +139,7 @@ export function PokemonIconPlain({
     includeTitle,
     imageStyle,
 }: PokemonIconProps & { imageStyle: any }) {
+    // className={`${isDragging ? 'opacity-medium' : ''} ${canDrop ? 'droppable' : ''}`}
     return (
         <div
             role="presentation"
@@ -155,13 +150,9 @@ export function PokemonIconPlain({
             id={id}
             title={includeTitle ? species : undefined}
             style={style}
-            className={`${id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'} ${
-                className || ''
-            } ${isDragging ? 'opacity-medium' : ''} ${canDrop ? 'droppable' : ''}`}>
+            className={`${id === selectedId ? 'pokemon-icon selected' : 'pokemon-icon'} ${className || ''} ${isDragging ? 'opacity-medium' : ''} ${canDrop ? 'droppable' : ''}`}>
             {customIcon ? (
-                <PokemonImage url={customIcon}>
-                    {(image) => <img style={imageStyle} alt={species} src={image} />}
-                </PokemonImage>
+                <PokemonImage url={customIcon} />
             ) : (
                 <img
                     style={imageStyle}
@@ -185,29 +176,21 @@ export function PokemonIconPlain({
     );
 }
 
-// @DragSource('ICON', iconSource as any, (connect, monitor) => ({
-//     connectDragSource: connect.dragSource(),
-//     isDragging: monitor.isDragging(),
-// }))
-// @DropTarget('ICON', iconSourceDrop, (connect, monitor) => ({
-//     connectDropTarget: connect.dropTarget(),
-//     canDrop: monitor.canDrop(),
-// }))
 export const PokemonIconBase = (props: PokemonIconProps) => {
-    const { connectDragSource, connectDropTarget, styles, hidden } = props;
+    const { styles, hidden } = props;
+    const dragRef = usePokemonDrag(props);
+    const dropRef = usePokemonDrop(props);
     const imageStyle = {
-        maxHeight: '100%',
-        opacity: hidden ? 0.5 : 1,
+
         height: '32px',
         maxWidth: 'auto',
         imageRendering: styles?.iconRendering,
     };
-    return connectDropTarget!(
-        connectDragSource!(
-            <div>
-                <PokemonIconPlain imageStyle={imageStyle} {...props} />
-            </div>,
-        ),
+
+    return (
+        <div ref={(node) => dragRef(dropRef(node))}>
+            <PokemonIconPlain imageStyle={imageStyle} {...props} />
+        </div>
     );
 };
 
