@@ -61,18 +61,20 @@ const getNumberOf = (status?: string, pokemon?: Pokemon[]) =>
             .filter((poke) => poke.status === status && !poke.hidden).length
         : 0;
 
-const ZoomValues = [{ key: 0.25, value: '25%' },
-{ key: 0.5, value: '50%' },
-{ key: 0.75, value: '75%' },
-{ key: 1, value: '100%' },
-{ key: 1.25, value: '125%' },
-{ key: 1.5, value: '150%' },
-{ key: 2, value: '200%' },
-{ key: 3, value: '300%' }];
+const ZoomValues = [
+    { key: 0.25, value: '25%' },
+    { key: 0.5, value: '50%' },
+    { key: 0.75, value: '75%' },
+    { key: 1, value: '100%' },
+    { key: 1.25, value: '125%' },
+    { key: 1.5, value: '150%' },
+    { key: 2, value: '200%' },
+    { key: 3, value: '300%' }
+];
 type ZoomValue = typeof ZoomValues[number];
 
 const TopBarItems = ({ editorDarkMode, setZoomLevel, currentZoomLevel }) => {
-
+    // @TODO: make this look decent
     return (
         <Select<ZoomValue>
             filterable={false}
