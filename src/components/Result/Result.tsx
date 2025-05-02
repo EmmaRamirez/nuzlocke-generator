@@ -23,11 +23,12 @@ import './Result.css';
 import './themes.css';
 import { State } from 'state';
 import isMobile from 'is-mobile';
-import { Button, Classes } from '@blueprintjs/core';
+import { Button, Classes, MenuItem } from '@blueprintjs/core';
 import { clamp } from 'ramda';
 import { resultSelector } from 'selectors';
 import { PokemonImage } from 'components/Shared/PokemonImage';
 import { normalizeSpeciesName } from 'utils/getters/normalizeSpeciesName';
+import { Select } from '@blueprintjs/select';
 
 async function load() {
     const resource = await import('@emmaramirez/dom-to-image');
@@ -59,6 +60,34 @@ const getNumberOf = (status?: string, pokemon?: Pokemon[]) =>
             ?.filter((v) => v.hasOwnProperty('id'))
             .filter((poke) => poke.status === status && !poke.hidden).length
         : 0;
+
+const ZoomValues = [{ key: 0.25, value: '25%' },
+{ key: 0.5, value: '50%' },
+{ key: 0.75, value: '75%' },
+{ key: 1, value: '100%' },
+{ key: 1.25, value: '125%' },
+{ key: 1.5, value: '150%' },
+{ key: 2, value: '200%' },
+{ key: 3, value: '300%' }];
+type ZoomValue = typeof ZoomValues[number];
+
+const TopBarItems = ({ editorDarkMode, setZoomLevel, currentZoomLevel }) => {
+
+    return (
+        <Select<ZoomValue>
+            filterable={false}
+            items={ZoomValues}
+            itemRenderer={(item, { handleClick }) => (<div onClick={handleClick}>{item.value}</div>)}
+            noResults={<MenuItem disabled={true} text="No results." />}
+            onItemSelect={(item) => {
+                console.log('item', item);
+                setZoomLevel(item.key);
+            }}
+        >
+            <Button text={currentZoomLevel ?? '100%'} icon="double-caret-vertical" />
+        </Select>
+    );
+};
 
 export function BackspriteMontage({ pokemon }: { pokemon: Pokemon[] }) {
     return (
@@ -125,40 +154,6 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             .map((poke, index) => {
                 return <TeamPokemon key={index} pokemon={poke} />;
             });
-    }
-
-    private renderTopBarItems() {
-        const renderItems: React.ReactNode[] = [];
-        renderItems.push(<div key={1} className={cx(this.props.style.editorDarkMode && Classes.DARK, Classes.SELECT)}>
-            <select className={cx(this.props.style.editorDarkMode && Classes.DARK)} defaultValue={1} onChange={(e?: React.ChangeEvent<HTMLSelectElement>) => this.setState({zoomLevel: Number.parseFloat(e?.target?.value ?? '1')})}>
-                {[
-                    {key: 0.25, value: '25%'},
-                    {key: 0.5, value: '50%'},
-                    {key: 0.75, value: '75%'},
-                    {key: 1, value: '100%'},
-                    {key: 1.25, value: '125%'},
-                    {key: 1.5, value: '150%'},
-                    {key: 2, value: '200%'},
-                    {key: 3, value: '300%'},
-                ].map(opt => <option className={cx(this.props.style.editorDarkMode && Classes.DARK)} key={opt.key} value={opt.key}>Zoom: {opt.value}</option>)}
-            </select>
-        </div>);
-        // if (this.props.pokemon.filter((poke) => poke.status === 'Team').length > 6) {
-        //     renderItems.push(
-        //         <div key={uuid()} className="bp3-callout bp3-intent-danger w-60 fixed right-1 top-1">
-        //             You have more than 6 Pokémon in your party.
-        //         </div>,
-        //     );
-        // }
-        // if (this.state.downloadError) {
-        //     renderItems.push(
-        //         <div key={uuid()} className="bp3-callout bp3-intent-danger w-60 fixed right-1 top-4">
-        //             Image failed to download. Check that you are not using images that link to
-        //             external sites.
-        //         </div>,
-        //     );
-        // }
-        return <>{renderItems}</>;
     }
 
     private getPokemonByStatus(status: string) {
@@ -321,7 +316,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     private onZoom = (e?: React.WheelEvent<HTMLElement>) => {
         // @ts-expect-error
         if (e.shiftKey) {
-            this.setState({zoomLevel: clamp(0.1, 5, ( (-e?.deltaY! ?? 3) / 3 ))});
+            this.setState({ zoomLevel: clamp(0.1, 5, ((-e?.deltaY! ?? 3) / 3)) });
         }
     };
 
@@ -376,7 +371,11 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     <TopBar
                         isDownloading={this.state.isDownloading}
                         onClickDownload={() => this.toImage()}>
-                        {this.renderTopBarItems()}
+                        <TopBarItems
+                            editorDarkMode={this.props.style.editorDarkMode}
+                            setZoomLevel={(zoomLevel) => this.setState({ zoomLevel })}
+                            currentZoomLevel={this.state.zoomLevel}
+                        />
                     </TopBar>
                     <style>
                         {`
@@ -401,12 +400,11 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     )}
                     <div
                         ref={this.resultRef}
-                        className={`result ng-container ${
-                            (style.template && style.template.toLowerCase().replace(/\s/g, '-')) ||
+                        className={`result ng-container ${(style.template && style.template.toLowerCase().replace(/\s/g, '-')) ||
                             ''
-                        } region-${getGameRegion(
-                            this.props.game.name,
-                        )} team-size-${numberOfTeam} ${trainerSectionOrientation}-trainer
+                            } region-${getGameRegion(
+                                this.props.game.name,
+                            )} team-size-${numberOfTeam} ${trainerSectionOrientation}-trainer
                        ${editor.showResultInMobile ? Styles.result_mobile : ''}
                         `}
                         style={{
@@ -458,9 +456,9 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             : null}
                         {teamContainer}
                         {style.template === 'Generations' &&
-                        trainerSectionOrientation === 'vertical' ? (
-                                <div className="statuses-wrapper">
-                                    {/* {this.renderContainer(
+                            trainerSectionOrientation === 'vertical' ? (
+                            <div className="statuses-wrapper">
+                                {/* {this.renderContainer(
                                         this.getPokemonByStatus('Boxed'),
                                         paddingForVerticalTrainerSection,
                                     box?.[1],
@@ -475,11 +473,11 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                                         paddingForVerticalTrainerSection,
                                     box?.[3],
                                     )} */}
-                                    {this.renderOtherPokemonStatuses(paddingForVerticalTrainerSection)}
-                                </div>
-                            ) : (
-                                <>
-                                    {/* {this.renderContainer(
+                                {this.renderOtherPokemonStatuses(paddingForVerticalTrainerSection)}
+                            </div>
+                        ) : (
+                            <>
+                                {/* {this.renderContainer(
                                         this.getPokemonByStatus('Boxed'),
                                         paddingForVerticalTrainerSection,
                                     box?.[1],
@@ -494,9 +492,9 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                                         paddingForVerticalTrainerSection,
                                     box?.[3],
                                     )} */}
-                                    {this.renderOtherPokemonStatuses(paddingForVerticalTrainerSection)}
-                                </>
-                            )}
+                                {this.renderOtherPokemonStatuses(paddingForVerticalTrainerSection)}
+                            </>
+                        )}
 
                         <div
                             style={{
