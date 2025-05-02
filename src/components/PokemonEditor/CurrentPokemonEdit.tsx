@@ -28,7 +28,7 @@ import { listOfGames, accentedE } from 'utils';
 import { PokemonIconPlain } from 'components/PokemonIcon';
 import { cx } from 'emotion';
 import * as Styles from './styles';
-const uuid = require('uuid');
+import { v4 as uuid } from 'uuid';
 import {
     Classes,
     Icon,
@@ -47,7 +47,7 @@ import { MoveEditor } from 'components/MoveEditor';
 import { CheckpointsInputList } from 'components/TrainerEditor';
 import { getImages, Image } from 'components/Shared/ImagesDrawer';
 
-const pokeball = require('assets/pokeball.png').default;
+const pokeball = 'src/assets/pokeball.png';
 
 export interface CopyPokemonButtonProps {
     onClick: (event: React.MouseEvent<HTMLElement>) => void;

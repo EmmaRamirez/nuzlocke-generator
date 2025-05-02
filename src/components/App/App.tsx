@@ -9,8 +9,6 @@ import { ErrorBoundary } from 'components';
 import { Button } from '@blueprintjs/core';
 import { updaterSelector, appSelector } from 'selectors';
 
-const isEqual = require('lodash/isEqual');
-
 import './app.css';
 import { Skeleton } from 'components/Shared';
 
@@ -62,7 +60,7 @@ export class UpdaterBase extends React.Component<{
             (prev.lrt === 'update') &&
             this.props.present != null &&
             this.props.present != null &&
-            !isEqual(this.props.present, prev.present)
+            !(this.props.present === prev.present)
         ) {
             const t0 = performance.now();
             this.props.updateEditorHistory(prev.present);

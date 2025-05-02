@@ -30,9 +30,8 @@ import { cx } from 'emotion';
 import * as Styles from './styles';
 import { ThemeEditor } from 'components/ThemeEditor';
 import { customCSSGuide as text } from 'utils/customCSSGuide';
-const ReactMarkdown = require('react-markdown');
-
-const debounce = require('lodash.debounce');
+import ReactMarkdown from 'react-markdown';
+import { debounce } from 'utils/debounce';
 
 const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'], game?: Game) => {
     const propName = name || e.target.name;

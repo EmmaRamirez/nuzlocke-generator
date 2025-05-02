@@ -14,10 +14,12 @@ import { isLocal } from 'utils';
 import { ErrorBoundary } from 'components';
 
 (window as any).global = window;
-// @ts-ignore
-window.Buffer = window.Buffer || require('buffer').Buffer;
-// @ts-ignore
-window.path = window.path || require('path').path;
+
+// @TODO: add back Buffer/Path
+// // @ts-ignore
+// window.Buffer = window.Buffer || require('buffer').Buffer;
+// // @ts-ignore
+// window.path = window.path || require('path').path;
 
 async function getRollbar() {
     // @ts-expect-error
@@ -98,6 +100,8 @@ async function createRender() {
     const { HTML5Backend  } = await import('react-dnd-html5-backend');
     const { PersistGate } = await import('redux-persist/es/integration/react');
     const { store, persistor } = await import('./store');
+    // @TODO: add back check for tests mode
+    const isTest = false;
 
     const App = React.lazy(() =>
         import('components/App').then((res) => ({ default: res.App })),
@@ -105,7 +109,7 @@ async function createRender() {
 
     render(
         <Provider store={store}>
-            {process.env.NODE_ENV !== 'test' ? (
+            {isTest? (
                 <PersistGate loading={<div>Loading...</div>} onBeforeLift={null} persistor={persistor}>
                     <DndProvider  backend={HTML5Backend}>
                         <ErrorBoundary>

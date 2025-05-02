@@ -4,7 +4,7 @@ import { splitUp, GEN_1_POKEMON_MAP, GEN_1_CHARACTER_MAP, MOVES_ARRAY } from './
 import { Buffer } from 'buffer';
 import { parseTime } from './utils/parseTime';
 import { ParserOptions } from './utils/parserOptions';
-const uuid = require('uuid');
+import { v4 as uuid } from 'uuid';
 
 // tslint:disable-next-line:class-name
 interface GEN_1_SAVE {

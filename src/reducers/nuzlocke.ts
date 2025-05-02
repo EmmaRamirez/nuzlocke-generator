@@ -6,7 +6,7 @@ import {
     UPDATE_NUZLOCKE,
     UPDATE_SWITCH_NUZLOCKE,
 } from 'actions';
-const uuid = require('uuid');
+import { v4 as uuid } from 'uuid';
 
 export interface Nuzlockes {
     currentId: string;

@@ -93,7 +93,7 @@ export const persistReducers = persistCombineReducers(config, reducers as any);
 
 export const middlewares: Middleware[] = [];
 
-if (process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'production') {
+if (import.meta.env.PROD) {
 } else {
     const loggerMiddleware = createLogger();
     middlewares.push(loggerMiddleware as any);

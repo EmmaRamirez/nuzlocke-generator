@@ -20,6 +20,7 @@ export * from './Types';
 export * from './accentedE';
 export * from './handleMovesGenerationExceptions';
 export * from './dragAndDrop';
+export * from './debounce';
 export * from './DeepSet';
 export * from './isEmpty';
 export * from './Forme';

@@ -17,7 +17,7 @@ import {
 } from '@blueprintjs/core';
 import { PokemonIconBase } from 'components/PokemonIcon';
 import { ErrorBoundary } from 'components/Shared';
-const uuid = require('uuid');
+import { v4 as uuid } from 'uuid';
 import { persistor } from 'store';
 import { newNuzlocke, replaceState, setEditorHistoryDisabled } from 'actions';
 import { Game, Pokemon, Trainer } from 'models';
@@ -27,9 +27,9 @@ import { State } from 'state';
 import { noop } from 'redux-saga/utils';
 import { feature, GameSaveFormat } from 'utils';
 import { DeleteAlert } from './DeleteAlert';
-
-const isEmpty = require('lodash/isEmpty');
-import codegen from 'codegen.macro';
+import { isEmpty } from 'utils/isEmpty';
+// @TODO: fix codegen imports
+// import codegen from 'codegen.macro';
 import { BoxMappings } from 'parsers/utils/boxMappings';
 import { cx } from 'emotion';
 
@@ -339,7 +339,9 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
     private uploadFile = (replaceState, state) => (e) => {
         const t0 = performance.now();
         // @NOTE: this is a gross work-around a bug with jest and import.meta.url
-        const worker = new Worker(new URL('parsers/worker.ts', codegen`module.exports = process.env.NODE_ENV === "test" ? "" : "import.meta.url"`));
+        // const worker = new Worker(new URL('parsers/worker.ts', codegen`module.exports = import.meta.env.MODE === "test" ? "" : "import.meta.url"`));
+
+        const worker = new Worker(new URL('parsers/worker.ts', import.meta.url));
 
         const file = this.fileInput.files[0];
         const reader = new FileReader();

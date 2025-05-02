@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { connect } from 'react-redux';
-const uuid = require('uuid');
+import { v4 as uuid } from 'uuid';
 import { cx } from 'emotion';
 
 import { selectPokemon, toggleMobileResultView } from 'actions';
@@ -193,9 +193,6 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     private async toImage() {
         const resultNode = this.resultRef.current;
         this.setState({ isDownloading: true });
-        if (process.env.NODE_ENV === 'test') {
-            return;
-        }
         try {
             const domToImage = await load();
             const dataUrl = await domToImage.toPng(resultNode, { corsImage: true });

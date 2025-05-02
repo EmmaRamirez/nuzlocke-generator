@@ -3,7 +3,12 @@ import { Classes, Dialog, Intent, Button } from '@blueprintjs/core';
 import { useSelector } from 'react-redux';
 import { State } from 'state';
 import { css, cx } from 'emotion';
-const credits = require('./credits.json');
+// import credits from './credits.json';
+// @TODO: fix credits
+const credits: CreditsData = {
+    dev: [],
+    art: []
+};
 
 const creditsContainer = css`
     max-height: 30rem;

@@ -5,7 +5,7 @@ import {
     REPLACE_STATE,
     VERSION_1116,
 } from 'actions';
-const uuid = require('uuid');
+import { v4 as uuid } from 'uuid';
 import { State } from 'state';
 
 const initialState = [];

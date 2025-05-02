@@ -24,7 +24,7 @@ import { getContrastColor } from 'utils';
 import { useEvent } from 'utils/hooks';
 import { TrainerNotes } from './TrainerNotes';
 
-const uuid = require('uuid');
+import { v4 as uuid } from 'uuid';
 
 async function load() {
     const resource = await import('@emmaramirez/dom-to-image');
