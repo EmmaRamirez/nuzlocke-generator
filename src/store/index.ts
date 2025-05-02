@@ -1,5 +1,6 @@
 import { applyMiddleware, createStore, Middleware } from 'redux';
 import { createLogger } from 'redux-logger';
+// @TODO: figure out this deprecation
 import createHistory from 'history/createBrowserHistory';
 import { persistCombineReducers, persistStore, createMigrate, MigrationManifest } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';

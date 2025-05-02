@@ -59,9 +59,10 @@ const usePokemonDrag = (props: PokemonIconProps) => {
         collect: (monitor) => ({
             isDragging: monitor.isDragging(),
         }),
-        begin: () => {
-            store.dispatch(selectPokemon(props.id!));
-        },
+        // @TODO: figure out where this piece should go
+        // item: () => {
+        //     store.dispatch(selectPokemon(props.id!));
+        // },
     });
 
     return dragRef;
