@@ -8,9 +8,10 @@ import { History } from 'reducers/editorHistory';
 import { ErrorBoundary } from 'components';
 import { Button } from '@blueprintjs/core';
 import { updaterSelector, appSelector } from 'selectors';
+import { Skeleton } from 'components/Shared';
+import { isEqual } from 'utils/isEqual';
 
 import './app.css';
-import { Skeleton } from 'components/Shared';
 
 export interface AppProps {
     style: State['style'];
@@ -60,7 +61,7 @@ export class UpdaterBase extends React.Component<{
             (prev.lrt === 'update') &&
             this.props.present != null &&
             this.props.present != null &&
-            !(this.props.present === prev.present)
+            !(isEqual(this.props.present, prev.present))
         ) {
             const t0 = performance.now();
             this.props.updateEditorHistory(prev.present);
