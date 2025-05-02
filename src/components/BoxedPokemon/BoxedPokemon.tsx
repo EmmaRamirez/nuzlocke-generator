@@ -46,7 +46,6 @@ export const BoxedPokemonBase = (poke: BoxedPokemonProps) => {
                 position={poke?.position}
                 species={poke?.species}
                 id={poke?.id}
-                style={{ cursor: 'pointer' }}
                 forme={poke?.forme}
                 shiny={poke?.shiny}
                 gender={poke?.gender}

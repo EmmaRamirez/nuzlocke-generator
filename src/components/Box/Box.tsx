@@ -24,6 +24,7 @@ import {
     Toast,
 } from '@blueprintjs/core';
 import { connect, useDispatch } from 'react-redux';
+import { PokemonIconProps } from 'components/PokemonIcon';
 
 const boxSource = {
     drop(props, monitor, component) {
@@ -129,7 +130,7 @@ export interface BoxState {
     deleteConfirmationOpen: boolean;
 }
 
-const BoxBase: React.FC<BoxProps> = (props) => {
+export const Box: React.FC<BoxProps> = (props) => {
     const {
         pokemon,
         inheritFrom,
@@ -139,10 +140,6 @@ const BoxBase: React.FC<BoxProps> = (props) => {
         background,
         collapsed: isCollapsed,
         searchTerm,
-        clearBox,
-        editBox,
-        deleteBox,
-        deletePokemon,
     } = props;
 
     const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
@@ -157,35 +154,54 @@ const BoxBase: React.FC<BoxProps> = (props) => {
     }));
 
     const [{ isOver }, dropRef] = useDrop(() => ({
-        accept: 'BOX',
-        drop: (item) => {
-            // Handle drop logic here
+        accept: 'POKEMON_ICON',
+        drop: (item: PokemonIconProps, monitor) => {
+            if (props.id == null || item.id == null) {
+                const toaster = Toaster.create();
+                toaster.show({
+                    message: 'Failed to move Pokémon',
+                    intent: Intent.DANGER,
+                });
+                return;
+            }
+            dispatch(
+                editPokemon(
+                    {
+                        // position: oldPosition,
+                        status: props.name,
+                    },
+                    (item).id,
+                ),
+            );
         },
         collect: (monitor) => ({
             isOver: monitor.isOver(),
         }),
     }));
 
+
     const toggleDialog = () => setDeleteConfirmationOpen(!deleteConfirmationOpen);
 
     const handleDeleteBox = () => {
-        deleteBox(id);
+        dispatch(deleteBox(id));
+
         pokemon
             .filter((p) => p.status === name)
             .forEach((p) => deletePokemon(p.id));
+
         setDeleteConfirmationOpen(false);
     };
 
     const handleEditBox = (edits: Partial<BoxType>) => {
-        editBox(id, edits);
+        dispatch(editBox(id, edits));
     };
 
     const handleToggleCollapse = () => {
-        editBox(id, { collapsed: !isCollapsed });
+        dispatch(editBox(id, { collapsed: !isCollapsed }));
     };
 
     const handleClearBox = () => {
-        clearBox(name);
+        dispatch(clearBox(name));
     };
 
     const getBoxBackground = () => {
@@ -486,11 +502,10 @@ const BoxBase: React.FC<BoxProps> = (props) => {
 // }
 
 
-
-export const Box = connect(null, {
-    clearBox,
-    editBox,
-    deleteBox,
-    deletePokemon,
-    updateBoxes,
-})(BoxBase);
+// export const Box = connect(null, {
+//     clearBox,
+//     editBox,
+//     deleteBox,
+//     deletePokemon,
+//     updateBoxes,
+// })(BoxBase);

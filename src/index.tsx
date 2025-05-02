@@ -89,7 +89,6 @@ injectGlobal`
     .full-width { width: 100%; }
 `;
 
-
 const mountNode = document.getElementById('app');
 
 async function createRender() {

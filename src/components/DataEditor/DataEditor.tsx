@@ -15,7 +15,7 @@ import {
     Popover,
     PopoverInteractionKind,
 } from '@blueprintjs/core';
-import { PokemonIconBase } from 'components/PokemonIcon';
+import { PokemonIcon } from 'components/PokemonIcon';
 import { ErrorBoundary } from 'components/Shared';
 import { v4 as uuid } from 'uuid';
 import { persistor } from 'store';
@@ -299,7 +299,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     {d?.pokemon
                         ?.filter((p) => p.status === 'Team')
                         ?.map((p) => {
-                            return <PokemonIconBase key={p.id} {...p} />;
+                            return <PokemonIcon key={p.id} {...p} />;
                         })}
                 </div>
             );

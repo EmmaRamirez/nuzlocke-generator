@@ -160,6 +160,7 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                             </label>
                             <div className={Classes.SELECT}>
                                 <select
+                                    className='bp3-select'
                                     onChange={this.editFormInput}
                                     value={this.state.newBox.inheritFrom}
                                     name="inheritFrom">
