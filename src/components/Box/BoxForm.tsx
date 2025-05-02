@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Intent, Popover, Icon, PopoverInteractionKind, Classes, Toaster } from '@blueprintjs/core';
+import { Button, Intent, Popover, Icon, PopoverInteractionKind, Classes, Toaster, HTMLSelect } from '@blueprintjs/core';
 import { State } from 'state';
 import { connect } from 'react-redux';
 import { addBox, AddBoxArgs } from 'actions';
@@ -158,19 +158,16 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                             <label style={labelStyle} className={Classes.LABEL}>
                                 Inherit From...
                             </label>
-                            <div className={Classes.SELECT}>
-                                <select
-                                    className='bp3-select'
-                                    onChange={this.editFormInput}
-                                    value={this.state.newBox.inheritFrom}
-                                    name="inheritFrom">
-                                    {['Team', 'Boxed', 'Dead', 'Champs'].map((box, idx) => (
-                                        <option key={idx} value={box}>
-                                            {box}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
+                            <HTMLSelect
+                                onChange={this.editFormInput}
+                                value={this.state.newBox.inheritFrom}
+                                name="inheritFrom">
+                                {['Team', 'Boxed', 'Dead', 'Champs'].map((box, idx) => (
+                                    <option key={idx} value={box}>
+                                        {box}
+                                    </option>
+                                ))}
+                            </HTMLSelect>
                         </div>
                         <div
                             style={{

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Classes } from '@blueprintjs/core';
+import { Classes, HTMLSelect } from '@blueprintjs/core';
 import * as css from './styles';
 import { cx } from 'emotion';
 import { head, last } from 'ramda';
@@ -76,15 +76,13 @@ export class CSSUnitInput extends React.Component<CSSUnitInputProps, CSSUnitInpu
                     type="number"
                     value={chosenNumber}
                 />
-                <div className={cx(Classes.SELECT, css.unitSelect)}>
-                    <select onChange={this.setUnit} value={chosenUnit}>
-                        {units?.map((u) => (
-                            <option key={u} value={u}>
-                                {u}
-                            </option>
-                        ))}
-                    </select>
-                </div>
+                <HTMLSelect onChange={this.setUnit} value={chosenUnit}>
+                    {units?.map((u) => (
+                        <option key={u} value={u}>
+                            {u}
+                        </option>
+                    ))}
+                </HTMLSelect>
             </div>
         );
     }

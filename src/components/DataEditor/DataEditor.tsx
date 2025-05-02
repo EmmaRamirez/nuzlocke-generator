@@ -14,6 +14,7 @@ import {
     Icon,
     Popover,
     PopoverInteractionKind,
+    HTMLSelect,
 } from '@blueprintjs/core';
 import { PokemonIcon } from 'components/PokemonIcon';
 import { ErrorBoundary } from 'components/Shared';
@@ -126,18 +127,16 @@ const generateArray = (n: number) => {
 const generateBoxMappingsDefault = (saveFormat) => generateArray(getGameNumberOfBoxes(saveFormat));
 
 export function BoxSelect({boxes, value, boxKey, setBoxMappings}: {boxes: State['box'], value: string, boxKey: number, setBoxMappings: SaveGameSettingsDialogProps['setBoxMappings']}) {
-    return <div className={Classes.SELECT}>
-        <select
-            value={value}
-            onChange={e => setBoxMappings({ key: boxKey, status: e.target.value })}
-        >
-            {boxes.map((box) => (
-                <option key={box.id} value={box.name}>
-                    {box.name}
-                </option>
-            ))}
-        </select>
-    </div>;
+    return <HTMLSelect
+        value={value}
+        onChange={e => setBoxMappings({ key: boxKey, status: e.target.value })}
+    >
+        {boxes.map((box) => (
+            <option key={box.id} value={box.name}>
+                {box.name}
+            </option>
+        ))}
+    </HTMLSelect>;
 }
 
 export function SaveGameSettingsDialog({
@@ -434,22 +433,20 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     <div
                         className={cx(Classes.LABEL, Classes.INLINE)}
                         style={{ padding: '.25rem 0', paddingBottom: '.5rem' }}>
-                        <div className={Classes.SELECT}>
-                            <select
-                                value={this.state.selectedGame}
-                                onChange={(e) => {
-                                    this.setState({
-                                        selectedGame: e.target.value as GameSaveFormat,
-                                        boxMappings: generateBoxMappingsDefault(e.target.value as GameSaveFormat)
-                                    });
-                                }}>
-                                {allowedGames.map((game) => (
-                                    <option key={game} value={game}>
-                                        {game}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
+                        <HTMLSelect
+                            value={this.state.selectedGame}
+                            onChange={(e) => {
+                                this.setState({
+                                    selectedGame: e.target.value as GameSaveFormat,
+                                    boxMappings: generateBoxMappingsDefault(e.target.value as GameSaveFormat)
+                                });
+                            }}>
+                            {allowedGames.map((game) => (
+                                <option key={game} value={game}>
+                                    {game}
+                                </option>
+                            ))}
+                        </HTMLSelect>
                     </div>
 
                     <div

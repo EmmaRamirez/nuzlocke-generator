@@ -73,20 +73,22 @@ const ZoomValues = [
 ];
 type ZoomValue = typeof ZoomValues[number];
 
+const convertToPercentage = (n: number) => `${(n * 100)}%`;
+
 const TopBarItems = ({ editorDarkMode, setZoomLevel, currentZoomLevel }) => {
     // @TODO: make this look decent
     return (
         <Select<ZoomValue>
             filterable={false}
             items={ZoomValues}
-            itemRenderer={(item, { handleClick }) => (<div onClick={handleClick}>{item.value}</div>)}
+            itemRenderer={(item, { handleClick }) => (<MenuItem onClick={handleClick} text={item.value} />)}
             noResults={<MenuItem disabled={true} text="No results." />}
             onItemSelect={(item) => {
                 console.log('item', item);
                 setZoomLevel(item.key);
             }}
         >
-            <Button text={currentZoomLevel ?? '100%'} icon="double-caret-vertical" />
+            <Button text={(convertToPercentage(currentZoomLevel)) ?? '100%'} rightIcon="double-caret-vertical" />
         </Select>
     );
 };

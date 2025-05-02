@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { State } from 'state';
 import { movesByType, getListOfTypes } from 'utils';
-import { Dialog, Intent, Button, Icon, Classes } from '@blueprintjs/core';
+import { Dialog, Intent, Button, Icon, Classes, HTMLSelect } from '@blueprintjs/core';
 import { Move } from 'components/TeamPokemon/Moves';
 import {
     editCustomMoveMap,
@@ -89,15 +89,13 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                                     customTypes={customTypes}
                                 />
                             </div>
-                            <div className={Classes.SELECT} style={{ width: '8rem' }}>
-                                <select onChange={onChange(move)} value={type}>
-                                    {types.map((opt) => (
-                                        <option key={opt} value={opt}>
-                                            {opt}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
+                            <HTMLSelect onChange={onChange(move)} value={type}>
+                                {types.map((opt) => (
+                                    <option key={opt} value={opt}>
+                                        {opt}
+                                    </option>
+                                ))}
+                            </HTMLSelect>
                             <Icon
                                 onClick={(e) => this.props.deleteCustomMove(id)}
                                 style={{ color: 'red', position: 'absolute', cursor: 'pointer' }}
@@ -129,15 +127,13 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
                                 customTypes={customTypes}
                             />
                         </div>
-                        <div className={Classes.SELECT} style={{ width: '8rem' }}>
-                            <select onChange={onChange(move)} value={type}>
-                                {types.map((opt) => (
-                                    <option key={opt} value={opt}>
-                                        {opt}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
+                        <HTMLSelect onChange={onChange(move)} value={type}>
+                            {types.map((opt) => (
+                                <option key={opt} value={opt}>
+                                    {opt}
+                                </option>
+                            ))}
+                        </HTMLSelect>
                     </div>
                 ));
         });
