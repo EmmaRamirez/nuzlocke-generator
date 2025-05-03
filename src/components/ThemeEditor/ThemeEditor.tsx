@@ -253,7 +253,7 @@ export const WrapWithLabel = ({ name, children }) => (
 export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEditorState> {
     public state = { componentTree: [] };
 
-    // eslint-disable-next-line camelcase
+     
     public UNSAFE_componentWillMount() {
         // TODO: Refactor out as props
         this.setState({ componentTree: componentTree });

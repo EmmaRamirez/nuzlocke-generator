@@ -1,4 +1,4 @@
-/* eslint-disable camelcase */
+ 
 import { css } from 'emotion';
 
 export const checkpointsEditor = css`

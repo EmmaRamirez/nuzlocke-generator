@@ -1,4 +1,4 @@
-/* eslint-disable prefer-template */
+ 
 import * as React from 'react';
 import {
     EvolutionTree,
@@ -153,7 +153,7 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
         };
     }
 
-    // eslint-disable-next-line camelcase
+     
     public UNSAFE_componentWillMount() {
         this.setState({
             selectedId: this.props.selectedId,
@@ -161,7 +161,7 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
         });
     }
 
-    // eslint-disable-next-line camelcase
+     
     public UNSAFE_componentWillReceiveProps(
         nextProps: CurrentPokemonEditProps,
         prevProps: CurrentPokemonEditProps,

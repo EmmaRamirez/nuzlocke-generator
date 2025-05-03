@@ -27,7 +27,7 @@ export default uniq;
 
 export type EvolutionTree = { [S in Species]?: Species[] };
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
+ 
 export const EvolutionTree: EvolutionTree = {
     Bulbasaur: ['Ivysaur'],
     Ivysaur: ['Venusaur'],

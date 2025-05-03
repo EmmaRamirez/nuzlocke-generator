@@ -55,7 +55,7 @@ export class UpdaterBase extends React.Component<{
         this.props.updateEditorHistory(this.props.present);
     }
 
-    // eslint-disable-next-line camelcase
+     
     public UNSAFE_componentWillReceiveProps(prev) {
         if (
             (prev.lrt === 'update') &&

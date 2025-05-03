@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/prefer-for-of */
+ 
 import * as fs from 'fs';
 import {
     HELD_ITEM,
