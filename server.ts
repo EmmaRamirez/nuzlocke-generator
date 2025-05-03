@@ -14,16 +14,6 @@ const logger = require('pino')({
   messageFormat: '☰nuz: {levelLabel} - {pid} - url:{request.url}'
 });
 
-// const { Client, Pool } = require('pg');
-// const pool = new Pool();
-
-// async function getStuff (limit, offset = 0) {
-//   const res = await pool.query('SELECT * FROM release_notes ORDER BY version DESC LIMIT $1 OFFSET $2', [limit, offset]);
-//   console.log(res);
-//   //await pool.end();
-//   return res.rows;
-// }
-
 const isLocal = process.env.NODE_ENV === 'local';
 
 let middleware, compiler;
