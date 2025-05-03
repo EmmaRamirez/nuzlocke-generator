@@ -15,7 +15,7 @@ import { editPokemon, selectPokemon, editStat } from 'actions';
 
 import { ErrorBoundary } from 'components/Shared';
 
-import { TagInput, Classes, TextArea } from '@blueprintjs/core';
+import { TagInput, Classes, TextArea, HTMLSelect } from '@blueprintjs/core';
 import { State } from 'state';
 import { Pokemon } from 'models';
 import { cx } from 'emotion';
@@ -227,36 +227,35 @@ export function PokemonSelectInput({
     edit,
     setEdit,
 }: PokemonInputProps) {
+    const pokeball = inputName === 'pokeball' && value && value !== 'None' ? (
+        <img
+            style={{ position: 'absolute' }}
+            alt={value}
+            src={`icons/pokeball/${formatBallText(value)}.png`}
+        />
+    ) : null;
+
     return (
-        <div className={Classes.SELECT} style={inputName === 'status' ? { width: '120px' } : {}}>
-            {inputName === 'pokeball' && value && value !== 'None' ? (
-                <img
-                    style={{ position: 'absolute' }}
-                    alt={value}
-                    src={`icons/pokeball/${formatBallText(value)}.png`}
-                />
-            ) : null}
-            <select
-                onChange={(e) => {
-                    onChange(e);
-                    setEdit({ [inputName]: e.currentTarget.value });
-                }}
-                value={value}
-                style={inputName === 'pokeball' ? { paddingLeft: '2rem' } : {}}
-                name={inputName}>
-                {!usesKeyValue
-                    ? options
-                        ?
-                        (options as any)?.map((item, index) => <option key={index}>{item}</option>)
-                        : null
-                    :
-                    (options as any)?.map((item, index) => (
-                        <option value={item.value} key={index}>
-                            {item.key}
-                        </option>
-                    ))}
-            </select>
-        </div>
+        <HTMLSelect
+            style={inputName === 'status' ? { width: '120px' } : {}}
+            onChange={(e) => {
+                onChange(e);
+                setEdit({ [inputName]: e.currentTarget.value });
+            }}
+            value={value}
+            name={inputName}>
+            {!usesKeyValue
+                ? options
+                    ?
+                    (options as any)?.map((item, index) => <option key={index}>{item}</option>)
+                    : null
+                :
+                (options as any)?.map((item, index) => (
+                    <option value={item.value} key={index}>
+                        {item.key}
+                    </option>
+                ))}
+        </HTMLSelect>
     );
 }
 
@@ -286,31 +285,27 @@ export function PokemonDoubleSelectInput({
 
     return (
         <span className="double-select-wrapper">
-            <div className={Classes.SELECT}>
-                <select onChange={onSelect(0)} value={edit?.[inputName]?.[0]} name={inputName}>
-                    {options
-                        ?
-                        (options as any).map((item, index) => (
-                            <option value={item} key={index}>
-                                {item}
-                            </option>
-                        ))
-                        : null}
-                </select>
-            </div>
+            <HTMLSelect onChange={onSelect(0)} value={edit?.[inputName]?.[0]} name={inputName}>
+                {options
+                    ?
+                    (options as any).map((item, index) => (
+                        <option value={item} key={index}>
+                            {item}
+                        </option>
+                    ))
+                    : null}
+            </HTMLSelect>
             <span>&nbsp;</span>
-            <div className={Classes.SELECT}>
-                <select onChange={onSelect(1)} value={edit?.[inputName]?.[1]} name={inputName}>
-                    {options
-                        ?
-                        (options as any).map((item, index) => (
-                            <option value={item} key={index}>
-                                {item}
-                            </option>
-                        ))
-                        : null}
-                </select>
-            </div>
+            <HTMLSelect onChange={onSelect(1)} value={edit?.[inputName]?.[1]} name={inputName}>
+                {options
+                    ?
+                    (options as any).map((item, index) => (
+                        <option value={item} key={index}>
+                            {item}
+                        </option>
+                    ))
+                    : null}
+            </HTMLSelect>
         </span>
     );
 };

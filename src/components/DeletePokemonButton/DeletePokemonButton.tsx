@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Alert, Intent, Icon, Popover, Position, PopoverInteractionKind, Classes } from '@blueprintjs/core';
-import styled, { cx } from 'react-emotion';
+import { cx, css } from 'emotion';
 
 import { deletePokemon, modifyDeletionConfirmation } from 'actions';
 import { connect } from 'react-redux';
@@ -14,7 +14,7 @@ export interface DeletePokemonButtonProps {
     deletePokemon: deletePokemon;
 }
 
-export const DeletePokemonButtonContainer = styled('div')`
+export const DeletePokemonButtonContainer = css`
     color: red;
     cursor: pointer;
 `;
@@ -40,7 +40,7 @@ DeletePokemonButtonProps,
     public render() {
         console.log(this.props.id);
         return (
-            <DeletePokemonButtonContainer>
+            <div className={DeletePokemonButtonContainer}>
                 <Alert
                     icon="trash"
                     isOpen={this.state.dialogOn && this.props.confirmation}
@@ -87,7 +87,7 @@ DeletePokemonButtonProps,
                         title="Delete Pokemon"
                     />
                 </Popover>
-            </DeletePokemonButtonContainer>
+            </div>
         );
     }
 }

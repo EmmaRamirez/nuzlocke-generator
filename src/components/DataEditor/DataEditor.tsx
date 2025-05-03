@@ -14,10 +14,11 @@ import {
     Icon,
     Popover,
     PopoverInteractionKind,
+    HTMLSelect,
 } from '@blueprintjs/core';
-import { PokemonIconBase } from 'components/PokemonIcon';
+import { PokemonIcon } from 'components/PokemonIcon';
 import { ErrorBoundary } from 'components/Shared';
-const uuid = require('uuid');
+import { v4 as uuid } from 'uuid';
 import { persistor } from 'store';
 import { newNuzlocke, replaceState, setEditorHistoryDisabled } from 'actions';
 import { Game, Pokemon, Trainer } from 'models';
@@ -27,9 +28,9 @@ import { State } from 'state';
 import { noop } from 'redux-saga/utils';
 import { feature, GameSaveFormat } from 'utils';
 import { DeleteAlert } from './DeleteAlert';
-
-const isEmpty = require('lodash/isEmpty');
-import codegen from 'codegen.macro';
+import { isEmpty } from 'utils/isEmpty';
+// @TODO: fix codegen imports
+// import codegen from 'codegen.macro';
 import { BoxMappings } from 'parsers/utils/boxMappings';
 import { cx } from 'emotion';
 
@@ -126,18 +127,16 @@ const generateArray = (n: number) => {
 const generateBoxMappingsDefault = (saveFormat) => generateArray(getGameNumberOfBoxes(saveFormat));
 
 export function BoxSelect({boxes, value, boxKey, setBoxMappings}: {boxes: State['box'], value: string, boxKey: number, setBoxMappings: SaveGameSettingsDialogProps['setBoxMappings']}) {
-    return <div className={Classes.SELECT}>
-        <select
-            value={value}
-            onChange={e => setBoxMappings({ key: boxKey, status: e.target.value })}
-        >
-            {boxes.map((box) => (
-                <option key={box.id} value={box.name}>
-                    {box.name}
-                </option>
-            ))}
-        </select>
-    </div>;
+    return <HTMLSelect
+        value={value}
+        onChange={e => setBoxMappings({ key: boxKey, status: e.target.value })}
+    >
+        {boxes.map((box) => (
+            <option key={box.id} value={box.name}>
+                {box.name}
+            </option>
+        ))}
+    </HTMLSelect>;
 }
 
 export function SaveGameSettingsDialog({
@@ -246,7 +245,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         const data = handleExceptions(JSON.parse(this.state.data));
         const nuz = this.props.state;
         // @NOTE this prevents previously undefined states from blowing up the app
-        const safeguards = { customTypes: [], customMoveMap: [], stats: [], excludedAreas: [] };
+        const safeguards = { customTypes: [], customMoveMap: [], stats: [], excludedAreas: [], customAreas: [] };
         if (!Array.isArray(data.customMoveMap)) {
             noop();
         } else {
@@ -299,7 +298,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     {d?.pokemon
                         ?.filter((p) => p.status === 'Team')
                         ?.map((p) => {
-                            return <PokemonIconBase key={p.id} {...p} />;
+                            return <PokemonIcon key={p.id} {...p} />;
                         })}
                 </div>
             );
@@ -339,7 +338,9 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
     private uploadFile = (replaceState, state) => (e) => {
         const t0 = performance.now();
         // @NOTE: this is a gross work-around a bug with jest and import.meta.url
-        const worker = new Worker(new URL('parsers/worker.ts', codegen`module.exports = process.env.NODE_ENV === "test" ? "" : "import.meta.url"`));
+        // const worker = new Worker(new URL('parsers/worker.ts', codegen`module.exports = import.meta.env.MODE === "test" ? "" : "import.meta.url"`));
+
+        const worker = new Worker(new URL('parsers/worker.ts', import.meta.url));
 
         const file = this.fileInput.files[0];
         const reader = new FileReader();
@@ -432,22 +433,20 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     <div
                         className={cx(Classes.LABEL, Classes.INLINE)}
                         style={{ padding: '.25rem 0', paddingBottom: '.5rem' }}>
-                        <div className={Classes.SELECT}>
-                            <select
-                                value={this.state.selectedGame}
-                                onChange={(e) => {
-                                    this.setState({
-                                        selectedGame: e.target.value as GameSaveFormat,
-                                        boxMappings: generateBoxMappingsDefault(e.target.value as GameSaveFormat)
-                                    });
-                                }}>
-                                {allowedGames.map((game) => (
-                                    <option key={game} value={game}>
-                                        {game}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
+                        <HTMLSelect
+                            value={this.state.selectedGame}
+                            onChange={(e) => {
+                                this.setState({
+                                    selectedGame: e.target.value as GameSaveFormat,
+                                    boxMappings: generateBoxMappingsDefault(e.target.value as GameSaveFormat)
+                                });
+                            }}>
+                            {allowedGames.map((game) => (
+                                <option key={game} value={game}>
+                                    {game}
+                                </option>
+                            ))}
+                        </HTMLSelect>
                     </div>
 
                     <div

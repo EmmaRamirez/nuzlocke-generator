@@ -3,7 +3,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Pokemon, Box as BoxModel, Boxes, Game } from 'models';
 import { State } from 'state';
-import { generateEmptyPokemon } from 'utils';
+import { generateEmptyPokemon, listOfPokemon, matchSpeciesToTypes } from 'utils';
 import { CurrentPokemonEdit } from '.';
 import { AddPokemonButton } from 'components/AddPokemonButton';
 import { BaseEditor } from 'components/BaseEditor';
@@ -17,6 +17,8 @@ export interface PokemonEditorProps {
     boxes: Boxes;
     game: Game;
     style: State['style'];
+    excludedAreas: State['excludedAreas'];
+    customAreas: State['customAreas'];
 
     // @NOTE: uncomment this if you need to auto-generate Pokemon
     // will create failing tests as a warning to not push this :]
@@ -76,7 +78,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
         // @NOTE: refactor so that there's an easier way to auto-generate Pokemon data
         // const {team} = this.props;
 
-        // listOfPokemon.slice(906).forEach((value) => {
+        // listOfPokemon.slice(1008).forEach((value) => {
         //     this.props.addPokemon(
         //         generateEmptyPokemon(team, {
         //             species: value,
@@ -87,7 +89,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
     }
 
     public render() {
-        const { team, boxes, game, style } = this.props;
+        const { team, boxes, game, style, excludedAreas, customAreas } = this.props;
 
         return (
             <>
@@ -127,7 +129,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                     <CurrentPokemonEdit />
                     <BaseEditor name="Location Checklist" defaultOpen={false}>
                         <React.Suspense fallback={<Spinner />}>
-                            <PokemonLocationChecklist boxes={boxes} style={style} pokemon={team} game={game} />
+                            <PokemonLocationChecklist customAreas={customAreas} excludedAreas={excludedAreas} boxes={boxes} style={style} pokemon={team} game={game} />
                         </React.Suspense>
                     </BaseEditor>
                 </BaseEditor>
@@ -156,6 +158,8 @@ export const PokemonEditor = connect(
         boxes: state.box,
         game: state.game,
         style: state.style,
+        excludedAreas: state.excludedAreas,
+        customAreas: state.customAreas,
     }),
     {
         addPokemon: addPokemon,

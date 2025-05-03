@@ -51,6 +51,7 @@ const cellRenderer: (pokemon: Pokemon[], key: keyof Pokemon, editPokemon) => ICe
 export function renderColumns(pokemon, editPokemon) {
     return Object.keys(PokemonKeys).map((key) => {
         return (
+            // @ts-expect-error react return type nonsense
             <Column key={key} name={key} cellRenderer={cellRenderer(pokemon, key as keyof Pokemon, editPokemon)} />
         );
     });

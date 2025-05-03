@@ -1,4 +1,4 @@
-/* eslint-disable prefer-template */
+ 
 import * as React from 'react';
 import {
     EvolutionTree,
@@ -23,12 +23,12 @@ import { CurrentPokemonInput } from 'components/PokemonEditor';
 import { DeletePokemonButton } from 'components/DeletePokemonButton';
 import { Autocomplete, ErrorBoundary } from 'components/Shared';
 import { selectPokemon, editPokemon } from 'actions';
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import { listOfGames, accentedE } from 'utils';
-import { PokemonIconBase, PokemonIconPlain } from 'components/PokemonIcon';
+import { PokemonIconPlain } from 'components/PokemonIcon';
 import { cx } from 'emotion';
 import * as Styles from './styles';
-const uuid = require('uuid');
+import { v4 as uuid } from 'uuid';
 import {
     Classes,
     Icon,
@@ -45,10 +45,9 @@ import { State } from 'state';
 import { CurrentPokemonLayoutItem } from './CurrentPokemonLayoutItem';
 import { MoveEditor } from 'components/MoveEditor';
 import { CheckpointsInputList } from 'components/TrainerEditor';
-import { gameNameSelector } from 'selectors';
 import { getImages, Image } from 'components/Shared/ImagesDrawer';
 
-const pokeball = require('assets/pokeball.png').default;
+const pokeball = 'src/assets/pokeball.png';
 
 export interface CopyPokemonButtonProps {
     onClick: (event: React.MouseEvent<HTMLElement>) => void;
@@ -82,6 +81,7 @@ export interface CurrentPokemonEditProps {
     game: { name: Game; customName: string };
     editor: Editor;
     customTypes: State['customTypes'];
+    customAreas: State['customAreas'];
 }
 
 export interface CurrentPokemonEditState {
@@ -141,10 +141,7 @@ export function EvolutionSelection({ currentPokemon, onEvolve }) {
     }
 }
 
-export class CurrentPokemonEditBase extends React.Component<
-    CurrentPokemonEditProps,
-    CurrentPokemonEditState
-> {
+export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditProps, CurrentPokemonEditState> {
     public constructor(props: CurrentPokemonEditProps) {
         super(props);
         this.state = {
@@ -156,7 +153,7 @@ export class CurrentPokemonEditBase extends React.Component<
         };
     }
 
-    // eslint-disable-next-line camelcase
+     
     public UNSAFE_componentWillMount() {
         this.setState({
             selectedId: this.props.selectedId,
@@ -164,7 +161,7 @@ export class CurrentPokemonEditBase extends React.Component<
         });
     }
 
-    // eslint-disable-next-line camelcase
+     
     public UNSAFE_componentWillReceiveProps(
         nextProps: CurrentPokemonEditProps,
         prevProps: CurrentPokemonEditProps,
@@ -472,6 +469,7 @@ export class CurrentPokemonEditBase extends React.Component<
 
     public render() {
         const currentPokemon = this.getCurrentPokemon();
+        const { customAreas } = this.props;
 
         if (currentPokemon == null) {
             return (
@@ -583,7 +581,7 @@ export class CurrentPokemonEditBase extends React.Component<
                         key={this.state.selectedId + 'level'}
                     />
                     <Autocomplete
-                        items={listOfLocations}
+                        items={[...listOfLocations, ...customAreas]}
                         name="met"
                         label="Met Location"
                         placeholder="Pallet Town"
@@ -685,6 +683,7 @@ export const CurrentPokemonEdit = connect(
         game: state.game,
         editor: state.editor,
         customTypes: state.customTypes,
+        customAreas: state.customAreas,
     }),
     {
         selectPokemon,

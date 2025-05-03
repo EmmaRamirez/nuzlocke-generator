@@ -1,4 +1,4 @@
-const uuid = require('uuid');
+import { v4 as uuid } from 'uuid';
 import { Pokemon } from 'models';
 import { sortPokes } from '.';
 import { Types } from './Types';

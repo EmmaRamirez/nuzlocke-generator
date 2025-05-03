@@ -3,29 +3,52 @@ import { Dialog, Classes, Button, DialogProps } from '@blueprintjs/core';
 import { css, cx } from 'emotion';
 import * as styles from 'components/Result/styles';
 import { Styles, classWithDarkTheme, getPatchlessVersion } from 'utils';
-const ReactMarkdown = require('react-markdown');
+import ReactMarkdown from 'react-markdown';
 import useSwr from 'swr';
 
-const calyrex = require('assets/icons/pokemon/regular/calyrex.png');
-const croagunk = require('assets/img/croagunk.gif');
-const dugtrio = require('assets/icons/pokemon/regular/dugtrio.png');
-const kubfu = require('assets/icons/pokemon/regular/kubfu.png');
-const lapras = require('assets/icons/pokemon/regular/lapras.png');
-const magneton = require('assets/icons/pokemon/regular/magneton.png');
-const mew = require('assets/icons/pokemon/regular/mew.png');
-const noctowl = require('assets/icons/pokemon/regular/noctowl.png');
-const porygon = require('assets/icons/pokemon/regular/porygon.png');
-const porygon2 = require('assets/icons/pokemon/regular/porygon2.png');
-const togepi = require('assets/icons/pokemon/regular/togepi.png');
-const arceus = require('assets/icons/pokemon/regular/arceus.png');
-const sprigatito = require('assets/icons/pokemon/regular/sprigatito.png');
-const fuecoco = require('assets/icons/pokemon/regular/fuecoco.png');
-const quaxly = require('assets/icons/pokemon/regular/quaxly.png');
-const miraidon = require('assets/icons/pokemon/regular/miraidon.png');
-const koraidon = require('assets/icons/pokemon/regular/koraidon.png');
+// import calyrex from 'src/assets/icons/pokemon/regular/calyrex.png';
+// import croagunk from 'src/assets/img/croagunk.gif';
+// import dugtrio from 'src/assets/icons/pokemon/regular/dugtrio.png';
+// import kubfu from 'src/assets/icons/pokemon/regular/kubfu.png';
+// import lapras from 'src/assets/icons/pokemon/regular/lapras.png';
+// import magneton from 'src/assets/icons/pokemon/regular/magneton.png';
+// import mew from 'src/assets/icons/pokemon/regular/mew.png';
+// import noctowl from 'src/assets/icons/pokemon/regular/noctowl.png';
+// import porygon from 'src/assets/icons/pokemon/regular/porygon.png';
+// import porygon2 from 'src/assets/icons/pokemon/regular/porygon2.png';
+// import togepi from 'src/assets/icons/pokemon/regular/togepi.png';
+// import arceus from 'src/assets/icons/pokemon/regular/arceus.png';
+// import sprigatito from 'src/assets/icons/pokemon/regular/sprigatito.png';
+// import fuecoco from 'src/assets/icons/pokemon/regular/fuecoco.png';
+// import quaxly from 'src/assets/icons/pokemon/regular/quaxly.png';
+// import miraidon from 'src/assets/icons/pokemon/regular/miraidon.png';
+// import koraidon from 'src/assets/icons/pokemon/regular/koraidon.png';
+// import terapagos from 'src/assets/icons/pokemon/regular/terapagos.png';
+
+const calyrex = { default: 'src/assets/icons/pokemon/regular/calyrex.png' };
+const croagunk = { default: 'src/assets/img/croagunk.gif' };
+const dugtrio = { default: 'src/assets/icons/pokemon/regular/dugtrio.png' };
+const kubfu = { default: 'src/assets/icons/pokemon/regular/kubfu.png' };
+const lapras = { default: 'src/assets/icons/pokemon/regular/lapras.png' };
+const magneton = { default: 'src/assets/icons/pokemon/regular/magneton.png' };
+const mew = { default: 'src/assets/icons/pokemon/regular/mew.png' };
+const noctowl = { default: 'src/assets/icons/pokemon/regular/noctowl.png' };
+const porygon = { default: 'src/assets/icons/pokemon/regular/porygon.png' };
+const porygon2 = { default: 'src/assets/icons/pokemon/regular/porygon2.png' };
+const togepi = { default: 'src/assets/icons/pokemon/regular/togepi.png' };
+const arceus = { default: 'src/assets/icons/pokemon/regular/arceus.png' };
+const sprigatito = { default: 'src/assets/icons/pokemon/regular/sprigatito.png' };
+const fuecoco = { default: 'src/assets/icons/pokemon/regular/fuecoco.png' };
+const quaxly = { default: 'src/assets/icons/pokemon/regular/quaxly.png' };
+const miraidon = { default: 'src/assets/icons/pokemon/regular/miraidon.png' };
+const koraidon = { default: 'src/assets/icons/pokemon/regular/koraidon.png' };
+const terapagos = { default: 'src/assets/icons/pokemon/regular/terapagos.png' };
+
 
 export const getMascot = v => {
     switch (v) {
+        case '1.16':
+            return terapagos.default;
         case '1.15':
             return koraidon.default;
         case '1.14':

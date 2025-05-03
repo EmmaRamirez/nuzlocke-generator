@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-redeclare */
+ 
 import { Action } from 'actions';
 
 export type ADD_STAT = 'ADD_STAT';

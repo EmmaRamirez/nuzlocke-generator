@@ -16,7 +16,7 @@ export interface ColorEditProps {
     value?: any;
     onChange: (e?: React.ChangeEvent<HTMLInputElement>) => void;
     name: string;
-    style: State['style'];
+    style?: State['style'];
     width?: string;
     onColorChange: (color) => void;
 }
@@ -54,7 +54,7 @@ export class ColorEditBase extends React.Component<ColorEditProps, { showChromeP
                             type="text"
                             className={cx(
                                 Classes.INPUT,
-                                classWithDarkTheme(Styles, 'colorTextInput', style.editorDarkMode),
+                                classWithDarkTheme(Styles, 'colorTextInput', style?.editorDarkMode),
                             )}
                             name={name}
                             value={rgbaOrHex(value)}
@@ -77,7 +77,7 @@ export class ColorEditBase extends React.Component<ColorEditProps, { showChromeP
     }
 }
 
-export const ColorEdit: React.ComponentClass<Omit<ColorEditProps, 'style'>> = connect(
+export const ColorEdit = connect(
     (state: State) => ({ style: state.style }),
     null,
-)(ColorEditBase as any) as any;
+)(ColorEditBase);

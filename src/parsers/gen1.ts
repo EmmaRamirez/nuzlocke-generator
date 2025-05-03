@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/prefer-for-of */
+ 
 import * as fs from 'fs';
 import { splitUp, GEN_1_POKEMON_MAP, GEN_1_CHARACTER_MAP, MOVES_ARRAY } from './utils';
 import { Buffer } from 'buffer';
 import { parseTime } from './utils/parseTime';
 import { ParserOptions } from './utils/parserOptions';
-const uuid = require('uuid');
+import { v4 as uuid } from 'uuid';
 
 // tslint:disable-next-line:class-name
 interface GEN_1_SAVE {

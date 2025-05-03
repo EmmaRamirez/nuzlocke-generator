@@ -1,4 +1,4 @@
-export { Action } from './action';
+export * from './action';
 export * from './saveNuzlocke';
 export * from './addPokemon';
 export * from './deletePokemon';
@@ -35,3 +35,4 @@ export * from './triggerDownload';
 export * from './toggleDialog';
 export * from './setEditorHistoryEnabled';
 export * from './updateExcludedAreas';
+export * from './updateCustomAreas';

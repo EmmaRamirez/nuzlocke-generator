@@ -13,7 +13,7 @@ import {
     feature,
 } from 'utils';
 import { selectPokemon } from 'actions';
-import { PokemonIconBase } from 'components/PokemonIcon';
+import { PokemonIconPlain } from 'components/PokemonIcon';
 import { State } from 'state';
 import { PokemonImage } from 'components/Shared/PokemonImage';
 
@@ -113,7 +113,7 @@ export const DeadPokemonBase = (poke: DeadPokemonProps) => {
                     }}
                 />
                 <span style={{ filter: 'grayscale(100%)', margin: '0 auto' }}>
-                    <PokemonIconBase
+                    <PokemonIconPlain
                         onClick={(e) => poke.selectPokemon(poke.id)}
                         {...(poke as any)}
                     />
@@ -180,7 +180,7 @@ export const DeadPokemonBase = (poke: DeadPokemonProps) => {
                     fontSize: '90%',
                 }}>
                 <span style={{ filter: 'grayscale(100%)' }}>
-                    <PokemonIconBase
+                    <PokemonIconPlain
                         onClick={(e) => poke.selectPokemon(poke.id)}
                         {...(poke as any)}
                     />
@@ -261,7 +261,7 @@ export const DeadPokemonBase = (poke: DeadPokemonProps) => {
                 </PokemonImage>
             ) : (
                 <span style={{ filter: 'grayscale(100%)' }}>
-                    <PokemonIconBase
+                    <PokemonIconPlain
                         onClick={(e) => poke.selectPokemon(poke.id)}
                         {...(poke as any)}
                     />

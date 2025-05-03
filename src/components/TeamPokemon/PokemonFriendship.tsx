@@ -7,7 +7,7 @@
 
 import * as React from 'react';
 import { Icon } from '@blueprintjs/core';
-const uuid = require('uuid');
+import { v4 as uuid } from 'uuid';
 
 export const determineNumberOfHearts = (friendship: number) => {
     if (friendship < 99 && friendship >= 50) return 1;

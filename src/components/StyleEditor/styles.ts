@@ -1,4 +1,4 @@
-/* eslint-disable camelcase */
+ 
 import { Classes } from '@blueprintjs/core';
 import { cx, css } from 'emotion';
 

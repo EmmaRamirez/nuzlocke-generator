@@ -1,16 +1,16 @@
 const featuresFromEnv = {
-    themeEditing: process.env.THEME_EDITING,
-    temTemMode: process.env.TEM_TEM_SUPPORT,
-    multipleNuzlockes: process.env.MULTIPLE_NUZLOCKES,
-    fileUploads: process.env.FILE_UPLOADS,
-    newHotkeys: process.env.NEW_HOTKEYS,
-    resultv2: process.env.RESULT_V2,
-    hallOfFame: process.env.HALL_OF_FAME,
-    locks: process.env.LOCKS,
-    gen2saves: process.env.GEN2_SAVES,
-    imageUploads: process.env.IMAGE_UPLOADS,
-    emmaMode: process.env.EMMA_MODE,
-    tcgImages: process.env.TCG_IMAGES,
+    themeEditing: import.meta.env.THEME_EDITING,
+    temTemMode: import.meta.env.TEM_TEM_SUPPORT,
+    multipleNuzlockes: import.meta.env.MULTIPLE_NUZLOCKES,
+    fileUploads: import.meta.env.FILE_UPLOADS,
+    newHotkeys: import.meta.env.NEW_HOTKEYS,
+    resultv2: import.meta.env.RESULT_V2,
+    hallOfFame: import.meta.env.HALL_OF_FAME,
+    locks: import.meta.env.LOCKS,
+    gen2saves: import.meta.env.GEN2_SAVES,
+    imageUploads: import.meta.env.IMAGE_UPLOADS,
+    emmaMode: import.meta.env.EMMA_MODE,
+    tcgImages: import.meta.env.TCG_IMAGES,
 };
 
 type FeatureObject = {

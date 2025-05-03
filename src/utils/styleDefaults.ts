@@ -1,5 +1,5 @@
 export type RadiusType = 'round' | 'square';
-export type OrientationType = 'vertical' | 'horizonal';
+export type OrientationType = 'vertical' | 'horizontal';
 export type TeamImagesType = 'standard' | 'sugimori' | 'dream world' | 'shuffle' | 'tcg';
 export type IconRenderingType = 'pixelated' | 'auto';
 export type RulesLocation = 'inside trainer section' | 'bottom' | 'top';

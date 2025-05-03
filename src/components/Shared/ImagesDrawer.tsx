@@ -87,7 +87,7 @@ export const db = new NuzlockeGeneratorDB();
 //     images: `++id, image, name`
 // });
 
-const uuid = require('uuid');
+import { v4 as uuid } from 'uuid';
 
 const userImages = new Set<Image>();
 

@@ -10,3 +10,4 @@ imageCheck.ts
 massRename.ts
 scraper.js
 **/__tests__/*.ts
+vite.config.js

@@ -1922,6 +1922,7 @@ Array [
     "Basculin": Array [
       "Red-Striped",
       "Blue-Striped",
+      "White-Striped",
     ],
   },
   Object {
@@ -3454,6 +3455,64 @@ Array [
   },
   Object {
     "Miraidon": Array [],
+  },
+  Object {
+    "Walking Wake": Array [],
+  },
+  Object {
+    "Iron Leaves": Array [],
+  },
+  Object {
+    "Dipplin": Array [],
+  },
+  Object {
+    "Poltchageist": Array [],
+  },
+  Object {
+    "Sinistcha": Array [],
+  },
+  Object {
+    "Okidogi": Array [],
+  },
+  Object {
+    "Munkidori": Array [],
+  },
+  Object {
+    "Fezandipiti": Array [],
+  },
+  Object {
+    "Ogerpon": Array [
+      "Teal Mask",
+      "Wellspring",
+      "Heartflame",
+      "Cornerstone",
+    ],
+  },
+  Object {
+    "Archaludon": Array [],
+  },
+  Object {
+    "Hydrapple": Array [],
+  },
+  Object {
+    "Gouging Fire": Array [],
+  },
+  Object {
+    "Raging Bolt": Array [],
+  },
+  Object {
+    "Iron Boulder": Array [],
+  },
+  Object {
+    "Iron Crown": Array [],
+  },
+  Object {
+    "Terapagos": Array [
+      "Terastal",
+    ],
+  },
+  Object {
+    "Pecharunt": Array [],
   },
 ]
 `;

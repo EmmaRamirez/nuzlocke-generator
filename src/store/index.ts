@@ -1,7 +1,8 @@
 import { applyMiddleware, createStore, Middleware } from 'redux';
 import { createLogger } from 'redux-logger';
+// @TODO: figure out this deprecation
 import createHistory from 'history/createBrowserHistory';
-import { persistCombineReducers, persistStore, createMigrate } from 'redux-persist';
+import { persistCombineReducers, persistStore, createMigrate, MigrationManifest } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { version } from 'package';
 import { reducers } from '../reducers';
@@ -72,7 +73,11 @@ const migrations = {
     '1.15.1': (state: State) => ({
         ...state,
         excludedAreas: [],
-    })
+    }),
+    '1.16.0': (state: State) => ({
+        ...state,
+        customAreas: [],
+    }),
 };
 
 const config = {
@@ -80,21 +85,21 @@ const config = {
     blacklist: ['router', 'editorHistory'],
     storage,
     version,
-    migrations: createMigrate(migrations, { debug: true }),
+    migrations: createMigrate(migrations as unknown as MigrationManifest, { debug: true }),
 };
 
 export const history = createHistory();
 
-export const persistReducers = persistCombineReducers(config, reducers);
+export const persistReducers = persistCombineReducers(config, reducers as any);
 
 export const middlewares: Middleware[] = [];
 
-if (process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'production') {
+if (import.meta.env.PROD) {
 } else {
     const loggerMiddleware = createLogger();
-    middlewares.push(loggerMiddleware);
+    middlewares.push(loggerMiddleware as any);
 }
 
 export const store = createStore(persistReducers, applyMiddleware(...middlewares));
 
-export const persistor = persistStore(store, null);
+export const persistor = persistStore(store, undefined);

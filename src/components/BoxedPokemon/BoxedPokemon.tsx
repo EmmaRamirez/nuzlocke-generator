@@ -42,20 +42,17 @@ export const BoxedPokemonBase = (poke: BoxedPokemonProps) => {
                 // Its dependent on the way react-dnd is wired
                 // which needs to be updated to v11 anyhow
             }
-            {process.env.NODE_ENV !== 'test' && (
-                <PokemonIcon
-                    position={poke?.position}
-                    species={poke?.species}
-                    id={poke?.id}
-                    style={{ cursor: 'pointer' }}
-                    forme={poke?.forme}
-                    shiny={poke?.shiny}
-                    gender={poke?.gender}
-                    egg={poke?.egg}
-                    customIcon={poke?.customIcon}
-                    className={'boxed-pokemon-icon'}
-                />
-            )}
+            <PokemonIcon
+                position={poke?.position}
+                species={poke?.species}
+                id={poke?.id}
+                forme={poke?.forme}
+                shiny={poke?.shiny}
+                gender={poke?.gender}
+                egg={poke?.egg}
+                customIcon={poke?.customIcon}
+                className={'boxed-pokemon-icon'}
+            />
             {isMinimal ? null : (
                 <div
                     className="boxed-pokemon-info"

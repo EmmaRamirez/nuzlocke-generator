@@ -3,7 +3,7 @@ import { cx } from 'emotion';
 import './Autocomplete.css';
 import { useDebounceCallback } from '@react-hook/debounce';
 import { css } from 'emotion';
-const debounce = require('lodash.debounce');
+import { debounce } from 'utils';
 
 
 export interface AutocompleteProps {

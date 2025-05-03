@@ -11,6 +11,8 @@ describe('<PokemonEditor />', () => {
                 team={[]}
                 boxes={[]}
                 game={{ name: 'Red', customName: '' }}
+                excludedAreas={[]}
+                customAreas={[]}
             />
         );
         expect(screen.getByTestId('pokemon-editor')).toBeDefined();
