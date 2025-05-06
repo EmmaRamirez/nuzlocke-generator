@@ -1,8 +1,7 @@
  
-import { Classes } from '@blueprintjs/core';
 import { cx, css } from 'emotion';
 
-const BP_VERSION = 'bp3';
+const BP_VERSION = 'bp4';
 
 export const colorTextInput_dark = css`
     background: rgba(16, 22, 26, 0.3);
