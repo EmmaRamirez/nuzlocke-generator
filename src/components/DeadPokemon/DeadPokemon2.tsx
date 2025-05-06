@@ -5,7 +5,7 @@ import { Pokemon, Game } from 'models';
 import { GenderElement } from 'components/Shared';
 import { gameOfOriginToColor, Styles } from 'utils';
 import { selectPokemon } from 'actions';
-import { PokemonIconBase } from 'components/PokemonIcon';
+import { PokemonIconPlain } from 'components/PokemonIcon';
 import { State } from 'state';
 
 export function DeadPokemon({ pokemon }: { pokemon: Pokemon }) {
@@ -13,7 +13,7 @@ export function DeadPokemon({ pokemon }: { pokemon: Pokemon }) {
 
     return (
         <span data-testid="dead-pokemon" style={{ filter: 'grayscale(100%)' }}>
-            <PokemonIconBase
+            <PokemonIconPlain
                 onClick={(e) => dispatch(selectPokemon(pokemon.id))}
                 {...(pokemon as any)}
             />

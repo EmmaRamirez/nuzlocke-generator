@@ -6,7 +6,7 @@ import {
     EDIT_CUSTOM_TYPE,
 } from 'actions';
 import { State } from 'state';
-const uuid = require('uuid');
+import { v4 as uuid } from 'uuid';
 
 export function customTypes(
     state: State['customTypes'] = [],

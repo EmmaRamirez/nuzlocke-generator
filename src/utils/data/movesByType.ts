@@ -122,6 +122,7 @@ export const movesByType: MovesByType = {
         'Dragon Energy',
         'Order Up',
         'Glaive Rush',
+        'Fickle Beam',
     ],
     Electric: [
         '10,000,000 Volt Thunderbolt',
@@ -170,6 +171,9 @@ export const movesByType: MovesByType = {
         'Thunder Cage',
         'Electro Drift',
         'Double Shock',
+        'Electro Shot',
+        'Thunderclap',
+        'Supercell Slam',
     ],
     Fairy: [
         'Dazzling Gleam',
@@ -201,6 +205,7 @@ export const movesByType: MovesByType = {
         'Misty Explosion',
         'Sparkly Swirl',
         'Magical Torque',
+        'Alluring Voice',
     ],
     Fighting: [
         'Seismic Toss',
@@ -259,6 +264,7 @@ export const movesByType: MovesByType = {
         'Axe Kick',
         'Collision Course',
         'Combat Torque',
+        'Upper Hand',
     ],
     Fire: [
         'Fire Blast',
@@ -304,6 +310,7 @@ export const movesByType: MovesByType = {
         'Bitter Blade',
         'Armor Cannon',
         'Blazing Torque',
+        'Burning Bulwark',
     ],
     Flying: [
         'FeatherDance',
@@ -696,6 +703,7 @@ export const movesByType: MovesByType = {
         'Shed Tail',
         'Tidy Up',
         'Hyper Drill',
+        'Tera Sandstorm',
     ],
     Poison: [
         'Acid',
@@ -731,6 +739,7 @@ export const movesByType: MovesByType = {
         'Shell Side Arm',
         'Mortal Spin',
         'Noxious Torque',
+        'Malignant Chain',
     ],
     Psychic: [
         'Barrier',
@@ -804,6 +813,7 @@ export const movesByType: MovesByType = {
         'Eerie Spell',
         'Lumina Crash',
         'Twin Beam',
+        'Psychic Noise',
     ],
     Rock: [
         'Rock Throw',
@@ -828,6 +838,7 @@ export const movesByType: MovesByType = {
         'Tar Shot',
         'Meteor Beam',
         'Salt Cure',
+        'Mighty Cleave',
     ],
     Steel: [
         'Anchor Shot',
@@ -863,6 +874,8 @@ export const movesByType: MovesByType = {
         'Spin Out',
         'Make It Rain',
         'Gigaton Hammer',
+        'Hard Press',
+        'Tachyon Cutter',
     ],
     Water: [
         'Brine',

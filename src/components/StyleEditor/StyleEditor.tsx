@@ -22,6 +22,7 @@ import {
     Classes,
     Drawer,
     Icon,
+    HTMLSelect,
 } from '@blueprintjs/core';
 import { State } from 'state';
 import { BaseEditor } from 'components/BaseEditor';
@@ -30,9 +31,8 @@ import { cx } from 'emotion';
 import * as Styles from './styles';
 import { ThemeEditor } from 'components/ThemeEditor';
 import { customCSSGuide as text } from 'utils/customCSSGuide';
-const ReactMarkdown = require('react-markdown');
-
-const debounce = require('lodash.debounce');
+import ReactMarkdown from 'react-markdown';
+import { debounce } from 'utils/debounce';
 
 const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'], game?: Game) => {
     const propName = name || e.target.name;
@@ -183,18 +183,15 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     />
                 </Drawer>
                 <div className={styleEdit}>
-                    <label className={cx(Classes.LABEL, Classes.INLINE)}>Template</label>
-                    <div className={Classes.SELECT}>
-                        <select
-                            className={Classes.SELECT}
-                            name="template"
-                            onChange={(e) => editEvent(e, props, undefined, props.game.name)}
-                            value={props.style.template}>
-                            {listOfThemes.map((o) => (
-                                <option key={o}>{o}</option>
-                            ))}
-                        </select>
-                    </div>
+                    <label htmlFor='template' className={cx(Classes.LABEL, Classes.INLINE)}>Template</label>
+                    <HTMLSelect
+                        name="template"
+                        onChange={(e) => editEvent(e, props, undefined, props.game.name)}
+                        value={props.style.template}>
+                        {listOfThemes.map((o) => (
+                            <option key={o}>{o}</option>
+                        ))}
+                    </HTMLSelect>
                     {feature.themeEditing ? (
                         <Button
                             onClick={this.toggleThemeEditor}
@@ -218,44 +215,40 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <label className={cx(Classes.LABEL, Classes.INLINE)}>Item Style</label>
-                    <div className={Classes.SELECT}>
-                        <select
-                            name="itemStyle"
-                            onChange={(e) => editEvent(e, props, undefined)}
-                            value={props.style.itemStyle}>
-                            {smallItemOptions.map((v) => {
-                                return (
-                                    <option key={v} value={v}>
-                                        {capitalize(v)}
-                                    </option>
-                                );
-                            })}
-                        </select>
-                    </div>
+                    <label htmlFor="itemStyle" className={cx(Classes.LABEL, Classes.INLINE)}>Item Style</label>
+                    <HTMLSelect
+                        name="itemStyle"
+                        onChange={(e) => editEvent(e, props, undefined)}
+                        value={props.style.itemStyle}>
+                        {smallItemOptions.map((v) => {
+                            return (
+                                <option key={v} value={v}>
+                                    {capitalize(v)}
+                                </option>
+                            );
+                        })}
+                    </HTMLSelect>
                 </div>
 
                 <div className={styleEdit}>
-                    <label className={cx(Classes.LABEL, Classes.INLINE)}>Pokéball Style</label>
-                    <div className={Classes.SELECT}>
-                        <select
-                            name="pokeballStyle"
-                            onChange={(e) => editEvent(e, props, undefined)}
-                            value={props.style.pokeballStyle}>
-                            {smallItemOptions.map((v) => {
-                                return (
-                                    <option key={v} value={v}>
-                                        {capitalize(v)}
-                                    </option>
-                                );
-                            })}
-                        </select>
-                    </div>
+                    <label htmlFor="pokeballStyle" className={cx(Classes.LABEL, Classes.INLINE)}>Pokéball Style</label>
+                    <HTMLSelect
+                        name="pokeballStyle"
+                        onChange={(e) => editEvent(e, props, undefined)}
+                        value={props.style.pokeballStyle}>
+                        {smallItemOptions.map((v) => {
+                            return (
+                                <option key={v} value={v}>
+                                    {capitalize(v)}
+                                </option>
+                            );
+                        })}
+                    </HTMLSelect>
                 </div>
 
                 <div className={createStyleEdit(true)}>
                     <div>
-                        <label className={cx(Classes.LABEL, Classes.INLINE)}>
+                        <label htmlFor="resultWidth" className={cx(Classes.LABEL, Classes.INLINE)}>
                             Result Dimensions
                         </label>
                         <span style={{ fontSize: '80%', marginRight: '2px' }}>w</span>
@@ -268,7 +261,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                             min="0"
                             step="10"
                         />
-                        <Icon icon='cross' style={{marginRight: '0'}} />
+                        <Icon icon='cross' style={{ marginRight: '0' }} />
                         <span style={{ fontSize: '80%', marginRight: '2px' }}>h</span>
                         <input
                             name="resultHeight"
@@ -306,7 +299,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
 
                 <div className={createStyleEdit(true)}>
                     <div>
-                        <label className={cx(Classes.LABEL, Classes.INLINE)}>
+                        <label htmlFor="trainerWidth" className={cx(Classes.LABEL, Classes.INLINE)}>
                             Trainer Dimensions
                         </label>
                         <span style={{ fontSize: '80%', marginRight: '2px' }}>w</span>
@@ -319,7 +312,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                             }}
                             value={props.style.trainerWidth}
                         />
-                        <Icon icon='cross' style={{marginRight: '0'}} />
+                        <Icon icon='cross' style={{ marginRight: '0' }} />
                         <span style={{ fontSize: '80%', marginRight: '2px' }}>h</span>
                         <input
                             name="trainerHeight"
@@ -432,18 +425,16 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
 
                 <div className={styleEdit}>
                     <label className={cx(Classes.LABEL, Classes.INLINE)}>Rules Location</label>
-                    <div className={Classes.SELECT}>
-                        <select
-                            name="displayRulesLocation"
-                            onChange={(e) => editEvent(e, props, undefined)}
-                            value={props.style.displayRulesLocation}>
-                            <option key={'inside trainer section'}>
-                                {'inside trainer section'}
-                            </option>
-                            <option key={'bottom'}>bottom</option>
-                            <option key={'top'}>top</option>
-                        </select>
-                    </div>
+                    <HTMLSelect
+                        name="displayRulesLocation"
+                        onChange={(e) => editEvent(e, props, undefined)}
+                        value={props.style.displayRulesLocation}>
+                        <option key={'inside trainer section'}>
+                            {'inside trainer section'}
+                        </option>
+                        <option key={'bottom'}>bottom</option>
+                        <option key={'top'}>top</option>
+                    </HTMLSelect>
                 </div>
 
                 <div className={styleEdit}>
@@ -469,25 +460,23 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <label className={cx(Classes.LABEL, Classes.INLINE)}>Team Images</label>
-                    <div className={Classes.SELECT}>
-                        <select
-                            name="teamImages"
-                            onChange={(e) => editEvent(e, props, undefined, props.game.name)}
-                            value={props.style.teamImages}>
-                            {teamImages.map((o) => (
-                                <option value={o} key={o}>
-                                    {capitalize(o)}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
+                    <label htmlFor="teamImages" className={cx(Classes.LABEL, Classes.INLINE)}>Team Images</label>
+                    <HTMLSelect
+                        name="teamImages"
+                        onChange={(e) => editEvent(e, props, undefined, props.game.name)}
+                        value={props.style.teamImages}>
+                        {teamImages.map((o) => (
+                            <option value={o} key={o}>
+                                {capitalize(o)}
+                            </option>
+                        ))}
+                    </HTMLSelect>
                     {(props.game.name === 'Sword' || props.game.name === 'Shield') &&
-                    props.style.teamImages === 'shuffle' ? (
-                            <div className={cx(Classes.CALLOUT, Classes.INTENT_DANGER)} style={calloutStyle}>
+                        props.style.teamImages === 'shuffle' ? (
+                        <div className={cx(Classes.CALLOUT, Classes.INTENT_DANGER)} style={calloutStyle}>
                             Shuffle images are not supported for this game
-                            </div>
-                        ) : null}
+                        </div>
+                    ) : null}
                     {[
                         'Sword',
                         'Shield',
@@ -498,20 +487,20 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         'Ultra Sun',
                         'Ultra Moon',
                     ].includes(props.game.name) && props.style.teamImages === 'dream world' ? (
-                            <div className={cx(Classes.CALLOUT, Classes.INTENT_DANGER)} style={calloutStyle}>
+                        <div className={cx(Classes.CALLOUT, Classes.INTENT_DANGER)} style={calloutStyle}>
                             Dream world images are not supported for this game
-                            </div>
-                        ) : null}
+                        </div>
+                    ) : null}
                     {['Sword', 'Shield'].includes(props.game.name) &&
-                    props.style.teamImages === 'tcg' ? (
-                            <div className={cx(Classes.CALLOUT, Classes.INTENT_DANGER)} style={calloutStyle}>
+                        props.style.teamImages === 'tcg' ? (
+                        <div className={cx(Classes.CALLOUT, Classes.INTENT_DANGER)} style={calloutStyle}>
                             TCG images are not fully supported for this game
-                            </div>
-                        ) : null}
+                        </div>
+                    ) : null}
                 </div>
 
                 <div className={styleEdit}>
-                    <label className={cx(Classes.LABEL, Classes.INLINE)}>
+                    <label htmlFor="boxedPokemonPerLine" className={cx(Classes.LABEL, Classes.INLINE)}>
                         Pokemon Per Line (Boxed)
                     </label>
                     <input
@@ -527,7 +516,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <label className={cx(Classes.LABEL, Classes.INLINE)}>Linked Pokemon Text</label>
+                    <label htmlFor="linkedPokemonText" className={cx(Classes.LABEL, Classes.INLINE)}>Linked Pokemon Text</label>
                     <input
                         name="linkedPokemonText"
                         className={cx(Classes.INPUT)}

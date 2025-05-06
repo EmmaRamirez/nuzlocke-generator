@@ -1,4 +1,4 @@
-.bp3-light .release-notes {
+.bp5-light .release-notes {
   background: #fafafa;
 }
 .release-notes-wrapper .release-notes {
@@ -60,10 +60,10 @@
     margin-left: 40px;
 }
 
-.bp3-dark .release-dialog h1,
-.bp3-dark .release-dialog h2,
-.bp3-dark .release-dialog h3,
-.bp3-dark .release-dialog h4 {
+.bp5-dark .release-dialog h1,
+.bp5-dark .release-dialog h2,
+.bp5-dark .release-dialog h3,
+.bp5-dark .release-dialog h4 {
   color: #fff !important;
 }
 .release-dialog {
@@ -82,13 +82,13 @@
 .no-list-item-types {
   list-style-type: none;
 }
-.bp3-tag-input {
+.bp5-tag-input {
     align-items: center !important;
 }
-.bp3-tag-input-icon {
+.bp5-tag-input-icon {
     margin: 0 !important;
     margin-right: 4px !important;
 }
-.bp3-switch {
+.bp5-switch {
     margin-bottom: 0 !important;
 }

@@ -1,1 +1,2 @@
-export const version = require('../../package.json').version;
+// @TODO: fetch actual version
+export const version = '1.16.1';

@@ -1,10 +1,33 @@
 import { Species } from './listOfPokemon';
 import { flatten } from 'ramda';
-const uniq = require('lodash/uniq');
+
+function uniq<T>(array: T[]): T[] {
+    // Return early for empty arrays or arrays with 1 or fewer elements
+    if (!array || array.length <= 1) {
+        return array ? [...array] : [];
+    }
+
+    // Create a new array to store unique values
+    const result: T[] = [];
+
+    // Use a Set to track which values have been seen
+    const seen = new Set<T>();
+
+    for (const value of array) {
+        if (!seen.has(value)) {
+            seen.add(value);
+            result.push(value);
+        }
+    }
+
+    return result;
+}
+
+export default uniq;
 
 export type EvolutionTree = { [S in Species]?: Species[] };
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
+ 
 export const EvolutionTree: EvolutionTree = {
     Bulbasaur: ['Ivysaur'],
     Ivysaur: ['Venusaur'],

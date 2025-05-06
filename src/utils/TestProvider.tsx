@@ -12,5 +12,6 @@ export function TestProvider({ children }: any) {
         },
     } as State);
 
+    // @ts-expect-error stupid typing
     return <Provider store={store}>{children}</Provider>;
 }

@@ -10,7 +10,7 @@ export type PokemonFixtures = Record<
 Pokemon
 >;
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
+ 
 export const PokemonFixtures: PokemonFixtures = {
     Pikachu: {
         ...generateEmptyPokemon(),

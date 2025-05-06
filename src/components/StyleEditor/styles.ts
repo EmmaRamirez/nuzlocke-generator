@@ -1,8 +1,7 @@
-/* eslint-disable camelcase */
-import { Classes } from '@blueprintjs/core';
+ 
 import { cx, css } from 'emotion';
 
-const BP_VERSION = 'bp3';
+const BP_VERSION = 'bp5';
 
 export const colorTextInput_dark = css`
     background: rgba(16, 22, 26, 0.3);
@@ -41,12 +40,15 @@ export const colorEditWrapper = css`
 `;
 
 export const styleEdit = css`
-    align-items: center;
     align-content: center;
     border-bottom: 1px solid #ddd;
     display: flex;
     padding: 0.5rem;
     width: 100%;
+    gap: 0.25rem;
+    align-items: baseline;
+    justify-content: flex-start;
+}
     .${BP_VERSION}-label {
         margin: 0;
         min-width: 10rem;

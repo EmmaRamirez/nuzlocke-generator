@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { editGame, changeEditorSize, editStyle, resetCheckpoints, toggleTemtemMode } from 'actions';
 import { gameOfOriginToColor, listOfGames, feature, Game } from 'utils';
 
-import { Button, Intent, Popover, Position, Menu, Switch, Classes } from '@blueprintjs/core';
+import { Button, Intent, Popover, Position, Menu, Switch, Classes, HTMLSelect } from '@blueprintjs/core';
 import { RulesEditorDialog } from 'components/RulesEditor';
 import { State } from 'state';
 import { BaseEditor } from 'components/BaseEditor';
@@ -59,13 +59,11 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                                 style={{ fontSize: '80%', marginRight: '.5rem' }}>
                                 Version
                             </label>
-                            <div className={Classes.SELECT}>
-                                <select onChange={this.onInput} value={game.name}>
-                                    {listOfGames.map((game) => (
-                                        <option key={game}>{game}</option>
-                                    ))}
-                                </select>
-                            </div>
+                            <HTMLSelect>
+                                {listOfGames.map((game) => (
+                                    <option key={game}>{game}</option>
+                                ))}
+                            </HTMLSelect>
                         </div>
                         <Button onClick={this.toggleDialog} icon="list" intent={Intent.PRIMARY}>
                             Modify Rules

@@ -1,4 +1,4 @@
-/* eslint-disable no-underscore-dangle */
+ 
 import * as React from 'react';
 import {
     Popover,
@@ -63,7 +63,7 @@ NuzlockeSaveControlsState
         isHofOpen: false,
     };
 
-    // eslint-disable-next-line camelcase
+     
     public UNSAFE_componentWillMount() {
         const { nuzlockes, newNuzlocke, state } = this.props;
         if (!nuzlockes.currentId || nuzlockes.currentId === '') {

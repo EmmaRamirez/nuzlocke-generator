@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-redeclare */
+ 
 import { Action } from './action';
 import { Styles } from 'utils';
 

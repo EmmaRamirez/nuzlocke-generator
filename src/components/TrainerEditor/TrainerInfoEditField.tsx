@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Omit } from 'ramda';
-const debounce = require('lodash.debounce');
-
+import { debounce } from 'utils/debounce';
 
 export interface TrainerInfoEditFieldProps {
     label: React.ReactElement<any> | string;

@@ -2,8 +2,7 @@ import { Button, ButtonGroup, Classes, Dialog, DialogProps, Intent } from '@blue
 import { css, cx } from 'emotion';
 import * as React from 'react';
 
-const hofImage = require('assets/hall-of-fame.png').default;
-
+const hofImage = 'assets/hall-of-fame.png';
 
 const styles = {
     hallOfFameDialog: css`

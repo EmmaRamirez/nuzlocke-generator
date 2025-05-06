@@ -14,10 +14,11 @@ import {
     Icon,
     Popover,
     PopoverInteractionKind,
+    HTMLSelect,
 } from '@blueprintjs/core';
-import { PokemonIconBase } from 'components/PokemonIcon';
+import { PokemonIcon } from 'components/PokemonIcon';
 import { ErrorBoundary } from 'components/Shared';
-const uuid = require('uuid');
+import { v4 as uuid } from 'uuid';
 import { persistor } from 'store';
 import { newNuzlocke, replaceState, setEditorHistoryDisabled } from 'actions';
 import { Game, Pokemon, Trainer } from 'models';
@@ -27,9 +28,9 @@ import { State } from 'state';
 import { noop } from 'redux-saga/utils';
 import { feature, GameSaveFormat } from 'utils';
 import { DeleteAlert } from './DeleteAlert';
-
-const isEmpty = require('lodash/isEmpty');
-import codegen from 'codegen.macro';
+import { isEmpty } from 'utils/isEmpty';
+// @TODO: fix codegen imports
+// import codegen from 'codegen.macro';
 import { BoxMappings } from 'parsers/utils/boxMappings';
 import { cx } from 'emotion';
 
@@ -89,7 +90,7 @@ const handleExceptions = (data) => {
         });
         for (const prop in data) {
             try {
-                updated = { ...updated, [prop]: JSON.parse(data[prop])};
+                updated = { ...updated, [prop]: JSON.parse(data[prop]) };
             } catch (e) {
                 console.log(
                     `Failed to parse on ${prop}`
@@ -107,7 +108,7 @@ export interface SaveGameSettingsDialogProps {
     boxes: State['box'];
     selectedGame: GameSaveFormat;
     boxMappings: BoxMappings;
-    setBoxMappings: ({key, status}) => void;
+    setBoxMappings: ({ key, status }) => void;
 }
 
 // Quick and dirty method of getting Array w n.length
@@ -115,9 +116,9 @@ const generateArray = (n: number) => {
     const arr: BoxMappings = [];
     for (let i = 1; i < n + 1; i++) {
         if (i === 2) {
-            arr.push({key: i, status: 'Dead'});
+            arr.push({ key: i, status: 'Dead' });
         } else {
-            arr.push({key: i, status: 'Boxed'});
+            arr.push({ key: i, status: 'Boxed' });
         }
     }
     return arr;
@@ -125,19 +126,17 @@ const generateArray = (n: number) => {
 
 const generateBoxMappingsDefault = (saveFormat) => generateArray(getGameNumberOfBoxes(saveFormat));
 
-export function BoxSelect({boxes, value, boxKey, setBoxMappings}: {boxes: State['box'], value: string, boxKey: number, setBoxMappings: SaveGameSettingsDialogProps['setBoxMappings']}) {
-    return <div className={Classes.SELECT}>
-        <select
-            value={value}
-            onChange={e => setBoxMappings({ key: boxKey, status: e.target.value })}
-        >
-            {boxes.map((box) => (
-                <option key={box.id} value={box.name}>
-                    {box.name}
-                </option>
-            ))}
-        </select>
-    </div>;
+export function BoxSelect({ boxes, value, boxKey, setBoxMappings }: { boxes: State['box'], value: string, boxKey: number, setBoxMappings: SaveGameSettingsDialogProps['setBoxMappings'] }) {
+    return <HTMLSelect
+        value={value}
+        onChange={e => setBoxMappings({ key: boxKey, status: e.target.value })}
+    >
+        {boxes.map((box) => (
+            <option key={box.id} value={box.name}>
+                {box.name}
+            </option>
+        ))}
+    </HTMLSelect>;
 }
 
 export function SaveGameSettingsDialog({
@@ -171,14 +170,16 @@ export function SaveGameSettingsDialog({
             onChange={onMergeDataChange}
         />
 
-        <div style={{height: '60vh', overflow: 'auto', display: 'flex', flexDirection: 'column', flexWrap: 'wrap'}} className='has-nice-scrollbars'>
+        <div style={{ height: '60vh', overflow: 'auto', display: 'flex', flexDirection: 'column', flexWrap: 'wrap' }} className='has-nice-scrollbars'>
             {boxMappings.map((value, index) => {
-                return <div style={{padding: '0.25rem'}}>
+                return <div style={{ padding: '0.25rem' }}>
                     <BoxSelect boxKey={value.key} setBoxMappings={setBoxMappings} value={value.status} boxes={boxes} />
                     <div
                         className={Classes.BUTTON}
-                        style={{marginLeft: '0.25rem',
-                            cursor: 'default', width: '8rem'}}
+                        style={{
+                            marginLeft: '0.25rem',
+                            cursor: 'default', width: '8rem'
+                        }}
                     >{`Box ${value.key}`}</div>
                 </div>;
             })}
@@ -299,7 +300,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     {d?.pokemon
                         ?.filter((p) => p.status === 'Team')
                         ?.map((p) => {
-                            return <PokemonIconBase key={p.id} {...p} />;
+                            return <PokemonIcon key={p.id} {...p} />;
                         })}
                 </div>
             );
@@ -339,11 +340,20 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
     private uploadFile = (replaceState, state) => (e) => {
         const t0 = performance.now();
         // @NOTE: this is a gross work-around a bug with jest and import.meta.url
-        const worker = new Worker(new URL('parsers/worker.ts', codegen`module.exports = process.env.NODE_ENV === "test" ? "" : "import.meta.url"`));
+        // const worker = new Worker(new URL('parsers/worker.ts', codegen`module.exports = import.meta.env.MODE === "test" ? "" : "import.meta.url"`));
+
+        const worker = new Worker(new URL('../../parsers/worker.ts', import.meta.url), { type: 'module' });
 
         const file = this.fileInput.files[0];
         const reader = new FileReader();
         const componentState = this.state;
+
+        console.log(
+            file,
+            reader,
+            componentState,
+            worker,
+        );
 
         reader.readAsArrayBuffer(file);
 
@@ -432,22 +442,20 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     <div
                         className={cx(Classes.LABEL, Classes.INLINE)}
                         style={{ padding: '.25rem 0', paddingBottom: '.5rem' }}>
-                        <div className={Classes.SELECT}>
-                            <select
-                                value={this.state.selectedGame}
-                                onChange={(e) => {
-                                    this.setState({
-                                        selectedGame: e.target.value as GameSaveFormat,
-                                        boxMappings: generateBoxMappingsDefault(e.target.value as GameSaveFormat)
-                                    });
-                                }}>
-                                {allowedGames.map((game) => (
-                                    <option key={game} value={game}>
-                                        {game}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
+                        <HTMLSelect
+                            value={this.state.selectedGame}
+                            onChange={(e) => {
+                                this.setState({
+                                    selectedGame: e.target.value as GameSaveFormat,
+                                    boxMappings: generateBoxMappingsDefault(e.target.value as GameSaveFormat)
+                                });
+                            }}>
+                            {allowedGames.map((game) => (
+                                <option key={game} value={game}>
+                                    {game}
+                                </option>
+                            ))}
+                        </HTMLSelect>
                     </div>
 
                     <div
@@ -489,14 +497,14 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                             boxes={this.props.state.box}
                             selectedGame={this.state.selectedGame}
                             boxMappings={this.state.boxMappings}
-                            setBoxMappings={({key, status}) => {
+                            setBoxMappings={({ key, status }) => {
                                 console.log('setBoxMappings:', key, status);
-                                this.setState(({boxMappings}) => {
-                                    const newBoxMappings = boxMappings.map(({key: boxKey, status: boxStatus}) => {
+                                this.setState(({ boxMappings }) => {
+                                    const newBoxMappings = boxMappings.map(({ key: boxKey, status: boxStatus }) => {
                                         if (key === boxKey) {
-                                            return {key, status};
+                                            return { key, status };
                                         }
-                                        return {key: boxKey, status: boxStatus};
+                                        return { key: boxKey, status: boxStatus };
                                     });
                                     return {
                                         boxMappings: newBoxMappings,
@@ -542,15 +550,14 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                             <div className={Classes.DIALOG_FOOTER}>
                                 <a
                                     href={this.state.href}
-                                    download={`nuzlocke_${
-                                        this.props?.state?.trainer?.title
+                                    download={`nuzlocke_${this.props?.state?.trainer?.title
                                             ?.toLowerCase()
                                             .replace(/\s/g, '-') ||
                                         this.props?.state?.game?.name
                                             ?.toLowerCase()
                                             .replace(/\s/g, '-') ||
                                         ''
-                                    }_${uuid().slice(0, 4)}.json`}>
+                                        }_${uuid().slice(0, 4)}.json`}>
                                     <Button icon={'download'} intent={Intent.PRIMARY}>
                                         Download
                                     </Button>
@@ -644,9 +651,9 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     checked={this.props.state.editor.editorHistoryDisabled}
                     onChange={e => this.props.setEditorHistoryDisabled(e.currentTarget.checked)}
                     labelElement={<>Disable Editor History <Popover content={
-                        <div style={{width: '8rem', padding: '.25rem'}}>Can be used to achieve better editor performance on larger saves</div>
+                        <div style={{ width: '8rem', padding: '.25rem' }}>Can be used to achieve better editor performance on larger saves</div>
                     }
-                    interactionKind={PopoverInteractionKind.HOVER}><Icon icon='info-sign' /></Popover></>}
+                        interactionKind={PopoverInteractionKind.HOVER}><Icon icon='info-sign' /></Popover></>}
                 />
             </BaseEditor>
         );

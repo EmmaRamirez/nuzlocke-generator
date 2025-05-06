@@ -24,7 +24,7 @@ import { getContrastColor } from 'utils';
 import { useEvent } from 'utils/hooks';
 import { TrainerNotes } from './TrainerNotes';
 
-const uuid = require('uuid');
+import { v4 as uuid } from 'uuid';
 
 async function load() {
     const resource = await import('@emmaramirez/dom-to-image');
@@ -267,6 +267,8 @@ export class Result extends React.Component {
     public render() {
         return (
             <div className={cx(Styles.result_wrapper, 'hide-scrollbars')}>
+                {/* @TODO fix this */}
+                {/* @ts-expect-error */}
                 <TopBar ref={this.ref} />
                 <ResultInner ref={this.ref} />
             </div>

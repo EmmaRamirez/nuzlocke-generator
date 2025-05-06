@@ -1,4 +1,4 @@
-export { Action } from './action';
+export * from './action';
 export * from './saveNuzlocke';
 export * from './addPokemon';
 export * from './deletePokemon';
