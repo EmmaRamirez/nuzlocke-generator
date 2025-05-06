@@ -1,7 +1,8 @@
-import { head, tail } from "lodash";
+import head from "lodash/head";
+import tail from "lodash/tail"
 import express from 'express';
-import path from 'path';
-import dotenv from 'dotenv';
+import path from 'node:path';
+import * as dotenv from 'dotenv';
 import fetch from 'node-fetch';
 import compression from 'compression';
 import cors from 'cors';
@@ -18,7 +19,6 @@ const logger = pino({
 const isLocal = process.env.NODE_ENV === 'local';
 
 let middleware, compiler;
-
 
 const GH_URL = 'https://api.github.com/repos/EmmaRamirez/nuzlocke-generator';
 const GH_ACCESS_TOKEN = process.env.GH_ACCESS_TOKEN;
