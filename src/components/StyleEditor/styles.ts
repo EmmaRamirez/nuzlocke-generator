@@ -1,7 +1,7 @@
  
 import { cx, css } from 'emotion';
 
-const BP_VERSION = 'bp4';
+const BP_VERSION = 'bp5';
 
 export const colorTextInput_dark = css`
     background: rgba(16, 22, 26, 0.3);

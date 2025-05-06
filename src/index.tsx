@@ -5,6 +5,7 @@ import { injectGlobal } from 'emotion';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/table/lib/css/table.css';
+import "@blueprintjs/select/lib/css/blueprint-select.css";
 // import 'tailwindcss/dist/base.min.css';
 // import 'tailwindcss/dist/components.min.css';
 // import 'tailwindcss/dist/utilities.min.css';

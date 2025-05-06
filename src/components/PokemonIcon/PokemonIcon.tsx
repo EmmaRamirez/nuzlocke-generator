@@ -191,7 +191,6 @@ export const PokemonIcon = (props: BasePokemonIconProps) => {
         dispatch(selectPokemon(props.id!));
     };
     const imageStyle = {
-
         height: '32px',
         maxWidth: 'auto',
         imageRendering: styles?.iconRendering,

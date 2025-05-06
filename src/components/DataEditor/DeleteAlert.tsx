@@ -20,7 +20,7 @@ export function DeleteAlert({
             intent={Intent.DANGER}
             {...props}>
             <div style={{ display: 'flex' }}>
-                <img style={{ height: '10rem' }} src={"trubbs"} alt="Sad Trubbish" />
+                <img style={{ height: '10rem' }} src={"./assets/img/trash.png"} alt="Sad Trubbish" />
                 <p style={{ fontSize: '1.2rem', padding: '1rem' }}>{warningText}</p>
             </div>
         </Alert>

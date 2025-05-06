@@ -79,6 +79,7 @@ const TopBarItems = ({ editorDarkMode, setZoomLevel, currentZoomLevel }) => {
     // @TODO: make this look decent
     return (
         <Select<ZoomValue>
+            className={cx({ 'bp5-dark': editorDarkMode })}
             filterable={false}
             items={ZoomValues}
             itemRenderer={(item, { handleClick }) => (<MenuItem onClick={handleClick} text={item.value} />)}
@@ -88,7 +89,7 @@ const TopBarItems = ({ editorDarkMode, setZoomLevel, currentZoomLevel }) => {
                 setZoomLevel(item.key);
             }}
         >
-            <Button text={(convertToPercentage(currentZoomLevel)) ?? '100%'} rightIcon="double-caret-vertical" />
+            <Button text={(convertToPercentage(currentZoomLevel)) ?? '100%'} endIcon="double-caret-vertical" />
         </Select>
     );
 };
