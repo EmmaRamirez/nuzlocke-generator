@@ -96,8 +96,8 @@
     "ts-node": "^10.9.2",
     "tslib": "^2.0.0",
     "tslint": "^6.1.2",
-    "vite": "^4.2.0",
-    "vite-plugin-static-copy": "^0.13.1",
+    "vite": "^6.3.5",
+    "vite-plugin-static-copy": "^2.3.1",
     "vite-tsconfig-paths": "^5.1.4"
   },
   "devDependencies": {
