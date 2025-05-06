@@ -3,12 +3,8 @@ import { Classes, Dialog, Intent, Button } from '@blueprintjs/core';
 import { useSelector } from 'react-redux';
 import { State } from 'state';
 import { css, cx } from 'emotion';
-// import credits from './credits.json';
-// @TODO: fix credits
-const credits: CreditsData = {
-    dev: [],
-    art: []
-};
+// @ts-expect-error oddity with default imports & vite/typescript/json
+import credits from './credits.json';
 
 const creditsContainer = css`
     max-height: 30rem;
