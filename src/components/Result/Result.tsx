@@ -82,7 +82,7 @@ const TopBarItems = ({ editorDarkMode, setZoomLevel, currentZoomLevel }) => {
             className={cx({ 'bp5-dark': editorDarkMode })}
             filterable={false}
             items={ZoomValues}
-            itemRenderer={(item, { handleClick }) => (<MenuItem onClick={handleClick} text={item.value} />)}
+            itemRenderer={(item, { handleClick }) => (<MenuItem key={item.key} onClick={handleClick} text={item.value} />)}
             noResults={<MenuItem disabled={true} text="No results." />}
             onItemSelect={(item) => {
                 console.log('item', item);
