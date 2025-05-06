@@ -47,7 +47,7 @@ import { MoveEditor } from 'components/MoveEditor';
 import { CheckpointsInputList } from 'components/TrainerEditor';
 import { getImages, Image } from 'components/Shared/ImagesDrawer';
 
-const pokeball = 'src/assets/pokeball.png';
+const pokeball = './assets/pokeball.png';
 
 export interface CopyPokemonButtonProps {
     onClick: (event: React.MouseEvent<HTMLElement>) => void;

@@ -41,12 +41,15 @@ export const colorEditWrapper = css`
 `;
 
 export const styleEdit = css`
-    align-items: center;
     align-content: center;
     border-bottom: 1px solid #ddd;
     display: flex;
     padding: 0.5rem;
     width: 100%;
+    gap: 0.25rem;
+    align-items: baseline;
+    justify-content: flex-start;
+}
     .${BP_VERSION}-label {
         margin: 0;
         min-width: 10rem;
