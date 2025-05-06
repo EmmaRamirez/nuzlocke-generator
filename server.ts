@@ -1,12 +1,16 @@
 import head from "lodash/head";
 import tail from "lodash/tail"
 import express from 'express';
-import path from 'node:path';
+import path, { dirname } from 'node:path';
 import * as dotenv from 'dotenv';
 import fetch from 'node-fetch';
 import compression from 'compression';
 import cors from 'cors';
 import pino from 'pino';
+import { fileURLToPath } from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 dotenv.config();
 
