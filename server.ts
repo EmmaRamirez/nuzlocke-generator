@@ -1,31 +1,24 @@
-const { head, tail } = require("lodash");
+import { head, tail } from "lodash";
+import express from 'express';
+import path from 'path';
+import dotenv from 'dotenv';
+import fetch from 'node-fetch';
+import compression from 'compression';
+import cors from 'cors';
+import pino from 'pino';
 
-const express = require('express');
-// @ts-ignore false redeclare warning
-const path = require('path');
+dotenv.config();
+
 const app = express();
-require('dotenv').config()
-// @ts-ignore false redeclare warning
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
-const compression = require('compression');
-const cors = require('cors');
-const logger = require('pino')({
-  // prettyPrint: true,
-  messageFormat: '☰nuz: {levelLabel} - {pid} - url:{request.url}'
+const logger = pino({
 });
+
+// '☰nuz: {levelLabel} - {pid} - url:{request.url}'
 
 const isLocal = process.env.NODE_ENV === 'local';
 
 let middleware, compiler;
 
-if (isLocal) {
-    const Webpack = require('webpack');
-    const WebpackDevServer = require('webpack-dev-server');
-    const webpackConfig = require('./webpack.config');
-
-    compiler = Webpack(webpackConfig);
-    middleware = require('webpack-dev-middleware');
-}
 
 const GH_URL = 'https://api.github.com/repos/EmmaRamirez/nuzlocke-generator';
 const GH_ACCESS_TOKEN = process.env.GH_ACCESS_TOKEN;
