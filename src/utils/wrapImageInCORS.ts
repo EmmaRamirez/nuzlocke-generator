@@ -15,7 +15,7 @@ export async function wrapImageInCORS(url: string) {
     console.log(import.meta.env.VITE_CORS_ANYWHERE_URL);
     const response = await fetch(`${import.meta.env.VITE_CORS_ANYWHERE_URL ?? "https://cors-anywhere-nuzgen.herokuapp.com"}/${url}`, {
         mode: 'cors',
-        // Origin: location.origin,
+        // origin: location.origin,
         // @ts-expect-error valid for cors-anywhere
         'X-Requested-With': 'XMLHttpRequest',
     });
