@@ -68,7 +68,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                                 style={{ fontSize: '80%', marginRight: '.5rem' }}>
                                 Version
                             </label>
-                            <HTMLSelect onInput={this.onInput}>
+                            <HTMLSelect value={game.name} onInput={this.onInput}>
                                 {listOfGames.map((game) => (
                                     <option key={game}>{game}</option>
                                 ))}
