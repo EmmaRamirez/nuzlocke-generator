@@ -12,7 +12,8 @@ function fileToBase64(file: Blob) {
 }
 
 export async function wrapImageInCORS(url: string) {
-    const response = await fetch(`${import.meta.env.CORS_ANYWHERE_URL}/${url}`, {
+    console.log(import.meta.env.VITE_CORS_ANYWHERE_URL);
+    const response = await fetch(`${import.meta.env.VITE_CORS_ANYWHERE_URL}/${url}`, {
         mode: 'cors',
         // Origin: location.origin,
         // @ts-expect-error valid for cors-anywhere
@@ -24,7 +25,7 @@ export async function wrapImageInCORS(url: string) {
 }
 
 export async function wrapImageInCORSPlain(url: string) {
-    const response = await fetch(`${import.meta.env.CORS_ANYWHERE_URL}/${url}`, {
+    const response = await fetch(`${import.meta.env.VITE_CORS_ANYWHERE_URL}/${url}`, {
         mode: 'cors',
         // @ts-expect-error valid for cors-anywhere
         'X-Requested-With': 'XMLHttpRequest',
