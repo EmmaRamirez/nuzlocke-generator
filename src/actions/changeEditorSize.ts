@@ -1,4 +1,3 @@
- 
 import { Action } from './action';
 
 export type CHANGE_EDITOR_SIZE = 'CHANGE_EDITOR_SIZE';

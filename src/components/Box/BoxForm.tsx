@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { Button, Intent, Popover, Icon, PopoverInteractionKind, Classes, Toaster, HTMLSelect } from '@blueprintjs/core';
+import {
+    Button,
+    Intent,
+    Popover,
+    Icon,
+    PopoverInteractionKind,
+    Classes,
+    Toaster,
+    HTMLSelect,
+} from '@blueprintjs/core';
 import { State } from 'state';
 import { connect } from 'react-redux';
 import { addBox, AddBoxArgs } from 'actions';
@@ -139,10 +148,7 @@ export class BoxFormBase extends React.Component<BoxFormProps, BoxFormState> {
                                             {wallpapers.map((w) => w.background).join(', ')}
                                         </div>
                                     }>
-                                    <Icon
-                                        style={{ marginLeft: '.25rem' }}
-                                        icon="info-sign"
-                                    />
+                                    <Icon style={{ marginLeft: '.25rem' }} icon="info-sign" />
                                 </Popover>
                             </label>
                             <input

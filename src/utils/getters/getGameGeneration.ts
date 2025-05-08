@@ -34,10 +34,16 @@ export const getGameGeneration = (game: Game): Generation => {
         'Moon',
         'Ultra Moon',
         'Ultra Sun',
-        'Let\'s Go Eevee',
-        'Let\'s Go Pikachu',
+        "Let's Go Eevee",
+        "Let's Go Pikachu",
     ];
-    const Gen8: Game[] = ['Sword', 'Shield', 'Brilliant Diamond', 'Shining Pearl', 'Legends: Arceus'];
+    const Gen8: Game[] = [
+        'Sword',
+        'Shield',
+        'Brilliant Diamond',
+        'Shining Pearl',
+        'Legends: Arceus',
+    ];
     const Gen9: Game[] = ['Scarlet', 'Violet', 'Legends: Z-A'];
 
     if (Gen1.includes(game)) return Generation.Gen1;

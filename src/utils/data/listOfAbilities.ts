@@ -53,7 +53,7 @@ export const listOfAbilities = [
     'Desolate Land',
     'Disguise',
     'Download',
-    'Dragon\'s Maw',
+    "Dragon's Maw",
     'Drizzle',
     'Drought',
     'Dry Skin',

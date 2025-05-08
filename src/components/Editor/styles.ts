@@ -11,7 +11,7 @@ export const editorStyles = {
     historyControls: css`
         left: 0;
         position: sticky;
-        top: -.25rem;
+        top: -0.25rem;
         z-index: 12;
         border-bottom: 1px solid;
         min-width: 100%;

@@ -1,4 +1,3 @@
- 
 import { css } from 'emotion';
 
 export const topBar = css`
@@ -106,8 +105,12 @@ export const pokemonContainer = css`
 `;
 
 export const trainerContainer = css`
-    background-position: top left, bottom left;
-    background-size: cover, 50% auto;
+    background-position:
+        top left,
+        bottom left;
+    background-size:
+        cover,
+        50% auto;
     background: #333;
     border-bottom: 1px solid #000;
     color: #eee;

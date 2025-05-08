@@ -26,15 +26,15 @@ interface CurrentPokemonInputProps {
     labelName: string;
     inputName: string;
     type:
-    | 'number'
-    | 'text'
-    | 'select'
-    | 'checkbox'
-    | 'double-select'
-    | 'moves'
-    | 'textArea'
-    | 'autocomplete'
-    | 'rich-text';
+        | 'number'
+        | 'text'
+        | 'select'
+        | 'checkbox'
+        | 'double-select'
+        | 'moves'
+        | 'textArea'
+        | 'autocomplete'
+        | 'rich-text';
     value: any;
     placeholder?: string;
     transform?: (v: any) => string;
@@ -58,7 +58,7 @@ const createEdit = ({ inputName, value, pokemon, edit }: ChangeArgs) => {
     if (inputName === 'species') {
         return {
             ...edit,
-            types: matchSpeciesToTypes(edit['species'])
+            types: matchSpeciesToTypes(edit['species']),
         };
     } else if (inputName === 'nature' && pokemon?.species === 'Toxtricity') {
         return {
@@ -68,7 +68,7 @@ const createEdit = ({ inputName, value, pokemon, edit }: ChangeArgs) => {
     } else if (inputName === 'forme') {
         return {
             ...edit,
-            types: pokemon && matchSpeciesToTypes(pokemon?.species as Species, value)
+            types: pokemon && matchSpeciesToTypes(pokemon?.species as Species, value),
         };
     }
 
@@ -76,23 +76,23 @@ const createEdit = ({ inputName, value, pokemon, edit }: ChangeArgs) => {
 };
 
 export type InputTypesFromState = Partial<
-Pick<State, 'selectedId' | 'customMoveMap' | 'customTypes'>
+    Pick<State, 'selectedId' | 'customMoveMap' | 'customTypes'>
 >;
 export type InputTypesFromActions = {};
 export type InputTypesFromInternalState = {
     setEdit: React.Dispatch<
-    React.SetStateAction<{
-        [x: string]: any;
-    }>
+        React.SetStateAction<{
+            [x: string]: any;
+        }>
     >;
     edit: { [x: string]: any };
     onChange: (event: React.ChangeEvent<HTMLElement>) => void;
 };
 export type PokemonInputProps = CurrentPokemonInputProps &
-InputTypesFromState &
-InputTypesFromInternalState;
+    InputTypesFromState &
+    InputTypesFromInternalState;
 
-export const renderItems = (visibleItems, setSelectedItem, selectedItem) => (
+export const renderItems = (visibleItems, setSelectedItem, selectedItem) =>
     visibleItems.map((v, i) => {
         return (
             <li
@@ -102,8 +102,7 @@ export const renderItems = (visibleItems, setSelectedItem, selectedItem) => (
                 {v}
             </li>
         );
-    })
-);
+    });
 
 export function PokemonAutocompleteInput({
     className,
@@ -123,25 +122,28 @@ export function PokemonAutocompleteInput({
     const closeList = () => {};
     const openList = () => {};
 
-
-    return <>
-        <input
-            autoComplete="off"
-            className={cx(className)}
-            onKeyDown={handleKeyDown}
-            onFocus={openList}
-            onChange={closeList}
-            placeholder={placeholder}
-            name={inputName}
-            type="text"
-            value={edit[inputName]}
-            disabled={disabled}
-            onInput={(e) => setEdit({ [inputName]: e.currentTarget.value })}
-        />
-        {isOpen ? (
-            <ul className="autocomplete-items has-nice-scrollbars">{renderItems(visibleItems, setSelectedItem, selectedItem)}</ul>
-        ) : null}
-    </>;
+    return (
+        <>
+            <input
+                autoComplete="off"
+                className={cx(className)}
+                onKeyDown={handleKeyDown}
+                onFocus={openList}
+                onChange={closeList}
+                placeholder={placeholder}
+                name={inputName}
+                type="text"
+                value={edit[inputName]}
+                disabled={disabled}
+                onInput={(e) => setEdit({ [inputName]: e.currentTarget.value })}
+            />
+            {isOpen ? (
+                <ul className="autocomplete-items has-nice-scrollbars">
+                    {renderItems(visibleItems, setSelectedItem, selectedItem)}
+                </ul>
+            ) : null}
+        </>
+    );
 }
 
 export function PokemonTextInput({
@@ -227,13 +229,14 @@ export function PokemonSelectInput({
     edit,
     setEdit,
 }: PokemonInputProps) {
-    const pokeball = inputName === 'pokeball' && value && value !== 'None' ? (
-        <img
-            style={{ position: 'absolute' }}
-            alt={value}
-            src={`icons/pokeball/${formatBallText(value)}.png`}
-        />
-    ) : null;
+    const pokeball =
+        inputName === 'pokeball' && value && value !== 'None' ? (
+            <img
+                style={{ position: 'absolute' }}
+                alt={value}
+                src={`icons/pokeball/${formatBallText(value)}.png`}
+            />
+        ) : null;
 
     return (
         <HTMLSelect
@@ -246,15 +249,13 @@ export function PokemonSelectInput({
             name={inputName}>
             {!usesKeyValue
                 ? options
-                    ?
-                    (options as any)?.map((item, index) => <option key={index}>{item}</option>)
+                    ? (options as any)?.map((item, index) => <option key={index}>{item}</option>)
                     : null
-                :
-                (options as any)?.map((item, index) => (
-                    <option value={item.value} key={index}>
-                        {item.key}
-                    </option>
-                ))}
+                : (options as any)?.map((item, index) => (
+                      <option value={item.value} key={index}>
+                          {item.key}
+                      </option>
+                  ))}
         </HTMLSelect>
     );
 }
@@ -274,41 +275,40 @@ export function PokemonDoubleSelectInput({
         throw new Error('Could not read input as Array');
     }
 
-    const onSelect = React.useMemo(() => (position: number) => (e) => {
-        onChange(e);
-        const newEdit = [
-            ...edit[inputName]
-        ];
-        newEdit[position] = e.currentTarget.value;
-        setEdit({ [inputName]: newEdit });
-    }, [inputName, edit]);
+    const onSelect = React.useMemo(
+        () => (position: number) => (e) => {
+            onChange(e);
+            const newEdit = [...edit[inputName]];
+            newEdit[position] = e.currentTarget.value;
+            setEdit({ [inputName]: newEdit });
+        },
+        [inputName, edit],
+    );
 
     return (
         <span className="double-select-wrapper">
             <HTMLSelect onChange={onSelect(0)} value={edit?.[inputName]?.[0]} name={inputName}>
                 {options
-                    ?
-                    (options as any).map((item, index) => (
-                        <option value={item} key={index}>
-                            {item}
-                        </option>
-                    ))
+                    ? (options as any).map((item, index) => (
+                          <option value={item} key={index}>
+                              {item}
+                          </option>
+                      ))
                     : null}
             </HTMLSelect>
             <span>&nbsp;</span>
             <HTMLSelect onChange={onSelect(1)} value={edit?.[inputName]?.[1]} name={inputName}>
                 {options
-                    ?
-                    (options as any).map((item, index) => (
-                        <option value={item} key={index}>
-                            {item}
-                        </option>
-                    ))
+                    ? (options as any).map((item, index) => (
+                          <option value={item} key={index}>
+                              {item}
+                          </option>
+                      ))
                     : null}
             </HTMLSelect>
         </span>
     );
-};
+}
 
 export function PokemonCheckboxInput({
     inputName,
@@ -352,37 +352,42 @@ export function PokemonMoveInput({
     selectedId,
 }: PokemonInputProps) {
     const dispatch = useDispatch();
-    const moves = useMemo(() => (v: string) => customMoveMap?.find((m) => m?.move === v)?.type, [customMoveMap]);
+    const moves = useMemo(
+        () => (v: string) => customMoveMap?.find((m) => m?.move === v)?.type,
+        [customMoveMap],
+    );
 
-    return <ErrorBoundary>
-        <TagInput
-            fill
-            leftIcon="ninja"
-            tagProps={(v, i) => {
-                // @TODO: Fix inconsitencies with bad parameter types
-                const background =
-                    typeToColor(
-                        // @ts-expect-error @TODO: fix mapping
-                        moves(v) || getMoveType(v?.toString()?.trim() || ''),
-                        customTypes,
-                    ) || 'transparent';
-                const color = getContrastColor(background);
-                return {
-                    style: {
-                        background,
-                        color,
-                    },
-                };
-            }}
-            onChange={(values) => {
-                const edit = {
-                    moves: values,
-                };
-                selectedId && dispatch(editPokemon(edit, selectedId));
-            }}
-            values={value || []}
-        />
-    </ErrorBoundary>;
+    return (
+        <ErrorBoundary>
+            <TagInput
+                fill
+                leftIcon="ninja"
+                tagProps={(v, i) => {
+                    // @TODO: Fix inconsitencies with bad parameter types
+                    const background =
+                        typeToColor(
+                            // @ts-expect-error @TODO: fix mapping
+                            moves(v) || getMoveType(v?.toString()?.trim() || ''),
+                            customTypes,
+                        ) || 'transparent';
+                    const color = getContrastColor(background);
+                    return {
+                        style: {
+                            background,
+                            color,
+                        },
+                    };
+                }}
+                onChange={(values) => {
+                    const edit = {
+                        moves: values,
+                    };
+                    selectedId && dispatch(editPokemon(edit, selectedId));
+                }}
+                values={value || []}
+            />
+        </ErrorBoundary>
+    );
 }
 
 export function CurrentPokemonInput(props: CurrentPokemonInputProps) {
@@ -398,7 +403,16 @@ export function CurrentPokemonInput(props: CurrentPokemonInputProps) {
     if (!selectedId) {
         return null;
     }
-    const onChange = useDebounceCallback(() => dispatch(editPokemon(createEdit({inputName, value: edit[inputName], edit, pokemon: props.pokemon}), selectedId)), 300);
+    const onChange = useDebounceCallback(
+        () =>
+            dispatch(
+                editPokemon(
+                    createEdit({ inputName, value: edit[inputName], edit, pokemon: props.pokemon }),
+                    selectedId,
+                ),
+            ),
+        300,
+    );
     React.useEffect(() => setEdit({ [inputName]: value }), [inputName, value]);
 
     return (

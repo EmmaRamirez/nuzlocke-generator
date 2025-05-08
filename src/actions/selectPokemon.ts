@@ -1,4 +1,3 @@
- 
 import { Action } from './action';
 
 export type SELECT_POKEMON = 'SELECT_POKEMON';

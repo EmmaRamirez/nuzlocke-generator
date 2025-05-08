@@ -1,4 +1,3 @@
- 
 import { Action } from './action';
 import { HistoryEntry } from 'models';
 

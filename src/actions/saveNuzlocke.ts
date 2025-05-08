@@ -1,4 +1,3 @@
- 
 import { Action } from './action';
 
 export type SAVE_NUZLOCKE = 'SAVE_NUZLOCKE';

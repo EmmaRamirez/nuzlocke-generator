@@ -48,7 +48,6 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
         isMenuOpen: false,
     };
 
-     
     public UNSAFE_componentWillMount() {
         if (version.split('.')[2] !== 0) {
             this.props.seeRelease(getPatchlessVersion(version));
@@ -121,7 +120,7 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                                     ...darkModeStyle(this.props.style.editorDarkMode),
                                     height: '30px',
                                 }}>
-                                <Spinner className={'inline-flex'} size={20}  /> Downloading
+                                <Spinner className={'inline-flex'} size={20} /> Downloading
                             </Button>
                         ) : (
                             <Button

@@ -1,4 +1,3 @@
- 
 import { Action } from './action';
 import { Box } from 'models';
 

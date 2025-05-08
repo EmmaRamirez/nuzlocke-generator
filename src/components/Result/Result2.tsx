@@ -126,7 +126,7 @@ export function TeamPokemonMemberView({ pokemon }: { pokemon: Pokemon }) {
                     filter: 'drop-shadow(0 0 0 2px rgba(0,0,0,0.2)',
                 }),
             }}
-            role='group'
+            role="group"
             onKeyPress={onClick}
             onClick={onClick}>
             {showContext && renderMenu}
@@ -154,9 +154,7 @@ export function TeamPokemonView({
             direction={direction}
             alignment={alignment}
             spacing={spacing}>
-            {pokemon?.map((poke) => (
-                <TeamPokemonMemberView key={poke.id} pokemon={poke} />
-            ))}
+            {pokemon?.map((poke) => <TeamPokemonMemberView key={poke.id} pokemon={poke} />)}
         </Layout>
     );
 }
@@ -164,9 +162,7 @@ export function TeamPokemonView({
 export function BoxedPokemonView({ pokemon, display, direction, alignment, spacing }: ViewProps) {
     return (
         <Layout display={display} direction={direction} alignment={alignment} spacing={spacing}>
-            {pokemon?.map((poke) => (
-                <BoxedPokemon key={poke.id} pokemon={poke} />
-            ))}
+            {pokemon?.map((poke) => <BoxedPokemon key={poke.id} pokemon={poke} />)}
         </Layout>
     );
 }
@@ -174,9 +170,7 @@ export function BoxedPokemonView({ pokemon, display, direction, alignment, spaci
 export function DeadPokemonView({ pokemon, display, direction, alignment, spacing }: ViewProps) {
     return (
         <Layout display={display} direction={direction} alignment={alignment} spacing={spacing}>
-            {pokemon?.map((poke) => (
-                <DeadPokemon key={poke.id} pokemon={poke} />
-            ))}
+            {pokemon?.map((poke) => <DeadPokemon key={poke.id} pokemon={poke} />)}
         </Layout>
     );
 }
@@ -191,7 +185,6 @@ export const ResultInner = React.forwardRef((props, resultRef: React.Ref<HTMLDiv
     const { bgColor } = style;
 
     const topHeaderColor = style ? style.topHeaderColor : '#333333';
-
 
     const scrollToScale = (event) => {
         console.log(scrollY - window.scrollY);
@@ -220,17 +213,14 @@ export const ResultInner = React.forwardRef((props, resultRef: React.Ref<HTMLDiv
             }}>
             <style>{style.customCSS}</style>
             <div
-                className='trainer-container'
+                className="trainer-container"
                 style={{
                     backgroundColor: topHeaderColor,
                     color: getContrastColor(topHeaderColor),
                     width: style.trainerAuto ? '100%' : style.trainerWidth,
                     height: style.trainerAuto ? 'auto' : style.trainerHeight,
-                }}
-            >
-                <TrainerResult
-                    orientation={'horizontal'}
-                />
+                }}>
+                <TrainerResult orientation={'horizontal'} />
             </div>
             <TrainerNotes />
             <ErrorBoundary>

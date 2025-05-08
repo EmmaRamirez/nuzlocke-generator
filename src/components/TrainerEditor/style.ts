@@ -1,4 +1,3 @@
- 
 import { css } from 'emotion';
 
 export const checkpointsEditor = css`

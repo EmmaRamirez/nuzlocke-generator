@@ -41,11 +41,9 @@ export function NuzlockeGameTags({
                     }}>
                     {data?.pokemon
                         ?.filter((p) => p.status === 'Team')
-                        .map((poke) => (
-                            <PokemonIcon key={poke.id} {...poke} />
-                        ))}
+                        .map((poke) => <PokemonIcon key={poke.id} {...poke} />)}
                 </div>
-                <div className='flex justify-center' style={{ minWidth: '50%' }}>
+                <div className="flex justify-center" style={{ minWidth: '50%' }}>
                     <Tag
                         round
                         style={{

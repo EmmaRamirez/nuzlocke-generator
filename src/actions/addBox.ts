@@ -1,4 +1,3 @@
- 
 import { Action } from './action';
 
 export type ADD_BOX = 'ADD_BOX';

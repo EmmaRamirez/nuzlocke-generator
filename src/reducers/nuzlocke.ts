@@ -19,7 +19,7 @@ export function nuzlockes(
         saves: [],
     },
     action: Action<
-    NEW_NUZLOCKE | DELETE_NUZLOCKE | SWITCH_NUZLOCKE | UPDATE_NUZLOCKE | UPDATE_SWITCH_NUZLOCKE
+        NEW_NUZLOCKE | DELETE_NUZLOCKE | SWITCH_NUZLOCKE | UPDATE_NUZLOCKE | UPDATE_SWITCH_NUZLOCKE
     >,
 ) {
     switch (action.type) {

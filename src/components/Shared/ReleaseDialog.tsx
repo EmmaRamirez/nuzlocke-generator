@@ -26,7 +26,7 @@ const miraidon = './assets/icons/pokemon/regular/miraidon.png';
 const koraidon = './assets/icons/pokemon/regular/koraidon.png';
 const terapagos = './assets/icons/pokemon/regular/terapagos.png';
 
-export const getMascot = v => {
+export const getMascot = (v) => {
     switch (v) {
         case '1.16':
             return terapagos;
@@ -64,7 +64,7 @@ export const getMascot = v => {
             return mew;
         default:
             return croagunk;
-    };
+    }
 };
 
 const mascot = css`
@@ -72,7 +72,7 @@ const mascot = css`
 `;
 
 // @ts-ignore
-const fetcher = (...args) => fetch(...args).then(res => res.json());
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export interface ReleaseDialogProps {
     onClose: (e?: React.SyntheticEvent) => void;
@@ -85,7 +85,7 @@ export interface ReleaseNote {
     note: string;
 }
 
-export function ReleaseDialog (props: DialogProps & ReleaseDialogProps) {
+export function ReleaseDialog(props: DialogProps & ReleaseDialogProps) {
     const [seePrevious, setSeePrevious] = React.useState(false);
     const { data, error } = useSwr('/release/latest', fetcher);
     const { data: allNotesData, error: allNotesError } = useSwr('/release/all', fetcher);
@@ -101,33 +101,27 @@ export function ReleaseDialog (props: DialogProps & ReleaseDialogProps) {
 
     const allNotes = allNotesData.payload.notes;
 
-
     return (
         <Dialog
             isOpen={props.isOpen}
             onClose={props.onClose}
             icon="document"
             title={`Release Notes ${version}`}
-            className={`release-dialog ${
-                props.style.editorDarkMode ? Classes.DARK : ''
-            }`}>
+            className={`release-dialog ${props.style.editorDarkMode ? Classes.DARK : ''}`}>
             <div className={Classes.DIALOG_BODY}>
                 <div className="release-notes-wrapper">
                     <h3
                         className={cx(
-                            classWithDarkTheme(
-                                styles,
-                                'heading',
-                                props.style.editorDarkMode,
-                            ),
+                            classWithDarkTheme(styles, 'heading', props.style.editorDarkMode),
                         )}>
                         {version}{' '}
-                        <img className={mascot} alt="mascot" src={getMascot(getPatchlessVersion(version))} />
+                        <img
+                            className={mascot}
+                            alt="mascot"
+                            src={getMascot(getPatchlessVersion(version))}
+                        />
                     </h3>
-                    {data && <ReactMarkdown
-                        className="release-notes"
-                     
-                    >{note.note}</ReactMarkdown>}
+                    {data && <ReactMarkdown className="release-notes">{note.note}</ReactMarkdown>}
                     {error && <div>There was an error retrieving release notes.</div>}
                     <Button
                         onClick={() => setSeePrevious(!seePrevious)}
@@ -138,10 +132,9 @@ export function ReleaseDialog (props: DialogProps & ReleaseDialogProps) {
                         allNotes.map((note) => {
                             const source = `#### ![${mascot}](${getMascot(getPatchlessVersion(note.version))}) ${note.version}\n${note.note}\n\n_Uploaded on ${new Date(note.timestamp).toLocaleString()}_`;
                             return (
-                                <ReactMarkdown
-                                    key={note.id}
-                                    className="release-notes"
-                                >{source}</ReactMarkdown>
+                                <ReactMarkdown key={note.id} className="release-notes">
+                                    {source}
+                                </ReactMarkdown>
                             );
                         })}
                 </div>

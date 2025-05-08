@@ -14,16 +14,16 @@ export interface PokemonByFilterProps {
     searchTerm: string;
 }
 
-const matchesStatus = (searchTerm) => ((poke: Pokemon) => poke.nickname?.toLowerCase().startsWith(searchTerm?.toLowerCase()) ||
+const matchesStatus = (searchTerm) => (poke: Pokemon) =>
+    poke.nickname?.toLowerCase().startsWith(searchTerm?.toLowerCase()) ||
     poke.species?.toLowerCase().startsWith(searchTerm?.toLowerCase()) ||
     poke.forme?.toLowerCase() === searchTerm?.toLowerCase() ||
     poke.nickname?.toLowerCase().startsWith(searchTerm?.toLowerCase()) ||
-    poke.gender?.toLowerCase() === (searchTerm?.toLowerCase()) ||
+    poke.gender?.toLowerCase() === searchTerm?.toLowerCase() ||
     poke.moves?.includes(searchTerm) ||
     poke.gameOfOrigin?.toLowerCase() === searchTerm?.toLowerCase() ||
     poke.item?.toLowerCase() === searchTerm?.toLowerCase() ||
-    poke.types?.includes(searchTerm)
-);
+    poke.types?.includes(searchTerm);
 
 export class PokemonByFilterBase extends React.PureComponent<PokemonByFilterProps> {
     public render() {
@@ -31,7 +31,7 @@ export class PokemonByFilterBase extends React.PureComponent<PokemonByFilterProp
 
         return team
             .sort(sortPokes)
-            .filter(poke => poke.status === status)
+            .filter((poke) => poke.status === status)
             .map((poke) => (
                 <Tooltip
                     key={poke.id}
@@ -39,8 +39,11 @@ export class PokemonByFilterBase extends React.PureComponent<PokemonByFilterProp
                     position={Position.TOP}>
                     <PokemonIcon
                         style={{
-                            backgroundColor: searchTerm !== '' && matchesStatus(searchTerm)(poke) ? '#90EE90' : undefined,
-                            borderRadius: '50%'
+                            backgroundColor:
+                                searchTerm !== '' && matchesStatus(searchTerm)(poke)
+                                    ? '#90EE90'
+                                    : undefined,
+                            borderRadius: '50%',
                         }}
                         id={poke.id}
                         status={poke.status}

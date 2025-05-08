@@ -19,7 +19,9 @@ export const determineNumberOfHearts = (friendship: number) => {
 };
 
 export const generateHearts = (friendship: ReturnType<typeof determineNumberOfHearts>) => {
-    return Array.from(Array(friendship).keys()).map(k => <Icon iconSize={12} data-testid='friendship-icon' key={uuid()} icon='heart' />);
+    return Array.from(Array(friendship).keys()).map((k) => (
+        <Icon iconSize={12} data-testid="friendship-icon" key={uuid()} icon="heart" />
+    ));
 };
 
 export interface PokemonFriendshipProps {
@@ -31,7 +33,8 @@ export function PokemonFriendship({ friendship }: PokemonFriendshipProps) {
 
     if (!friendship) return null;
     const numberOfHearts = determineNumberOfHearts(friendship);
-    if (numberOfHearts === 0) return <Icon iconSize={12} data-testid='friendship-broken-icon' icon='heart-broken' />;
+    if (numberOfHearts === 0)
+        return <Icon iconSize={12} data-testid="friendship-broken-icon" icon="heart-broken" />;
 
     return <>{generateHearts(numberOfHearts)}</>;
 }

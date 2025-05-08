@@ -1,4 +1,3 @@
- 
 import { Action } from './action';
 
 export type MODIFY_DELETION_CONFIRMATION = 'MODIFY_DELETION_CONFIRMATION';

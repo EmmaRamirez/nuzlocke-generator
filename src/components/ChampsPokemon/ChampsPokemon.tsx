@@ -50,15 +50,7 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
     };
 
     private getPokemonImage() {
-        const {
-            customImage,
-            forme,
-            species,
-            gameOfOrigin,
-            shiny,
-            gender,
-            nickname,
-        } = this.props;
+        const { customImage, forme, species, gameOfOrigin, shiny, gender, nickname } = this.props;
 
         return (
             <PokemonImage
@@ -68,19 +60,26 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
                 shiny={shiny}
                 gender={gender}
                 forme={forme}
-                style={{
-                    spritesMode: true,
-                    useSpritesForChampsPokemon: true,
-                } as any}
-            >
-                {(backgroundImage) => <img className='champs-pokemon-image' alt={''} style={{
-                    backgroundImage,
-                    backgroundPosition: 'center center',
-                    backgroundSize: 'contain',
-                    backgroundRepeat: 'no-repeat',
-                    height: '48px',
-                    width: '48px',
-                }} />}
+                style={
+                    {
+                        spritesMode: true,
+                        useSpritesForChampsPokemon: true,
+                    } as any
+                }>
+                {(backgroundImage) => (
+                    <img
+                        className="champs-pokemon-image"
+                        alt={''}
+                        style={{
+                            backgroundImage,
+                            backgroundPosition: 'center center',
+                            backgroundSize: 'contain',
+                            backgroundRepeat: 'no-repeat',
+                            height: '48px',
+                            width: '48px',
+                        }}
+                    />
+                )}
             </PokemonImage>
         );
     }
@@ -105,17 +104,23 @@ export class ChampsPokemon extends React.Component<ChampsPokemonProps> {
                     {this.props.useSprites ? (
                         this.getPokemonImage()
                     ) : (
-                        <PokemonIcon className='champs-pokemon-image' {...(this.props as any)} />
+                        <PokemonIcon className="champs-pokemon-image" {...(this.props as any)} />
                     )}
-                    <span className='champs-pokemon-nickname' style={{ margin: '0 4px' }}>{this.props.showNickname && this.props.nickname}</span>
+                    <span className="champs-pokemon-nickname" style={{ margin: '0 4px' }}>
+                        {this.props.showNickname && this.props.nickname}
+                    </span>
                     {this.props.showGender && GenderElement(this.props.gender)}
-                    <span className='champs-pokemon-level' style={{ marginLeft: '2px' }}>{this.props.showLevel && ` Lv ${this.props.level ?? 0}`}</span>
+                    <span className="champs-pokemon-level" style={{ marginLeft: '2px' }}>
+                        {this.props.showLevel && ` Lv ${this.props.level ?? 0}`}
+                    </span>
                 </div>
-                {customCSS && <style>
-                    {`.${className} {
+                {customCSS && (
+                    <style>
+                        {`.${className} {
                         ${customCSS}
                     }`}
-                </style>}
+                    </style>
+                )}
             </>
         );
     }

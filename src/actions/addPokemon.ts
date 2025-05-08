@@ -1,4 +1,3 @@
- 
 import { Action } from './action';
 import { Pokemon } from '../models';
 

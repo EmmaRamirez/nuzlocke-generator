@@ -21,7 +21,7 @@ export function debounce<T extends (...args: any[]) => any>(
         leading?: boolean;
         trailing?: boolean;
         maxWait?: number;
-    } = {}
+    } = {},
 ): T & { cancel: () => void; flush: () => void } {
     let lastArgs: any[] | undefined;
     let lastThis: any;
@@ -162,4 +162,3 @@ export function debounce<T extends (...args: any[]) => any>(
 
     return debounced as T & { cancel: () => void; flush: () => void };
 }
-

@@ -58,8 +58,9 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
         const { searchTerm } = this.state;
         const { style, customMoveMap, customTypes } = this.props;
         const types = this.getTypes();
-        const movesToDisplay = customMoveMap
-            .filter((m) => this.moveFilter(m.move, m.type, searchTerm));
+        const movesToDisplay = customMoveMap.filter((m) =>
+            this.moveFilter(m.move, m.type, searchTerm),
+        );
 
         const onChange = (move) => (e) => {
             this.props.editCustomMoveMap(e.target.value, move);
@@ -69,41 +70,40 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
             if (!Array.isArray(customMoveMap)) {
                 return null;
             }
-            return movesToDisplay
-                .map(({ move, type, id }, index) => {
-                    return (
-                        <div
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                padding: '.25rem',
-                                position: 'relative',
-                            }}>
-                            <div style={{ width: '12rem', marginRight: '.5rem' }}>
-                                <Move
-                                    index={index}
-                                    move={move}
-                                    type={type}
-                                    style={style}
-                                    customTypes={customTypes}
-                                />
-                            </div>
-                            <HTMLSelect onChange={onChange(move)} value={type}>
-                                {types.map((opt) => (
-                                    <option key={opt} value={opt}>
-                                        {opt}
-                                    </option>
-                                ))}
-                            </HTMLSelect>
-                            <Icon
-                                onClick={(e) => this.props.deleteCustomMove(id)}
-                                style={{ color: 'red', position: 'absolute', cursor: 'pointer' }}
-                                icon="trash"
+            return movesToDisplay.map(({ move, type, id }, index) => {
+                return (
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            padding: '.25rem',
+                            position: 'relative',
+                        }}>
+                        <div style={{ width: '12rem', marginRight: '.5rem' }}>
+                            <Move
+                                index={index}
+                                move={move}
+                                type={type}
+                                style={style}
+                                customTypes={customTypes}
                             />
                         </div>
-                    );
-                });
+                        <HTMLSelect onChange={onChange(move)} value={type}>
+                            {types.map((opt) => (
+                                <option key={opt} value={opt}>
+                                    {opt}
+                                </option>
+                            ))}
+                        </HTMLSelect>
+                        <Icon
+                            onClick={(e) => this.props.deleteCustomMove(id)}
+                            style={{ color: 'red', position: 'absolute', cursor: 'pointer' }}
+                            icon="trash"
+                        />
+                    </div>
+                );
+            });
         }
 
         const prepared = Object.keys(moves).map((type) => {

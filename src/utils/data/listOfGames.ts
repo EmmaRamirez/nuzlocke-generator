@@ -31,8 +31,8 @@ export type Game =
     | 'Ultra Moon'
     | 'Colosseum'
     | 'XD Gale of Darkness'
-    | 'Let\'s Go Eevee'
-    | 'Let\'s Go Pikachu'
+    | "Let's Go Eevee"
+    | "Let's Go Pikachu"
     | 'Sword'
     | 'Shield'
     | 'Brilliant Diamond'
@@ -41,7 +41,6 @@ export type Game =
     | 'Scarlet'
     | 'Violet'
     | 'Legends: Z-A';
-
 
 export const listOfGames: Game[] = [
     'None',
@@ -76,8 +75,8 @@ export const listOfGames: Game[] = [
     'Ultra Moon',
     'Colosseum',
     'XD Gale of Darkness',
-    'Let\'s Go Eevee',
-    'Let\'s Go Pikachu',
+    "Let's Go Eevee",
+    "Let's Go Pikachu",
     'Sword',
     'Shield',
     'Brilliant Diamond',
@@ -85,6 +84,6 @@ export const listOfGames: Game[] = [
     'Legends: Arceus',
     'Scarlet',
     'Violet',
-    'Legends: Z-A'
+    'Legends: Z-A',
     //'Custom...',
 ];

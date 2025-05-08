@@ -13,9 +13,9 @@ const pokemonState = [generateEmptyPokemon()];
 export function pokemon(
     state = pokemonState,
     action:
-    | Action<ADD_POKEMON>
-    | Action<DELETE_POKEMON>
-    | Action<EDIT_POKEMON | REPLACE_STATE | CLEAR_BOX>,
+        | Action<ADD_POKEMON>
+        | Action<DELETE_POKEMON>
+        | Action<EDIT_POKEMON | REPLACE_STATE | CLEAR_BOX>,
 ) {
     switch (action.type) {
         case ADD_POKEMON:

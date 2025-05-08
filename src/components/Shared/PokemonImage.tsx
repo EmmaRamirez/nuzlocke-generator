@@ -38,36 +38,29 @@ export function PokemonImage({
         // If a URL is defined, we return it through cors-anywhere
         // Otherwise, we just use getPokemonImage() (which also uses cors-anywhere under the hood)
         try {
-            url ? (async () => {
-                setImage(await wrapImageInCORSPlain(url));
-            })() : (async () => {
-                setImage(await getPokemonImage({
-                    customImage: customImage,
-                    forme: forme as any,
-                    species: species,
-                    shiny: shiny,
-                    style: style,
-                    name: name,
-                    editor: editor,
-                    gender: gender,
-                    egg: egg,
-                }));
-            })();
+            url
+                ? (async () => {
+                      setImage(await wrapImageInCORSPlain(url));
+                  })()
+                : (async () => {
+                      setImage(
+                          await getPokemonImage({
+                              customImage: customImage,
+                              forme: forme as any,
+                              species: species,
+                              shiny: shiny,
+                              style: style,
+                              name: name,
+                              editor: editor,
+                              gender: gender,
+                              egg: egg,
+                          }),
+                      );
+                  })();
         } catch (e) {
             console.error(e);
         }
-    }, [
-        customImage,
-        forme,
-        species,
-        shiny,
-        style,
-        name,
-        editor,
-        gender,
-        url,
-        egg,
-    ]);
+    }, [customImage, forme, species, shiny, style, name, editor, gender, url, egg]);
 
     return children?.(image) || <img alt={name} src={image} />;
 }

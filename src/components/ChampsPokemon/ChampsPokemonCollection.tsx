@@ -23,9 +23,7 @@ export class ChampsPokemonView extends React.Component<ChampsPokemonViewProps> {
 
         return (
             <Layout display={display} direction={direction} alignment={alignment} spacing={spacing}>
-                {pokemon?.map((poke) => (
-                    <ChampsPokemon key={poke.id} {...poke} />
-                ))}
+                {pokemon?.map((poke) => <ChampsPokemon key={poke.id} {...poke} />)}
             </Layout>
         );
     }

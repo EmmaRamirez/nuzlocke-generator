@@ -1,4 +1,3 @@
- 
 import * as React from 'react';
 import {
     Popover,
@@ -54,8 +53,8 @@ interface ContainsId {
 const sort = (a: ContainsId, b: ContainsId) => a.id - b.id;
 
 export class NuzlockeSaveBase extends React.Component<
-NuzlockeSaveControlsProps,
-NuzlockeSaveControlsState
+    NuzlockeSaveControlsProps,
+    NuzlockeSaveControlsState
 > {
     public state = {
         isDeletingNuzlocke: false,
@@ -63,7 +62,6 @@ NuzlockeSaveControlsState
         isHofOpen: false,
     };
 
-     
     public UNSAFE_componentWillMount() {
         const { nuzlockes, newNuzlocke, state } = this.props;
         if (!nuzlockes.currentId || nuzlockes.currentId === '') {
@@ -103,7 +101,7 @@ NuzlockeSaveControlsState
                 <Button
                     intent={Intent.SUCCESS}
                     icon="add"
-                    style={{marginBottom: '0.25rem'}}
+                    style={{ marginBottom: '0.25rem' }}
                     onClick={() => {
                         updateNuzlocke(currentId, state);
                         const data = createStore(appReducers)?.getState();
@@ -166,14 +164,14 @@ NuzlockeSaveControlsState
                                 onCancel={this.toggleIsDeletingNuzlocke}
                                 warningText="This will delete your Nuzlocke save without any to retrieve it. Are you sure you want to do this?"
                             />
-                            {feature.hallOfFame &&
+                            {feature.hallOfFame && (
                                 <HallOfFameDialog
                                     icon={'crown'}
                                     isOpen={isHofOpen}
                                     onClose={this.toggleIsHofOpen}
-                                    title='Hall of Fame'
+                                    title="Hall of Fame"
                                 />
-                            }
+                            )}
                             <Popover
                                 position={Position.BOTTOM_RIGHT}
                                 content={
@@ -256,7 +254,11 @@ NuzlockeSaveControlsState
                                     </Menu>
                                 }>
                                 <Icon
-                                    style={{ transform: 'rotate(90deg)', marginLeft: 'auto', cursor: 'pointer' }}
+                                    style={{
+                                        transform: 'rotate(90deg)',
+                                        marginLeft: 'auto',
+                                        cursor: 'pointer',
+                                    }}
                                     icon="more"
                                 />
                             </Popover>

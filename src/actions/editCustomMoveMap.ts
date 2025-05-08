@@ -1,4 +1,3 @@
- 
 import { Action } from './action';
 
 export type EDIT_CUSTOM_MOVE_MAP = 'EDIT_CUSTOM_MOVE_MAP';

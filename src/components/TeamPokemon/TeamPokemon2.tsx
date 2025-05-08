@@ -3,7 +3,13 @@ import * as React from 'react';
 import * as ReactDOMServer from 'react-dom/server';
 import { useSelector } from 'react-redux';
 import { State } from 'state';
-import { formatBallText, getGameGeneration, getPokemonImage, stripURLCSS, typeToColor } from 'utils';
+import {
+    formatBallText,
+    getGameGeneration,
+    getPokemonImage,
+    stripURLCSS,
+    typeToColor,
+} from 'utils';
 import { css, cx } from 'emotion';
 import * as Mustache from 'mustache';
 import { ErrorBoundary, PokemonIcon, PokemonIconPlain } from 'components';
@@ -37,32 +43,30 @@ export const teamPokemonImage = (options: TeamPokemonProps['options']) => css`
     width: ${options.width ?? '8rem'};
 `;
 
-const LinkedPokemon = ({
-    linkedPokemon,
-    style,
-}) => {
+const LinkedPokemon = ({ linkedPokemon, style }) => {
     return linkedPokemon ? (
         <ErrorBoundary>
             <div className="pokemon-linked">
-                {style.linkedPokemonText}{' '}
-                {linkedPokemon.nickname || linkedPokemon.species}
+                {style.linkedPokemonText} {linkedPokemon.nickname || linkedPokemon.species}
                 <PokemonIconPlain {...linkedPokemon} />
             </div>
         </ErrorBoundary>
     ) : null;
 };
 
-const TeamCheckpointsDisplay = ({game, pokemon, style}) => {
-    return <ErrorBoundary>
-        <div className='flex flex-wrap' style={{maxWidth: '14rem'}}>
-            <CheckpointsDisplay
-                className='pokemon-checkpoint'
-                game={game}
-                clearedCheckpoints={pokemon.checkpoints}
-                style={style}
-            />
-        </div>
-    </ErrorBoundary>;
+const TeamCheckpointsDisplay = ({ game, pokemon, style }) => {
+    return (
+        <ErrorBoundary>
+            <div className="flex flex-wrap" style={{ maxWidth: '14rem' }}>
+                <CheckpointsDisplay
+                    className="pokemon-checkpoint"
+                    game={game}
+                    clearedCheckpoints={pokemon.checkpoints}
+                    style={style}
+                />
+            </div>
+        </ErrorBoundary>
+    );
 };
 
 export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPokemonProps) {
@@ -94,16 +98,24 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
             });
             setImage(newImage);
         })();
-    }, [pokemon.species, pokemon.customImage, pokemon.forme, pokemon.shiny, style, name, editor, pokemon.gender, pokemon.egg]);
+    }, [
+        pokemon.species,
+        pokemon.customImage,
+        pokemon.forme,
+        pokemon.shiny,
+        style,
+        name,
+        editor,
+        pokemon.gender,
+        pokemon.egg,
+    ]);
 
     const classes = {
         teamPokemon: teamPokemon(options),
         teamPokemonImage: teamPokemonImage(options),
     };
 
-    const pokemonImage = stripURLCSS(
-        image
-    );
+    const pokemonImage = stripURLCSS(image);
 
     const pokemonIcon = (
         <PokemonIconPlain
@@ -136,19 +148,30 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
         type2: pokemon?.types?.[1],
         type1Color: typeToColor(pokemon?.types?.[0] ?? 'Normal'),
         type2Color: typeToColor(pokemon?.types?.[1] ?? 'Normal'),
-        pokeball: pokemon.pokeball ?
-            `icons/pokeball/${formatBallText(pokemon?.pokeball || 'None')}.png` : undefined,
-        pokeballComponent: ReactDOMServer.renderToString(<PokemonPokeball pokemon={pokemon} style={style} customTypes={customTypes} />),
-        item: pokemon.item ? `icons/hold-item/${(pokemon.item || '')
-            .toLowerCase()
-            .replace(/\'/g, '')
-            .replace(/\s/g, '-')}.png` : undefined,
-        itemComponent: ReactDOMServer.renderToString(<PokemonItem pokemon={pokemon} style={style} customTypes={customTypes} />),
+        pokeball: pokemon.pokeball
+            ? `icons/pokeball/${formatBallText(pokemon?.pokeball || 'None')}.png`
+            : undefined,
+        pokeballComponent: ReactDOMServer.renderToString(
+            <PokemonPokeball pokemon={pokemon} style={style} customTypes={customTypes} />,
+        ),
+        item: pokemon.item
+            ? `icons/hold-item/${(pokemon.item || '')
+                  .toLowerCase()
+                  .replace(/\'/g, '')
+                  .replace(/\s/g, '-')}.png`
+            : undefined,
+        itemComponent: ReactDOMServer.renderToString(
+            <PokemonItem pokemon={pokemon} style={style} customTypes={customTypes} />,
+        ),
         icon: ReactDOMServer.renderToString(pokemonIcon),
         checkpoints: ReactDOMServer.renderToString(<div />),
-        genderSymbol: ReactDOMServer.renderToString(<GenderElementReact gender={pokemon?.gender} />),
+        genderSymbol: ReactDOMServer.renderToString(
+            <GenderElementReact gender={pokemon?.gender} />,
+        ),
         notes: pokemon.notes ?? '',
-        linkedPokemon: ReactDOMServer.renderToString(<LinkedPokemon style={style} linkedPokemon={linkedPokemon} />),
+        linkedPokemon: ReactDOMServer.renderToString(
+            <LinkedPokemon style={style} linkedPokemon={linkedPokemon} />,
+        ),
         linkedPokemonData: linkedPokemon ?? null,
         extraData: '',
         movesColored: ReactDOMServer.renderToString(
@@ -216,8 +239,7 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
                         backgroundImage: image,
-                    }}>
-                </div>
+                    }}></div>
             </div>
         </>
     );

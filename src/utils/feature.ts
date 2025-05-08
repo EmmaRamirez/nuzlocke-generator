@@ -22,7 +22,7 @@ const featuresToBooleans = (f: typeof featuresFromEnv): FeatureObject => {
     for (const feature in f) {
         obj[feature] = Boolean(f[feature]);
     }
-    return (obj as FeatureObject);
+    return obj as FeatureObject;
 };
 
 export const feature = Object.freeze(featuresToBooleans(featuresFromEnv));

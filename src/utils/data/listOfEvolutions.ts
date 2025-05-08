@@ -27,7 +27,6 @@ export default uniq;
 
 export type EvolutionTree = { [S in Species]?: Species[] };
 
- 
 export const EvolutionTree: EvolutionTree = {
     Bulbasaur: ['Ivysaur'],
     Ivysaur: ['Venusaur'],
@@ -96,7 +95,7 @@ export const EvolutionTree: EvolutionTree = {
     Magnemite: ['Magneton'],
     Magneton: ['Magnezone'],
 
-    'Farfetch\'d': ['Sirfetch\'d'],
+    "Farfetch'd": ["Sirfetch'd"],
     Doduo: ['Dodrio'],
 
     Seel: ['Dewgong'],

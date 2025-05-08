@@ -81,7 +81,7 @@ export const listOfPokemon = [
     'Slowbro',
     'Magnemite',
     'Magneton',
-    'Farfetch\'d',
+    "Farfetch'd",
     'Doduo',
     'Dodrio',
     'Seel',
@@ -863,7 +863,7 @@ export const listOfPokemon = [
     'Obstagoon',
     'Perrserker',
     'Cursola',
-    'Sirfetch\'d',
+    "Sirfetch'd",
     'Mr. Rime',
     'Runerigus',
     'Milcery',
@@ -1120,5 +1120,5 @@ export const listOfPokemonLowercased = listOfPokemon.map((s) => s.toLowerCase())
 export const getListOfCreatures = (isTemtemMode?: boolean) =>
     isTemtemMode ? listOfTemtem : listOfPokemon;
 
-export type Species = typeof listOfPokemon[number];
-export type TemTemSpecies = typeof listOfTemtem[number];
+export type Species = (typeof listOfPokemon)[number];
+export type TemTemSpecies = (typeof listOfTemtem)[number];

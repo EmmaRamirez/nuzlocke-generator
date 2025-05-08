@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
-import {
-    getIconFormeSuffix,
-    Forme,
-    Species,
-    significantGenderDifferenceList,
-} from 'utils';
+import { getIconFormeSuffix, Forme, Species, significantGenderDifferenceList } from 'utils';
 import { Gender, GenderElementProps } from 'components/Shared';
 import { editPokemon, selectPokemon, SELECT_POKEMON } from 'actions';
 import { store } from 'store';
@@ -50,7 +45,10 @@ export interface PokemonIconProps {
 
 type BasePokemonIconProps = Omit<PokemonIconProps, 'onClick' | 'selectedId' | 'style'>;
 
-type IconURLArgs = Pick<Pokemon, 'id' | 'species' | 'forme' | 'shiny' | 'gender' | 'customIcon' | 'egg'>;
+type IconURLArgs = Pick<
+    Pokemon,
+    'id' | 'species' | 'forme' | 'shiny' | 'gender' | 'customIcon' | 'egg'
+>;
 
 const usePokemonDrag = (props: BasePokemonIconProps) => {
     const [, dragRef] = useDrag({
@@ -181,7 +179,9 @@ export function PokemonIconPlain({
 }
 
 export const PokemonIcon = (props: BasePokemonIconProps) => {
-    const { selectedId, style} = useSelector<State, Pick<State, 'selectedId' | 'style'>>(state => ({ selectedId: state.selectedId, style: state.style }));
+    const { selectedId, style } = useSelector<State, Pick<State, 'selectedId' | 'style'>>(
+        (state) => ({ selectedId: state.selectedId, style: state.style }),
+    );
     const dispatch = useDispatch();
 
     const { styles, hidden } = props;
@@ -198,7 +198,13 @@ export const PokemonIcon = (props: BasePokemonIconProps) => {
 
     return (
         <div ref={(node) => dragRef(dropRef(node))}>
-            <PokemonIconPlain onClick={onClick} imageStyle={imageStyle} selectedId={selectedId} style={style} {...props} />
+            <PokemonIconPlain
+                onClick={onClick}
+                imageStyle={imageStyle}
+                selectedId={selectedId}
+                style={style}
+                {...props}
+            />
         </div>
     );
 };

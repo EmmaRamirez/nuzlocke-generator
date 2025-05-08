@@ -31,7 +31,6 @@ const Result2 = React.lazy(() =>
     import('components/Result/Result2').then((res) => ({ default: res.Result })),
 );
 
-
 const ImagesDrawer = React.lazy(() =>
     import('components/Shared/ImagesDrawer').then((res) => ({ default: res.ImagesDrawer })),
 );
@@ -44,7 +43,6 @@ const Hotkeys = React.lazy(() =>
     import('components/Hotkeys').then((res) => ({ default: res.Hotkeys })),
 );
 
-
 export class UpdaterBase extends React.Component<{
     present: Omit<State, 'editorHistory'>;
     updateEditorHistory: updateEditorHistory;
@@ -55,13 +53,12 @@ export class UpdaterBase extends React.Component<{
         this.props.updateEditorHistory(this.props.present);
     }
 
-     
     public UNSAFE_componentWillReceiveProps(prev) {
         if (
-            (prev.lrt === 'update') &&
+            prev.lrt === 'update' &&
             this.props.present != null &&
             this.props.present != null &&
-            !(isEqual(this.props.present, prev.present))
+            !isEqual(this.props.present, prev.present)
         ) {
             const t0 = performance.now();
             this.props.updateEditorHistory(prev.present);
@@ -75,47 +72,47 @@ export class UpdaterBase extends React.Component<{
     }
 }
 
-export const Updater = connect(
-    updaterSelector,
-    { updateEditorHistory },
-    null,
-    { pure: false },
-)(UpdaterBase);
+export const Updater = connect(updaterSelector, { updateEditorHistory }, null, { pure: false })(
+    UpdaterBase,
+);
 
-export class AppBase extends React.Component<AppProps, {result2?: boolean}> {
+export class AppBase extends React.Component<AppProps, { result2?: boolean }> {
     public constructor(props: AppProps) {
         super(props);
-        this.state = {result2: false};
+        this.state = { result2: false };
     }
 
     public componentDidMount() {
         if (feature.resultv2) {
             // TOP SECRET
             if (this.props.style.customCSS.includes('resultv2')) {
-                this.setState({result2: true});
+                this.setState({ result2: true });
             } else {
-                this.setState({result2: false});
+                this.setState({ result2: false });
             }
         }
     }
 
     public render() {
-        const {style, view, editor} = this.props;
-        const {result2} = this.state;
+        const { style, view, editor } = this.props;
+        const { result2 } = this.state;
         const isDarkMode = style.editorDarkMode;
         console.log('features', feature);
 
         const UpdaterComponent = !editor.editorHistoryDisabled && <Updater />;
 
         return (
-            <ErrorBoundary errorMessage={<div className='p-6 center-text'>
-                <h2>There was a problem retrieving your nuzlocke data.</h2>
-                <p>Please consider submitting a bug report.</p>
+            <ErrorBoundary
+                errorMessage={
+                    <div className="p-6 center-text">
+                        <h2>There was a problem retrieving your nuzlocke data.</h2>
+                        <p>Please consider submitting a bug report.</p>
 
-                <React.Suspense fallback={'Loading Bug Reporter...'}>
-                    <BugReporter defaultOpen />
-                </React.Suspense>
-            </div>}>
+                        <React.Suspense fallback={'Loading Bug Reporter...'}>
+                            <BugReporter defaultOpen />
+                        </React.Suspense>
+                    </div>
+                }>
                 <div
                     data-testid="app"
                     className="app"
@@ -134,27 +131,32 @@ export class AppBase extends React.Component<AppProps, {result2?: boolean}> {
                             <Editor />
                         </React.Suspense>
                     </ErrorBoundary>
-                    {result2 ? <ErrorBoundary key={3}>
-                        <React.Suspense fallback={Skeleton}>
-                            <Result2 />
-                        </React.Suspense>
-                    </ErrorBoundary> : <ErrorBoundary key={3}>
-                        <React.Suspense fallback={Skeleton}>
-                            <Result />
-                        </React.Suspense>
-                    </ErrorBoundary>}
+                    {result2 ? (
+                        <ErrorBoundary key={3}>
+                            <React.Suspense fallback={Skeleton}>
+                                <Result2 />
+                            </React.Suspense>
+                        </ErrorBoundary>
+                    ) : (
+                        <ErrorBoundary key={3}>
+                            <React.Suspense fallback={Skeleton}>
+                                <Result />
+                            </React.Suspense>
+                        </ErrorBoundary>
+                    )}
 
-                    {isLocal() && feature.resultv2 && <Button
-                        style={{
-                            position: 'absolute',
-                            top: '0.5rem',
-                            right: '0.5rem',
-                            zIndex: 1000,
-                        }}
-                        onClick={e => this.setState({result2: !result2})}
-                    >
-                        Use Result v2
-                    </Button>}
+                    {isLocal() && feature.resultv2 && (
+                        <Button
+                            style={{
+                                position: 'absolute',
+                                top: '0.5rem',
+                                right: '0.5rem',
+                                zIndex: 1000,
+                            }}
+                            onClick={(e) => this.setState({ result2: !result2 })}>
+                            Use Result v2
+                        </Button>
+                    )}
 
                     <ErrorBoundary key={4}>
                         <React.Suspense fallback={Skeleton}>
@@ -167,6 +169,4 @@ export class AppBase extends React.Component<AppProps, {result2?: boolean}> {
     }
 }
 
-export const App = connect(
-    appSelector
-)(AppBase);
+export const App = connect(appSelector)(AppBase);

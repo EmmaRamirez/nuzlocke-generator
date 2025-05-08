@@ -1,4 +1,3 @@
- 
 import * as React from 'react';
 import {
     EvolutionTree,
@@ -141,7 +140,10 @@ export function EvolutionSelection({ currentPokemon, onEvolve }) {
     }
 }
 
-export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditProps, CurrentPokemonEditState> {
+export class CurrentPokemonEditBase extends React.Component<
+    CurrentPokemonEditProps,
+    CurrentPokemonEditState
+> {
     public constructor(props: CurrentPokemonEditProps) {
         super(props);
         this.state = {
@@ -153,7 +155,6 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
         };
     }
 
-     
     public UNSAFE_componentWillMount() {
         this.setState({
             selectedId: this.props.selectedId,
@@ -161,7 +162,6 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
         });
     }
 
-     
     public UNSAFE_componentWillReceiveProps(
         nextProps: CurrentPokemonEditProps,
         prevProps: CurrentPokemonEditProps,
@@ -216,7 +216,7 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
         const level = Number.parseInt(pokemon?.level ?? '0');
 
         const edit = {
-            level: (level ?? 0) + (levelUp ? 1 : -1)
+            level: (level ?? 0) + (levelUp ? 1 : -1),
         };
 
         this.props.editPokemon(edit, this.state.selectedId);
@@ -510,8 +510,12 @@ export class CurrentPokemonEditBase extends React.Component<CurrentPokemonEditPr
                     <div className={cx(Styles.iconBar)}>
                         <Tooltip content="Level Up/Down">
                             <ButtonGroup>
-                                <Button onClick={this.levelPokemon(false)} small>-1</Button>
-                                <Button onClick={this.levelPokemon(true)} small>+1</Button>
+                                <Button onClick={this.levelPokemon(false)} small>
+                                    -1
+                                </Button>
+                                <Button onClick={this.levelPokemon(true)} small>
+                                    +1
+                                </Button>
                             </ButtonGroup>
                         </Tooltip>
 

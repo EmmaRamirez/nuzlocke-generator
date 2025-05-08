@@ -232,7 +232,7 @@ describe(getGameGeneration.name, () => {
         expect(getGameGeneration('Red')).toBe(Generation.Gen1);
         expect(getGameGeneration('Emerald')).toBe(Generation.Gen3);
         // Yes it's Gen 7 now shut up
-        expect(getGameGeneration('Let\'s Go Eevee')).toBe(Generation.Gen7);
+        expect(getGameGeneration("Let's Go Eevee")).toBe(Generation.Gen7);
         expect(getGameGeneration('Sword')).toBe(Generation.Gen8);
         expect(getGameGeneration('Platinum')).toBe(Generation.Gen4);
         // Assumes latest gen
@@ -245,7 +245,7 @@ describe(getGameRegion.name, () => {
         expect(getGameRegion('Red')).toBe(Region.Kanto);
         expect(getGameRegion('Diamond')).toBe(Region.Sinnoh);
         expect(getGameRegion('Sword')).toBe(Region.Galar);
-        expect(getGameRegion('Let\'s Go Eevee')).toBe(Region.Kanto);
+        expect(getGameRegion("Let's Go Eevee")).toBe(Region.Kanto);
     });
 });
 

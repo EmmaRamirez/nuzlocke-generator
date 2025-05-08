@@ -1,4 +1,3 @@
- 
 import { Action } from './action';
 
 export type SEE_RELEASE = 'SEE_RELEASE';

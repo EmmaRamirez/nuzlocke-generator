@@ -67,7 +67,7 @@ export const addForme = (species: string | undefined, forme?: keyof typeof Forme
                 'Sensu',
                 'Baile',
                 'Pom-Pom',
-                'Pa\'u',
+                "Pa'u",
 
                 'Dawn Wings',
                 'Dusk Mane',

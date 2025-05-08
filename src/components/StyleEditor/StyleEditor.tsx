@@ -50,7 +50,11 @@ const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'],
         props.editStyle({ imageStyle: 'square', movesPosition: 'horizontal' as OrientationType });
     }
     if (propName === 'template' && e.target.value === 'Hexagons') {
-        props.editStyle({ resultWidth: 1320, accentColor: 'rgba(0, 0, 0, 0)', movesPosition: 'horizontal' as OrientationType });
+        props.editStyle({
+            resultWidth: 1320,
+            accentColor: 'rgba(0, 0, 0, 0)',
+            movesPosition: 'horizontal' as OrientationType,
+        });
     }
     if (
         (propName === 'template' && e.target.value === 'Generations') ||
@@ -62,7 +66,7 @@ const editEvent = (e: any, props: StyleEditorProps, name?: keyof State['style'],
             // @TODO: only push if resultW/H is lower
             resultHeight: 870,
             resultWidth: 1460,
-            movesPosition: 'vertical'
+            movesPosition: 'vertical',
         });
     }
 };
@@ -138,8 +142,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
     public state = { isThemeEditorOpen: false, showChromePicker: false, isCSSGuideOpen: false };
     private toggleThemeEditor = () =>
         this.setState({ isThemeEditorOpen: !this.state.isThemeEditorOpen });
-    private toggleCSSGuide = () =>
-        this.setState({ isCSSGuideOpen: !this.state.isCSSGuideOpen });
+    private toggleCSSGuide = () => this.setState({ isCSSGuideOpen: !this.state.isCSSGuideOpen });
     public render() {
         const props: StyleEditorProps = this.props;
         const createStyleEdit = (isWidthHeight?: boolean) =>
@@ -155,7 +158,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
             padding: '7px',
         };
         return (
-            <BaseEditor icon='style' name="Style">
+            <BaseEditor icon="style" name="Style">
                 {feature.themeEditing ? (
                     <Drawer
                         isOpen={this.state.isThemeEditorOpen}
@@ -175,15 +178,19 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                     size={Drawer.SIZE_LARGE}
                     title="CSS Guide"
                     icon="style"
-                    className={cx(Styles.dialog, {
-                        [Classes.DARK]: props.style.editorDarkMode,
-                    }, 'release-notes-wrapper')}>
-                    <ReactMarkdown
-                        source={text}
-                    />
+                    className={cx(
+                        Styles.dialog,
+                        {
+                            [Classes.DARK]: props.style.editorDarkMode,
+                        },
+                        'release-notes-wrapper',
+                    )}>
+                    <ReactMarkdown source={text} />
                 </Drawer>
                 <div className={styleEdit}>
-                    <label htmlFor='template' className={cx(Classes.LABEL, Classes.INLINE)}>Template</label>
+                    <label htmlFor="template" className={cx(Classes.LABEL, Classes.INLINE)}>
+                        Template
+                    </label>
                     <HTMLSelect
                         name="template"
                         onChange={(e) => editEvent(e, props, undefined, props.game.name)}
@@ -215,7 +222,9 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <label htmlFor="itemStyle" className={cx(Classes.LABEL, Classes.INLINE)}>Item Style</label>
+                    <label htmlFor="itemStyle" className={cx(Classes.LABEL, Classes.INLINE)}>
+                        Item Style
+                    </label>
                     <HTMLSelect
                         name="itemStyle"
                         onChange={(e) => editEvent(e, props, undefined)}
@@ -231,7 +240,9 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <label htmlFor="pokeballStyle" className={cx(Classes.LABEL, Classes.INLINE)}>Pokéball Style</label>
+                    <label htmlFor="pokeballStyle" className={cx(Classes.LABEL, Classes.INLINE)}>
+                        Pokéball Style
+                    </label>
                     <HTMLSelect
                         name="pokeballStyle"
                         onChange={(e) => editEvent(e, props, undefined)}
@@ -261,7 +272,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                             min="0"
                             step="10"
                         />
-                        <Icon icon='cross' style={{ marginRight: '0' }} />
+                        <Icon icon="cross" style={{ marginRight: '0' }} />
                         <span style={{ fontSize: '80%', marginRight: '2px' }}>h</span>
                         <input
                             name="resultHeight"
@@ -312,7 +323,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                             }}
                             value={props.style.trainerWidth}
                         />
-                        <Icon icon='cross' style={{ marginRight: '0' }} />
+                        <Icon icon="cross" style={{ marginRight: '0' }} />
                         <span style={{ fontSize: '80%', marginRight: '2px' }}>h</span>
                         <input
                             name="trainerHeight"
@@ -429,9 +440,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         name="displayRulesLocation"
                         onChange={(e) => editEvent(e, props, undefined)}
                         value={props.style.displayRulesLocation}>
-                        <option key={'inside trainer section'}>
-                            {'inside trainer section'}
-                        </option>
+                        <option key={'inside trainer section'}>{'inside trainer section'}</option>
                         <option key={'bottom'}>bottom</option>
                         <option key={'top'}>top</option>
                     </HTMLSelect>
@@ -460,7 +469,9 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <label htmlFor="teamImages" className={cx(Classes.LABEL, Classes.INLINE)}>Team Images</label>
+                    <label htmlFor="teamImages" className={cx(Classes.LABEL, Classes.INLINE)}>
+                        Team Images
+                    </label>
                     <HTMLSelect
                         name="teamImages"
                         onChange={(e) => editEvent(e, props, undefined, props.game.name)}
@@ -472,8 +483,10 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         ))}
                     </HTMLSelect>
                     {(props.game.name === 'Sword' || props.game.name === 'Shield') &&
-                        props.style.teamImages === 'shuffle' ? (
-                        <div className={cx(Classes.CALLOUT, Classes.INTENT_DANGER)} style={calloutStyle}>
+                    props.style.teamImages === 'shuffle' ? (
+                        <div
+                            className={cx(Classes.CALLOUT, Classes.INTENT_DANGER)}
+                            style={calloutStyle}>
                             Shuffle images are not supported for this game
                         </div>
                     ) : null}
@@ -487,20 +500,26 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         'Ultra Sun',
                         'Ultra Moon',
                     ].includes(props.game.name) && props.style.teamImages === 'dream world' ? (
-                        <div className={cx(Classes.CALLOUT, Classes.INTENT_DANGER)} style={calloutStyle}>
+                        <div
+                            className={cx(Classes.CALLOUT, Classes.INTENT_DANGER)}
+                            style={calloutStyle}>
                             Dream world images are not supported for this game
                         </div>
                     ) : null}
                     {['Sword', 'Shield'].includes(props.game.name) &&
-                        props.style.teamImages === 'tcg' ? (
-                        <div className={cx(Classes.CALLOUT, Classes.INTENT_DANGER)} style={calloutStyle}>
+                    props.style.teamImages === 'tcg' ? (
+                        <div
+                            className={cx(Classes.CALLOUT, Classes.INTENT_DANGER)}
+                            style={calloutStyle}>
                             TCG images are not fully supported for this game
                         </div>
                     ) : null}
                 </div>
 
                 <div className={styleEdit}>
-                    <label htmlFor="boxedPokemonPerLine" className={cx(Classes.LABEL, Classes.INLINE)}>
+                    <label
+                        htmlFor="boxedPokemonPerLine"
+                        className={cx(Classes.LABEL, Classes.INLINE)}>
                         Pokemon Per Line (Boxed)
                     </label>
                     <input
@@ -516,7 +535,11 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 </div>
 
                 <div className={styleEdit}>
-                    <label htmlFor="linkedPokemonText" className={cx(Classes.LABEL, Classes.INLINE)}>Linked Pokemon Text</label>
+                    <label
+                        htmlFor="linkedPokemonText"
+                        className={cx(Classes.LABEL, Classes.INLINE)}>
+                        Linked Pokemon Text
+                    </label>
                     <input
                         name="linkedPokemonText"
                         className={cx(Classes.INPUT)}
@@ -614,7 +637,6 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                         }
                     />
                 </div>
-
 
                 <div className={styleEdit}>
                     <Checkbox
@@ -809,19 +831,25 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
                 <div className="custom-css-input-wrapper">
                     <label className={cx(Classes.LABEL, 'flex', 'justify-between')}>
                         <span>Custom CSS</span>
-                        {feature.themeEditing && <Button minimal intent={Intent.PRIMARY} onClick={this.toggleCSSGuide}>
-                            Check out the CSS Guide!
-                        </Button>}
+                        {feature.themeEditing && (
+                            <Button minimal intent={Intent.PRIMARY} onClick={this.toggleCSSGuide}>
+                                Check out the CSS Guide!
+                            </Button>
+                        )}
                     </label>
                     <TextAreaDebounced name="customCSS" props={props} edit={editEvent} />
                 </div>
 
-                {feature.resultv2 && <div className="custom-css-input-wrapper">
-                    <label style={{ padding: '.5rem', marginBottom: 0 }} className={Classes.LABEL}>
-                        Custom Team HTML {/*<a href=''>Check out Layout Guide</a>*/}
-                    </label>
-                    <TextAreaDebounced name="customTeamHTML" props={props} edit={editEvent} />
-                </div>}
+                {feature.resultv2 && (
+                    <div className="custom-css-input-wrapper">
+                        <label
+                            style={{ padding: '.5rem', marginBottom: 0 }}
+                            className={Classes.LABEL}>
+                            Custom Team HTML {/*<a href=''>Check out Layout Guide</a>*/}
+                        </label>
+                        <TextAreaDebounced name="customTeamHTML" props={props} edit={editEvent} />
+                    </div>
+                )}
             </BaseEditor>
         );
     }

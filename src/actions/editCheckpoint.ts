@@ -1,4 +1,3 @@
- 
 import { Action } from './action';
 import { Badge } from '../models';
 

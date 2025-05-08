@@ -1,4 +1,3 @@
- 
 import { Action } from './action';
 
 export type TRIGGER_DOWNLOAD = 'TRIGGER_DOWNLOAD';

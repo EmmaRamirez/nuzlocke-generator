@@ -1,4 +1,3 @@
- 
 import * as fs from 'fs';
 import { splitUp, GEN_1_POKEMON_MAP, GEN_1_CHARACTER_MAP, MOVES_ARRAY } from './utils';
 import { Buffer } from 'buffer';
@@ -51,18 +50,7 @@ const OFFSETS = {
 };
 
 const BOX_OFFSETS = [
-    0x4000,
-    0x4462,
-    0x48c4,
-    0x4d26,
-    0x5188,
-    0x55ea,
-    0x6000,
-    0x6462,
-    0x68c4,
-    0x6d26,
-    0x7188,
-    0x75ea,
+    0x4000, 0x4462, 0x48c4, 0x4d26, 0x5188, 0x55ea, 0x6000, 0x6462, 0x68c4, 0x6d26, 0x7188, 0x75ea,
 ];
 
 const checksum = (data: Uint8Array) => {
@@ -139,13 +127,13 @@ const parsePartyPokemon = (buf: Buffer, boxed = false) => {
     const extraData = boxed
         ? undefined
         : {
-            currentHp: Buffer.from(pokemon.slice(0x01, 0x01 + 2)).readInt16BE(0),
-            maxHp: Buffer.from(pokemon.slice(0x22, 0x22 + 2)).readInt16BE(0),
-            attack: Buffer.from(pokemon.slice(0x24, 0x24 + 2)).readInt16BE(0),
-            defense: Buffer.from(pokemon.slice(0x26, 0x26 + 2)).readInt16BE(0),
-            speed: Buffer.from(pokemon.slice(0x28, 0x28 + 2)).readInt16BE(0),
-            special: Buffer.from(pokemon.slice(0x2a, 0x2a + 2)).readInt16BE(0),
-        };
+              currentHp: Buffer.from(pokemon.slice(0x01, 0x01 + 2)).readInt16BE(0),
+              maxHp: Buffer.from(pokemon.slice(0x22, 0x22 + 2)).readInt16BE(0),
+              attack: Buffer.from(pokemon.slice(0x24, 0x24 + 2)).readInt16BE(0),
+              defense: Buffer.from(pokemon.slice(0x26, 0x26 + 2)).readInt16BE(0),
+              speed: Buffer.from(pokemon.slice(0x28, 0x28 + 2)).readInt16BE(0),
+              special: Buffer.from(pokemon.slice(0x2a, 0x2a + 2)).readInt16BE(0),
+          };
     if (extraData) console.log(extraData);
     // const evs = pokemon.slice(0x11, 0x11 + 10);
     let ivString = '';

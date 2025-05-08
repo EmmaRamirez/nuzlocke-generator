@@ -21,12 +21,12 @@ export type Checkpoints = Badge[];
 export function checkpoints(
     state: Checkpoints = getBadges('None'),
     action: ReturnType<
-    | addCustomCheckpoint
-    | editCheckpoint
-    | deleteCheckpoint
-    | resetCheckpoints
-    | reorderCheckpoints
-    | replaceState
+        | addCustomCheckpoint
+        | editCheckpoint
+        | deleteCheckpoint
+        | resetCheckpoints
+        | reorderCheckpoints
+        | replaceState
     >,
 ) {
     switch (action.type) {

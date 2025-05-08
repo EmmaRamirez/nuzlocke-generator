@@ -23,8 +23,8 @@ export const getGameRegion = (game: Game): Region => {
         'Green',
         'FireRed',
         'LeafGreen',
-        'Let\'s Go Eevee',
-        'Let\'s Go Pikachu',
+        "Let's Go Eevee",
+        "Let's Go Pikachu",
     ];
     const johto: Game[] = ['Gold', 'Silver', 'Crystal', 'HeartGold', 'SoulSilver'];
     const hoenn: Game[] = ['Ruby', 'Sapphire', 'OmegaRuby', 'AlphaSapphire', 'Emerald'];

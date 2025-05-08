@@ -1,4 +1,3 @@
- 
 import { Trainer } from 'models';
 import { Action } from './action';
 

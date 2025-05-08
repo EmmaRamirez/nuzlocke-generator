@@ -1,4 +1,3 @@
- 
 import { Action } from './action';
 
 export type TOGGLE_TEMTEM_MODE = 'TOGGLE_TEMTEM_MODE';

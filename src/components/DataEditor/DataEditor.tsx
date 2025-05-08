@@ -34,7 +34,6 @@ import { isEmpty } from 'utils/isEmpty';
 import { BoxMappings } from 'parsers/utils/boxMappings';
 import { cx } from 'emotion';
 
-
 export interface DataEditorProps {
     state: State;
     replaceState: replaceState;
@@ -92,14 +91,12 @@ const handleExceptions = (data) => {
             try {
                 updated = { ...updated, [prop]: JSON.parse(data[prop]) };
             } catch (e) {
-                console.log(
-                    `Failed to parse on ${prop}`
-                );
+                console.log(`Failed to parse on ${prop}`);
             }
         }
     }
 
-    return (isEmpty(updated)) ? data : updated;
+    return isEmpty(updated) ? data : updated;
 };
 
 export interface SaveGameSettingsDialogProps {
@@ -126,17 +123,28 @@ const generateArray = (n: number) => {
 
 const generateBoxMappingsDefault = (saveFormat) => generateArray(getGameNumberOfBoxes(saveFormat));
 
-export function BoxSelect({ boxes, value, boxKey, setBoxMappings }: { boxes: State['box'], value: string, boxKey: number, setBoxMappings: SaveGameSettingsDialogProps['setBoxMappings'] }) {
-    return <HTMLSelect
-        value={value}
-        onChange={e => setBoxMappings({ key: boxKey, status: e.target.value })}
-    >
-        {boxes.map((box) => (
-            <option key={box.id} value={box.name}>
-                {box.name}
-            </option>
-        ))}
-    </HTMLSelect>;
+export function BoxSelect({
+    boxes,
+    value,
+    boxKey,
+    setBoxMappings,
+}: {
+    boxes: State['box'];
+    value: string;
+    boxKey: number;
+    setBoxMappings: SaveGameSettingsDialogProps['setBoxMappings'];
+}) {
+    return (
+        <HTMLSelect
+            value={value}
+            onChange={(e) => setBoxMappings({ key: boxKey, status: e.target.value })}>
+            {boxes.map((box) => (
+                <option key={box.id} value={box.name}>
+                    {box.name}
+                </option>
+            ))}
+        </HTMLSelect>
+    );
 }
 
 export function SaveGameSettingsDialog({
@@ -147,7 +155,6 @@ export function SaveGameSettingsDialog({
     boxMappings,
     setBoxMappings,
 }: SaveGameSettingsDialogProps) {
-
     // const select = (
     //     <Select
     //         items={boxes}
@@ -156,36 +163,55 @@ export function SaveGameSettingsDialog({
     //     </Select>
     // );
 
-    return <div className={cx(Classes.DIALOG_BODY, 'has-nice-scrollbars')}>
-        <Switch
-            labelElement={<>
-                <strong>Merge Data?</strong>
-                <p className={Classes.TEXT_MUTED}>
-                    Merges your current data with that of the save file, using an ID match algorithm.
-                    Disabling this will overwrite your current data with that from the save file.
-                    NOTE: this method of determining IDs is based off IVs in Gen I &amp; II.
-                </p>
-            </>}
-            checked={mergeDataMode}
-            onChange={onMergeDataChange}
-        />
+    return (
+        <div className={cx(Classes.DIALOG_BODY, 'has-nice-scrollbars')}>
+            <Switch
+                labelElement={
+                    <>
+                        <strong>Merge Data?</strong>
+                        <p className={Classes.TEXT_MUTED}>
+                            Merges your current data with that of the save file, using an ID match
+                            algorithm. Disabling this will overwrite your current data with that
+                            from the save file. NOTE: this method of determining IDs is based off
+                            IVs in Gen I &amp; II.
+                        </p>
+                    </>
+                }
+                checked={mergeDataMode}
+                onChange={onMergeDataChange}
+            />
 
-        <div style={{ height: '60vh', overflow: 'auto', display: 'flex', flexDirection: 'column', flexWrap: 'wrap' }} className='has-nice-scrollbars'>
-            {boxMappings.map((value, index) => {
-                return <div style={{ padding: '0.25rem' }}>
-                    <BoxSelect boxKey={value.key} setBoxMappings={setBoxMappings} value={value.status} boxes={boxes} />
-                    <div
-                        className={Classes.BUTTON}
-                        style={{
-                            marginLeft: '0.25rem',
-                            cursor: 'default', width: '8rem'
-                        }}
-                    >{`Box ${value.key}`}</div>
-                </div>;
-            })}
+            <div
+                style={{
+                    height: '60vh',
+                    overflow: 'auto',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexWrap: 'wrap',
+                }}
+                className="has-nice-scrollbars">
+                {boxMappings.map((value, index) => {
+                    return (
+                        <div style={{ padding: '0.25rem' }}>
+                            <BoxSelect
+                                boxKey={value.key}
+                                setBoxMappings={setBoxMappings}
+                                value={value.status}
+                                boxes={boxes}
+                            />
+                            <div
+                                className={Classes.BUTTON}
+                                style={{
+                                    marginLeft: '0.25rem',
+                                    cursor: 'default',
+                                    width: '8rem',
+                                }}>{`Box ${value.key}`}</div>
+                        </div>
+                    );
+                })}
+            </div>
         </div>
-
-    </div>;
+    );
 }
 
 export class DataEditorBase extends React.Component<DataEditorProps, DataEditorState> {
@@ -211,8 +237,8 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
     }
 
     public componentDidMount() {
-        this.setState(state => ({
-            boxMappings: generateBoxMappingsDefault(state.selectedGame)
+        this.setState((state) => ({
+            boxMappings: generateBoxMappingsDefault(state.selectedGame),
         }));
     }
 
@@ -247,7 +273,13 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         const data = handleExceptions(JSON.parse(this.state.data));
         const nuz = this.props.state;
         // @NOTE this prevents previously undefined states from blowing up the app
-        const safeguards = { customTypes: [], customMoveMap: [], stats: [], excludedAreas: [], customAreas: [] };
+        const safeguards = {
+            customTypes: [],
+            customMoveMap: [],
+            stats: [],
+            excludedAreas: [],
+            customAreas: [],
+        };
         if (!Array.isArray(data.customMoveMap)) {
             noop();
         } else {
@@ -280,7 +312,6 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         let d: any;
         try {
             d = handleExceptions(JSON.parse(data));
-
         } catch {
             d = { pokemon: false };
         }
@@ -313,8 +344,8 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         isYellow,
         selectedGame,
     }: {
-        isYellow?: boolean,
-        selectedGame?: GameSaveFormat
+        isYellow?: boolean;
+        selectedGame?: GameSaveFormat;
     }): Game {
         if (isYellow) return { name: 'Yellow', customName: '' };
         if (selectedGame === 'GS') return { name: 'Gold', customName: '' };
@@ -342,18 +373,15 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         // @NOTE: this is a gross work-around a bug with jest and import.meta.url
         // const worker = new Worker(new URL('parsers/worker.ts', codegen`module.exports = import.meta.env.MODE === "test" ? "" : "import.meta.url"`));
 
-        const worker = new Worker(new URL('../../parsers/worker.ts', import.meta.url), { type: 'module' });
+        const worker = new Worker(new URL('../../parsers/worker.ts', import.meta.url), {
+            type: 'module',
+        });
 
         const file = this.fileInput.files[0];
         const reader = new FileReader();
         const componentState = this.state;
 
-        console.log(
-            file,
-            reader,
-            componentState,
-            worker,
-        );
+        console.log(file, reader, componentState, worker);
 
         reader.readAsArrayBuffer(file);
 
@@ -366,7 +394,9 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                 boxMappings: componentState.boxMappings,
             });
 
-            worker.onmessage = (e: MessageEvent<{ pokemon: Pokemon[], isYellow?: boolean, trainer: Trainer }>) => {
+            worker.onmessage = (
+                e: MessageEvent<{ pokemon: Pokemon[]; isYellow?: boolean; trainer: Trainer }>,
+            ) => {
                 const result = e.data;
                 const mergedPokemon = componentState.mergeDataMode
                     ? DataEditorBase.pokeMerge(state.pokemon, result.pokemon as Pokemon[])
@@ -447,7 +477,9 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                             onChange={(e) => {
                                 this.setState({
                                     selectedGame: e.target.value as GameSaveFormat,
-                                    boxMappings: generateBoxMappingsDefault(e.target.value as GameSaveFormat)
+                                    boxMappings: generateBoxMappingsDefault(
+                                        e.target.value as GameSaveFormat,
+                                    ),
                                 });
                             }}>
                             {allowedGames.map((game) => (
@@ -480,8 +512,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                     <Button
                         onClick={(e) => this.setState({ isSettingsOpen: true })}
                         minimal
-                        intent={Intent.PRIMARY}
-                    >
+                        intent={Intent.PRIMARY}>
                         Options
                     </Button>
 
@@ -493,19 +524,23 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                         icon="floppy-disk">
                         <SaveGameSettingsDialog
                             mergeDataMode={this.state.mergeDataMode}
-                            onMergeDataChange={() => this.setState({ mergeDataMode: !this.state.mergeDataMode })}
+                            onMergeDataChange={() =>
+                                this.setState({ mergeDataMode: !this.state.mergeDataMode })
+                            }
                             boxes={this.props.state.box}
                             selectedGame={this.state.selectedGame}
                             boxMappings={this.state.boxMappings}
                             setBoxMappings={({ key, status }) => {
                                 console.log('setBoxMappings:', key, status);
                                 this.setState(({ boxMappings }) => {
-                                    const newBoxMappings = boxMappings.map(({ key: boxKey, status: boxStatus }) => {
-                                        if (key === boxKey) {
-                                            return { key, status };
-                                        }
-                                        return { key: boxKey, status: boxStatus };
-                                    });
+                                    const newBoxMappings = boxMappings.map(
+                                        ({ key: boxKey, status: boxStatus }) => {
+                                            if (key === boxKey) {
+                                                return { key, status };
+                                            }
+                                            return { key: boxKey, status: boxStatus };
+                                        },
+                                    );
                                     return {
                                         boxMappings: newBoxMappings,
                                     };
@@ -520,7 +555,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
 
     public render() {
         return (
-            <BaseEditor icon='database' name="Data">
+            <BaseEditor icon="database" name="Data">
                 <DeleteAlert
                     onConfirm={this.clearAllData}
                     isOpen={this.state.isClearAllDataOpen}
@@ -541,8 +576,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                             <Callout>Copy this and paste it somewhere safe!</Callout>
                             <div
                                 style={{ height: '40vh', overflow: 'auto' }}
-                                className={cx(Classes.DIALOG_BODY, 'has-nice-scrollbars')}
-                            >
+                                className={cx(Classes.DIALOG_BODY, 'has-nice-scrollbars')}>
                                 <span suppressContentEditableWarning={true} contentEditable={true}>
                                     {JSON.stringify(this.props.state, null, 2)}
                                 </span>
@@ -550,14 +584,15 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                             <div className={Classes.DIALOG_FOOTER}>
                                 <a
                                     href={this.state.href}
-                                    download={`nuzlocke_${this.props?.state?.trainer?.title
+                                    download={`nuzlocke_${
+                                        this.props?.state?.trainer?.title
                                             ?.toLowerCase()
                                             .replace(/\s/g, '-') ||
                                         this.props?.state?.game?.name
                                             ?.toLowerCase()
                                             .replace(/\s/g, '-') ||
                                         ''
-                                        }_${uuid().slice(0, 4)}.json`}>
+                                    }_${uuid().slice(0, 4)}.json`}>
                                     <Button icon={'download'} intent={Intent.PRIMARY}>
                                         Download
                                     </Button>
@@ -649,11 +684,22 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                 </ButtonGroup>
                 <Checkbox
                     checked={this.props.state.editor.editorHistoryDisabled}
-                    onChange={e => this.props.setEditorHistoryDisabled(e.currentTarget.checked)}
-                    labelElement={<>Disable Editor History <Popover content={
-                        <div style={{ width: '8rem', padding: '.25rem' }}>Can be used to achieve better editor performance on larger saves</div>
+                    onChange={(e) => this.props.setEditorHistoryDisabled(e.currentTarget.checked)}
+                    labelElement={
+                        <>
+                            Disable Editor History{' '}
+                            <Popover
+                                content={
+                                    <div style={{ width: '8rem', padding: '.25rem' }}>
+                                        Can be used to achieve better editor performance on larger
+                                        saves
+                                    </div>
+                                }
+                                interactionKind={PopoverInteractionKind.HOVER}>
+                                <Icon icon="info-sign" />
+                            </Popover>
+                        </>
                     }
-                        interactionKind={PopoverInteractionKind.HOVER}><Icon icon='info-sign' /></Popover></>}
                 />
             </BaseEditor>
         );

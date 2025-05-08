@@ -15,7 +15,16 @@ import { ErrorBoundary } from 'components/Shared';
 import { Stats } from './Stats';
 import { Pokemon, Trainer, Editor, Box } from 'models';
 import { reducers } from 'reducers';
-import { Styles as StyleState, getGameRegion, sortPokes, getContrastColor, isLocal, feature, getIconFormeSuffix, Species } from 'utils';
+import {
+    Styles as StyleState,
+    getGameRegion,
+    sortPokes,
+    getContrastColor,
+    isLocal,
+    feature,
+    getIconFormeSuffix,
+    Species,
+} from 'utils';
 
 import * as Styles from './styles';
 
@@ -57,8 +66,8 @@ interface ResultState {
 const getNumberOf = (status?: string, pokemon?: Pokemon[]) =>
     status
         ? pokemon
-            ?.filter((v) => v.hasOwnProperty('id'))
-            .filter((poke) => poke.status === status && !poke.hidden).length
+              ?.filter((v) => v.hasOwnProperty('id'))
+              .filter((poke) => poke.status === status && !poke.hidden).length
         : 0;
 
 const ZoomValues = [
@@ -69,11 +78,11 @@ const ZoomValues = [
     { key: 1.25, value: '125%' },
     { key: 1.5, value: '150%' },
     { key: 2, value: '200%' },
-    { key: 3, value: '300%' }
+    { key: 3, value: '300%' },
 ];
-type ZoomValue = typeof ZoomValues[number];
+type ZoomValue = (typeof ZoomValues)[number];
 
-const convertToPercentage = (n: number) => `${(n * 100)}%`;
+const convertToPercentage = (n: number) => `${n * 100}%`;
 
 const TopBarItems = ({ editorDarkMode, setZoomLevel, currentZoomLevel }) => {
     // @TODO: make this look decent
@@ -82,14 +91,18 @@ const TopBarItems = ({ editorDarkMode, setZoomLevel, currentZoomLevel }) => {
             className={cx({ 'bp5-dark': editorDarkMode })}
             filterable={false}
             items={ZoomValues}
-            itemRenderer={(item, { handleClick }) => (<MenuItem key={item.key} onClick={handleClick} text={item.value} />)}
+            itemRenderer={(item, { handleClick }) => (
+                <MenuItem key={item.key} onClick={handleClick} text={item.value} />
+            )}
             noResults={<MenuItem disabled={true} text="No results." />}
             onItemSelect={(item) => {
                 console.log('item', item);
                 setZoomLevel(item.key);
-            }}
-        >
-            <Button text={(convertToPercentage(currentZoomLevel)) ?? '100%'} endIcon="double-caret-vertical" />
+            }}>
+            <Button
+                text={convertToPercentage(currentZoomLevel) ?? '100%'}
+                endIcon="double-caret-vertical"
+            />
         </Select>
     );
 };
@@ -112,24 +125,23 @@ export function BackspriteMontage({ pokemon }: { pokemon: Pokemon[] }) {
                 ).toLowerCase()}${getIconFormeSuffix(poke.forme as any)}.png`;
 
                 return (
-                    <PokemonImage
-                        key={poke.id}
-                        url={image}
-                    >
-                        {(backgroundImage) => <img
-                            className="backsprite-montage-sprite"
-                            data-sprite-id={idx}
-                            data-sprite-species={poke.species}
-                            style={{
-                                height: '128px',
-                                marginLeft: '-32px',
-                                zIndex: 6 - idx,
-                                imageRendering: 'pixelated',
-                            }}
-                            alt=""
-                            role="presentation"
-                            src={backgroundImage} />
-                        }
+                    <PokemonImage key={poke.id} url={image}>
+                        {(backgroundImage) => (
+                            <img
+                                className="backsprite-montage-sprite"
+                                data-sprite-id={idx}
+                                data-sprite-species={poke.species}
+                                style={{
+                                    height: '128px',
+                                    marginLeft: '-32px',
+                                    zIndex: 6 - idx,
+                                    imageRendering: 'pixelated',
+                                }}
+                                alt=""
+                                role="presentation"
+                                src={backgroundImage}
+                            />
+                        )}
                     </PokemonImage>
                 );
             })}
@@ -290,13 +302,17 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             </div>
         ) : null;
 
-    private getScale(style: State['style'], editor: State['editor'], coords: ResultState['panningCoordinates']) {
+    private getScale(
+        style: State['style'],
+        editor: State['editor'],
+        coords: ResultState['panningCoordinates'],
+    ) {
         const rw = parseInt(style.resultWidth.toString());
         const ww = window.innerWidth;
         const scale = ww / rw / 1.1;
         const height = (this.resultRef?.current?.offsetHeight ?? 0) / this.state.zoomLevel;
         const width = (this.resultRef?.current?.offsetWidth ?? 300) / this.state.zoomLevel;
-        const translate = `translateX(${clamp(-(width), width, (coords?.[0] ?? 0) / 1)}px) translateY(${clamp(-(height), Infinity, (coords?.[1] ?? 0) / 1)}px)`;
+        const translate = `translateX(${clamp(-width, width, (coords?.[0] ?? 0) / 1)}px) translateY(${clamp(-height, Infinity, (coords?.[1] ?? 0) / 1)}px)`;
         if (this.state.isDownloading) {
             return { transform: undefined };
         }
@@ -314,14 +330,19 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         e?.preventDefault();
         e?.persist();
         if (e?.buttons === 1) {
-            this.setState(state => ({ panningCoordinates: [(state.panningCoordinates?.[0] ?? 0) + e?.movementX, (state.panningCoordinates?.[1] ?? 0) + e?.movementY] }));
+            this.setState((state) => ({
+                panningCoordinates: [
+                    (state.panningCoordinates?.[0] ?? 0) + e?.movementX,
+                    (state.panningCoordinates?.[1] ?? 0) + e?.movementY,
+                ],
+            }));
         }
     };
 
     private onZoom = (e?: React.WheelEvent<HTMLElement>) => {
         // @ts-expect-error
         if (e.shiftKey) {
-            this.setState({ zoomLevel: clamp(0.1, 5, ((-e?.deltaY! ?? 3) / 3)) });
+            this.setState({ zoomLevel: clamp(0.1, 5, (-e?.deltaY! ?? 3) / 3) });
         }
     };
 
@@ -339,8 +360,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         const paddingForVerticalTrainerSection =
             trainerSectionOrientation === 'vertical'
                 ? {
-                    paddingLeft: style.trainerWidth,
-                }
+                      paddingLeft: style.trainerWidth,
+                  }
                 : {};
         const teamContainer = (
             <div style={paddingForVerticalTrainerSection} className="team-container">
@@ -367,7 +388,12 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
         const EMMA_MODE = feature.emmaMode;
 
         return (
-            <div onWheel={this.onZoom} onMouseMove={this.onPan} onDoubleClick={this.resetPan} className="hide-scrollbars" style={{ width: '100%', overflowY: 'scroll' }}>
+            <div
+                onWheel={this.onZoom}
+                onMouseMove={this.onPan}
+                onDoubleClick={this.resetPan}
+                className="hide-scrollbars"
+                style={{ width: '100%', overflowY: 'scroll' }}>
                 {isMobile() && editor.showResultInMobile && (
                     <div className={Classes.OVERLAY_BACKDROP}></div>
                 )}
@@ -405,11 +431,12 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                     )}
                     <div
                         ref={this.resultRef}
-                        className={`result ng-container ${(style.template && style.template.toLowerCase().replace(/\s/g, '-')) ||
+                        className={`result ng-container ${
+                            (style.template && style.template.toLowerCase().replace(/\s/g, '-')) ||
                             ''
-                            } region-${getGameRegion(
-                                this.props.game.name,
-                            )} team-size-${numberOfTeam} ${trainerSectionOrientation}-trainer
+                        } region-${getGameRegion(
+                            this.props.game.name,
+                        )} team-size-${numberOfTeam} ${trainerSectionOrientation}-trainer
                        ${editor.showResultInMobile ? Styles.result_mobile : ''}
                         `}
                         style={{
@@ -433,19 +460,19 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             style={
                                 trainerSectionOrientation === 'vertical'
                                     ? {
-                                        backgroundColor: topHeaderColor,
-                                        color: getContrastColor(topHeaderColor),
-                                        width: style.trainerWidth,
-                                        position: 'absolute',
-                                        height: `calc(${style.trainerHeight} + 2%)`,
-                                        display: 'flex',
-                                    }
+                                          backgroundColor: topHeaderColor,
+                                          color: getContrastColor(topHeaderColor),
+                                          width: style.trainerWidth,
+                                          position: 'absolute',
+                                          height: `calc(${style.trainerHeight} + 2%)`,
+                                          display: 'flex',
+                                      }
                                     : {
-                                        backgroundColor: topHeaderColor,
-                                        color: getContrastColor(topHeaderColor),
-                                        width: style.trainerAuto ? '100%' : style.trainerWidth,
-                                        height: style.trainerAuto ? 'auto' : style.trainerHeight,
-                                    }
+                                          backgroundColor: topHeaderColor,
+                                          color: getContrastColor(topHeaderColor),
+                                          width: style.trainerAuto ? '100%' : style.trainerWidth,
+                                          height: style.trainerAuto ? 'auto' : style.trainerHeight,
+                                      }
                             }>
                             <TrainerResult orientation={trainerSectionOrientation} />
                         </div>
@@ -461,7 +488,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             : null}
                         {teamContainer}
                         {style.template === 'Generations' &&
-                            trainerSectionOrientation === 'vertical' ? (
+                        trainerSectionOrientation === 'vertical' ? (
                             <div className="statuses-wrapper">
                                 {/* {this.renderContainer(
                                         this.getPokemonByStatus('Boxed'),
@@ -524,10 +551,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     }
 }
 
-export const Result = connect(
-    resultSelector,
-    {
-        selectPokemon,
-        toggleMobileResultView,
-    },
-)(ResultBase as any);
+export const Result = connect(resultSelector, {
+    selectPokemon,
+    toggleMobileResultView,
+})(ResultBase as any);

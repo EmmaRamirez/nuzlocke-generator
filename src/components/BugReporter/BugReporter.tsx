@@ -36,7 +36,10 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
         const { defaultOpen } = this.props;
 
         return (
-            <BaseEditor icon='error' name="Bug Reports and Feature Requests" defaultOpen={defaultOpen}>
+            <BaseEditor
+                icon="error"
+                name="Bug Reports and Feature Requests"
+                defaultOpen={defaultOpen}>
                 <div style={{ margin: '.5rem' }}>
                     <input
                         style={{
@@ -78,12 +81,20 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
                             minimal
                             intent={Intent.DANGER}>
                             Submit{' '}
-                            {isSending ? <Spinner className={spinner} size={20} /> : <img
-                                style={{ height: '20px', verticalAlign: 'bottom', display: 'inline' }}
-                                alt=""
-                                role="presentation"
-                                src={`./icons/pokemon/regular/${this.getButtonPokemon(stage)}.png`}
-                            />}
+                            {isSending ? (
+                                <Spinner className={spinner} size={20} />
+                            ) : (
+                                <img
+                                    style={{
+                                        height: '20px',
+                                        verticalAlign: 'bottom',
+                                        display: 'inline',
+                                    }}
+                                    alt=""
+                                    role="presentation"
+                                    src={`./icons/pokemon/regular/${this.getButtonPokemon(stage)}.png`}
+                                />
+                            )}
                         </Button>
                     </div>
                 </div>
@@ -94,13 +105,14 @@ export class BugReporterBase extends React.Component<BugReporterProps, BugReport
     private getButtonPokemon = (stage: number) =>
         stage === 1 ? 'caterpie' : stage === 2 ? 'metapod' : 'butterfree';
 
-    private updateReport = (target: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const text = e.target.value;
-        const update: Pick<BugReporterState, 'userReport' | 'userReportTitle'> = ({
-            [target]: text,
-        } as unknown) as any;
-        this.setState(update);
-    };
+    private updateReport =
+        (target: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+            const text = e.target.value;
+            const update: Pick<BugReporterState, 'userReport' | 'userReportTitle'> = {
+                [target]: text,
+            } as unknown as any;
+            this.setState(update);
+        };
 
     private sendBugReport = () => {
         const { userReport, userReportTitle } = this.state;

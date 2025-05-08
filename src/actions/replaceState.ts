@@ -1,4 +1,3 @@
- 
 import { Action } from 'actions';
 
 export type REPLACE_STATE = 'REPLACE_STATE';

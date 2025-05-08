@@ -1,4 +1,3 @@
- 
 import { cx, css } from 'emotion';
 
 const BP_VERSION = 'bp5';

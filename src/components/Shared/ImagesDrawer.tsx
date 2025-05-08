@@ -33,9 +33,7 @@ const styles = {
         align-items: center;
         position: relative;
     `,
-    imageCaption: css`
-
-    `,
+    imageCaption: css``,
     imageInner: css`
         object-fit: cover;
         width: 100%;
@@ -60,7 +58,7 @@ const styles = {
         padding: 0.5rem;
         align-items: center;
         justify-content: space-between;
-        background: rgb(22,22,22);
+        background: rgb(22, 22, 22);
     `,
     layoutViewIcon: css`
         cursor: pointer;
@@ -71,11 +69,11 @@ const styles = {
 class NuzlockeGeneratorDB extends Dexie {
     public images: Dexie.Table<Image, number>;
 
-    public constructor () {
+    public constructor() {
         super('NuzlockeGenerator');
         this.version(1).stores({
             // eslint-disable-next-line @typescript-eslint/quotes
-            images: `++id, image, name`
+            images: `++id, image, name`,
         });
         this.images = this.table('images');
     }
@@ -122,15 +120,17 @@ export function ImagesDrawerInner() {
     }, [refresh]);
 
     const setLayout = React.useCallback(() => {
-        setLayoutView(layoutView === ImagesDrawerLayout.List ? ImagesDrawerLayout.Grid : ImagesDrawerLayout.List);
+        setLayoutView(
+            layoutView === ImagesDrawerLayout.List
+                ? ImagesDrawerLayout.Grid
+                : ImagesDrawerLayout.List,
+        );
     }, [layoutView]);
 
     const deleteImage = (id: number) => async () => {
         const toaster = Toaster.create();
         try {
-            const deletion = await db.images
-                .where('id').equals(id)
-                .delete();
+            const deletion = await db.images.where('id').equals(id).delete();
             setRefresh(id);
         } catch (e) {
             toaster.show({
@@ -140,51 +140,73 @@ export function ImagesDrawerInner() {
         }
     };
 
-    return <div className={cx('images-drawer', styles.imagesDrawer, isDarkMode && Classes.DARK)}>
-        <div className='p-2 relative'>
-            <ImageUpload
-                onSuccess={async (image, fileName) => {
-                    const id = await db.images.put({
-                        image: image,
-                        name: fileName,
-                    });
-                    setRefresh(id);
-                }}
-            />
-            <span>
-                <Button className={styles.layoutViewIcon} onClick={setLayout} icon={layoutView === ImagesDrawerLayout.Grid ? 'list' : 'grid-view'}>{layoutView === ImagesDrawerLayout.Grid ? 'List' : 'Grid'}</Button>
-            </span>
+    return (
+        <div className={cx('images-drawer', styles.imagesDrawer, isDarkMode && Classes.DARK)}>
+            <div className="p-2 relative">
+                <ImageUpload
+                    onSuccess={async (image, fileName) => {
+                        const id = await db.images.put({
+                            image: image,
+                            name: fileName,
+                        });
+                        setRefresh(id);
+                    }}
+                />
+                <span>
+                    <Button
+                        className={styles.layoutViewIcon}
+                        onClick={setLayout}
+                        icon={layoutView === ImagesDrawerLayout.Grid ? 'list' : 'grid-view'}>
+                        {layoutView === ImagesDrawerLayout.Grid ? 'List' : 'Grid'}
+                    </Button>
+                </span>
+            </div>
+            <div className={styles.images}>
+                {images?.map((image) => (
+                    <div key={image.id} className={styles.image}>
+                        <img
+                            className={styles.imageInner}
+                            src={image.image}
+                            alt={image.name}
+                            title={image.name}
+                        />
+                        <div className={styles.inputGroup}>
+                            <input
+                                readOnly
+                                className={cx(styles.input, Classes.INPUT)}
+                                value={image.name}
+                            />
+                            {image?.id && (
+                                <Icon
+                                    className={styles.deleteIcon}
+                                    onClick={deleteImage(image?.id)}
+                                    icon="trash"
+                                    intent={Intent.DANGER}
+                                />
+                            )}
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
-        <div className={styles.images}>
-            {images?.map(image => <div key={image.id} className={styles.image}>
-                <img className={styles.imageInner} src={image.image} alt={image.name} title={image.name} />
-                <div className={styles.inputGroup}>
-                    <input
-                        readOnly
-                        className={cx(styles.input, Classes.INPUT)}
-                        value={image.name}
-                    />
-                    {image?.id && <Icon className={styles.deleteIcon} onClick={deleteImage(image?.id)} icon='trash' intent={Intent.DANGER} />}
-                </div>
-            </div>)}
-        </div>
-    </div>;
+    );
 }
 
 export function ImagesDrawer() {
     const isDarkMode = useSelector<State, State['style']['editorDarkMode']>(isDarkModeSelector);
-    const view = useSelector<State, State['view']>(state => state.view);
+    const view = useSelector<State, State['view']>((state) => state.view);
     const dispatch = useDispatch();
     const onClose = () => dispatch(toggleDialog('imageUploader'));
 
-    return <Drawer
-        isOpen={view?.dialogs?.imageUploader}
-        size={DrawerSize.STANDARD}
-        className={isDarkMode ? Classes.DARK : ''}
-        onClose={onClose}
-    >
-        <React.Suspense fallback={Skeleton}>
-            <ImagesDrawerInner />
-        </React.Suspense>
-    </Drawer>;
+    return (
+        <Drawer
+            isOpen={view?.dialogs?.imageUploader}
+            size={DrawerSize.STANDARD}
+            className={isDarkMode ? Classes.DARK : ''}
+            onClose={onClose}>
+            <React.Suspense fallback={Skeleton}>
+                <ImagesDrawerInner />
+            </React.Suspense>
+        </Drawer>
+    );
 }

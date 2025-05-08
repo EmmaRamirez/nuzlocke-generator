@@ -28,7 +28,7 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
                 <div
                     onClick={() => this.props.deleteRule(index)}
                     onKeyPress={() => this.props.deleteRule(index)}
-                    role='none'
+                    role="none"
                     className="rule-delete"
                     title="Delete Rule">
                     <Icon intent={Intent.DANGER} style={{ cursor: 'pointer' }} icon={'trash'} />
@@ -80,9 +80,7 @@ export const RulesEditorDialogBase = (
         <Dialog
             isOpen={props.isOpen}
             onClose={props.onClose}
-            className={`rules-editor-dialog ${
-                props.style.editorDarkMode ? Classes.DARK : ''
-            }`}
+            className={`rules-editor-dialog ${props.style.editorDarkMode ? Classes.DARK : ''}`}
             title="Rules Editor"
             icon="edit">
             <div className={Classes.DIALOG_BODY}>

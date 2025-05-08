@@ -1,4 +1,3 @@
- 
 // https://stackoverflow.com/questions/15523514/find-by-key-deep-in-a-nested-object
 export function getDeepObject(theObject, n) {
     let result = null;

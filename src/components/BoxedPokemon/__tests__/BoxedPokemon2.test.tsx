@@ -14,9 +14,7 @@ const poke = {
 
 describe(`<${BoxedPokemon.name} />`, () => {
     it('renders its content', () => {
-        render(
-            <BoxedPokemon pokemon={poke} />
-        );
+        render(<BoxedPokemon pokemon={poke} />);
         expect(screen.getByTestId('boxed-pokemon')).toBeDefined();
     });
 });

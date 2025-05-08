@@ -4,7 +4,7 @@ import { addPokemon, selectPokemon } from 'actions';
 import { Button, Intent } from '@blueprintjs/core';
 import { Pokemon } from 'models';
 
-export function AddPokemonButton ({ pokemon }: {pokemon: Pokemon}) {
+export function AddPokemonButton({ pokemon }: { pokemon: Pokemon }) {
     const dispatch = useDispatch();
 
     const onClick = () => {
@@ -12,12 +12,9 @@ export function AddPokemonButton ({ pokemon }: {pokemon: Pokemon}) {
         dispatch(selectPokemon(pokemon.id));
     };
 
-    return <Button
-        icon="add"
-        intent={Intent.SUCCESS}
-        className="add-new-pokemon"
-        onClick={onClick}
-    >
-    Add New Pokémon
-    </Button>;
+    return (
+        <Button icon="add" intent={Intent.SUCCESS} className="add-new-pokemon" onClick={onClick}>
+            Add New Pokémon
+        </Button>
+    );
 }

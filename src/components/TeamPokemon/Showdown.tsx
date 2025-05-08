@@ -57,9 +57,7 @@ export const Showdown = ({
             {pokemon?.shiny && <div>Shiny: Yes</div>}
             {/* EVs: 252 HP / 252 Atk / 4 SpD  */}
             {pokemon?.nature && <div>{pokemon?.nature} Nature</div>}
-            {pokemon?.moves?.map((move) => (
-                <div>- {move}</div>
-            ))}
+            {pokemon?.moves?.map((move) => <div>- {move}</div>)}
             {pokemon?.notes}
         </div>
     );

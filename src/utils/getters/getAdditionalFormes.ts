@@ -119,7 +119,7 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
         return ['Confined', 'Unbound'];
     }
     if (s === 'oricorio') {
-        return ['Baile', 'Pom-Pom', 'Pa\'u', 'Sensu'];
+        return ['Baile', 'Pom-Pom', "Pa'u", 'Sensu'];
     }
     if (s === 'lycanroc') {
         return ['Midday', 'Midnight', 'Dusk'];
@@ -157,7 +157,7 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
     if (
         s === 'ponyta' ||
         s === 'rapidash' ||
-        s === 'farfetch\'d' ||
+        s === "farfetch'd" ||
         s === 'weezing' ||
         s === 'mr. mime' ||
         s === 'corsola' ||
@@ -304,15 +304,11 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
         return ['Hisuian'];
     }
 
-    if (
-        s === 'wooper'
-    ) {
+    if (s === 'wooper') {
         return ['Paldean'];
     }
 
-    if (
-        s === 'tauros'
-    ) {
+    if (s === 'tauros') {
         return ['Paldean', 'Paldean-Aqua', 'Paldean-Blaze'];
     }
 

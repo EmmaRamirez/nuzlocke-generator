@@ -6,11 +6,10 @@ import { matchSpeciesToTypes } from './formatters/matchSpeciesToTypes';
 import { Pokemon } from 'models';
 
 export type PokemonFixtures = Record<
-'Pikachu' | 'Dragonite' | 'MegaMewtwoX' | 'ShinyCorsola' | 'CustomPokemon',
-Pokemon
+    'Pikachu' | 'Dragonite' | 'MegaMewtwoX' | 'ShinyCorsola' | 'CustomPokemon',
+    Pokemon
 >;
 
- 
 export const PokemonFixtures: PokemonFixtures = {
     Pikachu: {
         ...generateEmptyPokemon(),

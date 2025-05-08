@@ -1,4 +1,3 @@
- 
 import { Action } from 'actions';
 
 export type UPDATE_EXCLUDED_AREAS = 'UPDATE_EXCLUDED_AREAS';

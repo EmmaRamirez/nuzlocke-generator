@@ -12,7 +12,7 @@ export interface TrainerInfoEditFieldProps {
     element?: (inputProps: Omit<TrainerInfoEditFieldProps, 'element'>) => any;
 }
 
-export function TrainerInfoEditField ({
+export function TrainerInfoEditField({
     label,
     name,
     placeholder,
@@ -25,7 +25,7 @@ export function TrainerInfoEditField ({
 
     const delayedValue = React.useCallback(
         debounce((e) => onEdit(e), 300),
-        [value]
+        [value],
     );
 
     React.useEffect(() => {
@@ -38,18 +38,20 @@ export function TrainerInfoEditField ({
         delayedValue(e);
     };
 
-    return <div className="trainer-info-field">
-        <label>{label}</label>
-        {element ? (
-            element({ label, name, placeholder, onEdit, /*onInput,*/ value: innerValue })
-        ) : (
-            <input
-                type="text"
-                value={innerValue}
-                onChange={onChange}
-                placeholder={placeholder}
-                name={name}
-            />
-        )}
-    </div>;
+    return (
+        <div className="trainer-info-field">
+            <label>{label}</label>
+            {element ? (
+                element({ label, name, placeholder, onEdit, /*onInput,*/ value: innerValue })
+            ) : (
+                <input
+                    type="text"
+                    value={innerValue}
+                    onChange={onChange}
+                    placeholder={placeholder}
+                    name={name}
+                />
+            )}
+        </div>
+    );
 }

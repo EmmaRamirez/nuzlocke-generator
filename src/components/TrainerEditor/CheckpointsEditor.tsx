@@ -1,13 +1,6 @@
 import * as React from 'react';
 import { cx } from 'emotion';
-import {
-    Classes,
-    Button,
-    Icon,
-    Intent,
-    Popover,
-    PopoverInteractionKind,
-} from '@blueprintjs/core';
+import { Classes, Button, Icon, Intent, Popover, PopoverInteractionKind } from '@blueprintjs/core';
 import { classWithDarkTheme, feature, Styles } from 'utils';
 import * as styles from './style';
 import { connect } from 'react-redux';
@@ -27,13 +20,12 @@ export interface CheckpointsSelectState {
     showOptions: boolean;
 }
 
-const checkpointImageURL = (name) => ((name.startsWith('http') || name.startsWith('data'))
-    ? name
-    : `./img/checkpoints/${name}.png`);
+const checkpointImageURL = (name) =>
+    name.startsWith('http') || name.startsWith('data') ? name : `./img/checkpoints/${name}.png`;
 
 export class CheckpointsSelect extends React.Component<
-CheckpointsSelectProps,
-CheckpointsSelectState
+    CheckpointsSelectProps,
+    CheckpointsSelectState
 > {
     private renderOptions(checkpoint) {
         const { name, image } = checkpoint;
@@ -43,7 +35,9 @@ CheckpointsSelectState
             .includes(image);
 
         return (
-            <div className='has-nice-scrollbars' style={{ padding: '1rem', height: '400px', overflowY: 'auto' }}>
+            <div
+                className="has-nice-scrollbars"
+                style={{ padding: '1rem', height: '400px', overflowY: 'auto' }}>
                 {getAllBadges().map((badge, key) => {
                     return (
                         <Button
@@ -74,7 +68,12 @@ CheckpointsSelectState
                     interactionKind={PopoverInteractionKind.CLICK}
                     content={this.renderOptions(checkpoint)}>
                     <div
-                        className={cx(styles.checkpointSelect, Classes.SELECT, Classes.BUTTON, 'has-nice-scrollbars')}>
+                        className={cx(
+                            styles.checkpointSelect,
+                            Classes.SELECT,
+                            Classes.BUTTON,
+                            'has-nice-scrollbars',
+                        )}>
                         <div>
                             <img
                                 className={cx(styles.checkpointImage(1))}
@@ -104,8 +103,8 @@ export interface CheckpointsEditorState {
 }
 
 export class CheckpointsEditorBase extends React.Component<
-CheckpointsEditorProps,
-CheckpointsEditorState
+    CheckpointsEditorProps,
+    CheckpointsEditorState
 > {
     public state = { badgeNumber: 0 };
 
@@ -176,12 +175,17 @@ CheckpointsEditorState
                             />
                         </div>
                         <div className={cx(styles.checkpointImageUploadWrapper)}>
-                            {feature.imageUploads && <ImageUpload
-                                onSuccess={image => {
-                                    const request = window.indexedDB.open('NuzlockeGenerator', 3);
-                                    this.props.editCheckpoint({image}, checkpoint.name);
-                                }}
-                            />}
+                            {feature.imageUploads && (
+                                <ImageUpload
+                                    onSuccess={(image) => {
+                                        const request = window.indexedDB.open(
+                                            'NuzlockeGenerator',
+                                            3,
+                                        );
+                                        this.props.editCheckpoint({ image }, checkpoint.name);
+                                    }}
+                                />
+                            )}
                         </div>
                         <Icon
                             style={{ cursor: 'pointer' }}

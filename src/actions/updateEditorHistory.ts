@@ -1,4 +1,3 @@
- 
 import { Action } from './action';
 import { History } from 'reducers/editorHistory';
 

@@ -5,7 +5,6 @@ import { useDebounceCallback } from '@react-hook/debounce';
 import { css } from 'emotion';
 import { debounce } from 'utils';
 
-
 export interface AutocompleteProps {
     items: string[];
     placeholder?: string;
@@ -20,24 +19,30 @@ export interface AutocompleteProps {
     makeInvisibleText?: boolean;
 }
 
-const renderItems = (visibleItems: string[], selectItem: any, innerValue: string, selectedValue: string) => visibleItems.map((v, i) => {
-    return (
-        <li
-            key={i}
-            onClick={(e) => selectItem(e)(v)}
-            className={v === selectedValue ? 'autocomplete-selected' : ''}>
-            {v}
-        </li>
-    );
-});
+const renderItems = (
+    visibleItems: string[],
+    selectItem: any,
+    innerValue: string,
+    selectedValue: string,
+) =>
+    visibleItems.map((v, i) => {
+        return (
+            <li
+                key={i}
+                onClick={(e) => selectItem(e)(v)}
+                className={v === selectedValue ? 'autocomplete-selected' : ''}>
+                {v}
+            </li>
+        );
+    });
 
-const filter = (items, str) => items?.filter(i => i?.toLowerCase().startsWith(str.toLowerCase()));
+const filter = (items, str) => items?.filter((i) => i?.toLowerCase().startsWith(str.toLowerCase()));
 
 const invisibleText = css`
     color: transparent !important;
 `;
 
-export function Autocomplete ({
+export function Autocomplete({
     label,
     name,
     placeholder,
@@ -54,9 +59,7 @@ export function Autocomplete ({
     const [isOpen, setIsOpen] = React.useState(false);
     const [visibleItems, setVisibleItems] = React.useState<string[]>([]);
 
-    const delayedValue = useDebounceCallback(
-        (e) => onChange(e), 300,
-    );
+    const delayedValue = useDebounceCallback((e) => onChange(e), 300);
 
     React.useEffect(() => {
         setValue(value);
@@ -64,12 +67,14 @@ export function Autocomplete ({
         // setIsOpen(false);
     }, [value, items]);
 
-    const changeEvent = (innerEvent: boolean = true) => (e) => {
-        innerEvent && e.persist();
-        setValue(e.target.value);
-        setVisibleItems(filter(items, e.target.value));
-        delayedValue({ target: { value: e.target.value }});
-    };
+    const changeEvent =
+        (innerEvent: boolean = true) =>
+        (e) => {
+            innerEvent && e.persist();
+            setValue(e.target.value);
+            setVisibleItems(filter(items, e.target.value));
+            delayedValue({ target: { value: e.target.value } });
+        };
 
     const handleMovement = (e) => {
         const currentIndex = visibleItems?.indexOf(selectedValue);
@@ -100,7 +105,10 @@ export function Autocomplete ({
                     setValue(selectedValue);
                 }
                 closeList(e);
-                changeEvent(false)({ ...e, target: { value: selectedValue !== '' ? selectedValue : innerValue }});
+                changeEvent(false)({
+                    ...e,
+                    target: { value: selectedValue !== '' ? selectedValue : innerValue },
+                });
                 break;
             case 8:
                 break;
@@ -119,32 +127,31 @@ export function Autocomplete ({
         }
     };
     const selectItem = (e) => (value) => {
-        changeEvent(false)({ ...e, target:{value}});
+        changeEvent(false)({ ...e, target: { value } });
     };
 
-    return <div className={cx('current-pokemon-input-wrapper', 'autocomplete')}>
-        <label>{label}</label>
-        <input
-            autoComplete="off"
-            className={cx(className, makeInvisibleText && invisibleText)}
-            onKeyDown={handleKeyDown}
-            onFocus={openList}
-            onBlur={closeList}
-            placeholder={placeholder}
-            name={name}
-            type="text"
-            onChange={changeEvent()}
-            value={innerValue}
-            disabled={disabled}
-            data-testid="autocomplete"
-        />
-        {isOpen ? (
-            <ul className="autocomplete-items has-nice-scrollbars">{renderItems(
-                visibleItems,
-                selectItem,
-                innerValue,
-                selectedValue,
-            )}</ul>
-        ) : null}
-    </div>;
+    return (
+        <div className={cx('current-pokemon-input-wrapper', 'autocomplete')}>
+            <label>{label}</label>
+            <input
+                autoComplete="off"
+                className={cx(className, makeInvisibleText && invisibleText)}
+                onKeyDown={handleKeyDown}
+                onFocus={openList}
+                onBlur={closeList}
+                placeholder={placeholder}
+                name={name}
+                type="text"
+                onChange={changeEvent()}
+                value={innerValue}
+                disabled={disabled}
+                data-testid="autocomplete"
+            />
+            {isOpen ? (
+                <ul className="autocomplete-items has-nice-scrollbars">
+                    {renderItems(visibleItems, selectItem, innerValue, selectedValue)}
+                </ul>
+            ) : null}
+        </div>
+    );
 }

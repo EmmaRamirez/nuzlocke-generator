@@ -64,7 +64,7 @@ export enum Forme {
     Winter = 'winter',
 
     Baile = 'baile',
-    'Pa\'u' = 'pa-u',
+    "Pa'u" = 'pa-u',
     'Pom-Pom' = 'pom-pom',
     Sensu = 'sensu',
 
@@ -112,5 +112,4 @@ export enum Forme {
     Wellspring = 'wellspring',
     Heartflame = 'heartflame',
     Cornerstone = 'cornerstone',
-
 }

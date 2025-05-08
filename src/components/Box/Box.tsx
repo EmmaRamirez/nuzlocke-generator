@@ -51,22 +51,23 @@ const boxSourceDrop = {
             return;
         }
 
-        store.dispatch(editBox(props.id, {
-            position: item.position,
-        }));
-        store.dispatch(editBox(item.id, {
-            position: props.position,
-        }));
+        store.dispatch(
+            editBox(props.id, {
+                position: item.position,
+            }),
+        );
+        store.dispatch(
+            editBox(item.id, {
+                position: props.position,
+            }),
+        );
 
-        return {
-
-        };
+        return {};
     },
     hover(props, monitor) {
-        return { isHovering: monitor.isOver({ shallow: true } )};
-    }
+        return { isHovering: monitor.isOver({ shallow: true }) };
+    },
 };
-
 
 export type BoxProps = {
     pokemon: Pokemon[];
@@ -170,7 +171,7 @@ export const Box: React.FC<BoxProps> = (props) => {
                         // position: oldPosition,
                         status: props.name,
                     },
-                    (item).id,
+                    item.id,
                 ),
             );
         },
@@ -179,15 +180,12 @@ export const Box: React.FC<BoxProps> = (props) => {
         }),
     }));
 
-
     const toggleDialog = () => setDeleteConfirmationOpen(!deleteConfirmationOpen);
 
     const handleDeleteBox = () => {
         dispatch(deleteBox(id));
 
-        pokemon
-            .filter((p) => p.status === name)
-            .forEach((p) => deletePokemon(p.id));
+        pokemon.filter((p) => p.status === name).forEach((p) => deletePokemon(p.id));
 
         setDeleteConfirmationOpen(false);
     };
@@ -241,8 +239,7 @@ export const Box: React.FC<BoxProps> = (props) => {
                 opacity: isDragging ? 0.5 : 1,
                 ...collapsedStyle,
             }}
-            className={`box ${name.replace(/\s/g, '-')}-box`}
-        >
+            className={`box ${name.replace(/\s/g, '-')}-box`}>
             <Alert
                 icon="trash"
                 isOpen={deleteConfirmationOpen}
@@ -250,11 +247,10 @@ export const Box: React.FC<BoxProps> = (props) => {
                 onConfirm={handleDeleteBox}
                 confirmButtonText="Delete Box"
                 cancelButtonText="Cancel"
-                intent={Intent.DANGER}
-            >
+                intent={Intent.DANGER}>
                 <p>
-                    This will delete the currently selected Box and all Pokémon stored inside the box. Are you sure you
-                    want to do that?
+                    This will delete the currently selected Box and all Pokémon stored inside the
+                    box. Are you sure you want to do that?
                 </p>
             </Alert>
             <Popover
@@ -292,14 +288,24 @@ export const Box: React.FC<BoxProps> = (props) => {
                                 ))}
                             </MenuItem>
                         )}
-                        <MenuItem onClick={handleToggleCollapse} text={isCollapsed ? 'Expand Box' : 'Collapse Box'} />
-                        <MenuItem onClick={handleClearBox} className={Classes.FILL} text="Clear Box" />
+                        <MenuItem
+                            onClick={handleToggleCollapse}
+                            text={isCollapsed ? 'Expand Box' : 'Collapse Box'}
+                        />
+                        <MenuItem
+                            onClick={handleClearBox}
+                            className={Classes.FILL}
+                            text="Clear Box"
+                        />
                         {!['Team', 'Boxed', 'Dead', 'Champs'].includes(name) && (
-                            <MenuItem onClick={toggleDialog} className={Classes.FILL} text="Delete Box" />
+                            <MenuItem
+                                onClick={toggleDialog}
+                                className={Classes.FILL}
+                                text="Delete Box"
+                            />
                         )}
                     </>
-                }
-            >
+                }>
                 <span
                     style={{
                         alignItems: 'center',
@@ -315,8 +321,7 @@ export const Box: React.FC<BoxProps> = (props) => {
                         minWidth: '5rem',
                         cursor: 'pointer',
                         userSelect: 'none',
-                    }}
-                >
+                    }}>
                     <Icon style={{ transform: 'rotate(90deg)' }} icon="more" />
                     {name}
                 </span>
@@ -500,7 +505,6 @@ export const Box: React.FC<BoxProps> = (props) => {
 //         )));
 //     }
 // }
-
 
 // export const Box = connect(null, {
 //     clearBox,

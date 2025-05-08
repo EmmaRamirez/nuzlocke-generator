@@ -1,4 +1,3 @@
- 
 import { Action } from 'actions';
 
 export type TOGGLE_MOBILE_RESULT_VIEW = 'TOGGLE_MOBILE_RESULT_VIEW';

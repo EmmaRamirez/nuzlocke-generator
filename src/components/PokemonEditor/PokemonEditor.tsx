@@ -45,7 +45,14 @@ export class BoxesComponent extends React.Component<BoxesComponentProps> {
                 return positionA - positionB;
             })
             .map((box) => {
-                return <Box searchTerm={this.props.searchTerm || ''} {...box} key={box.id} pokemon={team} />;
+                return (
+                    <Box
+                        searchTerm={this.props.searchTerm || ''}
+                        {...box}
+                        key={box.id}
+                        pokemon={team}
+                    />
+                );
             });
     }
 
@@ -57,7 +64,9 @@ export class BoxesComponent extends React.Component<BoxesComponentProps> {
 }
 
 const MassEditor = React.lazy(() => import('components/PokemonEditor/MassEditor'));
-const PokemonLocationChecklist = React.lazy(() => import('components/PokemonEditor/PokemonLocationChecklist'));
+const PokemonLocationChecklist = React.lazy(
+    () => import('components/PokemonEditor/PokemonLocationChecklist'),
+);
 
 export class PokemonEditorBase extends React.Component<PokemonEditorProps, PokemonEditorState> {
     public constructor(props: PokemonEditorProps) {
@@ -77,7 +86,6 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
     public componentDidMount() {
         // @NOTE: refactor so that there's an easier way to auto-generate Pokemon data
         // const {team} = this.props;
-
         // listOfPokemon.slice(1008).forEach((value) => {
         //     this.props.addPokemon(
         //         generateEmptyPokemon(team, {
@@ -93,34 +101,36 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
 
         return (
             <>
-                <BaseEditor icon='circle' name="Pokemon">
-                    <div data-testid="pokemon-editor" className="button-row" style={{ display: 'flex', alignItems: 'flex-start' }}>
+                <BaseEditor icon="circle" name="Pokemon">
+                    <div
+                        data-testid="pokemon-editor"
+                        className="button-row"
+                        style={{ display: 'flex', alignItems: 'flex-start' }}>
                         <AddPokemonButton
                             pokemon={{
                                 ...generateEmptyPokemon(team),
                                 gameOfOrigin: this.props.game.name || 'None',
                             }}
                         />
-                        <div style={{ marginLeft: 'auto', width: '50%'}}>
+                        <div style={{ marginLeft: 'auto', width: '50%' }}>
                             <Button
                                 icon={'heat-grid'}
                                 intent={Intent.PRIMARY}
                                 onClick={this.openMassEditor}
-                                className={cx(
-                                    Classes.MINIMAL,
-                                    Classes.FILL,
-                                )}>
+                                className={cx(Classes.MINIMAL, Classes.FILL)}>
                                 Open Mass Editor
                             </Button>
                             <input
-                                type='search'
-                                placeholder='Search...'
+                                type="search"
+                                placeholder="Search..."
                                 className={Classes.INPUT}
                                 value={this.state.searchTerm}
-                                onChange={e => this.setState({
-                                    searchTerm: e.target.value,
-                                })}
-                                style={{margin: '0.25rem', width: '100%'}}
+                                onChange={(e) =>
+                                    this.setState({
+                                        searchTerm: e.target.value,
+                                    })
+                                }
+                                style={{ margin: '0.25rem', width: '100%' }}
                             />
                         </div>
                     </div>
@@ -129,7 +139,14 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
                     <CurrentPokemonEdit />
                     <BaseEditor name="Location Checklist" defaultOpen={false}>
                         <React.Suspense fallback={<Spinner />}>
-                            <PokemonLocationChecklist customAreas={customAreas} excludedAreas={excludedAreas} boxes={boxes} style={style} pokemon={team} game={game} />
+                            <PokemonLocationChecklist
+                                customAreas={customAreas}
+                                excludedAreas={excludedAreas}
+                                boxes={boxes}
+                                style={style}
+                                pokemon={team}
+                                game={game}
+                            />
                         </React.Suspense>
                     </BaseEditor>
                 </BaseEditor>

@@ -16,10 +16,10 @@ export function editor(
         editorHistoryDisabled: true,
     },
     action: Action<
-    | CHANGE_EDITOR_SIZE
-    | TOGGLE_TEMTEM_MODE
-    | TOGGLE_MOBILE_RESULT_VIEW
-    | SET_EDITOR_HISTORY_ENABLED
+        | CHANGE_EDITOR_SIZE
+        | TOGGLE_TEMTEM_MODE
+        | TOGGLE_MOBILE_RESULT_VIEW
+        | SET_EDITOR_HISTORY_ENABLED
     >,
 ) {
     switch (action.type) {

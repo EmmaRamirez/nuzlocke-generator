@@ -107,9 +107,7 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
     }
 
     private displayMostCommonDeath(data: { name?: string; total?: string }[]) {
-        const numOfDead = this.props.pokemon
-            .filter((s) => s.status === 'Dead')
-            .length;
+        const numOfDead = this.props.pokemon.filter((s) => s.status === 'Dead').length;
 
         if (numOfDead === 0) {
             return 'None';
@@ -123,23 +121,27 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
 
     private getAverageLevel() {
         const pokes = this.props.pokemon.filter((p) => !p.hidden);
-        return pokes.reduce((prev, poke, arr) => {
-            if (Number.isNaN(poke.level) || !poke.level) {
-                return prev;
-            }
-            return prev + Number.parseInt(poke.level as unknown as string);
-        }, 0) / pokes.length;
+        return (
+            pokes.reduce((prev, poke, arr) => {
+                if (Number.isNaN(poke.level) || !poke.level) {
+                    return prev;
+                }
+                return prev + Number.parseInt(poke.level as unknown as string);
+            }, 0) / pokes.length
+        );
     }
 
     private getAverageLevelByStatus(status: string) {
         const pokes = this.props.pokemon.filter((p) => !p.hidden && p.status === status);
         if (!pokes.length) return 0;
-        return (pokes.reduce((prev, poke, arr) => {
-            if (Number.isNaN(poke.level) || !poke.level) {
-                return prev;
-            }
-            return prev + Number.parseInt(poke.level as unknown as string);
-        }, 0) / pokes.length);
+        return (
+            pokes.reduce((prev, poke, arr) => {
+                if (Number.isNaN(poke.level) || !poke.level) {
+                    return prev;
+                }
+                return prev + Number.parseInt(poke.level as unknown as string);
+            }, 0) / pokes.length
+        );
     }
 
     private getShinies() {
@@ -158,26 +160,36 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
     }
 
     private getAverageLevelDetailedComponent() {
-        return <div>Average Level: {this.props.box.map((b, idx, arr) => {
-            return <> {b.name} ({this.getAverageLevelByStatus(b.name)?.toFixed(0)}){idx < arr.length - 1 ? ',' : ''}</>;
-        })}
-        </div>;
+        return (
+            <div>
+                Average Level:{' '}
+                {this.props.box.map((b, idx, arr) => {
+                    return (
+                        <>
+                            {' '}
+                            {b.name} ({this.getAverageLevelByStatus(b.name)?.toFixed(0)})
+                            {idx < arr.length - 1 ? ',' : ''}
+                        </>
+                    );
+                })}
+            </div>
+        );
     }
 
     public render() {
         const { stats, style, color } = this.props;
 
         return (
-            <div className="stats stats-container" style={{color}}>
-                <h3 style={{color}}>Stats</h3>
+            <div className="stats stats-container" style={{ color }}>
+                <h3 style={{ color }}>Stats</h3>
 
                 <div style={{ marginTop: '10px', margin: '0 10px' }}>
-                    {this.props.pokemon.length && style.statsOptions.averageLevel ?
-                        this.getAverageLevelComponent() : null
-                    }
-                    {this.props.pokemon.length && style.statsOptions.averageLevelDetailed ?
-                        this.getAverageLevelDetailedComponent() : null
-                    }
+                    {this.props.pokemon.length && style.statsOptions.averageLevel
+                        ? this.getAverageLevelComponent()
+                        : null}
+                    {this.props.pokemon.length && style.statsOptions.averageLevelDetailed
+                        ? this.getAverageLevelDetailedComponent()
+                        : null}
                     {style.statsOptions.mostCommonKillers ? (
                         <div>
                             Most Common Killers:{' '}
@@ -198,12 +210,12 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
                     ) : null}
                     {stats?.length
                         ? stats?.map((stat, idx) =>
-                            stat.key?.length && stat.value?.length ? (
-                                <div key={stat.id}>
-                                    {stat.key}: {stat.value}
-                                </div>
-                            ) : null,
-                        )
+                              stat.key?.length && stat.value?.length ? (
+                                  <div key={stat.id}>
+                                      {stat.key}: {stat.value}
+                                  </div>
+                              ) : null,
+                          )
                         : null}
                 </div>
             </div>
@@ -211,9 +223,14 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
     }
 }
 
-export const Stats = connect((state: State) => ({
-    pokemon: state.pokemon,
-    stats: state.stats,
-    style: state.style,
-    box: state.box,
-}), undefined, undefined, { pure: false })(StatsBase);
+export const Stats = connect(
+    (state: State) => ({
+        pokemon: state.pokemon,
+        stats: state.stats,
+        style: state.style,
+        box: state.box,
+    }),
+    undefined,
+    undefined,
+    { pure: false },
+)(StatsBase);

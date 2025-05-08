@@ -50,7 +50,6 @@ export function PokemonItem({
 }) {
     const getSecondType = pokemon?.types?.[1] || 'Normal';
 
-
     return (pokemon.item || pokemon.customItemImage) && !style.displayItemAsText ? (
         <div
             style={{
@@ -58,31 +57,26 @@ export function PokemonItem({
                 backgroundImage:
                     style.template === 'Hexagons' || style.itemStyle === 'outer glow'
                         ? getBackgroundGradient(
-                            pokemon.types != null ? pokemon.types[0] : 'Normal',
-                            pokemon.types != null ? pokemon.types[1] : 'Normal',
-                            customTypes,
-                        )
+                              pokemon.types != null ? pokemon.types[0] : 'Normal',
+                              pokemon.types != null ? pokemon.types[1] : 'Normal',
+                              customTypes,
+                          )
                         : '',
             }}
-            className={cx(
-                itemLabelStyle.base,
-                itemLabelStyle[style.itemStyle],
-                'pokemon-item',
-            )}>
-            {pokemon.customItemImage ?
+            className={cx(itemLabelStyle.base, itemLabelStyle[style.itemStyle], 'pokemon-item')}>
+            {pokemon.customItemImage ? (
                 <PokemonImage url={pokemon.customItemImage}>
-                    {(image) => <img
-                        alt={pokemon.item}
-                        src={pokemon.customItemImage}
-                    />}
+                    {(image) => <img alt={pokemon.item} src={pokemon.customItemImage} />}
                 </PokemonImage>
-                : <img alt={pokemon.item}
+            ) : (
+                <img
+                    alt={pokemon.item}
                     src={`icons/hold-item/${(pokemon.item || '')
                         .toLowerCase()
                         .replace(/\'/g, '')
                         .replace(/\s/g, '-')}.png`}
                 />
-            }
+            )}
         </div>
     ) : null;
 }

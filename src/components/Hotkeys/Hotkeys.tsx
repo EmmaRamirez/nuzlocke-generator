@@ -1,7 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Toaster, Intent } from '@blueprintjs/core';
-import { selectPokemon, deletePokemon, addPokemon, newNuzlocke, changeEditorSize, toggleDialog } from 'actions';
+import {
+    selectPokemon,
+    deletePokemon,
+    addPokemon,
+    newNuzlocke,
+    changeEditorSize,
+    toggleDialog,
+} from 'actions';
 import { Pokemon } from 'models';
 import { sortPokes, sortPokesReverse, noop, generateEmptyPokemon } from 'utils';
 import { listOfHotkeys } from 'utils';
@@ -39,7 +46,6 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
         document && document.addEventListener('keyup', this.globalHotkeysEvents.handleKeyUp);
     }
 
-     
     public UNSAFE_componentWillMount() {
         document && document.removeEventListener('keydown', this.globalHotkeysEvents.handleKeyDown);
         document && document.removeEventListener('keyup', this.globalHotkeysEvents.handleKeyUp);

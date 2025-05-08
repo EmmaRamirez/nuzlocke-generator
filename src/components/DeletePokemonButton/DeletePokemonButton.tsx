@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { Alert, Intent, Icon, Popover, Position, PopoverInteractionKind, Classes } from '@blueprintjs/core';
+import {
+    Alert,
+    Intent,
+    Icon,
+    Popover,
+    Position,
+    PopoverInteractionKind,
+    Classes,
+} from '@blueprintjs/core';
 import { cx, css } from 'emotion';
 
 import { deletePokemon, modifyDeletionConfirmation } from 'actions';
@@ -20,8 +28,8 @@ export const DeletePokemonButtonContainer = css`
 `;
 
 export class DeletePokemonButtonBase extends React.Component<
-DeletePokemonButtonProps,
-{ dialogOn: boolean }
+    DeletePokemonButtonProps,
+    { dialogOn: boolean }
 > {
     public constructor(props: DeletePokemonButtonProps) {
         super(props);

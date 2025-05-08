@@ -1,4 +1,3 @@
- 
 import { Action } from 'actions';
 import { DialogViewType } from 'models';
 

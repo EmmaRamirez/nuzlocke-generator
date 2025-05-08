@@ -64,8 +64,8 @@ export function CheckpointsDisplay({
     clearedCheckpoints,
     className,
 }: CheckpointsDisplayProps) {
-    const {name} = game;
-    const checkpoints = useSelector<State, State['checkpoints']>(state => state.checkpoints);
+    const { name } = game;
+    const checkpoints = useSelector<State, State['checkpoints']>((state) => state.checkpoints);
     const cleared = trainer?.badges ?? clearedCheckpoints ?? [];
 
     if (!style.displayBadges) {
@@ -83,38 +83,44 @@ export function CheckpointsDisplay({
         { left: '3px', top: '2px', height: '32px' },
     ];
 
-    return <>{checkpoints.map((badge, index) => {
-        const obtained = cleared.some((b) => b.name === badge.name);
-        return (
-            <React.Fragment key={badge.name}>
-                <img
-                    className={cx(className ?? '', obtained ? 'obtained' : 'not-obtained')}
-                    style={
-                        isSWSH(name) && !trainer?.hasEditedCheckpoints
-                            ? { position: 'absolute', ...swshPositions[index] }
-                            : { }
-                    }
-                    key={badge.name}
-                    alt={badge.name}
-                    data-badge={badge.name}
-                    src={
-                        (badge.image.startsWith('http') || badge.image.startsWith('data'))
-                            ? badge.image
-                            : `./img/checkpoints/${badge.image}.png`
-                    }
-                />
-                {badge.name === 'Rising Badge' ? <br /> : null}
-            </React.Fragment>
-        );
-    })}</>;
+    return (
+        <>
+            {checkpoints.map((badge, index) => {
+                const obtained = cleared.some((b) => b.name === badge.name);
+                return (
+                    <React.Fragment key={badge.name}>
+                        <img
+                            className={cx(className ?? '', obtained ? 'obtained' : 'not-obtained')}
+                            style={
+                                isSWSH(name) && !trainer?.hasEditedCheckpoints
+                                    ? { position: 'absolute', ...swshPositions[index] }
+                                    : {}
+                            }
+                            key={badge.name}
+                            alt={badge.name}
+                            data-badge={badge.name}
+                            src={
+                                badge.image.startsWith('http') || badge.image.startsWith('data')
+                                    ? badge.image
+                                    : `./img/checkpoints/${badge.image}.png`
+                            }
+                        />
+                        {badge.name === 'Rising Badge' ? <br /> : null}
+                    </React.Fragment>
+                );
+            })}
+        </>
+    );
 }
 
 export const isSWSH = (name) => name === 'Sword' || name === 'Shield';
 
 export class TrainerResultBase extends React.Component<TrainerResultProps> {
-
     private getBadgeWrapperStyles(orientation) {
-        const { trainer, game: {name} } = this.props;
+        const {
+            trainer,
+            game: { name },
+        } = this.props;
 
         let style = {};
         if (isSWSH(name) && !trainer.hasEditedCheckpoints) {
@@ -143,12 +149,12 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                 style={
                     orientation === 'vertical'
                         ? {
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            width: '100%',
-                        }
+                              display: 'flex',
+                              flexDirection: 'column',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                              width: '100%',
+                          }
                         : {}
                 }>
                 <div
@@ -197,7 +203,7 @@ export class TrainerResultBase extends React.Component<TrainerResultProps> {
                 )}
                 <div className="badge-wrapper flex" style={this.getBadgeWrapperStyles(orientation)}>
                     <CheckpointsDisplay
-                        className='trainer-checkpoint'
+                        className="trainer-checkpoint"
                         trainer={trainer}
                         style={style}
                         game={game}

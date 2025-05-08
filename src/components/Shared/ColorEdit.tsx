@@ -77,7 +77,4 @@ export class ColorEditBase extends React.Component<ColorEditProps, { showChromeP
     }
 }
 
-export const ColorEdit = connect(
-    (state: State) => ({ style: state.style }),
-    null,
-)(ColorEditBase);
+export const ColorEdit = connect((state: State) => ({ style: state.style }), null)(ColorEditBase);

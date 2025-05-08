@@ -24,7 +24,11 @@ const determineCell = (key: keyof Pokemon, value: any, id, editPokemon) => {
         return <Cell>{id}</Cell>;
     }
     if (key === 'checkpoints') {
-        return <Cell><JSONFormat>{value}</JSONFormat></Cell>;
+        return (
+            <Cell>
+                <JSONFormat>{value}</JSONFormat>
+            </Cell>
+        );
     }
     return (
         <EditableCell
@@ -40,19 +44,25 @@ const determineCell = (key: keyof Pokemon, value: any, id, editPokemon) => {
     );
 };
 
-const cellRenderer: (pokemon: Pokemon[], key: keyof Pokemon, editPokemon) => ICellRenderer = (
-    pokemon: Pokemon[],
-    key: string,
-    editPokemon,
-) => (rowIndex: number) => {
-    return determineCell(key as keyof Pokemon, pokemon[rowIndex][key], pokemon[rowIndex].id, editPokemon);
-};
+const cellRenderer: (pokemon: Pokemon[], key: keyof Pokemon, editPokemon) => ICellRenderer =
+    (pokemon: Pokemon[], key: string, editPokemon) => (rowIndex: number) => {
+        return determineCell(
+            key as keyof Pokemon,
+            pokemon[rowIndex][key],
+            pokemon[rowIndex].id,
+            editPokemon,
+        );
+    };
 
 export function renderColumns(pokemon, editPokemon) {
     return Object.keys(PokemonKeys).map((key) => {
         return (
             // @ts-expect-error react return type nonsense
-            <Column key={key} name={key} cellRenderer={cellRenderer(pokemon, key as keyof Pokemon, editPokemon)} />
+            <Column
+                key={key}
+                name={key}
+                cellRenderer={cellRenderer(pokemon, key as keyof Pokemon, editPokemon)}
+            />
         );
     });
 }

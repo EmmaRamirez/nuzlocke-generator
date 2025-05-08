@@ -157,7 +157,7 @@ export const handleSpeciesTypeEdgeCases = ({
     if (
         match({
             ...data,
-            species: ['Farfetch\'d'],
+            species: ["Farfetch'd"],
             forme: ['Galarian'],
         })
     )
@@ -353,9 +353,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Cottonee', 'Whimsicott'],
-            generation: [
-                Generation.Gen5,
-            ],
+            generation: [Generation.Gen5],
         })
     )
         return [Types.Grass, Types.Grass];
@@ -484,7 +482,7 @@ export const handleSpeciesTypeEdgeCases = ({
         match({
             ...data,
             species: ['Oricorio'],
-            forme: ['Pa\'u'],
+            forme: ["Pa'u"],
         })
     ) {
         return [Types.Psychic, Types.Flying];
@@ -520,55 +518,55 @@ export const handleSpeciesTypeEdgeCases = ({
         return [Types.Normal, Types.Fighting];
     }
 
-    if (match({ ...data, species: ['Growlithe'], forme: ['Hisuian']})) {
+    if (match({ ...data, species: ['Growlithe'], forme: ['Hisuian'] })) {
         return [Types.Fire, Types.Rock];
     }
 
-    if (match({ ...data, species: ['Voltorb'], forme: ['Hisuian']})) {
+    if (match({ ...data, species: ['Voltorb'], forme: ['Hisuian'] })) {
         return [Types.Electric, Types.Grass];
     }
 
-    if (match({ ...data, species: ['Zorua', 'Zoroark'], forme: ['Hisuian']})) {
+    if (match({ ...data, species: ['Zorua', 'Zoroark'], forme: ['Hisuian'] })) {
         return [Types.Normal, Types.Ghost];
     }
 
-    if (match({ ...data, species: ['Braviary'], forme: ['Hisuian']})) {
+    if (match({ ...data, species: ['Braviary'], forme: ['Hisuian'] })) {
         return [Types.Psychic, Types.Flying];
     }
 
-    if (match({ ...data, species: ['Sneasel'], forme: ['Hisuian']})) {
+    if (match({ ...data, species: ['Sneasel'], forme: ['Hisuian'] })) {
         return [Types.Fighting, Types.Poison];
     }
 
-    if (match({ ...data, species: ['Qwilfish'], forme: ['Hisuian']})) {
+    if (match({ ...data, species: ['Qwilfish'], forme: ['Hisuian'] })) {
         return [Types.Dark, Types.Poison];
     }
 
-    if (match({ ...data, species: ['Wooper'], forme: ['Paldean']})) {
+    if (match({ ...data, species: ['Wooper'], forme: ['Paldean'] })) {
         return [Types.Poison, Types.Ground];
     }
 
-    if (match({ ...data, species: ['Tauros'], forme: ['Paldean']})) {
+    if (match({ ...data, species: ['Tauros'], forme: ['Paldean'] })) {
         return [Types.Fighting, Types.Fighting];
     }
 
-    if (match({ ...data, species: ['Tauros'], forme: ['PaldeanBlaze']})) {
+    if (match({ ...data, species: ['Tauros'], forme: ['PaldeanBlaze'] })) {
         return [Types.Fighting, Types.Fire];
     }
 
-    if (match({ ...data, species: ['Tauros'], forme: ['PaldeanAqua']})) {
+    if (match({ ...data, species: ['Tauros'], forme: ['PaldeanAqua'] })) {
         return [Types.Fighting, Types.Water];
     }
 
-    if (match({ ...data, species: ['Ogerpon'], forme: ['Wellspring']})) {
+    if (match({ ...data, species: ['Ogerpon'], forme: ['Wellspring'] })) {
         return [Types.Grass, Types.Water];
     }
 
-    if (match({ ...data, species: ['Ogerpon'], forme: ['Heartflame']})) {
+    if (match({ ...data, species: ['Ogerpon'], forme: ['Heartflame'] })) {
         return [Types.Grass, Types.Water];
     }
 
-    if (match({ ...data, species: ['Ogerpon'], forme: ['Cornerstone']})) {
+    if (match({ ...data, species: ['Ogerpon'], forme: ['Cornerstone'] })) {
         return [Types.Grass, Types.Water];
     }
 
@@ -1472,7 +1470,7 @@ export const matchSpeciesToTypes = (
             return [Types.Poison, Types.Dragon];
         case 'Stakataka':
             return [Types.Rock, Types.Steel];
-        case 'Farfetch\'d':
+        case "Farfetch'd":
             return [Types.Normal, Types.Flying];
         case 'Dewgong':
         case 'Cloyster':
@@ -1750,7 +1748,7 @@ export const matchSpeciesToTypes = (
             return [Types.Steel, Types.Steel];
         case 'Cursola':
             return [Types.Ghost, Types.Ghost];
-        case 'Sirfetch\'d':
+        case "Sirfetch'd":
         case 'Falinks':
             return [Types.Fighting, Types.Fighting];
         case 'Mr. Rime':
@@ -1955,7 +1953,7 @@ export const matchSpeciesToTypes = (
         case 'Pidgeot':
         case 'Spearow':
         case 'Fearow':
-        case 'Farfetch\'d':
+        case "Farfetch'd":
         case 'Doduo':
         case 'Dodrio':
         case 'Hoothoot':

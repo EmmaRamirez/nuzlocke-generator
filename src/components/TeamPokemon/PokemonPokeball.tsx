@@ -49,7 +49,7 @@ export function PokemonPokeball({
 }) {
     const getFirstType = pokemon?.types?.[0] || 'Normal';
 
-    return (pokemon.pokeball && pokemon.pokeball !== 'None') ? (
+    return pokemon.pokeball && pokemon.pokeball !== 'None' ? (
         <div
             style={{
                 top: style.template === 'Cards' ? '1rem' : undefined,
@@ -57,13 +57,12 @@ export function PokemonPokeball({
                 zIndex: 10,
                 borderColor: typeToColor(getFirstType, customTypes) || 'transparent',
                 backgroundImage:
-                    style.template === 'Hexagons' ||
-                    style.pokeballStyle === 'outer glow'
+                    style.template === 'Hexagons' || style.pokeballStyle === 'outer glow'
                         ? getBackgroundGradient(
-                            pokemon.types != null ? pokemon.types[0] : 'Normal',
-                            pokemon.types != null ? pokemon.types[1] : 'Normal',
-                            customTypes,
-                        )
+                              pokemon.types != null ? pokemon.types[0] : 'Normal',
+                              pokemon.types != null ? pokemon.types[1] : 'Normal',
+                              customTypes,
+                          )
                         : '',
             }}
             className={cx(

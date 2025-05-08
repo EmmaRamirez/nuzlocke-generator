@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { injectGlobal } from 'emotion';
 
-
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/table/lib/css/table.css';
-import "@blueprintjs/select/lib/css/blueprint-select.css";
+import '@blueprintjs/select/lib/css/blueprint-select.css';
 // import 'tailwindcss/dist/base.min.css';
 // import 'tailwindcss/dist/components.min.css';
 // import 'tailwindcss/dist/utilities.min.css';
@@ -24,7 +23,7 @@ import { ErrorBoundary } from 'components';
 
 async function getRollbar() {
     // @ts-expect-error
-    const {default: Rollbar} = await import('rollbar');
+    const { default: Rollbar } = await import('rollbar');
 
     const rollbarConfig = new Rollbar({
         accessToken: '357eab6297524e6facb1c48b0403d869',
@@ -47,7 +46,7 @@ async function getRollbar() {
     Rollbar.init(rollbarConfig as any);
 }
 
-getRollbar().then(res => res);
+getRollbar().then((res) => res);
 
 injectGlobal`
     *,
@@ -96,22 +95,23 @@ async function createRender() {
     const { render } = await import('react-dom');
     const { Provider } = await import('react-redux');
 
-    const { DndProvider  } = await import('react-dnd');
-    const { HTML5Backend  } = await import('react-dnd-html5-backend');
+    const { DndProvider } = await import('react-dnd');
+    const { HTML5Backend } = await import('react-dnd-html5-backend');
     const { PersistGate } = await import('redux-persist/es/integration/react');
     const { store, persistor } = await import('./store');
     // @TODO: add back check for tests mode
     const isTest = false;
 
-    const App = React.lazy(() =>
-        import('components/App').then((res) => ({ default: res.App })),
-    );
+    const App = React.lazy(() => import('components/App').then((res) => ({ default: res.App })));
 
     render(
         <Provider store={store}>
-            {isTest? (
-                <PersistGate loading={<div>Loading...</div>} onBeforeLift={null} persistor={persistor}>
-                    <DndProvider  backend={HTML5Backend}>
+            {isTest ? (
+                <PersistGate
+                    loading={<div>Loading...</div>}
+                    onBeforeLift={null}
+                    persistor={persistor}>
+                    <DndProvider backend={HTML5Backend}>
                         <ErrorBoundary>
                             <React.Suspense fallback={'Loading App...'}>
                                 <App />
@@ -120,7 +120,7 @@ async function createRender() {
                     </DndProvider>
                 </PersistGate>
             ) : (
-                <DndProvider  backend={HTML5Backend}>
+                <DndProvider backend={HTML5Backend}>
                     <ErrorBoundary>
                         <React.Suspense fallback={'Loading App...'}>
                             <App />
@@ -133,4 +133,4 @@ async function createRender() {
     );
 }
 
-createRender().then(res => res);
+createRender().then((res) => res);

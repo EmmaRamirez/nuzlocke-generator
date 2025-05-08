@@ -22,7 +22,11 @@ const style = {
 };
 
 export function CurrentPokemonLayoutItem({
-    disabled, checkboxes, className, children, fullWidth
+    disabled,
+    checkboxes,
+    className,
+    children,
+    fullWidth,
 }: {
     disabled?: boolean;
     checkboxes?: boolean;

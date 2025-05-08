@@ -1,4 +1,3 @@
- 
 import { Action } from './action';
 import { Game } from 'utils';
 

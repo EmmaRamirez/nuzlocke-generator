@@ -1,4 +1,3 @@
- 
 import * as fs from 'fs';
 import {
     GEN_3_CHARACTER_MAP,
@@ -14,23 +13,21 @@ import { Pokemon } from 'models';
 import { parseTime } from './utils/parseTime';
 import { ParserOptions } from './utils/parserOptions';
 
-
-
 export interface Gen3PokemonObject {
     entriesUsed: number;
     speciesList: string[];
     pokemonList: Pick<
-    Pokemon,
-    | 'species'
-    | 'level'
-    | 'moves'
-    | 'id'
-    | 'item'
-    | 'extraData'
-    | 'shiny'
-    | 'met'
-    | 'metLevel'
-    | 'forme'
+        Pokemon,
+        | 'species'
+        | 'level'
+        | 'moves'
+        | 'id'
+        | 'item'
+        | 'extraData'
+        | 'shiny'
+        | 'met'
+        | 'metLevel'
+        | 'forme'
     >[];
     pokemonNames: string[];
 }
@@ -38,13 +35,12 @@ export interface Gen3PokemonObject {
 const COMMON_OFFSETS = {
     PLAYER_NAME: [0x0000, 0x0000 + 7],
     PLAYER_GENDER: [0x0008, 0x0008 + 1],
-    PLAYER_ID: [0x000A, 0x000A + 4],
-    TIME_PLAYED: [0x000E, 0x000E + 5],
+    PLAYER_ID: [0x000a, 0x000a + 4],
+    TIME_PLAYED: [0x000e, 0x000e + 5],
     // 0x00000000 for RS
     // 0x00000001 for FRLG
     // Anything Else for Emerald
-    GAME_CODE: [0x00AC, 0x00AC + 4],
-
+    GAME_CODE: [0x00ac, 0x00ac + 4],
 };
 
 const SECTIONS = {
@@ -73,7 +69,7 @@ const RS_OFFSETS = {
 
 const EMERALD_OFFSETS = {
     ...COMMON_OFFSETS,
-    SECURITY_KEY: [0x00AC, 0x00AC + 4],
+    SECURITY_KEY: [0x00ac, 0x00ac + 4],
     TEAM_SIZE: [0x0234, 0x0234 + 4],
     TEAM_POKEMON_LIST: [0x0238, 0x0238 + 600],
     MONEY: [0x0490, 0x0490 + 4],
@@ -81,11 +77,10 @@ const EMERALD_OFFSETS = {
 
 const FRLG_OFFSETS = {
     ...COMMON_OFFSETS,
-    SECURITY_KEY: [0x0AF8, 0x0AF8 + 4],
+    SECURITY_KEY: [0x0af8, 0x0af8 + 4],
     TEAM_SIZE: [0x0034, 0x0034 + 4],
     TEAM_POKEMON_LIST: [0x0238, 0x0038 + 600],
     MONEY: [0x0490, 0x0490 + 4],
-
 };
 
 const POKEMON_OFFSETS = {
@@ -107,26 +102,18 @@ const POKEMON_OFFSETS = {
     DEFENSE: [92, 94],
     SPEED: [94, 96],
     SPECIAL_ATTACK: [96, 98],
-    SPECIAL_DEFENSE: [98, 100]
+    SPECIAL_DEFENSE: [98, 100],
 };
 
 const POKEMON_SUBSTRUCTURE_OFFSETS = {
     // Growth
-    G: {
-
-    },
+    G: {},
     // Attacks
-    A: {
-
-    },
+    A: {},
     // EVs and Condition
-    E: {
-
-    },
+    E: {},
     // Miscellaneous
-    M: {
-
-    }
+    M: {},
 };
 
 const substructures = [
@@ -156,9 +143,11 @@ const substructures = [
     'MEAG',
 ];
 
-const getBits = (data) => (n, x): number => {
-    return 0;
-};
+const getBits =
+    (data) =>
+    (n, x): number => {
+        return 0;
+    };
 
 const getOrigin = (originData) => {
     const getOriginBits = getBits(originData);
@@ -167,7 +156,6 @@ const getOrigin = (originData) => {
     const gameOfOrigin = getOriginBits(7, 10);
     const pokeball = getOriginBits(11, 14);
     const trainerGender = getOriginBits(15, 16);
-
 };
 
 function buf2hex(buffer: Buffer) {
@@ -341,14 +329,14 @@ const parsePokemon = (buf: Buffer, boxed = false): Gen3PokemonObject['pokemonLis
     const extraData = boxed
         ? {}
         : {
-            currentHp: to16BitInt(pokemon.slice(0x22, 0x22 + 2)),
-            maxHp: to16BitInt(pokemon.slice(0x24, 0x24 + 2)),
-            attack: to16BitInt(pokemon.slice(0x26, 0x26 + 2)),
-            defense: to16BitInt(pokemon.slice(0x28, 0x28 + 2)),
-            speed: to16BitInt(pokemon.slice(0x2a, 0x2a + 2)),
-            specialAttack: to16BitInt(pokemon.slice(0x2c, 0x2c + 2)),
-            specialDefense: to16BitInt(pokemon.slice(0x2e, 0x2e + 2)),
-        };
+              currentHp: to16BitInt(pokemon.slice(0x22, 0x22 + 2)),
+              maxHp: to16BitInt(pokemon.slice(0x24, 0x24 + 2)),
+              attack: to16BitInt(pokemon.slice(0x26, 0x26 + 2)),
+              defense: to16BitInt(pokemon.slice(0x28, 0x28 + 2)),
+              speed: to16BitInt(pokemon.slice(0x2a, 0x2a + 2)),
+              specialAttack: to16BitInt(pokemon.slice(0x2c, 0x2c + 2)),
+              specialDefense: to16BitInt(pokemon.slice(0x2e, 0x2e + 2)),
+          };
 
     return {
         species,

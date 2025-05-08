@@ -1,5 +1,13 @@
 import { addForme, speciesToNumber, getForme } from 'utils';
-import { capitalize, Game, Forme, Species, significantGenderDifferenceList, wrapImageInCORS, normalizeSpeciesName } from 'utils';
+import {
+    capitalize,
+    Game,
+    Forme,
+    Species,
+    significantGenderDifferenceList,
+    wrapImageInCORS,
+    normalizeSpeciesName,
+} from 'utils';
 import { getIconFormeSuffix } from './getIconFormeSuffix';
 import { Editor, Pokemon } from 'models';
 import { State } from 'state';
@@ -48,12 +56,16 @@ const getGameName = (name: Game) => {
     ) {
         return name.toLowerCase();
     }
-    if (name === 'Sword' || name === 'Shield' || name === 'Brilliant Diamond' || name === 'Shining Pearl') {
+    if (
+        name === 'Sword' ||
+        name === 'Shield' ||
+        name === 'Brilliant Diamond' ||
+        name === 'Shining Pearl'
+    ) {
         return 'swordshield';
     }
     return 'sm';
 };
-
 
 const getGameNameSerebii = (name: Game) => {
     switch (name) {
@@ -108,7 +120,6 @@ export interface GetPokemonImage {
     egg?: Pokemon['egg'];
 }
 
-
 export async function getPokemonImage({
     customImage,
     forme,
@@ -127,7 +138,7 @@ export async function getPokemonImage({
 
     if (customImage) {
         const images = await getImages();
-        const selectedImage = images.find(img => img.name === customImage)?.image;
+        const selectedImage = images.find((img) => img.name === customImage)?.image;
         if (selectedImage) {
             return `url(${selectedImage})`;
         }
@@ -164,8 +175,8 @@ export async function getPokemonImage({
             name === 'Ultra Moon' ||
             name === 'Sword' ||
             name === 'Shield' ||
-            name === 'Let\'s Go Eevee' ||
-            name === 'Let\'s Go Pikachu' ||
+            name === "Let's Go Eevee" ||
+            name === "Let's Go Pikachu" ||
             name === 'Colosseum' ||
             name === 'XD Gale of Darkness')
     ) {
@@ -215,11 +226,11 @@ export async function getPokemonImage({
     if (style?.spritesMode) {
         const url = shiny
             ? `https://www.serebii.net/Shiny/${getGameNameSerebii(
-                name as Game,
-            )}/${leadingZerosNumber}.png`
+                  name as Game,
+              )}/${leadingZerosNumber}.png`
             : `https://www.serebii.net/pokearth/sprites/${getGameName(
-                name as Game,
-            )}/${leadingZerosNumber}.png`;
+                  name as Game,
+              )}/${leadingZerosNumber}.png`;
 
         return await wrapImageInCORS(url);
     }
@@ -276,8 +287,10 @@ export async function getPokemonImage({
     }
 
     return `url(img/${(
-        addForme((species || '').trim().replace(/\s/g, '-').replace(/'/g, '').replace(/:/g, '-'), forme) ||
-        'missingno'
+        addForme(
+            (species || '').trim().replace(/\s/g, '-').replace(/'/g, '').replace(/:/g, '-'),
+            forme,
+        ) || 'missingno'
     ).toLowerCase()}.jpg)`;
 }
 

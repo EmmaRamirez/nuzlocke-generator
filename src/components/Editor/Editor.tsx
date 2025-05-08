@@ -8,7 +8,6 @@ import { editorStyles } from './styles';
 import './editor.css';
 import { editorModeSelector, minimizedSelector } from 'selectors';
 
-
 const PokemonEditor = React.lazy(() =>
     import('components/PokemonEditor').then((res) => ({ default: res.PokemonEditor })),
 );
@@ -39,12 +38,11 @@ const DataEditor = React.lazy(() =>
     import('components/DataEditor').then((res) => ({ default: res.DataEditor })),
 );
 const EditorControls = React.lazy(() =>
-    import('components/Editor/EditorControls').then((res => ({ default: res.EditorControls }))),
+    import('components/Editor/EditorControls').then((res) => ({ default: res.EditorControls })),
 );
 const Credits = React.lazy(() =>
     import('components/Credits').then((res) => ({ default: res.Credits })),
 );
-
 
 /**
  * The main editor interface.

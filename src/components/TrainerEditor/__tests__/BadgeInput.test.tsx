@@ -4,9 +4,7 @@ import { render, screen } from 'utils/testUtils';
 
 describe('<BadgeInput />', () => {
     it('renders its contents', () => {
-        render(
-            <BadgeInput />,
-        );
+        render(<BadgeInput />);
         expect(screen).toBeDefined();
     });
 });

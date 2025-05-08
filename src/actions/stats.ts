@@ -1,4 +1,3 @@
- 
 import { Action } from 'actions';
 
 export type ADD_STAT = 'ADD_STAT';

@@ -1,4 +1,3 @@
- 
 import * as fs from 'fs';
 import {
     HELD_ITEM,
@@ -51,17 +50,17 @@ export interface Gen2PokemonObject {
     entriesUsed: number;
     speciesList: string[];
     pokemonList: Pick<
-    Pokemon,
-    | 'species'
-    | 'level'
-    | 'moves'
-    | 'id'
-    | 'item'
-    | 'extraData'
-    | 'shiny'
-    | 'met'
-    | 'metLevel'
-    | 'forme'
+        Pokemon,
+        | 'species'
+        | 'level'
+        | 'moves'
+        | 'id'
+        | 'item'
+        | 'extraData'
+        | 'shiny'
+        | 'met'
+        | 'metLevel'
+        | 'forme'
     >[];
     pokemonNames: string[];
 }
@@ -281,14 +280,14 @@ const parsePokemon = (buf: Buffer, boxed = false): Gen2PokemonObject['pokemonLis
     const extraData = boxed
         ? {}
         : {
-            currentHp: to16BitInt(pokemon.slice(0x22, 0x22 + 2)),
-            maxHp: to16BitInt(pokemon.slice(0x24, 0x24 + 2)),
-            attack: to16BitInt(pokemon.slice(0x26, 0x26 + 2)),
-            defense: to16BitInt(pokemon.slice(0x28, 0x28 + 2)),
-            speed: to16BitInt(pokemon.slice(0x2a, 0x2a + 2)),
-            specialAttack: to16BitInt(pokemon.slice(0x2c, 0x2c + 2)),
-            specialDefense: to16BitInt(pokemon.slice(0x2e, 0x2e + 2)),
-        };
+              currentHp: to16BitInt(pokemon.slice(0x22, 0x22 + 2)),
+              maxHp: to16BitInt(pokemon.slice(0x24, 0x24 + 2)),
+              attack: to16BitInt(pokemon.slice(0x26, 0x26 + 2)),
+              defense: to16BitInt(pokemon.slice(0x28, 0x28 + 2)),
+              speed: to16BitInt(pokemon.slice(0x2a, 0x2a + 2)),
+              specialAttack: to16BitInt(pokemon.slice(0x2c, 0x2c + 2)),
+              specialDefense: to16BitInt(pokemon.slice(0x2e, 0x2e + 2)),
+          };
 
     return {
         species,

@@ -7,16 +7,15 @@ import { editorModeSelector } from 'selectors';
 import { cx } from 'emotion';
 import { useDebounceCallback } from '@react-hook/debounce';
 
-export interface ZoomLevelProps {
-}
+export interface ZoomLevelProps {}
 
-const zoomLevelSelector = state => state.style.zoomLevel;
+const zoomLevelSelector = (state) => state.style.zoomLevel;
 
-export function ZoomLevel ({}: ZoomLevelProps) {
+export function ZoomLevel({}: ZoomLevelProps) {
     const [zoomLevel, setZoomLevel] = React.useState(1);
     const styleZoomLevel = useSelector<State, number>(zoomLevelSelector);
     const darkMode = useSelector(editorModeSelector);
-    const onChange = useDebounceCallback(() => dispatch(editStyle({zoomLevel})), 300);
+    const onChange = useDebounceCallback(() => dispatch(editStyle({ zoomLevel })), 300);
     const dispatch = useDispatch();
 
     React.useEffect(() => {
@@ -31,17 +30,13 @@ export function ZoomLevel ({}: ZoomLevelProps) {
                 <Button
                     icon="zoom-out"
                     onClick={() => {
-                        const newZoomLevel =
-                        zoomLevel - 0.1 <= 0 ? 0 : zoomLevel - 0.1;
+                        const newZoomLevel = zoomLevel - 0.1 <= 0 ? 0 : zoomLevel - 0.1;
                         setZoomLevel(newZoomLevel);
                     }}
-                />
-                {' '}
+                />{' '}
                 <Button style={{ padding: '0 1.25rem' }}>
                     <Slider
-                        onRelease={(value) =>
-                            setZoomLevel(value)
-                        }
+                        onRelease={(value) => setZoomLevel(value)}
                         onChange={onChange}
                         value={zoomLevel}
                         min={0.2}
@@ -52,8 +47,7 @@ export function ZoomLevel ({}: ZoomLevelProps) {
                 <Button
                     icon="zoom-in"
                     onClick={() => {
-                        const newZoomLevel =
-                        zoomLevel + 0.1 >= 2 ? 2 : zoomLevel + 0.1;
+                        const newZoomLevel = zoomLevel + 0.1 >= 2 ? 2 : zoomLevel + 0.1;
                         setZoomLevel(newZoomLevel);
                     }}
                 />

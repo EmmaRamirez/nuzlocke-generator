@@ -1,4 +1,3 @@
- 
 import { Action } from './action';
 import { Styles } from 'utils';
 

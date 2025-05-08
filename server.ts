@@ -1,5 +1,5 @@
-import head from "lodash/head";
-import tail from "lodash/tail"
+import head from 'lodash/head';
+import tail from 'lodash/tail';
 import express from 'express';
 import path, { dirname } from 'node:path';
 import * as dotenv from 'dotenv';
@@ -15,8 +15,7 @@ const __dirname = dirname(__filename);
 dotenv.config();
 
 const app = express();
-const logger = pino({
-});
+const logger = pino({});
 
 // '☰nuz: {levelLabel} - {pid} - url:{request.url}'
 
@@ -97,18 +96,18 @@ app.get('/release/:type', async (req, res, next) => {
     })
         .then((res) => res.json())
         .then((res) => {
-          if (Array.isArray(res)) {
-              return res.map((rel) => ({
-                id: rel.id,
-                url: rel.html_url,
-                version: rel.tag_name,
-                note: rel.body,
-                timestamp: rel.published_at,
-            }));
-          } else {
-            return [];
-          }
-    });
+            if (Array.isArray(res)) {
+                return res.map((rel) => ({
+                    id: rel.id,
+                    url: rel.html_url,
+                    version: rel.tag_name,
+                    note: rel.body,
+                    timestamp: rel.published_at,
+                }));
+            } else {
+                return [];
+            }
+        });
 
     if (type === 'latest') {
         const notes = head(releases);

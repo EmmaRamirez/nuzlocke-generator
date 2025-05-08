@@ -24,7 +24,7 @@ const initial: History<any> = {
 export function editorHistory(
     state: History<any> = initial,
     action: Action<
-    UNDO_EDITOR_HISTORY | UPDATE_EDITOR_HISTORY | REDO_EDITOR_HISTORY | REPLACE_STATE
+        UNDO_EDITOR_HISTORY | UPDATE_EDITOR_HISTORY | REDO_EDITOR_HISTORY | REPLACE_STATE
     >,
 ): History<any> {
     switch (action.type) {

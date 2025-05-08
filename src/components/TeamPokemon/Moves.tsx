@@ -31,21 +31,21 @@ export const Move = ({ index, style, type, move, customTypes, stripClasses = fal
             style={
                 style.usePokemonGBAFont
                     ? {
-                        fontSize: '1rem',
-                        background: typeToColor(type, customTypes) || 'transparent',
-                        color: getContrastColor(typeToColor(type, customTypes)),
-                    }
+                          fontSize: '1rem',
+                          background: typeToColor(type, customTypes) || 'transparent',
+                          color: getContrastColor(typeToColor(type, customTypes)),
+                      }
                     : {
-                        background: typeToColor(type, customTypes) || 'transparent',
-                        color: getContrastColor(typeToColor(type, customTypes)),
-                    }
+                          background: typeToColor(type, customTypes) || 'transparent',
+                          color: getContrastColor(typeToColor(type, customTypes)),
+                      }
             }
             className={
                 stripClasses
                     ? ''
                     : `move move-${move.replace(/\s/g, '-')?.toLowerCase()} move-${type.toLowerCase()} ${
-                        move.length >= 10 ? 'long-text-move' : ''
-                    }`
+                          move.length >= 10 ? 'long-text-move' : ''
+                      }`
             }>
             {move}
         </div>
@@ -59,33 +59,31 @@ export class MovesBase extends React.Component<MovesProps> {
 
         if (!moves) return null;
 
-        return (
-            moves.map((move, index) => {
-                let customMove;
-                try {
-                    customMove = getMapMove(customMoveMap, move);
-                } catch {
-                    noop();
-                }
-                move = move.trim();
-                const type = handleMovesGenerationsExceptions({
-                    move: move,
-                    generation: this.props.generation,
-                    originalType: customMove?.type || getMoveType(move),
-                });
-                return (
-                    <Move
-                        key={index}
-                        index={index}
-                        style={style}
-                        type={type}
-                        move={move}
-                        stripClasses={stripClasses}
-                        customTypes={customTypes}
-                    />
-                );
-            })
-        );
+        return moves.map((move, index) => {
+            let customMove;
+            try {
+                customMove = getMapMove(customMoveMap, move);
+            } catch {
+                noop();
+            }
+            move = move.trim();
+            const type = handleMovesGenerationsExceptions({
+                move: move,
+                generation: this.props.generation,
+                originalType: customMove?.type || getMoveType(move),
+            });
+            return (
+                <Move
+                    key={index}
+                    index={index}
+                    style={style}
+                    type={type}
+                    move={move}
+                    stripClasses={stripClasses}
+                    customTypes={customTypes}
+                />
+            );
+        });
     }
 
     public renderToString() {

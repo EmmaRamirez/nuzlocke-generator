@@ -35,7 +35,7 @@ const defaultBoxes: Boxes = [
 export function box(
     state = defaultBoxes,
     action: Action<
-    EDIT_BOX | REPLACE_STATE | VERSION_0_0_6_BETA | ADD_BOX | DELETE_BOX | UPDATE_BOXES
+        EDIT_BOX | REPLACE_STATE | VERSION_0_0_6_BETA | ADD_BOX | DELETE_BOX | UPDATE_BOXES
     >,
 ) {
     switch (action.type) {
@@ -52,7 +52,7 @@ export function box(
             const { name, background = 'grass-meadow', inheritFrom } = action;
             const id = state.length;
             const position = state.length;
-            if (state.map(b => b.name).includes(name)) {
+            if (state.map((b) => b.name).includes(name)) {
                 throw new Error('Cannot name a box the same as a current one.');
             }
             return [...state, { id, name, position, background, inheritFrom }];

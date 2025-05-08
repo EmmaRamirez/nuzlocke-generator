@@ -9,8 +9,8 @@ export function getBadges(name: Game): Badge[] {
         name === 'Green' ||
         name === 'FireRed' ||
         name === 'LeafGreen' ||
-        name === 'Let\'s Go Eevee' ||
-        name === 'Let\'s Go Pikachu'
+        name === "Let's Go Eevee" ||
+        name === "Let's Go Pikachu"
     ) {
         return [
             { name: 'Boulder Badge', image: 'boulder-badge' },
@@ -70,7 +70,13 @@ export function getBadges(name: Game): Badge[] {
         ];
     }
 
-    if (name === 'Diamond' || name === 'Pearl' || name === 'Platinum' || name === 'Brilliant Diamond' || name === 'Shining Pearl') {
+    if (
+        name === 'Diamond' ||
+        name === 'Pearl' ||
+        name === 'Platinum' ||
+        name === 'Brilliant Diamond' ||
+        name === 'Shining Pearl'
+    ) {
         return [
             { name: 'Coal Badge', image: 'coal-badge' },
             { name: 'Forest Badge', image: 'forest-badge' },
@@ -198,7 +204,7 @@ export function getBadges(name: Game): Badge[] {
             { name: 'Quaking Earth Titan', image: 'paldea/ground-badge' },
             { name: 'Alfornada Gym', image: 'paldea/psychic-badge' },
             { name: 'Glaseado Gym', image: 'paldea/ice-badge' },
-            { name: 'Team Star Fairy', image: 'paldea/fairy-badge'},
+            { name: 'Team Star Fairy', image: 'paldea/fairy-badge' },
             { name: 'False Dragon Titan', image: 'paldea/dragon-badge' },
             { name: 'Team Star Fighting', image: 'paldea/fighting-badge' },
         ];
