@@ -44,7 +44,8 @@ const getGameName = (name: Game) => {
         name === 'Ultra Sun' ||
         name === 'Ultra Moon' ||
         name === 'Colosseum' ||
-        name === 'XD Gale of Darkness'
+        name === 'XD Gale of Darkness' ||
+        name === 'None'
     )
         return 'sunmoon';
     if (
