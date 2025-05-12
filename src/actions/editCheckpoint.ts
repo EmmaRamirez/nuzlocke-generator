@@ -6,11 +6,11 @@ export const EDIT_CHECKPOINT: EDIT_CHECKPOINT = 'EDIT_CHECKPOINT';
 
 export type editCheckpoint = (
   edits: Partial<Badge>,
-  name,
+  name
 ) => Action<EDIT_CHECKPOINT, Partial<Badge>>;
 export const editCheckpoint = (
   edits: Partial<Badge>,
-  name,
+  name
 ): Action<EDIT_CHECKPOINT, Partial<Badge>> => {
   return {
     type: EDIT_CHECKPOINT,

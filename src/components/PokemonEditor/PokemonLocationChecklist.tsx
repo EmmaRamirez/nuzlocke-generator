@@ -66,7 +66,7 @@ const LocationIcon = ({
   const poke = pokemon.find(
     (poke) =>
       poke.met?.trim().toLocaleLowerCase() === area.toLocaleLowerCase() &&
-      (currentGame === 'None' || poke.gameOfOrigin === currentGame),
+      (currentGame === 'None' || poke.gameOfOrigin === currentGame)
   );
 
   if (poke && !poke.hidden && (!poke.gift || !excludeGifts)) {
@@ -137,11 +137,11 @@ export const PokemonLocationChecklist = ({
       getEncounterMap(game.name)
         .concat(customAreas)
         .filter((area) => !excludedAreas.includes(area)),
-    [game.name, excludedAreas, customAreas],
+    [game.name, excludedAreas, customAreas]
   );
   const totals = React.useMemo(
     () => calcTotals(boxes, pokemon, encounterMap, currentGame),
-    [boxes, JSON.stringify(pokemon), encounterMap, currentGame],
+    [boxes, JSON.stringify(pokemon), encounterMap, currentGame]
   );
   const hideArea = (area: string) => () => dispatch(updateExcludedAreas([...excludedAreas, area]));
 

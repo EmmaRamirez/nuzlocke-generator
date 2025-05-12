@@ -36,7 +36,7 @@ export function box(
   state = defaultBoxes,
   action: Action<
     EDIT_BOX | REPLACE_STATE | VERSION_0_0_6_BETA | ADD_BOX | DELETE_BOX | UPDATE_BOXES
-  >,
+  >
 ) {
   switch (action.type) {
     case EDIT_BOX:

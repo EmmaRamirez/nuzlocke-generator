@@ -178,5 +178,5 @@ export const Hotkeys = connect(
     newNuzlocke,
     changeEditorSize,
     toggleDialog,
-  },
+  }
 )(HotkeysBase);

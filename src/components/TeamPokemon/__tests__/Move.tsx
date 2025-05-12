@@ -15,7 +15,7 @@ describe(Move.name, () => {
         customTypes={[]}
         style={styleDefaults}
         stripClasses={false}
-      />,
+      />
     );
 
     const { outerHTML } = container;

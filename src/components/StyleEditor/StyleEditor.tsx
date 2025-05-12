@@ -110,7 +110,7 @@ export const TextAreaDebounced = ({
 
   const delayedValue = React.useCallback(
     debounce((e) => edit(e, props, name), 300),
-    [props.style[name]],
+    [props.style[name]]
   );
 
   const onChange = (e) => {
@@ -179,7 +179,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
             {
               [Classes.DARK]: props.style.editorDarkMode,
             },
-            'release-notes-wrapper',
+            'release-notes-wrapper'
           )}>
           <ReactMarkdown source={text} />
         </Drawer>
@@ -469,7 +469,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
             </div>
           ) : null}
           {['Sword', 'Shield', 'X', 'Y', 'Sun', 'Moon', 'Ultra Sun', 'Ultra Moon'].includes(
-            props.game.name,
+            props.game.name
           ) && props.style.teamImages === 'dream world' ? (
             <div className={cx(Classes.CALLOUT, Classes.INTENT_DANGER)} style={calloutStyle}>
               Dream world images are not supported for this game
@@ -640,7 +640,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
               editEvent(
                 { ...e, target: { value: e.target.checked } },
                 props,
-                'oldMetLocationFormat',
+                'oldMetLocationFormat'
               )
             }
           />
@@ -655,7 +655,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
               editEvent(
                 { ...e, target: { value: e.target.checked } },
                 props,
-                'grayScaleDeadPokemon',
+                'grayScaleDeadPokemon'
               )
             }
           />
@@ -692,7 +692,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
               editEvent(
                 { ...e, target: { value: e.target.checked } },
                 props,
-                'useSpritesForChampsPokemon',
+                'useSpritesForChampsPokemon'
               )
             }
           />
@@ -707,7 +707,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
               editEvent(
                 { ...e, target: { value: e.target.checked } },
                 props,
-                'displayGameOriginForBoxedAndDead',
+                'displayGameOriginForBoxedAndDead'
               )
             }
           />
@@ -730,7 +730,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
               editEvent(
                 { ...e, target: { value: e.target.checked } },
                 props,
-                'displayBackgroundInsteadOfBadge',
+                'displayBackgroundInsteadOfBadge'
               )
             }
           />
@@ -765,5 +765,5 @@ export const StyleEditor = connect(
   (state: Pick<State, keyof State>) => ({ style: state.style, game: state.game }),
   {
     editStyle,
-  },
+  }
 )(StyleEditorBase);

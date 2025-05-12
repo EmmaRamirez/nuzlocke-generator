@@ -23,7 +23,7 @@ const renderItems = (
   visibleItems: string[],
   selectItem: any,
   innerValue: string,
-  selectedValue: string,
+  selectedValue: string
 ) =>
   visibleItems.map((v, i) => {
     return (

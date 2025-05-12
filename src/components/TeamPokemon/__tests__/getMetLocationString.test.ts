@@ -12,14 +12,14 @@ describe(getMetLocationString.name, () => {
   it('works with the new format', () => {
     // `Met Location: ${met} at lv.${metLevel}`;
     expect(getMetLocationString({ poke, oldMetLocationFormat: false })).toEqual(
-      'Met Location: Route 101 at lv.4',
+      'Met Location: Route 101 at lv.4'
     );
   });
 
   it('works with the old format', () => {
     // `Met ${determinePreposition()} ${met}, from lv.${metLevel}`;
     expect(getMetLocationString({ poke, oldMetLocationFormat: true })).toEqual(
-      'Met on Route 101, from lv.4',
+      'Met on Route 101, from lv.4'
     );
   });
 
@@ -32,7 +32,7 @@ describe(getMetLocationString.name, () => {
     };
 
     expect(getMetLocationString({ poke: starter, oldMetLocationFormat: true })).toEqual(
-      'Met as Starter at lv.5',
+      'Met as Starter at lv.5'
     );
   });
 });

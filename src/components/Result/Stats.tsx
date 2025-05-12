@@ -207,7 +207,7 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
                   <div key={stat.id}>
                     {stat.key}: {stat.value}
                   </div>
-                ) : null,
+                ) : null
               )
             : null}
         </div>
@@ -225,5 +225,5 @@ export const Stats = connect(
   }),
   undefined,
   undefined,
-  { pure: false },
+  { pure: false }
 )(StatsBase);

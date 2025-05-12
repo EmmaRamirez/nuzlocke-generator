@@ -52,12 +52,12 @@ export const UPDATE_SWITCH_NUZLOCKE: UPDATE_SWITCH_NUZLOCKE = 'UPDATE_SWITCH_NUZ
 export type updateSwitchNuzlocke = (
   id: string,
   newId: string,
-  data,
+  data
 ) => Action<UPDATE_SWITCH_NUZLOCKE>;
 export function updateSwitchNuzlocke(
   id: string,
   newId: string,
-  data,
+  data
 ): Action<UPDATE_SWITCH_NUZLOCKE> {
   return {
     type: UPDATE_SWITCH_NUZLOCKE,

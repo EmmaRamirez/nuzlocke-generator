@@ -14,7 +14,7 @@ describe('<ErroBoundary />', () => {
     render(
       <ErrorBoundary>
         <div data-testid="test">Test</div>
-      </ErrorBoundary>,
+      </ErrorBoundary>
     );
     expect(screen.getByTestId('test').textContent).toContain('Test');
   });
@@ -25,7 +25,7 @@ describe('<ErroBoundary />', () => {
     render(
       <ErrorBoundary errorMessage={<div>Error!</div>}>
         <ErroneousComponent />
-      </ErrorBoundary>,
+      </ErrorBoundary>
     );
     expect(ErrorBoundary.prototype.componentDidCatch).toHaveProperty('callCount', 1);
   });

@@ -576,7 +576,7 @@ export const handleSpeciesTypeEdgeCases = ({
 export const matchSpeciesToTypes = (
   species: Species,
   forme?: keyof typeof Forme,
-  generation?: Generation,
+  generation?: Generation
 ): [Types, Types] => {
   const result = handleSpeciesTypeEdgeCases({ species, forme, generation });
   if (result) return result;

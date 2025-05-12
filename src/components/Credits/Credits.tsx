@@ -58,7 +58,7 @@ export function Credits({}: CreditsProps) {
           className={cx(
             'has-nice-scrollbars',
             creditsContainer,
-            style.editorDarkMode ? creditsContainerDark : '',
+            style.editorDarkMode ? creditsContainerDark : ''
           )}>
           <div className={creditsItem} style={{ width: '50%', padding: '1rem' }}>
             <strong>Development/Design</strong>

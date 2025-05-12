@@ -113,7 +113,7 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
               ? getBackgroundGradient(
                   pokemon.types != null && !pokemon.egg ? pokemon?.types[1] : 'Normal',
                   pokemon.types != null && !pokemon.egg ? pokemon?.types[0] : 'Normal',
-                  customTypes,
+                  customTypes
                 )
               : undefined,
             color: isCompactTheme
@@ -472,7 +472,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, { ima
                   ? getBackgroundGradient(
                       poke.types != null && !poke.egg ? poke.types[0] : 'Normal',
                       poke.types != null && !poke.egg ? poke.types[1] : 'Normal',
-                      customTypes,
+                      customTypes
                     )
                   : 'transparent',
               }}
@@ -514,7 +514,7 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, { ima
                 ? getBackgroundGradient(
                     poke.types != null && !poke.egg ? poke.types[0] : 'Normal',
                     poke.types != null && !poke.egg ? poke.types[1] : 'Normal',
-                    customTypes,
+                    customTypes
                   )
                 : 'transparent',
             }}>
@@ -588,5 +588,5 @@ export const TeamPokemon = connect(
   null,
   {
     pure: true,
-  },
+  }
 )(TeamPokemonBase as any);

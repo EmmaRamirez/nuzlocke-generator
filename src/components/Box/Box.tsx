@@ -54,12 +54,12 @@ const boxSourceDrop = {
     store.dispatch(
       editBox(props.id, {
         position: item.position,
-      }),
+      })
     );
     store.dispatch(
       editBox(item.id, {
         position: props.position,
-      }),
+      })
     );
 
     return {};
@@ -171,8 +171,8 @@ export const Box: React.FC<BoxProps> = (props) => {
             // position: oldPosition,
             status: props.name,
           },
-          item.id,
-        ),
+          item.id
+        )
       );
     },
     collect: (monitor) => ({

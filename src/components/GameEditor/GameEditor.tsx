@@ -126,5 +126,5 @@ export const GameEditor = connect(
     changeEditorSize,
     resetCheckpoints,
     toggleTemtemMode,
-  },
+  }
 )(GameEditorBase as any);

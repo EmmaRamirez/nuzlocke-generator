@@ -21,7 +21,7 @@ describe('<DeadPokemon />', () => {
         selectPokemon={jest.fn()}
         minimal={false}
         {...poke}
-      />,
+      />
     );
     expect(screen.getByTestId('cause-of-death').textContent).toContain(poke.causeOfDeath);
   });

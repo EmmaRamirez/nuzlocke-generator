@@ -104,5 +104,5 @@ export const DeletePokemonButton = connect(
   {
     deletePokemon,
     modifyDeletionConfirmation,
-  },
+  }
 )(DeletePokemonButtonBase);

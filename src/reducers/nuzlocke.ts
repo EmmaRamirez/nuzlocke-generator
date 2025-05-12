@@ -20,7 +20,7 @@ export function nuzlockes(
   },
   action: Action<
     NEW_NUZLOCKE | DELETE_NUZLOCKE | SWITCH_NUZLOCKE | UPDATE_NUZLOCKE | UPDATE_SWITCH_NUZLOCKE
-  >,
+  >
 ) {
   switch (action.type) {
     case NEW_NUZLOCKE:

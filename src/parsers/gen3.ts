@@ -392,7 +392,7 @@ const parseJohtoBadges = (buf: Buffer) => {
 const transformPokemon = (
   pokemonObject: Gen3PokemonObject,
   status: string,
-  boxIndex: number = 1,
+  boxIndex: number = 1
 ) => {
   return pokemonObject.pokemonList
     .map((poke, index) => {

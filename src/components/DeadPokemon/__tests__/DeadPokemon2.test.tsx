@@ -18,7 +18,7 @@ describe('<DeadPokemon />', () => {
     render(
       <TestProvider>
         <DeadPokemon pokemon={poke} />
-      </TestProvider>,
+      </TestProvider>
     );
     expect(screen.getByTestId('dead-pokemon')).toBeDefined();
   });

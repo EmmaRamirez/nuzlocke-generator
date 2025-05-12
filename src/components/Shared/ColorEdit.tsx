@@ -54,7 +54,7 @@ export class ColorEditBase extends React.Component<ColorEditProps, { showChromeP
               type="text"
               className={cx(
                 Classes.INPUT,
-                classWithDarkTheme(Styles, 'colorTextInput', style?.editorDarkMode),
+                classWithDarkTheme(Styles, 'colorTextInput', style?.editorDarkMode)
               )}
               name={name}
               value={rgbaOrHex(value)}

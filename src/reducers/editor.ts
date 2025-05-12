@@ -17,7 +17,7 @@ export function editor(
   },
   action: Action<
     CHANGE_EDITOR_SIZE | TOGGLE_TEMTEM_MODE | TOGGLE_MOBILE_RESULT_VIEW | SET_EDITOR_HISTORY_ENABLED
-  >,
+  >
 ) {
   switch (action.type) {
     case CHANGE_EDITOR_SIZE:

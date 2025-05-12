@@ -7,7 +7,7 @@ export function view(
       imageUploader: false,
     },
   },
-  action: Action<TOGGLE_DIALOG>,
+  action: Action<TOGGLE_DIALOG>
 ) {
   switch (action.type) {
     case TOGGLE_DIALOG:

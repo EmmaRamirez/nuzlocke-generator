@@ -4,7 +4,7 @@ import { State } from 'state';
 export const getBackgroundGradient = (
   typeA: keyof typeof Types,
   typeB: keyof typeof Types,
-  customTypes: State['customTypes'],
+  customTypes: State['customTypes']
 ): string => {
   if (typeB == null) {
     if (typeA == null) {
@@ -12,13 +12,13 @@ export const getBackgroundGradient = (
     } else {
       return `linear-gradient(to right, ${typeToColor(typeA, customTypes)}, ${typeToColor(
         typeA,
-        customTypes,
+        customTypes
       )}`;
     }
   } else {
     return `linear-gradient(to right, ${typeToColor(typeA, customTypes)}, ${typeToColor(
       typeB,
-      customTypes,
+      customTypes
     )}`;
   }
 };

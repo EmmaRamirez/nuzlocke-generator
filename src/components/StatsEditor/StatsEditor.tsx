@@ -197,5 +197,5 @@ export const StatsEditor = connect(
     addStat,
     deleteStat,
     editStat,
-  },
+  }
 )(StatsEditorBase as any);

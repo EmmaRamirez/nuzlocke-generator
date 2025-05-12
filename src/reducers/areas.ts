@@ -2,7 +2,7 @@ import { Action, UPDATE_EXCLUDED_AREAS, REPLACE_STATE, UPDATE_CUSTOM_AREAS } fro
 
 export function excludedAreas(
   state: string[] = [],
-  action: Action<UPDATE_EXCLUDED_AREAS | REPLACE_STATE>,
+  action: Action<UPDATE_EXCLUDED_AREAS | REPLACE_STATE>
 ) {
   switch (action.type) {
     case UPDATE_EXCLUDED_AREAS:
@@ -16,7 +16,7 @@ export function excludedAreas(
 
 export function customAreas(
   state: string[] = [],
-  action: Action<UPDATE_CUSTOM_AREAS | REPLACE_STATE>,
+  action: Action<UPDATE_CUSTOM_AREAS | REPLACE_STATE>
 ) {
   switch (action.type) {
     case UPDATE_CUSTOM_AREAS:

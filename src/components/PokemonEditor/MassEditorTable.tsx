@@ -50,7 +50,7 @@ const cellRenderer: (pokemon: Pokemon[], key: keyof Pokemon, editPokemon) => ICe
       key as keyof Pokemon,
       pokemon[rowIndex][key],
       pokemon[rowIndex].id,
-      editPokemon,
+      editPokemon
     );
   };
 
@@ -83,5 +83,5 @@ export const MassEditorTable = connect(
   (state: State) => ({ pokemon: state.pokemon.sort(sortPokes) }),
   {
     editPokemon: editPokemonType,
-  },
+  }
 )(MassEditorTableBase);

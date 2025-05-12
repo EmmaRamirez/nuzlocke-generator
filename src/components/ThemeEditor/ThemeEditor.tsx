@@ -257,7 +257,7 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
   private onNodeClick = (
     node: ITreeNode,
     _nodePath: number[],
-    e: React.MouseEvent<HTMLElement>,
+    e: React.MouseEvent<HTMLElement>
   ) => {
     const originallySelected = node.isSelected;
     if (!e.shiftKey) {
@@ -449,7 +449,7 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
               <div
                 className={cx(
                   this.props.style.template.toLowerCase().replace(/\s/g, '-'),
-                  classWithDarkTheme(css, 'componentResult', this.props.style.editorDarkMode),
+                  classWithDarkTheme(css, 'componentResult', this.props.style.editorDarkMode)
                 )}>
                 {currentNode &&
                   currentNode.options &&
@@ -479,5 +479,5 @@ export const ThemeEditor = connect(
   (state: State) => ({
     style: state.style,
   }),
-  null,
+  null
 )(ThemeEditorBase);

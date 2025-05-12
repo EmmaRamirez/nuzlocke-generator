@@ -121,7 +121,7 @@ export function ImagesDrawerInner() {
 
   const setLayout = React.useCallback(() => {
     setLayoutView(
-      layoutView === ImagesDrawerLayout.List ? ImagesDrawerLayout.Grid : ImagesDrawerLayout.List,
+      layoutView === ImagesDrawerLayout.List ? ImagesDrawerLayout.Grid : ImagesDrawerLayout.List
     );
   }, [layoutView]);
 

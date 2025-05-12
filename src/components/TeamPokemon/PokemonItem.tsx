@@ -59,7 +59,7 @@ export function PokemonItem({
             ? getBackgroundGradient(
                 pokemon.types != null ? pokemon.types[0] : 'Normal',
                 pokemon.types != null ? pokemon.types[1] : 'Normal',
-                customTypes,
+                customTypes
               )
             : '',
       }}

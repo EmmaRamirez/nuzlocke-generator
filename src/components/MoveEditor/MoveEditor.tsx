@@ -266,5 +266,5 @@ export const MoveEditor = connect(
     editCustomType,
   },
   null,
-  { pure: false },
+  { pure: false }
 )(MoveEditorBase);

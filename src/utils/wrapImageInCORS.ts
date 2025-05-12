@@ -20,7 +20,7 @@ export async function wrapImageInCORS(url: string) {
       // origin: location.origin,
       // @ts-expect-error valid for cors-anywhere
       'X-Requested-With': 'XMLHttpRequest',
-    },
+    }
   );
   const img = await response.blob();
 
@@ -34,7 +34,7 @@ export async function wrapImageInCORSPlain(url: string) {
       mode: 'cors',
       // @ts-expect-error valid for cors-anywhere
       'X-Requested-With': 'XMLHttpRequest',
-    },
+    }
   );
   const img = await response.blob();
 
