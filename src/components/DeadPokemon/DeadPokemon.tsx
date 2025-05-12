@@ -291,5 +291,5 @@ export const DeadPokemon = connect(
   (state: Pick<State, keyof State>) => ({ style: state.style, game: state.game }),
   {
     selectPokemon,
-  },
+  }
 )(DeadPokemonBase);

@@ -10,7 +10,7 @@ import { v4 as uuid } from 'uuid';
 
 export function customTypes(
   state: State['customTypes'] = [],
-  action: Action<CREATE_CUSTOM_TYPE | DELETE_CUSTOM_TYPE | REPLACE_STATE | EDIT_CUSTOM_TYPE>,
+  action: Action<CREATE_CUSTOM_TYPE | DELETE_CUSTOM_TYPE | REPLACE_STATE | EDIT_CUSTOM_TYPE>
 ) {
   switch (action.type) {
     case CREATE_CUSTOM_TYPE:

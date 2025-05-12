@@ -41,7 +41,7 @@ const getAllByStatus = (boxes?: Box[], pokemon?: Pokemon[], status?: string) => 
     })
     .map((box) => box.name);
   const pokemonByStatus = pokemon?.filter(
-    (poke) => !poke.hidden && boxesByStatus?.includes(poke.status ?? ''),
+    (poke) => !poke.hidden && boxesByStatus?.includes(poke.status ?? '')
   );
 
   return pokemonByStatus;

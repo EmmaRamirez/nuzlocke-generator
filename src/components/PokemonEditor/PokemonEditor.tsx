@@ -60,7 +60,7 @@ export class BoxesComponent extends React.Component<BoxesComponentProps> {
 
 const MassEditor = React.lazy(() => import('components/PokemonEditor/MassEditor'));
 const PokemonLocationChecklist = React.lazy(
-  () => import('components/PokemonEditor/PokemonLocationChecklist'),
+  () => import('components/PokemonEditor/PokemonLocationChecklist')
 );
 
 export class PokemonEditorBase extends React.Component<PokemonEditorProps, PokemonEditorState> {
@@ -177,5 +177,5 @@ export const PokemonEditor = connect(
     addPokemon: addPokemon,
   },
   null,
-  { pure: true },
+  { pure: true }
 )(PokemonEditorBase as any);

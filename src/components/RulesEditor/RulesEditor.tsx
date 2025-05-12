@@ -74,7 +74,7 @@ export class RulesEditor extends React.Component<RulesEditorProps> {
 }
 
 export const RulesEditorDialogBase = (
-  props: RulesEditorProps & { onClose: any; isOpen: boolean; style: any },
+  props: RulesEditorProps & { onClose: any; isOpen: boolean; style: any }
 ) => {
   return (
     <Dialog
@@ -101,5 +101,5 @@ export const RulesEditorDialog = connect(
     rules: state.rules,
     style: state.style,
   }),
-  { editRule, addRule, deleteRule, resetRules },
+  { editRule, addRule, deleteRule, resetRules }
 )(RulesEditorDialogBase as any);

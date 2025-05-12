@@ -41,7 +41,7 @@ export function CurrentPokemonLayoutItem({
         style.Layout,
         disabled && style.disabled,
         checkboxes && style.checkboxes,
-        fullWidth && style.fullWidth,
+        fullWidth && style.fullWidth
       )}>
       {children}
     </div>

@@ -45,7 +45,7 @@ export const Showdown = ({
             gender,
             forme: forme as any,
             name,
-          }),
+          })
         )}
       />
       <div>

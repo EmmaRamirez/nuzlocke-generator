@@ -54,7 +54,7 @@ export function PokemonImage({
                 editor: editor,
                 gender: gender,
                 egg: egg,
-              }),
+              })
             );
           })();
     } catch (e) {

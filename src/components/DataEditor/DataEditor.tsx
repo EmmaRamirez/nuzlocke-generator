@@ -302,7 +302,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
     this.setState({ isOpen: true });
     this.setState({
       href: `data:text/plain;charset=utf-8,${encodeURIComponent(
-        JSON.stringify(omit(['router', '._persist', 'editorHistory'], state)),
+        JSON.stringify(omit(['router', '._persist', 'editorHistory'], state))
       )}`,
     });
   };
@@ -394,7 +394,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
       });
 
       worker.onmessage = (
-        e: MessageEvent<{ pokemon: Pokemon[]; isYellow?: boolean; trainer: Trainer }>,
+        e: MessageEvent<{ pokemon: Pokemon[]; isYellow?: boolean; trainer: Trainer }>
       ) => {
         const result = e.data;
         const mergedPokemon = componentState.mergeDataMode

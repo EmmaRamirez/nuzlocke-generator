@@ -20,27 +20,27 @@ export interface AppProps {
 }
 
 const Editor = React.lazy(() =>
-  import('components/Editor').then((res) => ({ default: res.Editor })),
+  import('components/Editor').then((res) => ({ default: res.Editor }))
 );
 
 const Result = React.lazy(() =>
-  import('components/Result/Result').then((res) => ({ default: res.Result })),
+  import('components/Result/Result').then((res) => ({ default: res.Result }))
 );
 
 const Result2 = React.lazy(() =>
-  import('components/Result/Result2').then((res) => ({ default: res.Result })),
+  import('components/Result/Result2').then((res) => ({ default: res.Result }))
 );
 
 const ImagesDrawer = React.lazy(() =>
-  import('components/Shared/ImagesDrawer').then((res) => ({ default: res.ImagesDrawer })),
+  import('components/Shared/ImagesDrawer').then((res) => ({ default: res.ImagesDrawer }))
 );
 
 const BugReporter = React.lazy(() =>
-  import('components/BugReporter').then((res) => ({ default: res.BugReporter })),
+  import('components/BugReporter').then((res) => ({ default: res.BugReporter }))
 );
 
 const Hotkeys = React.lazy(() =>
-  import('components/Hotkeys').then((res) => ({ default: res.Hotkeys })),
+  import('components/Hotkeys').then((res) => ({ default: res.Hotkeys }))
 );
 
 export class UpdaterBase extends React.Component<{
@@ -73,7 +73,7 @@ export class UpdaterBase extends React.Component<{
 }
 
 export const Updater = connect(updaterSelector, { updateEditorHistory }, null, { pure: false })(
-  UpdaterBase,
+  UpdaterBase
 );
 
 export class AppBase extends React.Component<AppProps, { result2?: boolean }> {

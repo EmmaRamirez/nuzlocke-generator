@@ -6,11 +6,11 @@ export const REORDER_CHECKPOINTS: REORDER_CHECKPOINTS = 'REORDER_CHECKPOINTS';
 
 export type reorderCheckpoints = (
   oldIndex: number,
-  newIndex: number,
+  newIndex: number
 ) => Action<REORDER_CHECKPOINTS, number>;
 export const reorderCheckpoints = (
   oldIndex: number,
-  newIndex: number,
+  newIndex: number
 ): Action<REORDER_CHECKPOINTS, number> => {
   return {
     type: REORDER_CHECKPOINTS,

@@ -91,8 +91,8 @@ const usePokemonDrop = (props: BasePokemonIconProps) => {
             position: oldPosition,
             status: oldStatus,
           },
-          newId,
-        ),
+          newId
+        )
       );
       store.dispatch(
         editPokemon(
@@ -100,8 +100,8 @@ const usePokemonDrop = (props: BasePokemonIconProps) => {
             position: newPosition,
             status: newStatus,
           },
-          oldId,
-        ),
+          oldId
+        )
       );
     },
   });
@@ -118,7 +118,7 @@ export const getIconURL = ({ id, species, forme, shiny, gender, customIcon, egg 
   if (species === 'Egg' || egg) return `${baseURL}egg.png`;
 
   return `${baseURL}${isShiny}/${isFemaleSpecific}${normalizeSpeciesName(
-    species as Species,
+    species as Species
   )}${getIconFormeSuffix(forme as keyof typeof Forme)}.png`;
 };
 
@@ -178,7 +178,7 @@ export function PokemonIconPlain({
 
 export const PokemonIcon = (props: BasePokemonIconProps) => {
   const { selectedId, style } = useSelector<State, Pick<State, 'selectedId' | 'style'>>(
-    (state) => ({ selectedId: state.selectedId, style: state.style }),
+    (state) => ({ selectedId: state.selectedId, style: state.style })
   );
   const dispatch = useDispatch();
 

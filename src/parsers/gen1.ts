@@ -257,7 +257,7 @@ export const parseGen1Save = async (file: Buffer, options: ParserOptions) => {
   const yellow = file[OFFSETS.PIKACHU_FRIENDSHIP] > 0;
   const trainerName = convertWithCharMap(
     file.slice(OFFSETS.PLAYER_NAME, OFFSETS.PLAYER_NAME + 11),
-    true,
+    true
   );
   const trainerID = file
     .slice(OFFSETS.PLAYER_ID, OFFSETS.PLAYER_ID + 2)
@@ -274,24 +274,24 @@ export const parseGen1Save = async (file: Buffer, options: ParserOptions) => {
       .slice(OFFSETS.MONEY, OFFSETS.MONEY + 3)
       // @ts-expect-error Buffer matches this
       .map((d) => d.toString(16))
-      .join(''),
+      .join('')
   );
   const pokemonParty = parsePokemonParty(
-    file.slice(OFFSETS.POKEMON_PARTY, OFFSETS.POKEMON_PARTY + 404),
+    file.slice(OFFSETS.POKEMON_PARTY, OFFSETS.POKEMON_PARTY + 404)
   );
   const casinoCoins = parseInt(
     file
       .slice(OFFSETS.CASINO_COINS, OFFSETS.CASINO_COINS + 2)
       // @ts-expect-error Buffer matches this
       .map((d) => d.toString(16))
-      .join(''),
+      .join('')
   );
 
   const pokemonFromBoxes = BOX_OFFSETS.map((box, boxIndex) => {
     return transformPokemon(
       parseBoxedPokemon(file.slice(box, box + 0x462)),
       options.boxMappings[boxIndex]['status'],
-      boxIndex + 1,
+      boxIndex + 1
     );
   }).flat();
 

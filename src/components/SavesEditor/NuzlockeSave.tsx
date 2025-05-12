@@ -285,5 +285,5 @@ export const NuzlockeSave = connect(
     switchNuzlocke,
     replaceState,
     updateSwitchNuzlocke,
-  },
+  }
 )(NuzlockeSaveBase as any);

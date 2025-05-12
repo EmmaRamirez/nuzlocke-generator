@@ -75,7 +75,7 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
         className={cx(
           classWithDarkTheme(styles, 'topBar', this.props.style.editorDarkMode),
           isMobile() && styles.topBar_mobile,
-          isMobile() && isMenuOpen && styles.topBar_mobile_open,
+          isMobile() && isMenuOpen && styles.topBar_mobile_open
         )}>
         {isMobile() && (
           <>
@@ -171,5 +171,5 @@ export const TopBar = connect(
     seeRelease,
     toggleTemtemMode,
     toggleMobileResultView,
-  },
+  }
 )(TopBarBase);

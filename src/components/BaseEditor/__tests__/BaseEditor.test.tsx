@@ -14,7 +14,7 @@ describe('<BaseEditor />', () => {
     render(
       <BaseEditor name="test">
         <div>Hello World!</div>
-      </BaseEditor>,
+      </BaseEditor>
     );
     expect(screen.findByText('Hello World!')).toBeDefined();
   });

@@ -150,7 +150,7 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
       ? `icons/pokeball/${formatBallText(pokemon?.pokeball || 'None')}.png`
       : undefined,
     pokeballComponent: ReactDOMServer.renderToString(
-      <PokemonPokeball pokemon={pokemon} style={style} customTypes={customTypes} />,
+      <PokemonPokeball pokemon={pokemon} style={style} customTypes={customTypes} />
     ),
     item: pokemon.item
       ? `icons/hold-item/${(pokemon.item || '')
@@ -159,14 +159,14 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
           .replace(/\s/g, '-')}.png`
       : undefined,
     itemComponent: ReactDOMServer.renderToString(
-      <PokemonItem pokemon={pokemon} style={style} customTypes={customTypes} />,
+      <PokemonItem pokemon={pokemon} style={style} customTypes={customTypes} />
     ),
     icon: ReactDOMServer.renderToString(pokemonIcon),
     checkpoints: ReactDOMServer.renderToString(<div />),
     genderSymbol: ReactDOMServer.renderToString(<GenderElementReact gender={pokemon?.gender} />),
     notes: pokemon.notes ?? '',
     linkedPokemon: ReactDOMServer.renderToString(
-      <LinkedPokemon style={style} linkedPokemon={linkedPokemon} />,
+      <LinkedPokemon style={style} linkedPokemon={linkedPokemon} />
     ),
     linkedPokemonData: linkedPokemon ?? null,
     extraData: '',
@@ -180,7 +180,7 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
         moves={pokemon.moves}
         movesPosition={style.movesPosition}
         stripClasses
-      />,
+      />
     ),
     movesColoredWithClasses: ReactDOMServer.renderToString(
       // @ts-expect-error
@@ -191,7 +191,7 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
         generation={getGameGeneration(name)}
         moves={pokemon.moves}
         movesPosition={style.movesPosition}
-      />,
+      />
     ),
   };
 

@@ -126,7 +126,7 @@ async function createRender() {
         </DndProvider>
       )}
     </Provider>,
-    mountNode,
+    mountNode
   );
 }
 

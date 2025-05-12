@@ -27,7 +27,7 @@ export function checkpoints(
     | resetCheckpoints
     | reorderCheckpoints
     | replaceState
-  >,
+  >
 ) {
   switch (action.type) {
     case RESET_CHECKPOINTS:

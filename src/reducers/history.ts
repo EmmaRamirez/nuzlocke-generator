@@ -3,7 +3,7 @@ import { HistoryEntry } from 'models';
 
 export function history(
   state: HistoryEntry[] = [],
-  action: Action<ADD_HISTORY_ENTRY | REPLACE_STATE | REMOVE_HISTORY_ENTRY>,
+  action: Action<ADD_HISTORY_ENTRY | REPLACE_STATE | REMOVE_HISTORY_ENTRY>
 ) {
   switch (action.type) {
     case ADD_HISTORY_ENTRY:

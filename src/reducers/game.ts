@@ -6,7 +6,7 @@ export function game(
     name: 'None',
     customName: '',
   },
-  action: Action<EDIT_GAME | REPLACE_STATE>,
+  action: Action<EDIT_GAME | REPLACE_STATE>
 ) {
   switch (action.type) {
     case EDIT_GAME:

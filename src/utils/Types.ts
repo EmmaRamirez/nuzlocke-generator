@@ -59,7 +59,7 @@ export const isTemTemType = (type: Types) => {
 
 export const getListOfTypes = (
   customTypes: State['customTypes'],
-  includeTemTemTypes: boolean = true,
+  includeTemTemTypes: boolean = true
 ) =>
   [
     'None',

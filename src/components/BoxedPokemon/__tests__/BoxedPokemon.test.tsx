@@ -15,7 +15,7 @@ describe(BoxedPokemonBase.name, () => {
 
     await waitFor(() => screen.getByTestId('boxed-pokemon-name'));
     expect(screen.getByTestId('boxed-pokemon-name').textContent).toContain(
-      PokemonFixtures.Pikachu.nickname,
+      PokemonFixtures.Pikachu.nickname
     );
   });
 });

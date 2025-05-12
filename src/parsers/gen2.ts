@@ -343,7 +343,7 @@ const parseJohtoBadges = (buf: Buffer) => {
 const transformPokemon = (
   pokemonObject: Gen2PokemonObject,
   status: string,
-  boxIndex: number = 1,
+  boxIndex: number = 1
 ) => {
   return pokemonObject.pokemonList
     .map((poke, index) => {
@@ -398,11 +398,11 @@ export const parsePokemonList = (buf: Buffer, entries = 6): Gen2PokemonObject =>
   const pokemonList = getPokemonList(
     data.slice(pokemonListAddress, pokemonListAddressEnd),
     entries,
-    isBoxed,
+    isBoxed
   );
   const pokemonNames = getPokemonNames(
     data.slice(pokemonNamesAddress, pokemonNamesAddressEnd),
-    entries,
+    entries
   );
 
   return {
@@ -432,7 +432,7 @@ export const parseGen2Save = async (file, options: ParserOptions) => {
   const money = parseInt(trainerMoney.map((d) => d.toString(16)).join(''));
   const time = parseTime(fileSlice(OFFSETS.TIME_PLAYED));
   const badges = parseJohtoBadges(
-    options.isCrystal ? fileSlice(CRYSTAL_OFFSETS.JOHTO_BADGES) : fileSlice(OFFSETS.JOHTO_BADGES),
+    options.isCrystal ? fileSlice(CRYSTAL_OFFSETS.JOHTO_BADGES) : fileSlice(OFFSETS.JOHTO_BADGES)
   );
   const currentPCId = options.isCrystal
     ? fileSlice(CRYSTAL_OFFSETS.CURRENT_PC_BOX_NUMBER)
@@ -446,7 +446,7 @@ export const parseGen2Save = async (file, options: ParserOptions) => {
       return transformPokemon(
         parsePokemonList(boxData, 20),
         options.boxMappings[boxIndex]['status'],
-        boxIndex + 1,
+        boxIndex + 1
       );
     })
     .flat();

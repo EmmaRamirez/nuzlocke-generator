@@ -262,7 +262,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
   private renderContainer = (
     pokemon: Pokemon[],
     paddingForVerticalTrainerSection: any,
-    box?: Box,
+    box?: Box
   ) =>
     box && pokemon && getNumberOf(box?.name, pokemon)! > 0 ? (
       <div
@@ -305,7 +305,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
   private getScale(
     style: State['style'],
     editor: State['editor'],
-    coords: ResultState['panningCoordinates'],
+    coords: ResultState['panningCoordinates']
   ) {
     const rw = parseInt(style.resultWidth.toString());
     const ww = window.innerWidth;
@@ -380,7 +380,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
       </div>
     );
     const others = pokemon.filter(
-      (poke) => !['Team', 'Boxed', 'Dead', 'Champs'].includes(poke.status!),
+      (poke) => !['Team', 'Boxed', 'Dead', 'Champs'].includes(poke.status!)
     );
     const enableStats = style.displayStats;
     const enableChampImage = feature.emmaMode;
@@ -432,7 +432,7 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
             className={`result ng-container ${
               (style.template && style.template.toLowerCase().replace(/\s/g, '-')) || ''
             } region-${getGameRegion(
-              this.props.game.name,
+              this.props.game.name
             )} team-size-${numberOfTeam} ${trainerSectionOrientation}-trainer
                        ${editor.showResultInMobile ? Styles.result_mobile : ''}
                         `}

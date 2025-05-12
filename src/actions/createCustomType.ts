@@ -29,7 +29,7 @@ export const EDIT_CUSTOM_TYPE: EDIT_CUSTOM_TYPE = 'EDIT_CUSTOM_TYPE';
 
 export type editCustomType = (
   id: string,
-  typeInfo: Partial<CustomType>,
+  typeInfo: Partial<CustomType>
 ) => Action<EDIT_CUSTOM_TYPE>;
 export function editCustomType(id: string, typeInfo: Partial<CustomType>) {
   return {

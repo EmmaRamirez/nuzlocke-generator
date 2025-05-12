@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch, ownProps: TrainerInfoEditFieldProps) => {
       dispatch(
         editTrainer({
           [ownProps.name]: e.target.value,
-        }),
+        })
       );
     },
   };
@@ -24,5 +24,5 @@ const mapDispatchToProps = (dispatch, ownProps: TrainerInfoEditFieldProps) => {
 
 export const LinkedTrainerInfoEditField = connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(TrainerInfoEditField as any);

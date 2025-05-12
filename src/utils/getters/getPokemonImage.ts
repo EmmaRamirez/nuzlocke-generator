@@ -182,13 +182,13 @@ export async function getPokemonImage({
   ) {
     if (!shiny) {
       const url = `https://www.serebii.net/${getGameName(
-        name,
+        name
       )}/pokemon/${leadingZerosNumber}${getForme(forme)}.png`;
 
       return await wrapImageInCORS(url);
     } else {
       const url = `https://www.serebii.net/Shiny/${capitalize(
-        getGameNameSerebii(name as Game),
+        getGameNameSerebii(name as Game)
       )}/${leadingZerosNumber}.png`;
 
       return await wrapImageInCORS(url);
@@ -210,13 +210,13 @@ export async function getPokemonImage({
   if (style?.spritesMode && (name === 'LeafGreen' || name === 'FireRed')) {
     if (!shiny) {
       const url = `https://img.pokemondb.net/sprites/firered-leafgreen/normal/${normalizeSpeciesName(
-        species as Species,
+        species as Species
       )}.png`;
 
       return await wrapImageInCORS(url);
     } else {
       const url = `https://img.pokemondb.net/sprites/firered-leafgreen/shiny/${normalizeSpeciesName(
-        species as Species,
+        species as Species
       )}.png`;
 
       return await wrapImageInCORS(url);
@@ -226,7 +226,7 @@ export async function getPokemonImage({
   if (style?.spritesMode) {
     const url = shiny
       ? `https://www.serebii.net/Shiny/${getGameNameSerebii(
-          name as Game,
+          name as Game
         )}/${leadingZerosNumber}.png`
       : `https://www.serebii.net/${getGameName(name as Game)}/pokemon/${leadingZerosNumber}.png`;
 
@@ -239,11 +239,11 @@ export async function getPokemonImage({
       (gender === 'f' || gender === 'Female')
     ) {
       return `url(img/sugimori/female/${regularNumber}${getIconFormeSuffix(
-        forme as keyof typeof Forme,
+        forme as keyof typeof Forme
       )}.png)`;
     }
     return `url(img/sugimori/${regularNumber}${getIconFormeSuffix(
-      forme as keyof typeof Forme,
+      forme as keyof typeof Forme
     )}.png)`;
   }
 
@@ -266,7 +266,7 @@ export async function getPokemonImage({
     return `url(img/tcg/${(
       handleTcgTransforms(
         addForme((species || '').replace(/\s/g, '').replace(/'/g, ''), forme),
-        gender,
+        gender
       ) || 'missingno'
     ).toLowerCase()}.jpg)`;
   }
@@ -287,7 +287,7 @@ export async function getPokemonImage({
   return `url(img/${(
     addForme(
       (species || '').trim().replace(/\s/g, '-').replace(/'/g, '').replace(/:/g, '-'),
-      forme,
+      forme
     ) || 'missingno'
   ).toLowerCase()}.jpg)`;
 }

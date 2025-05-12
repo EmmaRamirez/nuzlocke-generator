@@ -205,5 +205,5 @@ export const BoxForm = connect(
   }),
   {
     addBox,
-  },
+  }
 )(BoxFormBase);

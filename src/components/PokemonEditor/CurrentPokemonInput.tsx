@@ -282,7 +282,7 @@ export function PokemonDoubleSelectInput({
       newEdit[position] = e.currentTarget.value;
       setEdit({ [inputName]: newEdit });
     },
-    [inputName, edit],
+    [inputName, edit]
   );
 
   return (
@@ -354,7 +354,7 @@ export function PokemonMoveInput({
   const dispatch = useDispatch();
   const moves = useMemo(
     () => (v: string) => customMoveMap?.find((m) => m?.move === v)?.type,
-    [customMoveMap],
+    [customMoveMap]
   );
 
   return (
@@ -368,7 +368,7 @@ export function PokemonMoveInput({
             typeToColor(
               // @ts-expect-error @TODO: fix mapping
               moves(v) || getMoveType(v?.toString()?.trim() || ''),
-              customTypes,
+              customTypes
             ) || 'transparent';
           const color = getContrastColor(background);
           return {
@@ -406,10 +406,10 @@ export function CurrentPokemonInput(props: CurrentPokemonInputProps) {
       dispatch(
         editPokemon(
           createEdit({ inputName, value: edit[inputName], edit, pokemon: props.pokemon }),
-          selectedId,
-        ),
+          selectedId
+        )
       ),
-    300,
+    300
   );
   React.useEffect(() => setEdit({ [inputName]: value }), [inputName, value]);
 

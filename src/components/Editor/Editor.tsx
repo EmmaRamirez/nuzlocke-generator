@@ -9,39 +9,39 @@ import './editor.css';
 import { editorModeSelector, minimizedSelector } from 'selectors';
 
 const PokemonEditor = React.lazy(() =>
-  import('components/PokemonEditor').then((res) => ({ default: res.PokemonEditor })),
+  import('components/PokemonEditor').then((res) => ({ default: res.PokemonEditor }))
 );
 const NuzlockeSaveControls = React.lazy(() =>
   import('components/SavesEditor/NuzlockeSaveControls').then((res) => ({
     default: res.NuzlockeSaveControls,
-  })),
+  }))
 );
 const GameEditor = React.lazy(() =>
-  import('components/GameEditor').then((res) => ({ default: res.GameEditor })),
+  import('components/GameEditor').then((res) => ({ default: res.GameEditor }))
 );
 const TrainerEditor = React.lazy(() =>
-  import('components/TrainerEditor').then((res) => ({ default: res.TrainerEditor })),
+  import('components/TrainerEditor').then((res) => ({ default: res.TrainerEditor }))
 );
 const HotkeysEditor = React.lazy(() =>
-  import('components/HotkeysEditor').then((res) => ({ default: res.HotkeysEditor })),
+  import('components/HotkeysEditor').then((res) => ({ default: res.HotkeysEditor }))
 );
 const BugReporter = React.lazy(() =>
-  import('components/BugReporter').then((res) => ({ default: res.BugReporter })),
+  import('components/BugReporter').then((res) => ({ default: res.BugReporter }))
 );
 const StatsEditor = React.lazy(() =>
-  import('components/StatsEditor').then((res) => ({ default: res.StatsEditor })),
+  import('components/StatsEditor').then((res) => ({ default: res.StatsEditor }))
 );
 const StyleEditor = React.lazy(() =>
-  import('components/StyleEditor').then((res) => ({ default: res.StyleEditor })),
+  import('components/StyleEditor').then((res) => ({ default: res.StyleEditor }))
 );
 const DataEditor = React.lazy(() =>
-  import('components/DataEditor').then((res) => ({ default: res.DataEditor })),
+  import('components/DataEditor').then((res) => ({ default: res.DataEditor }))
 );
 const EditorControls = React.lazy(() =>
-  import('components/Editor/EditorControls').then((res) => ({ default: res.EditorControls })),
+  import('components/Editor/EditorControls').then((res) => ({ default: res.EditorControls }))
 );
 const Credits = React.lazy(() =>
-  import('components/Credits').then((res) => ({ default: res.Credits })),
+  import('components/Credits').then((res) => ({ default: res.Credits }))
 );
 
 /**

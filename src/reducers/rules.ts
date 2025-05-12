@@ -8,7 +8,7 @@ const initialState = [
 
 export function rules(
   state: string[] = initialState,
-  action: Action<EDIT_RULE | ADD_RULE | DELETE_RULE | RESET_RULES | REPLACE_STATE>,
+  action: Action<EDIT_RULE | ADD_RULE | DELETE_RULE | RESET_RULES | REPLACE_STATE>
 ) {
   switch (action.type) {
     case ADD_RULE:

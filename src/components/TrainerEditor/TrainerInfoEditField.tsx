@@ -25,7 +25,7 @@ export function TrainerInfoEditField({
 
   const delayedValue = React.useCallback(
     debounce((e) => onEdit(e), 300),
-    [value],
+    [value]
   );
 
   React.useEffect(() => {

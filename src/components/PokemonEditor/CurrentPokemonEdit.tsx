@@ -164,7 +164,7 @@ export class CurrentPokemonEditBase extends React.Component<
 
   public UNSAFE_componentWillReceiveProps(
     nextProps: CurrentPokemonEditProps,
-    prevProps: CurrentPokemonEditProps,
+    prevProps: CurrentPokemonEditProps
   ) {
     if (nextProps.selectedId !== prevProps.selectedId) {
       this.setState({
@@ -227,7 +227,7 @@ export class CurrentPokemonEditBase extends React.Component<
   private getTypes(includeShadow = true) {
     const { customTypes, editor } = this.props;
     return getListOfTypes(customTypes, editor.temtemMode).filter((type) =>
-      includeShadow ? true : type !== 'Shadow',
+      includeShadow ? true : type !== 'Shadow'
     );
   }
 
@@ -385,7 +385,7 @@ export class CurrentPokemonEditBase extends React.Component<
           options={[
             'None',
             ...listOfPokeballs.map(
-              (ball) => `${ball.charAt(0).toUpperCase() + ball.slice(1, ball.length)} Ball`,
+              (ball) => `${ball.charAt(0).toUpperCase() + ball.slice(1, ball.length)} Ball`
             ),
           ]}
           key={this.state.selectedId + 'ball'}
@@ -553,10 +553,10 @@ export class CurrentPokemonEditBase extends React.Component<
                       e.target.value,
                       // @TODO: tighten type
                       currentPokemon.forme as any,
-                      getGameGeneration(this.props.game.name as Game),
+                      getGameGeneration(this.props.game.name as Game)
                     ),
                   },
-                  this.state.selectedId,
+                  this.state.selectedId
                 );
                 this.props.selectPokemon(this.state.selectedId);
               }}
@@ -689,5 +689,5 @@ export const CurrentPokemonEdit = connect(
     selectPokemon,
     editPokemon,
     addPokemon,
-  },
+  }
 )(CurrentPokemonEditBase);

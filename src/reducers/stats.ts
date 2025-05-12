@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid';
 
 export function stats(
   initState = [{ id: 'a-1', key: '', value: '' }],
-  action: Action<ADD_STAT | EDIT_STAT | DELETE_STAT | REPLACE_STATE>,
+  action: Action<ADD_STAT | EDIT_STAT | DELETE_STAT | REPLACE_STATE>
 ) {
   switch (action.type) {
     case ADD_STAT:

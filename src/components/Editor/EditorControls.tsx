@@ -9,7 +9,7 @@ import { useEvent } from 'utils/hooks';
 
 export function EditorControls({ editorDarkMode, minimized }) {
   const present = useSelector<State, Omit<State, 'editorHistory'>>((state) =>
-    omit(['editorHistory'], state),
+    omit(['editorHistory'], state)
   );
   const editorHistory = useSelector<State, State['editorHistory']>((state) => state.editorHistory);
   const dispatch = useDispatch();

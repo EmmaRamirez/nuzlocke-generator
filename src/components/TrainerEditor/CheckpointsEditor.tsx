@@ -72,7 +72,7 @@ export class CheckpointsSelect extends React.Component<
               styles.checkpointSelect,
               Classes.SELECT,
               Classes.BUTTON,
-              'has-nice-scrollbars',
+              'has-nice-scrollbars'
             )}>
             <div>
               <img
@@ -118,7 +118,7 @@ export class CheckpointsEditorBase extends React.Component<
           name: `Custom Badge ${this.state.badgeNumber}`,
           image: 'unknown',
         });
-      },
+      }
     );
   };
 
@@ -130,7 +130,7 @@ export class CheckpointsEditorBase extends React.Component<
           <li
             key={key}
             className={cx(
-              classWithDarkTheme(styles, 'checkpointsItem', this.props.style.editorDarkMode),
+              classWithDarkTheme(styles, 'checkpointsItem', this.props.style.editorDarkMode)
             )}>
             {/* <Icon icon='drag-handle-vertical' /> */}
             <div className={cx(styles.checkpointName)}>
@@ -212,5 +212,5 @@ export const CheckpointsEditor = connect(
     editCheckpoint,
     deleteCheckpoint,
     reorderCheckpoints,
-  },
+  }
 )(CheckpointsEditorBase);

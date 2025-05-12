@@ -3,7 +3,7 @@ import { State } from 'state';
 
 export const typeToColor = (
   type: keyof typeof Types | 'None',
-  customTypes?: State['customTypes'],
+  customTypes?: State['customTypes']
 ): string | null => {
   if (type === 'None') return null;
   const types: Record<keyof typeof Types, string> = {
