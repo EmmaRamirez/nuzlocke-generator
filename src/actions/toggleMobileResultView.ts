@@ -5,7 +5,7 @@ export const TOGGLE_MOBILE_RESULT_VIEW: TOGGLE_MOBILE_RESULT_VIEW = 'TOGGLE_MOBI
 
 export type toggleMobileResultView = () => Action<TOGGLE_MOBILE_RESULT_VIEW>;
 export const toggleMobileResultView = (): Action<TOGGLE_MOBILE_RESULT_VIEW> => {
-    return {
-        type: TOGGLE_MOBILE_RESULT_VIEW,
-    };
+  return {
+    type: TOGGLE_MOBILE_RESULT_VIEW,
+  };
 };

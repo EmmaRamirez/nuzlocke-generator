@@ -6,8 +6,8 @@ export const DELETE_CHECKPOINT: DELETE_CHECKPOINT = 'DELETE_CHECKPOINT';
 
 export type deleteCheckpoint = (name: Badge['name']) => Action<DELETE_CHECKPOINT, Badge['name']>;
 export const deleteCheckpoint = (name: Badge['name']): Action<DELETE_CHECKPOINT, Badge['name']> => {
-    return {
-        type: DELETE_CHECKPOINT,
-        name,
-    };
+  return {
+    type: DELETE_CHECKPOINT,
+    name,
+  };
 };

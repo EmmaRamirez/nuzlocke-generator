@@ -5,8 +5,8 @@ export const UPDATE_EXCLUDED_AREAS: UPDATE_EXCLUDED_AREAS = 'UPDATE_EXCLUDED_ARE
 
 export type updateExcludedAreas = (excludedAreas: string[]) => Action<UPDATE_EXCLUDED_AREAS>;
 export const updateExcludedAreas = (excludedAreas: string[]): Action<UPDATE_EXCLUDED_AREAS> => {
-    return {
-        type: UPDATE_EXCLUDED_AREAS,
-        excludedAreas,
-    };
+  return {
+    type: UPDATE_EXCLUDED_AREAS,
+    excludedAreas,
+  };
 };

@@ -5,13 +5,13 @@ import { generateEmptyPokemon } from 'utils';
 import { State } from 'state';
 
 export function TestProvider({ children }: any) {
-    const store = configureStore()({
-        pokemon: [generateEmptyPokemon(), generateEmptyPokemon()],
-        style: {
-            editorDarkMode: false,
-        },
-    } as State);
+  const store = configureStore()({
+    pokemon: [generateEmptyPokemon(), generateEmptyPokemon()],
+    style: {
+      editorDarkMode: false,
+    },
+  } as State);
 
-    // @ts-expect-error stupid typing
-    return <Provider store={store}>{children}</Provider>;
+  // @ts-expect-error stupid typing
+  return <Provider store={store}>{children}</Provider>;
 }

@@ -9,14 +9,14 @@ import { PokemonIconPlain } from 'components/PokemonIcon';
 import { State } from 'state';
 
 export function DeadPokemon({ pokemon }: { pokemon: Pokemon }) {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    return (
-        <span data-testid="dead-pokemon" style={{ filter: 'grayscale(100%)' }}>
-            <PokemonIconPlain
-                onClick={(e) => dispatch(selectPokemon(pokemon.id))}
-                {...(pokemon as any)}
-            />
-        </span>
-    );
+  return (
+    <span data-testid="dead-pokemon" style={{ filter: 'grayscale(100%)' }}>
+      <PokemonIconPlain
+        onClick={(e) => dispatch(selectPokemon(pokemon.id))}
+        {...(pokemon as any)}
+      />
+    </span>
+  );
 }

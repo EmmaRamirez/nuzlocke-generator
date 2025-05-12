@@ -1,14 +1,14 @@
 export interface View {
-    dialogs?: DialogView;
+  dialogs?: DialogView;
 }
 export interface DialogView {
-    imageUploader?: false;
-    massEditor?: false;
-    themeEditor?: false;
-    checkpointsEditor?: false;
-    rulesEditor?: false;
-    importView?: false;
-    exportView?: false;
+  imageUploader?: false;
+  massEditor?: false;
+  themeEditor?: false;
+  checkpointsEditor?: false;
+  rulesEditor?: false;
+  importView?: false;
+  exportView?: false;
 }
 
 export type DialogViewType = keyof DialogView;
