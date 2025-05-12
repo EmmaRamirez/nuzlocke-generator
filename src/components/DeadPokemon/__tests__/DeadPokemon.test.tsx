@@ -4,25 +4,25 @@ import { generateEmptyPokemon, styleDefaults } from 'utils';
 import { render, screen } from 'utils/testUtils';
 
 const poke = {
-    ...generateEmptyPokemon(),
-    species: 'Pikachu',
-    nickname: 'Pikazzy',
-    level: 50,
-    metLevel: 3,
-    causeOfDeath: 'Died doing what he loved.',
+  ...generateEmptyPokemon(),
+  species: 'Pikachu',
+  nickname: 'Pikazzy',
+  level: 50,
+  metLevel: 3,
+  causeOfDeath: 'Died doing what he loved.',
 };
 
 describe('<DeadPokemon />', () => {
-    it('renders its content', () => {
-        render(
-            <DeadPokemonBase
-                game={{ name: 'Red', customName: '' }}
-                style={styleDefaults}
-                selectPokemon={jest.fn()}
-                minimal={false}
-                {...poke}
-            />,
-        );
-        expect(screen.getByTestId('cause-of-death').textContent).toContain(poke.causeOfDeath);
-    });
+  it('renders its content', () => {
+    render(
+      <DeadPokemonBase
+        game={{ name: 'Red', customName: '' }}
+        style={styleDefaults}
+        selectPokemon={jest.fn()}
+        minimal={false}
+        {...poke}
+      />,
+    );
+    expect(screen.getByTestId('cause-of-death').textContent).toContain(poke.causeOfDeath);
+  });
 });

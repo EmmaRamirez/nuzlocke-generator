@@ -6,8 +6,8 @@ export const ADD_CUSTOM_CHECKPOINT: ADD_CUSTOM_CHECKPOINT = 'ADD_CUSTOM_CHECKPOI
 
 export type addCustomCheckpoint = (checkpoint: Badge) => Action<ADD_CUSTOM_CHECKPOINT, Badge>;
 export const addCustomCheckpoint = (checkpoint: Badge): Action<ADD_CUSTOM_CHECKPOINT, Badge> => {
-    return {
-        type: ADD_CUSTOM_CHECKPOINT,
-        checkpoint,
-    };
+  return {
+    type: ADD_CUSTOM_CHECKPOINT,
+    checkpoint,
+  };
 };

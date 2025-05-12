@@ -22,28 +22,28 @@ import { ErrorBoundary } from 'components';
 // window.path = window.path || require('path').path;
 
 async function getRollbar() {
-    // @ts-expect-error
-    const { default: Rollbar } = await import('rollbar');
+  // @ts-expect-error
+  const { default: Rollbar } = await import('rollbar');
 
-    const rollbarConfig = new Rollbar({
-        accessToken: '357eab6297524e6facb1c48b0403d869',
-        captureUncaught: true,
-        payload: {
-            environment: 'production',
-        },
-        autoInstrument: {
-            network: false,
-            log: false,
-            dom: true,
-            navigation: false,
-            connectivity: true,
-        },
-        maxItems: 20,
-        captureIp: false,
-        enabled: isLocal() ? false : true,
-    });
+  const rollbarConfig = new Rollbar({
+    accessToken: '357eab6297524e6facb1c48b0403d869',
+    captureUncaught: true,
+    payload: {
+      environment: 'production',
+    },
+    autoInstrument: {
+      network: false,
+      log: false,
+      dom: true,
+      navigation: false,
+      connectivity: true,
+    },
+    maxItems: 20,
+    captureIp: false,
+    enabled: isLocal() ? false : true,
+  });
 
-    Rollbar.init(rollbarConfig as any);
+  Rollbar.init(rollbarConfig as any);
 }
 
 getRollbar().then((res) => res);
@@ -92,45 +92,42 @@ injectGlobal`
 const mountNode = document.getElementById('app');
 
 async function createRender() {
-    const { render } = await import('react-dom');
-    const { Provider } = await import('react-redux');
+  const { render } = await import('react-dom');
+  const { Provider } = await import('react-redux');
 
-    const { DndProvider } = await import('react-dnd');
-    const { HTML5Backend } = await import('react-dnd-html5-backend');
-    const { PersistGate } = await import('redux-persist/es/integration/react');
-    const { store, persistor } = await import('./store');
-    // @TODO: add back check for tests mode
-    const isTest = false;
+  const { DndProvider } = await import('react-dnd');
+  const { HTML5Backend } = await import('react-dnd-html5-backend');
+  const { PersistGate } = await import('redux-persist/es/integration/react');
+  const { store, persistor } = await import('./store');
+  // @TODO: add back check for tests mode
+  const isTest = false;
 
-    const App = React.lazy(() => import('components/App').then((res) => ({ default: res.App })));
+  const App = React.lazy(() => import('components/App').then((res) => ({ default: res.App })));
 
-    render(
-        <Provider store={store}>
-            {isTest ? (
-                <PersistGate
-                    loading={<div>Loading...</div>}
-                    onBeforeLift={null}
-                    persistor={persistor}>
-                    <DndProvider backend={HTML5Backend}>
-                        <ErrorBoundary>
-                            <React.Suspense fallback={'Loading App...'}>
-                                <App />
-                            </React.Suspense>
-                        </ErrorBoundary>
-                    </DndProvider>
-                </PersistGate>
-            ) : (
-                <DndProvider backend={HTML5Backend}>
-                    <ErrorBoundary>
-                        <React.Suspense fallback={'Loading App...'}>
-                            <App />
-                        </React.Suspense>
-                    </ErrorBoundary>
-                </DndProvider>
-            )}
-        </Provider>,
-        mountNode,
-    );
+  render(
+    <Provider store={store}>
+      {isTest ? (
+        <PersistGate loading={<div>Loading...</div>} onBeforeLift={null} persistor={persistor}>
+          <DndProvider backend={HTML5Backend}>
+            <ErrorBoundary>
+              <React.Suspense fallback={'Loading App...'}>
+                <App />
+              </React.Suspense>
+            </ErrorBoundary>
+          </DndProvider>
+        </PersistGate>
+      ) : (
+        <DndProvider backend={HTML5Backend}>
+          <ErrorBoundary>
+            <React.Suspense fallback={'Loading App...'}>
+              <App />
+            </React.Suspense>
+          </ErrorBoundary>
+        </DndProvider>
+      )}
+    </Provider>,
+    mountNode,
+  );
 }
 
 createRender().then((res) => res);

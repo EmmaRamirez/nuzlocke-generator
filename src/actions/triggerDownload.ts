@@ -5,7 +5,7 @@ export const TRIGGER_DOWNLOAD: TRIGGER_DOWNLOAD = 'TRIGGER_DOWNLOAD';
 
 export type triggerDownload = () => Action<TRIGGER_DOWNLOAD, boolean>;
 export const triggerDownload = (): Action<TRIGGER_DOWNLOAD, boolean> => {
-    return {
-        type: TRIGGER_DOWNLOAD,
-    };
+  return {
+    type: TRIGGER_DOWNLOAD,
+  };
 };
