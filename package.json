@@ -97,7 +97,7 @@
     "tslib": "^2.0.0",
     "tslint": "^6.1.2",
     "vite": "^4.5.14",
-    "vite-plugin-static-copy": "^0.13.1",
+    "vite-plugin-static-copy": "^2.3.2",
     "vite-tsconfig-paths": "^5.1.4"
   },
   "devDependencies": {
