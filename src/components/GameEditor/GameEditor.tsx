@@ -39,7 +39,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
     isOpen: false,
   };
 
-  private onInput = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  private onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     this.props.editGame({ name: e.target.value });
     this.props.editStyle({
       bgColor: gameOfOriginToColor(e.target.value as Game),
@@ -66,7 +66,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
               <label className={Classes.INLINE} style={{ fontSize: '80%', marginRight: '.5rem' }}>
                 Version
               </label>
-              <HTMLSelect value={game.name} onInput={this.onInput}>
+              <HTMLSelect value={game.name} onChange={this.onChange}>
                 {listOfGames.map((game) => (
                   <option key={game}>{game}</option>
                 ))}
