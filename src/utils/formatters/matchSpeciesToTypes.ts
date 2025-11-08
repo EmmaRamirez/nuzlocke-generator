@@ -563,11 +563,11 @@ export const handleSpeciesTypeEdgeCases = ({
   }
 
   if (match({ ...data, species: ['Ogerpon'], forme: ['Heartflame'] })) {
-    return [Types.Grass, Types.Water];
+    return [Types.Grass, Types.Fire];
   }
 
   if (match({ ...data, species: ['Ogerpon'], forme: ['Cornerstone'] })) {
-    return [Types.Grass, Types.Water];
+    return [Types.Grass, Types.Rock];
   }
 
   return null;
