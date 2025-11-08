@@ -156,7 +156,7 @@ html.bp5-dark {
   font-size: 10px;
 }
 .current-pokemon-input-wrapper input {
-  border: 1px solid #eee;
+  border: 1px solid #dfdfdf;
   padding: 0.25rem;
 }
 .current-pokemon-number {
