@@ -64,6 +64,9 @@ const getGameName = (name: Game) => {
   ) {
     return 'swordshield';
   }
+  if (name === 'Legends: Z-A') {
+    return 'legendsz-a';
+  }
   return 'sm';
 };
 
@@ -103,6 +106,8 @@ const getGameNameSerebii = (name: Game) => {
     case 'Brilliant Diamond':
     case 'Shining Pearl':
       return 'swordshield';
+    case 'Legends: Z-A':
+      return 'legendsz-a';
     default:
       return 'SM';
   }

@@ -95,8 +95,11 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
   if (s === 'genesect') {
     return ['Shock Drive', 'Burn Drive', 'Chill Drive', 'Douse Drive'];
   }
-  if (s === 'flabébé' || s === 'floette' || s === 'florges') {
+  if (s === 'flabébé' || s === 'florges') {
     return ['Red', 'Yellow', 'Orange', 'Blue', 'White'];
+  }
+  if (s === 'floette') {
+    return ['Red', 'Yellow', 'Orange', 'Blue', 'White', 'Eternal Flower'];
   }
   if (s === 'furfrou') {
     return [
