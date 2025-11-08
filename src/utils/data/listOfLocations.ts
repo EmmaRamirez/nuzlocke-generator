@@ -503,6 +503,7 @@ export const locations = {
     'Autumnal Avenue',
     'Hibernal Avenue',
     'Pokémon Research Lab',
+    'Hotel Z',
   ],
   Alola: [
     'Route 1',
