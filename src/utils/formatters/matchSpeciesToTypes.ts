@@ -1355,6 +1355,8 @@ export const matchSpeciesToTypes = (
     case 'Skuntank':
     case 'Drapion':
       return [Types.Poison, Types.Dark];
+    case 'Overqwil':
+      return [Types.Dark, Types.Poison];
     case 'Tyranitar':
       return [Types.Rock, Types.Dark];
     case 'Carvanha':
