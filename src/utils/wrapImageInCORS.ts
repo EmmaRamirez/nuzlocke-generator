@@ -12,7 +12,6 @@ function fileToBase64(file: Blob) {
 }
 
 export async function wrapImageInCORS(url: string) {
-  console.log(import.meta.env.VITE_CORS_ANYWHERE_URL);
   const response = await fetch(
     `${import.meta.env.VITE_CORS_ANYWHERE_URL ?? 'https://cors-anywhere-nuzgen.herokuapp.com'}/${url}`,
     {
