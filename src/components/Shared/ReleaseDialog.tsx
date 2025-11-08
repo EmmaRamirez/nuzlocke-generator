@@ -25,9 +25,15 @@ const quaxly = './assets/icons/pokemon/regular/quaxly.png';
 const miraidon = './assets/icons/pokemon/regular/miraidon.png';
 const koraidon = './assets/icons/pokemon/regular/koraidon.png';
 const terapagos = './assets/icons/pokemon/regular/terapagos.png';
+const ogerpon = './assets/icons/pokemon/regular/ogerpon.png';
+const zygarde = './assets/icons/pokemon/regular/zygarde.png';
 
 export const getMascot = (v) => {
   switch (v) {
+    case '1.18':
+      return zygarde;
+    case '1.17':
+      return ogerpon;
     case '1.16':
       return terapagos;
     case '1.15':
