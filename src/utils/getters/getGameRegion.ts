@@ -12,6 +12,7 @@ export enum Region {
   Galar = 'galar',
   Hisui = 'hisui',
   Paldea = 'Paldea',
+  LumioseCity = 'LumioseCity',
   Other = 'other',
 }
 
@@ -30,12 +31,13 @@ export const getGameRegion = (game: Game): Region => {
   const hoenn: Game[] = ['Ruby', 'Sapphire', 'OmegaRuby', 'AlphaSapphire', 'Emerald'];
   const sinnoh: Game[] = ['Diamond', 'Pearl', 'Platinum', 'Brilliant Diamond', 'Shining Pearl'];
   const unova: Game[] = ['Black', 'Black 2', 'White', 'White 2'];
-  const kalos: Game[] = ['X', 'Y', 'Legends: Z-A'];
+  const kalos: Game[] = ['X', 'Y'];
   const alola: Game[] = ['Sun', 'Ultra Sun', 'Ultra Moon', 'Moon'];
   const orre: Game[] = ['XD Gale of Darkness', 'Colosseum'];
   const galar: Game[] = ['Sword', 'Shield'];
   const hisui: Game[] = ['Legends: Arceus'];
   const paldea: Game[] = ['Scarlet', 'Violet'];
+  const lumiose: Game[] = ['Legends: Z-A'];
 
   if (kanto.includes(game)) return Region.Kanto;
   if (johto.includes(game)) return Region.Johto;
@@ -48,6 +50,7 @@ export const getGameRegion = (game: Game): Region => {
   if (galar.includes(game)) return Region.Galar;
   if (hisui.includes(game)) return Region.Hisui;
   if (paldea.includes(game)) return Region.Paldea;
+  if (lumiose.includes(game)) return Region.LumioseCity;
 
   return Region.Other;
 };

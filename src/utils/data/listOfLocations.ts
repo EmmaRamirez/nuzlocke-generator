@@ -464,7 +464,8 @@ export const locations = {
     'Unknown Dungeon',
     'Vaniville Town',
     'Victory Road',
-
+  ],
+  LumioseCity: [
     'Wild Zone 1',
     'Wild Zone 2',
     'Wild Zone 3',
@@ -752,6 +753,7 @@ export const listOfLocations = [
   ...locations.Sinnoh,
   ...locations.Unova,
   ...locations.Kalos,
+  ...locations.LumioseCity,
   ...locations.Alola,
   ...locations.Galar,
   ...locations.Paldea,
