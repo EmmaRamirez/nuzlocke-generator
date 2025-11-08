@@ -57,7 +57,7 @@
     "babel-plugin-search-and-replace": "^1.1.0",
     "buffer": "^6.0.3",
     "color": "^3.2.1",
-    "compression": "^1.7.4",
+    "compression": "^1.8.1",
     "cors": "^2.8.5",
     "cypress": "^14.3.3",
     "deep-diff": "^1.0.2",
