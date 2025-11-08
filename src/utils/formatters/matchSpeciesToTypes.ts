@@ -1140,10 +1140,11 @@ export const matchSpeciesToTypes = (
     case 'Tirtouga':
     case 'Carracosta':
     case 'Corsola':
-    case 'Binacle':
-    case 'Barbaracle':
     case 'Drednaw':
       return [Types.Water, Types.Rock];
+    case 'Binacle':
+    case 'Barbaracle':
+      return [Types.Rock, Types.Water];
     /**
      * @type Bug
      */
