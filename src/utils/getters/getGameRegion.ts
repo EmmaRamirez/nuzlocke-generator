@@ -30,7 +30,7 @@ export const getGameRegion = (game: Game): Region => {
   const hoenn: Game[] = ['Ruby', 'Sapphire', 'OmegaRuby', 'AlphaSapphire', 'Emerald'];
   const sinnoh: Game[] = ['Diamond', 'Pearl', 'Platinum', 'Brilliant Diamond', 'Shining Pearl'];
   const unova: Game[] = ['Black', 'Black 2', 'White', 'White 2'];
-  const kalos: Game[] = ['X', 'Y'];
+  const kalos: Game[] = ['X', 'Y', 'Legends: Z-A'];
   const alola: Game[] = ['Sun', 'Ultra Sun', 'Ultra Moon', 'Moon'];
   const orre: Game[] = ['XD Gale of Darkness', 'Colosseum'];
   const galar: Game[] = ['Sword', 'Shield'];
