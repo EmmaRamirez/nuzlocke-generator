@@ -337,7 +337,7 @@ export const listOfItems = [
   'Altarianite',
   'Ampharosite',
   'Audinite',
-  'Banetite',
+  'Banettite',
   'Beedrillite',
   'Blastoisinite',
   'Blazikenite',
