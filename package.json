@@ -30,7 +30,7 @@
     "lh": "npx lighthouse http://localhost:8080 --output-path=./lighthouse/audit.html --save-assets --preset=desktop --quiet --chrome-flags=headless"
   },
   "engines": {
-    "node": "^20",
+    "node": "^24",
     "npm": "^10"
   },
   "keywords": [],
@@ -47,7 +47,7 @@
     "@emmaramirez/dom-to-image": "^3.0.2",
     "@react-hook/debounce": "^3.0.0",
     "@types/react-dnd-html5-backend": "^3.0.2",
-    "@vitejs/plugin-react": "^4.4.1",
+    "@vitejs/plugin-react": "^5.1.0",
     "autoprefixer": "^10.0.1",
     "babel-jest": "^29.7.0",
     "babel-loader": "^8.2.2",
@@ -96,7 +96,7 @@
     "tslib": "^2.0.0",
     "tslint": "^6.1.2",
     "vite": "^7.1.11",
-    "vite-plugin-static-copy": "^0.13.1",
+    "vite-plugin-static-copy": "^3.1.4",
     "vite-tsconfig-paths": "^5.1.4"
   },
   "devDependencies": {

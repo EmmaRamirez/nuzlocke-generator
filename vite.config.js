@@ -55,7 +55,7 @@ export default defineConfig({
     },
   },
   worker: {
-    plugins: [tsconfigPaths()],
+    plugins: () => [tsconfigPaths()],
   },
   optimizeDeps: {
     include: ['react', 'react-dom'],
