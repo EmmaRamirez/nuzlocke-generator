@@ -52,7 +52,7 @@
     "babel-jest": "^29.7.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-bundled-import-meta": "^0.3.2",
-    "babel-plugin-macros": "^2.8.0",
+    "babel-plugin-macros": "^3.1.0",
     "babel-plugin-module-resolver": "^5.0.0",
     "babel-plugin-search-and-replace": "^1.1.0",
     "buffer": "^6.0.3",
