@@ -52,7 +52,7 @@ export const listOfHotkeys: HotkeyList[] = [
     onKeyUp: 'manualSave',
   },
   {
-    key: 'backspace',
+    key: 'Backspace',
     comment: 'Delete Pok\xE9mon',
     onKeyUp: 'deletePokemon',
   },

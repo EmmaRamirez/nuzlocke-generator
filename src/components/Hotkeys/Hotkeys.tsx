@@ -56,6 +56,7 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
   };
 
   private handleKeyUp = (e: KeyboardEvent) => {
+    console.log('pressed key up', e.key);
     listOfHotkeys.map((hotkey) => {
       if (e.key === hotkey.key) {
         if (this.isTextInput(e)) {
@@ -142,6 +143,7 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
   }
 
   private deletePokemon() {
+    console.log('pressed delete');
     if (!this.props.selectedId) return;
     this.props.deletePokemon(this.props.selectedId);
   }
