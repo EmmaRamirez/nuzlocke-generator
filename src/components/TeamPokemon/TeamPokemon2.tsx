@@ -10,16 +10,13 @@ import {
   stripURLCSS,
   typeToColor,
 } from 'utils';
-import { css, cx } from 'emotion';
+import { css } from 'emotion';
 import * as Mustache from 'mustache';
-import { ErrorBoundary, PokemonIcon, PokemonIconPlain } from 'components';
+import { ErrorBoundary, PokemonIconPlain } from 'components';
 import { uniq } from 'ramda';
-import { Moves, MovesBase } from './Moves';
-import { customMoveMap } from 'reducers/customMoveMap';
-import { customTypes } from 'reducers/customTypes';
-import { Gender, GenderElement, GenderElementReact } from 'components/Shared';
+import { MovesBase } from './Moves';
+import { GenderElementReact } from 'components/Shared';
 import { CheckpointsDisplay } from 'components/Result';
-import { game } from 'reducers/game';
 import { linkedPokemonSelector } from 'selectors';
 import { PokemonItem } from './PokemonItem';
 import { PokemonPokeball } from './PokemonPokeball';

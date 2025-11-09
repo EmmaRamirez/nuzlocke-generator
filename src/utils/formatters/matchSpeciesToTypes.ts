@@ -563,11 +563,11 @@ export const handleSpeciesTypeEdgeCases = ({
   }
 
   if (match({ ...data, species: ['Ogerpon'], forme: ['Heartflame'] })) {
-    return [Types.Grass, Types.Water];
+    return [Types.Grass, Types.Fire];
   }
 
   if (match({ ...data, species: ['Ogerpon'], forme: ['Cornerstone'] })) {
-    return [Types.Grass, Types.Water];
+    return [Types.Grass, Types.Rock];
   }
 
   return null;
@@ -1140,10 +1140,11 @@ export const matchSpeciesToTypes = (
     case 'Tirtouga':
     case 'Carracosta':
     case 'Corsola':
-    case 'Binacle':
-    case 'Barbaracle':
     case 'Drednaw':
       return [Types.Water, Types.Rock];
+    case 'Binacle':
+    case 'Barbaracle':
+      return [Types.Rock, Types.Water];
     /**
      * @type Bug
      */
@@ -1354,6 +1355,8 @@ export const matchSpeciesToTypes = (
     case 'Skuntank':
     case 'Drapion':
       return [Types.Poison, Types.Dark];
+    case 'Overqwil':
+      return [Types.Dark, Types.Poison];
     case 'Tyranitar':
       return [Types.Rock, Types.Dark];
     case 'Carvanha':

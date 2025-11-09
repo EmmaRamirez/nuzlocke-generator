@@ -93,7 +93,7 @@ export const DeadPokemonBase = (poke: DeadPokemonProps) => {
           // justifySelf: 'stretch',
           //flexGrow: 4,
           outline: EMMA_MODE ? '' : '1px solid #222',
-          width: poke.gameOfOrigin === 'SoulSilver' && EMMA_MODE ? '14rem' : '50px',
+          width: poke.gameOfOrigin === 'Black' && EMMA_MODE ? '14rem' : '50px',
         }}>
         <div
           className="goc-circle"
@@ -113,7 +113,7 @@ export const DeadPokemonBase = (poke: DeadPokemonProps) => {
         <span style={{ filter: 'grayscale(100%)', margin: '0 auto' }}>
           <PokemonIconPlain onClick={(e) => poke.selectPokemon(poke.id)} {...(poke as any)} />
         </span>
-        {poke.gameOfOrigin === 'SoulSilver' && EMMA_MODE && (
+        {poke.gameOfOrigin === 'Black' && EMMA_MODE && (
           <div
             style={{
               margin: 0,

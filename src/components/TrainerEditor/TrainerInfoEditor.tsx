@@ -10,7 +10,7 @@ import { editTrainer } from 'actions';
 
 const capitalize = (s: string) => s[0].toUpperCase() + s.slice(1);
 
-const SpanBlock = ({ text }) => (
+const SpanBlock = ({ text }: { text: string }) => (
   <span
     style={{
       background: 'rgba(0, 0, 0, 0.1)',
@@ -22,8 +22,6 @@ const SpanBlock = ({ text }) => (
     {text}
   </span>
 );
-
-const trainerInfoEdit = (name, func) => (e) => func({ [name]: e.target.value });
 
 export function TrainerInfoEditor() {
   const trainer = useSelector<State, State['trainer']>((state) => state.trainer);
@@ -98,12 +96,6 @@ export function TrainerInfoEditor() {
         name="notes"
         placeholder=""
       />
-      {/* <Button
-            style={{ borderRadius: '0' }}
-            intent={Intent.PRIMARY}
-            icon='plus'>
-            Add New Field
-        </Button> */}
     </div>
   );
 }

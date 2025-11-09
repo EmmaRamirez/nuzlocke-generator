@@ -654,6 +654,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
             Clear All Data
           </Button>
         </ButtonGroup>
+        <div style={{ marginLeft: '0.825rem' }}>
         <Checkbox
           checked={this.props.state.editor.editorHistoryDisabled}
           onChange={(e) => this.props.setEditorHistoryDisabled(e.currentTarget.checked)}
@@ -670,8 +671,9 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
                 <Icon icon="info-sign" />
               </Popover>
             </>
-          }
-        />
+            }
+          />
+        </div>
       </BaseEditor>
     );
   }

@@ -10,6 +10,7 @@ export const getIconFormeSuffix = (forme: keyof typeof Forme) => {
   if (forme === 'Complete') return '-complete';
   if (forme === '!') return '-exclamation';
   if (forme === '?') return '-question';
+  if (forme === 'EternalFlower') return '-eternal';
   if (Forme[forme]) return `-${Forme[forme]}`;
   return '';
 };

@@ -30,7 +30,7 @@
     "lh": "npx lighthouse http://localhost:8080 --output-path=./lighthouse/audit.html --save-assets --preset=desktop --quiet --chrome-flags=headless"
   },
   "engines": {
-    "node": "^20",
+    "node": "^24",
     "npm": "^10"
   },
   "keywords": [],
@@ -47,19 +47,18 @@
     "@emmaramirez/dom-to-image": "^3.0.2",
     "@react-hook/debounce": "^3.0.0",
     "@types/react-dnd-html5-backend": "^3.0.2",
-    "@vitejs/plugin-react": "^4.4.1",
+    "@vitejs/plugin-react": "^5.1.0",
     "autoprefixer": "^10.0.1",
     "babel-jest": "^29.7.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-bundled-import-meta": "^0.3.2",
-    "babel-plugin-macros": "^2.8.0",
+    "babel-plugin-macros": "^3.1.0",
     "babel-plugin-module-resolver": "^5.0.0",
     "babel-plugin-search-and-replace": "^1.1.0",
     "buffer": "^6.0.3",
     "color": "^3.2.1",
     "compression": "^1.8.1",
     "cors": "^2.8.5",
-    "cypress": "^14.3.3",
     "deep-diff": "^1.0.2",
     "deep-equal": "^1.0.1",
     "dexie": "^3.2.2",
@@ -97,7 +96,7 @@
     "tslib": "^2.0.0",
     "tslint": "^6.1.2",
     "vite": "^7.1.11",
-    "vite-plugin-static-copy": "^0.13.1",
+    "vite-plugin-static-copy": "^3.1.4",
     "vite-tsconfig-paths": "^5.1.4"
   },
   "devDependencies": {
@@ -138,6 +137,7 @@
     "codegen.macro": "^4.1.0",
     "coveralls": "^3.0.2",
     "css-loader": "^5.0.0",
+    "cypress": "^15.6.0",
     "emotion": "^8.0.12",
     "eslint": "^9.26.0",
     "eslint-plugin-react": "^7.37.5",

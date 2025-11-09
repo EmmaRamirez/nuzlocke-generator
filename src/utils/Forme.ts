@@ -112,4 +112,6 @@ export enum Forme {
   Wellspring = 'wellspring',
   Heartflame = 'heartflame',
   Cornerstone = 'cornerstone',
+
+  EternalFlower = 'eternal-flower',
 }

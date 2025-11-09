@@ -64,6 +64,9 @@ const getGameName = (name: Game) => {
   ) {
     return 'swordshield';
   }
+  if (name === 'Legends: Z-A') {
+    return 'legendsz-a';
+  }
   return 'sm';
 };
 
@@ -103,6 +106,8 @@ const getGameNameSerebii = (name: Game) => {
     case 'Brilliant Diamond':
     case 'Shining Pearl':
       return 'swordshield';
+    case 'Legends: Z-A':
+      return 'legendsz-a';
     default:
       return 'SM';
   }
@@ -173,8 +178,6 @@ export async function getPokemonImage({
       name === 'Moon' ||
       name === 'Ultra Sun' ||
       name === 'Ultra Moon' ||
-      name === 'Sword' ||
-      name === 'Shield' ||
       name === "Let's Go Eevee" ||
       name === "Let's Go Pikachu" ||
       name === 'Colosseum' ||
@@ -221,6 +224,18 @@ export async function getPokemonImage({
 
       return await wrapImageInCORS(url);
     }
+  }
+
+  if (style?.spritesMode && (name === 'Sword' || name === 'Shield')) {
+    if (!shiny) {
+      const url = `https://www.serebii.net/${getGameName(
+        name
+      )}/pokemon/${leadingZerosNumber}${getForme(forme)}.png`;
+
+      return await wrapImageInCORS(url);
+    } 
+    const url = `https://www.serebii.net/Shiny/SWSH/${leadingZerosNumber}.png`;
+    return await wrapImageInCORS(url);
   }
 
   if (style?.spritesMode) {

@@ -50,6 +50,10 @@ export function getEncounterMap(game: Game) {
     return locations.Paldea;
   }
 
+  if (region === Region.LumioseCity) {
+    return locations.LumioseCity;
+  }
+
   return ['This game does not have location info.'];
 
   // return {
