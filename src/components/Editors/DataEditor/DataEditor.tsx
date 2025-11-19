@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import {
   Button,
   ButtonGroup,
@@ -26,7 +26,7 @@ import { omit } from 'ramda';
 import { BaseEditor } from 'components/Editors/BaseEditor/BaseEditor';
 import { State } from 'state';
 import { noop } from 'redux-saga/utils';
-import { feature, GameSaveFormat } from 'utils';
+import { GameSaveFormat } from 'utils';
 import { DeleteAlert } from './DeleteAlert';
 import { isEmpty } from 'utils/isEmpty';
 // @TODO: fix codegen imports
@@ -71,17 +71,17 @@ const isValidJSON = (data: string): boolean => {
   try {
     JSON.parse(data);
     return true;
-  } catch (e) {
+  } catch {
     return false;
   }
 };
 
 // This is to handle very weird/rare edge cases where data
 // can be parsed, but then in turn has to be "double-parsed"
-const handleExceptions = (data) => {
-  let updated: any = {};
+const handleExceptions = (data: State | Record<string, unknown>) => {
+  let updated: Partial<State> = {};
 
-  if (typeof data.pokemon === 'string') {
+  if (typeof (data as State).pokemon === 'string') {
     const toaster = Toaster.create();
     toaster.show({
       message: 'Issue with data detected. Attempting to fix...',
@@ -89,8 +89,8 @@ const handleExceptions = (data) => {
     });
     for (const prop in data) {
       try {
-        updated = { ...updated, [prop]: JSON.parse(data[prop]) };
-      } catch (e) {
+        updated = { ...updated, [prop]: JSON.parse((data as Record<string, string>)[prop]) };
+      } catch {
         console.log(`Failed to parse on ${prop}`);
       }
     }
@@ -100,7 +100,7 @@ const handleExceptions = (data) => {
 };
 
 export interface SaveGameSettingsDialogProps {
-  onMergeDataChange: (e: any) => void;
+  onMergeDataChange: () => void;
   mergeDataMode: boolean;
   boxes: State['box'];
   selectedGame: GameSaveFormat;
@@ -151,7 +151,6 @@ export function SaveGameSettingsDialog({
   onMergeDataChange,
   mergeDataMode,
   boxes,
-  selectedGame,
   boxMappings,
   setBoxMappings,
 }: SaveGameSettingsDialogProps) {
@@ -189,9 +188,9 @@ export function SaveGameSettingsDialog({
           flexWrap: 'wrap',
         }}
         className="has-nice-scrollbars">
-        {boxMappings.map((value, index) => {
+        {boxMappings.map((value) => {
           return (
-            <div style={{ padding: '0.25rem' }}>
+            <div key={value.key} style={{ padding: '0.25rem' }}>
               <BoxSelect
                 boxKey={value.key}
                 setBoxMappings={setBoxMappings}
@@ -214,9 +213,9 @@ export function SaveGameSettingsDialog({
 }
 
 export class DataEditorBase extends React.Component<DataEditorProps, DataEditorState> {
-  public textarea: any;
-  public fileInput: any;
-  public nuzlockeJsonFileInput: any;
+  public textarea: HTMLTextAreaElement | null;
+  public fileInput: HTMLInputElement | null;
+  public nuzlockeJsonFileInput: HTMLInputElement | null;
 
   public constructor(props) {
     super(props);
@@ -253,21 +252,22 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
     }
   };
 
-  private uploadNuzlockeJsonFile = (e) => {
-    const file = this.nuzlockeJsonFileInput.files[0];
+  private uploadNuzlockeJsonFile = () => {
+    const file = this.nuzlockeJsonFileInput?.files?.[0];
+    if (!file) return;
     const reader = new FileReader();
 
     reader.readAsText(file, 'utf-8');
     reader.addEventListener('load', (event) => {
       const file = event?.target?.result;
       const data = file;
-      // @ts-ignore
+      // @ts-expect-error - FileReader result type mismatch
       this.setState({ data });
     });
   };
 
-  private confirmImport = (e) => {
-    let cmm = { customMoveMap: [] };
+  private confirmImport = () => {
+    let cmm: { customMoveMap: State['customMoveMap'] } = { customMoveMap: [] };
     const override = this.state.overrideImport;
     const data = handleExceptions(JSON.parse(this.state.data));
     const nuz = this.props.state;
@@ -307,12 +307,12 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
     });
   };
 
-  private renderTeam(data) {
-    let d: any;
+  private renderTeam(data: string) {
+    let d: { pokemon?: Pokemon[] };
     try {
-      d = handleExceptions(JSON.parse(data));
+      d = handleExceptions(JSON.parse(data)) as { pokemon?: Pokemon[] };
     } catch {
-      d = { pokemon: false };
+      d = {};
     }
 
     if (d.pokemon) {
@@ -349,6 +349,9 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
     if (isYellow) return { name: 'Yellow', customName: '' };
     if (selectedGame === 'GS') return { name: 'Gold', customName: '' };
     if (selectedGame === 'Crystal') return { name: 'Crystal', customName: '' };
+    if (selectedGame === 'RS') return { name: 'Ruby', customName: '' };
+    if (selectedGame === 'FRLG') return { name: 'FireRed', customName: '' };
+    if (selectedGame === 'Emerald') return { name: 'Emerald', customName: '' };
     return { name: 'Red', customName: '' };
   }
 
@@ -367,15 +370,16 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
     });
   };
 
-  private uploadFile = (replaceState, state) => (e) => {
+  private uploadFile = (replaceState, state) => () => {
     const t0 = performance.now();
     // @NOTE: this is a gross work-around a bug with jest and import.meta.url
     // const worker = new Worker(new URL('parsers/worker.ts', codegen`module.exports = import.meta.env.MODE === "test" ? "" : "import.meta.url"`));
 
-    const worker = new Worker(new URL('../../parsers/worker.ts', import.meta.url), {
+    const worker = new Worker(new URL('../../../parsers/worker.ts', import.meta.url), {
       type: 'module',
     });
 
+    if (!this.fileInput?.files?.[0]) return;
     const file = this.fileInput.files[0];
     const reader = new FileReader();
     const componentState = this.state;
@@ -408,6 +412,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
           pokemon: mergedPokemon,
           trainer: result.trainer,
         };
+        console.log('data', data);
         const newState = { ...state, ...data };
         replaceState(newState);
       };
@@ -426,7 +431,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
     });
   };
 
-  private clearAllData = (e) => {
+  private clearAllData = () => {
     persistor.purge();
     window.location.reload();
   };
@@ -435,21 +440,16 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
     persistor.flush();
   };
 
-  private toggleClearingData = (e) =>
+  private toggleClearingData = () =>
     this.setState({ isClearAllDataOpen: !this.state.isClearAllDataOpen });
 
   private renderSaveFileUI() {
-    const allowedGames: string[] = ['RBY'];
-
-    if (feature.gen2saves) {
-      allowedGames.push('GS');
-      allowedGames.push('Crystal');
-    }
+    const allowedGames: GameSaveFormat[] = ['RBY', 'GS', 'Crystal', 'RS', 'FRLG', 'Emerald'];
 
     return (
       <>
         <Button
-          onClick={(e) => {
+          onClick={() => {
             this.setState({ showSaveFileUI: !this.state.showSaveFileUI });
           }}
           style={{
@@ -507,7 +507,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
           </div>
 
           <Button
-            onClick={(e) => this.setState({ isSettingsOpen: true })}
+            onClick={() => this.setState({ isSettingsOpen: true })}
             minimal
             intent={Intent.PRIMARY}>
             Options
@@ -515,7 +515,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
 
           <Dialog
             isOpen={this.state.isSettingsOpen}
-            onClose={(e) => this.setState({ isSettingsOpen: false })}
+            onClose={() => this.setState({ isSettingsOpen: false })}
             title={'Save Upload Settings'}
             className={this.props.state.style.editorDarkMode ? Classes.DARK : ''}
             icon="floppy-disk">
@@ -556,7 +556,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         />
         <Dialog
           isOpen={this.state.isOpen}
-          onClose={(e) => this.setState({ isOpen: false })}
+          onClose={() => this.setState({ isOpen: false })}
           title={this.state.mode === 'export' ? 'Exported Nuzlocke Save' : 'Import Nuzlocke Save'}
           className={this.props.state.style.editorDarkMode ? Classes.DARK : ''}
           icon="floppy-disk">
@@ -573,10 +573,11 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
               <div className={Classes.DIALOG_FOOTER}>
                 <a
                   href={this.state.href}
-                  download={`nuzlocke_${this.props?.state?.trainer?.title?.toLowerCase().replace(/\s/g, '-') ||
+                  download={`nuzlocke_${
+                    this.props?.state?.trainer?.title?.toLowerCase().replace(/\s/g, '-') ||
                     this.props?.state?.game?.name?.toLowerCase().replace(/\s/g, '-') ||
                     ''
-                    }_${uuid().slice(0, 4)}.json`}>
+                  }_${uuid().slice(0, 4)}.json`}>
                   <Button icon={'download'} intent={Intent.PRIMARY}>
                     Download
                   </Button>
@@ -634,10 +635,10 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
         </Dialog>
 
         <ButtonGroup style={{ margin: '.25rem' }}>
-          <Button onClick={(e) => this.importState()} icon="import" intent={Intent.PRIMARY}>
+          <Button onClick={() => this.importState()} icon="import" intent={Intent.PRIMARY}>
             Import Data
           </Button>
-          <Button onClick={(e) => this.exportState(this.props.state)} icon="export">
+          <Button onClick={() => this.exportState(this.props.state)} icon="export">
             Export Data
           </Button>
           {/* <Button icon='add' intent={Intent.SUCCESS}>
@@ -682,4 +683,4 @@ export const DataEditor = connect((state: State) => ({ state: state }), {
   replaceState,
   newNuzlocke,
   setEditorHistoryDisabled,
-})(DataEditorBase as any);
+})(DataEditorBase);

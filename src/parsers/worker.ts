@@ -1,4 +1,4 @@
-import { parseGen1Save, parseGen2Save } from '.';
+import { parseGen1Save, parseGen2Save, parseGen3Save } from '.';
 import { BoxMappings } from './utils/boxMappings';
 
 interface MessageData {
@@ -30,6 +30,13 @@ self.onmessage = async ({ data: { save, selectedGame, boxMappings } }: MessageDa
       isCrystal: true,
       boxMappings,
     });
+  } else if (selectedGame === 'RS' || selectedGame === 'FRLG' || selectedGame === 'Emerald') {
+    result = await parseGen3Save(save, {
+      boxMappings,
+      selectedGame,
+    });
+  } else {
+    throw new Error(`Unsupported game type: ${selectedGame}`);
   }
 
   // strip out invalid species
