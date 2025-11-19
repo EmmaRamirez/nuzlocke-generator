@@ -22,7 +22,7 @@ import { ErrorBoundary } from 'components';
 // window.path = window.path || require('path').path;
 
 async function getRollbar() {
-  // @ts-expect-error
+  // @ts-ignore
   const { default: Rollbar } = await import('rollbar');
 
   const rollbarConfig = new Rollbar({
@@ -102,10 +102,14 @@ async function createRender() {
   // @TODO: add back check for tests mode
   const isTest = false;
 
-  const App = React.lazy(() => import('components/App').then((res) => ({ default: res.App })));
+  const App = React.lazy(() =>
+    import('components/Layout/App').then((res) => ({ default: res.App }))
+  );
+
+  const ReduxProvider = Provider as any;
 
   render(
-    <Provider store={store}>
+    <ReduxProvider store={store}>
       {isTest ? (
         <PersistGate loading={<div>Loading...</div>} onBeforeLift={null} persistor={persistor}>
           <DndProvider backend={HTML5Backend}>
@@ -125,9 +129,13 @@ async function createRender() {
           </ErrorBoundary>
         </DndProvider>
       )}
-    </Provider>,
+    </ReduxProvider>,
     mountNode
   );
 }
 
-createRender().then((res) => res);
+createRender().catch(err => {
+  console.error('Failed to create render:', err);
+  document.body.innerHTML = `<div style="color: red; padding: 20px;"><h1>Failed to start app</h1><pre>${err.message}\n${err.stack}</pre></div>`;
+});
+getRollbar().catch(err => console.error('Failed to init Rollbar:', err));

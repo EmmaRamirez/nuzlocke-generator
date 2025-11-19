@@ -1328,8 +1328,7 @@ export const matchSpeciesToTypes = (
     case 'Mandibuzz':
     case 'Yveltal':
       return [Types.Dark, Types.Flying];
-    case 'Sableye':
-      return [Types.Dark, Types.Ghost];
+
     case 'Sneasel':
     case 'Weavile':
       return [Types.Dark, Types.Ice];
@@ -1616,9 +1615,7 @@ export const matchSpeciesToTypes = (
     case 'Celesteela':
     case 'Corviknight':
       return [Types.Steel, Types.Flying];
-    case 'Houndour':
-    case 'Houndoom':
-      return [Types.Dark, Types.Fire];
+
     case 'Larvitar':
     case 'Pupitar':
       return [Types.Rock, Types.Ground];
@@ -1683,6 +1680,7 @@ export const matchSpeciesToTypes = (
     case 'Roggenrola':
     case 'Boldore':
     case 'Gigalith':
+      return [Types.Rock, Types.Rock];
     case 'Rockruff':
     case 'Lycanroc':
       return [Types.Rock, Types.Rock];
@@ -1875,8 +1873,7 @@ export const matchSpeciesToTypes = (
     case 'Palpitoad':
     case 'Seismitoad':
       return [Types.Water, Types.Ground];
-    case 'Maractus':
-      return [Types.Grass, Types.Grass];
+
     case 'Landorus':
       return [Types.Ground, Types.Flying];
     case 'Sigilyph':
@@ -1901,9 +1898,7 @@ export const matchSpeciesToTypes = (
       return [Types.Dragon, Types.Ground];
     case 'Volcanion':
       return [Types.Fire, Types.Water];
-    case 'Rockruff':
-    case 'Lycanroc':
-      return [Types.Rock, Types.Rock];
+
     case 'Mareanie':
     case 'Toxapex':
       return [Types.Water, Types.Poison];
@@ -1929,8 +1924,7 @@ export const matchSpeciesToTypes = (
       return [Types.Psychic, Types.Steel];
     case 'Nihilego':
       return [Types.Rock, Types.Poison];
-    case 'Celesteela':
-      return [Types.Steel, Types.Flying];
+
     case 'Kartana':
       return [Types.Steel, Types.Grass];
     case 'Ferroseed':
@@ -1956,7 +1950,6 @@ export const matchSpeciesToTypes = (
     case 'Pidgeot':
     case 'Spearow':
     case 'Fearow':
-    case "Farfetch'd":
     case 'Doduo':
     case 'Dodrio':
     case 'Hoothoot':

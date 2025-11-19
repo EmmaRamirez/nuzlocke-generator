@@ -12,7 +12,7 @@ import { getIconFormeSuffix } from './getIconFormeSuffix';
 import { Editor, Pokemon } from 'models';
 import { State } from 'state';
 import { GenderElementProps } from 'components';
-import { getImages } from 'components/Shared/ImagesDrawer';
+import { getImages } from 'components/Common/Shared/ImagesDrawer';
 
 const handleTcgTransforms = (species?: string, gender?: GenderElementProps) => {
   if (gender === 'Female') {
@@ -241,8 +241,8 @@ export async function getPokemonImage({
   if (style?.spritesMode) {
     const url = shiny
       ? `https://www.serebii.net/Shiny/${getGameNameSerebii(
-          name as Game
-        )}/${leadingZerosNumber}.png`
+        name as Game
+      )}/${leadingZerosNumber}.png`
       : `https://www.serebii.net/${getGameName(name as Game)}/pokemon/${leadingZerosNumber}.png`;
 
     return await wrapImageInCORS(url);

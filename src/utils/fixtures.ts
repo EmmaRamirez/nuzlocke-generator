@@ -1,6 +1,6 @@
 import { generateEmptyPokemon } from './generateEmptyPokemon';
 import { Types } from './Types';
-import { Moves } from 'components/TeamPokemon/Moves';
+import { Moves } from 'components/Pokemon/TeamPokemon/Moves';
 import { Forme } from './Forme';
 import { matchSpeciesToTypes } from './formatters/matchSpeciesToTypes';
 import { Pokemon } from 'models';

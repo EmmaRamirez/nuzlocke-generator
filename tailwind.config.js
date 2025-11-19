@@ -1,3 +1,4 @@
+/* eslint-env node */
 module.exports = {
   future: {
     removeDeprecatedGapUtilities: true,

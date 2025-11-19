@@ -1,4 +1,4 @@
-import { GenderElementProps } from 'components/Shared';
+import { GenderElementProps } from 'components/Common/Shared';
 import { Checkpoints } from 'reducers/checkpoints';
 import { Types, Game, Forme } from 'utils';
 

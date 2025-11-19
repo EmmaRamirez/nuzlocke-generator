@@ -1,7 +1,7 @@
 import { applyMiddleware, createStore, Middleware } from 'redux';
 import { createLogger } from 'redux-logger';
 // @TODO: figure out this deprecation
-import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 import {
   persistCombineReducers,
   persistStore,
@@ -9,7 +9,7 @@ import {
   MigrationManifest,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { version } from 'package';
+import { version } from '../../package.json';
 import { reducers } from '../reducers';
 import { State } from 'state';
 
@@ -89,11 +89,11 @@ const config = {
   key: 'root',
   blacklist: ['router', 'editorHistory'],
   storage,
-  version,
+  version: version as unknown as number,
   migrations: createMigrate(migrations as unknown as MigrationManifest, { debug: true }),
 };
 
-export const history = createHistory();
+export const history = createBrowserHistory();
 
 export const persistReducers = persistCombineReducers(config, reducers as any);
 
