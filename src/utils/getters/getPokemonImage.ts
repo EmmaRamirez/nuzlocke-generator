@@ -233,7 +233,7 @@ export async function getPokemonImage({
       )}/pokemon/${leadingZerosNumber}${getForme(forme)}.png`;
 
       return await wrapImageInCORS(url);
-    } 
+    }
     const url = `https://www.serebii.net/Shiny/SWSH/${leadingZerosNumber}.png`;
     return await wrapImageInCORS(url);
   }

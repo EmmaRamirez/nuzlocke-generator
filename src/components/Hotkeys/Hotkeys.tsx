@@ -42,16 +42,17 @@ export class HotkeysBase extends React.PureComponent<HotkeysProps> {
   }
 
   public componentDidMount() {
-    document && document.addEventListener('keydown', this.globalHotkeysEvents.handleKeyDown);
-    document && document.addEventListener('keyup', this.globalHotkeysEvents.handleKeyUp);
+    document.addEventListener('keydown', this.globalHotkeysEvents.handleKeyDown);
+    document.addEventListener('keyup', this.globalHotkeysEvents.handleKeyUp);
   }
 
   public UNSAFE_componentWillMount() {
-    document && document.removeEventListener('keydown', this.globalHotkeysEvents.handleKeyDown);
-    document && document.removeEventListener('keyup', this.globalHotkeysEvents.handleKeyUp);
+    document.removeEventListener('keydown', this.globalHotkeysEvents.handleKeyDown);
+    document.removeEventListener('keyup', this.globalHotkeysEvents.handleKeyUp);
   }
 
-  private handleKeyDown = (e: KeyboardEvent) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  private handleKeyDown = (event: KeyboardEvent) => {
     return;
   };
 
