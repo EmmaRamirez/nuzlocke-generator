@@ -203,12 +203,12 @@ export class StatsBase extends React.Component<StatsProps, { pokemon: State['pok
           ) : null}
           {stats?.length
             ? stats?.map((stat, idx) =>
-              stat.key?.length && stat.value?.length ? (
-                <div key={stat.id}>
-                  {stat.key}: {stat.value}
-                </div>
-              ) : null
-            )
+                stat.key?.length && stat.value?.length ? (
+                  <div key={stat.id}>
+                    {stat.key}: {stat.value}
+                  </div>
+                ) : null
+              )
             : null}
         </div>
       </div>

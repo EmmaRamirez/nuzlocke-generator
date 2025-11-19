@@ -4,7 +4,7 @@ import { listOfHotkeys } from 'utils';
 import { Classes } from '@blueprintjs/core';
 
 // tslint:disable-next-line:no-empty-interfaces
-export interface HotkeysEditorState { }
+export interface HotkeysEditorState {}
 
 export class HotkeysEditor extends React.Component<{}> {
   public constructor(props) {

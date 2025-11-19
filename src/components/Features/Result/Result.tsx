@@ -66,8 +66,8 @@ interface ResultState {
 const getNumberOf = (status?: string, pokemon?: Pokemon[]) =>
   status
     ? pokemon
-      ?.filter((v) => v.hasOwnProperty('id'))
-      .filter((poke) => poke.status === status && !poke.hidden).length
+        ?.filter((v) => v.hasOwnProperty('id'))
+        .filter((poke) => poke.status === status && !poke.hidden).length
     : 0;
 
 const ZoomValues = [
@@ -360,8 +360,8 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
     const paddingForVerticalTrainerSection =
       trainerSectionOrientation === 'vertical'
         ? {
-          paddingLeft: style.trainerWidth,
-        }
+            paddingLeft: style.trainerWidth,
+          }
         : {};
     const teamContainer = (
       <div style={paddingForVerticalTrainerSection} className="team-container">
@@ -429,10 +429,11 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
           )}
           <div
             ref={this.resultRef}
-            className={`result ng-container ${(style.template && style.template.toLowerCase().replace(/\s/g, '-')) || ''
-              } region-${getGameRegion(
-                this.props.game.name
-              )} team-size-${numberOfTeam} ${trainerSectionOrientation}-trainer
+            className={`result ng-container ${
+              (style.template && style.template.toLowerCase().replace(/\s/g, '-')) || ''
+            } region-${getGameRegion(
+              this.props.game.name
+            )} team-size-${numberOfTeam} ${trainerSectionOrientation}-trainer
                        ${editor.showResultInMobile ? Styles.result_mobile : ''}
                         `}
             style={{
@@ -456,19 +457,19 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
               style={
                 trainerSectionOrientation === 'vertical'
                   ? {
-                    backgroundColor: topHeaderColor,
-                    color: getContrastColor(topHeaderColor),
-                    width: style.trainerWidth,
-                    position: 'absolute',
-                    height: `calc(${style.trainerHeight} + 2%)`,
-                    display: 'flex',
-                  }
+                      backgroundColor: topHeaderColor,
+                      color: getContrastColor(topHeaderColor),
+                      width: style.trainerWidth,
+                      position: 'absolute',
+                      height: `calc(${style.trainerHeight} + 2%)`,
+                      display: 'flex',
+                    }
                   : {
-                    backgroundColor: topHeaderColor,
-                    color: getContrastColor(topHeaderColor),
-                    width: style.trainerAuto ? '100%' : style.trainerWidth,
-                    height: style.trainerAuto ? 'auto' : style.trainerHeight,
-                  }
+                      backgroundColor: topHeaderColor,
+                      color: getContrastColor(topHeaderColor),
+                      width: style.trainerAuto ? '100%' : style.trainerWidth,
+                      height: style.trainerAuto ? 'auto' : style.trainerHeight,
+                    }
               }>
               <TrainerResult orientation={trainerSectionOrientation} />
             </div>

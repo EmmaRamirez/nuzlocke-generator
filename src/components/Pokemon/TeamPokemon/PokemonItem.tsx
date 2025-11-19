@@ -57,10 +57,10 @@ export function PokemonItem({
         backgroundImage:
           style.template === 'Hexagons' || style.itemStyle === 'outer glow'
             ? getBackgroundGradient(
-              pokemon.types != null ? pokemon.types[0] : 'Normal',
-              pokemon.types != null ? pokemon.types[1] : 'Normal',
-              customTypes
-            )
+                pokemon.types != null ? pokemon.types[0] : 'Normal',
+                pokemon.types != null ? pokemon.types[1] : 'Normal',
+                customTypes
+              )
             : '',
       }}
       className={cx(itemLabelStyle.base, itemLabelStyle[style.itemStyle], 'pokemon-item')}>

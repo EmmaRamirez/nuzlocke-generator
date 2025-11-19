@@ -464,7 +464,7 @@ export class StyleEditorBase extends React.Component<StyleEditorProps, StyleEdit
             ))}
           </HTMLSelect>
           {(props.game.name === 'Sword' || props.game.name === 'Shield') &&
-            props.style.teamImages === 'shuffle' ? (
+          props.style.teamImages === 'shuffle' ? (
             <div className={cx(Classes.CALLOUT, Classes.INTENT_DANGER)} style={calloutStyle}>
               Shuffle images are not supported for this game
             </div>

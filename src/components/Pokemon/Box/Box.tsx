@@ -224,11 +224,11 @@ export const Box: React.FC<BoxProps> = (props) => {
 
   const collapsedStyle = isCollapsed
     ? {
-      height: '54px',
-      overflow: 'hidden',
-      WebkitMaskImage: 'linear-gradient(to top, rgba(0, 0, 0, 0.33) 25%, black 75%)',
-      marginBottom: '-18px',
-    }
+        height: '54px',
+        overflow: 'hidden',
+        WebkitMaskImage: 'linear-gradient(to top, rgba(0, 0, 0, 0.33) 25%, black 75%)',
+        marginBottom: '-18px',
+      }
     : {};
 
   return (

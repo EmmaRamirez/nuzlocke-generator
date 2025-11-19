@@ -32,6 +32,7 @@ import { isEmpty } from 'utils/isEmpty';
 // @TODO: fix codegen imports
 // import codegen from 'codegen.macro';
 import { BoxMappings } from 'parsers/utils/boxMappings';
+import SaveFileWorker from 'parsers/worker?worker';
 import { cx } from 'emotion';
 
 export interface DataEditorProps {
@@ -375,9 +376,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
     // @NOTE: this is a gross work-around a bug with jest and import.meta.url
     // const worker = new Worker(new URL('parsers/worker.ts', codegen`module.exports = import.meta.env.MODE === "test" ? "" : "import.meta.url"`));
 
-    const worker = new Worker(new URL('../../../parsers/worker.ts', import.meta.url), {
-      type: 'module',
-    });
+    const worker = new SaveFileWorker();
 
     if (!this.fileInput?.files?.[0]) return;
     const file = this.fileInput.files[0];

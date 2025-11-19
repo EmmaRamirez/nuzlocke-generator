@@ -27,13 +27,13 @@ const sortById = (a, b) => {
 export class StatsEditorBase extends React.Component<StatsEditorProps> {
   private onChange =
     (stat: State['stats'][number], use: 'key' | 'value') =>
-      (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { editStat } = this.props;
-        //if (!stat?.id || !stat?.key || !stat?.value) return;
-        use === 'key'
-          ? editStat(stat?.id!, e.target.value, stat.value ?? '')
-          : editStat(stat?.id!, stat.key ?? '', e.target.value);
-      };
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { editStat } = this.props;
+      //if (!stat?.id || !stat?.key || !stat?.value) return;
+      use === 'key'
+        ? editStat(stat?.id!, e.target.value, stat.value ?? '')
+        : editStat(stat?.id!, stat.key ?? '', e.target.value);
+    };
 
   public render() {
     const { style, pokemon, editStyle } = this.props;

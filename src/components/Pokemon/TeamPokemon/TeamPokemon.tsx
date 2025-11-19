@@ -109,10 +109,10 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
             // backgroundImage: isCardsTheme ? undefined : `linear-gradient(to right, #2d2d2d 1px, transparent 1px), linear-gradient(to bottom, #2d2d2d 1px, transparent 1px)`,
             backgroundImage: isCompactTheme
               ? getBackgroundGradient(
-                pokemon.types != null && !pokemon.egg ? pokemon?.types[1] : 'Normal',
-                pokemon.types != null && !pokemon.egg ? pokemon?.types[0] : 'Normal',
-                customTypes
-              )
+                  pokemon.types != null && !pokemon.egg ? pokemon?.types[1] : 'Normal',
+                  pokemon.types != null && !pokemon.egg ? pokemon?.types[0] : 'Normal',
+                  customTypes
+                )
               : undefined,
             color: isCompactTheme
               ? getContrastColor(typeToColor(getTypeOrNone(), customTypes))
@@ -281,8 +281,9 @@ export function TeamPokemonBaseMinimal(props: TeamPokemonBaseProps & { spriteSty
                 backgroundImage,
                 ...(props.spriteStyle as React.CSSProperties),
               }}
-              className={`pokemon-image ${(poke?.species || 'missingno').toLowerCase()} ${props.style.imageStyle === 'round' ? 'round' : 'square'
-                }`}
+              className={`pokemon-image ${(poke?.species || 'missingno').toLowerCase()} ${
+                props.style.imageStyle === 'round' ? 'round' : 'square'
+              }`}
             />
           );
         }}
@@ -467,10 +468,10 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, { ima
                 cursor: 'pointer',
                 background: this.props.style.teamPokemonBorder
                   ? getBackgroundGradient(
-                    poke.types != null && !poke.egg ? poke.types[0] : 'Normal',
-                    poke.types != null && !poke.egg ? poke.types[1] : 'Normal',
-                    customTypes
-                  )
+                      poke.types != null && !poke.egg ? poke.types[0] : 'Normal',
+                      poke.types != null && !poke.egg ? poke.types[1] : 'Normal',
+                      customTypes
+                    )
                   : 'transparent',
               }}
             />
@@ -492,8 +493,9 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, { ima
                       ...(spriteStyle as React.CSSProperties),
                       imageRendering: style.iconRendering,
                     }}
-                    className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()} ${this.props.style.imageStyle === 'round' ? 'round' : 'square'
-                      }`}
+                    className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()} ${
+                      this.props.style.imageStyle === 'round' ? 'round' : 'square'
+                    }`}
                   />
                 );
               }}
@@ -508,10 +510,10 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, { ima
               cursor: 'pointer',
               background: this.props.style.teamPokemonBorder
                 ? getBackgroundGradient(
-                  poke.types != null && !poke.egg ? poke.types[0] : 'Normal',
-                  poke.types != null && !poke.egg ? poke.types[1] : 'Normal',
-                  customTypes
-                )
+                    poke.types != null && !poke.egg ? poke.types[0] : 'Normal',
+                    poke.types != null && !poke.egg ? poke.types[1] : 'Normal',
+                    customTypes
+                  )
                 : 'transparent',
             }}>
             <PokemonImage
@@ -532,8 +534,9 @@ export class TeamPokemonBase extends React.Component<TeamPokemonBaseProps, { ima
                       ...(spriteStyle as React.CSSProperties),
                       imageRendering: style.iconRendering,
                     }}
-                    className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()} ${this.props.style.imageStyle === 'round' ? 'round' : 'square'
-                      }`}
+                    className={`pokemon-image ${(poke.species || 'missingno').toLowerCase()} ${
+                      this.props.style.imageStyle === 'round' ? 'round' : 'square'
+                    }`}
                   />
                 );
               }}

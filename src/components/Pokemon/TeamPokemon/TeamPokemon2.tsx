@@ -115,7 +115,7 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
   const pokemonIcon = (
     <PokemonIconPlain
       selectedId={''}
-      onClick={() => { }}
+      onClick={() => {}}
       imageStyle={{}}
       species={pokemon?.species}
       id={pokemon?.id}
@@ -151,9 +151,9 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
     ),
     item: pokemon.item
       ? `icons/hold-item/${(pokemon.item || '')
-        .toLowerCase()
-        .replace(/\'/g, '')
-        .replace(/\s/g, '-')}.png`
+          .toLowerCase()
+          .replace(/\'/g, '')
+          .replace(/\s/g, '-')}.png`
       : undefined,
     itemComponent: ReactDOMServer.renderToString(
       <PokemonItem pokemon={pokemon} style={style} customTypes={customTypes} />

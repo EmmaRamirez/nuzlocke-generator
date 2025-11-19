@@ -495,7 +495,7 @@ export class CurrentPokemonEditBase extends React.Component<
             customIcon={currentPokemon.customIcon}
             egg={currentPokemon.egg}
             selectedId={null}
-            onClick={() => { }}
+            onClick={() => {}}
             imageStyle={{
               maxHeight: '100%',
               height: '32px',

@@ -20,14 +20,20 @@ import {
 } from '@blueprintjs/core';
 import { ColorEdit, ThemeSelect } from 'components/Common/Shared';
 import { ChampsPokemon, PokemonIcon, ErrorBoundary } from 'components';
-import { } from 'themes';
+import {} from 'themes';
 import { BoxedPokemon } from 'components/Pokemon/BoxedPokemon/BoxedPokemon';
 import { DeadPokemon } from 'components/Pokemon/DeadPokemon/DeadPokemon';
 import { State } from 'state';
 import { CSSUnitInput } from './CSSUnitInput';
 import { ChampsPokemonView } from 'components/Pokemon/ChampsPokemon/ChampsPokemonCollection';
 import * as Loadable from 'react-loadable';
-import { Layout, LayoutDisplay, LayoutDirection, LayoutAlignment, LayoutSpacing } from 'components/Layout/Layout/Layout';
+import {
+  Layout,
+  LayoutDisplay,
+  LayoutDirection,
+  LayoutAlignment,
+  LayoutSpacing,
+} from 'components/Layout/Layout/Layout';
 import { TeamPokemon } from 'components/Pokemon/TeamPokemon/TeamPokemon2';
 import { render } from 'react-dom';
 

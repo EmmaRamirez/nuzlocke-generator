@@ -127,7 +127,7 @@ export class NuzlockeSaveBase extends React.Component<
           try {
             parsedData = isCurrent ? JSON.parse(state) : JSON.parse(data);
             //parsedData = JSON.parse(data);
-          } catch (e) { }
+          } catch (e) {}
 
           if (!parsedData) {
             return null;
