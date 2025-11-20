@@ -5,4 +5,5 @@ export interface ParserOptions {
   selectedGame?: string;
   isCrystal?: boolean;
   type?: 'nuzlocke' | 'raw';
+  debug?: boolean;
 }

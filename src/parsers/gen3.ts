@@ -7,6 +7,15 @@ import type { Species } from 'utils/data/listOfPokemon';
 import type { GameSaveFormat } from 'utils/gameSaveFormat';
 import { MOVES_ARRAY } from './utils';
 import { ParserOptions } from './utils/parserOptions';
+import { parseTime } from './utils/parseTime';
+
+const DEBUG = import.meta.env.VITE_DEBUG_PARSER === 'true';
+
+const log = (category: string, message: string, data?: unknown) => {
+  if (!DEBUG) return;
+  const timestamp = new Date().toISOString();
+  console.log(`[Gen3Parser:${category}] ${timestamp} - ${message}`, data || '');
+};
 
 interface SaveSection {
   id: number;
@@ -220,6 +229,15 @@ const readSection = (file: Buffer, sectionIndex: number): SaveSection => {
   const checksum = footer.readUInt16LE(2);
   const saveIndex = footer.readUInt32LE(8);
 
+  log(
+    'readSection',
+    `Section ${sectionIndex}: ID=${id}, checksum=0x${checksum.toString(16)}, saveIndex=${saveIndex}`,
+    {
+      offset: `0x${offset.toString(16)}`,
+      dataSize: SECTION_DATA_SIZE,
+    }
+  );
+
   return {
     id,
     checksum,
@@ -234,6 +252,11 @@ const readBlock = (file: Buffer, blockIndex: number): SaveSection[] => {
   const blockBuffer = file.slice(start, start + BLOCK_SIZE);
   const sections: SaveSection[] = [];
 
+  log(
+    'readBlock',
+    `Reading block ${blockIndex} at offset 0x${start.toString(16)}, size=${BLOCK_SIZE}`
+  );
+
   for (let i = 0; i < SECTION_COUNT; i++) {
     sections.push(readSection(blockBuffer, i));
   }
@@ -247,6 +270,12 @@ const selectLatestBlock = (file: Buffer): SaveSection[] => {
   const blockASave = blockA[SECTION_COUNT - 1].saveIndex;
   const blockBSave = blockB[SECTION_COUNT - 1].saveIndex;
 
+  const selected = blockASave > blockBSave ? 'A' : 'B';
+  log('selectLatestBlock', `Selected block ${selected}`, {
+    blockA_saveIndex: blockASave,
+    blockB_saveIndex: blockBSave,
+  });
+
   if (blockASave > blockBSave) {
     return blockA;
   }
@@ -258,6 +287,11 @@ const buildSectionMap = (sections: SaveSection[]) => {
   sections.forEach((section) => {
     map.set(section.id, section);
   });
+
+  log('buildSectionMap', `Built section map with ${map.size} sections`, {
+    sectionIds: Array.from(map.keys()),
+  });
+
   return map;
 };
 
@@ -266,9 +300,7 @@ const getSpeciesName = (speciesId: number, nickname?: string): Species | undefin
     return SPECIES_MAP[speciesId];
   }
   if (nickname) {
-    const match = listOfPokemon.find(
-      (name) => name.toLowerCase() === nickname.toLowerCase()
-    );
+    const match = listOfPokemon.find((name) => name.toLowerCase() === nickname.toLowerCase());
     return match;
   }
   return undefined;
@@ -311,8 +343,7 @@ const splitSubstructures = (orderKey: string, buffer: Buffer) => {
 const shinyCheck = (personality: number, otId: number) => {
   const tid = otId & 0xffff;
   const sid = (otId >> 16) & 0xffff;
-  const value =
-    (tid ^ sid ^ (personality & 0xffff) ^ ((personality >> 16) & 0xffff)) & 0xffff;
+  const value = (tid ^ sid ^ (personality & 0xffff) ^ ((personality >> 16) & 0xffff)) & 0xffff;
   return value < 8;
 };
 
@@ -351,6 +382,14 @@ const decodePokemon = (buffer: Buffer, context: PokemonContext): Pokemon | null 
   const orderKey = SUBSTRUCTURE_ORDERS[personality % SUBSTRUCTURE_ORDERS.length];
   const sub = splitSubstructures(orderKey, decrypted);
 
+  log('decodePokemon', `Decoding Pokemon at ${context.status} position ${context.position}`, {
+    personality: `0x${personality.toString(16)}`,
+    otId: `0x${otId.toString(16)}`,
+    encryptionKey: `0x${key.toString(16)}`,
+    substructureOrder: orderKey,
+    nickname,
+  });
+
   const speciesId = sub.G.readUInt16LE(0);
   if (!speciesId) return null;
 
@@ -365,12 +404,15 @@ const decodePokemon = (buffer: Buffer, context: PokemonContext): Pokemon | null 
     sub.A.readUInt16LE(4),
     sub.A.readUInt16LE(6),
   ];
-  const movePP = [
-    sub.A.readUInt8(8),
-    sub.A.readUInt8(9),
-    sub.A.readUInt8(10),
-    sub.A.readUInt8(11),
-  ];
+  const movePP = [sub.A.readUInt8(8), sub.A.readUInt8(9), sub.A.readUInt8(10), sub.A.readUInt8(11)];
+
+  log('decodePokemon', `Species data extracted`, {
+    speciesId,
+    itemId,
+    exp,
+    friendship,
+    moveIds,
+  });
 
   const evs = {
     hp: sub.E.readUInt8(0),
@@ -408,19 +450,29 @@ const decodePokemon = (buffer: Buffer, context: PokemonContext): Pokemon | null 
   const pokeball = BALL_MAP[ballId] || `Ball #${ballId}`;
   const ability = ivs.abilitySlot === 1 ? 'Ability 2' : 'Ability 1';
   const shiny = shinyCheck(personality, otId);
-  const forme =
-    speciesName === 'Unown' ? determineUnownForme(personality) : undefined;
+  const forme = speciesName === 'Unown' ? determineUnownForme(personality) : undefined;
+
+  log('decodePokemon', `Decoded: ${speciesName || `Species #${speciesId}`} Lv.${level || '?'}`, {
+    species: speciesName,
+    level,
+    moves,
+    shiny,
+    forme,
+    ability,
+    ivs,
+    evs,
+  });
 
   const stats = context.isParty
     ? {
-      currentHp: buffer.readUInt16LE(0x56),
-      maxHp: buffer.readUInt16LE(0x58),
-      attack: buffer.readUInt16LE(0x5a),
-      defense: buffer.readUInt16LE(0x5c),
-      speed: buffer.readUInt16LE(0x5e),
-      specialAttack: buffer.readUInt16LE(0x60),
-      specialDefense: buffer.readUInt16LE(0x62),
-    }
+        currentHp: buffer.readUInt16LE(0x56),
+        maxHp: buffer.readUInt16LE(0x58),
+        attack: buffer.readUInt16LE(0x5a),
+        defense: buffer.readUInt16LE(0x5c),
+        speed: buffer.readUInt16LE(0x5e),
+        specialAttack: buffer.readUInt16LE(0x60),
+        specialDefense: buffer.readUInt16LE(0x62),
+      }
     : undefined;
 
   const types =
@@ -428,8 +480,7 @@ const decodePokemon = (buffer: Buffer, context: PokemonContext): Pokemon | null 
       ? matchSpeciesToTypes(speciesName as Species)
       : undefined;
 
-  const met =
-    metLocation && metLocation !== 0xff ? `Location ${metLocation}` : undefined;
+  const met = metLocation && metLocation !== 0xff ? `Location ${metLocation}` : undefined;
 
   const pokemon: Pokemon = {
     species: speciesName || `Species ${speciesId}`,
@@ -472,14 +523,16 @@ const decodePokemon = (buffer: Buffer, context: PokemonContext): Pokemon | null 
   return pokemon;
 };
 
-const parseParty = (
-  section: Buffer,
-  offsets: ReturnType<typeof getOffsets>
-): Pokemon[] => {
+const parseParty = (section: Buffer, offsets: ReturnType<typeof getOffsets>): Pokemon[] => {
   const size = section.readUInt8(offsets.TEAM_SIZE) || 0;
   const count = Math.min(size, TEAM_CAPACITY);
   const start = offsets.TEAM_POKEMON_LIST;
   const party: Pokemon[] = [];
+
+  log('parseParty', `Parsing party: team size=${size}, capped at ${count}`, {
+    teamSizeOffset: `0x${offsets.TEAM_SIZE.toString(16)}`,
+    pokemonListOffset: `0x${start.toString(16)}`,
+  });
 
   for (let i = 0; i < count; i++) {
     const slice = section.slice(
@@ -499,13 +552,12 @@ const parseParty = (
     }
   }
 
+  log('parseParty', `Found ${party.length} Pokemon in party`);
+
   return party;
 };
 
-const parseBoxes = (
-  sectionMap: Map<number, SaveSection>,
-  options: ParserOptions
-): Pokemon[] => {
+const parseBoxes = (sectionMap: Map<number, SaveSection>, options: ParserOptions): Pokemon[] => {
   const buffers: Buffer[] = [];
   PC_SECTION_IDS.forEach((id) => {
     const section = sectionMap.get(id);
@@ -514,7 +566,13 @@ const parseBoxes = (
     }
   });
 
+  log('parseBoxes', `Found ${buffers.length} PC storage sections`, {
+    expectedSections: PC_SECTION_IDS.length,
+    sectionIds: PC_SECTION_IDS,
+  });
+
   if (!buffers.length) {
+    log('parseBoxes', 'No PC storage sections found, returning empty array');
     return [];
   }
 
@@ -523,10 +581,15 @@ const parseBoxes = (
   const pokemonArea = storage.slice(0, pokemonBytes);
   const boxed: Pokemon[] = [];
 
+  log('parseBoxes', `Parsing ${BOX_COUNT} boxes with ${BOX_CAPACITY} slots each`, {
+    totalSlots: BOX_COUNT * BOX_CAPACITY,
+    pokemonAreaSize: pokemonBytes,
+  });
+
   for (let boxIndex = 0; boxIndex < BOX_COUNT; boxIndex++) {
+    let boxCount = 0;
     for (let slot = 0; slot < BOX_CAPACITY; slot++) {
-      const offset =
-        boxIndex * BOX_CAPACITY * BOX_POKEMON_SIZE + slot * BOX_POKEMON_SIZE;
+      const offset = boxIndex * BOX_CAPACITY * BOX_POKEMON_SIZE + slot * BOX_POKEMON_SIZE;
       const slice = pokemonArea.slice(offset, offset + BOX_POKEMON_SIZE);
       const context: PokemonContext = {
         status: getBoxStatus(boxIndex, options),
@@ -538,9 +601,109 @@ const parseBoxes = (
       const pokemon = decodePokemon(slice, context);
       if (pokemon) {
         boxed.push(pokemon);
+        boxCount++;
       }
+    }
+    if (boxCount > 0) {
+      log('parseBoxes', `Box ${boxIndex + 1}: found ${boxCount} Pokemon`);
     }
   }
 
+  log('parseBoxes', `Total boxed Pokemon: ${boxed.length}`);
+
   return boxed;
+};
+
+const parseTrainer = (
+  section: Buffer,
+  offsets: ReturnType<typeof getOffsets>,
+  options: ParserOptions
+) => {
+  const name = decodeGameText(section.slice(offsets.PLAYER_NAME[0], offsets.PLAYER_NAME[1]));
+  const trainerId = section.readUInt16LE(offsets.PLAYER_ID[0]);
+  const time = parseTime(section.slice(offsets.TIME_PLAYED[0], offsets.TIME_PLAYED[1]));
+  const moneyBytes = section.slice(offsets.MONEY[0], offsets.MONEY[1]);
+  const money = formatMoney(moneyBytes);
+
+  log('parseTrainer', `Trainer: ${name} (ID: ${trainerId})`, {
+    time,
+    money,
+    game: options.selectedGame,
+  });
+
+  return {
+    name,
+    id: `${trainerId}`,
+    time,
+    money,
+    badges: [],
+    game: options.selectedGame,
+  };
+};
+
+export const parseGen3Save = async (file: Buffer, options: ParserOptions) => {
+  const startTime = performance.now();
+
+  log('parseGen3Save', '=== Starting Gen 3 save file parsing ===', {
+    fileSize: file.length,
+    expectedSize: BLOCK_SIZE * 2,
+    selectedGame: options.selectedGame,
+  });
+
+  const sections = selectLatestBlock(file);
+  const sectionMap = buildSectionMap(sections);
+  const offsets = getOffsets(options.selectedGame as GameSaveFormat);
+
+  log('parseGen3Save', 'Offsets determined', {
+    game: options.selectedGame,
+    teamSize: `0x${offsets.TEAM_SIZE.toString(16)}`,
+    teamList: `0x${offsets.TEAM_POKEMON_LIST.toString(16)}`,
+  });
+
+  const trainerSection = sectionMap.get(0);
+  const teamSection = sectionMap.get(1);
+
+  if (!trainerSection || !teamSection) {
+    log('parseGen3Save', 'ERROR: Missing critical sections', {
+      hasTrainerSection: !!trainerSection,
+      hasTeamSection: !!teamSection,
+    });
+    throw new Error('Unable to locate trainer or party data in save file.');
+  }
+
+  const trainer = parseTrainer(trainerSection.data, offsets, options);
+  const party = parseParty(teamSection.data, offsets);
+  const boxed = parseBoxes(sectionMap, options);
+
+  const endTime = performance.now();
+  const parseTime = endTime - startTime;
+
+  log('parseGen3Save', '=== Parsing complete ===', {
+    parseTimeMs: parseTime.toFixed(2),
+    trainerName: trainer.name,
+    partyCount: party.length,
+    boxedCount: boxed.length,
+    totalPokemon: party.length + boxed.length,
+  });
+
+  const result = {
+    trainer,
+    pokemon: [...party, ...boxed],
+    debug: DEBUG
+      ? {
+          fileSize: file.length,
+          game: options.selectedGame,
+          selectedBlock: sections[SECTION_COUNT - 1].saveIndex,
+          sectionCount: sectionMap.size,
+          parseTimeMs: parseTime,
+          counts: {
+            party: party.length,
+            boxed: boxed.length,
+            total: party.length + boxed.length,
+          },
+        }
+      : undefined,
+  };
+
+  return result;
 };
