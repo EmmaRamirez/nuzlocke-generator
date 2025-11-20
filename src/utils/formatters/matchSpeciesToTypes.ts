@@ -1,6 +1,7 @@
-import { Types, Generation } from 'utils';
+import { Types } from '../Types';
+import { Generation } from '../getters/getGameGeneration';
 import { Forme } from '../Forme';
-import { Species } from '..';
+import { Species } from '../data/listOfPokemon';
 
 const match = ({
   s,

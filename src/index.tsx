@@ -134,8 +134,8 @@ async function createRender() {
   );
 }
 
-createRender().catch(err => {
+createRender().catch((err) => {
   console.error('Failed to create render:', err);
   document.body.innerHTML = `<div style="color: red; padding: 20px;"><h1>Failed to start app</h1><pre>${err.message}\n${err.stack}</pre></div>`;
 });
-getRollbar().catch(err => console.error('Failed to init Rollbar:', err));
+getRollbar().catch((err) => console.error('Failed to init Rollbar:', err));

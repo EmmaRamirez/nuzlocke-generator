@@ -8,7 +8,10 @@ import {
   GEN_2_LOCATIONS,
 } from './utils';
 import { Buffer } from 'buffer';
-import { Forme, getBadges, matchSpeciesToTypes, Species } from 'utils';
+import { Forme } from 'utils/Forme';
+import { getBadges } from 'utils/getters/getBadges';
+import { matchSpeciesToTypes } from 'utils/formatters/matchSpeciesToTypes';
+import type { Species } from 'utils/data/listOfPokemon';
 import { Pokemon } from 'models';
 import { parseTime } from './utils/parseTime';
 import { ParserOptions } from './utils/parserOptions';

@@ -241,8 +241,8 @@ export async function getPokemonImage({
   if (style?.spritesMode) {
     const url = shiny
       ? `https://www.serebii.net/Shiny/${getGameNameSerebii(
-        name as Game
-      )}/${leadingZerosNumber}.png`
+          name as Game
+        )}/${leadingZerosNumber}.png`
       : `https://www.serebii.net/${getGameName(name as Game)}/pokemon/${leadingZerosNumber}.png`;
 
     return await wrapImageInCORS(url);

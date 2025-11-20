@@ -1,5 +1,4 @@
-import { Game } from 'utils';
-import { Badge } from 'models';
+import { Badge, Game } from 'models';
 
 export function getBadges(name: Game): Badge[] {
   if (
