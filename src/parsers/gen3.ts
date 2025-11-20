@@ -8,6 +8,7 @@ import type { GameSaveFormat } from 'utils/gameSaveFormat';
 import { MOVES_ARRAY } from './utils';
 import { ParserOptions } from './utils/parserOptions';
 import { parseTime } from './utils/parseTime';
+import { GEN_3_POKEMON_MAP } from './utils/gen3';
 
 const DEBUG = import.meta.env.VITE_DEBUG_PARSER === 'true';
 
@@ -296,8 +297,11 @@ const buildSectionMap = (sections: SaveSection[]) => {
 };
 
 const getSpeciesName = (speciesId: number, nickname?: string): Species | undefined => {
-  if (speciesId > 0 && speciesId <= MAX_SUPPORTED_SPECIES) {
-    return SPECIES_MAP[speciesId];
+  // Convert Gen 3 internal species ID to National Dex number
+  const nationalDexId = GEN_3_POKEMON_MAP[speciesId];
+
+  if (nationalDexId && nationalDexId > 0 && nationalDexId <= MAX_SUPPORTED_SPECIES) {
+    return SPECIES_MAP[nationalDexId];
   }
   if (nickname) {
     const match = listOfPokemon.find((name) => name.toLowerCase() === nickname.toLowerCase());
@@ -407,7 +411,8 @@ const decodePokemon = (buffer: Buffer, context: PokemonContext): Pokemon | null 
   const movePP = [sub.A.readUInt8(8), sub.A.readUInt8(9), sub.A.readUInt8(10), sub.A.readUInt8(11)];
 
   log('decodePokemon', `Species data extracted`, {
-    speciesId,
+    internalSpeciesId: speciesId,
+    nationalDexId: GEN_3_POKEMON_MAP[speciesId],
     itemId,
     exp,
     friendship,
@@ -644,13 +649,16 @@ const parseTrainer = (
 export const parseGen3Save = async (file: Buffer, options: ParserOptions) => {
   const startTime = performance.now();
 
+  // Ensure file is a Buffer (might be Uint8Array in worker context)
+  const buffer = Buffer.isBuffer(file) ? file : Buffer.from(file);
+
   log('parseGen3Save', '=== Starting Gen 3 save file parsing ===', {
-    fileSize: file.length,
+    fileSize: buffer.length,
     expectedSize: BLOCK_SIZE * 2,
     selectedGame: options.selectedGame,
   });
 
-  const sections = selectLatestBlock(file);
+  const sections = selectLatestBlock(buffer);
   const sectionMap = buildSectionMap(sections);
   const offsets = getOffsets(options.selectedGame as GameSaveFormat);
 
@@ -691,7 +699,7 @@ export const parseGen3Save = async (file: Buffer, options: ParserOptions) => {
     pokemon: [...party, ...boxed],
     debug: DEBUG
       ? {
-          fileSize: file.length,
+          fileSize: buffer.length,
           game: options.selectedGame,
           selectedBlock: sections[SECTION_COUNT - 1].saveIndex,
           sectionCount: sectionMap.size,
