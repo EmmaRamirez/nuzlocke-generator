@@ -65,7 +65,7 @@ describe('choose', () => {
   it('returns a result in the array', () => {
     const dice = [1, 2, 3, 4, 5, 6];
     const chosenDice = choose<number>(dice);
-    for (let i = 0; i > 10; i++) {
+    for (let i = 0; i < 10; i++) {
       (expect as any)(chosenDice).toBeOneOf(dice);
     }
   });
@@ -252,7 +252,7 @@ describe(gameOfOriginToColor.name, () => {
     expect(gameOfOriginToColor('Yellow')).toBe(colors.Yellow);
   });
   it('returns an empty string for non-games', () => {
-    // @ts-ignore
+    // @ts-expect-error - Testing with invalid game name
     expect(gameOfOriginToColor('Garbage')).toBe('');
   });
 });
@@ -340,7 +340,7 @@ describe(matchNatureToToxtricityForme.name, () => {
   });
 
   it('returns lowkey in null case', () => {
-    // @ts-expect-error
+    // @ts-expect-error - Testing with undefined nature
     const subject = matchNatureToToxtricityForme(undefined);
     expect(subject).toBe('Lowkey');
   });

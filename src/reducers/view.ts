@@ -15,7 +15,7 @@ export function view(
         ...state,
         dialogs: {
           ...state.dialogs,
-          [action.dialog]: !state?.dialogs?.[action.dialog] ?? true,
+          [action.dialog]: state?.dialogs?.[action.dialog] ? false : true,
         },
       };
     default:

@@ -22,7 +22,7 @@ import { ErrorBoundary } from 'components';
 // window.path = window.path || require('path').path;
 
 async function getRollbar() {
-  // @ts-ignore
+  // @ts-expect-error - Rollbar types are incomplete for dynamic imports
   const { default: Rollbar } = await import('rollbar');
 
   const rollbarConfig = new Rollbar({
@@ -48,7 +48,7 @@ async function getRollbar() {
 
 getRollbar().then((res) => res);
 
-injectGlobal`
+void injectGlobal`
     *,
     *::before,
     *::after {

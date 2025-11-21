@@ -39,16 +39,17 @@ export function box(
   >
 ) {
   switch (action.type) {
-    case EDIT_BOX:
+    case EDIT_BOX: {
       const box = state.find((box) => box.id === action.id);
       if (!box) {
         return state;
       }
       const newBox = { ...box, ...action.edits };
       return [...state.filter((box) => box.id !== action.id), newBox];
+    }
     case REPLACE_STATE:
       return action.replaceWith.box;
-    case ADD_BOX:
+    case ADD_BOX: {
       const { name, background = 'grass-meadow', inheritFrom } = action;
       const id = state.length;
       const position = state.length;
@@ -56,6 +57,7 @@ export function box(
         throw new Error('Cannot name a box the same as a current one.');
       }
       return [...state, { id, name, position, background, inheritFrom }];
+    }
     case DELETE_BOX:
       return state.filter((box) => box.id !== action.id);
     case UPDATE_BOXES:

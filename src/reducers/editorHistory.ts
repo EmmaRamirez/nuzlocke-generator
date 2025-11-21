@@ -26,7 +26,7 @@ export function editorHistory(
   action: Action<UNDO_EDITOR_HISTORY | UPDATE_EDITOR_HISTORY | REDO_EDITOR_HISTORY | REPLACE_STATE>
 ): History<any> {
   switch (action.type) {
-    case UPDATE_EDITOR_HISTORY:
+    case UPDATE_EDITOR_HISTORY: {
       const { present, future, past } = state;
 
       if (action.present == null) {
@@ -40,8 +40,9 @@ export function editorHistory(
         future: [],
         lastRevisionType: 'update',
       };
+    }
 
-    case UNDO_EDITOR_HISTORY:
+    case UNDO_EDITOR_HISTORY: {
       const undo = (): History<any> => {
         const { past, present, future } = state;
 
@@ -56,8 +57,9 @@ export function editorHistory(
       };
 
       return undo();
+    }
 
-    case REDO_EDITOR_HISTORY:
+    case REDO_EDITOR_HISTORY: {
       const redo = (): History<any> => {
         const { past, present, future } = state;
 
@@ -73,6 +75,7 @@ export function editorHistory(
       };
 
       return redo();
+    }
 
     // Return initial state when entire state tree gets replaced
     case REPLACE_STATE:

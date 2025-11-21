@@ -1879,8 +1879,6 @@ export const matchSpeciesToTypes = (
       return [Types.Ground, Types.Flying];
     case 'Sigilyph':
       return [Types.Psychic, Types.Flying];
-    case 'Tirtouga':
-      return [Types.Water, Types.Rock];
     case 'Ducklett':
     case 'Swanna':
       return [Types.Water, Types.Flying];

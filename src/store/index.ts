@@ -100,6 +100,7 @@ export const persistReducers = persistCombineReducers(config, reducers as any);
 export const middlewares: Middleware[] = [];
 
 if (import.meta.env.PROD) {
+  // No additional middlewares in production
 } else {
   const loggerMiddleware = createLogger();
   middlewares.push(loggerMiddleware as any);

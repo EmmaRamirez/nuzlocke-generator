@@ -39,13 +39,14 @@ export function checkpoints(
       return [...state, action.checkpoint];
     case REPLACE_STATE:
       return action.replaceWith.checkpoints;
-    case EDIT_CHECKPOINT:
+    case EDIT_CHECKPOINT: {
       const newState = state.slice();
       newState.splice(state.map((n) => n.name).indexOf(action.name as string), 1, {
         ...state.find((c) => c.name === action.name),
         ...(action.edits as any),
       });
       return newState;
+    }
     case DELETE_CHECKPOINT:
       return state.filter((c) => c.name !== action.name);
     default:

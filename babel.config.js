@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { resolve } = require('path');
 
 module.exports = (api) => {

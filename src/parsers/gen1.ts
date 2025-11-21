@@ -323,7 +323,7 @@ export const parseGen1Save = async (file: Buffer, options: ParserOptions) => {
       badges: badges,
     },
     pokemon: [
-      // @ts-ignore
+      // @ts-expect-error - Pokemon type conversion handled by transformPokemon
       ...transformPokemon(pokemonParty, 'Team'),
       ...pokemonFromBoxes,
     ],

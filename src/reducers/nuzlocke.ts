@@ -23,7 +23,7 @@ export function nuzlockes(
   >
 ) {
   switch (action.type) {
-    case NEW_NUZLOCKE:
+    case NEW_NUZLOCKE: {
       const id = uuid();
       return {
         ...state,
@@ -37,6 +37,7 @@ export function nuzlockes(
           },
         ],
       };
+    }
 
     case DELETE_NUZLOCKE:
       return {

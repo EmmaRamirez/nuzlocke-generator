@@ -28,7 +28,7 @@ export function pokemon(
       return state.filter((val, index) => {
         return val.status !== action.name;
       });
-    case EDIT_POKEMON:
+    case EDIT_POKEMON: {
       const pokemonToEdit = state.find((poke) => poke.id === action.id);
       const deathTimestamp =
         action.edits &&
@@ -42,6 +42,7 @@ export function pokemon(
         return [newPoke];
       }
       return [...state.filter((poke) => poke.id !== action.id), newPoke];
+    }
     case REPLACE_STATE:
       return action.replaceWith.pokemon;
     default:

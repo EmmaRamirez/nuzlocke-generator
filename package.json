@@ -15,6 +15,7 @@
     "deploy": "npm run build && git push heroku master",
     "lint": "npx eslint",
     "lint:fix": "npx eslint --fix",
+    "lint:errors": "npx eslint --quiet",
     "prebuild": "rm -rf ./dist",
     "precommit": "npm run lint",
     "pretest": "npm run lint",
@@ -97,7 +98,8 @@
     "tslint": "^6.1.2",
     "vite": "^7.1.11",
     "vite-plugin-static-copy": "^3.1.4",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^4.0.12"
   },
   "devDependencies": {
     "@babel/core": "^7.10.1",

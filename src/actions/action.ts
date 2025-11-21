@@ -9,6 +9,7 @@ export interface Action<T, P = any> {
   readonly meta?: any;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Action {
   export type Index = 'history' | 'pokemon' | 'mode' | 'example';
   export type Type = string;
