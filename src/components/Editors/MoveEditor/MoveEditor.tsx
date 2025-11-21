@@ -71,6 +71,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
       return movesToDisplay.map(({ move, type, id }, index) => {
         return (
           <div
+            key={id || index}
             style={{
               display: 'flex',
               justifyContent: 'center',
@@ -89,7 +90,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
               ))}
             </HTMLSelect>
             <Icon
-              onClick={(e) => this.props.deleteCustomMove(id)}
+              onClick={(_e) => this.props.deleteCustomMove(id)}
               style={{ color: 'red', position: 'absolute', cursor: 'pointer' }}
               icon="trash"
             />
@@ -104,6 +105,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
         .filter((m) => this.moveFilter(m, type, searchTerm))
         .map((move, index) => (
           <div
+            key={move || index}
             style={{
               display: 'flex',
               justifyContent: 'center',
@@ -194,7 +196,7 @@ export class MoveEditorBase extends React.Component<MoveEditorProps, MoveEditorS
               </div>
               <Button
                 style={{ margin: '0 .25rem' }}
-                onClick={(e) => {
+                onClick={(_e) => {
                   this.props.editCustomMoveMap(moveType, moveName);
                 }}
                 intent={Intent.PRIMARY}

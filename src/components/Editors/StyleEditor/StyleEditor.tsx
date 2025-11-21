@@ -18,7 +18,6 @@ import {
   Checkbox,
   Button,
   Intent,
-  Dialog,
   Classes,
   Drawer,
   DrawerSize,

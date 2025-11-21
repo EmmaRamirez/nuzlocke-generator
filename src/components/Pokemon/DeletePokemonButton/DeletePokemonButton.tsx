@@ -53,8 +53,10 @@ export class DeletePokemonButtonBase extends React.Component<
           icon="trash"
           isOpen={this.state.dialogOn && this.props.confirmation}
           onCancel={this.toggleDialog}
-          onConfirm={(e) => {
-            this.props.id && this.props.deletePokemon(this.props.id);
+          onConfirm={(_e) => {
+            if (this.props.id) {
+              this.props.deletePokemon(this.props.id);
+            }
             this.toggleDialog();
           }}
           confirmButtonText="Delete Pokemon"
@@ -71,7 +73,7 @@ export class DeletePokemonButtonBase extends React.Component<
               type="checkbox"
             />
             <span className={Classes.CONTROL_INDICATOR} />
-            Don't Ask Me For Confirmation Again
+            Don&apos;t Ask Me For Confirmation Again
           </label>
         </Alert>
         <Popover
@@ -79,13 +81,13 @@ export class DeletePokemonButtonBase extends React.Component<
           position={Position.TOP}
           content={<div style={{ padding: '1rem' }}>{`Delete Pok${accentedE}mon`}</div>}>
           <Icon
-            onClick={(e) => {
+            onClick={(_e) => {
               if (this.props.confirmation) {
                 this.toggleDialog();
               } else {
-                this.props.deletePokemon &&
-                  this.props.id &&
+                if (this.props.deletePokemon && this.props.id) {
                   this.props.deletePokemon(this.props.id);
+                }
               }
             }}
             icon="trash"

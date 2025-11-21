@@ -152,7 +152,7 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
     item: pokemon.item
       ? `icons/hold-item/${(pokemon.item || '')
           .toLowerCase()
-          .replace(/\'/g, '')
+          .replace(/'/g, '')
           .replace(/\s/g, '-')}.png`
       : undefined,
     itemComponent: ReactDOMServer.renderToString(
@@ -168,7 +168,7 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
     linkedPokemonData: linkedPokemon ?? null,
     extraData: '',
     movesColored: ReactDOMServer.renderToString(
-      // @ts-expect-error
+      // @ts-expect-error - MovesBase props type mismatch
       <MovesBase
         style={style}
         customMoveMap={customMoveMap}
@@ -180,7 +180,7 @@ export function TeamPokemon({ pokemon, options, customCSS, customHTML }: TeamPok
       />
     ),
     movesColoredWithClasses: ReactDOMServer.renderToString(
-      // @ts-expect-error
+      // @ts-expect-error - MovesBase props type mismatch
       <MovesBase
         style={style}
         customMoveMap={customMoveMap}

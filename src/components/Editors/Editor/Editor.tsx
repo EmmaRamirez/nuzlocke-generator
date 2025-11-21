@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
 import { cx } from 'emotion';
-import { State } from 'state';
+import {} from 'state';
 import { Classes } from '@blueprintjs/core';
 import { ErrorBoundary, Skeleton } from 'components';
 import { editorStyles } from './styles';

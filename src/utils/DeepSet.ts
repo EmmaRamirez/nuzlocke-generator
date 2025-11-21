@@ -6,8 +6,7 @@ export class DeepSet<T> {
 
   public constructor(arr: T[] = [], key?: keyof T) {
     this.set = arr;
-    // @ts-ignore
-    this.key = key || 'name';
+    this.key = key || ('name' as keyof T);
   }
 
   public add(item: T, key = this.key) {
@@ -22,7 +21,6 @@ export class DeepSet<T> {
   public overwrite(item: T, edits: Partial<T>, key = this.key) {
     const foundItem = this.set.find((i) => i[key] === item[key]);
     if (foundItem) {
-      // @ts-ignore
       const newItem = { ...foundItem, ...edits };
       this.set.splice(this.set.indexOf(foundItem), 1, newItem);
       return new DeepSet(this.set);

@@ -274,8 +274,8 @@ export const PokemonLocationChecklist = ({
         />
       </div>
       <Callout intent={Intent.WARNING} style={{ fontSize: '80%', marginTop: '0.5rem' }}>
-        Tip: Pokémon with the "hidden" attribute are a great option for including Pokemon that got
-        away on a certain route!
+        Tip: Pokémon with the &quot;hidden&quot; attribute are a great option for including Pokemon
+        that got away on a certain route!
       </Callout>
     </div>
   );

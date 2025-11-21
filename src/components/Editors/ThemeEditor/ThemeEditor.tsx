@@ -35,7 +35,6 @@ import {
   LayoutSpacing,
 } from 'components/Layout/Layout/Layout';
 import { TeamPokemon } from 'components/Pokemon/TeamPokemon/TeamPokemon2';
-import { render } from 'react-dom';
 
 const modelPokemon: Pokemon = {
   ...generateEmptyPokemon(),
@@ -339,7 +338,7 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
 
       if (propKey === 'customCSS' || propKey === 'customHTML') {
         return (
-          <WrapWithLabel name={propKey}>
+          <WrapWithLabel key={propKey} name={propKey}>
             <TextArea
               value={value}
               name={propKey}
@@ -355,6 +354,7 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
       if (propKey === 'padding' || propKey === 'margin') {
         return (
           <CSSUnitInput
+            key={propKey}
             name={propKey}
             value={value}
             onChange={(e) => {
@@ -367,13 +367,12 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
 
       if (type === 'boolean') {
         return (
-          <WrapWithLabel name={propKey}>
+          <WrapWithLabel key={propKey} name={propKey}>
             <Switch
               onChange={(e: any) => {
                 modify(propKey, e.target.checked);
                 this.setState(this.state);
               }}
-              key={idx}
               checked={value}
             />
           </WrapWithLabel>
@@ -382,6 +381,7 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
       if (type === 'number') {
         return (
           <NumericValue
+            key={propKey}
             name={propKey}
             value={value}
             onChange={(e) => {
@@ -394,6 +394,7 @@ export class ThemeEditorBase extends React.Component<ThemeEditorProps, ThemEdito
       if (type === 'string') {
         return (
           <TextInput
+            key={propKey}
             value={value}
             name={propKey}
             onChange={(e) => {

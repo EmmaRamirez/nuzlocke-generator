@@ -41,7 +41,7 @@ export interface CreditsData {
 
 export interface CreditsProps {}
 
-export function Credits({}: CreditsProps) {
+export function Credits() {
   const [creditsModal, setCreditsModal] = React.useState(false);
   const style = useSelector<State, State['style']>((state) => state.style);
   //const parsedCredits: CreditsData = JSON.parse(credits);

@@ -8,7 +8,7 @@ describe(determineNumberOfHearts.name, () => {
     expect(determineNumberOfHearts(250)).toBe(5);
     expect(determineNumberOfHearts(33)).toBe(0);
     expect(determineNumberOfHearts(100)).toBe(2);
-    // @ts-expect-error
+    // @ts-expect-error - Testing null handling
     expect(determineNumberOfHearts(null)).toBe(0);
   });
 });

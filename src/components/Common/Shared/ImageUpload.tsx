@@ -20,7 +20,9 @@ const onUpload =
     const file = e?.target?.files?.[0];
     const toaster = Toaster.create();
     if (!file) {
-      onError && onError(e);
+      if (onError) {
+        onError(e);
+      }
       toaster.show({
         message: 'No file detected.',
         intent: Intent.DANGER,
@@ -36,7 +38,9 @@ const onUpload =
     } else {
       try {
         const image = await toBase64(file);
-        onSuccess && onSuccess(image as string, file?.name);
+        if (onSuccess) {
+          onSuccess(image as string, file?.name);
+        }
 
         console.log(image);
         toaster.show({
@@ -44,7 +48,9 @@ const onUpload =
           intent: Intent.SUCCESS,
         });
       } catch (e) {
-        onError && onError(e);
+        if (onError) {
+          onError(e);
+        }
         toaster.show({
           message: `Error in parsing file. ${e}`,
           intent: Intent.DANGER,

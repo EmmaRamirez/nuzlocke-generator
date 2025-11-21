@@ -3,7 +3,6 @@ import { cx } from 'emotion';
 import './Autocomplete.css';
 import { useDebounceCallback } from '@react-hook/debounce';
 import { css } from 'emotion';
-import { debounce } from 'utils';
 
 export interface AutocompleteProps {
   items: string[];
@@ -70,7 +69,9 @@ export function Autocomplete({
   const changeEvent =
     (innerEvent: boolean = true) =>
     (e) => {
-      innerEvent && e.persist();
+      if (innerEvent) {
+        e.persist();
+      }
       setValue(e.target.value);
       setVisibleItems(filter(items, e.target.value));
       delayedValue({ target: { value: e.target.value } });
@@ -84,10 +85,10 @@ export function Autocomplete({
       setSelectedValue(visibleItems[currentIndex + 1]);
     }
   };
-  const openList = (e) => {
+  const openList = (_e) => {
     setIsOpen(true);
   };
-  const closeList = (e) => {
+  const closeList = (_e) => {
     setTimeout(() => {
       setIsOpen(false);
       setVisibleItems(items);

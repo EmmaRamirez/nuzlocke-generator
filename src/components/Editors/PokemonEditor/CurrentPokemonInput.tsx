@@ -1,6 +1,5 @@
-/* eslint-disable jsx-a11y/no-onchange */
 import * as React from 'react';
-import { connect, useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import {
   matchSpeciesToTypes,
@@ -11,7 +10,7 @@ import {
   matchNatureToToxtricityForme,
   Species,
 } from 'utils';
-import { editPokemon, selectPokemon, editStat } from 'actions';
+import { editPokemon } from 'actions';
 
 import { ErrorBoundary } from 'components/Common/Shared';
 
@@ -97,7 +96,7 @@ export const renderItems = (visibleItems, setSelectedItem, selectedItem) =>
     return (
       <li
         key={i}
-        onClick={(e) => setSelectedItem(v)}
+        onClick={(_e) => setSelectedItem(v)}
         style={v === selectedItem ? { color: 'lightblue' } : {}}>
         {v}
       </li>
@@ -110,15 +109,15 @@ export function PokemonAutocompleteInput({
   inputName,
   edit,
   disabled,
-  onChange,
+  _onChange,
   setEdit,
   items,
 }: PokemonInputProps) {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [visibleItems, setVisibleItems] = React.useState(items);
+  const [_isOpen, _setIsOpen] = React.useState(false);
+  const [_visibleItems, _setVisibleItems] = React.useState(items);
   const [selectedItem, setSelectedItem] = React.useState();
   const handleKeyDown = () => {};
-  const updateItems = () => {};
+  const _updateItems = () => {};
   const closeList = () => {};
   const openList = () => {};
 
@@ -149,10 +148,10 @@ export function PokemonAutocompleteInput({
 export function PokemonTextInput({
   inputName,
   type,
-  value,
+  _value,
   placeholder,
   disabled,
-  selectedId,
+  _selectedId,
   edit,
   setEdit,
   onChange,
@@ -173,8 +172,8 @@ export function PokemonTextInput({
 
 export function PokemonTextAreaInput({
   inputName,
-  type,
-  value,
+  _type,
+  _value,
   placeholder,
   disabled,
   onChange,
@@ -197,8 +196,8 @@ export function PokemonTextAreaInput({
 
 export function PokemonNumberInput({
   inputName,
-  type,
-  value,
+  _type,
+  _value,
   placeholder,
   disabled,
   onChange,
@@ -221,15 +220,15 @@ export function PokemonNumberInput({
 export function PokemonSelectInput({
   inputName,
   value,
-  type,
+  _type,
   usesKeyValue,
   options,
-  placeholder,
+  _placeholder,
   onChange,
-  edit,
+  _edit,
   setEdit,
 }: PokemonInputProps) {
-  const pokeball =
+  const _pokeball =
     inputName === 'pokeball' && value && value !== 'None' ? (
       <img
         style={{ position: 'absolute' }}
@@ -262,11 +261,11 @@ export function PokemonSelectInput({
 
 export function PokemonDoubleSelectInput({
   inputName,
-  value,
-  type,
-  usesKeyValue,
-  options,
-  placeholder,
+  _value,
+  _type,
+  _usesKeyValue,
+  _options,
+  _placeholder,
   onChange,
   edit,
   setEdit,
@@ -312,11 +311,11 @@ export function PokemonDoubleSelectInput({
 
 export function PokemonCheckboxInput({
   inputName,
-  value,
+  _value,
   type,
-  usesKeyValue,
-  options,
-  placeholder,
+  _usesKeyValue,
+  _options,
+  _placeholder,
   onChange,
   edit,
   setEdit,
@@ -338,15 +337,15 @@ export function PokemonCheckboxInput({
 }
 
 export function PokemonMoveInput({
-  inputName,
-  value,
-  type,
-  usesKeyValue,
-  options,
-  placeholder,
-  onChange,
-  edit,
-  setEdit,
+  _inputName,
+  _value,
+  _type,
+  _usesKeyValue,
+  _options,
+  _placeholder,
+  _onChange,
+  _edit,
+  _setEdit,
   customTypes,
   customMoveMap,
   selectedId,
@@ -362,7 +361,7 @@ export function PokemonMoveInput({
       <TagInput
         fill
         leftIcon="ninja"
-        tagProps={(v, i) => {
+        tagProps={(v, _i) => {
           // @TODO: Fix inconsitencies with bad parameter types
           const background =
             typeToColor(
@@ -382,7 +381,9 @@ export function PokemonMoveInput({
           const edit = {
             moves: values,
           };
-          selectedId && dispatch(editPokemon(edit, selectedId));
+          if (selectedId) {
+            dispatch(editPokemon(edit, selectedId));
+          }
         }}
         values={value || []}
       />
@@ -394,7 +395,7 @@ export function CurrentPokemonInput(props: CurrentPokemonInputProps) {
   const { inputName, value, className } = props;
   const selectedId = useSelector<State, State['selectedId']>((state) => state.selectedId);
   const customMoveMap = useSelector<State, State['customMoveMap']>((state) => state.customMoveMap);
-  const customTypes = useSelector<State, State['customTypes']>((state) => state.customTypes);
+  const _customTypes = useSelector<State, State['customTypes']>((state) => state.customTypes);
   const dispatch = useDispatch();
 
   const [edit, setEdit] = React.useState({ [inputName]: value });

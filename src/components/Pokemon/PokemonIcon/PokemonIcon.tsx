@@ -145,7 +145,9 @@ export function PokemonIconPlain({
       role="presentation"
       onClick={(e) => {
         e.preventDefault();
-        onClick && onClick();
+        if (onClick) {
+          onClick();
+        }
       }}
       id={id}
       title={includeTitle ? species : undefined}

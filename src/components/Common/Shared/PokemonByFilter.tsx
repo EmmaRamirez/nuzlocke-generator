@@ -5,7 +5,7 @@ import { PokemonIcon } from 'components/Pokemon/PokemonIcon';
 import { sortPokes } from 'utils';
 import { connect } from 'react-redux';
 import { editPokemon } from 'actions';
-import { compose, filter, sort, map, curry } from 'ramda';
+import {} from 'ramda';
 
 export interface PokemonByFilterProps {
   team: Pokemon[];

@@ -7,11 +7,9 @@ import { editorModeSelector } from 'selectors';
 import { cx } from 'emotion';
 import { useDebounceCallback } from '@react-hook/debounce';
 
-export interface ZoomLevelProps {}
-
 const zoomLevelSelector = (state) => state.style.zoomLevel;
 
-export function ZoomLevel({}: ZoomLevelProps) {
+export function ZoomLevel() {
   const [zoomLevel, setZoomLevel] = React.useState(1);
   const styleZoomLevel = useSelector<State, number>(zoomLevelSelector);
   const darkMode = useSelector(editorModeSelector);

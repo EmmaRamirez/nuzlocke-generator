@@ -3,16 +3,7 @@ import { connect } from 'react-redux';
 import { editGame, changeEditorSize, editStyle, resetCheckpoints, toggleTemtemMode } from 'actions';
 import { gameOfOriginToColor, listOfGames, feature, Game } from 'utils';
 
-import {
-  Button,
-  Intent,
-  Popover,
-  Position,
-  Menu,
-  Switch,
-  Classes,
-  HTMLSelect,
-} from '@blueprintjs/core';
+import { Button, Intent, Switch, Classes, HTMLSelect } from '@blueprintjs/core';
 import { RulesEditorDialog } from 'components/Editors/RulesEditor/RulesEditor';
 import { State } from 'state';
 import { BaseEditor } from 'components/Editors/BaseEditor/BaseEditor';
@@ -103,7 +94,7 @@ export class GameEditorBase extends React.Component<GameEditorProps, { isOpen: b
                   // style={{...darkModeStyle(this.props.style.editorDarkMode), marginBottom: 0}}
                   label="TemTem Mode"
                   checked={this.props.editor.temtemMode}
-                  onChange={(e) => this.props.toggleTemtemMode()}
+                  onChange={(_e) => this.props.toggleTemtemMode()}
                 />
               </Button>
             )}

@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as Styles from 'components/Editors/StyleEditor/styles';
 import { cx } from 'emotion';
 import { connect } from 'react-redux';
-import { classWithDarkTheme, Styles as StyleType } from 'utils';
+import { classWithDarkTheme } from 'utils';
 import { State } from 'state';
 import { ChromePicker } from 'react-color';
 import { Popover, PopoverInteractionKind, Classes } from '@blueprintjs/core';
@@ -27,7 +27,7 @@ export class ColorEditBase extends React.Component<ColorEditProps, { showChromeP
   };
 
   public render() {
-    const { value, onChange, name, style, width, onColorChange } = this.props;
+    const { value, onChange, name, style, width: _width, onColorChange } = this.props;
     return (
       <div className={cx(Styles.colorEditWrapper)}>
         {/*<input
@@ -58,8 +58,8 @@ export class ColorEditBase extends React.Component<ColorEditProps, { showChromeP
               )}
               name={name}
               value={rgbaOrHex(value)}
-              onFocus={(e) => this.setState({ showChromePicker: true })}
-              onBlur={(e) => this.setState({ showChromePicker: false })}
+              onFocus={(_e) => this.setState({ showChromePicker: true })}
+              onBlur={(_e) => this.setState({ showChromePicker: false })}
             />
             <div
               style={{

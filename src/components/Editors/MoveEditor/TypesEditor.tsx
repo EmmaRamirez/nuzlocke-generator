@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 import { State } from 'state';
 import { getListOfTypes, typeToColor, Types, getContrastColor } from 'utils';
-import { customTypes } from 'reducers/customTypes';
 import { createCustomType, deleteCustomType, editCustomType } from 'actions';
 import { ColorEdit, rgbaOrHex } from 'components/Common/Shared';
-import { InputGroup, Classes, Button, Icon } from '@blueprintjs/core';
+import { Classes, Button, Icon } from '@blueprintjs/core';
 
 export interface TypesEditorProps {
   customTypes: State['customTypes'];
@@ -26,7 +24,7 @@ export class TypesEditor extends React.Component<TypesEditorProps, TypesEditorSt
   };
 
   public render() {
-    const { customTypes, createCustomType, deleteCustomType, editCustomType } = this.props;
+    const { customTypes, createCustomType, deleteCustomType } = this.props;
     return (
       <div className="types-editor">
         <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -40,7 +38,9 @@ export class TypesEditor extends React.Component<TypesEditorProps, TypesEditorSt
           />
           <ColorEdit
             onChange={(e) => {
-              e?.target.value && this.setState({ color: e.target.value });
+              if (e?.target.value) {
+                this.setState({ color: e.target.value });
+              }
             }}
             value={this.state.color}
             name="color"
@@ -53,7 +53,7 @@ export class TypesEditor extends React.Component<TypesEditorProps, TypesEditorSt
         {customTypes.map((ct) => (
           <div style={{ display: 'flex', alignItems: 'center' }} key={ct.id}>
             <TypeBlock color={ct.color} customTypes={customTypes} type={ct.type} />
-            <Icon style={{ color: 'red' }} icon="trash" onClick={(e) => deleteCustomType(ct.id)} />
+            <Icon style={{ color: 'red' }} icon="trash" onClick={(_e) => deleteCustomType(ct.id)} />
           </div>
         ))}
         {getListOfTypes(customTypes).map((t, i) => (

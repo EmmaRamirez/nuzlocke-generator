@@ -92,6 +92,7 @@ export const TopBarWithDownload = React.forwardRef((props, ref) => {
     </ErrorBoundary>
   );
 });
+TopBarWithDownload.displayName = 'TopBarWithDownload';
 
 export function TeamPokemonMemberView({ pokemon }: { pokemon: Pokemon }) {
   const [showContext, setShowContext] = React.useState(false);
@@ -246,6 +247,7 @@ export const ResultInner = React.forwardRef((props, resultRef: React.Ref<HTMLDiv
     </div>
   );
 });
+ResultInner.displayName = 'ResultInner';
 
 export class Result extends React.Component {
   public ref: React.RefObject<HTMLDivElement>;
@@ -258,7 +260,7 @@ export class Result extends React.Component {
     return (
       <div className={cx(Styles.result_wrapper, 'hide-scrollbars')}>
         {/* @TODO fix this */}
-        {/* @ts-expect-error */}
+        {/* @ts-expect-error - TopBar ref type mismatch */}
         <TopBar ref={this.ref} />
         <ResultInner ref={this.ref} />
       </div>

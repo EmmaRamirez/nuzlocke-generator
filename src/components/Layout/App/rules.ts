@@ -13,10 +13,11 @@ export function rules(
   switch (action.type) {
     case ADD_RULE:
       return [...state, ''];
-    case EDIT_RULE:
+    case EDIT_RULE: {
       const newState = state;
       newState[action.target] = action.rule;
       return newState;
+    }
     case DELETE_RULE:
       return state.filter((_, i) => i !== action.target);
     case RESET_RULES:

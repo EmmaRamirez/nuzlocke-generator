@@ -73,7 +73,7 @@ export function PokemonItem({
           alt={pokemon.item}
           src={`icons/hold-item/${(pokemon.item || '')
             .toLowerCase()
-            .replace(/\'/g, '')
+            .replace(/'/g, '')
             .replace(/\s/g, '-')}.png`}
         />
       )}

@@ -20,7 +20,7 @@ describe('<ErroBoundary />', () => {
   });
 
   it('catches errors and renders errorMessage', () => {
-    const spy = sinon.spy(ErrorBoundary.prototype, 'componentDidCatch');
+    const _spy = sinon.spy(ErrorBoundary.prototype, 'componentDidCatch');
     // the mount here triggers the error
     render(
       <ErrorBoundary errorMessage={<div>Error!</div>}>

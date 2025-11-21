@@ -29,12 +29,14 @@ export const BoxedPokemonBase = (poke: BoxedPokemonProps) => {
     <div
       className={cx('boxed-pokemon-container')}
       style={{
-        background: useGameOfOriginColor
-          ? gameOfOriginToColor(poke?.gameOfOrigin!)
-          : getAccentColor(poke),
-        color: useGameOfOriginColor
-          ? getContrastColor(gameOfOriginToColor(poke?.gameOfOrigin!))
-          : getContrastColor(getAccentColor(poke)),
+        background:
+          useGameOfOriginColor && poke?.gameOfOrigin
+            ? gameOfOriginToColor(poke.gameOfOrigin)
+            : getAccentColor(poke),
+        color:
+          useGameOfOriginColor && poke?.gameOfOrigin
+            ? getContrastColor(gameOfOriginToColor(poke.gameOfOrigin))
+            : getContrastColor(getAccentColor(poke)),
         width: determineWidth(isMinimal, poke?.style.boxedPokemonPerLine),
       }}>
       {
@@ -57,9 +59,10 @@ export const BoxedPokemonBase = (poke: BoxedPokemonProps) => {
         <div
           className="boxed-pokemon-info"
           style={{
-            borderLeftColor: useGameOfOriginColor
-              ? getContrastColor(gameOfOriginToColor(poke?.gameOfOrigin!))
-              : getAccentColor(poke),
+            borderLeftColor:
+              useGameOfOriginColor && poke?.gameOfOrigin
+                ? getContrastColor(gameOfOriginToColor(poke.gameOfOrigin))
+                : getAccentColor(poke),
           }}>
           <span data-testid="boxed-pokemon-name" className="boxed-pokemon-name">
             {poke?.nickname} {GenderElement(poke?.gender)}{' '}

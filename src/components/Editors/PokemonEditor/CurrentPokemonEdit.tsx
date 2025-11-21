@@ -19,13 +19,11 @@ import {
 import { Pokemon, Editor } from 'models';
 import { Boxes } from 'models';
 import { CurrentPokemonInput } from './CurrentPokemonInput';
-import { PokemonEditor } from 'components/Editors/PokemonEditor/PokemonEditor';
 import { DeletePokemonButton } from 'components/Pokemon/DeletePokemonButton/DeletePokemonButton';
 import { Autocomplete, ErrorBoundary } from 'components/Common/Shared';
 import { selectPokemon, editPokemon } from 'actions';
 import { connect } from 'react-redux';
 import { listOfGames, accentedE } from 'utils';
-import { PokemonIcon } from 'components/Pokemon/PokemonIcon';
 import { cx } from 'emotion';
 import * as Styles from './styles';
 import { v4 as uuid } from 'uuid';
@@ -44,8 +42,6 @@ import { addPokemon } from 'actions';
 import { State } from 'state';
 import { CurrentPokemonLayoutItem } from './CurrentPokemonLayoutItem';
 import { MoveEditor } from 'components/Editors/MoveEditor/MoveEditor';
-import { TrainerEditor } from 'components/Editors/TrainerEditor/TrainerEditor';
-import { ImagesDrawer } from 'components/Common/Shared/ImagesDrawer';
 import { PokemonIconPlain } from 'components/Pokemon/PokemonIcon/PokemonIcon';
 import { CheckpointsEditorBase as CheckpointsInputList } from 'components/Editors/TrainerEditor/CheckpointsEditor';
 import { getImages, Image } from 'components/Common/Shared/ImagesDrawer';
@@ -181,7 +177,7 @@ export class CurrentPokemonEditBase extends React.Component<
     getImages().then((res) => this.setState({ images: res }));
   }
 
-  private copyPokemon = (e) => {
+  private copyPokemon = (_e) => {
     const currentPokemon = this.getCurrentPokemon();
     if (currentPokemon) {
       const newPokemon = {
@@ -203,7 +199,7 @@ export class CurrentPokemonEditBase extends React.Component<
     return this.props.pokemon.find((v: Pokemon) => v.id === this.state.selectedId);
   }
 
-  private evolvePokemon = (species: Species) => (e) => {
+  private evolvePokemon = (species: Species) => (_e) => {
     const pokemon = this.getCurrentPokemon();
     const edit = {
       species,

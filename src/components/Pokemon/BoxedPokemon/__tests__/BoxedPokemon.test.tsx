@@ -5,7 +5,7 @@ import { PokemonFixtures } from 'utils/fixtures';
 import { styleDefaults } from 'utils';
 describe(BoxedPokemonBase.name, () => {
   it('renders a Boxed Pokemon', async () => {
-    // @ts-expect-error
+    // @ts-expect-error - Test props may not match full interface
     const props: BoxedPokemonProps = {
       ...PokemonFixtures.Pikachu,
       style: styleDefaults,

@@ -72,7 +72,6 @@ class NuzlockeGeneratorDB extends Dexie {
   public constructor() {
     super('NuzlockeGenerator');
     this.version(1).stores({
-      // eslint-disable-next-line @typescript-eslint/quotes
       images: `++id, image, name`,
     });
     this.images = this.table('images');
@@ -85,9 +84,9 @@ export const db = new NuzlockeGeneratorDB();
 //     images: `++id, image, name`
 // });
 
-import { v4 as uuid } from 'uuid';
+import { v4 as _uuid } from 'uuid';
 
-const userImages = new Set<Image>();
+const _userImages = new Set<Image>();
 
 export const getImages = async () => {
   const images = await db.images.toArray();
@@ -128,7 +127,7 @@ export function ImagesDrawerInner() {
   const deleteImage = (id: number) => async () => {
     const toaster = Toaster.create();
     try {
-      const deletion = await db.images.where('id').equals(id).delete();
+      const _deletion = await db.images.where('id').equals(id).delete();
       setRefresh(id);
     } catch (e) {
       toaster.show({

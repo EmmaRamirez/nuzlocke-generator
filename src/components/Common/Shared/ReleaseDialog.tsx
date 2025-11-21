@@ -77,7 +77,7 @@ const mascot = css`
   display: inline-block;
 `;
 
-// @ts-ignore
+// @ts-expect-error - fetch args type inference issue
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export interface ReleaseDialogProps {

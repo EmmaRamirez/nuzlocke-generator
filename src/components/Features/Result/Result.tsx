@@ -340,9 +340,10 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
   };
 
   private onZoom = (e?: React.WheelEvent<HTMLElement>) => {
-    // @ts-expect-error
-    if (e.shiftKey) {
-      this.setState({ zoomLevel: clamp(0.1, 5, (-e?.deltaY! ?? 3) / 3) });
+    // @ts-expect-error - e may be undefined but we check shiftKey
+    if (e?.shiftKey) {
+      const deltaY = e?.deltaY ?? -3;
+      this.setState({ zoomLevel: clamp(0.1, 5, -deltaY / 3) });
     }
   };
 

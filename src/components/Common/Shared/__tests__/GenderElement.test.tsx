@@ -1,6 +1,4 @@
-import * as React from 'react';
-import { Autocomplete } from '..';
-import { GenderElement, Gender } from '../GenderElement';
+import { GenderElement } from '../GenderElement';
 import { render, screen } from 'utils/testUtils';
 
 describe(GenderElement.name, () => {

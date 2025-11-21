@@ -3,7 +3,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Pokemon, Box as BoxModel, Boxes, Game } from 'models';
 import { State } from 'state';
-import { generateEmptyPokemon, listOfPokemon, matchSpeciesToTypes } from 'utils';
+import { generateEmptyPokemon } from 'utils';
 import { CurrentPokemonEdit } from '.';
 import { AddPokemonButton } from 'components';
 import { BaseEditor } from 'components';
@@ -72,7 +72,7 @@ export class PokemonEditorBase extends React.Component<PokemonEditorProps, Pokem
     };
   }
 
-  private openMassEditor = (e) => {
+  private openMassEditor = (_e) => {
     this.setState({
       isMassEditorOpen: true,
     });

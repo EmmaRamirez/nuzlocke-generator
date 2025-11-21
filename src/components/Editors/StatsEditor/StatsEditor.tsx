@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { BaseEditor } from 'components/Editors/BaseEditor/BaseEditor';
-import { Pokemon } from 'models';
 import { connect } from 'react-redux';
 import { State } from 'state';
-import { Checkbox, Switch, Button, Intent, Classes, Icon, InputGroup } from '@blueprintjs/core';
+import { Checkbox, Switch, Button, Intent, Classes } from '@blueprintjs/core';
 import { editStyle, addStat, deleteStat, editStat } from 'actions';
 import { cx } from 'emotion';
 import { ErrorBoundary } from 'components';
@@ -30,14 +29,20 @@ export class StatsEditorBase extends React.Component<StatsEditorProps> {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const { editStat } = this.props;
       //if (!stat?.id || !stat?.key || !stat?.value) return;
-      use === 'key'
-        ? editStat(stat?.id!, e.target.value, stat.value ?? '')
-        : editStat(stat?.id!, stat.key ?? '', e.target.value);
+      if (use === 'key') {
+        if (stat?.id) {
+          editStat(stat.id, e.target.value, stat.value ?? '');
+        }
+      } else {
+        if (stat?.id) {
+          editStat(stat.id, stat.key ?? '', e.target.value);
+        }
+      }
     };
 
   public render() {
-    const { style, pokemon, editStyle } = this.props;
-    const { addStat, editStat, deleteStat } = this.props;
+    const { style, editStyle } = this.props;
+    const { addStat, deleteStat } = this.props;
     const stats = style?.statsOptions;
 
     return (

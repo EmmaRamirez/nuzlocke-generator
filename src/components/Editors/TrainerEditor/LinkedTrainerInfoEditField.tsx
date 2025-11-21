@@ -5,7 +5,7 @@ import { State } from 'state';
 
 const mapStateToProps = (state: Pick<State, keyof State>, ownProps: TrainerInfoEditFieldProps) => {
   return {
-    // @ts-ignore
+    // @ts-expect-error - Dynamic property access on trainer state
     value: state.trainer[ownProps.name],
   };
 };

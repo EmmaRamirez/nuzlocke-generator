@@ -24,7 +24,6 @@ import { omit } from 'ramda';
 import { createStore } from 'redux';
 import { appReducers } from 'reducers';
 import { NuzlockeGameTags } from './NuzlockeGameTags';
-import { DataEditor } from 'components/Editors/DataEditor/DataEditor';
 import { DeleteAlert } from 'components/Editors/DataEditor/DeleteAlert';
 import { HallOfFameDialog } from './HallOfFameDialog';
 
@@ -127,7 +126,9 @@ export class NuzlockeSaveBase extends React.Component<
           try {
             parsedData = isCurrent ? JSON.parse(state) : JSON.parse(data);
             //parsedData = JSON.parse(data);
-          } catch (e) {}
+          } catch (_e) {
+            // Ignore parse errors
+          }
 
           if (!parsedData) {
             return null;
