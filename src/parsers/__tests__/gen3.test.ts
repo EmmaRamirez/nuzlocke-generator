@@ -1,3 +1,4 @@
+import { describe, it, expect, beforeAll } from 'vitest';
 import { parseGen3Save } from '../gen3';
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
@@ -87,6 +88,61 @@ describe('Gen 3 Save Parser', () => {
         expect(pokemon.id).toBeDefined();
         expect(pokemon.id).not.toBe('');
       });
+    });
+
+    it('should parse the first team Pokemon moveset correctly', async () => {
+      const result = await parseGen3Save(saveData, {
+        boxMappings: [],
+        selectedGame: 'Emerald',
+      });
+
+      const partyPokemon = result.pokemon.filter((p) => p.status === 'Team');
+
+      // Get the first party Pokemon (Salamence)
+      const firstPokemon = partyPokemon[0];
+
+      // Verify the moveset
+      expect(firstPokemon.moves).toBeDefined();
+      expect(firstPokemon.moves).toEqual(['Headbutt', 'Ember', 'Dragon Breath', 'Fly']);
+    });
+
+    it('should parse the first three boxed Pokemon correctly as Bulbasaur, Ivysaur, and Venusaur', async () => {
+      const result = await parseGen3Save(saveData, {
+        boxMappings: [],
+        selectedGame: 'Emerald',
+      });
+
+      // Filter for boxed Pokemon (status: 'Boxed')
+      const boxedPokemon = result.pokemon.filter((p) => p.status === 'Boxed');
+
+      // Verify we have at least 3 Pokemon in boxes
+      expect(boxedPokemon.length).toBeGreaterThanOrEqual(3);
+
+      // Check the first three boxed Pokemon species
+      expect(boxedPokemon[0].species).toBe('Bulbasaur');
+      expect(boxedPokemon[1].species).toBe('Ivysaur');
+      expect(boxedPokemon[2].species).toBe('Venusaur');
+    });
+
+    it('should parse the first three dead Pokemon correctly as Nidoqueen, Nidoran♂, and Nidorino', async () => {
+      const result = await parseGen3Save(saveData, {
+        boxMappings: [
+          { key: 1, status: 'Boxed' },
+          { key: 2, status: 'Dead' },
+        ],
+        selectedGame: 'Emerald',
+      });
+
+      // Filter for dead Pokemon (status: 'Dead')
+      const deadPokemon = result.pokemon.filter((p) => p.status === 'Dead');
+
+      // Verify we have at least 3 dead Pokemon
+      expect(deadPokemon.length).toBeGreaterThanOrEqual(3);
+
+      // Check the first three dead Pokemon species
+      expect(deadPokemon[0].species).toBe('Nidoqueen');
+      expect(deadPokemon[1].species).toBe('Nidoran♂');
+      expect(deadPokemon[2].species).toBe('Nidorino');
     });
   });
 });
