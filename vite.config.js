@@ -35,7 +35,11 @@ export default defineConfig({
           if (/\.(css|styl)$/.test(id)) {
             return 'export default {}';
           }
-          if (/\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$/.test(id)) {
+          if (
+            /\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$/.test(
+              id
+            )
+          ) {
             return 'export default {}';
           }
         }
