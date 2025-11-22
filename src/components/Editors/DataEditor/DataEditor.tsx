@@ -373,7 +373,7 @@ export class DataEditorBase extends React.Component<DataEditorProps, DataEditorS
 
   private uploadFile = (replaceState, state) => () => {
     const t0 = performance.now();
-    // @NOTE: this is a gross work-around a bug with jest and import.meta.url
+    // @NOTE: this is a gross work-around a bug with tests and import.meta.url
     // const worker = new Worker(new URL('parsers/worker.ts', codegen`module.exports = import.meta.env.MODE === "test" ? "" : "import.meta.url"`));
 
     const worker = new SaveFileWorker();

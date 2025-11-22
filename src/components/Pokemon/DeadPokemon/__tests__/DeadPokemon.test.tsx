@@ -18,7 +18,7 @@ describe('<DeadPokemon />', () => {
       <DeadPokemonBase
         game={{ name: 'Red', customName: '' }}
         style={styleDefaults}
-        selectPokemon={jest.fn()}
+        selectPokemon={vi.fn()}
         minimal={false}
         {...poke}
       />

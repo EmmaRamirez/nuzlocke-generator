@@ -1,7 +1,11 @@
 import { parseGen3Save } from '../gen3';
 import { readFileSync } from 'fs';
-import { join } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'node:path';
 import { Buffer } from 'buffer';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 describe('Gen 3 Save Parser', () => {
   describe('Emerald Save File', () => {
