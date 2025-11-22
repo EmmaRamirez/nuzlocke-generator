@@ -9,7 +9,7 @@ import type { GameSaveFormat } from 'utils/gameSaveFormat';
 import { MOVES_ARRAY } from './utils';
 import { ParserOptions } from './utils/parserOptions';
 import { parseTime } from './utils/parseTime';
-import { GEN_3_POKEMON_MAP, ABILITY_MAP } from './utils/gen3';
+import { GEN_3_POKEMON_MAP, ABILITY_MAP, GEN_3_LOCATIONS } from './utils/gen3';
 
 const DEBUG = import.meta.env.VITE_DEBUG_PARSER === 'true';
 
@@ -450,7 +450,8 @@ const decodePokemon = (buffer: Buffer, context: PokemonContext): Pokemon | null 
   const ballId = (originInfo >> 11) & 0x3;
   const otGender = (originInfo >> 15) & 0x1 ? 'F' : 'M';
 
-  const level = context.isParty ? context.level : undefined;
+  // For party Pokemon, use the stored level. For boxed Pokemon, use metLevel as fallback
+  const level = context.isParty ? context.level : metLevel || undefined;
   const speciesName = getSpeciesName(speciesId, nickname);
   const moves = moveIds.map((id) => MOVES_ARRAY?.[id]).filter(Boolean);
   const pokeball = BALL_MAP[ballId] || `Ball #${ballId}`;
@@ -503,7 +504,8 @@ const decodePokemon = (buffer: Buffer, context: PokemonContext): Pokemon | null 
   const typeTuple = speciesName ? matchSpeciesToTypes(speciesName as Species) : undefined;
   const types = typeTuple ? (Array.from(new Set(typeTuple)) as [Types, Types]) : undefined;
 
-  const met = metLocation && metLocation !== 0xff ? `Location ${metLocation}` : undefined;
+  // Look up location name from GEN_3_LOCATIONS map
+  const met = metLocation && metLocation !== 0xff ? GEN_3_LOCATIONS[metLocation] : undefined;
 
   const pokemon: Pokemon = {
     species: speciesName || `Species ${speciesId}`,

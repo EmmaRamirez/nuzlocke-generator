@@ -73,6 +73,18 @@ describe('Gen 3 Save Parser', () => {
       expect(partyPokemon[2].ability).toBe('Own Tempo');
     });
 
+    it('should parse the locations of the first three party Pokemon correctly', async () => {
+      const result = await parseGen3Save(saveData, {
+        boxMappings: [],
+        selectedGame: 'Emerald',
+      });
+
+      const partyPokemon = result.pokemon.filter((p) => p.status === 'Team');
+      expect(partyPokemon[0].met).toBe('Meteor Falls');
+      expect(partyPokemon[1].met).toBe('Route 113');
+      expect(partyPokemon[2].met).toBe('Artisan Cave');
+    });
+
     it('should have correct positions for party Pokemon', async () => {
       const result = await parseGen3Save(saveData, {
         boxMappings: [],
@@ -159,6 +171,17 @@ describe('Gen 3 Save Parser', () => {
       expect(boxedPokemon[11].species).toBe('Butterfree');
     });
 
+    it('should have unique ids for each boxed Pokemon', async () => {
+      const result = await parseGen3Save(saveData, {
+        boxMappings: [],
+        selectedGame: 'Emerald',
+      });
+
+      const boxedPokemon = result.pokemon.filter((p) => p.status === 'Boxed');
+      const uniqueIds = new Set(boxedPokemon.map((p) => p.id));
+      expect(uniqueIds.size).toBe(boxedPokemon.length);
+    });
+
     it('should parse the first boxed Pokemon moveset correctly', async () => {
       const result = await parseGen3Save(saveData, {
         boxMappings: [],
@@ -194,6 +217,10 @@ describe('Gen 3 Save Parser', () => {
       expect(deadPokemon[0].species).toBe('Nidoqueen');
       expect(deadPokemon[1].species).toBe('Nidoran♂');
       expect(deadPokemon[2].species).toBe('Nidorino');
+
+      // Check Nidoqueen's levels
+      expect(deadPokemon[0].level).toBe(31);
+      expect(deadPokemon[0].metLevel).toBe(31);
     });
   });
 });

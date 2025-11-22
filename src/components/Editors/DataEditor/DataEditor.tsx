@@ -26,7 +26,7 @@ import { omit } from 'ramda';
 import { BaseEditor } from 'components/Editors/BaseEditor/BaseEditor';
 import { State } from 'state';
 import { noop } from 'redux-saga/utils';
-import { GameSaveFormat } from 'utils';
+import { gameOfOriginToColor, GameSaveFormat } from 'utils';
 import { DeleteAlert } from './DeleteAlert';
 import { isEmpty } from 'utils/isEmpty';
 // @TODO: fix codegen imports

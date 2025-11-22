@@ -259,7 +259,8 @@ export class CurrentPokemonEditBase extends React.Component<
           options={this.getTypes()}
           key={this.state.selectedId + 'types'}
         />
-        <span
+        <div>TODO: fix checkpoints editor</div>
+        {/* <span
           className={
             'current-pokemon-input-wrapper current-pokemon-checklist current-pokemon-checkpoints'
           }>
@@ -269,7 +270,7 @@ export class CurrentPokemonEditBase extends React.Component<
             onChange={(checkpoints) => editPokemon({ checkpoints }, currentPokemon.id)}
             buttonText="Award Checkpoints"
           />
-        </span>
+        </span> */}
         <CurrentPokemonLayoutItem checkboxes>
           <CurrentPokemonInput
             labelName="Shiny"
