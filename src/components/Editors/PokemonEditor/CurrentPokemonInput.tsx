@@ -196,8 +196,9 @@ export function PokemonTextAreaInput({
 
 export function PokemonNumberInput({
   inputName,
-  _type,
-  _value,
+  type,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  value,
   placeholder,
   disabled,
   onChange,
@@ -261,11 +262,11 @@ export function PokemonSelectInput({
 
 export function PokemonDoubleSelectInput({
   inputName,
-  _value,
-  _type,
-  _usesKeyValue,
-  _options,
-  _placeholder,
+  value,
+  type,
+  usesKeyValue,
+  options,
+  placeholder,
   onChange,
   edit,
   setEdit,
@@ -338,7 +339,7 @@ export function PokemonCheckboxInput({
 
 export function PokemonMoveInput({
   _inputName,
-  _value,
+  value,
   _type,
   _usesKeyValue,
   _options,

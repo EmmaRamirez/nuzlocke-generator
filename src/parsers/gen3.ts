@@ -2,13 +2,14 @@ import { Buffer } from 'buffer';
 import { Pokemon } from 'models';
 import { matchSpeciesToTypes } from 'utils/formatters/matchSpeciesToTypes';
 import { Forme } from 'utils/Forme';
+import { Types } from 'utils/Types';
 import { listOfPokemon } from 'utils/data/listOfPokemon';
 import type { Species } from 'utils/data/listOfPokemon';
 import type { GameSaveFormat } from 'utils/gameSaveFormat';
 import { MOVES_ARRAY } from './utils';
 import { ParserOptions } from './utils/parserOptions';
 import { parseTime } from './utils/parseTime';
-import { GEN_3_POKEMON_MAP } from './utils/gen3';
+import { GEN_3_POKEMON_MAP, ABILITY_MAP } from './utils/gen3';
 
 const DEBUG = import.meta.env.VITE_DEBUG_PARSER === 'true';
 
@@ -451,9 +452,28 @@ const decodePokemon = (buffer: Buffer, context: PokemonContext): Pokemon | null 
 
   const level = context.isParty ? context.level : undefined;
   const speciesName = getSpeciesName(speciesId, nickname);
-  const moves = moveIds.map((id) => MOVES_ARRAY[id] || `Move #${id}`).filter(Boolean);
+  const moves = moveIds.map((id) => MOVES_ARRAY?.[id]).filter(Boolean);
   const pokeball = BALL_MAP[ballId] || `Ball #${ballId}`;
-  const ability = ivs.abilitySlot === 1 ? 'Ability 2' : 'Ability 1';
+
+  // Get ability from ABILITY_MAP
+  // First try to get national dex ID from the species map
+  let nationalDexId = GEN_3_POKEMON_MAP[speciesId];
+
+  // If that fails but we have a valid species name, find the national dex ID from SPECIES_MAP
+  if ((!nationalDexId || nationalDexId === 0) && speciesName) {
+    // Search SPECIES_MAP to find the national dex ID for this species name
+    const foundKey = Object.keys(SPECIES_MAP).find(
+      (key) => SPECIES_MAP[parseInt(key)] === speciesName
+    );
+    if (foundKey) {
+      nationalDexId = parseInt(foundKey);
+    }
+  }
+
+  const abilities = nationalDexId && ABILITY_MAP[nationalDexId] ? ABILITY_MAP[nationalDexId] : [];
+  const abilityIndex = ivs.abilitySlot === 1 ? 1 : 0;
+  const ability = abilities[abilityIndex] || abilities[0] || undefined;
+
   const shiny = shinyCheck(personality, otId);
   const forme = speciesName === 'Unown' ? determineUnownForme(personality) : undefined;
 
@@ -480,10 +500,8 @@ const decodePokemon = (buffer: Buffer, context: PokemonContext): Pokemon | null 
       }
     : undefined;
 
-  const types =
-    speciesName && speciesName in SPECIES_MAP
-      ? matchSpeciesToTypes(speciesName as Species)
-      : undefined;
+  const typeTuple = speciesName ? matchSpeciesToTypes(speciesName as Species) : undefined;
+  const types = typeTuple ? (Array.from(new Set(typeTuple)) as [Types, Types]) : undefined;
 
   const met = metLocation && metLocation !== 0xff ? `Location ${metLocation}` : undefined;
 

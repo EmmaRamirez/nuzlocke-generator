@@ -421,3 +421,614 @@ export const GEN_3_POKEMON_MAP: Record<number, number> = {
   410: 0, // Old Unown Y
   411: 0, // Old Unown Z
 };
+
+// Gen 3 Pokémon ability mapping by species ID (1: Bulbasaur, etc.)
+// Source: https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_Ability
+export const ABILITY_MAP: { [speciesId: number]: string[] } = {
+  // 1-3: Bulbasaur line
+  1: ['Overgrow'],
+  2: ['Overgrow'],
+  3: ['Overgrow'],
+  // 4-6: Charmander line
+  4: ['Blaze'],
+  5: ['Blaze'],
+  6: ['Blaze'],
+  // 7-9: Squirtle line
+  7: ['Torrent'],
+  8: ['Torrent'],
+  9: ['Torrent'],
+  // 10-12: Caterpie line
+  10: ['Shield Dust'],
+  11: ['Shed Skin'],
+  12: ['Compound Eyes'],
+  // 13-15: Weedle line
+  13: ['Shield Dust'],
+  14: ['Shed Skin'],
+  15: ['Intimidate'],
+  // 16-18: Pidgey line
+  16: ['Keen Eye'],
+  17: ['Keen Eye'],
+  18: ['Keen Eye'],
+  // 19-20: Rattata line
+  19: ['Run Away', 'Guts'],
+  20: ['Run Away', 'Guts'],
+  // 21-22: Spearow line
+  21: ['Keen Eye'],
+  22: ['Keen Eye'],
+  // 23-24: Ekans line
+  23: ['Intimidate'],
+  24: ['Intimidate'],
+  // 25-26: Pikachu line
+  25: ['Static'],
+  26: ['Static'],
+  // 27-28: Sandshrew line
+  27: ['Sand Veil'],
+  28: ['Sand Veil'],
+  // 29-31: Nidoran♀ line
+  29: ['Poison Point'],
+  30: ['Poison Point'],
+  31: ['Poison Point'],
+  // 32-34: Nidoran♂ line
+  32: ['Poison Point'],
+  33: ['Poison Point'],
+  34: ['Poison Point'],
+  // 35-36: Clefairy line
+  35: ['Cute Charm'],
+  36: ['Cute Charm'],
+  // 37-38: Vulpix line
+  37: ['Flash Fire'],
+  38: ['Flash Fire'],
+  // 39-40: Jigglypuff line
+  39: ['Cute Charm'],
+  40: ['Cute Charm'],
+  // 41-42: Zubat line
+  41: ['Inner Focus'],
+  42: ['Inner Focus'],
+  // 43-45: Oddish line
+  43: ['Chlorophyll'],
+  44: ['Chlorophyll'],
+  45: ['Chlorophyll'],
+  // 46-47: Paras line
+  46: ['Effect Spore'],
+  47: ['Effect Spore'],
+  // 48-49: Venonat line
+  48: ['Compound Eyes'],
+  49: ['Shield Dust'],
+  // 50-51: Diglett line
+  50: ['Sand Veil'],
+  51: ['Sand Veil'],
+  // 52-53: Meowth line
+  52: ['Pickup'],
+  53: ['Limber'],
+  // 54-55: Psyduck line
+  54: ['Damp', 'Cloud Nine'],
+  55: ['Damp', 'Cloud Nine'],
+  // 56-57: Mankey line
+  56: ['Vital Spirit'],
+  57: ['Vital Spirit'],
+  // 58-59: Growlithe line
+  58: ['Intimidate'],
+  59: ['Intimidate'],
+  // 60-62: Poliwag line
+  60: ['Water Absorb', 'Damp'],
+  61: ['Water Absorb', 'Damp'],
+  62: ['Water Absorb', 'Damp'],
+  // 63-65: Abra line
+  63: ['Synchronize'],
+  64: ['Synchronize'],
+  65: ['Synchronize'],
+  // 66-68: Machop line
+  66: ['Guts'],
+  67: ['Guts'],
+  68: ['Guts'],
+  // 69-71: Bellsprout line
+  69: ['Chlorophyll'],
+  70: ['Chlorophyll'],
+  71: ['Chlorophyll'],
+  // 72-73: Tentacool line
+  72: ['Clear Body', 'Liquid Ooze'],
+  73: ['Clear Body', 'Liquid Ooze'],
+  // 74-76: Geodude line
+  74: ['Rock Head', 'Sturdy'],
+  75: ['Rock Head', 'Sturdy'],
+  76: ['Rock Head', 'Sturdy'],
+  // 77-78: Ponyta line
+  77: ['Run Away', 'Flash Fire'],
+  78: ['Run Away', 'Flash Fire'],
+  // 79-80: Slowpoke line
+  79: ['Oblivious', 'Own Tempo'],
+  80: ['Oblivious', 'Own Tempo'],
+  // 81-82: Magnemite line
+  81: ['Magnet Pull'],
+  82: ['Magnet Pull'],
+  // 83: Farfetch'd
+  83: ['Keen Eye'],
+  // 84-85: Doduo line
+  84: ['Run Away', 'Early Bird'],
+  85: ['Run Away', 'Early Bird'],
+  // 86-87: Seel line
+  86: ['Thick Fat'],
+  87: ['Thick Fat'],
+  // 88-89: Grimer line
+  88: ['Stench', 'Sticky Hold'],
+  89: ['Stench', 'Sticky Hold'],
+  // 90-91: Shellder line
+  90: ['Shell Armor'],
+  91: ['Shell Armor'],
+  // 92-94: Gastly line
+  92: ['Levitate'],
+  93: ['Levitate'],
+  94: ['Levitate'],
+  // 95: Onix
+  95: ['Rock Head', 'Sturdy'],
+  // 96-97: Drowzee line
+  96: ['Insomnia'],
+  97: ['Insomnia'],
+  // 98-99: Krabby line
+  98: ['Hyper Cutter', 'Shell Armor'],
+  99: ['Hyper Cutter', 'Shell Armor'],
+  // 100-101: Voltorb line
+  100: ['Soundproof', 'Static'],
+  101: ['Soundproof', 'Static'],
+  // 102-103: Exeggcute line
+  102: ['Chlorophyll'],
+  103: ['Chlorophyll'],
+  // 104-105: Cubone line
+  104: ['Rock Head', 'Lightning Rod'],
+  105: ['Rock Head', 'Lightning Rod'],
+  // 106: Hitmonlee
+  106: ['Limber'],
+  // 107: Hitmonchan
+  107: ['Keen Eye'],
+  // 108: Lickitung
+  108: ['Own Tempo', 'Oblivious'],
+  // 109-110: Koffing line
+  109: ['Levitate'],
+  110: ['Levitate'],
+  // 111-112: Rhyhorn line
+  111: ['Lightning Rod', 'Rock Head'],
+  112: ['Lightning Rod', 'Rock Head'],
+  // 113: Chansey
+  113: ['Natural Cure', 'Serene Grace'],
+  // 114: Tangela
+  114: ['Chlorophyll'],
+  // 115: Kangaskhan
+  115: ['Early Bird'],
+  // 116-117: Horsea line
+  116: ['Swift Swim'],
+  117: ['Swift Swim'],
+  // 118-119: Goldeen line
+  118: ['Swift Swim', 'Water Veil'],
+  119: ['Swift Swim', 'Water Veil'],
+  // 120-121: Staryu line
+  120: ['Illuminate', 'Natural Cure'],
+  121: ['Illuminate', 'Natural Cure'],
+  // 122: Mr. Mime
+  122: ['Soundproof'],
+  // 123: Scyther
+  123: ['Swarm'],
+  // 124: Jynx
+  124: ['Oblivious', 'Forewarn'],
+  // 125: Electabuzz
+  125: ['Static'],
+  // 126: Magmar
+  126: ['Flame Body'],
+  // 127: Pinsir
+  127: ['Hyper Cutter'],
+  // 128: Tauros
+  128: ['Intimidate'],
+  // 129-130: Magikarp line
+  129: ['Swift Swim'],
+  130: ['Intimidate'],
+  // 131: Lapras
+  131: ['Water Absorb', 'Shell Armor'],
+  // 132: Ditto
+  132: ['Limber'],
+  // 133-136: Eevee line
+  133: ['Run Away', 'Adaptability'],
+  134: ['Water Absorb'],
+  135: ['Volt Absorb'],
+  136: ['Flash Fire'],
+  // 137: Porygon
+  137: ['Trace'],
+  // 138-139: Omanyte line
+  138: ['Swift Swim', 'Shell Armor'],
+  139: ['Swift Swim', 'Shell Armor'],
+  // 140-141: Kabuto line
+  140: ['Swift Swim', 'Battle Armor'],
+  141: ['Swift Swim', 'Battle Armor'],
+  // 142: Aerodactyl
+  142: ['Rock Head', 'Pressure'],
+  // 143: Snorlax
+  143: ['Immunity', 'Thick Fat'],
+  // 144: Articuno
+  144: ['Pressure'],
+  // 145: Zapdos
+  145: ['Pressure'],
+  // 146: Moltres
+  146: ['Pressure'],
+  // 147-149: Dratini line
+  147: ['Shed Skin'],
+  148: ['Shed Skin'],
+  149: ['Inner Focus'],
+  // 150: Mewtwo
+  150: ['Pressure'],
+  // 151: Mew
+  151: ['Synchronize'],
+  // 152-154: Chikorita line
+  152: ['Overgrow'],
+  153: ['Overgrow'],
+  154: ['Overgrow'],
+  // 155-157: Cyndaquil line
+  155: ['Blaze'],
+  156: ['Blaze'],
+  157: ['Blaze'],
+  // 158-160: Totodile line
+  158: ['Torrent'],
+  159: ['Torrent'],
+  160: ['Torrent'],
+  // 161-162: Sentret line
+  161: ['Run Away', 'Keen Eye'],
+  162: ['Run Away', 'Keen Eye'],
+  // 163-164: Hoothoot line
+  163: ['Insomnia'],
+  164: ['Insomnia'],
+  // 165-166: Ledyba line
+  165: ['Swarm', 'Early Bird'],
+  166: ['Swarm', 'Early Bird'],
+  // 167-168: Spinarak line
+  167: ['Swarm', 'Insomnia'],
+  168: ['Swarm', 'Insomnia'],
+  // 169: Crobat
+  169: ['Inner Focus'],
+  // 170-171: Chinchou line
+  170: ['Volt Absorb', 'Illuminate'],
+  171: ['Volt Absorb', 'Illuminate'],
+  // 172: Pichu
+  172: ['Static'],
+  // 173: Cleffa
+  173: ['Cute Charm'],
+  // 174: Igglybuff
+  174: ['Cute Charm'],
+  // 175-176: Togepi line
+  175: ['Hustle', 'Serene Grace'],
+  176: ['Hustle', 'Serene Grace'],
+  // 177-178: Natu line
+  177: ['Synchronize', 'Early Bird'],
+  178: ['Synchronize', 'Early Bird'],
+  // 179-181: Mareep line
+  179: ['Static'],
+  180: ['Static'],
+  181: ['Static'],
+  // 182: Bellossom
+  182: ['Chlorophyll'],
+  // 183-184: Marill line
+  183: ['Thick Fat', 'Huge Power'],
+  184: ['Thick Fat', 'Huge Power'],
+  // 185: Sudowoodo
+  185: ['Sturdy', 'Rock Head'],
+  // 186: Politoed
+  186: ['Water Absorb', 'Damp'],
+  // 187-189: Hoppip line
+  187: ['Chlorophyll', 'Leaf Guard'],
+  188: ['Chlorophyll', 'Leaf Guard'],
+  189: ['Chlorophyll', 'Leaf Guard'],
+  // 190: Aipom
+  190: ['Run Away', 'Pickup'],
+  // 191-192: Sunkern line
+  191: ['Chlorophyll', 'Solar Power'],
+  192: ['Chlorophyll', 'Solar Power'],
+  // 193: Yanma
+  193: ['Speed Boost'],
+  // 194-195: Wooper line
+  194: ['Water Absorb', 'Damp'],
+  195: ['Water Absorb', 'Damp'],
+  // 196-197: Espeon/Umbreon
+  196: ['Synchronize'],
+  197: ['Synchronize'],
+  // 198: Murkrow
+  198: ['Insomnia'],
+  // 199: Slowking
+  199: ['Oblivious', 'Own Tempo'],
+  // 200: Misdreavus
+  200: ['Levitate'],
+  // 201: Unown
+  201: ['Levitate'],
+  // 202: Wobbuffet
+  202: ['Shadow Tag'],
+  // 203: Girafarig
+  203: ['Inner Focus', 'Early Bird'],
+  // 204-205: Pineco line
+  204: ['Sturdy'],
+  205: ['Sturdy'],
+  // 206: Dunsparce
+  206: ['Serene Grace', 'Run Away'],
+  // 207: Gligar
+  207: ['Hyper Cutter', 'Sand Veil'],
+  // 208: Steelix
+  208: ['Rock Head', 'Sturdy'],
+  // 209-210: Snubbull line
+  209: ['Intimidate', 'Run Away'],
+  210: ['Intimidate', 'Run Away'],
+  // 211: Qwilfish
+  211: ['Poison Point', 'Swift Swim'],
+  // 212: Scizor
+  212: ['Swarm', 'Technician'],
+  // 213: Shuckle
+  213: ['Sturdy', 'Gluttony'],
+  // 214: Heracross
+  214: ['Swarm', 'Guts'],
+  // 215: Sneasel
+  215: ['Inner Focus', 'Keen Eye'],
+  // 216-217: Teddiursa line
+  216: ['Pickup', 'Quick Feet'],
+  217: ['Guts', 'Quick Feet'],
+  // 218-219: Slugma line
+  218: ['Magma Armor', 'Flame Body'],
+  219: ['Magma Armor', 'Flame Body'],
+  // 220-221: Swinub line
+  220: ['Oblivious', 'Snow Cloak'],
+  221: ['Oblivious', 'Snow Cloak'],
+  // 222: Corsola
+  222: ['Hustle', 'Natural Cure'],
+  // 223-224: Remoraid line
+  223: ['Hustle', 'Sniper'],
+  224: ['Suction Cups', 'Sniper'],
+  // 225: Delibird
+  225: ['Vital Spirit', 'Hustle'],
+  // 226: Mantine
+  226: ['Swift Swim', 'Water Absorb'],
+  // 227: Skarmory
+  227: ['Keen Eye', 'Sturdy'],
+  // 228-229: Houndour line
+  228: ['Early Bird', 'Flash Fire'],
+  229: ['Early Bird', 'Flash Fire'],
+  // 230: Kingdra
+  230: ['Swift Swim', 'Sniper'],
+  // 231-232: Phanpy line
+  231: ['Pickup', 'Sand Veil'],
+  232: ['Sturdy', 'Sand Veil'],
+  // 233: Porygon2
+  233: ['Trace', 'Download'],
+  // 234: Stantler
+  234: ['Intimidate', 'Frisk'],
+  // 235: Smeargle
+  235: ['Own Tempo', 'Technician'],
+  // 236-238: Tyrogue line and baby forms
+  236: ['Guts', 'Steadfast'],
+  237: ['Guts'],
+  238: ['Oblivious', 'Own Tempo'],
+  // 239: Elekid
+  239: ['Static'],
+  // 240: Magby
+  240: ['Flame Body'],
+  // 241: Miltank
+  241: ['Thick Fat', 'Scrappy'],
+  // 242: Blissey
+  242: ['Natural Cure', 'Serene Grace'],
+  // 243: Raikou
+  243: ['Pressure'],
+  // 244: Entei
+  244: ['Pressure'],
+  // 245: Suicune
+  245: ['Pressure'],
+  // 246-248: Larvitar line
+  246: ['Guts'],
+  247: ['Shed Skin'],
+  248: ['Sand Stream'],
+  // 249: Lugia
+  249: ['Pressure'],
+  // 250: Ho-Oh
+  250: ['Pressure'],
+  // 251: Celebi
+  251: ['Natural Cure'],
+  // 252-254: Treecko line
+  252: ['Overgrow'],
+  253: ['Overgrow'],
+  254: ['Overgrow'],
+  // 255-257: Torchic line
+  255: ['Blaze'],
+  256: ['Blaze'],
+  257: ['Blaze'],
+  // 258-260: Mudkip line
+  258: ['Torrent'],
+  259: ['Torrent'],
+  260: ['Torrent'],
+  // 261-262: Poochyena line
+  261: ['Run Away', 'Quick Feet'],
+  262: ['Intimidate', 'Quick Feet'],
+  // 263-264: Zigzagoon line
+  263: ['Pickup', 'Gluttony'],
+  264: ['Pickup', 'Gluttony'],
+  // 265-267: Wurmple line -> includes Silcoon/Beautifly and Cascoon/Dustox
+  265: ['Shield Dust', 'Run Away'],
+  266: ['Shed Skin'],
+  267: ['Swarm'],
+  268: ['Shed Skin'],
+  269: ['Shield Dust', 'Compound Eyes'],
+  // 270-271: Lotad line
+  270: ['Rain Dish', 'Swift Swim'],
+  271: ['Rain Dish', 'Swift Swim'],
+  272: ['Rain Dish', 'Swift Swim'],
+  // 273-275: Seedot line
+  273: ['Chlorophyll', 'Early Bird'],
+  274: ['Chlorophyll', 'Early Bird'],
+  275: ['Chlorophyll', 'Early Bird'],
+  // 276-277: Taillow line
+  276: ['Guts'],
+  277: ['Guts'],
+  // 278-279: Wingull line
+  278: ['Keen Eye', 'Hydration'],
+  279: ['Keen Eye', 'Hydration'],
+  // 280-282: Ralts line
+  280: ['Synchronize', 'Trace'],
+  281: ['Synchronize', 'Trace'],
+  282: ['Synchronize', 'Trace'],
+  // 283-284: Surskit line
+  283: ['Swift Swim'],
+  284: ['Intimidate'],
+  // 285-286: Shroomish line
+  285: ['Effect Spore', 'Poison Heal'],
+  286: ['Effect Spore', 'Poison Heal'],
+  // 287-289: Slakoth line
+  287: ['Truant'],
+  288: ['Vital Spirit'],
+  289: ['Truant'],
+  // 290-292: Nincada line (292: Shedinja)
+  290: ['Compound Eyes', 'Run Away'],
+  291: ['Speed Boost'],
+  292: ['Wonder Guard'],
+  // 293-295: Whismur line
+  293: ['Soundproof'],
+  294: ['Soundproof'],
+  295: ['Soundproof'],
+  // 296-297: Makuhita line
+  296: ['Thick Fat', 'Guts'],
+  297: ['Thick Fat', 'Guts'],
+  // 298: Azurill
+  298: ['Thick Fat', 'Huge Power'],
+  // 299: Nosepass
+  299: ['Sturdy', 'Magnet Pull'],
+  // 300-301: Skitty line
+  300: ['Cute Charm', 'Normalize'],
+  301: ['Cute Charm', 'Normalize'],
+  // 302: Sableye
+  302: ['Keen Eye', 'Stall'],
+  // 303: Mawile
+  303: ['Hyper Cutter', 'Intimidate'],
+  // 304-306: Aron line
+  304: ['Sturdy', 'Rock Head'],
+  305: ['Sturdy', 'Rock Head'],
+  306: ['Sturdy', 'Rock Head'],
+  // 307-308: Meditite line
+  307: ['Pure Power'],
+  308: ['Pure Power'],
+  // 309-310: Electrike line
+  309: ['Lightning Rod', 'Static'],
+  310: ['Lightning Rod', 'Static'],
+  // 311: Plusle
+  311: ['Plus'],
+  // 312: Minun
+  312: ['Minus'],
+  // 313: Volbeat
+  313: ['Illuminate', 'Swarm'],
+  // 314: Illumise
+  314: ['Oblivious', 'Tinted Lens'],
+  // 315: Roselia
+  315: ['Natural Cure', 'Poison Point'],
+  // 316-317: Gulpin line
+  316: ['Liquid Ooze', 'Sticky Hold'],
+  317: ['Liquid Ooze', 'Sticky Hold'],
+  // 318-319: Carvanha line
+  318: ['Rough Skin', 'Speed Boost'],
+  319: ['Rough Skin', 'Speed Boost'],
+  // 320-321: Wailmer line
+  320: ['Water Veil', 'Oblivious'],
+  321: ['Water Veil', 'Oblivious'],
+  // 322-323: Numel line
+  322: ['Oblivious', 'Simple'],
+  323: ['Oblivious', 'Simple'],
+  // 324: Torkoal
+  324: ['White Smoke', 'Shell Armor'],
+  // 325-326: Spoink line
+  325: ['Thick Fat', 'Own Tempo'],
+  326: ['Thick Fat', 'Own Tempo'],
+  // 327: Spinda
+  327: ['Own Tempo', 'Tangled Feet'],
+  // 328-330: Trapinch line
+  328: ['Hyper Cutter', 'Arena Trap'],
+  329: ['Levitate'],
+  330: ['Levitate'],
+  // 331-332: Cacnea line
+  331: ['Sand Veil', 'Water Absorb'],
+  332: ['Sand Veil', 'Water Absorb'],
+  // 333-334: Swablu line
+  333: ['Natural Cure', 'Cloud Nine'],
+  334: ['Natural Cure', 'Cloud Nine'],
+  // 335: Zangoose
+  335: ['Immunity', 'Toxic Boost'],
+  // 336: Seviper
+  336: ['Shed Skin', 'Infiltrator'],
+  // 337-338: Lunatone/Solgaleo
+  337: ['Levitate'],
+  338: ['Levitate'],
+  // 339-340: Barboach line
+  339: ['Oblivious', 'Anticipation'],
+  340: ['Oblivious', 'Anticipation'],
+  // 341-342: Corphish line
+  341: ['Hyper Cutter', 'Adaptability'],
+  342: ['Hyper Cutter', 'Adaptability'],
+  // 343-344: Baltoy line
+  343: ['Levitate'],
+  344: ['Levitate'],
+  // 345-346: Lileep line
+  345: ['Suction Cups', 'Storm Drain'],
+  346: ['Suction Cups', 'Storm Drain'],
+  // 347-348: Anorith line
+  347: ['Battle Armor', 'Swift Swim'],
+  348: ['Battle Armor', 'Swift Swim'],
+  // 349-350: Feebas line
+  349: ['Swift Swim', 'Oblivious'],
+  350: ['Marvel Scale', 'Oblivious'],
+  // 351: Castform
+  351: ['Forecast'],
+  // 352: Kecleon
+  352: ['Color Change', 'Protean'],
+  // 353-354: Shuppet line
+  353: ['Insomnia', 'Frisk'],
+  354: ['Insomnia', 'Frisk'],
+  // 355-356: Duskull line
+  355: ['Levitate', 'Frisk'],
+  356: ['Levitate', 'Frisk'],
+  // 357: Tropius
+  357: ['Chlorophyll', 'Solar Power'],
+  // 358: Chimecho
+  358: ['Levitate'],
+  // 359: Absol
+  359: ['Pressure', 'Super Luck'],
+  // 360: Wynaut
+  360: ['Shadow Tag', 'Telepathy'],
+  // 361-362: Snorunt line
+  361: ['Inner Focus', 'Ice Body'],
+  362: ['Inner Focus', 'Ice Body'],
+  // 363-365: Spheal line
+  363: ['Thick Fat', 'Ice Body'],
+  364: ['Thick Fat', 'Ice Body'],
+  365: ['Thick Fat', 'Ice Body'],
+  // 366-368: Clamperl/Huntail/Gorebyss
+  366: ['Shell Armor', 'Rattled'],
+  367: ['Swift Swim', 'Water Veil'],
+  368: ['Swift Swim', 'Hydration'],
+  // 369: Relicanth
+  369: ['Swift Swim', 'Rock Head'],
+  // 370: Luvdisc
+  370: ['Swift Swim', 'Hydration'],
+  // 371-373: Bagon line
+  371: ['Rock Head', 'Sheer Force'],
+  372: ['Rock Head', 'Sheer Force'],
+  373: ['Intimidate', 'Moxie'],
+  // 374-376: Beldum line
+  374: ['Clear Body', 'Light Metal'],
+  375: ['Clear Body', 'Light Metal'],
+  376: ['Clear Body', 'Light Metal'],
+  // 377: Regirock
+  377: ['Clear Body'],
+  // 378: Regice
+  378: ['Clear Body'],
+  // 379: Registeel
+  379: ['Clear Body'],
+  // 380: Latias
+  380: ['Levitate'],
+  // 381: Latios
+  381: ['Levitate'],
+  // 382: Kyogre
+  382: ['Drizzle'],
+  // 383: Groudon
+  383: ['Drought'],
+  // 384: Rayquaza
+  384: ['Air Lock'],
+  // 385: Jirachi
+  385: ['Serene Grace'],
+  // 386: Deoxys
+  386: ['Pressure'],
+};

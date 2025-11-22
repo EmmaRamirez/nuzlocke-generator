@@ -36,6 +36,7 @@ describe('Gen 3 Save Parser', () => {
       });
 
       // Filter for party Pokemon (status: 'Team')
+
       const partyPokemon = result.pokemon.filter((p) => p.status === 'Team');
 
       // Verify we have at least 3 Pokemon in the party
@@ -45,6 +46,31 @@ describe('Gen 3 Save Parser', () => {
       expect(partyPokemon[0].species).toBe('Salamence');
       expect(partyPokemon[1].species).toBe('Magcargo');
       expect(partyPokemon[2].species).toBe('Smeargle');
+    });
+
+    it('should parse the types of the first three party Pokemon correctly', async () => {
+      const result = await parseGen3Save(saveData, {
+        boxMappings: [],
+        selectedGame: 'Emerald',
+      });
+
+      const partyPokemon = result.pokemon.filter((p) => p.status === 'Team');
+
+      expect(partyPokemon[0].types).toEqual(['Dragon', 'Flying']);
+      expect(partyPokemon[1].types).toEqual(['Fire', 'Rock']);
+      expect(partyPokemon[2].types).toEqual(['Normal']);
+    });
+
+    it('should parse the abilities of the first three party Pokemon correctly', async () => {
+      const result = await parseGen3Save(saveData, {
+        boxMappings: [],
+        selectedGame: 'Emerald',
+      });
+
+      const partyPokemon = result.pokemon.filter((p) => p.status === 'Team');
+      expect(partyPokemon[0].ability).toBe('Intimidate');
+      expect(partyPokemon[1].ability).toBe('Flame Body');
+      expect(partyPokemon[2].ability).toBe('Own Tempo');
     });
 
     it('should have correct positions for party Pokemon', async () => {
@@ -122,6 +148,31 @@ describe('Gen 3 Save Parser', () => {
       expect(boxedPokemon[0].species).toBe('Bulbasaur');
       expect(boxedPokemon[1].species).toBe('Ivysaur');
       expect(boxedPokemon[2].species).toBe('Venusaur');
+      expect(boxedPokemon[3].species).toBe('Charmander');
+      expect(boxedPokemon[4].species).toBe('Charmeleon');
+      expect(boxedPokemon[5].species).toBe('Charizard');
+      expect(boxedPokemon[6].species).toBe('Squirtle');
+      expect(boxedPokemon[7].species).toBe('Wartortle');
+      expect(boxedPokemon[8].species).toBe('Blastoise');
+      expect(boxedPokemon[9].species).toBe('Caterpie');
+      expect(boxedPokemon[10].species).toBe('Metapod');
+      expect(boxedPokemon[11].species).toBe('Butterfree');
+    });
+
+    it('should parse the first boxed Pokemon moveset correctly', async () => {
+      const result = await parseGen3Save(saveData, {
+        boxMappings: [],
+        selectedGame: 'Emerald',
+      });
+
+      const boxedPokemon = result.pokemon.filter((p) => p.status === 'Boxed');
+
+      // Get the first boxed Pokemon (Bulbasaur)
+      const firstBoxedPokemon = boxedPokemon[0];
+
+      // Verify the moveset
+      expect(firstBoxedPokemon.moves).toBeDefined();
+      expect(firstBoxedPokemon.moves).toEqual(['Tackle', 'Growl']);
     });
 
     it('should parse the first three dead Pokemon correctly as Nidoqueen, Nidoran♂, and Nidorino', async () => {
