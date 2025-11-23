@@ -194,9 +194,11 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
             "Rapid Strike Gigantamax",
         ];
     }
+    if (s === "venusaur" ||
+        s === "blastoise") {
+            return ["Mega", "Gigantamax"];
+        }
     if (
-        s === "venusaur" ||
-        s === "blastoise" ||
         s === "alakazam" ||
         s === "kangaskhan" ||
         s === "pinsir" ||
@@ -286,7 +288,12 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
         s === "orbeetle" ||
         s === "garbodor" ||
         s === "kingler" ||
-        s === "lapras"
+        s === "lapras" ||
+        s === "melmetal" ||
+        s === "rillaboom" ||
+        s === "cinderace" ||
+        s === "inteleon" ||
+        s === "melmetal"
     ) {
         return ["Gigantamax"];
     }

@@ -113,4 +113,6 @@ export enum Forme {
     Cornerstone = "cornerstone",
 
     EternalFlower = "eternal-flower",
+    "Single Strike Gigantamax" = "single-strike-gigantamax",
+    "Rapid Strike Gigantamax" = "rapid-strike-gigantamax",
 }

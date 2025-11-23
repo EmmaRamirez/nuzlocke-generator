@@ -1,5 +1,5 @@
 import * as React from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
     getIconFormeSuffix,
     Forme,
@@ -7,18 +7,15 @@ import {
     significantGenderDifferenceList,
 } from "utils";
 import { Gender, GenderElementProps } from "components/Common/Shared";
-import { editPokemon, selectPokemon, SELECT_POKEMON } from "actions";
+import { editPokemon, selectPokemon } from "actions";
 import { store } from "store";
 import {
     ConnectDragSource,
     ConnectDropTarget,
-    DragSourceHookSpec,
 } from "react-dnd";
 import { useDrag, useDrop } from "react-dnd";
-import { Dispatch } from "redux";
 import { State } from "state";
 import { Omit } from "ramda";
-import { Action } from "actions";
 import { normalizeSpeciesName } from "utils/getters/normalizeSpeciesName";
 import { PokemonImage } from "components/Common/Shared/PokemonImage";
 import { Pokemon } from "models";
