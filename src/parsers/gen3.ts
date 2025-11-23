@@ -60,10 +60,27 @@ const MAX_SUPPORTED_SPECIES = 411; // Includes old Unown forms (387-411)
 
 const PC_SECTION_IDS = [5, 6, 7, 8, 9, 10, 11, 12, 13];
 
+const SECTION_SAVE_SIZES: Record<number, number> = {
+    0: 3884,
+    1: 3968,
+    2: 3968,
+    3: 3968,
+    4: 3848,
+    5: 3968,
+    6: 3968,
+    7: 3968,
+    8: 3968,
+    9: 3968,
+    10: 3968,
+    11: 3968,
+    12: 3968,
+    13: 2000,
+};
+
 const COMMON_OFFSETS = {
-    PLAYER_NAME: [0x0000, 0x0007],
-    PLAYER_ID: [0x000a, 0x000e],
-    TIME_PLAYED: [0x000e, 0x0013],
+  PLAYER_NAME: [0x0000, 0x0007],
+  PLAYER_ID: [0x000a, 0x000e],
+  TIME_PLAYED: [0x000e, 0x0013],
 };
 
 const RS_OFFSETS = {
@@ -230,6 +247,39 @@ const getOffsets = (game?: GameSaveFormat) => {
     }
 };
 
+const computeChecksum = (buffer: Buffer, size: number) => {
+    let sum = 0;
+    const limit = Math.min(size, buffer.length);
+    for (let i = 0; i < limit; i += 4) {
+        const remaining = Math.min(4, limit - i);
+        let value = 0;
+        if (remaining === 4) {
+            value = buffer.readUInt32LE(i);
+        } else {
+            for (let b = 0; b < remaining; b++) {
+                value |= buffer[i + b] << (8 * b);
+            }
+        }
+        sum = (sum + value) >>> 0;
+    }
+    return ((sum & 0xffff) + (sum >>> 16)) & 0xffff;
+};
+
+const isSectionValid = (section: SaveSection) => {
+    const size = SECTION_SAVE_SIZES[section.id];
+    if (!size) return true;
+    const computed = computeChecksum(section.data, size);
+    const isValid = computed === section.checksum;
+    if (!isValid) {
+        log("checksum", `Section ${section.id} failed checksum`, {
+            expected: `0x${section.checksum.toString(16)}`,
+            computed: `0x${computed.toString(16)}`,
+            saveIndex: section.saveIndex,
+        });
+    }
+    return isValid;
+};
+
 const readSection = (file: Buffer, sectionIndex: number): SaveSection => {
     const offset = sectionIndex * SECTION_SIZE;
     const dataStart = offset;
@@ -276,29 +326,40 @@ const readBlock = (file: Buffer, blockIndex: number): SaveSection[] => {
     return sections;
 };
 
-const selectLatestBlock = (file: Buffer): SaveSection[] => {
-    const blockA = readBlock(file, 0);
-    const blockB = readBlock(file, 1);
-    const blockASave = blockA[SECTION_COUNT - 1].saveIndex;
-    const blockBSave = blockB[SECTION_COUNT - 1].saveIndex;
-
-    const selected = blockASave > blockBSave ? "A" : "B";
-    log("selectLatestBlock", `Selected block ${selected}`, {
-        blockA_saveIndex: blockASave,
-        blockB_saveIndex: blockBSave,
-    });
-
-    if (blockASave > blockBSave) {
-        return blockA;
-    }
-    return blockB;
-};
-
-const buildSectionMap = (sections: SaveSection[]) => {
+const buildSectionMap = (blockA: SaveSection[], blockB: SaveSection[]) => {
     const map = new Map<number, SaveSection>();
-    sections.forEach((section) => {
-        map.set(section.id, section);
-    });
+    const sectionsByIdA = new Map<number, SaveSection>();
+    const sectionsByIdB = new Map<number, SaveSection>();
+
+    blockA.forEach((section) => sectionsByIdA.set(section.id, section));
+    blockB.forEach((section) => sectionsByIdB.set(section.id, section));
+
+    for (let id = 0; id < SECTION_COUNT; id++) {
+        const sectionA = sectionsByIdA.get(id);
+        const sectionB = sectionsByIdB.get(id);
+        const validA = sectionA ? isSectionValid(sectionA) : false;
+        const validB = sectionB ? isSectionValid(sectionB) : false;
+
+        let selected: SaveSection | undefined;
+
+        if (validA && validB) {
+            selected =
+                sectionA!.saveIndex >= sectionB!.saveIndex ? sectionA : sectionB;
+        } else if (validA) {
+            selected = sectionA;
+        } else if (validB) {
+            selected = sectionB;
+        } else if (sectionA && sectionB) {
+            selected =
+                sectionA.saveIndex >= sectionB.saveIndex ? sectionA : sectionB;
+        } else {
+            selected = sectionA || sectionB;
+        }
+
+        if (selected) {
+            map.set(id, selected);
+        }
+    }
 
     log("buildSectionMap", `Built section map with ${map.size} sections`, {
         sectionIds: Array.from(map.keys()),
@@ -344,7 +405,7 @@ const getBoxStatus = (boxIndex: number, options: ParserOptions) => {
     return mapping?.status || "Boxed";
 };
 
-const xorDecrypt = (buffer: Buffer, key: number) => {
+const xorBufferWithKey = (buffer: Buffer, key: number) => {
     const decrypted = Buffer.from(buffer);
     for (let i = 0; i < decrypted.length; i += 4) {
         const value = decrypted.readUInt32LE(i) ^ key;
@@ -412,7 +473,7 @@ const decodePokemon = (
     const checksum = buffer.readUInt16LE(0x1c);
     const encryptedData = buffer.slice(0x20, 0x20 + 48);
     const key = (personality ^ otId) >>> 0;
-    const decrypted = xorDecrypt(encryptedData, key);
+  const decrypted = xorBufferWithKey(encryptedData, key);
     const orderKey =
         SUBSTRUCTURE_ORDERS[personality % SUBSTRUCTURE_ORDERS.length];
     const sub = splitSubstructures(orderKey, decrypted);
@@ -767,8 +828,13 @@ export const parseGen3Save = async (file: Buffer, options: ParserOptions) => {
         selectedGame: options.selectedGame,
     });
 
-    const sections = selectLatestBlock(buffer);
-    const sectionMap = buildSectionMap(sections);
+    const blockA = readBlock(buffer, 0);
+    const blockB = readBlock(buffer, 1);
+    log("parseGen3Save", "Merging save blocks", {
+        blockA_saveIndex: blockA[SECTION_COUNT - 1].saveIndex,
+        blockB_saveIndex: blockB[SECTION_COUNT - 1].saveIndex,
+    });
+    const sectionMap = buildSectionMap(blockA, blockB);
     const offsets = getOffsets(options.selectedGame as GameSaveFormat);
 
     log("parseGen3Save", "Offsets determined", {
@@ -813,7 +879,7 @@ export const parseGen3Save = async (file: Buffer, options: ParserOptions) => {
             ? {
                   fileSize: buffer.length,
                   game: options.selectedGame,
-                  selectedBlock: sections[SECTION_COUNT - 1].saveIndex,
+                  selectedBlock: blockA[SECTION_COUNT - 1].saveIndex,
                   sectionCount: sectionMap.size,
                   parseTimeMs: parseTime,
                   counts: {
