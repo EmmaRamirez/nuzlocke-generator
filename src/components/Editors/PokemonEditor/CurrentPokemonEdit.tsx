@@ -43,7 +43,7 @@ import { State } from "state";
 import { CurrentPokemonLayoutItem } from "./CurrentPokemonLayoutItem";
 import { MoveEditor } from "components/Editors/MoveEditor/MoveEditor";
 import { PokemonIconPlain } from "components/Pokemon/PokemonIcon/PokemonIcon";
-import { CheckpointsEditorBase as CheckpointsInputList } from "components/Editors/TrainerEditor/CheckpointsEditor";
+import { CheckpointsInputList } from "components/Editors/TrainerEditor/BadgeInput";
 import { getImages, Image } from "components/Common/Shared/ImagesDrawer";
 
 const pokeball = "./assets/pokeball.png";
@@ -280,18 +280,17 @@ export class CurrentPokemonEditBase extends React.Component<
                     options={this.getTypes()}
                     key={this.state.selectedId + "types"}
                 />
-                <div>TODO: fix checkpoints editor</div>
-                {/* <span
-          className={
-            'current-pokemon-input-wrapper current-pokemon-checklist current-pokemon-checkpoints'
-          }>
-          <label htmlFor="checkpointsInputList">Checkpoints</label>
-          <CheckpointsInputList
-            checkpointsObtained={currentPokemon.checkpoints ?? []}
-            onChange={(checkpoints) => editPokemon({ checkpoints }, currentPokemon.id)}
-            buttonText="Award Checkpoints"
-          />
-        </span> */}
+                <span
+                    className={
+                        'current-pokemon-input-wrapper current-pokemon-checklist current-pokemon-checkpoints'
+                    }>
+                    <label htmlFor="checkpointsInputList">Checkpoints</label>
+                    <CheckpointsInputList
+                        checkpointsObtained={currentPokemon.checkpoints ?? []}
+                        onChange={(checkpoints) => editPokemon({ checkpoints }, currentPokemon.id)}
+                        buttonText="Award Checkpoints"
+                    />
+                </span>
                 <CurrentPokemonLayoutItem checkboxes>
                     <CurrentPokemonInput
                         labelName="Shiny"
@@ -515,7 +514,7 @@ export class CurrentPokemonEditBase extends React.Component<
                         customIcon={currentPokemon.customIcon}
                         egg={currentPokemon.egg}
                         selectedId={null}
-                        onClick={() => {}}
+                        onClick={() => { }}
                         imageStyle={{
                             maxHeight: "100%",
                             height: "32px",
