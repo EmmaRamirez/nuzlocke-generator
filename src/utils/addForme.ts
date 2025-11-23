@@ -1,110 +1,113 @@
-import { Forme } from './Forme';
+import { Forme } from "./Forme";
 
-export const addForme = (species: string | undefined, forme?: keyof typeof Forme) => {
-  if (forme) {
-    if (forme === 'Normal') {
-      if (species === 'Oricorio') {
-        return `${species}-baile`;
-      }
-      return species;
-    }
-    if (forme === 'Alolan') {
-      return `alolan-${species}`;
-    }
-    if (forme === 'Paldean') {
-      return `paldean-${species}`;
-    }
-    if (forme === 'PaldeanAqua') {
-      return `palden-aqua-${species}`;
-    }
-    if (forme === 'PaldeanBlaze') {
-      return `paldean-blaze-${species}`;
-    }
-    if (forme === 'Galarian') {
-      return `galarian-${species}`;
-    }
-    if (forme === 'Hisuian') {
-      return `hisuian-${species}`;
-    }
-    if (forme === 'Mega') {
-      return `${species}-mega`;
-    }
-    if (forme === 'Mega-X') {
-      return `${species}-mega-x`;
-    }
-    if (forme === 'Mega-Y') {
-      return `${species}-mega-y`;
-    }
-    if (forme === 'D') {
-      return `${species}-d`;
-    }
-    if (forme === '10%') {
-      return `${species}-10`;
-    }
-    if (forme === 'Complete') {
-      return `${species}-complete`;
-    }
-    if (forme === 'West Sea') {
-      return `${species}-west`;
-    }
-    if (forme === 'East Sea') {
-      return `${species}-east`;
-    }
-    // Forms that don't require special formatting
-    if (
-      [
-        'Heat',
-        'Frost',
-        'Fan',
-        'Heat',
-        'Mow',
+export const addForme = (
+    species: string | undefined,
+    forme?: keyof typeof Forme,
+) => {
+    if (forme) {
+        if (forme === "Normal") {
+            if (species === "Oricorio") {
+                return `${species}-baile`;
+            }
+            return species;
+        }
+        if (forme === "Alolan") {
+            return `alolan-${species}`;
+        }
+        if (forme === "Paldean") {
+            return `paldean-${species}`;
+        }
+        if (forme === "Paldean-Aqua") {
+            return `palden-aqua-${species}`;
+        }
+        if (forme === "Paldean-Blaze") {
+            return `paldean-blaze-${species}`;
+        }
+        if (forme === "Galarian") {
+            return `galarian-${species}`;
+        }
+        if (forme === "Hisuian") {
+            return `hisuian-${species}`;
+        }
+        if (forme === "Mega") {
+            return `${species}-mega`;
+        }
+        if (forme === "Mega-X") {
+            return `${species}-mega-x`;
+        }
+        if (forme === "Mega-Y") {
+            return `${species}-mega-y`;
+        }
+        if (forme === "D") {
+            return `${species}-d`;
+        }
+        if (forme === "10%") {
+            return `${species}-10`;
+        }
+        if (forme === "Complete") {
+            return `${species}-complete`;
+        }
+        if (forme === "West Sea") {
+            return `${species}-west`;
+        }
+        if (forme === "East Sea") {
+            return `${species}-east`;
+        }
+        // Forms that don't require special formatting
+        if (
+            [
+                "Heat",
+                "Frost",
+                "Fan",
+                "Heat",
+                "Mow",
 
-        'Summer',
-        'Spring',
-        'Autumn',
-        'Winter',
+                "Summer",
+                "Spring",
+                "Autumn",
+                "Winter",
 
-        'Sensu',
-        'Baile',
-        'Pom-Pom',
-        "Pa'u",
+                "Sensu",
+                "Baile",
+                "Pom-Pom",
+                "Pa'u",
 
-        'Dawn Wings',
-        'Dusk Mane',
-        'Ultra',
+                "Dawn Wings",
+                "Dusk Mane",
+                "Ultra",
 
-        'Origin',
-        'Sky',
+                "Origin",
+                "Sky",
 
-        'Attack',
-        'Defense',
-        'Speed',
+                "Attack",
+                "Defense",
+                "Speed",
 
-        'Midday',
-        'Dusk',
-        'Midnight',
+                "Midday",
+                "Dusk",
+                "Midnight",
 
-        'Amped',
-        'Lowkey',
-        'Gigantamax',
+                "Amped",
+                "Lowkey",
+                "Gigantamax",
 
-        'Black',
-        'White',
+                "Black",
+                "White",
 
-        'School',
-        'Pirouette',
+                "School",
+                "Pirouette",
 
-        'Therian',
+                "Therian",
 
-        'Wellspring',
-        'Heartflame',
-        'Cornerstone',
-      ].includes(forme)
-    ) {
-      return `${species}-${forme.replace(/\s/g, '-').replace(/\'/g, '-').toLowerCase()}`;
+                "Wellspring",
+                "Heartflame",
+                "Cornerstone",
+            ].includes(forme)
+        ) {
+            return `${species}-${forme.replace(/\s/g, "-").replace(/\'/g, "-").toLowerCase()}`;
+        }
+        return species;
+    } else {
+        return species;
     }
-    return species;
-  } else {
-    return species;
-  }
 };
