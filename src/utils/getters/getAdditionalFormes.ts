@@ -238,7 +238,31 @@ export const getAdditionalFormes = (species: string | undefined): string[] => {
         s === "lopunny" ||
         s === "gallade" ||
         s === "audino" ||
-        s === "diancie"
+        s === "diancie" ||
+        s === "clefable" ||
+        s === "victreebel" ||
+        s === "starmie" ||
+        s === "scrafty" ||
+        s === "dragonite" ||
+        s === "meganium" ||
+        s === "feraligatr" ||
+        s === "skarmory" ||
+        s === "froslass" ||
+        s === "emboar" ||
+        s === "excadrill" ||
+        s === "scolipede" ||
+        s === "eelektross" ||
+        s === "chandelure" ||
+        s === "chensaught" ||
+        s === "delphox" ||
+        s === "greninja" ||
+        s === "pyroar" ||
+        s === "malamar" ||
+        s === "barbaracle" ||
+        s === "dragalage" ||
+        s === "hawlucha" ||
+        s === "drampa" ||
+        s === "falinks"
     ) {
         return ["Mega"];
     }
