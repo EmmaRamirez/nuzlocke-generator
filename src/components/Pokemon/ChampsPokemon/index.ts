@@ -1,2 +1,2 @@
-export * from './ChampsPokemon';
-export * from './ChampsPokemonCollection';
+export * from "./ChampsPokemon";
+export * from "./ChampsPokemonCollection";

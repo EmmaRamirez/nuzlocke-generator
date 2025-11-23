@@ -1,17 +1,17 @@
-import * as React from 'react';
-import { injectGlobal } from 'emotion';
+import * as React from "react";
+import { injectGlobal } from "emotion";
 
-import '@blueprintjs/icons/lib/css/blueprint-icons.css';
-import '@blueprintjs/core/lib/css/blueprint.css';
-import '@blueprintjs/table/lib/css/table.css';
-import '@blueprintjs/select/lib/css/blueprint-select.css';
+import "@blueprintjs/icons/lib/css/blueprint-icons.css";
+import "@blueprintjs/core/lib/css/blueprint.css";
+import "@blueprintjs/table/lib/css/table.css";
+import "@blueprintjs/select/lib/css/blueprint-select.css";
 // import 'tailwindcss/dist/base.min.css';
 // import 'tailwindcss/dist/components.min.css';
 // import 'tailwindcss/dist/utilities.min.css';
-import 'normalize.css/normalize.css';
+import "normalize.css/normalize.css";
 
-import { isLocal } from 'utils';
-import { ErrorBoundary } from 'components';
+import { isLocal } from "utils";
+import { ErrorBoundary } from "components";
 
 (window as any).global = window;
 
@@ -22,28 +22,28 @@ import { ErrorBoundary } from 'components';
 // window.path = window.path || require('path').path;
 
 async function getRollbar() {
-  // @ts-expect-error - Rollbar types are incomplete for dynamic imports
-  const { default: Rollbar } = await import('rollbar');
+    // @ts-expect-error - Rollbar types are incomplete for dynamic imports
+    const { default: Rollbar } = await import("rollbar");
 
-  const rollbarConfig = new Rollbar({
-    accessToken: '357eab6297524e6facb1c48b0403d869',
-    captureUncaught: true,
-    payload: {
-      environment: 'production',
-    },
-    autoInstrument: {
-      network: false,
-      log: false,
-      dom: true,
-      navigation: false,
-      connectivity: true,
-    },
-    maxItems: 20,
-    captureIp: false,
-    enabled: isLocal() ? false : true,
-  });
+    const rollbarConfig = new Rollbar({
+        accessToken: "357eab6297524e6facb1c48b0403d869",
+        captureUncaught: true,
+        payload: {
+            environment: "production",
+        },
+        autoInstrument: {
+            network: false,
+            log: false,
+            dom: true,
+            navigation: false,
+            connectivity: true,
+        },
+        maxItems: 20,
+        captureIp: false,
+        enabled: isLocal() ? false : true,
+    });
 
-  Rollbar.init(rollbarConfig as any);
+    Rollbar.init(rollbarConfig as any);
 }
 
 getRollbar().then((res) => res);
@@ -89,53 +89,57 @@ void injectGlobal`
     .full-width { width: 100%; }
 `;
 
-const mountNode = document.getElementById('app');
+const mountNode = document.getElementById("app");
 
 async function createRender() {
-  const { render } = await import('react-dom');
-  const { Provider } = await import('react-redux');
+    const { render } = await import("react-dom");
+    const { Provider } = await import("react-redux");
 
-  const { DndProvider } = await import('react-dnd');
-  const { HTML5Backend } = await import('react-dnd-html5-backend');
-  const { PersistGate } = await import('redux-persist/es/integration/react');
-  const { store, persistor } = await import('./store');
-  // @TODO: add back check for tests mode
-  const isTest = false;
+    const { DndProvider } = await import("react-dnd");
+    const { HTML5Backend } = await import("react-dnd-html5-backend");
+    const { PersistGate } = await import("redux-persist/es/integration/react");
+    const { store, persistor } = await import("./store");
+    // @TODO: add back check for tests mode
+    const isTest = false;
 
-  const App = React.lazy(() =>
-    import('components/Layout/App').then((res) => ({ default: res.App }))
-  );
+    const App = React.lazy(() =>
+        import("components/Layout/App").then((res) => ({ default: res.App })),
+    );
 
-  const ReduxProvider = Provider as any;
+    const ReduxProvider = Provider as any;
 
-  render(
-    <ReduxProvider store={store}>
-      {isTest ? (
-        <PersistGate loading={<div>Loading...</div>} onBeforeLift={null} persistor={persistor}>
-          <DndProvider backend={HTML5Backend}>
-            <ErrorBoundary>
-              <React.Suspense fallback={'Loading App...'}>
-                <App />
-              </React.Suspense>
-            </ErrorBoundary>
-          </DndProvider>
-        </PersistGate>
-      ) : (
-        <DndProvider backend={HTML5Backend}>
-          <ErrorBoundary>
-            <React.Suspense fallback={'Loading App...'}>
-              <App />
-            </React.Suspense>
-          </ErrorBoundary>
-        </DndProvider>
-      )}
-    </ReduxProvider>,
-    mountNode
-  );
+    render(
+        <ReduxProvider store={store}>
+            {isTest ? (
+                <PersistGate
+                    loading={<div>Loading...</div>}
+                    onBeforeLift={null}
+                    persistor={persistor}
+                >
+                    <DndProvider backend={HTML5Backend}>
+                        <ErrorBoundary>
+                            <React.Suspense fallback={"Loading App..."}>
+                                <App />
+                            </React.Suspense>
+                        </ErrorBoundary>
+                    </DndProvider>
+                </PersistGate>
+            ) : (
+                <DndProvider backend={HTML5Backend}>
+                    <ErrorBoundary>
+                        <React.Suspense fallback={"Loading App..."}>
+                            <App />
+                        </React.Suspense>
+                    </ErrorBoundary>
+                </DndProvider>
+            )}
+        </ReduxProvider>,
+        mountNode,
+    );
 }
 
 createRender().catch((err) => {
-  console.error('Failed to create render:', err);
-  document.body.innerHTML = `<div style="color: red; padding: 20px;"><h1>Failed to start app</h1><pre>${err.message}\n${err.stack}</pre></div>`;
+    console.error("Failed to create render:", err);
+    document.body.innerHTML = `<div style="color: red; padding: 20px;"><h1>Failed to start app</h1><pre>${err.message}\n${err.stack}</pre></div>`;
 });
-getRollbar().catch((err) => console.error('Failed to init Rollbar:', err));
+getRollbar().catch((err) => console.error("Failed to init Rollbar:", err));

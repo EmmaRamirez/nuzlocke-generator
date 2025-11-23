@@ -1,4 +1,4 @@
 export type BoxMappings = {
-  key: number;
-  status: string;
+    key: number;
+    status: string;
 }[];

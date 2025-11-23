@@ -1,1 +1,1 @@
-export * from './AddPokemonButton';
+export * from "./AddPokemonButton";

@@ -1,4 +1,5 @@
 ## A
+
 - [x] Abomasnow
 - [x] Abra
 - [x] Absol
@@ -43,7 +44,9 @@
 - [x] Azelf
 - [x] Azumarill
 - [x] Azurill
+
 ## B
+
 - [x] Bagon
 - [x] Baltoy
 - [x] Banette
@@ -99,7 +102,9 @@
 - [x] Burmy
 - [x] Butterfree
 - [x] Buzzwole
+
 ## C
+
 - [x] Cacnea
 - [x] Cacturne
 - [x] Calyrex
@@ -186,7 +191,9 @@
 - [x] Cutiefly
 - [x] Cyclizar
 - [x] Cyndaquil
+
 ## D
+
 - [x] Dachsbun
 - [x] Darkrai
 - [x] Darmanitan
@@ -247,7 +254,9 @@
 - [x] Duskull
 - [x] Dustox
 - [x] Dwebble
+
 ## E
+
 - [x] Eelektrik
 - [x] Eelektross
 - [x] Eevee
@@ -274,7 +283,9 @@
 - [x] Exeggcute
 - [x] Exeggutor
 - [x] Exploud
+
 ## F
+
 - [x] Falinks
 - [x] Farfetch'd
 - [x] Farigiraf
@@ -314,7 +325,9 @@
 - [x] Fuecoco
 - [x] Furfrou
 - [x] Furret
+
 ## G
+
 - [x] Gabite
 - [x] Gallade
 - [x] Galvantula
@@ -380,7 +393,9 @@
 - [x] Gurdurr
 - [x] Guzzlord
 - [x] Gyarados
+
 ## H
+
 - [x] Hakamo-o
 - [x] Happiny
 - [x] Hariyama
@@ -414,7 +429,9 @@
 - [x] Huntail
 - [x] Hydreigon
 - [x] Hypno
+
 ## I
+
 - [x] Igglybuff
 - [x] Illumise
 - [x] Impidimp
@@ -431,7 +448,9 @@
 - [ ] Iron Treads
 - [ ] Iron Valiant
 - [x] Ivysaur
+
 ## J
+
 - [x] Jangmo-o
 - [x] Jellicent
 - [x] Jigglypuff
@@ -440,7 +459,9 @@
 - [x] Joltik
 - [x] Jumpluff
 - [x] Jynx
+
 ## K
+
 - [x] Kabuto
 - [x] Kabutops
 - [x] Kadabra
@@ -473,7 +494,9 @@
 - [x] Kubfu
 - [x] Kyogre
 - [x] Kyurem
+
 ## L
+
 - [x] Lairon
 - [x] Lampent
 - [x] Landorus
@@ -514,7 +537,9 @@
 - [x] Luxio
 - [x] Luxray
 - [x] Lycanroc
+
 ## M
+
 - [ ] Mabosstiff
 - [x] Machamp
 - [x] Machoke
@@ -593,7 +618,9 @@
 - [x] Munna
 - [x] Murkrow
 - [x] Musharna
+
 ## N
+
 - [x] Nacli
 - [ ] Naclstack
 - [x] Naganadel
@@ -617,7 +644,9 @@
 - [x] Numel
 - [x] Nuzleaf
 - [ ] Nymble
+
 ## O
+
 - [x] Obstagoon
 - [x] Octillery
 - [x] Oddish
@@ -631,7 +660,9 @@
 - [x] Orthworm
 - [x] Oshawott
 - [x] Overqwil
+
 ## P
+
 - [x] Pachirisu
 - [x] Palafin
 - [x] Palkia
@@ -695,7 +726,9 @@
 - [x] Purugly
 - [x] Pyroar
 - [x] Pyukumuku
+
 ## Q
+
 - [x] Quagsire
 - [x] Quaquaval
 - [x] Quaxly
@@ -703,7 +736,9 @@
 - [x] Quilava
 - [x] Quilladin
 - [x] Qwilfish
+
 ## R
+
 - [x] Raboot
 - [ ] Rabsca
 - [x] Raichu
@@ -743,7 +778,9 @@
 - [x] Rowlet
 - [x] Rufflet
 - [x] Runerigus
+
 ## S
+
 - [x] Sableye
 - [x] Salamence
 - [x] Salandit
@@ -878,7 +915,9 @@
 - [x] Swirlix
 - [x] Swoobat
 - [x] Sylveon
+
 ## T
+
 - [ ] Tadbulb
 - [x] Taillow
 - [x] Talonflame
@@ -942,7 +981,9 @@
 - [x] Tyrantrum
 - [x] Tyrogue
 - [x] Tyrunt
+
 ## U
+
 - [x] Umbreon
 - [x] Unfezant
 - [x] Unown
@@ -950,7 +991,9 @@
 - [x] Ursaring
 - [x] Urshifu
 - [x] Uxie
+
 ## V
+
 - [x] Vanillish
 - [x] Vanillite
 - [x] Vanilluxe
@@ -976,7 +1019,9 @@
 - [x] Voltorb
 - [x] Vullaby
 - [x] Vulpix
+
 ## W
+
 - [x] Wailmer
 - [x] Wailord
 - [x] Walrein
@@ -1006,18 +1051,24 @@
 - [x] Wurmple
 - [x] Wynaut
 - [x] Wyrdeer
+
 ## X
+
 - [x] Xatu
 - [x] Xerneas
 - [x] Xurkitree
+
 ## Y
+
 - [x] Yamask
 - [x] Yamper
 - [x] Yanma
 - [x] Yanmega
 - [x] Yungoos
 - [x] Yveltal
+
 ## Z
+
 - [x] Zacian
 - [x] Zamazenta
 - [x] Zangoose

@@ -2,8 +2,9 @@
     padding-bottom: 0 !important;
 }
 
-.rule-no, .rule-delete {
-    padding: .25rem;
+.rule-no,
+.rule-delete {
+    padding: 0.25rem;
     text-align: center;
     height: 100%;
     width: 1.5rem;
@@ -15,10 +16,10 @@
 
 .rules-list-item {
     background: rgba(0, 0, 0, 0.05);
-    border-radius: .25rem;
+    border-radius: 0.25rem;
     align-items: center;
     display: flex;
     justify-content: space-around;
-    margin: .25rem 0;
+    margin: 0.25rem 0;
     min-height: 2rem;
 }

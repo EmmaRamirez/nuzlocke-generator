@@ -1,1 +1,1 @@
-export * from './HotkeysEditor';
+export * from "./HotkeysEditor";

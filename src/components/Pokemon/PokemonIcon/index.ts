@@ -1,1 +1,1 @@
-export * from './PokemonIcon';
+export * from "./PokemonIcon";

@@ -1,9 +1,9 @@
-import { BoxMappings } from './boxMappings';
+import { BoxMappings } from "./boxMappings";
 
 export interface ParserOptions {
-  boxMappings: BoxMappings;
-  selectedGame?: string;
-  isCrystal?: boolean;
-  type?: 'nuzlocke' | 'raw';
-  debug?: boolean;
+    boxMappings: BoxMappings;
+    selectedGame?: string;
+    isCrystal?: boolean;
+    type?: "nuzlocke" | "raw";
+    debug?: boolean;
 }

@@ -1,7 +1,7 @@
-import { Box } from '../Box';
+import { Box } from "../Box";
 
-describe('Box', () => {
-  it('renders the boxbase', () => {
-    expect(true).toBe(true);
-  });
+describe("Box", () => {
+    it("renders the boxbase", () => {
+        expect(true).toBe(true);
+    });
 });

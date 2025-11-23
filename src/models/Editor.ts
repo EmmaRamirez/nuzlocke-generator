@@ -1,7 +1,7 @@
 export interface Editor {
-  minimized: boolean;
-  temtemMode?: boolean;
-  monsterType?: string;
-  showResultInMobile?: boolean;
-  editorHistoryDisabled?: boolean;
+    minimized: boolean;
+    temtemMode?: boolean;
+    monsterType?: string;
+    showResultInMobile?: boolean;
+    editorHistoryDisabled?: boolean;
 }

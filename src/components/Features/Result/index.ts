@@ -1,2 +1,2 @@
-export { Result } from './Result';
-export * from './TrainerResult';
+export { Result } from "./Result";
+export * from "./TrainerResult";

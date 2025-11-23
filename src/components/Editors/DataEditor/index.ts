@@ -1,2 +1,2 @@
-export * from './DataEditor';
-export * from './DeleteAlert';
+export * from "./DataEditor";
+export * from "./DeleteAlert";

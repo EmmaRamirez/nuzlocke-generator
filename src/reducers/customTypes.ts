@@ -1,41 +1,46 @@
 import {
-  CREATE_CUSTOM_TYPE,
-  Action,
-  REPLACE_STATE,
-  DELETE_CUSTOM_TYPE,
-  EDIT_CUSTOM_TYPE,
-} from 'actions';
-import { State } from 'state';
-import { v4 as uuid } from 'uuid';
+    CREATE_CUSTOM_TYPE,
+    Action,
+    REPLACE_STATE,
+    DELETE_CUSTOM_TYPE,
+    EDIT_CUSTOM_TYPE,
+} from "actions";
+import { State } from "state";
+import { v4 as uuid } from "uuid";
 
 export function customTypes(
-  state: State['customTypes'] = [],
-  action: Action<CREATE_CUSTOM_TYPE | DELETE_CUSTOM_TYPE | REPLACE_STATE | EDIT_CUSTOM_TYPE>
+    state: State["customTypes"] = [],
+    action: Action<
+        | CREATE_CUSTOM_TYPE
+        | DELETE_CUSTOM_TYPE
+        | REPLACE_STATE
+        | EDIT_CUSTOM_TYPE
+    >,
 ) {
-  switch (action.type) {
-    case CREATE_CUSTOM_TYPE:
-      return [
-        ...state,
-        {
-          id: uuid(),
-          ...action.typeInfo,
-        },
-      ];
-    case DELETE_CUSTOM_TYPE:
-      return state.filter((type) => type.id !== action.id);
-    case EDIT_CUSTOM_TYPE:
-      return state.map((type) => {
-        if (type.id !== action.id) {
-          return type;
-        }
-        return {
-          ...type,
-          ...action.typeInfo,
-        };
-      });
-    case REPLACE_STATE:
-      return action.replaceWith.customTypes || [];
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case CREATE_CUSTOM_TYPE:
+            return [
+                ...state,
+                {
+                    id: uuid(),
+                    ...action.typeInfo,
+                },
+            ];
+        case DELETE_CUSTOM_TYPE:
+            return state.filter((type) => type.id !== action.id);
+        case EDIT_CUSTOM_TYPE:
+            return state.map((type) => {
+                if (type.id !== action.id) {
+                    return type;
+                }
+                return {
+                    ...type,
+                    ...action.typeInfo,
+                };
+            });
+        case REPLACE_STATE:
+            return action.replaceWith.customTypes || [];
+        default:
+            return state;
+    }
 }

@@ -1,17 +1,17 @@
-import { CSSProperties } from 'react';
+import { CSSProperties } from "react";
 
 export interface PropOptions {
-  showNickname: boolean;
-  showGender: boolean;
-  showLevel: boolean;
+    showNickname: boolean;
+    showGender: boolean;
+    showLevel: boolean;
 }
 
 export type Option = {
-  styles?: CSSProperties;
-  props?: Partial<PropOptions>;
+    styles?: CSSProperties;
+    props?: Partial<PropOptions>;
 };
 
-export type OptionItems = 'ChampsPokemon';
+export type OptionItems = "ChampsPokemon";
 
 export type Options = { [O in OptionItems]?: Option };
 

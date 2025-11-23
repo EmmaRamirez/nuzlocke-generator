@@ -1,1 +1,1 @@
-export * from './BugReporter';
+export * from "./BugReporter";
