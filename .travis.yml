@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-    - 16
+    - 22
 
 # if using Ubuntu 16 need this library
 # https://github.com/cypress-io/cypress-documentation/pull/1647
@@ -26,4 +26,4 @@ script:
     - npm test
 
 after_success:
-    - node node_modules/.bin/jest --coverage --config jest-config.json && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+    - npx vitest run --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
