@@ -27,9 +27,12 @@ const koraidon = "./assets/icons/pokemon/regular/koraidon.png";
 const terapagos = "./assets/icons/pokemon/regular/terapagos.png";
 const ogerpon = "./assets/icons/pokemon/regular/ogerpon.png";
 const zygarde = "./assets/icons/pokemon/regular/zygarde.png";
+const floette = "./assets/icons/pokemon/regular/floette-eternal.png";
 
 export const getMascot = (v) => {
     switch (v) {
+        case "1.19":
+            return floette;
         case "1.18":
             return zygarde;
         case "1.17":
@@ -106,7 +109,7 @@ export function ReleaseDialog(props: DialogProps & ReleaseDialogProps) {
     if (!data || !allNotesData) return null;
 
     const note = data.payload.notes[0];
-    const { version } = note;
+    const version = note?.version;
 
     const allNotes = allNotesData.payload.notes;
 

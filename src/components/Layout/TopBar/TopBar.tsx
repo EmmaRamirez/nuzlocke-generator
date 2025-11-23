@@ -13,7 +13,7 @@ import {
 import { version } from "package";
 import { cx } from "emotion";
 import { Pokemon, Editor } from "models";
-import { ReleaseDialog } from "components/Common/Shared";
+import { ErrorBoundary, ReleaseDialog } from "components/Common/Shared";
 import { State } from "state";
 import { isMobile } from "is-mobile";
 
@@ -199,11 +199,13 @@ export class TopBarBase extends React.Component<TopBarProps, TopBarState> {
                         </Button>
                     </>
                 )}
-                <ReleaseDialog
-                    style={this.props.style}
-                    isOpen={this.state.isOpen}
-                    onClose={this.closeDialog}
-                />
+                <ErrorBoundary>
+                    <ReleaseDialog
+                        style={this.props.style}
+                        isOpen={this.state.isOpen}
+                        onClose={this.closeDialog}
+                    />
+                </ErrorBoundary>
             </div>
         );
     }
