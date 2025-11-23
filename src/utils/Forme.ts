@@ -42,8 +42,8 @@ export enum Forme {
     Paldean = "paldea",
     Gigantamax = "gigantamax",
 
-    PaldeanBlaze = "paldea-blaze",
-    PaldeanAqua = "paldea-aqua",
+    "Paldean-Blaze" = "paldea-blaze",
+    "Paldean-Aqua" = "paldea-aqua",
 
     GreenPlumage = "green-plumage",
     BluePlumage = "blue-plumage",

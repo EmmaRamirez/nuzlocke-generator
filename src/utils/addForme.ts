@@ -17,10 +17,10 @@ export const addForme = (
         if (forme === "Paldean") {
             return `paldean-${species}`;
         }
-        if (forme === "PaldeanAqua") {
+        if (forme === "Paldean-Aqua") {
             return `palden-aqua-${species}`;
         }
-        if (forme === "PaldeanBlaze") {
+        if (forme === "Paldean-Blaze") {
             return `paldean-blaze-${species}`;
         }
         if (forme === "Galarian") {
