@@ -314,12 +314,12 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                             box?.name === "Boxed" ||
                             box?.inheritFrom === "Boxed"
                         )
-                            return <BoxedPokemon key={index} {...poke} />;
+                            return <BoxedPokemon key={poke.id} {...poke} />;
                         if (box?.name === "Dead" || box?.inheritFrom === "Dead")
                             return (
                                 <DeadPokemon
                                     minimal={false}
-                                    key={index}
+                                    key={poke.id}
                                     {...poke}
                                 />
                             );
@@ -342,12 +342,12 @@ export class ResultBase extends React.PureComponent<ResultProps, ResultState> {
                                     showNickname={
                                         !this.props.style.minimalChampsLayout
                                     }
-                                    key={index}
+                                    key={poke.id}
                                     {...poke}
                                 />
                             );
                         if (box?.name === "Team" || box?.inheritFrom === "Team")
-                            return <TeamPokemon key={index} pokemon={poke} />;
+                            return <TeamPokemon key={poke.id} pokemon={poke} />;
                         return null;
                     })}
                 </div>
