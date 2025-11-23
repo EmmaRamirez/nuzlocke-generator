@@ -366,6 +366,7 @@ export const EvolutionTree: EvolutionTree = {
     Swadloon: ["Leavanny"],
     Venipede: ["Whirlipede"],
     Whirlipede: ["Scolipede"],
+    Cottonee: ["Whimsicott"],
     Petilil: ["Lilligant"],
     Sandile: ["Krokorok"],
     Krokorok: ["Krookodile"],
