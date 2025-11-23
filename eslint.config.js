@@ -27,23 +27,23 @@ export default defineConfig([
   eslintConfigPrettier,
   {
     rules: {
-      // Disable overly strict rules for this codebase
-      'react/prop-types': 'off', // Using TypeScript for prop validation
-      '@typescript-eslint/no-explicit-any': 'warn', // Allow any but warn
+      'react/prop-types': 'off',
+      '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-unused-vars': [
         'warn',
         {
-          argsIgnorePattern: '^_', // Allow unused args starting with _
-          varsIgnorePattern: '^_', // Allow unused vars starting with _
-          caughtErrorsIgnorePattern: '^_', // Allow unused errors starting with _
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
         },
       ],
-      '@typescript-eslint/no-empty-object-type': 'warn', // Warn instead of error
-      '@typescript-eslint/no-unsafe-function-type': 'warn', // Warn instead of error
-      'no-prototype-builtins': 'warn', // Warn instead of error
-      'jsx-a11y/no-onchange': 'off', // Rule doesn't exist in current config
-      '@typescript-eslint/quotes': 'off', // Rule doesn't exist, handled by prettier
-      'no-useless-escape': 'off', // Rule doesn't exist, handled by prettier
+      '@typescript-eslint/no-empty-object-type': 'warn',
+      '@typescript-eslint/no-unsafe-function-type': 'warn',
+      'no-prototype-builtins': 'warn',
+      'jsx-a11y/no-onchange': 'off',
+      '@typescript-eslint/quotes': 'off',
+      'no-useless-escape': 'off',
+      'prettier/prettier': 'warn',
     },
   },
 ]);

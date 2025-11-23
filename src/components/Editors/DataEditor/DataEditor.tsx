@@ -63,6 +63,10 @@ const getGameNumberOfBoxes = (game: GameSaveFormat) => {
     case 'GS':
     case 'Crystal':
       return 14;
+    case 'Emerald':
+    case 'RS':
+    case 'FRLG':
+      return 14;
     default:
       return 12;
   }

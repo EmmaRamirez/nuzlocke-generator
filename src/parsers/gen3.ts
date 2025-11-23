@@ -9,7 +9,13 @@ import type { GameSaveFormat } from 'utils/gameSaveFormat';
 import { MOVES_ARRAY } from './utils';
 import { ParserOptions } from './utils/parserOptions';
 import { parseTime } from './utils/parseTime';
-import { GEN_3_POKEMON_MAP, ABILITY_MAP, GEN_3_LOCATIONS } from './utils/gen3';
+import {
+  GEN_3_POKEMON_MAP,
+  GEN3_ALT_SPECIES_MAP,
+  GEN3_INTERNAL_ID_OVERRIDES,
+  ABILITY_MAP,
+  GEN_3_LOCATIONS,
+} from './utils/gen3';
 
 const DEBUG = import.meta.env.VITE_DEBUG_PARSER === 'true';
 
@@ -34,6 +40,7 @@ interface PokemonContext {
   level?: number;
   boxIndex?: number;
   slotIndex?: number;
+  pidTracker: Map<string, number>;
 }
 
 const SECTION_SIZE = 0x1000;
@@ -46,7 +53,7 @@ const TEAM_CAPACITY = 6;
 const BOX_CAPACITY = 30;
 const BOX_COUNT = 14;
 const STORAGE_HEADER_SIZE = 4;
-const MAX_SUPPORTED_SPECIES = 386;
+const MAX_SUPPORTED_SPECIES = 411; // Includes old Unown forms (387-411)
 
 const PC_SECTION_IDS = [5, 6, 7, 8, 9, 10, 11, 12, 13];
 
@@ -299,7 +306,18 @@ const buildSectionMap = (sections: SaveSection[]) => {
 
 const getSpeciesName = (speciesId: number, nickname?: string): Species | undefined => {
   // Convert Gen 3 internal species ID to National Dex number
-  const nationalDexId = GEN_3_POKEMON_MAP[speciesId];
+  // Try the alternate map first (Gen 3 internal order)
+  let nationalDexId = GEN3_ALT_SPECIES_MAP[speciesId];
+
+  // Check for known alternate internal IDs used by some save formats
+  if (!nationalDexId || nationalDexId === 0) {
+    nationalDexId = GEN3_INTERNAL_ID_OVERRIDES[speciesId];
+  }
+
+  // Fall back to the old map if needed
+  if (!nationalDexId || nationalDexId === 0) {
+    nationalDexId = GEN_3_POKEMON_MAP[speciesId];
+  }
 
   if (nationalDexId && nationalDexId > 0 && nationalDexId <= MAX_SUPPORTED_SPECIES) {
     return SPECIES_MAP[nationalDexId];
@@ -396,7 +414,8 @@ const decodePokemon = (buffer: Buffer, context: PokemonContext): Pokemon | null 
   });
 
   const speciesId = sub.G.readUInt16LE(0);
-  if (!speciesId) return null;
+  // Validate species ID - filter out corrupted data from empty slots
+  if (!speciesId || speciesId > MAX_SUPPORTED_SPECIES) return null;
 
   const itemId = sub.G.readUInt16LE(2);
   const exp = sub.G.readUInt32LE(4);
@@ -457,10 +476,19 @@ const decodePokemon = (buffer: Buffer, context: PokemonContext): Pokemon | null 
   const pokeball = BALL_MAP[ballId] || `Ball #${ballId}`;
 
   // Get ability from ABILITY_MAP
-  // First try to get national dex ID from the species map
-  let nationalDexId = GEN_3_POKEMON_MAP[speciesId];
+  // First try to get national dex ID from the alternate species map (Gen 3 internal order)
+  let nationalDexId = GEN3_ALT_SPECIES_MAP[speciesId];
 
-  // If that fails but we have a valid species name, find the national dex ID from SPECIES_MAP
+  if (!nationalDexId || nationalDexId === 0) {
+    nationalDexId = GEN3_INTERNAL_ID_OVERRIDES[speciesId];
+  }
+
+  // If that fails, try the old mapping
+  if (!nationalDexId || nationalDexId === 0) {
+    nationalDexId = GEN_3_POKEMON_MAP[speciesId];
+  }
+
+  // If that also fails but we have a valid species name, find the national dex ID from SPECIES_MAP
   if ((!nationalDexId || nationalDexId === 0) && speciesName) {
     // Search SPECIES_MAP to find the national dex ID for this species name
     const foundKey = Object.keys(SPECIES_MAP).find(
@@ -507,11 +535,17 @@ const decodePokemon = (buffer: Buffer, context: PokemonContext): Pokemon | null 
   // Look up location name from GEN_3_LOCATIONS map
   const met = metLocation && metLocation !== 0xff ? GEN_3_LOCATIONS[metLocation] : undefined;
 
+  // Generate unique ID based on PID, with deduplication if needed
+  const basePid = personality.toString(16);
+  const currentCount = context.pidTracker.get(basePid) || 0;
+  context.pidTracker.set(basePid, currentCount + 1);
+  const id = currentCount > 0 ? `${basePid}-${currentCount}` : basePid;
+
   const pokemon: Pokemon = {
     species: speciesName || `Species ${speciesId}`,
     nickname: nickname || undefined,
     status: context.status,
-    id: `${personality.toString(16)}-${otId.toString(16)}`,
+    id,
     level,
     moves,
     shiny,
@@ -548,7 +582,11 @@ const decodePokemon = (buffer: Buffer, context: PokemonContext): Pokemon | null 
   return pokemon;
 };
 
-const parseParty = (section: Buffer, offsets: ReturnType<typeof getOffsets>): Pokemon[] => {
+const parseParty = (
+  section: Buffer,
+  offsets: ReturnType<typeof getOffsets>,
+  pidTracker: Map<string, number>
+): Pokemon[] => {
   const size = section.readUInt8(offsets.TEAM_SIZE) || 0;
   const count = Math.min(size, TEAM_CAPACITY);
   const start = offsets.TEAM_POKEMON_LIST;
@@ -570,6 +608,7 @@ const parseParty = (section: Buffer, offsets: ReturnType<typeof getOffsets>): Po
       isParty: true,
       level: slice.readUInt8(0x54),
       slotIndex: i,
+      pidTracker,
     };
     const pokemon = decodePokemon(slice, context);
     if (pokemon) {
@@ -582,7 +621,11 @@ const parseParty = (section: Buffer, offsets: ReturnType<typeof getOffsets>): Po
   return party;
 };
 
-const parseBoxes = (sectionMap: Map<number, SaveSection>, options: ParserOptions): Pokemon[] => {
+const parseBoxes = (
+  sectionMap: Map<number, SaveSection>,
+  options: ParserOptions,
+  pidTracker: Map<string, number>
+): Pokemon[] => {
   const buffers: Buffer[] = [];
   PC_SECTION_IDS.forEach((id) => {
     const section = sectionMap.get(id);
@@ -622,6 +665,7 @@ const parseBoxes = (sectionMap: Map<number, SaveSection>, options: ParserOptions
         isParty: false,
         boxIndex,
         slotIndex: slot,
+        pidTracker,
       };
       const pokemon = decodePokemon(slice, context);
       if (pokemon) {
@@ -699,9 +743,12 @@ export const parseGen3Save = async (file: Buffer, options: ParserOptions) => {
     throw new Error('Unable to locate trainer or party data in save file.');
   }
 
+  // Create a PID tracker to ensure unique IDs across all Pokemon
+  const pidTracker = new Map<string, number>();
+
   const trainer = parseTrainer(trainerSection.data, offsets, options);
-  const party = parseParty(teamSection.data, offsets);
-  const boxed = parseBoxes(sectionMap, options);
+  const party = parseParty(teamSection.data, offsets, pidTracker);
+  const boxed = parseBoxes(sectionMap, options, pidTracker);
 
   const endTime = performance.now();
   const parseTime = endTime - startTime;
