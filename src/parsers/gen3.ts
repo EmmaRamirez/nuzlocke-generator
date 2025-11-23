@@ -78,9 +78,9 @@ const SECTION_SAVE_SIZES: Record<number, number> = {
 };
 
 const COMMON_OFFSETS = {
-  PLAYER_NAME: [0x0000, 0x0007],
-  PLAYER_ID: [0x000a, 0x000e],
-  TIME_PLAYED: [0x000e, 0x0013],
+    PLAYER_NAME: [0x0000, 0x0007],
+    PLAYER_ID: [0x000a, 0x000e],
+    TIME_PLAYED: [0x000e, 0x0013],
 };
 
 const RS_OFFSETS = {
@@ -344,7 +344,9 @@ const buildSectionMap = (blockA: SaveSection[], blockB: SaveSection[]) => {
 
         if (validA && validB) {
             selected =
-                sectionA!.saveIndex >= sectionB!.saveIndex ? sectionA : sectionB;
+                sectionA!.saveIndex >= sectionB!.saveIndex
+                    ? sectionA
+                    : sectionB;
         } else if (validA) {
             selected = sectionA;
         } else if (validB) {
@@ -473,7 +475,7 @@ const decodePokemon = (
     const checksum = buffer.readUInt16LE(0x1c);
     const encryptedData = buffer.slice(0x20, 0x20 + 48);
     const key = (personality ^ otId) >>> 0;
-  const decrypted = xorBufferWithKey(encryptedData, key);
+    const decrypted = xorBufferWithKey(encryptedData, key);
     const orderKey =
         SUBSTRUCTURE_ORDERS[personality % SUBSTRUCTURE_ORDERS.length];
     const sub = splitSubstructures(orderKey, decrypted);

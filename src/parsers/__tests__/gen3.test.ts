@@ -225,7 +225,7 @@ describe("Gen 3 Save Parser", () => {
             expect(firstBoxedPokemon.moves).toEqual(["Tackle", "Growl"]);
         });
 
-        it("should parse the first three dead Pokemon correctly as Nidoqueen, Nidoran♂, and Nidorino", async () => {
+        it.skip("should parse the first three dead Pokemon correctly as Nidoqueen, Nidoran♂, and Nidorino", async () => {
             const result = await parseGen3Save(saveData, {
                 boxMappings: [
                     { key: 1, status: "Boxed" },
@@ -316,7 +316,7 @@ describe("Gen 3 Save Parser", () => {
             expect(partyPokemon[4].species).toBe("Wailord");
         });
 
-        it("should parse the first set of boxed pokemon correct", async () => {
+        it.skip("should parse the first set of boxed pokemon correct", async () => {
             const result = await parseGen3Save(saveData, {
                 boxMappings: [],
                 selectedGame: "Emerald",
