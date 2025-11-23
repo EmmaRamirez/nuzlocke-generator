@@ -29,14 +29,7 @@ export default defineConfig([
         rules: {
             "react/prop-types": "off",
             "@typescript-eslint/no-explicit-any": "warn",
-            "@typescript-eslint/no-unused-vars": [
-                "warn",
-                {
-                    argsIgnorePattern: "^_",
-                    varsIgnorePattern: "^_",
-                    caughtErrorsIgnorePattern: "^_",
-                },
-            ],
+            "@typescript-eslint/no-unused-vars": "off",
             "@typescript-eslint/no-empty-object-type": "warn",
             "@typescript-eslint/no-unsafe-function-type": "warn",
             "no-prototype-builtins": "warn",
