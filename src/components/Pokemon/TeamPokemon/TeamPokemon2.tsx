@@ -1,7 +1,7 @@
 import { Pokemon } from "models";
 import * as React from "react";
 import * as ReactDOMServer from "react-dom/server";
-import { useSelector } from "react-redux";
+import { Provider, useSelector, useStore } from "react-redux";
 import { State } from "state";
 import {
     formatBallText,
@@ -11,7 +11,7 @@ import {
     typeToColor,
 } from "utils";
 import { css } from "emotion";
-import * as Mustache from "mustache";
+import Mustache from "mustache";
 import { ErrorBoundary, PokemonIconPlain } from "components";
 import { uniq } from "ramda";
 import { MovesBase } from "./Moves";
@@ -20,6 +20,7 @@ import { Result } from "components/Features/Result/Result";
 import { linkedPokemonSelector } from "selectors";
 import { PokemonItem } from "./PokemonItem";
 import { PokemonPokeball } from "./PokemonPokeball";
+import { CheckpointsDisplay } from "components/Features/Result/TrainerResult";
 
 export interface TeamPokemonProps {
     pokemon: Pokemon;
@@ -56,12 +57,12 @@ const TeamCheckpointsDisplay = ({ game, pokemon, style }) => {
     return (
         <ErrorBoundary>
             <div className="flex flex-wrap" style={{ maxWidth: "14rem" }}>
-                {/* <CheckpointsDisplay
-          className="pokemon-checkpoint"
-          game={game}
-          clearedCheckpoints={pokemon.checkpoints}
-          style={style}
-        /> */}
+                <CheckpointsDisplay
+                    className="pokemon-checkpoint"
+                    game={game}
+                    clearedCheckpoints={pokemon.checkpoints}
+                    style={style}
+                />
             </div>
         </ErrorBoundary>
     );
@@ -87,6 +88,7 @@ export function TeamPokemon({
     const customTypes = useSelector<State, State["customTypes"]>(
         (state) => state.customTypes,
     );
+    const store = useStore();
 
     const teamHTML = style.customTeamHTML;
 
@@ -179,7 +181,15 @@ export function TeamPokemon({
             />,
         ),
         icon: ReactDOMServer.renderToString(pokemonIcon),
-        checkpoints: ReactDOMServer.renderToString(<div />),
+        checkpoints: ReactDOMServer.renderToString(
+            <Provider store={store}>
+                <TeamCheckpointsDisplay
+                    game={game}
+                    pokemon={pokemon}
+                    style={style}
+                />
+            </Provider>,
+        ),
         genderSymbol: ReactDOMServer.renderToString(
             <GenderElementReact gender={pokemon?.gender} />,
         ),

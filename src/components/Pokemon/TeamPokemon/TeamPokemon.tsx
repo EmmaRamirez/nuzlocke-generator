@@ -20,7 +20,7 @@ import { State } from "state";
 import { css, cx } from "emotion";
 import { PokemonIcon } from "components/Pokemon/PokemonIcon/PokemonIcon";
 import { getMetLocationString } from "./getMetLocationString";
-// import { CheckpointsDisplay } from 'components/Features/Result/Result';
+import { CheckpointsDisplay } from "components/Features/Result/TrainerResult";
 import { PokemonImage } from "components/Common/Shared/PokemonImage";
 import { PokemonItem } from "./PokemonItem";
 import { PokemonPokeball } from "./PokemonPokeball";
@@ -214,12 +214,12 @@ export class TeamPokemonInfo extends React.PureComponent<TeamPokemonInfoProps> {
                                 className="flex flex-wrap pokemon-checkpoints"
                                 style={{ maxWidth: "14rem" }}
                             >
-                                {/* <CheckpointsDisplay
-                  className="pokemon-checkpoint"
-                  game={game}
-                  clearedCheckpoints={pokemon.checkpoints}
-                  style={style}
-                /> */}
+                                <CheckpointsDisplay
+                                    className="pokemon-checkpoint"
+                                    game={game}
+                                    clearedCheckpoints={pokemon.checkpoints}
+                                    style={style}
+                                />
                             </div>
                         )}
                         {style.displayExtraData && pokemon.extraData ? (
