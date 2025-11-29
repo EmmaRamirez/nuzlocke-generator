@@ -1,18 +1,11 @@
 /* eslint-env node */
 module.exports = {
-    future: {
-        removeDeprecatedGapUtilities: true,
-        purgeLayersByDefault: true,
-        defaultLineHeights: true,
-        standardFontWeights: true,
-    },
-    purge: {
-        enabled: true,
-        content: ["./src/**/*.tsx"],
-    },
+    content: [
+        "./index.html",
+        "./src/**/*.{js,ts,jsx,tsx}",
+    ],
     theme: {
         extend: {},
     },
-    variants: {},
     plugins: [],
 };
