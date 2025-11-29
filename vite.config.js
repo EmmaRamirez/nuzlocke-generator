@@ -63,6 +63,15 @@ export default defineConfig({
         alias: {
             // Prefer Node built-ins over npm packages with same name
             path: "node:path",
+            // Ensure Vitest can resolve React's JSX runtime files
+            "react/jsx-runtime": path.resolve(
+                __dirname,
+                "node_modules/react/jsx-runtime.js",
+            ),
+            "react/jsx-dev-runtime": path.resolve(
+                __dirname,
+                "node_modules/react/jsx-dev-runtime.js",
+            ),
         },
         dedupe: ["react", "react-dom"],
     },
@@ -97,10 +106,16 @@ export default defineConfig({
     optimizeDeps: {
         include: ["react", "react-dom"],
     },
+    ssr: {
+        noExternal: ["react-dnd", "react-dnd-html5-backend"],
+    },
     test: {
         globals: true,
         environment: "jsdom",
         setupFiles: ["./setupTests.ts"],
+        deps: {
+            inline: ["react-dnd", "react-dnd-html5-backend"],
+        },
         coverage: {
             provider: "v8",
             reporter: ["text", "json", "html"],

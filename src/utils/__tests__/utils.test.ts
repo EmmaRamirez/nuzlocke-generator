@@ -380,10 +380,12 @@ describe(matchNatureToToxtricityForme.name, () => {
 });
 
 describe(getAdditionalFormes.name, () => {
-    const subject = listOfPokemon.map((species) => ({
-        [species]: getAdditionalFormes(species),
-    }));
-    expect(subject).toMatchSnapshot();
+    it("matches snapshot for all species", () => {
+        const subject = listOfPokemon.map((species) => ({
+            [species]: getAdditionalFormes(species),
+        }));
+        expect(subject).toMatchSnapshot();
+    });
 });
 
 describe.skip(getEvolutionLine.name, () => {
