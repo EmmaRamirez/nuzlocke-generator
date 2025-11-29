@@ -1,0 +1,38 @@
+import * as React from "react";
+import { Outlet, useLoaderData, useNavigation, useRevalidator } from "react-router-dom";
+import { Header } from "components/Common/ui/Header";
+import { Sidebar } from "components/Common/ui/Sidebar";
+import type { RunSummary } from "api/runs";
+
+export interface RootLoaderData {
+    runs: RunSummary[];
+    isAuthenticated: boolean;
+}
+
+export const RootLayout: React.FC = () => {
+    const { runs, isAuthenticated } = useLoaderData() as RootLoaderData;
+    const navigation = useNavigation();
+    const revalidator = useRevalidator();
+
+    const isLoading = navigation.state === "loading";
+
+    return (
+        <div className="min-h-screen bg-gray-50">
+            <Header />
+            <main className="flex min-h-screen">
+                <Sidebar
+                    runs={runs}
+                    isAuthenticated={isAuthenticated}
+                    onRunsChange={() => revalidator.revalidate()}
+                />
+                <div className="flex-1 relative">
+                    {isLoading && (
+                        <div className="absolute top-0 left-0 right-0 h-1 bg-blue-500 animate-pulse" />
+                    )}
+                    <Outlet />
+                </div>
+            </main>
+        </div>
+    );
+};
+

@@ -38,9 +38,10 @@ export interface Pokemon {
     linkedTo?: Pokemon["id"] | null;
     checkpoints?: Checkpoints;
     gift?: boolean;
+    alpha?: boolean;
     /* @deprecated */
     champion?: boolean;
-    alpha?: boolean;
+    
 }
 
 // We export a non-type version when we need all the keys easily

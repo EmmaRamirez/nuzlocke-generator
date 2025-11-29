@@ -1,0 +1,90 @@
+/**
+ * Run API functions for CRUD operations.
+ */
+
+import { api } from './client';
+import type { State } from '../state';
+
+export interface RunSummary {
+  id: string;
+  name: string;
+  revision: number;
+  updated_at: string;
+  inserted_at: string;
+}
+
+export interface Run extends RunSummary {
+  data: Partial<State>;
+}
+
+export interface RunsListResponse {
+  runs: RunSummary[];
+}
+
+export interface RunResponse {
+  run: Run;
+}
+
+export interface PatchResponse {
+  run: {
+    id: string;
+    revision: number;
+  };
+}
+
+/**
+ * List all runs for the current user.
+ */
+export async function listRuns(): Promise<RunSummary[]> {
+  const response = await api.get<RunsListResponse>('/api/runs');
+  return response.runs;
+}
+
+/**
+ * Get a specific run by ID.
+ */
+export async function getRun(id: string): Promise<Run> {
+  const response = await api.get<RunResponse>(`/api/runs/${id}`);
+  return response.run;
+}
+
+/**
+ * Create a new run.
+ */
+export async function createRun(
+  name?: string,
+  data?: Partial<State>
+): Promise<Run> {
+  const response = await api.post<RunResponse>('/api/runs', { name, data });
+  return response.run;
+}
+
+/**
+ * Update a run.
+ */
+export async function updateRun(
+  id: string,
+  updates: { name?: string; data?: Partial<State> }
+): Promise<Run> {
+  const response = await api.put<RunResponse>(`/api/runs/${id}`, updates);
+  return response.run;
+}
+
+/**
+ * Apply a patch to a run's data.
+ */
+export async function patchRun(
+  id: string,
+  patch: Partial<State>
+): Promise<{ id: string; revision: number }> {
+  const response = await api.post<PatchResponse>(`/api/runs/${id}/patch`, { patch });
+  return response.run;
+}
+
+/**
+ * Delete a run.
+ */
+export async function deleteRun(id: string): Promise<void> {
+  await api.delete(`/api/runs/${id}`);
+}
+
