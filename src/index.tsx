@@ -1,5 +1,6 @@
 import * as React from "react";
 import { injectGlobal } from "emotion";
+import { BrowserRouter } from "react-router-dom";
 import { ErrorBoundary } from "components";
 import "./index.css";
 
@@ -27,9 +28,11 @@ async function createRender() {
     const root = createRoot(mountNode!);
     root.render(
         <ErrorBoundary>
-            <React.Suspense fallback={"Loading App..."}>
-                <App />
-            </React.Suspense>
+            <BrowserRouter>
+                <React.Suspense fallback={"Loading App..."}>
+                    <App />
+                </React.Suspense>
+            </BrowserRouter>
         </ErrorBoundary>
     );
 }

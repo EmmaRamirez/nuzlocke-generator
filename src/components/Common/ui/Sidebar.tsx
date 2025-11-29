@@ -1,9 +1,108 @@
 import * as React from "react";
+import { NavLink } from "react-router-dom";
+import { useAuthStore } from "components/Layout/App/auth";
+
+interface NavItemProps {
+    to: string;
+    icon: React.ReactNode;
+    label: string;
+    requiresAuth?: boolean;
+}
+
+const NavItem: React.FC<NavItemProps> = ({ to, icon, label, requiresAuth }) => {
+    const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+
+    if (requiresAuth && !isAuthenticated) {
+        return (
+            <div className="flex items-center gap-3 px-3 py-2 rounded-md text-gray-400 cursor-not-allowed">
+                {icon}
+                <span>{label}</span>
+                <span className="ml-auto text-xs bg-gray-200 text-gray-500 px-1.5 py-0.5 rounded">
+                    Login required
+                </span>
+            </div>
+        );
+    }
+
+    return (
+        <NavLink
+            to={to}
+            className={({ isActive }) =>
+                `flex items-center gap-3 px-3 py-2 rounded-md transition-colors ${
+                    isActive
+                        ? "bg-blue-100 text-blue-700 font-medium"
+                        : "text-gray-700 hover:bg-gray-100"
+                }`
+            }
+        >
+            {icon}
+            <span>{label}</span>
+        </NavLink>
+    );
+};
 
 export const Sidebar = () => {
-    return <aside className="w-64 bg-white border-r border-gray-800">
-        <div className="p-4">
-            <p>Sidebar</p>
-        </div>
-    </aside>;
+    const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+    const logout = () => {
+        localStorage.removeItem("auth_token");
+        useAuthStore.setState({ token: null, isAuthenticated: false });
+    };
+
+    return (
+        <aside className="w-64 bg-white border-r border-gray-200 min-h-screen">
+            <div className="p-4">
+                <nav className="space-y-1">
+                    <NavItem
+                        to="/"
+                        label="Dashboard"
+                        icon={
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            </svg>
+                        }
+                    />
+                    <NavItem
+                        to="/api-explorer"
+                        label="API Explorer"
+                        requiresAuth
+                        icon={
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                        }
+                    />
+                </nav>
+
+                {/* Auth status section */}
+                <div className="mt-8 pt-4 border-t border-gray-200">
+                    {isAuthenticated ? (
+                        <div className="space-y-2">
+                            <div className="flex items-center gap-2 text-sm text-green-600">
+                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                </svg>
+                                <span>Logged in</span>
+                            </div>
+                            <button
+                                onClick={logout}
+                                className="w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-md transition-colors flex items-center gap-2"
+                            >
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                </svg>
+                                Logout
+                            </button>
+                        </div>
+                    ) : (
+                        <div className="flex items-center gap-2 text-sm text-gray-500">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                            <span>Not logged in</span>
+                        </div>
+                    )}
+                </div>
+            </div>
+        </aside>
+    );
 };
