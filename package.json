@@ -181,7 +181,7 @@
         "tailwindcss": "^4.0.0",
         "ts-loader": "^8.0.7",
         "tsx": "^4.19.4",
-        "typescript": "^5.4.3",
+        "typescript": "^5.9.3",
         "typescript-eslint": "^8.31.1",
         "url-loader": "^4.1.1",
         "uuid": "^3.4.0"
