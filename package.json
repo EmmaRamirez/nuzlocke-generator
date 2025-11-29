@@ -5,7 +5,9 @@
     "main": "dist/bundle.js",
     "type": "module",
     "scripts": {
-        "dev": "vite --host",
+        "dev": "npx concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+        "dev:frontend": "vite --host",
+        "dev:backend": "cd server && mix phx.server",
         "build:production": "vite build --mode production",
         "build": "vite build",
         "build:watch": "vite build --watch",
@@ -20,15 +22,16 @@
         "precommit": "npm run lint",
         "pretest": "npm run lint",
         "serve:heroku": "npm run build:production && heroku local web",
-        "serve:node": "npx tsx server.ts",
         "serve:http": "npx http-server@0.12.0 --cors ./dist",
-        "serve:forever": "npx forever start -c 'npm run server:node' ./",
         "serve": "npm run dev",
         "start": "npm run serve",
         "start:ci": "npm start",
         "test": "vitest --coverage",
         "todos": "npx leasot 'src/**/*.tsx' 'src/**/*.ts'",
-        "lh": "npx lighthouse http://localhost:8080 --output-path=./lighthouse/audit.html --save-assets --preset=desktop --quiet --chrome-flags=headless"
+        "lh": "npx lighthouse http://localhost:8080 --output-path=./lighthouse/audit.html --save-assets --preset=desktop --quiet --chrome-flags=headless",
+        "db:setup": "cd server && mix ecto.setup",
+        "db:migrate": "cd server && mix ecto.migrate",
+        "db:reset": "cd server && mix ecto.reset"
     },
     "engines": {
         "node": "^24",
@@ -58,6 +61,7 @@
         "buffer": "^6.0.3",
         "color": "^3.2.1",
         "compression": "^1.8.1",
+        "concurrently": "^8.2.2",
         "cors": "^2.8.5",
         "deep-diff": "^1.0.2",
         "deep-equal": "^1.0.1",
@@ -73,6 +77,7 @@
         "node-fetch": "^3.3.2",
         "normalize.css": "^8.0.1",
         "path": "^0.12.7",
+        "phoenix": "^1.7.14",
         "pino": "^7.0.0-rc.3",
         "pino-pretty": "^3.0.0-rc.2",
         "postcss": "^8.4.21",
@@ -83,6 +88,7 @@
         "react-error-boundary": "^4.0.13",
         "react-infinite-scroller": "^1.2.4",
         "react-loadable-ts-transformer": "0.0.5",
+        "react-router-dom": "^7.9.6",
         "redux-mock-store": "^1.5.3",
         "remark-prism": "^1.1.17",
         "sass": "^1.59.3",
@@ -94,7 +100,8 @@
         "vite": "^7.1.11",
         "vite-plugin-static-copy": "^3.1.4",
         "vite-tsconfig-paths": "^5.1.4",
-        "vitest": "^4.0.12"
+        "vitest": "^4.0.12",
+        "zustand": "^5.0.8"
     },
     "devDependencies": {
         "@babel/core": "^7.10.1",
