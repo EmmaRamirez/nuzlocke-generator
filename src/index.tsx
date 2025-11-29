@@ -18,19 +18,19 @@ void injectGlobal`
 const mountNode = document.getElementById("app");
 
 async function createRender() {
-    const { render } = await import("react-dom");
+    const { createRoot } = await import("react-dom/client");
 
     const App = React.lazy(() =>
         import("components/Layout/App").then((res) => ({ default: res.App })),
     );
 
-    render(
+    const root = createRoot(mountNode!);
+    root.render(
         <ErrorBoundary>
             <React.Suspense fallback={"Loading App..."}>
                 <App />
             </React.Suspense>
-        </ErrorBoundary>,
-        mountNode
+        </ErrorBoundary>
     );
 }
 
