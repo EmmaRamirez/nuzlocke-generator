@@ -1,17 +1,17 @@
 import * as React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuthStore } from "components/Layout/App/auth";
+import { createRun, type RunSummary } from "api/runs";
 
 interface NavItemProps {
     to: string;
     icon: React.ReactNode;
     label: string;
     requiresAuth?: boolean;
+    isAuthenticated: boolean;
 }
 
-const NavItem: React.FC<NavItemProps> = ({ to, icon, label, requiresAuth }) => {
-    const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
-
+const NavItem: React.FC<NavItemProps> = ({ to, icon, label, requiresAuth, isAuthenticated }) => {
     if (requiresAuth && !isAuthenticated) {
         return (
             <div className="flex items-center gap-3 px-3 py-2 rounded-md text-gray-400 cursor-not-allowed">
@@ -41,11 +41,34 @@ const NavItem: React.FC<NavItemProps> = ({ to, icon, label, requiresAuth }) => {
     );
 };
 
-export const Sidebar = () => {
-    const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+interface SidebarProps {
+    runs: RunSummary[];
+    isAuthenticated: boolean;
+    onRunsChange: () => void;
+}
+
+export const Sidebar: React.FC<SidebarProps> = ({ runs, isAuthenticated, onRunsChange }) => {
+    const navigate = useNavigate();
+    const [isCreating, setIsCreating] = React.useState(false);
+
     const logout = () => {
         localStorage.removeItem("auth_token");
         useAuthStore.setState({ token: null, isAuthenticated: false });
+        navigate("/");
+        onRunsChange();
+    };
+
+    const handleCreateRun = async () => {
+        setIsCreating(true);
+        try {
+            const newRun = await createRun("My Nuzlocke Run");
+            if (newRun) {
+                onRunsChange();
+                navigate(`/runs/${newRun.id}`);
+            }
+        } finally {
+            setIsCreating(false);
+        }
     };
 
     return (
@@ -55,6 +78,7 @@ export const Sidebar = () => {
                     <NavItem
                         to="/"
                         label="Dashboard"
+                        isAuthenticated={isAuthenticated}
                         icon={
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -65,6 +89,7 @@ export const Sidebar = () => {
                         to="/api-explorer"
                         label="API Explorer"
                         requiresAuth
+                        isAuthenticated={isAuthenticated}
                         icon={
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -72,6 +97,55 @@ export const Sidebar = () => {
                         }
                     />
                 </nav>
+
+                {/* My Saves section */}
+                {isAuthenticated && (
+                    <div className="mt-8 pt-4 border-t border-gray-200">
+                        <div className="space-y-2">
+                            <div className="text-xs text-gray-400 font-semibold uppercase tracking-wide mb-1">
+                                My Saves
+                            </div>
+                            {runs.length > 0 ? (
+                                runs.map((run) => (
+                                    <NavLink
+                                        key={run.id}
+                                        to={`/runs/${run.id}`}
+                                        className={({ isActive }) =>
+                                            `block px-3 py-1.5 text-sm rounded-md transition-colors ${
+                                                isActive
+                                                    ? "bg-blue-100 text-blue-700 font-medium"
+                                                    : "text-gray-600 hover:bg-gray-100"
+                                            }`
+                                        }
+                                    >
+                                        {run.name}
+                                    </NavLink>
+                                ))
+                            ) : (
+                                <div className="text-gray-400 italic text-xs px-3">
+                                    No saves yet
+                                </div>
+                            )}
+                        </div>
+                        <button
+                            onClick={handleCreateRun}
+                            disabled={isCreating}
+                            className="cursor-pointer w-full text-left px-3 py-2 mt-2 text-sm text-blue-600 hover:bg-blue-50 disabled:opacity-50 rounded-md transition-colors flex items-center gap-2"
+                        >
+                            {isCreating ? (
+                                <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                                </svg>
+                            ) : (
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                                </svg>
+                            )}
+                            {isCreating ? "Creating..." : "New Nuzlocke Run"}
+                        </button>
+                    </div>
+                )}
 
                 {/* Auth status section */}
                 <div className="mt-8 pt-4 border-t border-gray-200">

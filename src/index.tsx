@@ -1,7 +1,8 @@
 import * as React from "react";
 import { injectGlobal } from "emotion";
-import { BrowserRouter } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 import { ErrorBoundary } from "components";
+import { router } from "./router";
 import "./index.css";
 
 void injectGlobal`
@@ -21,18 +22,10 @@ const mountNode = document.getElementById("app");
 async function createRender() {
     const { createRoot } = await import("react-dom/client");
 
-    const App = React.lazy(() =>
-        import("components/Layout/App").then((res) => ({ default: res.App })),
-    );
-
     const root = createRoot(mountNode!);
     root.render(
         <ErrorBoundary>
-            <BrowserRouter>
-                <React.Suspense fallback={"Loading App..."}>
-                    <App />
-                </React.Suspense>
-            </BrowserRouter>
+            <RouterProvider router={router} />
         </ErrorBoundary>
     );
 }
